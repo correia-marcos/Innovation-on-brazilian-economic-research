@@ -65,9 +65,9 @@ Briefly, we did the following:
 * collections
 * matplotlib.pyplot
 * seaborn
-* NTRexample_FRevNCA github (cloned)
-* artifici_lda library github (cloned)
-* polyglot library (cloned)
+* NTRexample_FRevNCA from github (cloned)
+* artifici_lda library from github (cloned)
+* polyglot library from github (cloned)
 
 **Important:** some of this libraries need to be downloaded (pip install or
 conda install).
