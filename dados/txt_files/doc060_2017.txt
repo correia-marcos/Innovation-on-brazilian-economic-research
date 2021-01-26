@@ -1,0 +1,1582 @@
+    Regressão Quantíli a e VaR: Uma Apli ação de Quantis
+
+     Condi ionais Extremos para os Retornos Relativos ao
+
+                               IBOVESPA e Petrobrás
+
+                                  ∗                                    †                                ‡
+    Ana Katarina Campêlo , Wilton Bernardino da Silva , Renan Oliveira Regis ,
+
+                                      Rafael Moura Azevedo
+                                                                   
+
+
+                                        12 de julho de 2017
+
+
+
+
+                                                Resumo
+
+         Análises de ris o têm re ebido uma atenção substan ial em E onomia e Finanças ao ser o
+     fo o de uma vasta literatura neste ampo. O prin ipal fo o deste trabalho é apli ar a teoria e
+     os métodos de quantiles extremos na avaliação de fatores orrela ionados à gestão de ris o em
+     duas séries do mer ado nan eiro brasileiro (IBOVESPA e Petrobrás). A prin ipal metodolo-
+     gia utilizada é proposta por Chernozhukov & Du (2006), que des reve té ni as de estimação
+     para quantis extremos ondi ionais, tendo omo base a regressão quantíli a (Koenker & Bassett,
+     1978). A atratividade desse método reside no fato de que ele estima diretamente os quantis
+     extremos ondi ionais, os quais representam as estimativas do VaR. Além disso, a metodologia
+     permite a veri ação de quais variáveis orrelatas afetam esta estatísti a em parti ular. Final-
+     mente, o índi e de auda pode ser al ulado, dando uma idéia da probabilidade de o orrên ia
+     desses eventos extremos. Desta forma, o artigo objetiva desta ar a importân ia da apli ação
+     desta té ni a levando em onsideração às série de dados nan eiros brasileiros. Os resultados
+     adquiridos om o uso do bootstrap extremo atestam que a regressão quantíli a apli ada à quantis
+     extremos forne e previsões pre isas de VaR.
+
+     Palavras- have:  regressão quantíli a, teoria do valor extremo, valor em ris o.
+     Código JEL: C61, C68, E62.
+
+
+                                               Abstra t
+
+         Risk analysis has re eived a substantial amount of attention in E onomy and Finan es by
+     being the fo us of a vast literature in this eld. The main of this paper is to apply the theory
+     and methods of extreme quantiles in the evaluation of orrelated fa tors and risk management in
+     two series of the Brazilian nan ial market (IBOVESPA and Petrobrás). The main methodology
+     used was developed by Chernozhukov & Du (2006), whi h proposes estimative te hniques of the
+      onditional extremal quantiles, having as a base the Quantile regression (Koenker & Bassett,
+     1978). The attra tiveness for su h method lies on the fa t that it dire tly estimates the ondi-
+     tional extremal quantiles, whi h represents the VaR estimatives. Additionally, the methodology
+     allows the veri ation of whi h orrelated variables ae ts this statisti in parti ular. Finally,
+     the tail index of onditional ex hange rate of the series an be al ulated, giving us an idea of
+∗
+  anak ampelogmail. om
+†
+  wiltonre gmail. om
+‡
+  renan.e onomiahotmail. om
+ rafael.moura.agmail. om
+      the probability of su h extreme events o urren e. On this way, the paper targets to highlight
+      the importan e of applying this te hnique taking into onsideration the series of Brazilian data.
+      The a quired results from the extremal bootstrap method attest that the extremal quantile
+      regression applied to extreme quantiles provide pre ise predi tions of VaR.
+
+      Keywords: quantile regression, theory of extreme values, value at risk.
+      JEL ode: C61, C68, E62.
+
+
+
+1 Introdução
+    A mensuração e geren iamento dos ris os envolvidos em nego iações nan eiras têm motivado
+pesquisadores a proporem on eitos e métodos que resultem em indi adores apazes de prever e
+quanti ar quão arris ada é uma de isão de investimento. Nesse intuito, foi desenvolvido o on eito de
+Valor em Ris o (VaR) (Roy, 1952), visando geren iar os ris os envolvidos em transações nan eiras,
+em espe ial quanti ar as grandes perdas e han es de o orrên ia das mesmas. A medida de VaR tem
+sido bastante empregada no mer ado nan eiro, auxiliando no ontrole e regulamentação de aspe tos
+asso iados ao geren iamento de ris os pelos agentes e onmi os. Em muitas análises, dada uma
+informação a priori, utiliza-se a medida de VaR om o intuito de prever e expli ar os quantis extremos
+da distribuição dos retornos de uma arteira de ativos (portfólio)1, os quais  am ondi ionados a um
+ onjunto de variáveis regressoras (Chernozhukov & Umantsev, 2001). O VaR modelado dessa forma
+possui propriedades que o deixam om vantagens signi ativas relativamente às modelagens usuais,
+sendo apaz de quanti ar os ris os om maior pre isão e menor omplexidade omputa ional.
+    Os métodos de estimação do VaR mais usuais e difundidos na literatura são os paramétri os e
+utilizam a hipótese de que os dados possuem erta distribuição ondi ional (Bollerslev, 1986; Lon-
+gerstaey & More, 1995). Porém, tais métodos podem subestimar o verdadeiro VaR sob elevada
+o orrên ia de perdas extremas. Posteriormente, surgem os modelos que não ne essitam denir pre-
+viamente a distribuição da série de retornos (Chernozhukov & Umantsev, 2001; Engle & Manganelli,
+2004; Adrian & Brunnermeier, 2011). Estes métodos são semi-paramétri os e tendem a apresentar
+maior pre isão que os anteriores. Por m, existem té ni as uja metodologia se insere no ar abouço
+da teoria dos valores extremos (TVE) e se en ontram em Monteiro et al. (2002) e Carvalhal da Silva
+& Mendes (2003).
+    Outra medida utilizada na mensuração dos ris os em nanças é o Expe ted Shortfall (ES), tam-
+bém hamado de onditional Value-at-Risk (CVaR), proposto por Ro kafellar & Uryasev (2000). A
+diferença entre o VaR (que usa a probabilidade ondi ional) e o ES é que este é denido omo a
+perda esperada quando o VaR é violado, ou seja, dado que as perdas superam o VaR, tem-se no ES
+a esperança ondi ional das perdas extremas (a ima do VaR).
+    Uma grande vantagem da utilização do ES é que este é uma medida de ris o oerente (Ibragimov &
+Walden, 2007). Nesse sentido, medidas de ris o oerentes atendem às propriedades: (i) subaditividade
+(o valor da medida de ris o não pode ser superior à soma das medidas de ris o de sub-portfólios); (ii)
+homogeneidade (a medida é propor ional à es ala do portfólio); (iii) monotoni idade (se uma arteira
+A de ativos possui retornos não inferiores aos de um portifólio B, então o ris o asso iado a A não
+deve superar o de B); e (iv) translação invariante (a medida de ris o não muda sob mudanças apenas
+em parâmetros de lo ação). É importante ressaltar que o VaR nem sempre satisfaz a subaditividade,
+porém, há vários asos em que a medida VaR é subaditiva (sob normalidade dos retornos, por
+exemplo), o que a torna uma medida de ris o bastante atrativa em virtude da maior fa ilidade
+ omputa ional em estimá-la.
+   1 Um portfólio em nanças é uma arteira de investimentos mantida por uma instituição ou indivíduo. Para uma
+des rição detalhada de portfólio (ASSAF, 2011).
+2 Revisão Bibliográ a                                                                               3
+
+
+    A regressão quantíli a para valores extremos (Chernozhukov & Du, 2006), omo modelo de base
+para a estimação do VaR, tem despertado grande atenção às pesquisas a adêmi as interna ionais,
+sendo utilizada om su esso em diversas áreas apli adas, porém ainda de forma in ipiente na litera-
+tura brasileira. A maioria dos métodos existentes para o ál ulo do VaR estima a distribuição dos
+retornos e, em seguida, re upera seu quantil de forma indireta. Nesse sentido, a regressão quantíli a
+apresenta vantagens, pois possibilita a estimação direta de qualquer ponto da distribuição ondi i-
+onal da variável resposta, Y (retornos), dado um onjunto de ovariáveis, X , não restringindo-se
+às estimativas de medidas entrais. O método pode ser utilizado omo base para a obtenção de
+estimativas VaR asso iadas a quantis ondi ionais extremos, em parti ular àqueles perten entes à
+  auda esquerda da distribuição dos retornos onsiderados em análise. Além disso, a té ni a permite
+averiguar os fatores orrelatos ao ris o, determinantes no ál ulo do VaR. Portanto, há um grande
+poten ial para apli ação dessa teoria e métodos a diversas e interessantes análises empíri as em
+e onomia e nanças.
+    Toda modelagem que tem omo base a regressão quantíli a possui ainda outras propriedades atra-
+tivas, tais omo: (i) não ne essita de espe i ação paramétri a de uma distribuição (i.e., distribution
+free ), sendo lassi ada omo um método semi-paramétri o, ou seja, não requer uma parametrização
+prévia da distribuição ondi ional do erro asso iado ao modelo; (ii) possibilita a estimação de qual-
+quer quantil ondi ional da variável dependente, ofere endo assim uma visão mais global da relação
+entre esta variável e as demais ovariáveis; (iii) forne e estimativas dos parâmetros om propriedades
+desejáveis, ou seja, as mesmas são onsistentes (i.e, as estimativas dos parâmetros onvergem em
+probabilidade para seus valores popula ionais em amostras grandes).
+    Por onseguinte, té ni as e onométri as baseadas na regressão quantíli a forne em boas estimati-
+vas dos parâmetros (i.e., pre isas e e ientes), tanto pontuais quanto intervalares, além de possibili-
+tarem adequada inferên ia quanto à estimação e ajuste do modelo, bem omo a utilização do mesmo
+para ns de previsão.
+    O presente trabalho objetiva estimar o VaR ondi ionado a uma matriz de variáveis expli ativas
+X , tendo omo base a regressão quantíli a e tendo ênfase nos valores extremos. A pesquisa tem
+fo o nos retornos do índi e Bovespa e das ações ordinárias da Petrobrás, as quais são onsideradas
+  omo variáveis de interesse. Com esse propósito, bus a-se identi ar quais fatores de ris o impa tam
+a variável de interesse. Adi ionalmente, utilizar-se-á o índi e de auda para estimar quantis ainda
+mais extremos, por meio de té ni as de extrapolação baseadas em bootstrap. A pesquisa mostra-se
+também relevante para áreas de onhe imentos ans, para as quais análises de ris o são igualmente
+ne essárias. Ademais, este estudo omplementa a literatura na ional ao utilizar metodologia mais so-
+sti ada para a estimação do VaR, forne endo estimativas mais ompletas e globais, ao in orporarem
+os efeitos de ara terísti as do mer ado nan eiro brasileiro.
+    O artigo está organizado da seguinte forma. A Seção 2 dedi a-se à revisão bibliográ a da
+literatura na ional e interna ional. Na Seção 3 é des rita a metodologia. A Seção 4 apresenta os
+resultados do trabalho. Por m, na Seção 5 expõem-se as onsiderações nais da pesquisa.
+
+
+2 Revisão Bibliográ a
+    Um dos primeiros teóri os na tentativa de mensurar ris os bus ando estimativas de perdas po-
+ten iais em um portfólio foi Fran is Edgeworth em 1888, seguido por Di kson H. Leavens em 1945,
+que mensiona pela primeira vez o termo VaR em um estudo analisando ris os em uma arteira de
+ativos in luindo títulos públi os. Em 1952 Harry Markowitz introduz a teoria do portfólio e, três
+meses depois, Arthur D. Roy propõe os primeiros indi adores VaR.
+    O período ompreendido entre as dé adas de 1970 e 1980 é mar ado pelos mer ados apresentando-
+se mais voláteis e as empresas mais alavan adas. Por outro lado, o desenvolvimento te nológi o
+2 Revisão Bibliográ a                                                                                       4
+
+
+possibilita a implementação de novos re ursos para o ál ulo do VaR. Em 1988, o Comitê de Basiléia2
+publi a uma série de exigên ias de apital mínimo3, que devem ser atendidas por ban os omer iais,
+para pre aução relativa a ris o de rédito4 . Estas exigên ias passam a ser adotadas pelos países do
+G-10, e passam a ser onhe idos omo a ordo de Basileia de 1988.
+    Na de ada de 1990 os omputadores já eram apazes de realizar as análises mais omplexas de
+Markowitz (1959) e outros métodos já existentes do VaR. Um do umento té ni o publi ado por J.P.
+Morgan em 1994 introduzia um sistema de gestão de ris os denotado por RiskMetri sTM , o qual
+des reve um método omputa ional de ál ulo do VaR para um portfólio. Em 1996, o Comitê de
+Basiléia a res enta uma emenda que in luir as han es de o orrên ia de ris o de mer ado5 . Esta
+emenda aumenta o apital mínimo que os ban os pre isam deter para obrir os ris os de mer ado e
+este requisito é o maior valor entre o VaR do dia anterior e o VaR médio ao longo dos últimos 60
+dias, multipli ado por um fator denido pela autoridade reguladora om limite mínimo de 3. Após
+o a ordo de Basiléia há um res ente desenvolvimento de té ni as de mensuração do VaR.
+    Uma forma de lassi ar os modelos do VaR é distinguindo-os entre modelos não paramétri os,
+paramétri os e semi-paramétri os. No aso não paramétri o, a distribuição de probabilidade dos re-
+tornos é obtida empiri amente, não havendo espe i ação a priori. Um exemplo de modelagem desse
+tipo é a simulação históri a (HS), porposta por Roy (1952), onde se al ula o α-quantil (α ∈ (0, 0.1))
+da distribuição dos retornos a partir dos dados históri os. Os modelos lassi ados omo paramétri os
+ne essitam assumir uma distribuição para os dados e, através desta suposição, realizar a estimação
+dos parâmetros e, em seguida, estimar o VaR pelo α-quantil da distribuição estimada. Para esses
+ asos, é bastante usual utilizar a distribuição normal e estimar seus parâmetros de média e variân-
+ ia. Os modelos hetero edásti os autoregressivos ARCH e GARCH (Bollerslev, 1986; Engle, 1982)
+são também paramétri os. Nestes, a distribuição ondi ional dos retornos é suposta ser gaussiana.
+Há também modelos paramétri os que assumem o padrão Student-t para a distribuição ondi ional
+dos retornos (modelos tARCH e tGARCH). Por m, existe a modelagem semi-paramétri a omo,
+por exemplo, o modelo CAViaR (Engle & Manganelli, 2004), que utiliza a regressão quantili a na
+estimação do VaR.
+    Em uma apli ação da regressão quantíli a, Chernozhukov & Umantsev (2001) utilizam métodos
+e onométri os e o on eito de VaR a m de prever o ris o de uma grande empresa de petróleo
+ameri ana. Com esse propósito, os autores estimam quantis extremos ondi ionais, obtendo também
+regiões de onança para o VaR, on luindo que a natureza semi-paramétri a e exível do modelo
+é importante para avaliar os ris os de mer ado om pre isão. Também nessa linha de pesquisa,
+Chernozhukov & Du (2006) desenvolvem uma metodologia de mensuração do VaR para valores
+extremos (extremal quantile regression ). Nesse trabalho, os autores propõem diversas té ni as de
+estimação de quantis extremos e revisam algumas questões abordadas em Chernozhukov & Umantsev
+(2001). Na apli ação feita pelos autores, além de estimar o VaR, apli a-se o estimador de Hill et al.
+(1975) na obtenção do índi e de auda. Após a ara terização das audas dos retornos, quantis muito
+extremos são estimados através dos métodos de extrapolação propostos. Segundo os autores, há
+grandes oportunidades para novos desenvolvimentos teóri os e empíri os utilizando essa abordagem
+metodológi a.
+    Monteiro et al. (2002) utiliza uma abordagem designada de VaR-X ondi ional apli ada em dados
+do mer ado nan eiro português. Este método estatísti o faz parte da teoria dos valores extremos
+(TVE). A medida ondi ional utilizada pelos autores leva em onsideração a volatilidade ondi ional,
+permitindo veri ar se esta aptura algum ris o de perda adi ional, o qual, segundo os autores, seria
+relevante durante períodos de instabilidade nan eira. Os mesmos on luem que, omparadas às
+  2O   Comitê de Basiléia é uma organização que in orpora autoridades de supervisão ban ária e é onstituído por
+representantes dos ban os entrais de 27 países.
+   3 O apital mínimo é o apital total que a supervisionada deverá manter para operar.
+   4 Ris o de rédito surge quando o tomador ou ontraparte não são apazes de umprir om as suas obrigações
+ ontratuais.
+   5 Ris o de mer ado de orre de movimentos dos níveis ou nas volatilidades dos preços de mer ado.
+2 Revisão Bibliográ a                                                                                       5
+
+
+previsões obtidas através da metodologia RiskMetri s, as previsões forne idas pela nova abordagem
+são apazes de aptar o ris o de perda adi ional om maior pre isão. Carvalhal da Silva & Mendes
+(2003), por sua vez, utilizam a TVE para analisar séries provenientes de dez mer ados de ações asiá-
+ti os, identi ando qual tipo de distribuição assintóti a melhor se adequa aos modelos que estimam
+valores extremos a partir de séries nan eiras nesses mer ados. Os testes estatísti os indi am que
+as distribuições dos retornos não se ara terizam por distribuição normal e que os mínimos e os má-
+ximos das séries dos retornos podem ser modelados pelos valores extremos. Ademais, os resultados
+indi am que o tempo médio de espera para um índi e apresentar um retorno abaixo (a ima) de um
+limite espe í o é geralmente maior para os países asiáti os desenvolvidos do que para os emergentes
+da Ásia. Também são obtidas estimativas do VaR usando a TVE, as quais são omparadas om
+os resultados do VaR empíri o e normal. Os resultados sugerem que o método de valor extremo
+utilizado para realizar a estimação do VaR é uma abordagem mais onservadora para determinar as
+ne essidades de apital do que os métodos tradi ionais.
+    Engle & Manganelli (2004) propõem uma forma de mensuração de ris o baseada em regressão
+quantíli a (Koenker & Bassett, 1978), a qual re ebeu o nome de Valor em Ris o Auto-Regressivo Con-
+di ional (CAViaR). Nessa metodologia, propõe-se uma modelagem direta dos quantis da distribuição
+dos retornos de um portfólio, não havendo, portanto, hipóteses subja entes relativas à distribuição.
+O modelo CAViaR permite a mensuração do ris o de um investimento baseada em uma espe i a-
+ção que possibilita a estimação dos quantis ondi ionais om variáveis expli ativas auto-regressivas,
+fazendo uso da té ni a de regressão quantíli a. As apli ações eviden iam a apa idade do modelo
+CAViaR de se adaptar a novos ambientes de ris os. Por m, os resultados indi am que o omporta-
+mento das audas pode ser diferente do restante da distribuição. Santos (2006), por sua vez, analisa
+o modelo CAViaR para medir os ris os de investimentos nos asos dos índi es brasileiros (IBOVESPA
+e Petrobrás). Este modelo permite a modelagem da série por meio de um pro esso auto-regressivo
+  ondi ional, além de permitir uma avaliação mais pre isa da qualidade de ajuste deste. Em adição,
+no intuito de veri ar a pre isão das estimativas dos parâmetros, os autores realizam uma simulação
+de Monte Carlo, a partir da qual on lui-se que a mesma está rela ionada à es olha dos valores
+ini iais sugeridos para os parâmetros e que, na maioria das vezes, faz-se ne essário onsiderar um
+grande número de vetores de estimativas ini iais.
+    Adrian & Brunnermeier (2011) utilizam regressão quantíli a na estimação do VaR de grandes
+instituições nan eiras ameri anas, ondi ionado à ir unstân ia de que outras instuições estivessem
+em situação de ris o. Essa nova medida é denominada CoVAR. Nas análises são utilizados dados
+de ban os omer iais, ban os de investimento e Hedge Fund 6 . Em espe í o, são usados retornos
+de ações de in o ban os omer iais (Bank of Ameri a, Citibank, JPMorgan Chase, Wa hovia e
+Wells Fargo), bem omo os retornos das ações de in o importantes ban os de investimento (Bear
+Stearns, Goldman Sa hs, Lehman Brothers, Merrill Lyn h e Morgan Stanley), além dos retornos
+de diversos Hedge Fund. Os mesmos on luem que o aumento per entual do CoVaR relativamente
+ao VaR forne e informações sobre os ex edentes de ris o entre as instituições, sugerindo que as
+instituições nan eiras devem informar os CoVaR's além dos VaR's e extrair as impli ações para
+a gestão de ris os, regulação e ris o sistêmi o7 . No entanto, posteriormente, Gropp et al. (2010)
+mostram que a abordagem do CoVaR proposta por Adrian & Brunnermeier (2009) negligen ia as
+  ondições e onmi as do ambiente nan eiro e, portanto, não apta em termos de modelagem as
+intensidades das reper ussão entre duas lasses de ativos de forma adequada. Gropp et al. (2010)
+propõem um VaR de sensibilidade dependente do ambiente e onmi o (SDS-VaR), que mostra que
+o ontágio vária onsideravelmente em diferentes ondições de mer ado.
+  6 Hedge Fund são fundos de investimentos que enfrentam menos regulamentação do que os demais fundos nos EUA.
+  7 Segundo  Kaufman et al. (2000), ris o sistêmi o refere-se ao ris o de olapso de todo o sistema nan eiro ou
+mer ado, afetando amplamente a e onomia.
+3 Metodologia                                                                                             6
+
+
+3 Metodologia
+    A presente seção dis ute o on eito de valor em ris o e seus desdobramentos envolvendo as apli a-
+ções de regressão quantíli a e a sua forma mais usual, utilizada, por exemplo, no método da simulação
+históri a. Adi ionalmente, são dis utidos tópi os da Teoria do Valor Extremo (TVE), bem omo da
+abordagem e onométri a desenvolvida por Chernozhukov & Du (2006), temas úteis ao entendimento
+da apli ação empíri a des rita no Capítulo 4. Por m, são des ritos os testes de validação estatísti a
+(ba ktesting) para a modelagem VaR utilizada em pesquisa.
+
+3.1    Valor em Ris o
+
+    As instabilidades presentes nos mer ados nan eiros têm sido fonte de extensiva análise por parte
+de pesquisadores no intuito de prever e evitar perdas de orrentes das mesmas. A o orrên ia de perdas
+signi ativas nestes mer ados está, em geral, asso iada a eventos om probabilidade de o orrên ia
+muito baixa, mas que são fonte de grande preo upação, por seus efeitos alarmantes e multipli adores
+nas e onomias mundiais. Tais eventos a arretam ou tornam mais sérias as rises e onmi as em
+períodos de re essão, podendo, in lusive, impli ar na falên ia de importantes instituições interna i-
+onais e na ionais. Como exemplo mais re ente, podemos itar a rise e onmi a o orrida entre os
+anos de 2007 e 2009 que foi pre ipitada pela falên ia do tradi ional ban o de investimento ameri ano
+Lehman Brothers, fundado em 1850. Em onsequên ia, outras grandes instituições nan eiras foram
+também onduzidas à falên ia, gerando uma rise e onmi a global ujos efeitos se estendem até os
+dias atuais.
+    Como uma medida bastante útil à gestão de ris os em mer ados nan eiros tem-se o VaR. Do
+ponto de vista de uma instituição nan eira, este pode ser denido omo sendo uma perda extrema
+em uma posição nan eira onsiderando uma probabilidade baixa de o orrên ia de perdas superiores
+ao nível denido pelo VaR (Jorion, 1997). A ara terização do VaR está rela ionada om os quantis
+extremos da distribuição de probabilidade da variável nan eira de interesse (por exemplo, os retornos
+de uma série de ativos nan eiros).
+    O retorno (Y ) de uma arteira de ativos é denido omo sendo a variação do valor do ativo entre
+os instantes t e t − 1:
+                                        vt
+                                 Yt =       − 1 ≈ log(vt ) − log(vt−1 ),                           (1)
+                                      vt−1
+em que vt é o valor da arteira de ativos no instante de tempo t. A expressão no lado direito da
+equação (1) é denotado por (log) retorno.
+    Considerando uma variável aleatória Y e sua função de distribuição a umulada denida por
+FY (y) = P r(Y ≤ y), o τ -quantil (τ ∈ (0, 1)) da distribuição FY é denido omo sendo o número
+FY−1 (τ ) tal que FY (FY−1 (τ )) = τ , ou seja, P r(Y ≤ FY−1 ) = τ . Desta forma, tem-se a função quantíli a
+
+                               FY−1 (τ ) = inf{y∈ R; FY (y) > τ , τ ∈ (0, 1)},                          (2)
+
+em que inf{A} denota o valor ínmo do onjunto numéri o A. Um τ -quantil é dito extremo quando
+τ ≤ 0.15 (quantis situados na auda esquerda) ou τ ≥ 0.85 (quantis situados na auda direita). O
+presente estudo tem fo o nos quantis extremos inferiores, ou seja, na auda esquerda da distribuição
+ ondi ional da variável resposta.
+    Uma des rição do VaR, sob uma estrutura probabilísti a determinada a priori pode ser feita ao
+se supor que a distribuição dos retornos não está ondi ionada a um onjunto de regressores. Nesse
+sentido, sendo Y o (log) retorno da arteira de ativos durante o período de tempo onsiderado,
+dene-se o VaR om probabilidade τ omo sendo o valor (em %) tal que τ = P r(Y < V aR). Dessa
+forma, tem-se que V aR = FY−1 (τ ). Nesse aso, as perdas o orrem para valores de Y < 0 (retornos
+negativos).
+    Em geral, FY−1 é des onhe ida. Estudos de estimação do VaR são essen ialmente rela ionados
+3 Metodologia                                                                                             7
+
+
+ om a estimação de FY−1 e, espe ialmente, om o omportamento dos quantis situados na auda
+esquerda da distribuição de Y . Partido-se da distribuição de Y , ondi ional a um vetor de variáveis
+expli ativas (X = (x1 , . . . , xp )′ , dene-se o τ -quantil ondi ional de Y |X (Qτ (Y |x)) por
+
+                            Qτ (Y |x) = β0 (τ ) + β1 (τ )x1 + ... + βp (τ )xp + u,                      (3)
+
+sendo βi , i = 0, . . . , p, os parâmetros do modelo e u a par ela asso iada ao erro aleatório.
+   As Seções seguintes são dedi adas a uma breve des rição da TVE, bem omo das té ni as e ono-
+métri as envolvendo a estimação de quantis extremos mediante a utilização da TVE e da regressão
+quantíli a. A metodologia é proposta em Chernozhukov & Du (2006) e forne e a base teóri a para
+o entendimento da presente pesquisa.
+
+3.2    Teoria dos Valores Extremos
+
+    A Teoria dos Valores Extremos (TVE) tem omo prin ipal ênfase o estudo probabilísti o de even-
+tos ditos `raros'. Valores extremos de variáveis aleatórias podem ser ara terizadas por estatísti as
+de ordem extremas, máximos ou mínimos, ou até mesmo por ex essos a ima (ou abaixo) de valores
+limiares elevados (ou muito baixos). Os fundamentos da TVE baseiam-se em resultados referentes à
+distribuição assintóti a de máximos e mínimos padronizados obtidos pela extração de uma amostra
+aleatória de n ≥ 2 variáveis aleatórias i.i.d..
+    No que tange ao desenvolvimento da teoria, importantes resultados foram obtidos por Fré het
+(1927), Fisher & Tippett (1928), Von Mises (1936) e Gnedenko (1943). Os primeiros desenvolvimen-
+tos dentro de uma óti a estatísti a foram propostos por Pi kands III (1975). Diversas ontribuições
+para o aso bivariado podem ser vistas em Gumbel & Lieblein (1954), Gumbel (1958), Oliveira (1962)
+e Sibuya (1959).Von Mises (1954) e Jenkinson (1955) propem uma parametrização da distribuição de
+valores extremos, a qual  ou onhe ida por distribuição generalizada dos valores extremos (GEV) e
+des reve a distribuição limite do mínimo (ou máximo), sendo parametrizada por um índi e denotado
+por índi e de auda.
+    É importante ressaltar um dos prin ipais resultados da TVE: as ara terísti as e propriedades das
+distribuições de extremos aleatórios são determinadas pela forma da auda (inferior ou superior) da
+distribuição omum às variáveis aleatórias onsideradas. Considere {Y, Y1, Y2 , ...} omo sendo variá-
+veis aleatórias ontínuas, não-degeneradas8 e i.i.d, tendo função de distribuição omum representada
+por FY . Sejam FF+Y e FF−Y os limites superior e inferior do suporte da variável Y , respe tivamente.
+Dessa forma, tem-se que YF+Y = sup {y ∈ R; Fy (y) < 1} e YF−Y = inf {y ∈ R; Fy (y) > 0}. Denem-se
+Mn = max(Y1 , Y2 , ..., Yn ) e mn = min(Y1 , Y2 , .., Yn ) omo o máximo e o mínimo, respe tivamente, de
+um onjunto ontendo n ≥ 2 variáveis aleatórias i.i.d. Estas variáveis estão rela ionadas omo segue
+
+                                    mn = −max(−Y1 , −Y2 , ..., −Yn ).                                   (4)
+
+    Dada a relação de equivalên ia entre o máximo (Mn ) e o mínimo (mn ), des rita na equação
+(4), pode-se trabalhar om um dos dois on eitos nos desenvolvimentos da TVE e, em seguida,
+transformar os resultados para o outro. Usualmente, os textos a adêmi os na área trabalham om o
+máximo (Mn ) (Norberg, 1998). Visto que a apli ação empíri a dis utida no Capítulo 4 tem ênfase na
+ auda inferior da distribuição dos retornos, na dis ussão a seguir, são também des ritos os prin ipais
+resultados asso iados ao mínimo (mn ). As funções de distribuição exatas do máximo (Mn ) e do
+mínimo (mn ), n ≥ 2, podem ser obtidas pelas expressões seguintes
+
+                            FMn = P r(Mn ≤ y) = [P r(Y ≤ y)]n = [FY (y)]n .                             (5)
+  8 Diz-seque uma variável aleatória é degenerada em k ∈ R quando esta assume o valor k om probabilidade um.
+Uma variável aleatória é dita ser degenerada se for degenerada em algum k ∈ R.
+3 Metodologia                                                                                                     8
+
+
+                 Fmn (y) = P r(mn ≤ y) = 1 − P r(mn > y) = 1 − P r(Y1 >, ..., Yn > y)
+                         = 1 − [P r(Y > y)]n = 1 − [1 − P r(Y < y)] = 1 − [1 − FY (y)]n
+                         = 1 − [F−Y (−y)]n .                                                                    (6)
+
+   Como pode-se observar nas equações (5) e (6), as distribuições do máximo (Mn ) e do mínimo
+(mn ) dependem da distribuição FY . Tal distribuição é, em geral, des onhe ida, o que impli a que
+FMn e Fmn também o são. Adi ionalmente, quando n → ∞, FMn e Fmn tornam-se funções degenera-
+das.9 . O teorema de Fisher & Tippett (1928) forne e um resultado sobre a onvergên ia do máximo
+padronizado. Vale salientar que, om a devida modi ação, o teorema pode ser utilizado para o
+mínimo (mn )10 .
+
+Teorema 3.1 (Fisher-Tippett).    Seja Y1 , Y2 , ..., Yn, n ≥ 2, uma seqüên ia de variáveis aleatórias i.i.d.
+tendo função de distribuição omum FY . Se for possível en ontrar seqüên ias de números cn > 0 e
+dn ∈ R tais que a distribuição da variável aleatória (Mn − dn )/cn ) onverge para uma função limite
+H não degenerada à medida que n −→ ∞, então a função H terá uma das três seguintes formas:
+
+                                       Gumbel : H1 (y) = e−e                                                    (7)
+                                                                 −y
+                                                                      , y ∈ R,
+                                                    
+                                                       0,             y < 0,
+                             F rechet : H2 (y; α) =                                ,                            (8)
+                                                       e−y ,          y ≥ 0, α > 0
+                                                          −α
+
+
+                                                     −(−y)α
+                                                      e      ,        y < 0, α > 0
+                             W eibull : H3 (y; α) =                                .                            (9)
+                                                      1,              y≥0
+
+    A derivação da distribuição limite de transformações lineares do máximo Mn (ou do mínimo)
+segue um desenvolvimento baseado na mesma idéia do Teorema do Limite Central (TLC), no qual o
+interesse reside em se determinar a distribuição assintóti a de uma variável aleatória padronizada. No
+ aso de extremos aleatórios de máximos, sendo n ≥ 2, deseja-se onhe er a distribuição assintóti a
+da variável aleatória (Mn − dn )/cn para onstantes apropriadas cn > 0 e dn ∈ R. De forma mais
+geral, é importante saber quais lasses de distribuições são assintoti amente válidas para a expressão
+do máximo (ou mínimo) padronizado. Tais distribuições são ditas `max-estáveis' (Norberg, 1998).
+    Jenkinson (1955) e Von Mises (1954) propõem uma representação paramétri a generalizada para
+a forma fun ional da distribuição de valores extremos, a qual é onhe ida omo generalized extreme
+value distribution (GEV). A GEV permite que os três tipos de distribuição (Gumbel, Fré het e
+Weibull), des ritos nas equações (7) a (9), possam ser vistos omo membros de uma úni a familia
+de distribuições, fazendo om que estas tornem-se um modelo ontínuo e uni ado. O parâmetro da
+GEV (ξ) é denido de forma que ξ = 0 orresponde à distribuição Gumbel, ξ = α−1 > 0 orresponde
+à distribuição Fré het e ξ = −α−1 < 0 orresponde à distribuição Weibull (reversa). Considerando o
+máximo padronizado, a expressão da GEV é denida por
+                                               [−(1+ξy)−1/ξ ]
+                                                 e             , ξ 6= 0
+                                Gmax (y; ξ) =     −e−y
+                                                                        ,                          (10)
+                                                 e     ,         ξ=0
+
+em que 1 + ξy > 0, se ξ 6= 0 e y ∈ R, se ξ = 0. A distribuição Gmax (y; ξ) pode ser reduzida às formas
+Gumbel, Fré het e Weibull des ritas nas equações (7) a (9) onforme a relações des ritas a seguir
+   9O   termo degenerado refere-se aos seguinte fatos: (1) FMn ր 1 quando y → ∞ e FMn ց 0 quando y → −∞; (2)
+Fmn ց 0 quando y → −∞ e Fmn ր 1 quando y → ∞
+  10 Na práti a, normalmente multipli a-se os dados por (−1) e analisa-se o mínimo que é o máximo dos dados tro ados
+de sinal.
+3 Metodologia                                                                                                       9
+
+
+(Norberg, 1998):
+
+                                  Gumbel:H1 (y) ≡ Gmax (y; 0),                                                    (11)
+                                  Fré het:H2 (y, α) ≡ Gmax (α(y − 1); 1/α),                                       (12)
+                                  Weibull:H3 (y, α) ≡ Gmax (α(y + 1); −1/α).                                      (13)
+
+   Com as devidas modi ações, a forma generalizada para a distribuição do mínimo padronizado
+ a determinada por                                   1/ξ
+                                          1 − e[−(1+ξy) ] , ξ 6= 0
+                          Gmin (y; ξ) =          y                 ,                     (14)
+                                          1 − e−e ,         ξ=0
+em que 1 − ξy > 0 se ξ 6= 0 e y ∈ R se ξ = 0. Considerando a equação (14), quando ξ = 0 ,
+Gmin onverge para a forma Gumbel; quando ξ < 0 tem-se a distribuição Fré het (reversa); e ξ > 0
+representa a distribuição Weibull. O parâmetro ξ presente nas equações (10) e (14) é denotado por
+índi e de auda e seu valor absoluto mensura o peso nas audas das distribuições Gmax e Gmin . Uma
+dis ussão detalhada sobre a Teoria dos Valores Extremos en ontra-se em Norberg (1998).
+    Na estimação do índi e de auda (ξ), Chernozhukov & Du (2006) sugerem o uso dos estimadores
+propostos por Pi kands III (1975) e Hill et al. (1975), ujas expressões são mostradas na subseção
+3.3.2. A próxima Seção é dedi ada a uma breve dis ussão das té ni as estatísti as desenvolvidas por
+Chernozhukov & Du (2006), que propõe o uso da regressão quantíli a (Koenker & Bassett, 1978) na
+estimação do VaR. Essa metodologia está rela ionada om a TVE e é o prin ipal fo o de apli ação
+para a presente pesquisa.
+
+3.3    Regressão Quantíli a e Valor em Ris o
+
+    A metodologia desenvolvida por Chernozhukov & Du (2006) assume que a auda esquerda da
+distribuição dos retornos (Y ) omporta-se aproximadamente omo uma função de potên ia.11 Esse
+tipo de espe i ação ( onhe ida por `tipo Pareto') é bastante omum em dados e onmi os e in lui
+distribuições de audas leves e pesadas, tendo suporte limitado ou não (Pareto, 1964). Desenvolvi-
+mentos rela ionados à TVE e distribuições tipo Pareto podem ser vistos em Gnedenko (1943) e Haan
+(1970).
+    Segundo a modelagem e onométri a proposta em Chernozhukov & Du (2006), dada a variável
+Y , dene-se U omo sendo identi amente igual a Y (U ≡ Y ) se o suporte inferior de Y for −∞ e
+U ≡ Y − FY−1 (0) se esse suporte for nito. Dessa forma, tem-se que FU−1 (0) = −∞ ou FU−1 (0) = 0.
+A hipótese de que a auda esquerda da distribuição de U exibe omportamento tipo Pareto pode ser
+resumida pelas ondições a seguir
+
+                              FU (u) ∼ L(u)u−1/ξ          sempre que     u ց FU−1 (0),                            (15)
+
+                                  FU−1 (τ ) ∼ L(τ )τ −ξ     sempre que      τ ց 0,                                (16)
+em que ξ 6= 0 representa índi e de auda, L e L são funções não paramétri as de variação suave
+(L(τ ) onstante, por exemplo) em FU−1 (0) e 0, respe tivamente. Distribuições GEVmax (GEVmin )
+para as quais ξ > 0 (ξ < 0) são bastante utilizadas na modelagem de audas pesadas. Como
+exemplos ontemplando tal ara terísti a, têm-se as distribuições Pareto, t-Student e Burr. No aso
+da distrtibuição t, esta exibe audas leves à medida que os seus graus de liberdade se aproximam de
+30 (nesse aso, ξ = 1/30).
+   A proposta de Chernozhukov & Du (2006) é que os quantis extremos da distribuição de Y ,
+ 11 Entende-se   por função de potên ia toda função f : A ⊆ R −→ R tal que f (y) = y n , n sendo real não nulo.
+3 Metodologia                                                                                                     10
+
+
+ ondi ionados ao vetor de variáveis expli ativas X = x, sejam estimados pela seguinte forma linear
+
+                                     F̂Y−1|X (τ |X = x) = x′ β̂(τ ), τ ∈ (0, η],                                (17)
+
+em que η ∈ (0, 1], e para todo x no suporte de X . A forma fun ional des rita em (17), além de
+ser bastante onveniente omputa ionalmente, permite a obtenção de estimativas om propriedades
+assintoti amente desejáveis, sendo bastante exível no sentido de que permite a in lusão de vários
+tipos de variáveis expli ativas (funções de potên ia, splines12 e diversas transformações de X ). Na
+modelagem proposta por Chernozhukov (2005), supõe-se a existên ia de um vetor de parâmetros
+auxiliares (βe ∈ Rp+1) tal que a variável U ≡ Y − X ′ βe possui limite inferior ( ondi ionado a
+X = (x1 , . . . , xp )′ ) igual a 0 ou ilimitado (−∞). Vale observar que, quando Y |X tem limite inferior
+nito (ou seja, F̂Y−1|X (0) = x′ β̂(0) > −∞), então βe ≡ β(0), de modo que U ≡ Y − X ′ β(0) tem limite
+inferior nulo por onstrução. No aso em que X ′ β(0) = −∞, esta regressão não é adequada para ser
+utilizada omo regressão auxiliar, mas a existên ia de qualquer outra regressão satisfazendo a relação
+U ≡ Y − X ′ βe é su iente para validar o modelo.
+    A seguinte ondição é também estabele ida: os quantis ondi ionais FU−1       |X (τ |x), τ ∈ (o, η] devem
+ser tais que a relação abaixo é veri ada para valores de x uniformemente distribuidos no suporte de
+X (Chernozhukov, 2005):
+
+                  FU−1|X (τ |x) = FY−1|X (τ |x) − x′ βe ∼ L(τ )τ −ξ ,    sempre        que    τ ց 0,            (18)
+
+em que βe representa o impa to das ovariavéis sobre os quantis extremos e L(τ ) é uma função não
+paramétri a de variação suave em 0. A equação (18) impõe que a auda da distribuição de U tenha
+um omportamento em onformidade om a GEVmin , o qual o orre uniformemente relativamente aos
+valores ondi ionais (Chernozhukov, 2005). Vale notar que essa suposição afeta apenas a região de
+ auda, permitindo que as ovariavéis afetem os quantis extremos diferentemente dos quantis entrais.
+O parágrafo seguinte des reve o pro edimento de estimação do vetor βe , proposto por Koenker &
+Bassett (1978) e sugerido por Chernozhukov & Du (2006).
+    Dados T valores observados para X e Y , {Yt , Xt }t=1,...,T , Chernozhukov & Du (2006) sugerem que
+o estimador β̂(τ ) do vetor β(τ ) seja tal que (Koenker & Bassett, 1978),
+                                                         T
+                                                         X
+                                       β̂(τ ) = argmin          ρτ (Yt − Xt′ β),                                (19)
+                                                  β∈Rρ    t=1
+                  
+                      τ u,     u ≥ 0,
+em que ρτ (u) =                        , a função de desvio assimétri o absoluto (Fox & Rubin, 1964),
+                  (τ − 1)u, u < 0.
+sendo u tal que FU−1
+                   |X (τ |x) ∼ L(τ )τ
+                                      −ξ
+                                         sempre que τ ց 0. Tem-se então o estimador F̂Y−1|X (τ |x) =
+x′ β̂(τ ) para o τ -quantil ondi ional de Y .
+     Uma seqüên ia de quantis ondi ionais amostrais FY−1|X (τi |x)                         onsiste em uma estatísti a
+                                                                             i=1,2,...,T
+de ordem.13 Nesse ontexto, onforme denido em Chernozhukov & Du (2006), a ordem do quantil
+τi é dada pela quantidade ki = τi T , sendo T o tamanho amostral. Estatísti as de ordem formadas
+por quantis amostrais possuem ordem extrema se a seqüên ia τi ց 0 e ki > 0 para todo i, quando
+T −→ ∞. Se τi ց 0 e ki −→ −∞ quando T −→ ∞, a estatísti a possui ordem intermediária e,
+quando τi ∈ (0, 1) é xo para todo i e T −→ ∞, a ordem é entral (Chernozhukov & Du, 2006).
+Vale desta ar que, sendo a variável Y o retorno de um portfólio, o interesse reside em estatísti as de
+ordens extremas. Os resultados teóri os de inferên ia sobre o vetor de parâmetros β seguem a seguir.
+  12 As funções splines são denidas omo sendo polinmios por partes de graun.
+  13 No ontexto em dis ussão, estatísti as de ordem estão sendo utilizadas om
+                                                                            o objetivo de modelar a o orrên ia de
+um menor valor dentre um onjunto de realizações de uma variável de interesse.
+3 Metodologia                                                                                                  11
+
+
+Sendo,                                                                            √
+                                                                                      τT
+                             ẐT (k) = AT (β̂(τ ) − β(τ )), AT =            ′                    ,           (20)
+                                                                          X (β̂(mτ ) − β̂(τ ))
+em que τ T (m−1) > p+1, m > 1. Chernozhukov & Du (2006) derivam os resultados assintoti amente
+válidos para a realização de inferên ias sobre o vetor de parâmetros β , mostrando que, quando
+τ T −→ k e T −→ ∞,
+                                               d
+                                     ẐT (τ ) −→ Z∞ (k) − k −ξ ,                           (21)
+sendo14                                                            X
+                             Z∞ (k) = argmin[−kIE[x]′ z +                [Xj′ z − Γ−ξ
+                                                                                   j ]+ ](ξ < 0)             (22)
+                                         Z∈Rρ
+                                                                   j≥1
+                                                                   X
+                           Z∞ (k) = −argmin[−kIE[x]′ z +                  [Xj′ z − Γ−ξ
+                                                                                    j ]+ ](ξ > 0).           (23)
+                                          Z∈Rρ
+                                                                    j≥1
+
+A seqüên ia {Γ1 , Γ2 , ...} é identi ada por {ε1 , ε1 + ε2 , ε1 + ε2 + +ε2 ...} e {ε1 , ε2 , ...} é uma seqüên ia
+de variáveis aleatórias exponen iais i.i.d independentes de {X1 , X2 , ...}. Adi ionalmente, os autores
+mostram que, para todo m > 1 tal que k(m − 1) > p + 1, tem-se
+                                                        √
+                                             d            kZ∞ (k)
+                                    ZT (τ ) −→                                                                (24)
+                                               IE[X]′ (Z∞ (mk) − Z∞ (k))
+
+    A equação (24) é ainda válida onsiderando sequên ias i.i.d e fra amente esta ionárias om eventos
+extremos que satisfazem uma ondição em que não há lustering 15 . Estes resultados assintóti os
+forne em a base para té ni a de estimação via bootstrap, des rita na Subseção 3.3.1.
+
+3.3.1      Bootstrap Extremo
+
+   Em alguns asos, é de interesse realizar inferên ias através de um esquema bootstrap. As es-
+timativas bootstrap forne em um ajuste que se aproxima das ara terísti as da auda do modelo
+de regressão quantíli a des rito pelas equações (15) a (18). Para este pro edimento, onsidera-se a
+amostra                                                    !                   !!
+                                                 −ξ                 −ξ
+                                                ε1 − 1             εT − 1
+                 ((Y1 , X1 ), ..., (YT , XT ) =        , X1 , ...,        , XT    ,           (25)
+                                                  −ξ                 −ξ
+em que {ε1 , ..., εT } denota uma seqüên ia de variáveis aleatórias i.i.d tendo distribuição exponen ial
+padrão e {X1 , ..., XT } é um onjunto de variáveis expli ativas onhe idas a priori. Com essas hipóteses
+é possível mostrar que
+                                                           [−log(1 − τ )]−ξ − 1
+                               F −1 (τ |Xt ) = Xt′ β(τ ) =                      ,                   (26)
+                                                                   −ξ
+                                                  ′
+                   [−log(1 − τ )]−ξ − 1
+sendo β(τ ) =                           , 0, ..., 0 (Chernozhukov & Du, 2006). O modelo dado em (26)
+                            −ξ
+satisfaz as ondições estabele idas (15) a (18). Assim, pode-se estimar a distribuição de amostras
+nitas de ZT (τ ) = AT (β(τb ) − β(τ )) utilizando-se dados gerados em a ordo om a equação (25). O
+esquema bootstrap proposto por Chernozhukov & Du (2006) é des rito a seguir
+  i Sendo B o número de repetições do experimento, para j ≤ B , obtenha dados de a ordo om (25).
+    Substitua o valor de ξ pela estimativa ξb (ver Subseção 3.3.2) e al ule a estatísti a ZT,j (τ ) =
+        b ) − β(τ )).
+    AT (β(τ
+                                                      
+  14 A                                                    x,   x>0
+         notação |x|+ é equivalente a função |x|+ =                   .
+                                                          0,   x < 0.
+  15 Os   dados não possuem agrupamentos de valores extremos.
+3 Metodologia                                                                                                 12
+
+
+ ii Utilize a distribuição empíri a dos dados simulados (ZT,j (τ ), j ≤ B) na realização de inferên ias.
+
+    Dado o interesse no preditor linear x′ β̂(τ ) para algum vetor não nulo de x, tem-se que, denotando
+o α-quantil de x′ ZT (τ ) por c(α), após substituir ξ por uma estimativa adequada, a estimativa de
+c(α) pode ser obtida por meio de bootstrap extremo. Denotando o resultado estimado por ĉ(α). O
+estimador ( orrigido pelo viés da mediana) e o intervalo de onança (ao grau de obertura α) para
+x′ β(τ ) são obtidos por
+                                                                                     
+                                 ĉ(1/2)              ĉ(1 − α/2) ′           ĉ(α/2)
+                       ′
+                      x β̂(τ ) −             ′
+                                         e x β̂(τ ) −            , x β̂(τ ) −           .           (27)
+                                    AT                     AT                    AT
+
+3.3.2      Estimadores para o índi e de auda
+
+   O índi e de auda (ξ) indi a a densidade nas audas da distribuição de Y |X . Chernozhukov & Du
+(2006) sugerem que a estimação do índi e de ξ seja feita om a utilização dos estimadores propostos
+em Pi kands III (1975) (ξˆ1 ) e Hill et al. (1975) (ξˆ2 ). No primeiro aso, a estimação é baseada na
+razão de dis repân ias entre quantis amostrais e tem a forma
+                                                                        !
+                                            −1               −1
+                                         F̂    (4τ |X) −  F̂    (2τ |X)
+                           ξˆ1 = − log     Y                Y
+                                                                          / log 2,              (28)
+                                          F̂Y−1 (2τ |X) − F̂Y−1 (τ |X)
+
+em que X é a média de Xt . O estimador proposto por Hill et al. (1975) é sugestivo apenas quando
+ξ > 0, sendo dado por16                  PT              −1
+                                  ˆ        t=1 log[Yt /F̂Y (τ |Xt )]−
+                                  ξ2 = −                              .                      (29)
+                                                     Tτ
+Sob ondições adi ionais de regularidade17 , quando τ ց 0 e τ T −→ ∞ tem-se
+                                                                        
+                           √               d            ξ 2(22ξ+1 + 1)
+                                  ˆ
+                             τ T (ξ1 − ξ) −→ N 0,                          ,                 (30)
+                                                      (2(2ξ − 1) log 2)2
+                                            √                  d
+                                                τ T (ξˆ2 − ξ) −→ N(0, ξ 2 ).                                 (31)
+                                                                                                         √
+A té ni a de bootstrap extremo pode ser utilizada onsiderando a estatísti a ZT = τ T (ξˆ − ξ).
+Dessa forma, o estimador ( orrigido pelo viés da mediana) e o intervalo de onança (ao grau de
+ obertura α) para ξ são obtidos por
+                                                                        
+                                ĉ(1/2)        ĉ(1 − α/2)       ĉ(α/2)
+                           ξˆ − √       e ξˆ −     √       , ξˆ − √        .              (32)
+                                    τT               τT              τT
+
+3.3.3      Estimadores extrapolados
+
+    Diante da impossibilidade da estimação pre isa de quantis muito extremos, Chernozhukov & Du
+(2006) sugerem a seguinte estratégia de estimação (Dekkers & De Haan, 1989): (i) estimar o índi e
+de auda para quantis menos extremos utilizando o estimador de Pi kands III (1975) ou de Hill
+et al. (1975); (ii) extrapolar as estimativas usando os pressupostos sobre o omportamento da auda
+de larados nas equações (15) a (18); (iii) utilizar os estimadores propostos por Dekkers & De Haan
+                                                     
+ 16 A                                                    −x, x < 0
+        notação |x|− é equivalente a função |x|− =
+                                                          0, x > 0.
+ 17 Para   uma des rição detalhada, ver Pi kands III (1975), Hill et al. (1975) e Chernozhukov (2005).
+3 Metodologia                                                                                              13
+
+
+(1989), des ritos a seguir, na obtenção das estimativas quantíli as extrapoladas.
+
+                                     (τe /τ )−ξ̂ − 1 −1
+                 F̂Y−1|X (τe |x) =                  [F̂Y |X (mτ |x) − F̂Y−1|X (τ |x)] + F̂Y−1|X (τ |x),   (33)
+                                          −
+                                       m −1 ξ̂
+
+
+                                      F̂Y−1|X = (τe /τ )−ξ̂ F̂Y−1|X (τ |x) (ξ > 0),                       (34)
+em que τe é um quantil muito inferior a τ (notação: τe ≪ τ ). Esses estimadores possuem proprie-
+dades desejáveis desde que as quantidades situadas no lado direito das expressões (33) e (34) sejam
+bem estimadas. No presente trabalho, os estimadores extrapolados são utilizados na obtenção das
+estimativas VaR para níveis de 2, 5%, 1% e 0, 1%, dis utidas na Seção 4.
+
+3.4     Ba ktesting
+
+    Os modelos para a estimação do VaR só apresentam utilidade se forem apazes de prever o ris o
+ om pre isão. Por isso, os modelos de VaR pre isam ser validados por algum pro esso que seja apaz
+de medir o desempenho das estimativas. O ba ktesting é um pro esso o qual avalia as previsões
+do VaR e he a a performan e das previsões do modelo do VaR ao longo de um período de tempo.
+Trata-se de um pro edimento que toma o VaR ex-ante de um determinado modelo e ompara om
+os retornos realizados ex-post (i.e., observações históri as). Sempre que as perdas ex ederem o VaR,
+diz-se que o orreu uma violação do VaR. Existem diversos estudos na literatura sobre ba ktesting
+[para maior detalhamento, ver Jorion (1997) e Danielsson (2011)℄.
+    Nesta subsessão, são utilizadas as notações seguintes: WE representa o número de observações
+usadas para prever o ris o; WT refere-se à amostra de dados sobre a qual o ris o é previsto; T =
+WT + WE representa o números de observações da amostra; ηt = 0, 1 é uma função indi adora que
+toma o valor 1 se Yt < VaRt e o valor 0 aso ontrário; vi , i = 0, 1 representa o números de violações
+(i = 1) e não o orrên ia de violações (i = 0) observadas em ηt .
+    Pode-se fazer uso do ba ktesting para veri ar a qualidade das previsões do VaR. Nesta dissertação
+é utilizado a té ni a da violation rate (VR) e um teste de razão de verossimilhanças que utiliza a
+distribuição de Bernoulli, proposto por Kupie (1995). O método de VR ompara o número real de
+violações om o valor esperado das violações.
+
+                                     Número de violações observadas      v1
+                          VR =                                      =                                     (35)
+                                     Números de violações esperadas   τ × WT
+   O valor VR ideal seria 1, que demonstraria um ajuste perfeito, mas na maioria das vezes isso
+não o orre. Por isso, deve-se delimitar um intervalo para VR para o qual o modelo do VaR seria
+adequado. De a ordo om Danielsson (2011) se VR ∈ [0.8, 1.2] o modelo do VaR forne e uma boa
+previsão e se VR < 0.5 ou VR > 1.5 o modelo é impre iso. É possível que dois modelos que forne em
+previsões do VaR diferentes possuam o mesmo VR. Nesses asos pode ser útil veri ar o desvio
+padrão da estimativa do VaR, pois um menor desvio padrão impli a em estimador mais e iente.
+
+3.4.1   ba ktesting de obertura de Bernoulli (Bern LR)
+
+    A abordagem para o teste de obertura vem do ar abouço lássi o de testes estatísti os para
+sequen ias de fra asso e su esso, ou seja, eventos de Bernoulli. A o orrên ia de violações no dia t é
+expressa por η = 1 e, aso ontrario η = 0, em que {η} é uma sequên ia de variáveis aleatórias om
+distribuição de Bernoulli. O teste de obertura serve para avaliar a proporção de violações do VaR
+sob a hipótese nula
+                                            H0 : η ∼ B(p)
+4 Estudo Empíri o                                                                                                14
+
+
+em que B é a distribuição de Bernoulli. A densidade de Bernoulli é dada por
+
+                                                    (1 − p)1−ηt (p)ηt .
+
+A probabilidade p̂ é estimada por
+                                                               v1
+                                                        p̂ =      .                                            (36)
+                                                               WT
+   A partir da probabilidade estimada é possível estimar a função verossimilhança irrestrita (sob
+hipótese alternativa) que é dada por
+                                           T
+                                           Y
+                              LU (p̂) =         (1 − p̂)1−ηt (p̂)ηt = (1 − p̂)v0 (p̂)v1 .                      (37)
+                                          t=WE +1
+                 P
+     Onde v1 =      ηt e v0 = WT − v1 . Note que ela é irrestrita porque usa a probabilidade estimada
+p̂, diferente da função de verossimilhança restrita uja probabilidade é o valor p utilizado no ál ulo
+do modelo do VaR.
+     A amostra de dados é dividida em duas janelas, as de teste (WE ) e estimação (WT ). A primeira
+WE é reservada para obter as estimações, o teste omeça em WE + 1.
+     Sobre a hipótese nula H0 : p = p̂, a função de probabilidade restrita é
+                                            T
+                                            Y
+                              LR (p) =              (1 − p)1−ηt (p)ηt = (1 − p)v0 (p)v1                        (38)
+                                          t=WE +1
+
+    A estatísti a de teste é dada por
+
+                                      LR = 2(log(LU (p)) − log(LR (p̂)))
+                                                        (1 − p̂)v0 (p̂)v1
+                                                2log
+                                                        (1 − p)v0 (p)v1
+                                                         ∼ χ2(1) .                                             (39)
+Es olhendo o nível de signi ân ia de 5%, a hipótese nula é rejeitada se LR > 3, 84.
+
+
+4 Estudo Empíri o
+   Na análise empíri a, omo variáveis dependentes, utilizam-se as séries de (log) retornos do prin-
+ ipal índi e da bolsa brasileira (IBOVESPA) e das ações ordinárias da Petrobrás (PETR3)18 , jun-
+tamente om outras variáveis regressoras, des ritas na Subseção 4.1. Os dados ompreendem o
+período entre 01/01/2010 e 31/08/2016, totalizando 1729 observações diárias para o aso da Petro-
+brás e 1629 observações para o aso do IBOVESPA, sendo extraídos da base de dados do IPE-
+ADATA19 e da plataforma de análises GrapherOC20 . As análises estatísti as são realizadas por
+meio do ambiente de programação, análise de dados e grá os, R, disponível gratuitamente em
+https://www.r-proje t.org/.
+   O resumo das estatísti as des ritivas do IBOVESPA para o período amostral ompleto e para os
+diversos anos que o agregam é apresentado na Tabela 1. Observando os retornos do índi e para todos
+os períodos, notam-se médias amostrais aproximadamente nulas, o que é omum em dados de séries
+  18 As estimativas para as ações preferên ias (PETR4) foram obtidas e os resultados en ontrados foram similares.
+  19 Base de dados e onmi os e nan eiros mantida pelo Ipea (Instituto de Pesquisa E onmi a Apli ada).
+  20 O GrapherOC é uma ferramenta de análise té ni a que forne e dados sobre o mer ado de apitais brasileiro (a esso
+ao website em http://www.quantsis. om/grapherOC/).
+4 Estudo Empíri o                                                                                        15
+
+
+de retornos. Considerando o período ompreendendo toda a série, os retornos máximo e mínimo
+diários são de 8, 5% (observado em 2015) e −8, 4% (observado em 2011), respe tivamente. Entre os
+subperíodos, os máximos são próximos a 4% entre 2010 e 2014, sendo superiores em 2015 e 2016,
+subperíodos apresentando desvios-padão de 1, 15% e 1, 18%, respe tivamente. Os retornos mínimos
+apresentam-se semelhantes entre os anos de 2010, 2013, 2014 e 2015, ujas volatilidades (medidas
+pelo desvio-padrão) são de 1, 12% (2010 e 2013) e 1, 15% (2014 e 2015). Nos anos de 2011 e 2016
+(desvios-padão de 1, 16% e 1, 18%, respe tivamente), as quedas mínimas são próximas de −8% e em
+2012, tem-se o valor mais ameno entre os subperíodos (−3, 3%).
+
+         Tabela 1: Resumo de estatísti as des ritivas das séries de retorno do IBOVESPA
+     Retorno      Período     2010      2011      2012    2013     2014    2015    2016
+   IBOVESPA       ompleto
+  Média anual −0, 0001 −0, 000 0, 000 0, 0002 −0, 0006 −0, 000 −0, 0002 0, 001
+ Desvio padrão     0, 014     0, 012    0, 016    0, 013  0, 012  0, 015   0, 015 0, 018
+ Máxima diária     0, 085     0, 040    0, 049    0, 046  0, 035  0, 049   0, 085 0, 063
+ Mínima diária −0, 084 −0, 048 −0, 084 −0, 033 −0, 045 0, 046             −0, 040 −0, 079
+    Assimetria     0, 049    −0, 186 −0, 465      0, 217 −0, 160  0, 119   0, 850 −0, 146
+     Curtose       5, 297     4, 135    6, 327    3, 350  3, 630  3, 792   6, 132 5, 415
+    Ex esso de
+     Curtose       2, 297     1, 135    3, 327    0, 350  0, 630  0, 792   3, 132 2, 415
+  Jarque Bera
+       Test        0, 00∗     0, 00∗    0, 00∗     0, 19 0, 07∗∗∗ 0, 02∗∗  0, 00∗  0, 00∗
+Nota: * Teste Jarque-Bera signi ante ao nível de 1%
+** Teste Jarque-Bera signi ante ao nível de 5%
+*** Teste Jarque-Bera signi ante ao nível de 10%.
+Fonte: Elaboração própria.
+    Os dados exibem oe ientes de assimetria próximos de zero, havendo leve tendên ia de assimetria
+positiva em 2014 e negativa nos demais períodos. No histograma onsiderando o período ompleto,
+apresentado na Figura 1 (grá o à direita), é possível observar uma urva de densidade essen ialmente
+simétri a. No que tange à urtose, as séries apresentam ex esso de urtose positivo em todos os
+períodos, o que indi a audas densas para as densidades dos retornos. O teste de Jarque-Bera é
+utilizado na avaliação de normalidade, rejeitando-se a hipótese nula (densidade gaussiana) ao nível
+de signi ân ia de 10% em prati amente todos os períodos (ex eto em 2012).
+                                              (a)                                         (b)
+                                                                           35
+                                                                           30
+                        0.05
+
+
+
+
+                                                                           25
+                                                                           20
+                                                              Frequência
+              Retorno
+
+                        0.00
+
+
+
+
+                                                                           15
+                                                                           10
+                        −0.05
+
+
+
+
+                                                                           5
+                                                                           0
+
+
+
+
+                                2010   2012     2014   2016                     −0.05    0.00     0.05
+
+                                              Ano                                       Retorno
+
+
+Figura 1: (a) Série do retorno do IBOVESPA; (b) Histograma da série de retornos do IBOVESPA
+ om urva gaussiana padrão plotada.
+
+
+   A Figura 2 mostra ográ o de QQ-plot om as bandas de onança (90% de onabilidade)
+ onsiderando os quantis da normal onsiderando o período ompleto da Tabela 1. Como é possível
+4 Estudo Empíri o                                                                                                             16
+
+
+observar, o ajuste normal é bastante fragilizado nas regiões extremas, sinalizando audas densas.
+Essa ara terísti a é um diferen ial na modelagem proposta por Chernozhukov & Du (2006), que
+tem base na teoria dos valores extremos e é fonte de estudo do presente artigo.
+
+
+
+
+                                                            0.05
+                            Quantis observados da amostra
+
+                                                            0.00
+                                                            −0.05
+
+
+
+
+                                                                    −3        −2      −1       0       1       2          3
+
+                                                                         Quantis teóricos da distribuição normal padrão
+
+
+Figura 2: Q-Q plot para os retornos diários do IBOVESPA onsiderando o período ompleto da série.
+
+
+    A Tabela 2 ontém o sumário das estatísti as des ritivas onsiderando as séries asso iadas ao
+ativo PETR3. Como no aso anterior, observam-se médias próximas de zero. Os retornos máximos
+e mínimos o orrem em 2016 (14, 9%) e 2014 (−12%), respe tivamente. Entre os subperíodos, os
+retornos máximos inferiores a 10% em 2010, 2011 e 2012, seguindo o sentido ontrário em 2013,
+2014, 2015 e 2016. Os retornos mínimos são registrados abaixo de −10% entre 2013 e 2016. Estes
+períodos desta am o re ente enário de rise políti a brasileiro. Os subperíodos que apresentam-se
+maior volatilidade são observados entre 2014 e 2016.
+    Os oe ientes de assimetria estimados, omo no aso do IBOVESPA, apresentam-se próximos
+de zero. Há uma leve assimetria positiva visível no histograma da Figura 3 (grá o à direita),
+em que valores extremos são levemente mais intensos na região da auda direita da distribuição
+dos dados. Adi ionalmente, omo observado para o IBOVESPA, os ex essos de urtose não nulos,
+revelam distribuições de audas pesadas. O teste de Jarque Bera ao nível de 10% não rejeita a
+hipótese de normalidade apenas em 2010.
+               Tabela 2: Resumo de estatísti as des ritivas do Retorno da Petrobrás
+    Retorno       Período     2010      2011       2012  2013   2014  2015   2016
+   Petrobrás      ompleto
+  Média anual     −0.0005 −0.001 −0.0009 −0.0005 −0.0008 −0.001 −0.0003      0.003
+ Desvio padrão     0.028      0.017     0.019      0.021 0.025  0.032 0.038  0.040
+ Máxima diária     0.149      0.054     0.045      0.070 0.141  0.105 0.133  0.149
+ Mínima diária −0.120 −0.049 −0.082 −0.087 −0.109 −0.120 −0.110 −0.092
+   Assimetria      0.289     −0.083 −0.464        −0.267 0.535 −0.064 0.365  0.371
+    Curtose        5.647      3.426     4.533      4.804 8.673  4.332 3.593  3.446
+   Ex esso de
+    Curtose        2.647      0.426     1.533       1.80 5.673  1.332 0.593  0.446
+  Jarque Bera
+      Test         0.00∗       0.32     0.00∗      0.00∗ 0.00∗ 0.04∗∗ 0.00∗ 0.06∗∗∗
+Nota: * Teste Jarque-Bera signi ante ao nível de 1%
+** Teste Jarque-Bera signi ante ao nível de 5%
+*** Teste Jarque-Bera signi ante ao nível de 10%.
+Fonte: Elaboração própria.
+4 Estudo Empíri o                                                                                                                                                   17
+
+                                                                          (a)                                                                        (b)
+
+
+
+
+                         0.15
+
+
+
+
+                                                                                                                                20
+                         0.10
+
+
+
+
+                                                                                                                                15
+                         0.05
+
+
+
+
+                                                                                                                   Frequência
+               Retorno
+
+
+
+
+                                                                                                                                10
+                         0.00
+                         −0.05
+
+
+
+
+                                                                                                                                5
+                         −0.10
+
+
+
+
+                                                                                                                                0
+                                 2010   2012                                      2014           2016                                −0.10         0.00      0.10
+
+                                                                          Ano                                                                      Retorno
+
+
+Figura 3: (a) Retornos diários da Petrobrás (PETR3); (b) Histograma da série da Petrobrás om
+ urva gaussiana padrão ajustada.
+                                                                          0.15
+                                                                          0.10
+                                          Quantis observados da amostra
+
+                                                                          0.05
+                                                                          0.00
+                                                                          −0.05
+                                                                          −0.10
+
+
+
+
+                                                                                         −3        −2      −1         0          1   2         3
+
+                                                                                              Quantis teóricos da distribuição normal padrão
+
+
+Figura 4: Q-Q plot para os retornos diários da Petrobrás (PETR3) onsiderando o período ompleto
+da série.
+
+
+    O grá o QQ-plot onstruído a 90% de onança (Figura 4) revela que na região entral os
+dados omportam-se omo em uma distribuição normal (observações dentro das bandas), porém, nos
+quantis extremos, os dados diferem bastante do padão gaussiano (observações fora das bandas de
+ onança). De a ordo om o envelope inserido da Figura 4, há evidên ia empíri a ontra a hipótese
+de normalidade.
+    O fato de ambas as séries possuírem audas om padrões diferentes do gaussiano sugerem a
+obtenção de estimativas VaR diferentes dos usuais. A regressão quantíli a pode ser utilizada om
+esse propósito. A Seção 4.1 mostra os resultados om essa abordagem.
+
+4.1      Análise VaR via regressão quantíli a
+
+     Na realização das análises, as ovariáveis utilizadas na modelagem quantíli a do VaR referente aos
+retornos do IBOVESPA são:21 (i) o (log) retorno do IBOVESPA, defasado de um período (IBOVt−1 );
+(ii) o (log) retorno (defasado em um período) da taxa de âmbio - Livre - Dólar ameri ano ( ompra)22
+(Cmbiot−1 ); e (iii) o log retorno (defasado de um período) da taxa média de depósito interban ário
+  21 O   onjunto de ovariáveis é limitado a um pequeno onjunto de fatores de ris o a m de evitar que o modelo
+estatísti o se ajuste demasiadamente ao onjunto de dados (overting )
+  22 Metodologia        de      ál ulo      disponível     em       http://dadosabertos.b b.gov.br/dataset/
+10813-taxa-de- ambio---livre---dolar-ameri ano- ompra
+4 Estudo Empíri o                                                                                                 18
+
+
+(DI)23 (Jurost−1). Vale desta ar que há diversos estudos os quais eviden iam a relação de ausalidade
+existente entre as variáveis des ritas nos itens (i) a (iii) e o movimento dos preços das ações de
+empresas ujos ativos ompõem índi es representativos nos mer ados (Junior & Higu hi, 2008; Chen
+et al., 1986; Júnior & S herma, 2010; Bjørnland & Leitemo, 2009).
+    As ovariáveis utilizadas na estimação quantíli a do VaR referente aos retornos das ações ordi-
+nárias PETR3 são: (iv) o log retorno (defasado em um período) do ativo PETR3 (P ET R3t−1 ) ; (v)
+o log retorno do índi e IBrX 5024 defasado em um e dois períodos (IBrXt−1 e IBrXt−2 , respe tiva-
+mente); e (vi) o log retorno (defasado de um período) do preço unitário do barril de pétroleo bruto
+WTI (Fob)25 . O fatores (iv) a (vi) são es olhidos em onsonân ia om os estudos de Chernozhukov
+& Du (2006) e Grppo (2004).
+    As estimativas VaR são obtidas para os quantis de 10%, 5%, 2, 5%, 1% e 0, 1% e apresentadas nas
+Subseções 4.1.1 e 4.1.2, sendo também mostradas as estimativas orrigidas pelo viés e as respe tivas
+regiões de onança a 90% de onabilidade (ambas obtidas usando bootstrap extremo). Para o índi e
+de auda (ξ), via bootstrap extremo, são também al uladas as estimativas orrigidas pelo viés e as
+regiões de onança (90% de obertura). Por m, om o uso da estratégia de extrapolação des rita
+na Subseção 3.3.3, valores ξˆ estimados para quantir menos extremos são utilizados na obtenção de
+estimativas VaR mais extremas.
+
+4.1.1       Análise VaR para o IBOVESPA
+
+   A análise quantíli a VaR onsiderando os log retornos do IBOVESPA é baseada na equação de
+regressão
+
+            F̂Y−1
+               t
+                  (τ |Xt ) = Xt′ β̂(τ ) = β̂0 (τ ) + β̂1 (τ )IBOVt−1 + β̂2 (τ )Câmbiot−1 + β̂3 (τ )Jurost−1 ,   (40)
+
+em que Yt , F̂Y−1
+               t
+                  (τ |Xt ) e β̂i , i = 0, . . . , 3 denotam, respe tivamente, o (log) retorno (diário) do IBO-
+VESPA em t, o estimador do VaR ondi ional ao nível τ e os estimadores dos parâmetros do modelo.
+A Tabela 3 mostra os resultados da estimação. Como um ponto a observar, tem-se a não signi ân-
+ ia de Jurost−1 para os quantis 10%, 2, 5% e 1% (intervalos de onança estimados ontêm o zero).
+Para esses quantis, a ovariável não revela ter impa to relevante. Em ontra partida, o VaR ao nível
+τ = 0, 1% é muito impa tado por esse regressor: orrigindo o viés, 1% de aumento no DI impa ta
+em uma variação de −2, 25% nesse quantil. O Câmbio é uma variável signi ativa em prati amente
+todos os níveis de VaR, ex eto no VaR0,1% , em que o intervalo de onança estimado ontém o zero.
+Per ebe-se um aumento no impa to do âmbio à medida em que τ ց 0 (−0, 18% quando τ = 10%
+ ontra −0, 25% para o VaR1% ). O (log) retorno do IBOVESPA (IBOVt−1) é o fator menos impa -
+tante, apresentando estimativas signi ativas apenas para o nível τ = 10%. Nesse aso, o impa to
+estimado é de −0, 06% mediante uma variação per entual positiva em IBOVt−1 .
+    A Tabela 4 apresenta os resultados da estimação do índi e de auda utilizando o estimador
+proposto por Hill et al. (1975). Como todas as estimativas são positivas, visto que as equações (15)
+e (16) são es ritas na forma da GEVmax ,26 tem-se mais uma evidên ia da presença de audas densas
+na distribuição dos (log) retornos. Observa-se que a úni a estimativa não signi ativa foi obtida para
+τ = 0, 1%, em que a estimativa intervalar ontém o zero. Adi ionalmente, as estimativas orrigidas
+pelo viés são onsideravelmente distintas daquelas sem orreção. Entretanto, a orreção de viés torna
+  23 Taxa DI é o ontrato futuro de taxa média de depósito internan eiro de 1 dia nego iado no mer ado da BM&F,
+expressa as expe tativas sobre os omportamentos dos juros para períodos futuros. Essa variável é es olhida por
+apresentar uma maior liquidez do que na Taxa bási a de juros (Seli ) e por apresentar as expe tativas sobre juros
+futuros [Para maior detalhamento, ver Almeida et al. (2008)℄.
+  24 O IBrX 50 é o indi ador do desempenho médio das otações dos 50 ativos de maior nego iabilidade e represen-
+tatividade do mer ado de ações brasileiro. Esse é es olhido omo variável representativa do mer ado nan eiro por
+expressar as os ilações dos retornos das prin ipais ompanhias de apital aberto da BM&FBOVESPA.
+  25 Preço de referên ia dos EUA, transa ionado na Bolsa de mer adorias de Chi ago (CME).
+  26 Na forma GEV
+                    min altera-se o sinal de ξ .
+4 Estudo Empíri o                                                                                19
+
+
+mais estável os valores ξˆ obtidos para τ = 10%, 5% e 2, 5%. Quando τ = 1% tem-se ξˆ ≈ 0, 22, er a
+de 83% superior (também signi ativa a 10% de signi ân ia).
+
+   Tabela 3: Estimativas VaR para o modelo de regressão quantíli a asso iado ao IBOVESPA.
+
+                Coe iente     Estimativa Estimativa sem viés Região de onf. 90%
+                                             τ = 0, 1%
+                (Inter epto)     -0,07           -0,08             [-0,13;-0,06℄
+                IBOVt−1          -0,65           -0,69             [-1,62; 0,28℄
+                Câmbiot−1       -0,76           -0,72             [-2,56; 0,62℄
+                Jurost−1         -1,48           -2,25             [-3,14;-0,06℄
+                                              τ = 1%
+                (Inter ept)      -0,03           -0,03             [-0,04;-0,03℄
+                IBOVt−1          -0,05           -0,05             [-0,21; 0,11℄
+                Câmbiot−1       -0,24           -0,25             [-0,49;-0,02℄
+                Jurost−1         -0,27           -0,26             [-0,57; 0,02℄
+                                             τ = 2, 5%
+                (Inter ept)      -0,03           -0,03             [-0,03;-0,03℄
+                IBOVt−1          -0,06           -0,05             [-0,23; 0,10℄
+                Câmbiot−1       -0,14           -0,13             [-0,42;-0,07℄
+                Jurost−1         -0,26            -0,22            [-0,58; 0,13℄
+                                              τ = 5%
+                (Inter ept)      -0,02           -0,02             [-0,02;-0,02℄
+                IBOVt−1          -0,07           -0,07             [-0,16, 0,02℄
+                Câmbiot−1       -0,22           -0,22             [-0,35;-0,10℄
+                Jurost−1         -0,22           -0,20             [-0,42;-0,03℄
+                                             τ = 10%
+                (Inter ept)      -0,02           -0,02             [-0,02;-0,02℄
+                IBOVt−1          -0,06           -0,06             [-0,11;-0,01℄
+                Câmbiot−1       -0,17           -0,18             [-0,25;-0,09℄
+                Jurost−1          0,00            0,00             [-0,14; 0,12℄
+
+
+
+    A Figura 5 mostra o grá o das séries VaR obtidas após todo o pro esso de estimação quantíli a.
+No grá o, são mostrados os (log) retornos juntamente om as linhas VaR aos níveis τ = 2, 5%, 1%
+e 0, 1% (ajustes ordinário e extrapolado - ver Subseção 3.3.3). Para as estimativas extrapoladas, na
+obtenção dos valores VaR, sendo τ = 2, 5%, extrapola-se o quantil τ = 5% onsiderando ξˆmdio ≈
+0, 1258 (média de ξˆ para os quantis 10% e 5%). Quando τ = 1%, onsidera-se a média ξˆmdio =
+0,1227+0,1290+0,1246
+          3
+                     ≈ 0, 1254 (média para os quantis 10%, 5% e 2, 5%), extrapolando-se o VaR2,5% .
+Por m, om τ = 0, 1%, a estimativa ξˆ = 0, 2191 é utilizada (referente ao quantil τ = 1%), sendo
+extrapolado o VaR2,5% .
+    Os resultados eviden iam omo a estimação via bootstrap extremo tende a performar de forma
+mais realista. Esse fato é observado na Figura 5, em que a linha VaR0,1% estimada via bootstrap
+posi iona-se a ima da mesma estimada via método ordinário. Nesse sentido, é possível interpretar que
+a estimação ordinária pre i a o ris o de forma ex essiva, superestimando os quantis muito extremos.
+Segundo Chernozhukov & Du (2006), a diferença entre as estimações ordinária e extrapolada se dá
+em virtude da primeira limitar-se à amostra enquanto que a segunda utiliza um modelo da auda
+apropriado sob um ondi ional estimado de forma onável, o que torna o método extrapolado mais
+adequado. A Tabela 5 ontém as estatísti as de ba ktest, onsiderando as estimações extrapoladas
+para os quantis VaR aos níveis τ = 2, 5%, 1% e 0, 1%. A janela de estimação é a mesma denida
+no iní io da Seção 4. Como é possível observar, para a linha VaR2,5% , a razão de violação situa-se
+4 Estudo Empíri o                                                                                                        20
+
+
+                                                                           ˆ onsiderando os (log) retornos do IBOVESPA
+                                  Tabela 4: Estimativas do índi e de auda (ξ)
+
+                                                             Estimativa Estimativa sem viés Região de onf. 90%
+                                                                                   τ = 0, 1%
+                                                              0,0595          0,09123          [-0,1337; 0,1189℄
+                                                                                    τ = 1%
+                                                              0,2569          0,2191           [0,0937; 0,3181℄
+                                                                                   τ = 2, 5%
+                                                              0,2287          0,1246           [0,0389; 0,1950℄
+                                                                                    τ = 5%
+                                                              0,27226         0,1290           [0,0511; 0,1856℄
+                                                                                   τ = 10%
+                                                              0,3275          0,1227           [0,0621; 0,1750℄
+
+
+
+Figura 5: Extrapolação versus estimativas ordinárias para os níveis VaR asso iados aos (log) retornos
+da PETR3.
+
+
+
+                                                 retorno                 ordinário (1%)        extrapolado (0,1%)
+                                  0.15
+Retorno vs. Quantil Condicional
+
+
+
+
+                                                 ordinário (2,5%)        extrapolado (1%)
+                                                 extrapolado (2,5%)      ordinário (0,1%)
+                                  0.05
+                                  −0.05
+                                  −0.15
+
+
+
+
+                                          2010        2011        2012      2013        2014    2015       2016
+
+                                                                            período
+
+
+Fonte: Elaboração própria.
+
+dentro da faixa onsiderada omo razoável (VR ≈ 1, 40), porém, a estatísti a bernoulli, al ulada sob
+H0 , indi a rejeição da hipótese nula em teste. Considerando os quantis mais extremos os resultados
+são positivos, apresentando VR ≈ 1, 43 e 1, 78 (VaR1% e VaR0,1% , respe tivamente) e não havendo
+rejeição da hipótese nula em teste (estatísti as bernoulli inferiores a 3,84).
+    A Figura 6 mostra o grá o dos log retornos ontra as linhas VaR2,5% , obtidas via bootstrap
+extremo, uma utilizando a janela ompleta de dados (extrapolado- ompleto) e a outra utilizando
+uma janela de estimação W E = 100 no pro edimento de ba ktest des rito na Subseção 3.4. No
+segundo aso, VR = 0.99 e LR ≈ 0, 214, ongurando um melhor ajuste relativamente aquele obtido
+ om os dados ompletos (Tabela 5). Dessa forma, quando ne essário, a obtenção de estimativas VaR
+mais adequadas pode ser realizada por meio de ba ktests. Ao se realizar o mesmo pro edimento
+ onsiderando τ = 1% e 0, 1% nota-se que não há diferenças signi ativas entre as linhas VaR obtidas
+pelos dois pro edimentos.
+4 Estudo Empíri o                                                                                                         21
+
+
+
+
+Tabela 5: Resumo das estatísti as de ba ktest para o modelo de regressão quantíli a onsiderando
+as urvas VaR estremas estimadas para o IBOVESPA. Quantil ríti o do teste bernoulli é de 3,84 a
+5% de signi ân ia.
+
+                                                                τ           violações (em %)    VR    estatísti a LR
+                                                                2, 5%              3.51      1.407275      6.34
+                                                                1%                 1.43      1.431127      2.77
+                                                                0, 1%              0.18      1.788909      0.84
+
+
+
+
+Figura 6: Estimativas VaR extrapoladas asso iados aos (log) retornos do IBOVESPA om e sem
+pro edimento ba ktest.
+                                  0.10
+
+
+
+
+                                             retorno
+                                             extrapolado−backtest (2,5%)
+Retorno vs. Quantil Condicional
+
+
+
+
+                                             extrapolado−completo (2,5%)
+                                  0.05
+                                  0.00
+                                  −0.05
+                                  −0.10
+
+
+
+
+                                          2010          2011               2012     2013      2014       2015      2016
+
+                                                                                   período
+
+
+Fonte: Elaboração própria.
+4 Estudo Empíri o                                                                                             22
+
+
+4.1.2   Análise VaR para a Petrobrás
+
+   A análise VaR onsiderando os log retornos da PETR3 é baseada na equação de regressão
+
+   F̂Y−1
+      t
+         (τ |Xt ) = β̂0 (τ ) + β̂1 (τ )P ET R3t−1 + β̂2 (τ )IBrXt−1 + β̂3 (τ )IBrXt−2 + β̂4 (τ )Preçot−1 ,   (41)
+
+em que Yt , F̂Y−1
+               t
+                  (τ |Xt ) e β̂i , i = 0, . . . , 3 denotam, respe tivamente, o (log) retorno (diário) do ativo
+PETR3 em t, o estimador do VaR ondi ional ao nível τ e os estimadores dos parâmetros do modelo,
+ omo pode ser visto na tabela 6.
+
+Tabela 6: Estimativas do VaR para o modelo de regressão quantíli a para valores extremos da PETR3
+
+                    Coe iente      Estimativa Viés de orreção Região de onf. 90%
+                                                   τ = .001
+                    (Inter epto)       -0.10            -0.11              [-0.14;-0.09℄
+                    P ET R3t−1         -0.68            -0.71              [-1.25;-0.10℄
+                    IBrXt−1             0.74             0.87              [-0.53, 1.87℄
+                    IBrXt−2             0.00            -0.10              [-0.85; 0.74℄
+                    Preçot−1            0.42             0.41              [-0.04; 0.95℄
+                                                    τ = .01
+                    (Inter epto)       -0.08            -0.08              [-0.08;-0.07℄
+                    P ET R3t−1         -0.03            -0.03              [-0.40; 0.38℄
+                    IBrXt−1             0.06             0.10              [-0.83; 0.82℄
+                    IBrXt−2             0.29             0.29              [-0.21; 0.80℄
+                    Preçot−1            0.19             0.20              [-0.11; 0.54℄
+                                                   τ = .025
+                    (Inter epto)       -0.06            -0.06              [-0.06;-0.05℄
+                    P ET R3t−1         -0.14            -0.13              [-0.38; 0.11℄
+                    IBrXt−1             0.27             0.27              [-0.30; 0.75℄
+                    IBrXt−2             0.15             0.14              [-0.18; 0.45℄
+                    Preçot−1            0.20             0.20              [ 0.00; 0.43℄
+                                                    τ = .05
+                    (Inter ept)        -0.04            -0.04              [-0.05;-0.04℄
+                    P ET R3t−1          0.06             0.07              [-0.12; 0.24℄
+                    IBrXt−1            -0.25            -0.25              [-0.67; 0.13℄
+                    IBrXt−2             0.30             0.31              [ 0.08; 0.52℄
+                    Preçot−1            0.17             0.17              [ 0.01; 0.32℄
+                                                    τ = .10
+                    (Inter ept)        -0.03            -0.03              [-0.04;-0.03℄
+                    P ET R3t−1         -0.02            -0.01              [-0.15; 0.11℄
+                    IBrXt−1            -0.06            -0.08              [-0.33; 0.17℄
+                    IBrXt−2             0.21             0.21               [ 0.06; 0.36℄
+                    Preçot−1            0.17             0.17               [ 0.07; 0.27℄
+
+
+
+    Os resultados da estimação podem ser vistos na Tabelas 6 e 7. Na Tabela 6 observa-se que os
+retornos do preço do petróleo são signi ativos quando τ = 5% e 10%, tendo impa to médio estimado
+de 0, 17% nas variações de preço da PETR3 (para ada aumento de 1% em Preçot−1 , eteris paribus ).
+Nos quantis τ = 2, 5% e 1%, o impa to estimado, embora não signi ativo, é de 0, 20% e, quando
+τ = 0, 1%, esse valor mais que dobra (≈ 0, 40%), porém, a estimativa é não signi ativa. As variações
+defasadas em dois períodos do IBRX 50 (IBrXt−2 ) são relevantes para os níveis VaR10% e VaR5%
+enquanto que os log retornos defasados em um período (IBrXt−1 ) não são signi ativos para nenhum
+4 Estudo Empíri o                                                                                    23
+
+
+valor τ onsiderado. Vale observar que, mesmo havendo estimativas não signi ativas, os valores dos
+  oe ientes estimados asso iados aos regressores IBrXt−1 e IBrXt−2 mudam de sinal (de −0, 08 para
+0, 87 e de 0, 21 para −0, 10, respe tivamente), eviden iando uma tendên ia de reversão do impa to à
+medida que o quantil torna-se mais extremo. Os log retornos (defasados) da PRTR3 são signi ativos
+apenas para τ = 0, 1%, região em que o nível do impa to estimado (em valor absoluto) é bastante
+superior relativamente aos demais quantis onsiderados. Nesse sentido, para τ = 0, 1%, estima-se
+que um aumento per entual em P ET R3t−1 a arreta em uma variação de −0, 71% nos log retornos
+da PETR3, em média.
+     A Tabela 7 reporta as estimativas do índi e de auda, obtidas segundo Hill et al. (1975). Os valores
+ξˆ são estatisti amente signi ativos para τ = 10%, 5% e 2, 5%, sendo bastante próximas entre os dois
+primeiros (ξˆ ≈ 0, 196 e 0, 20, respe tivamente). Quando τ = 2, 5%, ξˆ diminui para 0, 118. A Figura
+7 mostra o grá o das séries VaR obtidas após o todo o pro esso de estimação quantíli a. Como na
+Figura 5, são mostrados os (log) retornos juntamente om as linhas VaR aos níveis τ = 2, 5%, 1% e
+0, 1% (ajustes ordinário e extrapolado). Para as estimativas extrapoladas, na obtenção dos valores
+VaR, sendo τ = 2, 5%, extrapola-se o quantil τ = 5% onsiderando ξˆmdio ≈ 0, 1975 (média dos valores
+ξˆ obtidos para os quantis 10% e 5%). Quando τ = 1% e 0, 1%, extrapola-se o quantil τ = 2, 5%
+  onsiderando ξˆmdio ≈ 0, 1745 (média de ξˆ para τ = 10%, 5% e 2, 5%).
+                       Tabela 7: Estimativa do índi e de auda ξˆ da Petrobrás
+
+                        Estimativa Estimativa sem viés Região de onf. 90%
+                                              τ = 0, 1%
+                           0,069            0,139            [-0,0952;0,139℄
+                                                τ = 1%
+                           0,145            0,071            [-0,0284;0,142℄
+                                              τ = 2, 5%
+                           0,222            0,118             [0,0277;0,190℄
+                                                τ = 5%
+                           0,331            0,208             [0,126;0,275℄
+                                               τ = 10%
+                           0,382            0,197             [0,141;0,253℄
+
+
+
+    Como pode-se observar, o ajuste extrapolado para o VaR0,1% é menos volátil que o mesmo obtido
+pelo método ordinário (desvio padrão de 0.0092 ontra 0.0133). O método extrapolado mostra-se
+bastante favorável na estimação dos quantis mais extremos, região em que há uma maior diferença nas
+estimativas VaR obtidas. A Tabela 8 ontém as estatísti as de ba ktest, onsiderando as estimações
+extrapoladas para os quantis VaR aos níveis τ = 2, 5%, 1% e 0, 1%. A janela de estimação é a
+mesma denida no iní io da Seção 4. Como na análise do IBOVESPA, para a linha VaR2,5% , a razão
+de violação situa-se dentro da faixa onsiderada omo razoável (VR = 1, 44), porém, a estatísti a
+bernoulli, al ulada sob H0 , indi a rejeição da hipótese nula em teste. Considerando os quantil
+τ = 1% têm-se VR = 1, 43, sem rejeição de H0 . Quando τ = 0, 1% e 2, 18 (VaR1% e VaR0,1% , por se
+tratar de um quantil mais extremo, VR = 2, 18 respe tivamente, porém, H0 não é rejeitada.
+    A Figura 8 mostra o grá o dos log retornos ontra as linhas VaR2,5% , obtidas via bootstrap
+extremo, uma utilizando a janela ompleta de dados (extrapolado- ompleto) e a outra utilizando
+uma janela de estimação W E = 100 no pro edimento de ba ktest des rito na Subseção 3.4. No
+segundo aso, VR = 1, 10 e LR ≈ 0, 082, ongurando um melhor ajuste relativamente àquele obtido
+ om os dados ompletos (Tabela 8), sendo possível a obtenção de estimativas VaR mais adequadas por
+meio de ba ktests. Como na análise do IBOVESPA, ao se onsiderar τ = 1% e 0, 1% em um mesmo
+pro edimento, não há diferen as signi ativas entre as linhas VaR obtidas pelas duas estratégias.
+4 Estudo Empíri o                                                                                                              24
+
+
+
+Figura 7: Extrapolação versus estimativas ordinárias para os níveis VaR asso iados aos (log) retornos
+do IBOVESPA.
+
+
+
+                                                 retorno                            ordinário (1%)        extrapolado (0,1%)
+                                  0.15
+Retorno vs. Quantil Condicional
+
+
+
+
+                                                 ordinário (2,5%)                   extrapolado (1%)
+                                                 extrapolado (2,5%)                 ordinário (0,1%)
+                                  0.05
+                                  −0.05
+                                  −0.15
+
+
+
+
+                                          2010        2011            2012           2013        2014     2015      2016
+
+                                                                                       período
+
+
+Fonte: Elaboração própria.
+
+Tabela 8: Resumo das estatísti as de ba ktest para o modelo de regressão quantíli a onsiderando
+as urvas VaR estremas estimadas para a petr3. Quantil ríti o do teste bernoulli é de 3,84 a 5% de
+signi ân ia.
+
+                                                                    τ             violações (em %) VR estatísti a LR
+                                                                    2, 5%                3,59      1.44    7.48
+                                                                    1%                   1,27      1.27    1.21
+                                                                    0, 1%                0,23      2.32    2.18
+
+
+
+Figura 8: Estimativas VaR extrapoladas asso iados aos (log) retornos da PETR3 om e sem pro e-
+dimento ba ktest.
+                                  0.10
+
+
+
+
+                                             retorno
+                                             extrapolado−backtest (2,5%)
+Retorno vs. Quantil Condicional
+
+
+
+
+                                             extrapolado−completo (2,5%)
+                                  0.05
+                                  0.00
+                                  −0.05
+                                  −0.10
+
+
+
+
+                                          2010         2011                2012        2013        2014      2015       2016
+
+                                                                                       período
+
+
+Fonte: Elaboração própria.
+Referên ias                                                                                       25
+
+
+5 Con lusões
+    A apli ação empíri a obtida no presente artigo eviden ia que o mer ado nan eiro brasileiro apre-
+senta retornos negativos extremos om uma maior frequên ia esperada do que aquela observada em
+séries sob hipótese de normalidade ondi ional. Nesse sentido, as abordagens tradi ionais ostumam
+subestimar o VaR e o erro de estimação pode aumentar à medida que a ênfase de estudo re ai sob
+quantis mais extremos. Essa ara terísti a observada nos mer ados torna útil o desenvolvimento
+de té ni as de estimação mais sosti adas e om esse propósito a regressão quantíli a para valores
+extremos torna-se bastante atrativa, pois não ne essita de espe i ação prévia dos parâmetros da dis-
+tribuição, sendo denominado um método semiparamétri o. Adi ionalmente, a modelagem possibilita
+veri ar quais são os fatores de ris o que afetam a série nan eira de interesse.
+    O trabalho também adentra no ar abouço da teoria do valor extremo. Com esse propósito, a
+TVE aprimora a regressão quantíli a na estimação do VaR asso iado a eventos extremos (`raros').
+Com isso, estima-se a densidade da auda da distribuição, a qual é ara terizada pelo índi e de
+ auda. Com a estimativa deste índi e realizam-se inferên ias sobre o VaR via bootstrap (método
+extrapolado), dando maior apa idade para mensurar o ris o em quantis mais extremos.
+    Na apli ação para o IBOVESPA as varições na taxa de âmbio e nos juros impa tam negati-
+vamente os níveis VaR asso iados a quantis mais extremos. Adi ionalmente, o impa to (em valor
+absoluto) asso iado aos juros é muito superior para o quantil 0, 1%. As estimativas dos índi es de
+ auda eviden iam (log) retornos do IBOVESPA distribuindo-se em on ordân ia om distribuições
+de audas pesadas, em onformidade om a teoria em nanças. No que tange ao método de ex-
+trapolação, este mostra-se omo uma solução para a previsão do VaR em quantis muito extremos.
+Por onseguinte, os resultados dos ba ktesting revelam uma boa pre isão do modelo de regressão
+quantíli a ajustado para o IBOVESPA.
+    Considerando os (log) retornos ds ações da Petrobrás (PETR3) obsreva-se a variação (defasada em
+um período) do IBrX50 impa ta no VaR aos níveis 10% e 5%. Além disso, observa-se uma mudança
+no sinal do impa to à medida que o VaR se aproxima de níveis τ próximos de zero. Para esses quantis
+estima-se impa to positivo. Os log retorno do preço do petróleo mostram-se signi ativos (impa to
+positivo) para os níveis VaR5% e VaR10% . Como no IBOVESPA, as estimativas do índi e de auda
+revelam log retornos em a ordo om densidades tendo audas pesadas. A análise grá a eviden ia
+que as estimativas extrapoladas mostram-se satisfatórias. Os resultados do ba ktesting eviden iam
+que o modelo de regressão quantíli a para valores extremos é adequado na estimação do VaR para a
+PETR3.
+    Finalmente, o artigo eviden ia que a regressão quantíli a para valores extremos pode ser usada
+para fazer boas previsões do VaR no mer ado nan eiro brasileiro. A abordagem utilizada é proposta
+por Chernozhukov & Du (2006) que além de prever o VaR, ainda mostra quais variáveis orrelatas
+afetam o VaR da série estudada. Nesse sentido, a presente pesquisa demonstra uma abordagem que
+pode ser usada para prever o VaR no mer ado nan eiro Brasileiro.
+
+
+6 Agrade imentos
+   O segundo autor agrade e o apoio nan eiro par ial do CNPq.
+
+
+Referên ias
+Adrian, T. & M. K. Brunnermeier (2009). Covar: a method for ma roprudential regulation.      Federal
+  Reserve Bank of New York Sta Report 348.
+Adrian, T. & M. K. Brunnermeier (2011). Covar. Te hni al report, National Bureau of E onomi
+  Resear h.
+Referên ias                                                                                         26
+
+
+Almeida, C., R. Gomes, A. Leite, & J. Vi ente (2008). Movimentos da estrutura a termo e ritérios
+  de minimização do erro de previsão em um modelo paramétri o exponen ial. Revista Brasileira de
+  E onomia 62 (4), 497510.
+ASSAF, N. (2011). Mer ado nan eiro.
+
+Bjørnland, H. C. & K. Leitemo (2009). Identifying the interdependen e between us monetary poli y
+  and the sto k market. Journal of Monetary E onomi s 56 (2), 275282.
+
+Bollerslev, T. (1986). Generalized autoregressive onditional heteroskedasti ity.    Journal of e ono-
+  metri s 31 (3), 307327.
+Carvalhal da Silva, A. & B. V. Mendes (2003). Value-at-risk and extreme returns in asian sto k
+  markets. International Journal of Business 8.
+
+Chen, N.-F., R. Roll, & S. A. Ross (1986). E onomi for es and the sto k market.             Journal of
+  business , 383403.
+Chernozhukov, V. (2005). Extremal quantile regression.    Annals of Statisti s , 806839.
+Chernozhukov, V. & S. Du (2006). Extremal quantiles and value-at-risk. mit Department of e    onomi s
+  working Paper .
+Chernozhukov, V. & L. Umantsev (2001). Conditional value-at-risk: Aspe ts of modeling and esti-
+  mation. Empiri al E onomi s 26 (1), 271292.
+
+                     Finan ial risk fore asting: the theory and pra ti e of fore asting market risk
+Danielsson, J. (2011).
+  with implementation in R and Matlab, Volume 588. John Wiley & Sons.
+Dekkers, A. L. & L. De Haan (1989). On the estimation of the extreme-value index and large quantile
+  estimation. The Annals of Statisti s , 17951832.
+
+Engle, R. F. (1982). Autoregressive onditional heteros edasti ity with estimates of the varian e of
+  united kingdom ination. E onometri a: Journal of the E onometri So iety , 9871007.
+
+Engle, R. F. & S. Manganelli (2004). Caviar: Conditional autoregressive value at risk by regression
+  quantiles. Journal of Business & E onomi Statisti s 22 (4), 367381.
+
+Fisher, R. A. & L. H. C. Tippett (1928). Limiting forms of the frequen y distribution of the largest or
+  smallest member of a sample. In Mathemati al Pro eedings of the Cambridge Philosophi al So iety,
+  Volume 24, pp. 180190. Cambridge Univ Press.
+
+Fox, M. & H. Rubin (1964). Admissibility of quantile estimates of a single lo ation parameter.     The
+  Annals of Mathemati al Statisti s , 10191030.
+Fré het, M. (1927). Sur les ensembles ompa ts de fon tions mesurables.       Fundamenta Mathemati-
+   ae 9 (1), 2532.
+Gnedenko, B. (1943). Sur la distribution limite du terme maximum d'une serie aleatoire.      Annals of
+ mathemati s , 423453.
+Gropp, R., Z. Adams, & R. Füss (2010). Systemi risk, ontagion, and state-dependent sensitivities
+  in value-at-risk estimation: Eviden e from hedge funds. Frankfurt a. M.: Verein für So ialpolitik .
+
+Grppo, G. d. S. (2004). Causalidade das   variáveis ma roe onmi as sobre o Ibovespa. Ph. D. thesis,
+  Universidade de São Paulo.
+Referên ias                                                                                             27
+
+
+Gumbel, E. (1958). Statisti s of extremes. 1958.    Columbia Univ. press, New York .
+Gumbel, E. J. & J. Lieblein (1954). Statisti al theory of extreme values and some pra        ti al appli a-
+ tions: a series of le tures, Volume 33. US Government Printing O e Washington.
+Haan, L. (1970). On regular variation and its appli   ation to the weak onvergen e of sample extremes.
+  Mathematis h Centrum.
+
+Hill, B. M. et al. (1975). A simple general approa h to inferen e about the tail of a distribution.   The
+  annals of statisti s 3 (5), 11631174.
+Ibragimov, R. & J. Walden (2007). Value at risk under dependen e and heavy-tailedness: Models
+  with ommon sho ks. Harvard Institute of E onomi Resear h Dis ussion Paper (2139).
+
+Jenkinson, A. F. (1955). The frequen y distribution of the annual maximum (or minimum) values of
+  meteorologi al elements. Quarterly Journal of the Royal Meteorologi al So iety 81 (348), 158171.
+
+Jorion, P. (1997). Value at risk: The new bem hmark in ontrolling market risk.          Irwin, Chi ago 1,
+  997.
+
+Junior, T. P. & R. H. Higu hi (2008). Variáveis ma roe onmi as e o ibovespa: um estudo da relação
+  de ausalidade. Revista Eletrni a de Administração 14 (2), 296315.
+
+Júnior, T. P. & F. R. S herma (2010). Um estudo da inuên ia entre o dólar e o ibovespa no período
+  19992003. GEST O. Org-Revista Eletrni a de Gestão Organiza ional 3 (1).
+
+Kaufman, G. G. et al. (2000). Banking and urren y rises and systemi risk: Lessons from re ent
+ events. Federal Reserve Bank of Chi ago E onomi Perspe tives 24 (3), 928.
+
+Koenker, R. & G. Bassett (1978). Regression quantiles.      E onometri a: journal of the E onometri
+ So iety , 3350.
+Kupie , P. H. (1995). Te hniques for verifying the a ura y of risk measurement models.          The J. of
+ Derivatives 3 (2).
+Longerstaey, J. & More (1995). Introdu tion to riskmetri s.        Morgan Guaranty Trust Company,
+  Market Risk Resear h, JPMorgan .
+Markowitz, H. (1959).     Portfolio Sele tion, E ent Diversi ation of Investments. J. Wiley.
+Monteiro, J., P. M. Silva, et al. (2002). Ris o de perda adi ional, teoria dos valores extremos e gestão
+ do ris o: apli ação ao mer ado nan eiro português. Universidade da Beira Interior .
+
+Norberg, R. (1998). Embre hts p., klüppelberg ., mikos h t.(1997): Modelling extremal events
+  for insuran e and nan e, springer-verlag. 645 pp (1.04 kg). issn 0172-4568, isbn 3-540-60931-8.
+  ASTIN Bulletin 28 (02), 285286.
+Oliveira, J. T. (1962).   Stru ture theory of bivariate extremes extensions.
+Pareto, V. (1964).   Cours d'é onomie politique, Volume 1. Librairie Droz.
+Pi kands III, J. (1975). Statisti al inferen e using extreme order statisti s.   the Annals of Statisti s ,
+  119131.
+
+Ro kafellar, R. T. & S. Uryasev (2000). Optimization of onditional value-at-risk.       Journal of risk 2,
+  2142.
+Referên ias                                                                                       28
+
+
+Roy, A. D. (1952). Safety rst and the holding of assets.   E onometri a: Journal of the E onometri
+  So iety , 431449.
+Santos, T. (2006). Valor em ris o auto-regressivo ondi ional: o aso de índi es brasileiros.
+
+Sibuya, M. (1959). Bivariate extreme statisti s, i.   Annals of the Institute of Statisti al Mathema-
+  ti s 11 (2), 195210.
+Von Mises, R. (1936). La distribution de la plus grande de n valeurs.   Rev. math. Union interbal a-
+  nique 1 (1).
+Von Mises, R. (1954). Numeris he bere hnung mehrdimensionaler integrale.    ZAMM-Journal of
+  Applied Mathemati s and Me hani s/Zeits hrift für Angewandte Mathematik und Me hanik 34 (6),
+  201210.
+

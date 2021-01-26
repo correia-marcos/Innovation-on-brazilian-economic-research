@@ -1,0 +1,852 @@
+            Reprovação e efeitos sobre resultados educacionais
+                    Roberta Mendes e Costa∗     André Albuquerque Sant’Anna†
+                                    Danielle Carusi Machado‡
+                                                     Julho de 2019
+
+
+                                                          Resumo
+             O objetivo deste artigo é analisar os efeitos da repetência no final do ciclo de alfabetização sobre
+         os resultados escolares nos anos subsequentes, como o desempenho acadêmico e reprovação. Para
+         tal análise, utilizamos uma base de dados única que contém os registros administrativos da segunda
+         maior rede de educação municipal do Brasil, o Rio de Janeiro. Esta base longitudinal abrange todos
+         os alunos do sistema municipal de ensino fundamental do Rio de Janeiro do 1o ao 9o ano entre 2012
+         e 2017 e contém as notas da prova bimestral aplicada pela Secretaria Municipal de Educação. Em
+         termos metodológicos, exploramos a descontinuidade na probabilidade de repetência ao redor da nota
+         de corte da prova bimestral, aplicando um RDD fuzzy. Os resultados indicam que uma repetência no
+         3o ano não tem impactos estatisticamente significativos no futuro acadêmico dos repetentes. Ou seja, a
+         repetência não resulta em consequências negativas como também não cria incentivos para uma melhor
+         performance. A partir desse resultado, realizamos um teste com uma subamostra especı́fica de forma
+         a checar se temos problemas de contaminação. A partir da estimação de um modelo de diferenças em
+         diferenças encontramos resultados que apontam para efeitos significativos e negativos de uma repetência
+         no 3o ano apenas nas notas do 4o ano.
+         Palavra-chave: Repetência, desempenho acadêmico, regressão descontı́nua.
+                                                           Abstract
+             This paper aims to analyze the impact of grade retention at the end of the literacy cycle on students
+         outcomes in subsequent years, such as academic achievement and grade repetition. We used administra-
+         tive records of the second largest municipal education system in Brazil, Rio de Janeiro. This longitudinal
+         database covers all students of the municipal system of primary education in Rio de Janeiro from 1st to
+         9th year between 2012 and 2017 and contains the grades of the bimonthly test applied by the Munici-
+         pal Education Department. In methodological terms, we explored the discontinuity in the probability
+         of retention around the bimonthly test approval score, applying a fuzzy RDD. The results indicate that
+         grade repetition in the 3rd year does not have statistically significant impacts on student’s academic fu-
+         ture. That is, grade retention does not result in negative consequences nor does it create incentives for
+         better performance. We further analysed this by performing a test with a specific subsample to check
+         for contamination problems. With a differences in differences estimation, we find results that point to
+         significant and negative effects of grade repetition in the 3rd year in the 4th year scores.
+         Key words: Grade retention, academic achievement, regression discontinuity design.
+       Área ANPEC: Área 12 – Economia Social e Demografia Econômica
+       Classificação JEL: I21
+
+   ∗
+     Doutoranda na Faculdade de Economia da Universidade Federal Fluminense (UFF) e membro do Centro de Estudo sobre
+Desigualdade e Desenvolvimento (Cede).E-mail: rmendes@id.uff.br.
+   †
+     Economista do BNDES e pós-doutorando na Faculdade de Economia da Universidade Federal Fluminense (UFF).E-mail:
+andre albuquerque@id.uff.br.
+   ‡
+     Professora na Faculdade de Economia da Universidade Federal Fluminense (UFF) e membro do Centro de Estudo sobre
+Desigualdade e Desenvolvimento (Cede).E-mail: danicarusimachado@gmail.com.
+
+
+                                                              1
+1        Introdução
+        A importância da educação para o desenvolvimento e o crescimento de longo prazo já é bem estabe-
+lecida na literatura (BARRO, 2001). Sabemos também que do ponto de vista individual, a educação gera
+benefı́cios de ordem econômica e social, sendo a base para a construção da cidadania. Deste modo, a
+aquisição de educação por parte dos indivı́duos é crucial não apenas por gerar retornos ao mesmo, consti-
+tuindo a base para a geração de renda individual, mas igualmente por garantir retornos no âmbito social e
+econômico. Pelo lado do indivı́duo, portanto, a existência de desigualdades de oportunidades educacionais,
+traduzida na literatura especı́fica, não apenas na desigualdade do acesso mas também no montante e na
+qualidade do conhecimento acumulado, resulta em disparidades em termos de renda e condições de vida. O
+acúmulo de capital humano por parte da sociedade de forma mais igualitária poderia contribuir para reduzir
+estas desigualdades (NEY; SOUZA; PONCIANO, 2010), tendo em vista que parte desta desigualdade é
+originada pelas desigualdades nas oportunidades educacionais (BELFIELD et al., 2000).
+        Existe uma vasta literatura em economia da educação que estuda os determinantes do acesso à educação,
+procurando entender como garantir a entrada no sistema educacional de diferentes estratos da sociedade
+(HANUSHEK, 1996). Por outro lado, uma parte da literatura também está preocupada em, dado que os
+indivı́duos adentraram no sistema, como garantir que tenham um ensino de qualidade e um bom desem-
+penho educacional. Os resultados escolares, seja em termos de proficiência ou avanço no sistema escolar,
+dependem de recursos individuais e familiares mas igualmente de recursos escolares e pedagógicos. Neste
+artigo, iremos analisar uma prática pedagógica muito usual: a reprovação.
+        A polı́tica de reprovação, na maior parte das vezes, é utilizada com a justificativa de que o aluno que não
+assimilou os conteúdos de um ano escolar não poderia avançar no sistema educacional com risco de com-
+prometimento de seu desempenho nas séries escolares seguintes. Neste sentido, o aluno repetente deveria
+obrigatoriamente permanecer novamente na mesma etapa escolar de forma a recuperar o que não conseguiu
+aprender. Conforme Manacorda (2012), o argumento mais forte a favor da polı́tica de retenção é evitar uma
+baixa performance educacional futura dos alunos e garantir que sejam mais aptos a prosseguir nos estudos
+sem grandes dificuldades. A penalidade da repetência também agiria no sentido de criar incentivos para que
+os repetentes se esforçassem mais evitando repetências futuras.
+        Apesar desta linha de argumentação, tal polı́tica ainda gera controvérsias sobre seus custos e benefı́cios.
+A repetência gera custos para o próprio sistema educacional e para o próprio aluno. De um lado, o aluno
+repetente tem que novamente utilizar os mesmos recursos escolares anteriormente já empregados nele.
+Por outro lado, para os próprios alunos repetentes, aumenta o custo de oportunidade de estudar, podendo
+de certa forma incentivar o abandono escolar e até a inserção em atividades ditas predatórias, tais como
+crime. Uma parte da literatura relaciona a retenção com as taxas de abandono escolar, e por consequência,
+o aumento dos casos de delinquência infantil/juvenil (COOK; KANG, 2013; DIAZ et al., 2016; EREN;
+DEPEW; BARNES, 2017).1 O fato é que nos anos iniciais da escolarização, a retenção pode trazer con-
+sequências socioemocionais negativas para as crianças, conforme Manacorda (2012), que repercutem na
+trajetória futura em termos desempenho educacional.
+        No Brasil, a repetência nos ensinos fundamental e médio tem sido historicamente utilizada como instru-
+    1
+    De acordo com Diaz et al. (2016), a retenção no 4o. e no 8o. ano aumenta a probabilidade de crime juvenil em 37,5% e
+eleva a probabilidade de evasão nos anos seguintes em 23,8%
+
+
+                                                            2
+mento pedagógico. Apesar de as discussões a respeito da sua ineficiência serem bastante antigas - datam do
+final da década de 1950 (FERRÃO; BELTRÃO; SANTOS, 2002), é só a partir de meados dos anos 1980 que
+começam a surgir propostas para reduzir a distorção idade-série, causada pela repetência. A inexistência de
+dados que permitissem investigar o fluxo escolar resultava na interpretação de que a repetência em massa
+nos primeiros anos escolares era um abandono da educação, resultante da situação socioeconômica dos
+alunos. Alunos de famı́lias mais pobres precisavam interromper seus estudos para ajudar no orçamento
+familiar, isentando a escola de responsabilidade sobre a evasão. O desenvolvimento de modelos de fluxo
+escolar na década de 1980 possibilitou a refutação desta hipótese. Os alunos das etapas iniciais da educação
+repetiam de série tantas vezes que, por fim, desistiam da escola (OLIVEIRA; SOARES, 2012). De fato,
+Ribeiro (1991) argumenta que polı́ticas pedagógicas equivocadas, sobretudo baseadas na repetência, repre-
+sentavam papel importante na baixa permanência de crianças no ensino fundamental no inı́cio da década de
+1990, apesar dos esforços familiares. Earp (2009) descreve esse processo como ”cultura da reprovação”ou
+”pedagogia da repetência”.
+       Na década de 2000, contudo, a discussão sobre a repetência foi deixada um pouco de lado no Brasil
+devido à sua queda no ensino fundamental, resultado dos debates e polı́ticas contra este método nos anos 90,
+e a criação de avaliações padronizadas como o SAEB (Sistema de Avaliação da Educação Básica). Apesar
+de poucos estudos brasileiros sobre os determinantes da repetência, eles indicam que crianças de diferentes
+situações socioeconômicas e caracterı́sticas demográficas lidam com este problema, apesar de ser bem
+mais frequente entre meninos, crianças mais pobres e cujos pais possuem baixa escolaridade (OLIVEIRA;
+SOARES, 2012; ORTIGÃO; AGUIAR, 2013). Repetência tem, portanto, um caráter desigual.
+       Oliveira e Soares (2012) argumentam que o estudo da repetência no Brasil ainda é relevante porque
+mesmo com a redução ao longo dos anos, ela ainda situa-se em um patamar elevado. De fato, o Brasil está
+entre os paı́ses com as maiores taxas de repetência na educação primária, o que, segundo a UNESCO, revela
+ineficiência no sistema educacional, além de constituir um alto custo para a sociedade e para os próprios
+alunos.2
+       Em 2011, o Conselho Nacional de Educação (CNE) recomendou que as escolas adotassem o regime
+de progressão continuada nos três primeiros anos do ensino fundamental (BRASIL, 2010). Na prática, a
+recomendação implica a não reprovação de crianças no 1o e no 2o ano do ensino fundamental, argumentando-
+se que a repetência durante o ciclo de alfabetização e letramento é prejudicial ao aprendizado do aluno.3
+       Essa recomendação do CNE parece, no entanto, ter uma consequência não desejada. Considerando
+todas as redes educacionais do paı́s, a terceira maior taxa de reprovação do ensino fundamental é no 3o
+ano (INEP, 2017). Apesar de seu uso controverso, Carvalho e Firpo (2014) argumentam que a reprovação
+representa uma motivação extrı́nseca para impulsionar os alunos a um maior nı́vel de esforço e, consequen-
+temente, um maior desempenho acadêmico. A suspensão da reprovação sem nenhuma alteração do contexto
+escolar, como a inserção de novas práticas pedagógicas, pode acarretar em desincentivo nos alunos, espe-
+cialmente naqueles com baixa motivação intrı́nseca. Os autores, por exemplo, encontram efeitos positivos
+   2
+      Organização das Nações Unidas para a Educação, a Ciência e a Cultura.                   Education for all 2000
+- 2015:       Achievements and challenges.               EFA Global Monitoring Report.              2015.       Disponı́vel em:
+http://unesdoc.unesco.org/images/0023/002322/232205e.pdf. Acesso em: 13 fev 2018.
+    3
+      Alguns estados, como São Paulo e Minas Gerais já vinham experimentando polı́ticas dessa natureza desde o inı́cio da década
+de 2000 (FERRÃO; BELTRÃO; SANTOS, 2002).
+
+
+
+                                                                3
+e significativos no desempenho em matemática de alunos da 4a série quando a ameaça da reprovação é
+reintroduzida no contexto escolar (quando escolas previamente organizadas em ciclo retornam ao modelo
+seriado). Entretanto, esse efeito não permanece para o desempenho na 8a série, implicando uma heteroge-
+neidade na reação à ameaça da reprovação em diferentes etapas.
+   O presente artigo investiga os efeitos da repetência no final do ciclo de alfabetização sobre variáveis re-
+lativas a resultados escolares nos anos subsequentes. Em suma, procura-se responder a questões como: de
+que forma a alta taxa de reprovação no 3o ano do Ensino Fundamental afeta o sistema educacional? Espe-
+cificamente, como uma reprovação nessa etapa afeta as chances de reprovação e o desempenho acadêmico
+futuro dos alunos? Essa é a principal pergunta de investigação desse artigo.
+   Para tanto, serão utilizados dados administrativos, inexplorados na literatura, fornecidos pela Secretaria
+Municial de Educação (SME) do Rio de Janeiro. Trata-se de uma base de dados com todos os alunos
+registrados no sistema municipal de ensino fundamental, do 1o ano ao 9o ano, entre 2012 e 2017. Estudar
+a cidade do Rio de Janeiro por si só também é relevante pois ela contém a maior Rede Municipal do Brasil
+na etapa do ensino fundamental (INEP, 2019). Além disso, 65% das matrı́culas de ensino fundamental da
+cidade são em escolas municipais (INEP, 2019). Vale destacar que a Secretaria Municipal do Rio de Janeiro
+segue parcialmente a recomendação do CNE. Desse modo, alunos no 1o e no 2o ano são reprovados apenas
+quando não alcançam a frequência mı́nima. Isso pode ser visto na Figura 1, onde a taxa de reprovação
+na rede municipal é extremamente baixa nos dois primeiros anos. No entanto, a rede municipal segue a
+tendência dos dados brasileiros mencionados acima, com a taxa de reprovação apresentando um pico no 3o
+ano, sendo, inclusive, a maior taxa de reprovação em todo o ensino fundamental (14%).
+
+           Figura 1: Taxa de reprovação por etapa do ensino fundamental – Rio de Janeiro, 2017
+
+
+
+
+                                     Fonte: Elaboração própria com dados do Inep (2017).
+
+
+
+
+   A partir do 3o ano do ensino fundamental, a repetência na rede municipal do Rio de Janeiro é determi-
+nada pelo conceito e pela frequência do aluno. Existem quatro conceitos: I (insuficiente), R (regular), B
+(bom) e MB (muito bom) e somente alunos com conceito I são reprovados. O conceito é definido pelo pro-
+fessor do aluno e abarca diferentes quesitos, como as avaliações aplicadas em sala, comportamento etc. A
+cada bimestre, todos os alunos da rede municipal são avaliados por provas elaboradas pela SME e aplicadas
+por seus respectivos professores. As notas dessas provas são utilizadas na determinação do conceito obtido
+pelos estudantes.
+
+
+                                                               4
+        Logo, a nota bimestral não determina completamente se o aluno é reprovado em determinado ano, mas
+gera um aumento na probabilidade dessa ocorrência. A fim de explorar essa caracterı́stica, será estimado
+um regression discontinuity design fuzzy (RDD fuzzy) para investigar o impacto de uma reprovação no 3o
+ano nas notas e na reprovação do 4o , 5o e 6o ano no ensino fundamental.
+        Os resultados encontrados para o RDD Fuzzy indicam que a repetência no 3o ano não gerou impactos
+estatisticamente significativos no futuro acadêmico dos alunos repetentes. Os efeitos sobre as notas do 4o ,
+5o e 6o anos e sobre a possibilidade de ter pelo menos uma experiência de repetência nestas séries não foram
+significativos. A princı́pio, estes achados nos fazem concluir que a repetência não resulta em consequências
+negativas, mas também não serve como motivadora de esforço ou de melhora no aprendizado futuro. A
+partir deste resultado, optamos por realizar um teste de robustez com uma subamostra especı́fica de forma
+a checar se temos problemas de contaminação. A partir da estimação de um modelo de diferenças em
+diferenças encontramos resultados em linha com Manacorda (2012), que aponta para efeitos negativos
+apenas nas notas do 4o ano.
+        Este artigo se organiza em 5 seções, além dessa introdução. A Seção 2 apresenta a metodologia utili-
+zada, com descrição dos dados, o modelo econométrico utilizado, além de discussões sobre as hipóteses de
+identificação e sobre a validade do modelo. A Seção 3 apresenta estatı́sticas descritivas, bem como gráficos,
+com vistas a documentar a descontinuidade utilizada para a identificação dos efeitos. A Seção 4 traz resul-
+tados preliminares. Por fim, a Seção 5 apresenta as principais conclusões desse artigo e discute os próximos
+passos da pesquisa.
+
+
+2         Metodologia
+        Como a nota bimestral não determina completamente se o aluno repete de ano e não temos acesso a
+informação do conceito nem da frequência do aluno, não é possı́vel estimar um RDD sharp. Apesar disso,
+a nota bimestral afeta a probabilidade de o aluno repetir de ano, o que nos permite utilizá-la como running
+variable (ou instrumento) em uma aplicação de RDD fuzzy. Nas próximas subseções, explicamos os dados,
+o método e a estratégia de identificação.
+
+
+2.1        Dados
+        A base de dados utilizada é composta por um painel de alunos da Rede Municipal do Rio de Janeiro para
+o perı́odo de 2012 a 2017. A partir destes dados, acompanhamospor seis anos o desempenho dos alunos nas
+provas bimestrais aplicadas pela SME do Rio de Janeiro. São utilizadas neste trabalho as notas de lı́ngua
+portuguesa (LP), escrita e leitura, e matemática.4 Apesar de ser aplicada pela SME, o que a caracteriza com
+uma avaliação externa à escola, os professores dos alunos possuem algum grau de envolvimento: além de
+aplicar a prova aos alunos, eles corrigem a prova de lı́ngua portuguesa - escrita.
+        A base contém as notas das disciplinas para cada um dos quatro bimestres do ano escolar, mas somente
+a média anual das provas bimestrais é utilizada para compor o conceito que define se o aluno passa para o
+próximo ano ou segue para a recuperação (coloquialmente conhecida como quinto bimestre). Para passar
+    4
+        A base também possui as notas de ciências e inglês, disciplinas que só são lecionadas a partir do 4o e do 6o ano.
+
+
+
+                                                                      5
+direto ao ano escolar seguinte, o aluno precisa obter média nas provas bimestrais igual ou superior a cinco.
+Por isso, utilizamos a média anual das provas bimestrais nas estimações e definimos como ponto de corte a
+nota cinco.
+   Como o objetivo é identificar o efeito de uma repetência no 3o ano, temos que manter na base somente
+alunos que estavam no 2o ano em 2012 e passaram para o 3o ano em 2013. Se não fizermos isso podemos
+contaminar o grupo de controle com algum aluno que repetiu o 3o ano antes de 2012. A partir desse corte
+ficamos com 46.523 alunos e definimos os seguintes grupos:
+
+   • Tratados: Alunos não repetentes em 2012 que cursaram o 3o ano em 2013 e repetiram em 2013 (de
+      forma que, que em 2014 também cursaram o 3o ano): 7.305 alunos;
+   • Controle: Alunos que cursaram o 3o ano em 2013 e passaram (de forma que, que em 2014 cursaram
+      o 4o ano): 39.218 alunos.
+
+   Considerando esse corte e supondo que os alunos não repitam nenhum outro ano escolar, suas trajetórias
+escolares nos anos que temos disponı́veis ocorreriam conforme a Tabela 1. Por isso, só é possı́vel analisar
+o impacto de repetir o 3o ano em 2013 nas notas futuras do 4o , 5o e 6o ano. Como é possı́vel que os
+alunos não sejam aprovados em anos subsequentes, são possı́veis combinações diferentes das apresentadas
+na Tabela 1. Nas estimações realizadas para as notas futuras não foi considerado se o aluno repetiu em
+anos subsequentes. Isto significa que as notas do 4o , 5o e 6o ano usadas são uma média para os alunos que
+cursaram esses anos escolares mais de uma vez.
+
+                                  Tabela 1: Simulação da trajetória escolar
+
+                                        Repetiu o 3o ano      Não repetiu o 3o
+                                           em 2013             ano em 2013
+                               2012           2o ano                2o ano
+                               2013           3o ano                3o ano
+                               2014           3o ano                4o ano
+                               2015           4o ano                5o ano
+                               2016           5o ano                6o ano
+                               2017           6o ano                7o ano
+
+
+
+
+2.2   Modelo
+   O RDD compara os alunos que se situam ao redor do ponto de corte, nota cinco, de forma a comparar
+alunos que repetiram por pouco com alunos que passaram por pouco. A implicação é que os alunos situados
+perto do ponto de corte são muito semelhantes, sendo sua única diferença o fato de que alguns tiveram a
+“sorte” de passar para o 4o ano e outros tiveram o “azar” de repetir o 3o ano em 2013. Nesse arcabouço,
+definimos nossas variáveis da seguinte forma:
+
+   • Tratamento (T ): Repetir no 3o ano em 2013;
+   • Running variable (Z): Nota de lı́ngua portuguesa (leitura) da prova bimestral do 3o ano;
+
+
+                                                       6
+   • Ponto de corte (c): nota cinco (nota mı́nima para aprovação);
+   • Variáveis de resultado (Y ): Notas da prova bimestral no 4o , 5o e 6o ano de lı́ngua portuguesa (escrita
+      e leitura) e matemática, e repetência, pelo menos uma vez, do 4o , 5o e 6o ano.
+
+   Ambas as provas de lı́ngua portuguesa - escrita e matemática apresentam sinais de manipulação ao redor
+do ponto de corte (a ser explicado na Subseção 2.4), por isso elas não foram não utilizadas como running
+variable.
+   Conforme dito acima, a nota da prova bimestral não define completamente se um aluno é reprovado
+em determinado ano. Isto significa que ela não altera a probabilidade de tratamento de zero para um. Por
+isso o salto entre as variáveis de resultado e a running variable não fornece diretamente o efeito causal
+de uma repetência no 3o ano. A identificação do efeito causal no RDD fuzzy passa a ser a divisão entre a
+descontinuidade no ponto de corte entre Y e Z e a descontinuidade entre T e Z. Dessa forma, o parâmetro
+a ser estimado é, conforme Lee e Lemieux (2010):
+
+                                         limε↓0 E[Y |Z=c+ε]−limε↑0 E[Y |Z=c+ε]
+                                    τ=   limε↓0 E[T |Z=c+ε]−limε↑0 E[T |Z=c+ε]
+
+
+   Onde ε representa uma vizinhança próxima ao ponto de corte
+   A estimação desse parâmetro foi realizada utilizando uma regressão polinomial local não-paramétrica
+(CALONICO; CATTANEO; TITIUNIK, 2014; CALONICO et al., 2017). Esse método realiza a estimação
+sharp de T contra Z e de Y contra Z do lado esquerdo e direito do ponto de corte:
+
+                           Repetir no 3o anoe = γ0e + f (Nota do 3o ano − c) + ω
+                           Repetir no 3o anod = γ0d + f (Nota do 3o ano − c) + ω
+                         Notas 4o , 5o e 6o anoe = β0e + f (Nota do 3o ano − c) + ω
+                         Notas 4o , 5o e 6o anod = β0d + f (Nota do 3o ano − c) + ω
+
+   Onde os sobrescritos e e d representam esquerda e direita:
+   Esquerda: c − h ≤ Nota do 3o ano < c
+   Direita: c ≤ Nota do 3o ano ≤ c + h
+   Por fim, o estimador fuzzy é a razão entre a diferença do intercepto da direita e da esquerda:
+
+                                                        β0d −β0d
+                                                  δ=    γ0d −γ0e
+
+
+   A seleção do bandwidth, intervalo ao redor do ponto de corte no qual se realiza a estimação, foi feita
+através de um método data-driven: otimização com erro quadrático médio.
+
+
+2.3   Hipóteses de identificação
+   O RDD fuzzy possui três hipóteses que garantem que o efeito encontrado seja o causal. A primeira, a
+hipótese de continuidade, garante que a descontinuidade entre as variáveis de resultado e a running variable
+seja somente devido ao “salto” em torno do ponto de corte na running variable (PINTO, 2017). Ou seja, a
+descontinuidade entre as variáveis de resultado e a nota da prova bimestral no 3o ano só deve estar presente
+na nota cinco.
+
+                                                        7
+       Para verificar a validade desta hipótese analisamos graficamente a distribuição das variáveis de resultado
+versus a running variable na Seção 3.5 Ainda, essa hipótese garante que exista uma descontinuidade
+somente no ponto de corte entre o tratamento, repetir no 3o ano, e a running variable. Essa análise também
+será realizada na Seção 3.
+       A segunda hipótese do RDD, ignorabilidade local, implica que em torno do ponto de descontinuidade,
+o status de tratamento é definido de forma aleatória, garantindo que os grupos sejam semelhantes (PINTO,
+2017). Isso significa que os indivı́duos não podem manipular perfeitamente sua posição em torno do ponto
+de corte, ou seja, na participação do tratamento. Pode-se argumentar que esta hipótese tem maior im-
+portância, pois garante que exista um experimento aleatório ao redor do ponto de corte (LEE; LEMIEUX,
+2010).
+       Para que isso aconteça, os alunos não podem manipular perfeitamente sua nota para passar na prova. Em
+teoria, é possı́vel que os alunos tenham alguma noção do nı́vel de esforço necessário para passar em uma
+avaliação, inclusive na prova bimestral. Porém, como ressaltam Jacob e Lefgren (2004), parece implausı́vel
+que os alunos possam manipular perfeitamente sua nota, uma vez que há uma significativa incerteza em
+relação à performance e à métrica de atribuição de notas.6 De fato, seria razoável admitir que todos os
+alunos próximos ao cutoff teriam interesse em tirar notas acima de cinco.
+       Uma outra possibilidade seria alguma manipulação da distribuição por parte dos professores, conside-
+rando o envolvimento deles com a aplicação da prova bimestral, descrito na Subseção 2.1. No entanto, a
+existência da recuperação, que provê aos alunos uma última chance de ser aprovado, pode desencorajar os
+professores de interferir com a média anual da prova bimestral. Apesar de não existir um teste rigoroso para
+esta hipótese, realizamos dois testes indiretos na Subseção 2.4 para verificar se existe uma concentração de
+alunos logo abaixo e acima do ponto de corte.
+       Considerando que estamos trabalhando com um RDD fuzzy, também precisamos das hipóteses do
+arcabouço de variável instrumental LATE (local average treatment effect). A hipótese de restrição de
+exclusão, que garante que o instrumento só afeta as variáveis de resultado indiretamente, já é abarcada pela
+continuidade. Apesar disso, é necessário uma discussão aprofundada dessa hipótese pois a educação é um
+processo cumulativo e notas passadas, se refletem adequadamente aquisição de conhecimento, podem estar
+relacionadas a notas futuras. Há de se questionar se faz sentido que a nota do 3o ano afete os resultados
+acadêmicos futuros somente através do aumento na probabilidade de repetência. A hipótese de alocação
+aleatória, por sua vez, é atendida pela ignorabilidade local (PINTO, 2017).
+       Assim, só é necessário incluir a monotonicidade. Essa hipótese omite a existência de defiers, indivı́duos
+que sempre farão o oposto do designado garantindo que comportamento das unidades de observação é
+induzido pelo instrumento numa única direção (PINTO, 2017). Segundo essa hipótese, todos os alunos que
+obtêm menos que cinco em, pelo menos, uma das disciplinas da prova bimestral devem repetir o 3o ano e
+todos os alunos que obtêm cinco ou mais em todas as disciplinas deve ser aprovados para o 4o ano.
+       Não obstante, não é isso que ocorre nos dados. Existem 11.805 alunos (25% dos 46.523 alunos) que
+obtiveram nota menor que cinco em alguma das disciplinas e foram aprovados no 3o ano. Esses alunos
+   5
+      O ideal seria replicar essa análise com outras caracterı́sticas visando examinar se suas distribuições são suaves em relação às
+variáveis de resultado, mas o banco de dados não possui variáveis que possam ser utilizadas nessa análise.
+    6
+      Sobre a importância de efeitos de variáveis fora do controle (nesse caso, poluição atmosférica) de estudantes sobre perfor-
+mance em testes no curto prazo, ver Ebenstein, Lavy e Roth (2016).
+
+
+                                                                     8
+provavelmente conseguiram um conceito maior que Insuficiente na recuperação, de forma que conseguiram
+passar para o 4o ano. Ou, como explicado na Seção 1, apesar de terem desempenho aquém da nota de
+aprovação na prova bimestral, é possı́vel que esses alunos atendiam a outras exigências para serem aprova-
+dos no 3o ano. No arcabouço do LATE, esses alunos podem ser classificados como defiers ou never-takers.
+   Ainda, existente 2.867 alunos que obtiveram cinco ou mais em todas as disciplinas e reprovaram o 3o
+ano. Conforme explicado na Seção 1, o conceito final recebido por um aluno, que define se ele é reprovado
+ou aprovado, contempla diferentes requisitos. Esses alunos, apesar de terem desempenho acima da nota
+de aprovação na prova bimestral, possivelmente não atendiam a outras exigências para serem aprovados
+no 3o ano. Esses alunos, por sua vez, podem ser defiers ou always-takers. Esse assunto será retomado na
+Subseção 4.1.
+
+
+2.4    Teste de validade
+   Existem duas formas de verificar se a hipótese de ignorabilidade local está sendo respeitada. A primeira
+é a análise gráfica da distribuição da running variable, apresentada na Figura 2. A existência de massas
+de observações diferentes ao redor do ponto de corte indica um possı́vel problema, como manipulação do
+status de tratamento ou controle. Se há uma distribuição contı́nua ao redor do cutoff, é um sinal de ausência
+de manipulação. Considerando que no presente trabalho o tratamento é repetir o 3o ano, é provável que a
+manipulação em torno do ponto de corte seja para estar no grupo de controle.
+
+                  Figura 2: Distribuição da running variable: Nota de LP (leitura) do 3o ano
+
+
+
+
+                       Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+
+
+
+
+   Analisando o histograma na Figura 2 em torno do ponto de corte, a distribuição de lı́ngua portuguesa -
+leitura apresenta uma massa menor de alunos entre as notas quatro e cinco quando comparado a frequência
+de alunos entre as notas cinco e seis. Apesar disso, existe uma clara variabilidade nesse intervalo.
+   A segunda forma de checar a hipótese de ignorabilidade local é um teste estatı́stico (ATHEY; IMBENS,
+2017). A hipótese nula do teste é que não existe uma descontinuidade na densidade ao redor do ponto de
+corte, implicando que não existem evidências de manipulação. O teste utilizado estima a densidade das
+observações ao redor do ponto de corte via estimadores polinomiais locais (CATTANEO; JANSSON; MA,
+
+
+                                                                     9
+2018).
+    Conforme comentado na Subseção 2.2, as notas de lı́ngua portuguesa - escrita e matemática não foram
+utilizadas como running variable. A nota de lı́ngua portuguesa - escrita no 3o ano apresenta sinais de
+manipulação em todo a distribuição ao redor do ponto de corte, possivelmente devido aos professores
+dos alunos corrigirem essa prova. Matemática, por sua vez, só não apresenta sinais de manipulação com
+bandwidths no intervalo entre 1,9 e 3, fato que ainda precisa ser melhor examinado.
+
+                                                              Tabela 2: Teste de validade
+
+                       Running                            Variável de
+                    variable: Nota                        resultado:
+                                                                                         bandwidth                  Estatı́stica   p-valor
+                    de LP (leitura)                         Nota e
+                       do 3o ano                          repetência
+                                                                4o ano                        1,374                   0,5989       0,5492
+                       LP (escrita)                             5o ano                        1,139                   0,3106       0,7561
+                                                                6o ano                        0,955                   0,3106       0,7561
+                                                                4o ano                        1,174                   0,2965       0,7668
+                       LP (leitura)                             5o ano                        1,056                   0,3743       0,7082
+                                                                6o ano                        0,946                   0,4675       0,6401
+                                                                4o ano                        1,271                   0,4519       0,6514
+                       Matemática                              5o ano                        1,049                   0,3843       0,7007
+                                                                6o ano                        1,111                   0,3254       0,7449
+                                                                4o ano                        1,201                   0,2907       0,7713
+                        Repetência                             5o ano                        1,297                   0,4911       0,6234
+                                                                6o ano                        1,201                   0,2907       0,7713
+                  Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+                  ∗
+                    p < 0.1, ∗∗ p < 0.05, ∗∗∗ p < 0.01.
+
+
+
+
+    A nota de lı́ngua portuguesa - leitura só apresenta sinais de manipulação a partir de um bandwidth de
+2,4. De qualquer forma, a Tabela 2 apresenta os resultados do teste para esta variável. O teste é feito com a
+running variable, mas considerando cada um dos bandwidths utilizados nas estimações com cada variável
+de resultado. Em compatibilidade com a análise gráfica, a hipótese nula não é rejeitada em nenhum caso.
+Isto é, não existe evidência de manipulação ao redor do ponto de corte.
+
+
+3    Análise descritiva
+    A Tabela 3 mostra as estatı́sticas descritivas para notas e repetência. Cerca de 16% dos alunos repetiram
+o 3o ano, em 2013. A média da running variable, nota de lı́ngua portuguesa - leitura, é de 6,6 com um desvio
+padrão de 2,1. As variáveis de resultado, notas do 4o ano em diante, apresentam uma menor variabilidade
+em comparação com a running variable.
+
+
+
+                                                                                       10
+                                                                          Tabela 3: Estatı́stica descritiva
+
+         Variáveis                                                                  Observações            Média   Desvio padrão   Mı́nimo   Máximo
+
+         Nota de LP (leitura) do 3o ano                                                   46.156               6,58         2,10           0        10
+         Repetiu o 3o ano em 2013                                                         46.523               0,16         0,36           0         1
+         Repetiu, pelo menos uma vez, o 4o ano                                            45.009               0,09         0,28           0         1
+         Repetiu, pelo menos uma vez, o 5o ano                                            41.536               0,05         0,20           0         1
+         Repetiu, pelo menos uma vez, o 6o ano                                            37.692               0,06         0,23           0         1
+         Nota de LP (escrita) do 4o ano                                                   44.404               5,96         1,89           0        10
+         Nota de LP (leitura) do 4o ano                                                   44.418               6,09         1,59           0        10
+         Nota de matemática do 4o ano                                                    44.419               7,07         1,65           0        10
+         Nota de LP (escrita) do 5o ano                                                   41.296               6,55         1,62           0        10
+         Nota de LP (leitura) do 5o ano                                                   41.299               6,66         1,62           0        10
+         Nota de matemática do 5o ano                                                    41.294               6,85         1,56           0        10
+         Nota de LP (escrita) do 6o ano                                                   37.233               6,21         1,75           0        10
+         Nota de LP (leitura) do 6o ano                                                   37.215               6,71         1,75           0        10
+         Nota de matemática do 6o ano                                                    37.231               5,78         1,83           0        10
+       Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+
+
+
+
+       A Figura 3 apresenta a relação entre o tratamento e a running variable. A primeira imagem mostra um
+salto na distribuição da probabilidade de tratamento, repetir no 3o ano em 2013, ao redor da nota cinco.
+Além disso, na segunda imagem é possı́vel verificar uma descontinuidade somente no ponto de corte, ou
+seja, na nota cinco.7
+
+                                                                Figura 3: Tratamento x running variable
+
+
+
+
+                                         Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+                                                                       Nota: Ajuste com polinômio de grau 1.
+
+
+
+
+       As Figuras 4, 5 e 6 mostram a relação entre as variáveis de resultado e a running variable. As
+distribuições das variáveis parecem sustentar a hipótese de continuidade, pois a descontinuidade só existe
+no ponto de corte da running variable.
+
+   7
+    A escolha dos bins para elaboração das Figuras 3, 4, 5 e 6 foi feita através de um método data-driven: otimização com erro
+quadrático médio uniformemente espaçado (tradução livre de integrated mean squared-error (IMSE)-optimal evenly-spaced),
+que auxilia na visualização da forma funcional da estimação.
+
+
+                                                                                                         11
+Figura 4: Variáveis de resultado x running variable: Lı́ngua Portuguesa (escrita)
+
+
+
+
+        Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+                                      Nota: Ajuste com polinômio de grau 1.
+
+
+
+
+Figura 5: Variáveis de resultado x running variable: Lı́ngua Portuguesa (leitura)
+
+
+
+
+        Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+                                      Nota: Ajuste com polinômio de grau 1.
+
+
+
+
+                                                     12
+Figura 6: Variáveis de resultado x running variable: Matemática
+
+
+
+
+Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+                              Nota: Ajuste com polinômio de grau 1.
+
+
+
+
+Figura 7: Variáveis de resultado x running variable: Repetência
+
+
+
+
+Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+                              Nota: Ajuste com polinômio de grau 1.
+
+
+
+
+                                             13
+4         Resultados preliminares
+         Antes de apresentar os resultados, é importante lembrar que o efeito de tratamento estimado pelo RDD
+é local. Ou seja, em um ponto de corte especı́fico. No nosso caso, isso significa que estamos falando sobre
+alunos que estão em torno da média para passar nas provas bimestrais, nota cinco. Além disso, o RDD
+fuzzy funciona em um arcabouço de LATE. Logo o efeito encontrado é um local average treatment: só
+se identifica o efeito para os compliers, indivı́duos cujo comportamento é alterado pelo instrumento. No
+LATE, é possı́vel encontrar o efeito médio do tratamento sobre os tratados se não existirem always takers,
+indivı́duos que sempre aceitam o tratamento, independente do valor assumido pelo instrumento. Conforme
+discutido na Subseção 2.3, esse não é caso dos nossos dados.
+         As Tabelas 4 e 5 apresentam os resultados para os efeitos sobre as notas futuras e sobre a possibilidade
+de repetências futuras.8
+
+                       Tabela 4: Efeitos da repetência no terceiro ano sobre a nota de Lı́ngua Portuguesa
+
+                                                                                                           Escrita                        Leitura
+
+                                                                                              4o ano       5o ano    6o ano    4o ano     5o ano     6o ano
+
+      Repetiu o 3o ano (Running variable: Nota                                               -10,65        -37,18     20,82    -4,513       -644       32,9
+      de lı́ngua portuguesa - leitura do 3o ano)                                             (19,41)       (292,9)   (82,22)   (15,00)    (22.137)   (100,2)
+
+      Observações                                                                          44.159        41.100    37.104    44.169     41.102     37.086
+      Observações utilizadas (dentro do                                                    13.119        9.660     6.497     10.531     9.662      6.492
+      bandwidth)                                                                              30%           24%       18%       24%        24%        18%
+      bandwidth                                                                               1,374        1,139     0,955     1,174      1,056      0,946
+
+                                                                                                                     Amostra balanceada
+
+      Repetiu o 3o ano (Running variable: Nota                                               -44,89        -2,865     12,27    -38,15     -8,015      32,52
+      de lı́ngua portuguesa - leitura do 3o ano)                                             (124,4)       (17,97)   (28,84)   (113,7)    (25,85)    (81,83)
+
+      Observações                                                                          35.960        35.960    35.960    35.960     35.960     35.960
+      Observações utilizadas (dentro do                                                    8.243         8.243     6.204     8.243      6.333      6.204
+      bandwidth)                                                                              23%           23%       17%       23%        18%        17%
+      bandwidth                                                                              1,075         1,064     0,932     1,127      0,985      0,943
+    Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+    Estimativas corrigidas para viés e com um estimador de variância robusto.
+    ∗
+      p < 0.1, ∗∗ p < 0.05, ∗∗∗ p < 0.01.
+
+
+
+         Os coeficientes não foram significativos na estimação das notas e nem sobre a possibilidade de re-
+petência. Sugere-se que a experiência de repetência no 3o ano não apresenta consequências negativas para
+o futuro acadêmico dos alunos, o que pode ser considerado um ponto positivo.
+         Entretanto, a repetência também não cumpre um dos seus possı́veis papéis pois não se traduz numa
+motivação extrı́nseca que levaria a um maior nı́vel de esforço por parte dos alunos e, consequentemente,
+um maior desempenho acadêmico futuro, conforme discutido na Seção 1.
+     8
+    As estimações para as notas também foram feitas considerando somente alunos que nunca repetiram anos subsequentes. Não
+houve alteração nos resultados.
+
+
+                                                                                                      14
+             Tabela 5: Efeitos da repetência no terceiro ano sobre a nota de Matemática e Repetência
+
+                                                                                                     Matemática                        Repetência
+
+                                                                                            4o ano       5o ano     6o ano    4o ano      5o ano      6o ano
+
+      Repetiu o 3o ano (Running variable: Nota                                              -10,21        -89,39    24,21      -0,89       6,344       -10,62
+      de lı́ngua portuguesa - leitura do 3o ano)                                           (20,49)       (1.007)   (55,28)    (2,087)     (44,68)     (26,16)
+
+      Observações                                                                        44.169        41.101    37.101     44.722      41.316      37.544
+      Observações utilizadas (dentro do                                                  12.013        9.662     8.627      11.135      11.095      9.122
+      bandwidth)                                                                            27%           24%       23%        25%         27%         24%
+      bandwidth                                                                            1,271         1,049     1,111       1,201      1,297       1,201
+
+                                                                                                                   Amostra balanceada
+
+      Repetiu o 3o ano (Running variable: Nota                                              -42,79        -12,3     30,11     -4,494       1,955       -9,435
+      de lı́ngua portuguesa - leitura do 3o ano)                                           (125,0)       (33,22)   (74,74)    (10,46)     (4,803)     (20,47)
+
+      Observações                                                                        35.960        35.960    35.960     36.603      36.603      36.603
+      Observações utilizadas (dentro do                                                  8.243         6.204     6.204       6.304      6.304       9.615
+      bandwidth)                                                                            23%           17%       17%        17%         17%         26%
+      bandwidth                                                                            1,083         0,873     0,933        0,94      0,936       1,254
+  Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+  Estimativas corrigidas para viés e com um estimador de variância robusto.
+  ∗
+    p < 0.1, ∗∗ p < 0.05, ∗∗∗ p < 0.01.
+
+
+
+
+4.1       Teste de robustez
+    Existem duas possı́veis razões inerentes ao banco de dados utilizado, já levantadas na Subseção 2.4,
+que explicariam a falta de resultados estatisticamente significativos. Primeiro, conforme comentado na
+Subseção 2.4, existem alunos que obtiveram nota menor que cinco em alguma das disciplinas e ainda assim
+foram aprovados no 3o ano. Segundo, também existem alunos que obtiveram nota maior ou igual a cinco
+em todas as disciplinas e reprovaram o 3o ano, conforme explicado na Seção 4
+    Para testar como essas questões podem estar afetando os resultados apresentados acima, estimamos um
+modelo de diferenças em diferenças. Para tanto, mantivemos no banco de dados somente: (i) os alunos que
+obtiveram menos de cinco em, pelo menos, uma das notas da prova bimestral no 3o ano em 2013; (ii) os
+alunos que nunca repetiram nenhum dos anos subsequentes (4o , 5o ou 6o ano). Logo, só contém alunos que
+seguem a trajetória escolar exibida na Tabela 1. A partir desse corte ficamos com 13.626 alunos, dos quais
+7.888 (58%) foram aprovados no 3o ano em 2013 e 5.738 (42%) foram reprovados. Os modelos estimados
+são apresentados abaixo:
+
+                                   Notaae,d,i = β1 Tratamentoi + β2 da + β3 Tratamentoi ∗ da + ε , onde
+
+ae = Ano escolar: 4o , 5o ou 6o ano
+d = Disciplina: Lı́ngua portuguesa, escrita e leitura, e matemática
+i = Aluno
+a = Ano: 2015, 2016 e 2017
+
+                                                                                                    15
+Tratamento = Repetir no 3o ano em 2013
+
+
+   Os resultados são apresentados na Tabela 6. Primeiro, uma repetência no 3o ano parece impactar ne-
+gativa e significamente nas notas do 4o ano nas três disciplinas. Estes resultados se mantém quando es-
+timamos somente com a amostra balanceada. Isto é, a repetência possui um impacto negativo no curto
+prazo no desempenho acadêmico. Esses resultados vão em linha com o encontrado por Manacorda (2012),
+que encontra resultados negativos de repetência. Não obstante, Manacorda (2012) também encontra efeitos
+negativos para o longo prazo, o que não parece ser o caso para nossos dados.
+
+                 Tabela 6: Efeitos da repetência no terceiro ano sobre as notas do 4o , 5o e 6o
+
+                Nota                                         Coeficiente               Erro-padrão               t     p-valor      N
+
+                LP (escrita) do 4o ano                            -1,373                      0,079             17,38   0,000***   12.008
+                LP (leitura) do 4o ano                            -0,416                      0,072             5,77    0,000***   12.017
+                Matemática do 4o ano                             -0,943                      0,076             12,46   0,000***   12.014
+                LP (escrita) do 5o ano                             0,39                       0,234             1,66     0,096*    10.736
+                LP (leitura) do 5o ano                            0,025                       0,242               0,1     0,919    10.739
+                Matemática do 5o ano                             0,651                       0,247             2,64    0,008***   10.737
+                LP (escrita) do 6o ano                            0,662                       0,448              1,48      0,14     9.691
+                LP (leitura) do 6o ano                            1,233                       0,47              2,62    0,009***    9.674
+                Matemática do 6o ano                             0,382                        0,47              0,81     0,416     9.678
+
+                                                                         Amostra balanceada
+
+                Nota                                         Coeficiente               Erro-padrão               t     p-valor      N
+
+                LP (escrita) do 4o ano                            -3,783                      1,464             2,58    0,010***   9.006
+                LP (leitura) do 4o ano                            -3,067                      1,356             2,26     0,024**   9.006
+                Matemática do 4o ano                             -4,200                      1,549             1,44    0,003***   9.006
+                LP (escrita) do 5o ano                            0,000                         -                 -         -      9.006
+                LP (leitura) do 5o ano                            0,000                         -                 -         -      9.006
+                Matemática do 5o ano                             0,000                         -                 -         -      9.006
+                LP (escrita) do 6o ano                            2,235                       1,549             1,44      0,149    9.006
+                LP (leitura) do 6o ano                            2,433                       1,634             1,49      0,137    9.006
+                Matemática do 6o ano                             1,578                       1,653             0,95      0,340    9.006
+              Fonte: Elaboração própria com dados da prova bimestral da SME - Rio de Janeiro, 2012 - 2017.
+              Estimativas corrigidas para viés e com um estimador de variância robusto.
+              ∗
+                p < 0.1, ∗∗ p < 0.05, ∗∗∗ p < 0.01.
+
+
+
+
+   Existe uma relação positiva e significativa entre a repetência no 3o ano e as notas do 5o ano de ma-
+temática e lı́ngua portuguesa - escrita, e do 6o ano de lı́ngua portuguesa - leitura. Este resultado pode ser
+explicado por diferentes motivos. Primeiro, no longo prazo a repetência pode se transformar em um incen-
+tivo positivo, levando os alunos a se empenhar mais resultando em maior desempenho acadêmico, conforme
+argumentado por Manacorda (2012) e Carvalho e Firpo (2014).
+   Segundo, os alunos que repetiram o 3o ano em 2013, cursam o 5o e 6o ano com uma idade mais avançada.
+No caso especı́fico do 6o ano, este é um dos piores anos escolares dos alunos. O 6o ano é o primeiro
+
+                                                                                        16
+ano escolar dos anos finais do ensino fundamental, no qual ocorrem mudanças extensivas na realidade
+escolar como novas disciplinas e professores diferentes para cada disciplina. Geralmente ocorre uma queda
+no desempenho acadêmico e uma elevação nas taxas de abandono escolar. Além disso, o momento no
+qual os alunos começam o 6o ano coincide justamente com o inı́cio da adolescência, fase delicada no
+desenvolvimento humano (SANTOS et al., 2017). É possı́vel que, por serem mais maduros, esses alunos
+lidem melhor com as mudanças do 6o ano.
+    Entretanto, esses resultados positivos não se mantém na estimação com a amostra balanceada, indi-
+cando que um efeito seleção estava presente nesses resultados. Existe a possibilidade de que os alunos
+que abandonaram a rede municipal de educação são aqueles com pior desempenho ou aqueles que mais se
+beneficiavam do incentivo positivo da repetência.
+
+
+5    Considerações finais
+    O objetivo desse artigo foi investigar como uma reprovação no 3o ano do ensino fundamental afeta o
+desempenho acadêmico futuro dos alunos. Para tanto, foram utilizados dados administrativos, inexplorados
+na literatura, fornecidos pela Secretaria Municipal de Educação (SME) do Rio de Janeiro que permitem
+acompanhar os resultados da prova bimestral de todos os alunos registrados da rede municipal de ensino
+fundamental, do 1o ano ao 9o ano, entre 2012 e 2017. A nota da prova bimestral gera um aumento na
+probabilidade de um aluno ser reprovado, o que possibilita a estimação de um RDD fuzzy
+    Os resultados do RDD fuzzy indicam que uma repetência no 3o ano não tem impactos estatisticamente
+significativos no futuro acadêmico dos repentes. Ou seja, a repetência não resulta em consequências nega-
+tivas como também não cria incentivos para uma melhor performance. Entretanto, esses resultados possi-
+velmente estão contaminados pela possı́vel existência de defiers na base de dados. Conforme explicado na
+Subseção 2.4, existem no banco de dados: (i) alunos que obtiveram nota menor que cinco em alguma das
+disciplinas e ainda assim foram aprovados no 3o ano, e (ii) alunos que obtiveram cinco ou mais em todas as
+disciplinas e reprovaram o 3o ano.
+    Para testar a possibilidade de contaminação, estimamos um modelo de diferenças em diferenças com
+uma subamostra dos alunos que obtiveram menos de cinco em, pelo menos, uma das notas da prova bimes-
+tral no 3o ano em 2013. Os resultados do teste indicam efeitos negativos da repetência somente nas notas
+do 4o ano. Esse resultado vai na linha do encontrado por Manacorda (2012), indicando que a repetência
+não alcança seus objetivos pois leva a um menor desempenho acadêmico no curto prazo e não gera efeitos
+significativos no longo prazo.
+    Existem diversas vias de pesquisa a serem examinadas no futuro. Primeiro, utilizar outras variáveis
+de resultado. Apesar de ser uma examinação externa, a prova bimestral conta com grande participação
+dos professores responsáveis pelos alunos. A Prova Rio, por sua vez, não envolve os professores o que
+a torna mais exógena a escola. Além disso, é interessante utilizar outros indicadores escolares, como o
+abandono da rede municipal pública e a distorção idade-série. Segundo, seria explorar possı́veis peer effects
+associados a repetentes. Terceiro, adicionar informações de outras bases de dados que permitam estudar
+heterogeneidades nos efeitos. Por fim, vale destacar que as algumas das figuras apresentadas na Seção 3
+parecem indicar um possı́vel regression kink design, sendo esta uma possibilidade a ser considerada em
+
+
+                                                       17
+futuras versões.
+
+
+Referências
+ATHEY, S.; IMBENS, G. W. The state of applied econometrics: Causality and policy evaluation. Journal
+of Economic Perspectives, v. 31, n. 2, p. 3–32, 2017.
+
+BARRO, R. J. Human capital and growth. American economic review, v. 91, n. 2, p. 12–17, 2001.
+
+BELFIELD, C. R. et al. Economic principles for education. [S.l.]: Edward Elgar Publishing, 2000.
+
+BRASIL. Resuloção no 7, de 14 de dezembro de 2010. Fixa Diretrizes Curriculares Nacionais para o
+Ensino Fundamental de 9 (nove) anos. Brası́lia, 2010.
+
+CALONICO, S. et al. rdrobust: Software for regression-discontinuity designs. The Stata Journal, SAGE
+Publications Sage CA: Los Angeles, CA, v. 17, n. 2, p. 372–404, 2017.
+
+CALONICO, S.; CATTANEO, M. D.; TITIUNIK, R. Robust data-driven inference in the regression-
+discontinuity design. The Stata Journal, SAGE Publications Sage CA, Los Angeles, CA, v. 14, n. 4, p.
+909–946, 2014.
+
+CARVALHO, S.; FIRPO, S. O regime de ciclos de aprendizagem e a heterogeneidade de seus efeitos sobre
+a proficiência dos alunos. Economia Aplicada, SciELO Brasil, v. 18, n. 2, p. 199–214, 2014.
+
+CATTANEO, M. D.; JANSSON, M.; MA, X. Manipulation testing based on density discontinuity. The
+Stata Journal, SAGE Publications Sage CA, Los Angeles, CA, v. 18, n. 1, p. 234–261, 2018.
+
+COOK, P. J.; KANG, S. Birthdays, schooling, and crime: New evidence on the dropout-crime nexus.
+Working Paper NBER, v. 18791, 2013.
+
+DIAZ, J. et al. Working Papers, The Impact of Grade Retention on Juvenile Crime. University of Chile,
+Department of Economics, 2016. Disponı́vel em: hhttps://EconPapers.repec.org/RePEc:udc:wpaper:
+wp429i.
+
+EARP, M. d. L. S. A cultura da repetência em escolas cariocas. Ensaio: avaliação e polı́ticas públicas em
+educação, Fundação Cesgranrio, v. 17, n. 65, p. 613–632, 2009.
+
+EBENSTEIN, A.; LAVY, V.; ROTH, S. The long-run economic consequences of high-stakes examinations:
+Evidence from transitory variation in pollution. American Economic Journal: Applied Economics, v. 8,
+n. 4, p. 36–65, 2016.
+
+EREN, O.; DEPEW, B.; BARNES, S. Test-based promotion policies, dropping out, and juvenile crime.
+Journal of Public Economics, v. 153, p. ”9 – 31, 2017. Disponı́vel em: hhttp://www.sciencedirect.com/
+science/article/pii/S0047272717301044i.
+
+FERRÃO, M. E.; BELTRÃO, K. I.; SANTOS, D. P. dos. Polı́ticas de não-repetência e a qualidade
+da educação: evidências obtidas a partir da modelagem dos dados da 4a série do saeb-99. Estudos em
+avaliação Educacional, n. 26, p. 47–74, 2002.
+
+HANUSHEK, E. A. School resources and student performance. In: BURTLESS, G. (eds.). Does Money
+Matter? The Effect of School Resources on Student Achievement and Adult Success. Washington, DC:
+Brookings Institution Press, 1996.
+
+INEP. Indicadores Educacionais - Taxas de rendimento. Brası́lia: Inep, 2017. Disponı́vel em:
+hhttp://portal.inep.gov.br/web/guest/indicadores-educacionaisi. Acesso em: 21 jun 2019.
+
+                                                     18
+INEP. Sinopse Estatı́stica da Educação Básica. Brası́lia: Inep, 2019. Disponı́vel em: hhttp:
+//portal.inep.gov.br/web/guest/sinopses-estatisticas-da-educacao-basicai. Acesso em: 21 jun 2019.
+
+JACOB, B. A.; LEFGREN, L. Remedial education and student achievement: A regression-discontinuity
+analysis. Review of economics and statistics, MIT Press, v. 86, n. 1, p. 226–244, 2004.
+
+LEE, D. S.; LEMIEUX, T. Regression discontinuity designs in economics. Journal of economic literature,
+v. 48, n. 2, p. 281–355, 2010.
+
+MANACORDA, M. The cost of grade retention. The Review of Economics and Statistics, v. 94, n. 2, p. 596–
+606, 2012. Disponı́vel em: hhttps://EconPapers.repec.org/RePEc:tpr:restat:v:94:y:2012:i:2:p:596-606i.
+
+NEY, M. G.; SOUZA, P. M. de; PONCIANO, N. J. Desigualdade de acesso à educação e evasão escolar
+entre ricos e pobres no brasil rural e urbano. InterSciencePlace, v. 1, n. 13, 2010.
+
+OLIVEIRA, L. F. B. d.; SOARES, S. S. Determinantes da repetência escolar no brasil: uma análise de
+painel dos censos escolares entre 2007 e 2010. Instituto de Pesquisa Econômica Aplicada (Ipea), 2012.
+
+ORTIGÃO, M. I. R.; AGUIAR, G. S. Repetência escolar nos anos iniciais do ensino fundamental:
+evidências a partir dos dados da prova brasil 2009. Revista Brasileira de Estudos Pedagógicos, v. 94,
+n. 237, 2013.
+
+PINTO, C. C. d. X. Regressão descontı́nua. In: FILHO, N. A. M.; PINTO, C. C. d. X. (eds.). Avaliação
+econômica de projetos sociais. São Paulo: Fundação Itaú Social, 2017. v. 3.
+
+RIBEIRO, S. C. A pedagogia da repetência. Estudos avançados, SciELO Brasil, v. 5, n. 12, p. 07–21,
+1991.
+
+SANTOS, D. D. D. et al. Mais é menos? o impacto do projeto 6o ano experimental–sme/rj. Estudos em
+Avaliação Educacional, Fundaçao Carlos Chagas, v. 28, n. 69, p. 718–747, 2017.
+
+
+
+
+                                                    19
+

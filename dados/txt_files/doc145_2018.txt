@@ -1,0 +1,807 @@
+Densidade Urbana e Zoneamento: uma Avaliação do Impacto da
+           Lei dos 12 Bairros na Cidade do Recife
+Andrews Augusto Diniz Barros, Doutorando em Economia pelo PIMES/UFPE,
+Raul da Mota Silveira Neto, PIMES/UFPE,
+Diego Firmino Costa da Silva, PADR/UFRPE
+
+Resumo: Este trabalho tem como objetivo compreender como restrições do uso da terra, no ambiente
+urbano, podem afetar o adensamento populacional nas regiões abrangidas e não abrangidas pela lei.
+Diante disso, explorou-se a heterogeneidade gerada através da Lei Municipal nº 16.179, também
+conhecida como a Lei dos Doze Bairros; pois esta limita a altura dos edifícios apenas em alguns, mas não
+todos, bairros do Recife. Com a base de informações do Censo Demográfico fornecido pelo Instituto
+Brasileiro de Geografia e Estatística (IBGE), foi possível usar uma estratégia espacial de Diferença em
+Diferenças para mostrar que a restrição não gerou efeito sobre as regiões afetadas pela lei, mas provocou
+um transbordamento populacional para as regiões não afetadas pela lei. Os resultados principais indicam
+que houve um aumento em torno de 38% para as regiões não tratadas. A estratégia utilizada e os
+resultados são fundamentados por alguns testes de robustez.
+
+Palavras-Chave: Restrição do uso da terra urbana. Densidade populacional. Heterogeneidade espacial.
+Diferença em Diferenças espacial.
+
+Abstract: This paper aims to understand how land use restrictions, in the urban environment, could affect
+population densities in regions covered and non-covered by the law. We explored a heterogeneity arisen
+from the enactment of a city-level Height-Restriction-Law (Municipal Law No. 16.719/2001), also known
+as Twelve Neighborhoods Law, which limited how tall buildings could get in some, but not all,
+neighborhoods of Recife. With the set of information by the Demographic Census provided by the
+Brazilian Institute of Geography and Statistics (IBGE), we were able to use a spatial Difference in
+Differences strategy to show that restriction had no effect on regions affected by the law, but caused a
+spillover effect to regions not affected by the law. The main results indicate that there was an increase by
+around 38% for the untreated regions. The strategy used and our findings are grounded for some
+robustness checks.
+
+Keywords: Urban land-use restrictions. Population Density. Spatial Heterogeneity. Spatial Difference in
+Differences.
+
+ANPEC: Área 10 - Economia Regional e Urbana
+
+Código JEL: H7; R23; R52
+
+1. Introdução
+
+       A taxa de urbanização de países latino-americanos cresceu de 22% em 1920 para 63% em 1980
+(INGRAM e CARROL, 1981). Embora isso tenha sido relatado a mais de 35 anos, evidenciou que a
+urbanização desses países ocorreu de maneira muito acelerada. No Brasil, nos últimos quarenta anos, essa
+taxa aumentou cerca de 30% atingindo aproximadamente 85% em 2010 (IBGE, 2017).
+       Diante disso, a rápida urbanização pode causar vários problemas sociais, visto que as cidades não
+tenham tempo para adaptar sua infraestrutura. De acordo com Fujita (1989), a concentração de pessoas
+causa vários tipos de externalidades, sendo elas positivas ou negativas, onde as principais vantagens são a
+provisão de bens públicos para essas localidades; por outro lado, o crescimento excessivo da densidade
+populacional diminui a qualidade ambiental, visto que ela é associada à maior barulho, lixo, crime,
+diminuição das áreas verdes e congestionamento.
+        Em Recife, a quarta capital brasileira com maior densidade populacional, o cenário de
+desenvolvimento urbano parece refletir bem a rápida ocupação urbana no país. Em 1996, foi promulgada
+a Lei do Uso e Ocupação do Solo, permitindo grandes edifícios na maioria dos distritos da cidade, mas
+também delimitando áreas com tratamento especial no uso do solo por razões naturais e características
+próprias. Diante disso, uma alternativa para amenizar problemas decorrentes do adensamento e
+verticalização de construções nesses distritos foi aplicar uma medida regulatória sobre o uso da terra
+urbana. O Conselho de Desenvolvimento Urbano de Recife estabeleceu as Áreas de Reestruturação
+Urbana - ARU (representado na Figura 1), no qual em 30 de novembro de 2001 foi promulgada a Lei dos
+12 Bairros.
+
+
+
+                                   Recife
+
+
+
+
+                                        Figura 1 – Brasil, Recife e ARU
+
+        A justificativa para nova lei representa o clássico argumento econômico para zoneamento
+(MCDONALD e MCMILLEN, 2012). Especificamente, a lei limita a altura dos edifícios em doze bairros
+da cidade para condicionar o uso e a ocupação do solo à oferta de infraestrutura, à tipologia arquitetônica
+e à paisagem urbana existente.
+        Apesar da importância desta Lei, poucos são os estudos que procuram analisar seus impactos. Em
+um dos poucos casos, Dantas et al. (2018) analisaram o impacto da Lei dos 12 Bairros no preço de
+apartamentos e casas. Para atingir esse objetivo, os autores usaram uma estratégia de Diferenças em
+Descontinuidade Geográfica para mostrar que a restrição imposta pela lei resultou em distorções nos
+preços dos imóveis. Os resultados encontrados nesse trabalho indicam que houve uma redução de preço
+para casas e um aumento de preço para apartamentos. A justificativa para esses resultados é que o preço
+das casas caiu por causa da redução do potencial econômico da terra, enquanto o preço dos apartamentos
+aumentou por causa da restrição de oferta.
+        Há um grande campo de pesquisa que estuda os efeitos teóricos e empíricos das várias formas de
+regular o uso da terra. Teoricamente, a regulação do uso da terra afeta a oferta de novas construções. Do
+lado empírico, temos que a maioria dos trabalhos existentes analisa o impacto da regulação no preço dos
+imóveis (QUIGLEY e RAPHAEL, 2005; IHLANFELDT, 2007; GLAESER e WARD, 2009). A
+explicação por trás desses estudos empíricos é que a baixa oferta de moradias geraria uma disposição a
+mais para se pagar em comunidades com maior controle de desenvolvimento.
+        Relativamente poucos estudos na literatura analisam o impacto da regulação do uso da terra sobre
+novas construções (MAYER e SOMERVILLE, 2000; KNAPP et al., 2008; JACKSON, 2014). Os
+resultados encontrados nesses estudos mostram ser de acordo com o esperado teoricamente, ou seja, a
+regulação do uso da terra provoca uma redução no crescimento da oferta de novas construções. Diante
+disso, é natural pensar que essa redução de oferta pode afetar também o crescimento demográfico dessas
+regiões.
+        Outro importante questionamento é a magnitude do efeito que a regulação do uso da terra urbana
+gera em um contexto espacial. Antes da delimitação da lei, não há um divisor notório entre as localidades
+que seriam impostas pela lei e regiões que não foram abrangidas pela lei. A partir do momento da
+implantação da lei, há um divisor notório entre o potencial econômico da terra entre as demais
+localidades. Partindo desse princípio, um dos possíveis efeitos seria um aumento de demanda para as
+localidades com potencial econômico de terra maior.
+        Diante do que já foi estudado, esse estudo busca novas complementações acerca do efeito da
+regulação do uso da terra. O intuito desse trabalho é medir o impacto urbano da regulação sobre a
+densidade populacional. Especificamente, analisa-se o impacto causal da limitação das alturas dos
+edifícios na densidade populacional tanto nas regiões que foram afetadas pela lei, quanto pelas regiões
+vizinhas a essas. Uma das razões para a aplicação desse trabalho é que Rosarinho, um bairro vizinho da
+área da lei, foi o que mais cresceu em termo populacional na cidade do Recife, crescendo em torno de
+54% entre 2000 e 2010. Ou seja, pretende-se identificar se a lei além de impactar as regiões limitadas,
+também pode ter ocasionado um transbordamento populacional para regiões vizinhas.
+        Ademais, constatou-se que não há estudos empíricos na literatura que analisam intrinsecamente o
+impacto da regulação do uso da terra sobre a densidade demográfica para regiões afetadas e não afetadas
+pela regulação. Para atingir esse objetivo, usa-se um conjunto de dados dos Censos Demográficos de
+1991, 2000 e 2010, assim como uma estratégia para identificar o efeito da política baseado no estimador
+espacial de diferença-em-diferenças (SDID).
+        Este trabalho é organizado em sete seções, incluindo esta introdução. A próxima seção fornece
+uma contextualização da Lei dos 12 Bairros. Na seção 3 aborda-se a metodologia a ser aplicada e a
+estrutura dos dados. Na seção 4 abordam-se os principais resultados e discussão. Na seção 5 consideram-
+se outras especificações como testes de robustez. Na seção 6 apresentam-se os impactos da intervenção
+urbana sobre a densidade domiciliar. Por fim, apresentam-se as considerações finais e implicações do
+trabalho.
+
+2. Restrição no Uso da Terra Urbana em Recife, Brasil
+
+        Fundada em 12 de março de 1537, a cidade do Recife tem algumas peculiaridades em sua
+formação histórica. Inicialmente, foi uma cidade baseada em um comércio portuário, contribuindo
+fortemente para o desenvolvimento do comércio na região através da exportação de sua grande produção
+açucareira. As primeiras áreas urbanas foram guiadas pela prestação de serviços, estas eram localizadas
+próximo ao centro, particularmente nos distritos centrais de Boa Vista, São José e Santo Antônio. Com o
+passar do tempo e o crescimento da cidade, devido à composição natural da cidade, a presença do Rio
+Capibaribe foi um determinante essencial para o surgimento de outras áreas urbanas não tão distantes da
+parte oriental da cidade. Durante esta evolução, o transporte público facilitou esse movimento e permitiu
+o desenvolvimento de outros distritos localizados próximos ao centro expandido da cidade, incluindo os
+distritos das Graças, Derby, Espinheiro e Aflitos. A forte dependência histórica da exportação de açúcar e
+tradição de prestação de serviços, guiadas por um escopo de políticas urbanas limitadas, condicionaram
+ao lento espraiamento populacional relativo ao centro da cidade, provocando assim um aumento da
+densidade nos distritos da parte central.
+        Diante desse processo, a cidade do Recife apresenta uma população aproximada de 1.6 milhões de
+habitantes distribuídos em uma área territorial de apenas 217 km², sendo atualmente a quarta capital
+brasileira com maior densidade populacional, apresentando 7.039,64 hab/km² (IBGE, 2017). Sua área
+urbana é caracterizada por ter vários distritos com alta densidade populacional, além do mais, com uma
+maior facilidade de obtenção de crédito habitacional, resulta-se em áreas com mais sensibilidade às
+mudanças demográficas.
+        Em 1996, foi promulgada a Lei do Uso e Ocupação do Solo, no qual definiu quatro zonas de
+urbanização: Zonas de Urbanização Preferencial - ZUP; Zonas de Urbanização de Morros - ZUM; Zonas
+de Urbanização Restrita - ZUR; e Zonas de Diretrizes Específicas - ZDE. No âmbito geral, nas Zonas de
+Urbanização Preferencial, a lei permitiu a construção de grandes edifícios em quase todos os distritos da
+cidade, mas se tratando das Zonas de Urbanização de Morros, Zonas de Urbanização Restrita e Zonas de
+Diretrizes Específicas, houve um tratamento especial para o uso e ocupação do solo, pois estas zonas são
+acarretadas por solo de baixo potencial construtivo (ZUM), carência/ausência de infra-estrutura básica
+(ZUR) e zonas especiais de preservação de patrimônio histórico-cultural, proteção ambiental, interesse
+social, atividades industriais, centros e aeroporto (ZDE).
+        Devido à permissão da construção de grandes edifícios na maioria dos distritos da cidade, o
+Conselho de Desenvolvimento Urbano de Recife estabeleceu as Áreas de Reestruturação Urbana com fim
+de amenizar dois grandes problemas, um sistema rodoviário sobrecarregado e um sistema sanitário
+prejudicado. Em 30 de novembro de 2001, foi promulgada a Lei de Reestruturação Urbana (ARU) - Lei
+dos 12 Bairros (Lei 16.719/01), estabelecendo novas diretrizes em 12 bairros: Derby, Espinheiro, Graças,
+Aflitos, Jaqueira, Parnamirim, Santana, Casa Forte, Poço da Panela, Monteiro, Apipucos e Tamarineira.
+        As restrições envolvidas na lei implicaram em limite na altura dos edifícios em torno de 12, 36 e
+60 metros nos bairros já então mencionados. Na região que foi limitada a 12 metros, a justificativa da lei
+foi preservar a paisagem natural, visto que os bairros afetados foram aqueles que bordam o Rio
+Capibaribe; na região que foi limitada a 36 metros, a justificativa foi preservar a tipologia arquitetônica
+ainda existente; e na região que foi limitada a 60 metros, a justificativa foi fornecer um equilíbrio entre a
+área construída e a oferta de infraestrutura viária.
+
+3. Estratégia Empírica
+
+3.1. O Modelo Espacial de Diferença-em-Diferenças
+
+        Como de costume em estudos espaciais, precisa-se ter noção de que as regiões apresentam alguma
+relação entre elas para fazer tal análise, possibilitando a propagação de efeitos nas regiões onde foram
+afetadas pela política (região tratada) e nas áreas vizinhas (regiões não tratadas).
+        Delgado e Florax (2015) desenvolveram um modelo que possibilita uma correlação espacial nos
+tratamentos e uma interação espacial nas respostas do tratamento. Essa interação espacial significa que o
+efeito do tratamento existe direta ou indiretamente, pois os resultados potenciais não são independentes.
+Os efeitos de tratamento indiretos são chamados de spillovers, resultando uma espécie de contágio. Em
+adição a isso, Chagas et al. (2016) incorporaram efeitos tradicionais de econometria espacial em seu
+modelo, possibilitando assim, capturar o efeito dos vizinhos na variável de interesse, assim como
+controlar por similaridades não observadas que sejam comum a todos.
+         Seguindo a idéia dos mesmos autores citados anteriormente, é importante incorporar o “Stable
+Unit Treatment Value Assumption” (SUTVA) (RUBIN, 1978, 1990), o que implica que os resultados
+potenciais de cada indivíduo não são correlacionados com os demais. A violação do SUTVA indica
+interferência ou interação social, invalidando o efeito causal proposto na metodologia, no qual será
+explicado mais adiante.
+        Modela-se com o setup básico de diferença-em-diferenças usando econometria espacial de tal
+forma que irá decompor o efeito direto e o efeito indireto. O setup básico DID é dado por:
+
+                           𝑦𝑖𝑡 = 𝛼𝑖 + 𝜃𝑡 + 𝛿𝐿𝐸𝐼𝑖𝑡 + 𝜇(𝑿𝑖𝑡 ) + 𝜖𝑖𝑡                                        (1)
+
+onde 𝑦𝑖𝑡 representa o (log) da densidade do setor censitário i durante o período t. O indicador de
+tratamento binário é definido por 𝐿𝐸𝐼𝑖𝑡 , que toma valor igual a um no setor censitário i que foi afetado
+pela lei durante o período t, e zero caso contrário. O vetor de controle é definido por 𝑿𝑖𝑡 , contendo
+informações das características relevantes do setor censitário. Os efeitos fixos de espaço e ano são
+definidos respectivamente por 𝛼𝑖 e 𝜃𝑡 , e 𝜇 relaciona 𝑿𝑖𝑡 para 𝑦𝑖𝑡 .
+        Tem-se então que o efeito causal causado pela restrição do uso da terra seria o parâmetro 𝛿, ou
+seja, o coeficiente representa a diferença média da variável de interesse depois da imposição da lei menos
+a diferença média da variável de interesse antes da imposição da lei para setores censitários tratados e não
+tratados.
+
+      𝐸𝑇𝑀 = ∆𝐸 (𝑦𝑖𝑡 |𝛼𝑖 , 𝜃𝑡 , 𝑿, 𝐿𝐸𝐼)𝑡𝑟𝑎𝑡𝑎𝑑𝑜𝑠 − ∆𝐸 (𝑦𝑖𝑡 |𝛼𝑖 , 𝜃𝑡 , 𝑿, 𝐿𝐸𝐼)𝑛ã𝑜−𝑡𝑟𝑎𝑡𝑎𝑑𝑜𝑠 = 𝛿              (2)
+
+       Então, a operacionalização da interação espacial nas respostas do tratamento será abordada por
+uso de um operador de atraso espacial 𝐿𝑠 , definido como 𝑊 𝑠 , que é uma matriz de pesos espaciais. O
+setup básico do modelo espacial de diferença-em-diferenças é dado a seguir:
+                       𝑦𝑖𝑡 = 𝛼𝑖 + 𝜃𝑡 + (𝛿 + 𝜌𝑾𝑖𝑆 )𝐿𝐸𝐼𝑖𝑡 + 𝜇(𝑿𝑖𝑡 ) + 𝜖𝑖𝑡                                  (3)
+
+onde 𝜌 descreve a força da dependência espacial na amostra de observações, ou seja, esse parâmetro vai
+indicar o efeito indireto do tratamento em todas as regiões (tratadas e não tratadas). Agora pode se
+calcular os três efeitos que o modelo captura: ETM (Efeito de Tratamento Médio), ETMT (Efeito de
+Tratamento Médio nos Tratados) e ETMNT (Efeito de Tratamento Médio nos Não-Tratados).
+
+         𝐸𝑇𝑀 = ∆𝐸 (𝑦𝑖𝑡 |𝛼𝑖 , 𝜃𝑡 , 𝑿, 𝐿𝐸𝐼)𝑡𝑟𝑎𝑡𝑎𝑑𝑜𝑠 − ∆𝐸 (𝑦𝑖𝑡 |𝛼𝑖 , 𝜃𝑡 , 𝑿, 𝐿𝐸𝐼)𝑛ã𝑜−𝑡𝑟𝑎𝑡𝑎𝑑𝑜𝑠 = 𝛿           (4)
+
+                    𝐸𝑇𝑀𝑇 = ∆𝐸 (𝑦𝑖𝑡 |𝛼𝑖 , 𝜃𝑡 , 𝑿, 𝐿𝐸𝐼)𝑡𝑟𝑎𝑡𝑎𝑑𝑜𝑠 = 𝛿 + 𝜌𝑾𝑖𝑆 𝐿𝐸𝐼𝑖𝑡                            (5)
+
+                   𝐸𝑇𝑀𝑁𝑇 = ∆𝐸 (𝑦𝑖𝑡 |𝛼𝑖 , 𝜃𝑡 , 𝑿, 𝐿𝐸𝐼)𝑛ã𝑜−𝑡𝑟𝑎𝑡𝑎𝑑𝑜𝑠 = 𝜌𝑾𝑖𝑆 𝐿𝐸𝐼𝑖𝑡                            (6)
+
+        Como argumentaram Chagas et al. (2016), essas expressões tornam claro o viés que poderia ser
+causado apenas usando a metodologia diff-in-diff, visto que ela não captura a interação espacial no efeito
+de tratamento representada por 𝜌𝑾𝑖𝑆 𝐿𝐸𝐼𝑖𝑡 .
+        Até aqui se tem o caso restrito de Delgado e Florax (2015), não capturando efeitos tradicionais nas
+interações espaciais, como no Spatial Autoregressive Model (SAR) e Spatial Error Model (SEM). Para
+incluir essas interações, assim como Chagas et al. (2016), será necessário primeiramente considerar o
+modelo em notação matricial, visto que os dados são estruturados em dados de painel, então tem-se que:
+
+                         𝑌𝑡 = 𝛼 + 𝜃𝑡 + (𝛿 + 𝜌𝑾𝑠 )𝐿𝐸𝐼𝑡 + 𝜇(𝑿𝑡 ) + 𝜖𝑡                                       (7)
+
+Onde 𝑌𝑡 = ( 𝑌1𝑡 , … , 𝑌𝑛𝑡 ), é um vetor 𝑛𝑡 × 1 de observações, 𝛼 = (𝛼1 , … , 𝑎𝑛 ), é um vetor 𝑛𝑡 × 1 de
+efeitos-fixos regionais, 𝜃𝑡 = (𝜃1 , … , 𝜃𝑡 ), é um vetor 𝑛𝑡 × 1 de efeitos-fixos de tempo, 𝑿𝑡 =
+(𝑿1𝑡 , … , 𝑿𝑛𝑡 ), é uma matriz 𝑛𝑡 × 𝑘 de covariáveis, 𝐿𝐸𝐼𝑡 = (𝐿𝐸𝐼1 , … , 𝐿𝐸𝐼𝑡 ), é uma variável dummy
+indicando regiões tratadas, 𝑾𝑠 é uma matriz 𝑛 × 𝑛 de pesos espaciais1, e 𝜖𝑡 = (𝜖1𝑡 , … , 𝜖𝑛𝑡 ), é um vetor
+𝑛𝑡 × 1 de erros. Os parâmetros a serem estimados são 𝛿 e 𝜌.
+        Então, a partir da decomposição da matriz 𝑾𝑠 , tem-se que o modelo pode ser definido como:
+
+            𝑌𝑡 = 𝛼 + 𝜃𝑡 + [𝛿 + (𝜌1 𝑾𝒔𝑇,𝑇 + 𝜌2 𝑾𝒔𝑁𝑇,𝑇 )]𝐿𝐸𝐼𝑡 + 𝜇(𝑿𝑡 ) + 𝜖𝑡                                 (8)
+
+onde 𝜌1 significa o efeito vizinhança da região tratada na região tratada, e 𝜌2 significa o efeito vizinhança
+da região tratada na região não tratada. O ponto chave da construção dessa matriz é que além de capturar
+o efeito externo que as regiões tratadas impactam as regiões não tratadas, ela consegue captar o efeito
+interno das próprias regiões tratadas.
+        Diante disso, pode-se se incluir um termo espacial autoregressivo como no modelo SAR, assim
+como um termo de erro, como no modelo SEM, ou ambos. Tem-se então que:
+
+                                        𝜇 (𝑿𝑡 ) = 𝜑𝑾𝒔 𝑌𝑡 + 𝑿𝑡 𝛾′                                         (9)
+
+e/ou
+
+                                           𝜖𝑡 = 𝜆𝑾𝑠 𝜖𝑡 + Τ𝑡                                             (10)
+
+onde na equação (9), 𝛾 é um parâmetro 1 × 𝑘 a ser estimado, e 𝜑 é o parâmetro espacial autoregressivo.
+Na equação (10), Τ𝑡 é um vetor de erro, sem correlação espacial, e 𝜆 é o parâmetro de erro espacial a ser
+estimado. Então, a versão completa do modelo é definida como:
+
+
+1
+    Para analisar a decomposição da matriz 𝑾𝑠 , ver Chagas et al. (2016, p. 28-29).
+         𝑌𝑡 = (𝐼𝑛 − 𝜑 𝑾𝑠 )−1 {𝛼 + 𝜃𝑡 + [𝛿 + (𝜌1 𝑾𝒔𝑇,𝑇 + 𝜌2 𝑾𝒔𝑁𝑇,𝑇 )]𝐿𝐸𝐼𝑡 + 𝑿𝑡 𝛾 ′ + (𝐼𝑛 −
+𝜆 𝑾𝑠 )−1 Τ𝑡 }                                                                                      (11)
+
+       O estimador a ser usado é o de máxima verossimilhança, pois faz com o que termo jacobiano
+𝑙𝑛(𝐼𝑛 − 𝜑 𝑾𝑠 )−1 não seja explosivo (ELHORST, 2014). Além do mais, a estimação baseia-se na rotina
+de Elhorst para modelos de dados de painel espacial (ELHORST, 2010a,b). De acordo com Elhorst
+(2010a), a vantagem de usar esse método é que se consegue elaborar rotinas para estimar modelo de
+dados de painel espacial incluindo o procedimento de correção de tendência proposto por Lee e Yu
+(2010), mas somente se o modelo de dados de painel espacial contém efeitos fixos e/ou efeito ano,
+estimativas de efeito direto e indireto, e uma estrutura que define qual o melhor modelo que descreve os
+dados.
+
+3.2 Dados
+
+        Recife é um município brasileiro, capital do estado de Pernambuco, localizando-se na parte
+costeira no nordeste do Brasil. No último Censo realizado, o município tinha 1.537.704 habitantes,
+colocando como 1º colocado dentre os 185 municípios do mesmo estado. Comparando com os demais
+municípios do Brasil, Recife é o 9º colocado de 5.570. Sua densidade demográfica é de 7.039,64
+habitantes por quilômetro quadrado, sendo o 2º no estado e 12º colocado no país (IBGE, 2017).
+        Para analisar o impacto da Lei dos Doze Bairros na densidade populacional em Recife, usam-se
+dados do Censo Demográfico para os anos de 1991, 2000 e 2010. Além do mais, o conjunto de dados
+disponíveis possibilitou desagregar os bairros em setores censitários que os compõem. A cidade era
+formada por 1.107 setores censitários em 1991, 1.212 em 2000, e 1.854 em 2010, tendo então que haver
+uma compatibilização dos setores para ser plausível a estimação do modelo, que posteriormente será
+sucintamente explicado.
+        O processo de compatibilização dos dados se deu justamente pela necessidade de se ter áreas
+comparáveis ao longo do período a ser analisado, e como há uma distinção entre os setores censitários ao
+longo dos períodos, foi necessário usar um software de SIG - Sistema de Informação Geográfica.
+Ademais, não havia informação acerca do mapa territorial de 1991, somente dos anos de 2000 e 2010,
+mas havia informação acerca da correspondência dos setores e subdivisão de setores entre todos os
+períodos. Na Figura 2 (a) tem-se o mapa de 2000; Na Figura 2 (b) tem-se o mapa de 2010; e na Figura 2
+(c) tem-se o mapa compatível entre todos os períodos.
+
+
+
+
+                (a) 2000                       (b) 2010              (c) Mapa compatibilizado
+
+               Figura 2 – Compatibilizações dos setores censitários de 1991, 2000 e 2010
+
+       Nesse novo mapa, obteve-se um total de 962 setores censitários compatibilizados. Com isso,
+puderam-se realizar todos os procedimentos cabíveis para estimar o modelo sem nenhum problema de
+áreas não comparáveis entre todos os períodos.
+        Diante dos dados, há uma dificuldade em abranger todos os vizinhos das regiões tratadas, visto
+que há barreiras naturais que possivelmente dificultaria o processo de spillover populacional, como é o
+caso do Rio Capibaribe, ou seja, não seria possível separar o efeito da política do efeito do rio. Portanto, a
+identificação do problema mais plausível seria a não consideração dos vizinhos que se localizam do outro
+lado do rio, pois se trata de um acidente natural que moldou de forma bastante acentuada as ocupações
+das duas margens, além do mais, não há pontes para a ligação entre as áreas dos dois lados.
+        Na Figura 3 tem-se o mapa para avaliar o efeito da política pública no adensamento populacional.
+Ao final, tem-se 58 setores tratados e 336 setores não-tratados. É importante mencionar também que em
+todas as regressões foram utilizadas tendências comuns somente para os setores censitários tratados,
+embora os resultados obtidos não dependam da consideração das mesmas. A justificativa para não
+incorporar a interação da variável de tendência com relação aos não tratados, é que se tais tendências
+influenciassem claramente os vizinhos, tornariam estes últimos tratados (incluídos) pela Lei. Ou seja, não
+há porque a princípio achar que tal tendência influenciaria os vizinhos.
+
+
+
+
+                   Rio Capibaribe
+
+
+
+                                      Figura 3 – Áreas de especificação
+
+4. Resultados
+
+4.1. Estatísticas Descritivas
+
+       Antes de qualquer interpretação dos dados, é importante ressaltar que há dois grupos de
+tratamento: um sendo afetado diretamente pela política e o outro sendo afetado indiretamente. Diante
+disso, as estatísticas descritivas foram geradas para os grupos de tratamento (diretamente), tratamento
+conjunto (diretamente e indiretamente) e controles, no qual são mostrados na Tabela 1.
+
+                                     Tabela 1 – Estatísticas Descritivas
+                                  G. Tratamento          G. Tratamento Conjunto            G. Controle
+ANO/VARIÁVEIS                   N Média        Dp       N     Média       Dp          N    Média       Dp
+1991
+Dens. Populacional          58 7350,3         9404,3   97     5760,9      17650,8    297 4932,6       16572
+Perc. Domic. Saneados       58     0,95        0,11    97      0,92        0,12      297 0,77          0,18
+Perc. Domic. com Água       58     0,99        0,01    97      0,99        0,02      297 0,95           0,1
+2000
+Dens. Populacional          58 8132,4         9493,6   97     6255,1      14160,1    297 5186,4       16124
+Perc. Domic. Saneados       58     0,99        0,01    97      0,99        0,01      297 0,96          0,08
+Perc. Domic. com Água       58     0,99        0,01    97      0,99        0,01      297 0,97          0,07
+2010
+Dens. Populacional          58 10126,7        9210,9   97     7311,9      14494,8    297 5458,1       16044
+Perc. Domic. Saneados       58     0,99       0,005    97      0,99        0,01      297 0,99          0,05
+Perc. Domic. com Água       58     0,98        0,05    97      0,98        0,06      297 0,97          0,08
+Fonte: Elaboração própria do autor.
+       Nota-se que houve um aumento respectivamente de 10,6% e 8,5% na densidade populacional
+entre 1991 e 2000 para os grupos de tratamento e tratamento conjunto. No grupo de controle, há um
+acréscimo de 5,1%. No período posterior, há um aumento substancial para o grupo de tratamento, em
+torno de 24,5%, o que não era esperado, visto que uma das justificativas para Lei dos Doze Bairros era o
+de controle de crescimento populacional. Além do mais, o tratamento conjunto indica um crescimento em
+torno de 16,8%. Já no grupo de controle, temos que há um crescimento de aproximadamente 5,2%, o que
+já era esperado teoricamente. Observa-se também que os serviços de água e saneamento são bastante
+parecidos, evidenciando que o grupo de controle em sua composição desses dois detrimentos é similar ao
+grupo de tratamento antes e após a política
+
+4.2. Estimação do Modelo Econométrico
+
+        Nessa seção, encontram-se os resultados das estimações dos modelos econométricos. Os
+resultados se encontram na Tabela 2. O primeiro é um modelo clássico de dados em painel com efeito
+fixo espacial e temporal, servindo como base para comparação de resultados. O segundo modelo incluem
+defasagens espaciais nas variáveis de controle. Isso se refere ao Spatial Lag of X model (SLX), sendo
+sugerido por Elhorst e Vega (2017) para capturar spillover espaciais em estudos empíricos com variáveis
+de controle exógenas. O terceiro é o Spatial Durbin Model (SDM). Por último, estimou-se o Spatial
+Durbin Error Model (SDEM). Alguns testes comuns desenvolvidos na literatura de econometria espacial
+são considerados: teste de Multiplicador de Lagrange (ML), ML robusto e critério de comparação
+Bayesiana. Inicialmente usa-se uma matriz de contigüidade, e posteriormente nos testes de robustez,
+varia-se o tipo de matriz e define-se o critério de seleção.
+
+                                           Tabela 2 - Resultados
+Variável dependente: ln(densidade populacional)
+                                       Painel            SLX             SDM          SDEM
+Tratamento                             0.067392          0.019682        0.046635     0.086188
+    𝒔
+𝑾 𝑇,𝑇                                                    0.024305        -0.046946    -0.066873
+    𝒔
+𝑾𝑁𝑇,𝑇                                                    0.378667*** 0.266930*        0.280694*
+    𝒔
+𝑾 * dep. var.                                                            0.343910***
+𝑅̅²                                    0.0220            0.0322          0.0397       0.0334
+ML_lag                                 96.2900           88.7041
+p-Value                                0.000             0.000
+ML_error                               95.0360           81.8738
+p-Value                                0.000             0.000
+rob ML_lag                             1.3650            30.9473
+p-Value                                0.243             0.000
+rob ML_error                           0.1110            24.1171
+p-Value                                0.739             0.000
+Model Prob.                            0.000             1.000           0.000        0.000
+𝜆                                                                                     0.339988***
+N                                      394               394             394          394
+T                                       3                 3               3            3
+Nota: Todos os modelos incluem variáveis de controle. Os modelos SLX, SDM e SDEM também
+incluem defasagens espaciais nas variáveis de controle. Adicionalmente, os modelos incluem efeitos fixos
+de tempo e espaço. Significância estatística: *** p < 0.001; ** p <0.05; * p<0.1.
+        O modelo clássico em painel indica que a política não apresentou efeito sobre o grupo de
+tratamento, o que não era de todo esperado, pois uma das justificativas da lei era controlar o adensamento
+populacional, mas é possível argumentar, contudo, que a Lei ao menos pode ter evitado um adensamento
+mais rápido na área tratada. Além do mais, de acordo com os resultados obtidos nos modelos espaciais,
+fica evidente que houve um transbordamento populacional para regiões vizinhas, ou seja, a política gerou
+um efeito reverso nas regiões não-tratadas, o que era esperado, pois de acordo com a teoria, haveria uma
+acomodação populacional nas demais regiões.
+        Todavia, introduziram-se controles espaciais como sugerido pelo teste de ML e ML robusto,
+indicando indiferença entre a defasagem espacial na variável dependente e no erro. Muito embora de
+acordo com Elhorst (2014), o poder desses testes ainda precisa ser mais investigado. Além do mais, a
+abordagem de comparação Bayesiana indicou o SLX como sendo o mais plausível. Nesta situação, o
+efeito do transbordamento populacional para regiões não-tratadas é de aproximadamente 38% para o
+modelo SLX.
+        A Tabela 3 mostra os resultados completos do modelo SLX. De acordo com os sinais das
+variáveis de controle, apresenta-se o que já era esperado. Regiões com menor acesso a saneamento (água
+não significante) apresentam densidades maiores. Isso se dá pelo fato de que essas regiões geralmente são
+mais pobres, portanto há uma atração maior por conta dos baixos custos de se viver nessas regiões.
+
+                             Tabela 3 – Resultado completo do modelo SLX
+Variável dependente                                             ln(densidade populacional)
+R²                                                                        0.0380
+𝑅̅²                                                                       0.0322
+𝜎2                                                                        0.0294
+Durbin-Watson                                                             2.1130
+Nobs,Nvars                                                                1182,8
+
+Variável                                              Coeficiente                    p-Value
+Saneamento                                            -0.162929                      0.049744
+Água                                                  0.053808                       0.594221
+Tendência                                             0.009927                       0.016864
+W - Saneamento                                        0.405675                       0.002295
+W - Água                                              -0.202966                      0.376726
+Tratamento                                            0.019682                       0.870406
+𝑾𝒔𝑇,𝑇                                                 0.024305                       0.840519
+𝑾𝒔𝑁𝑇,𝑇                                                0.378667                       0.002926
+
+5. Testes de Robustez
+
+        A fim de fornecer suporte adicional aos resultados, realizaram-se alguns testes de robustez para
+verificar se o efeito de transbordamento populacional ainda prevalece com outras especificações. Dada a
+natureza do trabalho empírico, os exercícios se baseiam em alternar o tipo de matriz e gerar outras
+especificações acerca do grupo de controle. No primeiro momento, verifica-se o mesmo grupo de
+tratamento e de controle com uma matriz alternativa. Essa matriz é composta pela quantidade de vizinhos
+mais próximos de cada setor censitário, logo, o critério de seleção para a quantidade ótima de vizinhos é
+aquela que gerar a maior estimativa no valor da função de máxima verossimilhança. De acordo com o
+critério de seleção, resultou-se em uma matriz com 10 vizinhos mais próximos.
+        Na Tabela 4, pode-se ver que o efeito de transbordamento populacional para regiões ainda
+permanece mesmo mudando a especificação da matriz. Diante disso, a política gerou um efeito
+aproximado de 52,4% no adensamento populacional das regiões não-tratadas.
+                           Tabela 4 – Teste de robustez com matriz alternativa
+                                  Painel             SLX             SDM               SDEM
+Tratamento                        0.067392           -0.084438       -0.029687         -0.007292
+𝑾𝒔𝑇,𝑇                                                0.179072        0.066917          0.104334
+𝑾𝒔𝑁𝑇,𝑇                                               0.524313*** 0.370198**            0.503555***
+𝑾𝒔 * dep. var.                                                       0.475035***
+𝑅̅²                               0.0220             0.0383          0.0448            0.0403
+𝜆                                                                                      0.467997***
+No. Obs.                            394                394              394            394
+T                                    3                  3                3              3
+Nota: Significância estatística: *** p < 0.001; ** p <0.05; * p<0.1.
+
+         Mesmo mudando a especificação da matriz, é importante analisar outras especificações de grupos
+de controle e tratamento. O ponto chave desse teste robustez é poder realmente verificar se o efeito
+prevalece em outras situações. Diante disso, a melhor estratégia seria considerar apenas regiões ao norte
+do Rio Capibaribe, visto que esse é um divisor natural para o transbordamento populacional para regiões
+ao sul do rio. Além do mais, alguns desses setores censitários são afetados por outra política pública
+vigente, que são as Zonas Especiais de Interesse Social (ZEIS) – áreas de assentamentos habitacionais de
+população de baixa renda (renda familiar média igual ou inferior a três salários mínimos), carência ou
+ausência de serviços de infraestrutura básica, densidade habitacional não inferior a 30 residências por
+hectare. Portanto, tais políticas públicas poderiam interferir no efeito causal encontrado na especificação
+inicial, visto que essas delimitam características sociodemográficas a serem atendidas.
+         Na Figura 4 (a), tem-se a especificação de um mapa considerando setores censitários que são
+abrangidos pelas ZEIS, mas não considerando regiões de preservação florestal e histórica. Na Figura 4
+(b), tem-se a especificação de um mapa desconsiderando setores censitários afetados por outras políticas
+públicas vigentes.
+
+
+
+
+                              (a)                                             (b)
+
+
+                                     Figura 4 – Outras especificações
+
+       Assim como nos resultados principais, considera-se inicialmente uma matriz de contigüidade,
+posteriormente alterna-se para a matriz de vizinhos mais próximos que gerou o maior valor para a função
+de máxima verossimilhança.
+       Na Tabela 5 têm-se os resultados obtidos da especificação que utiliza o grupo de controle da
+Figura 4 (a) com a matriz contigüidade e a matriz com vizinhos mais próximos. Diante dos resultados,
+percebe-se que mesmo ao incluir as áreas com ZEIS tem-se o mesmo efeito para regiões não-tratadas.
+Uma das justificativas para esse resultado é que essas zonas acima do Rio Capibaribe foram criadas antes
+da imposição da Lei dos Doze Bairros, com isso, não interferindo nos resultados já esperados de acordo
+com a teoria. Usando a matriz de contigüidade, o efeito nas regiões não-tratadas é de aproximadamente
+48%, e usando a matriz com 16 vizinhos mais próximos, o efeito nas regiões não-tratadas é ainda maior,
+sendo aproximadamente 57%.
+                               Tabela 5 – Resultados da especificação (a)
+Variável dependente: ln(densidade populacional)
+                                    W1                                          W2
+                   Painel         SLX            SDEM           Painel        SLX            SDEM
+Tratamento       0.064804       0.004541        0.021274     0.064804       0.155005        0.097416
+   𝒔
+𝑾 𝑇,𝑇                           0.041362        0.033941                   -0.210020       -0.124401
+   𝒔
+𝑾𝑁𝑇,𝑇                         0.480033*** 0.373782***                     0.574752***     0.554819***
+̅
+𝑅²                0.1018         0.1295          0.1695        0.1018        0.1532          0.1772
+𝜆                                             0.338983***                                 0.568995***
+
+N                      356           356           356          356           356             356
+T                       3             3             3             3            3                3
+Nota: W1 = matriz de contigüidade; W2 = matriz com 16 vizinhos mais próximos. Todos os modelos
+incluem variáveis de controle. Os modelos SLX e SDEM também incluem defasagens espaciais nas
+variáveis de controle. Adicionalmente, os modelos incluem efeitos fixos de tempo e espaço. Significância
+estatística: *** p < 0.001; ** p <0.05; * p<0.1.
+
+       Na Tabela 6 realizou-se o mesmo procedimento da Tabela 5, mas agora considerando a
+especificação que utiliza o grupo de controle da Figura 4 (b). Nota-se que os resultados obtidos são
+similares aos encontrados em todas as especificações, portanto é plausível considerar que esse efeito é
+robusto a mudança de especificação.
+
+                               Tabela 6 – Resultados da especificação (b)
+Variável dependente: ln(densidade populacional)
+                                   W1                                           W2
+                 Painel          SLX            SDEM           Painel         SLX            SDEM
+Tratamento     -0.100381      -0.106890       -0.054915      -0.100381     -0.007355        0.010762
+    𝒔
+𝑾 𝑇,𝑇                          0.016051       -0.026923                    -0.179749       -0.159008
+    𝒔
+𝑾𝑁𝑇,𝑇                        0.473190*** 0.365557***                      0.441200***     0.397217***
+𝑅̅²              0.1788         0.2015          0.2937         0.1788        0.2622          0.3472
+𝜆                                            0.283973***                                  0.374964***
+
+N                    151            151          151            151            151             151
+T                      3             3             3             3              3               3
+Nota: W1 = matriz de contigüidade; W2 = matriz com 10 vizinhos mais próximos. Todos os modelos
+incluem variáveis de controle. Os modelos SLX e SDEM também incluem defasagens espaciais nas
+variáveis de controle. Adicionalmente, os modelos incluem efeitos fixos de tempo e espaço. Significância
+estatística: *** p < 0.001; ** p <0.05; * p<0.1.
+
+        Diante dos resultados, usando a matriz de contigüidade, o efeito nas regiões não-tratadas é de
+aproximadamente 47%, e usando a matriz com 10 vizinhos mais próximos, o efeito nas regiões não-
+tratadas é um pouco menor, sendo aproximadamente 44%.
+
+6. Impactos sobre o Adensamento Domiciliar
+
+       Nessa seção altera-se a variável de interesse para densidade domiciliar, a razão para tal
+procedimento é que de acordo com os trabalhos existentes na literatura sobre esse tema, é natural de se
+pensar que a redução de oferta de novas construções nas regiões afetadas pela lei pode ter ocasionado um
+aumento de novas construções para regiões vizinhas não-tratadas, e com isso, gerando uma verticalização
+de edifícios mais acentuada nessas regiões. Diante disso, aplica-se o mesmo procedimento da seção
+anterior, ou seja, verificam-se os resultados para os três grupos de especificação com ambas as matrizes.
+        Na Tabela 7 têm-se os resultados usando a especificação que utiliza o grupo de controle da Figura
+3. Diante dos resultados, percebe-se que é bastante similar ao que foi encontrado com a variável
+dependente sendo densidade populacional, e isso é natural de pensar, pois densidade domiciliar e
+densidade populacional são duas variáveis correlacionadas. De forma resumida, o modelo em painel
+indicou que a política não gerou efeito sobre a área tratadas, mas fica evidente que gerou um spillover de
+novas construções para regiões vizinhas. Usando a matriz de contigüidade e de 4 vizinhos mais próximos,
+os efeitos de spillovers são respectivamente em torno de 36% e 63%.
+
+               Tabela 7 – Resultados da especificação inicial com densidade domiciliar
+Variável dependente: ln(densidade domiciliar)
+                                    W1                                         W2
+                   Painel         SLX            SDEM          Painel        SLX               SDEM
+Tratamento       0.035968       0.159086        0.152625      0.035968    -0.004003           0.017909
+𝑾𝒔𝑇,𝑇                          -0.166700       -0.206704                   0.053027          -0.005477
+𝑾𝒔𝑁𝑇,𝑇                        0.364433*** 0.348537***                    0.628381***        0.637021***
+̅
+𝑅²                0.0689         0.0789          0.1167        0.0689       0.0889             0.1335
+𝜆                                             0.409985***                                   0.350977***
+
+N                      394           394           394          394            394             394
+T                       3             3             3             3             3               3
+Nota: W1 = matriz de contigüidade; W2 = matriz com 4 vizinhos mais próximos. Todos os modelos
+incluem variáveis de controle. Os modelos SLX e SDEM também incluem defasagens espaciais nas
+variáveis de controle. Adicionalmente, os modelos incluem efeitos fixos de tempo e espaço. Significância
+estatística: *** p < 0.001; ** p <0.05; * p<0.1.
+
+       Na Tabela 8 têm-se os resultados usando a especificação que utiliza o grupo de controle da Figura
+4(a). Nota-se que os efeitos de spillovers de novas construções ainda permanecem mesmo alterando a
+especificação do grupo de controle e a matriz de vizinhança. Usando a matriz de contigüidade e de 16
+vizinhos mais próximos, os efeitos de spillovers são respectivamente em torno de 43% e 50%.
+
+                 Tabela 8 – Resultados da especificação (a) com densidade domiciliar
+Variável dependente: ln(densidade domiciliar)
+                                    W1                                         W2
+                   Painel         SLX            SDEM         Painel         SLX               SDEM
+Tratamento       0.071560       0.085004        0.074109     0.071560     0.203594            0.209097
+    𝒔
+𝑾 𝑇,𝑇                          -0.039351       -0.007197                  -0.262093          -0.216786
+    𝒔
+𝑾𝑁𝑇,𝑇                         0.431652*** 0.360975***                   0.503777***         0.582508***
+𝑅̅²               0.1015         0.1259          0.1614       0.1015        0.1517             0.1714
+𝜆                                             0.387016***                                   0.601972***
+
+N                      356           356           356          356           356             356
+T                       3             3             3             3            3                3
+Nota: W1 = matriz de contigüidade; W2 = matriz com 16 vizinhos mais próximos. Todos os modelos
+incluem variáveis de controle. Os modelos SLX e SDEM também incluem defasagens espaciais nas
+variáveis de controle. Adicionalmente, os modelos incluem efeitos fixos de tempo e espaço. Significância
+estatística: *** p < 0.001; ** p <0.05; * p<0.1.
+         Na Tabela 9 têm-se os resultados usando a especificação que utiliza o grupo de controle da Figura
+4(b). Percebe-se que os resultados são similares aos encontrados nas outras especificações. Portanto, é
+plausível considerar que esse efeito é robusto a mudança de especificação tanto no quesito de área
+territorial, quanto no quesito de definição dos vizinhos. Usando a matriz de contigüidade, o efeito nas
+regiões não-tratadas é de aproximadamente 51%, e usando a matriz com 8 vizinhos mais próximos, o
+efeito nas regiões não-tratadas é um pouco menor, sendo aproximadamente 36%.
+
+                 Tabela 9 – Resultados da especificação (b) com densidade domiciliar
+Variável dependente: ln(densidade domiciliar)
+                                    W1                                         W2
+                  Painel         SLX             SDEM          Painel        SLX               SDEM
+Tratamento      -0.04366       0.008983         0.045360     -0.043657    -0.011392           0.041656
+    𝒔
+𝑾 𝑇,𝑇                         -0.048059        -0.045957                  -0.122602          -0.174956
+    𝒔
+𝑾𝑁𝑇,𝑇                        0.512895*** 0.378684***                    0.365286***         0.297823***
+𝑅̅²               0.2377        0.2754           0.3396        0.2377       0.3566             0.4289
+𝜆                                             0.480221***                                   0.366987***
+
+N                     151           151          151            151            151             151
+T                      3             3             3             3              3               3
+Nota: W1 = matriz de contigüidade; W2 = matriz com 8 vizinhos mais próximos. Todos os modelos
+incluem variáveis de controle. Os modelos SLX e SDEM também incluem defasagens espaciais nas
+variáveis de controle. Adicionalmente, os modelos incluem efeitos fixos de tempo e espaço. Significância
+estatística: *** p < 0.001; ** p <0.05; * p<0.1.
+
+7. Considerações Finais
+
+        Usando uma estratégia empírica baseada em um diff-in-diff com dependência espacial, procurou-
+se gerar evidência acerca do impacto da regulação do uso da terra urbana no adensamento populacional
+tanto nas regiões afetadas pela regulação, quanto nas regiões não-tratadas. Tais evidências não foram
+exploradas nos países em desenvolvimento, além do mais, esta é a primeira vez que é usada uma análise
+espacial de diff-in-diff para questões urbanas brasileiras no quesito de regulação do uso da terra.
+        Geralmente, a maioria dos estudos busca analisar o impacto da regulação do uso da terra urbana
+nos preços dos imóveis, onde tal efeito é positivamente associado. Mas também há evidências na
+literatura sobre o impacto da regulação em novas moradias, onde tal efeito é negativamente associado.
+Contudo, esse trabalho vai além de buscar o efeito da regulação nas regiões afetadas pela lei, em adição a
+isso, buscou-se estimar o spillover espacial para regiões vizinhas e não afetadas pela lei.
+        Com essas evidências principais, mostrou-se que a política pública não gerou efeito sobre o grupo
+de tratamento, mas gerou um spillover espacial positivo para as regiões não-tratadas. Diante disso,
+acredita-se que a política não foi eficaz em cumprir seus objetivos, e além do mais, gerou um efeito
+reverso para as regiões vizinhas. Empiricamente, os resultados mostram que houve um transbordamento
+populacional de aproximadamente 38% para as regiões não-tratadas.
+        Os resultados encontrados são consistentes, em parte, com as hipóteses iniciais, visto que se
+esperava um efeito negativo e significante para as regiões de tratamento, mas por outro lado, gerou um
+resultado esperado acerca do transbordamento populacional para as regiões não-tratadas. Além do mais,
+confirma-se que esse efeito de spillover não é condicionado por um único grupo de controle, pois os
+testes de robustez garantem credibilidade aos resultados e dão suporte ao efeito causal encontrado.
+        É importante apontar que a regulação investigada neste trabalho pode impactar também outras
+variáveis, levando, por exemplo, à maior verticalização das áreas vizinhas. Neste sentido, os resultados
+também apontaram que o maior adensamento populacional das áreas vizinhas também tomou a forma de
+maior número de domicílios por área. Tal resultado é consistente, por sua vez, com o evidentemente
+processo de verticalização vivenciado em bairros vizinhos como Rosarinho e Encruzilhada.
+REFERÊNCIAS
+
+Chagas, A.L., Azzoni, C.R., Almeida, A.N. (2016). A spatial difference-in-differences analysis of the
+impact of sugar cane production on respiratory diseases. Regional Science and Urban Economics 59, 24 –
+36.
+
+Dantas, R.N.D, Duarte, G., Silveira Neto, R. M., Sampaio, B. (2018). Height restrictions and housing
+prices: A difference-in-discontinuity approach. Economics Letters 164, 58-61.
+
+Delgado, M.S., Florax, R.J. (2015). Difference-in-differences techniques for spatial data: local
+autocorrelation and spatial interaction. Economics Letters 137, 123–126.
+
+Elhorst, J.P. (2010a). Matlab software for spatial panels. Paper Presented at 4th World Conference of the
+Spatial Econometric Association, Chicago.
+
+Elhorst, J.P. (2010b). Spatial panel data models. In: Fischer, M.M., Getis, A. (Eds.), Handbook of Applied
+Spatial Analysis. Springer, p. 377–407.
+
+Elhorst, J.P. (2014). Spatial Econometrics: From Cross-sectional Data to Spatial Panels. Springer.
+
+Elhorst, J.P., Vega, S.H., (2017). The SLX model: extensions and the sensitivity of spatial spillovers to
+W. Papeles de Economía Española 152, 34-50.
+
+Fujita, M. (1989). Urban Economic Theory: Land Use and City Size. Cambridge University Press.
+
+Glaeser, E.L., Ward, B.A. (2009). The causes and consequences of land use regulation: Evidence from
+Greater Boston. Journal of Urban Economics 65, 265-278.
+
+IBGE (2017) Instituto Brasileiro de Geografia e Estatística, disponível em: http://www.ibge.gov.br.
+Acessado em 10 de junho de 2017.
+
+Ihlanfeldt, K.R. (2007). The effect of land use regulation on housing and land prices. Journal of Urban
+Economics 61, 420-435.
+
+Ingram, G.K., Carrol, A. (1981). The Spatial Structure of Latin American Cities. Journal of Urban
+Economics 9, 257-273.
+
+Jackson, K. (2014). Do Land Use Regulations Stifle Residential Development? Evidence from California
+Cities, Journal of Urban Economics 91, 45-56.
+
+Knapp, G., Meck, S., Moore, T., Parker, R. (2007). Zoning as a barrier to multifamily housing
+development (Report No. 548). Chicago, IL: Planning Advisory Service, American Planning Association.
+
+Lee, L.F., Yu, J. (2010). Estimation of spatial autoregressive panel data models with fixed effects.
+Journal of Econometrics 154, 165–185.
+
+Lei Municipal no. 16.176, de 09 de abril de 1996. Estabelece a Lei de Uso e Ocupação do Solo da Cidade
+do Recife.
+Lei Municipal no. 16.719, de 30 de novembro de 2001. Cria a Área de Reestruturação Urbana - ARU,
+composta pelos bairros Derby, Espinheiro, Graças, Aflitos, Jaqueira, Parnamirim, Santana, Casa Forte,
+Poço da Panela, Monteiro, Apipucos e parte do bairro Tamarineira, estabelece as condições de uso e
+ocupação do solo nesta área (Lei dos Doze Bairros).
+
+Mayer, C.J., Somerville, C.T. (2000). Land Use Regulation and New Construction, Regional Science and
+Urban Economics 30 (6), 659-83.
+
+McDonald, J.E., McMillen, D.P. (2012). The Economic of Zoning, in: N. Brooks, K. Donaghyand G.
+Knaap (Eds), The Oxford Handbook of Urban Economic and Planning, New York, NY: Oxford
+University Press.
+
+Quigley, J. M, Raphael, S. (2005). Regulation and the high cost of housing in California. American
+Economic Review 95 (2), 323-328.
+
+Rubin, D.B. (1978). Bayesian inference for causal effects: the role of randomization. The Annals of
+Statistics 6, 34–58.
+
+Rubin, D.B. (1990). Formal modes of statistical inference for causal effects. Journal of Statistical
+Planning and Inference 25, 279–292.
+APÊNDICE A – RESULTADOS DA ESPECIFICAÇÃO INICIAL COM A MATRIZ DE VIZINHOS MAIS PRÓXIMOS
+
+Variável dependente: ln(densidade populacional)
+               W1       W2 W3 W4 W5                W6      W7     W8      W9      W10     W11     W12     W13     W14     W15     W16     W17
+Tratamento     0.089 0.060 0.239 0.054 0.042      -0.04   -0.08   -0.07   -0.03   -0.09   -0.08   -0.07   -0.07   -0.05   -0.05   -0.07   -0.05
+  𝒔
+𝑾 𝑇,𝑇          -0.06 -0.03 -0.25 -0.04 -0.03      0.074   0.126   0.100   0.063   0.179   0.175   0.149   0.147   0.126   0.131   0.151   0.122
+  𝒔
+𝑾𝑁𝑇,𝑇          0.23* 0.38* 0.42* 0.62* 0.51*      0.40*   0.36*   0.39*   0.43*   0.50*   0.48*   0.47*   0.49*   0.54*   0.56*   0.56*   0.60*
+𝜆              0.15* 0.23* 0.30* 0.35* 0.35*      0.40*   0.42*   0.45*   0.48*   0.50*   0.52*   0.52*   0.53*   0.54*   0.55*   0.58*   0.59*
+
+No. Obs.        394 394 394 394 394 394 394 394 394 394 394 394 394 394 394 394 394
+̅
+𝑅²             0.121 0.125 0.127 0.134 0.128 0.125 0.123 0.122 0.123 0.122 0.122 0.124 0.125 0.126 0.126 0.124 0.122
+Log-likelihood 489.2 503.2 515.5 519.2 509.2 510.9 507.2 513.5 514.1 516.8 516.7 514.2 513.0 514.4 515.9 516.5 518.3
+Nota: Wi = Matriz com i vizinhos mais próximos. Significância estatística: * p < 0.001.
+
+Variável dependente: ln(densidade domiciliar)
+               W1       W2 W3 W4 W5                W6      W7     W8      W9      W10     W11     W12     W13     W14     W15     W16     W17
+Tratamento     -0.03 0.037 0.179 0.017 0.006      -0.03   -0.08   -0.04   -0.02   -0.05   -0.03   -0.02   -0.03   -0.03   -0.03   -0.06   -0.04
+  𝒔
+𝑾 𝑇,𝑇          0.068 -0.01 -0.19 -0.01 0.003      0.068   0.135   0.087   0.076   0.145   0.110   0.115   0.118   0.147   0.141   0.201   0.185
+  𝒔
+𝑾𝑁𝑇,𝑇          0.24* 0.38* 0.44* 0.63* 0.51*      0.40*   0.37*   0.45*   0.50*   0.51*   0.50*   0.51*   0.53*   0.56*   0.59*   0.61*   0.62*
+𝜆              0.14* 0.22* 0.30* 0.35* 0.36*      0.41*   0.42*   0.47*   0.48*   0.52*   0.54*   0.55*   0.55*   0.57*   0.60*   0.60*   0.61*
+
+No. Obs.        394 394 394 394 394 394 394 394 394 394 394 394 394 394 394 394 394
+̅
+𝑅²             0.121 0.124 0.126 0.133 0.127 0.124 0.121 0.121 0.122 0.118 0.118 0.118 0.120 0.118 0.117 0.116 0.114
+Log-likelihood 547.0 556.6 572.3 578.6 571.0 572.7 568.0 574.6 575.0 576.1 577.3 576.3 574.5 576.5 577.8 577.5 577.2
+Nota: Wi = Matriz com i vizinhos mais próximos. Significância estatística: * p < 0.001.
+APÊNDICE B – RESULTADOS DA ESPECIFICAÇÃO (A) COM A MATRIZ DE VIZINHOS MAIS PRÓXIMOS
+
+Variável dependente: ln(densidade populacional)
+               W1       W2 W3 W4 W5                W6      W7     W8      W9      W10     W11     W12     W13     W14     W15     W16     W17
+Tratamento     0.127 0.090 0.200 0.064 0.085      -0.09   -0.05   -0.07   0.036   0.008   0.008   0.026   0.057   0.098   0.105   0.097   0.156
+  𝒔
+𝑾 𝑇,𝑇          -0.06 -0.01 -0.13 0.008 -0.03      0.161   0.127   0.135   -0.01   0.036   0.042   -0.01   -0.03   -0.10   -0.11   -0.12   -0.21
+  𝒔
+𝑾𝑁𝑇,𝑇          0.23* 0.39* 0.40* 0.61* 0.48*      0.36*   0.37*   0.37*   0.44*   0.55*   0.53*   0.49*   0.52*   0.55*   0.55*   0.55*   0.61*
+𝜆              0.18* 0.26* 0.33* 0.35* 0.36*      0.41*   0.42*   0.44*   0.46*   0.48*   0.49*   0.50*   0.49*   0.52*   0.53*   0.56*   0.54*
+
+No. Obs.        356 356 356 356 356 356 356 356 356 356 356 356 356 356 356 356 356
+̅
+𝑅²             0.162 0.161 0.159 0.172 0.167 0.162 0.163 0.162 0.167 0.173 0.175 0.176 0.181 0.180 0.179 0.177 0.185
+Log-likelihood 584.3 593.2 607.2 611.5 599.9 602.4 598.7 600.2 603.6 609.6 608.6 607.0 605.9 609.9 610.0 612.4 611.8
+Nota: Wi = Matriz com i vizinhos mais próximos. Significância estatística: * p < 0.001.
+
+Variável dependente: ln(densidade domiciliar)
+               W1       W2 W3 W4 W5                W6      W7     W8      W9      W10     W11     W12     W13     W14     W15     W16     W17
+Tratamento     0.058 0.124 0.148 0.098 0.106      0.005   0.014   0.073   0.162   0.202   0.222   0.215   0.222   0.221   0.216   0.209   0.259
+  𝒔
+𝑾 𝑇,𝑇          0.020 -0.04 -0.06 -0.02 -0.05      0.068   0.063   -0.03   -0.13   -0.20   -0.23   -0.23   -0.23   -0.23   -0.22   -0.21   -0.29
+  𝒔
+𝑾𝑁𝑇,𝑇          0.24* 0.39* 0.42* 0.62* 0.47*      0.37*   0.37*   0.38*   0.46*   0.50*   0.53*   0.50*   0.53*   0.54*   0.55*   0.58*   0.60*
+𝜆              0.17* 0.23* 0.33* 0.36* 0.37*      0.43*   0.43*   0.46*   0.49*   0.52*   0.52*   0.53*   0.52*   0.57*   0.58*   0.60*   0.57*
+
+No. Obs.        356 356 356 356 356 356 356 356 356 356 356 356 356 356 356 356 356
+𝑅̅²            0.164 0.162 0.158 0.173 0.167 0.164 0.162 0.161 0.165 0.168 0.171 0.173 0.179 0.172 0.171 0.171 0.180
+Log-likelihood 694.4 696.2 714.1 723.5 713.7 717.4 712.2 714.1 718.6 723.8 724.1 721.8 720.7 726.0 725.4 726.4 722.6
+Nota: Wi = Matriz com i vizinhos mais próximos. Significância estatística: * p < 0.001.
+APÊNDICE C – RESULTADOS DA ESPECIFICAÇÃO (B) COM A MATRIZ DE VIZINHOS MAIS PRÓXIMOS
+
+Variável dependente: ln(densidade populacional)
+                         W1        W2        W3     W4       W5       W6       W7       W8       W9      W10      W11
+Tratamento              0.077     0.070     0.134 -0.002    0.026   -0.154   -0.131   -0.128   -0.014    0.010    0.055
+  𝒔
+𝑾 𝑇,𝑇                  -0.150    -0.103    -0.179 -0.087   -0.134    0.096    0.047   -0.027   -0.153   -0.159   -0.165
+  𝒔
+𝑾𝑁𝑇,𝑇                 0.248*** 0.355*** 0.339*** 0.410*** 0.400*** 0.333*** 0.332*** 0.287** 0.298** 0.397*** 0.471***
+𝜆                     0.168*** 0.292*** 0.314*** 0.343*** 0.336*** 0.385*** 0.396*** 0.382*** 0.372*** 0.374*** 0.383***
+
+No. Obs.               151        151       151        151        151         151        151        151        151       151       151
+̅
+𝑅²                    0.285      0.287     0.288      0.309      0.306       0.298      0.307      0.340      0.344     0.347     0.341
+Log-likelihood       210.130 220.766 218.897 223.745 219.237 218.732 219.889 229.316 229.244                           229.676   226.969
+Nota: Wi = Matriz com i vizinhos mais próximos. Significância estatística: *** p < 0.001; ** p < 0.05; * p < 0.1.
+
+Variável dependente: ln(densidade domiciliar)
+                         W1        W2         W3     W4      W5       W6       W7       W8       W9      W10      W11
+Tratamento              0.017     0.012      0.064  0.040   0.073   -0.026   -0.023    0.041    0.130    0.195    0.255
+  𝒔
+𝑾 𝑇,𝑇                  -0.034    -0.013     -0.067 -0.099  -0.146    0.007   -0.023   -0.174   -0.272   -0.346   -0.365
+  𝒔
+𝑾𝑁𝑇,𝑇                 0.252*** 0.354*** 0.340*** 0.422*** 0.395*** 0.354*** 0.345*** 0.297*** 0.333*** 0.375*** 0.482***
+𝜆                     0.127*** 0.247*** 0.275*** 0.302*** 0.320*** 0.375*** 0.370*** 0.366*** 0.347*** 0.352*** 0.349***
+
+No. Obs.               151        151       151        151        151         151        151        151         151      151       151
+̅
+𝑅²                    0.347      0.350     0.352      0.387      0.379       0.366      0.378      0.428       0.434    0.432     0.418
+Log-likelihood       322.880 330.320 329.944 342.097 338.821 336.717 338.698 357.119 357.086                           356.086   349.710
+Nota: Wi = Matriz com i vizinhos mais próximos. Significância estatística: *** p < 0.001; * p < 0.05; * p < 0.1.
+

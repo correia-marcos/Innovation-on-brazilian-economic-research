@@ -1,0 +1,1143 @@
+Repasse Cambial na Economia Brasileira: estimação a partir
+                   do modelo VCEE
+        Sérgio Kannebley Júnior∗             Lucas Gonçalves Godoi†                Diogo de Prince‡
+
+
+                                                     Resumo
+            Alterações na taxa de câmbio nominal leva a choques de custos que são repassados em
+        diferentes graus para os ı́ndices de preço. Assim, o trabalho objetiva estimar o grau de repasse
+        cambial para os preços de importação, ao atacado e ao consumidor amplo no Brasil entre 2003
+        e 2019. A proposta é medir o grau de repasse por meio da estimação de Vetor de Correção
+        de Erros Estrutural baseado em propriedades estatı́sticas e em restrições dadas pela teoria
+        econômica, que é a contribuição do trabalho. Os resultados obtidos indicam que os graus de
+        repasse cambial aos preços das importações, ao atacado e ao consumidor são respectivamente
+        76,3%, 22% e 21,8% no longo prazo. O encadeamento dos preços indica que o grau de repasse
+        cambial aos preços de importação tende a ser maior do que ao atacado que por sua vez é maior
+        do que ao consumidor.
+
+
+                                                    Abstract
+            Changes in the nominal exchange rate leads to cost shocks that affect price indexes differently.
+        Thus, the objective of this work is to estimate the degree of exchange rate pass-through for
+        import, wholesale and consumer prices in Brazil between 2003 and 2019. The proposal is
+        to measure the degree of pass-through with Structural Error Correction Vector Model using
+        statistical properties and constraints based on economic theory, which is the contribution of
+        this article. The results indicate that the degree of exchange rate pass-through to import,
+        wholesale and consumer prices are respectively 76.3%, 22% and 21.8% in the long run. The
+        price linkage indicates that the degree of exchange rate pass-through to import prices tends to
+        be higher than the wholesale price, which in turn is higher than the consumer price.
+
+      Classificação JEL: E31, E52, E58.
+      Palavras-chave: repasse cambial, vetor de correção de erros estrutural, ı́ndices de preços.
+      Keywords: exchange rate pass-through, structural vector error correction model, price indexes.
+
+
+
+
+                    Área 4 - Macroeconomia, Economia Monetária e Finanças
+
+
+
+  ∗
+     Professor Titular do Departamento de Economia da Faculdade de Economia, Administração e Contabilidade de
+Ribeirão Preto / Universidade de São Paulo (FEA-RP/USP)
+   †
+     Mestre em Economia Aplicada da Faculdade de Economia, Administração e Contabilidade de Ribeirão Preto /
+Universidade de São Paulo (FEA-RP/USP)
+   ‡
+     Professor da Universidade Federal de São Paulo (campus Osasco) e Pesquisador do Centro de Macroeconomia
+Aplicada da Fundação Getúlio Vargas de São Paulo
+
+
+                                                         1
+1       Introdução
+    Alterações na taxa nominal de câmbio são bastante relevantes para economias como a brasileira
+que tem um passado inflacionário na memória. As variação desse preço constitui um choque de
+custos que tende a ser absorvido em diferentes graus pelos diversos ı́ndices de preços na economia,
+afetando as expectativas de inflação e o comportamento dos formuladores de preços.
+    O principal objetivo da polı́tica monetária em um regime de metas de inflação é mantê-la em
+um nı́vel baixo e estável (MENDONÇA, 2002). Portanto, a extensão com que os choques da taxa
+de câmbio são repassados aos preços tem direta implicação sobre o nı́vel de atividade econômica
+e consequentemente sobre o nı́vel de bem-estar da sociedade. Com isso, a produção de estimativas
+confiáveis para esses graus de repasse são importantes para planejamento do policymaker. Esse artigo
+se propõe a produzir medidas de grau de repasse cambial a diferentes ı́ndices de preço por meio da
+estimação de um Vetor de Correção de Erros Estrutural (VCEE).
+    A literatura de repasse cambial aplicada ao caso brasileiro é extensa, avaliando hipóteses em
+relação a diversas tipos de preços, como repasse aos preços de importações em nı́vel setorial (KAN-
+NEBLEY JÚNIOR et al., 2016), exportações em nı́vel setorial (KANNEBLEY JÚNIOR, 2000; TE-
+JADA; SILVA, 2008; CORREA, 2012) e em nı́vel agregado aos preços (BELAISCH, 2003; ALBU-
+QUERQUE; PORTUGAL, 2005; GHOSH, 2013; CÂMARA; FEIJO, 2017). Em sua maioria, esses
+trabalhos apresentam aplicações em séries temporais, tendo como temáticas a estimação do repasse
+no curto e no longo prazo (BELAISCH, 2003; NOGUEIRA et al., 2012; CÂMARA; FEIJO, 2017), o
+repasse cambial considerando a possibilidade de mudanças de regimes (ALBUQUERQUE; PORTU-
+GAL, 2005; NOGUEIRA JUNIOR, 2010), ou presença de assimetria no repasse cambial (PIMENTEL
+et al., 2016).1
+    Nos trabalhos em que são estimados modelos de Vetores Autoregressivos (VAR) ou Vetores de
+Correção de Erros (VCE), é usual a utilização de uma estrutura recursiva para identificação dos cho-
+ques, encadeando o choque cambial ao longo da cadeia de preços, do ı́ndices de preços de importações
+para os ı́ndices de preços ao consumidor (BELAISCH, 2003; NOGUEIRA et al., 2012; CÂMARA;
+FEIJO, 2017), o que determina uma relação assimétrica entre o perı́odo de ocorrência e de resposta
+aos choques cambiais para as diferentes variáveis do modelo.2
+    A estimação de um modelo de vetor de correção erros estrutural (VCEE) permitiu estimar o grau
+de repasse cambial aos preços de importação, ao atacado e ao consumidor. A partir da estimação do
+VCE, busca-se identificar os choques estruturais e transitórios do modelo com base em suas proprie-
+dades estatı́sticas (JUSELIUS, 2006) e em restrições trazidas pela teoria econômica, produzindo uma
+estrutura de identificação não recursiva ao VCE. A contribuição do presente trabalho é identificar os
+choques estruturais baseando-se na teoria.
+    A literatura teórica sobre repasse cambial representa a variação cambial como um choque de cus-
+tos que é transmitido via mecanismo de arbitragem entre preços de bens comerciáveis transacionados
+no mercado doméstico e estrangeiro. Para representar esse mecanismo de transmissão de choques
+cambiais aos preços de importação, ao atacado e ao consumidor utilizamos o modelo proposto por
+Goldberg e Campa (2010), que justifica por meio da transmissão em cadeia, intermediada por compo-
+nentes de custos de distribuição, a diferença no nı́vel do repasse cambial entre as diferentes categorias
+de ı́ndices de preços. O presente trabalho tem como base essa estrutura analı́tica para determinar a
+especificação do modelo empı́rico e auxiliar na identificação dos choques estruturais do modelo.
+    Esse artigo tem também o mérito de produzir conjuntamente estimativas de repasse cambial para
+    1
+     Uma revisão da literatura sobre tema com ênfase no caso brasileira é realizada por Assis et al. (2019), em que
+classifica os estudos segundos os determinantes microeconômicos ou macroeconômicos do repasse cambial.
+   2
+     Uma exceção a esse procedimento é o trabalho de Pimentel et al. (2016) que identifica o modelo VAR a partir de
+restrições de curto prazo, mas como especifica o modelo com variáveis em primeira diferença, despreza a informação
+proveniente das relações de longo prazo entre as variáveis. Já Guillén et al. (2006) inovam metodologicamente ao
+introduzir restrições de cointegração e de ciclos comuns em vetores auto-regressivos (VAR). Porém para a obtenção de
+funções de resposta ao impulso utilizam a decomposição de Cholesky.
+
+
+                                                            2
+um amplo espectro de ı́ndices de preços em um perı́odo mais longo após a introdução do regime
+de metas cambiais. O presente trabalho estima um VCEE com as variáveis preço de importação,
+taxa de câmbio, preços ao consumidor e ao atacado e preço do petróleo para o Brasil. Os dados
+são trimestrais de 2003 ao primeiro trimestre de 2019. Os resultados obtidos indicam que o grau de
+repasse cambial para os preços ao atacado e ao consumidor foi de 22%, enquanto o grau de repasse
+cambial para o preço de importação foi de 76,3% no longo prazo a partir do VCEE. As estimativas
+obtidas indicam que o repasse cambial para o preço ao consumidor é sempre inferior ao repasse para
+o atacado, se aproximando no longo prazo. Caso fosse feito um VCE sem impor restrição nos vetores
+de longo prazo e utilizasse a decomposição de Cholesky, haveria um aumento no grau de repasse
+cambial.
+    Esse artigo está organizado em seis seções, além da presente introdução. A segunda seção de-
+senvolve uma revisão da literatura empı́rica sobre o tema. A terceira seção apresenta o modelo de
+Goldberg e Campa (2010) e considerações adicionais a esse modelo a partir de argumentos teóricos
+trazidos de outros trabalhos da literatura sobre o mecanismo de repasse cambial. Na quarta seção
+detalha-se o arcabouço metodológico utilizado no artigo. A quinta seção apresenta as estimações do
+VCEE e calcula-se o grau de repasse cambial. Na última seção são tecidas considerações finais em que
+discutimos a plausibilidade das estimativas produzidas nesse trabalho frente às demais estimativas
+presentes na literatura.
+
+
+2       Revisão da Literatura Empı́rica
+     Segundo Taylor (2000) a adoção de polı́ticas menos discricionárias ao final dos anos de 1980 e
+inı́cio dos anos de 1990 em diversos paı́ses levou a um declı́nio da persistência inflacionária e maior
+estabilidade de preços. Nesse ambiente macroeconômico mais previsı́vel, e de maior capacidade de
+observação de preços relativos, o poder de mercado para a formação de preços e o repasse de choque
+de custos foi reduzido, sendo observado, consequentemente, um declı́no do grau de repasse cambial
+aos preços. A hipótese de que o repasse cambial é endógeno ao ambiente inflacionário foi testada
+e corroborada por diversos autores, entre eles, Goldfajn e Werlang (2000), Bailliu et al. (2004) e
+Choudhri e Hakura (2006) e Ghosh (2013), ao produzirem estimativas de grau de repasse cambial
+para diversos conjuntos de paı́ses com dados entre os anos de 1970 e 2000 3 .
+     Especificamente para o caso brasileiro, Albuquerque e Portugal (2005) estimam repasses cambiais
+que variam ao longo do tempo, observando três comportamentos distintos da repasse cambial ao
+IPCA. Para o perı́odo de O primeiro perı́odo de 1980 a 1994, anterior à implementação do Plano
+Real, nota-se um repasse cambial volátil com picos que chegam a um (1) e reduções bruscas que
+poderiam estar relacionados aos diferentes planos econômicos. No segundo perı́odo, de 1995 a 1998,
+o parâmetro de repasse torna-se mais estável com uma média de 0,42. Por fim, no terceiro perı́odo
+que começa após a adoção de taxas de câmbio flutuantes observa-se um repasse de média de 0,04.
+Já para o IPA a taxa de repasse cambial é próximo de completo durante todo o perı́odo.
+     McCarthy (2007) estima por meio de um modelo VAR o grau de repasse cambial ao longo da
+cadeia de preços, com a transmissão do choque cambial para os preços de importação, de produção
+e aos consumidor. Além da variação dos ı́ndices de preço e da taxa de câmbio nominal efetiva,
+o autor usa a inflação no preço do petróleo e o hiato do produto de forma a captar choques de
+oferta e de demanda na cadeia de produção. A partir de uma decomposição de Cholesky o repasse
+cambial é identificado como a resposta dos preços dado um choque no câmbio. Para uma amostra
+de nove paı́ses industrializados encontra repasse incompleto e decrescente ao longo da cadeia de
+produção para o conjunto de paı́ses analisados. Outro trabalhos apresentam estrutura metodológica
+    3
+    Goldfajn e Werlang (2000) utilizam dados de 71 paı́ses entre os anos de 1980 e 1998. Choudhri e Hakura (2006)
+consideram também uma amostra de 71 paı́ses, no entanto, com dados para os anos de 1979 a 2000. Bailliu et al.
+(2004) baseiam-se em um painel de 11 paı́ses industrializados para o perı́odo de 1977 a 2001. Ghosh (2013) encontra
+evidências favoráveis a esse argumento para 9 paı́ses latino-americanos, inclusive o Brasil, entre 1970 e 2010.
+
+
+                                                        3
+semelhante como o de Hahn (2003) e Faruqee (2006), com estudos para a área do Euro, obtendo com
+resultados similares. Belaisch (2003) estima um modelo VAR recursivo de modo similar McCarthy
+(2007) para o caso brasileiro com dados mensais para o perı́odo de julho de 1999 a dezembro de 2002.
+Suas evidências são de um repasse cambial de 17% para o ı́ndice de preços ao consumidor e repasse
+completo para o ı́ndice de preços ao atacado (IPA) transcorrido um ano do choque cambial.
+     Ao utilizar a diferença das variáveis nas estimações, os modelos VAR não captam a dinâmica de
+longo-prazo do sistema. A estimação de vetores de correção de erros corrige tal problemas, sendo
+possı́vel encontrar exemplos da aplicação dessa metodologia à estimação grau de repasse cambial.
+São exemplos os trabalhos de Coricelli et al. (2006) e Beirne e Bijsterbosch (2011), que estimam o
+grau de repasse aos preços para 4 e 9 paı́ses do leste europeu, respectivamente, apurando em ambos os
+casos um alto grau de repasse em suas estimações 4 . Os trabalhos de Guillén et al. (2006) e Nogueira
+et al. (2012) estimam modelos VCE para o caso brasileiro e encontram um repasse de 25,12% e 18%
+respectivamente para os preços no atacado e de 10,99% e 5% para os preços ao consumidor. Em
+ambos os casos são utilizadas estruturas recursivas de Cholesky para a identificação dos choques
+estruturais. No entanto, enquanto Guillén et al. (2006) calculam as funções de resposta ao impulso
+por meio de um modelo VCEE, o trabalho Nogueira et al. (2012) apenas incorporam o termo de
+correção de erros no modelo VAR em diferenças na forma de inclusão de uma variável exógena.
+     Assim, de modo geral, podemos observar por meio dessa revisão de literatura que na maior parte
+dos casos é evidenciado o repasse incompleto no longo-prazo e decrescente ao longo da cadeia de
+produção. No entanto, também foi possı́vel observar que as estimativas obtidas a partir de modelos
+VAR, com variáveis em primeira diferença, apresentaram um grau de repasse inferior aos estudos em
+que o grau de repasse foi estimado utilizando um modelo VCE. Ainda outra observação relevante é
+que os resultados obtidos por autores que estudaram o caso brasileiro indicaram deve ter havido uma
+mudança de regime trazida por um ambiente de inflação mais baixa posteriormente à implantação do
+Plano Real, que deve ter reduzido o grau de repasse cambial na economia brasileira. Nesse sentido
+é recomendável para a implementação empı́rica uma amostra que se inicie posteriormente à 1999,
+quando teve inı́cio a implementação do regime de metas inflacionárias na economia brasileira e um
+novo padrão inflacionário foi estabelecido.
+
+
+3       Representação Analı́tica do Problema
+     O presente trabalho se caracteriza pelo estudo dos efeitos de variações cambiais sobre diferentes
+ı́ndices de preços. A fim de representar o mecanismo de transmissão dos choques cambiais aos
+preços, e demonstrar a natureza incompleta do repasse cambial, faremos uso do modelo de equilı́brio
+parcial apresentado em Goldberg e Campa (2010), em que a taxa de câmbio considerada como uma
+variável exógena ao sistema. Esse modelo busca qualificar os diferentes canais de transmissão dos
+choques cambiais sobre os preços de importação até os preços ao consumidor. Os autores procuram
+explicar a sensibilidade dos preços ao consumidor a choques cambiais, focando no papel que as
+margens de distribuição e insumos importados utilizados na produção de bens comercializáveis e não
+comercializáveis. Sendo assim, o objetivo dessa seção é demonstrar como a presença desses fatores
+influenciam as elasticidades de preços de tipos especı́ficos de bens de consumo e o IPC agregado.
+     Goldberg e Campa (2010) assumem que os consumidores tem funções de utilidade do tipo elasti-
+cidade constante de substituição (CES). Os autores supõem uma função de utilidade CES que separa
+o consumo em produtos comercializáveis (CT ) e não comercializáveis (CN ) . Cada tipo de produto
+é representado por um contı́nuo de mercadorias que fazem face a uma elasticidade de substituição
+    4
+     Beirne e Bijsterbosch (2011), por meio da estimação de vetores de cointegração, apuram o repasse médio para os
+preços ao consumidor em 60%, enquanto que, utilizando função de resposta ao impulso, foi estimado um repasse médio
+de 50 %. Já Coricelli et al. (2006) estimam um grau de repasse aos preços em um intervalo de 50% a 100%, sendo tal
+evidência justificada pelos autores como resultante da acomodação da polı́tica monetária desses paı́ses a choques que
+tenderam a elevar a inflação e o grau de repasse cambial.
+
+
+                                                           4
+constante θ. O consumo de bens comerciáveis e não comerciáveis também é governado por uma
+elasticidade de substituição dada por φ. Esse arcabouço baseado em utilidade permite a solução de
+um problema de minimização de dispêndio de um consumidor representativo que origina o seguinte
+agregador de preços:
+
+                                       Pt = [αPt (tr)1−φ + (1 − α)Pt (n)1−φ ]1/(1−φ)                                            (1)
+em que Pt (tr) e Pt (n) representam respectivamente os ı́ndices de preços de bens comercializáveis e
+não comercializáveis e α é um parâmetro de ponderação.
+    Dentro da categoria de comercializáveis os produtos podem ser produzidos domesticamente, ou
+serem importados. Dada a mesma estrutura de utilidade, o agregador de preços tem forma similar ao
+ı́ndice agregado com elasticidade de substituição entre bens produzidos domesticamente e importados
+dada por φT = φ. A parcela de produtos domésticos no grupo de comercializáveis é representada por
+αT . Com isso, a elasticidade dos preços ao consumidor em relação a mudanças na taxa de câmbio,
+isto é, o repasse cambial, pode ser escrita como:
+
+                                                                                        1−φ             1−φ
+                                                          Pt ,et              Pt (tr)              Pt (h)
+                                                      η            =α                         αh                η Pt (h),et +
+                                                                                Pt                 Pt (tr)
+                              1−φ                               1−φ                                     1−φ               (2)
+                     Pt (tr)                          Pt (f )                                         Pt (n)
+             α                        (1 − αh )                           η Pt (f ),et   + (1 − α)                η Pt (n),et
+                       Pt                             Pt (tr)                                           Pt
+
+    Como pode ser observado, o repasse cambial para os preços aos consumidores é uma média
+ponderada entre os repasses observados nos produtos que compõem a cesta de bens do consumidor.
+Com a possibilidade de substituição entre grupos sendo governada pela elasticidade φ.
+    De forma a aproximar o modelo da realidade, Goldberg e Campa (2010) introduzem tanto custos
+de distribuição, bem como a possibilidade de insumos importados serem utilizados na produção
+de produtos produzidos domesticamente. Sendo ct (f ), ct (h) e ct (n) respectivamente os custos de
+produção da firma estrangeira, da firma doméstica e de produção de não comercializáveis, mt (i : et ),
+com i ∈ (f, h) se tratando dos custos de distribuição que afetam tanto os bens importados como
+os comercializáveis produzidos domesticamente, µt (j : et ) com j ∈ (h, n) a parcela de insumos
+importados que os setores domésticos da economia utilizam e Zh e Zf respectivamente os salários
+efetivos domésticos e os praticados no exterior (Zf de fato é expressada em moeda local e representa
+o custo de se produzir uma unidade do produto importado) tem-se que as equações de custo de cada
+tipo de bem são tais que:
+
+                                               ct (f ) = Zf + mt (f : et )Pt (n)                                                (3)
+                                       ct (h) = Zh + mt (h : et )Pt (n) + µt (h : et )Zf                                        (4)
+                                                  ct (n) = Zh + µt (n : et )Zf                                                  (5)
+   Conforme pode ser observado, a taxa de câmbio impacta os custos de todos os grupos presentes
+no modelo. No caso de produtos importados, o impacto é direto ao transformar o custo medido na
+moeda do paı́s de origem para a moeda do paı́s importador, havendo também u custo de distribuição
+medido por Pt (n), ou seja, a distribuição em si é considerado um bem não comercializável que tem
+parte de seus insumos medidos em moeda estrangeira. Já os produtos comercializáveis produzidos
+domesticamente, além do efeito por meio dos custos de distribuição, também contam com parcela
+de insumos importados medida em moeda estrangeira. Nota-se também que tanto a parcela de
+produtos importados µ, como a parcela de custos de distribuição m são funções também da taxa de
+
+
+
+
+                                                                          5
+câmbio e, havendo então a possibilidade de se substituir insumos domésticos por importados dada
+uma apreciação da moeda por exemplo.5
+    Os custos são repassados ao preço a partir de uma regra de mark-up, que é função da elasticidade
+de substituição, θ, fixo sendo que a precificação de cada tipo de bem é dada respectivamente pelas
+equações abaixo6 :
+                                                        θ
+                                           Pt (f ) =       [Zf + mt (f : et )Pt (n)]                                 (6)
+                                                       θ−1
+                                               θ
+                                  Pt (h) =         [Zh + mt (h : et )Pt (n) + µt (h : et )Zf ]                       (7)
+                                             θ−1
+                                                        θ
+                                             Pt (n) =       [Zh + µt (n : et )Zf ]                                   (8)
+                                                      θ−1
+    É suposto que os custos de distribuição sejam precificados em moeda local e que parâmetros de
+produtividade, tais como o salário local e externo, sejam constantes no horizonte de tempo relevante.
+Derivando as expressões de preços em função da taxa de câmbio é obtida a elasticidade de cada preço
+com relação à variação cambial, ou seja, o grau de repasse cambial. Tais expressões são apresentadas
+a seguir:
+
+                               δPt (f )/δet      θ (mt (f : et Pt (n))
+              η Pt (f ),et =                =1−                        [1 − (η m(f :et ),et + η Pt (n),et )]         (9)
+                                Pt (f )/et      θ−1      Pt (f )
+
+                                     δPt (h)/δet    θ                              m(h : et )Pt (n)
+                     η Pt (h),et =               =     [(η Pt (n),et + η m(h),et )                     +
+                                      Pt (h)/et    θ−1                                    Pt (h)
+                                                                                                                    (10)
+                                                                                          µt (h : et )Zf
+                                                                     (1 + η µt (h:e),et )                ]
+                                                                                              Pt (h)
+
+                                          δP t(n)/δet    θ                          µt (n : et )Zf
+                          η Pt (n),et =               =     (1 + η µt (n:et ),et )[                ]                (11)
+                                           Pt (n)/et    θ−1                             Pt (n)
+    Ao analisarmos as equações acima, nota-se que o repasse de produtos importados não é completo
+para os consumidores dada a existência de custos de distribuição que impedem o mesmo de ser.
+Para o caso de produtos transacionáveis produzidos internamente o repasse ocorre por meio de dois
+canais distintos: insumos importados e de mudanças na margem do custo de distribuição. Por fim,
+o único canal pelo qual os preços não comercializáveis são afetados pela taxa de câmbio é no caso da
+utilização de insumos importados. Caso contrário não há motivo pelo qual variações cambiais afetem
+tais preços e, por conseguinte, o custo de distribuição dos produtos transacionáveis.
+    Dessa maneira, o repasse ao consumidor em (2) se comporta como uma média ponderada dos
+repasses especificados de (9) a (11), de forma que a magnitude da resposta dos preços aos consu-
+midores frente a uma variação cambial dependerá não apenas dos repasses de cada tipo de bem,
+como também da parcela de importância que cada bem tem dentro da cesta do consumidor e da
+elasticidade de substituição, φ, entre os tipos de bem.
+    Burstein e Gopinath (2013) apresentam outros argumentos para o repasse cambial incompleto
+aos preços de importação. Segundo esses autores, o repasse incompleto poderia advir da baixa sen-
+sibilidade dos custos dos exportadores aos choques cambiais, variabilidade dos mark-ups ou retornos
+   5
+      Como bens não comercializáveis são consumidos diretamente e adicionam valor tanto aos comercializáveis produ-
+zidos localmente como aos importados, o uso de insumos na produção de não comercializáveis pode ter um impacto
+importante para a sensibilidade dos preços ao consumidor. Tal canal desaparecerá apenas se movimentos da taxa de
+câmbio gerarem uma substituição total de insumos importados ou se tais insumos forem precificados em moeda local.
+    6
+      A existência de custos de distribuição que impactam diretamente o preço de compra de comercializáveis explica,
+pelo menos parcialmente, a falha da paridade do poder de compra.
+
+
+                                                                6
+decrescentes de escala. Primeiramente a possibilidade de uma parte de insumos da firma externa ao
+paı́s ser precificado na moeda local e, portanto, invariante as variações cambiais. Outro motivo é o
+mark-up ter como parâmetro os preços dos produtos produzidos domesticamente, de forma a manter
+sua competitividade no mercado frente aos produtos produzidos localmente. Assim, na eventuali-
+dade de uma desvalorização cambial haveria a possibilidade de uma redução do mark-up, não sendo
+repassada completamente aos preços dos produtos importados.
+    O modelo de Goldberg e Campa (2010) especifica os efeitos diretos sob o quais a taxa de câmbio
+afeta os preços internos como é explicitado nas equações de (9) a (11). Entretanto a interdependência
+entre os mark-ups dos produtos comercializáveis produzidos pela firma externa e doméstica é um ca-
+nal explorado por outros autores. Dornbusch (1987) aborda essa relação por meio de modelos de
+concorrência imperfeita (com produtos homogêneos em um modelo de Cournot e com bens hete-
+rogêneos em um modelo do tipo Dixit-Stiglitz), argumentando haver uma relação positiva entre a
+proporção de firmas estrangeiras no mercado doméstico e o grau de repasse cambial, ou uma relação
+positiva entre o grau de substituição entre produtos domésticos e estrangeiros e o repasse cambial.
+Uma adaptação ao modelo de Dixit e Stiglitz (1977) é feita por Yang (1997), de modo a permitir
+custos marginais fixos e elasticidade-preço da demanda variantes, demonstrando que o repasse da
+taxa de câmbio é maior nas indústrias com maior grau de diferenciação de produto e uma menor
+elasticidade do custo marginal. Já Auer e Schoenle (2016), ao admitir uma distribuição heterogênea
+de firmas no setor, permite que as firmas maiores sejam capazes de influenciar o preço agregado da
+indústria. Com isso, o tamanho da firma também influencia em sua decisão de precificação e quanto
+maior a firma, maior será o repasse cambial a seus produtos. Por fim, Pennings (2017) discute a im-
+portância dos preços relativos em um contexto de comércio multilateral em que os produtores, ao se
+defrontarem com uma variação cambial na taxa bilateral, levam em conta também o comportamento
+dos preços dos demais competidores externos naquele mercado, de forma que os repasses cambiais se
+tornam dependentes entre os paı́ses que competem em um mesmo mercado.
+    Tendo em vista os argumentos teóricos revisitados, é possı́vel perceber que a taxa de câmbio
+afeta das mais diversas maneiras os preços dos produtos internamente. Primeiramente, caso os bens
+não-comercializáveis utilizem insumos importados, a variação cambial afetará o produtor de bens
+comercializáveis por meio dos custos de distribuição. O consumidor final será afetado diretamente
+através da parcela da cesta de consumo que é composta por esses bens e, indiretamente, pelo já
+citado aumento no custo de distribuição que impacta sobre o preço dos comercializáveis.
+    Para os preços de comercializáveis e importados o câmbio afeta primeiramente por meio da parcela
+de insumos medidos em moeda estrangeira para a produção de cada produtor e, indiretamente,
+também se observa o efeito causado pela variação no custo de distribuição. Há outro efeito indireto
+causado pela mudança nos preços relativos. Tanto o produtor interno, como o produtor externo,
+observam o preço praticado pelo seu concorrente antes de decidir seu próprio mark-up. Isso acontece
+dado o grau de substituição que existe entre os bens comercializáveis produzidos internamente e os
+importados. Esse último efeito é mais um dos motivos pelo qual o repasse cambial de produtos
+importados não é completo.
+
+
+4     Metodologia
+    A partir da proposta de Sims (1980) acerca da utilização de vetores autorregressivos como alter-
+nativa para a pesquisa empı́rica em macroeconomia tal classe de modelos passou a ser amplamente
+utilizada devido à possibilidade de se analisar o comportamento de flutuação de variáveis inter-
+relacionadas e a dinâmica de resposta a choques considerando a endogeneidade entre as variáveis
+presentes no sistema. Em sua forma estrutural tem-se que:
+                                                     p
+                                                     X
+                                     Axt = B0 Dt +         Bi xt−i + ut                              (12)
+                                                     i=1
+
+
+                                                    7
+   Em que xt é um vetor (N x 1) das variáveis endógenas, xt−i vetores de defasagens destas variáveis,
+para i = 1, ..., p, B0 Dt um vetor (N x 1) de termos determinı́sticos, sendo Dt é um termo d x 1 de d
+termos determinı́sticos e B0 é uma matriz (N x N) irrestrita, Bi são matrizes (N x N) de coeficientes
+para as i defasagens das variáveis endógenas. A matriz A tem rank completo e sua diagonal principal
+composta por 1´s e ut é o vetor (Nx1) dos termos de erros estruturas com ut ∼ i.i.N (0, Σ), com
+a matriz de variância-covariância Σ semi-definida positiva e diagonal. O VAR(p) em sua forma
+reduzida é tal que:
+                                                 p
+                                                 X
+                                         xt =          Πi xt−i + ΦDt + t                                    (13)
+                                                 i=1
+                 −1            −1
+   Com t = A ut , Φ = A B0 e Πi = A−1 Bi para i = 1, ..., p. Isso pode ser reparametrizado de
+forma a gerar o vetor de correção de erros de forma que:
+                                                                  p−1
+                                                                  X
+                                    ∆xt = ΦDt + Πxt−1 +                 Γj ∆xt−j + t                        (14)
+                                                                  j=1
+                   Pp                           Pp−1
+    Em que Π = i=1 Πi − Ip e Γi = − j=i+1 Πj . Suponha que xt seja um processo I(1) e que Π
+                                                                                                       0
+tenha rank r, tal que 0 < r < N , assim a matriz Π pode ser reparametrizada de forma que Π = αβ
+em que tanto α como β são matrizes N x r, sendo α os coeficientes de ajustamento e β representando
+os r vetores de cointegração. O sistema pode ser de acordo reescrito na forma vetor de médias móveis
+(VMA) tal que:
+                                        t
+                                        X
+                               xt = C         (ΦDi + i ) + C(L)(ΦDt + t ) + C0                             (15)
+                                        i=1
+                                                                                 0      0        0
+    A matriz de impacto de longo     prazo é dada por C = β⊥ (α⊥ Γβ⊥ )−1 α⊥ = β ⊥ α⊥ , com β ⊥ =
+     0                              p−1
+β⊥ (α⊥ Γβ⊥ )−1 . A matriz Γ = I − i=1 Γi e β⊥ e α⊥ são, respectivamente, os complementos ortogonais
+                                 P
+                                                                                         0
+de β e α.7 C(L) é um processo convergente e C0 dependente dos valores iniciais, com β C0 = 0.
+    Os movimentos de longo-prazo das séries do sistema são descritos pelo vetor de dimensão (N − r)
+de tendências estocásticas comuns (CTt ) dado por
+                                                                  t
+                                                              0
+                                                                  X
+                                                 CTt ≡ α⊥               i                                   (16)
+                                                                  i=1
+
+    A tendência estocástica Ct ti=1 i , é decomposta em CTt , e na matriz de ”loadings”dada por
+                                 P
+             0
+β ⊥ = β⊥ (α⊥ Γβ⊥ )−1 . O primeiro termo, como já dito anteriormente, representa as tendências es-
+tocásticas comuns do sistema e o segundo descreve como cada uma das (N − r) tendências afetam
+individualmente cada variável do sistema.
+    Enquanto os parâmetros são irrestritos, o sistema de equações em (16) é não identificado, sendo
+que a identificação dos choques estruturais no modelo VMA segue algumas hipóteses básicas. Os N
+choques estruturais são distintos em (N -r) choques permanentes (associados à tendências estocásticas
+comuns) e r choques transitórios. Sendo C = CB, com B = A−1 , um choque transitório é definido
+como uma coluna de zeros na matriz C, enquanto que um choque permanente é definido como uma
+coluna de não zeros em C. Assim, os r choques transitórios do sistema se traduzirão em colunas
+                                               0
+de zero na matriz de longo-prazo C = β ⊥ α⊥ B gerando r(N - r) restrições dadas pela estrutura de
+cointegração do modelo como define Lütkepohl (2007). Dada a necessidade de 12 N (N − 1) restrições
+para identificar o sistema, restam 21 N (N −1)−r(N −r) restrições. Deste total, r(r−1) são necessárias
+   7
+    Um vetor ortogonal é definido tal que o produto interno de um vetor qualquer v e de seu complemento ortogonal
+v⊥ seja zero.
+
+
+
+                                                          8
+para identificar os choques transitórios e (N −r)(N
+                                                   2
+                                                     −r−1)
+                                                           para identificar os choques permanentes. Como
+os choques transitórios correspondem a uma coluna de zeros na matriz C, tem-se que um mı́nimo de
+r(r-1) restrições são impostas diretamente na matriz B 8 .
+     De acordo com Vlaar et al. (1999) um modelo de vetor de correção de erros estruturais pode
+ser considerado um processo de duas etapas. Na primeira as relações de longo-prazo dos dados são
+determinadas pela análise de cointegração tradicional, enquanto que no segundo passo, os resı́duos da
+primeira etapa do modelo em forma reduzida, são separados em choques estruturais não correlacio-
+nados de forma a separar os efeitos de cada choque presente no sistema. O problema de identificação
+envolve impor restrições baseadas na teoria econômica na matriz de efeitos contemporâneos ou na
+matriz de impacto de longo-prazo do sistema. Os efeitos dinâmicos de tais choques estruturais então
+são mostrados a partir das funções impulso-resposta.
+     De acordo com a literatura de tendências comuns (King et al. (1991), Warne (1993)), o espaço
+gerado pelas inovações estruturais é separado em um espaço de dimensão N - r correspondente às
+tendências comuns e um espaço de dimensão r correspondente ao espaço de cointegração. Assim
+as tendências comuns têm efeito permanente em pelo menos uma variável, enquanto que o impacto
+dos choques transitórios desaparece no tempo, ou seja, essa separação ocorre ao impor restrições de
+zero em r colunas de C. Como o rank de C é N - r, essa separação implica r(N - r) restrições
+independentes. A identificação dos choques permanentes e transitórios pode ser obtida ao impor
+uma ordenação recursiva dentro do espaço de tendências comuns e cointegração respectivamente ou
+por uma identificação não-recursiva.
+     Acerca da separação dos choques estruturais em permanentes e transitórios, a literatura empı́rica
+de modelos VCEE aborda um procedimento uniforme para a identificação dos choques estruturais,
+ver por exemplo Vlaar et al. (1999), Coenen e Vega (2001) e Møller (2008). Primeiramente se rotula
+os choques estruturais e os identifica de forma a relacionar tais choques com as variáveis do sistema,
+então se divide os choques em permanentes e transitórios de forma a gerar r colunas de zero na
+matriz C com base na teoria econômica.
+     Para a identificação dos choques permanentes utilizaremos testes de exoegenidade fraca para au-
+xiliar a identificação. Uma variável fracamente exógena influencia o comportamento de longo-prazo
+de outras variáveis do sistema, enquanto que ao mesmo tempo não é influenciada pelas mesmas.
+Assim para uma variável fracamente exógena sua linha correspondente no vetor P          α é igual a zero.
+Fraca exogeneidade implica que os resı́duos acumulados de determinada variável, ti=1 j,i , se com-
+portam como uma tendência estocástica comum do sistema, sendo identificada como um dos choques
+permanentes do sistema.
+     O segundo passo é, a partir da teoria econômica, impor as restrições restantes de forma a iden-
+tificar o sistema e choques estruturais. Por exemplo, uma restrição de zero no elemento C 12 indica
+que o choque correspondente à segunda coluna do sistema tem impacto nulo no longo-prazo para a
+variável representada na primeira linha. Já a mesma restrição zero, mas em B12 indica que o choque
+correspondente à segunda coluna do sistema tem impacto nulo apenas no perı́odo contemporâneo,
+possibilitando assim que a variável reaja a tal choque com a defasagem de um perı́odo.
+     A partir da identificação dos choques estruturais, ut , tem-se que dado C = CB e que C(L) é um
+processo convergente, tem-se que a função impulso-resposta é definida por:
+
+                              δE(xt+h |xt )   δE(xt+h |xt )
+                                            =               = C + C(L)B → C                                    (17)
+                                 δxt             δut
+   Assim, no longo-prazo a resposta a um choque é dada exclusivamente por C dado que C(L) é um
+processo convergente que tenderá a zero.
+   8
+   Choques transitórios tem como caracterı́stica ter efeito nulo sob todas as variáveis do sistema no longo-prazo,
+enquanto que choques permanentes devem afetar ao menos uma variável no longo-prazo
+
+
+
+
+                                                         9
+5     Análise Descritiva
+    A presente seção apresenta a análise das cinco variáveis que serão utilizadas nas estimações de
+modelos no presente trabalho. A taxa nominal de câmbio do Real em relação ao Dólar (R$/US$)
+média para o trimestre é denotada por et , o Índice de Preços de Importação produzido pela Fundação
+Centro de Estudos do Comércio Exterior em dólar é representado por Pt (f ), o ı́ndice preço de
+produtos comercializáveis produzidos internamente representado pelo Índice de Preços no Atacado
+calculado pela Fundação Getúlio Vargas que registra variações de preços de produtos agropecuários
+e industriais nas transações interempresariais, denotado por Pt (h). Pt representará os preços aos
+consumidores, e será representado aqui pelo Índice de Preços ao Consumidor Amplo (IPCA) calculado
+pelo Instituto Brasileiro de Geografia e Estatı́stica. Zt (f ) corresponde à cotação média do petróleo em
+dólares e representará choques de oferta externos em nosso modelo. Os dados utilizados apresentam
+frequência trimestral, englobando o perı́odo que se inicia no primeiro trimestre de 2003 e se encerra no
+primeiro trimestre de 2019, totalizando assim 58 observações. As variáveis foram redimensionadas
+sob a mesma base de forma a poder comparar suas trajetórias ao longo do tempo como se pode
+observar na Figura 1.
+
+
+                          6.0
+
+
+                          5.6
+
+
+                          5.2
+
+
+                          4.8
+
+
+                          4.4
+
+
+                          4.0
+
+
+                          3.6
+                                03   04   05   06   07   08   09   10   11   12    13   14     15   16   17   18 19
+
+                                                         ln P(h)         ln e           ln P
+                                                         ln P(f)         ln Z(f)
+
+
+
+
+                                Figura 1: Evolução das variáveis analisadas
+
+    Sobre o comportamento das séries ao longo do tempo, nota-se que a taxa de câmbio nominal
+apresenta dois perı́odos de comportamento bens distintos. De 2003 a meados de 2011, com exceção
+feita ao perı́odo da crise internacional de 2008, há movimentos de apreciação da moeda doméstica
+frente ao dólar. Após esse perı́odo há uma reversão de tendência, com destaque de 2014 para frente
+em que se observa uma grande depreciação, sendo que tal variável assume seu maior valor no primeiro
+trimestre de 2016. Em relação às variáveis correspondente a ı́ndices de preço, lnP e lnP (h) crescem
+constantemente ao longo do tempo de forma a indicar não estacionariedade de tais variáveis. Além
+disso, as duas variáveis se movem de maneira muito próxima durante toda a amostra indicando uma
+possı́vel relação de longo-prazo. Após 2014, quando se inicia o perı́odo recessivo, lnP (f ) começa a
+cair simultaneamente à depreciação cambial e a uma queda em lnZ(f ). De fato, lnP (f ), lne e lnZ(f )
+se comportam de maneira semelhante dado que são determinados, em grande parte, pela economia
+internacional. Assim é observado o espelhamento das trajetórias de lne e lnZ(f ) principalmente em
+perı́odos de depreciação cambial e queda no preço do petróleo.
+    A hipótese nula de raiz unitária das variáveis não foi rejeitada pelos testes DF-GLS e Dickey-Fuller
+
+
+
+                                                                   10
+Aumentado (ADF) com a inclusão de uma quebra estrutural endógena 9 . Sendo assim, analisamos
+as variáveis em diferença de forma a identificar possı́veis outliers. A tabela 1 apresenta a média,
+os valores máximo e mı́nimo e em que momento do tempo houve esses valores extremos para as
+variáveis em primeira diferença. Há a excepcionalidade do último perı́odo de 2008, que apresenta
+pontos de máximo para ∆lne e de mı́nimo para ∆lnP (f ) e ∆lnZ(f ). Dessa forma, será considerado
+a possibilidade de modelar outliers no modelo multivariado.
+
+                Tabela 1: Estatı́stica Descritiva para as variáveis em primeira             diferença
+           Variável Média Valor Máximo          Perı́odo      Valor Mı́nimo                   Perı́odo
+           ln P(f) 0,0067          0,0893       2o tri de 2008       -0.0897                 4o tri de 2008
+                                                 o
+             ln P    0,0139        0,0317       1 tri de 2015         0,0019                 3o tri de 2006
+                                                 o
+           ln P(h) 0,0142          0,0487       4 tri de 2015        -0,0379                 2o tri de 2017
+             ln e    0,0012        0,3118       4o tri de 2008       -0,1566                 2o tri de 2003
+                                                 o
+           ln Z(f) 0,0109          0,2908       2 tri de 2016        -0,7288                 4o tri de 2008
+
+   Com a não rejeição da hipótese de raiz unitária das séries e pela observação de comovimentos
+em diversas séries tais como lnP (h) e lnP e lnP (f ), lne e lnZ(f ) deverão ser conduzidos testes
+de cointegração, e verificada essa hipótese, identificar estruturalmente o o Vetor de Correção de
+Erros (VCE). A próxima seção apresenta estimativas do VCEE de repasse cambial aos preços de
+importação, ao atacado e ao consumidor.
+
+
+6       Resultados
+     O presente trabalho propõe estudar o repasse cambial aos preços na economia brasileira. O
+modelo é composto pelas variáveis lnPt (f ), lnPt , lnPt (h), lnet , e lnZt (f ). O primeiro passo foi
+analisar a presença de quebras no VAR em nı́vel por meio do algoritmo Autometrics, com p-valor de
+0,01% 10 . O algoritmo indicou a presença de variáveis dummy de quebra para o quarto trimestre de
+2008 e o primeiro trimestre de 2015, no qual a inclusão de tais variáveis dummy de pulso melhorou a
+especificação do modelo para lidar com a presença de outliers. O primeiro trimestre é o valor máximo
+apresentado pela variável ∆lnP conforme a tabela 1, enquanto o quarto trimestre de 2008 apresenta
+extremos para três variáveis das cinco variáveis modeladas.
+     A partir da especificação com as duas variáveis dummy de pulso é feito o teste de cointegração
+de Johansen, inclusive usando bootstrap. O teste especifica uma constante nas equações do VAR
+em diferenças e de uma constante no vetor de cointegração, de forma que as relações se mostrem
+estacionárias levando em conta a presença de uma constante diferente de zero. O teste de cointegração
+é feito em um VAR em nı́vel com duas defasagens com constante irrestrita, no qual a defasagem foi
+escolhida aquela que minimiza os critérios de informação. A tabela 2 apresenta o número de vetores
+de cointegração sob a hipótese nula, a estatı́stica do traço, o p-valor e o p-valor por bootstrap com
+cinco mil replicações. O p-valor (sem ou usando bootstrap) indica que há dois vetores de cointegração
+a 5% de significância estatı́stica. Dessa maneira, o vetor de correção de erros é estimado com duas
+relações de longo prazo.
+     A partir da definição do número de relações de cointegração o conceito de exogeneidade fraca se
+torna importante para a análise. De acordo com a definição
+                                                           Pt       de Juselius (2006), exogeneidade fraca
+da variável xj,t indica que a soma de seus resı́duos, i=1 j,i pode ser considerada uma tendência
+estocástica comum do sistema. O teste de exogeneidade fraca é definido como um teste de restrição
+    9
+   Os resultados dos testes de raiz unitária podem ser requisitado junto aos autores.
+  10
+   No caso, considerou-se quebra para cada ponto da amostra (ou seja, uma variável dummy para cada ponto da
+amostra), selecionou-se a variável dummy que melhorava os testes de especificação e era significativa estatisticamente
+com o p-valor considerado.
+
+
+                                                           11
+                           Tabela 2: Teste de cointegração de Johansen
+          o
+        N de Relações de Coint Estatı́stica do Traço P-valor P-valor usando bootstrap
+        0                                 97,04            0,000          0,003
+        1                                 54,71            0,009          0,035
+        2                                 24,56            0,183          0,208
+        3                                  7,33            0,547          0,677
+        4                                  0,98            0,322          0,448
+
+na matriz de ajustamento α. Se a variável xt não reagir às tendências estocásticas do sistema no
+longo-prazo, as velocidades de ajuste α são zero e tal variável pode ser considerada exógena fraca.
+A tabela 3 apresenta os testes LR para exogeneidade fraca, no qual testa-se a restrição conjunta
+das velocidades de ajuste da variável serem zero. Segundo o resultado apresentado na tabela 3, não
+se rejeita a hipótese nula de exogeneidade fraca para as duas relações de cointegração em um nı́vel
+de significância estatı́stica de 10% apenas para a variável preço do petróleo. Logo, lnZ(f ) não é
+afetada pelas relações de cointegração no longo-prazo de forma que seus choques estruturais possam
+ser considerados choques permanentes do sistema.
+
+                               Tabela 3: Testes de exogeneidade fraca
+                             Variável Estatı́stica do teste LR P-Valor
+                             ln P(f)             10,855          0,004
+                             ln P                23,362          0,000
+                             ln P(h)             20,832          0,000
+                             ln e                 9,086          0,011
+                             ln Z(f)              0,561          0,755
+
+
+
+                                  Tabela 4: Vetores de cointegração
+                                        β                             α
+                 ln P(f)       1,000      0,000              -0,377                -
+                                                              [0,00]
+                 ln P          0,000      1,000                  -              -0,055
+                                                                                [0,053]
+                 ln P(h)   -0,384          -0,991               0,191            0,300
+                           [0,00]          [0,00]               [0,00]           [0,00]
+                 ln e       0,297             -                    -             0,690
+                           [0,00]                                                [0,00]
+                 ln Z(f)   -0,185          0,042                  -                 -
+                           [0,00]          [0,00]
+                 Constante -3,274          -0,292                 -                -
+                           [0,00]          [0,00]
+                                                       Estatı́stica do Teste   P-valor
+                 Teste LR para restrições em α               2,039            [0,84]
+                 Teste de Wald para restrição em β           0,001            [0,98]
+                 Obs.: entre [] apresenta-se os respectivos p-valores.
+
+    A partir dos testes de exogeneidade fraca, foram estimados os vetores α e β. Também foi possı́vel
+restringir mais dois coeficientes de α para zero, de modo que o preço de importação não responde
+aos desvios da segunda relação de longo prazo e o preço ao consumidor não responde aos desvios
+da primeira relação de longo prazo. Além disso, apenas uma restrição foi possı́vel de ser feita para
+
+                                                    12
+os coeficientes do vetor β da relação de longo prazo. Restringiu-se o coeficiente da taxa de câmbio
+na segunda relação de longo prazo para zero. Ou seja, esses resultados indicam que o preço ao
+produtor é commum às duas relações de longo prazo e que o impacto da taxa de câmbio sobre os
+preços ao consumidor deve ser transmitido, no longo prazo, via relação dos preços ao consumidor
+com o preço ao produtor doméstico. Essa especificação foi estimada e é apresentada na tabela 4.11 A
+primeira relação de cointegração esperada provém da teoria exposta no Arcabouço Teórico do presente
+trabalho e relaciona os fatores determinantes para lnP (f ), no qual tem-se que P (f ) = f (Z(f ), e)
+a partir de (6). Ainda na primeira hipótese, há ainda a relação de competição entre produtos
+importados P (f ) e produtos domésticos P (h). Os sinais encontrados são os esperados pela teoria, ou
+seja, lnP (f ) reagirá negativamente a um choque cambial e positivamente a um choque em lnP (h).12
+O coeficiente de lnZ(f ) indica que quanto maior o preço do petróleo, maior tende a ser o preço dos
+produtos importados, ou seja, apresenta sinal esperado.
+    O segundo vetor de cointegração diz respeito à relação entre lnP (h) e lnP . Como é possı́vel ver por
+meio da análise gráfica o comportamento das duas variáveis ao longo do tempo é bastante próximo,
+indicando uma relação estacionária no longo-prazo. Teoricamente essa relação é justificada pelo fato
+de que os preços no atacado é a última etapa da cadeia de produção antes de chegar ao consumidor
+final, dessa maneira é razoável esperar que tais variáveis cointegrem. Outra particularidade do caso
+brasileiro é ainda o alto grau de indexação da economia, de modo que no longo prazo devemos esperar
+que as variáveis tendam a cointegrar. É possı́vel observar que o coeficiente do preço ao atacado na
+segunda relação é bastante próximo de -1. Além disso, o preço do petróleo está no segundo vetor de
+cointegração também, porém com um coeficiente bastante reduzido (-0,042).
+    Sobre o vetor de ajustamento α se observa que apenas os preços ao atacado lnP (h) reagem em
+direção ao equilı́brio para os dois vetores de cointegração nas especificações apresentadas. Além disso
+lnP não reage a primeira relação de equilı́brio. Por fim, dado os resultados dos testes de exogeneidade
+fraca, lnZ(f ) não reage a nenhuma das duas relações de cointegração, o que parece razoável para a
+hipótese de paı́s pequeno do Brasil.
+    Uma extensão aos vetores α e β é analisar β ⊥ e α⊥ . α⊥ pode ser interpretado como a combinação
+linear das variáveis endógenas do modelo que geram uma tendência estocástica comum. Por sua vez
+β ⊥ indica como as variáveis respondem às tendências comuns ao longo do tempo. Dessa maneira a
+tabela 5 apresenta as combinações lineares que formam as tendências estocásticas comuns e como
+tais combinações impactam as variáveis endógenas do sistema.
+
+                                  Tabela 5: Vetores ortogonais de cointegração
+                                                 β⊥                   α⊥
+                                ln P(f) 3,33 4,43 0,20 0,40 -0,14 0,00
+                                ln P     3,15 6,67 0,07 0,36 0,93 0,00
+                                ln P(h) 3,51 7,27 0,11 0,78 -0,28 0,00
+                                ln e     -1,83 2,35 0,10 -0,31 0,20 0,00
+                                ln Z(f) 7,80 12,60 1,03 0,00 0,00 1,00
+
+    Ao analisar as tendências estocásticas comuns geradas pelo sistema, há três tendências comuns
+que são combinações lineares das variáveis do sistema, apresentadas na tabela 5. A primeira tendência
+estocástica comum é uma combinação linear principalmente do preço ao atacado (essa variável tem
+  11
+     A restrição do coeficiente da taxa de câmbio ser zero na segunda relação de cointegração não é rejeitada pelo
+teste de Wald com p-valor de 0,98. O teste de razão de verossimilhança (LR) para as cinco restrições no vetor α não
+rejeita a hipótese nula dos coeficientes serem iguais a zero com p-valor de 0,84. Ou seja, as restrições nos vetores β e
+α consideradas são válidas a partir desses testes.
+  12
+     Testou-se a possibilidade de restringir no primeiro vetor de cointegração o coeficiente de lnP (h) ter o sinal contrário
+de lne. Essa hipótese representaria que a reação dos produtores internacionais a mudanças nos preços dos concorrentes
+ou à taxa de câmbio é a mesma, indicando que no processo de precificação esses dois componentes são levados em
+consideração com a mesma importância. Mas a hipótese nula da validade de tal restrição foi rejeitada.
+
+
+                                                              13
+o maior peso na composição da primeira tendência comum) com os preços de importação, ao consu-
+midor e a taxa de câmbio. A segunda tendência estocástica comum depende em grande parte dos
+preços ao consumidor. A terceira tendência estocástica comum é o preço do petróleo por ser uma
+variável fracamente exógena.
+    Para o processo de identificação tem-se que levar em contar a existência de, dado um vetor de
+variáveis de dimensão N com r relações de cointegração. Como no modelo r=2, deve-se identificar
+dois choques como tendo efeitos apenas transitórios. No caso de cinco variáveis, tem-se a necessidade
+de impor N (N2−1) = 10 restrições linearmente independentes de forma a identificar os choques estru-
+turais, sendo que seis de tais restrições são geradas pela definição dos dois choques transitórios do
+modelo. Na busca de rotular os choques na ordem em que aparecem dentro do sistema, tem-se um
+choque no mark-up dos importados, um choque inflacionário, um choque de custos internos, um cho-
+que cambial e um choque de custos externos, com os dois primeiros tendo efeitos apenas transitórios
+no sistema. De fato é importante a discussão acerca da identificação sobre a origem das tendências
+comuns do sistema, há o choque de custo externo que é um choque permanente do sistema pelo preço
+do petróleo ser uma variável exógena fraca.
+    Segundo, há o choque cambial que tende a apresentar segundo a teoria efeitos permanentes sobre
+as variáveis de preço. No caso de lnP (f ) tende a produzir uma redução no preço em moeda estrangeira
+de forma a se manter competitivo, afetando no entanto em moeda nacional diretamente, na forma de
+um aumento no preço de insumos importados ou bens de consumo importados, tanto lnP (h) como
+lnP . A terceira tendência estocástica comum tem como origem os choques de custos internos da
+produção. Sobre a definição dos choques de custos internos como o terceiro choque permanente do
+sistema, tem-se que mudanças na estrutura de custos internos do paı́s apresentam efeitos permanentes
+tanto diretamente sobre o preço aos consumidores, como indiretamente aos preços de importação por
+meio do processo de concorrência.
+    Com a separação entre choques permanentes e transitórios, para a exata identificação dos choques
+do sistema é necessária a utilização de mais restrições baseadas na teoria. Para identificar os choques
+permanentes definiu-se que os choques de custos internos não afetarão lnZ(f ) no longo-prazo.13 Ou
+seja, o choque na estrutura de custos internos a economia não afeta no longo prazo os custos externos
+a economia conforme hipótese de paı́s pequeno. Já para a identificação dos choques transitórios é
+necessário o uso de restrições de curto-prazo de forma que se definiu que um choque inflacionário
+não afetará os preços de importação contemporaneamente. Além das restrições já destacadas, duas
+restrições de curto-prazo adicionais serão introduzidas ao sistema de maneira a tornar as restrições
+testáveis com um teste LR de sobreidentificação. De fato, assume-se que o preço no atacado, lnP (h),
+e o preço aos consumidores, lnP , não são afetados contemporaneamente por choques cambiais. Tais
+restrições são baseadas na ideia de rigidez nominal dada a suposição de que os ajustes dos preços frente
+a choques cambiais não serão simultâneos ao choque. Assim a matriz de impactos contemporâneos
+B e a matriz de impactos de longo-prazo CB com a ordem das variáveis nas matrizes lnP (f ), lnP ,
+lnP (h), lne e lnZ(f ) são definidas tais que:
+                                                                             
+                                      ∗ 0 ∗ ∗ ∗                   0 0 ∗ ∗ ∗
+                                    ∗ ∗ ∗ 0 ∗                  0 0 ∗ ∗ ∗
+                                                                             
+                               B = ∗ ∗ ∗ 0 ∗ , CB = 
+                                                   
+                                                                 0  0  ∗  ∗   ∗
+                                                                                
+                                    ∗ ∗ ∗ ∗ ∗                  0 0 ∗ ∗ ∗
+                                      ∗ ∗ ∗ 0 ∗                   0 0 0 ∗ ∗
+   A partir das restrições especificadas, estimou-se o modelo para obter as funções de resposta ao
+impulso. As restrições em B e CB não são rejeitadas em um nı́vel de significância estatı́stica de
+10% pelo teste LR de sobreidentificação, apresentando p-valor de 0,13 com dois graus de liberdade.
+  13
+     Testou-se a possibilidade adicional de os choques de custos internos não afetarem a taxa de câmbio lne, mas isso
+foi rejeitado pelo teste LR de sobreidentificação do VCEE. Assim, não foi imposto que o choque de custo interno não
+afeta a taxa de câmbio.
+
+
+                                                          14
+Com essa estrutura, estimou-se as funções de resposta ao impulso para obter estimativas para repasse
+cambial. De forma a medir o repasse cambial, a literatura costuma considerar as respostas dos preços
+frente a um choque cambial e normalizá-las pela reação do próprio câmbio. Sendo lnpt o logaritmo
+de preço qualquer, lnet o logaritmo da taxa de câmbio e ulne,t um choque cambial ocorrido em t
+tem-se que o repasse cambial pode ser obtido tal que:
+                                                      ∂E(pt+h |pt )
+                                                         ∂ue,t
+                                        Repasse =    ∂E(lnet+h |et )
+                                                                                                    (18)
+                                                        ∂ulne,t
+
+   A estimativa de repasse especificada em (18) é a utilizada no presente trabalho para lnP (h) e
+lnP . Entretanto, como o preço dos importados lnP (f ) é especificado em dólares tem-se que uma
+pequena alteração é necessária na fórmula de cálculo de forma que:
+                                                         ∂E(pt+h |pt )
+                                                            ∂ue,t
+                                      Repasse = 1 +     ∂E(lnet+h |et )
+                                                                                                    (19)
+                                                           ∂ulne,t
+
+    Assim, caso lnP (f ) não se altere dado um choque cambial tem-se que o repasse é completo. Já
+para os preços no atacado e ao consumidor tem-se que uma resposta nula indica repasse cambial
+nulo.
+    A tabela 6 mostra as estimativas de repasse cambial em porcentagem para lnP (f ), lnP (h) e lnP
+a partir da estratégia de identificação do VCEE e com a decomposição de Cholesky. Como forma
+de comparação, estima-se a função de resposta ao impulso e o repasse cambial conforme as equações
+(18) e (19) a partir de um VCE sem impor restrição aos vetores α e β com a identificação através da
+decomposição de Cholesky. Para tal, foi selecionada a ordenação de modo que o preço do petróleo
+afeta a taxa de câmbio que impacta os preços dos bens importados. A sequência é o preço dos bens
+importados afetar o preço ao atacado que por conseqüência impacta o preço ao consumidor. Ou seja,
+a hipótese é que taxa de câmbio, preço das importações, ao atacado e ao consumidor não afetam o
+preço do petróleo e assim por diante. O ponto é analisar qual a contribuição do trabalho ao procurar
+identificar melhor os vetores α e β como através do teste de exogeneidade fraca e impor restrições
+de curto e de longo prazo para identificar os choques.
+    Primeiramente, aborda-se as estimativas de repasse cambial obtidas pelo VCEE e depois essas
+estimativas serão comparadas com as obtidas pela decomposição de Cholesky. A figura 2 apre-
+senta graficamente as estimativas pontuais de repasse cambial em porcentagem para os preços de
+importação, ao atacado e ao consumidor pelo VCEE. Para o preço dos bens importados, os resul-
+tados indicam um repasse de longo prazo estatisticamente diferente do completo pelo menos até 10
+perı́odos pela tabela 6 ou a figura 2. O repasse cambial para o preço dos importados inicialmente é
+maior, chegando a 86,4% e atinge 76,3% após 20 trimestres. Ou seja, o repasse cambial para o preço
+de importação é de 76,3% no longo prazo.
+    A estimativa de repasse cambial ao atacado no longo-prazo é 22%. Sobre a dinâmica do repasse
+estimado, tem-se que o maior impacto de variações cambiais no ı́ndice de preços no atacado ocorre
+20 trimestres após o choque.
+    Por fim, a estimativa de repasse cambial para o preço ao consumidor no longo-prazo é de 21,8%.
+A dinâmica do repasse estimado é um aumento ao longo do tempo. A estimativa de repasse cambial
+para o preço ao atacado e ao consumidor é próxima no longo prazo, mas a dinâmica não. Há um
+repasse cambial maior para o atacado em perı́odos mais curtos e depois a diferença entre o repasse
+cambial para o atacado e ao consumidor diminui. Embora a estimativa de repasse cambial ao atacado
+sempre seja superior em relação ao repasse cambial para o preço ao consumidor.
+    As estimativas de repasse cambial para os preços de importação, ao atacado e ao consumidor
+a partir da decomposição de Cholesky são apresentadas na tabela 6 e na figura 3 no apêndice.
+Primeiramente, o repasse cambial para os preços de importação é superior ao grau completo no
+
+
+                                                   15
+longo prazo com 145,8%. Ou seja, a estimativa de repasse cambial para os preços de importação
+com a decomposição de Cholesky é cerca do dobro do estimado com VCEE no longo prazo. O
+repasse cambial para o preço ao atacado pela decomposição de Cholesky é igual a 93,9% no longo
+prazo. Ou seja, a estimativa de repasse cambial ao atacado por Cholesky é cerca de 4,3 vezes mais
+que a estimativa pelo VCEE de 22% no longo prazo. No caso do repasse cambial para o preço
+ao consumidor, a estimativa de repasse cambial é de 69,7% no longo prazo pela decomposição de
+Cholesky. Assim, a estimativa de repasse cambial para o preço ao consumidor pela decomposição de
+Cholesky é cerca de 3,2 vezes mais do que a estimada pelo VCEE. De maneira geral, a estimativa de
+repasse cambial é sobreestimada através da decomposição de Cholesky, pelo menos duas vezes mais.
+
+Tabela 6: Estimativas de repasse cambial a partir da identificação por VCEE e por Cholesky em
+porcentagem
+                                    VCEE                     Cholesky
+                   Perı́odo lnP (f ) lnP (h) lnP lnP (f ) lnP (h) lnP
+                   0           86,4     0,0     0,0    101,2      101,2    2,7
+                   1           85,7     1,5     1,9     98,9       98,9    5,0
+                   2           78,8     5,0     3,1     94,2       94,2    7,3
+                   3           74,5     8,6     4,9     93,4       93,4   10,5
+                   4           72,2    11,5     6,9     95,4       95,4   13,7
+                   5           71,7    13,5     8,9     98,5       98,5   17,0
+                   6           72,2    14,8    11,0 101,5         101,5 20,1
+                   7           73,0    15,5    12,7 104,7         104,7 23,3
+                   8           73,9    16,1    14,3 107,7         107,7 26,5
+                   9           74,3    16,9    15,4 110,6         110,6 29,9
+                   10          74,6    17,6    16,3 113,7         113,7 33,3
+                   11          74,9    18,3    17,2 116,7         116,7 36,7
+                   12          75,2    19,0    18,0 119,9         119,9 40,2
+                   13          75,2    19,7    18,7 122,9         122,9 43,7
+                   14          75,5    20,0    19,4 126,1         126,1 47,3
+                   15          75,6    20,6    20,0 129,3         129,3 50,9
+                   16          75,9    20,9    20,5 132,5         132,5 54,6
+                   17          76,0    21,2    21,0 135,6         135,6 58,2
+                   18          76,2    21,5    21,2 138,9         138,9 62,0
+                   19          76,3    21,7    21,5 142,3         142,3 66,0
+                   20          76,3    22,0    21,8 145,8         145,8 69,7
+
+
+
+7     Considerações Finais
+    Esse trabalho buscou trazer uma inovação à literatura de repasse cambial por meio da estimação
+de um Vetor de Correção de Erros Estrutural, com a imposição de uma estrutura de identificação
+não recursiva, baseada em critérios estatı́sticos e em argumentos teóricos. Com isso, produzimos
+estimativas de repasse cambial para três ı́ndices de preços da economia, quais sejam: preços das
+importações, ao atacado e ao consumidor amplo. Nossos resultados são de um repasse cambial para
+os preços de importação de 76,3% no longo prazo, 22% aos preços ao atacado e 21,8% aos preços ao
+consumidor.
+    Em relação às estimativas produzidas pela literatura nacional, nossos resultados encontram parcial
+semelhança com os resultados apresentados em Guillén et al. (2006), Belaisch (2003), Nogueira et
+al. (2012). No entanto, são necessárias algumas considerações. Com relação a Guillén et al. (2006) e
+
+
+                                                    16
+                      85
+            ln P(f)
+
+                      80
+                      75
+
+
+                             0       5               10               15               20
+                      20
+            ln P(h)
+
+                      5 10
+                      0
+
+
+
+
+                             0       5               10               15               20
+                      20
+            ln P
+
+                      5 10
+                      0
+
+
+
+
+                             0       5               10               15               20
+
+
+
+                                 Figura 2: Repasse cambial com VCEE
+
+Nogueira et al. (2012) nossas estimativas guardam alguma proximidade somente com as estimativas
+de repasse no longo prazo desses autores para ao atacado. É de se destacar que nossas estimativas
+para os vetores de cointegração apresentam coeficientes muito mais plausı́veis que no caso de Guillén
+et al. (2006), sendo que os autores também não consideram o repasse cambial no longo prazo aos
+preços de importações, e para o repasse ao IPCA suas estimativas de repasse (entre 9% e 10%) são
+inferiores à nossa. Já Nogueira et al. (2012) apresentam estimativas de repasse cambial ao IPA e ao
+IPCA inferiores (18% e 6% respectivamente) . Com relação ao trabalho de Belaisch (2003) o resultado
+que mais se aproxima ao nosso é a estimativa de repasse cambial de 23% no longo prazo para o IPCA.
+Nossas estimativa de repasse cambial no longo prazo aos preços de importações é bastante próxima
+àquela produzida por Kannebley Júnior et al. (2016), que estima um repasse médio aos setores da
+indústria de transformação em 70%.
+    De modo geral, nossos resultados estão em acordo com a literatura internacional, em primeiro
+lugar, por apresentar evidências de repasse cambial que declinam ao longo da cadeia de preços.
+Também está de acordo com a literatura internacional a obtenção de estimativas superiores para o
+grau de repasse cambial quando a informação de longo prazo das variáveis é incorporada na estimação.
+Essa regularidade empı́rica corrobora nossa estimativa superior às demais evidências produzidas pela
+literatura nacional à respeito do repasse aos preços ao consumidor. Sendo consistente a estimativa
+de relação de longo prazo entre os preços ao atacado (IPA) e os preços ao consumidor (IPCA) no
+segundo vetor não deveria se esperar resultado muito distinto na estimação do grau de repasse cambial
+a ambos os ı́ndices.
+    Esse trabalho abre ainda diversas possibilidades de extensão que não foram contempladas nesse
+artigo. A primeira dela seria implementar mais testes de robustez, alterando a composição de variáveis
+endógenas no sistema, e/ou alterações na estrutura de identificação do sistema. Além disso, na
+forma presente o artigo permite o cálculo do repasse do preço do petróleo aos preços domésticos e
+de importações, o que pode ser feito futuramente.
+
+
+
+
+                                                   17
+Referências
+ALBUQUERQUE, C. R.; PORTUGAL, M. S. Pass-through from exchange rate to prices in brazil:
+an analysis using time-varying parameters for the 1980 2002 period. Revista de economı́a, Banco
+Central del Uruguay, v. 12, n. 1, p. 17–74, 2005.
+
+ASSIS, T. M. de; FONSECA, L. F. C.; FEIJÓ, C. A. d. V. C. Determinantes do repasse cambial:
+Uma resenha com foco no caso brasileiro. Revista de Economia Contemporânea, v. 23, n. 1, p. 1–31,
+2019.
+
+AUER, R. A.; SCHOENLE, R. S. Market structure and exchange rate pass-through. Journal of
+International Economics, v. 98, p. 60–77, 2016.
+
+BAILLIU, J.; BOUAKEZ, H. et al. Exchange rate pass-through in industrialized countries. Bank of
+Canada Review, Bank of Canada, v. 2004, n. Spring, p. 19–28, 2004.
+
+BEIRNE, J.; BIJSTERBOSCH, M. Exchange rate pass-through in central and eastern european eu
+member states. Journal of Policy Modeling, Elsevier, v. 33, n. 2, p. 241–254, 2011.
+
+BELAISCH, A. A. Exchange rate pass-through in Brazil. [S.l.], 2003. (IMF Working Papers,
+03/141). Disponı́vel em: hhttps://www.imf.org/en/Publications/WP/Issues/2016/12/30/
+Exchange-Rate-Pass-Through-in-Brazil-16622i.
+
+BURSTEIN, A.; GOPINATH, G. International prices and exchange rates. [S.l.], 2013.
+
+CÂMARA, F.; FEIJO, C. Industrial pricing in brazil in the 2010s: The pass-through effect.
+EconomiA, Elsevier, v. 18, n. 1, p. 60–72, 2017.
+
+CHOUDHRI, E. U.; HAKURA, D. S. Exchange rate pass-through to domestic prices: does the
+inflationary environment matter? Journal of International Money and Finance, v. 25, n. 4, p.
+614–639, 2006.
+
+COENEN, G.; VEGA, J.-L. The demand for m3 in the euro area. Journal of Applied Econometrics,
+Wiley Online Library, v. 16, n. 6, p. 727–748, 2001.
+
+CORICELLI, F.; JAZBEC, B.; MASTEN, I. Exchange rate pass-through in emu acceding countries:
+Empirical analysis and policy implications. Journal of Banking & Finance, Elsevier, v. 30, n. 5, p.
+1375–1391, 2006.
+
+CORREA, A. L. Taxa de câmbio e preços de exportação no brasil: avaliação empı́rica dos
+coeficientes de pass-through setoriais. Economia e Sociedade, v. 21, n. 1, p. 61–91, 2012.
+
+DIXIT, A. K.; STIGLITZ, J. E. Monopolistic competition and optimum product diversity. The
+American economic review, JSTOR, v. 67, n. 3, p. 297–308, 1977.
+
+DORNBUSCH, R. Exchange rates and prices. The American Economic Review, JSTOR, p. 93–106,
+1987.
+
+FARUQEE, H. Exchange rate pass-through in the euro area. IMF staff papers, Springer, v. 53, n. 1,
+p. 63–88, 2006.
+
+GHOSH, A. Exchange rate pass through, macro fundamentals and regime choice in latin america.
+Journal of Macroeconomics, Elsevier, v. 35, p. 163–171, 2013.
+
+
+
+
+                                                18
+GOLDBERG, L. S.; CAMPA, J. M. The sensitivity of the CPI to exchange rates: Distribution
+margins, imported inputs, and trade exposure. The Review of Economics and Statistics, v. 92, n. 2,
+p. 392–407, 2010.
+
+GOLDFAJN, I.; WERLANG, S. R. d. C. The pass-through from depreciation to inflation: a panel
+study. Werlang, Sergio R., The Pass-Through from Depreciation to Inflation: A Panel Study (July
+2000). Banco Central de Brasil Working Paper, n. 5, 2000.
+
+GUILLÉN, O. T. d. C. de; ARAÚJO, C. H. V. et al. O mecanismo de transmissão da taxa de
+câmbio para ı́ndices de preços: uma análise vecm para o brasil. Anais da ANPEC, 2006.
+
+Pass-through of external shocks to euro area inflation. [S.l.]: ECB working paper, 2003.
+
+JUSELIUS, K. The cointegrated VAR model: methodology and applications. [S.l.]: Oxford university
+press, 2006.
+
+KANNEBLEY JÚNIOR, S. Exchange rate pass-through: uma análise setorial para as exportações
+brasileiras.(1984-1997). Economia Aplicada, v. 4, n. 3, p. 435–463, 2000.
+
+KANNEBLEY JÚNIOR, S.; REIS, G. H. A.; TONETO JÚNIOR, R. Repasse cambial na indústria
+de transformação brasileira: uma análise para os preços de importação e ao atacado - 1999 a 2012.
+Economia e Sociedade, v. 25, n. 56, p. 25–50, 2016.
+
+KING, R. G. et al. Stochastic trends and economic fluctuations. The American Economic Review,
+American Economic Association, v. 81, n. 4, p. 819–840, 1991. ISSN 00028282. Disponı́vel em:
+hhttp://www.jstor.org/stable/2006644i.
+
+LÜTKEPOHL, H. New Introduction to Multiple Time Series Analysis. Springer Berlin
+Heidelberg, 2007. ISBN 9783540262398. Disponı́vel em: hhttps://books.google.com.br/books?id=
+muorJ6FHIiECi.
+
+MCCARTHY, J. Pass-through of exchange rates and import prices to domestic inflation in some
+industrialized economies. Eastern Economic Journal, JSTOR, v. 33, n. 4, p. 511–537, 2007.
+
+MENDONÇA, H. F. de. Metas para a taxa de câmbio, agregados monetários e inflação. Revista de
+Economia Polı́tica, v. 22, n. 1, p. 85, 2002.
+
+MØLLER, N. F. Bridging economic theory models and the cointegrated vector autoregressive
+model. Economics: the open-access, open-assessment E-Journal, v. 2, 2008.
+
+NOGUEIRA JUNIOR, R. P. Inflation environment and lower exchange rate pass-through in brazil:
+is there a relationship? Revista Brasileira de Economia, SciELO Brasil, v. 64, n. 1, p. 49–56, 2010.
+
+NOGUEIRA, V. A.; MORI, R.; MARÇAL, E. F. Transmissão da variação cambial para as taxas
+de inflação no brasil: estimação do pass-through através de modelos de vetores autoregressivos
+estruturais com correção de erros. In: Anais da ANPEC. [S.l.: s.n.], 2012.
+
+PENNINGS, S. Pass-through of competitors’ exchange rates to US import and producer prices.
+Journal of International Economics, v. 105, p. 41–56, 2017.
+
+PIMENTEL, D. M.; LUPORINI, V.; MODENESI, A. d. M. Assimetrias no repasse cambial para
+a inflação: uma análise empı́rica para o brasil (1999 a 2013). Estudos Econômicos (São Paulo),
+SciELO Brasil, v. 46, n. 2, p. 343–372, 2016.
+
+SIMS, C. A. Macroeconomics and reality. Econometrica: journal of the Econometric Society,
+JSTOR, p. 1–48, 1980.
+
+                                                  19
+TAYLOR, J. B. Low inflation, pass-through, and the pricing power of firms. European Economic
+Review, v. 44, n. 7, p. 1389–1408, 2000.
+
+TEJADA, C. A.; SILVA, A. G. d. O pass-through das variações da taxa de câmbio para os preços
+dos principais produtos exportados pelo brasil. Revista de Economia e Sociologia Rural, SciELO
+Brasil, v. 46, n. 1, p. 171–205, 2008.
+
+VLAAR, P. J.; SCHUBERTH, H. et al. Monetary transmission and controllability of money in
+Europe: a structural vector error correction approach. [S.l.]: De Nederlandsche Bank Amsterdam,
+1999.
+
+WARNE, A. A common trends model: Identification, estimation and inference. [S.l.]: IIES, 1993.
+
+YANG, J. Exchange rate pass-through in us manufacturing industries. Review of Economics and
+Statistics, MIT Press, v. 79, n. 1, p. 95–104, 1997.
+
+
+8    Apêndice
+                      140
+           ln P(f)
+
+                      120
+                      100
+
+
+
+
+                            0             5               10             15              20
+           ln P(h)
+
+                      60
+                      20
+
+
+
+
+                            0             5               10             15              20
+                      60
+                      40
+           ln P
+
+                      20
+                      0
+
+
+
+
+                            0             5               10             15              20
+
+
+
+                     Figura 3: Repasse cambial a partir da identificação do VCE por Cholesky
+
+
+
+
+                                                        20
+

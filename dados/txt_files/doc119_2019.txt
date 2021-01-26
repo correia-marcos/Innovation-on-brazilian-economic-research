@@ -1,0 +1,1127 @@
+                        Cartel Screening in the Brazilian Fuel Retail Market
+
+                     Douglas Sad Silveirab , Silvinha Vasconcelosb , Paula Bogossianc , Joaquim Netod
+                                   a Departmentof Economics, Federal University of Juiz de Fora, Brazil.
+                                   b Departmentof Economics, Federal University of Juiz de Fora, Brazil.
+                          c Department of Economic Studies, Administrative Council for Economic Defense, Brazil.
+                                   d Department of Statistics, Federal University of Juiz de Fora, Brazil.
+
+
+
+
+Abstract
+This article is aimed at contributing to the challenges and pitfalls faced by the antitrust authorities in the identification
+process of anti-competitive market behavior. We propose two econometric models to select possible cases to be
+investigated: (i) The Markov-Switching GARCH (MSGARCH) Models; (ii) The Local Gaussian Correlation (LGC)
+approach. We compare both models. Our results indicate that the LGC model, based on the correlation of the resale
+price margin and the variability of prices, may provide a biased estimation of the likelihood that a market is practicing
+cartel. The MSGARCH model, based only on the log deviation of the gasoline sale price, showed a better accuracy in
+cartel detection.
+Keywords: Cartel filter, price dynamics, fuel retail market
+JEL classification: L41 · L95 · C22 · C63
+Resumo
+Esse artigo busca contribuir com as autoridades antitruste na identificação de comportamento anticompetitivo no
+mercado de varejo de gasolina. Dois modelos econométricos são propostos: (i) Markov-Switching GARCH (MS-
+GARCH); (ii) Correlação Gaussiana Local (CGL). Comparando-se os dois modelos, há indícios de que o CGL,
+baseado na correlação da margem de preço de revenda e na variabilidade de preços, pode viesar a probabilidade de
+um mercado estar cartelizado. O modelo MS-GARCH, baseado apenas no log-desvio do preço de venda da gasolina
+no varejo, mostrou-se melhor na detecção de cartéis.
+
+Palavras-chave: Filtros de Cartel, dinâmica de preços, mercado de gasolina
+Área 8 - MICROECONOMIA, MÉTODOS QUANTITATIVOS E FINANÇAS
+
+
+
+1. Introduction
+    Frequently, gasoline markets are accused of cartel formation. Given the persistence of anti-competitive behavior
+in the industry, the best way to investigate and identify them are relevant issues. In an environment where the number
+of complaints and suspicions of cartels is increasing and, given the restriction of resources available to initiate an
+investigation, the econometric methods of screening and filtering are useful tool. As we can see in [16], these problems
+in cartel identification have led to a prominent new field of research in the last decades, but there is still no universal
+method in Economics that allows us to infer about the existence of cartel in a certain market. In this sense, the
+economic evidence is insufficient, maintaining the need for a criminal investigation. However, the econometric filters
+may reduce the authorities’ search effort by ordering the most likely candidates for the cartel.
+    One of the key variables used to chart the behaviour of cartels, capable of transmitting information about how the
+market works and its strategic decisions, is the retail price. There are several works following this literature1 . In light
+
+   ∗I am corresponding author
+     Email address: douglas.sadsilveira@gmail.com (Douglas Sad Silveira)
+     URL: silvinha.vasconcelos@ufjf.edu.br (Silvinha Vasconcelos), paula.bogossian@cade.gov.br (Paula Bogossian)
+   1 Please see the discussion shown in [2, 16, 11, 24, 22, 23].
+
+
+Preprint submitted to 47º Encontro Nacional de Economia (Anpec)                                                    June 23, 2019
+of these contributions, this paper is aimed at collaborating with the antitrust authorities in the analysis of behavioural
+patterns of cartelized markets, as well as in the task of distinguishing them from competitive behaviour.
+    In order to achieve our objective, we apply both the MSGARCH and the LGC models for screening and filtering
+markets with greater indications of cartel. As far as we are concerned, this is the first paper that empirically evaluates
+the performance of a MSGARCH model in the Brazilian gasoline retail market. Specifically, our objective is to
+analyze the market behaviour of the following cities: (i) Brasília (DF), the capital of Brazil; (ii) Goiânia (GO), a city
+in the vicinity of Brasília; (iii) Rio de Janeiro (RJ) and (iv) São Paulo (SP). We used continuous weekly price data
+provided by ANP2 between 2014 and 2017. The choice of these cities is justified by their relevance in the market. In
+addition, the city of Brasília was recently judged and condemned by CADE3 for cartel practice. Thus, we have a good
+way of evaluating the accuracy of the proposed models in identifying cartels.
+    In this regard, our research is related to cartel detection through dynamic pricing. As reported in [22, 43],
+economists widely apply this methodology in an attempt to generate patterns of collusive behaviour and, from then
+on, to formulate and validate a specific hypotheses, in order to distinguish a competitive pattern from the collusive
+one. The seminal contribution in this field of research came from [29], where the authors provide a game theoretic
+foundations for the classic kinked demand curve equilibrium and Edgeworth cycle. The analysis is based on a model
+in which firms take turns choosing prices. By using the Markov perfect equilibrium (MPE) concept, they conclude
+that a firm’s move in any period depends only on the other firm’s current price.
+    Using a Markov-switching regression model to estimate both prevalence and structural characteristics of the pric-
+ing patterns, [31] analyzes dynamic pricing in 19 Canadian cities over 574 weeks. The author finds that sticky-pricing
+(cycles) is more prevalent when there are few (many) small firms. [42] studies oligopoly firms’ dynamic pricing
+strategies in the Australian gasoline market before and after the introduction of a unique law that constrains firms to
+set price simultaneously and only once per day. The observed pricing behaviour, both before and after law implemen-
+tation, is well captured by the Edgeworth price cycle equilibrium in the Maskin and Tirole dynamic oligopoly model.
+Thus, the results highlight the importance of price commitment in tacit collusion.
+    As shown in [26], the role of price leadership in coordinating price increases in cycling gasoline retail markets in
+the U.S. The author concludes that the first price increases tend to stem from retail chains that operate a large number
+of stations. Following this approach, [12] used court documents from a gasoline cartel in Canada to characterize the
+strategies played by heterogeneous firms to collude and highlight the role of transfers based on adjustment delays
+during price changes. The cartel leaders systematically allowed the most efficient firms to move last during price-
+increase episodes in order to compensate. Furthermore, [13] use weekly station-level price data from before and after
+the cartel’s collapse to compare pricing behaviour in stations affected and unaffected by the investigation. The results
+indicate that collusion is associated with asymmetric price adjustments and high margins.
+    In contrast, following the arguments presented in [39], we use price series rather than margin4 because there is an
+ambiguity5 in the reasons behind the behaviour that sustains the cartels. For example, if the profit margin decreases,
+how can you be sure that this is not a period of punishment after some firm has cheated a cartel agreement? So, the
+decrease in the profit margin should not be seen merely as an indicator of competition, since firms may be punishing
+those who deviated. To sum up, in one hand, cartel can lead to an increase in the profit margin. On the other hand, it
+may have a punishment phase with lower profits, but this will still be an anti-competitive behaviour. We can say that
+this aspect is a limitation in the methodology of the antitrust authority if the data is restricted in a short period of time.
+    Other behavioural issues of economic agents may affect the price variance in the market under analysis. Firms
+in collusion can practice parallel price behaviour, that is, firms adjust their prices identically and simultaneously, for
+some common factor6 of knowledge between them. Such conduct would lead to a similar trajectory of prices among
+
+
+   2 National  Agency of Petroleum, Natural Gas and Bio-fuels: http://www.anp.gov.br.
+   3 The  Brazilian antitrust authority - Administrative Council for Economic Defense.
+    4 [5] propose a regime-switching model based on mean-reverting and local volatility processes to comprise the market structure of the French
+
+fuel retail market. By analyzing the volatility of prices and margins, the authors provided a better understanding of the behaviour of oligopolies. In
+this same market, [34] found evidence of tacit collusion from the margin analysis, but they emphasize that, the collusive behavior in the gasoline
+market is still an open question.
+    5 Theoretically, the stability of the cartel depends on the ability of firms to detect and punish the defectors. To implement the punishment
+
+mechanism, cartelized firms can reduce price and, consequently, profit margin. However, this behaviour of reduction of the retail price is compatible
+with that expected in a market environment in which there is an effective competition - without collusion of the firms.
+    6 Such as identical mark-ups, price levels.
+
+
+                                                                          2
+firms, resulting in a low variance7 . Related to the structural changes in the price series over time, [7, 24] argue that
+when firms have a low discount rate on future earnings, collusion equilibrium is given with equal prices.
+    Besides that, when firms exercise some market power, they can also act asymmetrically in the relation between
+product pricing and cost structure. In this way, the greater the cartel’s interference in price formation, the lower the
+price-to-cost ratio. There is an extensive literature8 dealing with the problem of asymmetry in collusive markets,
+with a reasonable consensus on the non-linearity of the relationship between price variations and cost adjustments in
+collusive markets. Another remarkable feature of collusive markets, according to [33], refers to coefficients of price
+variation, which may be relatively different in non competitive markets.
+    In order to reach our purpose and develop the discussion shown in this introduction, the remainder of this paper
+is organized as follows. Section 2 describes the methodology and the database. Section 3 brings the results of the
+empirical analysis. Section 4 shows our conclusions. Section 5 shows the appendix, in which it is possible to find
+detailed tables with information about the estimation of the models, as well as the validation of some asymptotic
+properties.
+
+
+2. Methodology
+
+    In this section, we begin with a brief description of the Brazilian fuel market and the database provided by ANP.
+Then, we introduce the methodology used to model the behavioural pattern of the gasoline sales market between
+January 2014 and December 2017 in Brasília (DF), Goiânia (GO), Rio de Janeiro (RJ) and São Paulo (SP). Next, we
+will describe the Markov-Switching Model, in line with [19, 5]. Then, we will explain the Local Gaussian Correlation
+approach, as proposed by [37].
+
+2.1. Characteristics of the Brazilian Gasoline Market
+    According to the exposed in [15], the composition of the price of gasoline in the Brazilian market went through
+many changes over the years9 . Until the middle of 1990, the Brazilian State interfered in distribution and resale of
+automotive fuels, controlling prices, margins of sale and freight. However, the price liberation process was initiated
+throughout the oil production chain. Thus, in 1996, the prices of automotive gasoline were released in the wholesale
+and retail trade units, as well as the sales margins of the resellers and distributors in the South, Southeast and Northeast
+regions. In 1997, the Petroleum Law10 was published, which created the Brazilian National Agency of Petroleum
+(ANP), whose function is to regularize the Brazilian fuel market. In addition, it allowed for a new model to enter
+into force, leaving behind the monopoly of the oil sector, hitherto exercised by Petrobras S.A, and opening up the fuel
+market in Brazil. Finally, the most recent change that is still in force today was the one that occurred in 2002. The
+main objective of the opening was to create a competitive market, avoiding cartel situations in the sector. Thus, since
+this period, gasoline imports have been released and the price has been defined by the market.
+
+2.2. The ANP Sampling of the Fuel Retail Price
+    One of the roles of the ANP is to preserve the competitiveness of the fuel sector. Thus, there are several efforts to
+defend competition and consumer welfare in the pursuit of economic efficiency. It is also the ANP that provides the
+database11 to CADE to be analyzed at the administrative level of complaints about cartel practices in the fuel retail
+market. With this set of information, it is possible to have a preliminary investigation signalling whether there is any
+cartel behaviour or not in a certain city. Therefore, the database used in this paper is the same as that used by CADE.
+    With this in mind, the development of the ANP sampling is described as follows. The price collection service, as
+stated in [32, 17], is developed through the structuring and execution of the following steps: (i) weekly collection of
+sales prices to the final consumer and the corresponding acquisition prices by the economic agents selected to integrate
+
+
+   7 We highlight the following literature: [27, 36, 35].
+   8 Pleasesee [13, 14, 30].
+  9 See www.anp.gov.br for more details.
+ 10 The law 9.478/97, which is available at http://www.planalto.gov.br/ccivil_03/leis/L9478.htm.
+ 11 The database is composed of, among other pieces of information, the evolution of fuel prices (buying and selling), the evolution of the resale
+
+margin and the coefficient of variation between prices.
+
+                                                                        3
+the sample defined by the ANP; (ii) quality control of the information; (iii) data entry into the system; (iv) creation of
+a database containing the information specified through contracts; and (v) forwarding the results to the ANP.
+     Field planning within each municipality is based on a geographical identification (plotting) of the resale points
+within the sample. The determination of the weekly collection routes in each of the municipalities is carried out
+based on the registration data of resellers to be forwarded by the ANP and the quantity defined in the sample design.
+The main objective of the distribution of the points of sale is to optimize the geographical representation of each of
+them. Considering the number of resale points in the total sample determined for each municipality and the criteria
+listed above, a random sample selection is made by the company conducting the survey to be collected weekly. In the
+selection procedures, however, we must observe the geographic coverage of the municipality as well as guarantee the
+randomness.
+
+2.3. Price Volatility with Markov-Switching GARCH Models
+    The MSGARCH parameters vary dynamically according to an unobservable variable. In this way, we can use it
+to identify changes in model behaviour. Another good property of these models, according to [28, 3], is their fast
+adaptation to the observed perturbations in unconditional volatility. Therefore, a better statistical inference process
+is possible as well as a better prediction of the variable of interest. In order to verify how well the model is able to
+capture the characteristics of the markets used in this article, a broad empirical analysis was carried out.
+    In order to better evaluate the impact of the estimation methods on the performance of the MSGARCH12 model,
+both Bayesian13 estimation techniques and the traditional maximum likelihood14 (ML) estimation will be used. In
+many situations, the Bayesian approach has been shown to be more advantageous, since the Markov Chain Monte
+Carlo (MCMC) procedure is able to explore the joint posterior distribution of the model parameters.
+
+2.4. MSGARCH Model Specification
+   Let pt denote the gasoline sales price (per liter) in the retail market at time t. Then, the price variation between t
+and t − 1, which is our variable of interest, zt , is given by
+                                                  pt − pt−1
+                                           zt =             ≈ log(pt ) − log(pt−1 ).
+                                                     pt−1
+   Thus, we assume the following conditions: E[zt ] = 0 and E[zt zt−` ] = 0 for ` , 0 and all t > 0. The Markov-
+Switching GARCH specification is given by the following expression:
+
+                                             zt |(mt = k, It−1 ) ∼ D(0, hk,t , ξk ),                                  (1)
+    In (1), we denote by It−1 the information set observed up to time t − 1, that is, It−1 ≡ {zt−i , i > 0}. The con-
+tinuous distribution D(0, hk,t , ξk ) has zero mean and time-varying variance hk,t . The vector ξk 15 assembles additional
+shape parameters. The stochastic variable, mt , which is an integer number and takes discrete values between 1, ..., K,
+characterizes the MSGARCH model. Standardized innovations are defined as
+                                                          zt iid
+                                                  λk,t ≡ p      ∼ D(0, 1, ξk ).
+                                                           hk,t
+
+2.4.1. The Dynamics of the State Variable
+    Following [5], two procedures are implemented in order to capture the dynamics of the state variable. As shown
+in [19], a first-order ergodic homogeneous Markov chain is assumed to distinguish the MSGARCH model. Depart-
+ing from a multinomial distribution and assuming the hypothesis of independent draws, we typify the mixture of
+
+
+  12 R package MSGARCH developed by [5].
+  13 See [4, 9, 10].
+  14 See [19, 28, 8].
+  15 See [6] for details.
+
+
+
+
+                                                               4
+GARCH models as [18]. The first-order Markov-chain, mt , evolves in accordance to an unobserved first-order ergodic
+homogeneous Markov chain with K × K transition probability matrix P:
+                                                 p1,1 . . . p1,K 
+                                                                        
+                                                   .      ..    ..  ,
+                                          P ≡  ..            .   . 
+                                                                       
+                                                       pK,1 · · · pK,K
+in which the term pi, j ≡ P[mt = j|mt−1 = i] corresponds to the transition probability from the state mt−1 = i to the
+state mt = j. By intuition, we see that the constraints 0 < pi, j < 1 ∀i, j ∈ {1, ..., K}, and Kj=1 pi, j = 1, ∀i ∈ {1, ..., K}
+                                                                                              P
+
+is sustained. Given the parametrization of D(·), we have E[z2t |mt = k, It−1 ] = hk,t . In other words, hk,t represents the
+variance of zt conditional on mt = k.
+     The Mixture of GARCH established by [18] introduces a specification related to the independent states. By doing
+so, the random sampling process is done independently over time, in addition to considering a Multinomial distribution
+of dimension {1, ..., K}. The term P[mt = k] = ωk is the probability vector given by ω = (ω1 , ..., ωK )T . Thus, the same
+parametric formulation of (1) with K several GARCH-type models is defined for each element of the mixture16 .
+
+2.4.2. Conditional Variance Dynamics
+    As in [19, 6], the conditional variance of the variable of interest, zt , follows a GARCH-type specification. There-
+fore, hk,t depends on the regime mt = k and corresponds to a function of the past observation, zt−1 , past variance, hk,t−1 ,
+and the Θk 17 :
+                                                 hk,t ≡ h(zt−1 , hk,t−1 , Θk ),                                          (2)
+where the term h(·) is a function dependent on the information set available at time t − 1, given by It−1 . It also defines
+the appropriate filter for conditional variance and guarantees its positivity. In the MSGARCH model proposed by
+[5], the variance is estimated recursively and its start values, that is, hk,1 (k = 1, ..., K), are assumed to be equal to the
+unconditional variance in regime k. Depending on the parameters observed in (·), we obtain different specifications
+for the variance of the error term. It is useful to reduce the model complexity.
+
+2.5. Conditional Distribution
+    The normal distribution, also known as the Gaussian or standard normal distribution, is the probability distribution
+that plots all of its values in a symmetrical fashion, and most of the results are situated around the probability’s mean.
+Values are equally likely to plot either above or below the mean. Grouping takes place at values close to the mean
+and then tails off symmetrically away from the mean. The probability density function (PDF) of the standard Normal
+distribution is given by:
+                                                           1
+                                                 fN (λ) ≡ √ e− 2 λ , λ ∈ R.
+                                                                1 2
+
+
+                                                           2π
+    The PDF of standardized Student-t distribution is given by:
+                                                          Γ( ν+1
+                                                              2 )
+                                                                                    λ2 − ν+1
+                                       f s (λ; ν) ≡ p                         1+               , λ ∈ R.
+                                                                                            2
+
+                                                        (ν − 2)πΓ( 2ν )            (ν − 2)
+where Γ(·) is the Gamma function. In order to guarantee the existence of the second order moment, the constraint
+ν > 2 is imposed. The kurtosis increases when the term ν decreases18 .
+   The PDF of the standardized generalized error distribution (GED19 ) is given by:
+                                                            1    ν
+                                                       νe− 2 |λ/φ|         Γ(1/ν) 1/2
+                                   fGED (λ; ν) ≡                     , λ ≡ 1/ν          , λ ∈ R,
+                                                   φ2 (1+1/ν) Γ(1/ν)       4 Γ(3/ν)
+where ν > 0 is the shape parameter. By considering ν = 1 (ν = 2), the Laplace (Normal) distribution is obtained. If
+ν → ∞, then the Uniform distribution is obtained.
+  16 According to what is exposed in [18, 6] the Mixture of the GARCH model contemplates the interactions between the mixture component
+
+variances.
+  17 It contains a additional regime-dependent vector of parameters.
+  18 For the Student-t distribution to be equivalent to the Normal distribution, it is necessary that ν = ∞.
+  19 For a complete specification of the PDF of the conditional distributions see [38].
+
+
+                                                                     5
+2.6. MSGARCH Model Estimation
+    The MSGARCH models can be estimated either by ML or by MCMC (Bayesian) techniques. For this, it is
+necessary to evaluate the likelihood function.. By doing so, let z ≡ (z1 , ..., zt )T be the vector of T observations and let
+ψ ≡ (Θ1 , ξ1 , ..., ΘK , ξK , P) be the vector of the model parameters. The likelihood function is:
+                                                                           T
+                                                                           Y
+                                             L(MS GARCH) (ψ|I) ≡                 f (zt |ψ, It−1 ),                          (3)
+                                                                           t=1
+
+in which f (zt |ψ, It−1 ) corresponds to the density of zt given past observations, It−1 , and the model parameters ψ. The
+conditional density of zt for the MSGARCH is given by:
+                                                           K
+                                                         K X
+                                                         X
+                                    f (zt |ψ, It−1 ) ≡              pi, j zi,t−1 fD (zt |mt = j, ψ, It−1 ),                 (4)
+                                                         i=1 j=1
+
+and the filtered probability of the state i observed in t − 1 is represented by zi,t−1 ≡ P[t−1 = i|ψ, It−1 ]. It is obtained via
+Hamilton’s filter 20 . Analogously, the conditional density of zt for the MSGARCH is:
+                                                              K
+                                                              X
+                                         f (zt |ψ, It−1 ) ≡         ω j fD (zt |mt = j, ψ, It−1 ).                          (5)
+                                                              j=1
+
+     In equations (4) and (5), for a certain ψ and It−1 , the conditional density of zt in state mt = k is defined as
+ fD (zt |mt = k, ψ, It−1 ). Through the maximization of equation (3), the ML estimator, ψ̃, is obtained. Following [3]
+for the MCMC estimation, the likelihood function is combined with a truncated prior f (ψ). In sequence, the kernel
+of the posterior distribution f (ψ|y) is generated. As the posterior is of an unknown shape, simulation techniques are
+required. For both ML and MCMC estimations, positivity and covariance-stationarity constraints of the conditional
+variance in each regime are ensured during the estimation and are stronger than those derived by [19]. Nevertheless,
+it allows for an insertion of a wider range of conditional variance specifications and distributional assumptions in our
+model. In the next subsection, we present the Local Gauss Correlation approach. The method is able to suggest the
+periods where the economic collusion agreement is more likely to have occurred.
+
+2.7. The Local Gaussian Correlation
+    In essence, cartels are unstable - since their participants, at any instant of time, may come to break the agreement,
+which reduces their lifetime. This way, the observed effect from the profit margin ratio and the resale price variability
+can occur in short-time intervals. In practice, an evaluation that considers only aggregate (or global) measure may
+despise observations of a collusive behaviour for a short period of time, since the whole series was dominated by a
+pattern of economic competition.
+    Thus, according to [1], a local correlation measure may be used to identify not only whether there are indications
+of cartelization, but also periods when the cartel may have occurred. The authors, following [37], proposed a local
+Gaussian correlation using local maximum likelihood to evaluate the Brazilian gasoline retail market. Specifically,
+they propose to consider any random variables (X1 , X2 ) with arbitrary bivariate density defined by f (X) and locally set
+in a neighborhood of x = (x1 , x2 ) following a bivariate normal distribution for each observed point so as to minimize
+the distance, in the same way as shown in [25]:
+                                   Z
+                                       Kb (υ − x){Ψ(υ, Θ(x)) − log[Ψ(υ, Θ(x))] f (x)}2 dυ                              (6)
+
+Equation (6) is the distance of Kullback-Leibler between f and Ψ(ν, Θ(x)) locally weighted. The term Kb (ν − x) =
+              1 (ν1 − x1 )]K[b2 (ν2 − x2 )] is the product of kernels with bandwidth b = (b1 , b2 ), and Ψ(ν, Θ(x)) is a
+(b1 b2 )−1 K[b−1              −1
+
+bivariate normal distribution with local density in the form:
+                                                                          "                 #
+                                                         1                        z(x)
+                              Ψ(υ, Θ(x)) =                            exp   −                 ,                      (7)
+                                             2πσ1 (x)σ2 (x) 1 − ρ(x)2         2(1 − ρ(x)2 )
+                                                           p
+
+
+  20 See   [20, 21].
+
+                                                                       6
+with:
+                                         Θ(x) = (µ1 (x), µ2 (x), σ1 (x), σ2 (x), ρ(x)), υ = (υ1 , υ2 );
+and
+                                    (υ1 − µ1 (x))2 2ρ(x)(υ1 − µ1 (x))(υ2 − µ2 (x)) (υ2 − µ2 (x))2
+                              z(x) =                −                                 +                                        (8)
+                                        σ1 (x)2                 σ1 (x)σ2 (x)               σ2 (x)2
+By maximizing the local log-likelihood function, for bivariate sample jointly independent and identically distributed
+Xi = (X1,i , X2,i ) and bandwidth b = (b1 , b2 ), as presented in [37], we have the following equation for L(LGC) (X1 , ..., Xn ; Θb (x)):
+                                          X n                                 Z
+                         L(LGC) (·) ≡ n−1
+                                               Kb (Xi − x)logΨ(Xi , Θb (x)) −    Kb (ν − x)Ψ(ν, Θ(x))dν.                       (9)
+                                               i=1
+
+    On this matter, through equation (9), for K = {1, 2}, each point observed in the sample has local average (µk (x)),
+local variance (σk (x)) and local correlation (ρ(x)). Thus, the choice of the optimum bandwidth is made by restricting
+the variance of the parameters so as to be sized by (nb31 b32 )−1 , and the square of bias is constrained by (b21 + b22 )2 . One
+of the advantages of this estimator is its flexibility in dealing with models whose correlation is nonlinear. Another
+advantage is the fact that it does not require a normal distribution of the vector Xi = (X1i , X2i ). Thus, it is possible to
+apply the local Gaussian correlation approach to detect periods where the correlation between the resale price margin
+series and the variability of fuel price in the market may be signalling the presence of collusion.
+
+3. Results
+     To generate the results shown in this section, our sample period is formed by the log deviation of weekly gasoline
+sales prices in DF, GO, RJ and SP, provided by the Brazilian National Agency of Petroleum, Natural Gas and Bio-fuels
+(ANP), from January 5, 2014 to December 24, 2017, for a total of 207 observations. The elaboration of the sample
+plan is important to guarantee that the statistical inference process is credible. As pointed out by [40], to carry out a
+statistical study by means of sampling, it is necessary to know the concept of probabilistic sampling plans, in which
+all units of the population have a nonzero probability of belonging to the sample21 , and that probability is calculable.
+
+3.1. The Best Fitted MSGARCH Model
+    From Figure (1) it is possible to make a first exploratory and descriptive analysis of the data. Note that the time
+interval selected to adjust the MSGARCH model suggests two different regimes. The first is characterized by a low
+volatility of the data. The second regime is identified as a period of greater dispersion and variability of the data. This
+suggests that conditional variance is time-varying according to a regime-switching specification.
+
+3.1.1. Brasília
+    In order to capture this effect, we exhaustively performed many estimations to fit the best GARCH model to
+describe the behaviour observed in the data. In this way, the model that identified more precisely the two regimes in
+Brasília is the one with heterogeneous regime, i.e., each regime is characterized by a different conditional volatility.
+Thus, a GARCH variance specification with a skewed22 Standardized t- Student (S .t−S tudent) distribution is assumed
+in the first regime and an ARCH variance specification with a S.t-Student distribution is assumed in the second regime.
+The model is given by the equation (10):
+                                               zt |(mt = k, It−1 ) ∼ S .t − S tudent(0, hk,t , ν, ξ),
+                                                       hk=1,t ≡ α0,1 + α1,1 z2t−1 + β1 h1,t−1 ,                                                  (10)
+                                                             hk=2,t ≡ α0,2 + α1,2 z2t−1 .
+where k ∈ 1, 2.
+
+   21 By doing so, the information obtained from the data can be generalized to the population, since the random selection guarantees its represen-
+
+tativeness and allows us to control possible sample errors. In this sense, it is necessary to choose the best sampling plan for the case studied, as
+this will have a great influence on the results obtained. However, since there is no precise description of the sample selection process adopted by
+the agency responsible for data collection, we carefully inform the reader that we are aware of the possible limitations of the statistical estimations
+made in this study.
+   22 Please see [38] for details.
+
+
+                                                                          7
+                                                                                 0.15
+
+0.10
+
+
+
+
+                                                                                 0.10
+
+
+
+
+0.05                                                                             0.05
+
+
+
+
+                                                                                 0.00
+
+
+
+
+0.00
+                                                                                −0.05
+
+
+
+
+                                                                                −0.10
+
+
+
+        2014        2015            2016            2017            2018                2014       2015           2016            2017            2018
+
+                                    year                                                                          year
+
+
+
+                               (a) (DF)                                                                     (b) (GO)
+ 0.08
+                                                                                 0.08
+
+
+
+ 0.06
+
+                                                                                 0.06
+
+
+ 0.04
+
+
+                                                                                 0.04
+
+ 0.02
+
+
+
+                                                                                 0.02
+ 0.00
+
+
+
+
+                                                                                 0.00
+−0.02
+
+
+
+
+−0.04                                                                           −0.02
+
+
+
+
+         2014        2015            2016            2017            2018               2014       2015           2016            2017            2018
+
+                                    year                                                                          year
+
+
+
+                               (c) (RJ)                                                                      (d) (SP)
+
+Figure 1: Percentage weekly log-deviation of the gasoline sales price in the cities of Brasília (a), Goiânia (b), Rio de Janeiro (c) and São Paulo (d)
+for a period ranging from January 05, 2014, to December 24, 2017, for a total of 207 observations.
+
+
+3.1.2. Goiânia
+     The best extension of the MSGARCH model to describe the market behaviour in Goiânia is represented in equation
+(11). We adjust an EGARCH model with skewed Generalized Error Distribution (SGED) for the first regime (k = 1),
+i.e., the one that suggests a collusive behaviour. The second regime (k = 2), which may indicate a competitive
+behaviour, follows an ARCH model with skewed normal distribution (SNORM):
+                                                zt |(mt = 1, It−1 ) ∼ S GED(0, hk=1,t , ν, ξ),
+                                ln(hk=1,t ) ≡ α0,1 + α1,1 (|λ1,t−1 | − E[|λ1,t−1 |]) + α2,1 zt−1 + β1 ln(h1,t−1 ),
+                                                                                                                                                (11)
+                                               zt |(mt = 2, It−1 ) ∼ S NORM(0, hk=2,t , ν, ξ),
+                                                          hk=2,t ≡ α0,2 + α1,2 z2t−1 .
+
+3.1.3. Rio de Janeiro
+    A GJR GARCH variance specification with a skewed S .t − S tudent distribution is assumed in each regime for Rio
+de Janeiro. The model may be written as:
+                                              zt |(mt = k, It−1 ) ∼ S .t − S tudent(0, hk,t , ν, ξ),
+                                                                                                                                                (12)
+                                             hk,t ≡ α0,k + (α1,k + α2,k I{zt−1 <0} )z2t−1 + βk hk,t−1 ,
+where k ∈ 1, 2.
+                                                                            8
+3.1.4. São Paulo
+    The best extension of the MSGARCH model to describe the market behaviour in São Paulo is represented in the
+equation (13). We adjust an ARCH model for the first regime (k = 1), i.e., the one that suggests a collusive behaviour.
+The second regime (k = 2) follows an EGARCH model. A skewed Generalized Error Distribution (SGED) is assumed
+in each regime:
+                                           zt |(mt = k, It−1 ) ∼ S GED(0, hk,t , ν),
+                                                   hk=1,t ≡ α0,1 + α1,1 z2t−1 .                                    (13)
+                         ln(hk=2,t ) ≡ α0,1 + α1,1 (|λ2,t−1 | − E[|λ2,t−1 |]) + α2,2 zt−1 + β2 ln(h2,t−1 ),
+where k ∈ 1, 2.
+
+3.1.5. Comparison Between ML and MCMC Estimations
+    The ML and MCMC estimations for the cities selected in this article are available in the Appendix. In Table
+(1), we summarize the information of the Transition Matrix and stable probabilities for ML and MCMC estimations.
+Estimates suggest that the volatility behaviour is not homogeneous over the two regimes. In fact, from Figures (8)
+and (9) in the Appendix, it is possible to see the heterogeneity in the conditional volatility of the two regimes. The
+persistence of volatility also shows a different behaviour between the regimes. Thus, in accordance with equations (10)
+- (13), the first regime has low unconditional volatility and low persistence of the volatility process. In a different way,
+the second regime presents high unconditional volatility and high persistence of the volatility process. In this sense,
+regime one may be perceived as a cartel behaviour, while regime two may be perceived as a competitive behaviour.
+
+                                              Transition Matrix - ML Estimation
+                                Brasília             Goiânia              Rio de Janeiro                      São Paulo
+                           t+1|k=1 t+1|k=2     t+1|k=1 t+1|k=2          t+1|k=1 t+1|k=2                       t+1|k=1 t+1|k=2
+              t|k=1        0.9181    0.0819    0.9805     0.0195        0.9705    0.0295                      0.9866    0.0134
+              t|k=2        0.0729    0.9271    0.1995     0.8005        0.7658    0.2342                      0.3915    0.6085
+                                                      Stable Probabilities
+              State 1:           0.471                0.911                   0.9629                                0.9669
+              State 2:           0.529                0.089                   0.0371                                0.0331
+                                            Transition Matrix - MCMC Estimation
+                           t+1|k=1 t+1|k=2     t+1|k=1 t+1|k=2          t+1|k=1 t+1|k=2                       t+1|k=1   t+1|k=2
+              t|k=1        0.9085    0.0915    0.8647     0.1353        0.9617    0.0383                      0.9881    0.0119
+              t|k=2        0.0978    0.9022    0.8620     0.1380        0.6203    0.3797                      0.5246    0.4754
+                                                      Stable Probabilities
+              State 1:           0.5169              0.8643                   0.9419                                0.9778
+              State 2:           0.4831              0.1357                   0.0581                                0.0222
+
+                                  Table 1: Transition Matrix and stable probabilities for ML and MCMC estimation.
+
+    As reported in [3], ML estimation may not be an easy task for MSGARCH-type models. The MCMC estimate cir-
+cumvents some potential problems of the ML method, since the exploratory analysis of the joint posterior distribution
+of the model parameters avoids the convergence to a local maximum - which is a common problem in ML approach.
+The Bayesian framework has many advantages, such as the lower cost to obtain the exact distributions of non-linear
+functions of the model parameters by simulations from the joint posterior distribution. For the Bayesian estimation of
+the MSGARCH models, the MCMC adaptive sampler proposed by [41] was applied. In other words, this method is a
+random-walk Metropolis-Hastings algorithm with coerced acceptance rate. A satisfactory performance was observed.
+The outcomes are presented in Table (1). The smoothed probabilities of being in the second regime (k = 2), given by
+P[mt = 2|IT ] for t = 1, ..., T , superimposed on the log-deviation of the gasoline sales price (top graph) is displayed in
+Figure (2). The filtered (annualized) conditional volatilities of the overall process corresponds to the bottom graph.
+    As expected, when the smoothed probability of being in a more competitive environment (regime 2) is approxi-
+mately equal to one, the filtered volatility of the process increases quite noticeably. It is also possible to observe that
+the Markov chain23 evolves persistently over time and that, at the limit, as reported in Table (1), the probabilities of
+
+  23 The   stability and stationarity test of the Markov chain is available in Figure (10) of the appendix.
+
+                                                                            9
+being in the two distinct market environments are approximately 52% and 48% in Brasília. For the gasoline market in
+Goiânia, the probability of being in the collusive or cartel market behaviour (regime 1) is about 86% and about 14%
+in the second one (competitive market behaviour). The probability of observing a cartel behaviour at time t and of this
+behaviour remaining at t + 1 is 96% and 99% for Rio de Janeiro and São Paulo, respectively.
+                                                                                                                                   Smoothed probabilities                                                                                                                                                                                                                                                                                                                                                                                                                   Smoothed probabilities
+1.0                                                                                                                                                                                                                                                                                                                                                      ●
+                                                                                                                                                                                                                                                                                                                                                                                                                 1.0                                                                                                                                                                                                                                                                                                                                                                           ●
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ●
+
+
+                                                                                         ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ●
+0.8                                                                                                                                                                                                                                                                                                                                                                                                              0.8                                                                                                                                                                                                                                                                                                                                                           ●
+                                                                                                                                                                                                                                                                                                                                                                         ●
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ●                                                                                                                                              ●                                 ●
+                                                                                                                                                                                                                                                            ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ●                                                                                                                                                                                                                               ●                             ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ●
+                                                                                                                                                                              ●
+0.6                                                                                                                                                                                                                                                                                                                                                                  ●                                           0.6                                                ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ●                                                                                                                       ●
+                                                                                                                                               ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ●                              ●                                       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ●                                                                                                                                                                                ●                                                                     ●
+                                                                                                                                                                                                                                                                                                                                                                 ●                                                                                                                                                                                                  ●                                                                                                                                                                                                  ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ● ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ●                                                ● ● ●                         ●                    ● ●        ● ●                             ●   ●
+                                                                                                                                                                                                                                                                      ●                                                                                                                  ●                                                                                                                                                                                                      ●                                    ●                                                                         ●                                                               ●                             ●
+                                                                                                                                                                                                                                                                                                                                                                                                                               ●                                                    ●                    ● ●● ● ● ●●●                                                                                            ●    ●                                                                                      ●●                      ●           ●
+                                                                                              ●                                                           ●                                                                                                                                                                                                                                                             ●●    ● ● ●                                 ●                                                    ●                                      ●                                                                                ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ● ●● ●●● ●● ●●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ●                          ●            ●       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                          ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                 ●● ●●●●●● ●●●
+                                                                                                                                                                                                                                                                                                                                                                                                                                              ●                  ● ● ●●                  ●      ●       ● ● ●●       ●● ● ●●●                           ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ●           ●       ● ●        ●● ● ● ● ●●●●●●● ●●                     ●●                                                       ●● ●●                                         ●    ●                   ●            ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ● ● ●● ●●●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ●
+                                                                                                                                                                                                                                                                                                                                                             ●                                                            ●●●                                  ●       ●                  ●                                                                                                                                    ●    ●                                                                                            ●●
+0.4                   ●
+                                                                                                                                                                                                                                                                  ●
+                                                                                                                                                                                                                                                                              ●
+                                                                                                                                                                                                                                                                                    ● ●                                     ●
+                                                                                                                                                                                                                                                                                                                                                                                     ●
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.4            ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ●                      ●       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ● ●     ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ●●                            ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ●●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ●      ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ●                                                                                   ●       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ●      ●                             ● ●
+                                                                      ●                                                                                                                                                                               ●                                                                                                                                                                                                                         ●●                                                                                                                                                     ●                                                                                     ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ●
+                                                                                                                                                                                                                                                                                                                        ●                                                                        ●● ●                                                      ●●                                                                                                                         ●                                                                   ●                                                                                                   ●            ●
+                                                                                                                                           ●                                                                                               ● ●                                             ●                                                                                                                                                                                      ●                                                                         ●
+                                                                                                                                                                                                                                       ●                                                                       ●                                                                         ●   ●                                                                                                                                                                                                              ●                                                                                                                                                                      ●
+                                                                                                                                                                                                                     ● ●                                                                                                            ●            ●                       ●                                                                                                                                                                                      ●                                                                                                                                                                        ●                             ●
+              ●                                                                                                                                                                                                                                                                                ●                   ●
+                  ●                               ●                                                                                                                                                                                                                      ●                                                               ●                                                                                                                                                                                                      ●
+         ●●●● ●●●● ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●● ●●●●●●●●●● ●● ● ●●●●●●● ●●●●●●●●●●●●●●● ● ● ●●●● ●●●●●●●● ●●●●●●●●●                                                                                             ●                                                             ●                 ●                ●                                                            ●
+             ●                                                    ●       ●                                            ● ●                                                                                     ●●   ●                             ●                                                                                     ●                                                    ●       ● ●
+                                                                                          ●●                                                                                                                  ●   ●                                                         ●                                                                        ●                                                                                                                                                                                                                              ●                                                                                                                    ●
+                                                                                                                         ●                                                                                                                                                                ●        ●●
+                                                                                                                        ●                                                                                   ●    ●    ● ●                                                             ● ●                                       ●●                                                                                                                                                                                                                  ●                                                                                                                                                                                                                                      ●
+0.2                                                                                                                                                                                                       ● ●
+                                                                                                                                                                                                           ●                                          ● ●
+                                                                                                                                                                                                                                                                    ●
+                                                                                                                                                                                                                                                                                                           ● ●         ●
+                                                                                                                                                                                                                                                                                                                               ●
+                                                                                                                                                                                                                                                                                                                                                                     ●
+                                                                                                                                                                                                                                                                                                                                                                             ●
+                                                                                                                                                                                                                                                                                                                                                                                     ●                           0.2                                                                                                                                                                                                                                                                                                         ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ●
+                                                                                                                                                                                                                                          ●                                                                                                 ●●
+                                                                                                                                                                                                ●                                             ●                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ●
+                                                                                                                                                                                                                                                                                                           ●                                             ●       ●               ●
+                                                                                                                                                                                                                                                                ●                                                                                                            ●
+
+
+                                                                                                                                                                                                                                                                                                                                                 ●
+0.0                                                                                                                                                                                                                                                       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.0                                                                                                                                                      ●
+
+
+
+
+       2014                                                                   2015                                                                         2016                                                                                                                   2017                                                                                                                2018             2014                                                                                 2015                                                                                    2016                                                                                                     2017                                                                                                  2018
+                                                                                                                                                       Volatility (%)                                                                                                                                                                                                                                                                                                                                                                                                                           Volatility (%)
+
+  5                                                                                                                                                                                                                                                                                                                                                                                                              40
+
+
+
+  4
+                                                                                                                                                                                                                                                                                                                                                                                                                 30
+
+
+  3
+                                                                                                                                                                                                                                                                                                                                                                                                                 20
+
+  2
+
+                                                                                                                                                                                                                                                                                                                                                                                                                 10
+  1
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                  0
+  0
+       2014                                                                   2015                                                                                    2016                                                                                                        2017                                                                                                                2018             2014                                                                                 2015                                                                                               2016                                                                                          2017                                                                                                  2018
+
+
+                                                                                                                                       (a) (DF)                                                                                                                                                                                                                                                                                                                                                                                                                               (b) (GO)
+                                                                                                                                   Smoothed probabilities                                                                                                                                                                                                                                                                                                                                                                                                                   Smoothed probabilities
+1.0                                                                                                                                                                                                                                                                                                                                                          ●                                                   1.0                                                                                                                                                                                                                                                                                                                                                       ●
+
+
+
+                                                                                          ●
+
+
+
+
+0.8                                                                                                                                                                                                                                               ●
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.8
+                                                                                                                                                                                                                                                              ●                                                                                                                                                                                                                                                          ●
+
+
+
+                                                                                                                                                                                            ●
+
+                                                                                                                                                                                                                                                                                                                                                                                             ●
+0.6                                                                       ●
+                                                                                                                                                  ●
+                                                                                                                                                           ●
+                                                                                                                                                                                                                                                                                          ●                        ●
+                                                                                                                                                                                                                                                                                                                                                                                          ●           ●
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.6                                                                                                                                                                                                                                                                                                                                                                                         ●
+                                                                                                                                                                                                                                                                                  ●
+                                                                                                                                                                                                                                                                                                                                                                     ●                   ●
+                                                                  ●                                                                            ●                                        ●                                          ●                                                                                                                                     ●                                                                                                                                                                                                                ●                                                                                                              ●                                                                                             ●
+                                                          ●                                                                                                                   ●                                ●                                                             ●                                                           ●                                                                                           ●
+                                 ●                                                                ●                                                ●                                                                                                  ●                                                                              ●                                                                                                                                                                                                                                                                                                                                                           ●                                                                                             ●
+                                       ●                                                                  ●                                                           ●                                                        ●                                                                                                                     ●       ●                                                                                                                                                                                                                                                                                                               ●                                                                                                                                     ●
+                ●                                                                             ●                        ●          ●                                                                   ●                ●               ●                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ●
+                    ●     ●                                                          ●                                                     ●                      ●                ●                                                                                ●●                         ●                                                                                 ● ●                 ●                                                                                                                                                                                      ●     ●●
+                                                                                                                              ●       ●                   ●            ●                                                                                                                                                                                                                                                                                                                                                                                                                                ●                                                                                                                                                                  ●
+                                                                                                                 ●                                                                ● ●                                      ●                                                                                                                                                 ●                                              ●                                                                                                                                                                                                        ●                                               ●
+          ●                                   ●    ● ●                    ●
+                                                                                                  ●                                                           ●                                            ●                                  ●                                       ●●                       ●        ●
+                                                                                                                                                                                                                                                                                                                                ●                                                                                                                                                                                                                                                       ●
+                                                            ●                   ●●                                                            ●                                                     ● ●                                                                                            ●                                                                                                                                                                                                                                                                                                                                                                                                                                                  ●
+0.4      ●    ● ● ●
+                      ● ●
+                       ● ●    ●
+                               ●     ●●    ●
+                                            ●
+                                                  ●
+                                                    ●
+                                                      ●      ●
+                                                                 ●
+                                                                  ●   ●       ●●●   ●●
+                                                                                         ● ●
+                                                                                          ●
+                                                                                              ●
+                                                                                                      ● ●●    ●      ●●
+                                                                                                                           ● ●         ●
+                                                                                                                                                      ●
+                                                                                                                                                                   ●
+                                                                                                                                                                           ●
+                                                                                                                                                                                                     ●
+                                                                                                                                                                                                                   ●
+                                                                                                                                                                                                                                                       ●
+                                                                                                                                                                                                                                                        ●
+                                                                                                                                                                                                                                                                        ●
+                                                                                                                                                                                                                                                                                                       ●●
+                                                                                                                                                                                                                                                                                                                            ● ●
+                                                                                                                                                                                                                                                                                                                                                                 ●                                       ●       0.4                                                                        ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ●       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ●                      ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ●              ●                                            ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ●           ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ●
+             ● ● ●                                                                           ●
+                                                                                                      ●
+                                                                                                                  ●●          ●●                                                              ●
+                                                                                                                                                                                                          ●       ●                        ● ●                                                                                               ●                           ● ● ●                    ●                                                ●   ●           ●                                                                                                    ●             ●                        ●                 ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ●                                               ●                                                     ●
+                                                ●       ●                                                                                                                                                                 ●                                                          ●         ●                           ●                  ●                                                                                                                                                     ●                        ●                                              ●                                      ● ●                           ●                                                                                                                                 ●                       ●
+                             ●                                                                                                                         ●                                                                                                                                                                                                                             ●●                                                                                 ●           ●                                                                                                                                                                                            ●                                   ●                                             ●
+                                                                                                                                   ●                                                                                                                                                                               ●●                                    ●                                                                                                     ●                                                                                                                                ●                          ●                                                                         ●                                                                              ●
+                                                    ●                                                                     ●                                               ●               ●                           ●       ●                                                                                                         ●                                                                                                ● ●                                ●                           ●                                                                                                                                  ●                                                                                     ●
+                                          ●                                                                  ●                                                                                                                                                                                         ●                                                                                                                        ●●                                                                                  ●                    ●           ●                                                      ●                                                                                                                                                                        ●
+                                   ●                          ●       ●                                                                                                                                                                                                         ●                                                                                                                                                                                                                                                            ●                                                                                 ●                                ●                                                        ●
+                                                                                                                                                               ●                  ●                                               ●                                                                                                          ●       ●           ●                                                      ●                           ●      ●                            ●            ●                           ●
+                                                                                                                                                                                                                                                                ●                                                                                                                                                                    ●                                     ●●                               ●                                 ●                                                                       ●●                       ●       ●     ●                               ●                   ●                       ●
+                                                                                                                                                                                                ●                                                                         ●                                                                                                                      ●                                           ● ●                                ●                   ●            ●                      ●      ●●                                                                                                                        ●                                                                                                     ●           ●           ● ●       ●
+                                                                                                                                          ●                                                                                                                                                                                         ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                 ●                 ● ●●●       ●●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ●       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ●                        ● ●                              ●           ●                 ● ●      ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ●                                       ●                   ●           ●                                            ●
+                                                                                                                                                                                                                                                                                                                                                                     ●                                                                                                 ●                                 ●                                                           ●                                                                             ●        ●                                                                        ●           ●        ●
+                                                                                                                                                                                      ●                       ●                       ●                                                                                                                                                                                                                                             ●                                           ●                                                                                                  ●                                             ●                                           ●                                                                     ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ● ●●
+0.2                                                                                                                                                                                                                                                         ●
+                                                                                                                                                                                                                                                                                           ●                   ●
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.2                     ●     ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ●                               ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ●                          ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ●●                   ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ●       ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ● ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ●                       ●                                               ●                                                                                            ●                                                                   ●                                                                                                 ●
+                                                                                                                                                                                                                                                                                                                                                                                                                         ● ●                                                                                                                            ●                                                  ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ●         ●                                                                                                          ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           ●                                                                                                                                        ●                                                            ●                       ●                                                           ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ●             ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ●
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ●
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ●
+0.0                                                                                                                                                                                                                                               ●
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.0                                                                                                                                                                                                                                                                                                                                                   ●
+
+
+
+
+        2014                                                                    2015                                                                        2016                                                                                                                      2017                                                                                                               2018          2014                                                                                 2015                                                                                    2016                                                                                                     2017                                                                                                  2018
+                                                                                                                                                       Volatility (%)                                                                                                                                                                                                                                                                                                                                                                                                                           Volatility (%)
+0.55
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.6
+0.50
+
+
+0.45
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.5
+
+
+0.40
+
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.4
+0.35
+
+
+0.30                                                                                                                                                                                                                                                                                                                                                                                                             0.3
+
+
+
+0.25
+                                                                                                                                                                                                                                                                                                                                                                                                                 0.2
+
+0.20
+
+        2014                                                                        2015                                                                                  2016                                                                                                           2017                                                                                                             2018         2014                                                                                 2015                                                                                                2016                                                                                             2017                                                                                                2018
+
+
+
+                                                                                                                                          (c) (RJ)                                                                                                                                                                                                                                                                                                                                                                                                                                (d) (SP)
+
+Figure 2: Top: Estimated smoothed probabilities of the second regime, P[mt = 2|ψ̂, IT ], for t = 1, ..., T . The thin blue line depicts the log deviation
+of the gasoline sales price. Bottom: Filtered conditional volatilities.
+
+    It is important to report that the database used to generate the results shown in Figure (2a) was extracted from a
+case already analyzed and judged by CADE. In this sense, we can note that, since the first quarter of 2016, when the
+Brazilian antitrust authority condemned the practice of cartel in the gasoline retail market in Brasília, there has been
+an evident regime change which was duly captured by the Bayesian MCMC estimate.
+    In addition, when we combine the information in Table (1) with the descriptive analysis of Figure (2), we can
+understand that the Transition Matrix informs us that, if the gasoline market in Brasília is characterized as an anti-
+competitive regime at a given time instant t, the probability that it continues in that environment in t + 1 is 90.85%. In
+Goiânia, this probability is equal to 86.47%. This value, shown in the 1st row and 1st column of Transition Matrix,
+can be used as a filter for signs of cartel formation.
+                                                                                                                                                                                                                                                                                                                                                                                                             10
+    Moreover, the results of the regime transition in Goiânia, Rio de Janeiro and São Paulo can be seen in Figures (2b),
+(2c) and (2d), respectively. We observe that the model was effective in differentiating the market behaviours according
+to the volatility. Although these markets have not been evaluated and judged by CADE, our outcomes suggest strong
+evidences that it has a cartel behaviour, once the smoothed probability of being in the second regime - that configures
+a competitive market - is equal (or closer) to zero in most of the time period analyzed.
+    We observed that during the period that characterizes collusive market behaviour in Brasília, i.e., from early 2014
+to early 2016, the MSGARCH model seems to overestimate the probability of regime reversal in some brief time
+intervals, which suggests the need of a specific treatment in order to address these possible outliers and correct the
+bias of the estimators. This same procedure was applied to the other cities analyzed in this article. It is important
+to note that, as far as we are concerned, this literature is still in development and there are no studies applied to the
+Brazilian gasoline retail market debating cartel formation as shown in this article.
+
+3.2. Statistical Treatment for the Markovian-Switching Regimes
+    The purpose of the statistical treatment performed in this section is to identify precisely at what point in time there
+was a statistically significant regime change. This is therefore justified, as can be seen by the smoothed probability of
+the city of Brasilia, available in Figure (2a). Due to the presence of some possible outliers, the procedure implemented
+to ensure the robustness of the results is described as follows.
+    We apply a scale transformation to the smoothed probabilities so that the market be in a competitive environment
+(Regime 2) in each city evaluated. In this sense, a new variable, Pk=2,t , is created and defined with the purposes of
+changing its scale of values, restricted to the interval (0, 1), for a set of values in the real line, R.
+    In this way, we can assume a Normal distribution for this new variable. More precisely, we use the transformation
+wt = Φ−1 (Pk=2,t ), in which Φ−1 is the inverse of the cumulative of the standard Normal distribution. In sequence, a
+model that establishes two regimes is formulated: an initial regime that goes to time instant represented by m, for
+which wt follows a distribution N(µ1 , σ21 ) and, after the change point, m, (to be estimated by the model), wt follows a
+distribution N(µ2 , σ22 ), characterizing the second regime.
+    In order to capture the moment of change in m, a Bayesian approach is used. By doing so, we formulate a priori
+uniform discrete distribution. Thus, all the instants of time have the same a priori probability. In summary, the model
+considered establishes that:
+                                                      N(µ1 , σ21 ) for i ≤ m
+                                                    (
+                                               wt ∼
+                                                      N(µ2 , σ22 ) for i > m
+    To estimate the parameters of this model, we used Markov Chain Monte Carlo (MCMC). More specifically, we
+use the Gibbs sampler with steps from Metropolis Hastings to simulate the posterior distribution. In addition to the
+model parameters, we also simulated a posteriori samples of ∆ = µ2 − µ1 to identify how distinct (heterogeneous) the
+two regimes are and to assess whether there is actually a significant regime change.
+
+
+
+
+      (a) Changing point m (DF)                  (b) Histogram of µ2 − µ1 (DF)                   (c) Posterior distribution (DF)
+
+                             Figure 3: Statistical Treatment for the Markovian-Switching Regimes in DF.
+
+
+                                                                11
+    By Figure (3), we can have a better dimension of how the market behavior of the gasoline retail price in Brasilia
+changes over time. In Figure (3a), we might infer that, from the week of 03/20/2016 onwards, with a high probability
+(p(m) u 1), there was a regime change captured by m in the market under analysis. Thus, when comparing the
+difference between the means, µ2 − µ1 , in Figure (3b), we can notice that these are quite different.
+    This suggests, in fact, that there are two distinct market behaviors for the retail gasoline price in Brasilia. Figure
+(3c) shows the number of interactions used for the simulation of the posterior distribution. In this way, we have a
+more robust evidence that the oscillations observed before 2016 for the city of Brasilia, shown in Figure (2a), does
+not characterize a change of market behavior for Brasília.
+
+
+
+
+      (a) Changing point m (GO)                  (b) Histogram of µ2 − µ1 (GO)                   (c) Posterior distribution (GO)
+
+                            Figure 4: Statistical Treatment for the Markovian-Switching Regimes in GO.
+
+
+   By submitting the same evaluation to the city of Goiania, we see from Figure (4a) that there is a probability
+p(m) u 0.45 associated with a change of regime in the period that corresponds to the instant of time between the
+weeks of 03/21/2015 and 04/25/2015. On the other hand, on Figure (4b), we see that the difference between µ2 − µ1
+is not as expressive as that observed in Brasilia. Figure (4b), in turn, shows the interactions of the simulation process
+used to obtain the posterior distribution.
+
+
+
+
+       (a) Changing point m (RJ)                 (b) Histogram of µ2 − µ1 (RJ)                    (c) Posterior distribution (RJ)
+
+                             Figure 5: Statistical Treatment for the Markovian-Switching Regimes in RJ.
+
+
+   For Rio de Janeiro, from Figure (5a), we see a possible regime change with probability p(m) u 0.5 around week
+09/21/2014. On the other hand, when we observe the difference between the averages, µ2 − µ1 , through Figure (5b),
+we infer that, given its small size, there may not be a significant change in the gasoline retail price behavior in RJ.
+
+                                                                12
+       (a) Changing point m (SP)                    (b) Histogram of µ2 − µ1 (SP)                    (c) Posterior distribution (SP)
+
+                                Figure 6: Statistical Treatment for the Markovian-Switching Regimes in SP.
+
+
+
+    Finally, when we give the same statistical treatment to the city of São Paulo, from Figure (6a), we see that the
+probability of a change in price behavior between weeks 12/20/2014 and 01/07/2015 is given by p(m) u 0.5. However,
+with the result shown in Figure (6b), we see that µ2 − µ1 is practically unperceivable. Thus, it may not be possible to
+state that the São Paulo market showed competitive market characteristics for the period under analysis.
+
+3.3. The Local Gaussian Correlation (LGC) Outcomes
+
+
+
+
+                            (a) (DF)                                                                 (b) (GO)
+
+
+
+
+                            (c) (RJ)                                                                 (d) (SP)
+
+Figure 7: The Local Gaussian Correlation outcomes for the weekly gasoline sales price between January 2014 and December 2017. The profit
+margin is equivalent to the resale price margin.
+
+
+                                                                   13
+    The Brazilian antitrust authority uses the correlation between the resale price margin and the variability of prices
+for the fuel market as a signalling of collusive behaviour. In other words, the LGC approach suggests that local nega-
+tive correlations that are persistent for three consecutive weeks and are below -0.80 might indicate a cartel agreement
+in the gasoline sales market. Thus, for Brasília (DF), we observe some points where the local correlation is negatively
+and persistently stronger. It is situated below the red line in Figure (7a), which indicates that the local correlation is
+lower than the value of the pocket rule (-0.8). The persistence of this value corresponds to the period between July
+and November of 2016, and between June and November of 2017. Figure (7b) presents the LGC results for Goiânia
+(GO). We note some points below the red line in May of 2017.
+    Considering the results of the LGC approach for Rio de Janeiro, it is possible to note in Figure (7c) that in April
+2017 the local correlation is negative and less than -0.8, suggesting a cartel behaviour. For São Paulo, although some
+time interval in which the local correlation is lower than -0.8 has been observed, it does not show persistence during
+the evaluated period. Therefore, for the city of São Paulo, as shown in Figure (7d) the result of the LGC approach
+does not reject the condition that the gasoline retail market has competitive characteristics.
+
+4. Conclusion
+
+     This paper analyzed the behaviour of the gasoline sales market in the cities of Brasília, Goiânia, Rio de Janeiro
+and São Paulo. The first approach was based on the Markov-Switching GARCH model. The results suggested that,
+in each market, there are evidences of cartel behaviour. The accuracy of the model is partially validated by the data
+analysis of Brasília, a city that has already been evaluated and judged by CADE due to the formation of Cartel in the
+gasoline market. In addition, the MSGARCH model indicates that all the other markets evaluated should be better
+investigated, since there is a substantial probability that it would have practiced cartel between 2014 and 2017.
+     The second approach was the Local Gaussian Correlation. The idea of adopting two models was to compare their
+fit quality to the data and to evaluate if they could be used in a complementary way. In this sense, even though the
+Local Gaussian Correlation model indicated that the gasoline retail markets in Brasilia, Goiânia and Rio de Janeiro are
+considerably more likely to have practiced cartels in the observed period, the dates in which this collusive behaviour
+would have occurred did not match with the MS GARCH analysis.
+     In other words, for the Brasília gasoline retail market, the LGC model indicates cartel formation from July to
+November 2016 and from June to November 2017. However, during this time, CADE had already judged and con-
+demned the collusive practice in the gasoline market. Another result that affects the accuracy of this model is the fact
+that it did not identify the cartel period along the years 2014 and 2015, where the weekly price volatility was quite low.
+Through the MS-GARCH models, it was possible to infer that the gasoline retail market in Goiânia, Rio de Janeiro
+and São Paulo showed a behaviour that was persistently cartelized. On the other hand, by the LGC approach, the
+same collusive behaviour was identified sporadically in Goiânia and Rio de Janeiro. The most striking result - and the
+one that most prevents the dialogue between the applied methodologies - was the one observed for São Paulo, given
+that, according to the methodology used by CADE, the gasoline retail market fits the characteristics of a competitive
+economic environment.
+     Finally, through this article, we hope to have emphasized the relevance of the analysis on price variation, which is
+a strategic variable of the firms with regard to the decisions on whether to adhere to a collusive agreement or not. In
+addition, it is important to recognize the limitation of the MSGARCH model with regard to the treatment of possible
+outliers. Another issue that may limit the validity of our results is the quality of the sample available. Thus, for future
+research, it may be useful to design a sample plan that guarantees the consistency of the estimators and also a way to
+treat the outliers departing from a MCMC approach.
+
+References
+ [1] P. H. Albuquerquea and S. M. Cuiabanob. Two stage screening for cartel detection. 2015.
+ [2] P. Andreoli-Versbach and J.-U. Franck. Endogenous price commitment, sticky and leadership pricing: Evidence from the italian petrol
+     market. International Journal of Industrial Organization, 40:32–48, 2015.
+ [3] D. Ardia. Financial risk management with bayesian estimation of GARCH models. Lecture notes in economics and mathematical systems,
+     2008.
+ [4] D. Ardia. Bayesian estimation of a Markov-Switching threshold asymmetric GARCH model with student-t innovations. The Econometrics
+     Journal, 12(1):105–126, 2009.
+
+                                                                  14
+ [5] D. Ardia, K. Bluteau, K. Boudt, L. Catania, and D.-A. Trottier. Markov-Switching GARCH models in R: The MSGARCH package. Journal
+     of Statistical Software, Forthcoming, 2016.
+ [6] D. Ardia, K. Bluteau, K. Boudt, and L. Catania. Forecasting risk with Markov-Switching GARCH Models: A large-scale performance study.
+     International Journal of Forecasting, Forthcoming, 2018.
+ [7] S. Athey, K. Bagwell, and C. Sanchirico. Collusion and price rigidity. The Review of Economic Studies, 71(2):317–349, 2004.
+ [8] M. Augustyniak. Maximum likelihood estimation of the markov-switching GARCH model. Computational Statistics & Data Analysis, 76:
+     61–75, 2014.
+ [9] L. Bauwens, A. Preminger, and J. V. Rombouts. Theory and inference for a markov switching GARCH model. The Econometrics Journal,
+     13(2):218–244, 2010.
+[10] L. Bauwens, A. Dufays, and J. V. Rombouts. Marginal likelihood for markov-switching and change-point GARCH models. Journal of
+     Econometrics, 178:508–522, 2014.
+[11] H. H. Chouinard and J. M. Perloff. Gasoline price differences: Taxes, pollution regulations, mergers, market power, and market conditions.
+     The BE Journal of Economic Analysis & Policy, 7(1), 2007.
+[12] R. Clark and J.-F. Houde. Collusion with asymmetric retailers: Evidence from a gasoline price-fixing case. American Economic Journal:
+     Microeconomics, 5(3):97–123, 2013.
+[13] R. Clark and J.-F. Houde. The effect of explicit communication on pricing: Evidence from the collapse of a gasoline cartel. The Journal of
+     Industrial Economics, 62(2):191–228, 2014.
+[14] A. S. Da Silva, C. R. F. Vasconcelos, S. P. Vasconcelos, and R. S. de Mattos. Symmetric transmission of prices in the retail gasoline market
+     in brazil. Energy Economics, 43:11–21, 2014.
+[15] C.-C. A. de Defesa Econômica. Defesa da concorrência no brasil 50 anos, 2014.
+[16] M. J. Doane, L. M. Froeb, D. S. Sibley, and B. P. Pinto. Screening for collusion as a problem of inference. Oxford Handbook of International
+     Antitrust Economics, 2:523–553, 2015.
+[17] T. A. d. Freitas and G. Balbinotto Neto. Análise cross-section da dispersão dos preços para sinalização de práticas anticompetitivas no
+     mercado de combustíveis. 2011.
+[18] M. Haas, S. Mittnik, and M. S. Paolella. Mixed normal conditional heteroskedasticity. Journal of Financial Econometrics, 2(2):211–250,
+     2004.
+[19] M. Haas, S. Mittnik, and M. S. Paolella. A new approach to markov-switching GARCH models. Journal of Financial Econometrics, 2(4):
+     493–530, 2004.
+[20] J. D. Hamilton. A new approach to the economic analysis of nonstationary time series and the business cycle. Econometrica: Journal of the
+     Econometric Society, pages 357–384, 1989.
+[21] J. D. Hamilton. Time series analysis, volume 2. Princeton university press Princeton, 1994.
+[22] J. E. Harrington. Detecting cartels. Technical report, Working Papers, The Johns Hopkins University, Department of Economics, 2005.
+[23] J. E. Harrington. Optimal cartel pricing in the presence of an antitrust authority. International Economic Review, 46(1):145–169, 2005.
+[24] J. E. Harrington Jr and J. Chen. Cartel pricing dynamics with cost variability and endogenous buyer detection. International Journal of
+     Industrial Organization, 24(6):1185–1212, 2006.
+[25] N. L. Hjort and M. Jones. Locally parametric nonparametric density estimation. The Annals of Statistics, pages 1619–1647, 1996.
+[26] M. S. Lewis. Price leadership and coordination in retail gasoline markets with price cycles. International Journal of Industrial Organization,
+     30(4):342–351, 2012.
+[27] W. B. MacLeod. A theory of conscious parallelism. European Economic Review, 27(1):25–44, 1985.
+[28] J. Marcucci. Forecasting stock market volatility with regime-switching GARCH models. Studies in Nonlinear Dynamics & Econometrics, 9
+     (4), 2005.
+[29] E. Maskin and J. Tirole. A theory of dynamic oligopoly, ii: Price competition, kinked demand curves, and edgeworth cycles. Econometrica:
+     Journal of the Econometric Society, pages 571–599, 1988.
+[30] J. Meyer and S. Cramon-Taubadel. Asymmetric price transmission: a survey. Journal of agricultural economics, 55(3):581–611, 2004.
+[31] M. D. Noel. Edgeworth price cycles, cost-based pricing, and sticky pricing in retail gasoline markets. The Review of Economics and Statistics,
+     89(2):324–334, 2007.
+[32] D. P. Pedra, L. M. N. de Oliveira Bicalho, O. de Araújo Vilela, P. H. Baran, R. M. de Paiva, and T. P. de Melo. Metodologia adotada pela
+     agência nacional do petróleo, gás natural e biocombustíveis para a detecção de cartéis. ANP, Rio de Janeiro, 2010.
+[33] J. Perdiguero. Symmetric or asymmetric gasoline prices? a meta-analysis approach. IREA–Working Papers, 2010, IR10/13, 2010.
+[34] S. Porcher and T. Porcher. The determinants of margins in french retail gasoline markets. Applied Economics Letters, 21(15):1050–1053,
+     2014.
+[35] J. J. Rotemberg and G. Saloner. Collusive price leadership. The Journal of Industrial Economics, pages 93–111, 1990.
+[36] R. Schmalensee. Competitive advantage and collusive optima. International Journal of Industrial Organization, 5(4):351–367, 1987.
+[37] D. Tjøstheim and K. O. Hufthammer. Local gaussian correlation: A new measure of dependence. Journal of Econometrics, 172(1):33–48,
+     2013.
+[38] D.-A. Trottier and D. Ardia. Moments of standardized fernandez–steel skewed distributions: Applications to the estimation of GARCH-type
+     models. Finance Research Letters, 18:311–316, 2016.
+[39] S. P. Vasconcelos and C. F. Vasconcelos. Análise do comportamento estratégico em preços no mercado de gasolina brasileiro: modelando
+     volatilidade. Análise Econômica, 26(50), 2008.
+[40] M. D. Vieira and C. J. Skinner. Estimating models for panel survey data under complex sampling. Journal of Official Statistics, 24(3):343,
+     2008.
+[41] M. Vihola. Robust adaptive metropolis algorithm with coerced acceptance rate. Statistics and Computing, 22(5):997–1008, 2012.
+[42] Z. Wang. (mixed) strategy in oligopoly pricing: Evidence from gasoline price cycles before and under a timing regulation. Journal of Political
+     Economy, 117(6):987–1030, 2009.
+[43] E. Zitzewitz. Forensic economics. Journal of Economic Literature, 50(3):731–69, 2012.
+
+                                                                       15
+     5. Appendix
+16
+
+
+
+
+                   Figure 8: Fitted Parameters using ML estimation.
+17
+
+
+
+
+     Figure 9: Fitted Parameters using MCMC estimation. S D:Standard Deviation; S E:Standard Error; T S S E:Time Series Standard Error; RNE:Relative Numerical Efficiency - (S E/T S S E)2 .
+18
+
+
+
+
+     Figure 10: Convergence of the Markov Chain.
+

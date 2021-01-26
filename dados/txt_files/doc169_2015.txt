@@ -1,0 +1,1139 @@
+    Impacto regional da política monetária no Brasil: uma abordagem
+
+                                                    Bayesiana
+
+
+
+                            Fábio Martins Serrano∗                Márcio Issao Nakane†
+
+
+                                                       Resumo
+
+         Este artigo tem como objetivo (i) estimar a resposta das Unidades Federativas brasileiras a um choque
+      de política monetária e, caso as mesmas respondam de forma assimétrica, (ii) compreender os determi-
+      nantes de tal heterogeneidade. Para tanto, faz-se uso de técnicas de econometria Bayesiana, assim como
+      em Francis, Owyang, e Sekhposyan (2012). Tais técnicas visam contornar o problema de dimensionalidade
+      inerente aos modelos que englobam um número elevado de variáveis, além de permitir modelar formal-
+      mente a incerteza existente na escolha do conjunto de covariadas adequado. A resposta das Unidades
+      Federativas foi estimada por meio de um VAR Bayesiano. A evidência encontrada sugere que as Unidades
+      Federativas brasileiras respondem de forma assimétrica às inovações de política monetária. As regiões
+      Sul e Sudeste apresentam as maiores contrações em resposta ao choque, enquanto a região Norte não
+      apresentou sensibilidade. Para o estudo dos determinantes das assimetrias regionais, utilizou-se o Baye-
+      sian Model Averaging. Apesar do grande grau de incerteza acerca dos determinantes da heterogeneidade
+      encontrada, Estados com maior porcentagem de empregos provenientes da indústria de transformação
+      tendem a ser mais sensíveis às variações exógenas de política monetária. O resultado encontrado aponta
+      para a relevância do canal de juros na determinação das assimetrias no nível estadual.
+         Palavras-chave: Econometria Bayesiana, Economia Regional, Política Monetária.
+
+
+
+                                                       Abstract
+
+         The purpose of this paper is to (i) estimate the impact of a monetary policy shock at the Brazilian state
+      level economies and, if they do respond asymmetrically, (ii) to investigate the causes of this heterogeneity.
+      Therefore, Bayesian econometric techniques were used, following Francis et al. (2012). These techniques
+      not only overcome the problem of dimensionality, inherent to large size models, but also provide a formal
+      framework to model the uncertainties involving the choice of the appropriate set of covariates. A Bayesian
+      VAR was estimated in order to access the regional responses. The results indicate that the Brazilian state
+      level monetary policy innovation responses are asymmetric. The greatest responses were found at the
+      South and Southeast Regions, while the North Region seems to be insensible to an interest rate shock.
+      The Bayesian Model Averaging technique was implemented to access the determinants of the state level
+      asymmetries. Despite the large degree of uncertainty about the determinants of the response heterogeneity,
+      states with greater share of manufacturing jobs tend to be more sensible to exogenous changes in monetary
+      policy. The results found points to the importance of the interest rate channel in determining Brazilian
+      state level asymmetries.
+         Keywords: Bayesian Econometrics, Regional Economics, Monetary Policy.
+         JEL codes: C11, E52, R10.
+
+
+         Área 4: Macroeconomia, Economia Monetária e Finanças
+
+
+
+
+∗
+    Mestre em Teoria Econômica, IPE-USP (fabio.serrano@usp.br)
+†
+    Professor Doutor, Departamento de Economia, FEA-USP (minakane@usp.br)
+
+                                                           1
+1        Introdução
+O interesse da literatura econômica no estudo dos efeitos regionais da política monetária é antigo1 . Contudo,
+a aplicação dos modelos VAR para esse objetivo é mais recente, e ganhou força após a criação da União
+Monetária Europeia.
+   Essa agenda de pesquisa se debruça sobre duas questões principais: (i) investigar se um choque de política
+monetária tem impactos assimétricos sobre a atividade de desagregações subnacionais e (ii) esclarecer quais
+os determinantes dessas assimetrias.
+   Diferentes características de cada economia regional levam à atuação mais preponderante de determinados
+canais de transmissão de política monetária, resultando em respostas heterogêneas. Dessa forma, uma
+compreensão completa do tema passa pelo estudo dos diferentes canais de transmissão atuantes nas economias
+regionais. Dentre os canais de transmissão de política monetária, Mishkin (1996) enfatiza, entre outros, os
+canais de juros, crédito, câmbio e custos.
+   Carlino e DeFina (1999) propõe uma abordagem empírica dividida em dois estágios, visando responder às
+duas questões de forma integrada. Os autores investigam a existência de respostas regionais assimétricas nos
+Estados Unidos e encontram evidências de que a região dos Grandes Lagos é a mais sensível a inovações de
+política monetária, enquanto que as regiões Sudoeste e das Montanhas Rochosas conguram entre as menos
+sensíveis. Os resultados encontrados indicam que o canal de juros é o principal determinante das assimetrias
+regionais presentes na economia americana.
+   Diversos autores também encontram evidência favorável à presença de respostas regionais assimétricas,
+não apenas para a economia americana, como para diversos outros países2 . Para o Brasil, Vasconcelos e
+da Fonseca (2002) concluem que os Estados de Pernambuco, São Paulo e Rio Grande do Sul, além da região
+Nordeste, são os mais sensíveis ao choque monetário. Já os resultados encontrados por Araújo (2004), a
+partir de modelos VECM, indicam que a região Sul tende a reagir mais fortemente ao choque de política
+monetária, quando comparada aos Estados do Nordeste. Estimando um VAR espacial, Bertanha e Haddad
+(2008) indicam que as regiões Norte e Nordeste são as mais sensíveis a uma inovação no instrumento de
+política do Banco Central.
+   Por meio de um Modelo de Fatores Dinâmicos Generalizado, Rocha (2007) encontra evidências de que
+os Estados da Bahia e Paraná apresentam as maiores respostas, enquanto São Paulo, Pernambuco e Minas
+Gerais seriam os menos sensíveis ao choque. Por m, Rocha, Silva, e Gomes (2011) concluem que os Estados
+da Amazônia e Pernambuco são os mais sensíveis à inovação monetária. Dentre os Estados menos sensíveis
+destacam-se Santa Catarina e Espírito Santo.
+    Apesar das evidências encontradas a favor da existência de assimetrias regionais na transmissão monetária,
+a literatura nacional avançou pouco no sentido de entender quais fatores determinam tal heterogeneidade.
+Vasconcelos e da Fonseca (2002) fazem uma análise inicial do tema a partir de estatísticas descritivas. Rocha
+et al. (2011) dão um passo importante ao analisar o tema dentro de um arcabouço quantitativo mais rigoroso.
+As evidências encontradas a favor dos canais de juros e crédito são pouco conclusivas. Por outro lado,
+características mais gerais parecem ter maior relevância na determinação da heterogeneidade encontrada.
+Estados com maior densidade demográca, maior estoque de capital humano e maior diversidade no setor
+industrial apresentam menor sensibilidade ao choque de política monetária.
+   Este estudo busca contribuir para a compreensão das diferentes reações regionais a choques de política mo-
+netária no Brasil. Como em Rocha et al. (2011), esse artigo não se limita a testar se as Unidades Federativas
+brasileiras respondem de forma diferente a uma inovação comum, mas também pretende-se esclarecer quais
+os determinantes da heterogeneidade encontrada. Para tanto, seguiremos a estratégia empírica proposta por
+Carlino e DeFina (1999), que consiste em estimar as respostas regionais ao choque monetário através de um
+modelo VAR e regredir os resultados obtidos contra variáveis proxy para os canais de transmissão.
+    Baseado em Francis et al. (2012), utilizaremos métodos Bayesianos para enfrentar problemas inerentes às
+duas etapas dessa metodologia, sendo eles (i) a questão da dimensionalidade presente nos modelos VAR e
+(ii) a falta de um procedimento formal para a escolha das covariadas incluídas no segundo estágio do estudo.
+    1
+        Ver, por exemplo, Miller (1978).
+    2
+        Uma revisão dessa literatura pode ser encontrada em Rocha (2007) e Serrano (2014).
+
+
+                                                                2
+   Modelos VAR tendem a apresentar um número elevado de parâmetros a serem estimados, e esse problema
+se acentua quando trabalhamos com desagregações regionais. Um solução encontrada na literatura consiste
+em estimar um modelo para cada região de interesse, uma estratégia nomeada por Sala (2001) de Specic-
+country. Araújo (2004) e Rocha et al. (2011), por exemplo, utilizam-se dessa classe de modelos. Contudo,
+a utilização do procedimento Specic-country pode prejudicar a interpretação de um choque de política
+monetária como sendo comum a todas as unidades regionais (Sala, 2001). A estratégia de estimar um só
+modelo contendo todas as desagregações regionais, denominada por Sala (2001) de Multi-country, aparenta
+ser mais adequada para o problema em questão.
+   Outra solução bastante adotada para o caso brasileiro consiste em utilizar apenas um número reduzido de
+Estados. Vasconcelos e da Fonseca (2002), Araújo (2004), Rocha (2007) e Rocha et al. (2011) procedem dessa
+forma. Apesar de reduzir o problema da dimensionalidade, não utilizar uma divisão exaustiva do território
+nacional pode enviesar os resultados (Bertanha e Haddad, 2008).
+   Neste artigo, o problema da dimensionalidade será contornado com a utilização de um VAR Bayesiano,
+construído com a prior proposta em Sims e Zha (1998). Dessa forma, é possível incluir todas as unidades
+espaciais brasileiras, sem abrir mão da estratégia Multi-country.
+   A incerteza acerca de quais covariadas são relevantes para a segunda etapa do estudo será modelada
+através do Bayesian Model Averaging. Essa técnica oferece um arcabouço formal para a escolha das variáveis
+explicativas relevantes para o problema em questão.
+   A evidência encontrada sugere que as Unidades Federativas brasileiras respondem de forma assimétrica às
+inovações de política monetária. As regiões Sul e Sudeste apresentam as maiores contrações em resposta ao
+choque, enquanto a região Norte não apresentou sensibilidade. Apesar do grande grau de incerteza acerca dos
+determinantes da heterogeneidade encontrada, Estados com maior porcentagem de empregos provenientes
+da indústria de transformação tendem a ser mais sensíveis às variações exógenas de política monetária. O
+resultado encontrado aponta para a relevância do canal de juros na determinação das assimetrias no nível
+estadual.
+   O restante do trabalho está organizado em duas seções, além desta introdução e das conclusões nais. A
+próxima seção aborda a questão da heterogeneidade regional. Esta seção está dividida em três subseções, que
+discutem, respectivamente, a metodologia empregada nas estimações, a base de dados utilizada e os principais
+resultados obtidos. Por m, são discutidos os determinantes das assimetrias encontradas, seguindo a mesma
+subdivisão utilizada na seção anterior.
+
+
+2       Efeito regional de política monetária
+2.1      Metodologia - SVAR Bayesiano3
+
+
+Seja p a quantidade de defasagens consideradas no modelo, T o tamanho da amostra, m o número de variáveis
+endógenas no sistema. Dena ainda k = 1 + mp. O modelo VAR estrutural (SVAR) pode ser escrito como:
+
+
+                                                 yt0 A = x0t F + ε0t                                           (1)
+onde F 0 = A01 . . . A0p C é uma matriz m × k , A e Al são matrizes de parâmetros          , C é um vetor m × 1
+                        
+                                                                              0 m×m
+de constantes, yt é um vetor m × 1 que contém m variáveis endógenas, x0t = yt−1          0 1 é um vetor 1 × k ,
+                                                                                  . . . yt−p
+εt é um vetor m × 1 de choques estruturais. Cada coluna de A e Al contém os parâmetros de uma das m
+        do sistema.
+equações              Os choques estruturais têm distribuição Normal com média zero e variância unitária,
+εt ∼ N     0 , I     .
+          m×1 m×m
+
+  Para 1 6 i 6 m, dena a i-ésima coluna de A e F como ai e fi , respectivamente. Seja Qi uma matriz
+m × m de posto qi e Ri uma matriz k × k de posto ri . As restrições consideradas pela literatura em questão
+podem ser resumidas como4
+    3
+     Seguiremos a notação de Waggoner e Zha (2003). Outras referências podem ser encontradas em Sims e Zha (1998) e
+Del Negro e Schorfheide (2011). Para um resumo sobre os modelos BVAR, ver Serrano (2014).
+   4
+     As restrições consideradas aqui não englobam restrições entre equações para o modelo estrutural.
+
+                                                         3
+                                               Qi ai = 0           i = 1, . . . , m.                                       (2)
+                                               Ri fi = 0           i = 1, . . . , m.                                       (3)
+
+   Seja Ui uma matriz m × qi cujas colunas formam uma base ortonormal para o espaço nulo de Qi e dena
+Vi como uma matriz k × ri cujas colunas formam uma base ortonormal para o espaço nulo de Ri . As colunas
+ai e fi satisfazem (2) e (3) se, e somente se, existir um vetor bi , qi × 1, e um vetor gi , ri × 1, tal que:
+
+
+                                                          ai = Ui bi                                                       (4)
+                                                           fi = Vi gi                                                      (5)
+
+                                                0 ]0 e Y = [y . . . y ]0 . A função de verossimilhança é proporcional a
+   Seja b = [b01 . . . b0m ]0 , g = [g10 . . . gm            1       T
+
+
+                                                                                     m
+                                                               T       1X 0 0 0
+                                | det [U1 b1 | · · · | Um bm ] | exp{−   (bi Ui Y Y Ui bi
+                                                                       2
+                                                                                     i=1
+
+
+                                          − 2gi0 Vi0 X 0 Y Ui bi + gi0 Vi0 X 0 XVi gi )}                                   (6)
+
+   A identicação do sistema será obtida seguindo a estrutura proposta por Francis et al. (2012), na qual o
+vetor de variáveis endógenas e a matriz de coecientes contemporâneos são particionados da seguinte maneira:
+
+                                                                                         
+                                                     D A21                           regt
+                                           A=                          , yt =                                              (7)
+                                                     0 A22                           agrt
+onde regt é o vetor de variáveis regionais, agrt é o vetor de variáveis agregadas. D é uma matriz diagonal, e
+A21 e A22 são partições irrestritas de A.
+   Esse esquema de identicação baseia-se em Christiano, Eichenbaum, e Evans (1999) para as variáveis
+agregadas e em Carlino e DeFina (1999) para o sistema regional. Assume-se que choques estaduais afetam
+contemporaneamente apenas o seu local de origem e as variáveis agregadas. Já os choques nas variáveis
+agregadas afetam as variáveis regionais com um período de defasagem, mas afetam as demais variáveis
+agregadas contemporaneamente.
+   A prior utilizada será a extensão da prior de Minnesota (Doan, Litterman, e Sims, 1984, Litterman, 1986)
+para modelos VAR estruturais, proposta por Sims e Zha (1998). A prior pode ser escrita como
+
+
+                                                                                                                           (8)
+                                                                             
+                                                       ai ∼ N 0, S̄i
+
+
+                                                                                                                           (9)
+                                                                         
+                                                 fi | ai ∼ N P̄i ai , H̄i .
+
+   A prior utilizada neste artigo supõe que as variáveis do modelo na forma reduzida B = F A−1 estão
+centradas ao redor de um passeio aleatório. Portanto, a matriz P̄i é denida como um para a própria
+defasagem e zero para as demais. Apenas para as variáveis regionais, que assemelham-se mais a um processo
+autorregressivo estacionário, foi feita a hipótese de que suas respectivas priors, para o modelo na forma
+reduzida, estão centralizadas ao redor de um processo AR(1) com coeciente 0, 7.
+   H̄i , a matriz de covariância de fi dado ai , é diagonal. A variância do coeciente da defasagem p da
+variável j na equação m é dado por
+
+                                                                       2
+                                                              λ0 λ1
+                                                                                                                          (10)
+                                                              σj pλ3
+
+   A prior da constante apresenta média zero e variância λ0 λ4 , onde λ4 .
+
+
+                                                                4
+                                                       Tabela 1: Hiper Parâmetros Prior
+             Hiper Parâmetros         Valor       Interpretação
+                      λ0                 1        Controla o quão concentrada é a prior no geral
+                      λ1                0.2       Controla o quão concentrado ao redor da hipótese de passeio aleatório é a prior
+                      λ3                 1        Direciona a taxa de contração da prior conforme as defasagens aumentam
+                      λ4                 1        Regula a prior relacionada à constante
+                      µ5                 1        Referente à ordem de integração das variáveis
+                      µ6                 1        Referente à cointegração entre as variáveis
+
+
+   Também foram impostas priors para a ordem de integração e para a possibilidade de cointegração entre
+as variáveis, através da introdução de observações dummy como em Doan et al. (1984), Sims (1993) e Sims
+e Zha (1998)5 . Os valores dos hiper parâmetros foram escolhidos seguindo Francis et al. (2012), e podem ser
+encontrados na tabela 1.
+    Ao aplicar as transformações (4) e (5), o que se faz na prática é isolar apenas os parâmetros aos quais não
+foram impostas as restrições de exclusão. Assim, podemos escrever a prior em função apenas das variáveis
+bi e gi 6
+                                                                                   
+                                                                      bi ∼ N 0, S̃i                                                     (11)
+
+                                                                                          
+                                                                  gi | bi ∼ N P̃i bi , H̃i                                              (12)
+
+    Ao juntar a prior de bi e gi dada por (11) eQ(12) com a verossimilhança (6) obtemos a distribuição posterior
+p (b1 , . . . , bm , g|X, Y ) = p (b1 , . . . , bm | X, Y ) m                            7
+                                                            i=1 p (gi | bi , X, Y ), onde
+
+                                                                                                   m
+                                                                                                                                   !
+                                                                                               T T X 0 −1
+                             p (b1 , . . . , bm   | X, Y ) ∝| det [U1 b1 | . . . | Um bm ] exp −     bi Si bi                           (13)
+                                                                                                 2
+                                                                                                                 i=1
+
+
+                                                           p (gi | bi , X, Y ) = N (Pi bi , Hi )                                        (14)
+
+   Para se obter um sorteio da posterior é necessário sortear {bs1 , . . . , bsm } da distribuição (13) e depois,
+condicional a {bs1 , . . . , bsmi }, sortear {g1s , . . . , gks } da distribuição (14). Contudo, quando o sistema é sobre
+identicado, a distribuição (13) não é convencional. Para simular esse sorteio, será utilizado o Gibbs sampler
+desenvolvido em Waggoner e Zha (2003) 8 . Para os resultados apresentados abaixo foram utilizadas 30.000
+repetições, das quais as 10.000 primeiras foram descartadas.
+
+
+2.2        Base de dados: primeira etapa
+
+
+Os dados utilizados na estimação do SVAR Bayesiano e das funções de impulso resposta apresentam frequên-
+cia mensal e cobrem o período de janeiro de 1996 até junho de 2013.
+   Como proxy para a atividade estadual, serão utilizados os dados do CAGED de saldo de novos empregos
+criados. A utilização das séries do CAGED permite trabalhar com todas as Unidades Federativas do país.
+  Para o nível de atividade agregado, será utilizada a série de produção industrial da Pesquisa Industrial
+Mensal do IBGE9 .
+   5
+       Para uma explicação completa e didática sobre observações             dummy, ver Blake e Mumtaz (2012).
+                                                                                                                           −1
+   6                          −1                                  
+       Onde H̃i = Vi0 H̄i−1 Vi , P̃i = H̃i Vi0 H̄i−1 P̄i Ui , S̃i = Ui0 S̄i −1 Ui + Ui0 P¯i0 H̄i−1 P̄i Ui − P˜i0 H̃i−1 P̃i     .
+                                −1                                                                                                −1
+   7
+                                                                                              −1
+       Hi = Vi0 X 0 XVi + H˜i−1     , Pi = Hi Vi0 X 0 Y Ui + H̃i−1 P̃i e Si = T1 Ui0 Y 0 Y Ui + S̃i + P̃i0 H̃i−1 P̃i − Pi0 Hi−1 Pi      .
+   8
+    Para uma explicação detalhada do algorítimo utilizado, ver Serrano (2014).
+   9
+    Originalmente, essa série utiliza o valor da média de 2002 como base igual a 100. Alteramos a série para utilizar o valor de
+janeiro de 1996 como base.
+
+
+
+
+                                                                               5
+  O comportamento da inação será capturado pelo Índice Geral de Preços  Disponibilidade Interna (IGP-
+DI). A escolha deste índice em detrimento ao IPCA deve-se ao fato do IGP-DI reduzir o fenômeno conhecido
+como price puzzle 1011 .
+   A taxa de juros Selic - acumulada no mês e anualizada - será utilizada como instrumento de política
+monetária. Por m, para melhor caracterizar o mercado monetário, será utilizada a série de meios de
+pagamento (M1) - média nos dias úteis do mês - deacionada para o nível de preços de janeiro de 1996.
+    As séries de produção industrial, meios de pagamento e as séries regionais do CAGED foram dessazona-
+lizadas. Adicionalmente, séries compostas por taxas ou proporções serão utilizadas em pontos percentuais.
+Já as séries de produção industrial e meios de pagamento estão em logaritmo (multiplicado por 100). Por
+m, as séries de emprego estadual serão utilizadas no nível.
+   As variáveis foram ordenadas como: y t = [y 1,t , ..., y 27,t , indt , πt , rt , m1t ]0 , onde y i,t , i = 1, ..., 27, corres-
+ponde às 27 variáveis regionais, indt representa o logaritmo - multiplicado por 100 - da produção industrial
+nacional, πt a taxa de inação, rt a taxa de juros Selic e m1t o logaritmo do agregado monetário, também
+multiplicado por 100.
+
+
+2.3    Resultados: SVAR Bayesiano12
+
+
+As funções de impulso resposta das variáveis regionais encontram-se na gura 1. O intervalo de conança
+Bayesiano de 68% é normalmente reportado, uma vez que bandas de 90% ou 95% podem levar a conclusões
+erradas quando a distribuição da função impulso resposta for assimétrica devido a não linearidades (Blake e
+Mumtaz, 2012).
+   Cada ponto do gráco representa o número de empregos criados a cada instante do tempo, após um choque
+positivo de 1 p.p. na taxa de juros em t = 1. Para permitir a comparação entre as Unidades Federativas, a
+função impulso resposta estadual foi dividida pelo seu valor de estado estacionário 13 .
+   A tabela 2 apresenta a resposta ponderada de cada UF, acumulada pelo período de 48 meses. Os resultados
+foram construídos dividindo a soma total de postos de trabalho criados ao longo do período pelo valor de
+estado estacionário multiplicado por 48. Para isso foi utilizada a mediana da função impulso resposta. Dessa
+forma, os valores na primeira coluna podem ser interpretados como a porcentagem de empregos criados além
+ou aquém do que teria sido obtido caso a economia estivesse no equilíbrio de estado estacionário.
+   Na última coluna da tabela 2, as Unidades Federativas foram ordenadas de acordo com suas respectivas
+respostas relativas acumuladas. O Estado com valor mais negativo foi ranqueado em primeiro, e assim por
+diante. Observe que essa medida não é exatamente uma medida de sensibilidade, uma vez que Estados com
+respostas grandes, mas positivas, aparecerão nas últimas colocações.
+   Como é possível observar, a reação das Unidades Federativas é bastante heterogênea, tanto em relação à
+magnitude e timing, como em relação ao sinal e à caracterização da incerteza presente nas respostas. Para
+facilitar a análise dos resultados, as Unidades Federativas serão divididas em três grupos de nove unidades
+cada, baseados na magnitude de suas respectivas respostas relativas acumuladas.
+   O primeiro grupo consiste nas unidades mais sensíveis à inovação de política monetária. O primeiro
+padrão identicável a partir da tabela 2 é a concentração regional desses Estados: das sete unidades que
+compõem as regiões Sul e Sudeste, quatro aparecem entre os mais sensíveis. Dentre eles, São Paulo é o
+Estado que perde mais empregos em relação ao seu potencial de estado estacionário, criando um total de
+postos de trabalho 0.92% menor do que teria sido alcançado caso o choque não tivesse ocorrido. Por outro
+lado, dos dezesseis Estados que compõem as regiões Norte e Nordeste, apenas três aparecem no grupo dos
+  10
+     Sua presença é recorrente na literatura, tanto para economias da OCDE como para o Brasil (Minella, 2003, Céspedes,
+Lima, e Maka, 2008, Sims, 1992). Quando decorre da não inclusão das expectativas de inação no modelo, o problema pode ser
+solucionado introduzindo-se uma série de preços de commodities (Sims, 1992).
+  11
+     Com exceção da inação, a troca do IPCA pelo IGP-DI resultou em posteriors para as funções impulso resposta bastante
+similares.
+  12
+     O SVAR Bayesiano foi estimado a partir do software Matlab, com um código baseado em Waggoner e Zha (2003), disponível
+em http://www.tzha.net/code.
+  13
+     Substituindo yt = yt−1 = . . . = yt−p = yss em (1) é fácil ver que yss = (In − pl=1 Bl0 )−1 c, onde yss é o valor do vetor y no
+                                                                                   P
+estado estacionário.
+
+
+                                                                 6
+                          Figura 1: Resposta das Variáveis Regionais a um Choque na Selic
+
+
+
+
+Nota: As linhas azul sólida, vermelha tracejada, e vermelha pontilhada indicam, respectivamente, a mediana, o intervalo de credibilidade
+de 68% e o intervalo de credibilidade de 90% da função impulso resposta.
+                                                                   7
+mais sensíveis à política monetária, sendo eles os Estados do Amazonas, Ceará e Pernambuco. O fato de o
+Estado do Amazonas apresentar um comportamento tão distinto das outras unidades da região Norte pode
+estar relacionado com a importância da Zona Franca de Manaus para a economia do Estado.
+   Quanto à incerteza presente na posterior das funções impulso resposta estaduais, também é possível
+identicar alguns padrões característicos do grupo de Estados mais sensíveis à política monetária. Na sua
+grande maioria, esses Estados são os que apresentam o menor grau de incerteza quanto ao sinal e ao formato
+da resposta, com posterior concentrada em valores negativos e com formato hump-shaped. Com exceção de
+Pernambuco e Amazonas, conforme levamos em conta intervalos de credibilidade maiores, os resultados não
+só continuam válidos, como esses Estados continuam entre os mais sensíveis ao choque de política monetária.
+   O segundo grupo analisado contém aquelas Unidades Federativas que apresentam sensibilidade interme-
+diária ao choque de política monetária. O padrão regional dessas unidades é um pouco mais disperso, com
+unidades das regiões Sudeste, Centro-Oeste e Nordeste. Apenas as regiões Sul e Norte não apresentam
+nenhuma UF no grupo intermediário.
+   Quanto ao formato da posterior das funções de impulso resposta, é possível perceber uma maior incerteza
+quanto ao sinal da resposta. Apesar da posterior ainda ser bastante concentrada nos valores negativos do
+espaço paramétrico, quase todas as Unidades Federativas passam a ter resposta nula quando o intervalo de
+credibilidade é levado em consideração. Adicionalmente, alguns Estados desse grupo apresentam funções
+de impulso resposta menos comportadas, com valores positivos para os primeiros períodos de tempo após o
+choque.
+   Por m, os nove Estados restantes compõem o grupo dos menos sensíveis à política monetária, ou ainda
+daquelas Unidades Federativas que apresentaram resposta acumulada positiva. Esse grupo apresenta um
+padrão regional bastante claro, com forte concentração nas regiões Norte e Nordeste, com destaque para a
+primeira.
+   A posterior das funções de impulso resposta apresentam maior grau de incerteza, não apenas em relação
+ao sinal da resposta, como também em relação ao seu formato. É possível observar que, para alguns Estados,
+a mediana da função impulso resposta é positiva por um longo período de tempo, e os percentis mais baixos
+apresentam formato diferente dos percentis mais altos. Ambos intervalos de credibilidade contêm o zero em
+quase todos os períodos de tempo.
+   Na tabela 3 encontram-se as respostas relativas acumuladas máximas de cada unidade federativa. Para
+cada instante de tempo o número de postos de trabalho criados foi acumulado e dividido por seu valor de
+longo prazo multiplicado pela quantidade de meses em questão. Esse processo foi repetido até se obter o
+valor máximo para cada Estado. Observe que o mês no qual a resposta acumulada máxima ocorre é diferente
+do mês em que a resposta máxima ocorre.
+   É possível observar que a ordenação obtida pela resposta relativa acumulada em 48 meses e pela resposta
+relativa acumulada máxima são bastante parecidas. Apesar de ocorrerem mudanças na posição de alguns
+Estados, são raros os casos onde houve mudança entre os três grupos descritos acima.
+   Na média, a resposta relativa acumulada máxima ocorre após 10 meses da incidência do choque de política
+monetária. Nenhum padrão claro emerge da análise dos dados apresentados na tabela 3. Os Estados das
+regiões Sul, Sudeste e Centro-Oeste são mais homogêneos quanto ao timing da resposta máxima acumulada.
+Já os Estados das regiões Norte de Nordeste apresentam uma variância maior, com Estados que respondem
+muito rápido e outros muito lentamente. Contudo, na média todos os grupos são bastante similares.
+
+
+3         Por que os Estados respondem de forma diferente a um choque de
+          política monetária?
+A atuação desigual dos canais de transmissão da política monetária entre diferentes regiões determina as
+assimetrias presentes nas respostas estaduais a inovações no instrumento de política do Banco Central. 14 .
+    14
+         Ver Mishkin (1996) e Serrano (2014).
+
+
+
+
+                                                    8
+       Tabela 2: Resposta Acumulada Após 48 Meses
+                             Resposta                   Estado
+     UF                                   Emprego                     Posição
+                            Acumulada                 Estacionário
+                                     Norte
+     Rondônia                 -0,37%        -110           621            19
+     Acre                      0,66%         25             79            27
+     Amazonas                 -0,73%        -353          1.002            4
+     Roraima                   0,18%          5             63            26
+     Pará                     -0,34%        -262          1.627           20
+     Amapá                    -0,07%         -5            160            22
+     Tocantins                 0,00%          0            220            23
+                                    Nordeste
+     Maranhão                 -0,40%        -138           721            16
+     Piauí                    -0,43%        -134           649            15
+     Ceará                    -0,73%       -1.082         3.094            5
+     Rio Grande do Norte       0,01%          4           1.042           24
+     Paraíba                  -0,38%        -159           862            18
+     Pernambuco               -0,65%        -971          3.099            8
+     Alagoas                   0,07%         10            296            25
+     Sergipe                  -0,62%        -214           720            10
+     Bahia                    -0,33%        -589          3.698           21
+                                    Sudeste
+     Minas Gerais             -0,51%       -2.586        10.537           13
+     Espírito Santo           -0,47%        -466         2.065            14
+     Rio de Janeiro           -0,72%       -2.978         8.634           7
+     São Paulo                -0,92%      -12.935        29.197            1
+                                      Sul
+     Paraná                   -0,79%       -2.596         6.880           3
+     Santa Catarina           -0,73%       -1.787         5.121           6
+     Rio Grande do Sul        -0,83%       -2.533         6.391           2
+                                  Centro-Oeste
+     Mato Grosso do Sul       -0,63%        -308          1.022           9
+     Mato Grosso              -0,59%        -372          1.315           11
+     Goiás                    -0,56%        -830          3.104           12
+     Distrito Federal         -0,39%        -282          1.525           17
+
+
+
+
+            Tabela 3: Resposta Acumulada Máxima
+                            Máx.                      Estado
+UF                                    Emprego                      Mês    Posição
+                          Acumulado                 Estacionário
+                                     Norte
+Rondônia                   -1,03%         -58           621           9        16
+Acre                        2,07%          10            79           6        26
+Amazonas                   -1,41%        -211          1.002         15        8
+Roraima                     1,05%           3            63           4        25
+Pará                       -0,62%        -172          1.627         17        20
+Amapá                      -0,14%          -4           160          19        21
+Tocantins                   0,26%           3           220          5         22
+                                    Nordeste
+Maranhão                    0,95%         21            721           3        24
+Piauí                      -1,03%         -74           649          11        15
+Ceará                      -1,78%        -495          3.094          9        3
+Rio Grande do Norte         0,91%         29           1.042          3        23
+Paraíba                    -0,89%         -92           862          12        18
+Pernambuco                 -1,31%        -570          3.099         14        10
+Alagoas                     5,78%         69            296           4        27
+Sergipe                    -1,29%        -121           720          13        11
+Bahia                      -0,76%        -335          3.698         12        19
+                                    Sudeste
+Minas Gerais               -1,13%       -1.434        10.537         12        13
+Espírito Santo             -1,06%        -240         2.065          11        14
+Rio de Janeiro             -1,50%       -1.551         8.634         12         6
+São Paulo                  -2,18%       -5.726        29.197          9         1
+                                      Sul
+Paraná                     -1,76%       -1.210         6.880         10        4
+Santa Catarina             -1,67%        -772          5.121          9        5
+Rio Grande do Sul          -1,86%       -1.189         6.391         10        2
+                                  Centro-Oeste
+Mato Grosso do Sul         -1,37%        -154          1.022         11        9
+Mato Grosso                -1,48%        -155          1.315          8         7
+Goiás                      -1,19%        -408          3.104         11        12
+Distrito Federal           -0,95%        -131          1.525          9        17
+
+
+
+
+                                      9
+   O canal de juros é o mecanismo tradicional presente nos modelos Keynesianos IS-LM básicos. Uma
+redução exógena na taxa de juros nominal de curto prazo resulta em uma diminuição da taxa de juros real de
+curto prazo, que por sua vez leva à queda da taxa de juros real de longo prazo, estimulando o investimento
+em capital físico, em novas residências e o consumo de bens duráveis.
+   Diferenças na composição do setor produtivo podem acarretar respostas regionais assimétricas a um
+choque de política monetária. A indústria de manufatura tende a ser mais sensível a mudanças exógenas
+na política do Banco Central devido, entre outros motivos, à dependência da demanda por bens duráveis à
+taxa de juros (Carlino e DeFina, 1999). A mesma lógica aplica-se ao setor imobiliário (Francis et al., 2012).
+Assim, regiões onde tais setores apresentam papel importante na economia local tendem a ser mais afetadas
+por inovações monetárias via canal de juros.
+   O canal de crédito15 complementa a explicação fornecida pela visão tradicional. Baseia-se em fricções
+existentes no mercado nanceiro, como informação imperfeita e contratos com enforcement custoso, para
+explicar como os mercados de crédito funcionam de modo a ampliar os efeitos da política monetária, em um
+mecanismo denominado acelerador nanceiro.
+   Firmas pequenas não conseguem obter fundos diretamente dos poupadores, sendo mais dependentes de
+intermediários nanceiros. Quanto menor e menos estruturada for a empresa, mais sensível ela será às
+imperfeições de mercado existentes entre credor e mutuário. No mesmo sentido, quanto menores forem os
+bancos, mais diculdade terão para obter fundos substitutos aos depósitos à vista. Assim, o canal de crédito
+tende a ser mais pronunciado em regiões com rmas e setor nanceiro pouco desenvolvidos.
+   O canal de câmbio explora a relação deste com a taxa de juros. Um choque de política monetária que, por
+exemplo, reduza o juro real doméstico, torna os investimentos em moeda nacional menos atrativos do que os
+investimentos em moeda estrangeira. Essa mudança de preços relativos faz com que parte do capital externo
+saia do país, depreciando a taxa real de câmbio. O valor menor da moeda local estimula as exportações
+líquidas, o que contribui para a expansão do produto agregado. Setores como a indústria de manufaturas e
+mineração tendem a ser mais ligados à economia externa.
+   O canal de custo também pode ser responsável por assimetrias regionais. Sempre que o custo marginal
+da rma depender da taxa de juros, como por exemplo quando os fatores de produção são pagos antes do
+recebimento das receitas, um choque positivo de política monetária desloca a curva de oferta para a esquerda,
+reduzindo o produto e elevando os preços.
+   Além dos canais expostos acima, Francis et al. (2012) ressaltam que outras características mais gerais da
+estrutura socioeconômica de uma região também podem contribuir para a propagação da política monetária.
+Uma mão de obra mais qualicada, por exemplo, teria mais facilidade em se deslocar entre setores diferentes,
+absorvendo mais facilmente o efeito de um choque de política monetária. O mesmo raciocínio vale para
+economias com um setor produtivo mais diverso. A exibilidade do mercado de trabalho também pode
+ser um fator importante na propagação de uma inovação monetária. Mercados mais sindicalizados ou com
+maior percentual de empregos públicos tendem a ser mais rígidos e, portanto, menos sensíveis. Como o
+acesso a serviços nanceiros depende do colateral que as famílias e rmas possuem, economias com renda per
+capita mais baixa e com percentual elevado de pessoas consideradas pobres tenderiam a ser menos sensíveis
+a mudanças exógenas na política do Banco Central. Adicionalmente, altas taxas de criminalidade podem
+desencorajar o empreendedorismo, reduzindo o número de agentes que utilizam linhas de crédito visando
+aproveitar oportunidades de negócios.
+
+
+3.1      Metodologia - Bayesian Model Averaging
+
+
+Em diversas aplicações empíricas existe um grande número de covariadas que, em teoria, podem inuenciar
+a variável dependente. Nesses casos, muitas vezes não é claro qual procedimento o pesquisador deve seguir.
+Incluir todas as variáveis no modelo pode ser uma opção. Contudo, esse procedimento é insatisfatório, uma
+vez que a inclusão de variáveis irrelevantes pode reduzir a precisão de todos os estimadores. Dessa forma, o
+procedimento tradicional seria conduzir uma série de testes no intuito de selecionar um modelo nal no qual
+as variáveis não signicantes estariam omitidas.
+ 15
+      Ver Bernanke e Gertler (1995).
+
+
+
+                                                     10
+   Apesar de vários trabalhos empíricos procederem dessa forma, existem alguns problemas associados a
+essa metodologia 16 . Raramente é desejável simplesmente rejeitar os resultados obtidos a partir dos outros
+modelos, uma vez que o pesquisador estaria ignorando a incerteza existente sobre qual modelo utilizar. A
+estatística Bayesiana apresenta uma metodologia simples e consistente para lidar com esse tipo de incerteza,
+o Bayesian Model Averaging (BMA).
+   Dena um modelo como um conjunto de variáveis explicativas em uma regressão linear. Supondo K
+possíveis variáveis explicativas, temos 2K modelos diferentes. Dena cada um dos R = 2K modelos diferentes
+por Mr , onde r = 1, . . . , R. Seja y = (y1 , . . . , yN )0 um vetor N × 1, onde N é o número de observações
+disponíveis. Seja X uma matriz N × K que dispõe em cada linha as K covariadas para cada um dos N
+indivíduos. Dena ainda Xr como uma matriz N × kr que dispõe em cada linha kr covariadas para cada um
+dos N indivíduos, onde kr é um subconjunto de K . Por m, seja βr o vetor kr × 1 de coecientes, ε como
+um vetor N × 1 de erros onde ε ∼ N 0N , h−1 IN e ιN um vetor N × 1 de uns.
+   Dessa forma, cada um dos R modelos de regressão linear pode ser denido como
+
+
+                                                      y = αιN + Xr βr + ε                                                 (15)
+
+   Com as hipóteses acima, a função de verossimilhança pode ser escrita como
+
+                                            N                                                 
+                                          h2              h                  0
+                   p (y | α, βr , h) =          N    exp − (y − αιN − Xr βr ) (y − αιN − Xr βr )                          (16)
+                                         (2π) 2           2
+
+   Para os parâmetros que não variam entre modelos (α e h−1 ), serão utilizadas as priors não informativas17
+p (h) ∝ h1 e p (α) ∝ 118 .
+   Já para βr , será considerada a prior conjugada Normal-Gamma:
+
+                                                                             
+                                                     βr | h ∼ N β r , h−1 V r                                             (17)
+
+   Baseando-se na crença de que várias covariadas utilizadas são irrelevantes, a prior de βr será centrada em
+βr = 0kr . Já para a matriz de variância covariância da prior de βr , será utilizada a g-prior 1920 descrita em
+Zellner (1986), que supõe uma relação de proporcionalidade com a matriz de variância covariância fornecida
+pelos dados, V r = [gr Xr0 Xr ]−1 .
+   A escolha da prior acima, junto com a função de verossimilhança Normal, implica em uma distribuição
+t multivariada para o vetor de parâmetros (α, βr ) e uma distribuição Gamma para h. Integrando h e α da
+posterior de (α, βr , h) obtém-se que a posterior marginal de βr é uma uma distribuição t multivariada com
+ν = N graus de liberdade, média
+
+
+                                                E (βr | y, Mr ) ≡ βr = V r Xr0 y                                          (18)
+e matriz de covariância
+  16
+     Para uma discussão mais detalhada do tema, ver Poirier (1995), Draper (1995) e Hodges (1987).
+  17
+     Segundo Koop (2003), ao comparar modelos usando a posterior odds ratio, é aceitável usar priors não informativas para os
+parâmetros comuns a todos os modelos.
+  18
+     Fernandez, Ley, e Steel (2001) sugerem subtrair todas as covariadas de suas respectivas médias. Quando as variáveis
+explicativas são medidas como desvio de suas médias, elas possuem média zero. Como os erros ε também apresentam média
+zero, apesar dos coecientes de inclinação não mudarem, o intercepto se torna a média da variável dependente. Dessa forma,
+garante-se que a prior não informativa de α tenha a mesma implicação para todos os modelos.
+  19
+                                           uma vez que reduz a escolha de parâmetros para apenas um hiper parâmetro gr .
+     A g-prior facilita a escolha da prior (
+                                                 1
+                                                        N ≤ K2
+Fernandez et al. (2001) sugerem que gr =        K2             .
+                                                N
+                                                 1
+                                                        N > K2
+  20
+    Além de reduzir a escolha dos hiper parâmetros para apenas um escalar, a g-prior também apresenta outras propriedades
+interessantes, como permitir o calculo analítico da likelihood marginal e apresentar resultados satisfatórios do ponto de vista
+preditivo. Para uma discussão mais detalhada das propriedades da g-prior ver Fernandez et al. (2001).
+
+
+
+
+                                                                11
+                                                                             νs2r
+                                                   var (βr | y, Mr ) =            Vr                                          (19)
+                                                                            υ−2
+                                               1                 r (y−yι )0 (y−yι )
+                                                   y 0 PXr y+ g g+1
+onde V r = [(1 + gr ) Xr0 Xr ]−1 , s2r =                                              e PXr = IN − Xr (Xr0 Xr )−1 X 0r .
+                                             gr +1             r        N        N
+                                                                 ν
+
+  Considerando priors iguais para cada modelo, na forma p(Mr ) =                        R,
+                                                                                        1
+                                                                                             temos que a posterior do modelo Mr
+pode ser escrita como
+
+                                                                 p(y | Mr )
+                                                   p(Mr | y) = PR                                                             (20)
+                                                                j=1 p(y | Mj )
+
+aonde a likelihood marginal é proporcional a
+
+                                             kr                                                 − N −1
+                                       gr      2         1    0          gr             0
+                                                                                                       2
+                   p(y | Mr ) ∝                              y PXr y +        (y − yιN ) (y − yιN )                           (21)
+                                      gr+1            gr + 1           gr + 1
+
+   Dena φ como o parâmetro de interesse. É possível demonstrar que tudo o que é conhecido sobre φ pode
+ser resumido em sua posterior e que
+
+                                                           R
+                                                           X
+                                             p (φ | y) =         p (φ | y, Mr ) p (Mr | y)                                    (22)
+                                                           r=1
+
+   Sendo g(φ) uma função de φ as regras da esperança condicional implicam que
+
+                                                           R
+                                                           X
+                                      E [g (φ) | y] =            E [g (φ) | y, Mr ] p (Mr | y)                                (23)
+                                                           r=1
+
+   Dessa forma, ao levar em consideração a incerteza existente em relação ao modelo utilizado, a média da
+função g(φ) torna-se a média das médias de cada um dos R modelos diferentes, ponderada pela posterior
+p (Mr | y) de cada modelo.
+   Uma vez denido o modelo Mr e o hiper parâmetro gr , é possível construir todas as equações acima e
+avaliar as probabilidades de interesse. Contudo, conforme o número de covariadas aumenta, o número de
+possíveis modelos cresce de maneira explosiva, impossibilitando a construção de cada equação para todo Mr .
+   Para aplicar o BMA sem avaliar todos      os possíveis modelos utilizaremos o algoritmo Markov Chain
+Monte Carlo Model Composition M C 3 , desenvolvido por Madigan, York, e Allard (1995). Assim como os
+                                        
+
+algoritmos de Markov Chain Monte Carlo (M CM C), o M C 3 simula sorteios de uma posterior selecionando
+mais variáveis aleatórias de regiões de maior probabilidade, evitando regiões com menor probabilidade. O
+M C 3 difere do M CM C por sortear modelos ao invés de parâmetros21 .
+   Uma vez sorteada uma sequência de modelos M 1 , . . . , M S é possível aproximar (23) a partir de
+                                                 
+
+
+                                                           S
+                                                    1      X          h                 i
+                                               ĝ =                  E g (φ) | y, M (s)                                       (24)
+                                                    S1
+                                                         s=S0 +1
+
+dado que ĝ → E [g (φ) | y] conforme S1 → ∞.
+  21
+     O algoritmo M C 3 é baseado no algoritmo de       Metropolis-Hastings.   Para uma explicação completa do algorítimo utilizado,
+ver Serrano (2014).
+
+
+
+
+                                                                     12
+                                                                       Tabela 4: Fonte
+                                                                                  a
+                                                                                       de Dados
+        Variável                                                                      Freq.              Período                                        Fonte
+                                                            Demográco e Socioeconômico
+        Anos de Estudo                                                A          1996 a 2012                                                         IPEAb
+        Habitantes/Km²                                                D           2000, 2010                                                      Censo - IBGE
+        Homicídios/100 mil Hab.                                       A          1996 a 2009                                                     SIM-DATASUSb
+        Indivíduos Abaixo da Linha de Pobreza (%)                     D        1991, 2000, 2010                                                   Censo - IBGEb
+        Renda Domiciliar Per Capita                                   A          1996 a 2012                                                      Pnad - IBGEb
+                                                                  Sistema Financeiro
+        Saldo de Operações de Crédito/PIB - PF                        M      jan/2004 a jun/2013                                                   SCR - BCB
+        Saldo de Operações de Crédito/PIB - PJ                        M      jan/2004 a jun/2013                                                   SCR - BCB
+        Agências/ 100 mil Hab.                                        M      dez/1998 a jun/2013                                                  Unicad - BCB
+        Municípios Sem Agência e PAB (%)                              M      dez/1998 a mai/2012                                                  Unicad - BCB
+                                                                   Mix Produtivob
+        Serviços - Ocupados (%)                                       D           2000, 2010                                                      Censo    -   IBGE
+        Comércio - Ocupados (%)                                       D           2000, 2010                                                      Censo    -   IBGE
+        Agropecuária - Ocupados (%)                                   D           2000, 2010                                                      Censo    -   IBGE
+        Extrativo Mineral - Ocupados (%)                              D           2000, 2010                                                      Censo    -   IBGE
+        Transformação - Ocupados (%)                                  D           2000, 2010                                                      Censo    -   IBGE
+        Construção - Ocupados (%)                                     D           2000, 2010                                                      Censo    -   IBGE
+        SIUP - Ocupados (%)                                           D           2000, 2010                                                      Censo    -   IBGE
+        Setor Público - Ocupados (%)                                  D           2000, 2010                                                      Censo    -   IBGE
+                                                             Características das Empresas
+        Empresas - Até 49 Funcionários - Serviços Financeiros (%)     A          2006 a 2011                                                    CEMPRE - IBGE
+        Empresas - Até 49 Funcionários (%)                            A          2006 a 2011                                                    CEMPRE - IBGE
+        Empresas - Até 49 Funcionários - Empregados (%)               A          2006 a 2011                                                    CEMPRE - IBGE
+        a "D", "A" e "M" indicam frequências decenais, anuais e mensais, respectivamente.
+        b Apesar de produzido por diferentes instituições, a agregação regional e setorial dessas séries foi feita pelo IPEA. Os dados estão disponíveis em http://www.ipeadata.gov.br/.
+
+
+
+
+3.2    Base de dados: segunda etapa
+
+
+O conjunto de variáveis utilizado para identicar quais canais de transmissão são importantes na deter-
+minação das assimetrias entre os Estados brasileiros pode ser dividido em quatro grandes grupos: mix de
+produção, sistema nanceiro, característica das empresas e demográco e socioeconômico. Uma descrição
+detalhada das variáveis encontra-se na tabela 4.
+   Como o perl dessas variáveis mudou muito ao longo da última década, optou-se por construir médias a
+partir das séries temporais originais, de forma a cobrir um intervalo de tempo o mais parecido possível com
+o utilizado no SVAR. Contudo, sua abrangência temporal varia caso a caso, devido às diferentes frequências
+e disponibilidade de cada fonte de dados.
+   O mix de produção é composto pela porcentagem de ocupados - com mais de 18 anos - nos seguintes
+setores: serviços, agropecuária, comércio, construção, indústria extrativa mineral, indústria de transformação,
+serviços industriais de utilidade pública (SIUP) e setor público. As séries são disponibilizadas pelo IPEA22 ,
+e foram construídas com base nos censos populacionais de 2000 e 2010, ambos do IBGE.
+   Como sugerem Carlino e DeFina (1999), o mix de produção de um Estado pode ser usado como uma
+proxy para o canal de juros. Setores como o da indústria de transformação seriam mais sensíveis à taxa
+de juros, uma vez que são mais dependentes de crédito. A mesma lógica pode ser aplicada ao setor de
+construção (Francis et al., 2012). Já setores como a indústria extrativa mineral e o agropecuário estariam
+correlacionados com o canal de câmbio, dada sua maior interdependência com o comércio exterior.
+    Para o sistema nanceiro, as variáveis utilizadas são a razão entre o saldo das operações de crédito - pessoa
+física e jurídica - e o PIB estadual, número de agências bancárias por 100 mil habitantes e a proporção de
+municípios sem agência bancária ou posto de atendimento bancário (PAB).
+   A razão crédito/PIB foi construída utilizando os dados de saldo de operações de crédito23 disponibilizados
+pelo Banco Central do Brasil (BCB) e os dados de PIB estadual calculados pelo IBGE. Como a série de
+saldo de crédito é mensal, foi construída uma média para cada ano, que então foi dividida pelo valor do PIB
+estadual, dado que este último apresenta periodicidade anual. Uma média nal foi calculada para o período
+de 2004 a 2010.
+   Já as últimas duas variáveis do grupo do sistema nanceiro foram construídas com base nos dados do
+  22
+    As séries podem ser encontradas na seção social do Ipeadata.
+  23
+    Essa série consiste no valor presente de todos os empréstimos superiores a R$ 1 mil reais, registrados no Sistema de
+Informações de Crédito (SCR) com base no endereço scal de cada devedor.
+
+
+                                                                                              13
+sistema de cadastro unicado do BC, o Unicad. O número de agências bancárias por 100 mil habitantes24
+consiste na média dessa razão, para o período de dezembro de 1998 a junho de 2013. A proporção de
+municípios sem agência ou PAB é formada pela média dessa variável, entre dezembro de 1998 e maio de 2012
+- com a exclusão do período entre setembro de 2005 a setembro de 2007.
+   O grupo de variáveis sobre as características das empresas e bancos é composto pela proporção de rmas
+com até 49 funcionários, a proporção das rmas de serviços nanceiros com até 49 funcionários e a proporção
+de empregados em rmas de até 49 funcionários. As três variáveis foram construídas a partir do Cadastro
+Central de Empresas (CEMPRE), do IBGE, e são médias para o período de 2006 a 2011. Essas variáveis
+servem de proxy para o canal de crédito, já que o problema de assimetria de informação estaria mais presente
+em rmas e bancos menos desenvolvidos (Carlino e DeFina, 1999).
+   Por m, o grupo de variáveis demográcas e socioeconômicas é composto pela média dos anos de estudos
+para pessoas com 25 anos ou mais, densidade demográca25 , número de homicídios por 100 mil habitantes,
+proporção dos indivíduos com renda domiciliar per capita igual ou inferior a R$ 140,00 mensais (em reais de
+agosto de 2010) e renda domiciliar per capita média (em reais de outubro de 2012). Essas variáveis foram
+incluídas na tentativa de se capturar características estaduais mais gerais que possam impactar na resposta
+regional a um choque de política monetária (Carlino e DeFina, 1999, Rocha et al., 2011).
+
+
+3.3    Resultados: BMA26
+
+
+Utilizando as medidas de sensibilidade derivadas do VAR Bayesiano, o Bayesian Model Averaging foi exe-
+cutado com as seguintes variáveis dependentes: a resposta relativa acumulada em 48 períodos e a resposta
+relativa acumulada máxima. Para facilitar a análise dos resultados, as medidas de sensibilidade foram mul-
+tiplicadas por −100, de forma que um coeciente positivo deve ser interpretado como o aumento, em pontos
+percentuais, da sensibilidade em relação a uma inovação monetária.
+   Também foram construídas variáveis de sensibilidade regional condicionais aos Intervalos de Credibilidade
+de 68% e 90%. A resposta do emprego foi considerada nula para os instantes de tempo em que o zero estivesse
+contido no respectivo intervalo, tanto ao construir a resposta relativa acumulada, como ao construir a resposta
+relativa acumulada máxima.
+   A correlação entre a posterior analítica e a posterior empírica do modelo Mr é superior à 0.99 para todas
+as especicações estimadas, indicando a convergência do algoritmo M C 3 (Fernández, Ley, e Steel, 2001).
+   Nas tabelas 5 e 6 encontram-se os resultados para os modelos estimados, tanto os obtidos a partir da
+resposta relativa acumulada em 48 períodos, quanto os obtidos a partir da resposta relativa acumulada
+máxima. A coluna intitulada Posterior Inclusion Probability (PIP ) contém a probabilidade de determinada
+variável estar inclusa no modelo27 . O PIP é estimado pela proporção de modelos sorteados que incluem
+determinada covariada. Já as colunas Post Mean e Post SD representam, respectivamente, a média e o
+desvio padrão da posterior, e são estimadas conforme a equação (24).
+   A análise da PIP mostra que existe um grau elevado de incerteza em relação à importância das covariadas
+para a determinação da sensibilidade de determinada unidade federativa a um choque de política monetária.
+Em nenhuma das especicações utilizadas uma variável apresentou PIP superior à 90%.
+   O fato da variável dependente derivar de uma distribuição de funções impulso resposta, que por si só
+já apresenta um certo grau de incerteza, pode inuenciar o resultado. Contudo, mesmo considerando ape-
+nas respostas com grau reduzido de incerteza em relação ao seu sinal, a presença de PIP baixas ainda é
+predominante.
+  24
+     A estimativa mensal da população de cada unidade federativa foi calculada pela interpolação linear dos censos demográcos
+de 1991, 2000 e 2010 e das contagens populacionais de 1996 e 2007, todos calculados pelo IBGE.
+  25
+     Número de habitantes por quilômetro quadrado.
+  26
+     Para implementar o BMA, foi utilizado software estatístico R, juntamente com o pacote BMS, disponível em
+http://bms.zeugner.eu/getBMS/. Para aqueles familiarizados com o software Matlab, é possível reproduzir o exemplo
+apresentado em Koop (2003), p. 274-278 (além de qualquer outra aplicação desejada), com o código disponível em
+http://www.wiley.com/legacy/wileychi/koopbayesian/mainprograms.html, capítulo 11. Por m, ainda é possível consultar o
+código de Matlab utilizado por Francis et al. (2012) em http://www.tateviksekhposyan.org/.
+  27
+     A constante apresenta PMP igual a 1 por construção.
+
+
+
+                                                             14
+   A variável que mais se destaca por apresentar PIP relativamente elevado é a porcentagem da população
+ocupada empregada na indústria de transformação. No modelo construído a partir da resposta relativa
+acumulada, essa variável é incluída em 57% dos modelos sorteados, valor bastante elevado se comparado
+com as demais covariadas. Ao passar do modelo construído a partir da mediana de função de impulso
+resposta, para os modelos que consideram os Intervalos de Credibilidade de 68% e 90%, a PIP da indústria de
+transformação aumenta para 60% e 88%, respectivamente. Dessa forma, ao limpar a medida de sensibilidade
+daquelas Unidades Federativas, cujo sinal da resposta apresenta grau elevado de incerteza, considerando-
+as como insensíveis à política monetária, a importância da presença da indústria de transformação cresce
+consideravelmente.
+   O mesmo resultado é encontrado analisando os modelos que consideram a resposta relativa acumulada
+máxima. Ao construir a variável dependente com base na mediana da função impulso resposta, a PIP
+da indústria de transformação é de 25%. Ao passar para os modelos que consideram os Intervalos de
+Credibilidade de 68% e 90%, a probabilidade de inclusão aumenta para 57% e 88%, respectivamente.
+   Apesar de em menor grau, outras covariadas relacionadas ao mix produtivo se destacam quando a análise
+foca em suas respectivas PIP. Para a resposta total restrita pelo Intervalo de Credibilidade de 90%, os
+percentuais de ocupados empregados no setor extrativo mineral, agropecuária e serviços, são inclusos em 39%,
+25%, 24% dos modelos sorteados, respectivamente. Percentuais de inclusão parecidos são encontrados quando
+a análise volta-se para a resposta relativa acumulada máxima restrita ao mesmo Intervalo de Credibilidade.
+   Diferentemente do encontrado para as variáveis relacionadas ao mix produtivo, as variáveis que tentam
+capturar a presença do canal de crédito por meio de características das rmas e bancos aparentam ser, de
+forma geral, pouco relevantes para se explicar a sensibilidade das Unidades Federativas brasileiras a um
+choque de política monetária. Com poucas exceções, a probabilidade de inclusão dessas variáveis é baixa,
+com valores inferiores a 10%.
+   Da mesma forma, variáveis relacionadas às características socioeconômicas e penetração do sistema nan-
+ceiro também apresentam probabilidade de inclusão relativamente pequena. Uma exceção interessante é a
+quantidade de agências bancárias para cada 100 mil habitantes. Na especicação que se utiliza da resposta
+total, essa variável apresenta probabilidade de inclusão superior à 30%. Quando restringimos a resposta total
+a partir do Intervalo de Credibilidade de 68%, essa probabilidade sobe para 59%.
+   A segunda coluna das tabelas 5 e 6 apresenta a média da distribuição posterior. Ela é calculada utilizando
+as equações (18) e (24), representando uma média ponderada das médias de cada modelo sorteado. A média
+das varáveis excluídas de um determinado modelo é zero, de forma que desconsiderar a incerteza acerca do
+modelo correto superestima o valor dos coecientes.
+   Como é possível observar, a maioria das variáveis com PIP alta apresenta sinais coerentes com a teoria
+econômica. O coeciente da porcentagem de ocupados empregados na indústria de transformação apresenta
+média positiva para todas as especicações. Para a resposta total, um aumento de 1% no share desse setor
+no emprego eleva a sensibilidade a um choque de política monetária em 0.0291p.p., valor que aumenta para
+0.351p.p. quando consideramos o Intervalo de Credibilidade de 90%.
+   Ainda restringindo-se às variáveis relativas ao mix produtivo, é possível concluir que quanto maior o share
+do setor agropecuário e extrativo mineral no emprego, menos sensível a unidade federativa se torna a uma
+inovação monetária. Um aumento da parcela de pessoas ocupadas empregadas pelo setor de serviços também
+atua no mesmo sentido. Já um aumento da porcentagem de ocupados trabalhando no comércio e construção
+tende a aumentar a sensibilidade à política monetária. Por m, a maioria das especicações aponta que
+um aumento da porcentagem de ocupados empregados no setor público diminui a sensibilidade à política
+monetária.
+
+
+
+
+                                                     15
+                                            Tabela 5: Importância dos Canais de Transmissão - Resposta Total
+                                                                         Resposta Total                 I.C. 68%             I.C. 90%
+     Covariadas
+                                                                 PIP      Post Mean Post SD    PIP     Post Mean   Post SD      PIP     Post Mean   Post SD
+     Constante                                                  1,0000     -0,7803      -     1,0000    -1,4487       -       1,0000     -1,2567       -
+     Anos de Estudo                                             0,0702      0,0024   0,0372   0,1035    -0,0068    0,0322     0,0911     -0,0026    0,0236
+     Habitantes/Km²                                             0,1991      0,0003   0,0007   0,1746    0,0001     0,0004     0,1482      0,0001    0,0002
+     Homicídios/100 mil Hab.                                    0,0725      0,0001   0,0018   0,0911    0,0003     0,0015     0,0584     0,0000     0,0008
+     Indivíduos Abaixo da Linha de Pobreza (%)                  0,1021      0,0005   0,0051   0,1954     0,0019    0,0055     0,0898      0,0002    0,0023
+     Renda Domiciliar Per Capita                                0,0884      0,0000   0,0002   0,2043    -0,0001    0,0003     0,0958      0,0000    0,0001
+     Saldo de Operações de Crédito/PIB - PF                     0,0657     -0,0003   0,0042   0,1102    0,0011     0,0048     0,0573      0,0002    0,0020
+     Saldo de Operações de Crédito/PIB - PJ                     0,0706      0,0011   0,0070   0,2183     0,0046    0,0106     0,0780     0,0007     0,0039
+     Agências/ 100 mil Hab.                                     0,3219     0,0215    0,0375   0,5911     0,0394    0,0409     0,1855     0,0051     0,0141
+16
+
+
+
+
+     Municípios Sem Agência e PAB (%)                           0,1688     -0,0009   0,0026   0,2090    -0,0008    0,0019     0,1073     -0,0002    0,0008
+     Serviços - Ocupados (%)                                    0,3087     -0,0117   0,0228   0,1128    -0,0010    0,0072     0,2413     -0,0014    0,0119
+     Comércio - Ocupados (%)                                    0,4316      0,0667   0,0893   0,4161     0,0406    0,0552     0,0916      0,0031    0,0151
+     Agropecuária - Ocupados (%)                                0,1799     -0,0014   0,0156   0,0948    -0,0009    0,0063     0,2529     -0,0046    0,0115
+     Extrativo Mineral - Ocupados (%)                           0,0700     -0,0083   0,0581   0,1976    -0,0379    0,0914     0,3850     -0,0787    0,1154
+     Transformação - Ocupados (%)                               0,5713      0,0291   0,0289   0,6000    0,0222     0,0214     0,8829      0,0351    0,0160
+     Construção - Ocupados (%)                                  0,0589      0,0012   0,0214   0,0657     0,0004    0,0154     0,1018     0,0049     0,0202
+     SIUP - Ocupados (%)                                        0,1450     -0,1149   0,3559   0,0625    -0,0078    0,0962     0,0955     0,0290     0,1268
+     Setor Público - Ocupados (%)                               0,0719     -0,0001   0,0081   0,0780    -0,0005    0,0052     0,1018     -0,0014    0,0060
+     Empresas - Até 49 Funcionários - Serviços nanceiros (%)   0,0563      0,0008   0,0077   0,0557    0,0002     0,0046     0,0683      0,0008    0,0048
+     Empresas - Até 49 Funcionários (%)                         0,0612     0,0030    0,0349   0,0898     0,0069    0,0341     0,1288     0,0107     0,0358
+     Empresas - Até 49 Funcionários - Empregados (%)            0,0828     -0,0003   0,0041   0,0760    0,0003     0,0024     0,0725     0,0002     0,0020
+                                          Tabela 6: Importância dos Canais de Transmissão - Resposta Máxima
+                                                                       Resposta Máxima                 I.C. 68%                       I.C. 90%
+     Covariadas
+                                                                 PIP     Post Mean Post SD    PIP     Post Mean   Post SD    PIP     Post Mean   Post SD
+     Constante                                                  1,0000    -3,8361      -     1,0000    -3,4708       -      1,0000    -4,1349       -
+     Anos de Estudo                                             0,1479     0,1008   0,3402   0,0682    -0,0051    0,0781    0,1012    -0,0170    0,0951
+     Habitantes/Km²                                             0,0642    -0,0001   0,0012   0,1111     0,0002    0,0010    0,1255     0,0002    0,0007
+     Homicídios/100 mil Hab.                                    0,0934    -0,0028   0,0128   0,1320     0,0023    0,0078    0,0565     0,0000    0,0026
+     Indivíduos Abaixo da Linha de Pobreza (%)                  0,1561    -0,0057   0,0248   0,0862    -0,0005    0,0090    0,0989     0,0016    0,0098
+     Renda Domiciliar Per Capita                                0,1089     0,0002   0,0010   0,0926     0,0000    0,0005    0,0987    -0,0001    0,0005
+     Saldo de Operações de Crédito/PIB - PF                     0,0691    -0,0042   0,0285   0,0613     0,0010    0,0103    0,0608     0,0005    0,0070
+     Saldo de Operações de Crédito/PIB - PJ                     0,0621    0,0009    0,0276   0,3351     0,0361    0,0585    0,0672     0,0017    0,0114
+     Agências/ 100 mil Hab.                                     0,2346     0,0473   0,1022   0,2758    0,0409     0,0807    0,1536     0,0153    0,0484
+17
+
+
+
+
+     Municípios Sem Agência e PAB (%)                           0,1070    -0,0022   0,0089   0,1098    -0,0012    0,0047    0,1328    -0,0010    0,0033
+     Serviços - Ocupados (%)                                    0,1399    -0,0160   0,0569   0,1134    -0,0056    0,0292    0,2302    -0,0053    0,0404
+     Comércio - Ocupados (%)                                    0,2836     0,1779   0,3303   0,2039     0,0561    0,1325    0,1121     0,0158    0,0607
+     Agropecuária - Ocupados (%)                                0,1102    -0,0081   0,0460   0,0961    -0,0044    0,0248    0,2469    -0,0162    0,0406
+     Extrativo Mineral - Ocupados (%)                           0,0535    -0,0014   0,2517   0,0702    -0,0248    0,1544    0,4377    -0,3127    0,4106
+     Transformação - Ocupados (%)                               0,2540     0,0419   0,0856   0,5667     0,0744    0,0745    0,8838     0,1158    0,0526
+     Construção - Ocupados (%)                                  0,1221     0,0680   0,2351   0,0566     0,0028    0,0529    0,0814     0,0102    0,0547
+     SIUP - Ocupados (%)                                        0,0649    -0,1222   0,9233   0,0546    -0,0099    0,3421    0,0902     0,0818    0,3918
+     Setor Público - Ocupados (%)                               0,0620    -0,0014   0,0324   0,0664     0,0012    0,0176    0,0833    -0,0033    0,0171
+     Empresas - Até 49 Funcionários - Serviços nanceiros (%)   0,0534    -0,0024   0,0382   0,0652     0,0033    0,0243    0,0653     0,0024    0,0156
+     Empresas - Até 49 Funcionários (%)                         0,0606    0,0082    0,2066   0,0757     0,0192    0,1110    0,1286     0,0368    0,1234
+     Empresas - Até 49 Funcionários - Empregados (%)            0,1948     0,0160   0,0398   0,0603     0,0005    0,0071    0,0748     0,0005    0,0071
+   Apesar da baixa probabilidade de inclusão, a média dos coecientes das covariadas relativas ao canal de
+crédito é consistente com a teoria econômica. Em sua grande maioria, aponta que quanto maior a proporção
+de rmas pequenas e de trabalhadores empregados em rmas pequenas, tanto no setor nanceiro, como nos
+demais setores, maior a sensibilidade a um choque de política monetária.
+   As variáveis relativas à inserção do mercado nanceiro nos Estados também estão em linha com a intuição
+econômica. Quanto maior o número de agências por 100 mil habitantes e quanto menor o número de
+municípios sem agência ou posto de atendimento bancário, maior é a porcentagem de empregos perdidos
+devido a um choque monetário.
+   Apesar dos sinais em linha com a teoria, a maioria das distribuições posterior apresenta desvio padrão
+bastante elevado se comparado com as médias, o que já é um indicativo do grau de incerteza existente, não
+só quanto à magnitude dos coecientes, mas também quanto ao seu sinal.
+
+
+4    Conclusão
+O estudo das respostas estaduais a um choque de política monetária e a compreensão dos determinantes
+dessa heterogeneidade vêm sendo tratados de forma separada na literatura nacional. Com a recente exceção
+de Rocha et al. (2011), parte majoritária da literatura foca apenas na estimação das respostas estaduais. O
+objetivo deste trabalho foi tratar os dois temas dentro de um mesmo arcabouço metodológico, contribuindo
+assim para a compreensão do comportamento das Unidades Federativas frente a um choque na taxa de juros.
+Para tanto, seguiu-se Francis et al. (2012), que aplicam técnicas Bayesianas ao procedimento de duas etapas
+proposto por Carlino e DeFina (1999).
+   Em primeiro lugar, utilizou-se um VAR Bayesiano para estimar o impacto regional de uma inovação exó-
+gena na política do Banco Central. Os resultados encontrados apontam para uma forte heterogeneidade nas
+respostas das Unidades Federativas brasileiras. São Paulo, Rio Grande do Sul e Paraná são, respectivamente,
+os Estados mais sensíveis. Analisando a dispersão geográca das respostas estimadas, é possível concluir que
+as regiões Sul e Sudeste apresentam as maiores contrações em resposta a um choque positivo na taxa de
+juros. No outro extremo, destaca-se a região Norte como um todo, com exceção ao Estado do Amazonas.
+   Os resultados mostram ainda que as funções impulso resposta dos Estados mais sensíveis apresentam
+menor grau de incerteza, tanto em seu formato, como em seu sinal. Já para a região Norte, além de alguns
+Estados da região Nordeste, a distribuição posterior das funções impulso resposta é bastante dispersa entre
+valores positivos e negativos do espaço paramétrico.
+   Dessa forma, as evidências encontradas estão em linha com a literatura nacional ao indicar que as Unidades
+Federativas brasileiras respondem de forma assimétrica a uma inovação monetária. Contudo, o padrão
+encontrado assemelha-se mais ao obtido por Araújo (2004) que, ao comparar as respostas dos Estados da
+região Sul com as da região Nordeste, conclui pela maior sensibilidade dos Estados sulistas. Vasconcelos e
+da Fonseca (2002) também apontam para a maior sensibilidade de São Paulo e Rio Grande do Sul.
+   A partir das funções impulso resposta, construíram-se medidas de sensibilidade para as 27 Unidades
+Federativas brasileiras. Tais medidas foram regredidas contra variáveis proxy para os canais de transmissão
+de política monetária. Dúvidas em relação a quais variáveis explicativas incluir no modelo foram tratadas
+através do Bayesian Model Averaging, metodologia que permite formalizar a incerteza em relação não só ao
+espaço paramétrico, como também ao espaço de modelos.
+   Encontrou-se evidência de um alto grau de incerteza em relação a quais variáveis deveriam ser incluídas
+na estimação, uma vez que todas apresentaram probabilidades de inclusão relativamente baixas. Entretanto,
+a porcentagem da população ocupada empregada na indústria de transformação destacou-se em relação às
+demais variáveis, para todas as especicações testadas. Ao considerar apenas os pontos da função impulso
+resposta nos quais havia baixo grau de incerteza em relação ao seu sinal, a probabilidade de inclusão dessa
+variável elevou-se, chegando a quase 90%. Os resultados encontrados apontam para a forte relevância do
+canal de juros na determinação da heterogeneidade de resposta a um choque de política monetária.
+  Não foram encontradas evidências da presença do canal de crédito no nível estadual, uma vez que variáveis
+como porcentagem de rmas e bancos pequenos apresentaram probabilidades de inclusão quase sempre
+
+
+                                                     18
+abaixo de 10%. O grau de penetração do sistema nanceiro mostrou-se importante para a determinação das
+diferentes respostas regionais, apresentando PIP acima da média para algumas especicações testadas. Por
+m, variáveis relacionadas às características socioeconômicas também não se mostraram relevantes para a
+determinação das respostas estaduais.
+   Em linhas gerias, os resultados obtidos são diferentes dos encontrados em Rocha et al. (2011). Para os
+autores, a indústria de transformação não se mostrou signicativa na determinação das assimetrias regionais.
+Já variáveis relacionadas ao tamanho das rmas e bancos mostraram-se signicantes. Apesar das divergências
+em relação aos principais resultados encontrados neste trabalho, Rocha et al. (2011) também encontram
+evidências da importância do grau de penetração do sistema nanceiro.
+   Apesar de a política monetária ser formulada com base no comportamento das variáveis macroeconô-
+micas agregadas e de forma horizontal para todas as Unidades Federativas, é importante que seus efeitos
+regionais sejam analisados e compreendidos. Diferentes resultados podem levar a prescrições de políticas
+completamente opostas. As evidências reportadas acima indicam que uma maior homogeneidade regional
+dos choques monetários passa por uma maior presença da indústria de transformação nas economias esta-
+duais, assim como por uma maior penetração do sistema bancário. É interessante notar que, por encontrar
+respostas diferentes das obtidas neste estudo, Rocha (2007) apresenta recomendações distintas.
+   Assim, a diversidade de conclusões presentes na literatura nacional aponta para a necessidade de se
+continuar aplicando diferentes metodologias ao tema. Juntar o arcabouço de econometria regional (Bertanha
+e Haddad, 2008) com a metodologia Bayesiana pode ser uma estratégia interessante para pesquisas futuras.
+Caminhar para desagregações mais nas, como em Francis et al. (2012), também constitui uma agenda pouco
+explorada para o Brasil.
+
+
+Referências
+Araújo, E., 2004. Medindo o impacto regional da política monetária brasileira: uma comparação entre as
+  regiões nordeste e sul. Revista Econômica do Nordeste 35 (3), 356393.
+
+Bernanke, B., Gertler, M., 1995. Inside the black box: the credit channel of monetary policy transmission.
+  Economic Research Reports.
+
+Bertanha, M., Haddad, E., 2008. Efeitos regionais da política monetária no Brasil: impactos e transborda-
+  mentos espaciais. Revista Brasileira de Economia, 329.
+
+Blake, A., Mumtaz, H., 2012. Applied Bayesian Econometrics for Central Bankers. Bank of England.
+
+Carlino, G., DeFina, R., 1999. The dierential regional eects of monetary policy: Evidence from the US
+  states. Journal of Regional Science 39 (2), 339358.
+
+Christiano, L., Eichenbaum, M., Evans, C., 1999. Monetary policy shocks: What have we learned and to
+  what end? Handbook of macroeconomics 1, 65148.
+
+Céspedes, Lima, Maka, 2008. Monetary policy, ination and the level of economic activity in Brazil after the
+  Real Plan: stylized facts from SVAR models. Revista Brasileira de Economia 62, 123160.
+
+Del Negro, M., Schorfheide, F., 2011. Bayesian macroeconometrics. The Oxford Handbook of Bayesian
+  Econometrics, 293389.
+
+Doan, T., Litterman, R., Sims, C., 1984. Forecasting and conditional projection using realistic prior distri-
+ butions. Econometric Reviews 3, 1114.
+
+Draper, D., 1995. Assessment and propagation of model uncertainty (with discussion). Journal of the Royal
+  Statistical Society 56, 4598.
+
+Fernandez, Ley, Steel, 2001. Model uncertainty in cross-country growth regressions. Journal of Applied
+  Econometrics 16, 563576.
+
+Fernández, C., Ley, E., Steel, M., 2001. Benchmark priors for Bayesian model averaging. Journal of Econo-
+  metrics 100, 381427.
+
+                                                     19
+Francis, N., Owyang, M., Sekhposyan, T., 2012. The Local Eects of Monetary Policy. The B.E. Journal of
+  Macroeconomics 12, 138.
+
+Hodges, J., 1987. Uncertainty, policy analysis and statitics. Statistical Science 2, 259291.
+
+Koop, G., 2003. Bayesian Econometrics. John Wiley.
+
+Litterman, R., 1986. Forecasting with Bayesian vector autoregressions ve years of experience. Journal of
+  Business & Economic Statistics 4 (1), 2538.
+
+Madigan, D., York, J., Allard, D., 1995. Bayesian graphical models for discrete data. International Statistical
+ Review 63, 215232.
+
+Miller, R. J., 1978. The regional impact of monetary policy in the United States. Lexington: D.C. Heath.
+
+Minella, A., 2003. Monetary policy and ination in Brazil (1975-2000): a VAR estimation. Revista Brasileira
+ de Economia 57 (3), 605635.
+
+Mishkin, F. S., 1996. The channels of monetary transmission: Lessons for monetary policy. National Bureau
+ of Economic Research Working Paper 5464.
+
+Poirier, D., 1995. Intermediate Statistics and Econometrics: A Comparative Approach. Cambridge: The
+  MIT Press.
+
+Rocha, B., 2007. Ensaios sobre economia bancária e política monetária no Brasil em uma abordagem regi-
+  onalizada. Tese de Doutorado, Faculdade de Economia, Administração e Contabilidade, Universidade de
+  São Paulo.
+
+Rocha, R., Silva, M., Gomes, S., 2011. Por que os estados brasileiros têm reações assimétricas a choques na
+  política monetária? Revista Brasileira de Economia 65 (4), 413441.
+
+Sala, L., 2001. Monetary transmission in the euro area a factor model approach. Economiscs Working Paper
+  Archive No. 020505.
+
+Serrano, F., 2014. Impacto regional da política monetária no Brasil: uma abordagem Bayesiana. Dissertação
+  de Mestrado, Faculdade de Economia, Administração e Contabilidade, Universidade de São Paulo.
+
+Sims, C., 1992. Interpreting the macroeconomic time series facts: The eects of monetary policy. European
+  Economic Review 36(5), 9751000.
+
+Sims, C., 1993. A nine-variable probabilistic macroeconomic forecasting model. Business Cycles, Indicators
+  and Forecasting, 179204.
+
+Sims, C. A., Zha, T., 1998. Bayesian methods for dynamic multivariate models. International Economic
+  Review 39 (4), 949968.
+
+Vasconcelos, M. R., da Fonseca, M. W., 2002. Política monetária no Brasil: mecanismos de transmissão e
+  impactos diferenciados nas regiões e estados da federação. Anais da ANPEC (45).
+
+Waggoner, D. F., Zha, T., Nov. 2003. A Gibbs sampler for structural vector autoregressions. Journal of
+ Economic Dynamics and Control 28 (2), 349366.
+
+Zellner, A., 1986. On Assessing Prior Distribution and Bayesian Regression Analysis with g-Prior Distri-
+  butions. Bayesian Inference and Decision Techniques: Essay in Honour of Bruno de Finetti. Amsterdam:
+  North-Holland.
+
+
+
+
+                                                      20
+

@@ -1,0 +1,1443 @@
+MODELO DE FATORES DINÂMICOS: ESTIMAÇÃO E PREVISÃO 
+
+DA CURVA REAL DE JUROS 
+
+1 
+ 
+
+ 
+
+ 
+
+JANINE PESSANHA DE CARVALHO1  
+GUILHERME VALLE MOURA2  
+
+ 
+
+Resumo 
+
+ 
+
+O principal objetivo deste trabalho é modelar o comportamento da estrutura a 
+termo da taxa de juros brasileira e gerar boas previsões para horizontes distintos, seja de 
+curto,  médio  e  de  longo  prazo  em  diversas  maturidades.  Seguindo  os  trabalhos  de 
+Diebold e Li (2006), aplicaremos a estimação do modelo para uma amostra com dados 
+diários de NTN’s-B, e a partir dele previsões são geradas e comparadas com modelos de 
+estimação  e  previsão  concorrentes  (RW,  Svensson  e  modelo  de  dois  fatores).  O 
+resultado de previsão encontrado nos levou a concluir que o modelo de Diebold e Li não 
+é  o  mais  adequado  para  o  caso  brasileiro  e  que  para  muitas  maturidades  nos  diversos 
+horizontes  de  previsão  tal  modelo  é  batido  por  meros  passeios  aleatórios.  Porém, 
+utilizando  um  modelo  Diebold  e  Li  modificado,  mais  simples  e  parcimonioso, 
+alcançamos  modelos  com  qualidade  superior  de  previsões  àqueles  concorrentes, 
+inclusive  randow  walks.  Razões  para  o  sucesso  de  previsão  desse  modelo  de  dois 
+fatores  são  apontadas,  assim  como  uma  agenda  de  pesquisa  futura  para  a  estrutura  a 
+termo da taxa de juros brasileira.  
+
+ 
+Palavras chave: estrutura a termo da taxa de juros, modelos fatoriais, 
+
+estimação e previsão. 
+
+Códigos JEL: E31, E43, E52 
+Classificação Anpec: Área 4: Macroeconomia, Economia Monetária e 
+
+Finanças. 
+
+Abstract 
+
+ 
+
+The main objective of this work is to model the behavior of the term structure 
+of interest rates in Brazil and generate good predictions for different horizons, whether 
+short, medium and long term in various maturities. Following the work of Diebold and 
+Li (2006), we apply the estimation of the model for a sample of daily data NTN's-B, and 
+predictions  from  it  are  generated  and  compared  with  models  for  estimating  and 
+forecasting competitors (RW, Svensson and two model factors). The result of prediction 
+found led us to conclude that the Diebold and Li model is not the most appropriate for 
+Brazil  and  for  many  maturities  in  different  forecast  horizons  such  model  is 
+outperformed by simple random walks. However, using a model modified Diebold and 
+Li,  simpler  and  more  parsimonious  models  achieve  superior  forecasts  to  those  of 
+competitors,  including  randow  walks.  Reasons  for  the  successful  prediction  of  this 
+model two factors are noted as well as a research agenda for the future term structure of 
+interest rates in Brazil. 
+
+ 
+
+Keywords: term structure of interest rates, factor models, estimation and 
+
+prediction. 
+
+ 
+
+                                                 
+1 Mestre em Economia pelo PPGE/UFSC. 
+2 Professor do PPGE/UFSC. 
+
+2 
+
+ 
+
+1.  Introdução 
+
+ 
+A otimização da carteira de títulos públicos ganha considerável  atenção pelos 
+gestores que atuam na área de seguros e pensões, com destaque para a sua utilização na 
+gestão de ativos e passivos. Assim é tarefa essencial da administração dessas entidades a 
+elaboração  e  manutenção  de  modelos  que  sejam  capazes  de  retratar  o  estado  atual  e 
+gerar previsões acerca da trajetória futura dos retornos dos investimentos e do custo das 
+obrigações  a  pagar.  Ora,  a  curva  de  juros  é  peça  fundamental  desses  modelos  porque 
+informa  as  rentabilidades  de  títulos  públicos  com  os  mais  diversos  prazos  de 
+vencimento, reflete as expectativas acerca das trajetórias futuras dessas rentabilidades e 
+fornece  os  fatores  necessários  para  o  cálculo  de  valores  presentes  e  futuros,  que  são 
+dados indispensáveis para a análise dos riscos de solvência e liquidez.  
+
+Além  do  gerenciamento  de  risco  e  apreçamento,  a  compreensão  acerca  da 
+Estrutura a Termo da Taxa de Juros (ETTJ) é importante para diversas utilidades.  Um 
+delas é o gerenciamento da dívida pública, ao indicar o custo de emitir novos títulos da 
+dívida do governo com prazos semelhantes (Ver Campbell e Shiller (1991)). 
+
+Não menos importante é a questão da previsão, já que a ETTJ ajuda a prever o 
+comportamento futuro das taxas de juros nominais de curto prazo, trazendo informações 
+sobre  expectativas  de  inflação  e  servindo  como  indicador  antecedente  do  nível  de 
+atividade econômica . Previsões sobre a taxa futura de curto prazo, sobre a inflação e a 
+atividade  econômica  futura  são  fundamentais  como  base  para  decisões  informadas  de 
+investimento,  poupança,  consumo  e  de  política  dos  agentes  econômicos  -  governo, 
+consumidores e firmas.3 
+
+A ETTJ tem papel fundamental no canal de juros para a transmissão de política 
+monetária,  já  que  as  autoridades  monetárias  tem  capacidade  de  influenciarem  as  taxas 
+vigentes  em  operações  de  crédito  e  os  rendimentos  oferecidos  por  diversos  tipos  de 
+ativos  financeiros  simplesmente  manipulando  a  taxa  de  juros  nominal  de  curtíssimo 
+prazo (Romer e Romer, 2004). 
+
+Esse trabalho  consiste no esforço de modelar o  comportamento da estrutura a 
+termo  da  taxa  de  juros,  de  importância  inegável  em  virtude  das  aplicações  discutidas 
+acima, seja para macroeconomistas ou gestores financeiros. Mais especificamente, esse 
+trabalho  irá  estimar  e  fazer  previsões  fora  da  amostra  para  ETTJ,  tendo  como  base 
+modelos fatoriais  dinâmicos (autoregressivos (AR)), aplicando a metodologia proposta 
+por  Nelson  e  Siegel  (1987).    Tais  autores  utilizaram  o  modelo  de  três  fatores  para 
+modelar  o  comportamento  da  ETTJ  que  mais  tarde  fora  utilizado  por  Diebold  e  Li 
+(2006)  que  interpretaram  os  fatores  como  nível,  inclinação  e  curvatura  da  curva  de 
+juros. Para analisar o desempenho desse modelo de previsão será feito uma comparação 
+com  alguns  modelos  utilizados  na  literatura  para  modelagem  de  curva  de  juros,  como 
+modelo  de  Nelson  e  Siegel  com  dinâmica  temporal  do  vetor  autoregressivo  (VAR),  o 
+modelo ampliado de Nelson e Siegel, com quatro fatores proposto por Svensson (1994) 
+tanto  com  uma  abordagem  dinâmica  de  AR  quanto  de  VAR,  modelo  de  dois  fatores 
+(AR e VAR) e finalmente com um randow walk (RW). 
+
+Mais  especificamente,  é  proposto  neste  trabalho  a  estimação  e  previsão  da 
+curva  de  juros  real  tendo  com  base  os  títulos  indexados  ao  Índice  de  Preços  ao 
+Consumidor  Amplo  (IPCA),  ou  seja,  as  notas  do  Tesouro  Nacional  –  série  B  (NTN-
+B). Para  os  investidores,  uma  das  vantagens  da  NTN-B  é  a  possibilidade  de  obter 
+rentabilidades  em  termos  reais.  E  isto,  é  particularmente  desejável,  já  que  no 
+
+                                                 
+3 Ver, por exemplo, “Why Does the Yield Curve Predict Output and Inflation?”, de Arturo Estrella,  
+The Economic Journal, 115, 2005. E ver Ang e Piazzesi (2003) para evidência sobre atividade real e 
+Mishkin (1990) para evidência sobre inflação. 
+
+ 
+
+3 
+
+ 
+
+gerenciamento  de  ativos  e  passivos  financeiros  é  imprescindível  identificar  os  fatores 
+que influenciam a volatilidade do retorno dos títulos. 
+
+O  Brasil  tem  avançado  bastante  no  desenvolvimento  do  mercado  de  títulos 
+remunerados por índices de preços, focando mais recentemente nos títulos remunerados 
+pelo  IPCA.  A  dinamização  desse  mercado  vem  proporcionando  crescente  liquidez  e 
+demanda, refletida no volume vendido e na maior participação desses títulos no total da 
+Dívida Pública Federal (DPF). Nesse sentido, o Tesouro Nacional vem trabalhando para 
+aumentar  a  participação  dos  títulos  atrelados  a  esse  indicador,  as  NTN’s-B,  as  quais 
+vêm  ganhando  força  na  composição  da  dívida  pública  recente,  saltando  de  12,5%  em 
+2002 para 35,5% já em 2012. 
+
+O  resultado  encontrado  por  Diebold  e  Li  (2006)  para  os  dados  americanos  se 
+revelaram  animadores,  principalmente  para  horizontes  de  previsão  de  longo  prazo.  
+Embora  o  resultado  para  previsões  no  horizonte  de  1  mês  não  sejam  melhores  do  que 
+mero passeio aleatório e concorrentes,  para previsões de 1 ano à frente os modelos de 
+Diebold e Li se mostraram superiores aos demais. Uma possível razão para o sucesso de 
+previsão,  segundo  os  autores,  seria  a  abordagem  da  parcimônia,  da  simplicidade,  ou 
+seja, o princípio do KISS – “Keep it sophisticatedly simple”.  
+
+Porém,  o  resultado  deste  trabalho  conclui  que  para  os  dados  brasileiros,  o 
+modelo  de  Diebold  e  Li  (proposto  originalmente  por  Nelson  e  Siegel)  não  é  o  mais 
+indicado, já que para muitas maturidades nos diversos horizontes de previsão tal modelo 
+é batido por meros modelos univariados (RW). Mas, utilizando um modelo de Diebold e 
+Li modificado com apenas dois fatores (nível e inclinação) será dada uma simplicidade 
+ainda  maior  ao  modelo  para  estimar  e  prever  a  curva  de  juros  brasileira.  Este  modelo 
+mostrou  ser  superior  aos  demais,  incluindo  o  RW,  para  quase  todas  as  maturidades  e 
+horizontes  de  previsão,  gerando  boas  previsões  para  a  dinâmica  temporal  de  um 
+VAR(1). A exceção fica por conta de horizontes de previsão de curtíssimo prazo (1dia à 
+frente) em que um passeio aleatório mostrou consistentemente como o que ocorre com 
+previsões  para  dados  de  vários  países,  ter  os  melhores  resultados.  Uma  das  razões 
+apontadas para o sucesso deste modelo é que os fatores determinantes da curva de juros 
+brasileira  estariam  correlacionados  e  que  o  terceiro  fator  apontado  como  determinante 
+teria  baixo  poder  de  explicação.  Além  destas  justificativas,  parece  razoável  supor  que 
+modelos menos complexos, com mais parcimônia preveem melhor, apesar de ter ajuste 
+pior (KISS).  
+
+Além dessa introdução, a seção seguinte traz alguns conceitos relevantes e uma 
+breve  revisão  de  modelos  adotados  para  a  estimação  e  previsão  da  curva  de  juros.  A 
+apresentação  dos  dados  assim  como  o  resultado  da  estimação  e  previsão  da  curva  de 
+juros  brasileira  para  NTN-B  zero-cupom  é  discutida  na  terceira  seção.  E  finalmente  a 
+quarta seção traz a conclusão do trabalho. 
+ 
+
+2.  Revisão de literatura 
+ 
+
+Antes  do  estudo  dos  modelos  teóricos  que  serão  abordados  neste  trabalho,  é 
+imprescindível  o  conhecimento  de  alguns  conceitos  e  notações  centrais  para  o 
+entendimento da curva de juros. 
+
+A taxa efetiva do título (effective yield) em um ambiente de tempo contínuo é 
+
+facilmente calculável através da fórmula: 
+
+ 
+
+ 
+    
+
+  .                                                                                 (1) 
+
+  é o valor da taxa efetiva, em t, paga por um zero-coupon com 
+vencimento em T,       é o valor de face do título em t, padronizado para $1, que será 
+
+           
+    
+
+     
+    
+         
+Onde                  
+
+ 
+
+ 
+
+pago   em  T(t<T)  e         o  valor  (preço)  pelo  qual  esse  zero-coupon  bond,  com 
+vencimento em T, é negociado em t (t<T). 
+
+4 
+
+Geralmente,  os  títulos  não  são  negociados  pelos  seus  preços  nem  pelas  suas 
+taxas  efetivas,  e,  sim  por  suas  taxas  anualizadas.  Estas  taxas  dependem  da  convenção 
+acerca  da  forma  como  os  juros  são  compostos.  Em  um  ambiente  de  juros  compostos 
+continuamente, a taxa de juros anualizada de um título com preço de      será dada por: 
+.                          (2)  
+
+                              
+Onde        é  a  taxa  anualizada  de  um  zero-coupon  com  vencimento  em  T  e 
+negociado a      em t (T>t) e   o valor em unidades anuais do prazo, em t, de um zero-
+coupon. 
+
+          
+
+          
+
+          
+
+     
+
+ 
+
+A  taxa  forward  é  a  taxa  de  juros  fixada  no  presente  para  um  empréstimo  a 
+concretizar numa determinada data futura, assim conhecida também como taxa de juros 
+previamente contratada. 
+
+Essa taxa pode ser entendida como a taxa de um investimento feito em t, mas 
+que  irá  vigorar  entre  s  e  T,  (t<s<T),  sendo  que  o  investidor  recebe  uma  unidade 
+monetária nesse último período. O retorno de tal investimento é dado por: 
+
+ 
+ 
+
+                .                                                                                      (3) 
+
+         
+Onde        é a taxa forward contratada em t e que vigorará entre s e T e (T- s) é 
+
+o período em anos para o qual a taxa forward estará ativa. 
+
+A ETTJ observada é o conjunto de pares ordenados (taxa de juros, maturidade) 
+dos  títulos  zero-coupon  emitidos  pelo  governo.  Porém,  por  diversas  razões,  o  governo 
+não emite títulos para todas as maturidades possíveis e, ainda que emitisse, todos esses 
+títulos não seriam negociados todos os dias, somente alguns deles4. Há, então, inúmeros 
+modelos que tentam estimar a curva de juros. 
+
+Agora, vamos descrever a teoria por trás destes modelos. Os modelos teóricos 
+da ETTJ podem ser divididos em três classes principais: modelos de não arbitragem; os 
+modelos de equilíbrio; e os modelos estatísticos. 
+
+Os  modelos  não  arbitrários  são  obtidos  de  modo  a  gerar  automaticamente 
+valores  para  ETTJ  que  sejam  consistentes  com  a  realidade  atual  do  mercado.  Tais 
+modelos usam precificação livre de arbitragem.  Exemplos de modelos desta classe são 
+os modelos de Hull e White (1990). A imposição de condições de não-arbitragem, além 
+de assegurar consistência com a precificação no sentido proposto por Harrison e Kreps 
+(1979),  também  pode  afetar  o  ajuste  e  previsões  do  modelo.  Ang  e  Piazzesi  (2003) 
+indicam  que  a  imposição  de  correções  para  não  arbitragem  leva  a  uma  melhora  nas 
+previsões  para  a  estrutura  a  termo,  e  assim  forçar  a  consistência  com  não-arbitragem 
+representaria melhores ajustes e previsões em modelos para ETTJ.  
+
+A  segunda  classe  de  modelos,  os  modelos  de  equilíbrio,  é  obtida  através  da 
+imposição de condições de equilíbrio entre os rendimentos das diversas maturidades na 
+curva  de  juros.  Este  modelo  consiste  basicamente  de  obter  a  partir  de  hipóteses 
+econômicas,  o  processo  para  a  taxa  de  juros.  Um  fato  estilizado  deste  modelo  é  o  do 
+comportamento das taxas de juros a curto prazo e sua reversão a média de longo prazo. 
+Porém,  os  resultados  empíricos  dos  modelos  de  equilíbrio  geral,  como  os  modelos  de 
+Vasicek (1977) e Cox, Ingersoll e Ross (1985) indicam que o ajuste dentro da amostra e 
+previsões resultantes destes modelos são bastante pobres. 
+
+                                                 
+4 Criar liquidez em mercado secundário de títulos, investidores que possuam preferência por vencimentos 
+específicos  são  algumas  das  razões  pelas  quais  o  governo  escolhe  emitir  uma  maior  concentração  de 
+dívida  em  determinados  vencimentos.  Cox,  Ingersoll  e  Ross  (1985)  é  uma  excelente  referência  na 
+discussão de algumas dessas teorias relacionadas à ETTJ. 
+
+ 
+
+5 
+
+ 
+
+A terceira principal classe de modelos é dada pelos modelos estatísticos. Estes 
+modelos  são  obtidos  como  representações  puramente  estatísticas  da  evolução  da 
+estrutura a termo de taxas de juros. Esta classe é composta principalmente por modelos 
+de componentes principais, modelos de fatores ou de variáveis latentes, bem como por 
+modelos  de  interpolação.  Nestes  modelos  as  técnicas  utilizadas  permitem  ajustes  e 
+previsões da curva de juros, mas estes modelos não são consistentes com a imposição de 
+condições de não-arbitragem dadas pela teoria de precificação de ativos financeiros. 
+
+Dentre  os  modelos  estatísticos,  o  modelo  de  Nelson  e  Siegel  (1987)  e  suas 
+variantes,  são  os  mais  populares  entre  gestores  de  renda  fixa  e  bancos  centrais.  A 
+atratividade  dos  modelos  de  fatores  da  classe  Nelson  e  Siegel  se  deve  à  sua 
+parcimonialidade e boa performance empírica. Modelos deste tipo conseguem capturar 
+a maior parte da evolução da estrutura a termo da taxa de juros através do uso de apenas 
+três  fatores  (nível,  inclinação  e  curvatura).  Várias  extensões  do  modelo  de  Nelson  e 
+Siegel foram propostas (ver Almeida et al. (2007), Laurini and Hotta (2008), Rudebusch 
+and Wu (2008), entre outros). 
+
+Os trabalhos de Diebold e Li (2006) e Diebold et al. (2006) voltaram atenção 
+para  o  modelo  de  Nelson  e  Siegel  e  o  reinterpretaram  como  um  modelo  estatístico  de 
+três  fatores  para  descrever  a  curva  de  juros  ao  longo  do  tempo.  Os  três  fatores,  como 
+veremos  à  frente,  são  interpretados  como  nível,  inclinação  e  curvatura,  de  forma 
+consistente  a  interpretação  obtida  em  Litterman  and  Scheinkman  (1991),  em  que  a 
+interpretação tem algum sentido econômico.  
+
+ 
+
+2.1.Modelo de Nelson - Siegel 
+
+ 
+Em um dado ponto do tempo, é observado um grande conjunto de rendimentos 
+e há o desejo de ajustá-los a uma curva suave. A yield curve correspondente ao modelo 
+estático Nelson-Siegel é 
+
+      
+
+      
+
+        
+
+                                                      (4) 
+                
+Apesar  da  forma  funcional  do  modelo  parecer  um  tanto  quanto  arbitrário,  o 
+modelo  de  Nelson-Siegel  tem  algumas  características  muito  atraentes.  Por  exemplo,  é 
+um  modelo  parcimonioso  capaz  de  gerar  estruturas  a  termo  com  formatos  muito 
+semelhantes aos observados no mercado financeiro. 
+
+  
+
+  
+
+Seguindo  Diebold e Li  (2006),  é  reconhecido  que os  parâmetros  de  Nelson-
+
+Siegel deva ser variável no tempo, se a curva de rendimento também varia no tempo.  
+
+Assim,  combinando  as  perspectivas espaciais  e  temporais têm-se  o modelo 
+
+dinâmico de Nelson-Siegel  (DNS): 
+
+      
+
+      
+
+  
+
+  
+
+         
+
+         .                                        (5) 
+                   
+Operacionalmente,  o  modelo DNS nada  mais é  do  que  o modelo  estático  de 
+Nelson-Siegel  com os parâmetros variando no tempo. O modelo exponencial da curva 
+de juros proposto por Nelson  e Siegel (1987) e reinterpretado por Diebold  e Li (2006) 
+considera uma forma paramétrica para a evolução da estrutura a termo da taxa de juros 
+ao  longo  do  tempo,  em  que  os  coeficientes  podem  ser  interpretados  como  fatores 
+latentes  comuns      (nível),       (inclinação)  e       (curvatura)  e  os  coeficientes 
+   
+
+          cargas fatoriais, respectivamente.  
+
+      
+
+      
+
+    
+
+  
+
+  
+
+Este  modelo  dinâmico  é  muito  conveniente  estatisticamente,  pois  converte 
+situações de alta dimensão aparentemente intratáveis para situações de baixa dimensão, 
+fáceis  de  mensurar.  Isto  é  possível,  neste  caso,  graças  a  tendência  que  os  ativos 
+
+ 
+
+6 
+
+ 
+
+financeiros tem de se mover juntos, não no mesmo ritmo é claro, visto que há os fatores 
+idiossincráticos, específicos para cada rendimento, dado sua maturidade. 
+
+Naturalmente,  vamos  descrever  um  pouco  mais  sobre  os  fatores  comuns  não 
+observáveis     ,       e     .  Antes,  porém,  é  necessário  conhecer  o  significado  do 
+parâmetro  λ.  Este  é  tratado  como  fixo  em  Diebold  e  Li  (2006)  e  governa  a  taxa  de 
+decaimento  exponencial  e  pequenos  (grandes)  valores  de  λ  estão  associados  a  um 
+decaimento  suave  (rápido).  Como  veremos  na  seção  3,  este  trabalho  optou  por  seguir 
+Diebold e Li e fixa um valor de lambda em 0,1036. 
+
+Considere  primeiro,  a  carga  de     ,  função  que  é  constante  em  1  e  não  tende 
+para zero no limite. Desta forma, como o peso do primeiro fator é constante para todas 
+as  maturidades       representa  o  chamado  “fator  de  longo  prazo”  que  influencia 
+igualmente as taxas de curto e longo prazo, sendo associado ao nível da curva de juros. 
+É  possível  demonstrar  claramente  o  porquê  da  associação  do       ao  nível  da  curva. 
+Tomando a maturidade (   ao infinito, têm-se que: 
+
+      
+
+                          
+Resolvendo o limite, tem: 
+                          . E concluindo que 
+           , mostrando que o nível é igual ao    . 
+
+               
+
+  
+
+      
+
+      
+
+  
+
+         .  
+
+O  peso  do  segundo  fator, 
+
+,  começa  em  1  e  converge  para  zero 
+monotonicamente  e  rapidamente,  sendo      interpretado  como  inclinação  da  curva  de 
+juros, ou “fator de curto  prazo”, dado que este fator influencia muito as taxas de juros 
+curto  prazo.  Da  equação  7  e  utilizando  o  cálculo  para  definir  a  primeira  derivada  da 
+curva  de  juros  (inclinação)  baseada  no  método  de  diferenças  finitas  para  aproximação 
+de derivadas, tem 
+
+  
+
+                                     
+
+                
+
+                               
+
+      
+
+  
+
+  
+      
+                
+
+  
+
+         .  
+
+      
+
+      
+
+  
+
+           
+
+Resolvendo o limite, tem: 
+                                                         . E chega à 
+
+                                   
+
+                        
+
+O que nos diz que     representa a inclinação da curva. No gráfico 1 é possível 
+
+observar o nível, a inclinação e a curvatura. 
+
+O peso do terceiro fator,  
+
+        , é uma função côncava, que assume 
+valor  zero  para  a  maturidade  zero,  cresce,  depois  converge  para  zero  nas  maturidades 
+mais longas. Assim,     é interpretado como curvatura, ou “fator de médio prazo”, pois 
+está associado às taxas de juros de médio prazo.  
+
+  
+
+      
+
+Agora  será  feita  a  estimação  dos  modelos  fatoriais  dinâmicos  da  ETTJ.  A 
+primeira  abordagem  de  estimação,  chamada  de  modelo  DNS  em  duas  etapas,  foi 
+introduzido  por  Diebold  e  Li  (2006).  Considere  primeiro,  o  caso  do  parâmetro  λ 
+calibrado. 
+
+Na primeira etapa são estimados os fatores latentes da equação de medida pelo 
+método  dos  mínimos  quadrados  sob  o  modelo  estático  de  Nelson-Siegel,  para  cada 
+período  de  tempo  t,  ou  seja,  esta  equação  é  tratada  como  um  modelo  cross-section.  A 
+partir  disso  são  obtidos  um  conjunto  de  dados  em  séries  temporais  dos  fatores 
+estimados,  assim  como  são  gerados  os  resíduos  para  cada  período  de  tempo  (série 
+temporal). 
+
+ 
+
+ 
+
+Gráfico 1 – Carga dos fatores (  = 0.1036) 
+
+7 
+
+Na  segunda  etapa,  por  sua  vez,  ajusta-se  o  modelo  dinâmico  dos  fatores  da 
+equação  de  transição.  A  dinâmica  dos  fatores  é  modelada  através  de  um  processo 
+autorregressivo de primeira ordem, AR(1), para cada fator. Utilizando a série temporal 
+dos três fatores estimadas no primeiro passo para estimar a equação dos estados, obtém 
+os estimadores tanto do parâmetro desta equação como do fator de perturbação. 
+
+ 
+
+Ao invés de fixar e/ou calibrar o valor de λ em um valor especificado a priori é 
+possível  estimar  este  valor.    O  problema  é  simples:  consiste  em  estimar  na  primeira 
+etapa  não  três  parâmetros,  mas  sim  quatro,  e  consequentemente  na  segunda  etapa  ao 
+estimar os parâmetros da equação de transição, estes quatro estimadores para o modelo 
+dinâmico serão utilizados. 
+
+ 
+
+2.2.Modelo de Svensson 
+
+ 
+Uma  extensão  do  modelo  original  de  Nelson  e  Siegel  é  o  proposto  por 
+Svensson (1994) em que é adicionado um quarto fator em que se têm melhores ajustes e 
+flexibilidade.  
+
+Como  a  inclinação  e  a  curvatura  em  Nelson  e  Siegel  se  aproximam  de  zero 
+rapidamente com maturidades maiores, somente o nível estaria disponível para o ajuste 
+das  yields  de  longo  prazo.  Para  resolver  este  problema  Svensson  (1994)  introduz  uma 
+segunda curvatura ao modelo assim como um lambda adicional5, propondo  
+
+       
+
+       
+
+       
+
+   
+
+        
+
+                
+Como  observado  anteriormente  no  modelo  de  Nelson  e  Siegel,  Diebold  e  Li 
+introduziram  uma  dinâmica  temporal  no  modelo  original  e  mostraram  que  sua  versão 
+dinâmica tem boa capacidade de previsão. Similarmente ao que Diebold e Li fizeram ao 
+modelo original de Nelson e Siegel, a versão dinâmica do modelo de Svensson é dada 
+por 
+
+                 
+
+          . (6) 
+
+   
+
+   
+
+                   
+
+         
+
+   
+
+         
+
+         
+
+   
+
+                          
+
+       
+
+   
+
+          .                                                                                     (7) 
+
+     
+ Em  trabalho  recente,  Calderia,  Moura  e  Santos  (2012)  demonstram  que  para 
+dados brasileiros este modelo com um fator a mais tem um melhor ajuste aos dados do 
+que  àqueles  com  três  fatores,  modelo  de  Nelson  e  Siegel.  Além  disso,  este  modelo  de 
+Svensson  vem  sendo  amplamente  usado  por  bancos  centrais  em  todo  o  mundo  (BIS 
+2005). 
+
+ 
+
+                                                 
+5 Problema de multicolinearidade da estimação do modelo com a introdução de um novo lambda será 
+detalhada mais a frente. 
+
+ 
+
+8 
+
+ 
+
+3.  Modelagem e previsão da Estrutura a termo da taxa de juros 
+
+ 
+Nesta  seção  os  modelos  propostos  para  a  curva  de  juros  serão  estimados  e 
+avaliados,  utilizando  o  modelo  de  três  fatores  de  Diebold  e  Li  (2006)  em  que  na 
+primeira  etapa  estimam-se  os  fatores  para  cada  período  de  tempo  (modelo  cross–
+section) e em seguida ajusta-se o modelo dinâmico dos fatores da equação de transição. 
+Iniciaremos com a introdução dos dados. Além deste modelo, outros concorrentes serão 
+utilizados para comparações. 
+
+ 
+
+3.1.Dados 
+
+ 
+Nesse capítulo serão introduzidos os dados utilizados para construir as curvas 
+
+de juros e a análise de suas propriedades. 
+
+Os dados empregados consistem das séries diárias de taxas de juros dos títulos 
+públicos  federais  fixados  à  inflação  (IPCA)  extraídos  da  ANBIMA,  com  maturidades 
+fixas de 1, 3, 6, 9, 12, 15, 18, 21, 24, 26, 30, 36, 42 e 48 meses. O período analisado vai 
+de  03/01/2005  a  03/02/2011,  perfazendo  um  total  de  1529  observações  diárias.  Para  a 
+estimação  da  curva  de  juros  foram  utilizados  os  preços  indicativos  dos  títulos  NTN-B 
+emitidos  pelo  Tesouro  Nacional  para  todos  os  vencimentos  disponíveis.    Estes  títulos 
+indexados pagam cupons semestrais.  
+
+As NTN-B’s são títulos s públicos com  rentabilidade vinculada  à variação do 
+IPCA, acrescida de juros definidos no momento da compra que pagam cupons de juros 
+(6% a.a.) semestrais,  compostos,  e apresentam um  único fluxo de principal  na data de 
+vencimento. O valor nominal deste título na data base (15/07/2000) é R$ 1.000,00 que 
+serve como referência para atualização do valor nominal conforme o  IPCA.  Seu preço 
+unitário é calculado como: 
+       
+
+   
+       ,                                                                           (8) 
+ 
+              
+            ,                                                                         (9) 
+onde      é  o  preço  unitário,      é  o  pagamento  dos  cupons  do  título,       o 
+valor nominal atualizado pela variação do IPCA entre a data-base (15/07/2000) e a data 
+de  liquidação,       é  o  yield  do  título  anualizado,  e  finalmente     é  o  tempo  até  o 
+vencimento (em anos comerciais - 252 dias úteis). 
+
+      
+
+ 
+   
+
+ 
+
+  
+
+ 
+
+Inicialmente  os  títulos  com  cupom  (NTN-B  de  diversas  maturidades)  são 
+transformados  em  zero  cupom  através  do  cálculo  da  duration6  dos  mesmos.  Uma  vez 
+que  este  trabalho  trabalha  com  maturidades  fixas,  os  dados  observados  foram 
+interpolados  através  do  método  cubic  splines  proposto  originalmente  por  McCulloch 
+(1971; 1975). Em seguida, define-se o total de pagamentos dos títulos     como: 
+
+                       .                                                                               (10)  
+Onde      é  pagamento  do  principal  e     é  o  somatório  do  pagamento  dos 
+
+cupons do título considerado. 
+
+A partir de        obtém-se a duration e a maturidade de cada título. A Tabela 
+
+1 resume algumas estatísticas descritivas da curva de juros para o período. 
+
+                                                 
+6 Macaulay (1938) propôs a formulação ainda hoje utilizada para o cálculo da duration, como uma média 
+ponderada de todos os fluxos de caixa do título.  
+
+ 
+
+ 
+
+Tabela 1 – Estatística das taxas de juros das NTN’s-B 
+
+9 
+
+ 
+
+Nota:  A  tabela  apresenta  estatísticas  descritivas  das  taxas  de  juros  diárias  para  diferentes 
+maturidades assim como para o nível, inclinação e curvatura da curva, definidos, respectivamente, como 
+                         e                           .  O  período  amostral  vai  de  03/01/2005  até 
+03/02/2011. 
+
+A  análise  preliminar  estatística  dos  dados  permite  fazer  algumas  conclusões.  
+Respeitando  a  teoria  de  finanças,  em  geral,  verifica-se  que  a  curva  de  juros  média  é 
+positiva e côncava (ver Diebold e Li (2006) e Angi e Piazzesi (2003)). Porém, as médias 
+registradas  para  títulos  americanos  com  prazos  equivalentes  apresentam  valores  bem 
+menores do que as médias das taxas nas NTN’s-B. Adicionalmente, os desvios padrões 
+decrescem com a maturidade, ou seja, títulos com vencimento em curtíssimo prazo (por 
+exemplo, observe um título com maturidade de 1 mês) possui volatilidade superior a de 
+um  outro  com  maturidade  de  longo  prazo  (  título  com  maturidade  de  48  meses).    Isto 
+indica que taxas de juros de prazos menores são mais suscetíveis a flutuações na Selic.  
+
+Outro  ponto  importante  é  a  considerável  variação  entre  as  taxas  mínimas  e 
+máximas  para  as  diferentes  maturidades,  o  que  pode  estar  sendo  influenciado  pela 
+política  monetária  no  referido  período.  As  distribuições  das  taxas  possuem,  em  sua 
+grande  maioria,  uma  cauda  longa  à  direita,  conforme  indicado  pela  medida  de 
+assimetria. Testamos a hipótese nula de que as yields são normalmente distribuídas e foi 
+possível  rejeitar  a  hipótese  para  todas  as  maturidades  (assim  como  para  os  dados 
+americanos). 
+
+A autocorrelação de primeira ordem das séries é elevada, o que indica que os 
+movimentos  das  taxas  de  juros  dos  NTN’s-B  tendem  a  ser  persistentes  (ver,  por 
+exemplo,  a  autocorrelação  de  primeira  ordem  registrada  para  a  taxa  de  NTN  -  B  de  1 
+mês, que é de aproximadamente 0.9984), o que vai ao encontro da teoria econômica, já 
+que as taxas de juros para maturidades de curto prazo parecem ser persistentes para as 
+três  defasagens  utilizadas,  1,  5  e  21  dias    úteis.  Importante  destacar  também  as 
+autocorrelações  para  maturidades  de  prazos  mais  longos  que  não  cai  expressivamente, 
+contrariando o observado para  dados americanos  (Dieboldi  e  Li (2006)).  Isto pode ser 
+um  indício  de  que  para  o  caso  brasileiro  existe  uma  alta  correlação  entre  fatores  que 
+afetam as yields tanto no curto quanto no longo prazo. Isso será explorado mais adiante 
+na seção de resultados.  
+
+O  gráfico  2  mostra  o  comportamento  diário  da  curva  de  juros  para  o  período 
+analisado. A Figura mostra o comportamento temporal das taxas de juros das NTN’s-B 
+de 1, 3, 6, 9, 12, 15, 18,21, 24, 26, 30, 36 e 42 meses. Nota-se que as taxas costumam se 
+movimentar  em  conjunto,  fenômeno  que  pode  ser  atribuído  à  influência  de  um  fator 
+nível  (que  supostamente  afeta  todas  as  taxas  da  mesma  maneira).  Este  fato  pode  ser 
+analisado ao notar que o nível da yield (maturidade de 48 meses) é altamente persistente 
+com autocorrelação alta. Nota-se também que ao longo do tempo tanto a inclinação e a 
+curvatura  variam  significativamente  assumindo  vários  formatos  e  que  são  também 
+
+ 
+
+Maturidade (meses)MédiaMedianadesvio PadrãoMínimoMáximoAssimetriaCurtoseρ(1)ρ(5)ρ(21)18.04366.84584.28371.869820.94811.35834.11930.99840.98970.934337.29966.95992.89342.753513.25920.41052.20500.99660.98200.916167.46307.15042.61713.371412.88810.34412.13150.99670.98240.920497.76937.38062.46414.206012.88890.50852.24540.99830.99130.9535127.97797.61632.36124.757012.95710.60902.33350.99900.99450.9655158.09947.77182.25134.951912.93060.62592.31080.99910.99500.9676188.16347.80002.13225.170712.70610.59462.21070.99900.99470.9668218.19097.81512.01385.386812.43300.54232.07960.99890.99410.9650248.19497.84691.90355.586912.13750.48531.95040.99880.99360.9627268.18367.83801.80465.747711.83950.43261.84250.99870.99300.9599308.16247.81111.71795.777011.56240.38841.76400.99860.99230.9567368.10277.77031.57745.803111.38470.32831.69200.99840.99100.9497428.03247.77161.47145.807411.30720.29721.69590.99820.98980.942648 (nível)7.95957.73581.38945.802711.18690.28101.72810.99810.98880.9363inclinação-0.08400.89793.5039-11.50795.2861-1.45114.63070.99740.98280.8895curvatura0.37870.83151.9598-6.33764.3202-1.30304.52640.99630.97670.865410 
+
+ 
+
+altamente persistentes. Porém a curvatura é menos persistente que a inclinação, que por 
+sua vez é menos persistente que o nível da yield. 
+
+Por fim, testes de raiz unitária foram realizados para a verificação da existência 
+ou não de estacionariedade nas séries temporais relativas às 14 maturidades de NTN-B. 
+A rejeição da hipótese nula de que há raiz unitária ao nível de significância de 10%,  5% 
+e 1% é assinalada por (*, **,***). Os testes Dickey-Fuller aumentado (ADF) sugerem 
+na tabela 2 que as séries são I(1), com exceção das maturidades 3, 6 e 9 meses, para as 
+quais foram rejeitadas a hipóteses nula de raiz unitária em nível. Porém, será seguido o 
+trabalho de Diebold e Li (2006) e essas séries serão utilizadas em níveis. 
+
+Gráfico 2 – Comportamento recente das taxas de juros das NTN’s. 
+
+ 
+
+ 
+
+ 
+
+Tabela 2 - Resultados dos testes de raiz unitária realizados com a série 
+
+temporal relativa às taxas de NTN’-B 
+
+Teste realizados no pacote econométrico MATLAB. Utilizou-se critério de Critério de 
+
+Schwarze (SIC) para a escolha das defasagens no teste de raiz unitária ADF. 
+
+ 
+
+3.2.Curva de Juros estimada 
+
+11 
+
+ 
+
+ 
+Como  discutido  na  seção  4.2,  para  o  ajuste  da  curva  de  juros  de  NTN-B  será 
+
+utilizado o modelo de Diebold e Li já descrito em seções anteriores como 
+
+      
+
+      
+
+  
+
+  
+
+       . 
+
+         
+
+                   
+Seguindo  os  trabalhos  de  Nelson  e  Siegel  (1987)  e  Diebold  e  Li  (2006),  os 
+parâmetros    ,      e      (betas)  serão  estimados  pelo  método  dos  mínimos  quadrados 
+ordinários  (MQO)  para  cada  período  de  tempo,  e,  portanto,  fixando  o  parâmetro  de 
+decaimento  λ  em  um  valor  específico.  Especificar  a  priori  o  valor  do  λ  ao  invés  de 
+estimá-lo, possibilita que a carga dos fatores seja fixada e conhecida (regressores fixos), 
+podendo ser estimado pelo  MQO. Além  de simplicidade e conveniência,  a calibragem 
+do  λ também  fornece confiabilidade numérica ao modelo já que estamos  substituindo 
+centenas de otimizações numéricas  (algoritmos) potencialmente complexas por triviais 
+regressões de mínimos quadrados. Obviamente devemos optar por um valor apropriado 
+para o    Este parâmetro ótimo escolhido será aquele que minimiza a soma do quadrado 
+da diferença do yield observado do estimado, isto é que minimize a soma dos quadrados 
+dos resíduos (SQR) conforme descrito na equação abaixo 
+
+                                
+.                                                                 (11)  
+O valor de λ que minimiza a função acima descrita é de 0,1036 o que implica 
+
+    
+
+ 
+
+que o valor máximo da curvatura ocorre aos 18 meses ou 378 dias úteis. 
+
+Após a escolha do λ, é aplicado o MQO para estimar os valores que        e    
+irão  assumir  ao  longo  do  tempo,  assim  como  os  resíduos  correspondentes.  Agora  será 
+analisado o ajuste do modelo.  
+
+No gráfico 3 algumas datas específicas são selecionadas e o comportamento da 
+curva  de  juros  ajustada  no  modelo  de  três  fatores  e  a  curva  empírica  (  observada)  são 
+mostradas. É possível perceber que a curva ajustada replica alguns formatos da curva de 
+juros real: positivamente inclinada e curvatura em forma de U invertido.  
+
+ 
+
+NívelDiferençaNívelDiferençaNívelDiferença1-1.0179-23.7347***-1.2131-23.7342***-1.9212-23.7257***3-0.8182-9.2639***-1.4871-9.2648***-4.3388***-9.3114***6-0.6234-15.6193***-1.0277-15.6172***-4.0474***-15.6812***9-0.6946-10.3620***-0.8314-10.3690***-3.6189**-10.4302***12-0.8007-12.2169***-0.6314-12.2303***-2.8487-12.2692***15-0.8570-34.7836***-0.3455-34.7883***-2.4800-34.8109***18-0.9153-35.0483***-0.4509-35.0544***-2.1757-35.0620***21-0.9337-35.2476***-0.5486-35.25358***-2.0511-35.2541***24-0.9341-35.3207***-0.6292-35.3261***-2.0109-35.3233***26-0.9261-35.3005***-0.6971-35.3052***-2.0094-35.3007***30-0.9151-35.2252***-0.7564-35.2292***-2.0247-35.2237***36-0.8951-35.0142***-0.8557-35.0170***-2.0669-35.0104***42-0.8865-34.8073***-0.9320-34.8096***-2.1010-34.8024***48-0.8921-34.6332***-0.9859-34.6357***-2.1210-34.6280***NadaInterceptoIntercepto e tendênciaMaturidades ( meses) 
+
+Gráfico 3 – Curva de juros em datas selecionadas 
+
+15/12/2006                                                 10/09/2008 
+
+ 
+
+12 
+
+ 
+
+Observando  os  fatores  estimados  (  ,    ,    )  e  comparando-os  com  os 
+observados na figura  4,  a premissa de que os três fatores do modelo  correspondem  ao 
+nível, inclinação e curvatura se confirmam. As correlações entre os fatores estimados e 
+o  nível,  inclinação  e  curvatura  observado  são  de  ρ(             ,  ρ(                e 
+ρ(             ,  onde  (N,I,C)  é  nível,  inclinação  e  curvatura  da  curva  de  juros 
+observada.  
+
+Gráfico 4 – Fatores estimados versus observados 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+13 
+
+ 
+
+ 
+
+Nota:  Define-se,  da  curva  observada,  o  nível,  inclinação  e  curvatura  da  curva,  definidos, 
+
+respectivamente, como                          e                         .  
+
+Completando  a  análise  dos  fatores  da  curva  estimada,  a  tabela  3  apresenta 
+algumas estatísticas descritivas destes fatores. O primeiro fator é o menos volátil, pois o 
+seu  desvio  padrão  é  menor  do  que  o  calculado  para  os  demais  fatores;  o  fator  mais 
+volátil  é  o  segundo.  E  por  fim,  nota-se  que  o  segundo  fator  é  o  mais  persistente  de 
+todos,  pois  apresenta  as  maiores  autocorrelações.  Ademais,  este  fator  possui  uma 
+característica  importante  a  ser  notada:  na  média,  seu  valor  é  negativo.  A  inclinação 
+negativa indica a conduta da política monetária flexível adotada no período em questão, 
+no  qual  a  meta  Selic  definida  pelo  Comitê  de  Política  Monetária  (Copom)  recuou  de 
+19,75% a.a. (maior pico do período analisado) em agosto de 2005 para 10,75% a.a. em 
+janeiro  de  2011  (BCB  –  Histórico  das  Taxas  de  Juros).  Os  testes  Dickey-Fuller 
+aumentado (ADF) sugerem que    e    têm raiz unitária e que    não tem7. 
+
+Tabela 3 - Estatística descritiva, fatores estimados. 
+
+ 
+
+3.3.Modelagem e desempenho dos modelos de previsão fora-da-amostra  
+
+ 
+Seguindo  os  trabalhos  de  Diebold  e  Li  (2006),  será  aplicada  a  estimação  do 
+modelo  para  uma  amostra  com  dados  diários  de  03/01/2005  à  03/02/2010,  sendo  que 
+uma subamostra composta por 252 dias úteis, compreendendo o período de 04/02/2010 
+até 02/01/2011 é deixada do lado de fora da amostra. Essa subamostra é separada para 
+comparar  as  previsões  calculadas  com  os  dados  efetivamente  observados8.  O  critério 
+
+                                                 
+7 Testes realizados no pacote econométrico MATLAB. Utilizou-se critério de Critério de Schwarze (SIC) 
+para a escolha das defasagens no teste de raiz unitária ADF.  Ao nível de significância de 5% os valores 
+críticos para rejeição da hipótese nula de presença de raiz unitária é de 1.9416. 
+ 
+8 O procedimento consiste em estimar o modelo com dados de 03/01/2005 à 03/02/10 no primeiro passo. 
+Em  seguida,  o  modelo  é  utilizado  para  gerar  previsões  de  04/02/10  à  02/01/2011.  Faz-se  então,  uma 
+repetição  do  primeiro  passo  incorporando  um  dia  a  mais  para  a  estimação,  ou  seja,  os  modelos  são 
+estimados  novamente  com  dados  de  03/01/2005  à  04/02/10.  Agora,  no  segundo  passo  são  geradas 
+previsões para o período de 05/02/2010 à 02/01/11. Faz-se então estimações e previsões recursivamente e 
+este procedimento com janela móvel vai se repetindo sucessivamente.  
+
+ 
+
+FatoresMédiaMedianaDesvio PadrãoMínimoMáximoAssimetriaCurtoseρ(1)ρ(5)ρ(21)ADFβ^18.08657.92311.35894.551712.27640.28982.97500.99100.95120.7863-1.1910β^2-0.5882-1.20513.1628-5.57527.42680.78172.79860.99560.97590.8636-1.6948β^30.76881.22123.0156-10.37607.8358-0.52983.24720.99220.95450.7992-2.5451 
+
+adotado  para  avaliação  de  desempenho  é  o  RMSE  ( root-mean-square  error)  ,  isto  é, 
+raiz do erro médio quadrático e os horizontes para os quais se faz as previsões são 1 dia, 
+1 semana, 1mês, 2 meses e 3 meses ( h=1,5,21,42 e 63 dias úteis). 
+
+14 
+
+A previsão da curva de juros com base em um modelo univariado AR(1) é 
+               
+Onde 
+
+            
+
+         , 
+
+         
+
+         
+
+      
+
+      
+
+      
+
+  
+
+  
+
+  
+                      
+
+   
+
+                 
+
+Este  trabalho  irá  incluir  também  previsões  VAR(1)  para  análise,  assim  como 
+em Diebold e Li (2006). Aqui, a correlação entre os fatores da curva de juros brasileira é 
+uma razão apontada para isto. Serão mostrados nos resultados que para o caso brasileiro 
+isto se confirma. Segue o modelo utilizado para a dinâmica do VAR(1). 
+
+            
+
+         
+
+      
+
+  
+
+      
+
+         
+
+      
+
+  
+
+         , 
+
+               
+onde 
+  
+                       
+ 
+
+Para  comparação, 
+concorrentes que seguem abaixo.  
+
+             . 
+
+também 
+
+iremos  obter  previsões  para  modelos 
+
+             
+
+Passeios aleatórios ou randow walks (RW) que corresponde a 
+
+1. 
+                    , 
+2.  Modelo dinâmico AR (1) de Svensson ajustado (1994)9  
+               
+       
+
+         
+
+         
+
+      
+
+       
+
+       
+
+   
+
+   
+
+            
+           , 
+
+   
+
+         
+onde 
+  
+                      
+3.  Modelo dinâmico VAR (1) de Svensson ajustado (1994)  
+                 
+       
+
+                 . 
+
+            
+
+         
+
+         
+
+      
+
+       
+
+       
+
+   
+
+   
+
+   
+
+            
+
+            
+
+  
+         
+
+           , 
+
+            
+
+               . 
+
+   
+onde 
+  
+                       
+4.  Modelo de 2 fatores com dinâmica AR(1)10   
+               
+Onde 
+  
+                      
+5.  Modelo de 2 fatores com dinâmica VAR(1)   
+               
+onde 
+
+            
+
+             . 
+
+         
+
+         
+
+      
+
+      
+
+   
+
+ , 
+
+ , 
+
+  
+
+  
+
+                                                 
+9  Seguindo  os  trabalho  de  Caldeira,  Moura  e  Santos  (2012)  disponível  em    Advances  in  Scientific  and 
+Applied  Accounting.  São  Paulo,  v.5,  n.3,  p.  349-376,  2012  iremos  utilizar  um  modelo  ajustado,  com  o 
+intuito  de  corrigir  possível  problema  de  multicolinearidade  entre  os  lambdas  1  e  2,  em  que  DePooter 
+(2007) propõe uma substituição do ultimo termo da equação 12 por        . 
+10 Na dissertação apresentada por Priscila Kelly Carvalho Sabino (2007) é mencionada a questão da não 
+necessidade do terceiro fator para o comportamento da estrutura a termo brasileira segundo a verificação 
+de ACP. Tal resultado também foi obtido para a curva de juros alemã antes do estabelecimento do euro 
+(ver  “A  Two-Factor  Model  of  the  German  Term  Structure  of  Interest  Rates”,  de  Nuno  Cassola  e  Jorge 
+Barros Luís, em Applied Financial Economics, 13, 2003.) 
+
+ 
+
+15 
+
+ 
+
+           . 
+
+  
+                       
+ 
+A raiz dos erros quadráticos médio (RMSE) para cada maturidade de NTN-B 
+são apresentadas a seguir para o modelo Diebold e Li (DL – AR e VAR) assim como a 
+de  seus  concorrentes  randow  walk  (RW),  Svensson  ajustado  (SV  –  AR  e  VAR)  e  o 
+modelo de dois fatores (2fat – AR e VAR). As tabelas de 4 a 8 mostram o resultado de 
+previsão fora-da-amostra para h passos à frente, sendo horizontes diário (h=1), semanal 
+(h=5), mensal (h=21), bimestral (h=42) e trimestral (h=63), respectivamente. 
+
+Para  o  horizonte  de  previsão  de  1  dia  a  frente  (h=1),  o  RW  supera  todos  os 
+modelos  concorrentes  para  qualquer  maturidade  que  se  observa.  Como  é  possível 
+observar  o  RMSE  é  decrescente  com  as  maturidades.  Isto,  como  já  mencionado 
+anteriormente,  pode  revelar  que  maturidades  mais  curtas  são  mais  suscetíveis  a 
+variações  na  Selic.  O  desempenho  ruim  dos  modelos  para  previsões  1  dia  à  frente, 
+comparado com meros passeios aleatórios (RW), vai ao encontro do resultado de muitos 
+outros estudos da estrutura a termo (Ver Diebold e Li (2006)).  
+
+Quando  comparamos  a  análise  de  desempenho  dos  modelos  (RMSE)  para  o 
+horizonte  de  previsão  de  1  semana,  percebemos  que  o  RW  ainda  supera  os  modelos 
+concorrentes  em  sua  maioria.  Mas  agora,  para  determinadas  maturidades,  modelos 
+como  os  de  Svensson  ajustado  e  o  modelo  de  dois  fatores  aparecem  como  a  melhor 
+alternativa  de  previsão  fora-da-amostra.  Porém,  o  modelo  de  Diebold  e  Li,  continua 
+apresentando  um  resultado  frustrante  para  previsões,  superando  seus  concorrentes 
+apenas para a maturidade de 30 meses (DL(AR)).  
+
+Tabela 4 – RMSE do modelo de Diebold e Li (AR e VAR) e concorrentes 
+
+RW, SV, e modelo de 2 fatores (2fat) quando h=1 
+
+ 
+
+ 
+
+MaturidadesRWDL (AR)DL (VAR)SV (AR)SV (VAR)2fat (AR)2fat (VAR)10.001860.010670.010710.008700.008900.012320.0124630.001140.009170.009140.008980.008930.008500.0084160.001020.007740.007710.005850.005800.008050.0079990.000710.002560.002550.000760.000740.003360.00335120.000620.000980.000990.002710.002750.000710.00072150.000610.002370.002350.003270.002970.001470.00143180.000600.002810.002770.002610.002590.002000.00194210.000580.002660.002600.001440.001400.002050.00197240.000560.002190.002110.000600.000540.001830.00173260.000540.001870.001780.001010.000930.001680.00158300.000530.000930.000840.002230.002190.001050.00095360.000510.000870.000990.002690.002890.000520.00058420.000500.002100.002280.001250.001430.001100.00126480.000490.003260.003470.002400.002620.001880.00206 
+
+Tabela 5 – RMSE do modelo de Diebold e Li (AR e VAR) e concorrentes 
+
+RW, SV, e modelo de 2 fatores (2fat) quando h=5 
+
+16 
+
+ 
+ 
+
+ 
+
+ 
+
+Tabela 6 – RMSE do modelo de Diebold e Li (AR e VAR) e concorrentes 
+
+RW, SV, e modelo   de 2 fatores (2fat) quando h=21 
+
+ 
+
+ 
+
+MaturidadesRWDL (AR)DL (VAR)SV (AR)SV (VAR)2fat (AR)2fat (VAR)10.001860.010670.010710.008700.008900.012320.0124630.001140.009170.009140.008980.008930.008500.0084160.001020.007740.007710.005850.005800.008050.0079990.000710.002560.002550.000760.000740.003360.00335120.000620.000980.000990.002710.002750.000710.00072150.000610.002370.002350.003270.002970.001470.00143180.000600.002810.002770.002610.002590.002000.00194210.000580.002660.002600.001440.001400.002050.00197240.000560.002190.002110.000600.000540.001830.00173260.000540.001870.001780.001010.000930.001680.00158300.000530.000930.000840.002230.002190.001050.00095360.000510.000870.000990.002690.002890.000520.00058420.000500.002100.002280.001250.001430.001100.00126480.000490.003260.003470.002400.002620.001880.00206MaturidadesRWDL (AR)DL (VAR)SV (AR)SV (VAR)2fat (AR)2fat (VAR)10.013910.013100.014060.014800.015210.013140.0133530.009560.007270.006570.005760.005250.007740.0077560.008330.006020.005470.003930.003310.007200.0074490.005920.001810.001570.005250.004760.002660.00299120.004700.003150.003210.007560.007860.001690.00121150.004130.004540.004480.008200.007990.002860.00203180.003750.005030.004830.007760.006710.003420.00246210.003420.004960.004630.006820.006120.003500.00244240.003140.004600.004140.005760.005270.003310.00218260.002900.004370.003850.005190.004770.003200.00206300.002700.003530.002870.004160.004020.002580.00140360.002470.002440.001720.003730.003110.001740.00089420.002270.001740.001340.004630.004440.001050.00125480.002170.001650.001900.007130.006970.000820.00195 
+
+Tabela 7 – RMSE do modelo de Diebold e Li (AR e VAR) e concorrentes 
+
+RW, SV, e modelo   de 2 fatores (2fat) quando h=42 
+
+17 
+
+Tabela 8 – RMSE do modelo de Diebold e Li (AR e VAR) e concorrentes 
+
+RW, SV, e modelo   de 2 fatores (2fat) quando h=63 
+
+ 
+
+ 
+Quando  o  horizonte  de  previsão  é  ampliado,  a  qualidade  de  previsão  dos 
+modelos propostos melhora substancialmente, principalmente para previsões de 1 mês e 
+2 meses à frente, com destaque para o modelo de dois fatores. 
+
+ 
+
+No caso da previsão  para 1 mês, o modelo de dois  fatores  (AR(1) e VAR(1)) 
+supera os demais em sua grande maioria, em termos da métrica do RMSE.  Interessante 
+notar que para as maturidades de 3 e 6 meses, o modelo de Svensson ajustado (VAR(1)) 
+apresentou o melhor desempenho. Para previsões de 2 meses à frente, a performance do 
+modelo  de  dois  fatores  praticamente  repete  o  resultado  apresentado  no  horizonte  de 
+previsão anterior. A diferença fundamental é que para as maturidades de 3 e 6 meses, o 
+modelo  de  Diebold  e  Li  (AR(1))  consegue  obter  o  menor  RMSE  frente  aos  seus 
+concorrentes.    
+
+ 
+
+ 
+
+ 
+
+Para  previsões  trimestrais,  o  modelo  de  dois  fatores  que  vinham  liderando  a 
+performance,  acaba  perdendo  espaço  para  o  modelo  mais  simples  (RW).  Uma 
+
+ 
+
+MaturidadesRWDL (AR)DL (VAR)SV (AR)SV (VAR)2fat (AR)2fat (VAR)10.016440.015590.020530.019410.022050.014150.0150830.013540.006000.006190.006730.006520.007100.0071360.011690.005000.005550.006210.006660.006490.0068890.009120.003460.006850.008850.009050.002700.00337120.007470.005580.008880.011110.010740.003230.00307150.006340.006960.009890.011850.012260.004480.00377180.005470.007490.010090.011590.014590.005060.00405210.004750.007490.009820.010850.015600.005170.00396240.004170.007210.009310.009980.011990.005010.00368260.003700.007040.009040.009500.009960.004930.00359300.003350.006300.008060.008560.009540.004340.00294360.002900.005320.006850.008100.007070.003540.00234420.002680.004440.005830.008810.008790.002790.00211480.002550.003740.005060.010770.010310.002150.00226MaturidadesRWDL (AR)DL (VAR)SV (AR)SV (VAR)2fat (AR)2fat (VAR)10.018270.017770.029900.022610.027600.015160.0177830.016990.005680.014000.008620.011870.006710.0077060.014510.005010.013290.008420.016300.006080.0074090.011390.005390.015450.011330.019350.003430.00557120.009280.007690.017170.013610.020550.004700.00597150.007830.009080.017880.014450.022680.005990.00651180.006740.009640.017880.014360.021630.006590.00665210.005880.009710.017480.013810.018100.006730.00649240.006190.009490.016880.013100.011540.006170.00660260.004640.009370.016560.012710.010360.006540.00607300.004220.008700.015510.011890.009990.005990.00540360.003640.007810.014200.011450.011460.005220.00472420.003320.006970.013070.011990.013000.004480.00424480.003120.006240.012120.013530.016290.003810.0039718 
+
+ 
+
+explicação é que como os dados são diários a previsão para um prazo tão longo como o 
+de 63 dias à frente fica cada vez mais difícil. 
+
+Os  resultados  anteriores  levam  a  conclusão  de  que  para  os  dados  brasileiros, 
+especificamente  para  as  NTN’s-B,  o  modelo  de  Diebold  e  Li  não  é  o  mais  adequado 
+para previsões de quaisquer horizontes, sendo em quase todas as maturidades superado 
+por  um  modelo  passeio  aleatório,  contrariando  os  resultados  encontrados  para  dados 
+americanos.  Observando  as  tabelas  de  4  à  8,  é  possível  constatar  que  o  modelo 
+modificado  de  Diebold  e  Li,  chamado  neste  trabalho  de  modelo  de  dois  fatores, 
+apresenta  o  melhor  desempenho  preditivo  para  quase  todos  os  horizontes  de  previsão 
+nas diversa maturidades analisadas.  
+
+Futuramente,  testes  econométricos  poderiam  ser  utilizados  para  checar  se  os 
+fatores  B1(nível)  e  B2  (inclinação)  tendem  a  ser  significativamente  correlacionados. 
+Uma  explicação,  se  isto  se  confirmar,  é  que  um  choque  inflacionário  que  pressione  a 
+taxa  de  juros  de  curto  prazo  gera  também  expectativas  de  alta  para  o  longo  prazo.  Há 
+ainda o fato de o terceiro fator (curvatura) poder ser irrelevante para o caso brasileiro, já 
+que os dois primeiros fatores são capazes de explicar mais de 99% da variabilidade dos 
+dados da amostra. (Sabino (2007)).    
+
+ 
+
+O  gráfico  5  mostra  as  curvas  de  juros  para  as  taxas  de  juros  de  NTN’s-B 
+observadas e previstas pelo modelo de dois fatores para o horizonte (DL(VAR)) de 1 e 2 
+meses à frente ((previsões calculadas em 04/02/2010). Comprovando a teoria, as curvas 
+de juros são positivamente inclinadas e côncavas, sendo que a curva prevista para h=21 
+tem melhor ajuste aos dados observados do que a curva para h=42. 
+
+Portanto,  com  os  resultados  encontrados  neste  trabalho  é  concluído  que  o 
+modelo  capaz  de  gerar  melhores  previsões  para  a  curva  de  juros  brasileira  utilizando 
+taxas de NTN’s-B para horizontes distintos, notadamente para 1 e 2 meses à frente, para 
+diversas  maturidades  é  o  modelo  de  Diebold  e  Li  modificado  de  dois  fatores.  Este 
+resultado vai ao encontrar da literatura encontrada em diversos trabalhos onde modelos 
+mais parcimoniosos são capazes de gerar melhores previsões (princípio do KISS). 
+
+Gráfico 5 - Curvas de juros observadas e previstas pelo modelo de dois 
+
+fatores (Diebold e Li modificado) para datas selecionadas 
+
+(Previsões para 09/03/2010 (h=21) e 08/04/2010 (h=42), respectivamente. As previsões foram 
+
+calculadas em 04/02/2010) 
+
+4.  Conclusão 
+
+ 
+
+  
+Esse trabalho consistiu no esforço de modelar o comportamento da estrutura a 
+termo da taxa de juros, de importância inegável em virtude das aplicações já discutidas, 
+seja para macroeconomistas ou gestores financeiros.  
+
+ 
+
+19 
+
+ 
+
+Mais  especificamente,  esse  trabalho  objetivou  aplicar  a  metodologia  proposta 
+por  Diebold  e  Li  para  estimar  e  fazer  previsões  fora  da  amostra  para  ETTJ  brasileira 
+(NTN’s-B), tendo como base modelos fatoriais dinâmicos (AR e VAR).   
+
+O  resultado  encontrado  por  Diebold  e  Li  (2006)  para  os  dados  americanos  se 
+revelaram  animadores,  principalmente  para  horizontes  de  previsão  de  longo  prazo.  
+Embora  o  resultado  para  previsões  no  horizonte  de  1  mês  não  sejam  melhores  do  que 
+mero passeio aleatório e concorrentes,  para previsões de 1 ano à frente os modelos de 
+Diebold e Li se mostraram superiores aos demais.  
+
+Já os resultados de previsão, utilizando o mesmo modelo citado anteriormente, 
+encontrados para a curva de juros brasileira se mostrou aquém do esperado, nos levando 
+a concluir que o modelo de Diebold e Li não é o mais adequado para o caso brasileiro e 
+que  para  muitas  maturidades  nos  diversos  horizontes  de  previsão  tal  modelo  é  batido 
+por meros modelos univariados (RW). 
+
+Porém,  foi  utilizado  um  modelo  Diebold  e  Li  mais  simples  e  parcimonioso, 
+visando  dar  uma  simplicidade  ainda  maior  objetivando  gerar  modelos  com  qualidade 
+superior  de  previsões.  Este  modelo  modificado  com  somente  dois  fatores  (nível  e 
+inclinação)  para  estimar  e  prever  a  curva  de  juros  brasileira  mostrou  ser  superior  aos 
+demais, incluindo o RW, com exceção do horizonte de previsão de curtíssimo prazo (1 
+dia  à  frente  e  1  semana  à  frente),    para  quase  todas  as  maturidades  e  horizontes  de 
+previsão, gerando boas previsões para a dinâmica temporal de um VAR(1).  
+
+As  principais  razões  apontadas  para  o  sucesso  deste  modelo  derivam  dos 
+fatores  determinantes  da  curva  de  juros  brasileira  estarem  correlacionados  e  que  o 
+terceiro fator apontado como determinante teria baixo poder de explicação. Além destas 
+justificativas,  parece  razoável  supor  que  modelos  menos  complexos,  com  mais 
+parcimônia preveem melhor, apesar ter ajuste pior (KISS).  
+
+Por  fim,  para  uma  futura  extensão  de  pesquisa  da  curva  de  juros  brasileira 
+poder-se-ia explorar mais afundo a correlação entre os fatores comuns que explicam  a 
+ETTJ, lançando mão de modelos de correção de erro. Assim como, modelar choques de 
+elevação  da  inflação  no  curto  prazo,  onde  a  elevação  da  taxa  de  juros  no  curto  é 
+transmitida para as taxas longas. 
+
+ 
+Referências bibliográficas  
+
+ 
+ALMEIDA,  C.  ET  AL.  Does  curvature  enhance  forecasting?  International 
+
+Journal of Theoretical and Applied Finance, v. 12, n. 8, p. 1171–1196, 2009. 
+
+ANBIMA.  2011.  Índices  de  Renda  Fixa  IMA.  Associação  Brasileira  das 
+
+Entidades dos Mercados Financeiros e de Capitais. 
+
+ANGI, A.; PIAZZESI, M.. A No-Arbitrage Vector Autoregression of Term 
+
+Structure Dynamics wiyh Macroeconomic and Latent Variables. Journal of Monetary 
+Economics 745-787, 2003. 
+
+BIS.  2005  (Oct.).  Zero-coupon  yield  curves:  technical  documentation.  BIS 
+
+Papers 25. Bank for International Settlements (Department Monetary and Economic ). 
+
+CALDEIRA, J. F. Estimação da estrutura a termo da curva de juros no Brasil 
+
+Análise Econômica, Porto Alegre, ano 29, n. 55, p. 95-122, mar. 2011. 
+
+CALDEIRA, J. F.; MOURA, G. V.; PORTUGAL, M. S. Efficient yield curve 
+
+estimation and forecasting in Brazil. Economia, v. 11, n. 1, p. 27–51, 2010. 
+
+CALDEIRA, J. F.; MOURA, G. V.; PORTUGAL, M. S. Otimização de 
+
+carteira de títulos públicos.  Advances in Scientific and Applied Accounting. São Paulo, 
+v.5, n.3, p. 349-376, 2012. 
+
+ 
+
+20 
+
+ 
+
+CAMPBELL,  J.  Y.,  SHILLER,  R.  J.  Yield  Spreads  and  Interest  Rate 
+Movements: A Bird's Eye View. The Econometrics of Financial Markets, special issue, 
+Review of Economic Studies 58,no. 3: 495-514, 1991. 
+
+CASSOLA, N.; LUÍS, J.. A Two-Factor Model of the German Term Structure 
+
+of Interest Rates, Applied Financial Economics, 13: 783-806, 2003. 
+
+COX, J. C; INGERSOLL JR., J. E; ROSS, S. A. A theory of the term structure 
+
+of interest rates. Econometrica, v. 53, n. 2, 385–407, 1985. 
+
+DEPOOTER,  M.  2007.  Examining  the  Nelson-Siegel  class  of  term  structure 
+
+models. Tinbergen Institute Discussion Papers. Tinbergen Institute. 
+
+DIEBOLD,  F.,  &  LI,  C.  2006.  Forecasting  the  term  structure  of  government 
+
+bond yields. Journal of Econometrics, 130(2), 337-364. 
+
+ESTRELLA,  ARTURO.  “Why  Does  the  Yield  Curve  Predict  Output  and 
+
+Inflation?”. The Economic Journal, 115, 2005. 
+
+HARRISON,  J.  M.  E  KREPS,  D.,  1979.  Martingales  and  arbitrage  in 
+
+multiperiod securitiesmarkets. Journal of Economic Theory 20: 381–408. 
+
+HULL, J., &  WHITE, A. 1990. Pricing interest  rate derivative securities. The 
+
+Review of Financial Studies, 3(4), 573-592. 
+
+KORN, O., & KOZIOL, C. 2006. Bond Portfolio Optimization. The Journal of 
+
+Fixed Income, 15(4), 48-60. 
+
+LAURINI, M.P. E L.K. HOTTA (2008), “Bayesian Extensions of the Diebold 
+
+and Li Term Structure Model," IBMEC Working Paper WPE-74-2008, São Paulo. 
+
+LITTERMAN, R. E J.A. SCHEINKMAN (1991), “Common Factors Affecting 
+
+Bond Returns," Journal of Fixed Income, 1, 77-85. 
+
+MACAULAY,  F.  (1938), The Movements  of  Interest  Rates.  Bond Yields  and 
+Stock Prices in the United States since 1856, New York: National Bureau of Economic 
+Research. 
+
+MCCULLOCH,  J.  H.  1975.  The  Tax-Adjusted  Yield  Curve.  Journal  of 
+
+Finance, 30(3), 811-30.  
+
+MISHKIN,FREDERIC  S., 1990 . “What  does  the  term  structure  tell  us  about 
+
+future inflation?," Journal of Monetary Economics, Elsevier, vol. 25(1), pages 77-95. 
+
+NELSON, C. R. N., & SIEGEL, A. F. 1987. Parsimonious Modeling of Yield 
+
+Curves. The Journal of Business, 60(4), 473-489. 
+
+ROMER, CHRISTINA D., and DAVID H. ROMER. 2004. “A New Measure 
+
+of Monetary Shocks: Derivation and Implications.” American Economic Review, 94(4): 
+1055–84. 
+
+RUDEBUSCH,  G.  E  T.  WU  (2008),  A  Macro-Finance  Model  of  the  Term 
+
+Structure, Monetary Policy and the Economy," Economic Journal, 118, 906{926. 
+
+SABINO, PRISCILA. Aplicando a Metodologia de Diebold e Li à Análise da 
+Estrutura a Termo da Taxa de Juros Brasileira. Dissertação Apresentada para obtenção 
+do título de mestre. PUC-RJ 2007. Disponível em http://www.maxwell.lambda.ele.puc-
+rio.br/10800/10800_1.PDF 
+
+SITE DO BANCO CENTRAL DO BRASIL. Disponível em 
+
+http://www.bcb.gov.br/ 
+
+SITE DO TESOURO NACIONAL . Disponível em 
+
+https://www.tesouro.fazenda.gov.br/pt/divida-publica-federal/a-divida-em-grandes-
+numeros 
+
+SVENSSON, L. O. 1994 (Sept.). Estimating and Interpreting Forward Interest 
+Rates: Sweden 1992-1994. IMF Working Papers 94-114. International Monetary Fund. 
+
+VASICEK, O. 1977. An equilibrium characterization of the term structure. 
+
+Journal of Financial Economics, 5(2), 177-188. 
+
+ 
+
+

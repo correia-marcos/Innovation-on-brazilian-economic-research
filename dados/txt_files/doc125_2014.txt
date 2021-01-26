@@ -1,0 +1,910 @@
+    Seleção de carteiras com restrição das normas das posições: uma
+  comparação empı́rica entre diferentes nı́veis de restrição de exposição
+                        para dados da BM&FBovespa
+                               Paulo Ferreira Naiberta,1 , João F. Caldeirab
+                                           a
+                                             Departmento de Economia
+                                    Universidade Federal do Rio Grande do Sul
+                                  b
+                                    Departmento de Economia, PPGA & PPGE
+                                    Universidade Federal do Rio Grande do Sul
+
+
+
+
+Abstract
+
+This paper studies the problem of minimum variance portfolio selection based on a recent metho-
+dology for portfolio optimization restricting the allocation vector proposed by Fan et al. (2012).
+To achieve this, we consider different conditional and inconditional covariance matrix estimators.
+The great contribuition of this paper is of empiric nature for the brazilian stock market. We eva-
+luate out of sample performance indexes of the portfolios constructed for a set of 61 diferent sotcks
+traded in the São Paulo stock exchange (BM&FBovespa). The results show that the restrictions
+on the norms of the allocation vector generate substantial gains in relation to the no short-sale
+portfolio, raising the average return adjusted by the risk (bigger Sharpe Ratio) and lowering the
+portfolio turnover.
+
+
+Resumo
+
+
+Este trabalho estuda o problema de seleção de carteiras de variância mı́nima com base em uma
+recente metodologia para otimização de carteiras com restrições nas normas das exposições brutas
+proposta por Fan et al. (2012). Para esse propósito consideramos diferentes estimadores da ma-
+triz de covariâncias condicional e incondicional. A grande contribuição deste artigo é de natureza
+empı́rica para o mercado de ações brasileiro. Avaliam-se ı́ndices de desempenho fora da amostra
+das carteiras construı́das para um conjunto de 61 ações negociadas na Bolsa de Valores de São
+
+  1
+      Autor correspondente. e-mail: paulo.naibert@gmail.com
+
+
+
+Preprint submitted to 42o Econtro Nacional de Economia                              23 de julho de 2014
+Paulo (BM&FBovespa). Os resultados mostraram que as restrições nas normas das exposições
+geram ganhos substanciais em relação à carteiras restritas para venda a descoberto, aumentando
+o retorno médio ajustado pelo risco (maior ı́ndice de Sharpe) e diminuindo o turnover dos portfólios.
+
+
+Keywords: norm constrained allocation vector, mean-variance, portfolio optimization,
+Performance Assessment
+
+Palavras chave: restrição da norma do vetor de alocação, média-variância, otimização de
+carteiras, avaliação de desempenho
+Área 8 - Microeconomia, Métodos Quantitativos e Finanças
+
+JEL: C53, E43, G17
+
+
+1. Introdução
+
+    Parece razoável imaginar que os investidores sempre preferiram elevar sua riqueza, minimizando
+os riscos associados a qualquer potencial de ganho. No entanto, o estudo cientı́fico e o desen-
+volvimento de algoritmos de otimização de carteiras de investimento são relativamente recentes,
+considerando como marco inicial os trabalhos de Markowitz (1952, 1959), os quais deram origem
+ao que hoje é popularmente conhecido como teoria moderna do portfólio e análise média-variância.
+Desde então, a seleção e otimização de carteiras é um problema fundamental em finanças, tanto
+do ponto de vista acadêmico como também para os praticantes de mercado. A teoria moderna do
+portfólio proposta por Markowitz é baseada na noção de que a diversificação de uma carteira de
+investimento gera portfólios com uma melhor relação entre risco e retorno.
+    Markowitz propôs para seleção de portfólios uma receita normativa sobre como os investido-
+res devem agir. A ideia é que devemos formar uma carteira de investimentos diversificada de
+modo a maximizar o retorno esperado da carteira dado um nı́vel de variância do retorno. Assim,
+transformou o processo de alocação de ativos em um problema de otimização com base no trade-
+off fundamental entre retorno esperado e risco. Todavia, o processo de otimização de portfólio
+proposto por Markowitz apresenta elevada sensibilidade à incerteza nas variáveis de interesse do
+problema. Isso foi observado por Best & Grauer (1991), que mostraram como as mudanças nas
+médias dos retornos esperados dos ativos alteram o retorno, a composição e o risco do portfólio, e
+por Chopra & Ziemba (1993), que examinaram o impacto relativo dos erros de estimação sobre as
+médias, variâncias e covariâncias das carteiras.
+    A implementação prática da otimização de carteiras com base no critério média-variância en-
+frenta duas dificuldades: i) a primeira diz respeito à dificuldade de se obter estimações acuradas
+
+
+                                                   2
+dos retornos esperados dos ativos e da matriz de covariâncias dos retornos; ii) a segunda dificuldade
+está relacionada ao problema da dimensionalidade, dado que geralmente busca-se obter carteiras
+ótimas contendo um número muito grande de ativos. Em muitos casos as estimativas dos retornos
+esperados e matriz de covariâncias estão sujeitas a erros de estimação, o que pode resultar em
+alocações inadequadas em função da hipersensibilidade dos pesos ótimos da carteiras em relação
+aos inputs do problema prejudicando o desempenho da carteira otimizada com base nestes esti-
+madores. Além disso, conforme destacaram Caldeira et al. (2013) e Jagannathan & Ma (2003),
+a estimação de retornos esperados está sujeita a um maior erro de estimação quando comparado
+com estimação de covariâncias, e o erro de estimação nos retornos esperados tem um impacto
+negativo maior no desempenho da carteira quando comparado ao impacto do erro de estimação
+nas covariâncias (Mendes & Leal, 2005; Ceria & Stubbs, 2006). Em consequência dessa hipersensi-
+bilidade das alocações ótimas aos erros de estimação do vetor de retornos esperados, grande parte
+da pesquisa acadêmica recente tem se dedicado a carteiras de variância mı́nima (DeMiguel et al. ,
+2009a), situação em que o investidor se preocupa apenas com a minimização do risco da carteira,
+sem levar em consideração seu retorno esperado.
+    Na tentativa de resolver o problema da sensibilidade da alocação resultante aos erros de esti-
+mação dos inputs (média e variância), foram feitos vários esforços para modificar o problema de
+média-variância de Markowitz. Chopra & Ziemba (1993) propuseram utilizar um estimador de
+James-Stein para o vetor de retornos esperados e Ledoit & Wolf (2003) propuseram uma técnica
+para encolhimento da matriz de covariância amostral. Fan et al. (2008), analisaram a estimação
+da matriz de covariância com base em um modelo de fatores e demonstraram que o vetor de alo-
+cação resultante supera significativamente o vetor de alocação baseado na covariância amostral.
+No entanto, Fan et al. (2012) argumentam que apesar dessas técnicas reduzirem a sensibilidade
+dos vetores de inputs na alocação por média-variância, são inadequadas para enfrentar os efeitos
+adversos decorrentes do acúmulo de erros de estimação, especialmente quando o número de ativos
+na carteira é grande. Jagannathan & Ma (2003) impuseram uma restrição à venda a descoberto no
+problema de otimização por média-variância de Markowitz e demonstraram os benefı́cios de tais
+restrições. Nesse contexto, Fan et al. (2012) alteraram o problema de maximização de utilidade
+através da introdução de uma restrição de exposição bruta sobre o vetor de alocação como uma al-
+ternativa promissora para contornar o problema da dimensionalidade e aliviar a carga do processo
+de estimação econométrica.
+    A solução proposta por Fan et al. (2012) consiste em modificar o problema de maximização
+de utilidade ao adicionar-se uma restrição da norma do vetor de alocação, a qual foi denominada
+como restrição sobre exposição bruta. A restrição proposta por Fan et al. (2012) não proibe as
+posições vendidas completamente. Com isso, é possı́vel generalizar a restrição sobre as posições
+vendidas e achar um meio do caminho entre a restrição total (c = 1) e a otimização irrestrita
+
+
+                                                   3
+das carteiras (c = ∞). Quanto mais a restrição sobre a norma do vetor de alocação for relaxada,
+mais perto do caso sem restrição a otimização se aproximará. A vantagem disso é que o investidor
+pode expressar uma visão negativa sobre um ativo sem a manifestação de posições extremas pela
+sensibilidade da otimização de Markowitz (Jacobs & Levy, 2006). Fan et al. (2012) mostram que,
+com essa restrição, os portfólios selecionados tem maior ı́ndice Sharpe, assim como menor turnover
+que os portfólios obtidos com a otimização tradicional sem essas restrições. Isso é demonstrado
+pelos autores ao criar um arcabouço teórico que conecta o trabalho de Markowitz (1952) com o de
+Jagannathan & Ma (2003).
+     Jagannathan & Ma (2003) explicaram porque a inclusão da restrição sobre posições vendidas
+ajuda a minimizar o risco em um portfólio ótimo de Markowitz, mesmo quando a restrição está
+errada (razão do tı́tulo do seu trabalho). A ideia vem de Green & Hollifield (1992), os quais mos-
+traram que a presença de um fator dominante pode resultar em pesos negativos extremos num
+arcabouço de um portfólio eficiente de média-variância, mesmo quando não há erros de estimação.
+Por causa disso, a restrição de posições negativas deveria piorar o portfólio, entretanto, a evidência
+empı́rica indica exatamente o contrário. Jagannathan & Ma (2003) mostraram que quando é im-
+posta a restrição sobre posições vendidas, a matriz de covariância tem um desempenho comparável
+às estimativas baseadas em modelos de fatores, estimadores de encolhimento e dados diários. Além
+disso, mostraram que construir um portfólio usando a restrição de que os elementos do vetor de
+alocação eficiente resultante devem ser maiores ou iguais a zero é equivalente a construı́-lo sem
+qualquer restrição no portfólio mas usando um estimador de matriz de covariância shrinkage de
+Ledoit & Wolf (2003) e Ledoit & Wolf (2004). Ou seja, mostraram que ”sem querer”, quando
+usamos a restrição sobre posições vendidas, estamos alterando a matriz de covariância amostral de
+forma a ficar parecida com uma matriz de covariância obtida com o estimador shrinkage. A ino-
+vação do trabalho de Fan et al. (2012) é que eles mostraram que as carteiras formadas utilizando
+a restrição sobre exposição bruta também podem ter essa interpretação de diminuição.
+     Brodie et al. (2008) também trataram do problema de otimização de carteiras com restrições
+sobre as normas das posições. Brodie et al. (2008) reformulam o problema de Markowitz como
+um problema de Mı́nimos Quadrados restritos. Os autores adicionam uma função de penalidade
+proporcional à soma dos valores absolutos dos pesos do portfólio. Foram construı́dos portfólios
+cujos desempenhos fora da amostra em termos de retorno ajustado pelo risco (medidos pelo Índice
+de Sharpe) é consistentemente e significativamente melhor que a diversificação ingênua (vetor de
+alocação com pesos iguais, ou seja wi = 1/N para todo i), que foi mostrada pela recente literatura
+(DeMiguel et al. (2009b)), ser uma referência difı́cil de superar.
+     Além dos trabalhos acima citados, DeMiguel et al. (2009a) forneceram um arcabouço geral para
+a construção de carteiras ótimas que apresentam bom desempenho fora da amostra na presença de
+erros de estimação. Isso é feito com a otimização média-variância tradicional de Markowitz mas
+
+
+                                                     4
+com a adição de uma restrição na norma do vetor de alocação de ativos. Essa restrição diz que
+a soma desses valores absolutos deve ser menor que um dado limiar. Os autores mostraram que
+o arcabouço que estabelecido insere-se como um caso especial das abordagens de encolhimento da
+matriz de covariância proposta por Jagannathan & Ma (2003), Ledoit & Wolf (2003) e Ledoit &
+Wolf (2004).
+     O presente trabalho insere-se no contexto de análise dos ganhos, em termos de desempenho fora
+da amostra de portfólios ótimos de mı́nima variância (PMV) utilizando as modificações no problema
+de seleção de carteiras de média-variância de Markowitz propostas por Fan et al. (2012). Vale
+observar que os PMV tem sido amplamente utilizados na literatura (Ledoit & Wolf, 2004; Engle
+& Sheppard, 2008; DeMiguel et al. , 2009a; Caldeira et al. , 2013), em função da sua relevância
+prática e da disponibilidade de uma solução em forma fechada no caso em que vendas a descoberto
+sejam permitidas. São considerados diferentes nı́veis de restrição da norma do vetor de alocação,
+comparativamente aos portfólios irrestrito e totalmente restrito para venda a descoberto. Como
+forma de obter matrizes são utilizados diferentes estimadores da matriz de covariâncias, os quais
+abrangem a covariância amostral, modelo RiskMetrics e o modelo variance targeting scalar VECH
+(scalar vt-VECH).
+     Esses estimadores são aplicados na previsão fora da amostra para as matrizes de covariância
+dos retornos de 61 ações negociadas no mercado financeiro brasileiro durante o perı́odo amostral.
+Aplicamos o modelo proposto por Fan et al. (2012) e usamos as matrizes de covariâncias previstas
+para estimar PMV irrestritos e com diferentes nı́veis de restrição da norma do vetor de alocação, as
+quais são avaliadas através de indicadores de performance como retorno médio, variância, ı́ndice de
+Sharpe e portfolio turnover. Os resultados são, ainda, comparados àqueles obtidos pelo benchmark
+(portfólio restrito para a venda a descoberto e covariância amostral). O perı́odo analisado vai de
+Janeiro de 1999 a Dezembro de 2010, perfazendo um total de 2.970 observações diárias para cada
+ação. Em resumo, são avaliados diferentes estimadores, tanto com uma abordagem incondicional
+como condicional, na estimação das matrizes de covariância com foco na seleção de ativos com base
+na recente metodologia proposta por Fan et al. (2012). Neste sentido, ao realizar uma aplicação
+com motivação econômica definida, este artigo faz uma contribuição aos trabalhos empı́ricos que
+analisam o problema de seleção de carteiras de investimento.
+     De uma forma geral, os resultados indicam ganhos na utilização da metodologia proposta por
+Fan et al. (2012). Os resultados obtidos nesse trabalho apontam no sentido de que as carteiras com
+restrições sobre as normas das posições tiveram um um Índice e Sharpe maior, e um menor turnover
+associado a carteira. Isso quer dizer que as carteiras otimizadas com restrições das normas obtém
+um melhor retorno médio para cada unidade de variância que elas sofrem e tem menores custos de
+transação que as carteiras irrestritas, o que no final nos permite ficar com os ganhos associados à
+carteira sem incorrermos em custos maiores de rebalanceamento com ela. Além disso, é importante
+
+
+                                                   5
+enfatizar que as vantagens da restrição sobre exposição bruta apontadas acima independem do
+estimador. Ou seja, a simples adição da restrição das normas melhora o desempenho da carteira
+não importando qual estimador de matriz de covariância que se está usando.
+    Este trabalho tem 3 seções além dessa introdução. Na seção 2, apresentamos os diferentes esti-
+madores de matriz de covariância que utilizaremos ao longo do trabalho, descrevemos o problema
+da seleção de carteira e falamos como a restrição das normas podem ajudar nesse problema, além
+de apresentar a conexão entre esse novo método de estimação e o estimador shrinkage. Na seção 3
+fazemos o estudo empı́rico e mostramos os resultados. Na seção 4, mostramos nossas conclusões.
+
+2. O problema de otimização de portfólio com restrição das normas
+
+    Nesta seção vamos detalhar matematicamente o problema de otimização de carteiras, e como ele
+muda ao adicionarmos a restrição sobre a norma do vetor de alocação, além de esclarecermos como
+essa restrição influencia a escolha dos pesos dos ativos. Apresentaremos, também os estimadores
+de matriz de covariância que usaremos ao longo desse trabalho.
+
+2.1. Estimadores da matriz de covariâncias
+   Como dissemos anteriormente, uma das maneiras de se resolver o problema de sensibilidade dos
+vetores de alocação aos vetores de input é usar um estimador diferente de matriz de covariância.
+Nessa subseção vamos mostrar os diferentes estimadores de matriz de covariância que usaremos ao
+longo desse trabalho.
+
+2.1.1. Matriz de Covariância Amostral
+   A matriz de covariâncias amostral para a construção da previsão da covariância dos retornos é
+dada por
+
+                                                T           0 
+                                           1 X                          
+                                 Ht1   =           Rt−k − R      Rt−k − R ,                          (1)
+                                         T − 1 k=1
+
+onde Rt−k é o vetor de retornos 1 × i no dia t − k. R é a média dos retornos dentro da amostra e
+T é o tamanho da janela de estimação.
+
+
+2.1.2. Estimador Shrinkage
+   Proposto no trabalho de Ledoit & Wolf (2003), o estimador shrinkage assume um modelo de
+mercado2 como gerador do retorno j no dia t :
+
+  2
+      Modelo de mercado com fator único (ı́ndice de mercado).
+
+
+
+                                                         6
+                                        rj,t = αj + βj rM,t + εj,t ,                                  (2)
+
+onde rM,t é o retorno do ı́ndice de mercado no dia t e εj,t é o resı́duo. Considerando rM,t e εj,t
+não correlacionados, assim como, os retornos residuais, o estimador da matriz de covariâncias dos
+retornos em um conjunto de ações é dado por Ft :
+
+                                            Ft = s2m,t BB 0 + Dt ,                                    (3)
+
+onde B é o vetor de β’s, s2m,t é a variância amostral de rM,t e Dt é a matriz diagonal das variâncias
+dos resı́duos amostrais.
+   O estimador shrinkage é uma média ponderada de dois estimadores: a matriz de covariâncias
+amostral e a matriz de covariâncias baseada no modelo de mercado, sendo descrito por
+                                                         
+                                             γt        γt
+                                      Ht2   = Ft + 1 −      Ht1 ,                                     (4)
+                                             T         T
+onde o estimador shrinkage é obtido através de uma função perda quadrática que mede a distância
+entre a matriz de covariâncias verdadeira e a estimada:
+
+                                                      πt − ρt
+                                               γt =           ,                                       (5)
+                                                         λt
+onde γt é o parâmetro que determina a intensidade de shrinkage estimado no tempo t com tamanho
+amostral de T . Além disso, πt denota a soma das variâncias assintóticas das entradas de Ht1
+                   √
+escalonadas por T , ρt denota a soma das covariâncias assintóticas das entradas de Ft com as
+                                  √
+entradas de Ht1 escalonadas por T e λt é uma medida quadrática da distância entre a matriz de
+covariâncias verdadeira e a estimada baseada na norma de Frobenius. Ainda, γt varia com a janela
+de estimação.
+
+2.1.3. Estimador Variance targeting scalar VECH
+    O método de estimação usando variance targeting tem como objetivo contornar dificuldades
+encontradas na aplicação de quase-máxima verossimilhança (QML) nos modelos GARCH, utili-
+zando, para isso, um procedimento em dois passos (Francq et al. , 2011). Em primeiro lugar, a
+equação de volatilidade é reparametrizada de forma que o intercepto é substituı́do pela variância
+não condicional dos retornos. A variância não condicional é estimada e, condicionalmente a essa
+medida, no segundo passo, os parâmetros remanescentes são estimados por QML. Nesse caso, as
+condições para que a matriz de covariâncias condicional seja positiva definida são simplificadas.
+    Seguindo Engle & Sheppard (2008), a especificação Variance targeting Scalar VECH (scalar
+vt-VECH) é definida por
+
+
+                                                      7
+                                         Ht3 = C + αRt Rt0 + βHt−1 ,                               (6)
+
+onde α e β são escalares. Sendo C positiva definida e α e β não negativos, a covariância condicional
+será positiva definida. Assumindo covariância estacionária com o objetivo de contornar o problema
+de curse of dimensionality e sendo H̄ = E [Rt Rt0 ] a covariância não condicional do retornos, temos
+
+
+                                                          0
+                        E Ht3 = C + α
+                                                           
+                                                  E Rt−1 Rt−1   +β     E [Ht−1 ] ,                 (7)
+                                H̄ = CC + α         H̄ + β H̄,                                     (8)
+                                          ιι0 − α − β
+                                                      
+                                   C =                   H̄,                                       (9)
+
+onde ι é um vetor de uns N × 1. Portanto, C não está ligado a Ht4 e pode ser substituı́do pela
+estimativa em 9.
+
+
+
+
+2.1.4. RiskMetrics
+   O modelo RiskMetrics consiste em um modelo de média móvel ponderada exponencialmente
+para modelar as covariâncias condicionais. Neste modelo, a matriz de covariância condicional é
+dada por
+                                                    0
+                                 Ht4 = (1 − λ)Rt−1 Rt−1 + λHt−1
+
+com o valor recomendado para o parâmetro em estimações com dados diários sendo λ = 0.94.
+
+2.2. Seleção de Carteiras
+    Originalmente, o problema de otimização de portfólio de Markowitz (1952) é maximizar o
+retorno esperado dos ativos com restrição sobre a variância do portfólio. Uma mudança nesse
+problema para levar em conta a utilidade marginal decrescente da renda é tentar maximizar uma
+função de utilidade esperada do retorno sujeito a uma variância máxima da carteira que estamos
+dispostos a nos sujeitar. Dessa maneira, o problema fica da seguinte forma:
+
+                              Max E[U (wT R)]
+                               w
+
+                               s.t. wT 1 = 1
+                                     wT Σ̂w
+                                            = Valvo
+                                       2
+
+onde w é o vetor de alocação do investidor onde cada componente wi é o percentual do total
+investido em cada ativo i, R é o vetor dos retornos dos ativos, 1 é um vetor que cada componente
+
+                                                      8
+é o número 1 e Σ é a matriz de covariância entre os ativos.
+     Entretanto, como as estimativas sobre a matriz de covariância são melhores que as estimativas
+sobre as médias dos retorno do ativos, além de erros de mensuração nessas medidas afetarem menos
+o resultado final da seleção de ativos para o portfólio como mostra Chopra & Ziemba (1993), seria
+melhor o investidor resolver o problema de minimização de variância. Dessa forma, mudamos o
+foco da otimização para o minimização do Risco, ou seja, não precisamos nos preocupar com as
+médias dos retornos dos ativos.
+
+                                  wT Σw
+                            Min                                                                 (10)
+                             w       2
+                                   T
+                             s.t. w 1 = 1
+
+Caldeira et al. (2013) falam que a resolução desse problema é análoga a solução do seguinte
+problema:
+
+                                             wT Σ̂w 1 T
+                                      Min          − w 1
+                                        w      2    λ
+
+onde λ é o coeficiente de aversão ao risco do investidor e, em (10), λ tende ao infinito (λ → ∞).
+
+2.3. Seleção de Carteiras com Restrição da Norma do Vetor de Alocação
+   A solução proposta pelos autores de Fan et al. (2012) é de utilizar o problema de maximização
+de utilidade com uma restrição da norma do vetor de alocação. Dessa forma, o problema de
+otimização de carteiras fica:
+
+                                  wT Σw
+                            min                                                                 (11)
+                              w      2
+                                   T
+                             s.t. w 1 = 1
+                                  kwk1 ≤ c
+
+onde kwk1 = N
+               P                                       PN
+                 i=1 |wi |. Portanto kwk1 ≤ c nos dá:    i=1 |wi | ≤ c.
+   A Restrição sobre as normas impõem restrições das posições vendidas e compradas da seguinte
+forma:
+
+                                               kwk1 + 1
+                                             w+ =
+                                                  2
+                                               kwk1−1
+                                          w− =
+                                                  2
+                                        +  −
+                                       w −w =1
+                                       w+ + w− = kwk1
+
+
+                                                 9
+onde w− é a soma das posições vendidas e w+ é a soma das posições compradas. Portanto, com
+uma restrição de c = 1.6 temos uma posição vendida máxima de w− = 0.3 e posição comprada
+máxima de w+ = 1.3. Um portfólio com a restrição c = 1.6 é conhecido com um portfólio 130/30, o
+qual é amplamente utilizado por participantes do mercado com evidenciado em Lo & Patel (2008)
+e Gastineau (2008). Se tivermos c = 1, quer dizer que posições vendidas não são permitidas. E
+com c = ∞ quer dizer que não há restrições sobre posições vendidas, ou seja a solução é a mesma
+que a da carteira irrestrita.
+    Como essas restrições diminuem o conjunto em que podemos fazer a minimização da variância,
+as alocações achadas por esse problema resultam, no máximo a carteira de mı́nima variância.
+No entanto, a restrição sobre exposição bruta ao impedir a carteira de assumir posições muito
+extremas, ajuda a controlar o turnover da carteira. Assim, ela tem um duplo papel, o de diminuir
+o risco associado à carteira e o de diminuir os custos de transação dela.
+
+Conexão entre a Restrição da Norma do Vetor de Alocação com o Estimador de Shrinkage
+  Aqui, falaremos sobre como a restrição da norma do vetor de alocação se conecta com o esti-
+mador de Shrinkage. Pelo método dos multiplicadores de Lagrange, o problema (11) fica:
+
+                               wT Σ̂w
+                                      + λ1 (kwk1 − c) + λ2 (1 − wT 1)
+                                 2
+
+definindo g como o vetor subgradiente da função kwk1 , cujo elemento i é −1 ou 1 ou qualquer
+elemento entre [−1, 1] dependendo se wi é positivo, negativo ou zero. Então as condições Karush-
+Kuhn-Tucker para a otimização (11) são:
+
+                                    Σ̂w + λ1 g − λ2 1 = 0                                          (12)
+                                    λ1 (kwk1 − c) = 0,          λ1 ≥ 0                             (13)
+
+    Então, Fan et al. (2012) em seu Teorema 4 dizem que a otimização de portfólio (11) é equiva-
+lente ao problema de média-variância:
+
+                                            Min      wT Σ̃c w
+                                           wT 1=1
+
+
+com a matriz de covariância regularizada
+
+                                      Σ̃c = Σ̂ + λ1 (g̃T 1 + 1g̃T )
+
+quando g̃ é o subgradiente avaliado em w̃ e λ1 é o multiplicador de Lagrange definido em (12)
+e (13). Fan et al. (2012) fala que esse resultado é similar aos de Jagannathan & Ma (2003) e
+
+
+                                                    10
+DeMiguel et al. (2009a). Ou seja, com a restrição sobre exposição bruta, estamos ”diminuindo”a
+matriz de covariância ( usamos a palavra diminuir no sentido do estimador da equação (4)). Na
+proposição 1 do seu trabalho, Jagannathan & Ma (2003) mostra que isso ocorre quando há proibição
+de vendas a descoberto, a inovação de Fan et al. (2012) e de DeMiguel et al. (2009a) é que eles
+generalizam essa restrição de forma que há a ”diminuição”da matriz de covariância mesmo quando
+há a possibilidade de vendas a descoberto.
+
+3. Estudo Empı́rico com dados Brasileiros
+
+     Nessa seção vamos expor os dados que utilizaremos, como vamos manipulá-los para obter as
+séries de retornos dos ativos para a otimização de carteiras, como vamos registrar os dados sobre
+as carteiras otimizadas e como vamos realizar a avaliação do desempenho delas.
+
+3.1. Dados e Detalhes da Implementação
+    Esse é um estudo empı́rico sobre o desempenho da otimização de Carteiras com restrição nas
+normas dos ativos. Os dados utilizados são preços de 61 ações que fizeram parte do Índice Bovespa
+de Janeiro de 1999 até Dezembro de 2010, o que resulta num total de 2970 observações de preços
+diários para cada um dos 61 ativos. Os dados foram obtidos na Bloomberg.
+    A partir da série de preços dos ativos, tiramos o retorno diário de cada uma das ações. Para
+isso, a cada dia tiramos a diferença logarı́tmica do seu preço contemporâneo com o seu preço do
+dia anterior, o que nos deixa com:
+                                                    
+                                               Pt
+                                rt = ln                  = ln(Pt ) − ln(Pt−1 )
+                                              Pt−1
+
+Isso nos deixa com 61 séries com 2969 observações de retornos diários. A partir dessas séries de
+retornos, resolvemos o problema da equação (11) e achamos:
+
+                                      ŵ =        argmin            wT Σ̂w
+                                               wT 1=1,    kwk1 ≤c
+
+
+O que é feito usando o pacote de Grant & Boyd (2014) para o software MATLAB. Depois, guar-
+damos esses vetores para cada mês, então fazemos o produto interno deles com o vetor de retornos
+de cada ativo no próximo mês. Dessa forma, registramos os retorno de carteiras que foram otimi-
+zadas, compraram as suas posições que foram mantidas por um mês até serem rebalanceadas no
+mês posterior. Esses produtos internos dos vetores vão nos dar séries temporais sobre os retornos
+dos portfólios otimizados. O que vamos analisar é justamente essas séries temporais.
+
+
+
+
+                                                         11
+3.2. Metodologia para Avaliação de Desempenho
+   A avaliação de desempenho das carteiras otimizadas é semelhante ao de DeMiguel et al. (2009a).
+Ela é realizada de acordo com a média, variância, Índice Sharpe fora da amostra do portfólio, assim
+como o turnover do portfólio. As fórmulas dessas medidas estão apresentadas abaixo:
+
+
+                                                  T −1
+                                      2     1 X 0
+                                     σ̂ =          (w Rt+1 − µ̂)2
+                                          T − 1 t=1 t
+                                                                 T −1
+                                           µ̂               1 X 0
+                                    IS =      , onde µ̂ =          w Rt+1                             (14)
+                                           σ̂             T − 1 t=1 t
+                                                 T −1 N
+                                             1 XX                    
+                             Turnover =                  wj,t+1 − wj,t ,                              (15)
+                                           T − 1 t=1 j=1
+
+onde wj,t é o peso do ativo j no portfólio no tempo t + 1 mas antes do rebalanceamento e wj,t+1 é o
+peso desejado do ativo j no tempo t + 1. Como destacado por DeMiguel et al. (2009b), o turnover,
+como definido acima, pode ser interpretado como a fração média da riqueza transacionada em cada
+perı́odo.
+    O resultado da equação (14), que é o Índice de Sharpe, indica o tradeoff entre a média e a
+variância dos retornos, ele exprime a quantidade de média que a série de retornos obtém para cada
+unidade de variância que ela sofre, por isso ela é exprimida em percentagem.
+    Para testar a significância estatı́stica das diferenças entre as variâncias e ı́ndices de Sharpe dos
+retornos de dois portfólios, seguimos DeMiguel et al. (2009a) e usamos o bootstrap estacionário de
+Politis & Romano (1994) com B=1,000 reamostragens e tamanho de bloco b = 5. Os p-valores do
+teste foram obtidos usando a metodologia sugerida em (Ledoit & Wolf, 2008, Remark 3.2).
+
+3.3. Análise do Desempenho
+    A tabela 1 apresenta a média, a variância, o ı́ndice de Sharpe e o turnover das carteiras de
+variância mı́nima obtidas com matrizes de covariância amostral, RiskMetrics e VECH VT Scalar.
+O modelo benchmark é a carteira de variância mı́nima com restrição sobre posições vendidas e com
+matriz de covariância amostral. Conseguimos observar que para todas as matrizes de covariância,
+a restrição c = 1.4 é a que obtém o melhor ı́ndice de Sharpe. A restrição c = 1.4 equivale a
+uma carteira 120/20, que é quando investimos 120% dos nosso valor disponı́vel e ficamos com 20%
+de posições vendidas no portfólio. O maior ı́ndice de Sharpe é 0.0813 quando usamos a matriz
+de covariância vech vt escalar. Além disso, como era de se esperar, o turnover das carteiras com
+restrição de exposição bruta cresce a medida que c cresce, chegando a perto do turnover da carteira
+GMV quando c = 2.2.
+
+
+                                                    12
+    A tabela 2 apresenta os mesmos dados que a tabela 1, mas com a frequência de rebalanceamento
+semanal, nela encontramos que a melhor restrição é quando c = 1.6 para todos e o maior Índice de
+Sharpe é .0837 para a matriz de covariância amostral. A tabela 3, que apresenta os dados para o
+rebalanceamento mensal nos mostra que para a matriz de covariância amostral e a estimada pelo
+modelo VECH VT ESCALAR, a melhor restrição é c = 2.2, já para a matriz estimada pelo modelo
+RiskMetrics, o valor seria c = 1.6. O maior valor do Índice Sharpe .0829 é para o estimador de
+covariância amostral.
+    Na figura 1, pode-se ver como um investimento de R$1,00 feito em janeiro de 2000 evoluiria ao
+longo do tempo se os rebalanceamentos propostos fossem obedecidos. Na figura 1a apresenta-se a
+evolução do investimento para os estimadores de covariância amostral com restrição de c = 2.0,
+RiskMetrics com restrição de c = 1.4 e VECH com restrição de c = 2.2, todos com rebalanceamento
+diário. Nessa figura observa-se que tanto o estimador amostral, quanto o VECH tem valor final
+maior que o da carteira de GMV. Entretanto, essas duas especificações apresentam turnover menor
+que o da carteira de GMV, assim como ı́ndice de Sharpe maior. Assim, essas carteiras tem menor
+custo de transação e melhor retorno médio ajustado pelo risco.
+    A figura 1b apresenta a evolução do investimento para os estimadores de covariância amostral
+com restrição de c = 2.2, RiskMetrics com restrição de c = 1.6 e VECH com restrição de c = 2.2.
+Todos com rebalanceamento semanal. Nessa figura observa-se que apenas a especificação com a
+covariância amostral ganha da carteira GMV. E a figura 1c apresenta a evolução do investimento
+para os estimadores de covariância com rebalanceamento mensal já citados. Nessa figura a restrição
+de exposição bruta é igual para todos (c = 2.2). Nessa figura, é possı́vel observar que a carteira de
+GMV ganha das outras especificações. No entanto, ela não ganha por muito e tem maior variância
+associada, apresentando menores ı́ndices de Sharpe, além de maior turnover associado. Ou seja,
+apesar de ter um maior valor final do investimento, essa carteira apresenta maior custo de transação
+e menor retorno médio ajustado pelo risco.
+
+
+
+
+                                                   13
+                          Tabela 1: Desempenho das carteiras de variância mı́nima com restrição nas normas (Rebalanceamento diário)
+
+     A tabela apresenta a média diária dos retornos das carteiras ótimas considerando diferentes nı́veis de restrição nas normas dos vetores de alocação, média diária
+     da variância da carteira, o ı́ndice de Sharpe e portfólio turnover dos portfólios de variância mı́nima com restrição nas normas dos vetores de alocação, obtidos
+     com matrizes de covariâncias geradas pelo modelo scalar vt-vech. Os modelos benchmark são a matriz de covariância amostral e o modelo RiskMetrics. p-valores
+     para as diferenças entre as variâncias das carteiras e ı́ndices de Sharpe em relação àqueles obtidos com o modelo restrito para venda a descoberto estão entre
+     parênteses abaixo de cada coeficiente.
+
+                                           Covariância Amostral                                RiskMetrics                                  Estimador VECH
+
+                               Média   Variância   Sharpe Ratio   Turnover   Média   Variância   Sharpe Ratio   Turnover   Média   Variância   Sharpe Ratio   Turnover
+
+           Portfólio Naı̈ve   0.0578    2.2616         0.0384       0.0000    0.0578    2.2616         0.0384       0.0000    0.0578    2.2616         0.0384       0.0000
+                                        (0.0000)       (0.1080)                         (0.0000)       (0.1080)                         (0.0000)       (0.1080)
+           GMV                 0.0740    0.9155         0.0773       0.1501    0.0726    1.8729         0.0530       0.9208    0.0751    0.9186         0.0784       0.1535
+                                        (0.9840)       (0.2380)                         (0.0000)       (0.5180)                         (0.9300)       (0.2040)
+           No-short            0.0630   0.9183         0.0657        0.0360    0.0611    0.9908         0.0614       0.1756    0.0626    0.9204         0.0653       0.0368
+                                        (0.0000)       (0.0000)                         (0.6400)       (0.8120)                         (0.2720)       (0.5140)
+           c = 1.2             0.0710    0.8526         0.0769       0.0538    0.0649    0.9940         0.0651       0.2245    0.0709    0.8535         0.0767       0.0552
+                                        (0.0000)       (0.0000)                         (0.7240)       (0.9800)                         (0.0000)       (0.0000)
+           c = 1.4             0.0741    0.8319         0.0812       0.0704    0.0655    0.9818         0.0661       0.2699    0.0742    0.8334         0.0813       0.0720
+                                        (0.0000)       (0.0060)                         (0.6960)       (0.9500)                         (0.0000)       (0.0060)
+           c = 1.6             0.0740    0.8375         0.0808       0.0879    0.0649    0.9746         0.0657       0.3133    0.0741    0.8387         0.0809       0.0895
+                                        (0.0000)       (0.0380)                         (0.6200)       (0.9300)                         (0.0000)       (0.0260)
+14
+
+
+
+
+           c = 1.8             0.0738    0.8547         0.0798       0.1055    0.0648    0.9898         0.0651       0.3553    0.0741    0.8554         0.0801       0.1074
+                                        (0.0080)       (0.0640)                         (0.4580)       (0.9780)                         (0.0060)       (0.0500)
+           c = 2.0             0.0746    0.8755         0.0797       0.1215    0.0653    1.0280         0.0644       0.3964    0.0749    0.8766         0.0800       0.1236
+                                        (0.1060)       (0.1080)                         (0.2380)       (0.9400)                         (0.1420)       (0.0800)
+           c = 2.2             0.0747    0.8934         0.0790       0.1345    0.0644    1.0734         0.0622       0.4390    0.0754    0.8954         0.0797       0.1370
+                                        (0.4280)       (0.1460)                         (0.0760)       (0.8280)                         (0.4960)       (0.1300)
+                         Tabela 2: Desempenho das carteiras de variância mı́nima com restrição nas normas (Rebalanceamento semanal)
+
+     A tabela apresenta a média diária dos retornos das carteiras ótimas considerando diferentes nı́veis de restrição nas normas dos vetores de alocação, média diária
+     da variância da carteira, o ı́ndice de Sharpe e portfólio turnover dos portfólios de variância mı́nima com restrição nas normas dos vetores de alocação, obtidos
+     com matrizes de covariâncias geradas pelo modelo scalar vt-vech. Os modelos benchmark são a matriz de covariância amostral e o modelo RiskMetrics. p-valores
+     para as diferenças entre as variâncias das carteiras e ı́ndices de Sharpe em relação àqueles obtidos com o modelo restrito para venda a descoberto estão entre
+     parênteses abaixo de cada coeficiente.
+
+                                         Covariância Amostral                                RiskMetrics                                  Estimador VECH
+
+                             Média   Variância   Sharpe Ratio   Turnover   Média   Variância   Sharpe Ratio   Turnover   Média   Variância   Sharpe Ratio   Turnover
+
+         Portfólio Naı̈ve   0.0578    2.2616         0.0384       0.0000    0.0578    2.2616         0.0384       0.0000    0.0578    2.2616         0.0384       0.0000
+                                      (0.0000)       (0.0760)                         (0.0000)       (0.0760)                         (0.0000)       (0.0760)
+         GMV                 0.0788    0.9330         0.0815       0.0773    0.0783    1.8626         0.0574       0.4718    0.0776    0.9357         0.0802       0.0788
+                                      (0.9720)       (0.1460)                         (0.0000)       (0.6380)                         (0.8860)       (0.1780)
+         No-short            0.0652   0.9346         0.0675        0.0202    0.0587    1.0036         0.0586       0.0921    0.0643    0.9368         0.0664       0.0206
+                                                                                      (0.7260)       (0.5520)                         (0.2680)       (0.1060)
+         c = 1.2             0.0735    0.8680         0.0789       0.0291    0.0675    0.9815         0.0682       0.1156    0.0723    0.8686         0.0776       0.0298
+                                      (0.0000)       (0.0000)                         (0.8460)       (0.9880)                         (0.0000)       (0.0040)
+         c = 1.4             0.0769    0.8491         0.0835       0.0374    0.0697    0.9622         0.0711       0.1384    0.0759    0.8495         0.0824       0.0382
+                                      (0.0000)       (0.0100)                         (0.8560)       (0.8240)                         (0.0000)       (0.0000)
+         c = 1.6             0.0774    0.8548         0.0837       0.0460    0.0736    0.9764         0.0745       0.1595    0.0763    0.8548         0.0825       0.0468
+                                      (0.0000)       (0.0160)                         (0.7100)       (0.7240)                         (0.0020)       (0.0380)
+         c = 1.8             0.0778    0.8713         0.0833       0.0548    0.0723    0.9994         0.0723       0.1794    0.0768    0.8715         0.0823       0.0556
+                                      (0.0020)       (0.0300)                         (0.5020)       (0.7920)                         (0.0140)       (0.0440)
+15
+
+
+
+
+         c = 2.0             0.0789    0.8933         0.0835       0.0627    0.0714    1.0359         0.0701       0.1988    0.0775    0.8932         0.0820       0.0636
+                                      (0.1680)       (0.0620)                         (0.2500)       (0.9240)                         (0.1920)       (0.0940)
+         c = 2.2             0.0792    0.9112         0.0829       0.0694    0.0706    1.0807         0.0679       0.2193    0.0780    0.9117         0.0817       0.0705
+                                      (0.5140)       (0.0920)                         (0.1000)       (0.9600)                         (0.4540)       (0.1060)
+                         Tabela 3: Desempenho das carteiras de variância mı́nima com restrição nas normas (Rebalanceamento mensal)
+
+     A tabela apresenta a média diária dos retornos das carteiras ótimas considerando diferentes nı́veis de restrição nas normas dos vetores de alocação, média diária
+     da variância da carteira, o ı́ndice de Sharpe e portfólio turnover dos portfólios de variância mı́nima com restrição nas normas dos vetores de alocação, obtidos
+     com matrizes de covariâncias geradas pelo modelo scalar vt-vech. Os modelos benchmark são a matriz de covariância amostral e o modelo RiskMetrics. p-valores
+     para as diferenças entre as variâncias das carteiras e ı́ndices de Sharpe em relação àqueles obtidos com o modelo restrito para venda a descoberto estão entre
+     parênteses abaixo de cada coeficiente.
+
+                                         Covariância Amostral                                RiskMetrics                                  Estimador VECH
+
+                             Média   Variância   Sharpe Ratio   Turnover   Média   Variância   Sharpe Ratio   Turnover   Média   Variância   Sharpe Ratio   Turnover
+
+         Portfólio Naı̈ve   0.0578    2.2616         0.0384       0.0000    0.0578    2.2616         0.0384       0.0000    0.0578    2.2616         0.0384       0.0000
+                                      (0.0000)       (0.1580)                         (0.0000)       (0.1580)                         (0.0000)       (0.1580)
+         GMV                 0.0816    0.9759         0.0826       0.0406    0.0683    2.1682         0.0464       0.2141    0.0792    0.9796         0.0801       0.0412
+                                      (0.9300)       (0.0300)                         (0.0000)       (0.4100)                         (0.9640)       (0.0540)
+         No-short            0.0624   0.9799         0.0630        0.0116    0.0384    1.3206         0.0334       0.0445    0.0611    0.9807         0.0617       0.0117
+                                                                                      (0.0060)       (0.0840)                         (0.7240)       (0.0640)
+         c = 1.2             0.0708    0.9105         0.0742       0.0161    0.0483    1.3015         0.0423       0.0546    0.0690    0.9113         0.0723       0.0163
+                                      (0.0000)      (0.0000)                          (0.0100)       (0.2260)                         (0.0000)       (0.0080)
+         c = 1.4             0.0744    0.8897         0.0788       0.0200    0.0546    1.2768         0.0483       0.0642    0.0723    0.8903         0.0766       0.0203
+                                      (0.0000)      ( 0.0040)                         (0.0100)       (0.4080)                         (0.0000)       (0.0100)
+         c = 1.6             0.0756    0.8944         0.0799       0.0242    0.0600    1.2717         0.0532       0.0734    0.0732    0.8947         0.0774       0.0244
+                                      (0.0000)      (0.0100)                          (0.0120)       (0.5880)                         (0.0000)       (0.0420)
+         c = 1.8             0.0772    0.9116        0.0809        0.0288    0.0594    1.2737         0.0526       0.0820    0.0748    0.9119         0.0784       0.0290
+                                      (0.0120)      (0.0200)                          (0.0000)       (0.6040)                         (0.0100)       (0.0500)
+16
+
+
+
+
+         c = 2.0             0.0795    0.9339        0.0823        0.0329    0.0589    1.3076         0.0515       0.0912    0.0769    0.9345         0.0796       0.0332
+                                      (0.1520)      (0.0180)                          (0.0000)       (0.5940)                         (0.1540)       (0.0360)
+         c = 2.2             0.0809    0.9530        0.0829        0.0362    0.0607    1.3539         0.0521       0.1006    0.0784    0.9549         0.0802       0.0367
+                                      (0.4360)      (0.0300)                          (0.0000)       (0.6020)                         (0.4980)       (0.0440)
+4. Conclusões
+
+   As conclusões deste trabalho foram que as restrições sobre as normas tiveram um desempenho
+melhor que os outros tipos de otimização (maior Índice de Sharpe), como em Brodie et al. (2008)
+e DeMiguel et al. (2009a). É importante ressaltar que quando as carteiras com restrição de
+exposição bruta apresentaram valor do investimento menor na figura 1, a diferença não foi muito
+grande e ainda assim elas tinham menor turnover e ı́ndice de sharpe maior ou comparável.
+   Dessa forma, a otimização com restrição sobre exposição bruta pode ser uma alternativa viável
+aos métodos tradicionais de otimização de carteiras. Esta abordagem restringe a soma das posições
+vendidas e assim pode-se ter um controle maior sobre o vetor de alocação do portfólio. Com isso,
+a carteira apresenta um turnover menor e maior retorno médio ajustado pelo risco (ı́ndice de
+Sharpe).
+
+References
+
+Best, Michael J, & Grauer, Robert R. 1991. On the Sensitivity of Mean-Variance-Efficient
+  Portfolios to Changes in Asset Means: Some Analytical and Computational Results. Review of
+  Financial Studies, 4(2), 315–42.
+
+Brodie, Joshua, Daubechies, Ingrid, De Mol, Christine, Giannone, Domenico, &
+  Loris, Ignace. 2008 (Sept.). Sparse and stable Markowitz portfolios. Working Paper Series
+  0936. European Central Bank.
+
+Caldeira, João, Moura, Guilherme, & Santos, André. 2013. Seleção de carteiras utili-
+  zando o modelo Fama-French-Carhart. Revista Brasileira de Economia, 67(1).
+
+Ceria, S., & Stubbs, R.A. 2006. Incorporating estimation errors into portfolio selection: Robust
+  portfolio construction. Journal of Asset Management, 7(2), 109–127.
+
+Chopra, Vijay K., & Ziemba, William T. 1993. The Effect of Errors in Means, Variances,
+  and Covariances on Optimal Portfolio Choice. Journal of Portfolio Management, 19(2), 6–11.
+
+DeMiguel, Victor, Garlappi, Lorenzo, Nogales, Francisco J., & Uppal, Raman.
+  2009a. A Generalized Approach to Portfolio Optimization: Improving Performance by Cons-
+  training Portfolio Norms. Management Science, 55(5), 798–812.
+
+                                                 17
+Figura 1: Valor do Investimento Inicial em Janeiro de 2000 obedecendo o Rebalanceamento Executado
+
+                                                                                  (a) Rebalanceamento diário
+
+                                                            9
+                                                                     1/N
+                                                                     GMV
+                                                                     SAMPLE
+                                                            8        RM
+                                                                     VECH
+
+
+                                                            7
+
+
+
+
+                                                            6
+                             Resultado Acumulado (t)1 = 1
+
+
+
+                                                            5
+
+
+
+
+                                                            4
+
+
+
+
+                                                            3
+
+
+
+
+                                                            2
+
+
+
+
+                                                            1
+
+
+
+
+                                                            0
+                                                            Jan/00            Jul/02         Jan/05           Jul/07   Jan/10
+                                                                                                      Tempo
+
+
+
+
+                                                                               (b) Rebalanceamento semanal
+
+                                                            10
+                                                                     1/N
+                                                                     GMV
+                                                                     SAMPLE
+                                                            9
+                                                                     RM
+                                                                     VECH
+
+                                                            8
+
+
+
+                                                            7
+                    Resultado Acumulado (t1 = 1)
+
+
+
+
+                                                            6
+
+
+
+                                                            5
+
+
+
+                                                            4
+
+
+
+                                                            3
+
+
+
+                                                            2
+
+
+
+                                                            1
+
+
+
+                                                            0
+                                                            Jan/00            Jul/02         Jan/05           Jul/07   Jan/10
+                                                                                                      Tempo
+
+
+
+
+                                                                                 (c) Rebalanceamento mensal
+
+                                                            12
+                                                                     1/N
+                                                                     GMV
+                                                                     SAMPLE
+                                                                     RM
+                                                                     VECH
+                                                            10
+
+
+
+
+                                                            8
+                    Resultado Acumulado (t1 = 1)
+
+
+
+
+                                                            6
+
+
+
+
+                                                            4
+
+
+
+
+                                                            2
+
+
+
+
+                                                            0
+                                                            Jan/00            Jul/02         Jan/05           Jul/07   Jan/10
+                                                                                                      Tempo
+
+
+
+
+                                                                                               18
+DeMiguel, Victor, Garlappi, Lorenzo, & Uppal, Raman. 2009b. Optimal Versus Naive
+  Diversification: How Inefficient is the 1-N Portfolio Strategy?   Review of Financial Studies,
+  22(5), 1915–1953.
+
+Engle, Robert, & Sheppard, Kevin. 2008. Evaluating the specification of covariance models
+  for large portfolios. Working Paper. New York University, working paper.
+
+Fan, Jianqing, Fan, Yingying, & Lv, Jinchi. 2008. High dimensional covariance matrix
+  estimation using a factor model. Journal of Econometrics, 147(1), 186–197.
+
+Fan, Jianqing, Zhang, Jingjin, & Yu, Ke. 2012. Vast Portfolio Selection With Gross-
+  Exposure Constraints. Journal of the American Statistical Association, 107(498), 592–606.
+
+Francq, Christian, Horvath, Lajos, & Zakoı̈an, Jean-Michel. 2011. Merits and draw-
+  backs of variance targeting in GARCH models. Journal of Financial Econometrics, 9(4), 619–
+  656.
+
+Gastineau, Gary L. 2008. The Short Side of 130/30 Investing. The Journal of Portfolio
+  Management, 34(2), 39–52.
+
+Grant, Michael, & Boyd, Stephen. 2014 (Mar.). CVX: Matlab Software for Disciplined
+  Convex Programming, version 2.1. http://cvxr.com/cvx.
+
+Green, Richard C, & Hollifield, Burton. 1992.               When Will Mean-Variance Efficient
+  Portfolios Be Well Diversified? Journal of Finance, 47(5), 1785–809.
+
+Jacobs, Bruce I, & Levy, Kenneth N. 2006. Enhanced Active Equity Strategies. The Journal
+  of Portfolio Management, 32(3), 45–55.
+
+Jagannathan, Ravi, & Ma, Tongshu. 2003. Risk Reduction in Large Portfolios: Why Impo-
+  sing the Wrong Constraints Helps. Journal of Finance, 58(4), 1651–1684.
+
+Ledoit, Oliver, & Wolf, Michael. 2008. Robust performance hypothesis testing with the
+  Sharpe ratio. Journal of Empirical Finance, 15(5), 850–859.
+
+
+
+
+                                               19
+Ledoit, Olivier, & Wolf, Michael. 2003. Improved estimation of the covariance matrix of
+  stock returns with an application to portfolio selection. Journal of Empirical Finance, 10(5),
+  603–621.
+
+Ledoit, Olivier, & Wolf, Michael. 2004. A well-conditioned estimator for large-dimensional
+  covariance matrices. Journal of Multivariate Analysis, 88(2), 365–411.
+
+Lo, Andrew W, & Patel, Pankaj N. 2008. 130/30. The Journal of Portfolio Management,
+  34(2), 12–38.
+
+Markowitz, Harry. 1952. Portfolio Selection. Journal of Finance, 7(1), 77–91.
+
+Markowitz, H.M. 1959. Portfolio Selection: Efficient Diversification of Investments. Cowles
+  Commission for Research in Economics: Monographs. Yale University Press.
+
+Mendes, B.V., & Leal, R.P.C. 2005. Robust multivariate modeling in finance. International
+  Journal of Managerial Finance, 1(2), 95–106.
+
+Politis, Dimitris N., & Romano, Joseph P. 1994. The Stationary Bootstrap. Journal of the
+  American Statistical Association, 89(428), 1303–1313.
+
+
+
+
+                                              20
+

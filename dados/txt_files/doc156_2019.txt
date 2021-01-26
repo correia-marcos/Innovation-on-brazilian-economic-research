@@ -1,0 +1,796 @@
+    Devagar e sempre: os efeitos da redução no limite de velocidade nos acidentes de
+                                       São Paulo
+
+     Caio Pedro Castro1, Rodrigo Moita2, Bruno Monteiro3, Elisa Santos4, Gabriel Santos5,
+                                       Ingrid Ribeiro6
+
+Resumo
+
+O presente estudo busca analisar o impacto de reduções no limite de velocidade máxima
+realizadas entre 2015 e 2016 em determinadas vias da cidade de São Paulo no número de
+acidentes, ferimentos e fatalidades ocorridas nelas, através de regressão em painel com
+efeitos fixos por via e de tempo. Utilizou-se dados da Companhia de Engenharia de Tráfego
+de São Paulo (CET-SP). Os resultados encontrados indicam que as intervenções tiveram
+o efeito desejado, levando à queda do número de acidentes e feridos, embora não tenham
+ocorrido mudanças estatisticamente significativas no número de mortos. Para validar os
+resultados, foram realizados testes de placebo, os quais confirmaram que não houve
+interferência de fatores não-especificados sobre os efeitos da política pública analisada.
+
+Palavras-chave: Trânsito, Acidentes, Dados em Painel, Diferenças-em-Diferenças
+
+JEL: R41, R42, R58, C23
+
+Abstract
+
+The present study aims to analyze the impact of the reduction in the speed limit of certain
+streets and avenues in the city of São Paulo on the number of accidents, injuries and
+fatalities registered on them, through panel regressions with route and time fixed effects.
+Data from the Traffic Engineering Company of São Paulo (CET-SP) was collected. The
+results are indicative of a desired effect of the intervention, causing a reduction in the number
+of accidents and injuries, although there were no statistically significant changes in the
+number of deaths. In order to validate these results, placebo tests were made, which
+confirmed there was no bias due to interference from non-specified factors in our analysis.
+
+Keywords: Traffic, Accidents, Panel Data, Differences-in-Differences
+
+JEL: R41, R42, R58, C23
+
+Área ANPEC: 10 – Economia Regional e Urbana
+
+
+
+
+1                                         4
+  Insper – caiopasc@al.insper.edu.br        Insper – elisams@al.insper.edu.br
+2                                         4
+  Insper – rodrigomsm@inper.edu.br          Insper – gabrielps1@al.insper.edu.br
+3                                         6
+  Insper – brunorpmf@al.insper.edu.br       Insper – ingridra@al.insper.edu.br
+1. Introdução
+
+       No período entre julho de 2015 e janeiro de 2016, os limites de velocidade de
+diversas vias da cidade de São Paulo sofreram redução, com a justificativa de que esta
+medida reduziria o número de acidentes graves ou fatais ocorridos7. Ao comparar as vias
+que sofreram redução àquelas que se mantiveram inalteradas, o presente artigo busca
+medir, por meio de regressão em painel com efeitos fixos, o impacto de limites de
+velocidade mais baixos no número de acidentes ocorridos em cada via, os quais serão
+validados por meio de testes de robustez. Espera-se contribuir para a literatura que estuda
+a relação entre velocidade e número de acidentes em vias urbanas, além de avaliar a
+eficiência das políticas de gestão de trânsito praticadas à época.
+
+       No mundo todo, o número de veículos automotores cresce initerruptamente desde
+2000 – com incrementos médios de quase 80 milhões de veículos por ano. O número de
+mortes no trânsito também apresentou um crescimento contínuo no período, embora muito
+menos acelerado que o de veículos. Assim, o número de mortes anuais a cada 100 mil
+veículos caiu de 135 para 64 entre 2000 e 20168.
+
+       Se analisadas de forma mais aprofundada, porém, as métricas do trânsito não são
+tão animadoras. Entre 2014 e 2017, houve uma vítima fatal no trânsito a cada 24 segundos,
+e os acidentes de trânsito persistiram como a principal causa de morte entre pessoas dos
+5 aos 29 anos em todo o mundo. Além disso, as relativas melhorias no número de acidentes
+ocorreram em grande parte nos países desenvolvidos; dentre os emergentes, somente 23%
+apresentaram algum tipo de melhora expressiva no número de mortes desde 2013, e esse
+percentual cai para zero quando falamos em países pobres9. No Brasil, em específico, o
+número de mortes no trânsito para cada 100 mil habitantes diminuiu um pouco desde 2015,
+mas continua em níveis mais altos do que os de países como México, Colômbia e Rússia.
+
+        Diante da gravidade da situação, não é difícil concluir que a gestão do trânsito deve
+configurar importante ponto focal de políticas públicas. Melhorias expressivas na qualidade
+e na segurança das vias potencialmente trariam melhorias reais para o nível de bem-estar
+da sociedade. Mas se por um lado sua relevância é nítida, por outro a arquitetura de
+políticas eficientes não é elementar. Há um amplo rol de fatores que acabam por influenciar
+o número de acidentes de trânsito, desde aspectos estruturais – como o grau de
+adensamento urbano e o nível de educação da população – até as estratégias de gestão
+de tráfego em si, como a legislação relevante e a delimitação de velocidades máximas.
+
+       Nem sempre as intenções por trás das políticas implementadas são satisfeitas:
+apesar de temer multas, o brasileiro infrator demonstra certo descrédito pela capacidade
+de enforcement das regras de trânsito do país, segundo estudo de 200810. Do mesmo
+modo, Ferraz et al. (2012) corroboram a importância de um maior enforcement das normas
+de trânsito ao achar que uma maior intensidade de fiscalização (denotada pela quantidade
+de multas aplicadas) tem relação inversa com o número de mortes no trânsito11. Durante a
+última década várias medidas desta natureza foram instauradas. Em 2008, por exemplo,
+
+7
+   De acordo com comunicado feito em 11/08/2015. Disponível em: <http://www.capital.sp.gov.br/noticia/prefeitura-
+padronizara-velocidade-maxima-na>
+8
+  Todos os dados deste parágrafo derivaram do Global Status Report on Road Safety 2018, da Organização Mundial de
+Saúde (OMS).
+9
+  Idem.
+10
+   (Thielen, Hartmann & Soares, 2008)
+11
+   (Ferraz et al., 2012)
+houve um enrijecimento na Lei Seca, que, ao diminuir a concentração máxima aceita de
+álcool no sangue do motorista para 0,02 g/dL, conseguiu reduzir em 16% o número de
+mortes no trânsito na cidade de São Paulo, ainda que a redução nos acidentes no geral
+tenha sido de apenas 2,3%12. Endurecimentos posteriores ainda foram feitos ao final de
+2012, mas suas consequências carecem de medição.
+
+       Há, entretanto, um fator que desponta como o mais explorado pela literatura sobre
+acidentes de trânsito: a velocidade. Seja na forma de média ou de limite máximo permitido
+na via, há conclusões robustas – de diversos estudos e países do mundo – sobre o impacto
+desta nos acidentes em vias urbanas.
+
+      No começo da década de 90, Swali (1993) concluiu que a imposição de radares
+diminuiu a velocidade média das vias londrinas em 6 mph, o que reduziu os acidentes fatais
+em 40%13. Um ano depois, uma pesquisa do Transport Research Laboratory, também em
+Londres, achou que um aumento de 1 km/h na velocidade média das vias europeias e
+americanas causaria um aumento de 3% no número de acidentes, em média14. Ao analisar
+98 estudos sobre os efeitos da velocidade no número de acidentes, Rune (2004) resume
+que, mantendo-se 95% de confiança, 94,1% das estimações estudadas demonstraram que
+uma redução na velocidade diminui, também, o número de acidentes de trânsito15.
+
+       Mais recentemente, um estudo do Insurance Institute for Highway Safety (2016), dos
+Estados Unidos, reuniu mais um sólido corpo de evidências sobre os efeitos negativos de
+altas velocidades16. Estimou-se que, somente no ano de 2013, aumentos nos limites de
+algumas vias produziram 1.900 mortes adicionais – o bastante para neutralizar as mortes
+evitadas por airbags frontais naquele ano. Em uma análise com horizonte de 20 anos (de
+1993 a 2013), o estudo também achou que aumentos de 5 mph (aproximadamente 8 km/h)
+geraram, em média, incrementos de 4% no número de mortes em vias urbanas. Tratando-
+se de vias interestaduais e rodovias, o número de fatalidades sobe cerca de 8%. Há,
+portanto, uma ampla vertente na literatura sobre os efeitos maléficos da velocidade no
+trânsito.
+
+       De fato, é intuitivo explicar a relação direta entre velocidade e acidentes. Aumentos
+na velocidade praticada aumentam a distância de frenagem do veículo em taxas
+crescentes, além de causar maiores defasagens na distância de reação do motorista. Com
+o aumento da distância entre a percepção do obstáculo à frente e a parada total do veículo,
+é razoável que acidentes se tornem mais prováveis (Gráfico 1). Além disso, pessoas ao
+volante tendem a subestimar o tamanho de seu impacto em outros objetos (inclusive
+humanos) à medida que sua velocidade aumenta (Eriksson et. al, 2012).
+
+
+
+
+12
+   (Andreuccetti et al., 2011)
+13
+   (Swali, 1993)
+14
+   (Finch et. al, 1994)
+15
+   (Rune, 2004)
+16
+   (IIHS, 2016)
+        Gráfico 1 - Distâncias de frenagem e reação de acordo com velocidade praticada.
+
+
+
+
+               Fonte: OECD, Speed Management, 2006 / OMS, Gestão de velocidade: Um manual de
+               segurança viária, 2008
+
+
+
+Gráfico 2 - Probabilidade acumulada do risco de morte de acordo com a velocidade do impacto.
+
+
+
+
+                   Fonte: OECD, Speed Management, 2006 / OMS, Gestão de velocidade: Um
+                   manual de segurança viária, 2008
+
+       Não só a probabilidade, mas a severidade de um acidente é, também, afetada. A
+função de probabilidade acumulada do risco de morte de pedestres cresce de muito a partir
+de uma velocidade de 30 km/h no impacto. Aos 50 km/h, há mais de 80% de chance de a
+vítima sofrer danos fatais.
+
+       Do exposto, segue que reduções nas velocidades praticadas em uma via têm o
+potencial de diminuir o número de acidentes via diminuição da distância de reação e
+frenagem. Deve haver, também, impactos que sejam mais significativos nos acidentes
+fatais à medida que o valor absoluto da redução aumenta, dada a relação não-linear
+existente entre o risco de morte e a velocidade praticada. Possíveis malefícios ou benefícios
+paralelos (como os ganhos de fluidez viária dada a diminuição dos acidentes) fogem ao
+escopo do presente estudo.
+
+   1.1. Política de reduções de velocidade
+
+      Desde 2011, quando a Organização das Nações Unidas (ONU) lançou o programa
+“Década de Ação pela Segurança no Trânsito”, políticas voltadas ao trânsito vêm ganhando
+importância na gestão pública. Países emergentes, em especial, foram os mais atingidos
+pela nova agenda de mudanças, visto que acumulam a maioria dos veículos automotores
+e os acidentes do mundo17.
+
+       Na cidade de São Paulo, essa tendência teve a forma do Programa de Proteção à
+Vida (PPV). Buscando melhorar a segurança viária de modo geral, o programa executou
+medidas que variam desde a implementação de faixas de pedestres específicas para
+grandes cruzamentos, até a introdução de áreas de espera exclusivas para motocicletas.
+Foi justamente sob o bojo do PPV que, a partir de julho de 2015, a Prefeitura de São Paulo
+começou uma série de reduções nos limites de velocidade de diversas ruas e avenidas da
+cidade.
+
+       As reduções miravam na relação empírica conhecida entre velocidade da via e
+número e gravidade dos acidentes. As primeiras alterações ocorreram nas marginais
+Pinheiros e Tietê; depois, ao longo do segundo semestre de 2015, seguiram-se diversas
+outras reduções. Dezembro de 2015 foi o mês com a maior quantidade de reduções,
+apresentando mais de 50 vias com limite de velocidade alterado18. O gráfico 3 situa
+temporalmente todas as reduções realizadas entre 2015 e 2017. Nota-se, ainda, que houve
+variações positivas nas velocidades de algumas vias neste último ano, por conta do retorno
+ao patamar de velocidade inicial das avenidas marginais, executado por gestão municipal
+posterior.
+           Gráfico 3 - Tracking temporal das reduções de velocidade na cidade de São
+           Paulo (jan. 2015 a dez. 2017)
+
+
+
+
+                Fonte: Dados da CET; elaboração própria.
+
+       Análises descritivas realizadas pela Companhia de Engenharia de Tráfego de São
+Paulo (CET-SP) estudaram a variação dos acidentes de trânsito nas vias marginais em
+períodos imediatamente após as reduções19. Ao comparar as 4 semanas posteriores à
+alteração da CET-SP com o mesmo período em 2014 e 2013, ficou evidente que já havia
+tendência de queda nos acidentes com e sem vítimas, mas que esses números baixaram
+ainda mais após as reduções. Em relação ao ano de 2014, acidentes com vítimas fatais
+caíram 29% após as alterações da CET-SP, enquanto acidentes sem vítimas fatais caíram
+17
+   Global Status Report on Road Safety 2018, Organização Mundial de Saúde (OMS).
+18
+   Dados da Companhia de Engenharia de Tráfego de São Paulo (CET-SP).
+19
+   CET-SP: Programa de Proteção à Vida: Balanço do Impacto da Redução de Velocidade nas Marginais. Agosto 2015.
+20%. Em estudo realizado para a CET-SP, Sarno (2016) conduziu uma análise – ainda
+descritiva - com horizonte mais longo: do início de 2014 até junho de 201620. Durante o
+período, ele encontra uma queda de 56% nos acidentes com feridos na Marginal Tietê e de
+53% na Marginal Pinheiros.
+
+       Por serem meramente descritivas, as análises supracitadas não atendem aos
+objetivos do presente estudo, qual seja medir o impacto líquido da velocidade nos
+acidentes, controlando por qualquer fator que interfira nessa relação. Na literatura, mais
+similar a este propósito está Cardoso (2018) o qual apresenta, além disso, um período de
+análise muito próximo ao deste trabalho21. Ambos se tratam de regressão de diferenças-
+em-diferenças, buscando calcular o diferencial na evolução dos acidentes nas vias com
+velocidade reduzida (tratadas) e nas outras constantes (controle). Há, no entanto,
+importantes diferenças metodológicas entre as duas análises.
+
+       A primeira diferença está na base de dados: enquanto Cardoso (2018) analisa uma
+base com os acidentes registrados por uma seguradora com 60% de market share na
+cidade de São Paulo, o presente estudo trabalha com dados diretamente da CET-SP, a
+qual mantém registros de todos os acidentes com intervenção do órgão no período. A
+natureza média dos acidentes muda bastante entre essas duas bases. Isso porque há
+incentivos para o reporte de acidentes de qualquer natureza à seguradora, por mais leves
+que sejam; na base da CET-SP, por outro lado, o critério para o registro são acidentes em
+que houve registro da ocorrência por parte das autoridades. Portanto, este estudo analisa
+acidentes mais graves, enquanto Cardoso (2018) leva em conta ocorrências menores. A
+importância dessa diferença é que os acidentes mais graves são mais correlacionados com
+velocidade, têm um custo social maior, e eram o objetivo declarado da intervenção
+estudada.
+
+       Há também uma distinção metodológica: Cardoso (2018) estimou um modelo de
+diferenças-em-diferenças simples, com um só período de intervenção, fixado em julho de
+2015, quando houve as primeiras – e talvez mais importantes – reduções. Como as
+diminuições aconteceram até janeiro de 2016, tal escolha pode ter feito com que o efeito
+do tratamento de muitas vias tenha sido subestimado, pois ele as consideraria tratadas
+antes que a mudança ocorresse de fato.
+
+        No presente trabalho, portanto, optou-se por utilizar dados em painel por via e por
+mês, com efeitos fixos por via. Tal método não exige que se estabeleça um único período
+de intervenção; a redução na velocidade de cada via pode ser captada, no seu devido
+tempo, por meio da variação em sua velocidade máxima, a qual teria valor zero até que
+haja a intervenção.
+
+2. Base de Dados
+
+      Os dados utilizados são da CET – Registro de Acidentes para os anos de 2015 a
+2017, da qual retirou-se para a análise a soma dos acidentes por via por mês, número de
+mortos e o de feridos. Nossa amostra final inclui vias com ao menos um acidente registrado
+durante o período e cuja velocidade máxima pôde ser verificada nos 36 meses sob análise.
+
+
+
+20
+     (Sarno, 2016)
+21
+      (Cardoso, 2018)
+      As vias que sofreram mudanças de velocidade no período, bem como as datas e
+magnitudes destas foram informadas pela CET, e estão disponíveis no Anexo 1.
+
+       A partir de comunicados sobre as velocidades das vias e datas de alteração
+encontrados no site da CET, também foi construída uma variável nomeada “delta”, que
+mede a variação do limite de velocidade da via em certo mês se comparado ao limite de
+velocidade inicial (∆𝑉𝑒𝑙𝑜𝑐𝑖𝑑𝑎𝑑𝑒 𝑀𝑎𝑥. = 𝑉𝑒𝑙𝑜𝑐𝑖𝑑𝑎𝑑𝑒 𝑀𝑎𝑥./01 − 𝑉𝑒𝑙𝑜𝑐𝑖𝑑𝑎𝑑𝑒 𝑀𝑎𝑥./03 ). Assim,
+a variável terá valor constante igual a zero ao longo do tempo caso a via não tenha sofrido
+alteração, e valores negativos em períodos de velocidade reduzida para vias tratadas.
+
+       A análise descritiva mostrou que 36,3% do total de acidentes na base da CET-SP
+em 2015 estavam presentes na amostra para análise, enquanto que, para 2016 e 2017,
+havia 28,7% e 29,5% desse total, respectivamente. A representatividade da amostra quanto
+às vias com mais acidentes da cidade está ilustrada na Tabela 1.
+
+         Tabela 1 – Presença das vias com maior número de acidentes na base.
+
+
+
+
+                           Fonte: Dados da CET; elaboração própria.
+
+
+       Entre os grupos de tratamento e controle, a amostra contém 144 e 187 vias,
+respectivamente, sendo as tratadas aquelas vias que sofreram alguma alteração de
+velocidade no período analisado, e as de controle, aquelas que não sofreram alterações de
+velocidades entre 2015 e 2017. Tanto o grupo controle quanto o tratamento tiveram
+aproximadamente 50% dos acidentes da amostra.
+
+       Ainda, conforme a Tabela 2, a Av. das Nações Unidas é a que mais tem acidentes
+por via, com um total de 342 acidentes entre janeiro de 2015 e dezembro de 2017.
+                Tabela 2 – Vias com o maior número de acidentes.
+
+
+
+
+                           Fonte: Dados da CET; elaboração própria.
+
+       Como é possível observar a partir do Gráfico 4, aparentemente, as tendências dos
+acidentes mensais são paralelas entre os grupos de controle e de tratamento. A região
+sombreada em azul do gráfico diz respeito ao momento em que ocorreram as reduções de
+velocidade, e a em vermelho, aumentos pontuais, de acordo com o Anexo 1.
+
+
+               Gráfico 4 – Evolução dos acidentes mensais médios por via.
+
+
+
+
+                              Fonte: Dados da CET; elaboração própria.
+
+       Os dados revelaram uma menor média de acidentes durante janeiro e dezembro, os
+quais são meses de férias escolares (Gráfico 5). Nota-se, também, que novembro foi o mês
+que apresentou a menor média de acidentes, talvez pelo fato de acumular muitos feriados,
+o que, possivelmente, incorreria em menor fluxo de carro nas vias da cidade. Isso
+demonstra a importância de controlar a análise por características fixas de cada mês.
+             Gráfico 5 – Sazonalidade nos acidentes registrados.
+
+
+
+
+                           Fonte: Dados da CET; elaboração própria.
+
+      As marginais, junto com suas vias de acesso, foram as vias que mais tiveram
+acidentes registrados no período analisado, como demonstra a Tabela 2. O Gráfico 6
+mostra que houve uma queda na média de acidentes nessas vias durante o tratamento.
+Além disso, essa média manteve-se relativamente baixa durante os meses subsequentes.
+
+         Gráfico 6 – Média de acidentes mensais nas Marginais.
+
+
+
+
+                                             Período de reduções         Período de
+                                                                         aumentos
+
+
+
+
+                              Fonte: Dados da CET; elaboração própria.
+3. Modelo Econométrico
+
+      A variável resposta foi dividida em três, conforme os desdobramentos dos acidentes:
+número total de acidentes, número de feridos por acidentes e número de mortos por
+acidente, todos por via, por mês.
+
+        Foram estimadas duas regressões em painel para cada variável resposta. A primeira
+inclui como variáveis explicativas a variação no limite de velocidade que a via sofreu nas
+intervenções e o seu quadrado e, a segunda, uma variável dummy de tratamento que
+recebe 1 se a via estiver no grupo de tratamento nos meses em questão, e 0, caso contrário.
+O caso para a variável agregada (número de acidentes) pode ser visto a seguir:
+   (1) 𝑁ú𝑚𝑒𝑟𝑜 𝑑𝑒 𝑎𝑐𝑖𝑑𝑒𝑛𝑡𝑒𝑠;/ = 𝛽3 + 𝛽1 . 𝛥𝑉𝑒𝑙𝑜𝑐𝑖𝑑𝑎𝑑𝑒;/ + 𝛽? . 𝛥𝑉𝑒𝑙𝑜𝑐𝑖𝑑𝑎𝑑𝑒;/? +
+                              + ∑D; 𝜔B/ 𝐷/ + ∑/B 𝜃B/ 𝑀/ . 𝐴/ + 𝜀;/
+   (2) 𝑁ú𝑚𝑒𝑟𝑜 𝑑𝑒 𝑎𝑐𝑖𝑑𝑒𝑛𝑡𝑒𝑠;/ = 𝛽3 + 𝛽1 . 𝐷𝑢𝑚𝑚𝑦 𝑑𝑒 𝑀𝑢𝑑𝑎𝑛ç𝑎;/ + ∑D; 𝜔B/ 𝐷/ +
+                              + ∑/B 𝜃B/ 𝑀/ . 𝐴/ + 𝜀;/
+
+       Onde:
+
+   •   i representa a via em questão;
+   •   t representa o mês e ano;
+   •   ∑D; 𝜔B/ 𝐷/ representa os efeitos fixos de via;
+   •   ∑DB 𝛽B/ 𝑀/ . 𝐴/ representa os efeitos fixos de mês multiplicados pelos de ano, criando,
+       através da interação das dummies, os efeitos fixos de cada período (mês de cada
+       ano).
+
+       A inclusão dos efeitos fixos de via é de extrema importância para a análise,
+considerando que vias com maior fluxo de carros podem ter mais acidentes não puramente
+relacionados com o limite de velocidade. Ao inclui-los, controlamos por características
+heterogêneas entre vias, mas constante no tempo (é razoável supor, por exemplo, que vias
+com alto fluxo de veículos não deixaram de ter essa característica durante os 2 anos
+analisados).
+
+      Assim, na especificação (1), captura-se um efeito quadrático da variável de interesse
+(mudança na velocidade máxima permitida), e o efeito líquido se dá derivando-se em
+relação à variável resposta: 𝛽1 + 2. 𝛽? . Δ𝑉𝑒𝑙𝑜𝑐𝑖𝑑𝑎𝑑𝑒;/ .
+
+       Também, semelhantemente a Cardoso (2018), foi feita uma regressão de
+Diferenças-em-Diferenças considerando como o período de tratamento todos os meses
+subsequentes àquele com maior número de intervenções de redução de velocidade
+(dezembro de 2015). A equação a ser estimada é a (3), a seguir:
+
+   (3) 𝑁ú𝑚𝑒𝑟𝑜 𝑑𝑒 𝐴𝑐𝑖𝑑𝑒𝑛𝑡𝑒𝑠;/ = 𝛼3 + 𝛽1 𝐷𝑡𝑟𝑎𝑡;/ + 𝛽1 𝐷𝑝ó𝑠;/ + 𝜃1 P𝐷𝑡𝑟𝑎𝑡;B . 𝐷𝑝ó𝑠;/ Q + 𝜀;/
+
+       Onde:
+
+   •   𝐷𝑡𝑟𝑎𝑡;/ representa uma variável binária que assume 1 caso o distrito i tenha sido
+       tratado, e 0 caso contrário;
+   •   𝐷𝑝ó𝑠;/ representa uma variável binária que assume 1 caso o período t tenha ocorrido
+       após a data de tratamento (dezembro de 2015), e 0 caso contrário;
+
+       Nesta especificação, o coeficiente de interesse é o da interação (𝜃1 ).
+
+4. Resultados
+   4.1. Dados em Painel
+
+       A tabela 3 mostra os resultados das estimações citadas anteriormente:
+                                                    Tabela 3 - Resultados das estimações em painel.
+
+
+                                               Número de Acidentes                                     Número de Feridos                                   Número de Mortos
+                                       (1)         (2)         (3)         (4)             (5)           (6)            (7)         (8)         (9)          (10)        (11)        (12)
+
+                                     0.161***  0.0407***                                0.290***    0.111***                                  0.00527*      0.00240
+         ΔVelocidade
+                                     (0.0111)    (0.0122)                                (0.0271)    (0.0316)                                 (0.00314)    (0.00589)
+                                   -0.00801*** -0.00191**                              -0.0156*** -0.00699***                                -0.000392*    -6.62e-05
+         ΔVelocidade²
+                                    (0.000717) (0.000761)                               (0.00186)   (0.00207)                                (0.000217)   (0.000387)
+                                                            -0.907***   -0.294***                                    -1.401***   -0.373***                              0.00206     -0.0107
+    Dummy de Tratamento
+                                                             (0.0452)    (0.0539)                                      (0.104)     (0.131)                              (0.0140)   (0.0245)
+                                    1.522***    1.940***     1.587***    1.940***       2.946***      4.444***        3.025***    4.440***   0.170***     0.150***     0.168***    0.150***
+           Constante
+                                    (0.0947)    (0.0796)     (0.0952)    (0.0795)        (0.109)       (0.184)         (0.110)     (0.184)   (0.00753)    (0.0343)     (0.00778)   (0.0343)
+Efeitos fixos de tempo (mês*ano)                    X                        X                            X                           X                       X                        X
+        Efeitos fixos de via                        X                        X                            X                           X                       X                        X
+         Observações                 11,916      11,916      11,916      11,916           5,412         5,412         5,412       5,412        5,412        5,412       5,412       5,412
+          R-quadrado                 0.027       0.098        0.035      0.099            0.036         0.123         0.042       0.122       0.0001        0.008       0.001       0.008
+        Número de Vias                331         331          331        331              331           331           331         331          331          331         331         331
+                                                                              Obs.: Erros padrão entre parênteses.
+                                                                                *** p<0.01, ** p<0.05, * p<0.1
+       As especificações mais interessantes são as com efeitos fixos de vias e tempo, por
+serem mais robustas a características individuais de vias, mas fixas no tempo e
+características sazonais de meses de cada ano, mas fixas entre vias. Assim, escolheu-se
+focar nelas.
+
+      Pode-se perceber que, em todas as especificações, a variável da variação no limite
+de velocidade (ΔVelocidade) se manteve positiva. Como a variável está construída como
+redução de velocidade (assumindo valores negativos com a redução nos limites e positivos
+com o aumento destes), é razoável inferir que reduzir a velocidade máxima tem efeitos de
+diminuição no número de acidentes e feridos a um nível de significância menor que 1%;
+não se pode inferir nada quanto ao número de mortos devido à insignificância estatística.
+
+        Entretanto, a mesma variável ao quadrado possui coeficiente de sinal contrário (e
+significante) ao seu nível, mostrando que este efeito diminui, e não é linear, ou seja, a
+redução do limite de velocidade tem efeitos negativos, mas decrescentes no número de
+acidentes, ao contrário do proposto na seção 1. Esse resultado é plausível por dois motivos:
+primeiro, é razoável pensar que há um certo nível de acidentes nas vias que não depende
+da velocidade – não seria razoável crer que, por exemplo, se diminuíssemos o limite de
+uma via que está a 80 km/h para 10 km/h, o nível de acidentes se reduziria na mesma
+magnitude –, como por exemplo acidentes mais simples ou ligados a outros fatores (como
+semáforos, mudança de faixa, dentre outros); segundo, pode existir um certo efeito
+comportamental nos indivíduos: uma redução muito grande pode gerar uma adaptação por
+parte dos agentes mais lenta, levando a um período em que poderia haver mais acidentes
+justamente por essa adaptação não estar completa em todos os usuários da via.
+
+      Como as reduções das velocidades analisadas nesse trabalho foram de, no máximo,
+20 km/h, é possível concluir, via coeficientes da Tabela 3, que todas tiveram impacto
+negativo no número de acidentes (aproximadamente -0,216 acidentes por mês com 10 km/h
+de redução vs. aprox. -0.05 com 20 km/h). Como o efeito foi maior com a menor redução,
+é sugestão deste trabalho que as reduções sejam feitas de forma gradual, talvez de 10
+km/h por vez, até atingir-se o limite de velocidade desejado.
+
+       Nas especificações em que o regressor principal é a dummy de tratamento, seu
+coeficiente é negativo e significante no número de acidentes e feridos, implicando na
+existência de um efeito negativo e do tratamento (redução de limites de velocidade) nestes.
+
+       Quando a variável resposta é o número de mortos, não há significância estatística
+para praticamente nenhum dos regressores. Isso se dá principalmente por a grande maioria
+dos acidentes possuir apenas feridos, sendo o número de mortos relativamente pequeno,
+conforme a tabela 4.
+              Tabela 4 - Distribuição de mortos e feridos nos acidentes.
+
+                                                    Desvio-
+                              Observações   Média             Mínimo   Máximo
+                                                    padrão
+
+          Número de Mortos       5,412      0.17     0.47       0          6
+
+          Número de Feridos      5,412      3.33     3.31       0        37
+        Em seguida, foram calculadas as elasticidades centradas na média para as
+especificações com efeitos fixos de via e tempo, e a variável explicativa sendo a variação
+no      limite       de        velocidade           e seu quadrado, através  da    fórmula
+TUúVWXY ZW [\;ZWD/W]      céZ;a ZW ^_W`Y\;ZaZW
+                     × céZ;a ZW UúVWXY ZW [\;ZWD/W].
+   T^_W`Y\;ZaZW
+
+
+      Os resultados estão na tabela 5:
+                                      Tabela 5 – Elasticidades.
+
+                                      Elasticidades nas Médias
+                                                                   Total de           Total de
+                                  Número de Acidentes
+                                                                   Feridos            Mortos
+
+                Δ Velocidade             -0,126                      -0,37              -0,01
+
+                Obs.: Calculadas com os resultados das regressões com efeitos fixos de unidade e
+                                                    tempo.
+
+
+       Interpreta-se, então, que uma redução de 1% na velocidade máxima permitida na via
+reduz o número de acidentes registrados no mês nela por, em média, 0,12% e o número
+de feridos por, em média, 0,37%. Como a variável não apresentou significância estatística
+para o número de mortos, a elasticidade para ela não traz informação de relevância
+estatística.
+
+   4.2. Diferenças-em-Diferenças
+
+      Os resultados da estimação de diferenças-em-diferenças podem ser encontrados na
+Tabela 6.
+                   Tabela 6 - Estimação Diferenças-em-Diferenças.
+
+                                                             Número de Acidentes
+
+
+
+                                                                     0.415**
+                                    Dtratamento
+                                                                     (0.166)
+
+                                                                    -0.887***
+                                  Dpós-tratamento
+                                                                    (0.0959)
+
+                                                                     -0.140
+                                Dtratamento * Dpós
+                                                                     (0.173)
+
+                                                                    1.837***
+                                     Constante
+                                                                    (0.0781)
+
+                                         R2                              0.003
+
+                                    Observações                      11,952
+
+                                Número de Períodos                        36
+
+                                        Erros-padrão entre parênteses.
+
+                                        *** p<0.01, ** p<0.05, * p<0.1
+      Como é possível notar, o coeficiente de interesse (da interação entre as dummies)
+não possui significância estatística, equivalentemente ao apresentado por (Cardoso, 2018).
+
+        Entretanto, é importante desconfiar destes resultados devido ao que foi considerada
+uma falha metodológica cometida pelo autor e reproduzida nesta seção: muito se perde ao
+considerar apenas uma data de intervenção, quando estas ocorreram em um período
+relativamente longo de tempo. Em vez disso, seria mais prudente observar períodos de
+tratamento dinâmicos, como feito na subseção 4.1 deste trabalho, assim como é
+interessante olhar efeitos da magnitude da redução da velocidade no número de acidentes.
+Sendo assim, considera-se a especificação mostrada na seção 4.1 mais robusta e
+abrangente para medir o impacto das intervenções no número de acidentes.
+
+5. Testes de Robustez
+
+       Para analisar a robustez dos resultados, foram realizados testes de placebo, nos
+quais foram aleatorizadas as vias que receberam tratamento ou o período de tratamento.
+
+   5.1. Aleatorizando o Grupo de Tratamento
+
+       Primeiro, testou-se a robustez com um grupo de tratamento aleatorizado, ou seja,
+selecionou-se aleatoriamente um novo grupo de vias e simulou-se a realização da
+intervenção nele.
+
+       Para este procedimento, foi gerado um codificador para cada via na base, e o
+tratamento foi aleatorizado entre estes códigos de identificação, de forma a avaliar se existe
+algum efeito capturado no modelo proposto que não ocorra devido ao tratamento em si. Os
+resultados deste modelo estão na tabela 7:
+
+
+               Tabela 7 - Placebo com grupo de tratamento aleatorizado.
+                                                               Número de Acidentes
+
+
+
+
+                                                                     -0.000284
+                            ΔVelocidade (placebo)
+                                                                     (0.0105)
+
+                                                                     -9.80e-05
+                           ΔVelocidade² (placebo)
+                                                                    (0.000706)
+
+                                                                     1.940***
+                                  Constante
+                                                                      (0.123)
+
+                              Efeitos fixos de via                         X
+
+                       Efeitos fixos de data (mês x ano)                   X
+
+                                 Observações                          11,916
+
+                                 R-quadrado                            0.043
+
+                               Número de Vias                              331
+
+                                         Erros-padrão entre parênteses.
+
+                                          *** p<0.01, ** p<0.05, * p<0.1
+       Assim, não foi capturado nenhum efeito do tratamento atribuído aleatoriamente entre
+as vias. Isso permite afirmar que os resultados estão robustos quanto à atribuição do grupo
+de tratamento.
+
+   5.2. Aleatorizando o Período de Tratamento
+
+     Em seguida, foi criado um lag de 5 meses entre o período de tratamento real e um
+fictício, a fim de verificar se há algum efeito capturado no modelo que se deve
+exclusivamente ao período analisado e não ao tratamento. Os resultados deste modelo
+estão na tabela 8:
+             Tabela 8 - Placebo com período de tratamento aleatorizado.
+                                                                  Número de
+                                                                  Acidentes
+
+
+
+                                                                      -0.0150
+                            ΔVelocidade (placebo)
+                                                                      (0.0116)
+
+                                                                      0.00116
+                           ΔVelocidade² (placebo)
+                                                                  (0.000751)
+
+                                                                      1.940***
+                                  Constante
+                                                                      (0.123)
+
+                              Efeitos fixos de via                       X
+
+                       Efeitos fixos de data (mês x ano)                 X
+
+                                 Observações                           11,916
+
+                                 R-quadrado                            0.043
+
+                               Número de Vias                           331
+
+                                     Erros-padrão entre parênteses.
+
+                                     *** p<0.01, ** p<0.05, * p<0.1
+
+
+       Tal qual na estimação anterior, o placebo não capturou nenhum efeito do tratamento
+atribuído com um lag de 5 meses. Portanto, pode-se dizer que os resultados estão robustos
+quanto à atribuição do período de tratamento.
+
+6. Conclusão
+
+        O presente trabalho analisou os efeitos das reduções realizadas nas velocidades de
+determinado grupo de vias da cidade de São Paulo no número de acidentes, ferimentos e
+fatalidades ocorridos nelas. Em concordância com a literatura conhecida acerca do tema,
+o resultado encontrado foi de que as intervenções – realizadas entre julho de 2015 e janeiro
+de 2016 – tiveram, em geral, efeito sobre esses valores.
+
+       No caso dos números de acidentes e velocidades, os resultados das regressões em
+painel foram estatisticamente relevantes, indicando que as diminuições das velocidades
+máximas, de fato, os impactaram negativamente. É importante ressaltar, entretanto, que
+esse efeito é reduzido, de maneira não linear, quanto maior for a intervenção. Como todas
+as reduções foram da ordem de 10 ou 20 km/h, elas, ainda assim, surtiram o efeito
+desejado; em especial as menores (como foi o caso da maioria das vias).
+
+       No caso do número de mortos, nenhuma das regressões apresentou resultados
+estatisticamente significantes, o que acredita-se ocorrer devido à baixa representatividade
+de acidentes fatais na amostra. No entanto, todos os valores obtidos, com exceção de um,
+apresentaram o sinal esperado.
+
+        Os testes de robustez realizados validaram os resultados obtidos. Tanto com relação
+ao grupo de tratamento, quanto com relação ao momento do tratamento realizado, os testes
+de placebo não apresentaram resultados significativos, indicando que não há fatores não
+identificados pelas regressões principais viesando seus resultados.
+
+       Assim sendo, acredita-se que as políticas públicas de gestão de trânsito analisadas
+foram efetivas em alcançar seu objetivo declarado. Cabe lembrar que foge ao escopo deste
+trabalho medir efeitos colaterais das reduções (por exemplo, seu impacto sobre a fluidez
+do tráfego), e, dessa maneira, não foi analisado completamente seu impacto sobre o bem-
+estar geral dos habitantes de São Paulo. A medição de tais efeitos fica como sugestão para
+um possível aprofundamento futuro.
+Bibliografia
+
+ANDREUCCETTI, G., CARVALHO, H. B., CHERPITEL, C. J., Ye, Y., PONCE, J. C., KAHN,
+T. et al (2011). Reducing the legal blood alcohol concentration limit for driving in
+developing countries: a time for change? Results and implications derived from a
+time–series analysis (2001–10) conducted in Brazil. Addiction; DOI: 106: 2124- 31.
+
+CARDOSO, Mychaeell (2018). O Impacto da Redução da Velocidade Máxima Permitida
+sobre os Acidentes de Trânsito: Evidências para a Cidade de São Paulo. Fundação
+Getúlio Vargas – Escola de Economia de São Paulo (EESP).
+
+CET-SP – Companhia de Engenharia de Tráfego de São Paulo (2015). Programa de
+Proteção à Vida: Balanço do Impacto da Redução de Velocidade nas Marginais.
+
+CET-SP – Companhia de Engenharia de Tráfego de São Paulo (2016). Análise da
+Mortalidade ocorrida por Acidentes de Trânsito em agosto e setembro de 2016.
+
+ERIKSSON, Gabriella et al (2012). Braking from different speeds: Judgments of
+collision speed if a car does not stop in time. Accident Analysis & Prevention, Vol 45,
+páginas 487-495.
+
+FERRAZ, Antônio Clóvis Pinto et al (2012). Segurança viária. São Carlos: Suprema
+Gráfica e Editora.
+
+FINCH, D.J., KOMPFNER, P., LOCKWOOD, C.R., MAYCOCK, G. (1994). Speed, speed
+limits and accidents. Crowthorne: Transport Research Laboratory (TRL).
+
+IIHS - Insurance Institute for Highway Safety (2016). Status Report, Vol. 51, No. 4.
+
+OCDE – Organização para a Cooperação e Desenvolvimento Econômico (2006). Speed
+Management Report.
+
+OMS - Organização Mundial da Saúde (2008). Gestão de velocidade: Um manual de
+segurança viária.
+
+OMS - Organização Mundial da Saúde (2018). Global Status Report on Road Safety
+2018.
+
+PREFEITURA DE SÃO PAULO. São Paulo, SP. 11/08/2015. Disponível em:
+<http://www.capital.sp.gov.br/noticia/prefeitura-padronizara-velocidade-maxima-na>.
+
+SARNO, Caio (2016). Benefícios Imediatos da Redução de Velocidades Máximas
+Permitidas. CET-SP. Disponível em: <http://www.cetsp.com.br/media/517275/nt251.pdf>.
+
+THIELEN, Iara Picchioni; HARTMANN, Ricardo Carlos; SOARES, Diogo Picchioni (2008).
+Percepção de risco e excesso de velocidade. Cadernos de Saúde Pública, Rio de
+Janeiro, v. 24.
+                                                                                   Anexo 1 – Vias no Grupo de tratamento
+           Nome da Via                 Redução Aumento        Mudança                   Nome da Via                  Redução Aumento        Mudança                     Nome da Via                  Redução    Aumento     Mudança
+        AV ADOLFO PINHEIRO             dez/2015                   -10              AV FRANCISCO MATARAZZO            out/2015                   -10                 AV VINTE E TRES DE MAIO          out/2015                   -10
+      AV ADUTORA DO RIO CLARO          dez/2015                   -10                 AV GAL EDGAR FACO              dez/2015                   -10                  AV WASHINGTON LUIS              out/2015                   -10
+         AV AFRANIO PEIXOTO            set/2015                   -10             AV GAL OLIMPIO DA SILVEIRA         out/2015                   -10                 ES DE MOGI DAS CRUZES            dez/2015                   -10
+          AV AGUIA DE HAIA             dez/2015                   -10                AV GIOVANNI GRONCHI             jan/2016                   -10                    ES DO ALVARENGA               jan/2016                   -10
+      AV ALCANTARA MACHADO             out/2015                   -10                 AV INAJAR DE SOUZA             nov/2015                   -10                  ES DO CAMPO LIMPO               set/2015                   -10
+       AV ALEXANDRE COLARES            nov/2015                   -10                AV INTERCONTINENTAL             dez/2015                   -10                    ES DO IMPERADOR               dez/2015                   -10
+         AV ALM DELAMARE               nov/2015                   -10                   AV INTERLAGOS                out/2015                   -10                       ES IGUATEMI                dez/2015                   -10
+     AV AMADOR BUENO DA VEIGA          dez/2015                   -10               AV MIGUEL IGNACIO CURI           dez/2015                   -10                   ES MÃ Â´BOI MIRIM              out/2015                   -10
+            AV ANGELICA                set/2015                   -10                    AV MORUMBI                  dez/2015                   -10         MARGINAL PINHEIROS INTCB (INTERLAGOS-C   ago/2015   mar/2017   -20 depois +20
+           AV ANTARTICA                set/2015                   -10           AV MORVAN DIAS DE FIGUEIREDO         ago/2015   mar/2017   -20 depois +10   MARGINAL TIETE ASCB CENTRAL (AYRTON SE   ago/2015   mar/2017   -10 depois +10
+  AV ANTONIO ESTEVAO DE CARVALHO       out/2015                   -10             AV NADIR DIAS DE FIGUEIREDO        set/2015                   -10         MARGINAL TIETE ASCB EXPRESSA (AYRTON S   ago/2015   mar/2017   -20 depois +20
+      AV ASSIS CHATEAUBRIAND           ago/2015   mar/2017   -20 depois +10                AV NAZARE                 out/2015                   -10         MARGINAL TIETE CBAS CENTRAL (CASTELO B   ago/2015   mar/2017   -10 depois +10
+           AV BRAZ LEME                ago/2015                   -10                  AV NICOLAS BOER               nov/2015                   -10          MARGINAL TIETE CBAS EXPRESSA (CASTELO   ago/2015   mar/2017   -20 depois +20
+      AV CARLOS CALDEIRA FILHO         set/2015                   -10                   AV NORDESTINA                mai/2016                   -10         PTE DA CASA VERDE-JORN.WALTER ABRAHAO    nov/2015                   -10
+          AV CD DE FRONTIN             out/2015                   -10                  AV NOVE DE JULHO              nov/2015                   -10            PTE DO LIMAO-ADHEMAR F. DA SILVA      nov/2015                   -10
+   AV CDSSA ELISABETH DE ROBIANO       ago/2015   mar/2017   -20 depois +10           AV NSRA DE SABARA              nov/2015                   -10                     PTE DO PIQUERI               nov/2015                   -10
+          AV CHEDID JAFET              nov/2015                   -10               AV ORDEM E PROGRESSO             nov/2015                   -10                   PTE FREGUESIA DO O             nov/2015                   -10
+        AV COMEN MARTINELLI            nov/2015                   -10                  AV OSVALDO PUCCI              dez/2015                   -10               PTE JULIO DE MESQUITA NETO         nov/2015                   -10
+   AV CORIFEU DE AZEVEDO MARQUES       dez/2015                   -10             AV OTAVIANO ALVES DE LIMA          ago/2015   mar/2017   -20 depois +10             R AMARAL GURGEL                out/2015                   -10
+             AV CUPECE                 nov/2015                   -10                    AV PACAEMBU                 set/2015                   -10                    R ARARITAGUABA                dez/2015                   -10
+       AV DAS NACOES UNIDAS            ago/2015   mar/2017   -20 depois +10           AV PAES DE BARROS              dez/2015                   -10                        R BRESSER                 dez/2015                   -10
+  AV DEPDR JOSE ARISTODEMO PINOTTI     dez/2015                   -10                     AV PAULO VI                set/2015                   -10                 R BRIG GAVIAO PEIXOTO            dez/2015                   -10
+            AV DO POETA                dez/2015                   -10                   AV PIRAJUSSARA               dez/2015                   -10                    R DR ASSIS RIBEIRO            dez/2015                   -10
+          AV DOM PEDRO I               out/2015                   -10                   AV PIRES DO RIO              jan/2016                   -10                     R DR LUIZ AYRES              out/2015                   -10
+  AV DOMINGOS DE SOUZA MARQUES         nov/2015                   -10               AV PRES CASTELO BRANCO           ago/2015   mar/2017   -20 depois +10                  R EMBIRA                  dez/2015                   -10
+        AV DOS BANDEIRANTES            set/2015                   -10             AV PROF ABRAAO DE MORAIS           out/2015                   -10                       R FUNCHAL                  nov/2015                   -10
+        AV DR ABRAAO RIBEIRO           set/2015                   -10                AV PROF EDGAR SANTOS            dez/2015                   -10                     R GUIDO CALOI                ago/2015   mar/2017   -20 depois +10
+      AV DR ANTONIO MARIA LAET         dez/2015                   -10             AV PROF FRANCISCO MORATO           dez/2015                   -10                R HENRIQUE SCHAUMANN              set/2015                   -10
+AV DR BERNARDINO BRITO F.DE CARVALHO   dez/2015                   -10            AV PROF MANUEL JOSE CHAVES          set/2015                   -10                       R HUNGRIA                  ago/2015   mar/2017   -20 depois +10
+        AV DR RICARDO JAFET            out/2015                   -10                AV RADIAL LESTE OESTE           out/2015                   -10                    R MAJ NATANAEL                set/2015                   -10
+       AV DRA RUTH CARDOSO             ago/2015   mar/2017   -20 depois +10           AV RAGUEB CHOHFI               dez/2015                   -10                      R MELO FREIRE               out/2015                   -10
+        AV ELISEU DE ALMEIDA           dez/2015                   -10         AV RAIMUNDO PEREIRA DE MAGALHAES       dez/2015                   -10                    R MONTE PASCAL                dez/2015                   -10
+       AV EMB MACEDO SOARES            ago/2015   mar/2017   -20 depois +10             AV RIO BRANCO                nov/2015                   -10             R NORMA PIERUCCINI GIANNOTTI         dez/2015                   -10
+          AV ENG BILLINGS              ago/2015   mar/2017   -20 depois +10                AV RUDGE                  nov/2015                   -10                       R PARANABI                 dez/2015                   -10
+       AV ERMANO MARCHETTI             nov/2015                   -10                     AV S GABRIEL               dez/2015                   -10                        R RHONE                   dez/2015                   -10
+            AV ITAQUERA                dez/2015                   -10                     AV S MIGUEL                dez/2015                   -10                   R SENA MADUREIRA               ago/2015                   -10
+            AV JAGUARE                 dez/2015                   -10                AV SALIM FARAH MALUF            out/2015                   -10                     R SERGIO TOMAS               nov/2015                   -10
+            AV JOAO DIAS               dez/2015                   -10                    AV SAPOPEMA                 dez/2015                   -10                      R STO AMARO                 dez/2015                   -10
+      AV JOSE PINHEIRO BORGES          out/2015                   -10           AV SARG MIGUEL DE SOUSA FILHO        dez/2015                   -10                       R TAQUARI                  dez/2015                   -10
+              AV LIDER                 dez/2015                   -10               AV SEN TEOTONIO VILELA           out/2015                   -10                      VD ANTARTICA                set/2015                   -10
+      AV MAGALHAES DE CASTRO           ago/2015   mar/2017   -20 depois +10      AV SERAFIM GONCALVES PEREIRA        dez/2015                   -10                       VD BRESSER                 dez/2015                   -10
+AV MAJ SYLVIO DE MAGALHAES PADILHA     ago/2015   mar/2017   -20 depois +10              AV STO AMARO                dez/2015                   -10                VD DOMINGOS DE MORAES             dez/2015                   -10
+   AV MANOEL MONTEIRO DE ARAUJO        nov/2015                   -10                     AV SUMARE                  set/2015                   -10                VD ENG ORLANDO MURGEL             nov/2015                   -10
+   AV MANUEL ANTONIO GONCALVES         dez/2015                   -10                  AV TERESA CRISTINA            out/2015                   -10                     VD PIRES DO RIO              out/2015                   -10
+    AV MARGINAL DIREITA DO TIETE       ago/2015   mar/2017   -20 depois +10   AV TTE AMARO FELICISSIMO DA SILVEIRA   dez/2015                   -20           VD POMPEIA MISSIONARIO MANOEL DE       nov/2015                   -10
+  AV MARGINAL ESQ DO RIO PINHEIROS     ago/2015   mar/2017   -20 depois +20          AV VALDEMAR FERREIRA            set/2015                   -10            VEL PRES ARTHUR DA COSTA E SILVA      out/2015                   -10
+       AV ESCOLA POLITECNICA           dez/2015                   -10                 AV VER ABEL FERREIRA           dez/2015                   -10                      VIA ANCHIETA                nov/2015                   -10
+             AV EUROPA                 jun/2015                   -10                  AV VER JOSE DINIZ             set/2015                   -10
+

@@ -1,0 +1,1115 @@
+Changes in central bank preferences: an empirical study for
+                          Brazil
+                                 Rennan Kertlly de Medeiros*
+                                                                              †
+                         Edilean Kleber da Silva Bejarano Aragón
+
+                                              Abstract
+     This paper analyzes the behavior of the Central Bank of Brazil’s (Banco Central do Brasil -
+     BCB) preference parameters during the period between 2000: Q1 and 2017: Q4. To this end, we
+     assume that Brazil’s monetary policy is optimal and thus obtain the parameters of the policy
+     function by estimating a macroeconomic model with backward-looking expectations and central
+     bank preferences. The econometric approach used is based on Bayesian Markov Chain Monte
+     Carlo (MCMC) estimation with the aid of the Kalman filter. Our results indicate that there
+     was instability in the preferences over time, with fluctuations following the appointment of a
+     new BCB president and during the 2008 international crisis.
+
+     Keywords: Central Bank Preferences; Monetary policy; Time-varying parameter; Extended
+     Kalman filter.
+     JEL Code: E430; E520; E580.
+
+
+                                               Resumo
+     Este artigo analisa o comportamento dos parâmetros de preferências do banco central do Brasil
+     (BCB), no período compreendido entre 2000.T1 e 2017.T4. Para isso, supomos que a política
+     monetária do Brasil é definida de forma otimizada e, posteriormente, obtemos os parâmetros da
+     função política a partir de estimação do modelo macroeconômico com expectativas backward-
+     looking e das preferências do banco central. A abordagem econométrica utilizada é baseada em
+     estimação bayesiana MCMC com auxílio do filtro de Kalman. Nossos resultados indicam que
+     houve instabilidade nas preferências ao longo do tempo, com flutuações após posses de presi-
+     dentes do BCB e durante a crise internacional de 2008.
+
+     Palavras-chave: Preferências do banco central. Política monetária. Parâmetro variante no
+     tempo. Filtro de Kalman estendido.
+
+
+
+
+                     Área 4: Macroeconomia, Economia Monetária e Finanças
+
+
+
+
+*
+    PhD student of the Graduate Program in Applied Economics, UFPB. E-mail:rennanmedeiros22@hotmail.com.
+†
+    Professor of the Graduate Program in Applied Economics, UFPB. E-mail:edilean@hotmail.com.
+
+
+                                                   1
+1 Introduction
+        Following the implementation of the inflation targeting regime in the late 1990s, the Central
+Bank of Brazil (Banco Central do Brasil - BCB) played a role in guiding monetary policy to achieve
+price stability in the economy. The interest rate plays a crucial role in monetary policy behavior,
+given fluctuations in output and inflation, as presented in Taylor (1993).1 Monetary authorities thus
+face a trade-off between inflation stabilization or reduced unemployment. For Brazil, Minella et al.
+(2000), Silva and Portugal (2001) and Minella et al. (2003) evaluated the effect of the interest rate
+on macroeconomic variables and potential changes to the monetary policy regime.
+        The importance that the BCB places on inflation relative to outputs can be established as a
+fundamental preference measure for monetary policy decisions, as presented by Bogdanski, Tombini
+and Werlang (2000). The interest rate rule can be obtained by solving an intertemporal optimization
+problem with constraints as the monetary authority seeks to minimize the squared deviations of
+the objective variables from their respective targets. The coefficients of the central bank’s reaction
+function are thus a fusion of the economy’s preference and structural parameters.
+        In this study, the estimation of the preference parameter for inflation is variable, as it may
+exhibit different behavior over time. Monetary policy, together with time-varying preferences, estab-
+lishes nonlinearities, which were estimated using the extended Kalman filter (EKF) incorporated into
+the Bayesian Markov Chain Monte Carlo (MCMC) Metropolis-Hastings algorithm. The objective of
+the study is thus to verify whether the BCB’s preferences varied over time, considering that the
+study period included potential gradual changes in the economy and three different BCB presidents,
+namely, Henrique de Campos Meirelles (2004-2010), Alexandre Antonio Tombini (2011-2016) and
+Ilan Goldfajn (2016-present).
+        Most of the studies that address central bank preferences seek to combine a macroeconomic
+model with the first-order conditions of the policymakers. In studies focused on the United States’
+central bank (Federal Reserve System - Fed), gradual changes in the sample vary according to the
+interests of the central bank’s president, as shown by Favero and Rovelli (2003), Ozlale (2003),
+Dennis (2006), Salemi (2006), Givens (2012) and Ilbas (2012). With a different focus, Söderström,
+Söderlind and Vredin (2002) and Castelnuovo and Surico (2004) estimate the Fed’s preferences using
+calibration. The authors found that the Fed attributes an important weight to interest rate smoothing
+and places little importance on the output gap.
+        Dennis (2006) estimated the parameters of the Fed’s reaction function together with the
+parameters in its optimization constraints. Positing that the economy can be represented by the
+model proposed in Rudebusch and Svensson (1999), the US inflation target was approximately 1.4%,
+and policymakers attributed greater weight to interest rate smoothing. In turn, Ilbas (2012) used
+Bayesian methods to estimate changes in US post-war monetary policy and concluded that output
+growth is explained by the combination of two factors: the decreased volatility of the structural
+shocks and the improved monetary policy behavior.
+        Givens (2012) sought to estimate the Fed’s preferences under commitment and discretion.
+The author used an empirical New Keynesian model in which monetary policy minimizes the cen-
+tral bank’s loss function. With estimates for different periods (Volcker-Greenspan-Bernanke), it was
+possible to observe that the estimates of the loss function weights suggest an excessive concern for
+interest rate smoothing in the proposed model. The author also found a relative balance with respect
+to inflation and output stability in the discretionary policy.
+        For Brazil, Aragón and Portugal (2009) investigated monetary policy under the inflation tar-
+geting regime by calibrating preferences and found that the BCB adopted a flexible inflation targeting
+regime and placed greater importance on inflation stabilization. Finally, these authors found that
+the monetary authority’s concern with interest smoothing was deeper than with output stabiliza-
+1
+    One explanation for why applying estimated rules is important to describe the evolution of monetary policy stems
+    from the fact that estimated rules capture the systematic relationship between interest rates and macroeconomic
+    variables and, as such, can be used as approximations for the central bank’s decision rules, as shown by Clarida,
+    Gali and Gertler (2000).
+
+
+                                                          2
+tion. Similar results were found by Palma and Portugal (2011) and Palma and Portugal (2014). This
+study thus seeks to contribute to the national literature by analyzing the BCB’s preferences with a
+time-varying approach in the period from 2000: Q1 to 2017: Q4.
+        The results indicate that there is some instability in the policymakers’ preferences, particu-
+larly following the appointment of a new BCB president and during the 2008 international crisis.
+The Brazilian monetary authority seeks to smooth the Special System for Settlement and Custody
+(Sistema Especial de Liquidação e Custodia - Selic) interest rate, as well as control inflation and out-
+put gap fluctuations, via interest rates. We also found that the long-term responses to inflation and
+the output gap were larger during Henrique Meirelles’s term compared to his successor, Alexandre
+Tombini.
+        In addition to this introduction, this article is divided into five sections. The second section
+shows an overview of Brazil’s monetary policy. The third section presents the theoretical model used
+as a base for estimation. The fourth section is devoted to presenting the main methodological tools
+used to estimate the BCB’s preferences. The fifth section presents the results. Finally, the sixth
+section is devoted to the study’s conclusions.
+
+
+2 An overview of Brazilian monetary policy
+        Based on BCB reports, this section presents a broad overview of Brazil’s monetary policy and
+the interest rate as a policy instrument for achieving inflation targets.
+        According to Bogdanski, Tombini and Werlang (2000), Brazil’s inflation stabilization occurred
+in mid-1994, resulting in single-digit inflation in less than three years. This process involved a series
+of economic reforms such as a reduction of the public sector through privatizations, greater trade
+liberalization with a reduction of tariffs and nontariff barriers, and a restructuring of the financial
+system. The main measure of inflationary inertia—automatic indexing of prices, wages and other
+contracts—was reduced considerably. As a consequence, annual output growth averaged 3.4% (in
+real terms) from 1994 to 1998.
+        Historically, countries that have adopted an inflation targeting regime—Australia, Canada,
+New Zealand—have obtained satisfactory results, although it is only natural for economic recessions
+to follow its adoption, and this was no different in Brazil. Although the stabilization of the Brazilian
+economy was successful, there were still some structural economic problems, namely:
+
+    ∙ increased vulnerability of the country’s confidence, exacerbated following the Russian morato-
+      rium in August 1998;
+
+    ∙ capital flight from emerging markets, as a consequence of the crisis of confidence; and
+
+    ∙ strong pressures on exchange reserves.
+
+         The inflation targeting regime was instituted in Brazil in July 1999. This regime took the
+following assumptions as its objectives: i) set inflation targets based on a predetermined price index;
+ii) assigned to the BCB the task of achieving the target; and iii) made the National Monetary Council
+(Conselho Monetário Nacional - CMN) responsible for determining the inflation targets, their relative
+ranges of variation and the price index to be followed.
+         Concomitant with the above measures, the Monetary Policy Committee (Comitê de Política
+Monetária - COPOM) determined the basic interest rate of the Brazilian economy (Selic) as a
+monetary policy measure for inflation control.2 According to Carvalho et al. (2007), Selic is used
+to carry out transactions between financial institutions and functions as the government’s main
+monetary instrument.
+2
+    According to the BCB, the Selic rate is the adjusted average rate of daily financing calculated in the Selic system for
+    federal securities. The rate calculation considers the daily financing relative to transactions registered and settled
+    in Selic and in systems operated by clearing and asset settlement services.
+
+
+                                                             3
+2.1 Interest rate as a monetary policy instrument
+        After implementing the inflation targeting regime and a floating exchange rate, in effect since
+1999, the interest rate was used as the main monetary policy instrument for pursuing price stability.
+In this initial period, the inflation target was reduced in 2000 due to the turbulent international sce-
+nario. Some situations occurring around the world at the time included increased oil prices, political
+problems in the US and a critical scenario experienced by the Argentine economy. Figure 1 presents
+a series of the Selic interest rates accumulated monthly, annualized for the 2000-2017 period.
+        Following the recovery of the Brazilian economy in late 2000, reflecting the positive evolution
+of the macroeconomic fundamentals and low instability in the international environment, a target of
+15.25% per annum (p.a.) was set for the Selic rate for January 2001. As of March 2001, there was
+an increase in the exchange rate (currency depreciation), and under these conditions, the COPOM
+raised the target for the economy’s basic interest rate to the level of 19% p.a. in July, returning to
+the level observed in the early months of 2000.
+        According to the bulletin of the BCB (2004), in 2004, with Henrique de Campos Meirelles
+serving as the BCB’s president, the COPOM interrupted the monetary policy easing process, which
+began in June 2003. This cautious measure was imposed with the objective of meeting the inflation
+target for 2004, given the increase in commodity prices caused by the high growth of the world
+economy. The target for the basic interest rate was set at 17.75% p.a. in late 2004.
+        In 2006, price stability was preferred in the monetary policy behavior.3 In the first three
+months, the COPOM reduced the Selic rate target by 0.75% p.a., subsequently applying another
+cut of 0.5% p.a. in the ensuing months. This reduction in the basic interest rate represented two
+uncertainties to the economy: i) the degree of monetary policy easing that began in 2005; and ii) the
+external liquidity conditions resulting from changes in US monetary policy behavior, as presented in
+BCB (2006).4
+        In early 2008, the COPOM acted more cautiously in guiding monetary policy, given that
+the world and domestic economy showed signs of recovery, legitimizing a more restrictive monetary
+policy. During July of that same year, given the acceleration of wholesale prices and an increase in the
+inflation expectation, the decision was made to raise the economy’s basic interest rate. Finally, at the
+end of the year, the committee decided to keep the interest rate high due to some negative aspects
+encouraged by the international crisis, namely, uncertainty in the positive evolution of economic
+activity and a decrease in consumer and entrepreneur confidence.
+        According to the BCB (2010), the economy’s official price index, the Broad Consumer Price
+Index (Índice de Preços ao Consumidor Amplo - IPCA), remained between 2.5% and 6.5% in 2010,
+and the Selic rate target reached 8.75% p.a., which was the lowest level since the implementation of
+the inflation targeting regime in 1999. As the months passed, this rate was raised to 10.75% p.a., as
+shown in Figure 1. In this scenario, the CMN, together with authorities from the BCB and COPOM,
+adopted some important measures, including compulsory reserve and credit increases.
+        Following the deceleration of the Brazilian economy in the second half of 2011, the COPOM
+decided to reduce the Selic interest rate repeatedly throughout 2012. At the end of that year, the
+economic environment showed a favorable balance of risks for inflation, recovery of the domestic econ-
+omy and the complexity surrounding the international economy, and these circumstances contributed
+to the COPOM keeping the economy’s interest rate at a low level.
+        As stated in BCB (2014), over the next few years, the COPOM raised the Selic rate from 10%
+p.a. at the end of 2013 to approximately 11.75% p.a. at the end of 2014. This is justified by the fact
+that the relative price adjustments in the economy caused a deterioration in the balance of risks for
+inflation. The monetary authorities thus reached a consensus regarding the adjustment of monetary
+3
+    Based on the annual inflation target set at 4.5% by the CMN, the COPOM reduced the target for the basic interest
+    rate to 13.25% p.a. in December 2006.
+4
+    The easing of the monetary policy in Brazil was enabled by the downward trend in the inflation expectations
+    for 2006. That same year, an equivalent trend was confirmed, beginning in September 2007, in the price index
+    expectations.
+
+
+                                                         4
+conditions to ensure—at a lower cost—hegemony of a less hostile environment for inflation in the
+next two years, 2015 and 2016.
+
+        Figure 1 – Trajectory of the accumulated/annualized Selic interest rate (2000-2017)
+
+
+
+
+                           Source: Prepared by the authors using BCB data.
+
+[1] Note: The value for each year was calculated from the 12-month mean of the cumulative monthly interest
+rate series.
+
+
+
+       As shown in appendix C, the inflation trajectory points to signs of changes in the preferences
+of the monetary authorities only at specific points in the economy; for example, after the 2003
+presidential election, we observed a drop in the general price level, which rose once more in 2014. For
+the output gap, we found a clear deceleration during the 2008 international crisis. The trajectory of
+the variables thus indicates a slight change in the policymakers’ preferences at specific periods in the
+Brazilian economy.
+
+
+3 Theoretical Model
+        This section is devoted to presenting the theoretical model that will be used to estimate the
+BCB’s preferences. This model is grounded in three elements: constraints, loss function and optimal
+policy.
+
+3.1 Constraints
+       In this study, we consider a simple structural macroeconomic model with backward-looking
+expectations. The studies of Favero and Rovelli (2003), Ozlale (2003), Dennis (2006) and Lakdawala
+(2016) used this model to study central bank preferences. The model’s equations are as follows:
+
+                     𝜋𝑡 = 𝑏0 + 𝑏1 𝜋𝑡−1 + 𝑏2 𝜋𝑡−2 + 𝑏3 𝜋𝑡−3 + 𝑏3𝐴 𝜋𝑡−4 + 𝑏4 𝑦𝑡−1 + 𝜇𝜋,𝑡                (1)
+em que b3𝐴 = 1 − 𝑏1 − 𝑏2 − 𝑏3 .
+
+                           𝑦𝑡 = 𝑎0 + 𝑎1 𝑦𝑡−1 + 𝑎2 𝑦𝑡−2 + 𝑎3 (𝑖𝑡−1 − 𝜋𝑡−1 ) + 𝜇𝑦,𝑡                     (2)
+in which 𝜋𝑡 is the annualized quarterly inflation rate and 𝑦𝑡 is the output gap (obtained by the
+difference between the observed output and its potential value). The real interest rate, 𝑟𝑡−1 , is defined
+
+
+                                                     5
+as the difference between the nominal interest rate (𝑖𝑡−1 ), considered as a monetary policy instrument,
+and the economy’s inflation rate (𝜋𝑡−1 ). The error terms 𝜇𝜋,𝑡 and 𝜇𝑦,𝑡 are independent and identically
+distributed (i.i.d.) and are interpreted as supply and demand shocks, respectively.
+        The Phillips or aggregate supply curve (1) shows that the current inflation depends on its past
+values and the fluctuation of the output gap in the previous period. Equation (2) is a conventional
+investment/saving (IS) curve where the output gap at time 𝑡 depends on its lagged values and the
+real interest rate in the previous period. The coefficient 𝑎3 , which measures the output gap response
+at the real interest rate, should be negative.
+
+3.2 Loss function
+       Following Rudebusch and Svensson (1999), we assume that the monetary authority seeks to
+choose a path for the policy instrument (the nominal interest rate) to minimize:5
+                                       ∞
+                             𝐿 = 𝐸˜𝑡         𝛽 𝑗 [𝛼𝑡 (𝜋𝑡+𝑗
+                                                       𝑎
+                                                           − 𝜋𝑡* )2 + 𝑦𝑡+𝑗
+                                                                       2
+                                                                           + 𝜈(𝑖𝑡+𝑗 − 𝑖𝑡+𝑗−1 )2 ]
+                                       ∑︁
+                                                                                                                           (3)
+                                       𝑗=0
+
+where 𝐸𝑡 is the expectation operator conditioned on the set of data available at 𝑡; 𝛽 is the discount rate
+(0 < 𝛽 < 1); 𝛼 > 0; the weight of the output gap relative to inflation is normalized to 1; and 𝜈, which
+represents the interest rate smoothing coefficient, should be equal to or greater than 0.6 With loss
+function 𝐿, the monetary authority is assumed to stabilize the annual inflation, 𝜋𝑡𝑎 = (1/4) 3𝑗=0 𝜋𝑡−𝑗 ,
+                                                                                                ∑︀
+
+around an inflation target (𝜋 * ) to keep the output gap closed at zero and smooth the nominal
+interest rate. Appendix A shows the detailed mathematical derivation of the model in a state-space
+representation and the optimal policy rule.
+        According to Lakdawala (2016), the theoretical motivation of the third term (𝜈(𝑖𝑡+𝑗 −𝑖𝑡+𝑗−1 )2 )
+is based on the desirable effects of private sector expectations.7 This term may also be motivated
+by the central bank’s desire to reduce asset price volatility to prevent high interest rate swings.
+Rudebusch (2002), Rudebusch (2006) and Castelnuovo and Surico (2004) argued that the central
+bank does not use the smoothing device directly but rather follows autocorrelated shocks that affect
+the economy or potential concern with the model’s uncertainty. However, in recent empirical studies,
+Hamilton, Pruitt and Borger (2011) and Coibion and Gorodnichenko (2012) found that the central
+bank is truly concerned with interest rate smoothing.
+        Several points justify the use of the interest rate smoothing term: i) the data and coefficients
+of monetary policy transmission present uncertainties; ii) policymakers only take action when there
+is certainty about the results of these actions; iii) changes in interest rates may destabilize the
+financial and exchange markets; iv) reversions in monetary policy actions can be observed as errors
+or evidence of political consistency; and v) small and persistent changes in the short-term interest
+rate allow monetary policy to affect aggregate demand without the imposing volatility of the policy
+instrument. For further clarification on the interest rate smoothing term, see Clarida, Galı and Gertler
+(1998), Woodford (1999), Sack and Wieland (2000) and Woodford (2003).
+        In this study, the weight on inflation relative to the output gap (𝛼𝑡 ) is variable over time. In
+literature, there are several studies treating this parameter as time-varying.8 First, this weight may
+change depending on the BCB’s personnel; new employees may be more concerned with stabilizing
+the economy’s inflation or guiding the policy in an effort to decrease unemployment. Second, there
+is a distinct degree of political pressure on the central bank, as shown by Maggio (2010) and Meltzer
+5
+    According to Aragón and Portugal (2009), there are two reasons to use the quadratic loss function: i) this type of
+    function, associated with linear restrictions, results in a linear policy rule; and, ii) it allows for the inclusion of the
+    nominal interest rate smoothing term.
+6
+    As shown by Rudebusch and Svensson (1999), when 𝛽 −→ 1, the policymaker’s optimization problem and the
+    intertemporal loss function can be interpreted as an unconditional mean of the loss function at time 𝑡, given by
+    𝐸[𝐿𝑡 ] = 𝛼[𝜋𝑡 − 𝜋 * ] + 𝜆𝑦 𝑣𝑎𝑟[𝑦𝑡 ] − 𝜈[𝑖𝑡 − 𝑖( 𝑡 − 1)].
+7
+    See Woodford (2003).
+8
+    See Ireland (2007), Aragón and Medeiros (2015) e Lakdawala (2016).
+
+
+                                                               6
+(2011). Lakdawala (2016) argues that this change in political pressure can be captured over time in
+the weight the central bank puts on inflation relative to the output gap. The specified loss factor,
+with the weight of inflation on the output gap varying in time, is a simple and appropriate way to
+obtain central bank preferences.
+
+3.3 Optimal policy
+       For each period 𝑡, the monetary authority determines the economy’s interest rates. We want
+to observe the behavior of central bank preference parameters using a time-varying model.
+       The central bank minimizes the loss function (3) subject to the constraints given by the
+structural model (1)-(2). The derivation of the optimal policy rule is thus based on the state-space
+representation, denoted by (4):
+
+                                          𝑍𝑡+1 = 𝐶 + 𝐷𝑍𝑡 + 𝐵𝑋𝑡 + 𝜇𝑡+1                                            (4)
+where column vector 𝑍𝑡 represents the state variables, matrix 𝐷, column vector 𝐵 and the column
+vector of disturbances, 𝜇𝑡 + 1.
+       The interest rate rule is thus given by:
+
+
+              𝑖𝑡 = 𝑓𝑡 + 𝑓1,𝑡 𝜋𝑡 + 𝑓2,𝑡 𝜋𝑡−1 + 𝑓3,𝑡 𝜋𝑡−2 + 𝑓4,𝑡 𝜋𝑡−3 + 𝑓5,𝑡 𝑦𝑡 + 𝑓6,𝑡 𝑦𝑡−1 + 𝑓7,𝑡 𝑖𝑡−1 + 𝜇𝑖,𝑡     (5)
+
+where the nominal interest rate (control variable) at [︁time 𝑡 is a linear function of ]︁the state vari-
+able vector 𝑍𝑡 . The coefficients of line vector 𝑓 = 𝑓 𝑓1 𝑓2 𝑓3 𝑓4 𝑓5 𝑓6 𝑓7 represent an
+interaction of the central bank preference parameters and the Phillips and IS curve parameters.
+Therefore, for each preference parameter value for inflation relative to output gap, there is an op-
+timal rule. The coefficients of this rule, 𝑓𝑖,𝑡 , depend on the constant parameters of the constraints
+(𝑏0 , 𝑏1 , 𝑏2 , 𝑏3 , 𝑏3𝐴 , 𝑏4 , 𝑎0 , 𝑎1 , 𝑎2 , 𝑎3 ), the interest rate smoothing parameter and the time-varying pref-
+erence parameter. We estimate Equation (5) with a shock, 𝜇𝑖,𝑡 . This shock can be observed as a
+pure random component of monetary policy. Moreover, to capture the changes in monetary policy
+behavior, it is assumed that the parameters of the reaction function are time-varying and follow a
+random walk, as discussed by Cooley and Prescott (1976).
+
+
+4 Estimation
+       Equation (5) was estimated with a shock, 𝜇𝑖,𝑡 , to eliminate the singularity problem in the
+estimation of the vector autoregression (VAR) parameters.9 Equations (1), (2) e (5) podem escritas
+da seguinte forma:
+
+                       𝐴0,𝑡 𝑦^𝑡 = 𝐴1,𝑡 + 𝐴2,𝑡 𝑦^𝑡−1 + 𝐴3,𝑡 𝑦^𝑡−2 + 𝐴4,𝑡 𝑦^𝑡−3 + 𝐴5,𝑡 𝑦^𝑡−4 + 𝐿𝛹𝑡 𝜇𝑡              (6)
+      The 𝐴𝑖,𝑡 matrices are functions of the time-varying preference parameter (𝛼𝑡 ), modeled as a
+random walk:
+
+                                                    𝛼𝑡 = 𝛼𝑡−1 + 𝑧𝑡                                               (7)
+where the shock, 𝑧𝑡 𝑁 (0, 𝑄), is assumed to be independent of the shocks to the structural model. The
+random walk process, widely used in literature,10 is an accessible and parsimonious way of modeling
+time-varying parameters, as it can detect permanent shifts in the preference parameter, simplifying
+the estimation relative to a general autoregressive process, as presented by Lakdawala (2016).
+9
+     See appendix B.
+10
+     Some studies used models following a random walk, including Cogley and Sargent (2001), Cogley and Sargent
+     (2005), Boivin (2006) and Kim and Nelson (2006).
+
+
+                                                            7
+       The error vector 𝜇𝑡 consists of three shocks: a supply shock (𝜇𝜋,𝑡 ), a demand shock (𝜇𝑦,𝑡 ) and
+a shock involving the interest rate (𝜇𝑖,𝑡 ). The model assumed the following covariance matrix:
+                                                     (︃[︃        ]︃)︃           [︃       ]︃
+                                                            𝜇𝑡            𝐼 0
+                                              𝑉 𝑎𝑟                      =
+                                                            𝑧𝑡            0 𝑄
+       Some studies indicate that there is heteroskedasticity in the exogenous shocks included in
+macroeconomic models that involve inflation, output gap and interest rate.11 The triangular decom-
+position of the variance matrix of the errors considers 𝛺𝑡 = 𝐿𝛹𝑡 𝛹𝑡 𝐿′ , where:
+                                      ⎡                                 ⎤            ⎡            ⎤
+                                       𝜎𝜇𝜋,𝑡  0     0              1    0 0
+                                      ⎣ 0
+                                 𝛹𝑡 = ⎢      𝜎𝜇𝑦,𝑡  0 ⎥  ⎦ , 𝐿 = ⎣𝑙2,1 1 0⎦
+                                                                 ⎢           ⎥
+
+                                        0     0    𝜎𝜇𝑖,𝑡          𝑙3,1 𝑙3,2 1
+       Since the model is characterized by the constraints, the optimal interest rate rule and the
+random walk process for the time-varying parameters, we can now write it in a state-space represen-
+tation. We thus express the following nonlinear space system:
+
+                                                𝑦𝑡 = ℎ(𝛼𝑡 , 𝑋𝑡 , 𝛤, 𝜇𝑡 )                               (8)
+
+                                                     𝛼𝑡 = 𝛼𝑡−1 + 𝑧𝑡                                    (9)
+                [︁         ]︁
+where 𝛤 = 𝛿, 𝜈, 𝐿, 𝛹𝑡 . We estimate the following set of parameters: 𝛼𝑡 : time-varying weight of
+inflation; 𝛿: coefficients of the constraints (1), (2); 𝜈: weight on interest rate smoothing; 𝜓𝑡 : stan-
+dard deviations; 𝑁 : covariance terms; and 𝑄: variance of the shock to the time-varying preference
+parameter.
+
+4.1 Bayesian MCMC approach
+        To estimate the model’s parameters as random variables, we follow Lakdawala (2016) and use
+Bayesian MCMC estimation. This method involves numerical sampling of the posterior distribution,
+which is done using the random walk Metropolis-Hastings (RWMH) algorithm.
+        For linear state-space models, the Kalman filter is suitable for evaluating the likelihood func-
+tion. In this study, the preference parameter is nonlinear, and thus the EKF was used to linearize the
+observation equation at each point in time using a first-order Taylor expansion, and we then applied
+the techniques of the standard filter described. Based on nonlinear state-space representation of (8)
+and (9), the following equations show how to evaluate the likelihood using the EKF:
+
+                                                  𝛼𝑡|𝑡−1 = 𝛼𝑡−1|𝑡−1                                   (10)
+
+                                               𝑃𝑡|𝑡−1 = 𝑃𝑡−1|𝑡−1 + 𝑄                                  (11)
+
+                                          𝜂𝑡|𝑡−1 = 𝑦^𝑡 − ℎ(𝛼𝑡|𝑡−1 , 𝑋𝑡 , 𝛤, 0)                        (12)
+
+                                                                            ′                 ′
+                                          𝑓𝑡|𝑡−1 = 𝐻𝑡 𝑃𝑡|𝑡−1 𝐻𝑡 + 𝑀𝑡 𝛴𝑡 𝑀𝑡                            (13)
+
+                                              𝛼𝑡|𝑡 = 𝛼𝑡|𝑡−1 + 𝐾𝑡 𝜂𝑡|𝑡−1                               (14)
+
+                                             𝑃𝑡|𝑡 = 𝑃𝑡|𝑡−1 − 𝐾𝑡 𝐻𝑡 𝑃𝑡|𝑡−1                             (15)
+11
+     For example, see Sims and Zha (2006).
+
+
+                                                                  8
+where
+                                                                      ⃒
+                                                              𝜕ℎ() ⃒⃒
+                                                                      ⃒
+                                                         𝐻𝑡 =                                                (16)
+                                                               𝜕𝛼 ⃒⃒
+                                                                          𝛼𝑡|𝑡−1
+                                                                      ⃒
+                                                                 𝜕() ⃒⃒
+                                                                      ⃒
+                                                          𝑀𝑡 =                                               (17)
+                                                                 𝜕𝜀 ⃒⃒
+                                                                          𝜀𝑡|𝑡−1
+
+                                                                        −1 ′
+                                                        𝐾𝑡 = 𝑃𝑡|𝑡−1 𝐻𝑡 𝑓𝑡|𝑡−1                                (18)
+     With the filtered values available, the likelihood is evaluated using the error decomposition
+method.
+
+                                                  𝑇                      𝑇
+                                  𝑇𝑛           1 ∑︁                   1 ∑︁
+                        𝑙𝑙𝑓 = −      log(2𝜋) −       log(|𝑓𝑡|𝑡−1 |) −      𝜂 ′ 𝑓 −1 𝜂𝑡|𝑡−1                   (19)
+                                   2           2 𝑡=1                  2 𝑡=1 𝑡|𝑡−1 𝑡|𝑡−1
+       The likelihood is combined with the prior to obtain the posterior. We followed a two-step
+procedure. First, we numerically maximized the log of the posterior probability distribution to obtain
+a posterior estimate. Second, using the previously calculated posterior mode as a starting value, we
+used the Metropolis-Hastings algorithm to characterize the posterior distribution.
+       Let 𝜃 be the parameter vector to be estimated. The Metropolis-Hastings algorithm generates
+a draw from a candidate generating density, 𝑞(.). Let this candidate draw be known as 𝜃𝑔+1 . This
+new draw is thus accepted with the following probability:
+                                                                 (︃                 )︃
+                                        (𝑔+1)     (𝑔)       𝑝(𝜃(𝑔+1) |𝑌 ).𝑞(𝜃(𝑔) )
+                                  𝛼(𝜃           , 𝜃 ) = 𝑚𝑖𝑛                        ,1                        (20)
+                                                            𝑝(𝜃(𝑔) |𝑌 ).𝑞(𝜃(𝑔+1) )
+        We used the inverse of the Hessian of the posterior method as a candidate-generating density
+that is centered around the current draw 𝜃(𝑔) , which is:
+
+                                                                     ˜ −1
+                                                    𝜃(𝑔+1) = 𝜃(𝑔) + 𝑐𝐻                                       (21)
+                              ^ is the Hessian of the posterior mode. The RWMH algorithm was run
+where 𝑐 is a scale factor and 𝐻
+for 400,000 draws, of which 200,000 were discarded, to ensure independence in the initial stages. The
+mean acceptance rate of the chain was 32%.12 MATLAB R2015a software was used for estimation,
+and the code is available upon request.
+
+4.2 Data
+       The estimation of the BCB’s loss function with a time-varying preference parameter was
+based on quarterly data; the full sample covers 2000: Q1 to 2017: Q4. This period of analysis was
+chosen considering that, between 1994 and 1999, there were two important milestones in the Brazilian
+economy: the implementation of the Plano Real and the change to the exchange rate regime (from a
+fixed to a floating exchange rate). Furthermore, the period chosen covers only one monetary policy
+regime—the inflation targeting regime.13
+       We decided to use a quarterly frequency for two reasons: (i) quarterly data are less susceptible
+to noise and measurement errors; and (ii) to decrease monetary policy lag, in case the policy affects
+two or three periods after the policy is implemented. The dataset used includes the macroeconomic
+variables—inflation rate (𝜋), Selic interest rate (𝑖) and output gap (𝑦) - obtained from the Brazilian
+Institute of Geography ans Statistics (Instituto Brasileiro de Geografia e Estatística - IBGE) and the
+BCB.
+12
+     This number of draws is sufficient to ensure convergence, as established by Raftery and Lewis (1992).
+13
+     This fact diminishes the importance of the critique by Lucas (1976).
+
+
+                                                                  9
+                                   Table 1 – Summary of the variables used
+
+                               Variable     Unit Symbol Source
+                               Inflation    Rate 𝜋            IBGE
+                               Interest     Rate 𝑖            BCB
+                               Output gap Rate 𝑦              BCB/HP Filter
+                                      Source: Prepared by the authors.
+
+       The variable 𝜋 refers to the cumulative inflation for the last 12 months, measured by the
+IPCA and used as an inflation target (𝜋 * ) by the BCB. The output gap (𝑦) is obtained from the
+percentage difference between the seasonally adjusted quarterly real GDP and its trend (proxy for
+the potential output), measured by the Hodrick-Prescott (HP) filter14 , and the Selic interest rate (𝑖)
+is annualized (quarterly mean).15
+
+
+5 Results
+5.1 Estimation of parameters
+         We used data from 2000: Q1 to 2003: Q4 as a pre-sample to obtain the priors. For this initial
+sample, we estimated a seemingly unrelated regression (SUR). The priors for the coefficients of the
+constraints, 𝛿, are assumed with normal distribution with a prior mean equal to the SUR estimate
+for the pre-sample and high variance to ensure that it has noninformative value. The prior for the
+interest rate smoothing weight, 𝜈, has uniform distribution with a positive real value. The variances,
+𝜎𝑖,𝑡 , are assumed to be inverse gamma, with a shape and scale defined by 2 and 1, respectively.
+Finally, the variance of the time-varying parameter, 𝑄, is defined by uniform distribution with a
+positive real number. Table 2 shows a summary of the priors.
+
+                                  Table 2 – Prior distribution of parameters
+
+            Parameter       Definition                             Distribution
+            𝛿               Coefficients of the constraints        Normal (𝛿𝑆𝑈 𝑅 , 10.𝑉𝛿,𝑆𝑈 𝑅 )
+            𝜎               Standard deviation of the parameters   Inverse gamma (2,1)
+            N               Covariance matrix                      Normal (0,10)
+            Q               Variance of the time-varying parameter Uniform (0,∞)
+            𝜈               Interest rate smoothing weight         Uniform (0,∞)
+                                     Source: Prepared by the authors.
+
+        To estimate the RWMH algorithm, it was first necessary to calibrate the discount factor (𝛽)
+and inflation target (𝜋 * ) parameters. Following Castro et al. (2011), we established that 𝛽 is equal
+to 0.989 and 𝜋 * is 4.5%, as Brazil’s inflation target has been at that level since 2005.
+        The values of the estimated parameters are shown in Table 3. These values were obtained
+along with the 5th and 95th percentiles of the posterior distribution. The standard error for each
+parameter was also calculated. The results were compared with those in the literature.
+        As shown in Table 3, 𝑎𝑖 and 𝑏𝑖 are parameters of constraints; 𝜎𝑖,𝑡 and 𝑙𝑖 refer to the standard
+deviations and the covariance terms of the variance matrix; 𝜈 is the interest rate smoothing weight
+of the loss function; and 𝑄 is the variance of the shocks in the equation governing the weight of the
+time-varying parameter.
+        In general, the parameter estimates have the expected signs. For the Phillips curve, the excep-
+tion was 𝑏2 , which had a negative sign. The parameter that measures the impact of the output gap
+on the inflation rate presented a lower value compared to the result found by Aragón and Portugal
+14
+     To calculate the output gap, 𝜆 = 1600 was used, as suggested by Hodrick and Prescott (1997).
+15
+     The trajectory of the variables used is presented in appendix C.
+
+
+                                                         10
+(2009) and was also not statistically significant. These authors estimated a structural macroeconomic
+model for a small open economy, without considering a constant variable in the estimation of the IS
+and Phillips curves.
+        With regard to the IS curve, as expected, the coefficient for the real interest rate’s effect on
+the output gap had a negative sign. In this case, a 1% increase in the real interest rate estimate
+suggests a decrease of 0.04% in the annualized inflation, but the parameter does not present a value
+statistically different from zero. Aragón and Portugal (2009) found that a 1% increase in the real
+interest rate caused a fall of 0.09% in the annualized inflation.
+
+                              Table 3 – Estimation of the constant parameters
+
+        Parameter                      Posterior mean 95%IC                     Standard error
+        IS curve
+        𝑎0                             0.2979            [-1.5083;2.1780]       1.1554
+        𝑎1                             0.9125            [0.4288;1.3662]        0.2836
+        𝑎2                             -0.3866           [-0.6368;-0.1691]      0.0149
+        𝑎3                             -0.0383           [-0.2019;0.1193]       0.0992
+        Phillips curve
+        𝑏0                             4.8536            [-2.3265;13.4183]      4.5276
+        𝑏1                             0.5447            [0.0534;1.5512]        0.6321
+        𝑏2                             -0.5573           [-1.8358;0.5056]       0.6981
+        𝑏3                             0.3139            [0.1147;0.7823]        0.2671
+        𝑏4                             0.5791            [-4.8990;4.5903]       2.8113
+        Standard deviation
+        𝜎𝜇𝜋,𝑡                          0.6353            [0.2010;1.5380]        0.4414
+        𝜎𝜇𝑦,𝑡                          0.6400            [0.1997;1.5634]        0.4461
+        𝜎𝜇𝑖,𝑡                          0.6421            [0.2023;1.5138]        0.4126
+        Covariance
+        l2,1                           -0.1604           [-3.4047;3.5911]       2.1639
+        l3,1                           -0.4333           [-5.8359;6.0909]       3.5211
+        l3,2                           -0.5145           [-5.3067;3.5023]       2.5546
+        Interest rate smoothing
+        𝜈                              33.5525           [3.4985;67.9780]       21.3188
+        Variance of the state equation
+        Q                              20.4383           [1.5329;31.9229]       10.1345
+                                  Source: Prepared by the authors.
+
+         As shown in Table 3, the interest rate smoothing parameter has a high value statistically
+different from zero. For Brazil, the value of the interest rate smoothing found by Palma and Portugal
+(2011) was 20.005. In the international literature, this parameter has a value above 30.16 There is
+still discussion about the true source of smoothing observed in the policy parameter.
+         The sign of the parameter 𝑎0 is different from the studies in the international literature. The
+coefficient 𝑎2 in this study has a negative value, unlike the results found in Rudebusch and Svensson
+(1999) and Dennis (2006). The signs of the other terms are similar. With regard to the IS curve, the
+parameters were similar, although the constant parameter (𝑏0 ) for this paper was negative (although
+not significant), relative to the studies in the general literature.
+
+5.2 Optimal policy rule
+      To evaluate the optimal policy rule over time, the posterior mean of the IS and Phillips curve
+parameters, the interest rate smoothing term and the estimation of the varying parameter in each
+16
+     See Dennis (2006), Primiceri (2006) e Lakdawala (2016).
+
+
+                                                         11
+time period were considered.
+        The solid blue line in Figure 2 represents the estimate of the smoothed value of the variable
+preference parameter using the posterior mean of the constant parameters (described in Table 3).
+The dashed black line indicates the confidence interval for plus or minus one standard deviation.
+These confidence bands consider the uncertainty of the Kalman filter and the uncertainty of the
+parameter.
+        As Figure 2 suggests, during the term of Henrique de Campos Meirelles (2004-2011), there
+were small shifts in the weight given to inflation. With the appointment of Antonio Alexandre
+Tombini, there was a drop in the weight and some fluctuations during his term. At the beginning
+of Ilan Goldfajn’s term, there seems to have been greater concern with controlling inflation, as we
+noticed a rising weight attributed to the parameter, flexible in time. We observed that after the 2008
+international crisis, there was a downward trend in the weight of inflation.
+        Previous studies for Brazil estimated the central bank’s loss function considering constant
+parameters. For the inflation preference parameter, Aragón and Portugal (2009) found a value of
+0.73, Palma and Portugal (2011) arrived at 0.83 and Palma and Portugal (2014) obtained 0.42. The
+first two studies estimated the preferences using maximum likelihood, and the latter used Bayesian
+methods for a dynamic stochastic general equilibrium (DSGE) model.
+
+                           Figure 2 – Time-varying preference parameter
+
+
+
+
+                           Source: Prepared by the authors using BCB data.
+
+             [2] Note: The solid vertical line indicates the end of the BCB president’s term.
+
+
+
+      To evaluate the optimal policy rule, we consider the long-term responses to inflation and the
+output gap represented by equations (22) and (23):
+
+                                              𝑓1,𝑡 + 𝑓2,𝑡 + 𝑓3,𝑡 + 𝑓4,𝑡
+                                     𝜑1,𝑡 ≡                                                      (22)
+                                                      1 − 𝑓7,𝑡
+
+                                                       𝑓5,𝑡 + 𝑓6,𝑡
+                                              𝜑2,𝑡 ≡                                             (23)
+                                                        1 − 𝑓7,𝑡
+       Panel (A) in Figure 3 indicates that the long-term response to inflation has a mean value of
+4.39 for the full sample and was greater during Henrique Meirelles’s term when compared to the
+period when Alexandre Tombini was the BCB’s president. We note a positive trend in the long-term
+response to inflation during the early years of Henrique Meirelles’s term and a sharp drop following
+the 2008 international crisis.
+
+
+
+
+                                                       12
+ Figure 3 – Optimal interest rate evaluated using the posterior mean of the estimated parameters
+
+
+
+
+                             Source: Prepared by the authors using BCB data.
+
+[3] Note: Panel (A) shows the long-term response to inflation given by (22) and panel (B) shows the long-
+term response to the output gap given by (23).
+[4] Note: The solid vertical line indicates the end of the BCB president’s term.
+
+
+
+       Panel (B) in Figure 3 shows the interest rate’s response to changes in the output gap over
+time. We observed that after the international crisis and the start of Alexander Tombini’s term,
+there was a downward trend in the interest rate’s response to the output gap. The mean value of
+our estimates suggests that the BCB was more concerned with guiding the interest rate in response
+to the output gap during Henrique Meirelles’s term when compared to the term of his successor.
+Aragón and Medeiros (2015) found that the Brazilian monetary authorities were more concerned
+with controlling the interest rate in response to the output gap following the 2008 international crisis
+compared to the pre-crisis period. These authors estimated the BCB’s reaction function considering
+forward-looking expectations with time-varying parameters for the period 2002-2011.
+       Table 4 shows the optimal rules for different BCB presidents based on the mean of the time-
+varying parameter. We observed that, on average, the parameter that measures the weight of inflation
+preference relative to the output gap was greater during Alexandre Tombini’s term. The estimated
+optimal rule for Henrique Meirelles shows that a 1% increase in inflation raises the interest rate by
+1.25%, while a 1% increase in the output gap raises the interest rate by approximately 4.1295%.
+The coefficient that measures the inertia of the interest rate presented a value of 0.5065, i.e., a 1%
+increase in the interest rate of the previous period causes an increase of 0.51% in the interest rate of
+the current period.
+
+                   Table 4 – Optimal monetary rule for different BCB presidents
+                            Henrique Meirelles                        Alexandre Tombini
+                     𝛼𝑡             0.1578                                  0.3207
+                     𝜈             33.5525                                 33.5525
+                                             Short-term optimal monetary rule
+                     i𝑡 = 𝑓𝑡 + 𝑓1,𝑡 𝜋𝑡 + 𝑓2,𝑡 𝜋𝑡−1 + 𝑓3,𝑡 𝜋𝑡−2 + 𝑓4,𝑡 𝜋𝑡−3 + 𝑓5,𝑡 𝑦𝑡 + 𝑓6,𝑡 𝑦𝑡−1 + 𝑓7,𝑡 𝑖𝑡−1
+                     f𝑡             4.7160                                  5.2252
+                     f1,𝑡           1.2500                                  1.1265
+                     f2,𝑡           0.0981                                  0.1526
+                     f3,𝑡           0.3968                                  0.4413
+                     f4,𝑡           0.0510                                  0.0343
+                     f5,𝑡           4.1295                                  3.5953
+                     f6,𝑡          -1.2408                                  -1.1982
+                     f7,𝑡           0.5065                                  0.6161
+                                              Long-term optimal monetary rule
+                                                      i𝑡 = 𝜑1,𝑡 𝜋 + 𝜑2,𝑡 𝑦
+                     𝜑1,𝑡           4.5701                                  3.6391
+                     𝜑2,𝑡           6.2434                                  5.8535
+                                            Source: Prepared by the authors.
+
+
+        The estimated coefficients of the optimal rule for Alexandre Tombini show that a 1% increase
+in inflation raises the interest rate by 1.13%; in turn, a 1% increase in the output gap raises the
+interest rate by 3.60%. Similar to the case of Henrique Meirelles, the coefficient that measures the
+
+                                                              13
+autoregressive process of the interest rate presented a high value (1.25), indicating the Brazilian
+monetary authority’s concern with smoothing the Selic rate. In both cases of optimal rule, the
+monetary authority responds to the lagged values of the inflation rate and the output gap, although
+this response is weaker when compared to period 𝑡.
+        In addition to the short-term coefficients f described in the optimal rule, the state variables
+also have secondary effects on the interest rate due to their lagged values and the inertial term of the
+interest rate 𝑖𝑡−1 . We evaluated these effects in Table 4, and they are described by the coefficients
+𝜑1,𝑡 and 𝜑2,𝑡 . As established by the long-term rule, during Henrique Meirelles’s term, a sustained
+1% increase in inflation enables an increase in the Selic rate of 4.57%, while a 1% increase in the
+output gap raises the Selic rate by approximately 6.24%. For Alexandre Tombini, the coefficients that
+measure the long-term responses to inflation and the output gap were 3.63 and 5.85, respectively. The
+interest rate’s response to inflation was thus more than proportional, corroborating the Taylor rule.
+Estimating the BCB’s loss function with constant parameters, Aragón and Portugal (2009) found
+that during the period 1999-2007, there was also a more than proportional increase in the interest
+rate in response to inflation.
+
+                    Figure 4 – Impulse responses to a unitary shock on inflation
+
+
+
+
+                                    Source: Prepared by the authors.
+
+[5] Note: The solid line shows the responses using the estimated preferences in Henrique Meirelles’s term,
+while the dashed line refers to Alexandre Tombini’s term.
+
+
+
+
+                                                   14
+       Figure 4 considers the mean varying preference parameter for each BCB president.17 Our
+results indicate similarity in the responses for both presidents, although the mean of the prefer-
+ence parameter that measures the weight of inflation relative to the output gap was higher during
+Alexandre Tombini’s term.
+
+
+6 Conclusions
+        In recent years, numerous empirical studies have evaluated the central bank’s actions using
+monetary policy estimation. This procedure is limited, given that optimal policy rules are restricted
+to equations whose coefficients are convolutions of policymakers’ preferences and economic behavioral
+patterns.
+        We assume that the monetary authority solves an intertemporal optimization problem re-
+stricted to a simple macroeconomic model with backward-looking expectations. This study thus
+evaluated the behavior of the BCB’s preferences by considering the time-varying inflation preference
+parameter relative to the output gap. Our results suggest the following: (i) there was some instability
+in the varying parameter, with fluctuations following the appointment of a new BCB president and
+during the 2008 international crisis; (ii) the Brazilian monetary authority was concerned with inter-
+est rate smoothing; (iii) the long-term responses to inflation and the output gap were greater during
+Henrique Meirelles’s term compared to his successor; and (iv) the responses of both presidents to a
+unitary shock in inflation were similar.
+        There are countless studies in literature seeking to understand changes in central bank pref-
+erences. We can categorize the changes into two areas: changes that are policy errors and changes
+as a consequence of policy preferences. Although the literature focuses on the first line of thought,
+the primary motivation of this study is that insufficient attention is given to changes in central bank
+behavior. The results motivate future studies that consider time-varying preferences for a small open
+economy.
+
+
+ACKNOWLEDGEMENT
+
+This study was financed in part by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior
+- Brasil (CAPES) - Finance Code 001.
+
+
+                                                    Bibliography
+
+
+ARAGÓN, E. K. d. S. B.; PORTUGAL, M. S. Asymmetric effects of monetary policy in brazil.
+Estudos Econômicos (São Paulo), SciELO Brasil, v. 39, n. 2, p. 277–300, 2009. Available at:
+<http://dx.doi.org/10.1590/S0101-41612009000200002>.
+
+ARAGÓN, E. K. S. B.; MEDEIROS, G. B. Monetary policy in brazil: evidence of a reaction
+function with time-varying parameters and endogenous regressors. Empirical Economics, Springer,
+v. 48, n. 2, p. 557–575, 2015. Available at: <https://doi.org/10.1007/s00181-013-0791-5>.
+
+BCB. Boletim do Banco Central do Brasil - Relatório anual - Moeda e crédito. [S.l.], 2004. Available
+at: <https://www.bcb.gov.br/pec/boletim/banual2004/rel2004p.pdf>.
+
+BCB. Boletim do Banco Central do Brasil - Relatório anual - Moeda e crédito. [S.l.], 2006. Available
+at: <https://www.bcb.gov.br/pec/boletim/banual2006/rel2006p.pdf>.
+17
+     Given the brevity of Ilan Goldfajn’s term, his respective responses to a unitary shock on inflation were not presented.
+     This result is available upon request.
+
+
+                                                             15
+BCB. Boletim do Banco Central do Brasil - Relatório anual - Moeda e crédito. [S.l.], 2010. Available
+at: <https://www.bcb.gov.br/pec/boletim/banual2010/rel2010p.pdf>.
+
+BCB. Boletim do Banco Central do Brasil - Relatório anual - Moeda e crédito. [S.l.], 2014. Available
+at: <https://www.bcb.gov.br/pec/boletim/banual2014/rel2014indicep.pdf>.
+
+BOGDANSKI, J.; TOMBINI, A.; WERLANG, S. Implementing inflation targeting in Brazil. [S.l.],
+2000. Available at: <https://dx.doi.org/10.2139/ssrn.247507>.
+
+BOIVIN, J. Has us monetary policy changed? evidence from drifting coefficients and real-time
+data. Journal of Money, Credit and Banking, Blackwell Publishing, v. 38, n. 5, p. 1149–1173, 2006.
+Available at: <http://dx.doi.org/10.1353/mcb.2006.0065>.
+
+CARVALHO, F. de et al. Economia monetária e financeira: teoria e política. ELSEVIER
+EDITORA, 2007. ISBN 9788535223606. Available at: <https://books.google.com.br/books?id=
+a2x1PgAACAAJ>.
+
+CASTELNUOVO, E.; SURICO, P. Model uncertainty, optimal monetary policy and the preferences
+of the fed. Scottish Journal of Political Economy, Wiley Online Library, v. 51, n. 1, p. 105–126,
+2004. Available at: <https://doi.org/10.1111/j.0036-9292.2004.05101007.x>.
+
+CASTRO, M. R. et al. SAMBA: Stochastic Analytical Model with a Bayesian Approach. [S.l.], 2011.
+Available at: <https://www.bcb.gov.br/pec/wps/ingl/wps239.pdf>.
+
+CLARIDA, R.; GALI, J.; GERTLER, M. Monetary policy rules in practice: Some international
+evidence. european economic review, Elsevier, v. 42, n. 6, p. 1033–1067, 1998. Available at:
+<https://doi.org/10.1016/S0014-2921(98)00016-6>.
+
+CLARIDA, R.; GALI, J.; GERTLER, M. Monetary policy rules and macroeconomic stability:
+evidence and some theory. The Quarterly journal of economics, MIT Press, v. 115, n. 1, p. 147–180,
+2000. Available at: <https://doi.org/10.1162/003355300554692>.
+
+COGLEY, T.; SARGENT, T. J. Evolving post-world war ii us inflation dynamics. NBER
+macroeconomics annual, MIT Press, v. 16, p. 331–373, 2001. Available at: <https://doi.org/10.
+1086/654451>.
+
+COGLEY, T.; SARGENT, T. J. Drifts and volatilities: monetary policies and outcomes in the
+post wwii us. Review of Economic dynamics, Elsevier, v. 8, n. 2, p. 262–302, 2005. Available at:
+<https://doi.org/10.1016/j.red.2004.10.009>.
+
+COIBION, O.; GORODNICHENKO, Y. Why are target interest rate changes so persistent?
+American Economic Journal: Macroeconomics, v. 4, n. 4, p. 126–62, 2012. Available at:
+<http://dx.doi.org/10.1257/mac.4.4.126>.
+
+COOLEY, T. F.; PRESCOTT, E. C. Estimation in the presence of stochastic parameter variation.
+Econometrica: journal of the Econometric Society, JSTOR, p. 167–184, 1976. Available at:
+<http://www.jstor.org/stable/1911389>.
+
+DENNIS, R. The policy preferences of the us federal reserve. Journal of Applied Econometrics,
+Wiley Online Library, v. 21, n. 1, p. 55–77, 2006. Available at: <https://doi.org/10.1002/jae.808>.
+
+FAVERO, C. A.; ROVELLI, R. Macroeconomic stability and the preferences of the fed: A formal
+analysis, 1961-98. Journal of Money, Credit, and Banking, The Ohio State University Press, v. 35,
+n. 4, p. 545–556, 2003. Available at: <https://doi.org/10.1353/mcb.2003.0028>.
+
+GIVENS, G. E. Estimating central bank preferences under commitment and discretion. Journal
+of Money, credit and Banking, Wiley Online Library, v. 44, n. 6, p. 1033–1061, 2012. Available at:
+<https://doi.org/10.1111/j.1538-4616.2012.00522.x>.
+
+                                                16
+HAMILTON, J. D.; PRUITT, S.; BORGER, S. Estimating the market-perceived monetary
+policy rule. American Economic Journal: Macroeconomics, v. 3, n. 3, p. 1–28, 2011. Available at:
+<dx.doi.org/10.1257/mac.3.3.1>.
+
+HODRICK, R. J.; PRESCOTT, E. C. Postwar us business cycles: an empirical investigation.
+Journal of Money, credit, and Banking, JSTOR, p. 1–16, 1997. Available at: <https:
+//doi.org/10.2307/2953682>.
+
+ILBAS, P. Revealing the preferences of the us federal reserve. Journal of Applied Econometrics, Wiley
+Online Library, v. 27, n. 3, p. 440–473, 2012. Available at: <https://doi.org/10.1002/jae.1199>.
+
+IRELAND, P. N. Changes in the federal reserve’s inflation target: Causes and consequences. Journal
+of Money, credit and Banking, Wiley Online Library, v. 39, n. 8, p. 1851–1882, 2007. Available at:
+<https://doi.org/10.1111/j.1538-4616.2007.00091.x>.
+
+KIM, C.-J.; NELSON, C. R. Estimation of a forward-looking monetary policy rule: A time-varying
+parameter model using ex post data. Journal of Monetary Economics, Elsevier, v. 53, n. 8, p.
+1949–1966, 2006. Available at: <https://doi.org/10.1016/j.jmoneco.2005.10.017>.
+
+LAKDAWALA, A. Changes in federal reserve preferences. Journal of Economic Dynamics and
+Control, Elsevier, v. 70, p. 124–143, 2016. Available at: <https://doi.org/10.1016/j.jedc.2016.07.
+003>.
+
+LUCAS, R. E. Econometric policy evaluation: A critique. In: ELSEVIER. Carnegie-Rochester
+conference series on public policy. 1976. v. 1, p. 19–46. Available at: <http://people.sabanciuniv.
+edu/atilgan/FE500_Fall2013/2Nov2013_CevdetAkcay/LucasCritique_1976.pdf>.
+
+MAGGIO, M. D. The political economy of the yield curve. Munich Personal RePEc Archive, 2010.
+Available at: <https://mpra.ub.uni-muenchen.de/20697/>.
+
+MELTZER, A. H. Politics and the fed. Journal of Monetary Economics, Elsevier, v. 58, n. 1, p.
+39–48, 2011. Available at: <https://doi.org/10.1016/j.jmoneco.2010.09.009>.
+
+MINELLA, A. et al. Inflation Targeting in Brazil: Lessons and Challenges. [S.l.], 2000. Available at:
+<http://www.bcb.gov.br/pec/wps/ingl/wps53.pdf>.
+
+MINELLA, A. et al. Inflation targeting in brazil: constructing credibility under exchange rate
+volatility. Journal of international Money and Finance, Elsevier, v. 22, n. 7, p. 1015–1040, 2003.
+Available at: <https://doi.org/10.1016/j.jimonfin.2003.09.008>.
+
+OZLALE, U. Price stability vs. output stability: tales of federal reserve administrations. Journal
+of Economic Dynamics and Control, Elsevier, v. 27, n. 9, p. 1595–1610, 2003. Available at:
+<https://doi.org/10.1016/S0165-1889(02)00072-6>.
+
+PALMA, A. A.; PORTUGAL, M. S. Preferences of the central bank of brazil under the inflation
+targeting regime: commitment vs. discretion. Revista Brasileira de Economia, SciELO Brasil, v. 65,
+n. 4, p. 347–358, 2011. Available at: <http://dx.doi.org/10.1590/S0034-71402011000400002>.
+
+PALMA, A. A.; PORTUGAL, M. S. Preferences of the central bank of brazil under the
+inflation targeting regime: Estimation using a dsge model for a small open economy.
+Journal of Policy Modeling, Elsevier, v. 36, n. 5, p. 824–839, 2014. Available at: <https:
+//doi.org/10.1016/j.jpolmod.2014.08.004>.
+
+PRIMICERI, G. E. Why inflation rose and fell: policy-makers’ beliefs and us postwar stabilization
+policy. The Quarterly Journal of Economics, MIT Press, v. 121, n. 3, p. 867–901, 2006. Available
+at: <https://doi.org/10.1162/qjec.121.3.867>.
+
+
+
+                                                 17
+RAFTERY, A. E.; LEWIS, S. How many iterations in the gibbs sampler? In: Bayesian Statistics.
+Oxford University Press, 1992. p. 763–773. Available at: <http://citeseerx.ist.psu.edu/viewdoc/
+download?doi=10.1.1.41.6474&rep=rep1&type=pdf>.
+
+RUDEBUSCH, G.; SVENSSON, L. E. Policy rules for inflation targeting. In: Monetary policy rules.
+University of Chicago Press, 1999. p. 203–262. Available at: <http://www.nber.org/chapters/c7417.
+pdf>.
+
+RUDEBUSCH, G. D. Term structure evidence on interest rate smoothing and monetary policy
+inertia. Journal of monetary economics, Elsevier, v. 49, n. 6, p. 1161–1187, 2002. Available at:
+<https://doi.org/10.1016/S0304-3932(02)00149-6>.
+
+RUDEBUSCH, G. D. Monetary policy inertia: Fact or fiction? International Journal of Central
+Banking, v. 2, n. 4, p. 85–135, 2006. Available at: <https://www.frbsf.org/economic-research/files/
+ijcb06q4a4.pdf>.
+
+SACK, B.; WIELAND, V. Interest-rate smoothing and optimal monetary policy: a review of recent
+empirical evidence. Journal of Economics and Business, Elsevier, v. 52, n. 1-2, p. 205–228, 2000.
+Available at: <https://doi.org/10.1016/S0148-6195(99)00030-2>.
+
+SALEMI, M. K. Econometric policy evaluation and inverse control. Journal of Money, Credit,
+and Banking, The Ohio State University Press, v. 38, n. 7, p. 1737–1764, 2006. Available at:
+<http://dx.doi.org/10.1353/mcb.2006.0092>.
+
+SILVA, M. E. D.; PORTUGAL, M. S. Inflation targeting in Brazil: An empirical evaluation. [S.l.],
+2001.
+
+SIMS, C. A.; ZHA, T. Were there regime switches in us monetary policy? American Economic
+Review, v. 96, n. 1, p. 54–81, 2006. Available at: <http://www.jstor.org/stable/30034354>.
+
+SÖDERSTRÖM, U.; SÖDERLIND, P.; VREDIN, A. Can a calibrated New-Keynesian model of
+monetary policy fit the facts? [S.l.], 2002. Available at: <http://hdl.handle.net/10419/82456>.
+
+TAYLOR, J. B. Discretion versus policy rules in practice. In: ELSEVIER. Carnegie-
+Rochester conference series on public policy. 1993. v. 39, p. 195–214. Available at: <https:
+//doi.org/10.1016/0167-2231(93)90009-L>.
+
+WOODFORD, M. Optimal monetary policy inertia. The Manchester School, Wiley Online Library,
+v. 67, n. s1, p. 1–35, 1999. Available at: <https://doi.org/10.1111/1467-9957.67.s1.1>.
+
+WOODFORD, M. Optimal interest-rate smoothing. The Review of Economic Studies, Wiley-
+Blackwell, v. 70, n. 4, p. 861–886, 2003. Available at: <https://doi.org/10.1111/1467-937X.00270>.
+
+
+
+
+                                                18
+APPENDIX A – Derivation of the theoretical model and the optimal rule
+      Putting constraints (1) and (2) in a state-space representation, where 𝑍𝑡 is the state vector
+and 𝑋𝑡 is control variable, we have:
+
+                                             𝑍𝑡+1 = 𝐶 + 𝐷𝑍𝑡 + 𝐵𝑋𝑡 + 𝜇𝑡+1                                    (24)
+Let: [︁                            ]︁′    [︁ ]︁′
+𝑍𝑡 ≡ 𝜋𝑡 𝜋𝑡−1 𝜋𝑡−2 𝜋𝑡−3 𝑦𝑡 𝑦𝑡−1 𝑖𝑡−1 , 𝑋𝑡 ≡ 𝑖𝑡 e
+       [︁                 ]︁′
+𝜇𝑡+1 ≡ 𝜇𝜋,𝑡+1 𝜇𝑦,𝑡+1 .
+
+We can, thus, write system (1)-(2) as follows:
+      ⎡      ⎤ ⎡ ⎤ ⎡                                                ⎤⎡       ⎤     ⎡   ⎤   ⎡     ⎤
+       𝜋𝑡+1     𝑏0      𝑏1 𝑏2 𝑏3 𝑏3𝐴 𝑏4                   0     0      𝜋𝑡       0         𝜇𝜋,𝑡+1
+      ⎢ 𝜋𝑡 ⎥ ⎢ 0 ⎥ ⎢ 1       0 0 0 0                      0     0⎥  ⎢𝜋 ⎥ ⎢ 0 ⎥           ⎢ 0 ⎥
+      ⎢      ⎥ ⎢ ⎥ ⎢                                              ⎥⎢       ⎥ ⎢ ⎥         ⎢        ⎥
+      ⎢      ⎥ ⎢ ⎥ ⎢                                              ⎥ ⎢ 𝑡−1 ⎥ ⎢ ⎥          ⎢        ⎥
+      ⎢𝜋 ⎥ ⎢ 0 ⎥ ⎢ 0         1 0 0 0                      0     0⎥⎥ ⎢𝜋𝑡−2 ⎥ ⎢ 0 ⎥
+                                                                    ⎢      ⎥ ⎢ ⎥         ⎢ 0 ⎥
+      ⎢ 𝑡−1 ⎥ ⎢ ⎥ ⎢                                                                      ⎢        ⎥
+      ⎢𝜋𝑡−2 ⎥=⎢ 0 ⎥ + ⎢ 0
+𝑍𝑡+1 =⎢                      0 1 0 0                      0     0⎥⎥ ⎢𝜋𝑡−3 ⎥ + ⎢ 0 ⎥ 𝑖𝑡 + ⎢ 0 ⎥
+             ⎥ ⎢ ⎥ ⎢                                                ⎢      ⎥ ⎢ ⎥         ⎢        ⎥
+      ⎢ 𝑦𝑡+1 ⎥ ⎢𝑎0 ⎥ ⎢−𝑎3 0 0
+      ⎢      ⎥ ⎢ ⎥ ⎢                                              ⎥⎢       ⎥ ⎢ ⎥         ⎢        ⎥
+      ⎢      ⎥ ⎢ ⎥ ⎢                  0 𝑎1                𝑎2    0⎥⎥ ⎢ 𝑦𝑡 ⎥ ⎢𝑎3 ⎥
+                                                                    ⎢      ⎥ ⎢ ⎥         ⎢ 𝜇𝑦,𝑡+1 ⎥
+                                                                                         ⎢        ⎥
+      ⎢ 𝑦 ⎥ ⎢0⎥ ⎢ 0          0   0    0    1              0     0⎥⎦ ⎣ 𝑦𝑡−1 ⎦ ⎣ 0 ⎦
+                                                                    ⎢      ⎥ ⎢ ⎥         ⎢ 0 ⎥
+      ⎣ 𝑡 ⎦ ⎣ ⎦ ⎣                                                                        ⎣        ⎦
+         𝑖𝑡     0        0   0 0 0 0                      0     0 𝑖𝑡−1          0            0
+Let: ⎡                              ⎤        ⎡       ⎤
+      0, 25 0, 25 0, 25 0, 25 0 0 0           𝛼𝑡 0 0
+𝑃 =⎣ 0        0     0     0   1 0 0⎥⎦ e 𝑅𝑡 = ⎣ 0 1 0 ⎦. We, thus, have:
+     ⎢                                       ⎢       ⎥
+
+        0     0     0     0   0 0 1            0 0 𝜈
+             0, 252 𝛼𝑡           0, 252 𝛼𝑡   0, 252 𝛼𝑡   0, 252 𝛼𝑡
+                ⎡                                                                 ⎤
+                                                                     0   0       0
+            ⎢0, 252 𝛼𝑡           0, 252 𝛼𝑡   0, 252 𝛼𝑡   0, 252 𝛼𝑡   0   0       0⎥
+            ⎢
+                                                                                   ⎥
+            ⎢0, 252 𝛼𝑡           0, 252 𝛼𝑡   0, 252 𝛼𝑡   0, 252 𝛼𝑡
+            ⎢                                                                      ⎥
+            ⎢                                                        0   0       0⎥⎥
+            ⎢0, 252 𝛼            0, 252 𝛼𝑡   0, 252 𝛼𝑡   0, 252 𝛼𝑡   0   0       0⎥
+      ′               𝑡
+𝑊𝑡 = 𝑃 𝑅𝑃 = ⎢                                                                      ⎥
+            ⎢0, 252 𝛼𝑡           0, 252 𝛼𝑡   0, 252 𝛼𝑡   0, 252 𝛼𝑡   0   0       0⎥
+            ⎢                                                                      ⎥
+            ⎢                                                                      ⎥
+            ⎢
+            ⎢    0                   0           0           0       1   0       0⎥⎥
+                 0                   0           0           0       0   0       0⎦
+            ⎢                                                                      ⎥
+            ⎣
+                 0                   0           0           0       0   0       𝜈
+Let: [︁                      ]︁′
+𝑍¯ = 𝜋  ¯ 𝜋 ¯ 𝜋    ¯ 𝑦¯ 𝑦¯ ¯𝑖 . Thus,
+                 ¯ 𝜋
+                [︁                                                              ]︁
+(𝑍𝑡 − 𝑍) ¯ ′ = 𝜋𝑡 − 𝜋 ¯ 𝜋𝑡−1 − 𝜋 ¯ 𝜋𝑡−2 − 𝜋        ¯ 𝑦𝑡 − 𝑦¯ 𝑦𝑡−1 − 𝑦¯ 𝑖𝑡−1 − ¯𝑖
+                                          ¯ 𝜋𝑡−3 − 𝜋
+e (𝑍𝑡 − 𝑍)             ¯
+           ¯ ′ 𝑊 (𝑍𝑡 − 𝑍).
+
+Let 𝑁 = 𝜈. Thus:
+
+                                                  ¯ = (𝑖𝑡 − ¯𝑖)𝜈(𝑖𝑡 − ¯𝑖) = 𝜈(𝑖𝑡 − ¯𝑖)2
+                                      ¯ ′ 𝑁 (𝑋𝑡 − 𝑋)
+                                (𝑋𝑡 − 𝑋)                                                                    (25)
+
+
+                [︁                             ]︁
+Let 𝐻 ′ = 𝐺 = 0 0 0 0 0 0 − 𝜈2 . Thus:
+
+                                       ¯ = −𝜈(𝑖𝑡 − ¯𝑖)(𝑖𝑡−1 − ¯𝑖) = 2(𝑥𝑡 − 𝑥¯)′ 𝐺(𝑍𝑡 − 𝑍)
+                            ¯ ′ 𝐻(𝑋𝑡 − 𝑋)
+                     2(𝑍𝑡 − 𝑍)                                                         ¯                    (26)
+Therefore, the central bank’s loss function is defined as follows:
+
+
+             ¯ )2 + (𝑦𝑡 − 𝑦¯)2 + 𝜈(𝑖𝑡−1 − ¯𝑖)2 + 𝜈(𝑖𝑡 − ¯𝑖)2 − 𝜈(𝑖𝑡 − ¯𝑖)(𝑖𝑡−1 − ¯𝑖) − 𝜈(𝑖𝑡 − ¯𝑖)(𝑖𝑡−1 − ¯𝑖) (27)
+ 𝐿𝑡 = 𝛼(𝜋𝑎 − 𝜋
+
+
+                                                               19
+                                           ¯ )2 + (𝑦𝑡 − 𝑦¯)2 + 𝜈(𝑖𝑡 − 𝑖𝑡−1 )2
+                               𝐿𝑡 = 𝛼(𝜋𝑎 − 𝜋                                                           (28)
+With
+                                ¯ , 𝑦𝑡 = 𝑦𝑡−1 = 𝑦¯, 𝑖𝑡 = 𝑖𝑡−1 = ¯𝑖 e 𝜇𝜋,𝑡 = 𝜇𝑦,𝑡
+      𝜋𝑡 = 𝜋𝑡−1 = 𝜋𝑡−2 = 𝜋𝑡−3 = 𝜋
+We have:
+
+                      𝜋𝑡 = 𝑏0 + 𝑏1 𝜋𝑡−1 + 𝑏2 𝜋𝑡−2 + 𝑏3 𝜋𝑡−3 + 𝑏3𝐴 𝜋𝑡−4 + 𝑏4 𝑦𝑡−1 + 𝜇𝜋,𝑡                (29)
+
+
+                  ¯ = 𝑏0 + 𝑏1 𝜋
+                  𝜋           ¯ + 𝑏2 𝜋      ¯ + 𝑏4 𝑦¯ => (1 − 𝑏1 − 𝑏2 − 𝑏3 )¯
+                                     ¯ + 𝑏3 𝜋                               𝜋 = 𝑏0 + 𝑏4 𝑦¯             (30)
+
+                                                                             𝑏0 𝑏3𝐴
+                                                          𝜋 => 𝑦¯ = −
+                         𝑏4 𝑦¯ = −𝑏0 + (1 − 𝑏1 − 𝑏2 − 𝑏3 )¯                     +    ¯
+                                                                                     𝜋
+                                                                             𝑏4   𝑏4
+
+                                                𝑦𝑡 = 𝑎0 + 𝑎1 𝑦𝑡−1                                      (31)
+
+           APPENDIX B – VAR derivation for Bayesian estimation
+       The system formatted by Equations (1), (2) and (5) can be represented in matrix form, as
+follows:
+
+                   𝐴0,𝑡 𝑦^𝑡 = 𝐴1,𝑡 + 𝐴2,𝑡 𝑦^𝑡−1 + 𝐴3,𝑡 𝑦^𝑡−2 + 𝐴4,𝑡 𝑦^𝑡−3 + 𝐴5,𝑡 𝑦^𝑡−4 + 𝑁 𝛹𝑡 𝜇𝑡       (32)
+where
+              ⎡                  ⎤⎡    ⎤    ⎡   ⎤    ⎡                  ⎤⎡       ⎤    ⎡            ⎤
+                1     0    0 𝜋𝑡         𝑏0       𝑏1   𝑏4   0     𝜋𝑡−1        𝑏2 0 0
+              ⎣ 0     1     ⎦ ⎣ 𝑦𝑡 ⎦ = ⎣𝑎0 ⎦ + ⎣−𝑎3 𝑎1
+                           0⎥                             𝑎3 ⎥⎦ ⎣ 𝑦𝑡−1 ⎦ + ⎣ 0   𝑎2 0⎥
+              ⎢               ⎢ ⎥      ⎢ ⎥ ⎢                    ⎢      ⎥ ⎢
+                                                                                     ⎦
+               −𝑓1,𝑡 −𝑓5,𝑡 1 𝑖𝑡         𝑓𝑡      𝑓2,𝑡 𝑓6,𝑡 𝑓7,𝑡 𝑖𝑡−1         𝑓3,𝑡 0 0
+
+                          ⎡      ⎤    ⎡             ⎤⎡        ⎤   ⎡           ⎤⎡      ⎤
+                           𝜋𝑡−2        𝑏3 0 0 𝜋𝑡−3          𝑏3𝐴 0 0 𝜋𝑡−4
+                          ⎣ 𝑦𝑡−2 ⎦ + ⎣ 0   0 0⎦ ⎣ 𝑦𝑡−3 ⎦ + ⎣ 0 0 0⎥⎦ ⎣ 𝑦𝑡−4 ⎦
+                          ⎢      ⎥ ⎢          ⎥⎢       ⎥ ⎢           ⎢      ⎥
+
+                            𝑖𝑡−2      𝑓4,𝑡 0 0 𝑖𝑡−3          0 0 0 𝑖𝑡−4
+
+
+
+                  APPENDIX C – Trajetory of the variables used
+
+
+
+
+                                     Source: Prepared by the authors.
+
+
+
+
+                                                         20
+

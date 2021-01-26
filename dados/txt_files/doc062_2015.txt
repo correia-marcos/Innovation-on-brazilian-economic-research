@@ -1,0 +1,823 @@
+             Convergência multissetorial na emissão de gases do efeito estufa
+
+                                         Guilherme de Oliveira
+                     Departamento de Economia, Universidade de São Paulo, Brasil.
+                                    E-mail: guilherme.decon@usp.br
+                                                   &
+                                           Deise Bourscheidt
+           Colegiado de Ciências Econômicas, Universidade Federal da Fronteira Sul, Brasil.
+                               E-mail: deise.bourscheidt@uffs.edu.br
+
+Resumo: O artigo estima um painel dinâmico multissetorial para testar a hipótese de convergência na
+emissão per capita de gases do efeito estufa, que tornou-se possível com a publicação recente da World
+Input Output Database. A estratégia empírica emprega estimadores convencionais de efeitos aleatórios e
+fixos, e também um GMM de Arellano e Bond (1991) para os principais poluentes relacionados ao efeito
+estufa. Encontramos fortes evidências de convergência na emissão de CH4 em setores ligados a
+agropecuária, indústria de alimentos e serviços. Em relação a emissão de CO2, encontramos evidências
+moderadas na agropecuária e indústria de alimentos, na transformação de bens não duráveis e serviços.
+Em todos os casos, o tempo de convergência foi inferior a dez anos. Para a emissão de CO2 por uso de
+energia, a maior fonte do efeito estufa, encontramos evidência moderada apenas no setor da indústria
+extrativa. Todos os demais poluentes apresentaram evidências fracas ou ausência de evidências.
+Palavras-chave: Gases do efeito estufa; convergência multissetorial; painel dinâmico.
+
+
+Abstract: This paper estimates a multissectorial dynamic panel to test the hypothesis of per capita
+convergence on the greenhouses-gases emissions, which is possible through the recent publication of the
+World Input Output Database. The empirical strategy uses conventional estimators of random and fixed
+effects, and an Arellano e Bond’s (1991) GMM to the main pollutants related to the greenhouse effect.
+We found strong evidence of convergence in CH4 emissions in sectors linked to agriculture, food industry
+and services. Regarding CO2 emissions, we found moderate evidence in agriculture and food industry,
+processing of non-durable goods and services. In all cases, the time of convergence was less than ten
+years. For CO2 emissions by energy use, the largest source of global warming, we found moderate
+evidence only in the extractive industry sector. All other pollutants presented weak or lack of evidence.
+Keywords: greenhouse-gases; multissectorial convergence; dynamic panel data.
+
+JEL: Q5; Q52; C33.
+
+Área da Anpec: Economia Agrícola e do Meio Ambiente.
+
+
+1. Introdução
+
+       A relação empírica entre crescimento econômico e meio ambiente tem sido foco de atenção na
+literatura de economia do meio ambiente. Recentemente, as fontes de maior controvérsia tem se
+concentrado no teste da chamada Curva Ambiental de Kuznets (CAK) - que supõe uma relação em
+formato de “U invertido” entre os níveis de emissões de poluentes e renda per capita -, e na hipótese de
+convergência na emissão de gases do efeito estufa (GEE) - que busca verificar se os países estão
+
+                                                                                                        1
+convergindo para um steady-state de emissões per capita. O presente artigo busca subsidiar o debate
+acadêmico em torno dessa última controvérsia.
+
+           Nesse contexto, o trabalho pioneiro é o de Strazicich e List (2003), que por meio da utilização de
+mínimos quadrados ordinários (MQO) e testes de raiz unitária em painel para uma amostra de países
+membros da OCDE, encontraram evidências em favor da hipótese convergência, tanto em termos
+absolutos quanto condicionais. A partir deste trabalho, a mesma controvérsia visualizada na literatura
+empírica de crescimento econômico pode ser observada atualmente na literatura ambiental. De um lado,
+artigos como os de Romero-Ávila (2008), Westerlund e Basher (2007), e outros, encontram evidências
+relevantes de convergência na emissão de poluentes per capita1. Por outro, Aldy (2006), Criado e Grether
+(2011), entre outros, não suportam convergência.
+
+           Uma das fontes de divergência nos resultados refere-se ao tamanho da amostra: à medida que ela
+aumenta, a constatação de convergência diminuiu. Outra se refere à técnica utilizada: MQO e testes de
+raiz unitária em painel tendem a confirmá-la, já técnicas mais elaboradas como cadeias de Markov e
+análises dinâmicas, por exemplo, tendem a não confirmar. Outro ponto relevante da literatura é a
+concentração de estudos analisando apenas a dimensão cross-country das emissões, enquanto outras
+perspectivas pertinentes são deixadas de lado, como a análise de convergência setorial. Uma parcela desta
+preferência pode ser explicada pela escassez de bases de dados multissetoriais que permitam uma
+estimação global e consistente da hipótese entre países.
+
+           No entanto, esse panorama muda com a divulgação de certas bases de dados como a World
+International Input-Output Database (WIOD) de Timmer et al. (2015), que estima dados intersetoriais de
+consumo intermediário, valor adicionado, emprego, investimento, depreciação e estoque de capital
+relevantes para a estimação de impactos econômicos via matriz insumo produto. A WIOD também
+disponibiliza dois anexos: um social e outro ambiental, esse último reunindo dados da relação dos setores
+da matriz com o meio ambiente, inclusive a emissão dos principais gases do efeito estufa. Nesse conjunto,
+existe variação suficiente para estimar convergência entre os setores das principais economias mundiais.
+
+           Testar tal hipótese é particularmente pertinente para avaliar se existe heterogeneidade entre as
+amostras setoriais, por exemplo: setores pertencentes à indústria de bens duráveis estão convergindo? E se
+estão, são mais rápidos que os setores agropecuários e alimentícios? Além desse interesse teórico,
+respostas como essa podem ter implicações políticas, como diferentes desenhos de mecanismo para o
+abatimento e controle das emissões multissetoriais.
+
+           Nesse contexto, o presente trabalho contribui para a literatura de economia do meio ambiente por
+elaborar um painel dinâmico multissetorial que subsidia o debate em torno da hipótese de convergência
+
+
+1
+    Em geral, emissões de dióxido de carbono, CO2.
+                                                                                                            2
+na emissão per capita de gases do efeito estufa. Para isso, derivou-se teoricamente a função de
+convergência com base num mecanismo de produção conjunta de emissões e PIB, e então, se estimou um
+painel utilizando 33 setores da WIOD disponíveis para um conjunto de 39 países entre 1996 e 2007. Tal
+período justifica-se principalmente para evitar a inclusão de estatísticas de emissões após a crise
+econômica mundial, a partir de 2008, que podem ter alterado a tendência de longo prazo2.
+
+        Diante do exposto, além dessa introdução, o artigo está dividido nas seguintes seções: a Seção 2
+descreve em linhas gerais a literatura relacionada. A Seção 3 apresenta a estratégia de identificação. Na
+seção 4, apresenta-se a amostra e a fonte dos dados. Na quinta seção, discutem-se as evidências empíricas
+encontradas; que é seguida pelas principais conclusões do estudo.
+
+
+2. Literatura relacionada
+
+        A literatura empírica de economia do meio ambiente preocupada com a hipótese de convergência
+na emissão de GEE é recente, datando o início dos anos 2000, e focando principalmente na emissão de
+CO2. Como mencionado, é uma literatura pouco autônoma, sendo influenciada pelos desenvolvimentos
+empíricos da teoria do crescimento econômico. O que não é gratuito, já que emissão e renda são
+fortemente correlacionadas no tempo, via efeitos de escala.
+
+        Para estudar a convergência nos níveis de emissão de CO2 em países industrializados, Strazicich e
+List (2003) realizaram o primeiro teste empírico da literatura, onde combinaram análises cross-section e
+séries de tempo, usando dados de emissão de CO2 de 21 países industrializados no período de 1960-1997.
+Os autores encontraram evidências significativas de que as emissões de CO2 convergiram, embora não
+tenham definido sua velocidade e tempo.
+
+        Aldy (2006) concentrou-se em ampliar a amostra dos pioneiros para um conjunto de 88 países no
+período de 1960 a 2000. O autor não encontra evidência de convergência para essa amostra. Quando
+utiliza a amostra dos 23 países da OECD, encontra convergência ao longo do tempo, embora a
+convergência estocástica seja caracterizada como “mista”. Entretanto, previsões com base em uma Matriz
+de transição markoviana forneceram pouca evidência de convergência futura das emissões para a amostra
+mundial, e indicaram que as emissões poderiam estar divergindo ainda no curto prazo.
+
+        Westerlund e Basher (2007) também resgataram o trabalho dos precursores, aumentando o
+intervalo de tempo, de 1870 a 2002, usando as mesmas técnicas estatísticas e o mesmo conjunto de 21
+países. Os autores suportam a hipótese de convergência empírica, tanto condicional quanto absoluta. O
+
+
+
+2
+  Ademais, a WIOD reúne estatísticas de emissões para o período de 1995 a 2009, entretanto, as estimativas do estoque de
+capital setorial só estão disponíveis até 2007, o que inviabiliza a ampliação do período amostral. 1995 foi perdido pela
+necessidade de se estimar a taxa de crescimento do emprego, como será detalhado na seção correspondente.
+                                                                                                                       3
+fato novo do artigo está em calcular a taxa de convergência que, segundo eles, aumentou
+consideravelmente após a década de 1970.
+
+       Em outro estudo, Romero-Ávila (2007), para 1960 e 2002, examinou a existência de convergência
+estocástica e determinística na emissão de CO2 em 23 países, por meio da utilização de testes de raiz
+unitária em painel. De modo geral, a análise evidenciou forte convergência estocástica e determinística
+nas emissões de CO2. Por sua vez, Pen e Sévi (2010) analisaram a convergência de intensidade energética
+para um grupo de 97 países, entre os anos 1971 até 2003, cujo método utilizado foi baseado no critério da
+convergência estocástica, proposto por Pesaran (2007). Aplicando testes de raiz unitária a hipótese da
+convergência global foi rejeitada. Para a região do centro oeste dos membros da OECD e sub grupos da
+Europa, a não convergência “é menos fortemente rejeitada”. O controle de possíveis quebras estruturais
+oferece ganhos marginais em favor da convergência.
+
+       O método Bayesiano de estimação também foi usado para investigar a convergência nas emissões
+de CO2 per capita, em uma amostra composta por 22 países europeus no período de 1971 a 2006. Jobert,
+Karanfil e Tykhonenko (2010) concluíram que, primeiramente, a hipótese da convergência absoluta das
+emissões de CO2 per capita se sustenta e uma ligeira convergência ascendente é observada. Em segundo
+lugar, o fato de os países diferirem consideravelmente em sua velocidade de convergência e na
+volatilidade faz com que seja possível identificar grupos de países. Além disso, os resultados, não variam
+muito uma vez que a participação da indústria no PIB é contabilizada em uma análise de convergência
+condicional. No entanto, uma decrescente participação da indústria no PIB parece contribuir para um
+declínio das emissões per capita.
+
+       Outro trabalho que buscou analisar a hipótese foi realizado por Herrerias (2012), utilizando a uma
+abordagem dinâmica distributiva. A região de abrangência foi delimitada para 25 países da União
+Europeia e o período de análise foram os anos entre 1920-2007. A inovação deste trabalho consiste no
+fato dele examinar se os padrões podem diferir se ponderados tanto pela população de cada país ou pela
+dimensão econômica (efeitos não observáveis não são controlados). A análise não ponderada indicou que
+os padrões de convergência diferem fortemente antes e depois da Segunda Guerra Mundial, mostrando
+maior convergência após os anos 1970. Resultados de ponderação, tanto pela população quanto pela
+dimensão econômica, mostram que a convergência é muito mais rápida, quando estas características são
+introduzidas no modelo. Ou seja, esse último resultado advoga em favor da convergência condicional.
+
+       Li e Lin (2013) avaliaram a convergência global de CO2 per capita no período de 1971-2008.
+Entre os resultados encontrados, os autores observaram convergências absolutas dentro de subamostras
+por nível de renda, enquanto que uma amostra contendo 110 países forneceu poucas evidências de
+convergência absoluta. Além disso, o trabalho considerou a renda per capita no âmbito da convergência
+condicional. Os resultados mostraram que, entre diferentes grupos, a relação entre a renda e o aumento da
+                                                                                                         4
+emissão de CO2 é diferente. Em especial, observaram que as emissões de CO2 per capita de países
+desenvolvidos se mantêm no estado estacionário, conforme aumenta a renda. O resultado contradiz a
+Curva de Ambiental Kuznets, que indica que ocorre determinado limiar as emissões reduziriam.
+
+           Camarero, Picazo-Tadeo e Tamarit (2013) estudaram a convergência na intensidade da emissão de
+CO2 (emissões de CO2 em relação ao PIB) entre os países da OCDE, entre 1960 e 2008, baseados nos
+determinantes intensidade energética (consumo de energia/PIB), e num índice de carbonização (emissões
+de CO2/consumo de energia). A estimação de clubes de convergência mostrou que as diferenças de
+convergência na intensidade de emissão de CO2 são determinadas, em sua maioria, por diferenças na
+convergência do índice de carbonização e não pelas diferenças na convergência da intensidade energética.
+
+           Por meio desta revisão de literatura apresentada percebe-se uma controvérsia: geralmente,
+modelos simples de cross-section e outros com testes de raiz unitária em painel constatam a existência de
+convergência, enquanto que outros que empregam diferentes técnicas estatísticas, cadeias de Markov, por
+exemplo, chegam a resultados distintos. Outro fator que contribui para a constatação de convergência
+parece ser o tamanho da amostra: em geral, grandes amostras não reportam evidências convergência, que
+é constatada em grupos pequenos de países, como a OCDE.
+
+           Outro ponto que chama atenção é que alguns estudos encontram convergência absoluta e
+condicional para o mesmo grupo de países. Ora, isso só é possível se os países têm as mesmas
+características estruturais, o que é verificado em amostras pequenas, como a OCDE. Quando
+características heterogêneas entre países são consideradas, a taxa de convergência perde força. Logo,
+neste trabalho, são enfatizados três dos aspectos revisados: amplia-se o tamanho da amostra, ao se
+considerarem 39 países e 33 setores ao longo de 11 anos de observações; e, eventuais problemas de
+inconsistência na estimação pelos métodos tradicionais são contornados por meio de um painel dinâmico.
+
+
+3. A hipótese de convergência multissetorial modelada como um painel dinâmico
+
+           Nesta seção descreve-se a estratégia de identificação do artigo, baseada em Islam (1995), porém
+num contexto multissetorial e ambiental. Supõe-se uma lógica de produção conjunta, em que a utilização
+dos insumos capital e trabalho, em uma função de produção Cobb-Douglas, gera um produto bom - o
+crescimento econômico - e um ruim - a emissão GEE:
+
+                                                      𝑌 = 𝐾 𝛼 (𝐴𝐿)1−𝛼 → 𝐸,                             (1)
+
+em que Y é o produto, K é o estoque de capital, A é o nível tecnológico3, L é o número de trabalhadores, e
+E é o fluxo de emissões de GEE, ambos setorialmente distribuídos. Essa é uma lógica semelhante ao
+modelo de “Solow verde” de Brock e Taylor (2010), que é consistente com a hipótese empírica da CAK.
+
+3
+    “A” é muito mais que isso, pode ser instituições, democracia, cultura, geografia, etc.
+                                                                                                         5
+Contudo, dado a dificuldade de obtenção de dados de investimento em abatimento de emissões entre
+países, não se considera o modelo de Solow verde para a derivação da equação de convergência, mas a
+equação empírica será equivalente. Logo, dada a forte correlação empírica que existe entre renda e
+emissões, pode-se assumir que o processo gerador de emissões é o mesmo daquele que gera renda para a
+economia. Portanto, modelam-se as emissões como 𝐸 = 𝐾 𝛼 (𝐴𝐿)1−𝛼 .
+
+       Tal como no modelo canônico, assume-se que a taxa de crescimento da população e da tecnologia
+dos setores são exogenamente determinadas por 𝐿𝑡 = 𝐿(0)𝑒 𝑛𝑡 e 𝐴𝑡 = 𝐴(0)𝑒 𝑔𝑡 , respectivamente.
+Assumindo que uma fração s da renda setorial é poupada e automaticamente revertida em investimento, e
+definindo as emissões e o capital por trabalhador efetivo como 𝑒 = 𝐸⁄𝐴𝐿 e 𝑘 = 𝐾⁄𝐴𝐿, nessa ordem, o
+estoque de capital por trabalhador cresce no tempo de acordo com a equação diferencial:
+                                        𝑑𝑘
+                                             = 𝑠𝑘 𝛼 − (𝑛 + 𝑔 + 𝛿)𝑘.                                    (2)
+                                        𝑑𝑡
+
+       Dividindo por k, igualando a zero e resolvendo para o estoque de capital por trabalhador efetivo,
+obtêm-se os valores do estoque de capital por trabalhador no steady-state:
+                                                                 1⁄
+                                                         𝑠         (1−𝛼)
+                                             𝑘 ∗ = [(𝑛+𝑔+𝛿)]               .                            (3)
+
+
+       No steady-state, o crescimento do estoque de capital setorial é determinado pela taxa de
+crescimento populacional, taxa de poupança, progresso técnico e um parâmetro exógeno de depreciação,
+𝛿. Substituindo o estoque de capital em equilíbrio no nível de emissões por trabalhador efetivo, obtém-se
+o nível de emissão per capita no steady state (que é determinada pelos mesmos parâmetros da Equação
+(3)). Aplicando o logaritmo na expressão das emissões per capita, após algumas substituições, alcança-se
+a expressão linear do fluxo de emissões no equilíbrio:
+                              𝐸                    𝛼                𝛼
+                          𝑙𝑛 [ 𝐿 ] = 𝑙𝑛𝐴0 + 𝑔𝑡 + 1−𝛼 ln(𝑠) − 1−𝛼 ln⁡(𝑛 + 𝑔 + 𝛿).                        (4)
+
+
+       É importante notar que agora as emissões estão normalizadas pelo número de trabalhadores em
+cada setor, e não pelo número de trabalhadores efetivos, portanto, a variável nível tecnológico, A, está do
+lado direito da equação. Se a intenção fosse estimar a Equação (4) para analisar a sensibilidade das
+emissões per capita para um grupo de países, em determinado momento do tempo, por MQO, ter-se-ia
+que assumir (como se faz em grande parte da literatura revisada), por exemplo, que: 𝑙𝑛𝐴0 = 𝑎 + 𝜇, ou
+seja, uma constante mais um termo de perturbação estocástico. Ajustar-se-ia a reta para a equação:
+                                  𝐸          𝛼               𝛼
+                            𝑙𝑛 [ 𝐿 ] = 𝑎 + 1−𝛼 ln(𝑠) − 1−𝛼 ln(𝑛 + 𝑔 + 𝛿) + 𝜇.                           (5)
+
+
+       É fácil perceber que por MQO o ajuste linear de (5) é inconsistente, pois termos contidos no erro
+que explicam emissões e correlacionados com a taxa de poupança e o crescimento populacional afetam o
+
+                                                                                                          6
+                         𝛼
+sinal dos parâmetros           . A conjectura básica neste artigo está em modelar as emissões multissetoriais
+                         1−𝛼
+
+per capita, considerando que "𝑎" possa ser estimado para cada setor em cada país, o efeito fixo, e que gt
+seja explicitamente modelado, a dummy de tempo, ambos via painel.
+
+       Assim, deriva-se a equação de convergência de emissões per capita, adaptada de Mankiw, Romer
+e Weil (1992) e Islam (1995) assumindo que ϵ* é o fluxo de emissões per capita no steady-state e ϵ o
+fluxo atual de emissão em t. Na vizinhança do steady-state, a equação de convergência é dada por:
+                                               𝑑𝑙𝑛𝜖𝑡
+                                                       = 𝜑[𝑙𝑛𝜖 ∗ − 𝑙𝑛𝜖],                                  (6)
+                                                𝑑𝑡
+
+em que 𝜑 = (𝑛 + 𝑔 + 𝛿)(1 − 𝛼). Integrando (6), segue-se que:
+
+                                       𝑙𝑛𝜖𝑡2 = (1 − 𝑒 −𝜑𝜏 )𝑙𝑛𝜖 ∗ + 𝑒 −𝜑𝜏 𝑙𝑛𝜖𝑡1 ,                          (7)
+
+em que 𝜖𝑡1 é o nível de emissão no momento inicial do tempo e 𝜏 = (𝑡2 − 𝑡1). Subtraindo o nível de
+emissão inicial per capita dos dois lados da equação (7) e rearranjando, obtém-se:
+
+                                      𝑙𝑛𝜖𝑡2 − 𝑙𝑛𝜖𝑡1 = (1 − 𝑒 −𝜑𝜏 )(𝑙𝑛𝜖 ∗ − 𝑙𝑛𝜖𝑡1 ).                       (8)
+
+       Substituindo os valores de ϵ*, inserindo o parâmetro tecnológico do lado direito e recolhendo 𝜖𝑡1 ,
+obtém-se:
+                               𝛼                         𝛼
+    𝑙𝑛𝜖𝑡2 = (1 − 𝑒 −𝜑𝜏 ) 1−𝛼 ln(𝑠) − (1 − 𝑒 −𝜑𝜏 ) 1−𝛼 ln(𝑛 + 𝑔 + 𝛿) + 𝑒 −𝜑𝜏 𝑙𝑛𝜖𝑡1 + (1 − 𝑒 −𝜑𝜏 )𝑙𝑛𝐴0 +
+
+⁡𝑔(𝑡2 − 𝑒 −𝜑𝜏 𝑡1).                                                                                        (9)
+
+       A Equação (9) é a principal deste artigo, pois trata da equação de convergência condicional que
+será modelada via painel dinâmico, tal como em Islam (1995). Ao modelar em (9) (1 − 𝑒 −𝜑𝜏 )𝑙𝑛𝐴0 , a
+“tecnologia”, como um efeito invariante no tempo e específico de país, e 𝑔(𝑡2 − 𝑒 −𝜑𝜏 𝑡1), o “progresso
+tecnológico”, como um conjunto de dummies de tempo tem-se um painel:
+                                                                𝑗
+                                   𝑦𝑖𝑗𝑡 = 𝛾𝑦𝑖𝑗,𝑡−1 + ∑2𝑙=1 𝛽𝑗 𝑥𝑖𝑗𝑡 + 𝜋𝑡 + 𝜃𝑖 + 𝜗𝑖𝑡 ,                     (10)
+
+em que:
+
+𝑦𝑖𝑗𝑡 = ⁡𝑙𝑛𝜖𝑖𝑗𝑡2 ⁡- logaritmo do fluxo de emissões por trabalhador em t2 no setor i do país j;
+𝑦𝑗𝑖,𝑡−1 = 𝑙𝑛𝜖𝑡1 - logaritmo do fluxo de emissões por trabalhador em t1 no setor i do país j;
+𝛾 = 𝑒 −𝜑𝜏 - parâmetro utilizado para estimar a taxa de convergência, mede o impacto que o fluxo de
+emissão inicial tem sobre o nível multissetorial atual;
+                     𝛼
+𝛽1 = (1 − 𝑒 −𝜑𝜏 ) 1−𝛼 - elasticidade da taxa de poupança no fluxo de emissões;
+                     𝛼
+𝛽2 = (1 − 𝑒 −𝜑𝜏 ) 1−𝛼 - elasticidade do crescimento populacional (progresso técnico e depreciação) no
+
+fluxo de emissões por trabalhador;
+
+                                                                                                            7
+ 1
+𝑥𝑖𝑗𝑡 = ln(𝑠) - logaritmo da taxa de poupança do setor i no país j;
+ 2
+𝑥𝑖𝑗𝑡 = ln(𝑛 + 𝑔 + 𝛿) - logaritmo da taxa de crescimento populacional, progresso técnico e depreciação
+de cada setor i distribuído entre os países j;
+𝜋𝑡 = ⁡𝑔(𝑡2 − 𝑒 −𝜑𝜏 𝑡1) - efeito do progresso técnico no tempo, modelado por um conjunto de dummies
+temporais;
+𝜃𝑖 = (1 − 𝑒 −𝜑𝜏 )𝑙𝑛𝐴0 - efeito fixo de setor;
+𝜗𝑖𝑗𝑡 - termo de perturbação idiossincrático que varia entre os setores de cada país e no tempo.
+        A estimação de painel dinâmico permite que se controlem os resultados da convergência
+condicional na emissão de gases efeito estufa por efeitos observáveis e não observáveis específicos de
+cada setor em cada país da amostra, sendo essa composta por 39 países no período de 1995 a 2007. Nesse
+sentido, a próxima seção descreve brevemente a técnica e detalha a fonte dos dados.
+
+
+3.1. Questões relevantes na análise de dados em painel
+
+        No presente artigo, o ponto central é como modelar os efeitos específicos de cada setor em cada
+país. Três técnicas foram empregadas: a primeira considera os efeitos específicos de setores entre países
+como aleatórios (GLS), outra considerando esses efeitos como fixos, e dado a possível endogeneidade de
+se considerar uma variável dependente defasada para se testar convergência utilizou-se o estimador
+GMM. No primeiro, assumiu-se, por construção, que o efeito aleatório não é correlacionado com as
+variáveis explicativas do modelo em (10). Na segunda abordagem, modela-se explicitamente pela técnica
+de efeitos fixos via dummies, tal como em Islam (1995), os efeitos específicos de países e setores,
+permitindo sua correlação com as variáveis explicativas.
+
+        As hipóteses de identificação do modelo econométrico estimado por efeitos fixos são: ausência de
+correlação entre o erro idiossincrático e as variáveis explicativas mais efeitos fixos, ou seja, exogeneidade
+estrita, 𝐸𝐹1: 𝐸[𝜗𝑖𝑡 |𝑥𝑖𝑗 , 𝜃𝑖 ] = 0. Posto completo, ou seja, o vetor de variáveis x precisa possuir
+inversa,⁡𝐸𝐹2: 𝑝𝑜𝑠𝑡𝑜𝐸[𝑥𝑖𝑗 ′𝑥𝑖𝑗 ] = 𝑘. Por fim, assume-se homocedasticidade entre os indivíduos nas cross-
+sections, entretanto, essa hipótese é relacionada entre os erros no tempo, 𝐸𝐹1: 𝐸[𝜗𝑖𝑡 𝜗𝑖𝑡 ′|𝑥𝑖𝑗 , 𝜃𝑖 ] = 𝜎 2 𝜗𝐼𝑡 .
+
+        Espera-se que a taxa de convergência estimada, utilizando o modelo de efeitos aleatórios, seja
+subestimada uma vez que os efeitos intrínsecos de cada país são correlacionados com as variáveis
+explicativas. Com a consideração do modelo de efeitos fixos o valor deve mudar consideravelmente, pois
+essas características serão explicitamente modeladas. Detalhes de ambas as estimações são conhecidos e
+podem ser verificados em Greene (2000) e Wooldridge (2002).
+
+        Nesse contexto, é importante compreender que as estimativas não serão baseadas no teste de
+Hausman, pois a estratégia não passa pela identificação ad hoc de qual é o modelo “correto”, mas sim a
+                                                                                                                     8
+partir de uma “história empírica” sobre a hipótese de convergência na emissão de GEE. Ademais, neste
+trabalho, o teste não é essencial, uma vez que se estimam os modelos para fins comparativos.
+
+       Como a equação de convergência (10) tem uma variável dependente defasada a estimação de
+efeitos fixos e aleatórios pode ser inconsistente dado à violação da hipótese de exogeneidade estrita,
+oriunda da correlação do resíduo com a dependente defasada. Se o período de tempo fosse grande o
+suficiente a técnica de estimar efeitos fixos via dummies não reportaria estimativas viesadas como em
+Islam (1995), no entanto, a presente estimação é realizada para um período de 12 anos de 1996 a 2007,
+podendo ainda estar sobre influenciada de alguma endogeneidade. Para levar em conta essa característica
+dos dados utiliza-se o estimador GMM de Arellano e Bond (1991).
+
+       Como a variável defasada é um ponto chave na estratégia de identificação, nós adotamos dois
+intervalos de tempo. Primeiro, seguimos parte da literatura ao usar apenas 1 ano como defasagem.
+Entretanto, é possível que um ano seja pouco tempo para avaliar convergência, então, usamos 4 anos.
+
+
+3.2. Dados
+
+       Os dados utilizados nesta estimação foram coletados junto a WIOD (2015) - Timmer et. al. (2015)
+-, uma base de dados recente, que além de possibilitar novas análises econômicas via modelos insumo-
+produto, reúne um conjunto de informações para a análise econométrica multissetorial. Neste trabalho
+utilizamos dois anexos da base de dados. O primeiro, com informações socioeconômicas do número de
+trabalhadores, estoque de capital e depreciação para os 39 setores dos 40 países listados pela base.
+
+       Os países que estão representados na WIOD são as 27 economias da União Europeia mais as 13
+maiores economia ao redor do mundo, contemplando todos os continentes do globo. Apesar disso, a base
+ainda tem alguns dados incompletos, o que gerou a exclusão de algumas unidades cross-section: como é o
+caso do emprego intersetorial na China, excluída da amostra. Ademais, resolvemos não utilizar o “resto
+do Mundo”, uma unidade amostral que agrega todos os demais países como resíduos.
+
+       Para computar a taxa de poupança em (10), assumimos que essa é igual à taxa de investimento dos
+capitalistas, S=I. Nesse caso, estimamos a taxa de poupança isolando o investimento em (11) e
+normalizando pelo respectivo estoque de capital do período.
+
+                                          𝐾𝑡 = (1 − 𝑑)𝐾𝑡−1 + 𝐼𝑡 .                                      (11)
+
+       As taxas de depreciação são diferentes para cada um dos 39 setores e foram consideradas no
+cálculo da taxa de poupança seguindo Timmer, et. al. (2015). No que tange a taxa de crescimento
+populacional, n, do modelo neoclássico canônico, esta foi aproximada pela taxa de crescimento do
+número de trabalhadores. Ademais, considerou-se, além da respectiva depreciação setorial, uma taxa de
+progresso técnico, g, de 4% (padrão na literatura empírica). Assim, têm-se n+d+g na Equação (10).
+                                                                                                          9
+       Todos os dados de estoque de capital e investimento estão a preços de 1995, deflacionados de
+acordo com Timmer et. Al. (2015). Essa abordagem teve duas desvantagens: 2,1% das observações para a
+taxa de poupança apresentaram variação negativa no período, ou seja, desinvestimento. Como para
+estimarmos (10) precisamos linearizar (3), consideramos o desinvestimento como poupança nula, já que
+não existe poupança negativa; não obstante, como usamos dados do emprego para computar n, em 5,32%
+das observação apresentam variação negativa em n+d+g, dado o forte desemprego de um ano para o
+outro – em países como a Letônia. Nessa situação, optou-se por excluir a observação da amostra.
+
+       O segundo anexo, foi o de informações ambientais, na qual coletamos a emissão de GEE em
+toneladas por setor ao longo de 1995 e 2007. Para representá-los selecionamos os seguintes gases:
+emissões de CO2 por uso de energia; emissões de metano CH4; de monóxido de carbono CO; e a emissão
+de CO2 por setor; que são alguns dos maiores responsáveis pelas mudanças climáticas (IPCC, 2014).
+
+       Mais uma vez, enfrentamos problemas com a limitação da base de dados, já que alguns setores
+não possuíam registro de informação e foram excluídos. No total, além da base completa de setores
+(14.553 observações na emissão de CO2 por intensidade energética; 15.432 na emissão de CO 2; 15.443
+no CH4; 15.048 na emissão de CO), que já são orginalmente bastante agregados para comparação cross-
+country, agregamos os setores nos seguintes conjuntos amostrais:
+
+Amostra A: [1] Agricultura, exploração florestal e pesca + [2] Indústria de alimentos e bebidas. Com o
+seguinte número de observações: 948 (CO2 uso de energia), 924 (CO2 e CH4) 912 (CO);
+Amostra B: [6] Mineração e indústria extrativa + [7] Produtos de madeira + [8] Refino de petróleo e
+coque; [9] Química + [10] Borracha e plástico + [11] Outros minerais não metálicos. Observações: 2.808
+(uso de energia), 2.784 (CO2), 2.776 (CH4) e 2.712 (CO);
+Amostra C: [3] Têxtil e confecções + [4] Couro e calçados + [5] Produtos de papel. Observações: 1.404
+(uso de energia), 1.356 (CO2 e CO) e 1.352 (CH4);
+Amostra D: [12] Metalurgia e produtos de metal + [13] Máquinas e equipamentos; [14] Equipamentos de
+informática e elétricos + [14] Automobilística e equipamentos de transporte + [15] Móveis, indústrias
+diversas e reciclagem + [16] Eletricidades, gás e água + [17] Construção. Observações: 3.288 (uso de
+energia), 3.240 (CO2), 3.232 (CH4) e 3.216 (CO);
+Amostra E: [18] Comércio e reparação de veículos + [19] Comércio atacadista + [20] Comércio varejista
++ [21] Hotéis e restaurantes + [22] Transporte terrestre + [23] Transporte aquaviário + [24] Atividades
+auxiliares de transporte + [25] Telecomunicações e correio + [26] Intermediação financeira + [27]
+Atividades imobiliárias + [28] Serviços prestados as empresas + [29] Administração pública e seguridade
+social + [30] Educação + [31] Saúde e serviço social + [32] Serviços prestados as famílias + [33] Serviços
+domésticos. Observações: 7,476 (uso de energia), 7.176 (CO2), 7.188 (CH4) e 6.900 (CO).
+
+
+                                                                                                        10
+               A amostra A é composta por setores da produção e indústria de alimentos; a B é a indústria
+extrativa; a C é a indústria de bens não duráveis; a D é composta por setores de bens duráveis; e a E são
+todos os serviços. Por fim, cabe ressaltar a rotina trabalhosa de rodar 144 regressões para esses 6
+conjuntos amostrais, cujos principais resultados são apresentados a seguir.
+
+
+4. Evidências empíricas4
+
+               A Tabela 1 apresenta os parâmetros estimados de efeito aleatório, fixo e do GMM para a amostra
+completa de setores. Primeiramente, considerando a defasagem de um período, nota-se que ambos os
+modelos previram corretamente o sinal dos parâmetros associados a taxa de poupança e ao crescimento
+populacional, depreciação e progresso técnico. A significância estatística na maioria deles também sugere
+que são importantes para explicar as variações dos gases. Note, contudo, que eles falham em ser
+estatisticamente idênticos, como prevê o modelo canônico de Solow5.
+
+    Tabela 1 - Resultados da convergência na emissão de GEE na amostra completa 1996 – 2007.
+                                                               A = Estimativa com n=1
+                                  Efeitos aleatórios                           Efeitos fixos                                 GMM
+                         CO2                                        CO2                                      CO2
+        Regressores     Energia     CO2        CH4       CO        Energia     CO2       CH4       CO       Energia    CO2          CH4      CO
+    ln(yt-n)            0.9933     0.9995     0.9997    0.9793     0.7143     0.7497    0.7342    0.5109    0.0976    0.6736       0.5373   0.3847
+                        [0.000]    [0.000]    [0.000]   [0.000]    [0.000]    [0.000]   [0.000]   [0.000]   [0.102]   [0.000]    [0.000]    [0.000]
+    ln(s)               0.0209     0.0185     0.0014    0.0136     0.0307     0.0075    0.0147    0.0269    0.0423    0.0069       0.0046   -0.0192
+                        [0.000]    [0.000]    [0.649]   [0.007]    [0.025]    [0.065]   [0.005]   [0.002]   [0.452]   [0.1551]   [0.385]    [0.073]
+    ln(n+d+g)           -0.0630    -0.0789    0.0120    -0.0976    -0.0536   -0.0711    0.0132    -0.6972   -0.0375   -0.0591      0.0025   -0.0762
+                        [0.000]    [0.000]    [0.020]   [0.000]    [0.000]    [0.000]   [0.016]   [0.000]   [0.000]   [0.000]    [0.654]    [0.000]
+    Dummy temporal       Sim         Sim        Sim      Sim         Sim       Sim       Sim       Sim       Não        Não         Não      Não
+    Convergência        0.0029     0.0002     0.0001    0.0091     0.1461     0.1251    0.1342    0.2916       -      0.1716       0.2698   0.4149
+    Tempo (em anos)     236.35     3468.83    5319.30   76.45        4.74      5.54      5.17      2.38        -       4.04         2.57     1.67
+                                                               B = Estimativa com n=4
+    ln(yt-n)            0.9384     0.9334     0.9672    0.8684     0.0179     0.1288    0.1591    -0.2170   -0.1618   -0.0004      0.0159   -0.0168
+                        [0.000]    [0.000]    [0.000]   [0.000]    [0.672]    [0.000]   [0.000]   [0.000]   [0.278]   [0.976]    [0.358]    [0.000]
+    ln(s)               0.0476     -0.0431    0.0209    -0.0193    0.0304     0.0013    0.0379    0.0423    0.0026    0.0035       0.0057   -0.0370
+                        [0.014]    [0.959]    [0.014]   [0.179]    [0.134]    [0.869]   [0.000]   [0.006]   [0.718]   [0.576]    [0.389]    [0.018]
+    ln(n+d+g)           -0.0569    -0.0608    0.0163    -0.0690    -0.2217   -0.0423    0.0078    -0.0456   -0.0433   -0.0677      0.0050   -0.5462
+                        [0.000]    [0.000]    [0.077]   [0.000]    [0.039]    [0.000]   [0.237]   [0.000]   [0.000]   [0.000]    [0.464]    [0.000]
+    Dummy temporal       Sim         Sim        Sim      Sim         Sim       Sim       Sim       Sim       Não        Não         Não      Não
+    Convergência        0.0276     0.0299     0.0145    0.0613        -       0.8901    0.7985       -         -         -           -         -
+    Tempo (em anos)      25.12      23.16      47.86    11.31         -        0.78      0.87        -         -         -           -         -
+Fonte: primária. *Valores p entre colchetes. *Taxa de convergência estimada apenas para parâmetros significativos.
+
+               Em relação a convergência, o estimador GLS de efeitos aleatórios reportou taxas baixas, o que
+gera períodos de tempo mais longo para atingir o steady-state em ambos os poluentes. Note que a
+4
+  Dada a limitação de espaço, optamos por realizar uma análise puramente estatística dos principais resultados encontrados,
+deixando as implicações políticas correspondentes para outro contexto, como também é de praxe na literatura revisada.
+5
+  Restringimos os parâmetros para serem iguais, porém pouca mudança foi observada em termos de convergência.
+                                                                                                                                                    11
+utilização de efeitos fixos e do GMM aumentou fortemente a taxa de convergência em todos os gases,
+sendo estatisticamente equivalente em número de anos. Ambos retornaram um período de tempo de 4 a 6
+anos para convergência multissetorial na emissão de CO2, 5 a 3 no CH4, e de aproximadamente 2 a 3 anos
+no CO. Em relação a emissão de CO2 pelo uso de energia, maior fonte de GEE, a taxa de convergência só
+foi significativa no modelo de efeitos aleatórios e de efeitos fixos. Pelo GMM não podemos inferir que
+sua emissão esteja convergindo entre os setores da amostra.
+
+               O desempenho da estimativa com defasagem de quatro anos foi inferior. Em primeiro lugar, ela
+falha em estimar o sinal dos controles s e n+d+g em alguns dos poluentes. Esse padrão também tende a
+se repetir nos demais conjuntos amostrais. Apenas 7 dos 12 modelos reportaram taxas de convergência
+significativas. É possível notar, que mesmo o estimador de efeitos aleatórios reportou taxas mais
+elevadas, quem resultaram em 11 e 47 anos para convergência em todos os poluentes. O efeito fixo
+estimou taxas elevadas para emissão de CO2 e CH4, ambas inferiores a um ano. O GMM não reportou
+estatísticas significativas para nenhum dos gases do efeito estufa. Na base completa, portanto, é possível
+afirmar que encontramos evidencias moderadas6 de convergência na emissão per capita de CO2 e CH4.
+
+    Tabela 2 - Resultados da convergência na emissão de GEE para a amostra A 1996 - 2007.
+                                                                A = Estimativa com n=1
+                                 Efeitos aleatórios                            Efeitos fixos                                    GMM
+                        CO2                                        CO2                                          CO2
+        Regressores    Energia     CO2       CH4       CO         Energia     CO2         CH4         CO       Energia    CO2         CH4      CO
+    ln(yt-n)           0.9873     0.9828    1.0011    0.9720       0.4548    0.7901      0.7728     0.4449     0.1503    0.6462     0.5078    0.3251
+                       [0.000]   [0.000]    [0.000]   [0.000]      [0.004]   [0.000]     [0.000]    [0.000]    [0.014]   [0.000]    [0.005]   [0.000]
+    ln(s)              0.0192     0.0048    0.1370    -0.0073      0.0171    0.0178      0.0038     0.0032     0.0316    0.0379     -0.0116 -0.1981
+                       [0.057]   [0.830]    [0.158]   [0.804]      [0.553]   [0.517]     [0.771]    [0.959]    [0.196]   [0.411]    [0.581]   [0.134]
+    ln(n+d+g)          -0.0518   -0.0613    0.0098    -0.0815     -0.0516    0.6243      0.0107     -0.0741    -0.0424   -0.0561    0.0053    -0.0474
+                       [0.000]   [0.000]   [0.0876]   [0.008]      [0.000]   [0.007]     [0.0973]   [0.018]    [0.000]   [0.000]    [0.305]   [0.138]
+    Dummy temporal      Sim        Sim        Sim      Sim          Sim       Sim          Sim        Sim       Não        Não        Não      Não
+    Convergência       0.0055     0.0075       -      0.0123       0.3422    0.1023      0.1119     0.3517     0.8230    0.1896     0.2943    0.4880
+    Tempo (em anos)    125.17     92.15        -      56.20         2.03      6.77        6.19       1.97       0.84      3.66        2.35     1.42
+                                                                B = Estimativa com n=4
+    ln(yt-n)           0.8991     0.8482    0.9975    0.8981      -0.0569    0.2453      0.3873     -0.4058    -0.0249   0.0637     0.0336    -0.5481
+                       [0.000]   [0.000]    [0.000]   [0.000]      [0.367]   [0.031]     [0.000]    [0.0001]   [0.474]   [0.2335]   [0.000]   [0.000]
+    ln(s)              0.0622     0.0376    0.0373    -0.0317     -0.0037    0.0798      0.0372     -0.0075    0.0070    0.4458     -0.0056 -0.3568
+                       [0.162]   [0.472]    [0.308]   [0.798]      [0.942]   [0.145]     [0.1881]   [0;960]    [0.780]   [0.446]    [0.880]   [0.012]
+    ln(n+d+g)          -0.0529   -0.4067    0.0036    0.0053      -0.0360    -0.0388     0.0087     -0.2793    0.3437    -0.0547    0.0037    -0.0116
+                       [0.000]   [0.023]   [0.7772]   [0.910]      [0.000]   [0.000]     [0.221]    [0.533]    [0.000]   [0.000]    [0.385]   [0.629]
+    Dummy temporal      Sim        Sim        Sim      Sim          Sim       Sim          Sim        Sim       Não        Não        Não      Não
+    Convergência       0.0462     0.0715    0.0011    0.0467          -      0.6103      0.4119        -          -         -       1.4735       -
+    Tempo (em anos)     15.01      9.70     637.61    14.86           -       1.14        1.68         -          -         -         0.47       -
+Fonte: primária. *Valores p entre colchetes. *Taxa de convergência estimada apenas para parâmetros significativos.
+
+
+6
+ Podemos pensar na seguinte categorização: evidência fraca quando apenas o efeito aleatório sugere convergência; evidencia
+moderada quando efeito fixo e aleatório sugerem; evidência forte quando efeito fixo e GMM sugerem convergência, em ambos
+os intervalos de tempo. A não significância estatística deve ser interpretada como ausência de evidência.
+                                                                                                                                                        12
+           O mesmo padrão apresentado pelos controles, s e n+d+g, é observado na amostra A, que
+contempla setores da agropecuária e indústria de alimentos (Tabela 2). Mais uma vez o efeito fixo e
+GMM reportaram estatísticas próximas sugerindo convergência com uma defasagem. Na ampliação do
+gap temporal, é interessante notar que a emissão de CO2 por uso de energia e a emissão de monóxido de
+carbono apresentaram evidências fracas de convergência, enquanto que as evidências em torno da
+emissão de CO2 foram moderadas, já que são reportadas pelo estimador de efeitos fixos. O destaque foi a
+evidência forte de convergência na emissão de CH4 entre os setores agropecuários e a indústria
+alimentícia, com um tempo equivalente a aproximadamente 1 ano, estimada por efeitos fixos e/ou GMM.
+
+           O metano, CH4, está presente na maioria dos fertilizantes nitrogenados utilizados pela agricultura.
+Em especial, desde a intensificação do uso de transgênicos nos anos 1990, houve uma padronização das
+técnicas de manejo agrícola nas lavouras ao redor do mundo, que tem que seguir um rigoroso processo de
+aplicação de fertilizantes, seguindo a orientação dos proprietários dos direitos autorais das sementes
+transgênicas. Nesse sentido, um dos possíveis canais que ajudam a explicar essa forte evidência de
+convergência do uso da emissão de metano no setor possa estar sendo conduzida por essa padronização
+de técnicas agropecuárias.
+
+Tabela 3 - Resultados da convergência na emissão de GEE para amostra B 1996 – 2007.
+                                                             A = Estimativa com n=1
+                              Efeitos aleatórios                            Efeitos fixos                                  GMM
+                     CO2                                         CO2                                       CO2
+    Regressores     Energia     CO2        CH4       CO         Energia     CO2        CH4       CO       Energia    CO2         CH4      CO
+ln(yt-n)            0.9915     1.0003     1.0001    0.9716       0.7880    0.7819     0.7398    0.4937    0.0229    0.7022    0.3220     0.2823
+                    [0.000]    [0.000]    [0.000]   [0.000]      [0.000]   [0.000]    [0.000]   [0.000]   [0.648]   [0.044]   [0.001]    [0.000]
+ln(s)               0.0327     0.0242     0.0094    0.0264       0.0209    0.1056     0.0185    0.0413    0.0128    -0.0283   -0.0039    -0.0544
+                     [0.06]   [0.0584]    [0.205]   [0.109]      [0.206]   [0.289]    [0.125]   [0.101]   [0.449]   [0.847]   [0.768]    [0.033]
+ln(n+d+g)           -0.0603    -0.0920   -0.0030    -0.1030     -0.0550    -0.0794    -0.0088   -0.0618   -0.0321   -0.0596   -0.0083    -0.0510
+                    [0.000]    [0.000]    [0.832]   [0.000]      [0.000]   [0.000]    [0.535]   [0.000]   [0.000]   [0.000]   [0.387]    [0.001]
+Dummy temporal        Sim        Sim       Sim       Sim          Sim       Sim        Sim       Sim       Não       Não         Não      Não
+Convergência        0.0037        -          -      0.0125       0.1035    0.1069     0.1309    0.3065       -      0.1536    0.4922     0.5492
+Tempo (em anos)     186.75        -          -      55.48         6.70      6.49       5.29      2.26        -       4.51        1.41     1.26
+                                                             B = Estimativa com n=4
+ln(yt-n)            0.8282     0.9440     0.9783    0.8225       0.1578    0.0603     0.0864    -0.2993   -0.0068   -0.0489   -0.0252    -0.3015
+                    [0.000]    [0.000]    [0.000]   [0.000]      [0.008]   [0.218]    [0.382]   [0.000]   0.7950    [0.258]   [0.0731]   [0.000]
+ln(s)               0.0155     -0.0093    0.0459    0.0061      -0.0674    -0.0139    0.0331    0.0724    -0.0087   -0.0097   0.0010     -0.1191
+                    [0.615]    [0.716]    [0.019]   [0.905]      [0.823]   [0.469]    [0.129]   [0.084]   [0.694]   [0.527]   [.0.946]   [0.002]
+ln(n+d+g)           -0.0565    -0.0977   -0.0168    -0.0542     -0.0472    -0.0671    -0.0121   -0.0421   -0.0327   -0.0644   -0.0063    -0.0380
+                    [0.000]    [0.000]    [0.408]   [0.087]      [0.001]   [0.002]    [0.358]   [0.048]   [0.000]   [0.000]   [0.654]    [0.048]
+Dummy temporal        Sim        Sim       Sim       Sim          Sim       Sim        Sim       Sim       Não       Não         Não      Não
+Convergência        0.0819     0.0250     0.0095    0.0849       0.8019       -       1.0634       -         -         -          -         -
+Tempo (em anos)      8.47       27.70     72.75      8.17         0.86        -        0.65        -         -         -          -         -
+Fonte: primária. *Valores p entre colchetes. *Taxa de convergência estimada apenas para parâmetros significativos.
+
+
+
+                                                                                                                                                   13
+           A Tabela 3 apresenta os resultados para a amostra B, a indústria extrativa. A percentagem de
+vezes que o sinal dos controles, s e n+d+g, foi previsto incorretamente aumenta, ao passo que a
+significância estatística também diminuiu. O efeito aleatório previu incorretamente a convergência na
+emissão de CO2 e CH4 com um ano de defasagem, mas reportou parâmetros significativos com n=4. Em
+termos gerais, só é possível falar em convergência moderada para emissão de CH4 e na emissão de CO2
+pela utilização de energética (efeito fixo).
+
+           Note que esse macro setor contempla os maiores poluentes mundiais: as atividades extrativas
+minerais, a indústria madeireira e a indústria petroquímica. É interessante notar que mesmo assim, uma
+elevada taxa de convergência na emissão de CO2 pelo uso de energia foi encontrada por efeitos fixos, de 7
+a menos de um ano, dependendo do horizonte temporal. Entretanto, seria possível demonstrar que como
+esses são os principais emissores, suas taxas são mais elevadas mesmo em um eventual steady-state.
+
+           Contudo, nenhum dos gases foi estatisticamente significativo no GMM com n=4, apenas com
+n=1. Nesse caso, chama a atenção o valor elevado das taxas de convergência, seguindo o observado em
+outros conjuntos amostrais. É interessante notar também a elevação na taxa de convergência da emissão
+de CO2 por uso de energia no modelo com efeitos aleatórios, que passa de 0.0037 com n=1 para 0.0819
+com n=4, o mesmo é observado na estimação por efeitos fixos.
+
+Tabela 4 - Resultados da convergência na emissão de GEE para amostra C 1996 – 2007.
+                                                             A = Estimativa com j=1
+                              Efeitos aleatórios                            Efeitos fixos                                  GMM
+                    CO2                                         CO2                                        CO2
+    Regressores    Energia      CO2       CH4       CO         Energia     CO2         CH4       CO       Energia    CO2         CH4      CO
+ln(yt-j)            0.9950     0.9950    1.0053    0.9770       0.6042    0.7667      0.8799    0.5442    0.0910    0.4742     0.4898    0.2855
+                    [0.000]    [0.000]   [0.000]   [0.000]      [0.000]   [0.000]     [0.000]   [0.000]   [0.339]   [0.008]    [0.000]   [0.000]
+ln(s)               0.0268     0.0099    0.0024    0.0074       0.0028    0.0040      -0.0051   -0.0088   -0.0064   -0.0025    -0.0147   -0.0144
+                    [0.006]    [0.260]   [0.819]   [0.627]      [0.796]   [0.737]     [0.686]   [0.631]   [0.373]   [0.8122]   [0.292]   [0.424]
+ln(n+d+g)           -0.0419    -0.0391   0.0464    -0.0761      -0.0358   -0.0449     0.0392    -0.0714   -0.0291   -0.0345    0.0231    -0.0591
+                    [0.000]    [0.000]   [0.000]   [0.000]      [0.000]   [0.000]     [0.000]   [0.001]   [0.001]   [0.000]    [0.078]   [0.001]
+Dummy temporal       Sim         Sim       Sim      Sim                     Sim        Sim       Sim       Não        Não        Não      Não
+Convergência        0.0022     0.0022       -      0.0101       0.2188    0.1154      0.0556    0.2642       -      0.3240     0.3100    0.5444
+Tempo (em anos)     315.87     317.77       -      68.59         3.17       6.01      12.47      2.62        -       2.14        2.24     1.27
+                                                             A = Estimativa com j=4
+ln(yt-j)            0.8002     0.8532    1.0001    0.8173       0.0089    0.2145      0.3612    -0.2675   0.0635    -0.0209    0.0171    -0.3572
+                    [0.000]    [0.000]   [0.000]   [0.000]      [0.902]   [0.003]     [0.000]   [0.005]   [0.224]   [0.657]    [0.684]   [0.000]
+ln(s)               0.0251     0.0098    0.0308    0.0049       0.0032    -0.0008     0.0473    0.0221    -0.0099   0.0005     -0.0065   -0.0302
+                    [0.226]    [0.612]   [0.237]   [0.885]      [0.825]   [0.962]     [0.093]   [0.476]   [0.216]   [0.967]    [0.782]   [0.123]
+ln(n+d+g)           -0.0282    -0.0675   0.0532    -0.0224      -0.0042   -0.0375     0.0920    -0.0335   -0.0238   -0.0350    0.0121    0.0051
+                    [0.082]    [0.000]   [0.019]   [0.517]      [0.773]   [0.006]     [0.613]   [0.240]   [0.086]   [0.001]    [0.428]   [0.851]
+Dummy temporal       Sim         Sim       Sim      Sim          Sim        Sim        Sim       Sim       Não        Não        Não      Não
+Convergência        0.0968     0.0689       -      0.0876          -      0.6686      0.4422       -         -         -          -         -
+Tempo (em anos)      7.16       10.06       -       7.91           -        1.04       1.57        -         -         -          -         -
+Fonte: primária. *Valores p entre colchetes. *Taxa de convergência estimada apenas para parâmetros significativos.
+
+                                                                                                                                                   14
+           O comportamento estimado segue sobrevivendo nos demais conjuntos amostrais, tais como na
+transformação de bens não duráveis, amostra C na Tabela 4. O que chama atenção nesse caso, é variação
+no parâmetro do efeito aleatório quando consideramos n=4. O parâmetro de convergência passa de
+valores quase nulos para parâmetros próximo ao estimado por efeitos fixos, principalmente na emissão de
+CO2 setorial e pelo uso de energia. Em nenhum dos gases é possível falar em evidência forte de
+convergência, apenas moderada na emissão de CO2 e CH4.
+
+           O GMM só reporta parâmetros estatisticamente significativos para a estimativa em que o intervalo
+de tempo é igual a um ano. Também é oportuno notar que nesse caso, os parâmetros associados a taxa de
+poupança foram viesados e com o sinal trocado para todos os gases do efeito estufa. O mesmo padrão de
+parâmetros viesados também ocorre na estimava de GMM para amostra da indústria da transformação de
+“bens duráveis”, Tabela 5, sendo que apenas para o CH4 e CO os parâmetros são estatisticamente
+significativos com n=1. Já para o estimador de efeitos aleatórios e fixos, todos os gases foram
+estatisticamente significativos.
+
+           Quando um período de tempo mais amplo é considerado para interpretação da convergência, é
+possível afirmar que existem evidências moderadas de convergência apenas no CH4 para a indústria de
+transformação. Para todos os demais gases encontramos apenas evidências fracas, por efeito aleatório.
+
+Tabela 5 - Resultados da convergência na emissão de GEE para amostra D 1996 - 2007
+                                                             A = Estimativa com j=1
+                              Efeitos aleatórios                            Efeitos fixos                                  GMM
+                     CO2                                         CO2                                       CO2
+    Regressores     Energia     CO2        CH4      CO          Energia     CO2        CH4       CO       Energia    CO2         CH4     CO
+ln(yt-j)            0.9944     0.9948    0.9971    0.9791       0.5594     0.6527     0.6809    0.5021    0.0832    0.1904    0.3684    0.3293
+                    [0.000]    [0.000]   [0.000]   [0.000]      [0.000]    [0.000]    [0.000]   [0.000]   [0.148]   [0.360]   [0.001]   [0.000]
+ln(s)               0.0014     0.0066    -0.0116   -0.0179      0.0059     0.0966     0.0249    0.0732    -0.0159   -0.0087   0.0143    -0.1026
+                    [0.867]    [0.526]   [0.436]   [0.439]      [0.642]    [0.575]    [0.281]   [0.049]   [0.427]   [0.529]   [0.418]   [0.070]
+ln(n+d+g)           -0.0597    -0.0734   0.0197    -0.0751      -0.0542    -0.0636    0.0241    -0.0544   -0.0223   -0.0378   0.0091    -0.0559
+                    [0.000]    [0.000]   [0.060]   [0.000]      [0.000]    [0.000]    [0.015]   [0.003]   [0.003]   [0.000]   [0.285]   [0.004]
+Dummy temporal       Sim        Sim        Sim      Sim                      Sim       Sim       Sim       Não       Não         Não     Não
+Convergência        0.0024     0.0023    0.0013    0.0092       0.2523     0.1853     0.1669    0.2992       -         -      0.4337    0.4824
+Tempo (em anos)     284.97     303.21    540.23    75.60          2.75       3.74      4.15      2.32        -         -         1.60    1.44
+                                                             A = Estimativa com j=4
+ln(yt-j)            0.9394     0.9219    0.9254    0.8606       0.0437     0.0850     0.1930    -0.1169   0.0061    -0.0584   -0.0047   -0.1525
+                    [0.000]    [0.000]   [0.000]   [0.000]      [0.429]    [0.232]    [0.011]   [0.160]   [0.794]   0.0770    [0.865]   [0.012]
+ln(s)               -0.0319    -0.0294   -0.0012   -0.0287      -0.0267    -0.0169    0.0659    0.0998    -0.0276   -0.0144   0.0158    -0.1386
+                    [0.280]    [0.361]   [0.975]   [0.548]      [0.2760]   [0.5553]   [0.087]   [0.098]   [0.244]   [0.354]   [0.438]   [0.052]
+ln(n+d+g)           -0.0706    -0.0560   0.0151    -0.0801      -0.0401    -0.0443    0.0122    -0.0586   -0.0323   -0.0412   0.0013    -0.0571
+                    [0.000]    [0.000]   [0.477]   [0.001]      [0.000]    [0.000]    [0.262]   [0.005]   [0.005]   [0.000]   [0.838]   [0.014]
+Dummy temporal       Sim        Sim        Sim      Sim           Sim        Sim       Sim       Sim       Não       Não         Não     Não
+Convergência        0.0272     0.0353    0.0337    0.0652          -          -       0.7145       -         -         -          -        -
+Tempo (em anos)      25.51      19.62     20.59    10.63           -          -        0.97        -         -         -          -        -
+Fonte: primária. *Valores p entre colchetes. *Taxa de convergência estimada apenas para parâmetros significativos.
+
+                                                                                                                                                  15
+           No que tange ao setor de serviços, amostra E, os parâmetros do modelos neoclássico foram, em
+geral, bem estimados nos dois intervalos de tempo. O estimador GLS de efeitos aleatórios tendeu a
+mostrar taxas de convergência baixas para n=1, que se elevaram a medida que o gap temporal aumentava,
+que ao seu turno, resultou em uma diminuição acentuada na taxa de convergência de todos os poluentes.
+
+           O GMM e o efeito fixo reportaram taxas de convergência elevadas quando se considera o
+intervalo de um ano, na casa de aproximadamente 2 a 7 anos para cada gás. Ao se elevar o intervalo de
+tempo, apenas CO2 e a emissão de CH4 são estatisticamente significativos em efeitos fixos, e com o
+GMM apenas o CH4 reportou estatísticas interpretáveis. É surpreendente que em ambos os casos, a
+velocidade de convergência é inferior a 1 ano, para o período anterior à crise econômica mundial de 2008.
+
+
+Tabela 6 - Resultados da convergência na emissão de GEE para amostra E 1996 - 2007
+                                                           A = Estimativa com j=1
+                              Efeitos aleatórios                            Efeitos fixos                                  GMM
+                     CO2                                         CO2                                       CO2
+    Regressores     Energia     CO2        CH4      CO          Energia      CO2       CH4       CO       Energia    CO2         CH4     CO
+ln(yt-j)            0.9900     0.9937    0.9981    0.9786        0.7516     0.7869    0.7415    0.5090    0.3383    0.6769    0.5155    0.4856
+                    [0.000]    [0.000]   [0.000]   [0.000]       [0.000]   [0.000]    [0.000]   [0.000]   [0.006]   [0.000]   [0.000]   [0.000]
+ln(s)               0.0322     0.0195    -0.0016   0.0186        0.0437     0.0058    0.0109    0.0273    0.0084    0.0054    0.0047    -0.0054
+                    [0.000]    [0.000]   [0.614]   [0.002]       [0.055]   [0.224]    [0.080]   [0.010]   [0.204]   [0.273]   [0.377]   [0.616]
+ln(n+d+g)           -0.0765   -0.0913    0.0054    -0.0113      -0.0584    -0.0849    0.0112    -0.0872   -0.0570   -0.0752   0.0024    -0.1174
+                    [0.000]    [0.000]   [0.528]   [0.000]       [0.001]   [0.000]    [0.219]   [0.000]   [0.000]   [0.000]   [0.800]   [0.000]
+Dummy temporal       Sim        Sim        Sim      Sim                      Sim       Sim       Sim       Não       Não         Não     Não
+Convergência        0.0044     0.0027    0.0008    0.0094        0.1240     0.1041    0.1299    0.2933    0.4707    0.1695    0.2878    0.3137
+Tempo (em anos)     158.14     252.14    817.68    73.68          5.59       6.66      5.34      2.36      1.47      4.09        2.41    2.21
+                                                             A = Estimativa com j=4
+ln(yt-j)            0.9386     0.9206    0.9550    0.8768       -0.0509     0.1708    0.1348    -0.2444   -0.0372   0.0072    0.0509    -0.0942
+                    [0.000]    [0.000]   [0.000]   [0.000]       [0.430]   [0.002]    [0.002]   [0.000]   [0.013]   [0.743]   [0.023]   [0.034]
+ln(s)               0.0365     0.0011    0.0046    -0.0182       0.0578     0.0055    0.0203    0.0294    0.0049    0.0015    0.0062    -0.0125
+                    [0.059]    [0.991]   [0.632]   [0.296]       [0.095]   [0.574]    [0.046]   [0.097]   [0.519]   [0.818]   [0.340]   [0.421]
+ln(n+d+g)           -0.0522   -0.0333    0.0262    -0.0764       0.0077    -0.0221    0.0127    -0.0477   -0.0510   -0.0772   0.0050    -0.1188
+                    [0.010]    [0.061]   [0.083]   [0.002]       [0.781]   [0.046]    [0.00]    [0.010]   [0.000]   [0.000]   [0.573]   [0.000]
+Dummy temporal       Sim        Sim        Sim      Sim           Sim        Sim       Sim       Sim       Não       Não         Não     Não
+Convergência        0.0275     0.0359    0.0200    0.0571           -       0.7674    0.8703       -         -         -      1.2929       -
+Tempo (em anos)      25.17      19.29     34.66    12.14            -        0.90      0.80        -         -         -         0.54      -
+Fonte: primária. *Valores p entre colchetes. *Taxa de convergência estimada apenas para parâmetros significativos.
+
+           Nesse contexto, pode-se afirmar que existem evidências moderadas de convergência na emissão
+de CO2 no setor de serviços, enquanto que para o CH4 a evidência de convergência é forte, já que também
+foi corroborada pelo método generalizado dos momentos de Arellano e Bond. Para a emissão de CO2
+pelo uso de energia e para o monóxido de carbono as evidências são fracas, e dada a provável
+inconsistência no estimador de efeitos aleatórios, com os dados que dispomos não existem evidências de
+convergência em sua emissão per capita.
+
+                                                                                                                                                  16
+5. Considerações finais
+
+       Este artigo concentrou-se na estimação empírica da hipótese convergência na emissão de gases do
+efeito estufa, um teste que tem reservado a atenção de muitos trabalhados na literatura de economia do
+meio ambiente. O que não é gratuito, já que entender a dinâmica dos principais poluentes é crítico para a
+adoção de políticas apropriadas relacionadas ao aquecimento global. Muitos modelos de equilíbrio geral
+computável usados para estimar tendências futuras, por exemplo, assumem um certo grau de
+convergência entre países e setores. Se entretanto, as emissões per capita não estiverem convergindo,
+esses modelos podem estar seriamente incorretos, gerando más recomendações de política ambiental.
+
+       Nesse estudo contribuímos para a literatura em três aspectos. Primeiro, controlamos possíveis
+inconsistências na estimação da hipótese de convergência com a utilização de estimadores de dados em
+painel robustos, em especial efeitos fixos e o GMM de Arellano e Bond. Tal procedimento mostrou que a
+taxa de convergência eleva-se significativamente em relação a estimativas convencionais, como o POLS
+ou o GLS de efeito aleatórios, esse último utilizado no trabalho.
+
+       Em seguida, encontramos evidências de convergência para grandes conjuntos de dados, como por
+exemplo, na nossa amostra que contempla todos os setores da WIOD, mais de 14.553 observações
+distribuídas em 39 países. Ao contrário dos estudos prévios, essa evidência parece ser invariante ao
+tamanho da amostra, mesmo quando se utiliza do GLS de efeitos aleatórios para a estimação.
+
+       Por fim, expandimos a análises dos gases efeito estufa, que tendiam a se concentrar apenas na
+emissão de CO2 cross-country. Utilizamos também a emissão de CO2 pelo uso de energia – maior
+causador do aquecimento global -, a emissão de gás metano, CH4 e a emissão de monóxido de carbono.
+Como era esperado, o resultado foi bastante heterogêneo entre setores e entre os poluentes. Foram
+encontradas fortes evidências de convergências na emissão de CH4 no macro setor agricultura e indústria
+alimentícia (A), e também no macro setor de serviços (E), já que os três estimadores utilizados reportam
+taxas estatisticamente significativas. O estimador de efeitos fixos também sugere convergência nas
+emissões de metano nos macro setores da indústria extrativa (B), na transformação industrial de bens
+duráveis (D) e na industrialização de bens não duráveis (C).
+
+       A emissão de dióxido de carbono, CO2, teve um desempenho mais moderado, sendo que foi
+confirmada pelo estimador de efeitos aleatórios e fixos apenas nos macro setores de serviços (E) e
+industrialização de bens não duráveis (c). Também foram encontradas evidências moderas na amostra que
+contempla todos os setores da WIOD. Entretanto, a emissão de CO2 pelo uso de energia, não renovável
+em sua maioria, foi encontrada na amostra que contempla dados da indústria extrativa (B) e na
+transformação de bens duráveis (D). Para as emissões de monóxido de carbono, encontramos evidências
+fracas de convergência, já que apenas o estimador de efeitos aleatórios tende a confirmá-las, e a taxas
+                                                                                                       17
+baixas. Contudo, dado a violação da hipótese de exogeneidade estrita nesse estimador, é mais correto
+afirmarmos, talvez, que não foram encontradas evidências de convergência na utilização desse poluente
+em nenhum conjunto amostral estimado.
+
+       Por fim, mesmo este trabalho tendo avançado na literatura de economia do meio ambiente, ao
+construir um painel multissetorial de emissões com os dados inéditos da WIOD, é preciso salientar que as
+conclusões são válidas num pequeno horizonte temporal, 11 anos. Em especial, a consideração de uma
+defasagem para avaliar convergência, como adotada por parte da literatura, pode ser insuficiente no nosso
+contexto. Talvez por isso, encontramos taxas elevadas em quase todos os gases para n=1, mas que
+tendem a ser válidas apenas para alguns dos poluentes quando o horizonte temporal é ampliado. Mesmo
+assim, se a estratégia de identificação for válida, só é possível afirmar que as evidências em termos de
+convergência per capita foram encontradas para alguns gases do efeito estufa e se distribuem
+heterogeneamente entre os setores produtivos.
+
+
+
+6. Referencias
+
+ALDY, J. E. Per capita carbon dioxide emissions: convergence or divergence? Environmental and
+Resource Economics, v. 33, n. 4, p. 533-555, 2006.
+ARELLANO, M. BOND, S. Some tests of specification for panel data: Monte Carlo evidence and an
+application to employment equations. The Review of Economic and Studies, v.58, n.2., p.277, 1991.
+BROCK, W.; TAYLOR, M. S. The green Solow model. Journal of Economic Growth, v. 15, n. 2, p. 127-
+153, 2010.
+CAMARERO, M.; PICAZO-TADEO, A. J.; TAMARIT, C. Are the determinants of CO2 emissions
+converging among OECD countries? Economic Letters, v. 118, n. 1, p. 159-162, 2013.
+CRIADO, C. O.; GRETHER, J. M. Convergence in per capita CO2 emissions: a robust distributional
+approach. Resource and Energy Economics, v. 33, n. 3, p. 637-665, 2011.
+GREENE, W. H. Econometric analysis. New Jersey: Prentice Hall, 2000.
+HERRERIAS, M. J. CO2 weighted convergence across the EU-25 countries (1920-2007). Applied
+Energy, v. 92, p. 09-16, 2012.
+IPCC. Climate Change 2014: Synthesis Report, book section Contribution of Working Groups I, II and III
+to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, page 1141. IPCC,
+Geneva, Switzerland, 2014.
+ISLAM, N. Growth empirics: a panel data approach. The Quarterly Journal of Economics, v. 110, n. 4, p.
+1127-1170, 1995.
+JOBERT, T.; KARANFIL, F.; TYKHONENKO, A. Convergence of per capita carbon dioxide emissions
+in the EU: legend or reality? Energy Economics, v. 32, n. 6, p. 1364-1373, 2010.
+LI, X.; LIN, B. Global convergence in per capita CO2 emissions. Renewable and Sustainable Energy
+Reviews, v. 24, p. 357-363, 2013.
+
+
+                                                                                                       18
+MANKIW, N. G.; ROMER, D.; WEIL, D. N. A contribution to the empirics of economic growth. The
+Quaterly Journal of Economics, v. 107, n. 2, p. 407-437, 1992.
+PEASARAM, M. H.; A simple panel unit root test in the presence of cross-section dependence Journal
+of Applied Econometrics v. 22, p. 265–312, 2007.
+
+PEN, L. Y.; SÉVI B. On the non-convergence of energy intensities: Evidence from a pair-wise
+econometric approach. Ecological Economics v. 69 p. 641–650, 2010.
+
+ROMERO-ÁVILA, D. Convergence in carbon dioxide emissions among industrialized countries
+revisited. Energy Economics, v. 30, n. 5, p. 2265-2282, 2008.
+STRAZICICH, M. C.; LIST, J. A. Are CO2 emission levels converging among industrial countries?
+Environmental and Resource Economics, v. 24, n. 3, p. 263-271, 2003.
+TIMMER, M. P.; DIETZENBACHER, E,; LOS, B.; STEHRER, R.; de VRIES, G. J.; An illustrated use
+guide to the World Input-Output Database: The case of global automotive production. Review of
+International Economics, v.22, n.3, p.575-605, 2015.
+
+WESTERLUND, J.; BASHER, S. A. Testing for convergence in carbon dioxide emissions using a
+century of panel data. Environmental and Resource Economics, v. 40, n. 1, p. 109-120, 2008
+WOOLDRIDGE, J. Econometric analysis of cross section and panel data. MIT Press, 2002.
+
+
+
+
+                                                                                                19
+

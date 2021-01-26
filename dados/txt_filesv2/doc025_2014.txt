@@ -1,0 +1,3007 @@
+Forecasting the yield curve with the arbitrage-free dynamic Nelson-Siegel
+
+model: Brazilian evidence
+
+Fabricio Tourrucôo12
+
+João F. Caldeira3
+
+Guilherme V. Moura4
+André A. P. Santos5
+
+Resumo
+
+Avaliamos se a imposição de uma restrição de não-arbitragem no modelo dinâmico de Nelson-
+Siegel contribui para a obtenção de projeções mais acuradas da estrutura a termo. Para tal objetivo,
+conduzimos uma aplicação empírica para um amplo painel de contratos futuros de taxas de juro no
+Brasil e testamos as diferenças nos desempenhos das projeções para especificações alternativas
+incluindo: passeio aleatório, autoregressões (vetoriais) e o modelo dinâmico de Nelson-Siegel com
+fatores correlacionados e não-correlacionados. Mostramos empiricamente que o modelo livre-de-
+arbitragem dinâmico de Nelson-Siegel supera todos os modelos alternativos quando horizontes de
+projeção mais longos são considerados.
+
+Palavras-chave: Curva de juros, modelo livre-de-arbitragem dinâmico de Nelson-Siegel,  modelos
+
+de fatores dinâmicos, filtro de Kalman
+
+Abstract
+
+We assess the extent to which the imposition of a no-arbitrage restriction on the dynamic Nelson-
+Siegel model helps obtaining more accurate forecasts of the term structure. For that purpose, we
+provide an empirical application based on a large panel of Brazilian interest rate future contracts
+and test for differences in forecasting performance among alternative benchmark specifications
+including the random walk, (vector) autoregressions, and the dynamic Nelson-Siegel model with
+both uncorrelated and correlated factors. We show empirically that the arbitrage-free Nelson-Siegel
+model is able to outperform all other benchmark models when longer forecasting horizons are taken
+into account.
+
+Keywords: Yield curve, arbitrage-free dynamic Nelson-Siegel model,   dynamic factor models,
+
+Kalman filter
+
+JEL: E43, E47, G12, G17
+
+Área 4 - Macroeconomia, Economia Monetária e Finanças. 
+
+1 Economia - Universidade Federal do Rio Grande do Sul – UFRGS
+2 Corresponding author e-mail: fabricio.tourrucoo@ufrgs.br
+3 Economia - Universidade Federal do Rio Grande do Sul - UFRGS
+4 Economia – Universidade Federal de Santa Catarina - UFSC
+5 Economia – Universidade Federal de Santa Catarina - UFSC
+
+Forecasting the yield curve with the arbitrage-free dynamic Nelson-Siegel
+
+model: Brazilian evidence
+
+Abstract
+
+We assess the extent to which the imposition of a no-arbitrage restriction on the dynamic Nelson-
+Siegel model helps obtaining more accurate forecasts of the term structure. For that purpose, we
+provide an empirical application based on a large panel of Brazilian interest rate future contracts and
+test for diﬀerences in forecasting performance among alternative benchmark speciﬁcations including the
+random walk, (vector) autoregressions, and the dynamic Nelson-Siegel model with both uncorrelated and
+correlated factors. We show empirically that the arbitrage-free Nelson-Siegel model is able to outperform
+all other benchmark models when longer forecasting horizons are taken into account.
+
+Keywords: yield curve, arbitrage-free Nelson-Siegel model, dynamic factor models, Kalman ﬁlter
+
+1. Introduction
+
+There has been growing interest in the ability to forecast the behavior of the term structure of interest
+rates. Such forecasts are of paramount importance for macroeconomists, ﬁnancial economists and ﬁxed
+income managers since bond portfolio optimization, pricing of ﬁnancial assets and their derivatives, as
+well as risk management, rely heavily on interest rate forecasts. Moreover, these forecasts are widely
+used by ﬁnancial institutions, regulators, and institutional investors to develop macroeconomic scenarios.
+One of the most popular approaches to forecast the yield curve is the the dynamic version of the Nelson
+& Siegel (1987) model proposed by Diebold & Li (2006) (hereafter DNS). Existing evidence suggests
+that these speciﬁcations are remarkably well suited both to ﬁt the term structure and to forecast its
+movements (see, for example, Diebold & Rudebusch, 2013, and the references therein).
+
+Despite the large empirical evidence favorable to the DNS approach, one drawback is that it fails on
+an important theoretical dimension: it does not impose the restrictions necessary for riskless arbitrage
+opportunities, as shown in Bj¨ork & Christensen (1999). This drawback is relevant, since many ﬁnancial
+applications that rely on interest rate modeling such as the pricing of interest-rate-linked assets require
+an arbitrage-free setting. This diﬃculty motivated Christensen et al. (2009) and Christensen et al.
+(2011) to develop an arbitrage-free version of the DNS model (hereafter AFNS), thus overcoming the
+theoretical weakness of the original model speciﬁcation.
+
+The AFNS model of Christensen et al. (2009) and Christensen et al. (2011) has many appealing
+features. First, it preserves the desirable economic interpretation of the three-factor model of time-
+varying level, slope and curvature of the original DNS speciﬁcation. Second, the AFNS ensures lack of
+arbitrage opportunities with a more parsimonious structure in comparison to general aﬃne arbitrage-free
+models such as those considered in Duﬃe & Kan (1996) and Duﬀee (2002). More speciﬁcally, the way
+the AFNS achieves these desirable properties is by adding a yield-adjustment term to the original DNS
+speciﬁcation which contains the necessary restrictions to ensure freedom of arbitrage.
+
+That being said, an immediate question that arises is the following: is the imposition of no-arbitrage
+helpful for forecasting purposes? This question is indeed very controversial. First, as we shall see in
+
+Preprint submitted to Elsevier
+
+July 19, 2014
+
+Section 2.2, the yield-adjustment term of the AFNS model puts no restriction on the physical dynamics
+of yields. In other words, the imposition of no-arbitrage delivers yield-adjustment term that vary with
+maturity but are constant over time. This suggests that the inclusion of the yield-adjustment term
+is unlikely to provide forecasting gains.
+In particular, Duﬀee (2011) points out that imposition of
+no-arbitrage based on cross-section restrictions is irrelevant for forecasting.1 However, empirical work
+has found predictive gains from imposing no-arbitrage in a DNS framework. For instance, Gimeno &
+Marqu´es (2009) and Christensen et al. (2011) found that imposition of no-arbitrage leads to substantial
+forecast improvements. Diebold & Rudebusch (2013) point out that, despite its time constancy, the
+yield-adjustment term can act as a bias correction and thus produce forecast improvements.2 Clearly,
+additional empirical work is necessary in order to help clarify the gains (or lack of) coming from the
+imposition of no-arbitrage in the DNS class of models.
+
+In this paper we assess the extent to which the imposition of a no-arbitrage restriction on the DNS
+setting brings additional forecasting gains by providing an empirical evidence based on a large data set
+of constant-maturity future contracts of the Brazilian Inter Bank Deposit Future Contract (DI1) which
+is equivalent to a zero-coupon bond and is highly liquid (293 million contracts worth US$ 15 billion
+traded in 2010). The market for DI1 contracts is one of the most liquid interest rate markets in the
+world. Many banks, insurance companies, and investors use DI1 contracts as investment and hedging
+instruments. The data set considered in the paper contains daily observations of DI1 contracts traded
+on the Brazilian Mercantile and Futures Exchange (BM&F) with ﬁxed maturities of 3, 6, 9, 12, 15,
+18, 21, 24, 27, 30, 33, 36, 42, and 48 months. We use a rolling estimation to produce out-of-sample
+forecasts for 1-week, 1-month, 3-month, and 6-month ahead based on the DNS and AFNS models with
+both uncorrelated and correlated factors. Moreover, we consider three alternative classical benchmark
+speciﬁcations: the random walk (RW) model, which is taken as our baseline model, and the unrestricted
+ﬁrst-order autoregressive (AR(1)) and vector-autoregressive (VAR(1)) models. We assess forecasting
+accuracy by means of the root mean squared forecast error (RMSFE) and the trace RMSFE (TRMSFE)
+considered in H¨ordahl et al. (2006) and de Pooter et al. (2010). Finally, we also test for the diﬀerences
+in forecasting performance using the test proposed in Giacomini & White (2006).
+
+Our empirical evidence suggests that when a short forecasting horizon is considered (e.g. 1-week-
+ahead) the diﬀerences in forecasting performance among the candidate models is rather inconclusive
+since in very few instances the candidate models outperform the baseline RW model. However, when
+longer forecasting horizons are considered, the AFNS model with uncorrelated factors appears to deliver
+the most accurate forecasts in the vast majority of the cases. Therefore, the most important message
+from our empirical test is that the imposition of no-arbitrage is indeed helpful but only for longer (e.g.
+3-month- and 6-month-ahead) forecasting horizons. These results corroborate the evidence reported in
+Christensen et al. (2011) for US Treasuries data, as they ﬁnd that the AFNS model with indendent
+factors outperform the DNS speciﬁcations for the 6-month- and 12-month-ahead forecast horizons.
+
+The rest of the paper is organized as follows. Section 2 describes the DNS and AFNS speciﬁcations
+adopted in this paper. Section 3 discusses the implementation details and the empirical results. Finally,
+Section 5 concludes.
+
+1Coroneo et al. (2011) and Nyholm & Vidova-Koleva (2012) also found that the imposition of no-arbitrage adds little
+
+to forecasting accuracy.
+
+2Other authors such as Ang & Piazzesi (2003), M¨onch (2008), Carriero (2011), Favero et al. (2012), among others,
+have also found that imposition of no-arbitrage leads to more accurate term structure forecasts. Moreover, Carriero &
+Giacomini (2011) show that the imposition of no-arbitrage restriction is important specially when an economic measure
+of accuracy is taken into account.
+
+2
+
+2. The Nelson-Siegel class of models
+
+Nelson & Siegel (1987) have shown that the term structure can be surprisingly well ﬁtted at a
+particular point in time by a linear combination of three smooth functions. The Nelson-Siegel model of
+the yield curve is given by
+
+(cid:18)1 − e−λτ
+
+(cid:19)
+
+(cid:18)1 − e−λτ
+
+λτ
+
+y(τ ) = β1 + β2
+
++ β3
+
+λτ
+
+− e−λτ
+
++ τ
+
+(1)
+
+where y(τ ) is the zero-coupon yield with τ months to maturity, and β1, β2, and β3 can be interpreted
+as the level, slope, and curvature of the yield curve, respectively. The parameter λ determines the
+exponential decay of the β2 and β3 loadings.
+
+2.1. Dynamic Nelson-Siegel model (DNS)
+
+Diebold & Li (2006) show that using the static Nelson-Siegel model as basis for a dynamic factor
+
+model generates highly accurate interest rate forecasts. The dynamic Nelson-Siegel model (DNS) is
+
+(cid:19)
+
+(cid:19)
+
+(cid:18)1 − e−λτ
+
+(cid:19)
+
+λτ
+
+(cid:18)1 − e−λτ
+
+λτ
+
+− e−λτ
+
+yt(τ ) = X1t + X2t
+
++ X3t
+
++ t(τ ),
+
+(2)
+
+where X1t, X2t, and X3t can be interpreted as the time-varying level, slope, and curvature factors.
+The DNS model can be interpreted as a dynamic factor model and written in state-space form.
+Consider the N × T matrix of observable yields (yt), t = 1, . . . , T , where yt is the observation vector at
+time t, yt = (yit) , i = 1, . . . , N . The DNS model can be represented in state-space form as
+
+εt ∼ N (0, Σ) ,
+ηt ∼ N (0, Ω) ,
+
+t = 1, . . . , T,
+
+yt = Γ + BXt + εt,
+Xt = µ + AXt−1 + ηt,
+
+(3)
+(4)
+where B is the N × K matrix of factor loadings that depends on the decay parameter λ, Xt =
+(X1t, . . . , XKt)(cid:48) is a K-dimensional vector containing the coeﬃcients, εt is the N × 1 vector of dis-
+turbances with Σ being its N × N diagonal covariance matrix. µ is a K × 1 vector of constants, A is
+the K × K transition matrix, and Ω is the conditional covariance matrix of disturbance vector ηt, which
+are independent of the residuals εt ∀t. Γ is a vector of constants, which is ﬁxed to zero in the DNS
+speciﬁcation but will be diﬀerent from zero in the AFNS speciﬁcation presented bellow. Equations (3)
+and (4) characterize a general Gaussian linear state-space model.
+
+t = 1, . . . , T,
+
+Empirically, the DNS model is highly tractable and provides good ﬁts. Theoretically, however,
+arbitrage opportunities cannot be prevented due to an unrestricted dynamic evolution of the yields.
+Indeed, as implied by Filipovic (1999), it is impossible to prevent arbitrage at bond prices in the resulting
+Nelson-Siegel yield curve. Christensen et al. (2011) showed how to remedy this theoretical weakness.
+
+2.2. The dynamic arbitrage-free Nelson-Siegel model (AFNS)
+
+Aiming to overcome this theoretical weakness, but hoping to maintain the good properties of the
+DNS model, Christensen et al. (2011) have developed an arbitrage-free aﬃne model in the spirit of
+Duﬃe & Kan (1996) which has the same factor loadings as the original DNS model. The resulting
+class of AFNS models involves considering the ﬁltered probability space (Ω,F, (Ft), Q) with ﬁltration
+(Ft) = {Ft : t ≤ 0} satisfying the usual conditions (see Williams, 1997). Q denotes the risk-neutral
+measure and we will denote the real world probability measure by P . The risk-neutral dynamic factors
+Xt are assumed to follow a Markov process deﬁned on a set M ⊆ Rn that solves the stochastic diﬀerential
+equation (SDE)
+
+(cid:3) dt + Σ(t)D(Xt, t)dW
+
+Q
+t ,
+
+Q
+dXt = K
+
+Q
+
+(t) − Xt
+
+(t)(cid:2)Θ
+
+(5)
+
+3
+
+Q
+
+is a standard Brownian Motion in Rn deﬁned according to the ﬁltration (Ft). Furthermore,
+where W
+: [0, T ] → Rn×n,
+as in Duﬃe & Kan (1996) one assumes that the drifts, Θ
+and volatility, Σ : [0, T ] → Rn×n, are continuous functions. Finally, it is assumed that the mapping
+D : M × [0, T ] → Rn×n has a diagonal structure with entries
+
+: [0, T ] → Rn, dynamics, K
+Q
+
+[D]ii =(cid:112)γi(t) + δi(t)X1t + . . . + δn(t)Xnt ∀i ∈ {1, . . . , n},
+
+(6)
+where γi : [0, T ] → Rn and δi : [0, T ] → Rn×n are continuous functions. In addition, Duﬃe & Kan (1996)
+assume the instantaneous risk-neutral rate is an aﬃne function of the state variables
+
+Q
+
+rt = ρ0(t) + ρ1(t)(cid:48)Xt,
+
+(7)
+with continuous functions ρ0 : [0, T ] → R and ρ1 : [0, T ] → Rn. Under this aﬃne formulation Duﬃe
+& Kan (1996) proved that a closed-form analytic expression for zero-coupon bond prices is attained as
+a linear function of the latent dynamic factors. This implies that the zero-coupon yield at time t for a
+bond with maturity T is given by:
+
+y(t, T ) = − 1
+
+(cid:90) T
+
+t
+
+log
+
+−
+
+exp
+
+(cid:18)
+
+T − t
+
+EQ(cid:20)
+
+(cid:18)
+dt = ρ0 − B(t, T )(cid:48)(cid:0)K
+Q(cid:1)(cid:48)
+dt = ρ1 +(cid:0)K
+Q(cid:1)(cid:48)
+
+(cid:19)(cid:21)(cid:19)
+
+rudu
+
+(cid:80)n
+(cid:80)n
+
+2
+
+where Γ(t, T ) and B(t, T ) satisfy the system of ordinary diﬀerential equations (ODEs)
+i=1 [Σ(cid:48)B(t, T )B(t, T )(cid:48)Σ]ii γi,
+(cid:48)
+i=1 [Σ(cid:48)B(t, T )B(t, T )(cid:48)Σ]ii (δi)
+,
+
+B(t, T ) − 1
+
+Q − 1
+
+dB(t,T )
+
+dΓ(t,T )
+
+θ
+
+2
+
+= − 1
+
+T − t
+
+[Γ(t, T ) + B(t, T )(cid:48)Xt]
+
+(8)
+
+(9)
+
+with boundary conditions Γ(T, T ) = 0 and B(T, T ) = 0.
+
+Christensen et al. (2011) objective was to work under the generic aﬃne latent factor dynamic struc-
+ture proposed in(8) in order to rule out arbitrage opportunities. On the other hand, they had to impose
+additional restrictions on the ODE for B(t, T ) in (9) to ensure that it has solutions equal to the factor
+loadings of the DNS model:
+
+B1(t, T ) = − (T − t) ,
+B2(t, T ) = −1 − e−λ(T−t)
+B3(t, T ) = −1 − e−λ(T−t)
+(cid:20)1 − e−λ(T−t)
+
+(cid:21)
+
+λ
+
+λ
+
+λ (T − t)
+
++ X3t
+
+,
++ (T − t) e−λ(T−t).
+
+(cid:20)1 − e−λ(T−t)
+
+λ (T − t)
+
+(cid:21)
+
+− e−λ(T−t)
+
+− Γ(t, T )
+T − t
+
+,
+
+(10)
+
+This results in
+
+y(t, T ) = X1t + X2t
+
+where DNS factor loadings are matched and the additional term − Γ(t,T )
+T−t
+model is arbitrage-free.
+
+is a correction to ensure the
+
+Unlike the DNS models, which admit arbitrage, the AFNS models of Christensen et al. (2011)
+impose a particular structure on both the risk-neutral and real world latent factor dynamic processes.
+Christensen et al. (2011), following Singleton (2006), argue that not all parameters in the speciﬁcation
+(5-7) can be identiﬁed so that identifying restrictions must be imposed under the Q measure. Speciﬁcally,
+
+4
+
+the mean Θ
+
+Q
+
+= 0, the volatility matrix Σ is triangular,
+
+ρ0 = 0, ρ1 = (1, 1, 0)(cid:48), δ = 0, γ = (1, . . . , 1)(cid:48), and the state-variable reversion rate
+
+ ,
+ .
+
+Σ =
+
+0
+0
+0
+σ21 σ22
+σ31 σ32 σ33
+
+Q
+
+K
+
+0
+0 λ −λ
+0 0
+λ
+
+ σ11
+ 0 0
+(cid:90) T
+3(cid:88)
+
+=
+
+i=1
+
+t
+
+Under those restrictions, the yield adjustment term − Γ(t,T )
+T−t
+
+is of the form
+
+Γ(t, T )
+T − t
+
+=
+
+1
+2
+
+1
+
+T − t
+
+[Σ(cid:48)B(s, T )B(s, T )(cid:48)Σ]ii ds,
+
+(11)
+
+the instantaneous risk-neutral rate is given by rt = X1t + X2t, and the latent state variables Xt =
+(X1t, X2t, X3t) are described by the system of SDEs under the risk-neutral measure Q
+
+ dX1t
+
+dX2t
+dX3t
+
+ = −K
+
+Q
+
+ X1t
+
+X2t
+X3t
+
+ dt + Σ
+
+ ,
+
+ dW
+
+dW
+dW
+
+Q
+1t
+Q
+2t
+Q
+3t
+
+λ > 0.
+
+This completes the speciﬁcation of the AFNS model under the risk-neutral measure.
+
+2.2.1. Independent and correlated AFNS models
+
+We consider two versions of the DNS model and investigate the eﬀect of the arbitrage-free restriction
+on their corresponding AFNS versions. The ﬁrst is the uncorrelated-factor DNS model which is speciﬁed
+in terms of a diagonal transition matrix in (4). The correlated-factor DNS model has a full transition
+matrix instead. In both DNS models the measurement equation is the same.
+
+The corresponding AFNS models are formulated in continuous time and the relation between the
+dynamics under measures Q and P is given by a change of measure that preserves the aﬃne dynamic
+structure (see Christensen et al. (2011) for full details). This is a very convenient property since it
+guarantees that identical (P-measure) models can be estimated.
+
+Using the solution already presented in (10), yields must be related to the state variables by
+
+yt = Γ + BXt + εt.
+
+(12)
+
+Comparing equations (2) and (10), we notice that the matrix B is identical for DNS and AFNS models.
+The only diﬀerence is the added vector Γ containing the yield-adjustment terms in the AFNS models.
+Since the AFNS is a continuous model, the dynamics is discretized to allow comparison with the discrete-
+time DNS models. The estimation is outlined in the next section.
+
+For the uncorrelated-factor AFNS model the dynamics of the state variables under the P-measure is
+
+ dX1t
+
+dX2t
+dX3t
+
+ =
+
+ κ
+
+P
+11
+0
+0
+
+0
+P
+κ
+22
+0
+
+0
+0
+P
+κ
+33
+
+ θ
+
+P
+1
+P
+2
+P
+3
+
+θ
+θ
+
+ −
+
+ X1t
+
+X2t
+X3t
+
+ dt +
+
+ σ11
+
+0
+σ22
+0
+
+0
+0
+σ33
+
+0
+0
+
+ dW
+
+dW
+dW
+
+P
+1t
+P
+2t
+P
+3t
+
+ .
+
+(13)
+
+5
+
+(cid:90) ∆t
+(cid:90) ∆t
+
+0
+
+0
+
+In the correlated-factor AFNS model, the three shocks may be correlated, and there may be full inter-
+action among the factors as they adjust to the steady state
+
+ dX1t
+
+dX2t
+dX3t
+
+ =
+
+ κ
+
+P
+P
+P
+12 κ
+11 κ
+13
+P
+P
+P
+22 κ
+21 κ
+κ
+23
+P
+P
+P
+κ
+31 κ
+32 κ
+33
+
+ θ
+
+P
+1
+P
+θ
+2
+P
+θ
+3
+
+ −
+
+ X1t
+
+X2t
+X3t
+
+ dt +
+
+ σ11
+
+0
+0
+0
+σ21 σ22
+σ31 σ32 σ33
+
+ dW
+
+dW
+dW
+
+P
+1t
+P
+2t
+P
+3t
+
+ .
+
+(14)
+
+This is the most ﬂexible version of the AFNS models, where all parameters are identiﬁed. From these
+speciﬁcations we see the striking resemblance between DNS and AFNS models.
+
+2.2.2. An exact expression for the covariance of the continuous-time AFNS model
+
+In this paper, the models are estimated using a maximum likelihood estimation method based on
+the Kalman ﬁlter discussed in Section 3. The AFNS model can be formulated in a state-space form
+as follows. Departing from the continuous-time formulation of the AFNS model, the conditional mean
+vector and the conditional covariance matrix are
+
+[XT|Ft] =(cid:2)I − exp(−K
+
+P
+
+∆t)(cid:3) Θ
+
+EP
+
+P
+
++ exp(−K
+P
+
+∆t)Xt
+
+VP
+
+[XT|Ft] =
+
+exp(−K
+P
+
+s)ΣΣ(cid:48) exp(−(K
+P
+
+)(cid:48)s)ds
+
+(15)
+
+(16)
+
+To estimate the AFNS models proposed by Christensen et al. (2011) we must compute the conditional
+
+covariance matrix
+
+VP
+
+[Xt|Ft−1] =
+
+exp(−K
+P
+
+s)ΣΣ(cid:48) exp(−(K
+P
+
+)(cid:48)s)ds
+
+(17)
+
+of discrete observations. Since the estimation is an intense computational process, we need to provide
+fast intermediate calculations. One approach is to approximate the integral and the matrix exponential.
+P
+Another approach uses the diagonalization of K
+to calculate the integral exactly. Due to the reduced
+P
+size of the matrix K
+
+, the latter is signiﬁcantly faster than the former.
+
+The AFNS state transition is
+
+Xt =(cid:0)I − exp(cid:0)−K
+
+P
+
+∆t(cid:1)(cid:1) Θ
+
+P
+
++ exp(cid:0)−K
+
+P
+
+∆t(cid:1) Xt−1 + ηt,
+
+where ∆t is the time between the observations at t and t − 1, with measurement equation
+
+and error structure
+
+(cid:18)ηt
+
+(cid:19)
+
+yt = Γ + BXt + εt,
+
+(cid:20)(cid:18)0
+(cid:19)
+
+,
+
+0
+
+(cid:18)Q 0
+
+0 H
+
+(cid:19)(cid:21)
+
+,
+
+∼ N
+
+εt
+
+where H is diagonal, Q = VP [Xt|Ft−1] and the transition and measurement errors are assumed orthog-
+onal to the initial state.
+
+P
+The computation of Q is straightforward if we use the diagonalization of K
+
+P
+K
+
+= V ΛV −1,
+
+(18)
+
+, and Λ is a diagonal matrix containing the eigenvalues (λi) of
+. We refer the reader to Lang (1987) and Golub & Van Loan (1996) for details on linear algebra
+
+P
+where V contains the eigenvectors of K
+P
+K
+theory and on the computational aspects of linear algebra, respectively.
+
+6
+
+Substituting (18) in (17), using
+
+and similarly
+
+we obtain
+
+exp(−K
+P
+
+exp(−(cid:0)K
+P(cid:1)T
+(cid:18)(cid:90) ∆t
+
+s) = V exp(−Λs)V −1,
+
+s) =(cid:0)V −1(cid:1)T exp(−Λs)V T ,
+(cid:19)
+
+exp(−Λs)Ω exp(−Λs)ds
+
+Q = V
+
+V T ,
+
+0
+
+where Ω = (ωij)n×n = V −1ΣΣT (V −1)T . Since the exponential of a diagonal matrix with entries −λis
+is a diagonal matrix with entries e−λis, each term of the matrix under the integral is (ωije−(λi+λj )s)n×n.
+Integration yields an expression which only involves matrix multiplications
+
+(cid:18) ωij
+
+λi + λj
+
+(cid:0)1 − e−(λi+λj )∆t(cid:1)(cid:19)
+
+Q = V
+
+V T .
+
+n×n
+
+(19)
+
+variance Σ0 =(cid:82) ∞
+
+Stationarity of the system under the P-measure is ensured if the real parts of all eigenvalues of K
+P
+are positive, and this condition is imposed in all estimations. For this reason, we can start the Kalman
+P
+ﬁlter at the unconditional mean, X0 = Θ
+, and covariance matrix, Σ0. In particular, the unconditional
+s)ΣΣ(cid:48) exp(−(K
+)(cid:48)s)ds used in the initialization of the ﬁlter is easily obtained
+P
+has eigenvalues with positive real parts, the integral converges
+
+0 exp(−K
+
+P
+
+P
+from the above expression. Assuming K
+to
+
+V T .
+
+(20)
+
+(cid:18) ωij
+
+(cid:19)
+
+λi + λj
+
+n×n
+
+Σ0 = V
+
+3. Data and estimation framework
+
+In this section we describe the estimation method and present the data set used in the empirical
+analysis. Speciﬁcally, we estimate the three-factor dynamic Nelson-Siegel model of Diebold & Li (2006)
+and the arbitrage-free Nelson and Siegel model developed by Christensen et al. (2011) via Maximum
+Likelihood. Benchmark models used include the Random Walk forecast (RW), linear autoregressive
+(AR) and vector autoregressive models (VAR).
+
+3.1. Estimation of the DNS and AFNS models
+
+Given the state space formulation of the dynamic factor model presented in (3) and (4), the Kalman
+ﬁlter can be used to obtain the likelihood function via the prediction error decomposition, as well as
+ﬁltered estimates of the states and of their covariance matrices. However, the computational burden
+associated with the Kalman ﬁlter recursions depends crucially on the dimension of both the state and
+observation vectors. Moreover, in yield curve models the dimension of the observation vector (N × 1) is
+often much larger than that of the state vector (K × 1). In these circumstances, Jungbacker & Koopman
+(2014) have shown that signiﬁcant computational gains can be achieved by a simple transformation.
+First, deﬁne the N × N and the K × N matrices:
+
+(cid:21)
+
+(cid:20) J L
+
+J H
+
+J =
+
+,
+
+J L = CΛ(λ)(cid:48)Σ−1,
+
+7
+
+respectively, where C can be any K × K invertible matrix, and J H is chosen to guarantee that J is full
+rank. Selecting C = (Λ(λ)(cid:48)Σ−1Λ(λ))
+
+−1 implies:
+
+(cid:20) J L(yt − Γ)
+
+J H(yt − Γ)
+
+(cid:21)
+
+(cid:21)
+
+(cid:20) yL
+
+t
+yH
+t
+
+(cid:21)
+
+(cid:20) ft
+
+0
+
+=
+
+=
+
++
+
+(cid:20) ALεt
+
+AHεt
+
+(cid:21)
+
+,
+
+(cid:20) ALεt
+
+AHεt
+
+(cid:21)
+
+(cid:18)
+
+(cid:20) C 0
+
+0 ΣH
+
+(cid:21)(cid:19)
+
+.
+
+∼ N
+
+0,
+
+J(yt−Γ) =
+
+The law of motion of the factors in (4) is not aﬀected by the transformation. Note that yH
+t
+
+is
+neither dependent on ft, nor correlated with yL
+t and, therefore, does not need to be considered for
+the estimation of the factors. This implies that the Kalman ﬁlter only needs to be applied to the low
+dimensional subvector yL
+for signal extraction, generating large computational gains when N >> K
+t
+(see Table 1 of Jungbacker & Koopman, 2014).
+Denote l(y) the log-likelihood function of the untransformed model in (3) and (4), where y =
+1, . . . , y(cid:48)
+T )(cid:48). Evaluation of l(y) can also take advantage of the transformations presented above. Jung-
+(y(cid:48)
+backer & Koopman (2014) show that the log-likelihood of the untransformed model can be represented
+as
+
+l(y) = c + l(yL) − T
+2
+
+where c is a constant independent of both y and the parameters, l(cid:0)yL(cid:1) is the log-likelihood function of
+
+the reduced system, and et = yt − Γ − Λ(λ)ft. Note that computation of matrix J H is not required at
+any point, as proved in Lemma 2 of Jungbacker & Koopman (2014).
+
+t=1
+
+(21)
+
+log
+
+T(cid:88)
+
+|Σ|
+|C| − 1
+
+2
+
+e(cid:48)
+tΣ−1et,
+
+3.2. Data
+
+The analyzed data set consists of Brazilian Interbank Deposit Futures Contract (DI1)3. DI1 market
+is one of the largest ﬁxed-income markets among emerging economies. We use DI1 daily closing yields
+of available contracts. Since not all maturities are observed on a daily basis, we interpolate the available
+data using cubic splines to produce yield curves with ﬁxed maturities. The chosen ﬁxed maturities are:
+3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 42, and 48 months.
+
+The DI1 contract with maturity τ is a zero-coupon future contract in which the underlying asset
+is the DI interest rate accrued on a daily basis, capitalized between trading days t and τ 4 The value
+of contract is set by its value at maturity, R$100, 000.00, discounted according to the accrued interest
+rate negotiated between the seller and the buyer. In 2010 the DI1 market traded a total of 293 million
+contracts corresponding to US$ 15 billion. The DI1 contract is very similar to the zero-coupon bond,
+except for the daily payment of margin adjustments. The data set contains liquid maturities from
+
+3BM&FBOVESPA is the entity that oﬀers the DI1 contract and determines the number of maturities with authorized
+
+contracts.
+
+4The DI rate is the average daily rate of Brazilian Interbank Deposits (borrowing/lending), calculated by the Clear-
+inghouse for Custody and Settlements (CETIP) for all business days. The DI rate, which is published on a daily basis, is
+expressed in annually compounded terms, based on 252 business days. When buying a DI1 contract at the DI (cid:63) rate at
+time t and keeping it until maturity τ , the gain or loss is given by:
+
+(cid:32)(cid:81)ζ(t,τ )
+
+(cid:33)
+
+100.000
+
+i=1 (1 + yi) 1
+(1 + DI∗)
+
+ζ(t,τ )
+
+252
+
+252
+
+− 1
+
+,
+
+where yi denotes the DI rate, (i − 1) days after the trading day. The function ζ(t, τ ) represents the number of working
+days between t and τ .
+
+8
+
+January 2006 to December 2012, with a total of T = 1488 daily observations. The data source is the
+Brazilian Mercantile and Futures Exchange (BM&F).
+
+Table 1 reports descriptive statistics for the Brazilian interest rate yield curve based on the DI1
+market. For each time series we report the mean, standard deviation, minimum, maximum and the lag-
+1 sample autocorrelation. The summary statistics conﬁrm some common stylized facts to yield curve
+data: the sample average curve is upward sloping and concave, volatility is decreasing with maturity,
+and autocorrelations are very high.
+
+Table 1: Descriptive statistics for the term structure of interest rates
+
+The Table reports summary statistics for DI1 yields over the sample period January 2007 - December 2012
+(1488 daily observations). We examine daily data, constructed using cubic splines. Maturity is measured in
+months. We show, for each maturity, mean, standard deviation, minimum, maximum and and a selection
+
+of autocorrelation (Acf, (cid:98)ρ(1), (cid:98)ρ(5), and (cid:98)ρ(21), respectively) and partial autocorrelation (Pacf, (cid:98)α(2) and (cid:98)α(5))
+
+coeﬃcients.
+
+Maturity
+
+τ
+
+Mean
+
+Std Dev Min Max
+
+Skew
+
+Kurt
+
+Month
+
+1
+3
+6
+9
+12
+15
+18
+21
+24
+27
+30
+36
+42
+48
+
+Level
+Slope
+Curvature
+
+10.66
+10.66
+10.73
+10.85
+11.00
+11.16
+11.31
+11.42
+11.52
+11.60
+11.66
+11.75
+11.83
+11.89
+
+12.41
+-1.92
+-1.00
+
+1.75
+1.79
+1.86
+1.90
+1.92
+1.92
+1.88
+1.85
+1.81
+1.77
+1.74
+1.66
+1.59
+1.56
+
+1.42
+1.95
+3.94
+
+6.97
+7.02
+6.91
+6.86
+6.87
+6.90
+7.00
+7.14
+7.32
+7.49
+7.65
+7.91
+8.13
+8.29
+
+9.34
+-6.37
+-9.48
+
+14.13
+14.52
+15.32
+16.04
+16.40
+16.91
+17.12
+17.26
+17.44
+17.62
+17.78
+17.83
+17.93
+18.00
+
+18.99
+2.84
+8.60
+
+-0.337
+-0.286
+-0.201
+-0.132
+-0.091
+-0.053
+-0.046
+-0.042
+-0.032
+-0.004
+0.028
+0.080
+0.104
+0.181
+
+0.673
+-0.267
+0.120
+
+2.219
+2.296
+2.472
+2.650
+2.784
+2.907
+3.002
+3.118
+3.243
+3.375
+3.504
+3.731
+3.937
+4.156
+
+5.185
+2.814
+2.192
+
+(cid:98)ρ(1)
+
+0.998
+0.998
+0.998
+0.998
+0.997
+0.997
+0.997
+0.997
+0.996
+0.996
+0.996
+0.995
+0.995
+0.995
+
+0.992
+0.995
+0.997
+
+Acf
+
+(cid:98)ρ(5)
+
+0.987
+0.989
+0.989
+0.988
+0.987
+0.985
+0.984
+0.983
+0.982
+0.981
+0.980
+0.978
+0.976
+0.975
+
+0.957
+0.974
+0.978
+
+(cid:98)ρ(21)
+
+0.936
+0.940
+0.939
+0.934
+0.929
+0.923
+0.917
+0.912
+0.907
+0.901
+0.895
+0.887
+0.880
+0.873
+
+0.800
+0.866
+0.903
+
+(cid:98)α(2)
+
+Pacf
+
+(cid:98)α(5)
+
+-0.016
+-0.017
+-0.012
+0.004
+0.019
+0.024
+0.020
+0.023
+0.020
+0.015
+0.010
+0.015
+0.017
+0.018
+
+-0.012
+-0.025
+-0.023
+-0.010
+0.000
+0.003
+0.002
+-0.002
+-0.001
+-0.002
+-0.006
+-0.013
+-0.006
+-0.011
+
+-0.064
+-0.039
+-0.160
+
+-0.014
+-0.036
+-0.011
+
+Figure 1 displays a three-dimensional plot of the data set and illustrates how yield levels and spreads
+vary substantially throughout the sample. The plot also suggests the presence of an underlying factor
+structure. Although the yield series vary substantially over time for each maturity, a strong common
+pattern in the 14 series is apparent for most of them: the yield curve is an upward-sloping function of
+maturity. For example, the last year of the sample is characterized by rising interest rates, especially
+for the shorter maturities, which respond faster to the contractionary monetary policy implemented by
+the Brazilian Central Bank in the ﬁrst half of 2010. It is clear from Figure 1 that not only the term
+structure level ﬂuctuates over time but also its slope and curvature. The curve takes on various forms
+ranging from nearly ﬂat to (inverted) S-type shapes.
+
+4. Empirical analysis
+
+In this section we investigate whether the in-sample superiority of the ﬂexible correlated-factor model
+
+carries over to out-of-sample forecast accuracy.
+
+Estimates for the vector of factor means, µ, and the λ parameter are very similar for both the
+uncorrelated and correlated DNS models, as can be seen on Table 2 and on Table 3. The mean of
+
+9
+
+Figure 1: Evolution of the yield curve
+
+Evolution of the term structure of interest rates (based on DI1 contracts) for the 2006:01-2012:12
+period. The sample consists of the daily yields for maturities of 1, 3, 4, 6, 9, 12, 15, 18, 24, 27, 30,
+36, 42, and 48 months.
+
+the level, slope, and curvature factors are 12.56%, −2.21%, and −0.84% in the uncorrelated model,
+respectively, and 12.03%, −3.44%, and 0.80% for the correlated model, respectively. All ﬁgures are in
+accordance with observable empirical yield curves. The transition matrices reveal that the factors are
+highly persistent, being well above 0.9 for both estimated DNS models. The correlated transition matrix
+shows only very mild correlation.
+
+Table 2: Estimates for the uncorrelated DNS model
+
+Estimated uncorrelated DNS model. All numbers are in decimals. State transition matrix A is enforced to be
+diagonal. Corresponding error matrix Q is enforced to be diagonal and positive semi-deﬁnite (using Cholesky
+factorization Q = qq(cid:48)). Vector µ contains the level, slope, and curvature factor means. The estimated λ is
+1.4377, where time measured in years.
+
+A matrix
+A.,2
+
+A.,1
+
+0.9873
+
+0
+
+A.,3
+
+0
+
+0
+
+0
+
+0
+
+0.9496
+
+0
+
+0.9809
+
+Means
+
+µ
+
+0.1256
+−0.0221
+−0.0084
+
+q1,.
+
+q2,.
+
+q3,.
+
+q.,1
+
+4.61 × 10−6
+
+0
+
+0
+
+Q matrix
+q.,2
+
+0
+
+6.00 × 10−6
+
+0
+
+q.,3
+
+0
+
+0
+
+5.30 × 10−5
+
+A1,.
+
+A2,.
+
+A3,.
+
+Variances of the state variables are similar across the uncorrelated and correlated DNS models,
+except for the variance of shocks to the curvature parameter. The covariance estimates obtained in
+the correlated-factor DNS model translate into a correlation of −0.795 for innovations to the level and
+slope factor, a correlation of 0.330 for innovations to the level and curvature factor, and a correlation of
+−0.234 for innovations to the slope and curvature factor. These correlations allow interesting geometrical
+interpretations: when the yield curve level increases, it gets steeper, and more concave. The slope eﬀect
+is higher than the curvature eﬀect, and the correlation between slope and curvature reinforces slightly
+the concavity eﬀect.
+
+10
+
+Table 3: Estimates for the correlated DNS model
+
+Estimated correlated DNS model. All numbers are in decimals. Corresponding error matrix Q are enforced
+to be positive semi-deﬁnite (using Cholesky factorization Q = qq(cid:48)). Vector µ contains the level, slope, and
+curvature factor means. The estimated λ is 1.3272, where time is measured in years.
+
+A matrix
+A.,2
+
+A.,1
+
+0.9898
+
+0.0318
+
+0.0394
+0.9945
+−0.0032 −0.0610
+
+A.,3
+
+−0.0063
+0.0392
+
+0.9462
+
+Means
+
+µ
+
+0.1203
+−0.0344
+0.0080
+
+q1,.
+
+q2,.
+
+q3,.
+
+q.,1
+
+4.84 × 10−6
+−4.62 × 10−6
+6.38 × 10−6
+
+Q matrix
+q.,2
+
+0
+
+6.97 × 10−6
+−5.43 × 10−6
+
+q.,3
+
+0
+
+0
+
+7.71 × 10−5
+
+A1,.
+
+A2,.
+
+A3,.
+
+Estimates of the level factor mean are noticeably higher in AFNS models when compared to both
+DNS formulations, while slope and curvature are of similar magnitude, as can be seen on Table 4 and
+on Table 5. λ is slightly higher for correlated DNS and AFNS models. The higher λ makes the slope
+and curvature factor loadings decay to zero faster.
+
+Table 4: Estimates for the uncorrelated AFNS model
+
+Estimated uncorrelated AFNS model. Estimated state transition matrix K is enforced to be diagonal. Corre-
+sponding error matrix Σ is enforced to be diagonal and positive semi-deﬁnite (using Cholesky factorization). θ
+is the vector of factor means (level, slope, and curvature). The associated estimated λ is 1.4039, where time is
+measured in years.
+
+P
+K
+
+P
+κ
+.,1
+
+matrix
+
+P
+.,2
+
+κ
+
+3.1873
+
+0
+
+1.1755
+
+0
+
+0
+
+P
+.,3
+
+κ
+
+0
+
+0
+
+0
+
+1.1027
+
+Mean
+
+P
+
+θ
+
+0.1294
+−0.0233
+−0.0258
+
+Σ1,.
+
+Σ2,.
+
+Σ3,.
+
+P
+κ
+1,.
+P
+κ
+2,.
+P
+κ
+3,.
+
+Σ matrix
+Σ.,2
+
+Σ.,1
+
+0.0334
+
+0
+
+Σ.,3
+
+0
+
+0
+
+0
+
+0
+
+0.0315
+
+0
+
+0.0572
+
+While λ and θ are directly comparable to the decay parameter and vector of factor means in the
+DNS model, the state transition and covariance matrices are modeled continuously and need to be
+converted to be comparable. The continuous state transition matrix (K) and volatility matrix (Σ) are
+converted into one-day (the time between observations) conditional matrices. Given the mean-reversion
+
+rate matrix K, its daily counterpart can be computed as exp(cid:0)−K
+
+(cid:1). For the volatility matrix Σ, its
+
+P 1
+252
+
+discrete version is computed as
+
+QAFNS =
+
+(cid:90) 1
+
+252
+
+0
+
+exp(−K
+P
+
+s)ΣΣ(cid:48) exp(−(K
+P
+
+)(cid:48)s)ds,
+
+which is based on equation (17) with ∆t = 1
+
+252. Results are presented on Table 6.
+
+The same conversion procedure is used in the correlated AFNS model to ensure comparison (see Table
+7). Results are similar to the ones reported for the correlated-factor DNS model. The curvature factor
+becomes slightly more persistent in the AFNS model, while the level becomes slightly less persistent.
+
+The yield adjustment term is the key diﬀerence in the measurement update between the AFNS and
+
+11
+
+Table 5: Estimates for the correlated AFNS model
+
+Estimated correlated AFNS model. Estimated state transition matrix K is fully ﬂexible. Corresponding error
+matrix Σ is enforced to be lower-triangular and positive semi-deﬁnite (using Cholesky factorization). θ is
+the vector of factor means (level, slope, and curvature). The associated estimated λ is 1.3419, where time is
+measured in years.
+
+P
+K
+
+matrix
+
+P
+.,2
+
+P
+.,1
+
+P
+.,3
+
+κ
+
+κ
+
+κ
+3.1408 −0.0604
+−2.6261
+−0.0412
+
+0.0254
+1.2257 −1.4691
+1.9921
+1.8640
+
+Mean
+
+P
+
+θ
+
+Σ matrix
+Σ.,2
+
+Σ.,1
+
+0.1418
+−0.0344
+−0.0192
+
+Σ1,.
+
+Σ2,.
+
+Σ3,.
+
+0
+
+0.0401
+−0.0406
+0.0220
+−0.0355 −0.0926
+
+Σ.,3
+
+0
+
+0
+
+0.0684
+
+P
+κ
+1,.
+P
+κ
+2,.
+P
+κ
+3,.
+
+Table 6: One-day parameters for uncorrelated AFNS model
+
+K and Σ converted into daily estimates to ensure comparison with A and Q.
+
+One-day mean reversion matrix
+
+One-day volatility matrix
+
+0.9874
+
+0
+
+0.9953
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0.9956
+
+4.38 × 10−6
+
+0
+
+0
+
+0
+
+3.93 × 10−6
+
+0
+
+0
+
+0
+
+5.29 × 10−5
+
+DNS models. The adjustment terms for both AFNS models are shown in Figure 2. The yield adjustment
+term increases the ﬂexibility of the curve ﬁtting, especially at longer maturities. Furthermore the oﬀ-
+diagonal elements of matrix Σ are heavily inﬂuenced by the shape of the adjustment terms.
+
+The shape of the almost linear adjustment term is not surprising for the uncorrelated AFNS model
+since all oﬀ-diagonals in Σ are forced to be zero, meaning there are no negative covariances to oﬀset the
+decreasing function of maturity. However, the more ﬂexible correlated AFNS model can have covariances
+that change the shape of the adjustment term. Nevertheless, due to the low oﬀ-diagonal for the correlated
+covariance matrix, the eﬀect on the shape of the adjustment term is small. In fact, the very low yield
+adjustment term in both AFNS cases (highlighted by the considerably lower variances than the DNS
+models) implies that very little adjustment is needed to make the DNS model arbitrage-free.
+
+To further investigate in-sample model performance, residual means for each maturity together with
+root-mean-square-errors (RMSE) are presented on Table 8. Based on Table 8 alone, it is very hard to
+rank models, but it does indicate that the simpler DNS models outperform the AFNS counterpart at
+least in-sample. The lowest RMSEs of 12 out of 13 maturities belong to the DNS class, out of which,
+eight belong to the uncorrelated DNS model. The absence of arbitrage restrictions do not seem to
+improve in-sample ﬁt. Given the relatively small yield adjustment terms presented in Figure 2, the lack
+of improvement in ﬁt is not very surprising.
+
+4.1. Out-of-sample analysis
+
+The forecasting test is performed in pseudo-real time, i.e., we never use information which is not
+available at the time the forecast is made. We use a rolling estimation window of 500 daily observations
+
+12
+
+Table 7: One-day parameters for correlated AFNS model
+
+K and Σ converted into daily estimates to ensure comparison with A and Q.
+
+0.9876
+
+One-day mean reversion matrix
+0.0002 −0.0001
+0.0103
+0.9951
+0.0058
+−0.0557 −0.0224
+
+0.9921
+
+One-day volatility matrix
+
+4.38 × 10−6 −6.39 × 10−6 −5.57 × 10−6
+8.34 × 10−6 −2.24 × 10−6
+−6.39 × 10−6
+−5.57 × 10−6 −2.24 × 10−6
+5.72 × 10−5
+
+Figure 2: Yield adjustment term for the AFNS models
+
+Yield adjustment term,
+provided in Christensen et al. (2011).
+
+τ
+
+−A(τ )
+
+, in basis points. Maturity is measured in years. The solution is
+
+(2 years). We produce forecasts for 1-week, 1-month, 3-months, and 6-months ahead. The choice of a
+rolling scheme is suggested by two reasons: ﬁrst, it is a natural way to avoid problems of instability, see
+e.g. Pesaran et al. (2011). Second, having a ﬁxed number of observations used to compute the forecasts,
+the resulting time series of forecast errors can be tested for accuracy by the Giacomini & White (2006)
+test. It is worth noting that we use iterated forecasts instead of direct forecasts for the multi-period
+ahead predictions. Marcellino et al. (2005) argue that iterated forecasts are more eﬃcient when the
+model is correctly speciﬁed.
+In order to evaluate out-of-sample forecasts, we compute popular error metrics. Given a sample of
+M out-of-sample forecasts for an h-period-ahead forecast horizon, we compute the root mean squared
+forecast error (RMSFE) for maturity τi and for model m as follows:
+
+RMSFEm(τi) =
+
+(22)
+
+(cid:0)ˆyt+h|t,m(τi) − yt+h(τi)(cid:1)2
+
+(cid:118)(cid:117)(cid:117)(cid:116) 1
+
+M
+
+M(cid:88)
+
+t=1
+
+13
+
+0.511.522.533.54−0.007−0.006−0.005−0.004−0.003−0.002−0.0010.000Maturity in MonthsYield Adjustment Term  indep. AFNS yield adj.corr. AFNS yield adj.Table 8: Descriptive statistics of in-sample ﬁt
+
+The means and the root mean squared errors for 13 diﬀerent maturities. All numbers are measured in basis
+points.
+
+Maturity
+
+Months
+
+τ
+
+3
+
+6
+
+9
+
+12
+
+15
+
+18
+
+21
+
+24
+
+27
+
+30
+
+36
+
+42
+
+48
+
+DNS
+
+AFNS
+
+indep-factor
+
+dep-factor
+
+indep-factor
+
+dep-factor
+
+Mean RMSE
+
+Mean RMSE
+
+Mean RMSE
+
+Mean RMSE
+
+-7.05
+
+-0.01
+
+3.18
+
+3.06
+
+1.11
+
+-0.29
+
+-0.94
+
+-0.92
+
+-0.56
+
+0.66
+
+1.94
+
+0.43
+
+-2.37
+
+19.54
+
+-4.06
+
+18.00
+
+0.01
+
+6.71
+
+6.65
+
+4.39
+
+2.31
+
+2.41
+
+3.07
+
+3.22
+
+3.39
+
+3.39
+
+2.54
+
+5.40
+
+1.07
+
+3.56
+
+3.33
+
+1.53
+
+0.36
+
+-0.06
+
+0.15
+
+0.68
+
+2.02
+
+3.42
+
+1.88
+
+-1.09
+
+1.07
+
+6.74
+
+6.70
+
+4.54
+
+2.32
+
+2.19
+
+2.95
+
+3.24
+
+3.85
+
+4.35
+
+3.04
+
+5.20
+
+-0.02
+
+8.38
+
+11.01
+
+9.35
+
+5.49
+
+2.19
+
+-0.16
+
+-1.49
+
+-2.05
+
+-1.30
+
+0.42
+
+1.13
+
+2.22
+
+0.03
+
+14.77
+
+17.28
+
+14.01
+
+8.83
+
+3.94
+
+0.91
+
+2.79
+
+3.75
+
+3.57
+
+2.37
+
+2.74
+
+5.36
+
+-14.64
+
+24.28
+
+-0.03
+
+6.52
+
+7.21
+
+4.68
+
+2.07
+
+0.04
+
+-1.3
+
+-1.98
+
+-1.43
+
+-0.21
+
+0.00
+
+0.65
+
+0.02
+
+9.50
+
+10.63
+
+7.97
+
+4.09
+
+0.07
+
+3.13
+
+4.53
+
+4.49
+
+3.55
+
+0.00
+
+4.38
+
+where yt+h(τi) is the yield for the maturity τi observed at time t + h, and ˆyt+h|t,m(τi) is the corresponding
+forecasting made at time t.
+
+Following H¨ordahl et al. (2006) and de Pooter et al. (2010), we also summarize the forecasting
+performance of each model by computing the trace root mean squared forecast error (TRMSFE). For
+each forecast horizon, we compute the trace of the covariance matrix of the forecast errors across all N
+maturities. Hence, lower TRMSFE indicate more accurate forecasts. The TRMSFE can be computed
+as
+
+(cid:118)(cid:117)(cid:117)(cid:116) 1
+
+N
+
+N(cid:88)
+
+M(cid:88)
+
+i=1
+
+t=1
+
+1
+M
+
+(cid:0)ˆyt+h|t(τi) − yt+h(τi)(cid:1)2
+
+TRMSFEm(τi) =
+
+(23)
+
+Finally, in order to assess the statistical signiﬁcance of these forecasting diﬀerences, we use the test
+proposed by Giacomini & White (2006). The Giacomini & White (2006) (GW) test is a conditional
+forecasting ability test constructed under the assumption that forecasts are generated using a moving
+data window. This is a test of equal forecasting accuracy and as such can handle forecasts based on
+both nested and non-nested models, regardless from the estimation procedures used in the derivation of
+the forecasts. The test is based on the loss diﬀerential dm,t = (erw,t)2 − (em,t)2, where emt is the forecast
+error of model m at time t. We assume that the loss function is quadratic but it can be replaced by
+other loss functions depending on the forecast goal. The null hypothesis of equal forecasting accuracy
+can be written as
+
+(24)
+where δm,t is a p × 1 vector of test functions or instruments and h is the forecast horizon. If a constant
+
+H0 : E [dm,t+h|δm,t] = 0,
+
+14
+
+is used as instrument, the test can be interpreted as an unconditional test of equal forecasting accuracy.
+The GW test statistic GWm,t can be computed as the Wald statistic:
+
+(cid:32)
+
+n−h(cid:88)
+
+(cid:33)(cid:48)
+
+(cid:32)
+
+n−h(cid:88)
+
+(cid:33)
+
+GWm,n = n
+
+n−1
+
+δm,tdm,t+h
+
+ˆΩ−1
+
+n
+
+n−1
+
+δm,tdm,t+h
+
+d−→ χ2
+
+dim(δ)
+
+(25)
+
+t=ω+1
+
+t=ω+1
+
+where ˆΩn is a consistent HAC estimator for the asymptotic variance of δm,tdm,t+h, and n = (T − ω) the
+number of out-of-sample observations. Under the null hypothesis given in (24), the test statistic GWi,t
+is asymptotically distributed as χ2
+p. The asterisks on Tables 9 and 10 denote signiﬁcant diﬀerences in
+out-of-sample model performance relative to RW at the 5, and 10 percent levels.
+
+Tables 9 and 10 report the RMSFE and TRMSFE for each of the forecasting models and for each of
+the forecasting horizons. The ﬁrst column in each panel of each Table reports the value of RMSFE and
+TRMSFE (expressed in basis points) for the random walk model (RW), while all other columns report
+statistics relative to the RW. The following model abbreviations are used on Tables 9 and 10: AR(1) for
+the ﬁrst-order univariate autoregressive model, VAR(1) for the ﬁrst-order vector autoregressive model,
+DNSAR for the dynamic Nelson-Siegel model with a (V)AR speciﬁcation for the factors, and AFNS
+for the dynamic Arbitrage-Free Nelson Siegel model with a (V)AR speciﬁcation for the factors. First,
+the RW conﬁrms to be a very competitive benchmark in forecasting the term structure of bond yields,
+especially at short horizons.
+
+For each forecasting horizon considered, we highlight the most accurate model, in terms of RMSFE,
+for each of the 13 maturities analyzed. Bold values indicate relative diﬀerences below one, which means
+that a particular model outperforms the random walk. Stars denote rejection of the null of equal
+forecasting ability according to the GW test at 5% and 1% level.
+
+Comparing correlated to uncorrelated factor models, we notice that the most parsimonious speciﬁ-
+cation performs better for AFNS but not for DNS. For the latter, VAR parameterization of the factor
+dynamics achieves better forecasting results. As pointed out, the DNS model outperformed the AFNS
+model in-sample in terms of RMSE. When analyzing out-of-sample performance, we observe that the
+DNS model is superior to the other competitors in almost all maturities when short-horizon forecasts
+are considered (1-week and 1-month). These results are in line with Duﬀee (2002), who conclude that
+aﬃne term structure models can have very poor performance out-of-sample.
+
+However, for longer forecasting horizons (3 to 6-months ahead), the AFNS model outperforms all
+competitors for all maturities. Nevertheless, DNS still outperforms RW, showing its good forecasting
+capabilities. What is striking here is that the arbitrage-free restrictions seem to improve a lot the
+long run forecasts, since most of the diﬀerences in RMSFE are statistically signiﬁcant. Moreover, the
+uncorrelated AFNS version is the best performing model for almost all maturities, except for short
+maturities, when it is beaten by the correlated AFNS model.
+
+For the 1-week ahead forecasts, the best performing model overall in terms of T-RMSFE is the RW
+model. However, for 1-month ahead forecasts the correlated factors DNS model performs best, while for
+the longer forecast horizons of 3- and 6-months ahead the best performing model in terms of T-RMSFE
+was the AFNS, evidencing the forecast beneﬁts of imposing the arbitrage-free restriction.
+
+15
+
+Table 9: Out-of-sample Yield Forecasts : [T] RMSFEs
+
+Note: This table summarizes Relative Mean Squared Forecast Errors and Trace Root Mean Squared Forecast Error (TRMPSE)
+relative to the Random Walk obtained by using each of the competing models, for the horizons 1-week, 1-, 3-, and 6-month-ahead.
+The ﬁrst column in the table reports the value of (T) RMSFE (expressed in basis points) for the Random Walk model (RW), while
+all other columns report statistics relative to the RW. The following model abbreviations are used in the table: RW stands for the
+Random Walk, (V)AR for the ﬁrst-order (Vector) Autoregressive Model, DNS for the one-step dynamic Nelson-Siegel model with
+a (V)AR speciﬁcation for the factors, AFNS refers to the one-step Arbitrage-Free Nelson Siegel model with a (V)AR speciﬁcation
+for the factors. Numbers smaller than one (shown in bold) indicate that models outperform the random walk, whereas numbers
+larger than one indicate underperformance. The gray box indicate outperformance in the maturity. The stars on the right of the
+cell entries signal the level at which the Giacomini & White (2006) test rejects the null of equal forecasting accuracy (∗ and ∗∗mean
+respectively rejection at 1% and 5% level).
+
+1
+6
+
+Maturity
+
+3
+6
+9
+12
+15
+18
+21
+24
+27
+30
+36
+42
+48
+
+1-week-ahead forecasts
+
+1-month-ahead forecasts
+
+RW
+
+AR(1)
+
+VAR(1)
+
+DNSAR
+
+DNSVAR AFNSAR AFNSVAR
+
+RW
+
+AR(1) VAR(1)
+
+DNSAR
+
+DNSVAR AFNSAR AFNSVAR
+
+0.120
+0.141
+0.154
+0.164
+0.174
+0.181
+0.183
+0.184
+0.187
+0.188
+0.188
+0.189
+0.192
+
+0.986
+0.994
+0.999
+1.003
+1.006
+1.008
+1.011
+1.013
+1.013
+1.014
+1.016
+1.018
+1.019
+
+0.764∗
+0.928
+1.015
+1.062
+1.105
+1.130
+1.152
+1.162
+1.159
+1.160
+1.162
+1.169
+1.166
+
+0.990∗∗
+1.384
+1.430
+1.269
+1.104
+1.023
+1.005
+0.993
+0.988
+0.993
+1.004
+1.010
+1.044
+
+2.211
+0.961
+1.120
+1.152
+1.090
+1.045
+1.045
+1.067
+1.083
+1.060
+1.035
+1.040
+1.058
+
+1.792
+1.149
+1.222
+1.194
+1.126
+1.083
+1.081
+1.079
+1.074
+1.080
+1.085
+1.053
+1.042
+
+1.494
+0.858∗
+1.001
+1.033
+1.031
+1.033
+1.052
+1.032
+1.030
+1.053
+1.072
+1.039
+1.054
+
+0.409
+0.430
+0.442
+0.445
+0.455
+0.459
+0.458
+0.453
+0.453
+0.452
+0.437
+0.420
+0.417
+
+0.994
+0.997
+1.001
+1.006
+1.012
+1.017
+1.023
+1.029
+1.031
+1.036
+1.045
+1.056
+1.061
+
+0.573∗
+0.749∗∗
+0.858
+0.963
+1.040
+1.101
+1.139
+1.162
+1.158
+1.159
+1.198
+1.230
+1.230
+
+0.995∗∗
+1.008
+1.017
+1.021
+1.011
+1.006
+1.002
+0.990
+0.977∗∗
+0.980∗
+1.005
+1.009
+1.011
+
+1.113
+0.960∗∗
+0.955
+0.964
+0.958
+0.954
+0.953
+0.948
+0.942
+0.944
+0.969
+0.978
+0.983
+
+1.192
+1.162
+1.164
+1.166
+1.146
+1.130
+1.128
+1.128
+1.120
+1.119
+1.134
+1.125
+1.092
+
+0.576∗
+0.693∗
+0.845
+0.956
+1.021
+1.064
+1.101
+1.104
+1.100
+1.109
+1.129
+1.107
+1.077
+
+T-RMSFE
+
+0.170
+
+1.010
+
+1.116
+
+1.086
+
+1.127
+
+1.132
+
+1.052
+
+0.440
+
+1.024
+
+1.065
+
+1.002
+
+0.969
+
+1.139
+
+1.011
+
+Table 10: Out-of-sample Yield Forecasts : [T] RMSFEs
+
+Note: This table summarizes Relative Mean Squared Forecast Errors and Trace Root Mean Squared Forecast Error (TRMPSE)
+relative to the Random Walk obtained by using each of the competing models, for the horizons 1-week, 1-, 3-, and 6-month-ahead.
+The ﬁrst column in the table reports the value of (T) RMSFE (expressed in basis points) for the Random Walk model (RW), while
+all other columns report statistics relative to the RW. The following model abbreviations are used in the table: RW stands for the
+Random Walk, (V)AR for the ﬁrst-order (Vector) Autoregressive Model, DNS for the one-step dynamic Nelson-Siegel model with
+a (V)AR speciﬁcation for the factors, AFNS refers to the one-step Arbitrage-Free Nelson Siegel model with a (V)AR speciﬁcation
+for the factors. Numbers smaller than one (shown in bold) indicate that models outperform the random walk, whereas numbers
+larger than one indicate underperformance. The gray box indicate outperformance in the maturity. The stars on the right of the
+cell entries signal the level at which the Giacomini & White (2006) test rejects the null of equal forecasting accuracy (∗ and ∗∗mean
+respectively rejection at 1% and 5% level).
+
+1
+7
+
+Maturity
+
+3
+6
+9
+12
+15
+18
+21
+24
+27
+30
+36
+42
+48
+
+3-month-ahead forecasts
+
+6-month-ahead forecasts
+
+RW
+
+AR(1) VAR(1)
+
+DNSAR
+
+DNSVAR AFNSAR
+
+AFNSVAR
+
+RW
+
+AR(1) VAR(1) DNSAR
+
+DNSVAR AFNSAR
+
+AFNSVAR
+
+1.134
+1.192
+1.234
+1.248
+1.252
+1.236
+1.221
+1.200
+1.196
+1.190
+1.154
+1.106
+1.084
+
+1.077
+1.085
+1.078
+1.071
+1.067
+1.066
+1.071
+1.085
+1.105
+1.124
+1.144
+1.176
+1.205
+
+0.727∗
+0.950∗∗
+1.119
+1.254
+1.358
+1.437
+1.495
+1.540
+1.566
+1.597
+1.669
+1.709
+1.724
+
+0.998∗
+0.980
+0.981
+0.991
+0.996
+1.003
+1.001
+0.997
+0.985∗∗
+0.985∗∗
+1.001
+1.007
+1.003
+
+1.020
+0.981∗
+0.967∗
+0.967∗
+0.966∗
+0.969∗
+0.966∗
+0.962∗
+0.952∗
+0.952∗
+0.969∗
+0.976∗∗
+0.973∗
+
+0.970∗
+0.910
+0.881
+0.873
+0.869
+0.871
+0.867
+0.867
+0.859∗∗
+0.857∗∗
+0.862
+0.859
+0.839
+
+0.546∗
+0.705∗
+0.806∗
+0.875∗
+0.919∗
+0.953∗
+0.975∗
+0.992∗
+0.996∗
+1.006
+1.013
+0.981∗∗
+0.932∗
+
+2.023
+2.092
+2.122
+2.110
+2.074
+2.004
+1.930
+1.856
+1.806
+1.760
+1.641
+1.534
+1.477
+
+1.252
+1.325
+1.289
+1.233
+1.196
+1.163
+1.144
+1.154
+1.182
+1.206
+1.233
+1.284
+1.334
+
+1.117∗
+1.380
+1.609
+1.798
+1.969
+2.114
+2.252
+2.377
+2.485
+2.587
+2.797
+2.949
+3.054
+
+0.999∗
+0.984
+0.987
+0.993
+0.994
+0.999
+1.000
+0.999
+0.992∗∗
+0.990∗
+0.999
+1.005
+1.001
+
+1.113
+0.960∗∗
+0.955
+0.964
+0.958
+0.954
+0.953
+0.948
+0.942
+0.944
+0.969
+0.978
+0.983
+
+0.758∗
+0.710∗
+0.699∗
+0.703∗
+0.709∗
+0.721
+0.733
+0.744
+0.749∗∗
+0.755∗
+0.774
+0.785
+0.778
+
+0.583∗
+0.697∗
+0.772∗
+0.825∗
+0.859∗
+0.892∗
+0.921∗∗
+0.947∗∗
+0.936∗
+0.928∗
+0.919∗∗
+0.905∗∗
+0.876∗∗
+
+T-RMSFE
+
+1.190
+
+1.102
+
+1.418
+
+0.994
+
+0.970
+
+0.876
+
+0.910
+
+1.890
+
+1.230
+
+2.151
+
+0.995
+
+0.972
+
+0.735
+
+0.846
+
+5. Concluding remarks
+
+The dynamic version of the Nelson-Siegel model has been shown in the literature to be remarkably
+well suited both to ﬁt and to forecast the term structure of interest rates. More recently, Christensen
+et al. (2011) have developed an arbitrage-free version of this model in order to bring theoretical rigor to
+a empirically successful model. In this paper, we have analyzed the forecasting power of no-arbitrage
+restrictions on the dynamic Nelson-Siegel model in order to determine the empirical relevance of this
+new theoretical restriction.
+
+Diﬀerent speciﬁcation for the factor dynamics are allowed in both versions of the DNS model. Their
+forecasts are compared on an yield to yield basis using the root mean squared forecast error, and their
+overall performance is measured via the trace root mean squared error. Results indicate that, for
+longer horizons (3- and 6-months ahead),the AFNS outperforms not only the DNS model, but also all
+other benchmarks considered. However, arbitrage-free restrictions do not seem to improve short horizon
+forecasts (1-weak and 1-month ahead).
+
+References
+
+Ang, A., & Piazzesi, M. 2003. A no-arbitrage vector autoregression of term structure dynamics with
+
+macroeconomic and latent variables. Journal of Monetary Economics, 50(4), 745–787.
+
+Bj¨ork, Tomas, & Christensen, Bent Jesper. 1999. Interest rate dynamics and consistent forward
+
+rate curves. Mathematical Finance, 9(4), 323–348.
+
+Carriero, Andrea. 2011. Forecasting the yield curve using priors from no-arbitrage aﬃne term
+
+structure models. International Economic Review, 52(2), 425–459.
+
+Carriero, Andrea, & Giacomini, Raffaella. 2011. How useful are no-arbitrage restrictions for
+
+forecasting the term structure of interest rates? Journal of Econometrics, 164(1), 21–34.
+
+Christensen, J. H. E., Diebold, F. X., & Rudebusch, G. D. 2009. An arbitrage-free generalized
+
+Nelson-Siegel term structure model. Econometrics Journal, 12, 33–64.
+
+Christensen, Jens H.E., Diebold, Francis X., & Rudebusch, Glenn D. 2011. The aﬃne
+
+arbitrage-free class of Nelson-Siegel term structure models. Journal of Econometrics, 164(1), 4–20.
+
+Coroneo, Laura, Nyholm, Ken, & Vidova-Koleva, Rositsa. 2011. How arbitrage-free is the
+
+Nelson-Siegel model? Journal of Empirical Finance, 18(3), 393–407.
+
+de Pooter, Michiel, Ravazzolo, Francesco, & van Dijk, Dick. 2010 (Mar.). Term structure
+
+forecasting using macro factors and forecast combination. Working Paper 2010/01. Norges Bank.
+
+Diebold, F., & Li, C. 2006. Forecasting the term structure of government bond yields. Journal of
+
+Econometrics, 130(2), 337–364.
+
+Diebold, Francis X., & Rudebusch, Glen D. 2013. The Dynamic Nelson-Siegel Approach to
+
+Yield Curve Modeling and Forecasting. Princeton University Press.
+
+Duffee, G. R. 2002. Term premia and interest rate forecasts in aﬃne models. Journal of Finance,
+
+57(1), 405–443.
+
+18
+
+Duffee, Gregory R. 2011. Forecasting with the term structure: The role of no-arbitrage restrictions.
+
+Working paper, Johns Hopkins University, Department of Economics.
+
+Duffie, Darrell, & Kan, Rui. 1996. A Yield-Factor Model Of Interest Rates. Mathematical Finance,
+
+6(4), 379–406.
+
+Favero, Carlo A., Niu, Linlin, & Sala, Luca. 2012. Term Structure Forecasting: No-Arbitrage
+
+Restrictions versus Large Information Set. Journal of Forecasting, 31(2), 124–156.
+
+Filipovic, Damir. 1999. A Note on the Nelson–Siegel Family. Mathematical Finance, 9(4), 349–359.
+
+Giacomini, Raffaella, & White, Halbert. 2006. Tests of Conditional Predictive Ability. Econo-
+
+metrica, 74(6), 1545–1578.
+
+Gimeno, Ricardo, & Marqu´es, J Manuel. 2009. Extraction of ﬁnancial market expectations about
+
+inﬂation and interest rates from a liquid market. Working Paper 0906, Banco de Espa˜na.
+
+Golub, Gene H., & Van Loan, Charles F. 1996. Matrix Computations. 3rd edn. Johns Hopkins
+
+University Press.
+
+H¨ordahl, P., Tristani, O., & Vestin, D. 2006. A joint econometric model of macroeconomic and
+
+term-structure dynamics. Journal of Econometrics, 131(1-2), 405–444.
+
+Jungbacker, Borus, & Koopman, Siem Jan. 2014. Likelihood-based dynamic factor analysis for
+
+measurement and forecasting. The Econometrics Journal, forthcoming.
+
+Lang, Serge. 1987. Linear Algebra. 3rd edn. Springer.
+
+Marcellino, M., Stock, J., & Watson, M. 2005. A comparison of direct and iterated multistep
+AR methods for forecasting macroeconomic time series. Journal of Econometrics, 135(1-2), 499–526.
+
+M¨onch, Emmanuel. 2008. Forecasting the yield curve in a data-rich environment: a no-arbitrage
+
+factor-augmented VAR approach. Journal of Econometrics, 146(1), 26–43.
+
+Nelson, Charles R., & Siegel, Andrew F. 1987. Parsimonious modeling of yield curves. The
+
+Journal of Business, 60(4), 473–489.
+
+Nyholm, Ken, & Vidova-Koleva, Rositsa. 2012. Nelson-Siegel, Aﬃne and Quadratic Yield Curve
+
+Speciﬁcations: Which One is Better at Forecasting? Journal of Forecasting, 31(6), 540–564.
+
+Pesaran, M. Hashem, Pick, Andreas, & Timmermann, Allan. 2011. Variable selection, estima-
+tion and inference for multi-period forecasting problems. Journal of Econometrics, 164(1), 173–187.
+
+Singleton, K.J. 2006. Empirical Dynamic Asset Pricing: Model Speciﬁcation and Econometric As-
+
+sessment. Princeton University Press.
+
+Williams, David. 1997. Probability with Martingales. Cambridge University Press.
+
+19
+
+

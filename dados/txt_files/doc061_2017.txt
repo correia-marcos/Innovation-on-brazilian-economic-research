@@ -1,0 +1,767 @@
+The Welfare Cost of Business Cycles for Heterogeneous
+     Consumers: A State-Space Decomposition∗
+     Fernando A. de Barros Jr.†1 , Francisco Lima2 , and Diego Martins Silva2
+                                          1
+                                       Fucape Business School
+                            2
+                                Graduate School of Economics, FGV/RJ
+
+                                                   July 21, 2017
+
+                                             Abstract
+           The main objective of this paper is to measure the welfare costs related to per-
+       manent and transitory shocks for heterogeneous consumers. We use data from the
+       Consumer Expenditure Survey (CEX) and compute the average consumption in three
+       different income groups: low, middle and high income. We sort consumers from the
+       poorest to the richest and we create these three groups using income as a reference.
+       Then, we consider a model where consumers in different groups face different shocks.
+       Our findings indicate that the welfare costs of economic fluctuations are higher than
+       previous works that explore heterogeneous agents argue. Moreover, our estimations
+       indicate that high-income consumers are more sensitive to both transitory and perma-
+       nent shocks than other classes of consumers.
+
+       Keywords: Welfare cost; Business cycle; Heterogeneous agents; Kalman filter.
+       JEL Classification: E32,C32,C53
+
+                                                        Resumo
+           O objetivo principal deste trabalho é medir os custos de bem estar relacionados a choques permanentes
+       e transitórios para consumidores heterogêneos. Utilizamos dados da Consumer Expenditure Survey (CEX) e
+       calculamos o consumo médio em três grupos de renda diferentes: renda baixa, média e alta. Nós classificamos os
+       consumidores dos mais pobres aos mais ricos e criamos esses três grupos usando a renda como referência. Então,
+       consideramos um modelo em que os consumidores em diferentes grupos enfrentam diferentes choques. Nossas
+       descobertas indicam que os custos de bem-estar das flutuações econômicas são maiores do que os trabalhos
+       anteriores que exploram agentes heterogêneos argumentam. Além disso, nossas estimativas indicam que os
+       consumidores de alta renda são mais sensíveis a choques transitórios e permanentes do que outras classes de
+       consumidores.
+           Palavras-chave: Custo de bem-estar; Ciclo de negócios; Agentes heterogêneos;
+       Filtro Kalman.
+                       Área 4 - Macroeconomia, Economia Monetária e Finanças
+ ∗
+     We thank an anonymous referee, João Victor Issler and Fábio Gomes for helpful comments.
+ †
+     Contact: fernandobarros@fucape.br
+
+
+                                                             1
+                                     1      Introduction
+Lucas (1987) argues that the welfare cost due to business cycles is small, about 0.04%
+of personal consumption per-capita. Lucas made three basic assumption: (i) there is a
+representative consumer, (iii) the welfare function is time-separable and iso-elastic (iii) the
+log of annual per capita consumption is serially uncorrelated and normally distributed around
+a linear trend. Subsequent work measured the cost of business cycles with different methods
+and data bases. In general, these works have either changed the environment of the problem
+or relaxed Lucas assumptions. Some authors changed the preference utility and achieve high
+welfare cost, as example we have Van Wincoop (1994), Dolmas (1998) and Tallarini (2000).
+Although they found great welfare costs, these papers are criticized by Otrok (2001) who says
+that it is trivial to find big number for the welfare cost when we can choose preferences. Our
+approach is to relax the assumption of representative consumer keeping CRRA preferences.
+In our model, consumers are heterogeneous with respect to income. Then, we measure
+how different class of consumers are willing to pay (in terms of consumption) to eliminate
+consumption uncertainty.
+    There are some works that relax the hypothesis of representative consumer and compute
+the welfare cost of business cycles. Imrohoroglu (1989), Krusell and Smith (1999), De Santis
+(2007), Krebs (2003, 2007), and others measured the costs of fluctuations in economies where
+agents are heterogeneous and markets are incomplete. Although one can expect that the
+costs of fluctuations would be higher, as bad income shocks hurt a few households severely,
+the typical finding from these studies is that the costs of fluctuations are only slightly higher
+or even lower than the Lucas benchmark. It is also common in all works of this group the
+use of calibration techniques on some well design economic models, which implies that the
+individual consumption series is derived from simulations.
+    The literature that uses econometric tools to estimate the welfare cost of business cycles
+have important results relaxing some of the assumption of Lucas. Obstfeld (1994) points
+that, for reasonable calibrations, the costs of fluctuations are small even if consumption is
+infinitely persistent. Exploring serial correlation in consumption series, Reis (2009) finds
+that a high persistence of consumption in the data severely distorts conventional measures
+of welfare cost of cycles and estimates a cost of fluctuations between 0.5% and 5% of per
+capita consumption. Issler et al. (2008) and Issler et al. (2014) split off the cost in welfare
+costs due to permanent and transitory shocks and finds even negative numbers for the costs
+of fluctuations. We notice that all those works build on the assumption of a representative
+consumer.
+    Our contribution to the literature is to measure the welfare costs related to permanent
+and transitory shocks in heterogeneous class of consumers using microdata. For the best of
+our knowledge, we are the first work to use data from individual consumers to estimate the
+welfare cost of business cycles.1 Our approach is similar to Issler et al. (2014) estimation of a
+structural time-series models with long-run constraints. We assume a structural time-series
+model, where the unobserved components are assumed to be normal and uncorrelated, as in
+Harvey (1985) and Koopman et al. (2009). We put our problem in a state-space form and
+   1
+     Although our primary data is extracted from individuals, we agreggate consumers within income groups
+to execute our estimations.
+
+
+
+                                                   2
+use Kalman Filter to estimate the transitory and permanent components of our model.
+    We find evidence that consumers have a higher costs due to permanent shocks than the
+costs due to transitory shocks. A intuitive result, since permanent shock affects current and
+future consumption, while transitory shocks can only direct change current consumption.
+Also, high-income consumers have higher costs due to economic fluctuations than other
+income-classes of consumers. Finally, our results indicates that the total costs of economic
+fluctuations are higher than the related literature suggests. In general, works that keeps the
+representative consumer hypothesis use aggregate consumption data, which may hide part of
+the variation in the consumption of individual (or groups of) consumers. Also, it is possible
+that the literature that explore heterogeneous consumers with incomplete markets can not
+identify all the variation in consumption series, or they can not account the persistence of
+consumption, which is a important component of the welfare costs as Reis (2009) shows.
+
+
+                                             2     Model
+We consider a economy where there is a large number of individual indexed by i = 1, 2, . . . N .
+All individuals have the same utility function:
+                                                       (1−φ)
+                                                     ct,i − 1
+                                          u(ct,i ) =          .
+                                                        1−φ
+where t represents the period of consumption and φ is the relative risk aversion coefficient
+of an agent. Each person lives forever and discount future utility at the rate β ∈ (0, 1).
+Individuals maximize the following objective function:
+                                       (∞                )
+                                        X
+                                    E0       β t u(ct,i )                                (1)
+                                                 t=0
+
+   Following Issler et al. (2014), we decompose ln(ct,i ) as the sum of a deterministic term,
+a martingale trend and a stationary and ergodic cycle:
+                                                              2      t         t−1
+                                                             ωt,i   X          X
+                  ln(ct,i ) = ln(α0,i ) + ln(1 + α1,i )t −        +     j,i +     ψk µt−k,i   (2)
+                                                              2     j=1        k=0
+
+                                    ω2
+                                         
+where, ln α0,i (1 + α1,i )t · exp(− 2t,i ) is the deterministic term of log-consumption, t,i rep-
+resents an permanent shock and µt,i is a stationary shock for individual i. Here, we make an
+assumption to allow us to use the Kalman filter to estimate properties of those shocks: we
+suppose that shocks are uncorrelated and have a bivariate Normal distribution:
+                                                              
+                               t,i                0      σ11,i   0
+                                    ∼ i.i.d.N         ,                                        (3)
+                               µt,i                0       0 σ22,i
+
+       Considering thePuncorrelated shocks hypothesis, the unconditional variance of ln(ci,t ) is
+ 2
+ωt,i   = σ11,i t + σ22,i t−1  2
+                         k=0 ψk . Giving that the marginal distribution of a multivariate normal
+
+
+
+                                                       3
+distribution is also normal distributed, we have that
+
+                                                t,i ∼ N (0, σ11,i );                                       (4)
+                                                µt,i ∼ N (0, σ22,i ).                                       (5)
+
+Then, we can turn off either permanent or transitory shock and calculate counterfactual
+log-consumption exposed to only one kind of those shocks.
+    In order to find a consumption sequence only exposed to permanent shock, cPt,i , we tun
+off transitory shock and obtain the following sequence of log-consumption:
+                                                                                        t
+                                                                       σ11,i    X
+                           ln(cPt,i )   = ln(α0,i ) + ln(1 + α1,i )t −       t+     j .                    (6)
+                                                                        2       j−1
+
+
+With cPt,i , we can measure welfare cost associated to transitory shocks. Similar to Lucas
+(1987), we find λP,i comparing the conditional expected utility from the sequence of consump-
+tion exposed only to permanent shock and the consumption exposed to all macroeconomic
+uncertainty, i.e, solves the following equality
+                           "∞                       #     "∞           #
+                             X                             X
+                                  t                            t   P
+                        E0       β u((1 + λP,i )ct,i = E0    β u(ct,i ) .                  (7)
+                                   t=0                                  t=0
+
+Then, λP,i represents the welfare cost of cycles for consumer i in terms of consumption.
+Following the algebra in Issler et al. (2014), we get the following expression:
+                                              
+                                   exp φσ̃22,i − 1 for φ 6= 1
+                          λP,i =           2                     ,                 (8)
+                                   exp σ̃22,i − 1      for φ  = 1
+                                             2
+
+
+where σ̃22,i = σ22,i ∞
+                    P      2
+                                                                               Pt−1 2
+                      k=0 ψk represents the unconditional counterpart of σ22,i  k=0 ψk . We
+implicit assume that a convergence condition
+                                                         σ11,i 
+                          β(1 + α1,i )(1−φ) exp −φ(1 − φ)         <1
+                                                           2
+holds.
+   Now, turning off the transitory shock, we found consumption exposed only to transitory
+shock with the following sequence
+                                                                       Pt−1             t−1
+                                                               σ22,i          ψk2       X
+              ln(cTt,i )   = ln(α0,i ) + ln(1 + α1,i )t −               k=0
+                                                                                    +         ψk µt−k,i .   (9)
+                                                                        2               k=0
+
+Thus, we can measure the welfare cost of growth variation by finding λT,i that solves the
+following equality     "∞                       #     "∞              #
+                        X                              X
+                   E0      β t u((1 + λT,i )ct,i = E0    β t u(cTt,i ) .             (10)
+                                   t=0                                  t=0
+
+
+
+                                                           4
+    Assuming the convergence condition β(1 + α1,i )(1−φ) < 1, we have
+                                                                  1
+                                                                 (1−φ)
+                                                        σ
+                           (1−β(1+α1,i )1−φ exp(−φ(1−φ) 11,i
+                                                         2
+                                                              )
+                                                                        −1               for φ 6= 1
+                                    1−β(1+α1,i )(1−φ)
+                 λT,i   =                                                                           .            (11)
+                           exp βσ11,i − 1
+                          
+                                                                                         for φ = 1
+                                 2(1−β)
+
+
+   Finally, we can measure the combined effect of both shocks. In this case we turn off t
+and µt,i and find that ln(cDt,i ) = ln(α0,i ) + ln(1 + α1,i )t. The welfare cost of all macroeconomic
+uncertainty, λD,i , solves:
+                            "∞                        #         "∞            #
+                             X                                   X
+                                    t                                t    D
+                        E0         β u((1 + λD,i )ct,i = E0         β u(ct,i ) ,                  (12)
+                                 t=0                                    t=0
+
+which give us
+             
+                          σ
+                                                                        1
+                                               1−φ exp(−φ(1−φ) σ11,i )) (1−φ)
+             (exp(φ(1−φ) 22,i
+                           2
+                               )(1−β(1+α 1,i )                   2
+                                                                              −1              for φ 6= 1
+                                (1−β(1+α1,i )(1−φ)
+     λD,i =                                                                                                  ,   (13)
+                                  ˜
+             exp βσ11,i +(1−β)σ22,i
+            
+                                       −1                                                     for φ = 1
+                        2(1−β)
+
+
+assuming that the convergence condition β(1 + α1,i )(1−φ) < 1 holds.
+   Following Alvarez and Jermann (2004), we can calculate marginal welfare cost of trend
+and business cycle. The idea is take a convex combination of cycle free consumption,c∗t,i and
+consumption ct,i : (1 − α)ct,i + αc∗t,i , and then differentiate in α the equivalent variation in
+consumption. We obtain the marginal welfare costs as exposed below.
+
+                            
+                                exp (φσ̃22,i ) − 1     for φ 6= 1
+            λ0P,i (0)   =                                         ,                                                (14)
+                                exp (σ̃22,i ) − 1      for φ = 1
+                                                              σ11,i
+                            
+                                (1−β(1+α1,i )1−φ exp(−φ(1−φ)        )
+                                                               2
+                                                             σ11,i      −1      for φ 6= 1
+            λ0T,i (0) =          (1−β(1+α1,i )
+                                    1−β
+                                               1−φ exp(φ(1+φ) 2 )                             ,                    (15)
+                            
+                                1−βexp(σ11,i )
+                                                  −1                            for φ = 1
+                                                                            σ11,i
+                                (exp(φσ̃22,i )(1−β(1+α1,i )1−φ exp(−φ(1−φ)         ))
+                                                                  σ
+                                      (1−β(1+α1,i )(1−φ) exp(φ(1+φ) 11,i
+                                                                               2
+                                                                                        −1   for φ 6= 1
+            λ0D,i (0) =         exp(σ22,i
+                                      ˜ (1−β))
+                                                                     2
+                                                                         )                                 .       (16)
+                            
+                                 1−βexp(σ11,i )
+                                                  −1                                         for φ = 1
+
+
+                                 3      Estimation and data
+We use the Consumer Expenditure Survey (CEX) to gather income and expenditure data
+at household-level. CEX program consists of two different surveys, the Quarterly Interview
+Survey and the Diary Survey, providing data of American consumers, expenditures, income,
+and consumer unit (families and single consumers) characteristics. We only look at the
+Quarterly Interview Survey, which tracks consumer units large expenditures, such as major
+appliances and cars, and is conducted quarterly with each consumer unit. A consumer unit
+appears up to four interviews, spaced three months apart. After its final interview, a new
+
+                                                         5
+randomly selected household replaces this consumer unit. There are six types of data files
+organized by quarter. However, we focus only at the FMLI file, also referred to as the
+Consumer Unit (CU) characteristics and income file, contains consumer unit characteristics,
+consumer unit income, and characteristics and earnings of the reference person and of the
+spouse. The file includes weights needed to calculate population estimates and variances.2
+    Our sample is drawn from CEX data files corresponding to the period 1996:Q1 through
+2014:Q4 (the latest quarter available at the time that the paper was written). We use three
+variables from CEX data files: (i) Expenditure: total expenditures last quarter; (ii) Income:
+amount of wage and salary income, before deductions, received by all CU members in past
+12 months; and, (iii) CU replicate weight. To adjust for inflation, we deflate income using
+implicit price deflators for gross domestic product, and expenditures using implicit price
+deflators for personal consumption expenditures from the Bureau of Economic Analysis of
+the U.S. Department of Commerce. The base-year for the deflated variables is 2009.
+    After some exclusions, we obtain a sample with 331,974 observations.3 For each period
+we sort the data by income from the lowest to the highest income, respectively, I`t and Iht .
+After that, we aggregate consumers in three income groups. Let Iti be income of consumer i
+in period t. Then we create the following groups: Group 1 - consumers with Iti ∈ [I`t , Iht /3);
+Group 2 - consumers with Iti ∈ [Iht /3, 2Iht /3); and Group 3 - consumers with Iti ∈ [2Iht /3, Iht ].
+Finally, we compute the average of the log-consumption of each groups for each period. As a
+result of this aggregation, we have three consumption time series with 76 observations.4 As
+a last treatment, we remove seasonal quarter effects from our data using dummy variables.
+    Figure 1 presents our consumption time series for different income levels and also the
+mean consumption time series.
+    Before we describe the technique used in the empirical work, we briefly describe an
+additional assumption. It would be difficult to report the λ’s for a big panel of consumers,
+because it would require a long time series to estimate all of those parameters. Then, we
+make the following assumption: individuals from the same income group receive the same
+shocks and share a equal trend. Therefore, for a group with K < N individuals, we calculate
+the average of the log-consumption:
+         K                 K               K                            t      t−1
+                                             "                      #
+                                                                2
+                                                               ωt,`
+       1 X               1 X             1 X                            X      X
+           [ln(ct,` )] =     ln(α0,` ) +      ln(1 + α1,` )t −        +   j +     ψk µt−k,g            (17)
+       K                 K               K                      2
+         `=1               `=1                `=1                            j=1      k=0
+
+ where g represents an income group. With that assumption, the average of ln(ct,i ) keeps
+the same permanent and transitory shocks that individuals receive. Then, we can calculate
+the λ’s described in the last section for groups of individual. It is essential to our empirical
+approach.
+    We estimate our model in a state-space form with normal disturbances using the Kalman
+Filter. Following Drukker and Gates (2011) we apply the sspace to estimate a local-level
+   2
+     There is no full form for the file name FMLI. In accord to the Bureau of Labor Statistics FMLI is a file
+with characteristics, income, weights, and summary level expenditures for the Consumer Unit.
+   3
+     We drop individuals in the bottom and top 1% of the income distribution. We do this to avoid consumers
+with extremely low income (including zero income) and because without this exclusion our time series of
+group 3 was composed only by one observation in many periods.
+   4
+     For our estimation of welfare costs of economic fluctuations, we have the implicit assumption that
+consumers do not jump from one income group to another.
+
+
+                                                     6
+                10
+                9.5
+                9
+                8.5
+
+
+
+
+                  1996q1   1999q1   2002q1     2005q1      2008q1     2011q1    2014q1
+                                                  time
+
+                               Mean Consumption                Group 1 Consumption
+                               Group 2 Consumption             Group 3 Consumption
+
+
+
+                           Figure 1: Consumption per income level
+
+
+
+
+model. The observation and state equations are, respectively:
+
+                                          yt = µt + t
+                                       µt = µt−1 + ξt                                     (18)
+
+Where, t ∼ N (0, σ2 ) and ξt ∼ N (0, σξ2 ) and both are independent. The parameters in this
+model are σ2 , σξ2 , and µ0 .
+    Following Issler et al. (2014), we impose that permanent and transitory shocks on con-
+sumption are independent, relying on the structural time-series model of Harvey (1985) and
+Koopman et al. (2009). The idea is to decompose a single integrated series in a trend and a
+cycle by maximum likelihood, guaranteeing consistent and asymptotically Normal parameter
+estimates. Applying the local-level model to our trend-cycle decomposition of consumption
+for different income levels consists in:
+
+                                             cit = c̄t + it
+                                    c̄t = c̄t−1 + δi + ξit                                (19)
+
+Where, ci is consumption for different income (i) level: low, middle and high; c̄ is mean
+consumption; it ∼ N (0, σ2i ) and ξit ∼ N (0, σξ2i ) and both are independent. Note that we
+constrained our state variable to have a unit root, and ci and c̄ parameter to be equal one.
+    Using Kalman Filter in this state-space model we can estimate our key parameters for
+each income (i) level: ; σ2i is our variance related to cycle (σ22,i in the model) and σξ2i
+variance related to trend (σ11,i in the model, invariant to adition of a constant), and we also
+will estimate a different constant for each i. Where ln(1 + α1 ) is equal E(∆c̄t ).
+
+                                                 7
+                                4      Empirical results
+Table 1 presents the estimated parameters for our model employing the state-space approach
+using Kalman Filter. Figure 2 plots the (log) consumption and the estimated trends for all
+the income groups.
+
+                          Table 1: Estimated parameters (1996-2014)
+
+                           Class      ln(1 + α1 )           σ11               σ22
+                          Group 1     0.0023293      0.0002672             0.0003397
+                          Group 2     0.0038581      0.0002668             0.0009009
+                          Group 3     0.0036965      0.0017165             0.0028653
+
+   In figure 2 we can see that there is a higher shift in the consumption of a group if the
+group has a higher income. Also, in accord to table 1, we notice that the volatility of
+permanent and transitory shocks are increasing in the income group. There are two facts
+that can explain it. First, we take averages of consumers using income groups and since the
+income distribution is asymmetric, the amount of people is decreasing in the income terciles.
+Therefore, the average is a bigger smoother of consumption series in groups 1 and 2 than in
+group 3. Second, there is a higher heterogeneity among the richest consumers than among
+the poorest consumers. Thus, when we group more heterogeneous agents it is natural to find
+a more volatile time series.
+               10
+               9.5
+               9
+               8.5
+
+
+
+
+                 1996q1     1999q1     2002q1     2005q1          2008q1     2011q1    2014q1
+                                                     time
+
+                                     Group 1 Consumption               Group 1 Trend
+                                     Group 2 Consumption               Group 2 Trend
+                                     Group 3 Consumption               Group 3 Trend
+
+
+
+           Figure 2: Consumption per income level profile (deseasonalized logs)
+
+
+
+   High-income consumers have the biggest welfare cost due to cycles (see table 2) in our
+
+                                                    8
+estimations.5 This result is robust to changes in risk aversion coefficient, because both the
+cost and the marginal cost are incresing on φ.6 The results are in percent of consumption,
+therefore, to avoid business cycle a high-income individual would give up a fraction of his
+consumption between 0.14% and 1.44%, while low-income individuals would give up some-
+thing between 0.02% and 0.17% of his consumption to avoid cycles. Those numbers are
+higher than the findings in Issler et al. (2014). This give us some evidence that if we con-
+sider consumer heterogeneity, the costs of cycles can be higher than previous results. The
+marginal welfare cost of cycles presents the same interpretation we give to the welfare cost
+of cycles.
+
+            Table 2: Welfare Cost of Business Cycle (1996-2014) - % consumption.
+
+                                Welfare cost                  Marginal welfare cost
+                    φ         1   3     5    10                1    3    5      10
+                Group 1      0.02   0.05    0.08   0.17       0.03   0.10    0.17    0.34
+                Group 2      0.05   0.14    0.23   0.45       0.09   0.27    0.45    0.90
+                Group 3      0.14   0.43    0.72   1.44       0.29   0.86    1.44    2.91
+
+    Our estimations indicate that consumers are willing to pay a higher fraction of their
+consumption to avoid variations due to economic growth (permanent shocks) than they are
+willing to pay to attenuate cycles. To see that, one can contrast the number in tables 2 and
+3.
+    We find a non-linear relation between the welfare cost associated to economic growth
+variation and our groups of income. People in group 2 are less sensitive to variations in the
+permanent shocks on consumption. We interpret this result as an evidence that consumers
+with intermediary income have a better adaptation when shocks are permanent than people
+in the other income groups. However, we should note that in absolute values even this group
+are more sensitive to permanent shocks in comparison to transitory.
+    When we analyze the cost associated to all macroeconomic uncertainty, we observe that
+the cost due to economic growth predominates over cost associate with transitory shock (see
+table 4). Also, we observe that the welfare cost is an increasing function of our income
+groups as observed in the welfare cost of cycles.
+    In general, we find a higher welfare cost due to economic fluctuations than the related
+literature. Estimations of Lucas (1987) and Issler et al. (2014) present a smaller welfare cost
+than our numbers, because their measure of the variance of the shocks on consumption are
+smaller than the numbers in table 1. Therefore, we have a evidence that a disaggregation of
+the consumption can reveal a higher welfare cost than was previous suggested.
+    Our results also contrast with the literature that measure the welfare cost of cycles using
+heterogeneous agents and incomplete markets. In general, those papers find a very small cost
+of cycles and only in extreme cases, welfare costs due to economic fluctuations reresents a
+   5
+     You should note that both the cost and the marginal cost of cycles presented in section 2 do not depend
+on the discount factor. Thus, we present some estimations for those number only for different φ’s.
+   6
+     Despite we follow Issler et al. (2014), we do not measure the welfare cost for φ = 20 because we do not
+guarantee the convergence conditions exposed in section (2) for high-income consumers.
+
+
+
+                                                     9
+      Table 3: Welfare Cost of Economic Growth Variation (1996-2014) - % consumption.
+
+                                 Welfare cost                    Marginal welfare cost
+                 φ         1      3      5          10           1    3      5      10
+             β=0.95
+             Group 1 0.25         0.70     1.10     1.98       0.51     1.43     2.29     4.51
+             Group 2 0.25         0.67     0.99     1.62       0.51     1.35     2.06     3.61
+             Group 3 1.64         4.57     7.58    30.80       3.37    10.36    20.78       -
+
+             β=0.97
+             Group 1 0.43         1.14    1.72     2.94        0.87     2.35     3.67     7.14
+             Group 2 0.43         1.05    1.48     2.22        0.87     2.15     3.12     5.15
+             Group 3 2.81         7.45    12.44      -         5.88    18.39    43.47       -
+
+             β=0.99
+             Group 1 1.33         2.82    3.75     5.54       2.72 6.08          8.63     16.24
+             Group 2 1.33         2.31    2.77     3.47       2.71 4.91          6.15     8.74
+             Group 3 8.87        18.98    33.93      -        20.49 71.77          -        -
+              We reported a ‘-’ in cases where we do not find a real number for the welfare cost.
+
+ Table 4: Welfare Cost of All Macroeconomic Uncertainty (1996-2014) - % consumption.
+
+                                 Welfare cost                    Marginal welfare cost
+                 φ         1      3      5          10           1    3      5      10
+             β=0.95
+             Group 1 0.27         0.76     1.19     2.15       0.54     1.54     2.47     4.86
+             Group 2 0.30         0.80     1.22     2.08       0.60     1.63     2.52     4.54
+             Group 3 1.79         5.02     8.36    32.69       3.67    11.32    22.52       -
+
+             β=0.97
+             Group 1 0.45         1.19    1.81     3.11        0.91     2.46     3.84     7.50
+             Group 2 0.48         1.18    1.70     2.68        0.96     2.43     3.58     6.10
+             Group 3 2.96         7.91    13.24      -         6.19    19.42    45.54       -
+
+             β=0.99
+             Group 1 1.35         2.87    3.84     5.72       2.75 6.18          8.82     16.64
+             Group 2 1.38         2.45    3.00     3.93       2.81 5.20          6.63     9.72
+             Group 3 9.02        19.50    34.90      -        20.84 73.26          -        -
+              We reported a ‘-’ in cases where we do not find a real number for the welfare cost.
+
+
+bigger number. For example, Krusell and Smith (1999) argues that only very poor consumers
+can present a cost up to 2%.7
+  7
+      However, Krusell et al. (2009) present a new evidence that welfare costs can be higher (about 1%).
+
+
+                                                     10
+   In the appendix, we present a exercise where we increase the number of income groups.
+This exercise indicates that our finding of a higher welfare cost than previous literature is
+robust to a increase in the number of groups.
+
+
+                                 5    Final remarks
+In this paper, we use data from individual consumers to compute the welfare cost of economic
+fluctuations for different income-group agents. We use a method similar to Issler et al. (2014)
+that split off the cost in welfare costs due to permanent shocks and due to transitory shocks.
+Our estimation is based in a state-space model and uses Kalman Filter to identify the different
+kinds of shocks. Our estimations indicate that the welfare costs of business cycles are bigger
+than previous works with similar techniques found. In addition, we present a robustness
+exercise where we increase the number of groups of income and find a stronger result: with
+a bigger number of groups, there is an increase in the welfare costs in all groups except for
+the group with the higher income. We interpret this exercise as a evidence that exploring
+some heterogeneity of consumers can reveal a higher measure of the welfare cost of economic
+fluctuations.
+    In general, our results indicate that the welfare cost of economic fluctuations can vary
+from 0.20% to 35%, but it is not difficult to find a number around 2% of consumption. We
+use data from individual consumers to compute averages for groups of consumers, which
+contains more variation than the aggregate consumption used in similar empirical works.
+Even compared to Issler et al. (2014) - our inspiration to split the variation in two kind
+of shocks - our estimations indicate a higher cost of business cycles and economic growth
+variation. It is important to note that they permit a more flexible form for the relation
+between shocks.
+    Future work can benefit from our finds that the assumption of representative consumer is
+not a neutral one. There is also many of our assumptions that can be relaxed in future work,
+for example: (a) we only use three and four classes of consumers, maybe with more classes
+there will be heterogeneity in the welfare cost of business cycles, but we believe that our
+general finds will keep; (b) the independence assumption can be relaxed in order to explore
+the correlation between permanent and transitory shocks.
+
+
+                                      References
+Alvarez, F. and U. J. Jermann (2004). Using asset prices to measure the cost of business
+  cycles. Journal of Political Economy 112 (6), 1223–1256.
+De Santis, M. (2007). Individual consumption risk and the welfare cost of business cycles.
+  The American Economic Review 97 (4), 1488–1506.
+Dolmas, J. (1998). Risk preferences and the welfare cost of business cycles. Review of
+ Economic Dynamics 1 (3), 646–676.
+Drukker, D. M. and R. B. Gates (2011). State space methods in stata. Journal of Statistical
+  Software 41 (10), 1–25.
+
+                                              11
+Harvey, A. C. (1985). Trends and cycles in macroeconomic time series. Journal of Business
+  & Economic Statistics 3 (3), 216–27.
+
+Imrohoroglu, A. (1989). Cost of Business Cycles with Indivisibilities and Liquidity Con-
+  straints. Journal of Political Economy 97 (6), 1364–83.
+
+Issler, J. V., A. A. de Mello Franco-Neto, and O. T. de Carvalho Guillén (2008). The welfare
+   cost of macroeconomic uncertainty in the post-war period. Economics Letters 98 (2),
+   167–175.
+
+Issler, J. V., A. A. de Mello Franco-Neto, and O. T. de Carvalho Guillén (2014). On the
+   welfare costs of business-cycle fluctuations and economic-growth variation in the 20th
+   century and beyond. Journal of Economic Dynamics and Control 39 (C), 62–78.
+
+Koopman, S. J., A. C. Harvey, J. A. Doornik, and N. Shephard (2009). Structural time
+ series analyzer, modeller and predictor stamp 8.2. Tmberlake Consultants Ltd., London.
+
+Krebs, T. (2003). Growth and Welfare Effects of Business Cycles in Economies with Idiosyn-
+  cratic Human Capital Risk. Review of Economic Dynamics 6 (4), 846–868.
+
+Krebs, T. (2007). Job Displacement Risk and the Cost of Business Cycles. American
+  Economic Review 97 (3), 664–686.
+
+Krusell, P., T. Mukoyama, A. Sahin, and J. Anthony A. Smith (2009). Revisiting the Welfare
+  Effects of Eliminating Business Cycles. Review of Economic Dynamics 12 (3), 393–402.
+
+Krusell, P. and A. Smith (1999). On the welfare effects of eliminating business cycles. Review
+  of Economic Dynamics 2 (1), 245–272.
+
+Lucas, R. (1987). Models of Business Cycle. Blackwell.
+
+Obstfeld, M. (1994). Evaluating risky consumption paths: The role of intertemporal substi-
+ tutability. European Economic Review 38 (7), 1471 – 1486.
+
+Otrok, C. (2001). On measuring the welfare cost of business cycles. Journal of Monetary
+  Economics 47 (1), 61–92.
+
+Reis, R. (2009). The Time-Series Properties of Aggregate Consumption: Implications for
+  the Costs of Fluctuations. Journal of the European Economic Association 7 (4), 722–753.
+
+Tallarini, T. D. (2000). Risk-sensitive real business cycles. Journal of monetary Eco-
+  nomics 45 (3), 507–532.
+
+Van Wincoop, E. (1994). Welfare gains from international risksharing. Journal of Monetary
+  Economics 34 (2), 175–200.
+
+
+
+
+                                             12
+                                         Appendix
+In this appendix, we present the results of our estimations of the welfare costs in the presence
+of permanent and transitory shocks with four groups of income. We use the same procedure
+to create these groups. Given the dataset where for each period consumers where sorted by
+income, we create the following groups:
+
+   • Group 1: consumers with Iti ∈ [I`t , Iht /4);
+
+   • Group 2: consumers with Iti ∈ [Iht /4, Iht /2);
+
+   • Group 3: consumers with Iti ∈ [Iht /2, 3Iht /4);
+
+   • Group 4: consumers with Iti ∈ [3Iht /4, Iht ].
+
+   In table 5 we present the parameters estimated using the Kalman filter. Comparing the
+results with the estimations using three groups of income, we notice that there is a decrease in
+the volatility of both transitory and permanent shocks in the group with the highest income,
+while there is a increase the remaining groups. As we point out in the main text, there are
+two reason for this effect. We are reducing the denominator used to take the averages of
+groups, then in the income groups where there was a big amount of people (groups 1 and 2 in
+the main text) the average is not a big smoother of the aggregate group consumption. Only
+part of the heterogeneity in group 3 of the main text is inside the group 3 of this appendix.
+Figure 3 shows the estimated the stochastic trend and the consumption series of all new
+income groups.
+
+                         Table 5: Estimated parameters (1996-2014)
+
+                         Class       ln(1 + α1 )        σ11        σ22
+                       Group     1   0.0021681      0.0002778   0.0004911
+                       Group     2   0.0042161      0.0003999   0.0004143
+                       Group     3   0.0034533      0.0003325   0.0027437
+                       Group     4   0.0033973      0.0009283   0.0050116
+
+    Tables 6, 7 and 8 presents the estimations of the welfare costs of economic fluctuations.
+As a general result, we find higher estimated welfare costs as we increase the number of the
+groups of income, except for the groups with the highest income. This result makes our
+exercise of breaking the assumption of a representative agent more robust. It indicates us
+that expending the heterogeneity of consumers can reveal higher welfare costs of economic
+fluctuations.
+
+
+
+
+                                                   13
+     10
+     9.5
+     9
+     8.5
+     8
+
+
+
+
+       1996q1      1999q1      2002q1     2005q1    2008q1      2011q1      2014q1
+                                             time
+
+                             Group 1 Consumption           Group 1 Trend
+                             Group 2 Consumption           Group 2 Trend
+                             Group 3 Consumption           Group 3 Trend
+                             Group 4 Consumption           Group 4 Trend
+
+
+
+ Figure 3: Consumption per income level profile (deseasonalized logs)
+
+
+
+
+Table 6: Welfare Cost of Business Cycle (1996-2014) - % consumption.
+
+                          Welfare cost              Marginal welfare cost
+           φ        1       3     5    10            1    3    5      10
+   Group       1   0.02     0.07   0.12   0.25      0.05     0.15    0.25     0.49
+   Group       2   0.02     0.06   0.10   0.21      0.04     0.12    0.21     0.42
+   Group       3   0.14     0.41   0.69   1.38      0.27     0.83    1.38     2.78
+   Group       4   0.25     0.75   1.26   2.54      0.50     1.51    2.54     5.14
+
+
+
+
+                                           14
+ Table 7: Welfare Cost of Economic Growth Variation (4 groups) - % consumption.
+
+                          Welfare cost                    Marginal welfare cost
+           φ         1     3     5     10                1     3     5       10
+       β=0.95
+       Group 1     0.26    0.74    1.16     2.11        0.53     1.50     2.42      4.86
+       Group 2     0.38    0.99    1.47     2.44        0.77     2.03     3.12      5.74
+       Group 3     0.32    0.84    1.28     2.17        0.64     1.72     2.68      5.02
+       Group 4     0.89    2.42    3.82     8.01        1.80     5.16     8.86     29.58
+
+       β=0.97
+       Group 1     0.45    1.20    1.82     3.18        0.91     2.47     3.90      7.86
+       Group 2     0.65    1.55    2.18     3.35        1.31     3.23     4.74      8.42
+       Group 3     0.54    1.34    1.93     3.06        1.09     2.77     4.15      7.52
+       Group 4     1.51    3.89    5.98     13.43       3.10     8.64    15.15     92.62
+
+       β=0.99
+       Group 1     1.38    3.01     4.06    6.23        2.83    6.51      9.47     19.31
+       Group 2     2.00    3.39     4.06    5.27        4.12    7.40      9.47     15.20
+       Group 3     1.66    3.05     3.78    5.07        3.40    6.62      8.73     14.40
+       Group 4     4.70    9.39    13.17    38.65      10.13    24.55    47.55       -
+        We reported a ‘-’ in cases where we do not find a real number for the welfare cost.
+
+Table 8: Welfare Cost of All Macroeconomic Uncertainty (4 groups) - % consumption.
+
+                           Welfare cost                    Marginal welfare cost
+           φ         1      3      5          10           1    3      5      10
+       β=0.95
+       Group 1     0.29     0.81    1.28      2.36       0.58     1.65    2.67      5.38
+       Group 2     0.40     1.05    1.58      2.65       0.81     2.16    3.33      6.18
+       Group 3     0.45     1.26    1.98      3.58       0.91     2.57    4.10      7.94
+       Group 4     1.14     3.19    5.13     10.76       2.31     6.75    11.62     36.24
+
+       β=0.97
+       Group 1     0.47     1.27    1.95      3.43       0.96     2.62     4.16     8.39
+       Group 2     0.67     1.61    2.29      3.57       1.35     3.36     4.96     8.87
+       Group 3     0.68     1.76    2.63      4.49       1.36     3.62     5.59     10.51
+       Group 4     1.77     4.67    7.31     16.31       3.61    10.29    18.08       -
+       β=0.99
+       Group 1     1.41     3.08    4.19      6.49      2.88      6.67 9.74         19.90
+       Group 2     2.02     3.45    4.17      5.49      4.17      7.54 9.69         15.68
+       Group 3     2.80     3.48    4.50      6.53      3.69      7.50 10.23        17.58
+       Group 4     4.96    10.21    14.59    42.16      10.68    26.44 51.29          -
+        We reported a ‘-’ in cases where we do not find a real number for the welfare cost.
+
+
+                                               15
+

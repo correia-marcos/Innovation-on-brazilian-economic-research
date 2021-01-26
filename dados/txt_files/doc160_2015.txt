@@ -1,0 +1,1086 @@
+                       Combining monetary policy and prudential regulation:
+                               An agent-based modeling approach
+
+                                                                             Michel Alexandre (BACEN)
+                                                                         Gilberto Tadeu Lima (FEA/USP)
+
+Abstract:
+The aim of this paper is to study the interaction between monetary policy and prudential regulation in an
+agent-based modeling framework. Several relevant policy implications are drawn from this analysis. First,
+the implementation of a cyclical capital component as proposed in Basel III loses its efficacy when
+combined with some interest rate rules. Second, interest rate smoothing is more effective than the other
+interest rate rules assessed, as it outperforms them concerning financial stability and performs as well as
+them regarding macroeconomic stability. Finally, there is no long-run tradeoff between macroeconomic
+and financial stability regarding the assessed parameters.
+Resumo:
+O objetivo deste trabalho é estudar a interação entre política monetária e regulação prudencial em um
+modelo baseado em agentes. Várias implicações relevantes relativas a política econômica emergem desta
+análise. Primeiro, a implementação de um componente cíclico de capital, tal como proposto em Basileia
+III, perde sua eficácia quando combinado com algumas regras de taxas de juros. Segundo, o smoothing da
+taxa de juros mostrou-se mais efetivo que outras regras de taxas de juros, já que supera as mesmas
+relativamente a estabilidade financeira e é tão eficaz quanto as demais no que tange a estabilidade
+macroeconômica. Finalmente, não há um trade-off entre estabilidade macroeconômica e financeira
+relativamente aos parâmetros avaliados.
+
+Keywords: Agent-based modeling, monetary policy, prudential regulation.
+Palavras-chave: Modelo baseado em agentes, política monetária, regulação prudencial.
+
+JEL Classification: E52; G18; C63.
+
+Área ANPEC: 4 – Macroeconomia, Economia Monetária e Finanças.
+1. Introduction
+        The 2008 financial crisis promoted a revival of the debate on the interaction between the real and
+financial sectors. Although some arguments, as the financial accelerator proposed by Bernanke and
+Gertler (1995), had already pointed out the existence of transmission channels from one sector to another,
+the crisis suggested that such interlinks could be much more complex than initially thought. It left clear
+that small disturbances in one sector, through essentially nonlinear relationships, could be amplified and
+spread across both. Indeed, although the turmoil had its roots in U.S. subprime crisis, it has crossed the
+border of the financial sector, bringing heavy losses to the real economy.
+        Before the crisis, the reigning view concerning macroeconomic policy was that monetary policy
+and prudential regulation could pursue their goals – macroeconomic and financial stability, respectively –
+acting independently, without any need of coordination. According to this dominant paradigm, a
+monetary policy based on inflation targeting and flexible exchange rates and a financial regulation
+grounded on microprudential measures would accomplish their objectives (Canuto and Cavallari, 2013).
+        More recently, the balance started to be tipped in favor of a more harmonious interaction between
+monetary policy and prudential regulation. In fact, through linkages between real and financial variables,
+one policy may affect the other’s target, sometimes in an undesirable way. For instance, by pursuing
+macroeconomic stabilization in a recession scenario, monetary policy may reduce the interest rate.
+However, low interest rates may lead to less banks’ incentive to monitor borrowers, over-leverage in
+banks and the bearing of higher risks by agents in order to achieve higher returns, bringing threats to
+financial stability (IMF, 2013). Hence, the stand-alone execution of policies may lead to unsatisfactory
+outcomes.
+        To handle this issue of policy coordination, existing macroeconomic models should be endowed
+with an attribute which proved to be important in the last crisis: the ability to tackle with nonlinear
+interdependencies between real and financial variables. In the case of Dynamic Stochastic General
+Equilibrium (DSGE)-type models, the main workhorse of most central banks, this is done through the
+incorporation of financial frictions (BCBS, 2012). This allows the study of optimal combinations between
+monetary policy and prudential regulation within the DSGE framework, as has been done recently by
+some researchers (e.g., Agénor et al., 2013; Beau et al., 2011; Goodhart et al., 2013; Lambertini et al.,
+2013).
+        Nonetheless, DSGE models have some inherent characteristics which limit their usefulness to the
+assessment of policy actions. As discussed above, a key element to grasp the occurrence of crashes is the
+understanding of nonlinear feedbacks among financial and real variables. Nevertheless, the incorporation
+of nonlinearities in DSGE models is quite limited, as they are usually solved through log-linearization
+around a unique steady state. Furthermore, the embodying of some endogenous elements responsible for
+the propagation of the crisis, as irrational behavior and inefficient markets, is hard in DSGE models, due
+to their assumption of forward-looking rational behavior (Canuto and Cavallari, 2013). Indeed, in these
+models, the risk is brought in by exogenous shocks. Additionally, the hypothesis of perfect rationality and
+optimizing behavior is even more unrealistic during crisis, as these abilities depend on historical
+relationships which no longer hold (Bookstaber, 2012).
+        Another strategy has been the development of new approaches. One of the most promising
+alternative approaches is the Agent Based (AB) modeling.1 AB modeling conceives the economy as a
+complex system, defined by the presence of emergent properties, that is, an aggregate behavior
+remarkably distinct from the simple extrapolation of units’ behavior (Krugman, 1996). In the AB
+modeling framework, agents (consumers, firms etc.) are rationally limited computational entities. They
+interact with each other following simple behavioral rules, giving rise to nonlinear patterns. Such rules,
+grounded on incentives and information, may evolve according to their fitness – the payoff they provide
+to the agents adopting them. In this case, the model is called evolutionary. Once the initial conditions and
+parameters of the model are established, the modeler can observe how the system evolves over time.
+1
+ By AB models we are referring to computational agent-based models. There are also models of heterogeneous interacting
+agents, solvable analytically through technics coming from statistical physics or Markov chains (Gallegatti and Kirman, 2012).
+                                                               2
+        AB models have some advantages over DSGE models regarding the assessment of economic
+policy. According to Fagiolo and Roventini (2012), such advantages belong to two classes: theory and
+empirics. From the theoretical point of view, as they are not a priori required to be analytically solvable,
+they allow the relaxing of several simplifying assumptions (e.g., equilibrium and rational expectations)
+necessary to mathematical tractability. Their disengagement from analytical solvability makes them cope
+with nonlinearities much better than DSGE models. This flexibility is the base of their empirical
+advantage; it enables them to be much more realistic than DSGE models in the case of inputs
+(assumptions more similar to the observed ones), as well as concerning the outputs (replication of stylized
+facts of interest).
+        Policy experiments with AB models are typically done in the following way. First, the AB model
+is designed to reproduce relevant stylized facts of the policy target (e.g., price level). Then, it is gauged
+how the implementation or changes in some policy parameter (e.g., interest rate) impact the behavior of
+such variable (Fagiolo and Rovetini, 2012). The possibility of implementing a wide range of policy
+measures turns AB modeling very attractive for the performance of policy exercises, as has been done
+extensively in recent years.2
+        The aim of this paper is to study the interaction between monetary policy and prudential
+regulation in an AB modeling framework. In the model proposed here, firms borrow funds from the
+banking system in an economy regulated by a central bank. The central bank is responsible for carrying
+out monetary policy, by setting the interest rate, and banking prudential regulation. Among the multiple
+tools available for prudential regulation, we deal with a specific one in this paper, namely, the capital
+requirement through the setting of a cyclical buffer. Different combinations of interest rate and capital
+requirement rules are carefully evaluated regarding macroeconomic and financial stability. The former
+depends negatively on output and price volatility and the latter is measured by the bad debt-to-credit ratio.
+While monetary policy employs Taylor-type interest rate rules, the capital requirement rules involve the
+establishment of a cyclical component, as proposed in the Basel III agreement. In the end, our purpose is
+to gain qualitative insights on the suitable combinations between monetary policy and prudential
+regulation.
+        AB modeling has been extensively applied by researchers to analyze the impacts of monetary
+policy on the economy. Usually, effects of monetary policy are explored through changes in the interest
+rate, as in Dosi et al. (2012). In some studies (Delli Gatti et al., 2005; Raberto et al., 2008; Mandel et al.,
+2010), such changes are driven by Taylor-type rules. Prudential regulation has also been the object of
+study of AB models. Teglio et al. (2012) and Cincotti et al. (2012) study the impact of capital requirement
+rules on the economy employing the EURACE model3. Krug et al. (2014) developed a stock-flow
+consistent AB model to assess the effects of the main components of Basel III on financial stability.
+Nonetheless, as far as we know, no available study is devoted to test different combinations of monetary
+policy and prudential regulation within the AB modeling framework. Similar exercises were conducted
+mainly through the use of DSGE models, as referenced above. A noteworthy exception is Barnea et al.
+(2015), which developed an overlapping-generations model to analyze the interaction between these
+policies. However, we believe that AB models, due to their greater flexibility to cope with nonlinearities,
+can shed new and relevant light on this issue.
+        In addition to this introduction, this paper has more four parts. Section 2 outlines the model, while
+results of simulations concerning the baseline case are shown in Section 3. Meanwhile, Section 4 contains
+an assessment of various combinations of monetary policy and prudential regulation, considering their
+performance regarding both macroeconomic and financial stability. Concluding remarks are presented in
+the last section.
+
+2. Structure of the model
+
+2
+ See the excellent review in Fagiolo and Roventini (2012).
+3
+ EURACE is a large-scale, multi-sector agent-based model and simulator, which is under development since 2006 within an
+EU-funded research grant (Cincotti et al., 2011).
+                                                           3
+         The model is composed by three groups of agents: firms, which produce consumption goods, the
+banking system, which provides credit to firms and receive deposits from firms and firm-owners, and the
+central bank, which is in charge of setting the base interest rate and the capital requirement ratio.
+         This model has several ingredients of other models, such as Delli Gatti et al. (2010) and Dosi et al.
+(2013), in addition to several novel features. Indeed, our purpose is not to contribute methodologically to
+the literature on the agent-based economic modeling framework, but rather to explore a specific issue (the
+coordination between monetary policy and prudential regulation) within such framework. The main
+feature of the model herein is the supply/demand mutual restriction. An individual firm’s sales are a
+fraction of aggregate demand, but constrained by its own production. Hence, an individual firm’s output
+can be equal, lower (engendering unfilled demand) or higher (engendering unsold production) than the
+firm’s share in aggregate demand. It is supposed that firms operate in an imperfect information
+environment, which allows them to set different prices. Market shares are a function of the corresponding
+markups: firms setting relatively lower markups increase their market share. Firms with negative net
+worth are expelled from the model, and any bankrupt firm is replaced by a new one.
+         On the financial side, firms’ demand for credit with the banking system follows the “dynamic
+trade-off theory” proposed by Riccetti et al. (2013), meaning that firms have a long-run leverage target.
+Firms’ credit demand is fulfilled following a pecking order according to their net worth. The banking
+system sets a different interest rate to each firm according to its own soundness and the firm’s leverage
+level.
+         As it turns out, there is interdependence among the individual firms’ financial robustness. It
+operates through two channels. The first one is the banking credit. If a firm goes bankrupt, the banking
+system’s net worth shrinks. As the maximum total credit is a multiple of the banking system’s net worth,
+the available credit will be lower in the next period, thus eventually preventing other firms from
+producing more. The second such channel is a demand externality. By producing less, firms reduce
+aggregate demand, thus affecting the other firms’ revenues and profits.
+         The following subsections detail the behavior of each component of the model.
+
+2.1. Accounting identities
+         There is an aggregate consistency between assets, liabilities and financial resources circulating
+among the components of the model. Firms’ liabilities are composed by net worth, NW, and loans, B.
+Firms’ asset is capital, K. The banking system has, in the liability side, net worth, NWB, and deposits, D,
+while its assets are formed by loans, B, and voluntary, non-remunerated, reserves kept at the central bank,
+R. Firm-owners receive a fraction of profits as dividends, A. As in Delli Gatti and Desiderio (2014), we
+assume that there is no currency in the model, with all funds taking the form of inside money. Firms
+deposit their net worth at the banking system and firm-owners’ dividends totalize their deposits in the
+banking system, D K . Loans come back to the banking system as new deposits. The aggregate equality
+between assets and liabilities implies that R  NW  NW B . All these accounting relationships are
+represented in Table 1.
+         The flow of nominal funds is displayed in Table 2. The aggregate wage bill, wL , where w is
+nominal wage and L is hired labor, is paid by firms and received by workers. A share of nominal profits is
+received by firm-owners as dividends. Nominal debt commitments, iB , where i is the nominal interest
+rate, flow from firms to the banking system. Nominal output, pY , where p is the price level and Y is the
+real output, is consumed by workers and firm-owners or stored.
+
+2.2. Firms
+        A large number of firms, indexed by i=1,…, N, produce a consumption good using labor and
+capital. It is assumed that firms operate under conditions of imperfect information in order to allow for
+price heterogeneity.4 The output of each firm Yi ,t is determined by the following expression:
+
+4
+    On consumers’ imperfect price knowledge, see, for instance, Rotemberg (2008).
+                                                                4
+                                                           
+                                              Yi ,t  min K i,t , Li ,t             (1),
+where   0 and 0    1 are fixed (and uniform across firms) parameters, K i ,t is the capital stock of
+firm i at period t and Li ,t is the corresponding hired labor. It can be seen that labor productivity is
+normalized to one. For the sake of simplicity, we also abstract from the presence of physical capital, as
+we consider that K is simply credit capital. Consequently, capital comprises the stock of loans granted to
+the individual firm, BiS,t , and its net worth, NWi ,t :
+                                                   K i ,t  BiS,t  NWi ,t      (2).
+        Debt lasts for t D periods. Therefore, the stock of debt is the sum of the flow of debts in the last t D
+periods: BiS,t  t t
+                   t
+                                BiF,t . More details on how credit demand of firms is met will be given in the next
+                         D 1
+
+section.
+        There is a perfectly elastic supply of labor so an individual firm can hire as much labor as it wants
+at the current wage. Considering (1), a firm will hire a quantity of labor given by K i,t . It is assumed that
+the labor contract signed by firms and workers establish a minimum real wage. Therefore, there is a
+reasonable limit to the possibility that financially fragile firms improve their financial situation as a result
+of a sharp decline in real wage costs (recall that labor productivity is constant). The real wage, wt pt ,
+where wt is nominal wage and pt is the price level, has as lower bound a fraction ψ<1 of the initial real
+wage, w0 p0 . Therefore, the nominal wage, which is uniform across firms, is given by:
+                                                                   wt 1      w 
+                                  wt 1          if                         0 
+                                                                   pt 1       p0 
+                           wt                                                        (3).
+                                 p  w0  if                    wt 1       w0 
+                                                                             
+                                  t 1  p0                    pt 1       p0 
+        The nominal revenue of firm i at period t                  corresponds to a share si ,t of the aggregate nominal
+demand, Ct :
+                                             Ct  wt Lt   t 1                 (4).
+        In the equation above, wt Lt is the aggregate wage bill paid by the firms, δ is the (constant)
+fraction of profits paid by the firm to its owner as dividends, which is uniform across firms, and π is the
+aggregate nominal profit of firms. Thus, we assume that workers consume all their income and firm-
+owners’ dividends are saved to be entirely spent in the next period.
+        The nominal profit of an individual firm is given by:
+                                i ,t  min  pi ,tYi ,t , si ,t Ct   wt Li ,t  ii ,t BiS,t (5).
+       The first term of the expression above is the firm’s revenue. It corresponds to its share, s i ,t , of the
+aggregate demand, but it cannot be greater than its nominal production. Unsold production corresponds to
+inventories, I i ,t  max 0, pi ,tYi ,t  si ,t Ct . Remaining demand, if any, is confronted with firms’ inventories
+always considering si ,t until its complete fulfillment or the total depletion of inventories. Goods
+depreciate completely in one period, thus every firm starts any period with no inventories. Firms’ costs
+encompass labor costs, wt Li ,t , and debt commitments, ii ,t BiS,t , where ii ,t is the nominal interest rate
+charged on loans to an individual firm.
+
+
+
+
+                                                                    5
+      The individual price pi ,t is determined by applying an individual markup, i,t , on the nominal
+         5
+wage. The markup follows a behavioral rule, which is adapted from Dosi et al. (2013):
+                                                 s s               c 
+                        i ,t  i ,t 1  1   i ,t 1 i ,t 2    t 1  (6),
+                                                        si ,t 2     t 2 
+                                                                          c
+where 0    1 and ct is logarithm of the aggregate demand. The above expression can be interpreted in
+the following way: if the firm loses market share, it will try to recover it by reducing its markup (see
+equation 7 below); moreover, a fall in aggregate demand also means lower profits, and the firm will adopt
+the same strategy in order to increase its market share and hence keeps its revenues. An individual firm’s
+market share evolves according to the following rule inspired in Dosi et al. (2013):
+                                                           tM  i ,t 1 
+                                                       
+                                    si ,t  si ,t 1  1                  (7),
+                                                                 M        
+                                                                t         
+where  tM is the average markup at period t. Consequently, more competitive firms increase their market
+share.
+         Meanwhile, the dynamics of the individual net worth is given by NWi ,t  NWi ,t 1  1    i ,t . At
+any period, firms with a negative net worth are expelled from the model. For simplicity, the number of
+firms is kept constant. The sum of the market share of bankrupt firms is randomly distributed among
+entrant firms. The other attributes of entrant firms (leverage target, net worth and markup) are drawn from
+ N M I ,0.2M I  , where M I is the average value of the corresponding attribute of incumbent firms, taking
+into account the minimum levels set at Table 3 below.
+
+2.3. The banking system
+        The amount of credit supplied by the banking system at any period is limited by the capital
+requirement set by the central bank, represented by the parameter k, where 0  k  1 , so that
+ BtS  NWt B k . Thus, the banking system is required by the central bank to keep a minimum net worth
+over the loans ratio equal to k. The maximum flow of credit at period t, BtF , is given by the difference
+between the maximum credit supply allowed and the funds already lent:
+                                                  
+                                      BtF  max NWt B k  t t
+                                                                   t 1
+
+                                                                      D 1
+                                                                             BtF , 0             (8).
+       We suppose that the firms’ capital structure is determined by the “dynamic trade-off theory”
+(Riccetti et al., 2013). The “trade-off theory” (Jensen and Meckling, 1976; Myers, 1977) is based on the
+trade-off between the costs and benefits of debt, implying that firms choose a leverage level, defined as
+the debt/net worth ratio. Riccetti et al. (2013) proposed a dynamic version of this theory, according to
+which the adjustment of leverage towards a long-run target is governed by market frictions. The credit
+demanded by firm i at period t is given by:
+                                                  
+                                      BiF,t  max li*,t  NWi ,t  t t
+                                                                      t 1
+
+                                                                           D 1
+                                                                                  BiF,t , 0      (9).
+             In the equation above, l i*,t denotes the desired leverage. Therefore, if the stock of debt of the firm
+in the beginning of the period is below the maximum it is willing to borrow ( li*,t  NWi ,t ), it will ask for
+more loans. The desired leverage level evolves according to the following behavioral rule:
+                                                         C  Ci ,t 2 
+                                li*,t  li*,t 1.1    i ,t 1         
+                                                                           
+                                                                             (10),
+                                                                C i ,t 2 
+where 0    1 . The change in l i*,t is constrained to 10% per period, which is intended to impose enough
+cautiousness on agents’ willingness to adjust their desired leverage. A rise in the demand for their output
+5
+    The assumption of markup pricing behavior goes in hand with robust survey data evidence (e. g., Fabiani et al., 2006).
+                                                               6
+will lead firms to revise upwards their desired leverage: they will ask for more loans in order to produce
+more and meet the higher sales. This rule can also be thought of as being driven by the very rationale of
+the banking system, as it is willing to lend to the more profitable firms.
+        Once BtF is established, firms are sorted in descending order according to their net worth and their
+credit demands are fulfilled until the limit given by BtF is achieved. The nominal interest rate charged on
+each individual firm, ii ,t , is established by applying a specific markup, hi,t, on the base interest rate,
+i B 1 hi ,t  , where:
+                                                  
+                                      hi ,t  0.5  NWt B   
+                                                            
+                                                                  0.5  li ,t 
+                                                                                
+                                                                                    (11).
+        In the preceding expression, i B is the base interest rate set by the central bank and γ is a positive
+risk premium parameter, 0    1 . The first term implies that a sounder banking system will charge a
+lower interest rate. Besides, as implied by the second term, the interest rate paid by a firm is increasing in
+the firm’s risk level, as measured by its leverage.
+        The nominal profit of the banking system is given by:
+                                       tB  NW 0 ii ,t BiS,t  BDt (12).
+       Therefore, the banking system receives the debt commitments of the firms with positive net worth
+and face a loss which is equal to the bad debt, whose definition as the absolute sum of the net worth of the
+bankrupt firms follows Delli Gatti et al. (2007): BDt  NW 0 NWi ,t . The banking system’s net worth
+evolves according to NWt B  NWt 1
+                                 B
+                                      tB . If the banking system has a non-positive net worth, it is
+replaced by a new one with a net worth equal to  NWi ,t .6
+
+3. Simulations: the passive policy case
+       In this section, we run simulations considering that economic policy (monetary policy and
+prudential regulation) is merely passive. Therefore, the policy instruments k and i B are exogenous rather
+than endogenously updated according to some adaptive rule. The parameters and initial conditions are
+reported in Table 3.7
+
+3.1. Baseline simulations
+        Figures 1 and 2 displays some basic statistics generated by the model, where we considered the
+average of 100 simulations. It can be seen that, after a transient period, the system oscillates around a
+relatively stable long-run level. In the initial periods, the more competitive firms grab a bigger slice of
+aggregate demand and grow faster than the other firms, which can be seen by the increasing variability
+concerning net worth and markup (Figure 3). After a big bust around period 80, when a great number of
+less competitive firms is eliminated, firms became more uniform, as entrant firms are random copies of
+the incumbent ones. Without remarkable differences regarding firms’ competitiveness, as measured by
+their markups, oscillations became less pronounced. Inequality regarding firms’ net worth and real output,
+as measured by the Herfindahl-Hirschman Index, is very low, although it increases after the transient
+period.
+        There is no long-run growth, which is expected given the lack of any source of growth (e.g.,
+increase in the number of firms or in labor productivity). Similarly to other agent-based models, the
+model herein is able to endogenously generate business cycles. When the economy is in the boom period,
+firms revise upward their leverage target, engendering higher levels of production and subsequent growth
+
+6
+  In all simulation runs, no banking system bankruptcy was observed.
+7
+  No validation exercise on empirical data was performed, but using reasonable parameter values was always a major concern.
+In fact, most of the parameter values were drawn from existing studies (e.g., Riccetti et al., 2013). We run simulations on a
+range of reasonable values and chose a set of parameters whose results were not counterintuitive on empirical grounds.
+                                                              7
+in aggregate demand. Firms’ higher profits also keep the banking system in good financial shape, thus
+ensuring the necessary supply of credit. Such solid banking system’ equity position pushes the interest
+rate down, while prices are pushed up. The credit expansion, combined with decreasing returns to net
+worth, spawns a greater credit-to-output ratio. In the descending phase, firms cut down markups to try to
+keep their market shares and avoid higher losses. The consequent shrink in the leverage level reinforces
+the reduction of output and aggregate demand. Eventually, some firms go bankrupt, which reduces the
+banking system’s net worth. This can cause credit rationing, which creates a new source of instability.
+       Note that the system is adaptive, in the sense that ill-suited firms are expelled from the model and
+new firms are random copies of the surviving ones. Therefore, the financial fragility of the system
+decreases over time. The bad debt over total credit stabilizes around 1.5%. The number of firms
+eliminated in each period also goes down until around 2% of the total number of firms. In general,
+bankrupt firms are young, with an average age not higher than 10 periods, while this value is below 5 in
+the long-run. Inventories reach 8% of total output. All these dynamics are shown in Figure 4.
+
+3.2. Interest rate shock
+        We then run simulations including an interest rate shock, in the form of a temporary increase in
+  B
+i . The base interest rate is the instrument used by the central bank to implement its monetary policy.
+Thus, it is worth exploring how changes in this variable affect the real economy, as well as the price level
+and the financial fragility, which is measured here as the bad debt-to-aggregate credit ratio.
+        We considered that, at period 1,000, the base interest rate varies positively by r and, after 50
+periods, it turns back to its previous level. Note that the model replicates two kinds of tradeoffs: the
+inflation/output tradeoff and the inflation/financial stability tradeoff (Figure 5). Increases in the base
+interest rate reduce profits, thus affecting negatively consumption (through dividends) and output
+(through retained profits). Cascade effects take place, provoking further decreases in aggregate demand
+and production. In order to minimize profit losses, firms reduce markups to try to gain market share,
+which pushes prices down. Lower profits increase the occurrence of bankruptcies, thus worsening
+financial stability. An opposite mechanism takes place in case of a negative interest rate shock.
+        For large absolute values of r (above 25% of base interest rate), the macroeconomic effects of
+negative and positive shocks became asymmetric, being much stronger in the former case. In fact, they
+preclude the system from returning to its original path. This phenomenon does not seem to have much
+robust empirical support, but it can be logically and intuitively explained by characteristics of the model.
+After the transient period, eliminated firms have an average level of leverage which is smaller than that of
+the incumbent ones (Figure 2). With a positive interest rate shock, the resulting fall in aggregate demand
+forces leverage down. However, financial fragility increases, which attenuates such decrease in the
+leverage level and, consequently, in the output production: there will be more low-leveraged firms being
+eliminated and more high-leveraged firms being created, as entrant firms are random copies of incumbent
+ones. Meanwhile, a similar mechanism which can attenuate the change in leverage does not exist in the
+case of a negative interest rate shock.
+
+4. Implementing monetary policy and prudential regulation
+        In this section, we explore how the system is affected by an active economic policy. We assume
+that the central bank has two targets: macroeconomic stability (hereafter, MS) and financial stability (FS).
+To reach each one of these objectives, it relies on two instruments, respectively, the base interest rate i B
+and the capital requirement ratio k.
+        The base interest rate is set according to a Taylor-type rule:
+               itB    itB1  1    [r *  t 1  1 t 1   2 yt 1  y T   3 bt 1  bT ] (13).
+        In the equation above, r * is the equilibrium real interest rate,  is the observed inflation, y is the
+natural log of Y, y T is the natural log of the potential output, b is the nominal credit-to-nominal output
+ratio, b is the potential level of b, χ is a smoothing parameter between 0 and 1 and 1 ,  2 and  3 are
+        T
+
+                                                       8
+positive parameters. Both y T and bT are estimated applying the Hodrick-Prescott filter on the last t HP
+observations.8 It is implicitly assumed that the inflation target is zero. The base interest rate is never set
+below 0.1%.
+        By setting different values to parameters in equation (13), we explore the effects of three types of
+rules:
+   i.   Traditional Taylor rule (TTR):   3  0 , 1   2  0.5 . This establishes the rule proposed by
+        Taylor (1993) in his seminal paper.
+  ii.   Interest-rate smoothing (IRS): 3  0 , 1   2  0.5 , 0    1 . In the actual conduct of monetary
+        policy, central banks are frequently prone to adopt an inertial monetary policy, adjusting partially
+        the policy interest rate. Clarida et al. (2000) estimate the smoothing parameter as ranging from 0.7
+        to 0.9. Some researchers claim that this can be an optimal behavior on the part of the central bank.
+        Sack and Wieland (2000), for instance, consider that interest rate smoothing may be optimal due
+        to three features of the environment in which monetary policy is conducted: forward-looking
+        behavior by market participants, measurement error of key macroeconomic variables and
+        uncertainty regarding structural parameters.
+ iii. “Leaning against the wind” interest rate (LAW):   0 , 1   2  0.5 , 3  0 . There is an intense
+        discussion about whether monetary policy should react when an asset price bubble is identified or
+        just after the bubble burst – the “lean versus clean” debate. The recent financial crisis has provided
+        some arguments in favor of the first option (Canuto and Cavallari, 2013). We explore this rule by
+        using a variable associated with the booming of asset bubbles, viz. the credit expansion. Then we
+        incorporate to the TTR a component which is sensible to the credit-to-output gap.
+        Regarding the capital requirement, we consider that it now incorporates a cyclical component ktC :
+                                                   kt  k *  ktC            (14).
+        As originally proposed by the Basel III accord (BCBS, 2010), we establish k  0.08 , while ktC
+                                                                                          *
+
+
+varies according to the credit-to-output gap:
+                                         0          if     g t 1  L
+                                 
+                                 
+                                          g L
+                          ktC  0.025  t 1        if L  g t 1  H            (15),
+                                           H   L
+                                 
+                                 
+                                       0.025        if     g t 1  H
+where gt  bt  bT is the credit-to-output gap and L (H) is the lower (higher) threshold. In BCBS (2010),
+the suggested values for L and H, which we adopt here, are 0.02 and 0.10, respectively.
+        In the following analysis, this first rule is called the Basel III rule (BAS). Alternatively, we test a
+second capital requirement rule, which is adopted, for instance, in Agénor et al. (2013). Here, the capital
+requirement is kt  k *   C gt 1 , with   0 . In the following analysis, we refer to this rule as the
+                                              C
+
+
+unbounded capital requirement rule (UNB).
+        Departing from UNB, we explore two more rules. Firstly, we analyze the effect of the capital
+                                                                                          
+requirement smoothing (CRS) rule, by setting kt    kt 1  1     k *   C gt . The latter is
+underpinned by the same rationale of IRS. Capital requirement smoothing is a way to tackle the problem
+of procyclicality of capital requirement rules under the Internal Ratings Based (IRB) approach, which
+includes Basel II accord (Hordy and Howells, 2006). Finally, the use of the deviation of the credit-to-
+output ratio from its trend in setting of capital requirement is criticized by many authors. Repullo et al.
+
+8
+    Whenever the Hodrick-Prescott filter was applied in this paper, we set tHP = 20.
+                                                                 9
+(2010) point out that it would exacerbate the pro-cyclicality of risk-sensitive bank capital regulation, as
+for many countries the credit-to-GDP gap is negatively correlated with GDP growth. Some studies
+suggest that the credit growth rate is a better reference point. Therefore, we implement the credit growth
+capital requirement rule (CGR), according to which the capital requirement ratio is established according
+                               
+to kt  k *   C ln Bt 1  ln BT , where BT is the potential credit, which is also estimated through the
+Hodrick-Prescott filter.
+        As stated earlier, the central bank is concerned with macroeconomic stability and financial
+stability. We assume that the former depends negatively on the volatility of output and prices, as
+measured by their coefficients of variation, while the latter is measured by the ratio bad debt-to-total
+credit. We explore how the behavior of these three variables (coefficient of variation of real output,
+coefficient of variation of prices and average bad debt-to-credit) is affected by each combination of
+monetary policy rule and capital requirement rule.
+
+4.1. Results
+        Tables 4-5 show the results of simulations. For each combination, it was run 100 simulations of
+1,000 periods each. The values shown in the cells correspond to the difference between the average of the
+respective combination and that of the baseline case (fixed capital requirement and interest rate). We
+considered two cases: the mean across all the 1,000 periods (Table 4) and a similar series which excludes
+a transient phase comprising the first 200 periods (Table 5). We set r* = 0.02, χ = 0.5 and θC = 0.5 (0.1 for
+CGR). For the “leaning against the wind” rule, three values of θ3 were tested: 0.1, 0.5 and 1.
+        Our results show that the available instruments are individually effective. In fact, all the cyclical
+capital and interest rate rules, when applied alone, reduce their target variables (bad debt-to-credit in the
+first case, coefficient of variation of output and price in the second one). However, in some cases this
+efficiency has a temporal dimension. The “leaning against the wind” interest rate rule (LAW), when
+implemented alone, does not exhibit a long-run effect (ignoring the transient period); it just alleviates the
+output and price variation during the transient phase. Only few combinations present a long-run effect
+regarding price volatility. It is worth noting that some cyclical capital rules (notably UNB and CRS) have
+short-run positive effects on macroeconomic stability.
+        Some relevant policy implications can be inferred from the results. The cyclical capital component
+as suggested in the Basel III accord (BAS), notwithstanding being efficient when applied alone, loses its
+effectiveness when combined with an interest rate rule. A possible explanation is that changes in the
+interest rate require, in order to avoid a worsening of financial stability, a change in the capital
+requirement greater than that allowed in the BAS case, where the buffer is limited to 2.5%. Moreover, it
+can be seen that the unbounded capital requirement rules (UNB, CRS and CGR) perform very well in
+articulation with interest rate rules, which provides further support to the possible explanation suggested
+above.
+        The “leaning against the wind” rule proved very damaging to financial stability in the short-term,
+but may promote it in the long-run when the interest rate is not too sensitive to credit changes (θ3 = 0.1)
+and when it is combined with unbounded cyclical capital rules. Regarding the cyclical capital rules, the
+unbounded options (UNB, CGR and CRS) do not present any noticeable difference among themselves.
+        The best results for financial stability involve the smoothing of interest rate changes (IRS). This
+option proved slightly worse than other Taylor-type rules regarding macroeconomic stability, but this
+difference is not significant. Woodford (1999, 2001) discusses the optimality of interest rate smoothing.
+In fact, it reduces the likelihood of reaching the zero nominal interest rate floor in a low interest rate
+environment and decreases the average size of distortions caused by high interest rates (Woodford, 1999).
+Furthermore, if agents are forward-looking in such a way that current aggregate demand is affected by
+future interest rates, monetary policy inertia is optimal (Woodford, 2001).
+        This result goes in hand with the standpoint of some studies according to which interest rate
+smoothing enhances financial stability. It is claimed that, as banks convert variable rate liabilities in fixed
+rate assets, inertia in interest rates is favorable to their solvency (Padoa-Scioppa, 2002). Furthermore, our
+                                                      10
+results corroborate the evidence found in Smith and van Egteren (2005), according to which IRS performs
+better with unbounded capital requirement rules. These authors point out that, if interest rate smoothing is
+in place, a higher capital requirement should be imposed, in order to avoid moral hazard problems
+stemming from the fact that banks are prone to be more risk-taking in a stable environment.
+
+4.2. Extending the analysis: varying θC and χ
+        From the analysis above, it follows that two parameters are crucial. First, the preceding results
+suggest that the sensitiveness of the cyclical capital requirement to credit variations (θC) should be strong
+enough to countervail changes in interest rate in order to avoid a worsening in financial stability. Second,
+the interest rate smoothing (0 < χ < 1) overcomes both the fixed interest rate (χ = 1) and the traditional
+Taylor rule (χ = 0) cases. Therefore, it is worth exploring a wider range of values of these parameters.
+        We then changed θC between 0 and 1 in increments of 0.1. We used the UNB rule combined with
+three interest rate rules: TTR, IRS and LAW. For each value of the parameter 100 simulations were run
+and the average of the variables of interest (mean bad debt, coefficient of variation of real output and
+coefficient of variation of price) was calculated. The same procedure was adopted regarding χ with a
+ceiling of 0.9. In this case, an interest rate rule (IRS) was combined with three cyclical capital component
+rules (UNB, CRS and CGR). In both situations, we analyze the no-transience-phase case and the one in
+which the transience phase comprises the first 200 periods.
+        Figure 6 shows that, when a transient period is considered, there appears to be a nonlinear U-
+shaped relationship between the variables and θC. The fit in the convex curve is poor when the interest
+rate smoothing is applied, considering the financial stability, which is shown by the low adjusted R2
+(Table 6). Such result is expected, as in this case the financial stability stems essentially from the
+smoothed interest rate and relies less on θC. However, in the transient phase case, while average bad debt
+keeps its convex relationship with θC, the variables related to macroeconomic stability become concave
+functions of the parameter. This can be explained in light of the adaptive process which takes place
+during the transient phase. For values of θC below the turning point level (around 0.7), the elimination of
+less adapted firms – that is, those with lower net worth – due to a tightening of the credit supply is more
+severe. As entrant firms are random copies of incumbent ones, this increases firms’ average net worth. As
+a result, the peak of the aggregate output and price level is more pronounced.
+        Regarding the smoothing parameter (Figure 7), a similar result is observed. In the long-run, an
+increase in χ contributes to greater financial stability and its effects on macroeconomic stability are
+positive or negligible depending on the case. But in the short term output and price volatility is a convex
+function of the parameter. Again this can be understood by looking at the dynamics of the system in its
+early stages. When smoothed, the interest rate does not rise by as much as it would be necessary to
+dampen output and prices in the ascendant phase of the cycle.
+
+5. Concluding remarks
+        In this paper, we set forth an AB model well suited to performing macroeconomic policy analysis.
+The main purpose is to derive qualitative results regarding the appropriate coordination between monetary
+policy and prudential regulation within this framework.
+        The model succeeds in replicating several important macroeconomic stylized facts (e.g., business
+cycles), as well as two tradeoffs which relevant to the issues addressed here: the inflation/output tradeoff
+and the inflation/financial stability tradeoff. A positive interest rate shock pushes both output and prices
+down. Furthermore, the resulting decrease in firms’ profits increases the likelihood of bankruptcies, thus
+threatening financial stability.
+        We also explore how different combinations of monetary policy and prudential regulation rules
+affect macroeconomic and financial stability. Some relevant policy implications are drawn from this
+analysis. First, the implementation of a cyclical capital component as proposed in Basel III, while
+successful in reducing financial instability when applied alone, loses its efficacy when combined with the
+interest rate rules considered here. The reason might be that, in face of an interest rate change, it becomes
+                                                     11
+necessary an accompanying change in the capital requirement which is higher than that allowed by the
+Basel III cyclical buffer rule.
+        Second, interest rate smoothing is more effective than the other interest rate rules assessed, as it
+outperforms them concerning financial stability and performs as well as them regarding macroeconomic
+stability. Moreover, interest rate smoothing achieves better results when combined with unbounded
+capital requirement rules. A possible explanation comes from Smith and van Egteren (2005): banks are
+more prone to adopt a risky behavior in a stable environment, so that a higher capital requirement should
+be implemented when the smoothing interest rate is in place.
+        Finally, there is no long-run tradeoff regarding the sensitiveness of the cyclical capital component
+to the credit-to-output ratio, as well as the smoothing interest rate parameter. In the long-run, there is a
+nonlinear U-shaped relationship between the variables measuring financial and macroeconomic stability
+(bad debt-to-credit ratio and output and price volatility) and the cyclical capital component to credit-to-
+output ratio. Furthermore, financial stability is well fitted by a concave function of the smoothing interest
+rate parameter, whereas the same parameter has a positive or negligible effect on macroeconomic
+stability. Short-run tradeoffs appear due to the adaptive nature of the model.
+        Needless to say, all these qualitative results should be taken with caution. Agent-based models
+suffer from over-parametrization and their results are very sensitive to parameters and initial conditions.
+However, similar caution applies to other types of models addressing the same issues. Furthermore, the
+model set forth here is underpinned by an aggregate consistency between stocks and flows, a coherence of
+assumptions and the replication of stylized facts. Therefore, we believe that agent-based models along the
+lines of the one developed in this paper can be an important tool in the assessment of economic policies,
+acting complementarily to existing ones.
+
+References
+Agénor, P-R., Alper, K. and Silva, L. A. P. da (2013). “Capital Regulation, Monetary Policy, and
+Financial Stability”. International Journal of Central Banking, 9 (3): 193-238.
+Barnea, E., Landskroner, Y. and Sokoler, M. (2015). “Monetary policy and financial stability in a banking
+economy: Transmission mechanism and policy tradeoffs”. Journal of Financial Stability, 18 (In
+Progress): 78-90.
+Basel Committee on Banking Supervision (BCBS) (2010). “Guidance for national authorities operating
+the countercyclical capital buffer”. Bank of International Settlements, Basel, Switzerland, December
+2010.
+                (2012). “Models and tools for macroprudential analysis”. BIS Working Paper No. 21,
+May.
+Beau, D., Clerc, L. and Mojon, B. (2011). “Macro-prudential Policy and the Conduct of Monetary
+Policy”. Bank of France Occasional Paper No. 8.
+Bernanke, B. S. and Gertler, M. (1995). “Inside the black box: the credit channel of monetary policy
+transmission”. Journal of Economic Perspectives, 9 (4): 27–48.
+Bookstaber, R. (2012). “Using Agent-Based Models for Analyzing Threats to Financial Stability”. Office
+of Financial Research Working Paper No. 0003.
+Canuto, O. and Cavallari, M. (2013). “Monetary Policy and Macro Prudential Regulation: Whither
+Emerging Markets”. In Canuto, O. e Gosh, S. R. (eds.), Dealing with the Challenges of Macro Financial
+Linkages in Emerging Markets. The World Bank: Washington, D. C.
+Cincotti, S., Raberto, M. and Teglio, A. (2011). “The EURACE macroeconomic model and simulator”.
+16th IEA World Congress 2011.
+Cincotti, S., Raberto, M. and Teglio, A. (2012). “Macroprudential Policies in an Agent-Based Artificial
+Economy”. Revue de l'OFCE, 124 (5): 205-234.
+Clarida, R., Gali, J. and Gertler, M. (2000). “Monetary Policy Rules and Macroeconomic Stability:
+Evidence and Some Theory”. Quarterly Journal of Economics, 115: 147-180.
+
+
+                                                     12
+Delli Gatti, D. and Desiderio, S. (2014). “Monetary policy experiments in an agent-based model with
+financial frictions”. Journal of Economic Interaction and Coordination.
+Delli Gatti, D., Di Guilmi, C., Gallegati, M. and Giulioni, G. (2007). “Financial Fragility, Industrial
+Dynamics and Business Fluctuations in an Agent Based Model”. Macroeconomic Dynamics, 11 (S1): 62-
+79.
+Delli Gatti, D., Gallegati, M., Greenwald, B., Russo, A. and Stiglitz, J.E. (2010). “The financial
+accelerator in an evolving credit network”. Journal of Economic Dynamics and Control, 34(9): 1627-
+1650.
+Dosi, G., Fagiolo, G., Napoletano, M. and Roventini, A. (2013). “Income Distribution, Credit and Fiscal
+Policies in an Agent-Based Keynesian Model”. Journal of Economic Dynamics and Control, 37 (8):
+1598-1625.
+Fabiani, S., Druant, M., Hernando, I., Kwapil, C., Landau, B., Loupias, C., Martins, F., Mathä, T.,
+Sabbatini, R., Stahl, H. and Stokman, A. (2006). “What Firms' Surveys Tell Us about Price-Setting
+Behavior in the Euro Area”. International Journal of Central Banking, 2 (3): 3-47.
+Fagiolo, G. e Roventini, A. (2012). “Macroeconomic Policy in DSGE and Agent-Based Models”. Revue
+de l’OFCE, 124 (5): 67-116.
+Gallegati, M. e Kirman, A. (2012). “Reconstructing Economics: Agent Based Models and Complexity”.
+Complexity Economics, 1: 5-31.
+Goodhart, C. A. E., Kashyap, A. K., Tsomocos, D. P. and Vardoulakis, A. P. (2013). “An Integrated
+Framework for Analyzing Multiple Financial Regulations”. International Journal of Central Banking, 9
+(S1): 109–143.
+Gordy, M. B. and Howells, B. (2006). “Procyclicality in Basel II: Can we Treat the Disease without
+Killing the Patient?”. Journal of Financial Intermediation, 15: 396-418.
+International Monetary Fund (IMF). (2013). “The interaction of monetary and macroprudential policies”.
+January.
+Jensen, M.C. and Meckling, W.H. (1976). “Theory of the Firm: Managerial Behavior, Agency Costs, and
+Ownership Structure”. Journal of Financial Economics, 3: 305-360.
+Krug, S., Lengnick, M. and Wohltmann, H. W. (2014). “The impact of Basel III on financial (in) stability:
+An agent-based credit network approach”. Economics Working Paper No. 2014-13, Christian-Albrechts-
+Universität Kiel, Department of Economics.
+Krugman, P. (1996). The Self-Organizing Economy. Oxford: Blackwell (Basil).
+__________ (2011). “The Profession and the Crisis". Eastern Economic Journal, 37: 307-312.
+Lambertini, L., Mendicino, C. and Punzi, M. T. (2013). “Leaning against boom–bust cycles in credit and
+housing prices”. Journal of Economic Dynamics and Control, 37 (8): 1500–1522.
+Mandel, A., Jaeger, C., Fuerst, S., Lass, W., Lincke, D., Meissner, F., Pablo-Marti, F. and Wolf, S.
+(2010). “Agent-Based Dynamics in Disaggregated Growth Models”. Working Paper 2010.77, CES.
+Myers, S.C. (1977). “Determinants of corporate borrowing”. Journal of Financial Economics, 5(2): 147-
+175.
+Padoa-Schioppa, T. (2002). “Central banks and financial stability: exploring a land in between”. Second
+ECB Central Banking Conference “The transformation of the European financial system”, Frankfurt am
+Main, October 2002.
+Raberto, M., Teglio, A. and Cincotti, S. (2008). “Integrating Real and Financial Markets in an Agent-
+Based Economic Model: An Application to Monetary Policy Design”. Computational Economics, 32:
+147–162.
+Repullo, R., Saurina, J. and Trucharte, C. (2010): “Mitigating the Pro-cyclicality of Basel II”. Economic
+Policy, 64: 659-702.
+Riccetti, L., Russo, A. and Gallegati, M. (2013). “Leveraged network-based financial accelerator”.
+Journal of Economic Dynamics and Control, 37 (8): 1626-40.
+Rotemberg, J. (2008). “Behavioral Aspects of Price Setting, and Their Policy Implications”. NBER
+Working Paper 13754.
+                                                   13
+Sack, B. and Wieland, V. (2000). “Interest-rate smoothing and optimal monetary policy: a review of
+recent empirical evidence”. Journal of Economic and Business, 52: 205-228.
+Smith, R. T. and van Egteren, H. (2005). “Interest rate smoothing and financial stability”. Review of
+Financial Economics, 14 (2): 147–171.
+Stiglitz, J. (2011). “Rethinking Macroeconomics: What Failed, and How to Repair It". Journal of the
+European Economic Association, 9: 591-645.
+Taylor, J. B. (1993). “Discretion versus policy rules in practice”. Carnegie-Rochester Conference Series
+on Public Policy, 39: 195-214.
+Teglio, A., Raberto, M. and Cincotti, S. (2012). “The impact of banks’ capital adequacy regulation on the
+economic system: an agent-based approach”. Advances in Complex Systems, 15 (S2).
+Woodford, M. (1999). “Optimal monetary policy inertia”. CFS Working Paper, No. 1999/09.
+___________ (2001). “The Taylor Rule and Optimal Monetary Policy”. American Economic Review, 91
+(2): 232–237.
+
+                                             Appendix: Tables and Figures
+
+                                                    Table 1: Balance sheets
+Agents                                       Assets                                                       Liabilities
+                                                                                                             B
+Firms                                          K
+                                                                                                            NW
+                                               R                                                             D
+Banking system
+                                               B                                                            NWB
+Firm-owners                                    DK                                                            A
+
+                                                     Table 2: Flow of funds
+                                             Firms                  Banking system              Workers            Firm-owners
+Production                                      pY                                                 wL                  A*
+Wages                                          wL                                                 wL
+Dividends                                      A*                                                                       A*
+Debt commitments                                iB                        iB
+(*): As will be detailed later, dividends are paid at period t and consumed at period t+1. Thus, dividends in the first row have a
+different value from those in the third one.
+
+                                         Table 3: Parameters and initial conditions
+Symbol           Meaning                                                                                                    Value
+Parameters
+N                Number of firms                                                                                              500
+α                Production parameter (see equation 1)                                                                           3
+β                Production parameter (see equation 1)                                                                         0.7
+tD               Duration of debts (in periods)                                                                                10
+ψ                Real wage lower limit parameter (see equation 3)                                                            0.95
+δ                Fraction of profits distributed as dividends                                                                 0.5
+φ                Markup sensitivity to a change in market share (equation 6)                                                  0.2
+λ                Leverage sensitivity to a change in demand (equation 10)                                                       1
+iB               Base interest rate                                                                                          0.02
+k                Capital requirement ratio                                                                                   0.08
+γ                Risk premium parameter (see equation 11)                                                                    0.02
+Initial conditions
+NWi ,0 (1)       Firms’ initial net worth                                                                  NWi ,0 ~ N 10, 2
+ i ,0 (2)       Firms’ initial markup                                                                 i ,0 ~ N 0.15, 0.03
+w0               Initial nominal wage                                                                                            1
+                                                               14
+l i*, 0         Firms’ initial leverage target                                                               li*,0 ~ U 0.01, 3
+si ,0           Firms’ initial market share                                                                  NWi ,0      NW    i ,0
+
+NWoB              Banking system’s initial net worth                                                                  k  NW    i ,0
+(1): Initial net worth is never set below 1.
+(2): Initial markup is never set below 1%.
+
+                                  Table 4: Results of simulations, no transient phase
+                                                                                                    LAW
+k\iB Rule                FIR                  TTR               IRS
+                                                                                 θ3=0.1             θ3=0.5             θ3=1.0
+Coefficient of variation of the real output
+FCR                         -              -0.9961***         -0.9342***        -0.9888***       -1.0287***        -0.9888***
+BAS                -0.0300                 -0.9819***         -0.8998***        -0.9947***       -1.0607***        -1.0582***
+UNB                -0.1144**               -0.8941***         -0.8084***        -0.8915***       -0.9908***        -1.0264***
+CRS                -0.1378***              -0.9063***         -0.8601***        -0.9247***       -1.0431***        -1.0634***
+CGR                 0.0171                 -0.9135***         -0.8589***        -0.9327***       -1.0251***        -1.0724***
+Coefficient of variation of prices
+FCR                         -              -0.0129***         -0.0117***        -0.0126***       -0.0129***        -0.0126***
+BAS                -0.0025**               -0.0128***         -0.0113***        -0.0125***       -0.0131***        -0.0130***
+UNB                -0.0036***              -0.0120***         -0.0109***        -0.0120***       -0.0124***        -0.0125***
+CRS                -0.0044***              -0.0120***         -0.0113***        -0.0122***       -0.0130***        -0.0126***
+CGR                 0.0001                 -0.0120***         -0.0111***        -0.0125***       -0.0129***        -0.0130***
+Mean bad debt-to-credit
+FCR                         -            0.1572***          0.0572            0.3461***        0.4917***           0.3461***
+BAS                -0.1128***            0.2182***          0.1059            0.2670***        0.4961***           0.5550***
+UNB                -0.1450***           -0.0320            -0.1568***         0.0690           0.2323***           0.6327***
+CRS                -0.1715***            0.0568            -0.1104**          0.1240**         0.4134***           0.7056***
+CGR                -0.0780*              0.0204            -0.0807            0.0438           0.3843***           0.7633***
+Values correspond to the difference between the mean of the combination and that of the baseline case (FCR x FIR). The
+significance level is set according to the F-test of equality of means. (*): Significant at 10%. (**): Significant at 5%. (***):
+Significant at 1%.
+
+                        Table 5: Results of simulations, transient phase = 200 first periods
+     B                                                                                              LAW
+k\i Rule                 FIR                  TTR               IRS
+                                                                                 θ3=0.1             θ3=0.5             θ3=1.0
+Coefficient of variation of the real output
+FCR                         -           -0.0788*           -0.0753*           -0.0584          -0.0462             -0.0584
+BAS                -0.0481              -0.0637            -0.0506            -0.0354          -0.0648             -0.0630
+UNB                 0.0130              -0.1119***         -0.0860**          -0.1180***       -0.0922**           -0.0720*
+CRS                -0.0395              -0.0991**          -0.0677            -0.0959**        -0.0569             -0.0458
+CGR                 0.0750              -0.0986**          -0.0745*           -0.0891**        -0.0689*            -0.0517
+Coefficient of variation of prices
+FCR                         -           -0.0004            -0.0005            -0.0001           0.0001             -0.0001
+BAS                -0.0004              -0.0001            -0.0001             0.0004           0.0000              0.0001
+UNB                 0.0007              -0.0009**          -0.0007*           -0.0009**        -0.0005              0.0002
+CRS                -0.0002              -0.0007*           -0.0006            -0.0007           0.0001              0.0006
+CGR                 0.0009              -0.0006            -0.0005            -0.0006          -0.0000              0.0003
+Mean bad debt-to-credit
+FCR                         -           -0.0428            -0.1639**           0.1270           0.1912**           0.1270
+BAS                -0.1021**             0.0082            -0.0892             0.0495           0.2323***          0.2133**
+UNB                -0.1298***           -0.2798***         -0.3751***         -0.1727***       -0.0259             0.4712***
+CRS                -0.1599***           -0.1707***         -0.3244***         -0.1029**         0.2052***          0.5722***
+CGR                -0.0912**            -0.2052***         -0.3118***         -0.1404**         0.2102***          0.5746***
+Values correspond to the difference between the mean of the combination and that of the baseline case (FCR x FIR). The
+significance level is set according to the F-test of equality of means. (*): Significant at 10%. (**): Significant at 5%. (***):
+Significant at 1%.
+                                                              15
+                                          Table 6: Adjusted R2 of regressions
+ C
+θ :
+                        avg. bad debt-to-credit            coeff. var. real output                                           coeff. var. price level
+Rule
+                         (1)               (2)             (1)                 (2)                                           (1)                 (2)
+TTR                    0.8947            0.8165          0.7493              0.7398                                        0.8151              0.6211
+IRS                    0.3595            0.6608          0.7646              0.6102                                        0.5426              0.2395
+LAW                    0.8844            0.8783          0.7771              0.8917                                        0.8696              0.7891
+χ:
+UNB                     0.9307             0.9711         0.3425                          0.3738                           0.3857                      0.9089
+CRS                     0.9215             0.9514        -0.0453                          0.4919                           0.2486                      0.9831
+CGR                     0.9695             0.9667         0.6980                          0.6188                           0.8547                      0.9491
+(1): Transient phase. (2): No transient phase.
+
+                                                                             4
+                                                                          x 10
+                                                                   1.08
+
+                                                                1.078
+
+                                                                1.076
+
+                                                                1.074
+
+                                                                1.072
+
+                                                                   1.07
+
+                                                                1.068
+
+                                                                1.066
+
+                                                                1.064
+
+                                                                1.062
+
+                                                                   1.06
+                                                                      1000       1020   1040   1060   1080   1100   1120   1140   1160   1180   1200
+                                                                                                               t
+
+
+                                                                 0.78
+
+
+                                                                0.775
+
+
+                                                                 0.77
+
+
+                                                                0.765
+
+
+                                                                 0.76
+
+
+                                                                0.755
+
+
+                                                                 0.75
+
+
+                                                                0.745
+
+
+                                                                 0.74
+                                                                    1000         1020   1040   1060   1080   1100   1120   1140   1160   1180   1200
+                                                                                                               t
+
+Figure 1: Left-hand side, from top-down: Real output and nominal credit-to-nominal output ratio. Right-hand side: the same
+variables in detail, considering a narrower time window.
+
+
+
+
+                                                           16
+                                                                   1.0914
+
+
+                                                                   1.0913
+
+
+                                                                   1.0912
+
+
+                                                                   1.0911
+
+
+                                                                    1.091
+
+
+                                                                   1.0909
+
+
+                                                                   1.0908
+
+
+                                                                   1.0907
+
+
+                                                                   1.0906
+                                                                        1000   1020   1040   1060   1080   1100   1120   1140   1160   1180   1200
+                                                                                                             t
+
+
+
+
+Figure 2: Left-hand side, from top-down: Price level and leverage. Right-hand side: the same variables in detail, considering a
+narrower time window.
+
+
+
+
+Figure 3: Above: Standard-deviation of firms’ net worth (left) and markup (right). Below: Herfindahl-Hirschman Index of
+firms’ net worth (left) and real output (right).
+
+                                                              17
+Figure 4: Bad debt as a percentage of total credit (top-left), number of eliminated firms per period (top-right), inventories over
+output (down-left) and average age of eliminated firms (down-right).
+
+
+
+
+Figure 5: Aggregate real output (up-left), price level (up-right), bad debt-to-total credit (down-left) and leverage (down-right)
+for various levels of r . Obs.: the variables are normalized to coincide at t=1,000.
+
+                                                               18
+                1.85                                                                              2.1
+                                                                                  TTR                                                                              TTR
+                 1.8                                                              IRS            2.05                                                              IRS
+                                                                                  LAW                                                                              LAW
+                1.75                                                                               2
+
+                 1.7                                                                             1.95
+
+                1.65                                                                              1.9
+
+                 1.6                                                                             1.85
+
+                1.55                                                                              1.8
+
+                 1.5                                                                             1.75
+
+                1.45                                                                              1.7
+
+                 1.4                                                                             1.65
+                       0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1               0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1
+                                                        C                                                                               C
+
+
+                0.17                                                                              0.6
+                                                                                  TTR
+                                                                                                                       TTR
+                0.16                                                              IRS
+                                                                                                                       IRS
+                                                                                  LAW            0.55
+                                                                                                                       LAW
+                0.15
+
+
+                0.14                                                                              0.5
+
+                0.13
+                                                                                                 0.45
+                0.12
+
+                0.11                                                                              0.4
+
+                 0.1
+                                                                                                 0.35
+                0.09
+
+                0.08
+                       0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1               0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1
+                                                        C                                                                               C
+                           -3                                                                               -3
+                       x 10                                                                             x 10
+                  2                                                                               8.8
+                                                                                  TTR
+                                                                                  IRS             8.6
+                                                                                                                                                                  TTR
+                 1.8                                                              LAW
+                                                                                                  8.4                                                             IRS
+                                                                                                                                                                  LAW
+                                                                                                  8.2
+                 1.6
+                                                                                                   8
+
+                 1.4                                                                              7.8
+
+                                                                                                  7.6
+                 1.2
+                                                                                                  7.4
+
+                                                                                                  7.2
+                  1
+                                                                                                   7
+
+                 0.8                                                                              6.8
+                       0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1               0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1
+                                                        C                                                                               C
+
+Figure 6: Left: average bad debt-to-credit (top), coefficient of variation of the real output (middle) and coefficient of variation
+of the price level (down) as functions of θ C considering a transient phase comprised by the 200 first periods. Right: the same
+variables in the no transient period case.
+
+
+
+
+                                                                                            19
+                 1.6                                                                               1.8
+                                                                                  UNB                                                                           UNB
+                                                                                  CRS              1.7                                                          CRS
+                 1.5
+                                                                                  CGR                                                                           CGR
+
+                                                                                                   1.6
+                 1.4
+
+                                                                                                   1.5
+                 1.3
+                                                                                                   1.4
+                 1.2
+                                                                                                   1.3
+
+                 1.1
+                                                                                                   1.2
+
+                  1                                                                                1.1
+
+
+                 0.9                                                                                1
+                       0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1                0   0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8    0.9     1
+                                                                                                                                    
+
+
+                0.12                                                                              0.62
+                                                                                  UNB                                                                   UNB
+                                                                                  CRS              0.6                                                  CRS
+                0.11
+                                                                                  CGR                                                                   CGR
+                                                                                                  0.58
+                 0.1
+                                                                                                  0.56
+
+                0.09                                                                              0.54
+
+
+                0.08                                                                              0.52
+
+                                                                                                   0.5
+                0.07
+                                                                                                  0.48
+
+                0.06
+                                                                                                  0.46
+
+
+                0.05                                                                              0.44
+                       0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1                0   0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8    0.9     1
+                                                                                                                                    
+
+                           -4
+                       x 10
+                 14                                                                              0.014
+                                                                                  UNB                                                                           UNB
+                 13                                                               CRS                                                                           CRS
+                                                                                                 0.013
+                                                                                  CGR                                                                           CGR
+                 12
+
+                 11                                                                              0.012
+
+
+                 10
+                                                                                                 0.011
+                  9
+                                                                                                  0.01
+                  8
+
+                  7                                                                              0.009
+
+                  6
+                                                                                                 0.008
+                  5
+
+                  4                                                                              0.007
+                       0        0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8   0.9     1                0   0.1   0.2   0.3   0.4   0.5   0.6   0.7   0.8    0.9     1
+                                                                                                                                    
+
+Figure 7: Left: average bad debt-to-credit (top), coefficient of variation of the real output (middle) and coefficient of variation
+of the price level (down) as functions of χ considering a transient phase comprised by the 200 first periods. Right: the same
+variables in the no transient period case.
+
+
+
+
+                                                                                            20
+

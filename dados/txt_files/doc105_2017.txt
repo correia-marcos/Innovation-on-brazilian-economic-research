@@ -1,0 +1,1540 @@
+Causes and Consequences of Hysteresis: Aggregate Demand,
+             Productivity and Employment
+       M. C. Pereira1,2 , G. Dosi2 , A. Roventini2,3 , and M. E. Virgillito4,2
+                         1
+                           Universidade Estadual de Campinas (Brazil)
+                              2
+                                Scuola Superiore Sant’Anna (Italy)
+                                  3
+                                    OFCE, Sciences Po (France)
+                         4
+                           Universita’ Cattolica del Sacro Cuore (Italy)
+
+
+
+                                             Abstract
+      In this work we develop an agent-based model where hysteresis in major macroeconomic vari-
+  ables (e.g., GDP, productivity, unemployment) emerges out of the decentralized interactions of
+  heterogeneous firms and workers. Building upon the model in Dosi et al. (2016, 2017), we spec-
+  ify an endogenous process of accumulation of workers’ skills and a state-dependent process of
+  firms entry, studying their hysteretic impacts. Indeed, hysteresis is ubiquitous. However, this is
+  not due to market imperfections, but rather to the very functioning of decentralised economies
+  characterised by coordination externalities and dynamic increasing returns. So, contrary to the
+  insider-outsider hypothesis (Blanchard and Summers, 1986), the model does not support the
+  findings that rigid industrial relations may foster hysteretic behaviour in aggregate unemploy-
+  ment. On the contrary, this contribution provides evidence that during severe downturns, and
+  thus declining aggregate demand, phenomena like decreasing investment and innovation rates,
+  skills deterioration, and declining entry dynamics are better candidates to explain long-run un-
+  employment spells and reduced output growth. In that, more rigid labour markets dampen
+  hysteretic dynamics by supporting aggregate demand, thus making the economy more resilient.
+
+
+  Keywords
+  Hysteresis, Aggregate Demand, Multiple Equilibria, Skills Deterioration, Market Entry, Agent-
+  Based Model
+
+
+  JEL codes
+  C63, E02, E24
+
+
+
+
+                                                  i
+                                             Resumo
+     Neste trabalho, desenvolvemos um modelo agent-based, onde a histerese nas principais va-
+riáveis macroeconômicas (por exemplo, PIB, produtividade, desemprego) surge de interações
+descentralizadas entre empresas e trabalhadores heterogêneos. Com base no modelo de Dosi
+et al. (2016, 2017), especificamos processo endógenos de acumulação de habilidades pelos tra-
+balhadores e de entrada das empresas no mercado e estudamos seus impactos histeréticos. A
+histerese é onipresente nos resultados. No entanto, isso não se deve às imperfeições do mer-
+cado, mas sim ao próprio funcionamento das economias descentralizadas, caracterizadas por
+externalidades de coordenação e retornos crescentes dinâmicos. Assim, ao contrário da hipótese
+insider-outsider (Blanchard and Summers, 1986), o modelo não suporta as conclusões de que re-
+lações industriais rı́gidas possam promover o comportamento histérico no desemprego agregado.
+Pelo contrário, esta contribuição fornece evidências de que, durante recessões severas e o asso-
+ciado declı́nio da demanda agregada, fenômenos como a diminuição das taxas de investimento
+e inovação, a deterioração das habilidades e a diminuição da dinâmica de entrada são melhores
+candidatos para explicar o aumento do desemprego de longo prazo e o reduzido crescimento do
+produto. Nesse sentido, mercados de trabalho mais rı́gidos atenuam a dinâmica histerética ao
+apoiar a demanda agregada, tornando a economia mais resiliente.
+
+
+Palavras-chave
+Histerese, Demanda Agregada, Equilı́brio Múltiplo, Deterioração de Habilidades, Entrada no
+Mercado, Modelo Baseado em Agente
+
+
+Área ANPEC
+Área 6 - Crescimento, Desenvolvimento Econômico e Instituições
+
+
+
+
+                                                 ii
+1       Introduction
+In this work, we develop an agent-based model able to display the endogenous emergence of hysteresis
+out of the interaction of heterogeneous firms and workers. The paper focuses on both the causes
+and the consequences of the hysteretical properties of macroeconomic time series, including GDP,
+productivity, and unemployment. Further, refining upon Dosi et al. (2016, 2017), we introduce an
+endogenous process of accumulation of workers’ skills, and a state-dependent process of firms entry,
+studying their hysteretic effects.
+    As we shall briefly discuss below, there are different notions of hysteresis. Basically, they boil
+down to three different interpretations of the phenomenon (more in Piscitelli et al., 2000, Hallett
+and Piscitelli, 2002, Amable et al., 2004). The first is formulated in terms of the persistence in
+the deviations from some equilibrium path; the second is defined as a random-walk dynamics in
+equilibrium itself; the third, we believe a more genuine one, is in terms of the heterogeneous and non-
+linear responses of a system characterised by multiple equilibria or path-dependent trajectories. Even
+if Piscitelli et al. (2000) (p. 59-60) define the former two as bastard usages of the notion of hysteresis,
+they have been the most common in economics, at least. In a representative example, Blanchard and
+Summers (1986) famous paper used the second of the foregoing interpretations in attempt to explain
+the structural unemployment in the late 1980’s in many European countries, at around 10% and
+quite far from the predicted 2-3% equilibrium level. Two alternative hypotheses were proposed by
+these authors in order to explain the emergence of hysteresis, a first one resting on the membership
+channel according to which only insider workers are able to exert pressure in the wage setting process,
+and a second one based on the duration channel, because the long-term unemployed are less relevant
+in the wage determination process. In the latter case, unemployment duration can (a) induce a
+process of worker skills deterioration, implying that the long-term unemployed experiences a fall in
+their productivity; (b) trigger search discouragement in unemployed people, less re-employable, and
+so less prone to search in the labour market.
+    Together with the supply side channels emphasized from the eighties, some acknowledgement has
+gone to aggregate demand shocks conceived as potential sources of hysteresis in the current economic
+crisis. Therefore, the notion of hysteresis has been extended from unemployment to permanent
+output loss. Blanchard et al. (2015) revisit hysteresis as the permanent effect exerted by crises on
+the the levels of output relative to the pre-crises one. The work suggests a sustained output gap in
+69% of the cases, among 22 countries in the period 1960-2010, where in 47% of them the recession
+was followed by an increasing output gap, meaning that recessionary periods affected not only the
+levels but also the subsequent growth rates, an effect named by Ball (2014) as super-hysteresis. In
+fact, Ball (2014) reports that over 23 countries in the period 2007-2014, most of them have been hit
+by severe recession, and some of them, like Greece, faced up to 30% losses in potential output.
+    The empirical detection of hysteresis, of course, goes together with the analysis of its determi-
+nants. Agent-based models (Tesfatsion and Judd, 2006; LeBaron and Tesfatsion, 2008) are particu-
+larly suitable to the task as one knows by construction the micro data-generating process and thus
+can explore the possible hysteretic features of aggregate variables as emergent properties of the evo-
+lutionary dynamics.1 The model, built upon the “Keynes meets Schumpeter” family of models (Dosi
+et al., 2010, Napoletano et al., 2012, Dosi et al., 2013, Dosi et al., 2015, 2016, 2017), as we shall see,
+is able to generically yield hysteresis in the macro variables under scrutiny both inter-regimes and
+intra-regimes. Indeed, hysteresis is ubiquitous.
+    According to our analysis, hysteresis is not due to market imperfections but rather to the very
+functioning of decentralised economies characterised by coordination externalities and dynamic in-
+creasing returns. Contrary to what is suggested by Blanchard and Summers (1986), our model does
+    1
+    See Fagiolo and Roventini (2012, 2017) for critical surveys on macro ABMs. See also Bassi and Lang (2016) for
+an agent-based model with investment hysteresis. For related ABMs which consider a decentralised labour market,
+see Dawid et al. (2014), Russo et al. (2015), Caiani et al. (2016) and Caiani et al. (2016), among the others.
+
+
+                                                       1
+not support the hypothesis that rigid industrial relations, via the insider-outsider channel, are the
+driving source of hysteresis in aggregate unemployment. On the contrary, more in line with Ball
+et al. (2014), our work indicates that during severe downturns and thus declining aggregate demand,
+phenomena like decreasing investment and innovation rates, skills deterioration, and declining en-
+try dynamics are better candidates to explain long term unemployment spells and reduced output
+growth. In such a framework, more rigid labour markets, by supporting aggregate demand, do not
+foster hysteresis but rather dampen it, thus making the economy more resilient.
+    The paper is organised as follows. After this introduction, Section 2 discusses the nature and
+the sources of hysteresis. In Section 3, we present the model structure. The empirical regularities
+matched by the K+S model are discussed in Section 4. In Section 5, we study the emergence and
+the causes of hysteresis. Finally, Section 6 concludes.
+
+
+2     The nature and determinants of hysteresis
+In this section, we provide a brief exploration on the sources and potential channels which might
+induce hysteretic behaviours in the macroeconomic variables. Hysteresis, a concept adopted from the
+natural sciences but with similar instances in economics, is a nonlinear mechanism, often implying
+multiple (alternative) time trajectories and equilibria. In a very broad perspective, a dynamical
+system can be considered hysteretical when the time trajectories of some or all of its variables do
+exhibit path-dependency, in turn also implying in non-ergodicity. The very notion of multiple paths
+for the development of both socio-economic and natural complex systems ultimately rests on the idea
+that history is an essential part of the interpretation of many dynamic phenomena. The property
+that history matters is also intimately related to that of time irreversibility, that is, a situation where
+it is not possible, even theoretically, to “reverse the arrow of time” and still expect to recover invariant
+properties of the system under investigation.
+     However, in tackling path-dependent phenomena in the social sciences, an intrinsic difficulty rests
+also in the fact that frequently only one of the many possible realizations of the system, dependent
+on its initial state, is empirically observed. In fact, is history-dependence only shaped by initial
+conditions or does it relate also to irreversible effects of some particular unfolding events (e.g., crises
+or regime changes)? Related, how do the set of all possible evolutionary paths are shaped and
+constrained by the structure inherited from the past?
+     In economics, the very notion of hysteresis has only been acknowledged with some scepticism
+and often in the most restrictive interpretations. In the 1980’s and 1990’s, a stream of literature has
+faced head-on the challenge of non-linearity of growth processes and thus the multiplicity of alter-
+native paths and the related hysteretic properties (good examples are the contributions in Anderson
+et al., 1988 and Day and Chen, 1993).2 However, such a stream of investigation was progressively
+marginalized, possibly due to its “revolutionary” theoretical implications, particularly in terms of
+equilibria selection and the welfare theorems. A usual “safer” path has been that of formalizing the
+phenomenon based on linear stochastic models with close-to-unit-root auto-regressive processes. In
+their seminal contribution, Blanchard and Summers (1986) identify hysteresis in the unemployment
+series whenever the coefficient of persistence ρ in the equation Ut = ρUt−1 + αt + t + θt−1 was
+estimated to be greater or equal to one.
+     Whether or not a (close to) unit-root process is an adequate signal of hysteresis has been strongly
+debated. Recently, Galı́ (2015) explores, without conclusive results, three alternative sources to a
+unit-root process of the European unemployment rate, testing whether it lies (i) in the natural rate
+of unemployment (Utn = Ut−1   n
+                                  + t ), (ii) in the central bank inflation target (πt∗ = πt−1∗
+                                                                                                   + ∗t ), or
+(iii) in the insider-outsider hypothesis (à la Blanchard-Summers) via alternative specifications for
+   2
+     The hysteretic properties of economic systems is also emphasized in the Post Keynesian literature: see Davidson,
+1991, 1993.
+
+
+                                                         2
+the New Keynesian Wage Phillips Curve. In general, this modelling approach has been based on a
+somewhat naive epistemology – like “Which processes should present unit-roots? The natural rate
+of unemployment, the inflation target, or the wage setting curve?” –, but without jeopardizing the
+underlying unique equilibrium assumption. The obvious dissatisfaction with the (linear) unit-root
+process approach is currently bringing a revival on the importance of the detection of nonlinearities in
+empirical macroeconomics, therefore questioning the widespread use of such methods. For example,
+Beaudry et al. (2016) do find evidence of cyclical recurrent patterns, not detectable when estimating
+auto-regressive linear stochastic models, while examining empirical time series like unemployment
+and working hours.
+    However, the critique to the unit-root process approach is deeper and concerns its very underlying
+theory: as suggested by Piscitelli et al. (2000), Hallett and Piscitelli (2002), Amable et al. (2004) and
+Bassi and Lang (2016), genuine models of hysteresis should embed a nonlinear structure – or at least
+do not discard nonlinearity in advance. According to Piscitelli et al. (2000), three features characterise
+hysteretic processes, namely, non-linearity, selectivity, and remanence. Being this memory process
+nonlinear, reversing a shock may not drive the system to recover its starting point. Moreover,
+selectivity means that not all shocks affect the system in the same way in different circumstances.
+Finally, remanence entails that temporary or non-recurrent shocks may lead to permanent new system
+states.
+    Widespread origins of hysteresis in the socio-economic domain are, first, feedback mechanisms
+related to coordination externalities, and, second, amplification processes stemming from some form
+of increasing returns.3 In particular, it is frequently derived from (i) positive feedbacks between levels
+of aggregate activities and innovative search, and (ii) powerful interactions between the aggregate
+demand and the diffusion of innovations. Whenever one abandons the unfortunate idea that the
+macroeconomic system is held up to some mysteriously stable and unique equilibrium path, it could
+well be that negative demand shocks exert persistent effects, because less aggregate demand entails less
+innovative search, which in turn entails less innovation stemming from technological shocks (Stiglitz,
+1994).
+    Despite the 2008 crisis, many economists continue to believe in some version of the model un-
+derlying the example A in Figure 1: the economy is bound to “spring back”, with no permanent
+loss to its long-run equilibrium rate of growth. The econometric side of this belief is the Frisch-like
+idea of the economy as a “pendulum”, responding to exogenous shocks.4 In this perspective, it seems
+almost a “miracle” that in the empirical literature one recently finds impulse response functions with
+multipliers significantly greater than one. This, we suggest, is a witness of the depth of the current
+crisis (see Blanchard and Leigh, 2013).
+    However, a small but significant minority of the profession has been forced by the evidence to
+accept case B in Figure 1: recession-induced output losses are permanent because even if the system
+goes back to the pre-crisis rate of growth, that is associated with an absolute level gap growing
+exponentially over time. Moreover, as discussed in Stiglitz (1994), imperfect capital markets and
+credit rationing may well exacerbate the effects of recessions, hampering the recovery of the growth
+rate even further. Beyond that, recurrent negative demand shocks, such as those deriving from
+austerity or labour market flexibilization policies, might yield reduced long-term rates of growth: this
+is what is shown in Dosi et al. (2016) and Dosi et al. (2016). In the latter scenario, as in the example
+C in Figure 1, the pre- and post-crisis growth trajectories diverge, implying a reduced long-run rate
+of the output growth.
+  3
+      See Dosi and Virgillito (2016) for a further discussion.
+  4
+      For an enticing reconstruction of the discussion between Frisch and Schumpeter, see Louca (2001).
+
+
+
+
+                                                          3
+          (A) ln Q                                             (B) ln Q
+
+
+
+
+                                                       Time                                                Time
+                                   (C) ln Q
+
+
+
+
+                                                                                 Time
+
+
+
+Figure 1: Effects of recessions: (A) short-run (no hysteresis), (B) long-run (hysteresis), (C) perma-
+nent/divergent (super hysteresis). Source (A and B): Stiglitz (1994), p. 123.
+
+
+2.1       Innovation, diffusion and investment
+At the empirical level, a first microeconomic channel5 which might induce hysteresis is the lower
+innovation rate associated with a reduction in the aggregate demand, which turns out in a decline
+in the productivity growth. Indeed, R&D expenditures are pro-cyclical. Moreover, the diffusion of
+new technologies and the adoption of capital-embodied, best-practice techniques slows down during
+crises. Reifschneider et al. (2015) document a drop in the yearly rate of growth of R&D expenditure
+in the U.S. from 3.6% during the pre-crises period (1990-2007), on average, to 1.6% after 2007. Not
+only the propensity to innovate, but also the process of adoption and diffusion of innovation is slowed
+down by the contraction of aggregate demand. Both phenomena have been emphasized long ago by
+Freeman et al. (1982) in their search for the patterns and determinants of long term fluctuations in
+growth and employment, and, more recently, theoretically investigated in Dosi et al. (2016, 2017).
+    Together with the slower rates of innovation, a process of destruction of the installed productive
+capacity, due to the lack of sales prospects, seems markedly happening in the post-2008. Indeed,
+even non-Keynesian commentators have identified the current economic crisis as one stemming from
+the lack of aggregate demand. As the interest rate reached its zero lower bound without fostering
+any surge in the investment rate, only accelerator-type investment processes seem able to explain
+the deteriorating dynamics of the productive capacity. Consistently with the accelerator hypothesis,
+Kothari et al. (2013) report that investments are ultimately affected by the dynamics of sales, rather
+than by the interest rate. According to their estimates, of the 23% total drop in investment during
+2008-2009, “more than three-quarters (18.1%) can be explained by the drop in GDP and corporate
+profits in the fourth quarter of 2008” [ibid, p. 6].
+    Overall, lower innovation, diffusion and investment rates seem very plausible candidates to explain
+the current slowdown in productivity. In turn, the fundamental point is that such changes may well
+bear a long-term impact, that is hysteretic effects, on the future dynamics of productivity, GDP and
+employment.
+  5
+      The order the channels are presented is not relevant in terms of the impact produced by each one upon hysteresis.
+
+
+
+                                                           4
+2.2    Entry dynamics
+The second microeconomic channel is the declining entry rate of firms in the market, which has
+been recently investigated especially in the U.S., as discussed in Gourio et al. (2014). Entry rates
+have declined since 2006 by about 27%, a widespread phenomenon across all sectors of the economy.
+This has been accompanied by steady exit rates and, consequently, also shrinking net entry rates.
+One direct effect of less entry is the reduced creation of new job opportunities. Decker et al. (2016)
+document a long term pattern in the declining business dynamism which the authors attribute,
+mainly, to the contracting share of young firms. In a similar vein, Siemer (2014) introduces the
+hypothesis of a missing generation of entrants after the 2008 crisis, as the results of the tightening
+financial constraints, primarily affecting young firms. According to his estimates, the more finance-
+dependent entrant firms reduced their the rates of job creation between 4.8 and 10.5 percentage
+points relative to the less finance-constrained incumbents. In fact, constrained access to credit may
+represent an important barrier to entry, together with the usual set-up costs, particularly during
+crises and the associated tight finance availability. In a Minskian perspective, on the other hand,
+periods of easy access to debt may induce a higher entry rate. Kerr and Nanda (2009) studied the
+effect of the banking deregulation in the U.S. upon the entry rate from the 1970s and estimated
+an increase of 10% in the start-ups rate after the reforms. Similar findings have been reported by
+Bertrand et al. (2007) at the industry level for France.
+    All in all, both in relatively bad or good times, the entry dynamics, affected by credit and other
+conditions, seems to be a potentially relevant source of hysteresis.
+
+2.3    Skills deterioration
+A third microeconomic channel which might trigger hysteresis is the workers’ skills deterioration
+process. Once the economy enters a longer recessionary phase, firms tend to fire workers. During
+severe recessions, like the 2008 ongoing crisis, the incentive to firms to hire is significantly weakened,
+so unemployment which could be in principle temporary and cyclical turns out to be persistent,
+implying that many workers experience long unemployment periods. Unemployed workers, as they
+stop learning-by-doing and lose contact with the new practices and techniques being introduced by
+firms, gradually deteriorate their existing skills during the unemployment period. As the economy
+recovers and the unemployed are finally hired, their productivity is lower than incumbent workers,
+reducing the overall productivity.
+    Looking at the recent figures, Reifschneider et al. (2015) document that the share of workers
+who have been unemployed for more than 26 weeks peaked at 45% in 2011 and it was still about
+30% in 2013. On a similar vein, Jaimovich and Siu (2012) analyse the speed of economic recovery
+during different economic recessions (1970, 1975, 1982, 1991, 2001, 2009) in the United States. Their
+findings suggest that while in the first three recessions aggregate employment begun to expand
+within six months of the peak of the downturn, during the last three crises employment continued
+to contract for about 20 months before turning around. Yet, at the end of 2013 employment had
+not returned to the pre-crisis level. Finally, Abraham et al. (2016) studying the effect of long-
+term unemployment on employment probability and earnings find evidence that long unemployment
+duration is negatively associated with both job-finding rates and earning opportunities. On a similar
+vein, Ghayad (2013), based on a résumé review study, reports that employers have a strong rejection
+for long-term unemployed applicants, even in case of equivalent or superior résumé qualification.
+    Hence, the effects of long unemployment shocks upon skills and job-finding probabilities are yet
+another important candidate as a source of macroeconomic hysteresis.
+
+
+
+
+                                                    5
+3       The model
+We build a general disequilibrium, stock-and-flow consistent, agent-based model, populated by het-
+erogeneous firms and workers who behave according to bounded-rational rules. More specifically, we
+extend the Keynes Meets Schumpeter (K+S) model (Dosi et al., 2010) with decentralized interac-
+tions among firms and workers in both the product and the labour markets (Dosi et al., 2016, 2017),
+introducing an endogenous process of workers’ skills accumulation and variable number of firms in
+the markets.
+    The two-sector economy in the model is composed of three populations of heterogeneous agents,
+  1
+Ft capital-good firms, Ft2 consumption-good firms, LS consumers/workers, plus a bank and the
+Government.6 Capital-good firms invest in R&D and produce heterogeneous machine-tools whose
+productivity stochastically evolves over time. Consumption-good firms combine machines bought
+from capital-good firms and labour in order to produce an homogeneous product for consumers.
+There is a minimal financial system represented by a single bank that provides credit to firms to
+finance production and investment plans. Credit is allocated to each firm according to their own
+demand, which is constrained by their past performance, according to a loan-to-sales cap rule ap-
+plied by the bank. Conversely, credit supply is completely elastic, adapting to the approved credit
+demand. Workers submit job applications to a small random subset of firms. Firms hire according
+to their individual adaptive demand expectations. The government levies taxes on firms profits, pays
+unemployment benefits and set minimum wages, according to the policy setting, absorbing excess
+profits and losses from the bank and keeping a relatively balanced budget in the long run.7
+
+3.1     The entry and exit processes
+We expanded the K+S model accounting for a variable number of firms in both the consumption-
+and the capital-good sectors (Ft1 , Ft2 ). In the new version of the model, entry and exit are now
+independent processes. As before, firms leave the market whenever their market shares get close to
+zero or their net assets turn negative (bankruptcy). However, and in line with Dosi et al. (1995), we
+now define the number of entrants by means of the random variables b1t and b2t :
+                          bzt = Ft−1
+                                  z
+                                     [(1 − o)M Azt + oπtz ]        (lower bounded to 0),                            (1)
+                                                                                      z
+where z ∈ {1, 2} denotes the sector (capital- or consumption-good, respectively), Ft−1   is the existing
+                                    z
+number of incumbent firms, M At the market current financial attractiveness, 1 ≤ o ≤ 1 is a mix
+balance parameter and πtz is a random draw from a uniform distribution on the fixed support [x2 , x̄2 ],
+                                                                                                 ¯
+representing a stochastic component in the entry process. This entry criterion states that the financial
+conditions do affect the decision of each firm evaluating to enter into the respective market, subject
+to a certain level of uncertainty, together with the current number of incumbent firms.
+    The market-specific entry attractiveness M Azt in period t is defined as:
+                              M Azt = M C zt − M C zt−1  (bounded to [x2 , x̄2 ]).                    (2)
+                                                                        ¯
+M C zt represents the overall sector’s financial conditions, calculated based on firms’ balance sheets as
+the (log) ratio between the aggregate stocks of liquid assets N Wy,t (bank deposits) and bank debt
+Deby,t :                                              !                       !
+                                          X                      X
+                          M C zt = log       N Wy,t−1 − log          Deby,t−1 ,                       (3)
+                                               y                         y
+
+    6
+     The subscript t indicates time dependence, one time unit representing roughly one quarter. From now on, agent
+specific variables are denoted by a subscript i, in case of capital-good firms, j, for consumption-good firms, or `, for
+workers.
+   7
+     Due to space restrictions, we do not present in details the firms’, the workers’ and the Government behavioural
+rules already set in the original model. For more details, including the model configuration, the timeline of events and
+the parameter set-up, please see Dosi et al., 2010 and Dosi et al., 2017.
+
+
+                                                           6
+in each sector, y ∈ {i, j}, accordingly. So, M C zt measures the sectoral liquidity-to-debt ratio and thus
+the tightness of the credit market, and M Azt is a proxy to its dynamics. Correspondingly, negative
+(positive) values of M Azt represent leveraged (deleveraged) markets, meaning debt is growing faster
+(slower) than the accumulation of cash equivalents. This means that whenever the incumbents’
+financial conditions are sound – the overall liquidity-to-debt ratio is shrinking – firms are more
+inclined to enter, and vice versa.
+    The adopted formulation for the entry process tries to model some well known facts in the
+industrial dynamics and business cycle literature: (i) the number of entrants is proportional to the
+number of incumbent firms (Geroski, 1991, 1995), (ii) entry is affected by the easiness of access to
+credit (Kerr and Nanda, 2009; Bertrand et al., 2007), (iii) the process is pro-cyclical (Gomis et al.,
+2017; Lee and Mukoyama, 2015).
+
+3.2     The labour market and skills dynamics
+The labour market in the model implements a fully-decentralized search and hiring process between
+workers and firms (more on that in Dosi et al., 2016, 2017). The aggregate supply of labour LS is
+fixed and all workers are available to be hired in any period. Also, the labour market is characterised
+by imperfect information. When unemployed, workers submit a certain number of job applications to
+firms. Employed workers may apply or not for better positions, according to the institutional set-up
+(see Section 3.3 below). Larger firms, in terms of market share, have a proportionally higher prob-
+ability of receiving job applications, which are organized in separated, firm-specific queues. Firms
+decide about their individual labour demand based on the received orders (capital-good sector), the
+expected demand (consumption-good sector), and the expected labour productivity level. Consid-
+ering the number and the productivity of the already employed workers, firms decide to (i) hire
+new workers, (ii) fire part of the existing ones, or (iii) keep the existing labour force. Each hiring
+firm defines a unique wage offer for the applicant workers, based on its internal conditions and the
+received applications. Workers select the best offer they get from the firms to which they submitted
+applications, if any. If already employed, they quit the current job if a better wage offer is received.
+There is no second round of bargaining between workers and firms in the same period and, so, firms
+have no guarantee of fulfilling all the open positions (no market clearing). Moreover, there are no
+firing or hiring transaction costs.
+     We extended the K+S model to account for the process of workers’ skills accumulation and
+deterioration. Such a process is driven by the worker-specific job tenures, assuming a learning-by-
+doing process when employed and a gradual deterioration of skills while unemployed, assuming firms
+keep introducing new techniques all the time, deprecating the skills of unemployed workers. The skill
+level s`,t > 0 of each worker ` evolves over time as a multiplicative process:
+                                    
+                                    (1 + τ )s`,t−1 if employed in t − 1
+                             s`,t =    1                                                             (4)
+                                          s`,t−1    if unemployed in t − 1,
+                                      1+τ
+with the learning rate τ ≥ 0 a parameter. As a consequence, when worker ` is employed her skills
+improve over time, as she becomes more experienced in her task. Conversely, unemployed workers
+lose skills. In particular, when a worker is hired, she may immediately acquire the minimum level
+of skills already present in the firm (the existing worker with the lowest skills), if above her present
+level. Also, workers have a fixed working life. After a fixed number of periods Tr ∈ N∗ in the labour
+market, workers retire and are replaced by younger ones,8 whose skills are equivalent to the current
+minimum level in the incumbent firms.
+   8
+     In the start of the simulation, initial workers ages are randomly draw in the integer range [1, Tr ] and all start from
+the same skills level.
+
+
+
+                                                             7
+      Workers’ skills define their individual (potential) productivity A`,t :
+
+                                                s`,t τ                     1 X
+                                       A`,t =       A ,           s̄t =        s`,t ,                        (5)
+                                                 s̄t i                    LS `
+
+where s̄t is the average worker skills level and Aτi , the expected productivity of the machinery vintage
+the worker operates. The ratio s`,t /s̄t , or the worker normalized productivity, represents her ability
+to produce more (if s`,t > s̄t ) or less (otherwise) when using a certain machine technology, in relation
+to the expected vintage productivity. The worker effective production depends, yet, on its utilization
+in the production process, according to the firms desired production level Qdj,t . Note that the sectoral
+aggregation over the firm-level effective productivities Aj,t is a truly emergent properties of the model,
+resulting, simultaneously, from the technical innovation dynamics (mainly, the introduction of new
+vintages Aτi ), the worker skills accumulation/deterioration process and the effective demand, which
+guides firms when deciding Qdj,t , the capital stock dynamics and the employed machine mix (see Dosi
+et al., 2010 for more details).
+    The influence of the workers’ skills upon production reflects a learning by tenure/doing mechanism
+well established in the literature at least since the seminal contribution of Arrow (1962). On the
+empirical side, for the links between job tenure, capability accumulation and firm productivity, see
+Zhou et al. (2011) and Lucidi and Kleinknecht (2009), among others.
+
+3.3      Alternative labour-market policy regimes
+We employ the model described above to study two alternative policy regimes, which we call Fordist
+(our baseline) and Competitive.9 The policy regimes are telegraphically sketched in Table 1.
+    Under the Fordist regime, wages are insensitive to the labour market conditions and indexed to
+the productivity gains of the firms. There is a sort of covenant between firms and workers concerning
+“long term” employment: firms fire only when their profits become negative, while workers are loyal to
+employers and do not seek for alternative jobs. When hiring/firing, firms aim to keep the more skilled
+worker. Labour market institutions contemplate a minimum wage fully indexed to the aggregate
+economy productivity and unemployment benefits financed by taxes on profits. Conversely, in the
+Competitive regime, flexible wages respond to unemployment and the decentralised labour market
+dynamics, and are set by means of an asymmetric bargaining process where firms have the last say.
+Employed workers search for better paid jobs with some positive probability and firms freely adjust
+(fire) their excess workforce according to their planned production. Hiring/firing workers by firms
+are based on a balance between skills and wages, using a simple payback comparison rule. The
+Competitive regime is also characterized by different labour institutions: minimum wage is only
+partially indexed to productivity and unemployment benefits – and the associated taxes on profits –
+are relatively lower.
+
+                                                              Fordist (baseline)         Competitive
+
+                       Wage sensitivity to unemployment          low (rigid)            high (flexible)
+                       Workers search activity                unemployed only      unemployed and employed
+                       Labour firing restrictions             under losses only               none
+                       Workers hiring priority                  higher skills           lower payback
+                       Workers firing priority                  lower skills           higher payback
+                       Unemployment benefits                         yes                 yes (reduced)
+                       Minimum wage productivity indexation          full                   partial
+
+
+
+                            Table 1: Main characteristics of tested policy regimes.
+
+    The simulation exercises in Section 5 are configured so that there is a regime transition at a
+certain time step, capturing a set of labour-market “structural reforms”. This institutional shock is
+  9
+    The two regimes roughly capture two alternative wage-labour nexus in the words of the Regulation Theory (see,
+within a vast literature, Boyer and Saillard, 2005 and Amable, 2003).
+
+
+                                                              8
+meant to spur flexibility on the relations among agents in the labour market and implies that the
+social compromise embodied in the Fordist regime is replace by the Competitive one.
+
+
+4      Empirical validation
+The K+S model is able to generate endogenous growth and business cycles, emergent crises, and
+to reproduce a rich set of macro (e.g., relative volatility, co-movements, etc.) and micro (firm size
+distributions, firm productivity dynamics, etc.) stylized facts (see Dosi et al., 2010, 2013, 2015,
+2017). In addition, the labour-enhanced version of the model (Dosi et al., 2016, 2017), which explic-
+itly accounts for microeconomic firm-worker interactions, has already proved to be able to robustly
+reproduce most of the labour market macro empirical regularities.10
+
+                   Fordist              t-4         t-3      t-2       t-1       0      t+1      t+2      t+3      t+4
+
+                   Net entry            0.09       0.13     0.14     0.07     -0.05    -0.18    -0.25    -0.25    -0.17
+                                        (0.02)   (0.02)   (0.02)   (0.02)    (0.02)   (0.02)   (0.02)   (0.02)   (0.02)
+                   Total firm debt      0.21       0.29     0.34     0.35      0.30     0.21     0.11     0.02    -0.03
+                                        (0.02)   (0.03)   (0.03)   (0.04)    (0.04)   (0.04)   (0.04)   (0.03)   (0.02)
+                   Liquidity-to-sales   -0.12     -0.31    -0.52    -0.65     -0.66    -0.51    -0.26    -0.00     0.19
+                                        (0.03)   (0.03)   (0.02)   (0.03)    (0.03)   (0.03)   (0.02)   (0.02)   (0.02)
+                   Competitive          t-4         t-3      t-2       t-1       0      t+1      t+2      t+3      t+4
+
+                   Net entry            0.07      0.12      0.15     0.15      0.11     0.03    -0.07    -0.16    -0.21
+                                        (0.02)   (0.02    (0.02)   (0.02)    (0.02)   (0.02)   (0.02)   (0.02)   (0.02)
+                   Total firm debt      0.11      0.11      0.08     0.03     -0.03    -0.08    -0.09    -0.07    -0.03
+                                        (0.03)   (0.04    (0.04)   (0.03)    (0.03)   (0.03)   (0.02)   (0.03)   (0.03)
+                   Liquidity-to-sales   -0.24    -0.50     -0.72    -0.85     -0.83    -0.64    -0.35    -0.02     0.25
+                                        (0.02)   (0.01    (0.01)   (0.01)    (0.01)   (0.01)   (0.01)   (0.02)   (0.02)
+
+
+
+Table 2: Correlation structure with respect to GDP on selected variables. All results significant at 5%
+level. MC standard errors in parentheses. Non-rate series are Baxter-King bandpass-filtered (6,32,12).
+
+    The extensions to the K+S model proposed here added some new empirical regularities matched
+by the model. First, the new labour force learning dynamics dynamics produce fat-tailed skills
+(worker level) and productivity (firm level) distributions, consistent with the empirical evidence
+suggesting the presence of both firm- and worker-specific heterogeneity. Second, the improved entry
+dynamics increased the number of the model variables that match the usual cross-correlation/lag
+structure among aggregated macro indicators. As shown in Table 2, net entry is pro-cyclical and
+lagging with respect to GDP, coherently with the specified state-dependent entry dynamics, but also
+counter-cyclical and leading on GDP. Time series correlation structure of some financial variables
+also added new insights. While the Fordist regime presents the same lag structure already revealed
+in Dosi et al. (2013), at least in terms of debt pro-cyclicality, in the Competitive regime debt is just
+mildly pro-cyclical and more lagged. In fact, credit (debt) is now also a slightly counter-cyclical
+leading indicator to GDP, as suggested by empirical data.
+
+
+5      At the roots of hysteresis
+Let us study the emergence of hysteresis in our model, addressing the possible causes and discussing
+the consequences for the economic dynamics. We will first study inter-regime long-run hysteresis (cf.
+Figure 1), also testing the Blanchard-Summers hypothesis (Section 5.1). We will then analyse the
+emergence of intra-regime transient hysteresis (Section 5.2).
+  10
+     For a detailed discussion upon the configurations and the parameter settings producing the above mentioned
+stylised facts we refer to Dosi et al. (2010, 2017). In the following we focus on the innovation, entry and skills
+processes and on the related variables and parameters.
+
+
+
+
+                                                                   9
+5.1      Regime change: super hysteresis
+We begin with the long-run dynamics of the model, when affected by an institutional shock, namely
+the introduction of “structural reforms” aimed at increasing the flexibility of the labour market,
+leaving however untouched the technological fundamentals. In our policy typology, the reforms are
+supposed to move the labour market regime from a Fordist to a Competitve set-up (see Section 3.3
+above). In that, we are implicitly testing the insider-outsider hypothesis of hysteresis proposed by
+Blanchard and Summers (1987). The normative implication of such hypothesis is the advocacy of
+a more flexible labour market, where unions have lower bargaining power in the wage formation
+process, with the aim of making wages more respondent to unemployment conditions. In our model,
+the transition from a Fordist toward a Competitive type of labour relations captures the structural
+reforms, aimed at achieving both numerical (easier firing) and wage flexibility (wages more respondent
+to unemployment), as illustrated in Table 1.11
+    In Figure 2, we report the time series of the main macroeconomic variables in the two regimes.12
+The institutional shock occurs at time t = 100 (the vertical dotted line). The widening GDP gap
+between the two regimes, as presented in Figure 2.a, shows how the structural reforms determine
+not only super hysteresis (i.e., a permanently lower growth rate of the GDP), but even a form of
+asymptotic hysteresis, whereby the effects propagate in the very long-run (see also Dosi et al., 2017,
+2016). The actual level of the long-run capacity utilization increases from the 85% to 90% after the
+introduction of the Competitive regime (cf. Figure 2.b), hinting at a process of underinvestment
+due to the worsened business opportunities for firms. In the Competitive regime, as a result of the
+depressed wage dynamics, increased GDP volatility, and their effect on the aggregate demand, firms
+reduce the average expansionary investments, which depend on the difference between (demand-led)
+desired and installed production capacity, pushing down the number of machines ordered from the
+capital-good sector. As a result, firms decrease the gap between the effective production and the
+potential capacity, which leads to a cyclical surge in the capacity utilization, that is, during good
+times firms utilize almost all the available capital to produce goods. The capital accumulation is
+slower when structural reforms are in place: the long-run growth rate falls from 1.55% to 1.44% per
+period. Figure 2.c shows the dynamics of unemployment and vacancy rates, which are negatively
+correlated, consistent with a Beveridge Curve, while unemployment is significantly higher in the
+Competitive regime. The negative effects of structural reforms spill over the long-run: the number
+of successful innovations in the capital-good sector takes a sustained lower trajectory (Figure 2.d)
+and the average level of workers skills is significantly reduced (Figure 2.e). Finally, the trend of the
+net entry13 of firms in the market is more turbulent after the reforms, indicating a higher level of
+volatility in credit conditions (Figure 2.f).14
+    The different performance of the two regimes is quantitatively summarised in Table 3, which
+presents the averages and the ratios between selected variables of the two set-ups and also the p-
+values for a t test comparing the averages. The results confirm, at a 5% significance level, that
+after the introduction of structural reforms the short- and long-run performance of the economy
+significantly worsens. Note that as the technological configuration of the model is invariant between
+the two regime specifications, the significant effects on the productivity, innovation and imitation
+rates are entirely caused by the institutional shock.15
+   11
+      Indeed, the change of the political structure and of the balance of power between capitalists and workers and
+the related results of a class struggle are phenomena which, if might have some economic roots, did occur at the
+socio-political level. For this reason, we perform a comparative static analysis, mimicking a quasi-natural experiment
+with a “treated” and “control” group.
+   12
+      The presented series are the averages of 50 Monte Carlo simulation runs, over 500 periods. The initial 100
+“warm-up” periods are not presented.
+   13
+      The use of the two-sided H-P filter produces the diverging patterns of the two curves before time t = 100.
+   14
+      Entry decision in the model is also driven by the average financial conditions of the firms in each sector.
+   15
+      In accordance with the behavioural rules set in the model (cf. Dosi et al., 2010 and Dosi et al., 2017), the dynamics
+of innovation, of imitation, of new machines introduction and, consequently, of the firms productivity growth is directly
+
+
+                                                            10
+                         Time series                Fordist (1)     Competitive (2)   Ratio (2)/(1)   p-value
+
+                         GDP growth rate              0.0148            0.0135           0.9118       0.044
+                         Capacity utilization         0.8712            0.9038           1.0374       0.000
+                         Productivity growth rate     0.0147            0.0134           0.9084       0.034
+                         Innovation rate              0.0937            0.0719           0.7677       0.001
+                         Imitation rate               0.0253            0.0189           0.7476       0.004
+                         Unemployment rate            0.0152            0.2640           17.400       0.000
+                         Vacancy rate                 0.0976            0.1439           1.4749       0.000
+                         Worker tenure                27.861            4.9561           0.1779       0.000
+                         Worker skills                1.7288            1.3418           0.7762       0.000
+                         Wages std. deviation         0.0618            0.1710           2.7672       0.000
+
+
+
+Table 3: Comparison between policy regimes, selected time series. Averages for 50 MC runs in period
+[200, 400] (excluding warm-up). p-value for a two-means t test, H0 : no difference between regimes.
+
+
+    What are the drivers of the soaring super hysteresis in the model? The huge surge in unemploy-
+ment reflects the widening gap between the long-run dynamics of real wages in the two regimes,16
+which, in turn, leads to the emergence of Keynesian unemployment due to the contraction of aggre-
+gate demand and the slowdown on the skills accumulation and on the productivity growth. Figure
+3 shows the box-plot comparison between the Monte Carlo simulation runs for the two regimes, for
+the long-term consequences in terms of the innovation and imitation rates, productivity growth, job
+tenure, workers skills and net entry of firms (see Section 2). The results in the first row of plots
+(Figure 3.a, b and c) indicate a reduction in the innovation and imitation rates in the majority of the
+simulation runs – the latter variables are calculated as the rate of successful innovators and imitators
+in the capital-good sector – and, as a consequence, in the productivity growth rate. This is an indi-
+rect outcome of the fall in the aggregate demand, which yields lower R&D expenditure by firms.17
+In the same direction, the results in the second row of Figure 3 show the quite significant fall on the
+average tenure period (plot d) and the ensuing slower pace of the workers skills accumulation (plot
+e), which, in turn, also has a direct and negative effect on the growth of productivity. Finally, the
+dynamics of net entry (number of entrants minus the exiting firms) is presented in plot f.18 According
+to the adopted entry rule, the financial conditions of incumbents do affect the decision to enter in the
+market. In the presence of overall improving financial state of firms, e.g., whenever there is a grow-
+ing sectoral difference between net worth (liquid assets) and debt, firms are more inclined to enter.
+However, note that in the Competitive regime the financial cycle is amplified due to the increased
+volatility, exacerbating the entry dynamics: in good times there are more entrants in Competitive
+than in the Fordist regime, which exhibits a stabler financial cycle, while the opposite occurs in bad
+times. Both phenomena, the more pronounced leverage cycle and the tighter availability of credit,
+have been documented by Ng and Wright (2013) as emerging business cycle stylised facts from the
+last three recessions (1990, 2001, 2007).
+    The transmission channels in the model operate through both numerical and wage flexibility.
+First, higher numerical flexibility, where workers are more freely fired, determines a sharp drop in
+workers job tenure and, indirectly, has a negative effect on skills accumulation and, consequently,
+on productivity. Not only the firing rule, but also the firing order criteria affect the dynamics of
+productivity growth. In the Fordist regime, firms hire (fire) first workers with higher (lower) skills.19
+
+
+
+
+affected by the overall macroeconomic conditions, including those directly impacted by the reforms. This creates a
+(potentially hysteretic) reinforcing feedback process between the macro and the technological domains, which in part
+explains the observed results.
+   16
+      The real wages growth rates are 1.47% and 1.35% per period, respectively.
+   17
+      See Dosi et al., 2010 for details on the innovation process.
+   18
+      The diverging trend before time t = 100 is due to the two-sided H-P filter we employ to detrend the series.
+   19
+      This is a necessary consequence of the firms unilaterally decided and homogeneously applied wage adjustments,
+so skills are the only heterogeneous metric among workers in a Fordist firm.
+
+
+                                                               11
+                                                                                                                                                   Figure 2: Macroeconomic dynamics in alternative policy regimes.
+                                                                                                                                          Lines represent 50 MC runs time step averages (Fordist: black | Competitive: blue).
+
+                                                                        (a) Actual and     full
+                                                                                    GDP ( all       capacity
+                                                                                              experiments )  GDP                                                                                                                        (b) Capacity utilization
+                                                                                                                                                                                                                                      Capacity utilization and participation rates ( all experiments )                                                                                                   (c) Unemployment             and
+                                                                                                                                                                                                                                                                                                                                                                                                                Unemployment and vacancy         vacancy
+                                                                                                                                                                                                                                                                                                                                                                                                                                                     experiments ) rates
+                                                                                                                                                                                                                                                                                                                                                                                                                                         rates ( all
+
+
+
+
+                                                                                                                                                                                                            1.00
+                                                          Fordist                                                                                           Effective GDP                                              Fordist                                                                                            Utilization                                                             Fordist                                                                                         Unemployment
+                                                          Competitive                                                                                       GDP @ 100% utilization                                     Competitive                                                                                        Participation                                                           Competitive                                                                                     Vacancy
+                                               22
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.3
+                                                                                                                                                                                                            0.95
+                                               20
+
+
+
+
+                                                                                                                                                                                                            0.90
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.2
+     Log GDP
+
+
+
+
+                                                                                                                                                                                     Rate
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                           Rate
+                                               18
+
+
+
+
+                                                                                                                                                                                                            0.85
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.1
+                                               16
+
+
+
+
+                                                                                                                                                                                                            0.80
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.0
+                                               14
+
+
+
+
+                                                                                                                                                                                                            0.75
+12
+
+
+
+
+                                                      0                          100                              200                                 300                      400                                 0                    100                                200                                 300                   400                                                      0                     100                           200                              300                       400
+
+                                                                                                                    Time                                                                                                                                                    Time                                                                                                                                                                     Time
+                                                                                         ( vertical dotted line: regime change / MC runs = 50 )                                                                                      ( vertical dotted line: regime change / capacity in sector 2 only / MC runs = 50 )                                                                                                   ( vertical dotted line: regime change / MC runs = 50 )
+
+                                                                                Innovation and and
+                                                                        (d) Innovation         imitation (imitation
+                                                                                                           all experiments ) rates                                                                                                         Workers skills (worker
+                                                                                                                                                                                                                                      (e) Average          all experimentsskills
+                                                                                                                                                                                                                                                                          )                                                                                                                                   Net entryof
+                                                                                                                                                                                                                                                                                                                                                                                                   (f ) Net entry             firms
+                                                                                                                                                                                                                                                                                                                                                                                                                        of firms          (HP-filtered
+                                                                                                                                                                                                                                                                                                                                                                                                                                 in the market ( all experiments ) trend)
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.8
+                                                          Fordist                                                                                                       Innovation                                     Fordist                                                                                            Tenure skills                                                           Fordist                                                                                Consumption−good sector
+                                                                                                                                                                                                            1.8
+
+
+
+
+                                                          Competitive                                                                                                   Imitation                                      Competitive                                                                                        Vintage skills                                                          Competitive                                                                            Capital−good sector
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.6
+                                               0.15
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                           Number of net entrant firms (HP−filtered)
+     Share of innovating and imitating firms
+
+
+
+
+                                                                                                                                                                                                            1.6
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.4
+                                                                                                                                                                                     Average skills level
+                                               0.10
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.2
+                                                                                                                                                                                                            1.4
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       0.0
+                                               0.05
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       −0.2
+                                                                                                                                                                                                            1.2
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                       −0.4
+                                               0.00
+
+
+
+
+                                                                                                                                                                                                            1.0
+
+
+
+
+                                                      0                          100                              200                                 300                      400                                 0                    100                                200                                 300                   400                                                      0                     100                           200                              300                       400
+
+                                                                                                                   Time                                                                                                                                                      Time                                                                                                                                                                    Time
+                                                                                  ( vertical dotted line: regime change / sector 1 only / MC runs = 50 )                                                                                          ( vertical dotted line: regime change / MC runs = 50 )                                                                                                                  ( vertical dotted line: regime change / MC runs = 50 )
+     Figure 3: Performance comparison between policy regimes (Fordist: left | Competitive: right).
+     Summary statistics for 50 MC runs in period [200, 400] (excluding warm-up). Bar: median | box: 2nd-3rd quartile | whiskers: max-min | dots: outliers.
+
+                                                                                          (a) Innovation
+                                                                                                  Innovation rate                                                                                                                                         (b) Imitation
+                                                                                                                                                                                                                                                                  Imitation rate                                                                                                                          (c) Productivity        growth rate
+                                                                                                                                                                                                                                                                                                                                                                                                                    Productivity growth
+                                                      0.16
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.020
+                                                                                                                                                                                                                                                                                                                       ●                                                                                           ●
+
+
+
+
+                                                                                                                                                                                                                      0.05
+                                                      0.14
+
+
+
+
+                                                                                                                                                                                                                      0.04
+                                                      0.12
+     Innovating firms share in sector 1
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                  Average productivity growth rate
+                                                                                                                                                                                  Imitating firms share in sector 1
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.015
+                                                      0.10
+
+
+
+
+                                                                                                                                                                                                                      0.03
+                                                      0.08
+
+
+
+
+                                                                                                                                                                                                                      0.02
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.010
+                                                      0.06
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                   ●
+
+
+
+
+                                                                                                                                                                                                                      0.01
+                                                      0.04
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                   ●
+                                                      0.02
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.005
+                                                                                                                                                                                                                      0.00
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ●
+13
+
+
+
+
+                                                                                Fordist                                                           Competitive                                                                                   Fordist                                                           Competitive                                                                                   Fordist                                                           Competitive
+
+
+                                                             ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 50 / period = 300 − 500 )                                              ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 50 / period = 300 − 500 )                                              ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 50 / period = 300 − 500 )
+
+                                                                                          (d) Worker      tenure
+                                                                                               Workers tenure
+                                                                                                                                                                                                                      1.8                                  (e) Worker         skills
+                                                                                                                                                                                                                                                               Workers tenure skills                                                                                                                                             entry
+                                                                                                                                                                                                                                                                                                                                                                                                                       (f ) Net Net             of firms
+                                                                                                                                                                                                                                                                                                                                                                                                                                    entry of firms
+                                                      30
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.6
+                                                                                                                                                                                                                      1.7
+     Average employment time in same firm (periods)
+
+                                                      25
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.4
+                                                                                                                                                                                  Average workers skills level
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                  Net entries in both markets
+                                                                                                                                                                                                                      1.6
+                                                      20
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.2
+                                                                                                                                                                                                                      1.5
+                                                      15
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     0.0
+                                                      10
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     −0.2
+                                                                                                                                                                                                                                                                                                                       ●
+                                                                                                                                                                                                                      1.4
+
+
+
+
+                                                                                                                                                       ●
+                                                                                                                                                       ●
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                     −0.4
+                                                      5
+
+
+
+
+                                                                                                                                                                                                                      1.3
+
+
+
+
+                                                                                                                                                                                                                                                                                                                       ●
+
+
+
+
+                                                                                Fordist                                                           Competitive                                                                                   Fordist                                                           Competitive                                                                                   Fordist                                                           Competitive
+
+
+                                                             ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 50 / period = 300 − 500 )                                              ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 50 / period = 300 − 500 )                                              ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 50 / period = 300 − 500 )
+    Conversely, in the Competitive case, firms use the skills-to-wage “payback” ratio as a decision
+guide to preferentially hire (fire) workers with superior (inferior) ratios. Such a behaviour has a
+negative impact on the aggregate skills level of the incumbent workers over time. On the other hand,
+higher wage flexibility, by limiting the wage indexation upon the productivity gains, causes a straight-
+forward drop in the aggregate demand via the reduced consumption of workers. In turn, the shrinking
+sales opportunities drive a fall in investment and labour demand, which induces more unemployment,
+characterising a typical Keynesian feedback-amplified downturn. Moreover, the slower economy also
+impacts upon the entry/exit and the innovation/imitation rates, via the overall cut in total R&D
+expenditure and the higher volatility in the number of operating firms. In fact, Table 2 show the
+significant level of correlation between the business cycle and the net entry of firms in the market.
+    To sum up, our simulation experiments on the K+S model – extended with endogenous firms
+entry and workers skills accumulation/deterioration – generically yield super hysteresis stemming
+from an institutional shock. Indeed, institutions are a “carrier of history” (David, 1994) also here.
+However, contrary to the insider-outsider hypothesis (Blanchard and Summers, 1987) “pro-market”
+institutions bear a negative hysteretic effect. However, our results seem to provide a more consistent
+explanation for its main causes and also bring a critical warning. The model suggests that structural
+reforms aimed at increasing the flexibility in the labour market, may well spur even more hysteresis
+instead of reducing it. Considering that, in the next section, we focus on intra-regime hysteresis
+phenomena.
+
+5.2     Detecting intra-regime hysteresis
+Assessing the emergence of intra-regime hysteresis is not a trivial task as there is no unifying test or
+even widely accepted criteria for this. However, there are several properties and techniques which do
+help uncover particular aspects of hysteresis. In the following, we present a set of analytical methods,
+summarized in Table 4, which provide evidence of the presence of hysteretical properties in the K+S
+model. In line with the literature, we study whether the time series generated by the model present
+evidence of (i) remanence, (ii) persistency, (iii) nonlinearity, (iv) path-dependency, and (v) super
+hysteresis. Needless to say, these properties are to some degree overlapping.
+    Figure 4 illustrates the number of periods (grey area) necessary to put the economy back to
+the pre-crisis growth trend (dashed line) in typical simulation runs.20 The analysis is inspired by
+(Blanchard et al., 2015) and simply performs an extrapolation of the long-run GDP trend to detect
+the recovery from crises under the presence of hysteresis. The results show the coexistence of shorter
+business cycle downturns with longer, hysteretical crises, requiring significant more times for the
+economy to recover. Note also the presence of super hysteresis, revealed by the different slopes of
+the peak to to peak GDP trends (dashed lines).
+    Table 5 reports the average recovery duration for both the GDP and the mean unemployment
+time (the average period a worker takes to find a new job). While the duration of the GDP trend
+recovery is similar among regimes (around 16 quarters), the unemployment time takes almost five
+times more to return to its pre-crisis level in the Competitive case. In order to better assess the
+severity of the crises, we also track the peak GDP trend deviation during the recovery period (the
+farther the GDP gets from the pre-crisis trend) and the accumulated GDP losses in comparison to
+the trend (the crisis “cost”). The model robustly shows how Competitive regime crises are about
+two times deeper than in the Fordist scenario. The accumulated GDP losses comparison leads to a
+similar conclusion.
+    In Table 6, we report a set of statistical tests to detect unit-roots/stationarity (Augmented
+  20
+     A crisis is defined by a 3% drop of the GDP in a single period which is not recovered in the next three periods.
+The pre-crisis level is calculated as the average GDP for the four periods before the crisis and the trend, as the output
+of an H-P filter at the period just before the crisis. The crisis is considered recovered when the GDP reaches back the
+pre-crisis trend level.
+
+
+                                                           14
+                                             Property                                        Test                                                                            Reference
+
+                                             Remanence                                       Duration of recovery of                                                         Jaimovich and Siu, 2012
+                                                                                             employment and GDP after crises
+                                             Persistency                                     Unit-root tests for stationarity                                                Blanchard and Summers, 1986
+                                             Nonlinearity                                    Brock-Dechert-Scheinkman test                                                   Broock et al., 1996
+                                             Path dependence                                 Ergodicity tests                                                                Wald and Wolfowitz, 1940
+                                             Super hysteresis                                Different GDP growth trend (slope) after crises                                 Blanchard et al., 2015
+
+
+
+                                           Table 4: Selected tests to evaluate hysteretic properties in times series.
+
+Figure 4: GDP recovery after crises.
+Typical simulation runs. Dashed line: pre-crisis trends | Gray boxes: recovery periods.
+
+                                                       (a) Fordist
+                                   GDP long−term trend recovery after crisis sample ( Fordist )                                                                                           (b) Competitive
+                                                                                                                                                                           GDP long−term trend recovery after crisis sample ( Competitive )
+          22
+
+
+
+
+                                                                                                                                                   20
+          21
+
+
+
+
+                                                                                                                                                   19
+Log GDP
+
+
+
+
+                                                                                                                                        Log GDP
+          20
+
+
+
+
+                                                                                                                                                   18
+          19
+
+
+
+
+                                                                                                                                                   17
+
+
+
+
+               200                   250                               300                                350                    400                    200                     250                               300                                350                    400
+
+                                                                         Time                                                                                                                                       Time
+                      ( dashed line: pre−crisis trend / gray boxes: trend recovey period / MC case = 32 / period = 300 − 500 )                                   ( dashed line: pre−crisis trend / gray boxes: trend recovey period / MC case = 39 / period = 300 − 500 )
+
+
+
+
+Dickey-Fuller/ADF, Phillips-Perron/PP, and Kwiatkowski-Phillips-Schmidt-Shin/KPSS tests),
+i.i.d./nonlinearity (Brock-Dechert-Scheinkman/BDS test), and ergodicity (Kolmogorov-Smirnov/KS
+and Wald-Wolfowitz/WW tests).21 Except for the WW case, the tests are applied for individual
+Monte Carlo simulation runs (or multiple run-pair combinations, in the case of KS) and, so, the
+results present the frequency of the rejection of the null hypothesis for the set of 50 runs at the usual
+5% significance level (see Table 6 for the definition of H0 in each case).
+
+                                                                                                                                                  Fordist     Competitive
+
+                                                                                                       Number of crises                            6.15          5.77
+                                                                                                                                                  (0.44)        (0.28)
+                                                                                                       Crises peak                                 0.23          0.51
+                                                                                                                                                  (0.01)        (0.02)
+                                                                                                       Crises losses                               2.38          4.18
+                                                                                                                                                  (0.33)        (0.42)
+                                                                                                       Recovery duration
+                                                                                                       - GDP                                      15.64         16.97
+                                                                                                                                                  (1.43)        (1.04)
+                                                                                                       - Unemployment time                         6.83         31.22
+                                                                                                                                                  (0.55)        (9.04)
+
+
+
+Table 5: Comparison between policy regimes: GDP and unemployment time recovery.
+Averages for 50 MC runs in period [200, 400] (excluding warm-up), MC standard errors in parentheses.
+
+    The results of the tests suggest that GDP, productivity and wage growth rates more frequently
+exhibit stationary (no unit-roots) behaviour in both regimes. More borderline, the unemployment
+rate time series seems to be more commonly stationary among simulation runs in the Fordist regime,
+while more likely non-stationary in the Competitive case. The nonlinearity test indicates a more
+nuanced situation: the unemployment series is the one more frequently nonlinear (not i.i.d.), partic-
+ularly in the Competitive regime, while the wage growth rates series are more likely linear (i.i.d.).
+Finally, the less powerful KS test cannot reject ergodicity for the majority of run pairs tested, while
+WW indicates the non-ergodicity of all series.
+    There are a few take-home messages from the tests. The first is that mixed results, e.g., on
+          21
+               We report alternative tests for each property because of possible test lack of power in some circumstances.
+
+
+                                                                                                                                       15
+ergodicity or stationarity, militate in favour of path-dependency. In fact, they show the different
+statistical properties of alternative sample-paths: only an outright non rejection of the null hypothesis
+could be claimed in support of the the lack of hysteresis. Second, but related, the tests aimed at
+the detection of some underlying, emergent, non-linear structure, are quite encouraging despite the
+limited length of the sample paths.22
+
+                               Fordist                    ADF         PP     KPSS   BDS    KS     WW
+
+                               GDP growth rate            0.80        1.00   0.00   0.30   0.23   0.00
+                               Productivity growth rate   0.76        1.00   0.02   0.44   0.12   0.00
+                               Wage growth rate           0.60        1.00   0.12   0.16   0.40   0.00
+                               Unemployment rate          0.40        0.60   0.16   0.50   0.33   0.01
+                               Competitive                ADF         PP     KPSS   BDS    KS     WW
+
+                               GDP growth rate            0.54        0.98   0.00   0.42   0.11   0.00
+                               Productivity growth rate   0.64        1.00   0.02   0.62   0.19   0.00
+                               Wage growth rate           0.42        1.00   0.14   0.30   0.38   0.02
+                               Unemployment rate          0.24        0.00   0.26   1.00   0.49   0.00
+
+
+
+Table 6: Comparison between policy regimes: statistical tests for detecting hysteresis.
+Frequencies of rejection of H0 for 50 MC runs in period [300, 350] (excluding warm-up)
+except for WW test (p-value presented), at 5% significance.
+ADF (Augmented Dickey-Fuller)/PP (Phillips-Perron) H0 : non-stationary | KPSS (Kwiatkowski-
+Phillips-Schmidt-Shin) H0 : stationary | BDS (Brock-Dechert-Scheinkman) H0 : i.i.d., KS (Kolmogorov-
+Smirnov)/WW (Wald-Wolfowitz) H0 : ergodic.
+
+    We performed a global sensitivity analysis (SA) to explore the effects of alternative model
+parametrisations and to gain further insights on the robustness of our exercises on institutional
+shocks.23 Out of the 57 parameters and initial conditions in the K+S model, we reduce the rele-
+vant parametric dimensionality to 29, by means of an Elementary Effect screening procedure which
+allowed discarding from the analysis the parameters which do not significantly affect the selected
+model outputs.24 In order to understand the effect of each of the 29 parameters over the selected
+metrics, we perform a Sobol decomposition.25 Because of the relatively high computational costs to
+produce the decomposition using the original model, a simplified version of it – a meta-model – was
+build using the Kriging method and employed for the Sobol SA.26 The meta-model is estimated by
+numerical maximum likelihood using a set of observations (from the original model) sampled using a
+high-efficiency, nearly-orthogonal Latin hypercube design of experiments (Cioppa and Lucas, 2007).27
+    The main indicator used for the SA is the accumulated GDP losses during the crises’ recovery
+periods, as defined above. It seems a sensible choice, as it conveys information about both the
+  22
+     The choice of the adequate time window length is quite relevant when analysing hysteresis, as detailed in Section
+2.1, and it is not driven by the availability of simulated data. For this reason we split the analysis in inter-regime
+hysteresis, where the patterns are of long term type, and the intra-regime hysteresis. For comparability with empirical
+data, to check for the intra-regime hysteresis we restricted the time span to 50 runs (12.5 years), which is closer to
+the empirical time horizons. Note that taking longer time spans would simply “dilute” some hysteretic properties of
+the series, like non ergodicity or non-stationarity: in the very long run most real economic series look stationary and
+ergodic.
+  23
+     For technical details on the global sensitivity analysis methodology, see Dosi et al. (2016).
+  24
+     Briefly, the Elementary Effects technique proposes both a specific design of experiments, to efficiently sample the
+parameter space under a one-factor-at-a-time, and some linear regression statistics, to evaluate direct and indirect
+(nonlinear/non-additive) effects of parameters on the model results (Morris, 1991, Saltelli et al., 2008).
+  25
+     The Sobol decomposition is a variance-based, global SA method consisting in the decomposition of the variance
+of the chosen model output into fractions according to the variances of the parameters selected for analysis, better
+dealing with nonlinearities and non-additive interactions than traditional local SA methods. It allows to disentangle
+both direct and interaction quantitative effects of the parameters on the chosen metrics (Sobol, 1993, Saltelli et al.,
+2008).
+  26
+     In summary, the Kriging meta-model “mimics” our original model by a simpler, mathematically-tractable approx-
+imation. Kriging is an interpolation method that under fairly general assumptions provides the best linear unbiased
+predictors for the response of complex, non-linear computer simulation models (Rasmussen and Williams, 2006, Salle
+and Yildizoglu, 2014).
+  27
+     Due to space restrictions we cannot present all the tests statistics here but they can be requested to the authors.
+
+
+                                                                 16
+Figure 5: Global sensitivity analysis: response surfaces.
+Surfaces modelled using the fitted Kriging meta-model. z axis: recovery losses (rec loss).
+Red dot: calibration settings | Markers: maximum (blue) and minimum (green) predicted crises losses.
+                        Meta−model response surface ( F2max = 400 )
+                                    (a) Fordist                                                                          Meta−model
+                                                                                                                                 (b)response surface ( LS0 = 250000 )
+                                                                                                                                       Competitive
+
+
+
+
+     1.8
+
+
+
+         1.6
+     rec_lo
+       ss
+
+
+
+
+              1.4
+
+                                                                                                 4.0
+               1.2
+
+
+                                                                                                                            ●
+                                                                                                     3.5
+                                                                                                                      200
+                     200             ●
+
+
+
+
+                                                                                                 rec_lo
+                                                                                                          3.0         150
+                                                                                  0.10
+
+
+
+
+                                                                                                                  Tr
+                         150
+                                                                           0.08
+                       Tr
+
+
+
+
+                                                                                                   ss
+                                                                   0.06                                     2.5
+                                                                                                                  100
+                               100                        0.04       tau
+                                                                                                                                                                                   0.10
+                                                                                                                2.0                                                     0.08
+                                                 0.02                                                                                                       0.06
+                                                                                                                                                0.04
+                                                                                                                                    0.02                     tau
+
+
+
+                    95% confidence interval: rec_loss = [0.51,1.96] at defaults (red dot)                             95% confidence interval: rec_loss = [0.52,4.7] at defaults (red dot)
+
+
+
+duration and the intensity of the crises, as such among the key properties of hysteresis. Interestingly,
+this indicator is significantly influenced only by a limited set of parameters (and no initial condition),
+namely the learning rate parameter (τ ), the retirement age (Tr ), the replicator equation parameter
+(χ), the maximum technical advantage of the capital-good entrants (x5 ), and the minimum capital
+ratio (Φ1 ) and the expected capacity utilization (u) of the consumption-good entrants. The two
+parameters associated with the skills accumulation process, learning rate (τ ) and retirement age
+(Tr ), are jointly responsible for almost 80% of the variance of the losses indicator over the entire
+parametric space in both policy regimes.
+    Figure 5.a and 5.b presents an exploration of the model response surface, using the Kriging
+meta-model, for the two critical skills-related parameters. The rugged surfaces, in particular in the
+Competitive regime, clearly indicate the nonlinear nature of the system, in tune with the require-
+ments for hysteretic behaviours. The sensitivity analysis of the model seems to suggest that the
+prominent parameters influencing the level of hysteresis observed in the losses indicator are those
+directly connected with the workers skills accumulation process (τ and Tr ), the firm entry mecha-
+nism (Φ1 , u and x5 ) and the market competitiveness (χ). Directly or in interaction among them,
+these 5 parameters account for 95% of the variation of the GDP crises losses in the model for the
+two scenarios. This ensures that the comparisons between policy regimes presented above are not
+influenced by specific configuration settings. As can be seen in Figure 5, the Competitive regime
+tends to produce significant higher GDP crises losses irrespective of the model set-up (notice that
+the peak losses in plot (a), the blue dot, are at a lower z axis level than the deepest valley in plot
+(b), the green dot). Finally, the response surfaces in both regimes show that in general the higher
+the learning rate (τ ), the higher is the accumulated GDP losses during the crises’ recovery periods.
+The latter positive marginal effect hints at the fact that the higher the firm specific capabilities, the
+more difficult is to rebuilt the firm skills destroyed by a crisis, and to be back to the pre-crisis level.
+    All in all, the statistical tests results indicate that model has a rather frequent tendency to
+produce runs which show the properties usually associated with hysteresis in its main variables, in
+particular the unemployment rate, whenever hit by an endogenously-produced crisis. Recoveries can
+
+
+                                                                                            17
+take quite long times and the losses experienced by the economy, both in terms of the GDP and the
+social cost of unemployment, are severe. It is also significant that such losses seem to increase after
+the introduction of structural reforms of the type discussed above.
+
+
+6     Conclusions
+A revival of the debate on hysteresis has emerged in the aftermath of the Great Recession. Together,
+the evidence forced revisiting the standard approach of modelling unit-root processes as good can-
+didates to explain the persistent deviations from the pre-crisis trends. Not only the level trends of
+GDP and unemployment, but even the growth rates in many countries are still persistently bellow
+the pre-2008 figures, leading to the importance of a stronger notion of hysteresis.
+    As an alternative, an expanding tradition of scholars have been discussing the notions of hys-
+teresis and path dependence, identifying in coordination failures and persistent effects of aggregate
+demand upon productivity the main sources of long-term deviation from stable growth trajectories.
+Nested into the latter literature, here we have presented an ABM which intertwines a Schumpeterian
+engine of growth and a Keynesian generation of demand, declined under two institutional labour-
+market variants, labelled as Fordist and Competitive regimes. The transition from the Fordist to the
+Competitive regime captured “structural reforms” aimed at increasing labour market flexibility.
+    The model is able to generically exhibits path dependence, nonlinearity and non-ergodicity in
+its main macroeconomic variables, presenting both inter-regime and intra-regime hysteresis as a
+bottom-up emergent property. In a more specific instance, the model fails in providing support to
+the Blanchard and Summers (1986) insider-outsider hypothesis, according to which more flexible
+labour relations might reduce hysteresis. On the contrary, the model suggests that both numerical
+and wage flexibility are quite prone to increase the hysteretic properties of the macroeconomic system.
+
+
+References
+Abraham, K. G., J. C. Haltiwanger, K. Sandusky, and J. Spletzer (2016). The consequences of long term unemployment:
+  Evidence from matched employer-employee data. NBER Working Paper 22665, National Bureau of Economic
+  Research.
+Amable, B. (2003). The diversity of modern capitalism. Oxford University Press.
+Amable, B., J. Henry, F. Lordon, and R. Topol (2004). Complex remanence vs. simple persistence: Are hysteresis and
+  unit-root processes observationally equivalent? In W. Barnett (Ed.), Economic Complexity, pp. 67–89. Emerald
+  Group Publishing Limited.
+Anderson, P., K. Arrow, and D. Pines (1988). The economy as a complex evolving system. Addison-Wesley.
+Arrow, K. J. (1962). The economic implications of learning by doing. The Review of Economic Studies 29 (3), 155–173.
+Ball, L., B. DeLong, and L. Summers (2014). Fiscal policy and full employment.
+Ball, L. M. (2014). Long-term damage from the great recession in oecd countries. NBER Working Paper 20185,
+  National Bureau of Economic Research.
+Bassi, F. and D. Lang (2016). Investment hysteresis and potential output: A post-keynesian–kaleckian agent-based
+  approach. Economic Modelling 52, 35–49.
+Beaudry, P., D. Galizia, and F. Portier (2016). Is the macroeconomy locally unstable and why should we care? NBER
+  Working Paper 22275, National Bureau of Economic Research.
+Bertrand, M., A. Schoar, and D. Thesmar (2007). Banking deregulation and industry structure: Evidence from the
+  french banking reforms of 1985. The Journal of Finance 62 (2), 597–628.
+Blanchard, O., E. Cerutti, and L. Summers (2015). Inflation and activity–two explorations and their monetary policy
+  implications. NBER Working Paper 21726, National Bureau of Economic Research.
+Blanchard, O. and D. Leigh (2013). Growth forecast errors and fiscal multipliers. NBER Working Paper 18779,
+  National Bureau of Economic Research, Cambridge, MA.
+Blanchard, O. J. and L. H. Summers (1986). Hysteresis and the european unemployment problem. NBER macroeco-
+  nomics annual 1, 15–78.
+Blanchard, O. J. and L. H. Summers (1987). Hysteresis in unemployment. European Economic Review 31 (1-2),
+  288–295.
+Boyer, R. and Y. Saillard (2005). Régulation Theory: the state of the art. Routledge.
+
+
+                                                        18
+Broock, W., J. A. Scheinkman, W. D. Dechert, and B. LeBaron (1996). A test for independence based on the correlation
+  dimension. Econometric reviews 15 (3), 197–235.
+Caiani, A., A. Godin, E. Caverzasi, M. Gallegati, S. Kinsella, and J. E. Stiglitz (2016). Agent based-stock flow
+  consistent macroeconomics: Towards a benchmark model. Journal of Economic Dynamics and Control 69, 375 –
+  408.
+Caiani, A., A. Russo, and M. Gallegati (2016). Does inequality hamper innovation and growth? Available at SSRN
+  2790911 .
+Castaldi, C. and G. Dosi (2006). The grip of history and the scope for novelty: some results and open questions on
+  path dependence in economic processes. In A. Wimmer and R. Kössler (Eds.), Understanding change, pp. 99–128.
+  Springer.
+Cioppa, T. M. and T. W. Lucas (2007). Efficient nearly orthogonal and space-filling latin hypercubes. Technomet-
+  rics 49 (1), 45–55.
+David, P. A. (1994). Why are institutions the ‘carriers of history’ ?: Path dependence and the evolution of conventions,
+  organizations and institutions. Structural change and economic dynamics 5 (2), 205–220.
+Davidson, P. (1991). Is probability theory relevant for uncertainty? a post keynesian perspective. The Journal of
+  Economic Perspectives 5 (1), 129–143.
+Davidson, P. (1993). The elephant and the butterfly: Or hysteresis and post keynesian economics. Journal of Post
+  Keynesian Economics 15 (3), 309–322.
+Dawid, H., P. Harting, and M. Neugart (2014). Economic convergence: policy implications from a heterogeneous agent
+  model. Journal of Economic Dynamics and Control 44, 54–80.
+Day, R. H. and P. Chen (1993). Nonlinear dynamics and evolutionary economics. Oxford University Press Oxford.
+Decker, R. A., J. Haltiwanger, R. S. Jarmin, and J. Miranda (2016). Declining business dynamism: Implications for
+  productivity? Hutchins center working paper, Brookings Institution.
+Dosi, G., G. Fagiolo, M. Napoletano, and A. Roventini (2013). Income distribution, credit and fiscal policies in an
+  agent-based keynesian model. Journal of Economic Dynamics and Control 37 (8), 1598–1625.
+Dosi, G., G. Fagiolo, M. Napoletano, A. Roventini, and T. Treibich (2015). Fiscal and monetary policies in complex
+  evolving economies. Journal of Economic Dynamics and Control 52, 166–189.
+Dosi, G., G. Fagiolo, and A. Roventini (2010). Schumpeter meeting keynes: A policy-friendly model of endogenous
+  growth and business cycles. Journal of Economic Dynamics and Control 34 (9), 1748–1767.
+Dosi, G., O. Marsili, L. Orsenigo, and R. Salvatore (1995). Learning, market selection and the evolution of industrial
+  structures. Small Business Economics 7 (6), 411–436.
+Dosi, G., M. Napoletano, A. Roventini, J. Stiglitz, and T. Treibich (2016). Expectation formation, fiscal policies
+  and macroeconomic performance when agents are heterogeneous and the world is changing. Lem Paper Series
+  Forthcoming, Laboratory of Economics and Management (LEM), Sant’Anna School of Advanced Studies.
+Dosi, G., M. Napoletano, A. Roventini, and T. Treibich (2016). The short-and long-run damages of fiscal austerity:
+  Keynes beyond schumpeter. In J. Stiglitz and M. Guzman (Eds.), Contemporary Issues in Macroeconomics, pp.
+  79–100. Palgrave Macmillan UK.
+Dosi, G., M. Napoletano, A. Roventini, and T. Treibich (2017). Micro and macro policies in the keynes+ schumpeter
+  evolutionary models. Journal of Evolutionary Economics 27 (1), 63–90.
+Dosi, G., M. C. Pereira, A. Roventini, and M. E. Virgillito (2016). The Effects of Labour Market Reforms upon
+  Unemployment and Income Inequalities: an Agent Based Model. LEM Papers Series 2016/27, Laboratory of
+  Economics and Management (LEM), Sant’Anna School of Advanced Studies, Pisa, Italy.
+Dosi, G., M. C. Pereira, A. Roventini, and M. E. Virgillito (2017). When more Flexibility Yields more Fragility: the
+  Microfoundations of Keynesian Aggregate Unemployment. Journal of Economic Dynamics and Control . Forthcom-
+  ing.
+Dosi, G., M. C. Pereira, and M. E. Virgillito (2016). On the robustness of the fat-tailed distribution of firm growth
+  rates: a global sensitivity analysis. LEM Papers Series 2016/12, Laboratory of Economics and Management (LEM),
+  Sant’Anna School of Advanced Studies, Pisa, Italy.
+Dosi, G., M. C. Pereira, and M. E. Virgillito (2017). The footprint of evolutionary processes of learning and selection
+  upon the statistical properties of industrial dynamics. Industrial and Corporate Change 26 (2), 187–210.
+Dosi, G. and M. E. Virgillito (2016). The “schumpeterian” and the “keynesian” stiglitz: Learning, coordination hurdles
+  and growth trajectories. Lem Working Paper Series 2016/20, Scuola Superiore Sant’Anna, Pisa.
+Fagiolo, G. and A. Roventini (2012). Macroeconomic policy in dsge and agent-based models. Revue de l’OFCE 5 (124),
+  67–116.
+Fagiolo, G. and A. Roventini (2017). Macroeconomic policy in dsge and agent-based models redux: New developments
+  and challenges ahead. Journal of Artificial Societies and Social Simulation 20 (1), 1.
+Freeman, C., J. Clark, and L. Soete (1982). Unemployment and technical innovation. London and New York: Pinter
+  Publisher.
+Galı́, J. (2015). Hysteresis and the european unemployment problem revisited. NBER Working Paper 21430, National
+  Bureau of Economic Research.
+
+
+
+                                                          19
+Geroski, P. (1991). Market dynamic and entry. Wiley-Blackwell.
+Geroski, P. (1995). What do we know about entry? International Journal of Industrial Organization 13 (4), 421 –
+   440. The Post-Entry Performance of Firms.
+Ghayad, R. (2013). The jobless trap. Technical report, Northeastern University.
+Gomis, R. M., S. Khatiwada, et al. (2017). Firm dynamics and business cycle: What doesn’t kill you makes you
+   stronger? Technical report, Economics Section, The Graduate Institute of International Studies.
+Gourio, F., T. Messer, and M. Siemer (2014). A missing generation of firms? Aggregate effects of the decline in new
+   business formation. In CES Ifo Conference.
+Gualdi, S., M. Tarzia, F. Zamponi, and J.-P. Bouchaud (2015). Tipping points in macroeconomic agent-based models.
+   Journal of Economic Dynamics and Control 50, 29 – 61. Crises and ComplexityComplexity Research Initiative for
+   Systemic InstabilitieS (CRISIS) Workshop 2013.
+Hallett, A. H. and L. Piscitelli (2002). Testing for hysteresis against nonlinear alternatives. Journal of Economic
+   Dynamics and Control 27 (2), 303–327.
+Jaimovich, N. and H. E. Siu (2012). The trend is the cycle: Job polarization and jobless recoveries. NBER Working
+   Paper 18334, National Bureau of Economic Research.
+Kerr, W. R. and R. Nanda (2009). Democratizing entry: Banking deregulations, financing constraints, and en-
+   trepreneurship. Journal of Financial Economics 94 (1), 124–149.
+Kothari, S. P., J. Lewellen, and J. Warner (2013). The behavior of aggregate corporate investment. Technical report.
+Lamberson, P. and S. Page (2012). Tipping points. Quarterly Journal of Political Science 7 (2), 175–208.
+LeBaron, B. and L. Tesfatsion (2008). Modeling macroeconomies as open-ended dynamic systems of interacting agents.
+   American Economic Review 98, 246–250.
+Lee, Y. and T. Mukoyama (2015). Entry and exit of manufacturing plants over the business cycle. European Economic
+   Review 77, 20 – 27.
+Louca, F. (2001). Intriguing pendula: founding metaphors in the analysis of economic fluctuations. Cambridge Journal
+   of Economics 25, 25–55.
+Lucidi, F. and A. Kleinknecht (2009). Little innovation, many jobs: An econometric analysis of the italian labour
+   productivity crisis. Cambridge Journal of Economics 34 (3), 525–546.
+Morris, M. D. (1991). Factorial sampling plans for preliminary computational experiments. Technometrics 33 (2),
+   161–174.
+Napoletano, M., G. Dosi, G. Fagiolo, and A. Roventini (2012). Wage formation, investment behavior and growth
+   regimes: An agent-based analysis. Revue de l’OFCE 5 (124), 235–261.
+Ng, S. and J. H. Wright (2013). Facts and challenges from the recession for forecasting and macroeconomic modeling.
+   Journal of Economic Literature 51 (4), 1120–1154.
+Piscitelli, L., R. Cross, M. Grinfeld, and H. Lamba (2000). A test for strong hysteresis. Computational Economics 15 (1-
+   2), 59–78.
+Rasmussen, C. and C. Williams (2006). Gaussian processes for machine learning. Cambridge, MA: MIT Press.
+Reifschneider, D., W. Wascher, and D. Wilcox (2015). Aggregate supply in the united states: recent developments
+   and implications for the conduct of monetary policy. IMF Economic Review 63 (1), 71–109.
+Russo, A., L. Riccetti, and M. Gallegati (2015). Increasing inequality, consumer credit and financial fragility in an
+   agent based macroeconomic model. Journal of Evolutionary Economics, 1–23.
+Salle, I. and M. Yildizoglu (2014). Efficient sampling and meta-modeling for computational economic models. Com-
+   putational Economics 44 (4), 507–536.
+Saltelli, A., M. Ratto, T. Andres, F. Campolongo, J. Cariboni, D. Gatelli, M. Saisana, and S. Tarantola (2008). Global
+   sensitivity analysis: the primer. New York: John Wiley & Sons.
+Seppecher, P., I. Salle, and M. Lavoie (2017, January). What drives markups? Evolutionary pricing in an agent-based
+   stock-flow consistent macroeconomic model. CEPN Working Papers 2017-03, Centre d’Economie de l’Université de
+   Paris Nord.
+Siemer, M. (2014). Firm entry and employment dynamics in the great recession. Technical report.
+Sobol, I. M. (1993). Sensitivity analysis for non-linear mathematical models. Mathematical Modelling and Computa-
+   tional Experiments, 407–414.
+Stiglitz, J. (1994). Endogenous growth and cycles. In Y. Shionoya and M. Perlman (Eds.), Innovation in Technology,
+   Industry and Institutions, pp. 121–156. The University of Michigan Press.
+Tesfatsion, L. and K. Judd (Eds.) (2006). Handbook of Computational Economics II: Agent-Based Computational
+   Economics. North Holland, Amsterdam.
+Wald, A. and J. Wolfowitz (1940). On a test whether two samples are from the same population. The Annals of
+   Mathematical Statistics 11 (2), 147–162.
+Zhou, H., R. Dekker, and A. Kleinknecht (2011). Flexible labor and innovation performance: evidence from longitudinal
+   firm-level data. Industrial and Corporate Change 20 (3), 941.
+
+
+
+
+                                                          20
+

@@ -1,0 +1,672 @@
+         MEASURING THE NEUTRAL REAL INTEREST RATE IN BRAZIL:
+      A JOIN ESTIMATION WITH POTENTIAL OUTPUT, NAIRU AND NAICU
+
+                    Alberto Ronchi Neto∗                 Osvaldo Candido†
+                                         July 21, 2017
+
+
+                                             Abstract
+      This paper applies a multivariate Kalman Filter to estimate the Neutral Real Inter-
+      est Rate (NRIR) in Brazil, from 2002Q1 to 2016Q4. Our state space representation
+      combines macroeconomic models with the Hodrick-Prescott (HP) filter approach. This
+      framework differs from previous literature in two aspects: (1) departing from a produc-
+      tion function with two factors (capital and labor), we introduce more structure in the
+      potential output state equation; (2) this procedure results in a state space representa-
+      tion that allow us to make a join estimation of four latent variables: NRIR, potential
+      output, NAIRU (non-accelerating inflation rate of unemployment) and NAICU (non-
+      accelerating inflation rate of capacity utilization).
+
+       Keywords: Neutral Real Interest Rate; Monetary Policy; State-Space Models.
+
+      JEL codes: E1; E4; E5.
+
+
+                                             Resumo
+      Esse artigo aplica um filtro de Kalman multivariado para estimar a Taxa de Juros Real
+      Neutra (NRIR) no Brasil, entre o 1T2002 e o 4T2016. A representação em espaço de
+      estado construı́da combina modelos macroeconômicos com o Filtro Hodrick-Prescott
+      (HP), difenciando-se da literatura prévia em dois aspectos: (1) tomando uma função
+      de produção com dois fatores, introduziu-se maior estrutura na equação de estado do
+      produto potencial; (2) o procedimento resulta em uma representação que permite fa-
+      zer uma estimativa conjunta de quatro variáveis latentes: NRIR, produto potencial,
+      NAIRU (non-accelerating inflation rate of unemployment) e NAICU (non-accelerating
+      inflation rate of capacity utilization).
+
+      Palavras-chave: Taxa de Juros Neutra; Polı́tica Monetária; Modelo Espaço de Estados.
+
+      Classificação JEL: E1, E4, E5.
+
+
+          Área Anpec: Área 4 - Macroeconomia, Economia Monetária e Finanças.
+
+∗
+    Graduate Program in Economics at the Catholic University of Brası́lia (PPGE-UCB).
+†
+    Graduate Program in Economics at the Catholic University of Brası́lia (PPGE-UCB).
+
+
+                                                  1
+1     Introduction
+             The neutral real interest rate (NRIR)1 was first introduced by Wicksell (1936),
+whose work basically defines this variable as the one associated with long run equilibrium
+in the economy. The concern about NRIR in monetary policy grows after Taylor (1993)
+implicitly showed that there is an interest rate associated with steady state in terms of
+inflation and income. In turn, Woodford (2003) enhanced the role of the NRIR in a New
+Keynesian environment as the real interest rate that would prevail in the absence of price
+and wage rigidity in short to medium term.
+             However, as Blinder (1999) emphasized, once this variable is hard to measure
+and its estimates are usually accompanied by a great deal of uncertainty, the NRIR should
+be thought more as a way of thinking monetary policy than as the basis for a mechanical
+rule. Orphanides and Williams (2002) makes us aware of this by showing that the adoption
+of policy rules optimized under the false presumption that the uncertainties regarding the
+NRIR are small proves particularly costly in terms of stabilizing inflation and unemployment.
+             Anyway, this controversy over the NRIR is not apparently enough to diminish its
+role as a guidance for central bankers. The variable is often identified in public communica-
+tions of monetary authorities around the world, both in developed and emerging economies.
+As an example for the former, Yellen (2017) underline the importance of the NRIR for assess-
+ing the monetary policy stance in US economy. As an example for the latter, Central Banks
+in India ( Reserve Bank of India (2017) ) and Brazil ( Central Bank of Brazil (2017) ) have
+mentioned the NRIR dynamics in the minutes of their monetary policy committee meetings
+as a reference for its decisions. In this sense, this variable still occupies an outstanding
+position in monetary policy, which justifies the efforts in measuring its level.
+             Usually, the literature sheds light on how the deviations of the short term interest
+rate from its estimated long-run value is related to inflation and business cycle variables.
+Woodford (2003) enhanced this framework, where the NRIR arises from as interest rule
+and varies continuously in response to real economy shocks. In this sense, if the short
+term interest rate is set under (above) its neutral value, we would expect to observe prices
+rising (declining) and key economic activity variables skipping from its steady-state values:
+the output should be above (under) the potential output, the unemployment rate should
+be under (above) the NAIRU (non-accelerating inflation rate of unemployment) and the
+installed capacity utilization should be above (under) the NAICU (non-accelerating inflation
+rate of capacity utilization). These relationships highlight an important issue: any deviation
+of the mentioned observed variables from its long run values could be seen as a clue that the
+real interest rate (RIR) is not at its neutral level.
+             However, once the long run variables cannot be directly observed, how to measure
+its values is a challenge for economists. Regarding the NRIR, Giammarioli and Valla (2004)
+present an overview about the methods usually applied to estimate its level. Among these
+methods, we focus on the one that applies Kalman filter in order to obtain a proxy for the
+latent variable using information provided by activity and prices dynamics.
+             Laubach and Williams (2003) is one of the key studies in this group. Originally
+   1
+     As enhanced by Bernhardsen and Gerdrup (2007), the concepts “neutral real interest rate”, “natural
+real interest rate” and “normal real interest rate” are used interchangeably in the literature. We use the
+expression Neutral Real Interest Rate (NRIR) in this article.
+
+
+                                                    2
+developed for the U.S. economy, in their framework the NRIR is related with the growth rate
+of output trend and an unobserved variable introduced in order to measure effects linked
+to other of its components (as the intertemporal consumer’s preference). This arrangement
+arises from traditional economic relationships often observed in mainstream macroeconomic
+theory: an IS curve (Aggregate Demand), a Phillips curve (Aggregate Supply) and an interest
+rate rule.
+             Following Laubach and Williams (2003), other studies presented similar strategies
+to estimate the natural interest rate in other developed economies. For the Euro Area,
+Mésonnier and Renne (2004) introduced a new equation for the NRIR, comprised by a
+constant parameter and a total productivity factor component. Bernhardsen and Gerdrup
+(2007) estimate the NRIR in Norway by means of the Kalman filter, using a model that
+comprises four equations: the first split the RIR in the NRIR and a ciclycal i.i.d component;
+the second decomposes the NRIR in a constant that is set as the productivity growth and a
+disturbance that explains the deviations of the neutral from the long-term real interest rate
+(LRIR); the third defines the last disturbance as an AR(1) process; the fourth is an IS curve.
+In this simpler framework, there is a distinction between the NRIR and the LRIR. While
+the latter is determined by factors like potential output and long-term savings, the former
+is additionally influenced by various disturbances linked to the supply and demand side of
+the economy in medium term.2 3 Holston et al. (2016) estimates a version of the Laubach
+and Williams (2003) model using data from the United States and three other advanced
+economies (Canada, the Euro Area, and the United Kingdom). They highlight four key
+results: (i) all four economies presented evidence of time-variation in the NRIR; (ii) all four
+economies registered large declines in trend GDP growth and natural rates of interest over
+the past 25 years; (iii) although estimation is done on a economy-by-economy basis, there
+is substantial comovement in the estimates of the natural rates of interest and trend GDP
+growth across economies; and (iv) the estimates of the NRIR are highly imprecise, reinforcing
+a key finding of the original Laubach and Williams (2003) paper.
+             In similar approaches, but applied for Brazilian economy, Barcellos Neto and
+Portugal (2009), Magud and Tsounta (2012), Araújo and Silva (2014), Gottlieb (2013) and
+Machado and Portugal (2014) present versions of the Laubach and Williams (2003) model
+to estimate the NRIR. In turn, Ribeiro and Teles (2013) applies both Laubach and Williams
+(2003) and Mésonnier and Renne (2004) to estimate the NRIR in Brazil.
+             A common point in these state space models is that all of them make a join
+estimation of the NRIR and the potential output, imposing for the latter a structure that
+depends on unobservable components that follows a random walk or have an autoregressive
+pattern.
+   2
+     As Bernhardsen and Gerdrup (2007) enhances, in the neoclassical theory, the Ramsey–Cass–Koopmans
+model express that the real interest rate in the long term is related to economic fundamentals, been directly
+proportional to potential output (given by the sum of productivity and population growth) and household
+rate of time preference (concept associate with the long-term savings rate). A more detailed discussion about
+this model can be found in Romer (2001).
+   3
+     Another important remark from Bernhardsen and Gerdrup (2007) is that in small open economies, due
+to free movements of capital hypothesis, the NRIR is dependent on global interest rate and the exchange
+rate. This last issue can be related with Galı́ and Monacelli (2005) finding that both the natural levels of
+output and interest rates in the small open economy are generally a function of both domestic and foreign
+disturbances.
+
+
+                                                     3
+             Other part of the literature, although uses alternative methods to the ones men-
+tioned before, highlights issues that are relevant for the determination of the NRIR in Brazil.
+Bacha et al. (2009), Bacha (2010) and Goldfajn and Bicalho (2011) present evidences that
+some structural factors as the dollarization, the country risk rating and the public debt are
+relevant to explain the RIR level in Brazil. More recently, Barbosa et al. (2016) claims that
+some studies that uses the Taylor Rule as a reference to obtain the NRIR in Brazil do not
+consider the reaction function properties’ in a small open economy, where variables linked to
+overseas can affect the domestic fundamentals, which leads to a specification error. In this
+sense, making reference to the Covered Interest Rate Parity (CIRP), the authors calculate
+a measure of the NRIR applying a Hodrick-Prescott (HP) Filter over a sum of variables
+related to the international real rate of interest, the premium due to country risk and the
+premium due to the exchange rate risk.
+             Considering these aspects, the aim of this study is to present an expanded version
+of the Mésonnier and Renne (2004) model, built over Brazilian data. Our model differs
+from the mentioned literature in two aspects. First, using as reference Areosa (2008), we
+introduce more structure in the potential output state equation. Areosa (2008) proposes
+a methodology that combines the production function approach and the HP filtering in
+a multivariate Kalman Filter, which simultaneously produces estimates for the potential
+output and its unobservable components. Second, this procedure results in a state space
+representation that allow us to make a join estimation of four latent economic variables:
+NRIR, potential output, NAIRU and NAICU.
+             Applying our model to evaluate the monetary policy stance in our sample period,
+we observed that in the first half of our data, tighter monetary policy prevailed. The last
+period of policy easing began in the aftermath of 2008 financial crisis and sustained till the
+first half of 2014. Since then, Brazil Central Bank has been adopting a tighter monetary
+stance. Also, we highlight increasing idle productive capacity linked to both capital and
+labor factors.
+             The rest of the paper is structured as follows. Section 2 provides the theoretical
+background, presenting the models proposed by Laubach and Williams (2003), Mésonnier
+and Renne (2004) and Areosa (2008). In section 3, we introduce our state space model.
+Section 4 focuses on data description. Section 5 depicts the results (i) comparing the latent
+variables estimates from our model with an original HP filter framework and (ii) using our
+state space model to evaluate the monetary policy stance in Brazil during our sample period
+(2002Q1-2016Q4). Section 6 concludes.
+
+
+2     Theoretical Background
+
+2.1    The Laubach and Williams (2003) model
+           The basic specification for the NRIR in Laubach and Williams (2003) is inspired
+on the neoclassical growth model. The Euler Equation that results from the household
+intertemporal CRRA (Constant Relative Risk Aversion) utility maximization yields a re-
+lationship that shows this latent variable being explained by shifts in preferences and the
+
+
+                                              4
+growth rate of output. Based on this theoretical link, the following state-equation gives the
+law of motion for the NRIR (rt∗ ) :
+
+                                               rt∗ = φgt + zt ,                                          (2.1)
+where gt denotes the trend growth rate of the potential output, φ is interpreted as the
+constant relative risk aversion 4 and zt is a control for other determinants of the NRIR. This
+last component follows a random walk, which originates another state equation:
+
+                                              zt = zt−1 + z,t .                                         (2.2)
+            As the remaining state equations, the log potential output is specified as a random
+walk with a stochastic drift given by the trend growth rate of the potential output, that itself
+follows a random walk:
+
+                                                ∗
+                                         yt∗ = yt−1 + gt−1 + y∗ ,t .                                    (2.3)
+                                              gt = gt−1 + g,t .                                         (2.4)
+           The next step is to define functions for demand and supply side of the economy.
+Following Holston et al. (2016), we will present the reduced-form equations of, respectively,
+an IS (equation 2.5) and a Phillips curve (equation 2.6) that arise from the open economy
+version of the New Keynesian model ( Galı́ (2008) ). These specifications follow closely
+the small semi-structural model presented by BCB (2015) and comprise the measurement
+equations:
+                                                         2
+                                                      α3 X           ∗
+                         ht = α1 ht−1 + α2 ht−2 +           (rt−j − rt−j ) + h,t ,                      (2.5)
+                                                      2 j=1
+
+                             πt = β1 πt−1 + (1 − β1 )πt−2,4 + β3 ht−1 + π,t                             (2.6)
+            In this setting, ht is the output gap, given by the output deviation from its
+potential. rt and rt∗ are the RIR and NRIR, respectively. πt is the consumer price inflation.
+πt−2,4 is the average consumer price inflation of its second to fourth lags. h,t and π,t are
+error terms (i.i.d. ∼ N(0,σi2 ), for i=h,π). The long-run verticality of the Phillips curve is
+imposed in equation 2.6. Besides, these two equations are consistent with the hypothesis
+that price stability is reached when the RIR and the output are equal to their respective
+long term equilibrium (NRIR and potential output).
+
+2.2     The Mésonnier and Renne (2004) model
+          Mésonnier and Renne (2004) follow a simpler structure than Laubach and Williams
+(2003). The main difference are the state equations, that hold the following specifications:
+
+                                               rt∗ = µr + φgt                                            (2.7)
+   4
+    This parameter corresponds to the inverse of the intertemporal elasticity of substitution, that arises from
+the Ramsey model applying a standard CRRA utility function for the representative household
+
+
+                                                      5
+                                                    ∗
+                                        yt∗ = µy + yt−1 + gt + y,t .                                     (2.8)
+                                              gt = ρgt−1 + g,t .                                         (2.9)
+                                                yt = yt∗ + ht .                                         (2.10)
+             The variables have the same interpretation of the ones in last section, with few
+adaptations. Once more, the errors terms are i.i.d. and normally distributed. In this
+setting, the NRIR and the potential output dynamics have a common component linked to
+trend growth rate (subject to low frequency fluctuations), which follows an AR(1) process
+(equation 2.9). For instance, φ is interpreted as the constant relative risk aversion 5 . The
+parameters µr e µy stand for the rate of time preference of consumers 6 and the average
+potential output growth rate, respectively. The measurement equation remains similar to
+the ones presented in last section.
+             In this structure, unlike Laubach and Williams (2003), there is no need to extract
+two non-observable variables (gt and zt ) from another variable that is also non-observable
+(rt∗ ). Accordingly to the authors, this strategy makes the estimation easier and more reliable.
+
+2.3     The Areosa (2008) model
+           Areosa (2008) uses Brazilian data to apply a methodology that combines the
+production function approach and the HP filtering in a multivariate Kalman Filter, which
+simultaneously produces estimates for the potential output, the NAIRU and the NAICU. In
+order to assess these non-observable variables, this framework departs from a Cobb-Douglas
+production function with constant returns to scale and defines the following equation:
+
+                                yt = yt∗ + γ(et − e∗t ) + (1 − γ)(ct − c∗t )                            (2.11)
+              Following the same terminology from previous sections, yt and yt∗ are the log
+output and its potential. As we introduce for the first time, ct is the log capacity utilization,
+c∗t is the log NAICU, et is the log employment rate and e∗t is the log NAIRE (non-accelerating
+inflation rate of employment). The NAIRU is obtained as 1-Et∗ , with the upper-case variable
+denoting the exponential of the corresponding lower-case variable. In this approach, the
+equation 2.11 is explored as one of the measurement equations. The output elasticities of
+labor and capital are represented by γ and (1-γ), respectively.
+              The remaining state space model follow closely Boone (2000). Departing from
+a HP filter structure for the state equations based on Harvey (1985), a multivariate filter
+similar to Laxton and Tetlow (1992) is implemented, adding a Phillips Curve in the set of
+measurement equations. Considering the most complete specification presented by Areosa
+(2008), the resulting system is given by three transition equations and four measurement
+equations, as follows:
+
+                                            e∗t = e∗t (−1) + e∗,t                                      (2.12)
+   5
+     This parameter corresponds to the inverse of the intertemporal elasticity of substitution, that arises from
+the Ramsey model applying a standard CRRA utility function for the representative household
+   6
+     Also, as arises from the Ramsey model applying a standard CRRA utility function for the representative
+household
+
+
+                                                       6
+                                             c∗t = c∗t (−1) + c∗,t                                      (2.13)
+                                      yt∗ = 2yt∗ (−1) + yt∗ (−2) + y∗ ,t                                (2.14)
+                                                et = e∗t + e,t                                          (2.15)
+                                                ct = c∗t + c,t                                          (2.16)
+                                  yt = yt∗ + 0.6(et − e∗t ) + 0.4(ct − c∗t )                             (2.17)
+                            πt = θ1 πt+1 + (1 − θ1 )πt−1 + θ2 (yt − yt∗ ) + π,t                         (2.18)
+            The state equations above comprise the lowest order r -filter (r =1) to NAIRE
+(2.12) and NAICU (2.13). In turn, an HP filter structure is set for potential output (2.14).7
+Considering the measurement equations, the specification above introduces additional signals
+through the employment rate (3.9) and capacity utilization (2.16) dynamics. The long-run
+verticality is imposed in the Phillips curve (2.18), that includes the output gap (yt − yt∗ )
+as another control. Finally, the measurement equation given by equation 2.11 is included
+(2.17), where the parameter γ is set to 0.6.
+
+
+3       A State Space Macroeconomic Model for the NRIR:
+        a join estimation with potential output, NAIRU and
+        NAICU
+           In this section, we present an expanded version of the Mésonnier and Renne
+(2004) model, built over Brazilian data. Using as reference Areosa (2008), we introduce
+more structure in the potential output state equation. This procedure results in a state
+space representation that allow us to make a join estimation of four latent economic variables:
+NRIR, potential output, NAIRU and NAICU. First, we depart from the same state equations
+in Areosa (2008):
+
+                                             e∗t = e∗t (−1) + e∗,t                                        (3.1)
+                                             c∗t = c∗t (−1) + c∗,t                                        (3.2)
+                                      yt∗ = 2yt∗ (−1) + yt∗ (−2) + y∗ ,t                                  (3.3)
+           Considering the measurement equations, we modify the Phillips curve specifica-
+tion. Our dependent variable is the freely-set consumer inflation. Also, in the set of controls,
+we add a variable related to external prices.8 Then, we have the following set of equations:
+
+                                                et = e∗t + e,t                                            (3.4)
+                                                ct = c∗t + c,t                                            (3.5)
+    7
+      As Areosa (2008) mentions, the r -filters is a two-parameters family of filters in which the HP filter is
+considered as the second order member (r =2). The r =1 filter converges to a constant, been more indicated
+for stationary variables. As the order increases, the r -filter converges to higher order polynomial time trends.
+See Araújo et al. (2003) for details.
+    8
+      This Phillips curve specification follows closely BCB (2015).
+
+
+                                                       7
+                                yt = yt∗ + γ(et − e∗t ) + (1 − γ)(ct − c∗t )                              (3.6)
+                            ∗
+                  πtF = β1 πt−1 + β2 Et (πt+1 ) + (1 − β1 − β2 )πt−1 + β3 ht−1 + πF ,t                   (3.7)
+             In this setting, ht is the output gap, given by the output deviation from its
+potential. πtF is the freely-set consumer inflation. πt∗ is the imported goods inflation. Et (πt+1 )
+is the inflation expectation. πt is the head consumer inflation. rt is the RIR. π,t is an error
+term (i.i.d. ∼ N(0,σi2 ), for i=π. The long-run verticality of the Phillips curve is imposed
+in equation 3.7. Besides, these two equations are consistent with the hypothesis that price
+stability is reached when the RIR and the output are equal to their respective long term
+equilibrium (NRIR and potential output).
+             As we can observe in equation 3.7, these changes demand an adjustment in the
+restriction that stem from the long term verticality. The next step is to make the link between
+the NRIR and the potential output. Using as reference Mésonnier and Renne (2004), this
+relationship is denoted by the following state equation:
+
+                                          rt∗ = µr + φ(yt∗ − yt−4
+                                                              ∗
+                                                                  )                                       (3.8)
+          Equation 3.8 is a modified version of equation 2.7 in Mésonnier and Renne (2004),
+where we replace the trend growth rate (gt ) by the potential output growth (year over year).
+The remaining equations are signals from an r-filter for the RIR and an IS curve:
+
+                                                rt = rt∗ + r,t                                           (3.9)
+                                                ∗
+                     ht = α1 ht−1 + α2 (rt−2 − rt−2 ) + α3 h∗t−1 + α4 govt−2 + h,t .                   (3.10)
+            h∗t is the world output gap. govt is the growth rate of the government expenditure
+in real terms. rt is the RIR. h,t is an error term (i.i.d. ∼ N(0,σi2 ), for i=h. The remaining
+variables were defined before.
+            Also, similar to Areosa (2008), we introduce linear restrictions in the errors stan-
+dard deviation of some transition √ and measurement √  equations (σ  ) that shares the same state
+component, as follows: (1) σet = λe σe∗t ; (2) σct = λc σc∗t ; and (3) λc = λr = 40.9
+
+
+4       Data description
+            Our data was collected for Brazilian economy from the first quarter of 2002 to
+fourth quarter of 2016, totalling 60 observations. On one hand, this sample interval ex-
+cludes structural breaks as happened with the implementation of the real plan in 1994 and
+the change of the exchange rate regime in 1999. One another hand, the period comprises
+structural changes undergone by the economy after the Real plan and the last decade com-
+modities’ boom. As Ubiergo (2012) highlights, the adoption of an inflation-targeting regime
+and better economic fundamentals has helped Brazil sustain significantly lower real inter-
+est rates than in the past. In the aftermath of the 2008 financial crisis, prices pressures
+that stemmed from overstimulus policies triggered an monetary tightening cycle that lasted
+almost four years (2013Q1-2016Q3). More recently, the combination of a severe recession
+    9
+    Setting λ = 40 on a filter with r = 1 is equivalent to λ = 1600 on the HP filter (r = 2). See Araújo et al.
+(2003) for details
+
+
+                                                       8
+and inflation deceleration opened room for Central Bank to begin an interest rate reduction
+cycle. All these events characterized the general economic background behind the policy
+rate fluctuations over the last years in Brazil, that can be observed in Figure 1.
+
+
+
+
+                      Figure 1: Policy rate cycle in Brazil 2002-2016
+
+           We use as nominal interest rate the quarterly average of Selic rate in annual
+terms. We also introduce the 12 months ahead inflation expectation from Focus, both
+to calculate our RIR and to add as a control in the Phillips Curve. The other domestic
+price measures applied in our framework was the head and the freely-set quarterly inflation
+(Broad National Consumer Price Index -IPCA). The CRB commodity price index growth
+in domestic currency is applied as the measure for external price inflation. The output
+measure is the Brazilian GDP, obtained in National Accounts. The unemployment rate was
+constructed exploring data from PNAD (Pesquisa Nacional por Amostra de Domicı́lios) and
+PME (Pesquisa Mensal de Emprego). Capacity utilization is provided by FGV (Fundação
+Getulio Vargas). The external output was calculated through the aggregation of the GDPs
+from Brazil’s thirteen largest export destinations. The nominal exchange rate is quarterly
+average of the PTAX reference rate. The fiscal instance is captured by the recurring general
+government outlays in real terms, calculated as Oreng (2012). When necessary, the variables
+were seasonally adjusted using the X12 process.
+
+
+5     Results
+
+5.1    Result and evaluation of the State-Space Macroeconomic Model
+           Applying the state space model described in section three on our data, we ob-
+
+                                             9
+tained paths for NRIR, potential output, NAIRU and NAICU in Brazil. Table 1 stands the
+estimated parameters out. Using as reference national accounts data from Brazil, the output
+elasticity of labor (γ) was set at 0.6.10 Also, we assumed a logarithmic utility function for
+the representative household, setting the constant relative risk aversion (φ) equal to 1.11
+             The latent variables dynamics is presented in Figure 2. For comparison, we also
+produce the latent variables estimated by the HP filter. Table 2 and 3 shows the descriptive
+statistics for each long-term variable.
+
+
+
+
+       Figure 2: Non-observable variables - HP filter vs State Space Macroeconomic Model
+  10
+     Analogously to one of the methods proposed by Gollin (2002), we calculated γ as the average for the
+period 2010-2014 of the following ratio: (employee compensation+operating surplus of private unincorpo-
+rated enterprises)/(employee compensation+operating surplus of private unincorporated enterprises+gross
+operating surplus). The data is provided by Brazilian Institute of Geography and Statistics (IBGE (2016)).
+Considering Brazilian data, a similar approach was adopted by Bastos (2012).
+  11
+     Arguing that φ is not well identified in the data, Holston et al. (2016) chose to impose this coefficient
+equal to unity. The assumption behind this strategy is that we have a logarithmic utility function for the
+representative household. See Hamilton et al. (2016) and Laubach and Williams (2016) for further details.
+
+
+
+                                                     10
+               Table 1: State Space Model estimated
+
+Method: Maximum likelihood (Marquardt)
+Sample: 2002Q1 2016Q4
+Log likelihood: 948.6907
+
+           Coefficient   Std. Error   z-Statistic     Prob.
+
+  
+σe∗,t      −12.70508  0.163439 −77.73604             0.0000
+  
+σc∗,t      −10.77062  0.356445 −30.21682             0.0000
+  γ              0.6 Calculated with national accounts data
+  
+σy∗,t      −8.568818  0.172210 −49.75804             0.0000
+ β1         0.057728  0.011792     4.895419          0.0000
+ β2         0.783757  0.224313     3.494033          0.0005
+ β3         0.083293  0.043259     1.925445          0.0542
+σπ L ,t   −10.14113  0.207943 −48.76875             0.0000
+ µr         0.045141  0.006139     7.353434          0.0000
+  φ                1 Logarithmic household utility function
+ σrt      −10.03231  0.244445 −41.04121             0.0000
+ α1         0.821494  0.114818     7.154749          0.0000
+ α2        −0.071226  0.020311 −3.506775             0.0005
+ α3         0.769099  0.159459     4.823193          0.0000
+ α4         0.047232  0.023594     2.001890          0.0453
+ σh t     −10.70132  0.307924 −34.75311             0.0000
+
+           Final State   Root MSE     z-Statistic     Prob.
+
+  e∗t      −0.104878      0.004401 −23.83085          0.0000
+  c∗t      −0.282167      0.010668 −26.45075          0.0000
+  yt∗       5.107972      0.014723  345.7206          0.0000
+
+
+
+
+                                 11
+            We can observe that for all variables, the State Space Model has standard devi-
+ation smaller than the original HP filter. Another point to emphasize is that the former is
+more robust to the trend estimates bias usually presented by the latter method at the end
+and beginning of samples.
+            Evaluating the NRIR dynamics, as we can observe in the Figure 2, the minimum
+NRIR value on the sample (1.3%) was registered in 2016Q1, reflecting the impact of the
+potential GDP contraction in that moment. Considering this variable and period, we also
+emphasize the difference between the NRIR estimated by the models (530 basis points),
+a result that exemplifies the sizeable error that we can incur in the measurement of this
+variable in periods marked by greater potential GDP variations. Analysing the remaining
+non observable variables, we highlight the growing idle productive capacity stemming from
+the recent recession, associated to both capital and labor factors.
+
+        Table 2: Non-observable variables descriptive statistics - State Space Model
+      Descriptive Statistic NRIR (%) Output gap (%) NAIRU (%) NAICU (%)
+             Mean             7.41             0.16              8.95         80.23
+            Median            7.58             0.33              8.82         81.02
+          Maximum             13.57            2.10             10.25         82.40
+           Minimum             1.18           -3.01              7.87         75.41
+        Std. Deviation        2.73             1.22              0.79          1.84
+
+
+
+             Table 3: Non-observable variables descriptive statistics - HP Filter
+      Descriptive Statistic NRIR (%) Output gap (%) NAIRU (%) NAICU (%)
+             Mean             7.71            -0.02             8.88           80.51
+            Median            6.80             0.28             8.83           81.30
+          Maximum             13.76            3.2             10.59           82.51
+           Minimum             3.90           -4.92             7.43           73.97
+        Std. Deviation        3.25             1.80             1.03            2.22
+
+            Assessing the remaining latent variables, the output gap measured by the State
+Space Model is smother than the one obtained with the HP filter. This effect is specially
+evident in the 2008 financial crisis. Considering the NAIRU and the NAICU, we highlight
+the differences in these variables levels estimated by both models between 2008 and 2013.
+This period coincides with a RIR holding sistematically under the NRIR in the state space
+model, resulting in a NAIRU over and NAICU under the respective HP filter measures.
+
+5.2    Evaluating the Monetary Policy Stance in Brazil through the
+       lens of a State-Space Macroeconomic Model
+           In this section we evaluate the stance of monetary policy in Brazil in our sample
+period. First, we compare the RIR gap (the difference between the RIR and the NRIR) with
+some price and activity variables explored in our Kalman Filter. Second, we identify the
+
+                                            12
+monetary policy easing and tightening cycles using the latent variables dynamics. Figure 3
+allows a comparison of the RIR gap with: inflation, output gap, unemployment rate gap and
+capacity utilization gap.
+
+
+
+
+ Figure 3: Evaluating the stance of monetary policy: RIR gap vs business cycle variables
+
+           As we can observe, the comovement among the variables occurs as expected.
+When the RIR is set under (above) the NRIR, we usually identify inflation above (under)
+the central target, the output above (under) its potential, the unemployment rate under
+(above) the NAIRU and the installed capacity utilization above (under) the NAICU.
+           In order to assess the monetary policy stance, we verify the RIR gap dynamics
+during our sample period. Periods of negative (positive) RIR gap are identified by the
+shaded (white) areas in the graphs, being equivalent to monetary easing (tightening) cycles.
+A more restrictive monetary policy prevails in the first half of our sample. The last (and
+longest) period of policy easing was 2009Q3-2014Q2. Since then, Brazil Central Bank has
+been adopting a tighter monetary stance.
+
+
+
+
+                                            13
+6      Final Remarks
+            In this study, we employ a multivariate Kalman Filter to measure the Neutral
+Real Interest Rate (NRIR) in Brazil, from 2002Q1 to 2016Q4. Basically, we depart from
+Mésonnier and Renne (2004) and Areosa (2008) state space models in order to build a
+representation that allow us to make a join estimation of four latent economic variables:
+NRIR, potential output, NAIRU and NAICU. This method differs from previous literature
+in two ways. First, former studies usually make a joint estimation of two latent variables:
+NRIR and potential output. Second, instead of imposing for potential output structures
+that follow random walks or have autoregressive patterns, our state space model relies on
+the production function approach.
+            Comparing the latent variables estimated by our state space macroeconomic
+model with the ones that results from a HP filter, the former is more robust to the trend
+estimates bias usually presented by the latter method at the end and beginning of samples.
+Also, the difference between the NRIR estimated by the models at some moments exemplifies
+the sizeable error that we can incur in the measurement of this variable in periods marked
+by greater potential GDP variations. Analysing the remaining non observable variables, we
+highlight the growing idle productive capacity linked to both capital and labor factors.
+            Evaluating the monetary policy stance in our sample period with the state space
+macroeconomic model, we observed that in the first half of our data, tighter monetary
+policy prevailed. The last (and longest) period of policy easing began in the aftermath of
+2008 financial crisis and sustained till the first half of 2014. Since then, Brazil Central Bank
+has been adopting a tighter monetary stance.
+
+
+References
+    Araújo, F., M. B. M. Areosa, and J. A. Rodrigues Neto (2003). r-filters: a hodrick-prescott
+       filter generalization. Working Papers Series 69, Central Bank of Brazil, Research De-
+       partment.
+    Araújo, R. C. D. and C. G. D. Silva (2014). The neutral interest rate and the stance of
+       monetary policy in brazil. Anais do XLI Encontro Nacional de Economia [Proceedings
+       of the 41th Brazilian Economics Meeting] 051, ANPEC - Associação Nacional dos
+       Centros de Pósgraduação em Economia [Brazilian Association of Graduate Programs
+       in Economics].
+    Areosa, M. (2008). Combining hodrick-prescott filtering with a production function ap-
+       proach to estimate output gap. Working Papers Series 172, Central Bank of Brazil,
+       Research Department.
+    Bacha, E. L. (2010). Além da trı́ade: Há como reduzir os juros. Texto para discussão 17,
+       IEPE/CdG.
+    Bacha, E. L., M. Holland, and F. M. Gonçalves (2009). A panel-data analysis of interest
+       rates and dollarization in brazil. Revista Brasileira de Economia 63, 341 – 360.
+    Barbosa, F. d. H., F. D. Camêlo, and I. C. João (2016). A taxa de juros natural e a regra
+       de taylor no brasil: 2003/2015. Revista Brasileira de Economia 70 (4).
+
+                                               14
+Barcellos Neto, P. C. F. d. and M. S. Portugal (2009). The natural rate of interest in brazil
+   between 1999 and 2005. Revista Brasileira de Economia 63, 103 – 118.
+Bastos, E. K. X. (2012). Distribuição Funcional da Renda no Brasil: Estimativas Anuais
+   e Contrução de Uma Série Trimestral. Discussion Papers 1702, Instituto de Pesquisa
+   Econômica Aplicada - IPEA.
+BCB (2015). Box: Revisão dos modelos de projeção de pequeno porte – 2015. In Relatório
+  de Inflação, Volume 18. Banco Central do Brasil.
+Bernhardsen, T. and K. Gerdrup (2007). The neutral real interest rate. Economic Bul-
+   letin 2, Norges Bank.
+Blinder, A. S. (1999). Central Banking in Theory and Practice, Volume 1 of MIT Press
+   Books. The MIT Press.
+Boone, L. (2000). Comparing semi-structural methods to estimate unobserved variables:
+   The hpmv and kalman filters approaches. OECD Economics Department Working
+   Papers 240, OECD Publishing.
+Central Bank of Brazil (2017). Minutes of the 205th Meeting of the Monetary Policy
+   Committee of the Central Bank of Brazil. Central Bank of Brazil.
+Galı́, J. (2008). Introduction to monetary policy, inflation, and the business cycle: An
+   introduction to the new keynesian framework. In Monetary Policy, Inflation, and the
+   Business Cycle: An Introduction to the New Keynesian Framework. Princeton Univer-
+   sity Press.
+Galı́, J. and T. Monacelli (2005). Monetary policy and exchange rate volatility in a small
+   open economy. The Review of Economic Studies 72 (3), 707.
+Giammarioli, N. and N. Valla (2004). The natural real interest rate and monetary policy:
+   a review. Journal of Policy Modeling 26 (5), 641–660.
+Goldfajn, I. and A. Bicalho (2011). A longa travessia para a normalidade: os juros reais
+   no brasil. Texto para discussão 02, Itaú Unibanco.
+Gollin, D. (2002). Getting income shares right. Journal of Political Economy 110 (2), 458–
+   474.
+Gottlieb, J. W. F. (2013). Estimativas e determinantes da taxa de juros real neutra no
+   brasil. Master’s thesis, PUC-Rio.
+Hamilton, J. D., E. S. Harris, J. Hatzius, and K. D. West (2016). The equilibrium real
+  funds rate: Past, present, and future. IMF Economic Review 64 (4), 660–707.
+Harvey, A. C. (1985). Trends and cycles in macroeconomic time series. Journal of Business
+   & Economic Statistics 3 (3), 216–227.
+Holston, K., T. Laubach, and J. C. Williams (2016). Measuring the natural rate of interest:
+   International trends and determinants. Working Paper Series 2016-11, Federal Reserve
+   Bank of San Francisco.
+IBGE (2016). Sistema de contas nacionais: Brasil. 2010-2014. Technical Report 52, Insti-
+   tuto Brasileiro de Geografia e Estatı́stica.
+
+
+                                            15
+Laubach, T. and J. C. Williams (2003). Measuring the natural rate of interest. The Review
+   of Economics and Statistics 85, 1063–1070.
+Laubach, T. and J. C. Williams (2016). Measuring the natural rate of interest redux.
+   Finance and Economics Discussion Series 2016-11, Board of Governors of the Federal
+   Reserve System (U.S.).
+Laxton, D. and R. Tetlow (1992). A simple multivariate filter for the measurement of
+   potential output. Technical report 59, Bank of Canada.
+Machado, V. and M. Portugal (2014). Measuring inflation persistence in brazil using a
+  multivariate model. Revista Brasileira de Economia 68 (2), 225–241.
+Magud, N. E. and E. Tsounta (2012). To cut or not to cut? that is the (central banks)
+  question in search of the neutral interest rate in latin america. IMF Working Papers
+  12/243, International Monetary Fund.
+Mésonnier, J.-S. and J.-P. Renne (2004). A time-varying natural rate for the euro area.
+   Working papers 115, Banque de France.
+Oreng, M. (2012). Brazil’s structural fiscal balance. Working paper, Itaú Unibanco.
+Orphanides, A. and J. C. Williams (2002). Robust monetary policy rules with unknown
+   natural rates. Brookings Papers on Economic Activity 33 (2), 63–146.
+Reserve Bank of India (2017). Minutes of the Monetary Policy Committee Meeting of the
+   Reserve Bank of India. Reserve Bank of India.
+Ribeiro, A. and V. K. Teles (2013). Taxa natural de juros no brasil. Economia 14 (1c),
+   733–750.
+Romer, D. (2001). Advanced Macroeconomics. McGrawHill.
+Taylor, J. B. (1993). Discretion versus policy rules in practice. Carnegie-Rochester Con-
+   ference Series on Public Policy 39, 195–214.
+Ubiergo, A. S. (2012). The puzzle of brazil’s high interest rates. IMF Working Papers
+   12/62, International Monetary Fund.
+Wicksell, K. (1936). Interest and Prices (tr. of 1898 edition by R.F. Kahn). London:
+  Macmillan.
+Woodford, M. (2003). Interest and Prices: Foundations of a Theory of Monetary Policy.
+  Princeton University Press.
+Yellen, J. L. (2017). The economic outlook and the conduct of monetary policy : a speech
+   at the stanford institute for economic policy research, stanford university, stanford,
+   california, january 19, 2017. Speech 935, Board of Governors of the Federal Reserve
+   System (U.S.).
+
+
+
+
+                                          16
+

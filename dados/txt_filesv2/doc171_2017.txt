@@ -1,0 +1,1419 @@
+Determinantes regionais das redes nacionais e internacionais de patenteamento no 
+
+Brasil1 
+
+Raquel Coelho Reis2 
+Eduardo Gonçalves3 
+Juliana Gonçalves Taveira4 
+
+ 
+Resumo:  O  presente  artigo  objetiva  investigar  os  determinantes  regionais  e  estruturais  do 
+número de ligações entre regiões nas redes de colaborações no Brasil. Para isto, utiliza-se de 
+dados  de  copatenteamento  das  produções  tecnológicas,  realizadas  tanto  por  inventores 
+brasileiros  como  destes  em  parceria  com  estrangeiros.  Como  possíveis  determinantes  do 
+número de ligações nas redes consideram-se tanto os aspectos econômicos, tecnológicos e de 
+densidade  demográfica  das  regiões,  além  das  estruturas  de  ligações  dos  nós  nas  redes.  A 
+investigação  é realizada  com  o modelo para dados de contagem,  Binomial Negativo  Inflado 
+em  Zeros  (ZINB),  que  considera  o  número  absoluto  de  ligações  de  cada  região  nas  redes. 
+Como  principais  resultados  evidencia-se  que  as  ligações  dos  nós  (regiões)  são  mais 
+impactadas  pelo  nível  de  P&D,  principalmente  o  P&D  universitário,  e  por  sua  estrutura  de 
+centralidade na rede.  
+Palavras-chave: Redes de inovação; Copatentes; Centralidade; ZINB; REGIC. 
+ 
+Abstract: The paper aims to investigate the regional and structural determinants of the links 
+among  regions  in  social  networks  of  collaboration  in  Brazil.  For  this,  we  use  patent 
+applications database that register collaborations among Brazilian inventors and Brazilian and 
+foreign  inventors.  As  possible  determinants  of  the  links  in  the  Brazil  co-patenting  networks 
+we take into account variables that capture economic, technological and demographic density 
+aspects of Brazilian regions, as well as the topology structures of the nodes in the networks. 
+The  approach  consider  the  Zero-inflated  negative  binomial  (ZINB)  model,  which  considers 
+the absolute number of inter-regional links among inventors from different regions. The main 
+results show that node (region) connections are more affected by the R&D level, especially by 
+the academic R&D, and by the centrality structural in network.  
+Key-words: Innovation Networks; Co-patents; Centrality; ZINB; REGIC. 
+ 
+Código JEL: O31; O33; L14; R10 
+ 
+
+Área 10: Economia Regional e Urbana 
+
+ 
+
+1. Introdução 
+
+Países  atrasados  tecnologicamente  buscam  absorver  conhecimentos  de  outros  mais 
+desenvolvidos  a  fim  de  melhorar  sua  competição  no  mercado  e  seus  níveis  de  inovação 
+(VIOTTI,  1997).  No  entanto,  o  processo  de  absorção  dependeria  da  proximidade  espacial 
+tendo em vista que as externalidades de conhecimento geradas pelas inovações são limitadas 
+geograficamente (JAFFE et al., 1993; ANSELIN et al., 1997). Assim, a proximidade espacial 
+                                                           
+1  Os  autores  agradecem  o  apoio  da  Fapemig,  CNPq  e  CAPES  pelo  financiamento.  Artigo  submetido  ao  45º. 
+Encontro Nacional de Economia, ANPEC, 2017. 
+2 Doutoranda em Economia do PPGE/FE-UFJF – e-mail: raquelcoelhoreis@gmail.com 
+3 Professor Associado da FE/UFJF e Pesquisador do CNPq – e-mail: eduardo.goncalves@ufjf.edu.br 
+4 Professora Adjunta da UFJF, Campus Governador Valadares – e-mail: julianagtaveira@gmail.com 
+
+2 
+ 
+
+entre  os  agentes  pode  auxiliar  na  absorção  de  conhecimentos  mais  complexos,  inclusive 
+aqueles classificados como tácitos (FISCHER; VARGA, 2003; MORENO et al., 2005).  
+
+Contudo,  estudos  recentes  questionam  a  relevância  da  proximidade  espacial  para  a 
+ocorrência  de  trocas  de  conhecimento,  ao  destacarem  o  papel  da  proximidade  relacional.  A 
+interação  entre  agentes  em  redes  seria  capaz  de  gerar  trocas  de  informações  e  de 
+conhecimentos  que  podem  gerar  inovações,  mesmo  a  longas  distâncias  geográficas 
+(BOSCHMA, 2005;  MAGGIONI;  UBERTI, 2007;  BRESCHI;  CATALINI, 2010;  GUAN  et 
+al.,  2015).  As  redes  sociais  de  inovação  são  consideradas  estruturas  que  podem  canalizar  e 
+transbordar fluxos de conhecimento tecnológico entre agentes pertencentes a uma mesma rede 
+(POWELL,  2004).  Se  os  agentes  da  rede  se  localizam  em  regiões  diferentes,  tais  fluxos 
+podem  beneficiar  as  regiões  de  diferentes  formas,  elevando  o  nível  de  competitividade 
+regional (COOKE et al., 1997). A absorção de conhecimentos externos à região pode superar 
+barreiras  tecnológicas,  desenvolvendo  e  elevando  os  níveis  de  inovação  local  (POOT  et  al., 
+2009),  permitindo  a  aquisição  de  novas  tecnologias  de  países  desenvolvidos  (HERSTAD  et 
+al.,  2014).  Nesse  sentido,  se  as  colaborações  se  dão  entre  países,  as  redes  funcionam  como 
+canais  de  transbordamento  de  conhecimento  a  longas  distâncias  e  entre  nacionalidades 
+distintas (GUAN et al., 2015).  
+
+A  concentração  inovativa  e  a  importância  da  região  Sudeste  no  cenário  tecnológico 
+brasileiro  têm  sido  amplamente  evidenciada  por  trabalhos  que  exploram  a  distribuição 
+espacial  dessas  atividades  no  país  (GONÇALVES,  2007;  ARAUJO,  2016).  Porém,  sob  a 
+perspectiva  da  existência  de  redes  de  invenção,  seria  possível  que  as  demais  regiões 
+brasileiras participassem ativamente do processo de geração de inovação. Isto é, por meio de 
+colaborações com regiões mais desenvolvidas em termos tecnológicos, tais regiões poderiam 
+superar suas barreiras tecnológicas.  
+
+Mas,  quais  são  as  condições  da  estrutura  econômica  regional  e  as  características  da 
+própria  estrutura  de  redes  que  explicam  o  número  de  ligações  que  uma  região  pode 
+estabelecer com outras regiões do país ou de outros países a fim de gerar inovações? Locais 
+de  aglomerações  populacionais  tendem  a  concentrar  maiores  rendas,  além  de  possuir  uma 
+demanda mais exigente em termos de qualidade e inovações. Assim, a produção de tecnologia 
+e  conhecimento  científico  tende  a  se  aglomerar  também  nessas  regiões.  No  entanto,  quando 
+excessivas,  tais  aglomerações  podem  gerar  problemas  urbanos  como  trânsito  pesado, 
+criminalidade  elevada,  poluição,  serviços  públicos  insuficientes  e  custos  básicos  elevados. 
+Tais  problemas  podem  ser  uma  barreira  à  permanência  de  agentes  mais  qualificados  nestas 
+regiões e podem inibir parcerias em invenções. Um fato destacado por Keller (2010) é que o 
+conhecimento 
+importações  eleva  o  estoque 
+tecnológico nacional e sua produtividade em inovar. O conteúdo tecnológico incorporado nos 
+bens  pode  ser  utilizado  como  insumo  de  produção  de  atividades  inovativas,  superando 
+deficiências  e  barreiras  tecnológicas  locais.  No  caso  brasileiro,  há  elevados  gastos  com 
+importação  de  maquinaria  a  ser  utilizada  na  produção,  sendo  que,  tal  valor  chega  a  ser 
+superior aos próprios gastos com P&D interno. Guan et al. (2015) analisam redes de inovação 
+sob  uma  perspectiva  regional  e  consideram  que  o  número  de  invenções  colaborativas  é 
+impactado pela centralidade do país ou região, assim como, o tamanho das firmas, número de 
+inventores, e outros fatores da estrutura local. 
+
+tecnológico  estrangeiro  proveniente  de 
+
+Esse artigo investiga quais  são os  determinantes  do número de laços (ligações) entre 
+regiões durante o processo de patenteamento de atividades tecnológicas no Brasil.  Para isso, 
+consideram-se  os  aspectos  locais,  em  termos  econômicos,  tecnológicos  e  de  densidade 
+demográfica, além da relevância da própria estrutura do nó na rede para a ocorrência de laços. 
+Neste  caso,  investigam-se  tanto  as  redes  formadas  apenas  por  inventores  brasileiros  (rede 
+inter-regional) quanto àquelas com a presença de estrangeiros (rede internacional). Em termos 
+
+3 
+ 
+
+metodológicos,  utiliza-se  o  modelo  Binomial  Negativo  Inflado  em  Zero  (ZINB)  já  que  a 
+variável  dependente,  número de ligações absolutas, é uma variável  de contagem,  e os dados 
+assumem superdispersão e excesso de zeros.  
+
+literatura  sobre  redes  de 
+
+Além  da  introdução,  o  estudo  está  dividido  em  mais  quatro  seções.  Na  segunda,  é 
+apresentada  uma  revisão  de 
+invenção  como  meios  de 
+transbordamentos  tácitos  e  geração  de  inovação,  além  das  hipóteses  a  serem  testadas  na 
+presente análise. Na terceira seção encontra-se a descrição da estratégia empírica assim como 
+da base de dados e variáveis. Na quarta seção são apresentados e discutidos os resultados. A 
+seção  final  delineia  os  principais  resultados  da  pesquisa  e  suas  possibilidades  de  extensão 
+futura. 
+
+ 
+
+2. Redes Sociais de Inovação 
+
+Redes  são  canais  pelos  os  quais  agentes  absorvem  conhecimentos  externos  ao  se 
+ligarem  aos  demais  agentes  (ROTHWELL  et  al.,  1974).  Redes  de  inovação,  identificadas  e 
+medidas  com  auxílio  de  dados  de  copatenteamento  de  invenções,  são  consideradas  tanto 
+meios de transbordamento de conhecimento codificado quanto tácito (MAGGIONI; UBERTI, 
+2007).  Isso  ocorre  porque  redes  geram  confiança  mútua  entre  seus  membros  durante  o 
+processo  de  invenção,  ao  compartilharem  recursos,  conhecimentos  e  objetivos  em  comum 
+(GRANOVETTER,  1973;  2005).  Ademais,  é  suposta  uma  relação  positiva  entre  redes  de 
+invenção  e  produção  de  inovação,  tendo  em  vista  que  parcerias  em  invenções  tendem  a 
+incorporar mais conhecimentos e, portanto, gerar mais inovações (SINGH; FLEMING, 2010). 
+
+A eficiência em gerar inovações está atrelada às características de seus inventores, do 
+local  onde  se  inserem  e,  principalmente,  se  estes  fazem  parte  de  redes,  de  modo  a  terem 
+acesso a variadas fontes de conhecimentos. A proximidade entre agentes facilita a existência 
+de  intercâmbio  de  conhecimento  entre  eles  (AGRAWAL  et  al.,  2006),  além  de  diminuir 
+custos  de  transação  e  transporte  (BRESCHI;  CATALINI,  2010),  tendendo  a  produzir  uma 
+rede social  densa (AUDRETSCH, 1998). Contudo, interações sociais  podem  ser construídas 
+por  reuniões  eventuais  de  negócios,  feiras  e  exposições  técnicas  e  congressos  científicos,  os 
+quais,  juntamente com  os avanços das tecnologias de informação, permitem  que os contatos 
+sociais sejam mantidos e até fortalecidos mesmo a longas distâncias geográficas. Esse tipo de 
+proximidade é conhecido como relacional (CASSI; PLUNKET, 2015).  
+
+A relação entre ambos os tipos de proximidade pode ser complementar à medida que o 
+processo  de  interação  local  entre  agentes  que  dividem  o  mesmo  espaço  geográfico  permite 
+criar  e  compartilhar  conhecimento,  o  que  é  denominado  local  buzz.  Nesse  sentido,  a 
+aglomeração de empresas, universidades, inventores e demais agentes criam externalidades de 
+conhecimento que ficariam limitadas espacialmente. Já as conexões entre agentes distantes no 
+espaço, chamadas global pipelines, podem fortalecer o meio local através do acesso a novas 
+fontes externas de conhecimento que ultrapassam as fronteiras locais (BATHELT et al., 2004; 
+STOPER;  VENABLES,  2004).  Trocas  de  conhecimento  a  longas  distâncias  podem  ser 
+evidenciadas  pela  presença  de  redes  de  colaborações,  alianças  estratégicas,  trabalhos 
+temporários e redes sociais globais em geral (KNOBEN; OERLEMANS, 2006; POWELL  et 
+al., 1996). Firmas de regiões periféricas e deficientes em infraestrutura tecnológica tendem a 
+colaborar  mais  externamente  a  fim  de  compensar  a  falta  de  transbordamento  local 
+(GRILLITSCH;  NILSSON,  2015),  contudo,  alguns  autores  evidenciam  que  as  colaborações 
+devem  complementar  e  não  compensar  a  falta  de  transbordamento  local  (COOKE,  2002; 
+BATHELT et al., 2004). 
+
+4 
+ 
+
+Adicionalmente,  deve-se  considerar  a  intensidade  dessas  conexões  entre  os  agentes. 
+Segundo,  Granovetter  (1973), um  grupo de nós conectados  entre si  por laços fortes formam 
+um cluster. Contudo, devido às ligações fortes entre eles, pode haver  menor fluxo de novos 
+conhecimentos  externos.  Laços  fracos,  com  agentes  externos  à  região,  podem  permitir 
+alcançar  novos  inventores  e  consequentemente  novas  informações  (CAPALDO,  2007). 
+Usualmente,  interações  em  redes  se  iniciam  por  meio  de  laços  fracos  e  podem  evoluir  para 
+laços  mais  fortes.  Laços  fracos  ligam  agentes,  podendo  fornecer  informações  distintas  e 
+promover a inovação na rede (WU, 2012).  
+
+Ao considerar local buzz e global pipelines como complementares, surge a questão de 
+pesquisa  de  se  regiões  com  fortes  ligações  internas  entre  seus  inventores,  ou  seja,  com  um 
+intenso  processo  de  local  buzz,  possuem  também  intensas  conexões  externas  como  fonte  de 
+renovação do conhecimento tecnológico. Na ausência de conexões externas, redes com muitas 
+ligações internas tendem a tornar o conhecimento  da região obsoleto  e redundante, podendo 
+conduzir  a  região  aos  efeitos  negativos  do  lock-in.  Sendo  assim,  a  fim  de  evitar  esse  efeito, 
+agentes  pertencentes  a  regiões  (nós)  com  ligações  internas  densas  procuram  participar  de 
+outras redes, i.e., se ligam externamente. Desta maneira, podem adquirir novos conhecimentos 
+a serem  utilizados na superação de barreiras tecnológicas locais  e geração de inovação.  Isso 
+permite formular a seguinte hipótese de investigação (H1): 
+
+H1:  Regiões  com  muitas  ligações  internas  também  tendem  a  ter  maior  número  de 
+
+colaborações com outras regiões. 
+
+Além  do  número  de  ligações  internas  entre  inventores  de  uma  mesma  região,  o 
+número de ligações externas pode estar relacionado com o número de inventores que a própria 
+região  possui.  Bettencourt  et  al.  (2007)  encontram  que  a  proporção  de  inventores  dentro  de 
+uma metrópole está diretamente associada com a produção de patentes local. Adicionalmente, 
+afirmam  também  que  o  volume  de  patentes  da  metrópole  tem  relação  positiva  com  a 
+conectividade  em  redes  metropolitanas  de  inventores.  Logo,  assume-se  que  o  número  de 
+inventores  da  região  pode  estar  relacionado  à  capacidade  regional  de  absorção  de 
+conhecimentos  externos.  Segundo  Marrocu  et  al.  (2013),  a  capacidade  de  uma  região  de 
+absorver  conhecimentos  externos  está  associada  às  habilidades  de  seus  indivíduos  mais 
+instruídos e a um maior gasto em pesquisas na região. Assim, pode-se supor que: 
+
+H2:  A  interação  entre  ligações  internas  e  o  número  de  inventores  da  região 
+
+potencializa o número de ligações com demais regiões. 
+
+A  colaboração  com  instituições  voltadas  para  pesquisas  têm  sido  meio  de 
+aprimoramento  e  evolução  das  inovações  nos  últimos  anos  (POWELL  et  al.,  1996).  List 
+(1941)  relaciona  a  presença  de  capital  intelectual,  P&D,  com  a  produção  tecnológica  nas 
+instituições  de  educação  e  ciência.  Segundo  Lastres  e  Cassiolato  (2000),  a  inovação  ocorre 
+por  meio  de  diversos  tipos  de  colaborações  entre  agentes,  sendo  as  novas  políticas  de 
+incentivo a atividades de inovação voltadas para a promoção de tais colaborações por meio de 
+atividades de P&D e consequente difusão tecnológica.  
+
+Entre as características da estrutura econômica da região, o número de ligações inter-
+regionais é, portanto, função direta da capacidade de pesquisa regional, i.e., neste caso, tanto 
+do  P&D  empresarial  quanto  do  P&D  universitário.  Redes  de  invenção  podem  surgir  de 
+parcerias  em  atividades  de  P&D,  as  quais  trazem  aos  membros  os  benefícios  dos 
+investimentos em pesquisas, além da absorção de conhecimentos mais sofisticados (ERNST, 
+1994).  Um  argumento  que  justifica  a  existência  de  redes  entre  universidades  e  outras 
+instituições e empresas para a formação de pesquisa, é o alto custo para manutenção de P&D.  
+
+Desse  modo,  a  parceria  com  demais  organizações  torna  a  pesquisa  menos  custosa  e 
+permite  adquirir  conhecimentos  complementares.  Além  disso,  condições  sociais  e  políticas 
+
+5 
+ 
+
+podem facilitar as ligações entre grupos de inventores, existindo vantagens  competitivas aos 
+que  acessam  precocemente  conhecimentos  relevantes.  Tais  vantagens  são  motivações  para 
+parcerias  de  pesquisas  conjuntas  como  meios  de  compartilhar 
+ideias  (POWELL; 
+GIANNELLA,  2010).  Sendo  assim,  políticas  deveriam  incentivar  parcerias  na  geração 
+tecnológica  entre  universidade  e  demais  instituições  por  meio  de  facilitação  do  registro  das 
+patentes e da promoção de cooperação entre os agentes. De tal modo, espera-se que, quanto 
+maiores  os  níveis  de  P&D,  maiores  sejam  os  números  de  laços  das  regiões  nas  redes  de 
+copatenteamento,  devido  à  existência  de  parcerias  e  colaborações  inventivas  durante  o 
+processo de produção de P&D da região. 
+
+H3:  Regiões  com  maior  capacidade  para  produzir  P&D  possuem  maiores 
+colaborações inventivas.  
+
+Pela  perspectiva  de  transferências  de  conhecimentos  intencionais,  as  proximidades 
+relacionais  e  tecnológicas  se  destacam  como  relevantes  para  a  geração  de  inovação 
+(GRILLITSCH;  NILSSON,  2015).  Além  da  questão  das  estruturas  das  regiões  onde  se 
+inserem  os  inventores  e  da  ideia  de  proximidade  geográfica,  considera-se  que  a  forma  com 
+que  os  agentes  se  inserem  e  se  posicionam  na  rede  seja  relevante  para  a  absorção  e 
+compartilhamento  de  conhecimento  (PONDS  et  al.,  2010).  Em  análises  de  redes,  portanto, 
+deve-se analisar tanto a questão geográfica quanto a relacional. 
+
+Sob  a  perspectiva  relacional,  algumas  medidas  são  mais  utilizadas  em  trabalhos 
+empíricos  de  redes  de  copatenteamento,  como  a  densidade,  a  centralidade  e  a  conectividade 
+ligações  (BETTENCOURT  et  al.,  2007;  LOBO;  STRUMSKY,  2008; 
+dos  nós  e 
+MIGUELLÉZ; MORENO, 2013; HE; FALLAH, 2014). Investiga-se ainda a relação entre os 
+nós  serem  centrais  ou  intermediários  e  uma  consequente  eficiência  de  alcance  dos 
+transbordamentos  de  conhecimento,  provenientes  ou  captados  por  estes  nós  (BURT  et  al., 
+1993; 1997, GILSING et al., 2008).  
+
+Os  agentes  intermediários,  nós  entre  dois  ou  mais  subgrupos  nas  redes,  captam 
+maiores  graus  de  novidade  e  conhecimentos  distintos  (GILSING  et  al.,  2008).  Ademais, 
+evidencia-se que as estruturas dos nós impactam nos fluxos de conhecimento, sendo que redes 
+com  laços  de  menor  comprimento  e  mais  agrupadas  podem  transbordar  conhecimento  mais 
+longe  e  rapidamente,  sem  grandes  perdas  de  informações  (GRANOVETTER,  1985; 
+BARABÁSI et al., 1999; EBEL et al., 2002; SEN et al., 2003; HE; FALLAH, 2009).  
+
+Medidas de aglomeração pretendem incorporar a ideia de que regiões mais populosas 
+tendem  a  promover  maior  interação  entre  seus  agentes,  facilitando  os  contatos  face  a  face  e 
+colaborações, impactando no processo  de produção de inovações  (STORPER; VENABLES, 
+2004;  MORENO  et  al,  2005;  GONÇALVES,  2007).  Tal  relação  de  maior  facilidade  de 
+interação entre agentes, consequentemente, pode atrair novas colaborações de outras regiões. 
+Essa atração pode ser identificada pelo aumento da centralidade dos nós (regiões), tornando-
+os  centros  de  atração  (hubs)  para  os  demais  fluxos  de  conhecimento  e  fortalecendo  a  rede 
+(MATOS, 2002; MATOS; BRAGA, 2002).  
+
+A  centralidade  pode  influenciar  no  desempenho  em  gerar  novas  ligações  durante  o 
+processo de geração de inovação, uma vez que nós centrais funcionam como um meio de ligar 
+nós  adjacentes  através  de  laços  fracos  (WASSERMAN;  FAUST,  1994).  Destaca-se  que  nós 
+centrais  influenciam  as  redes  de  inovação,  pois  tendem  a  incorporar  maiores  fluxos  de 
+conhecimento  ao  se  ligar  aos  demais  nós  (ROXENHALL,  2013).  Estas  ideias  corroboram  a 
+última hipótese da análise: 
+
+H4: Quanto maior a centralidade do nó (região), maior é o número de colaborações 
+inventivas.  
+
+6 
+ 
+
+3. Dados e Estratégia Empírica 
+
+3.1. Base de Dados 
+
+A  unidade  geográfica  desta  análise  é  a  junção  de  municípios  brasileiros  segundo  o 
+recorte territorial  das Regiões de  Influência das  Cidades (REGIC). Por incluir aglomerações 
+urbanas  e  a  influência  de  regiões  sobre  outras,  será  utilizado  o  nível  mais  desagregado  de 
+REGIC  imediata,  objetivando-se  captar  uma  divisão  urbana-regional  da  polarização 
+econômica brasileira. A REGIC imediata abrange 482 regiões de articulação urbana, i.e, áreas 
+de  habitação  e  deslocamento  populacional.  Contudo,  os  dados  foram  captados  no  nível  de 
+município e posteriormente agregados ao nível REGIC imediata através da identificação dos 
+códigos de município e de REGIC correspondente, segundo dados do IBGE.  
+
+As  variáveis  número  de  ligações,  de  patentes  e  de  inventores,  foram  construídas  a 
+partir  da  base  de  dados  de  patentes,  disponibilizada  pelo  Instituto  Nacional  de  Propriedade 
+Intelectual (INPI). Esta base contém informações dos registros de patentes, abrangendo dados 
+específicos  da  patente  e  de  seus  inventores/coinventores.  A  partir  da  identificação  dos 
+inventores, foi possível juntar os dados do INPI com os dados identificados da Relação Anual 
+de  Informações  Sociais  (RAIS)5,  a  fim  de  se  obter  informações  mais  seguras  em  relação  ao 
+município desses indivíduos. A partir daí, os dados foram agregados pelo ano de depósito da 
+patente  e  código  de  município  de  residência  do  inventor  e,  por  último,  pela  REGIC 
+correspondente. Assim, identificaram-se as informações para cada ano e região, balanceando-
+se a base e totalizando 5302 observações (482 regiões x 11 anos).   
+
+Informações  de  número  de  empregados,  características  industriais  da  região  e 
+trabalhadores que potencialmente desenvolvem atividades inovativas e de P&D, especificados 
+como  Pessoal  Ocupado  Técnico  Científico  (POTEC),  originam-se  da  RAIS,  disponibilizada 
+pelo  Ministério  do  Trabalho  e  Emprego  (MTE).  Em  países  desenvolvidos  utilizam-se 
+informações de gastos diretos em P&D de organizações privadas como medidas dos esforços 
+e capacidade em inovar, como propôs Jaffe (1989), contudo, no Brasil, tais informações são 
+divulgadas  apenas  através  da  Pesquisa  de  Inovação  (PINTEC)  a  níveis  regionais  mais 
+agregados. Logo, como alternativa, utiliza-se dados do número de trabalhadores em atividades 
+em  áreas  tecnocientíficas  –POTEC-  como  proxy  dos  esforços  e  capacidades  de  exercer 
+atividades de P&D. De acordo com Araújo, Cavalcante e Alves (2009), a POTEC e os gastos 
+em  P&D,  externos  e  internos,  possuem  uma  correlação  alta,  sugerindo  que  esta  seja  uma 
+proxy adequada para medir o esforço inovador. 
+
+Os  dados  de  P&D  universitário  provêm  da  Coordenação  de  Aperfeiçoamento  de 
+Pessoal de Nível Superior (CAPES). Neste caso, consideram-se dados de professores doutores 
+em centros de pós-graduação (stricto sensu) nas áreas das Engenharias, Ciências Exatas e da 
+Terra,  Ciências  Agrárias,  Ciências  Biológicas  e  da  Saúde,  que  potencialmente  criam 
+tecnologias  a  serem  transferidas  ao  setor  produtivo.  Já  a  importação  de  bens  de  capital  é 
+medida  como  volume  de  bens  importados  em  reais,  tendo  como  fonte  os  dados  anuais  de 
+indicadores  econômicos  e  comércio  dos  municípios  brasileiros  da  Secretaria  de  Comércio 
+Exterior (SECEX). Por último, dados sobre população, produção econômica e área geográfica 
+das regiões foram extraídos do Instituto Brasileiro de Geografia e Estatística (IBGE), que é o 
+principal provedor de dados estatísticos do país. 
+
+ 
+
+3.2. Método de Estimação  
+
+Tendo como objetivo central analisar os determinantes - regionais e características da 
+estrutura da rede  - do número de ligações entre regiões nas redes  de copatenteamento inter-
+
+                                                           
+5 Estes dados foram disponibilizados pelo ECONS/Laboratório de Economia/FE-UFJF. 
+
+7 
+ 
+
+regional  e  internacional  no  Brasil,  o  presente  estudo  analisa  as  ligações  ocorridas  nas  482 
+regiões brasileiras entre os anos de 2001 a 2011, por meio de técnicas econométricas baseada 
+em um painel de dados. No caso brasileiro, é possível identificar a ocorrência de dois tipos de 
+redes: (1) rede de copatenteamento inter-regional, correspondente às ligações entre inventores 
+brasileiros  localizados  em  regiões  distintas  do  país;  e  (2)  rede  de  copatenteamento 
+internacional, compreendendo as ligações entre brasileiros e estrangeiros.  
+
+Como o número de ligações entre inventores na rede podem assumir características de 
+variável de contagem, deve-se investigar qual o melhor modelo de estimação. Ao identificar-
+se dados de contagem, i.e, que assumem valores inteiros e não negativos, usualmente aplica-
+se o modelo de distribuição  Poisson, que pressupõe média  e variância iguais  dos dados.  No 
+entanto,  existem  ocasiões  em  que  a  variância  é  superior  à  média,  isto  é,  ocorre 
+superdispersão6.  Nestes  casos,  aplica-se  o  modelo  Binomial  Negativo,  o  qual  corrige  o 
+problema adicionando um parâmetro de heterogeneidade não observada ao Poisson.  
+
+Todavia,  em  casos  da  presença  de  excesso  de  zeros,  que  geram  viés  nos  resultados, 
+sugere-se  o  uso  de  modelos  inflados.  Neste  contexto,  destacam-se  dois  modelos:  o  Poisson 
+Inflado em zero – Zero Inflated Poisson (ZIP); e o Binomial Negativo inflado em zero - Zero 
+Inflated  Negative  Binominal  (ZINB).  Estes  assumem  duas  distribuições.  Respectivamente, 
+uma  considera  a  distribuição  ajustada  a  valores  inteiros  e  maiores  que  zero,  e  a  outra  a 
+probabilidade  de  ocorrência  de  valores  nulos.  As  distribuições  dos  modelos  ZINB  e  ZIP 
+tratam a superdispersão da variância em relação a média de formas semelhantes (ZANIBONI; 
+MONTINI,  2015),  contudo,  estudos  encontraram  resultados  melhores  quanto  à  significância 
+das variáveis e estatísticas para estimações por ZINB, se comparadas ao ZIP (CARVALHO; 
+LAVOR, 2008; ZANIBONI; MONTINI, 2015).  
+
+Como  possíveis  determinantes  do  número  de  ligações  entre  regiões,  utilizam-se 
+informações relativas aos aspectos locais de infraestrutura econômica, tecnológica, densidade 
+demográfica e as características das ligações e arquitetura do próprio nó na rede.  
+
+A Tabela 1 traz as estatísticas descritivas das variáveis dependentes, ligações absolutas 
+inter-regionais  e  internacionais,  considerando  o  período  de  análise,  2001  a  2011,  a  fim  de 
+verificar qual o modelo a apropriado. Ao comparar a média das variáveis com sua variância, 
+nota-se  a  presença  de  superdispersão,  sendo  assim,  o  modelo  binomial  negativo  é  o  mais 
+apropriado.  A  partir  da  tabela  é  possível  destacar  ainda  a  presença  de  excesso  de  zeros  na 
+base.  Na  rede  inter-regional,  verifica-se  que  mais  de  70%  da  base  de  dados  é  composta  por 
+regiões  que  assumem  valores  nulos  de  ligações,  enquanto  na  rede  internacional,  95% 
+assumem valores iguais a zero. Sendo assim, vê-se necessário verificar qual modelo melhor se 
+ajusta aos dados, o que considera a distribuição normal ou o inflado de zero.  
+
+Tabela 1 – Análises descritivas das variáveis de ligações absolutas (2001-2011) 
+
+ 
+
+REDES 
+
+ 
+
+Rede Inter-regional (LigaBB) 
+Rede Internacional (LigaBE) 
+Fonte: Elaboração Própria. 
+
+ 
+
+REGIC Imediata 
+
+N 
+5302 
+5302 
+
+Nº de Zeros  Média  Variância  Min 
+
+3871 (73%) 
+5042 (95%) 
+
+0,75 
+0,10 
+
+2,34 
+0,29 
+
+0 
+0 
+
+Max 
+9,49 
+5,76 
+
+                                                           
+6  A  superdispersão  pode  ocorrer  pela  omissão  de  variáveis  não  observadas,  zeros  abundantes  na  amostra, 
+correlação alta entre os dados e/ou variabilidade da média. 
+
+8 
+ 
+
+Para tal, utilizando-se estimações de Máxima Verossimilhança - Maximum Likelihood 
+Estimation  (MLE)  é  realizado  o  teste  de  z-Vuong,  desenvolvido  por  Vuong  (1989)  e 
+apresentado  na  tabela  2.  Este  possui  como  hipótese  nula  que  os  métodos  de  distribuições 
+infladas  são  iguais  em  explicar  a  regressão  aos  de  distribuição  normal,  enquanto  a  hipótese 
+alternativa  é  que  o  método  de  zero  inflado  explica  melhor  o  modelo.  O  teste  z-vuong 
+evidenciou  o  ZINB  como  melhor  em  ajustar  os  dados  do  que  a  versão  pooled,  sem  zeros 
+inflados, ao indicar que o modelo ZIP não foi significativo e o ZINB foi significativo ao nível 
+de  1%,  respectivamente,  assumindo  valores  de  62,69  e  5,01  para  as  redes  inter-regionais  e 
+internacionais.  Cabe  destacar,  contudo,  que  primeiramente,  estimou-se  um  painel  binomial 
+negativo  que  se  mostrou  indiferente  ao  pooled,  utilizando  por  fim  este  último.  Assim,  para 
+explicar os determinantes do número de ligações nas redes de copatenteamento utilizou-se o 
+modelo  Binomial  Negativo  Inflado  em  Zero  (ZINB)  em  sua  versão  robusta7,  por  corrigir-se 
+possíveis vieses causados pela heterogeneidade.  
+
+ 
+
+Tabela 2 – Teste Z-Vuong para modelos inflados em zero (2001-2011). 
+
+Rede 
+Inter-regional (ligaBB) 
+Internacional (ligaBE) 
+
+Teste Z-Vuong ZINB 
+62,69*** 
+5,01*** 
+
+Fonte: Elaboração própria a partir do software Stata. 
+
+Teste Z-Vuong ZIP 
+86,44 
+1,02 
+
+ 
+
+Em  termos  de  estatísticas  descritivas,  a  Tabela  3  reporta  o  ranking  das  regiões  que 
+mais  possuem  ligações  dentro  de  cada  uma  das  redes  consideradas.  Assim,  verifica-se  a 
+presença  de  maiores  ligações  nas  regiões  industriais  brasileiras  como  São  Paulo,  Curitiba  e 
+Campinas e São Carlos.  
+
+Tabela 3 - Ranking das 15 regiões brasileiras por número de ligações (2001-2011) 
+
+ 
+
+REGIC 
+São Paulo 
+Belo Horizonte 
+Rio de Janeiro 
+Curitiba 
+Campinas 
+Porto Alegre 
+Florianópolis 
+Recife 
+Salvador 
+São Carlos 
+
+ 
+1º 
+2º 
+3º 
+4º 
+5º 
+6º 
+7º 
+8º 
+9º 
+10º 
+11º  Ribeirão Preto 
+12º  Aracajú 
+13º  Brasília 
+14º 
+15º  Araraquara 
+Percentual - 15 primeiros 
+Total de ligações na rede 
+   Fonte: Elaboração Própria. 
+
+São José dos Campos 
+
+LigaBB 
+20600 
+20308 
+17897 
+10876 
+10673 
+5708 
+4434 
+3417 
+3359 
+2467 
+2450 
+2377 
+2335 
+2073 
+1971 
+    0,73 
+    152618 
+
+REGIC 
+São Paulo 
+Belo Horizonte 
+Rio de Janeiro 
+Campinas 
+Joinville 
+Porto Alegre 
+Salvador 
+São José dos Campos 
+Curitiba 
+Brasília 
+Recife 
+São Carlos 
+Araraquara 
+Fortaleza 
+Limeira 
+ 
+
+LigaBE 
+1584 
+670 
+659 
+597 
+363 
+224 
+203 
+179 
+170 
+158 
+90 
+89 
+75 
+70 
+66 
+         0,89 
+           5835 
+
+ 
+
+                                                           
+7 Considera-se erros-padrões robustos.  
+
+9 
+ 
+
+É possível notar também a presença de São Paulo, Belo Horizonte e Rio de Janeiro nas 
+três primeiras posições do ranking para ambas  as redes. Tais  regiões são  as capitais  de seus 
+estados e, portanto, concentram melhores infraestruturas, centros educacionais, e aglomeração 
+populacional,  salientando  a  importância  de  se  investigar  a  associação  de  tais  características 
+em relação ao número de ligações da região na rede.  Nota-se que as 15 regiões que mais se 
+ligam dentro da rede são responsáveis pela maioria das ligações, sendo este índice de 73% no 
+caso da rede inter-regional e 89% da rede internacional.  
+
+ 
+
+3.3. Modelo de Estimação  
+
+A fim de padronizar a escala em que as variáveis são mensuradas e evitar problemas 
+de  colinearidade,  com  exceção  das  variáveis  de  controle,  todas  variáveis,  inclusive  as 
+dependentes,  foram 
+logaritmizadas.  Adicionalmente,  as  variáveis  explicativas  foram 
+defasadas temporalmente a fim de controlar possíveis problemas de endogeneidade, de modo 
+que,  para  o  período  de  análise  t,  consideraram-se  as  variáveis  independentes  medidas  no 
+período t-1.  
+
+Assim, a estratégia empírica desse artigo se baseia na equação geral a seguir:  
+
+ligações = β0 + β1(LigaINTpat) + β2(escalainv) + β3(ligaINTinv) + β4(pedind) + β5(peduniv) + β6(bet) + 
+β7(Empind) + β8(aglomeração) + β9(deseconomia) + β10(PibpibB) + β11(bkpib) + dreg + dmetro + ε 
+
+ 
+
+        
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+      
+
+ 
+
+ 
+
+                                             
+     (1) 
+
+Sendo, ligações a variável dependente; β0 é o termo constante; ε o termo de erro; os demais 
+termos representam as variáveis independentes e dummies de controle, detalhadas a seguir.  
+
+ 
+3.3.1. Variáveis Dependentes e de Interesse 
+
+Ligações (variável dependente): é dada pelo número absoluto de ligações no nó. Esta 
+variável  foi construída a partir da identificação dos inventores das patentes, considerando-se 
+que  houve  colaborações  durante  o  processo  de  produção  tecnológica  (formação  de  laços) 
+quando  a  patente  está  registrada  como  tendo  mais  de  um  inventor.  Logo,  para  a  rede  inter-
+regional,  cada  vez  que  um  brasileiro  está  registrado  como  inventor  de  uma  patente  junto  a 
+outro  brasileiro,  de  região  distinta,  contabilizou-se  uma  ligação  para  cada  região  dos 
+inventores,  associando-se  esta  contabilização  ao  ano  de  depósito  da  patente.  A  variável 
+ligação,  quando  dada  pela  relação  brasileiro-brasileiro,  é  representada  por  ligaBB.  Já  as 
+ligações  entre  brasileiros-estrangeiros  denominadas  ligaBE,  contabilizam  o  número  de  laços 
+existentes entre um inventor brasileiro e outro estrangeiro.  
+
+LigaINTpat: é dada pela razão entre o número de ligações internas ao nó e as patentes 
+geradas  na  região.  Esta  visa  capturar  se  há  relação  entre  o  fato  da  região  possuir  muitas 
+ligações  internas  e  a  existência  de  conexões  inter-regionais  e/ou  internacionais.  Espera-se 
+relação positiva desta tanto com o número de ligações inter-regionais quanto com as ligações 
+internacionais, conforme a Hipótese 1. 
+
+Escalainv:  é  construída  pelo  número  de  inventores  do  nó  em  relação  ao  total  de 
+inventores  no  país,  a  escala  de  inventores.  Cabe  destacar  que  contabiliza-se  neste  caso, 
+inventores com parcerias ou não.  
+
+LigaINTpat  x  Escalainv:  é  construída  pela  interação  da  ligaINTpat  com  a  Escalainv, 
+
+visando investigar a Hipótese 2. Dessa forma, é esperado um sinal positivo. 
+
+𝑃𝑒𝑑𝑖𝑛𝑑: é a proxy de P&D industrial dada pelo número de empregados em profissões 
+“técnico-científicas”,  os  trabalhadores  denominados  POTEC,  em  relação  ao  total  de 
+
+10 
+ 
+
+empregados  da  região,  multiplicada  por  10.000  para  transformação  dos  dados    em  números 
+inteiros a fim de melhor captar os efeitos da variável sobre a variável dependente. Espera-se 
+uma  relação  positiva  com  o  número  de  ligações  entre  regiões,  sendo  atividades  de  P&D 
+associadas  a  atividades  inventivas  e,  neste  caso,  haveria  P&D  entre  regiões  distintas  como 
+forma de captar conhecimentos distintos de organizações que não competem no mercado. 
+
+𝑃𝑒𝑑𝑢𝑛𝑖𝑣: é a proxy de P&D universitário construída, como  em Gonçalves e Almeida 
+(2009), considerando-se o número de doutores, permanentes ou visitantes em centros de pós-
+graduação e em áreas de pesquisas e criação de inovações, em relação ao total da população 
+da  região,  multiplicado  por  10.000.  Assim  como  o  P&D  industrial,  espera-se  que  tenha 
+relação positiva com o número de ligações entre regiões, de acordo com a Hipótese 3. 
+
+bet: é a estrutura de centralidade betweeness do nó construída a partir do software de 
+
+análises de redes Gephi 0.9.1 e calculada como:  
+
+CC(Vk) =  
+
+∑
+
+n
+j=1
+
+1
+
+  
+
+dist(vj,vi)
+
+ 
+
+ 
+
+ 
+
+(2) 
+
+sendo Cc(Vk) a centralidade do nó k, dada pela distância geodésica em que o nó k intermedia 
+ligações entre os nós i e j. Estando o coefiente normalizado entre 0 e 1, quanto mais próximo 
+de  um,  maior  é  a  probabilidade  do  nó  (região)  mediar  trocas  de  conhecimento  na  rede.  No 
+caso da rede de inventores, espera-se um sinal positivo, dado que, se o nó for central, haverá 
+aglomeração  em  torno  dele,  colaborando  para  maiores  ligações.  A  medida  é  calculada  para 
+ambas as redes, denominando-se betBB na rede inter-regional e betBE, na internacional. 
+
+Empind:  representa  a  participação  industrial  da  região  e  é  dada  pela  razão  entre  o 
+número de empregados nas indústrias de extração e transformação em relação ao número total 
+de  empregados  da  região.  A  relação  entre  o  grau  de  industrialização  e  redes  é  positiva  em 
+redes locais, pois o setor industrial é o que mais patenteia e se liga aos demais agentes, a fim 
+de se manterem informados e competitivos. 
+
+aglomeração:  é  definida  como  população  por  área  (km²)  da  região  (nó),  assim  como 
+economias  de  urbanização  usualmente  são  medidas  pela  densidade  demográfica.  Como 
+regiões  mais  populosas,  em  geral,  possuem  melhor  infraestrutura,  espera-se  que  a 
+aglomeração capte regiões mais propensas  a se ligarem  em  redes regionais  de invenção por 
+gerarem ambientes favoráveis às colaborações. 
+
+deseconomias  de  aglomeração:  é  dada  pelo  quadrado  da  variável  aglomeração, 
+seguindo o pressuposto que economias de urbanização crescem com o aumento populacional 
+e  ao  atingir  seu  ponto  crítico  decrescem  devido  às  deseconomias  de  escala  (PEREIRA; 
+LEMOS,  2003).  Supõe  que  esta  tenha  uma  associação  negativa  com  ligações,  pois  repelem 
+inventores.  
+ 
+
+3.3.2. Variáveis de Controle  
+
+As  demais  variáveis  inseridas  na  equação  (1)  são  variáveis  de  controle  que  captam 
+características  da  infraestrutura  local  e  aspectos  econômicos,  e  tem  como  objetivo  amenizar 
+possíveis problemas de heterogeneidade espacial.  
+
+PibpibB:  é  a  variável  de  escala  econômica,  construída  a  partir  da  participação  do 
+Produto Interno Bruto (PIB) da região em relação ao PIB do país. Visa controlar o efeito de 
+regiões mais desenvolvidas economicamente, que tendem a ser mais inovativas.  
+
+Bkpib:  representa  a  importação  de  bens  de  capital,  e  é  dada  pela  proporção  de  gastos 
+com  importações  de  bens  de  capital  em  relação  ao  PIB  regional.  Esta  tenta  captar  o 
+transbordamento  de  conhecimento  pecuniário  (rent  spillover)  por  meio  de  compras  de  bens 
+com tecnologias incorporadas. 
+
+11 
+ 
+
+𝑑𝑟𝑒𝑔:  representa  a  dummy  regional  que  assume  valor  1  caso  o  nó  se  encontre  nas 
+regiões Sul e Sudeste e 0, caso contrário. Visa controlar características dos sistemas regionais 
+de inovação não captadas pelas outras variáveis.  
+
+𝑑𝑚𝑒𝑡𝑟𝑜:  é  a  dummy  de  metrópole,  construída  considerando  26  regiões  metrópoles  a 
+nível  REGIC  imediata,  com  base  nas  26  microrregiões  com  municípios  sedes  de  regiões 
+metropolitanas.  A  dummy  assume  valor  1  se  a  região  possui  metrópole  e  0,  caso  contrário. 
+Possui a função de controlar o fato de metrópoles serem espaços preferenciais na criação de 
+inovações (CARLINO, CHATTERJEE; HUNT, 2007; ARAUJO, 2016).  
+ 
+
+4. Resultados 
+
+Analisando o número de ligações na rede de copatenteamento no Brasil, as Tabelas 4 e 
+5  trazem,  respectivamente,  os  resultados  obtidos  para  a  rede  inter-regionais  (LigaBB)  e 
+internacional  (LigaBE),  utilizando-se  um  Painel  Pooled  ZINB  robusto.  A  diferença  entre  as 
+colunas (1) e (2) é que a (2) testa a relação da interação entre ligações internas e a escala de 
+inventores e um consequente maior número de ligações, i.e., Hipótese 2.  
+
+Ao analisar as colunas 1 e 2 da Tabela 4, tem-se que o número de ligações por patentes 
+geradas  internamente  à  região  (LigaINTpat)  tem  relação  positiva  com  o  número  de  ligações 
+entre inventores na rede inter-regional.  Tal resultado corrobora a  Hipótese 1, de que regiões 
+cujos  inventores  se  ligam  internamente  também  tendem  a  se  ligar  a  inventores  de  outras 
+regiões  brasileiras.  Tal  fenômeno  seria  uma  forma  de  não  deixar  que  o  conhecimento  da 
+região  se  torne  obsoleto  ou  ocorreria  em  função  da  necessidade  de  complementar  as 
+competências  e  conhecimentos  dos  diferentes  agentes/instituições  dentro  do  processo 
+inventivo.  
+
+A  escala  de  inventores  (Escalainv),  nas  duas  especificações,  não  se  mostra 
+significativamente relacionada ao número de  colaborações inter-regionais de invenção.  Uma 
+possível explicação para tal resultado pode ser o fato de que regiões com grande proporção de 
+inventores sejam também aquelas mais inventivas. Logo, tais regiões precisam acessar menos 
+recursos  humanos e competências de regiões diferentes, sugerindo  autossuficiência regional. 
+Porém,  ao  se  incluir  na  regressão  a  interação  entre  as  ligações  internas  ao  nó  e  a  escala  de 
+inventores da região, esta variável mostrou-se com o sinal positivo e significativo. O resultado 
+sugere  que  a  escala  de  inventores  apenas  se  torna  importante  quando  potencializada  pelo 
+número de ligações internas da região. Esse resultado confirma a Hipótese 2, de que a escala 
+de  inventores  potencializa  as  ligações  com  demais  regiões  em  casos  de  grande  número  de 
+ligações internas. Esse fato  está atrelado  à ideia  de que interações locais  intensas e variadas 
+levam  à  redundância  de  conhecimentos  locais,  sendo  a  captação  de  conhecimentos  externos 
+uma alternativa para as regiões não incorrerem em lock-in.   
+
+O  P&D  industrial  foi  estatisticamente  significativo,  sugerindo  que  um  P&D  mais 
+elevado gera mais laços entre os inventores de regiões distintas. O P&D universitário, por seu 
+turno, obteve um coeficiente positivo e mais elevado, se comparado à capacidade de realizar 
+P&D  industrial.  Assim,  apesar  de  ambos  serem  importantes  para  o  desenvolvimento  de 
+ligações  entre  regiões,  o  P&D  universitário  gera  um  volume  maior  de  transbordamento  de 
+conhecimento  tecnológico  via  colaborações  entre  inventores  brasileiros,  do  que  o  realizado 
+dentro da indústria. A explicação pode estar associada à pequena escala dos investimentos em 
+P&D nas indústrias e à importância dos gastos com máquinas e equipamentos, muitas vezes 
+importados, em substituição a gastos com pesquisas, no Brasil. Estes resultados corroboram a 
+Hipótese 3, de que regiões capazes de produzir P&D fomentam a ocorrência de laços fortes e 
+tendem a possuir maior produção tecnológica a partir de colaborações em redes.  
+
+12 
+ 
+
+Tabela 4: Determinantes do número de ligações inter-regionais (LigaBB) no Brasil.   
+
+Painel Pooled ZINB robusto (2001-2011)  
+
+Variáveis              
+ 
+Ligações internas por patentes (LigaINTpat) 
+
+Escala de inventores (Escalainv) 
+
+Ligações int. x inventores (LigaINTpat x Escalainv) 
+
+P&D industrial (P&Dind) 
+
+P&D universitário (P&Duniv) 
+
+Centralidade betweeness (BetBB) 
+
+Participação da indústria (Empind) 
+
+Aglomeração 
+
+Deseconomia 
+
+Importações de bens de Capital (Bkpib) 
+
+Participação econômica (PibpibB) 
+
+Dummy regional (Dreg) 
+
+Dummy metrópole (Dmetro) 
+
+_cons 
+
+Wald 
+Log pseudolike 
+/lnalpha 
+
+Pooled Robusto 
+
+(1) 
+0,13*** 
+(0,02) 
+0,66 
+(1,07) 
+ 
+
+0,08*** 
+(0,03) 
+0,20*** 
+(0,03) 
+8,92*** 
+(3,35) 
+1,93* 
+(1,09) 
+0,45 
+(0,63) 
+-0,18 
+(0,31) 
+0,08*** 
+(0,01) 
+-0,12 
+(1,41) 
+0,07** 
+(0,03) 
+0,25*** 
+(0,03) 
+-0,06 
+(0,14) 
+2812,36*** 
+-2322,29 
+-18,24*** 
+
+(2) 
+0,11*** 
+(0,02) 
+-0,92 
+(1,02) 
+0,07*** 
+(0,02) 
+0,07*** 
+(0,03) 
+0,21*** 
+(0,01) 
+0,78 
+(3,37) 
+1,82* 
+(1,09) 
+0,43 
+(0,63) 
+-0,17 
+(0,31) 
+0,08*** 
+(0,01) 
+0,50 
+(1,34) 
+0,09*** 
+(0,03) 
+0,22*** 
+(0,03) 
+0,01 
+(0,14) 
+3638,51*** 
+-2319,80 
+-18,16*** 
+
+Fonte: Elaboração própria por meio do software Stata 12. 
+Nota: Erro padrão da estatística entre parênteses. Significância: ***0,01; **0,05; * 0,10. 
+ 
+
+Na  especificação  (1),  a  centralidade  betweenness  (BetBB),  além  de  obter  sinal 
+positivo,  mostrou-se  como  a  variável  mais  influente  para  o  número  de  ligações  com  o  nó. 
+Quando  considerados  hubs,  os  nós  tendem  a  atrair  um  maior  número  de  ligações  com  os 
+demais agentes funcionando como intermediador de novas ligações. O resultado corrobora a 
+Hipótese  4  de  que  as  estruturas  de  centralidade  dos  nós  são  formas  de  torná-los  centros  de 
+atração, promovendo novas ligações com nós adjacentes. De acordo com Guan et al. (2015), 
+um nó central é menos restrito dentro da rede, o que indica que a centralidade é um fator que 
+o torna mais passível de ligações. Na especificação (2), porém, a significância da variável não 
+se  mantém,  indicando  que  esse  efeito  perde  importância  quando  se  considera  as  ligações 
+internas por patente potencializadas pela proporção de inventores. 
+
+A  participação  de  empregados  na  indústria  (Empind)  teve  coeficiente  positivo, 
+sugerindo que quanto maior a estrutura industrial da região, maior é a tendência desta inovar 
+por meio de colaboração. Esse resultado já era esperado, pois o processo de patenteamento é 
+uma atividade estreitamente vinculada à indústria. As variáveis de aglomeração parecem não 
+afetar o número de ligações inter-regionais.   
+
+13 
+ 
+
+As  importações  de  máquinas  constituem  mecanismos  de  absorção  de  fluxos  de 
+conhecimentos  externos  incorporados  em  produtos.  Nota-se  que  há  uma  associação  positiva 
+desta com o número de colaborações existentes na rede, uma vez que a variável que mede a 
+participação da importação de bens de capital sobre o PIB da região (bkpib) foi positiva. Este 
+resultado  sugere  que  esta  forma  de  absorção  de  conhecimento  tecnológico  contribui  para  o 
+número de laços na rede inter-regional.  
+
+A  participação  econômica  da  região  no  PIB  do  país  (PIBpibB)  não  foi  significativa, 
+sugerindo que o número de colaborações não guarda relação com a importância da região no 
+PIB nacional. As demais variáveis de controle assumiram os sinais positivos esperados. Dessa 
+forma, ser uma região metropolitana tende a influenciar positivamente o número de ligações 
+nas redes de copatenteamento inter-regional, assim como estar localizada no Sul e Sudeste.  
+
+Sob  a  perspectiva  do  número  de  ligações  internacionais  (Tabela  5),  as  ligações 
+internas  por  patentes  (LigaINTpat)  parecem  não  ser  importantes  para  explicar  o  número  de 
+ligações da região com outros países. Contudo, verifica-se que a escala de inventores tem uma 
+relação positiva com as ligações estrangeiras (coluna 1). Assim, regiões com maior proporção 
+de  inventores  em  relação  ao  país  possuem  um  número  maior  de  parcerias  com  o  exterior,  o 
+que pode estar atrelado ao fato de um maior número de inventores na região possibilitar maior 
+capacidade de absorção de conhecimentos externos.  
+
+Além  disso,  ao  se  considerar  os  resultados  para  a  coluna  (2),  evidencia-se  que  a 
+interação entre o número de ligações internas e  a escala de inventores da região é positiva e 
+significativa. Ou seja, a interação entre as duas medidas potencializa as ligações de agentes de 
+regiões brasileiras com agentes de outros países, confirmando a Hipótese 2. Isso pode ser um 
+indício  de  que,  quando  a  escala  de  inventores  é  potencializada  pelo  número  de  ligações  na 
+região, eleva-se o número de ligações externas.   
+
+As variáveis de P&D industrial e P&D universitário obtiveram coeficientes positivos e 
+de magnitude semelhante. Esse resultado confirma a Hipótese 3 da existência de uma relação 
+entre investimentos em P&D e a ocorrência de maiores fluxos internacionais de conhecimento 
+via ligações em redes. 
+
+A  centralidade  de  intermediação  (betBE)  obteve  sinal  positivo,  sugerindo  a 
+importância dos nós serem  intermediários  de outras ligações, e  assim,  captar maiores fluxos 
+de  conhecimento  funcionando  como  hubs.  Resultado  também  encontrado  ao  se  analisar  as 
+redes  inter-regionais.  Neste  caso,  a  variável  foi  significativa  em  ambas  especificações  de 
+regressão, o que de fato corrobora a  Hipótese 4. Contudo, é possível notar que o coeficiente 
+de centralidade do nó cai pela metade, ao se inserir a variável de interação de ligações internas 
+com  a  escala  de  inventores  (LigaINTpat  x  Escalainv).  Assim,  ser  de  uma  região  com  maior 
+proporção  de  inventores  e  de  ligações  internas  parece  diminuir  o  efeito  de  ser  um  nó 
+intermediário sobre o número de ligação internacionais.  
+
+As  variáveis  de  importação  de  bens  de  capital  (bkpib),  participação  do  PIB, 
+aglomeração  populacional,  deseconomias  de  aglomeração  e  participação  dos  empregados  na 
+indústria  não  foram  significativas  em  explicar  o  número  de  ligações  entre  brasileiros  e 
+estrangeiros. A variável de controle de região foi não significativa para a coluna (1), enquanto 
+a controle de metrópole foi positiva e significativa. Já para a coluna (2), somente a dummy de 
+região parece afetar o número de ligações internacionais das regiões brasileiras.  
+
+ 
+
+ 
+
+Tabela 5: Determinantes do número de ligações internacionais (LigaBE) no Brasil. 
+
+Painel Pooled ZINB robusto (2001-2011)  
+
+14 
+ 
+
+Variáveis              
+ 
+Ligações internas por patentes (LigaINTpat) 
+
+Escala de inventores (Escalainv) 
+
+Ligações int. x inventores (LigaINTpat x Escalainv) 
+
+Centralidade betweeness (betBB) 
+
+P&D industrial (P&Dind) 
+
+P&D universitário (P&Duniv) 
+
+Participação da indústria (Empind) 
+
+Aglomeração 
+
+Aglomeração ao quadrado 
+
+Importações de bens de Capital (Bkpib) 
+
+Participação econômica (PibpibB) 
+
+Dummy regional (Dreg) 
+
+Dummy metrópole (Dmetro) 
+
+_cons 
+
+Wald 
+Log pseudolike 
+/lnalpha 
+
+Pooled Robusto 
+
+(1) 
+0,04 
+(0,05) 
+4,81** 
+(2,09) 
+ 
+
+18,97*** 
+(5,94) 
+0,48*** 
+(0,16) 
+0,09** 
+(0,04) 
+-11,56 
+(8,17) 
+0,81 
+(2,23) 
+-0,38 
+(1,09) 
+-0,06 
+(0,06) 
+-5,05 
+(3,12) 
+0,04 
+(0,10) 
+0,10*** 
+(0,07) 
+-1,60** 
+(0,62) 
+436,03*** 
+-382,51 
+-24,58*** 
+
+(2) 
+-0,11 
+(0,07) 
+1,99 
+(2,12) 
+0,18*** 
+(0,04) 
+9,66*** 
+(0,06) 
+0,35** 
+(0,16) 
+0,09* 
+(0,05) 
+-8,20 
+(8,59) 
+-0,91 
+(1,87) 
+0,47 
+(0,92) 
+-0,04 
+(0,05) 
+-4,66 
+(2,94) 
+0,24** 
+(0,11) 
+-0,11 
+(0,09) 
+-0,76 
+(0,63) 
+485,73*** 
+-379,75 
+-24,32*** 
+
+Fonte: Elaboração própria por meio do software Stata 12. 
+Nota: Erro padrão da estatística entre parênteses. Significância: ***0,01; **0,05; * 0,10. 
+ 
+
+5. Conclusões 
+
+A  literatura  sugere  que  as  invenções  colaborativas  tendem  a  gerar  resultados  mais 
+propensos  a inovações, e que redes de  copatenteamento são  formas de transferências diretas 
+de conhecimento codificado e tácito. Logo, investigar os determinantes do número de ligações 
+nas  redes  pode  auxiliar  na  compreensão  e  promoção  de  maiores  fluxos  de  conhecimento, 
+principalmente,  fluxos internacionais. Nessa perspectiva,  analisou-se  as invenções regionais, 
+medidas por patentes, sob a perspectiva da análise de redes sociais. Para isto, identificaram-se 
+os  nós  das  redes  como  sendo  as  regiões  em  que  se  inserem  os  inventores,  sendo  seus  laços 
+(ligações) caracterizados por dados de copatenteamento.  
+
+Em  termos  de distribuição  geográfica  das ligações no  Brasil, constatou-se que, ao se 
+considerar o número absoluto de ligações, os grandes centros tecnológicos e educacionais do 
+país  se  destacam,  fato  atrelado  à  concentração  de  inventores  nestes  locais.  Além  disso,  as 
+variáveis  que  mais  influenciam  no  número  de  ligações,  considerando-se  as  redes  inter-
+regionais,  são  as  variáveis  de  P&D,  principalmente  o  universitário,  e  a  centralidade 
+betweenness, corroborando-se assim as Hipóteses 3 e 4. Evidencia-se, portanto, a importância 
+
+15 
+ 
+
+de  investimentos  em  P&D  e  em  regiões  centrais,  sendo  estas  responsáveis  por  transferir 
+conhecimentos às demais regiões por meio de colaborações com as demais localidades.  
+
+A Hipótese 1 também é validada na rede inter-regional, indicando-se que regiões com 
+muitas  ligações  internas  tendem  a  possuir  mais  colaborações  com  agentes  localizados  em 
+regiões  distintas,  por  meio  de  laços  fracos.  Já  a  escala  de  inventores  demostrou  ter  uma 
+relação positiva com o número de ligações entre brasileiros e estrangeiros durante o processo 
+de  produção  de  inovação  nas  redes  internacionais.  Ademais,  a  Hipótese  2  é  confirmada  em 
+ambas as redes, dessa forma, maiores ligações no nó, quando potencializadas pelo número de 
+inventores na região, eleva o número de laços em redes de inovação.   
+
+A importação de bens de capital possui efeito positivo sobre o número de ligações das 
+regiões  brasileiras  com  outras  regiões  nacionais  e  com  outros  países.  Por  constituir  um 
+importante mecanismos de aquisição de conhecimento tecnológico, a importação de máquinas 
+e  equipamentos  pode  ser  utilizada  como  insumo  da  produção  de  atividades  de  inovação,  ao 
+permitir  que  as  regiões  tenham  acesso  a  um  conheço  que  não  produzem.  Isso  aumenta  sua 
+capacidade de absorção de conhecimento externo e de produção de conhecimento interno.  
+
+A escala econômica não foi significativa em explicar o número de laços em nenhuma 
+das  redes  investigadas,  indicando  que  possuir  maior  participação  no  PIB  nacional  não 
+aumenta  o  número  de  ligações  das  regiões  brasileiras.  Cabe  destacar  ainda  que  as  regiões 
+metropolitanas  e  as  localizadas  no  Sul  e  Sudeste  possuem  maiores  ligações  inter-regionais 
+nacionais.  
+
+As políticas públicas ainda são tímidas quanto ao objetivo explícito de gerar redes de 
+colaborações  entre  agentes  de  localidades  distintas,  havendo  em  geral  somente  cooperações 
+locais. Espera-se que com os resultados apontados, as políticas de incentivo às atividades de 
+inovação  promovam  parcerias,  principalmente  via  atividades  de  P&D.  Entre  as  regiões  com 
+maiores  ligações,  principalmente  ligações  com  o  exterior,  se  destacam  São  Paulo,  Belo 
+Horizonte, Rio de Janeiro e Campinas. Com isso, em termos de políticas tecnológicas, espera-
+se  que  haja  maior  incentivo  de  geração  de  colaborações  e  cooperação  entre  agentes  dessas 
+regiões, apontadas como mais colaborativas, com  as regiões consideradas mais atrasadas em 
+termos  tecnológicos.  Desse  modo,  haveria  a  possibilidade  de  promover  maior  produção 
+tecnológica  em  todo  o  país  e  não  apenas  manter  as  atividades  de  inovação  aglomeradas  nas 
+regiões Sul e Sudeste.  
+
+A limitação da pesquisa se dá em função de se medir fluxos de conhecimento por meio 
+de dados de patentes. Nesse sentido, haveria outros fluxos não captados por esses dados, que 
+estariam  fora  do  alcance  do  estudo.  Em  termos  de  extensão  e  trabalhos  futuros,  cabe 
+investigar  e  destacar  quais  nós  primários,  i.e,  agentes  e  instituições,  que  funcionam  como 
+gatekeepers, responsáveis por criar pontes com agentes localizados em outras regiões.  
+
+ 
+Referências 
+ 
+AGRAWAL,  A.;  COCKBURN,  I.;  MCHALE,  J.  Gone  but  not  forgotten:  knowledge  flows, 
+labor  mobility,  and  enduring  social  relationships.  Journal  of  Economic  Geography,  v.  6, 
+n.5, p. 571–591, 2006. 
+
+ANSELIN,  L.;  VARGA,  A.;  ACS,  Z.  Local  geographic  spillovers  between  university 
+research and high technology innovations. Journal of Urban Economics, v. 42, n. 3, p. 422-
+448, 1997. 
+
+ARAÚJO,  B.  C.;  CAVALCANTE  L.  R.;  ALVES  P.  Variáveis  proxy  para  os  gastos 
+empresariais  em  inovação  com  base  no  pessoal  ocupado  técnico-científico  disponível  na 
+
+16 
+ 
+
+Relação  Anual  de  Informações  Sociais  (RAIS).  Radar:  tecnologia,  produção  e  comércio 
+exterior, v. 5, p 16-21, 2009. 
+
+ARAUJO, V. de C.; GARCIA, R. Local determinants of innovation and spatial dependence - 
+A spatial  Tobit model applied to  Brazilian micro-regions.  In:  Encontro  Nacional de Centros 
+de Pós-graduação em Economia, Foz do Iguaçu, 2016. Anais, n. 161, 2016. 
+
+AUDRETSCH, B. Agglomeration and the location of innovative activity.  Oxford review of 
+economic policy, v. 14, n. 2, p. 18-29, 1998. 
+
+BARABÁSI, A. L.; ALBERT, R. Emergence of scaling in random networks, Science, v. 286, 
+n.5439, p. 509–512, 1999. 
+
+BATHELT H.; MALMBERG A.; MASKELL P. Clusters and knowledge: local buzz, global 
+pipelines and the process of knowledge creation. Progress in Human Geography, v. 28, n.1, 
+p. 31–56, 2004. 
+
+BOSCHMA, R. Proximity and innovation: a critical assessment.  Regional Studies, v. 39, p. 
+61-74, 2005. 
+
+BETTENCOURT, L. M.; LOBO J.; STRUMSKY, D. Invention in the city: Increasing returns 
+to  patenting  as  a  scaling  function  of  metropolitan  size. Research  Policy,  v.  36,  n.1,  p.  107-
+120, 2007. 
+
+BETTENCOURT,  L.;  LOBO,  J.;  HELBING,  D.;  KÜHNERT,  C;  WEST,  G.  B.  Growth, 
+innovation, scaling, and the pace of life in cities. Proceedings of the National Academy of 
+Sciences of the United States of America, v.104, n. 17, p. 7301–7306, 2007. 
+
+BRESCHI,  S;  CATALINI,  C.  Tracing  the  links  between  science  and  technology:  An 
+exploratory  analysis  of  scientists’  and  inventors’  networks.  Research  Policy,  v.  39,  n.  1,  p. 
+14-26, 2010. 
+
+BRESCHI  S.;  LISSONI  F.  Mobility  of  skilled  workers  and  co-invention  networks:  an 
+anatomy of localized knowledge flows. Journal of Economic Geography, v. 9, n.4, p. 439–
+468, 2009. 
+
+BURT, R. S.; TALMUD, L. Market niche, Social Network, v. 15, n. 2, p. 133–149, 1993. 
+
+CAPALDO,  A.  Network  structure  and  innovation:  The  leveraging  of  a  dual  network  as  a 
+distinctive  relational  capability.  Strategic  management  journal,  v.  28,  n.  6,  p.  585-608, 
+2007. 
+
+CARLINO, G. A.; CHATTERJEE, S.; HUNT, R. M. Urban density and the rate of invention. 
+Journal of Urban Economics, v. 61, n. 3, p. 389–419, 2007. 
+
+CARVALHO,  J.  R.;  LAVOR,  S.  C.  Repeat  property  criminal  victimization  and  income 
+inequality in Brazil. Revista Economia, 2008. 
+
+CASSI,  L.,  PLUNKET,  A.  Research  collaboration  in  co-inventor  networks:  combining 
+closure, bridging and proximities. Regional Studies, v. 49, 936–954, 2015. 
+
+COOKE,  P.;  URANGA,  M.  G.;  ETXEBARRIA,  G.  Regional  innovation  systems: 
+Institutional and organisational dimensions. Research policy, v. 26, n. 4-5, p. 475-491, 1997. 
+
+COOKE  P.  Regional  innovation  systems:  general  findings  and  some  new  evidence  from 
+biotechnology clusters. The Journal of Technology Transfer, v. 27, n. 1, p. 133–145, 2002. 
+
+EBEL,  H.;  MIELSCH,  L;  BORNHOLDT,  S.  Scale-free  topology  of  e-mail  networks, 
+Physical Review, v 66, n. 3, 2002. 
+
+17 
+ 
+
+ERNST, D. Network transactions, market structure and technology diffusion: implications for 
+south-south cooperation. In: MYTELKA, L.K. (Ed.),  South-south co-operation in a global 
+perspective. Paris: OECD, p.89- 124, 1994. 
+
+FISCHER,  M.  M.;  VARGA,  A.  Spatial  knowledge  spillovers  and  university  research.  The 
+Annals of Regional Science, v. 37 n. 2, p. 303–322, 2003. 
+
+GILSING, V.; NOOTEBOOM, B.; VANHAVERBEKE, W.; DUYSTERS, G; OORD, A. V. 
+D. Network embeddedness and the exploration of novel technologies: technological distance, 
+betweenness centrality and density. Research Policy, v. 37, n. 10, p. 1717–1731, 2008. 
+
+GONÇALVES,  E.  O  padrão  espacial  da  atividade  inovadora  brasileira:  uma  análise 
+exploratória. Estudos Econômicos, v. 37, n.2, p. 405-433, 2007. 
+
+GONÇALVES, E.; ALMEIDA, E. S. Innovation and Spatial Knowledge Spillovers: Evidence 
+from Brazilian Patent Data. Regional Studies, v. 43, p. 513–528, 2009. 
+
+GRANOVETTER M. S. The strength of weak ties. American journal of sociology, v.78, n. 
+6, p.1360–1 380, 1973. 
+
+GRANOVETTER,  M.  Economic  action  and  social  structure:  the  problem  of  embeddedness. 
+The American Journal of Sociology. v. 91, n. 3, p. 481–510, 1985. 
+
+GRANOVETTER M. The impact of social structure on economic outcomes. The Journal of 
+Economic Perspectives, v. 19, n. 1, p. 33–50, 2005. 
+
+GRILLITSCH,  M.;  NILSSON,  M.  Innovation  in  peripheral  regions:  do  collaborations 
+compensate for a lack of local knowledge spillovers. The Annals of Regional Science, v.54, 
+n.1, p. 299-321, 2015. 
+
+GUAN, J.; ZHANG, J.; YAN, Y. The impact of multilevel networks on innovation. Research 
+Policy, v. 44, n. 3, p. 545-559, 2015. 
+
+HE,  J.;  FALLAH,  M.  H.  Dynamics  of  Inventor  Networks  and  the  Evolution  of  Technology 
+Clusters. International Journal of Urban and Regional Research, v.38, n.6, p. 2174-2200, 
+2014. 
+
+HERSTAD, S. J.; ASLESEN, H. W.; EBERSBERGER, B. On  Industrial  Knowledge Bases, 
+Commercial Opportunities and Global Innovation Network Linkages. Research Policy, v. 43, 
+n. 3, p. 495-504, 2014. 
+
+JAFFE, A. B. Real effects of academic research. The American Economic Review, v. 79, n. 
+5, p. 957-970, 1989. 
+
+JAFFE,  A.  B.;  TRAJTENBERG,  M.;  HENDERSON,  R.  Geographic  localization  of 
+knowledge  spillovers  as  evidenced  by  patent  citations.  The  Quarterly  Journal  of 
+Economics, v. 108, n.3, p. 577- 598, 1993. 
+
+KELLER,  W.  International  trade,  foreign  direct  investment,  and  technology  spillovers.  In: 
+HALL, B. H., ROSENBERG, N. (Eds.), Handbook of the Economics of Innovation, v. 2, p. 
+793-829. Amsterdam: Elsevier, 2010. 
+
+KNOBEN  J.;  OERLEMANS  L.  A.  G.  Proximity  and  inter  organizational  collaboration:  a 
+literature  review.  International  Journal  of  Management  Reviews,  v.  8,  n.  2;  p.  71–89, 
+2006. 
+
+LIST,  F.  National  System  of  Political  Economy.  JB  Lippincott  &  Company,  Philadelphia, 
+1941. 
+
+18 
+ 
+
+LOBO,  J.;  STRUMSKY,  D.  Metropolitan  patenting,  inventor  agglomeration  and  social 
+networks: a tale of two effects. Journal of Urban Economics, v. 63, n. 3, p. 871–884, 2008. 
+
+MAGGIONI,  M.  A.;  UBERTI,  T.  E.:  Inter-regional  knowledge  flows  in  Europe:  an 
+econometric  analysis.  In:  FREKEN,  K.  (ed.)  Applied  Evolutionary  Economics  and 
+Economic Geography, p. 230–255. Edward Elgar Publishing, Cheltenham, 2007. 
+
+MATOS, R. E. S. A contribuição dos imigrantes em áreas de desconcentração demográfica do 
+Brasil  contemporâneo.  Revista  Brasileira  de  Estudos  de  População,  Campinas,  v.19,  n.1, 
+p.49-72, 2002.  
+
+MATOS,  R.;  BRAGA,  F.  Migração  e  Rede  Urbana:  procedências  e  inserção  ocupacional. 
+XIII Encontro Nacional de Estudos Populacionais, Ouro Preto, 2002. 
+
+MIGUELÉZ,  E.;  MORENO,  R.  Research  networks  and  inventors'  mobility  as  drivers  of 
+innovation: evidence from Europe. Regional Studies, v.47, n.10, p. 1668-1685, 2013. 
+
+MORENO,  R.;  PACI,  R.;  USAI,  S.  Geographical  and  sectoral  clusters  of  innovation  in 
+Europe. The Annals of Regional Science, v. 39, n. 4, p. 715-739, 2005. 
+
+MORENO,  R.;  PACI,  R.;  USAI,  S.  Spatial  spillovers  and  innovation  activity  in  European 
+regions. Environment and Planning A, v. 37, n.10, p. 1793-1812, 2005. 
+
+MARROCU,  E.;  PACI,  R.;  USAI,  S.  Proximity,  networking  and  knowledge  production  in 
+Europe:  What  lessons  for  innovation  policy? Technological  Forecasting  and  Social 
+Change. v.80 n.8, p. 1484-1498, 2013. 
+
+PEREIRA,  F.  M.;  LEMOS,  M.  B.  Cidades  médias  brasileiras:  características  e  dinâmicas 
+urbano-industriais.  Repositório  do  Conhecimento  do  IPEA.  Pesquisa  e  Planejamento 
+em: 
+Econômico 
+<http://repositorio.ipea.gov.br/bitstream/11058/4099/1/PPE_v33_n01_Cidades.pdf>.  Acesso 
+em: 25 de Maio de 2016. 
+
+Disponível 
+
+2003. 
+
+PPE, 
+
+v.33, 
+
+n.1, 
+
+- 
+
+PONDS,  R.,  OORT,  F.  V.;  FRENKEN,  K.  Innovation,  spillovers  and  university–industry 
+collaboration:  an  extended  knowledge  production  function  approach.  Journal  of  Economic 
+Geography, v. 10, n. 2, p. 231-255, 2010. 
+
+POOT,  T.;  FAEMS,  D.;  VANHAVERBEKE,  W.  I.  N.  Toward  a  dynamic  perspective  on 
+open  innovation:  A  longitudinal  assessment  of  the  adoption  of  internal  and  external 
+innovation strategies in the Netherlands. International Journal of Innovation Management, 
+v. 13, n. 2, p. 177-200, 2009. 
+
+POWELL, W. W.; GIANNELLA, E. Collective invention and inventor networks. Handbook 
+of the Economics of Innovation, v.1, 575-605, 2010. 
+
+POWELL  W.  W.,  KOPUT  K  W,  SMITH  D.  L.  Inter  organizational  collaboration  and  the 
+locus  of  innovation:  networks  of  learning  in  biotechnology.  Administrative  Science 
+Quarterly, v. 41, n 1, p. 116–145, 1996. 
+
+POWELL,  W.  W;  OWEN-SMITH,  J.  Knowledge  networks  as  channels  and  conduits:  The 
+effects  of  spillovers  in  the  Boston  biotechnology  community.  Organization  science,  v.  15, 
+n.1, p. 5-21, 2004. 
+
+ROTHWELL, R.; FREEMAN, C.; HORLSEY, A.; JERVIS, V. T. P.; ROBERTSON, A. B.; 
+TOWNSEND,  J.  Updated  –  project  SAPPHO  phase  II.  Research  Policy,  v.  3,  n.3,  p.  258-
+291, 1974. 
+
+ROXENHALL,  T.  Network  structure  and  innovation  in  strategic  innovation  networks. 
+International Journal of Innovation Management, v. 17, n. 02, 2013. 
+
+19 
+ 
+
+SEN,  P;  DASGUPTA,  S.;  CHATTERJEE,  A.;  SREERAN,  P.  A.;  MUKHERJEE,  G.; 
+MANNA,  S.  S.  Small-world  network  properties  of  the  Indian  railway  network.  Physical 
+Review, v 67, n.3, 2003. 
+
+SINGH,  J.;  FLEMING,  L.  Lone  inventors  as  sources  of  breakthroughs:  Myth  or  reality? 
+Management Science, v. 56, n. 1, p. 41-56, 2010. 
+
+STORPER,  M.;  VENABLES,  A.  J.  Buzz:  face-to-face  contact  and  the  urban  economy. 
+Journal of Economic Geography, v. 4, n. 4, p. 351-370, 2004. 
+
+VIOTTI, E. B. Passive and active national learning systems. 1997. 310f. tese. (Doutorado 
+em Política e Ciência Social). New School for Social Research, [s.l] 1997. 
+
+VUONG,  Q.  H.  Likelihood  ratio  tests  for  model  selection  and  non-nested  hypotheses. 
+Econometrica, v. 57, n. 2, p. 307-333, 1989. 
+
+WASSERMAN, S.; FAUST, K. Social network analysis: Methods and applications.  v. 8. 
+Structural Analysis in the social sciences. Cambridge university press, Cambrigde: UK. 1994. 
+
+WU,  J.  "Technological  collaboration  in  product  innovation:  The  role  of  market  competition 
+and sectoral technological intensity." Research Policy, v. 41 n.2, 489-496, 2012. 
+
+ZANIBONI,  N.;  MONTINI,  A.  Modelos  de  Poisson  inflado  de  zeros  e  binomial  negativo 
+inflado de zeros na previsão de sinistro de automóveis. Revista Economia & Gestão, v. 15, 
+n. 41, p. 159-180, 2015. 
+
+ 
+
+

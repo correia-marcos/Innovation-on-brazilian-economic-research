@@ -1,0 +1,1251 @@
+                                                                                                            1
+
+
+
+              A Multi-Agent Computational Model for Brazilian Stock Market:
+           The “Gap Value” Channel of Monetary Policy Transmission Mechanism
+
+                                                                             Marcelo de Oliveira Passos1
+                                                                              Jean Rodrigues Venecian2
+
+Área da Anpec: Área 4 – Macroeconomia, Economia Monetária e Finanças
+Resumo: Este artigo apresenta a estrutura e os resultados de um modelo computacional baseado
+em vários agentes heterogêneos que mede os efeitos das mudanças nas taxas de juros básica e
+esperada sobre a série do valor intrínseco da carteira teórica do Ibovespa. Isto possibilita
+insights originais sobre o mecanismo de transmissão da política monetária sobre o valor
+intrínseco da carteira teórica do Ibovespa no período de 2008/2010. Os resultados do modelo
+quantificam bolhas no mercado de capitais (bullmarket) e também situações de bearmarket. O
+modelo também estima uma série semanal de hiato de valor para o Ibovespa. O hiato de valor
+(GV) é um novo índice de value investing proposto pelos autores. Duas conclusões do modelo:
+(i) o mecanismo de transmissão da política de juros do Copom afetará o GV do Ibovespa
+negativamente somente quando as companhias que fazem parte deste índice, apresentarem
+geração agregada líquida de caixa negativa; e (ii) as decisões do COPOM de aumentar (diminuir)
+a taxa Selic resultarão em aumentos (reduções) no GV do Ibovespa.
+Palavras-chave: economia computacional baseada no agente, índice de hiato de valor, mercado
+de ações e mecanismo de transmissão da política monetária.
+Códigos do JEL: C63, E44, E52.
+Abstract: This article presents the structure and the results of a computational model based on
+several heterogeneous agents that measures the effects of changing basic and expected interest
+rates on the series of the intrinsic value of Ibovespa`s (Sao Paulo Stock Exchange Index)
+theoretical portfolio. This may give original insights on the effects of the transmission
+mechanism of monetary policy on this series in the period of 2008/2010. The model results
+quantify both bull market and bear market. The model also estimates a weekly time series of gap
+values of the Ibovespa. Gap value (GV) is a new index of value investing proposed by the
+authors. Two conclusions of the model are: (i) COPOM’s decisions to increase (reduce) the
+benchmark interest rate will invariably result in increased (reduced) Ibovespa`s GV; and (ii) the
+transmission mechanism of monetary policy will affect Ibovespa`s GV negatively only when
+the companies that make up this index have, aggregated negative net cash generation3.
+Keywords: agent-based computational economics (ABCE), gap value index, stock market and
+monetary policy transmission mechanism.
+JELCodes: C63, E44, E52.
+
+1. Introduction
+      This paper introduces a computer-based, multi-agent financial model (henceforth,
+“computational model” or “model”) that uses stock valuation techniques and computer
+simulation to estimate two time series: one with intrinsic values for Bovespa (Sao Paulo Stock
+Exchange) Index Theoretical Portfolio and another with a proposal of a index of value investing,
+named Ibovespa`s gap value.
+
+
+1
+  Adjunct professor at Department of Economics and Master`s Program in Organizations and Markets/Applied
+Economics in Federal University of Pelotas (Universidade Federal de Pelotas -UFPel).
+2
+  Master in Applied Economics - Master`s Program in Organizations and Markets Applied Economics - Federal
+University of Pelotas (Universidade Federal de Pelotas -UFPel).
+3
+  The authors are grateful to the comments of António Carlo Bina (University of Bologna) at World Finance
+Conference (2014/07/03 - Venice – Italy).
+                                                                                                                 2
+
+
+
+       Section 2 describes the computer-based model and its five modules. It also introduces the
+notion of “gap value”4, GV, which intends to be an index to detect and measure financial market
+bubbles and circumstances under which Ibovespa (Bovespa Index) market value is higher than
+its intrinsic value (bull market) or the other way round (bear market). Section 3 presents the
+corollaries of the model. Section 4 reports the results of a graph analysis of Ibovespa series of
+intrinsic value elasticity and GV elasticity compared to a series of benchmark and expected
+interest rates. It particularly highlights the events that have influenced the series behavior.
+Section 5 provides final remarks.
+
+2. Model Development
+    The model includes four modules as described in the following subsections.
+
+2.1. Module 1 – Ibovespa companies’ cash flow
+      The model, developed using the software packages Mathematica 75 and Excel 2007,builds
+on the discounted cash flow technique (DCF). According to Damodaran (2012), leveraged
+companies are best assessed on the basis of their free cash flow to the firm (FCFF)6. FCFF is
+derived from EBIT (earnings before interest and taxes). Table 1 shows how this process occurs,
+including their meaning and data source. The cash flows included in the model were extracted
+from 816 accounting statements7 from 2008 through 2010.The cash flows for the two subsequent
+years (the 2011-2012 biennium) were estimated using the least squares method8.
+
+                           Table 1 – Accounts used for cash flow calculation
+    Symbol           FCFF item                         Meaning                  Data source in period t and
+                                                                                previous periods
+     (=)     NSt                          Net Sales Revenue in period t         Income Statement for period t
+
+     (-)     SCt                          Sales costs in t                      Income Statement for period t
+     (-)     OEt                          Operating Expenses in t               Income Statement for period t
+     (=)     EBITt                        Earning before income and taxes in
+                                          period t
+     (+)     Depreciation/Amortization    Depreciation/Amortization in t        Cash Flow Statement for period
+                                                                                t
+      (-)    Income tax (IT) + social     Income Tax (IT) + Social Charges      Income Statement for period t
+             charges                      in t
+     (=)     Operational cash             Operational Cash Generation in t
+             generation
+      (-)    Permanent current            Permanent Current Investments
+             investiments (Working        (Working Capital) in t                Income Statement and Balance
+             Capital)                                                           Sheet for period t
+
+      =      FCFFt                          Free cash flow to the firm for
+                                            period t
+Source: Adapted from Damodaran (2012), Abrams (2001) and Stewart III (1991). The methodology was adapted
+according to current accounting standards in Brazil.
+
+4
+  In the rest of text, this term wil be called GV.
+5
+  The use of this software relies on its power to work with symbolic mathematics (or literal algebra).Calculations
+using symbolic mathematics are common in models of macro and microeconomics as well as in computer-based
+models.
+6
+  Leveraged companies are those companies that use debt to finance their operations. They are not necessarily very
+debt-laden companies, but companies with any given burden of debt ( Damodaran 2002 and Bisciari, Durré &
+Nyssen 2003).
+7
+  These data are the standardized financial statements available from the Brazilian Stock Market Regulatory
+Comission (Comissão de Valores Mobiliários/CVM) website.
+8
+  Excel 2007 was used to calculate the cash flows, and function PROJ.LIN was used to calculate the least squares.
+                                                                                                                      3
+
+
+
+
+2.2. Module 2 – Inter-temporal discounting model
+      This model includes the time horizon of the cash flow projections to be discounted. Before
+projecting a company’s cash flow, it is important to decide how many periods or stages will be
+included for cash flow in perpetuity. In accordance with Cuberthson & Nitzsche (2004: 21) and
+Stewart III (1991: 97), a number of stages can be identified in a business growth to maturity9,
+depending on the characteristics of each company. As one of the goals of the model is to build a
+series of weekly intrinsic values for the companies making up the Bovespa Index, they will be
+assumed to have two stages for the sake of simplicity. In this assumption, the first stage
+corresponds to the short term, while the second stage refers to an infinite time horizon (i.e., in
+perpetuity)10. The formula for the first stage11 is:
+                                                 FCFF1
+                                          IVA =              (1)
+                                                  (1 + i )1
+Where: IVA stands for the intrinsic value in the first stage, FCFF1 is the cash flow in the present
+period, and it refers to the benchmark/base interest rate as determined by COPOM (Monetary
+Policy Committee, Central Bank of Brazil). All these variables are calculated on a weekly basis.
+The intrinsic value in stage 1 is equal to the sum of results of a simple discount formula in a
+given period, where the basic interest rate i 12 substitutes every company’s weighted average cost
+of capital (WACC), a variable commonly adopted in finance and valuation techniques13. The
+second stage assumes that the net cash flow result is in perpetuity14. The inter-temporal
+discounting formula in the second stage is as follows:
+                                            FCFF3 (ie − g 2 )
+                                     IVB =                       (2)
+                                                 (1 + ie ) 2
+Where: IVB stands for the intrinsic value in the second stage, FCFF3 refers to the free cash flow
+to the firm in the third period (t+2), ie is the expected basic interest rate, g2 corresponds to the
+growth rate in the second stage. All these variables are calculated on a weekly basis. As shown,
+discounting formula (2) includes an expected growth rate (g2) and an expected interest rate (ie)15.
+Rate g2 is a geometric mean including the per share profit variation in period 2001-2010 plus an
+investors’ confidence component (Ψ). An animal spirit variable ( Ψ ) stands for the stockholders'
+willingness to invest. This variable corresponds to an adjusted average rate of return on equity in
+the 1996-2010 period and a rate of variation obtained from the exam of the technical analysis
+9
+ Growth to maturity: period of transition and adjustment of a company's return and risk.
+10
+   According to Bodie, Kane & Marcus (2003) and Damodaran (2011), two-stage valuation models adopt the
+simplifying hypothesis that the companies will not experience any extraordinary changes in the upcoming years, yet
+they will experience some changes to their capital structure, and growth and productivity patterns. Therefore, the
+ideal is to project an adjustment period (the first stage).The dividend policy will not be definitive before the second
+stage, which includes the perpetuity. The first stage is expected to have a distinct level of growth with higher levels
+of net investments, both in tangible assets and working capital.
+11
+   For a discussion of this formula, see Damodaran (2011: 301), McKinsey & Co. (2000: 76) and Stickney, Weil &
+Schipper (2009: 143).
+12
+   It corresponds to the basic Selic interest rate as defined by the Monetary Policy Committee. Selic is the acronym of
+Custody and Settlement Special System (Sistema Especial de Liquidação e Custódia).
+13
+   The underlying hypothesis is that the companies making up t the Ibovespa theoretical portfolio have the Selic rate
+as a proxy of capital cost. This is a useful simplifying hypothesis, as it allows for aggregating all Ibovespa
+companies without performing individual accounting calculations, which would be laborious and make the model
+unfeasible. This hypothesis is realistic, as most companies making up the Ibovespa borrow funds from BNDES1 at
+lower rates than the COPOM-defined Selic rate. Therefore, the major Ibovespa companies' WACC is assumed not to
+be distant from ib.
+14
+    The second stage is the period in which the investment will yield returns at percentages quite close to that of the
+minimum return rate demanded by the capital providers (creditors and stockholders).
+15
+    The source for the expected Selic rate (ie) is the Focus Report, which is published by the Central Bank of Brazil on
+a weekly basis.
+                                                                                                                             4
+
+
+
+   trend graphics16. Each variable has a weighting of 0.5. It was also used to calibrate the model for
+   the weekly changes in the investors' confidence about the company's stocks. The animal spirit
+   ( Ψ ) is incorporated into the g2 calculation. By including inter-temporal discounting rates (ib and
+   ie), the model integrates the financial data provided by the cash flows, a variable of monetary
+   policy (the Selic rate defined by COPOM), and the decision rules guiding the behavior of a
+   representative agent. Indeed, this computer-based financial model is also multi-agent-based, and
+   both inter-temporal discounting rates can be understood as minimum attractive rates for the
+   multiple agents making up in the model.
+
+   2.3. Module 3 – IV and GV in Ibovespa theoretical portfolio
+         This module targets the IV and GV of both companies and the Ibovespa theoretical
+   portfolio. In general terms, the module is composed of the sum of intrinsic values in both stages.
+   The weekly intrinsic value of a company is, therefore17:
+                                               n
+                                                  FCFFt FCFFn +1 (ie − g n )
+                              IVA + IVB = ∑                  +                       (3)
+                                             t =1 (1 + i )          (1 + ie ) 2
+                                                           t
+
+
+         Following the model methodology, 68 intrinsic values are generated (building on the
+   discounted cash flows).18
+         The concept of GV, as introduced in this paper, is aimed as an index that predicts financial
+   market bubbles as well as bull market and bear market conditions. The GV is determined using a
+   weekly time series that comprises the difference between intrinsic values (as shown in Module 2)
+   and market values (number of shares x share price on the cash market) that make up the Ibovespa
+   theoretical portfolio. Equation (5) is a matrix equation that calculates the GV:
+                                       GV11              MV11            IV11 
+                                                                         2
+                                       GV12               MV12             IV
+                           GV(68×1) =                 =                 − 1            (5)
+                                       M                 M               M 
+                                          68                68           68 
+                                      GV1  (68×1)  MV1  (68×1)  IV1  (68×1)
+   Where: GV(68x156) is the gap value, MV(68x156) is the market value of the 68 shares in the Ibovespa
+   theoretical portfolio, and IV(68x156) is the intrinsic value. All these variables are calculated for 1
+   week, as represented in the vector columns.
+           The results are placed in a matrix, where the rows represent the weeks and the columns
+   represent the weekly intrinsic values. Subtracting values of every row vector gives the GV. The
+   equation below shows the same in a more aggregate form:
+
+               GV11    GV21         1
+                                K GV156              MV11    MV21         1
+                                                                       K MV156              IV11    IV21         1
+                                                                                                              K IV156 
+                                    2                                    2               2                    2 
+                GV 2    GV22    K GV156                MV12    MV22    K MV156                IV      IV22    K IV156 
+GV(68×156)   = 1                                 =                                    − 1
+               M        M      O  M                 M        M      O  M                 M         M     O   M 
+                  68                68                                   68                                   68 
+              GV1     GV268   K GV156  (68×156)  MV168   MV268   K MV156  (68×156)  IV168   IV268   K IV156  (68×156)
+
+   Stressing the result of the GV matrix and using an alternative notation gives:
+   16
+       Sources: several editions of the Exame Magazine’s annual list of the greatest companies in Brazil, for the first
+   variable, and Economatica System for Investment Analysis, for the second.
+   17
+      General formula based on Damodaran (2012).
+   18
+      The model generates, therefore, 68 weekly time series of intrinsic values of the shares making up the Ibovespa`s
+   theoretical portfolio. These weekly series include 52 observations each. The results are placed in a matrix, where the
+   rows represent the weeks and the columns represent the weekly intrinsic values. Summing up the values in each row
+   vector gives the weekly intrinsic value of the Ibovespa´s theoretical portfolio. It will become clearer in the
+   description of the following module of the model.
+                                                                                                                                                                                                                                  5
+
+
+
+
+                                                                      GV(68x156) = MV(68x156) – IV(68x156)                                                (6)
+  Where:
+
+                                                             MV11 − IV11                           MV21 − IV21                            1
+                                                                                                                                      K MV156 − IV156
+                                                                                                                                                   1
+                                                                                                                                                      
+                                                                                                                                                  2 
+                                                              MV12 − IV12                          MV22 − IV22                       K MV156 − IV156 
+                                                                                                                                           2
+                                    GV(68×156)            =                                                                                                       (7)
+                                                                    M                                 M                              O       M       
+                                                                                                                                                  68 
+                                                             MV1 − IV1                          MV268 − IV268                               − IV156
+                                                                  68     68                                                                68
+                                                                                                                                      K MV156          (68×156)
+
+        For the sake of easy reading of the matrix above, the second column is omitted in order to
+  obtain:
+
+                             1 FCFF 1             FCFF31 (ie ,1 − g e,1,1 )               1   FCFF11           FCFF31 (ie ,2 − g e ,2,1 )                     1    FCFF11        FCFF31 (ie ,156 − g e ,156,1 ) 
+                 MV1 − ∑                       +                               MV21 − ∑                    +                                            −∑                      +
+                        1                                                                                                                             1
+                                            1
+                                                                                                                                             K     MV156                                                         
+                            t =1 (1 + ib ,1 )          (1 + ie,1 ) 2                     t =1 (1 + ib ,2 )           (1 + ie ,2 )                        t =1 (1 + ib ,156 )          (1 + ie ,156 )2
+                                              1                                                         1                        2                                           1
+                                                                                                                                                                                                                
+                             1 FCFF 2             FCFF32 (ie ,1 − g e,1,2 )              1 FCFF 2               FCFF32 (ie,2 − g e ,2,2 )                1    FCFF12            FCFF32 (ie ,156 − g e ,156,2 ) 
+                 MV 2 −
+GV(68×156)     =     1   ∑ t =1 (1 + i
+                                            1
+
+                                            ) 1
+                                                +
+                                                       (1 + ie,1 ) 2
+                                                                                MV2 − ∑
+                                                                                    2
+
+                                                                                        t =1 (1 + ib ,2 )
+                                                                                                         1
+                                                                                                           1
+                                                                                                             +
+                                                                                                                     (1 + ie ,2 ) 2
+                                                                                                                                             K MV156 − ∑
+                                                                                                                                                   2
+
+                                                                                                                                                        t =1 (1 + ib ,156 )
+                                                                                                                                                                            1
+                                                                                                                                                                              +
+                                                                                                                                                                                      (1 + ie ,156 )2                      (8)
+                                       b ,1
+                                                                                                                                                                                                                
+                                                M                                                             M                             O                                  M                                
+                                                                                                                                                                                                                
+                 MV 68 − FCFF1 + FCFF3 (ie ,1 − g e ,1,68 )                                                    FCFF368 (ie ,2 − g e ,2,68 )                  FCFF168 FCFF368 (ie ,156 − g e,156,68 ) 
+                            1              68           68                               1 FCFF 68                                                      1
+
+                 1       ∑
+                          t =1 (1 + ib ,1 )
+                                             1
+                                                        (1 + ie ,1 )2
+                                                                               MV268 − ∑               1
+
+
+                                                                                       t =1 (1 + ib ,2 )
+                                                                                                           1
+                                                                                                             +
+                                                                                                                      (1 + ie ,2 ) 2
+                                                                                                                                                  68
+                                                                                                                                             K MV156 −∑
+                                                                                                                                                      t =1 (1 + ib ,156 )
+                                                                                                                                                                           1
+                                                                                                                                                                              +
+                                                                                                                                                                                      (1 + ie ,156 ) 2
+                                                                                                                                                                                                                 
+                                                                                                                                                                                                                 (68×156)
+
+
+                  Matrix (8) can also be partitioned in the following row-vectors:
+
+                                1 FCFF 1            FCFF31 (ie,1 − g e,1,1 )             1   FCFF11           FCFF31 (ie ,156 − g e ,156,68 ) 
+           1
+   GV(1×156)         =  MV1 − ∑
+                            1                  1
+                                                   +                          K MV156 − ∑
+                                                                                   68
+                                                                                                             +                                 
+                               t =1 (1 + ib ,1 )        (1 + ie,1 ) 2                   t =1 (1 + ib ,156 )         (1 + ie,156 ) 2
+                                                 1                                                         1
+                                                                                                                                              (1×156)
+                                                                                                                                                                                                                    2
+                                1 FCFF 2            FCFF32 (ie,1 − ge ,1,2 )             1   FCFF11           FCFF31 (ie ,156 − ge ,156,68 ) 
+  GV(1×156)2
+                    =  MV12 − ∑               1
+                                                   +                          K MV 68
+                                                                                      − ∑                    +                                           (9)
+                               t =1 (1 + ib ,1 )         (1 + ie ,1 ) 2                 t =1 (1 + ib ,156 )         (1 + ie ,156 ) 2
+                                                 1                                156                      1
+                                                                                                                                             (1×156 )
+                                                                                                                     M
+                               FCFF1       1   FCFF3 (ie ,1 − g e ,1,68 )
+                                                             68                   68   1   FCFF11           FCFF31 (ie,156 − g e ,156,68 ) 
+  GV(168×156 ) =  MV168 − ∑                  +                            K MV 68
+                                                                                   − ∑                    +                                
+                           t =1 (1 + ib ,1 )        (1 + ie ,1 ) 2                   t =1 (1 + ib ,156 )         (1 + ie ,156 ) 2
+                                            1                                  156                      1
+                                                                                                                                          (1×156)
+
+        Summing up the row vectors in the matrix system (9) – which represent the 68 weekly time
+  series of GVs of all stocks in the Ibovespa theoretical portfolio – gives the aggregate weekly
+  time series of GVs as follows:
+                            68
+
+                          ∑ GV
+                           t =1
+                                        (1×156)     = GV11 + K + GV168                             GV21 + K + GV268 K GV156
+                                                                                                                           1
+                                                                                                                              + K + GV156
+                                                                                                                                       68
+                                                                                                                                          
+                                                                                                                                                                                                     (1×156)
+                                                                                                                                                                                                                  (10)
+
+                  This series refers to the 156 weeks in the 2008-2010 triennium.
+                    Returning to the notion of GV and considering the system of row vector in (9) gives:
+     68
+
+    ∑ GV
+    t =1
+                     (1×156)      =  ( MV11 − IV11 ) + K + ( MV168 − IV168 ) K ( MV156
+                                                                                      1
+                                                                                         − IV156
+                                                                                              1
+                                                                                                 ) + K + ( MV156
+                                                                                                              68
+                                                                                                                 − IV156
+                                                                                                                      68
+                                                                                                                         )  (11)
+                                                                                                                                                                           6
+
+
+
+      2.4. Module 4 – gap value elasticity in relation to benchmark and expected interest rates
+             GV elasticities are deduced from equations (8) using software package Mathematica 719 as
+      follows.
+            Differentiating (8) in relation to ib, which is a weekly benchmark interest rate20, gives the
+      matrix equation (12), which shows the several elasticity values of the intrinsic values of every
+      share in the Ibovespa theoretical portfolio in relation to COPOM’s benchmark interest rate.
+      Elasticity (12) herein determines the effect of, for instance, an 1-percentage-point variation on
+      the intrinsic value of a share in the Bovespa Index.
+
+                                                                 FCFF11                                  FCFF11 
+                                                        MV  1
+                                                               +                                  1
+                                                                                           K K MV156 +                   
+                                                                 (1 + ib ,1 )2                         (1 + ib ,156 ) 2 
+                                                            1
+                                                       
+                                                                 FCFF12                                 FCFF12 
+                                   ∂GV(68×156)          MV12 +                                   2
+                                                                                           K K MV156 +                   
+                                                     =          (1 + ib ,1 ) 2                        (1 + ib ,156 ) 2            (12)
+                                         ∂ib                                                                            
+                                                                M                         M O          M                
+                                                                 FCFF168                                FCFF      68 
+
+                                                        MV1 +                                       +
+                                                            68                                    68
+                                                                                                                         
+                                                                                                                  1
+                                                                                           K K MV156
+                                                                (1 + ib ,1 )2                        (1 + ib ,156 ) 2  (68×156)
+
+            Partitioning matrix (12) gives the row values that represent the elasticity curve of all
+      Ibovespa`s stocks in relation to the several levels of interest rates determined by COPOM
+      throughout 156 weeks (in the 2008-2010 triennium).Summing up these row vectors gives the
+      series of Ibovespa`s GV elasticity in relation to the Selic rate, the first objective of this paper.
+      The vector calculations are as follows:
+
+     ∂GV(1×156)                  FCFF11                       FCFF168                     FCFF11                          FCFF168  
+                      =  MV11 +               + ... + MV168 +               
+                                                                                       1
+                                                                                K  MV156 +                  + ... + MV156
+                                                                                                                        68
+                                                                                                                           +                    (13)
+           ∂ib                   (1 + ib,1 ) 2
+                                                                (1 + ib ,1 ) 
+                                                                            2              (1 + ib ,156 ) 2
+                                                                                                                             (1 + ib ,156 )2  
+                                                                               
+
+             After that, matrix (8) is differentiated in relation to the expected interest rate. The
+      calculations, similar to those provided before, give the series of GV for every Ibovespa`s stock in
+      relation to the expected interest rate, as well as the series of GV of the Ibovespa`s theoretical
+      portfolio as a whole in relation to this very variable (expected interest rate). Therefore, result
+      (14) below attains the second objective of this paper.
+
+                                 FCFF11                      2FCFF31                                            FCFF11                         2FCFF31                 
+                 MV 1
+                       +                                +                             K K            1
+                                                                                                  MV156 +                               +                               
+                         (1+ ie,1)2 ⋅ (ie,1 − ge,1,1)2 (1+ ie,1)3 ⋅ (ie,1 − ge,1,1)                (1+ie,156 ) ⋅ (ie,156 − ge,156,1) (1+ ie,156 ) ⋅ (ie − ge,156,1) 
+                    1                                                                                           2                     2            3
+               
+                                 FCFF12                      2FCFF32                                            FCFF12                         2FCFF32                 
+∂GV(68×156)     MV12 +                                 +                                     2
+                                                                                      K K MV156  +                                      +                               
+              =         (1+ ie,1) ⋅ (ie,1 − ge,1,2 ) (1+ie,1)3 ⋅ (ie,1 − ge,1,2 )
+                                  2                  2
+                                                                                                   (1+ ie,156 ) ⋅ (ie,156 − ge,156,2 ) (1+ ie,156 ) ⋅ (ie − ge,156,2 ) 
+                                                                                                                2                     2            3
+                                                                                                                                                                                   (14)
+    ∂ie                                                                                                                                                                
+                                                 M                                   M O                                       M                                       
+                68              FCFF1      68
+                                                               2FCFF368                                        FCFF1    68
+                                                                                                                                                2FCFF368                
+               MV1 +                                   +                             K K MV156 +                                       +
+                                                                                             68
+                                                                                                                                                                         
+                      (1+ie,1) ⋅ (ie,1 − ge,1,68 ) (1+ie,1)3 ⋅ (ie,1 − ge,1,68 )
+                                  2                   2
+                                                                                                  (1+ ie,156 ) ⋅ (ie,156 − ge,156,68 ) (1+iee,156 ) ⋅ (ie − ge,156,68 ) (68×156)
+                                                                                                              2                       2            3
+
+
+
+
+      19
+         For the use of Mathematica 7, see Shingareva & Lizárraga-Celaya (2009) and Blachman (1992). For examples
+      applied to Economics and Finance, the most relevant references are Stinespring (2002) and Varian (1993).Kendrick,
+      Mercado & Amman (2005) also provide some examples of using the software.
+      20
+         Selic rate as defined by COPOM.
+                                                                                                                           7
+
+
+
+      Partitioning matrix (12) gives the row values that represent the elasticity curve of all Ibovespa
+stocks in relation to the several levels of interest rates determined by COPOM thought 156 weeks
+(in the 2008-2010 triennium). Now let each expression contained in the matrix (14) cells be GVws ,
+where s stands for the number of stocks in the Ibovespa`s theoretical portfolio (listed in alphabetical
+order), and w stands for the week to which a given share’s market value and intrinsic value
+estimation correspond. From that follows:
+
+                                       ∂GV(1×156)       ∂GV11        ∂GV21              ∂GV156 1
+                                                                                                   
+                                                     =                           ...              
+                                          ∂ib, w        ∂ib,1        ∂ib,2              ∂ib,156 
+                                      ∂GV(1×156)       ∂GV12         ∂GV22              ∂GV156 2
+                                                                                                   
+                                                     =                           ...                     (15)
+                                          ∂ib, w       ∂ib,1         ∂ib ,2             ∂ib,156 
+                                                                       M
+                                     ∂GV(1×156)       ∂GV      68
+                                                                      ∂GV268              ∂GV156  68
+                                                                                                     
+                                                    =         1
+                                                                                   ...               
+                                         ∂ib, w       ∂ib,1          ∂ib,2               ∂ib ,156 
+
+       Summing up the row vectors of system (15) gives the series of Ibovespa`s gap value
+elasticity in relation to the expected Selic rate, the second objective of this paper. This gives the
+series as follows:
+
+      ∂GV(1×156)       ∂GV11 ∂GV12            ∂GV168        ∂GV156
+                                                                     1
+                                                                         ∂GV156  2
+                                                                                           ∂GV156  68 
+                                                                                                     
+                    =        +        + ... +          ...         +           + ... +             (16)
+         ∂ib , w         ∂i     ∂i              ∂i           ∂i        ∂i                ∂i
+                       b ,1     b ,1            b ,1       b ,156      b ,156            b ,156  
+
+      Analogously, a number of vector calculations finally gives the series of Ibovespa`s gap
+value elasticity in relation to the expected interest rates throughout the 156 weeks included in the
+analysis:
+
+      ∂GV(1×156)       ∂GV11 ∂GV12              ∂GV168         ∂GV156 1
+                                                                              ∂GV156  2
+                                                                                                ∂GV156  68 
+                                                                                                          
+                    =          +        + ... +           ...           +           + ... +              (17)
+         ∂ie, w                                   ∂ie ,1                                     ∂ie ,156  
+                       ∂ie ,1   ∂ie ,1                         ∂ie ,156    ∂ie ,156
+
+Where the cells correspond to:
+
+                        ∂GV11                       FCFF11                            2 FCFF31
+                               = MV11 +                                     +
+                         ∂ie,1          (1 + ie ,1 ) 2 ⋅ (ie,1 − ge ,1,1 ) 2 (1 + ie ,1 )3 ⋅ (ie,1 − g e,1,1 )
+                       ∂GV11                       FCFF12                             2 FCFF32
+                               = MV12 +                                     +                                      (18)
+                        ∂ie ,1          (1 + ie,1 ) 2 ⋅ (ie ,1 − g e,1,2 ) 2 (1 + ie ,1 )3 ⋅ (ie ,1 − ge ,1,2 )
+
+and so on and so forth until:
+
+                   ∂GV156  68
+                                                       FCFF168                                 2 FCFF368
+                              = MV156
+                                   68
+                                      +                                            +
+                    ∂ie ,156            (1 + ie ,156 )2 ⋅ (ie ,156 − g e,156,68 ) 2 (1 + ie ,156 )3 ⋅ (ie − g e,156,68 )
+
+Where ge,w,s is the expected growth for week w by the company’s shareholders, ib,wis the
+benchmark interest rate (Selic) in week w, and ie,wis the expected interest rate for week w.
+                                                                                                                     8
+
+
+
+3. Corollaries of the model
+        The GV results, particularly from equation (5) onwards, fall in three categories:
+downside, upside, and balance (IV and MV are equal). These categories are shown in Table 2.
+        As Table 2 shows, the GV elasticity in relation to the benchmark interest rate (Selic rate
+defined by COPOM) is negative only in B; it is positive in all other conditions.
+        This means that the transmission mechanism of monetary policy will affect Ibovespa`s
+GV negatively only when the companies that make up this index have, altogether, negative net
+cash generation.
+        Otherwise, coeteris paribus, COPOM’s decisions to increase (reduce) the benchmark
+interest rate will invariably result in increased (reduced) Ibovespa`s GV.
+
+                                     Table 2 – Corollaries of the model
+
+                        Possible interactions between GV and share market conditions
+
+ Condition               Possible results                                         Conclusion
+             GV(i× j ) > 0 ⇔ MV(i× j ) > IV(i× j )       Ibovespa's potential of losses increases: bull market,
+     1                                                   downside, or speculative bubble condition.
+             and GV → ∞ ⇒ Π → ∞
+             GV(i× j ) < 0 ⇔ IV(i× j ) > MV(i× j ) and   Ibovespa’s potential of profits increases: bear market,
+     2                                                   upside, or share market downturn condition.
+             GV → −∞ ⇒ Π → −∞
+             GV(i× j ) ≅ 0 ⇔ IV(i× j ) ≅ MV(i× j )       Condition of intrinsic value balance across the shares in
+     3                                                   the Ibovespa theoretical portfolio.No profit nor loss
+             and GV → 0 ⇒ Π → 0                          potential.
+
+ Possible conditions between Ibovespa`s cash flow, GV and GV elasticity in relation to the effects of
+ changes to the benchmark interest rate –through transmission mechanism – on the stocks in the Ibovespa`s
+ theoretical portfolio.
+
+             MV >IV (downside), and FCFF< 0                                       ∂GV
+     A       (negative cash flow)                                                      >0
+                                                                                   ∂ib
+             MV < IV (upside), and FCFF< 0                                        ∂GV
+     B       (negative cash flow)                                                      <0
+                                                                                   ∂ib
+             MV >IV (downside), and FCFF> 0                                       ∂GV
+     C       (positive cash flow)                                                      >0
+                                                                                   ∂ib
+             MV < IV (upside), and FCFF< 0                                        ∂GV
+     D       (positive cash flow)                                                      >0
+                                                                                   ∂ib
+Source: Elaborated by the authors
+
+
+4. Results of the model simulations: graph analysis of years 2008 through 2010
+      This section provides the results of the macroeconomic, computer-based, agent-based
+financial model for the 2008-2010 triennium21. Each subsection analyses the events of each year
+of the triennium that influenced the elasticity curve of Ibovespa`s IV and GV in relation to
+changes to the benchmark and expected interest rates. The simulations were carried out on Excel
+
+
+
+21
+ The events related to the monetary policy and the financial market evolution in the triennium under scrutiny are
+based on the Central Bank of Brazil’s annual reports and on several editions of the ConjunturaEconômicamagazine
+and the Valor Econômico newspaper.
+                                                                                                                     9
+
+
+
+2007 by calibrating the growth rate parameters (g2) in vector (11) equations. This series is
+calculated on a weekly basis, and refers to the 156 weeks in the triennium.22
+      All the following subsections provide graph analysis for the computer-based simulations.
+The subsections are divided according to the year to which they refer. The weekly series
+correspond to the following row vectors: (1) IV – intrinsic value vector for the Ibovespa`s
+theoretical portfolio, which is the sum of the 52 weekly time series of the intrinsic values
+estimated by the computer-based model for the 68 stocks in the Ibovespa`s theoretical
+portfolio23; (2) MV – market value vector for the Ibovespa`s theoretical portfolio24; (3) Selic
+defined by COPOM short-term interest rate, represented as effective interest rates that were
+weekly compounded; and (4) Expected interest rate – containing expected values as published by
+the Central Bank of Brazil in the Focus Report for the respective weeks of the period under
+scrutiny.
+
+4.1. Effect of the interest rates (benchmark and expected) on the Ibovespa`s IV and GV in
+2008
+       The increased expected inflation (referred to by the Central Bank of Brazil as a "benign
+scenario" deriving from excess of aggregate demand over supply) led COPOM to interrupt in
+April 2008 the policy of progressively mild interest rates that started in September 2005.As a
+result, the benchmark interest rate goal, which was 11.25% since September 2007, increased 50
+basis points (bps) in April 2008, and suffered other increases upon three other COPOM
+meetings. It eventually reached 13.75% p.a. in December 2008.The ex-ante real interest rate,
+calculated by the Central Bank of Brazil for a period of one year after surveying analysts in the
+private sector,25 increased throughout the first nine months of 2008.In October, the expectations
+for the benchmark interest rates had reduction tendency, which led to a rate of 7.2% p.a. by the
+end of the year (0.7 percentage points higher than that registered for the same month in 2007).
+COPOM’s contractionary monetary policy measures in the beginning of 2008 continued the
+decisions of previous meetings in 2007, in which the committee members assessed that the
+international economic conjuncture and the expanding domestic economic activity required some
+prudential measures from the monetary policy maker. The Committee eventually decided to keep
+the Selic rate at 11.25% p.a., without bias, and opted for monitoring the macroeconomic
+conjecture and thus gain time to deliberate about potential changes to the monetary policy in
+subsequent meetings26. As the expected inflation was increasing, COPOM increased the Selic
+rate in 50 bps in two meetings. Assuming that risks of increasing prices still existed in July,
+COPOM decided to increase the Selic rate to 13% p.a., without bias. The committee still
+believed in a tendency of increasing prices in September (the already mentioned “benign
+scenario”). The committee, thus, opted for a new increase on 75 bps in the Selic rate, without
+bias, even in a scenario of international economic recession (see Graph 1).In October and
+December, COPOM finally noticed the effects of the economic slowdown and the increased
+economic uncertainty resulting from the international financial crisis that was also affecting
+
+22
+   The series builds on the analysis of 816 standardized financial statements included in the Brazilian Comission
+databank. The data are available at: <http://www.cvm.gov.br/>.
+23
+   This series estimates builds on the cash flows of the 68 theoretical portfolio stocks. The preparation of such cash
+flows builds on the analysis of 272 accounting statements of these companies (four statements for each company).
+24
+   Source: BMF&Bovespa’s website, available at: <http://www.bmfbovespa.com.br/home.aspx?idioma=pt-br>.
+25
+   This survey data are included in the Focus Report, published weekly by the Central Bank of Brazil.These data are
+deflated by the IPCA and correspond to the series of expected real interest rates as described in the following
+graphs.
+26
+   In April and June, however, the COPOM members assessed that the inflationary pressures -- that were initially
+localized -- could pose risks of increasing inflation. This risk was aggravated by the tight aggregate demand and the
+factor market, besides potential supply constraints in important sectors.
+                                                                                                                        10
+
+
+
+several sectors in the Brazilian economy (especially the credit channels) as well as the
+consumers’ and entrepreneurs’ confidence.27As for the dynamics of monetary aggregates, a
+reduction of 2.3% was registered for the average daily balance of narrowly defined money
+supply (M1).28M1 velocity of money remained relatively stable, and the monetary base (as
+measured according to the average daily balances) increased 1.5% in the year. The Central Bank
+of Brazil assumed other expansionary pressures on the monetary supply, which led to an increase
+of 933 million Brazilian Reais in the monetary base (using the criterion of available balance by
+the end of the period). The monetary authority, therefore, decided to implement changes to the
+rules of compulsory deposits, which translated into: reductions in rates, increases in the amounts
+to be deducted from callable reserves, changes in earnings on reserve requirements, together with
+discounts on amounts to be deposited as an incentive to negotiation of assets among medium-
+and small-sized financial institutions.29
+      Graph 1 synthetizes the explanations provided so far and shows the negative effects of
+having increased real interest rates (benchmark and expected) on the intrinsic value of the
+Ibovespa theoretical portfolio. Obviously, the Ibovespa intrinsic value was also affected by other
+variables that are beyond the scope of the model such as:1) the default of the three mentioned
+financial institutions, and worsening animal spirits among the entrepreneurs in the productive
+sector; 2) reduced volume of foreign investments in shares (Graph 2); 3) the devaluated real
+exchange rate’s effect on the companies making up the Ibovespa theoretical portfolio; and 4) the
+remarkably reduced international trade flows.
+
+        Graph 1 – Computer-based weekly series of variation effects of expected and short-term interest
+        rates on the intrinsic values in the Ibovespa theoretical portfolio in 2008
+
+
+
+                 R$ Billions                                                                       Weekly
+                                                                                                   Interest Rates (%)
+        1.200                                                                                                0,009
+                                                                                                             0,008
+        1.000
+                                                                                                             0,007
+          800                                                                                                0,006
+                                                                                                             0,005
+          600
+                                                                                                             0,004
+          400                                                                                                0,003
+                                                                                                             0,002
+          200
+                                                                                                             0,001
+             0                                                                                               0
+                 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51
+                               Interest rate ( i )                     Expected interest rate ( ie )
+                               Market value ( MV )                     Intrinsic value ( IV )
+
+     Source: Estimates as provided by the authors' computer-based model; Security Exchange Commission’s
+     standardized financial statements for the 68 companies making up the Ibovespa theoretical portfolio in fiscal
+     year 2008; Central Bank of Brazil’s Focus Report; BMF&Bovespa; Monetary Policy Committee (COPOM).
+
+
+27
+   The COPOM analysis pointed to the need of preventing inflationary pressures because the families' rates of
+consumption growth were still accelerated despite the higher stability of the commodity prices.Therefore, the
+committee kept the Selic rate at 13.75% p.a., without bias, in both meetings.It trusted that the reduced liquidity in
+the international market and the expectation changes would help the transmission mechanisms of monetary policy
+and inhibit price increases (Graph 1).
+28
+   Considering non-seasonally adjusted and IPCA-deflated data.
+29
+   These changes to the rules, implemented from September 24, 2008 to January 19, 2009, caused a compulsory
+reserve reduction of 99.8 billion Brazilian reais.
+                                                                                                                        11
+
+
+
+       As for the Ibovespa performance, it is worth noting the Petrobras30 stock split that took
+place in the seventh week of the year31. In addition the period from January from May witnessed
+a number of repeated records of increased index values, which reached 73,516 point on May
+20th32. From late May to the end of year, the Ibovespa experienced a sharp drop (of 42.1% in
+relation to the prevailing level by the end of 2007) and increased volatility. 33
+       Graph 2 shows that the GV is positive until the 40th week and is negatively correlated with
+the real interest rates (benchmark and expected), as mentioned in the previous section. 34From
+then on, the GV is negative, reflecting Lehman Brothers', Fannie Mae's , and Freddie Mac's
+collapse.
+       This moment of structural collapse in the GV series evinces that the intrinsic value of the
+Ibovespa`s theoretical portfolio declined at a fast pace and started a progressive upside
+(tendency of profit)35.
+
+          Graph 2 – Computer-based weekly series of variation effects of expected and short-term interest
+          rates on the GV (GV = MV – IV) in the Ibovespa theoretical portfolio in 2008
+
+
+                                                                                                   Weekly
+                R$ Billions                                                                        Interest Rates (%)
+         250                                                                                                    0,009
+         200                                                                                                    0,008
+         150
+                                                                                                                0,007
+         100
+          50                                                                                                    0,006
+           0                                                                                                    0,005
+         -50   1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51                         0,004
+        -100                                                                                                    0,003
+        -150
+                                                                                                                0,002
+        -200
+        -250                                                                                                    0,001
+        -300                                                                                                    0
+
+                              Expected interest rate ( ie )   Interest rate ( i )   Gap of value ( GV )
+
+
+     Source: Estimates as provided by the authors' computer-based model; Security Exchange Commission’s
+     standardized financial statements for the 68 companies making up the Ibovespa theoretical portfolio in fiscal
+     year 2008; Central Bank of Brazil’s Focus Report; BMF&Bovespa; Monetary Policy Committee (COPOM).
+
+     The result herein described shows the model’s power to detect and measure speculative
+bubbles in the stock market, as well as to identify when they emerge and disappear (Graph 2)36.
+
+30
+   Brazilian distributor and marketer of petroleum derivatives and biofuel.
+31
+   This explains the inflexion of both intrinsic and market value curves in the period, as Petrobras is the company is
+the greatest weight in the Ibovespa portfolio.
+32
+   This was due to the positive effects derived from the upgrade of sovereign debt rating to investment grade that was
+granted by two risk rating agencies: Standard & Poor’s , and Fitch Ratings.
+33
+   Therefore, the greatest value (that of May 20th) represented the bull market apex of a period that started in year
+2005 and experienced high Ibovespa returns.
+3434
+     That is, increased in both rates are associated with reductions in IV and MV, and vice-versa. However, GV
+variations depend on the IV elasticity, and on MV elasticity to both rates, as shown in matrix equations (12) and
+(14).Therefore, GV reduced significantly in 2008 as these rates increased from the 25th week to the end of the year.
+35
+   A characteristic phenomenon of fundamental analyses based on the notion of value investing in periods of bear
+market.
+36
+   Results of this nature are of special interest for policy makers (especially those concerned with making and
+executing the monetary policy), financial executives, and the representative agent of the computer-based model.
+                                                                                                                      12
+
+
+
+4.3. Effect of the interest rates (benchmark and expected) on the Ibovespa intrinsic value
+and GV in 2009
+       The quarterly growth rates of real GDP in 2009 showed that only the service sector was not
+affected by the financial crisis, which, as mentioned before, had its epicenter in August 2008.
+The industrial and agricultural GDPs reduced in the first three quarters of the year, and only
+improved in the last.
+       The consequences of the world crisis worsened from the last quarter 2008, when the
+domestic economic activity faced strong recession in response to the reduced credit availability,
+worsened expectations, and increased levels of risk aversion. The external scenario changed at a
+fast pace, and the Central Bank of Brazil changed the contractionary orientation of the monetary
+policy, and reduced 500 bps of the base Selic rate. In late 2008, COPOM interrupted a series of
+four consecutive rate increases, which had started in the April meeting of that year and translated
+into a 250-basis-point increase of the Selic rate. In October and December, however, COPOM
+took the new scenario described before and unanimously took the decision to keep the Selic rate
+at 13.75% p.a., without bias.
+     In the first meetings of 2009 (in January and March), COPOM decided to reduce the Selic
+rate in respectively 100 and 150 basis points. The decision built on the assumption that a strong
+inhibition of the expected inflation and the reduced economic activity would make IPCA
+(Extended National Consumer Price Index) follow a trajectory that would be consistent with the
+inflation targets determined by the National Monetary Committee (CMN). In March, COPOM
+understood that the reduced levels of economic activity was ensuring a level of idle capacity that
+could refrain the risks of worsening demand inflation despite the effects of adjusting the balance
+of payments and persisting with transmission mechanisms in some contracts. In the third and
+fourth meetings (April and June), the committee promoted two reductions of 100 basis points in
+the base Selic rates. The committee recognized that such measures were needed to gradually
+recover the industrial production rates, industry capacity utilization rates, employment rates, and
+both investors’ and consumers’ confidence. In the following meeting, in July, COPOM reduced
+the Selic rate in 50 bps to 8.75% p.a.; it kept this rate in the subsequent meetings, in September,
+October, and December, assuming that a more prudential attitude was needed.37
+       As for the monetary aggregates, the expansionary monetary policy implemented in mid-
+20008 to remediate the effects of the intense contraction of credit both internally and externally
+produced an actual increase38 of 5.7% in M1. Despite this increase, M139 velocity of money
+remained relatively stable in the year. The average daily balances of the monetary base increased
+14.9% in the year due to increases to its components (the average balance of issued currency
+increased 14.3%, and bank reserves grew 16.8%40). In 2009, monetary aggregates M2, M3 and
+M4 enlarges respectively 8.6%, 15.5%, and 16.1%. Graph 3 synthetizes these data and relate
+them to the time series of Ibovespa`s IV`s that was obtained using the model simulations.
+
+They help policy makers and financial executives measure and detect speculative bubbles in the share market. They
+also inform the model representative agent’s decision: if the GV is declining and the agent trust in a positive future
+scenario for the Ibovespa tendency in the long term, s/he will opt for increasing investments in this index; if the
+value is increasing, however, s/he may decide to keep his/her levels of investments or sell shares if this increase
+magnitude is great enough to yield him/her the desired profit.
+37
+   The real expected interest rates (or ex-ante defined) declined from January to July in the year under scrutiny1.In the
+interest derivatives market, the interfinancial swap deposit contracts (DI) x 360-day pre-DI swap registered
+decreasing rates in the first semester 2009, dropping to the lowest rate of 8.97 p.a. in July. A reversal took place in
+this downward trend in the expected interest rates throughout the second semester of the year. By the end of
+December, the rates of the negotiated contracts was 10.46% p.a., a level 171 bps lower than that registered in
+December 2008.
+38
+   Considering non-seasonally adjusted and IPCA-deflationed data.
+39
+   Defined as the relation between the GDP at current values and M1 average balance.
+40
+   This increase was due to the reduced rate of reserve requirements on demand resources that became effective in
+October 2008.
+                                                                                                                      13
+
+
+
+      As for the capital market dynamics, the international crisis depreciated asset prices and
+           he number of negotiations in the international financial markets. The number of new
+declined the
+                                                                             2009. the second
+issues in the capital market dropped, especially in the first semester of 2009.In
+       er, however, the volume of share supplies, debentures, and promissory notes recovered in
+semester,
+the respective primary markets, enough to stimulate positive expectation to 2010. The Ibovespa
+ended 2008 82.7% higher at 68,588 points. 41In 2009, the dollar-basedbased index variation was
+positive in 145.2% (this includes both Ibovespa variation and the sharp decline of the real
+exchange rate)42.
+
+        Graph 3 – Computer-based                                                         short
+                                based weekly series of variation effects of expected and short-term interest
+                  he intrinsic values in the Ibovespa theoretical portfolio in 2009
+        rates on the
+
+
+
+
+               stimates as provided by the authors' computer-based
+     Source: Estimates                                                                            C
+                                                      computer based model; Security Exchange Commission’s
+     standardized financial statements for the 68 companies making up the Ibovespa theoretical portfolio in fiscal
+     year 2008; Central Bank of Brazil’s Focus Report; BMF&Bovespa; Monetary Policy Committee (COPOM).
+
+      The second quarter 2009 saw a recovery of the Brazilian balance of trade. In this period,
+the government also took countercyclical fiscal policy measures – i.e., reducing the tax on
+industrialized products (IPI) for durable consumer goods. The period also witnessed increased
+public expenditures and increased volume of bank credit to the private sector. Graph 443 shows
+                             general led to a MV and IV recovery. It also shows that the GV
+that these circumstances in general                                                        G
+
+41
+   The strong volatility in January and February 2009 gave way to a an increase period that lasted up to June, when it
+reached 54,486 points.
+42
+                                                                           year:1) the increases of 18.8% and 43.9% in
+   For comparison purposes, three events are worth highlighting in that year:1)
+                                       respectively; 2) the increase of 69.8% (in relation to 2008) in the marked value
+the Dow Jones and Nasdaq indexes, respectively;
+of the companies listed in Sao Paulo Stock Exchange (Bovespa); 3) the average daily trading volume peaked 5.2
+                                                                2008).Stock funds, in turn, benefited from this scenario,
+billion Brazilian reais (yet a reduction of 4.1% in relation to 2008).Stock
+presenting an annual return of 46.8% anda an increase of 49.3 in consolidated net equity.
+43
+                                                     updated the country’s sovereign debt rating to investment grade in
+   Risk rating agencies Fitch Ratings and Moody’s updated
+                         The Brazilian economy was booming by the end of the quarter. Eventually, the forth quarter
+the third quarter 2009.The
+saw a remarkable increase in the Ibovespa values. Notice, however, that IV did not follow this tendency in that
+quarter, since the expected interest rates increased. This shows that the intrinsic value was negatively affected by the
+expected interest rate variations.
+                                                                                                                     14
+
+
+
+remained negative until the 40th week, i.e. it remained below the intrinsic value in the period, in
+an upside condition. This took place because of the financial crisis and the aforementioned
+events. From the 40th week on, however, expectations change in response to the economic
+recovery, expansionary factors as explained above, and award of good investment grade. The
+GV became thereafter positive (i.e., a downside condition).44
+
+        Graph 4 – Computer-based weekly series of variation effects of expected and short-term interest
+        rates on the GV (GV = MV – IV) in the Ibovespa theoretical portfolio in 2009
+
+
+             R$ Billions                                                                        Weekly
+                                                                                           Interest Rates (%)
+       200                                                                                                0,008
+                                                                                                          0,007
+       150
+                                                                                                          0,006
+       100
+                                                                                                          0,005
+        50                                                                                                0,004
+                                                                                                          0,003
+         0
+               1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51                   0,002
+       -50
+                                                                                                          0,001
+      -100                                                                                                0,000
+
+                              Interest rate ( i )                  Expected interest rate ( ie )
+                              Gap of value ( GV )
+
+     Source: Estimates as provided by the authors' computer-based model; Security Exchange Commission’s
+     standardized financial statements for the 68 companies making up the Ibovespa theoretical portfolio in
+     fiscal year 2008; Central Bank of Brazil’s Focus Report; BMF&Bovespa; Monetary Policy Committee
+     (COPOM).
+
+
+
+5.3. Effect of the interest rates (benchmark and expected) on the Ibovespa intrinsic value
+and GV in 2010
+       As for the real interest rates (both benchmark and expected rates), COPOM kept the
+targeted Selic rate at 8.75% p.a. throughout the first quarter of 2010.In other words, the targeted
+base interest rate was kept at 8.75 in the two first COPOM meeting of the year, the lowest rate in
+a series that began in 1999. In the subsequent meetings, however, which took place in the second
+and third quarters, COPOM made a series of increases in the rate that summed up 200 bps. In the
+last three meetings of the year, the committee kept the rate at 10.75% p.a.45. The yearly IPCA
+(Extended National Consumer Price Index) reached 5.91%, which was close to the upper limit of
+a range of 2.5% to 6.5% that was defined as inflation target for 2010 by the National Monetary
+Council (CMN). As a result, the effective accumulated Selic rate was 9.7% in 2010, while the
+real accumulated Selic rate deflated by IPCA hit 3.7%.The expected real rate46 jumped from
+5.1% in the end of 2009 to 6.2% p.a. in the end of 2010. In the second semester, however, the
+
+44
+   In fact, investors turned opted for variable-income assets (the foreign investments in shares increased substantially
+as shown in Graph 2).The GV trajectory in Graph 6 reflects this upward tendency.
+45
+   Such an interest policy was implemented in response to the inflationary pressures related to the increased
+commodity prices (from the international economy perspective) and the inconsistency between the aggregate supply
+growth and the expansion of domestic demand (from the domestic economy perspective).
+46
+   Ex-ante real interest rate as estimated by the Central Bank of Brazilian (as mentioned in the previous section).
+                                                                                                             15
+
+
+
+contracts proved to be volatile and ended up negotiated at 12.03% p.a. by the end of 201047. In
+December, CMN and the Board of Directors of the Central Bank of Brazil decided to implement
+some measures aimed at strengthening the financial regulation and, therefore, sustaining the
+stability of the financial institutions that make up the National Financial System (SFN) and
+ensuring a safe process of credit market expansion. These measures became known as macro-
+prudential regulatory measures48. Still, they needed to be articulated with COPOM’s policy of
+base interest rates. Accordingly, COPOM assessed at the last meeting of the year that the
+economic scenario showed no major risks of aggravating the until-then benign process of
+demand inflation49.
+       Graph 5 shows a decline in the IV and MV series in the period herein analyzed. The graph
+also shows a negative correlation between both series of interest rates (benchmark and expected)
+and the series of IV and MV.
+       The public offering of Petrobras` stocks reached a trading volume of 120.2 billion
+Brazilian Reais, a number that boosted the primary offering of debentures, promissory notes, and
+shares listed in the Brazilian Security Exchange Commission (CVM) in 2010.The volume
+increased 341% in relation to the previous year50. The correlation level between IV and MV was
+99% in the period.
+       In 2010, the Brazilian economy saw a GPD growth rate of 7.5%.Such a rate had not been
+recorded for over two decades. Nevertheless, the worsening expectations about the US economy
+indexes, along with the reduced credit availability in China and the fiscal crises in important
+Eurozone countries (i.e., Portugal, Greece, Spain, Italy, and France) caused considerably
+increased uncertainty in the productive and financial market worldwide, which eventually
+reduced the Ibovespa companies' MV.
+       In the second quarter, the international scenario remained alarming and led investors who
+usually buy variable-income assets to focus their concern on the European fiscal crisis effects on
+the very Europe countries and on the Chinese economy. Such concerns reflected the fact that the
+export dynamics of several major Brazilian companies is strongly linked to the market growth in
+China, Europa and the USA – the Chinese market having increasingly gained more importance
+than the others in the last ten years). Foreign investments also declined in the first quarters of the
+year. They dropped to U$ 274 billion in the first quarter and hit U$ 622 billion in the second
+quarter – still quite lower than the U$ 2.99 trillion in the last quarter of 200951.
+       In addition to this downturn scenario of the world economy, the domestic conjuncture also
+imposed more inflationary pressure and eventually caused COPOM to pursue a cycle of
+increased Selic rates. In turn, the interest rates and the foreign investors’ expectations caused a
+declining trend in the GV of the Ibovespa theoretical portfolio.
+
+
+
+
+47
+   This rate was 157 bps higher than the rate registered by the end of 2009.
+48
+   Two of them were especially relevant:1) increased compulsory reserve requirements; and 2) increased capital
+requirements for operations involving credit to individuals for periods longer than 24 months.
+49
+   The Committee, however, opted for wait some time to contemplate the impacts of the increased Selic rates
+(implemented since early 2010) and the macroprudential measures (adopted in December) on the IPCA evolution.
+The maintenance of the Selic rate in the December meeting was based on this analysis of the committee.
+50
+   The market value of the companies making up the Ibovespa theoretical portfolio increased 10.1% in 2010.It
+reached 2.6 trillion Brazilian reais in December, while it had been 2.3 trillion in the year before. The Bovespa
+average daily trading volume increased 22.4% in the year, totalizing 6.4 billion Brazilian reais.
+51
+    Sources: Central Bank of Brazil’s Focus Report and Applied Economic Research Institute Database
+(IPEADATA).
+                                                                                                                            16
+
+
+
+     Graph 5 – Computer-based weekly series of variation effects of expected and short-term interest
+     rates on the intrinsic values in the Ibovespa theoretical portfolio in 2010
+
+
+              R$ Billions                                                                                Weekly
+                                                                                                    Interest Rates (%)
+      800                                                                                                          0,004
+      700                                                                                                          0,0035
+      600                                                                                                          0,003
+      500                                                                                                          0,0025
+      400                                                                                                          0,002
+      300                                                                                                          0,0015
+      200                                                                                                          0,001
+      100                                                                                                          0,0005
+         0                                                                                                         0
+              1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51
+                               Interest rate ( i )                              Expected interest rate ( ie )
+                               Market value ( MV )                              Intrinsic value ( IV )
+
+  Source: Estimates as provided by the authors' computer-based model; Security Exchange Commission’s
+  standardized financial statements for the 68 companies making up the Ibovespa theoretical portfolio in fiscal
+  year 2007; Central Bank of Brazil’s Focus Report; BMF&Bovespa; Monetary Policy Committee (COPOM).
+
+      Graph 6 shows the elasticity trajectory for the Ibovespa GV in relation to increases in the
+benchmark and expected interest rates. It also associates the dynamics of Ibovespa`s GV the
+major economic events of the period: the lowering of the risk ratings of Portugal's and Greece’s
+debts in April 27th, and the expansion of the industrial and service GDP that started some weeks
+before April 27th.
+
+     Graph 6 – Computer-based weekly series of variation effects of expected and short-term interest
+     rates on the GV (GV = MV – IV) in the Ibovespa theoretical portfolio in 2010
+                                                                                                          Weekly
+             R$ Billions                                                                             Interest Rates (%)
+      100                                                                                                          0,004
+
+       80                                                                                                          0,0035
+                                                                                                                   0,003
+       60
+                                                                                                                   0,0025
+       40
+                                                                                                                   0,002
+       20
+                                                                                                                   0,0015
+        0
+                                                                                                                   0,001
+               1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51
+      -20                                                                                                          0,0005
+      -40                                                                                                          0
+
+                            Interest rate ( i )      Expected interest rate ( ie )           Gap of value ( GV )
+
+  Source: Estimates as provided by the authors' computer-based model; Security Exchange Commission’s
+  standardized financial statements for the 68 companies making up the Ibovespa theoretical portfolio in fiscal
+  year 2008; Central Bank of Brazil’s Focus Report; BMF&Bovespa; Monetary Policy Committee (COPOM).
+                                                                                                                17
+
+
+
+
+      In the third quarter -- more specifically in September --, the Ibovespa reached the historical
+record of ca. 70,000 points.52The IPCA rates were indicating that the inflationary process had
+been restrained, and the Focus Report pointed a growth of 7% in the Brazilian economy by the
+end of 2010.Consequently, Brazil saw an inconsistency between its strong economic growth and
+the the I bovespa growth setback (60,000 points).This inconsistency was associated with the
+effects of the European crisis53 and the Brazilian investors’ replacement of variable-income
+assets with fixed-income assets. Despite this adverse scenario, the GV behavior was found to be
+largely positive. The higher MV compared to IV pointed to a downside condition.54
+
+6. Final remarks
+       The computer-based financial model herein described is a multi-agent model and
+incorporates techniques from finance (the share valuation model), computational economics, and
+monetary economics.
+       The agents in the model are the shareholders of the companies making up the Ibovespa
+theoretical portfolio. These agents’ expectations are linked to these companies’ profit rates. The
+expected profit rates are combined – in a valuation formula, i.e., that of free cash flow to the firm
+– with the benchmark and expected interest rates, which serve as inter-temporal discounting rates
+or minimum attractive rates for negotiating the given shares)55.
+       The model has first estimated the cash flows of all Ibovespa`s company in all the years of
+the triennium under analysis. Subsequently, it has projected the flows to years 2011 and 2012,
+and then discounted them to obtain intrinsic value estimates for every stock. These estimates are
+summed up and weighted according to their contribution share to the Ibovespa`s theoretical
+portfolio. The total result is the IV estimate of the Ibovespa. Finally, the herein proposed notion
+of GV is deduced, this being the difference between Ibovespa’s market and intrinsic values. This
+series of GV index is useful to detect and measure speculative bubbles in the financial market as
+well as bear market conditions. The model methodology has drawn from readings of Lebaron
+(2006), Testfasion (2006) and Judd (2006).They all have built on the seminal work by
+Testfatsion & Judd (2006).Besides these texts, this paper also draws on insights of simulation
+and calibration techniques as described in Law & Kelton (1991), Werker & Brenner (2004),
+Menner (1995) and Miranda (2002).
+       The analysis of the model results evinces the correlation between the series of intrinsic
+values and market value and the correlation between the weekly series of IV and of GV with the
+trajectories of the benchmark and expected interest rates. In addition, the analysis also sought to
+show the effect of exogenous factors on the series under study. In other words, it sought to
+correlate the model-generated trajectories with such events as the US financial institution's
+default, the Petrobras` stock split, the expansionary fiscal and monetary policy adopted by the
+
+
+52
+   This was an event with strong impact on Petrobras capitalization in the Bovespa, which reached ca. 30.4 billion
+Brazilian reais.
+53
+   Approximately one-third of the Bovespa activities refer to foreign investors.
+54
+   The GV was negative only in the period between the 9th and the 22th weeks of the year. That is, the COPOM-
+defined interest rates increased, while IV declined in the period; even so IV was higher than MV, indicating upside
+in this short period of time. This observation can be seen in Graph 9.
+55
+   According to Bodie, Kane & Marcus (2009), share valuation techniques can be top-down or bottom-up in
+fundamental analysis. The analyst uses the former when s/he first desires to assess the macroeconomic environment,
+then the sector in which the company operates, and finally the company’s accounting statements and management
+quality. Inversely, s/eh uses the second technique when s/he desires to assess: first the company's accounting
+statements and management quality, then its sector, and finally the macroeconomic environment of the company.
+The model herein described used the bottom-up approached, as multi-agent computational simulations are usually
+used with a view to studying complexes tendencies that emerge from the micro level of the systems to their macro
+level.
+                                                                                         18
+
+
+
+Brazilian government, the macro-prudential decisions of market regulation, and the European
+financial crisis.
+      Another relevant conclusion of the model is the transmission mechanism of monetary
+policy will affect Ibovespa`s GV negatively only when the companies that make up this index
+have, aggregated negative net cash generation.
+
+References
+
+ABRAMS, J. B. Quantitative business valuation: a mathematical approach for today`s
+professionals. New York: McGraw-Hill, 2001.
+BANCO CENTRAL. (2010). Boletim do Banco Central do Brasil – Relatório Anual. Brasília:
+Banco Central, 2010.
+Available at: http://www.bcb.gov.br/pec/boletim/banual2010/rel2010p.pdf
+__________ Boletim do Banco Central do Brasil – Relatório Anual. Brasília: Banco Central,
+2009. Available at:
+http://www.bcb.gov.br/pec/boletim/banual2009/rel2009apendp.pdf
+__________ Boletim do Banco Central do Brasil – Relatório Anual. Brasília: Banco Central,
+20008. Available at: http://www.bcb.gov.br/pec/boletim/banual2008/rel2008p.pdf
+BISCIARI, P.; DURRÉ, A.& NYSSENS, A. Stock market valuation in the United States.
+Brussels: National Bank of Belgium, 2003.
+BLACHMAN, N. Mathematica: a practical approach. Englewood Cliffs, New Jersey: Prentice-
+Hall, 1992.
+BODIE, Z.; KANE, A. & MARCUS, A. J. Investments. 8thed. New York: McGraw-Hill, 2009.
+CUTHBERTSON, K.; NITZSCHE, D. Quantitative Financial Economics: Stocks, Bonds and
+Foreign Exchange. 2nd ed. New York: JohnWiley& Sons, 2004.
+CVM – Comissão de Valores Mobiliários (Brazilian Stock Market Regulatory Comission).
+Available at: http://www.cvm.gov.br/
+ DAMODARAN, A. Investment Valuation: tools and techniques for determining the value of
+any asset. New Jersey: John Wiley & Sons Ltd, 2012.
+_____________ The little book of valuation: how to value a company, pick a stock and profit.
+New Jersey: John Wiley & Sons Ltd, 2011.
+ECONOMÁTICA System for Investment Analysis. http://www.economatica.com.br/.
+JUDD, K. L. Computationally intensive analyses in Economics. In: TESTFATSION, L. &
+JUDD, K. L. Handbook of computational economics (vol. 2).Amsterdam: Elsevier, 2006.
+KENDRICK, D. A.; MERCADO, P.R. & AMMAN, H. Computational economics. Princeton
+University Press, 2005.
+McKINSEY& COMPANY, Inc. Valuation: measuring and managing the value of companies.
+New Jersey: John Wiley & Sons, 2000.
+MIRANDA, M. J. Applied computational economics and finance. Massachussets: The MIT
+Press, 2002.
+STINESPRING, J.R. Mathematica for Microeconomics: learning by example. Academic
+Press/Harcourt Inc.: San Diego, California, 2002.
+                                                                                      19
+
+
+
+LAW, A M. e KELTON, W. D.            Simulation modeling and analysis. 2nd ed. Singapore:
+McGraw-Hill, 1991.
+LEBARON, B. Agent-based computational finance. In: TESTFATSION, L. & JUDD, K. L.
+Handbook of computational economics (vol. 2). Amsterdam: Elsevier, 2006.
+MENNER, W. A. Introduction to modeling and simulation. Johns Hopkins, APL Technical
+Digest, v. 16, n. 1, p. 6-17, 1995.
+SHANNON, R. E. System simulation: the art and science. Englewood Cliffs, New Jersey:
+Prentice-Hall, 1975.
+STEWART III, G. B. The quest for value: a guide for senior managers. New York: Harpers
+Collins Publishers Inc, 1991.
+STICKNEY, C., WEIL, R. L. e SCHIPPER, K. Financial accounting: an introduction to
+concepts, methods and uses. Forth Worth: The Dryden Press, 2009.
+TESTFATSION, L. Agent-based computational economics: a constructive approach to
+economic theory. In: TESTFATSION, L. e JUDD, K. L. Handbook of computational
+economics. Vol. 2. Amsterdam: Elsevier, 2006.
+VARIAN, H. R. Economic and financial modelling with Mathematica. New York: Telos, 1993.
+WERKER, C. e BRENNER, T. Empirical calibration of simulation models. Eindhoven Institute
+of Technology: Netherlands, 2004. Available at:
+https://papers.econ.mpg.de/evo/discussionpapers/2004-10.pdf
+

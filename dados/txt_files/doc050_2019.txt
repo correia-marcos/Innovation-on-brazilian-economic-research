@@ -1,0 +1,962 @@
+ On the subprime crisis and the Latin American financial
+  markets: A regime switching skew-normal approach
+                              Diego Ferreira∗           Andreza A. Palma†
+
+                      Área 4 - Macroeconomia, Economia Monetária e Finanças
+
+
+
+                                                Abstract
+
+      This paper analyzes the potential occurrence of financial contagion in Latin American
+      markets from the recent US subprime crisis. Distinctively from the usual empirical ap-
+      proaches for contagion analyses, a regime-switching skew-normal (RSSN) model is imple-
+      mented in order to assess both correlation and coskewness contagion as well as investigate
+      the occurrence of structural breaks in the moments of the mean, variance and skewness.
+      Even though correlation contagion was observed in all selected Latin American markets,
+      coskewness contagion was only detected in Brazil. Variance structural breaks were found
+      in all financial markets while structural breaks in the mean were only detected in Ar-
+      gentinian, Mexican and the US markets. Yet, joint contagion and structural break tests
+      suggested the occurrence of these phenomena in all considered markets.
+
+      Keywords: Financial Contagion; Latin America; Regime Switching; Skew-Normal
+      Distribution; Bayesian Estimation.
+      JEL Classification: C11; C34; N26.
+
+                                                Resumo
+
+      O objetivo do presente trabalho é analisar a ocorrência de contágio financeiro nos mercados
+      latino-americanos durante a recente crise do subprime. De forma distinta das abordagens
+      empíricas usuais para análise de contágio, utilizamos um modelo regime-switching skew-
+      normal (RSSN) que permite avaliar o contágio em correlação e em coassimetria, bem como
+      a existência de quebras estruturais na média, variância e assimetria (primeiro, segundo
+      e terceiro momentos). Apesar do contágio em correlação ter sido observado em todos os
+      mercados estudados, o contágio em coassimetria foi observado apenas no Brasil. Quebras
+      estruturais na variância foram encontradas em todos os mercados enquanto as quebras
+      estruturais na média foram observadas apenas na Agertina, México e EUA. Além disso,
+      os testes de quebra estrutural e contágio conjuntos apontaram para a existência desses
+      fenômenos em todos os mercados analisados.
+
+      Palavras-chave: Contágio Financeiro; América Latina; Mudança de Regime; Dis-
+      tribuição normal assimétrica; Estimação Bayesiana.
+  ∗
+    PhD candidate at the Department of Applied Social Sciences, Graduate Program in Development Eco-
+nomics (PPGDE), Federal University of Paraná (UFPR), Curitiba, Brazil. E-mail: diegoferreira.eco@gmail.com.
+Phone: (+55 41) 99947-7494.
+  †
+    Professor at the Department of Economics, Federal University of São Carlos (UFSCar), Sorocaba, Brazil.
+E-mail: drepalma@gmail.com.
+
+
+                                                    1
+1     Introduction
+After a period of low volatility, the advent of the subprime mortgage crisis in mid 2007, which
+was originated due to the reversion process of the last residential construction cycle in the US,
+was one of the most severe crisis in the American economy, with spillover effects on a variety of
+other developed and emerging markets (Horta et al., 2008; Dooley and Hutchison, 2009; Lahet,
+2009). The current process of globalization as well as technological advances have contributed to
+a higher degree of financial market integration, which is largely responsible for the propagation
+of international crises in the last decades (Dornbush et al., 2000). Notwithstanding the existence
+of numerous benefits arising from such higher integration, some disadvantages also emerge as
+the byproduct of this process. Financial contagion is one of them. Being potentially responsible
+for the worsening of a market vulnerability to external shocks (Bekaert et al., 2003; Collins and
+Biekpe, 2003), financial contagion might also reduce the effectiveness of portfolio diversification
+(Sharma and Seth, 2012) as well as hamper policymakers’ ability of monitoring and maintaining
+the financial stability of their countries.
+    Despite the relevance of financial contagion for both academics and practitioners, there still
+remains no consensus in the literature on the concept of contagion. According to Rotta and
+Valls Pereira (2016), the World Bank provides three different definitions of contagion: broad
+(can occur during both good and bad times), restrictive (excess of comovement) and very
+restrictive (changes in the transmission mechanism in turbulent times, i.e., shift-contagion). In
+the present paper, we follow the definition perpetrated by Forbes and Rigobon (2002), which
+is equivalent to the shift-contagion principle, that is, contagion is understood as a statistically
+significant change in the correlation coefficient of two (or more) financial assets in a crisis period
+compared to a non-crisis period. Usually, during periods of crisis, the correlation between asset
+returns tends to increase.
+    In terms of methodological procedures, most applied studies on financial contagion are based
+on multivariate volatility models (such as DCC-GARCH, BEKK, CCC, among others), which
+lie within the class of models originally proposed by Bollerslev et al. (1988). Some recent
+studies in this methodological branch are Marçal and Valls Pereira (2008) and Filleti et al.
+(2008). These models are particularly useful in verifying the occurrence of contagion given that
+they model the correlation structure between variables. However, overparameterization as well
+as the need of imposing proper restrictions in order to proceed with estimation are underlying
+limitations of such models. For instance, the Constant Conditional Correlation (CCC) model
+developed by Bollerslev (1990) – considered to be one of the most common models within this
+class – assumes that the conditional correlations are constant over time. Although several
+improvements were proposed to these models (see e.g. Galeano and Ausin (2010)), estimation
+from the frequentist standpoint is still challenging.
+    Against this background, the present paper applies the regime switching skew-normal (RSSN)
+model developed by Chan et al. (2017) to assess the potential occurrence of financial conta-
+gion between the US and four main Latin American economies: Argentina, Brazil, Chile and
+Mexico. The proposed model is an extension of Hamilton (1989) and is particularly adequate
+to evaluate contagion. First, the model assumes data is non-normally distributed, which is
+an important feature of financial series – usually, financial series are characterized by heavy
+tails, that is, their distribution is leptokurtic, reflecting the higher likelihood of extreme events
+compared to the normal distribution. Moreover, by considering regime switching features, the
+model is also able to capture comovement shifts between asset returns due to regime transi-
+tions, which is the exact definition of contagion considered in this paper. Given the rather
+large amount of parameters and latent variables, the Bayesian approach is considered to be
+
+
+                                                 2
+more appropriate for this type of models. More specifically, we applied Markov Chain Monte
+Carlo (MCMC) techniques in order to retrieve the posterior estimates of the switching param-
+eters and then perform the contagion tests. Also, distinctively from the multivariate volatility
+models, the regime transition in the RSSN model is endogenous. As discussed by Chan et al.
+(2017), by defining strict periods of crisis and non-crisis without a endogenous mechanism of
+transition, one might obtain misleading results. Hwang et al. (2011) assert that another limi-
+tation in empirical studies on contagion is their assessment of only correlation shifts (see also
+Pukthuanthong and Roll (2009)). Given that the correlation coefficient is a linear measure
+of dependency between distributions, such coefficient might not reflect the proper dependency
+relationship since the definition of contagion is based on a non-normal non-linear structure of
+dependency. In this sense, the proposed model also allows for the evaluation of higher-order
+moment contagion (e.g. coskewness) given that it can capture changes in the joint distribution
+of the asset returns. The financial literature has in fact discussed the importance of equity re-
+turn skewness and coskewness for portfolio management. For instance, during crises, negative
+return skewness tends to become positive since risk averse investors recompose their portfolios
+to include assets with this characteristic (Fry et al., 2010). Assets with positive skewness (i.e.
+tail is on the right side) have fewer negative returns with higher probability. The coskewness
+coefficient is defined as the covariance between an asset return and the squared portfolio re-
+turn, thus being related to the systematic contribution of this asset to the portfolio skewness.
+Consequently, if an asset return and a portfolio present positive coskewness, they will usually
+present extreme positive returns in excess of market returns at the same time, which ultimately
+leads to lower expected returns. Conversely, negative coskewness implies higher probability of
+underperformance relative to market returns at the same time.
+     The present study contributes to the existing literature by assessing the existence of financial
+contagion in the Latin American economies in the aftermath of the recent global financial crisis
+not only through correlation (linear or non-linear) but also through coskewness in the context
+of endogenous regime transitions. To the best of our knowledge, no study has attempted
+to use such approach to investigate both correlation and coskewness contagion effects in Latin
+America during the recent US financial crisis. Given the highly volatile nature of these markets,
+analyzing the potential occurrence of financial contagion is essential, especially in the presence
+of non-linear behavior. Calvo and Reinhart (1996), Chen et al. (2002) and Coronado et al.
+(2016) describe the specific characteristics of financial markets in Latin America.
+     The obtained results confirm the hypothesis of correlation contagion in the selected Latin
+American markets, with probability of 100%. Hence, we found evidences of a statistically
+significant increase in the correlation between the US and each Latin American market during
+the 2007 global financial crisis. The assessment of coskewness showed that such coefficient
+increased for all five considered countries, even becoming positive for Brazil and Mexico, that
+is, these financial markets shifted toward a more risk-averse profile than in the pre-crisis period,
+with investors seeking safety strategies (lower volatility and lower expected return). Regarding
+the interrelationship with the US, only Argentina depicted a less risk averse behavior, indicating
+greater risk appetite. As for the existence of coskewness contagion, such phenomenon was only
+observed in Brazil, suggesting that risk-averse investors tended to migrate their investments
+from the Brazilian market to the US during the crisis. Consequently, these findings indicate
+that, among the selected Latin American countries, the Brazilian market apparently endured
+the most significant negative effects of the recent crisis. The occurrence of structural breaks in
+the moments of the mean, variance and skewness was also analyzed. Structural breaks in the
+mean were only present in Argentina and the US whereas the probability of variance structural
+break was 100% for the five financial markets. As for skewness structural breaks, decisive
+
+
+                                                 3
+support of such phenomenon was only found in Mexico. Overall, these findings reaffirm the
+relevance of financial contagion in Latin America.
+    Besides this introduction and the concluding remarks, the paper is organized in three sec-
+tions. First, Section 2 describes the RSSN model as well as the contagion and structural break
+tests. Section 3 presents the data and the posterior estimates of the switching parameters.
+Finally, Section 4 addresses the results for the contagion tests and the occurrence of moment
+structural breaks.
+
+
+2     A regime switching skew-normal model for asset re-
+      turns
+According to Hamilton (1989), nonlinear stationary processes are intrinsic features of macroeco-
+nomic time series. By amending the parameters of an autoregression to allow for a discrete-state
+Markov process, the regime switching model departed from the restrictions imposed by linear-
+ity. Yet, others still remained. As discussed in Chan et al. (2017), financial time series are
+usually characterized by asymmetry, heavy tails and heteroskedasticity. In order to circumvent
+such restraints, the latter authors extended the regime switching model of Hamilton (1989) to
+a multivariate skew-normal framework, following the skew-normal distribution developed by
+Sahu et al. (2003). This so-called regime switching skew-normal (RSSN) model is argued to
+better represent the intricacies of high frequency data.
+    Let yt be a set of asset returns skew-normally distributed with regime-dependent parameters,
+that is,
+
+
+                            yt = µst + Ωst Zt + εt ,                                             (1)
+                               iid
+                            εt ∼ N (0, Σst ),                                                    (2)
+                            Zt ∼ N (c1m , Im )1(Zjt > c, j = 1, . . . , m),
+                               iid
+                                                                                                 (3)
+
+where yt = (y1t , . . . , ymt )0 is an m-dimensional vector with t = 1, . . . , T ; st ∈ {0; 1} is an
+unobserved random binary variable representing the regime that the process was in at time
+t; µst is an m × 1 regime-dependent vector of constants; Ωst is a symmetric m × m regime-
+dependent skewness-coskewness matrix; Zt = (Z1t , . . . , Zmt )0 is an m-dimensional latent random
+vector; εt is an m × 1 innovation vector; Σst is an m × m regime-dependent variance-covariance
+matrix; 1m is an m × 1 column of ones; Im is an m × m identity matrix; and 1(·) is an indicator
+function with takes a value ofq1 if all Zjt are greater than c and 0 otherwise. Following Chan
+et al. (2017), c is set to be − 2/π so that the unconditional expectation of yt is not affected
+by Zt .
+    As in Hamilton (1989), the state of the regime st is modeled as the outcome of an unobserved
+two-state Markov chain, so that the standard Markov transition is given by
+
+
+                                     Pr(st = 1 | st−1 = i) = pit
+                                                                                                 (4)
+                                     Pr(st = 0 | st−1 = i) = 1 − pit
+
+with i ∈ {0; 1}; and pit being probabilities that vary with time.
+
+
+                                                   4
+    Note that the RSSN model allows the means (µst ), coskewness (Ωst ), and the error cross-
+covariances (Σst ) to change in accordance to shifts in regime. Hence, given the existence
+of two regimes, there are two sets of regime-dependent parameters, namely (µ0 , Ω0 , Σ0 ) and
+(µ1 , Ω1 , Σ1 ). Chan et al. (2017) argue that changes in the parameters of correlation and coskew-
+ness during the second regime are to be understood as contagion whereas changes in the moment
+parameters of the mean, variance and skewness in the second regime are to be understood as
+structural breaks.
+    The econometric representation of equations (1) to (3) is defined as
+
+
+                                                 y t = X t βs t + εt ,                                             (5)
+                                                        iid
+                                                 εt ∼ N (0, Σst ),                                                 (6)
+
+                         0                0      0                             0
+where Xt = (Im , Im ⊗ Zt ), βst = (µst , ωst )0 and ωst = vec(Ωst ). The dimensions of µst , ωst and
+βst are m, m2 and m(m + 1), respectively. The underlying likelihood function is then specified
+as
+                                         T                             T
+                                                                    (                                         )
+                                  − mT               − 12           1X                  0
+                                                                          [yt − Xt βst ] Σ−1
+                                         Y
+         f (y | Z, Θ, s) = (2π)      2         |Σst |         exp −                       st [yt − Xt βst ]        (7)
+                                         t=1                        2 t=1
+
+with Θ = (β0 , β1 , Σ0 , Σ1 ) being the parameters of the RSSN model; and st ∈ {0; 1}.
+    In terms of the Bayesian estimation procedure, Markov Chain Monte Carlo methods are per-
+formed as to obtain draws from the posterior distribution. The priors for the model parameters
+are set as
+
+
+                                                βst ∼ N (β, V β ),                                                 (8)
+                                                Σst ∼ IW (τ Σ , S Σ ),                                             (9)
+                  Pr(st = 1 | st−1       = i) = pit , Pr(st = 0 | st−1 = i) = 1 − pit ,                           (10)
+
+where IW (τ Σ , S Σ ) represents the inverse-Wishart
+                                                 h     distribution
+                                                             i      with degree of freedom τ Σ and
+                                 0  0 0            φµ Im 0                2
+scale matrix S Σ . Also, β = (µ , ω ) and V β =      0 φω Ik , with k = m .
+    As proposed by Chan et al. (2017), the posterior distribution is obtained by the Gibbs
+sampler method. As the joint posterior distribution is proportional to the product of the
+likelihood function and the joint prior density (i.e. the Bayes rule), we have that
+
+                        π(Θ, Z, s | y) ∝ f (y | Z, Θ, s)f (Z)f (s | Θ)π(Θ)                                        (11)
+
+where f (Z), f (s | Θ) and f (y | Z, Θ, s) are depicted by equations (3), (4) and (7), respectively.
+In addition, π(Θ) represents the prior density function whereas π(Θ, Z, s | y) is the posterior
+density function. Prior independence between β and Σ is assumed, so that
+
+                                    π(Θ) = π(β0 )π(β1 )π(Σ0 )π(Σ1 ).                                              (12)
+
+   Following Chan et al. (2017), the posterior draws from the joint posterior distribution are
+obtained by performing the following Gibbs sampler:
+
+
+                                                                5
+                                                                                          
+                                                              (0)     (0)   (0)      (0)
+   • Step 1: Starting values for Θ(0) =                      β0 , β1 , Σ0 , Σ1                 and Z (0) are defined, where
+       (0)
+             
+                 (0)0   (0)  0 0
+     βl = µl , ωl        with l = 0, 1. The counter is set as loop = 1, . . . , n, where n is the
+     number of iterations.
+                                                                                                                                
+   • Step 2: The s(loop) is generated from π s | y, Z (loop−1) , Θ(loop−1) , where Θ(loop) = β (loop) , Σ(loop) .
+                                                                                                                 
+                           (loop)                                                            (loop−1)
+   • Step 3: The βl                 is generated from π βl | y, Z (loop−1) , Σl                           , s(loop) .
+                                                                                                     
+                  (loop)                                                          (loop)
+                                                                                           ,s(loop)
+   • Step 4: Σl            is generated from π Σl | y, Z (loop−1),βl                                  .
+                                                                                    
+   • Step 5: Z (loop) is generated from π Z | y, Θ(loop) , s(loop) .
+
+   • Step 6: The counter is reset to loop = loop + 1. Return to Step 2.
+
+   As described in Step 1, this algorithm is iterated n times. In order to allow the Markov
+Chain to converge to a stationary distribution, the n0 first draws are discarded as burn-in
+draws while the remaining n1 are retained to compute the parameter estimates. For the full
+conditional distributions, their derivations and further technical details, refer to Chan et al.
+(2017).
+   Testing for financial contagion and structural breaks requires restrictions on the RSSN model
+parameters as well as the evaluation of underlying hypotheses. Assume the RSSN model as the
+unrestricted model (Mu ). This model embodies two sets of regime-specific parameters, which
+are comprised of regime-specific mean vectors µ0 and µ1 , covariance matrices Σ0 and Σ1 , and
+coskewness matrices Ω0 and Ω1 . The correlation coefficient ρij,l is obtained by the ratio of the
+covariance Σij,l and the product of the square root of the variances Σii,l and Σjj,l , that is,
+                                                                  Σij,l
+                                                ρij,l = q           q       .                                               (13)
+                                                             Σii,l Σjj,l
+
+Note that the subscript (ij, l) refers to the ij-th element of the respective matrix in the regime
+l.
+    For the specific case of financial contagion, five alternative tests are performed. First,
+contagion between financial markets is detected if the correlation coefficient increased in the
+regime st = 1 in comparison to the regime st = 0. In mathematical terms, we test whether
+
+                                                ρij,st =1 − ρij,st =0 > 0                                                   (14)
+
+for i 6= j. Chan et al. (2017) argue that such hypothesis is based on the idea perpetrated by
+Forbes and Rigobon (2002) that markets are expected to behave more similarly during a crisis.
+The probability associated to the correlation contagion between markets i and j is defined as
+
+                                         Pr (ρij,st =1 − ρij,st =0 > 0 | y, Mu )                                            (15)
+
+and is calculated from the MCMC draws.
+   Second, joint correlation contagion between the m − 1 pairs of asset returns with market j
+can also be tested for. In this case, we obtain the sum of the individual correlation coefficients
+Υl = m
+       P     Pm
+         i=1  j6=i ρij,l for each regime and then test for joint correlation contagion, that is,
+
+
+
+
+                                                              6
+whether Υ0 ≤ Υ1 . Similarly to the previous case, such joint probability of correlation contagion
+is estimated based on the MCMC draws.
+    A third alternative test is the coskewness contagion test which relies on the idea that
+contagion occurs when the asymmetric dependence of returns i and j changes across regimes.
+According to Chan et al. (2017), this test is compatible with the bivariate coskewness statistics
+for contagion developed by Fry et al. (2010). The coskewness contagion test is given by
+
+                                                 ωij,st =0 6= ωij,st =1                                    (16)
+
+for i 6= j. Hence, the restricted model (Mr ) for the coskewness test is set as ωij,st =0 = ωij,st =1 ,
+for i 6= j. As the test involves equality restrictions, we depart from the probability decision
+to Bayesian model comparison methods. Following Chan et al. (2017), the natural logarithm
+of the Bayes factor is used as the decision statistics and the model selection threshold follows
+the scale proposed by Jeffreys (1961).1 Evidence in favor of Mu supports the hypothesis of
+bivariate coskewness contagion.
+    It is also possible to test for joint coskewness contagion in which we investigate whether
+there were shifts in coskewness across all m asset markets. In this case, the joint coskewness
+contagion test is defined as
+                                        m
+                                      m X
+                                      X                           m
+                                                                m X
+                                                                X
+                                                 ωij,st =0 6=              ωij,st =1 .                     (17)
+                                      i=1 j6=i                  i=1 j6=i
+
+
+Thus, the restriction imposed to the model is comprised of m    m                m    m
+                                                                              P      P       P    P
+                                                           i=1  j6=i ωij,st =0 = i=1  j6=i ωij,st =1 .
+As the previous case, the natural logarithm of BFru is computed. Evidences in favor of Mu
+indicates the existence of joint coskewness contagion.
+   In addition, both correlation and coskewness contagion can be jointly tested for. The proce-
+dure consists of imposing both restrictions to the RSSN model and then computing the natural
+logarithm of BFru . However, despite knowing the prior distributions of the associated pa-
+rameters, the density in the simultaneous presence of such restrictions is usually not known.
+Therefore, Chan et al. (2017) propose a Gaussian kernel estimation to approximate such un-
+known densities, following Geweke (2010).2 Once again, evidences in favor of Mu indicates the
+simultaneous occurrence of both types of contagion.
+   Yet, the RSSN model also allows for the testing of structural breaks in the mean, variance
+and skewness for asset market i during st = 1 compared to st = 0. For the first case, testing
+the existence of a structural break in the mean for asset market i relies on the idea that the
+mean decreases in financial crisis periods given that expected returns are lower. Hence, the
+probability for market i is defined as
+   1
+    Despite being an alternative to classical hypothesis testing, the choice of Bayesian model comparison is
+driven by the fact that it is also a suitable approach for comparing non-nested models. The Bayes factor is
+defined as
+
+                               p(y|Mr )                                                
+                      BFru =              ⇐⇒         ln BFru = ln p(y|Mr ) − ln p(y|Mu )
+                               p(y|Mu )
+
+with p(y|Mr ) and p(y|Mu ) being the marginal likelihoods of the data under models Mr and Mu , respectively.
+For technical details on computing the marginal likelihoods, refer to Chan et al. (2017). Note that the marginal
+likelihood of Mr will be small if the data are improbable under such model. Hence, the BFru indicates which
+model better fits the given data.
+    2
+      For technical details on the Gaussian kernel estimator, refer to Chan et al. (2017) and Geweke (2010).
+
+
+
+                                                           7
+                                  Pr (µi,st =1 − µi,st =0 < 0 | y, Mu )                          (18)
+
+and is estimated from the MCMC draws. The extension to a joint version across all m as-
+set markets is achieved by considering the whole mean vectors µst =1 and µst =0 , so that the
+associated probability is
+                                   m                  m
+                                                                                 !
+                                   X                  X
+                             Pr          µi,st =1 −         µi,st =0 ≤ 0 y, Mu                   (19)
+                                   i=1                i=1
+
+
+and can also be estimated from the MCMC draws.
+    The structural break test for the variance of the returns of market i is obtained by testing
+the hypothesis that Σii,st =1 − Σii,st =0 > 0 since the variance of returns is expected to increase
+in the financial crisis regime. Therefore, the underlying probability has the form
+
+                                  Pr (Σii,st =1 − Σii,st =0 > 0 | y, Mu )                        (20)
+
+which is also calculated from the MCMC draws. The joint test version for all m asset markets
+is computed by evaluating the proportion of times Σst =1 − Σst =0 > 0 in the MCMC draws,
+where Σst =1 = m
+               P                             Pm
+                  i=1 Σii,st =1 and Σst =0 =  i=1 Σii,st =0 . Consequently, the associated probability
+is given by
+
+                                    Pr(Σst =1 − Σst =0 > 0 | y, Mu )                             (21)
+
+and is obtained from the MCMC draws.
+    The last set of structural break tests consists of evaluating potential changes in the skewness
+of asset returns in regime st = 1 compared to regime st = 0. The individual test for asset
+market i is based on the hypothesis that ωii,st =0 6= ωii,st =1 . Yet, Chan et al. (2017) argue that
+there still remains no macroeconomic consensus on the direction of skewness changes during a
+crisis. Therefore, they propose an agnostic stance regarding such movements, recognizing both
+positive and negative changes as possible outcomes. Formally, the latter hypothesis is tested
+by imposing ωii,st =1 = ωii,st =0 to the RSSN model and comparing the unrestricted model to the
+restricted one through the Bayes factor. Note that in Mu all regime-specific parameters are
+free to vary across regimes whereas Mr considers no skewness changes for the asset market i.
+Similarly to the previous cases, evidences in favor of Mu suggest the occurrence of a structural
+break in the return skewness for market i. On the other hand, the joint evaluation of a potential
+structural break in the return skewness of all m asset markets is performed by imposing the
+assumption that ωii,st =1 = ωii,st =0 , for all i = 1, . . . , m, to the RSSN model. The Bayes factor
+is then computed and evaluated.
+    Finally, the RSSN model also allows for the testing of the simultaneous occurrence of conta-
+gion and structural breaks by simultaneously imposing the necessary restrictions to the RSSN
+model and evaluating the Bayes factor. For instance, one can evaluate the coexistence of a joint
+structural break (i.e. simultaneous mean, variance and skewness structural break) for the asset
+market i with a joint bivariate contagion (i.e. correlation and coskewness contagion) between
+asset markets i and j. Note that the occurrence of joint contagion and structural breaks across
+all asset markets is also possible under the RSSN framework. Yet, as previously discussed,
+there still remains concerns about the associated densities in the presence of such restrictions.
+These unknown densities are also estimated by a Gaussian kernel estimator.
+
+
+                                                        8
+3            Data and econometric estimates
+We investigate the potential occurrence of contagion effects between the equity returns of the
+US and four Latin American markets (Argentina, Brazil, Chile, and Mexico – the LA-4) dur-
+ing the recent subprime crisis. To this end, daily equity market indices for the latter markets
+were collected from the Bloomberg financial database. More specifically, we use the following
+stock market indices: (i) Sao Paulo Stock Exchange Ibovespa index for Brazil (IBOV:IND),
+(ii) Santiago Stock Exchange IGPA index for Chile (IGPA:IND), (iii) Buenos Aires Stock Ex-
+change Merval index for Argentina (MERVAL:IND), (iv) S&P/BMV IPC index for Mexico
+(MEXBOL:IND), and (v) Dow Jones Industrial Average index for the US (INDU:IND). The
+daily percentage returns are computed as the hdifference of naturali   logarithms of the daily equity
+indices, multiplied by 100, that is, rt = 100 × ln(yt ) − ln(yt−1 ) , where rt is the daily percentage
+return of an equity index at time t, and yt and yt−1 are the daily equity indices at time t and
+t − 1, respectively. In addition, given that different stock markets are subjected to different
+holiday schedules, missing equity indices are carried forward from the last observed index as to
+make the calendar compatible across the five selected countries. Finally, following Chan et al.
+(2017), the residuals of a VAR(5) are used as the data during the estimation procedure.
+    Data span the period from January 4, 2005 to November 28, 2014. Following Chan et al.
+(2017), the period from January 4, 2005 to July 25, 2007 is defined as the Great Moderation
+whereas the Global Financial Crisis corresponds to the period from March 3, 2008 to November
+28, 2014. Consequently, from July 26, 2007 to February 29, 2008, both the selected Latin
+American and the US markets are in transition from the former period to the latter one. In
+fact, preliminary visual inspection of the financial time series in Figure 1 suggests that the
+fluctuation of equity returns increased from 2008 onwards, especially in Argentina, Chile and
+the US. Such fluctuation increase also indicates the potential presence of a non-constant and
+time-dependent volatility.
+
+ Figure 1: Daily Percentage Equity Returns of Selected Latin American Markets and the US
+ 15                                                                             10                                                                              15
+
+                                                                                  8
+ 10                                                                                                                                                             10
+                                                                                  6
+
+    5                                                                             4                                                                               5
+
+                                                                                  2
+    0                                                                                                                                                             0
+                                                                                  0
+
+  -5                                                                             -2                                                                              -5
+
+                                                                                 -4
+ -10                                                                                                                                                            -10
+                                                                                 -6
+
+ -15                                                                             -8                                                                             -15
+        Jan 2, 2006   Jan 1, 2008   Jan 1, 2010   Jan 2, 2012   Jan 1, 2014           Jan 2, 2006   Jan 1, 2008   Jan 1, 2010     Jan 2, 2012   Jan 1, 2014           Jan 2, 2006   Jan 1, 2008   Jan 1, 2010   Jan 2, 2012   Jan 1, 2014
+
+
+
+                            (a) Brazil                                                                     (b) Chile                                                                   (c) Argentina
+                                         12                                                                              15
+                                         10
+                                           8                                                                             10
+                                           6
+                                           4                                                                              5
+                                           2
+                                           0                                                                              0
+                                          -2
+                                          -4                                                                              -5
+                                          -6
+                                          -8                                                                             -10
+                                               Jan 2, 2006   Jan 1, 2008   Jan 1. 2010   Jan 2, 2012   Jan 1, 2014             Jan 2, 2006   Jan 1, 2008   Jan 1, 2010   Jan 2, 2012   Jan 1, 2014
+
+
+
+                                                                  (d) Mexico                                                                           (e) US
+
+
+   Yet, priors for the hyperparameters in Equations (8) to (10) need to be specified in order to
+proceed with the Bayesian estimation. Following Chan et al. (2017), we set β = 0, φµ = 0.01,
+φω = 1, τ Σ = 20 + m + 1, S Σ = (τ Σ − m − 1) × Im , with m = 5. Note that the priors for
+
+                                                                                                                     9
+the variances (i.e. φµ and φω ) are relatively small as to guarantee the prior distributions are
+proper and slightly informative. Regarding the priors for the transition probabilities, it is first
+assumed that Pr(st = 1 | st−1 = 0) = Pr(st = 1 | st−1 = 1) = pt . Then, following Chan et al.
+(2017), the initial value for the probability of being in the Great Moderation regime is defined
+as Pr(st = 0) = 0.99 for the period between January 4, 2005 and July 25, 2007. In contrast, the
+probability of being in the Global Financial Crisis regime is defined as Pr(st = 1) = 0.99 for the
+period between March 3, 2008 and November 28, 2014. One should note that the probability
+of being in the Great Moderation regime decreases linearly from 0.99 on July 26, 2007 to 0.01
+on March 3, 2008.
+    As in Chan et al. (2017), we also restrict the coskewness matrix Ω of Equation (1) to be a
+symmetric matrix so that the dimension q    of ω becomes k = m(m + 1)/2. Further, the constant
+term c in Equation (3) is defined as c = − 2/π, which leads to E(Zt ) = 0 and V (Zt ) = (π−2)/π
+and ensures that the inclusion of latent variables (i.e. Zt ) has no effect on the (unconditional)
+expectation of yt .
+    We performed 200,000 iterations of the MCMC algorithm with the first 10,000 draws being
+discarded in the burn-in period. Given that MCMC sampling methods are commonly associated
+to autocorrelation and, consequently, biased Monte Carlo standard errors, we only retain every
+10th iteration in order to circumvent such issues. Hence, posterior means are computed based
+on 20,000 MCMC draws. Table 1 presents the posterior means of the switching parameters for
+the selected Latin American markets and the US during both the Great Moderation and the
+Global Financial Crisis regimes.
+    In terms of correlation and coskewness, the obtained results show considerable variation
+between regimes (Table 1). Correlation was found to be higher during the Global Financial
+Crisis regime in comparison to the period of Great Moderation. This result is in line with
+the evidences presented by the international literature on financial market linkages during
+crises (see e.g. Roll (1988), Hamao et al. (1990), King and Wadhwani (1990), Malliaris and
+Urrutia (1992), Erb et al. (1994), Lin et al. (1994), Solnik et al. (1996), Ramchmand (1998),
+Cizeau et al. (2001), Longin and Solnik (2001), Ang and Chen (2002), Butler and Joaquin
+(2002), Bartram and Wang (2005), Meric et al. (2008), among others). Accordingly, such cross-
+market correlation rise in the context of high volatility ultimately reduced the benefits of risk
+diversification in the Latin American markets in the aftermath of the United States subprime
+mortgage crisis.
+    When compared to the Great Moderation period, coskewness between all pairs of Latin
+American markets became less negative during the Global Financial Crisis, with coskewness
+between Mexico and Brazil even becoming positive (Table 1). Given that positive coskewness
+reduces the risk of the portfolio in high volatile periods (Harvey and Siddique, 2000; Adesi
+et al., 2004; Guidolin and Timmermann, 2008), these findings suggest that the Latin American
+financial markets shifted toward a more risk-averse profile than in the pre-crisis period. Yet,
+regarding the interrelationship with the US, coskewness became positive for almost all selected
+Latin American markets. Similar results were also found in recent studies for the European
+markets and the US (Fry et al., 2010; Fry-McKibbin et al., 2014; Chan et al., 2017). Note that
+the Argentina-US pair is the only exception, with the value of coskewness falling from −0.327
+to −0.858. Thus, while most of Latin American markets presented a more risk-averse profile
+relative to the US during the subprime crisis, investors in Argentina seem to have become even
+less risk averse.
+    The obtained results for the moments of the mean, variance and skewness are also regime-
+dependent (Table 1). During the Great Moderation, mean returns for the five considered mar-
+kets were positive, with Mexico and Brazil exhibiting the highest values: 0.086% and 0.080%,
+
+                                                10
+Table 1: Posterior Means of the Switching Parameters for the Selected Latin American Markets
+and the US
+
+    Parameters                      Markets       Brazil          Chile        Argentina        Mexico             US
+ Great Moderation Regime (st = 0)
+                       P
+    Covariance (           ij,0 )   Chile         0.095
+                                    Argentina     0.190           0.046
+                                    Mexico        0.403           0.120           0.154
+                                    US            0.210           0.052           0.107           0.204
+    Correlation (ρij,0 )            Chile         0.168
+                                    Argentina     0.168           0.085
+                                    Mexico        0.390           0.239           0.155
+                                    US            0.355           0.181           0.190           0.388
+    Coskewness (ωij,0 )             Chile         -0.272
+                                    Argentina     -1.064         -0.222
+                                    Mexico        -0.782         -0.210          -0.707
+                                    US            -0.356         -0.087          -0.327          -0.252
+    Mean (µi,0 )                    —             0.080           0.065          0.033            0.086          0.021
+              P
+    Variance ( ii,0 )               —             1.131           0.272           1.001          0.908           0.300
+    Skewness (ωii,0 )               —             -1.054         -0.182          -0.889          -0.525          -0.119
+ Global Financial Crisis Regime (st = 1)
+                       P
+    Covariance (           ij,1 )   Chile         0.892
+                                    Argentina     2.334           0.926
+                                    Mexico        1.628           0.681           1.525
+                                    US            1.457           0.563           1.387           1.055
+    Correlation (ρij,1 )            Chile         0.615
+                                    Argentina     0.704           0.588
+                                    Mexico        0.743           0.654           0.642
+                                    US            0.769           0.625           0.672           0.775
+    Coskewness (ωij,1 )             Chile         -0.083
+                                    Argentina     -0.319         -0.093
+                                    Mexico         0.238         -0.138          -0.337
+                                    US             0.583          0.338          -0.858           0.135
+    Mean (µi,1 )                    —             -0.017          0.008           0.047           0.011          0.011
+              P
+    Variance ( ii,1 )               —              3.054          0.690           3.599           1.571          1.180
+    Skewness (ωii,1 )               —             -0.225         -0.148          -0.489           0.223          0.224
+ Notes: By their nature, both variance-covariance and skewness-coskewness matrices are symmetrical. Therefore, only the main
+ diagonal and the lower entry estimates are reported. Data span from January 4, 2005 to November 28, 2014, comprising 2584
+ daily observations.
+
+
+
+
+                                                            11
+respectively. However, as expected, mean returns decreased in the aftermath of the subprime
+crisis, with the Brazilian mean return even becoming negative (−0.017%). The variance of daily
+equity returns considerably increased in the Global Financial Crisis regime relative to the Great
+Moderation regime. For instance, while the Argentinian and Brazilian variances substantially
+increased after the subprime crisis (from 1.001 to 3.599 and from 1.131 to 3.054, respectively),
+Chile presented the lowest increase among the considered markets (from 0.272 to 0.690). As
+for skewness, negative parameters were found for all five selected markets during the pre-crisis
+period. Still, the obtained results for the Global Financial Crisis regime shows that the skew-
+ness parameters shifted toward less negative magnitudes in Brazil, Chile and Argentina. In the
+case of Mexico and the US, even though the same direction of change was observed, skewness
+parameters turned positive. Based on the Arrow-Pratt notion of risk aversion (Pratt, 1964;
+Arrow, 1971), right-skewed (positive skewness) payoffs are preferable to left-skewed (negative
+skewness) ones in the context of risk-averse investors. Therefore, the positive skewness param-
+eters for Mexico and the US imply that investors considered these markets to be relatively safer
+than Brazil, Chile and Argentina. Similar results for the European markets and the US were
+found by Fry et al. (2010) and Fry-McKibbin et al. (2014).
+    But how did the probability of the model being in a certain regime change over time? Figure
+2 displays the posterior probability of being in the Global Financial Crisis regime during the
+sample period. The regime transition was apparently initiated in mid 2007, period in which the
+US economy severely suffered from increases in risk spreads, wealth contractions, and shortage
+of liquidity in the credit market (Goodhart, 2008; Reinhart and Rogoff, 2008). Such transitions
+across regimes were unstable until February of 2008, settling into the crisis regime thereafter.
+Note that the transition to the Global Financial Crisis regime for the selected Latin American
+markets took place before the collapse of the Bear Stearns Hedge Group in March of 2008, an
+event considered as a main trigger of the subsequent financial crisis. Using the same econometric
+framework, Chan et al. (2017) found similar results for the European markets and the US.
+
+            Figure 2: Posterior Probability of the Global Financial Crisis Regime
+
+                  1
+
+
+
+                 0.8
+
+
+
+                 0.6
+
+
+
+                 0.4
+
+
+
+                 0.2
+
+
+
+                  0
+
+                       Jan/2006   Jan/2007   Jan/2008   Jan/2009   Jan/2010   Jan/2011   Jan/2012   Jan/2013   Jan/2014
+
+
+
+
+4    Addressing contagion and structural breaks
+Even though the regime-dependent nature of both our low- and high-order moment estimates is
+readily observable, properly identifying potential contagious linkages arising from the US equity
+market on Latin America during the Global Financial Crisis is still imperative. The first panel
+of Table 2 presents individual and joint contagion tests for the correlation and coskewness
+channels. First, note that correlation contagion is characterized as a statistical significant
+increase in the correlation parameter during the Global Financial Crisis relative to the previous
+
+
+                                                                   12
+regime. That being said, the obtained results provide strong evidence of correlation contagion
+between the US and Latin American returns, with p = 1.00. Even when jointly considering the
+US and all Latin American markets, the contagion tests still indicate the occurrence of such
+contagion mechanism (p = 1.00).
+    However, coskewness contagion was only observed for the Brazil-US pair, with a value of the
+log of the Bayes factor ln(BFru ) of −8.54. Consequently, this result suggests that risk-averse
+investors tended to migrate their investments from the Brazilian market to the US during the
+crisis. As discussed in Chan et al. (2017), the presence of coskewness contagion in only some of
+the considered markets indicates the relative severity of the crisis in the financial sector of these
+economies relative to the other markets. Thus, the US subprime crisis spillovers seem to have
+affected the Brazil more severely than the rest of the Latin American markets. Interestingly,
+when considering the coskewness test for all markets (∀i), there is decisive evidence of contagion,
+with the value of the log of the Bayes factor ln(BFru ) being −172.22.
+    The jointly occurrence of both the correlation and coskewness contagion is tested in the
+bottom row of the first panel of Table 2. For each US-Latin American market pair, the joint
+contagion tests provided decisive support for both phenomena during the Global Financial
+Crisis regime. The same conclusion is obtained when jointly considering all Latin American
+markets and the US.
+
+Table 2: Contagion and Structural Break Tests for the Equity Returns of Selected Latin Amer-
+ican Markets and the US during the Global Financial Crisis
+
+                                     Method         Brazil        Chile    Argentina     Mexico         US            ∀i
+ Contagion Tests (i 6= j)
+   Correlation                           p           1.00       1.00         1.00         1.00           —           1.00
+   Coskewness                           BF          -8.54       -2.24        -0.87        -2.11          —         -172.22
+   Correlation and Coskewness           BF         -19.98      -28.37        -9.91       -54.03          —         -288.75
+ Structural Break Tests (i)
+   Mean                                  p           0.57       0.58          0.99         0.71         0.99         0.98
+   Variance                              p           1.00       1.00          1.00        1.00          1.00         1.00
+   Skewness                             BF           -1.65      1.33          0.62        -2.56         -0.37       -5.28
+   Mean, Variance and Skewness          BF         -144.60    -213.55       -116.57      -15.29       -450.01      -813.94
+ Joint Contagion (i 6= j) and Structural Break Tests (i)
+   All                                  BF         -668.62    -494.58       -229.76      -497.85         —         -1102.7
+ Notes: Contagion tests are performed with respect to the US market. Data span from January 4, 2005 to November 28, 2014,
+ comprising 2584 daily observations. Note that p and BF refer to decision methods based on probability and the Bayes Factor,
+ respectively. The bold results indicate the presence of contagion or structural break.
+
+
+    As a second step, we also investigate the likelihood of moment structural breaks in the
+mean, variance and skewness for each equity return. The second panel of Table 2 presents such
+results. Even though the structural break tests suggest only Argentina and the US individually
+presented such phenomenon, the test considering all five markets combined indicate a structural
+break in the moment of the mean during the Global Financial Crisis period (p = 0.98). Note
+that this latter result might reflect the strong evidences of such structural breaks in Argentina
+(p = 0.99) and the US (p = 0.99).
+    In regards to the second moment, the probability of a structural break for all equity markets
+is 100% (Table 2). As expected, when considering all five markets jointly, the structural break
+test for the variance confirms the individual results, with probability of 100%. These results
+are in line with the stylized fact of higher equity return volatility during crisis periods.
+    The results for the presence of a structural break in skewness are decisive only for Mexico,
+with the value of the log of the Bayes factor ln(BFru ) being −2.56 (Table 2). Yet, similar to
+
+                                                             13
+the test of a structural break in the moment of the mean, the results for skewness considering
+all five markets also suggest a statically significant shift in the parameter in the aftermath of
+the US subprime crisis, with ln(BFru ) = −5.28.
+    For each market, joint tests were also performed in order to assess whether the mean, vari-
+ance and skewness, jointly, presented structural breaks. The obtained results are summarized
+in the last row of the second panel of Table 2. Note that the values of the natural log of the
+Bayes factor for all five markets, both individually and jointly, provide decisive evidence of
+structural breaks. Still, it is important to highlight the fact that, in general, the structural
+break in the variance emerges as the most important one for all five equity markets.
+    Finally, we also considered the concomitant occurrence of both contagion and structural
+breaks for each market as well as all the five markets jointly. The last panel of Table 2 reports
+the joint test estimates. Given that the US is considered the source of the crisis, there is no test
+statistics for this market. Overall, our findings provide decisive evidence of joint contagion and
+structural breaks for each individual Latin American market and for the five combined markets.
+However, these results must be interpreted with caution. As the joint tests for contagion and
+structural breaks consider a variety of comoment and moment changes between regimes, the
+sole use of their results might induce misleading conclusions. For instance, even though the joint
+contagion and structural break test indicates the occurrence of both phenomena in Chile, the
+results of individual tests suggest neither coskewness contagion nor mean or skewness structural
+break. Still, these joint tests are appealing tools in order to further validate the individual
+results.
+
+
+5     Concluding remarks
+This article investigated the potential occurrence of financial contagion between the US and se-
+lected Latin American equity markets during the recent US-based global financial crisis. More
+specifically, through the application of the regime switching skew-normal (RSSN) model devel-
+oped by Chan et al. (2017), we evaluated the likelihood of contagion by considering potential
+changes in the comoments of correlation and coskewness in the Global Financial Crisis regime
+compared to the Great Moderation regime. As a second step, we also tested for the presence of
+structural breaks in the moments of the mean, variance and skewness. Assessing the possibility
+of these phenomena is relevant in order to better comprehend the intricacies in the behavior of
+risk averse investors in Latin America during the recent crisis.
+    First, the posterior estimates of the switching parameters revealed their regime-dependent
+nature. Indeed, correlation between Latin American markets and the US increased during the
+Global Financial Crisis regime in comparison to the Great Moderation regime, which ultimately
+reduced the benefits of risk diversification in these emerging markets. Moreover, with excep-
+tion of Argentina, the observed rise in coskewness during the crisis period suggests that the
+Latin American markets shifted toward a more risk-averse profile relative to the US than in the
+pre-crisis period. While the variance of equity returns of all five considered markets increased
+considerably during the crisis regime, the mean equity returns presented a rather substantial
+decreased, with the Brazilian mean even becoming negative. As for skewness, daily equity
+returns exhibited less negative coefficients during the financial crisis relative to the pre-crisis
+period. In fact, positive skewness parameters were even found for Mexico and the US. Con-
+sequently, these results for skewness imply that risk averse investors considered Mexico and
+the US to be relatively safer markets than Brazil, Chile and Argentina in the aftermath of the
+recent financial crisis.
+    Both the individual and joint contagion tests provided significant evidence of correlation
+
+                                                14
+contagion from the US for all the selected Latin American markets, with probability of 100%.
+Yet, coskewness contagion was only decisively observed for the Brazil-US pair. Furthermore,
+structural breaks in the mean were only present in Argentina and the US whereas the probability
+of variance structural break was 100% for the five financial markets. As for skewness structural
+breaks, decisive support of such phenomenon was only found for Mexico. Yet, joint contagion
+and structural tests provided decisive evidence of their occurrence for each individual Latin
+American market and for the five combined markets.
+    The results found in the present paper contribute to the recent debate on the occurrence of
+contagion and on potential restructuring policies for the international financial system. Deter-
+mining the existence of financial contagion is of major concern for investors given its effect on
+portfolio risk management and portfolio expected return. On the other hand, the evaluation
+of financial contagion is also important to policymakers as to design proper macroprudential
+strategies in order to minimize potential financial spillovers on economies during crisis as well
+as discuss the resilience and efficiency of the financial system in the context of high-volatility
+returns.
+
+
+6    Compliance with Ethical Standards
+Ethical approval: This article does not contain any studies with human participants or animals
+performed by any of the authors.
+   Diego Ferreira declares that he has no conflict of interest.
+   Andreza Aparecida Palma declares that she has no conflict of interest
+
+
+References
+Adesi, G. B., Gagliardini, P. and Urga, G. (2004), ‘Testing Asset Pricing Models With Coskew-
+ ness’, Journal of Business & Economic Statistics 22(4), 474–485.
+Ang, A. and Chen, J. (2002), ‘Asymmetric correlations of equity portfolios’, Journal of Finan-
+ cial Economics 63(3), 443–494.
+Arrow, K. J. (1971), Essays in the theory of risk-bearing, Markham Publishing Company,
+  Chicago.
+Bartram, S. M. and Wang, Y. (2005), ‘Another look at the relationship between cross-market
+  correlation and volatility’, Finance Research Letters 2(2), 75–88.
+Bekaert, G., Harvey, C. R. and Lundblad, C. T. (2003), ‘Equity Market Liberalization in
+  Emerging Markets’, Journal of Financial Research 26(3), 275–299.
+Bollerslev, T. (1990), ‘Modelling The Coherence in Short-Run Nominal Exchange Rates: A
+  Multivariate Generalized ARCH approach’, Review of Economics and Statistics 72(3), 498–
+  505.
+Bollerslev, T., Engle, R. F. and Wooldridge, J. M. (1988), ‘A Capital Asset Pricing Model with
+  Time-Varying Covariances’, Journal of Political Economy 96(1), 116–131.
+Butler, K. C. and Joaquin, D. C. (2002), ‘Are the gains from international portfolio diversifica-
+  tion exaggerated? The influence of downside risk in bear markets’, Journal of International
+  Money and Finance 21(7), 981–1011.
+
+                                               15
+Calvo, S. and Reinhart, C. (1996), Capital Flows to Latin America: Is There Evidence of
+  Contagion Effects?, in G. A. Calvo, M. Goldstein and E. Hochreiter, eds, ‘Private Capital
+  Flows to Emerging Markets After the Mexican Crisis’, Peterson Institute for International
+  Economics, pp. 151–171.
+
+Chan, J. C. C., Fry-McKibbin, R. A. and Hsiao, C. Y. (2017), ‘A Regime Switching Skew-
+ normal Model of Contagion’, Working Paper. URL: http://joshuachan.org/papers/rssn.pdf.
+
+Chen, G. M., Firth, M. and Rui, O. M. (2002), ‘Stock market linkages: evidence from Latin
+ America’, Journal of Banking & Finance 26(6), 1113–1141.
+
+Cizeau, P., Potters, M. and Bouchaud, J. (2001), ‘Correlation structure of extreme stock re-
+  turns’, Quantitative Finance 1(2), 217–222.
+
+Collins, D. and Biekpe, N. (2003), ‘Contagion and interdependence in African stock markets’,
+  South African Journal of Economics 71(1), 181–194.
+
+Coronado, S., Rojas, O., Romero-Meza, R. and Venegas-Martinez, F. (2016), ‘A study of
+  co-movements between USA and Latin American stock markets: a cross-bicorrelations per-
+  spective’, Dyna 83(196), 143–148.
+
+Dooley, M. and Hutchison, M. (2009), ‘Transmission of the U.S. Subprime Crisis to Emerg-
+ ing Markets: Evidence on the Decoupling-Recoupling Hypothesis’, Journal of International
+ Money and Finance 28(8), 1331–1349.
+
+Dornbush, R., Park, Y. C. and Claessens, S. (2000), ‘Contagion: Understanding How It
+ Spreads’, The World Bank Observer 15(2), 177–197.
+
+Erb, C., Harvey, C. R. and Viskanta, T. E. (1994), ‘Forecasting International Equity Correla-
+  tions’, Financial Analysts Journal 50(6), 32–45.
+
+Filleti, J. P., Hotta, L. K. and Zevallos, M. (2008), ‘Analysis of contagion in emerging markets’,
+  Journal of Data Science 6(4), 601–626.
+
+Forbes, K. J. and Rigobon, R. (2002), ‘No Contagion, Only Interdependence: Measuring Stock
+  Market Comovements’, The Journal of Finance 57(5), 2223–2261.
+
+Fry-McKibbin, R., Martin, V. L. and Tang, C. (2014), ‘Financial contagion and asset pricing’,
+  Journal of Banking & Finance 47, 296–308.
+
+Fry, R. A., Martin, V. L. and Tang, C. (2010), ‘A New Class of Tests of Contagion with
+  Applications’, Journal of Business and Economic Statistics 28(3), 423–436.
+
+Galeano, P. and Ausin, M. C. (2010), ‘The gaussian mixture dynamic conditional correlation
+ model: Parameter estimation, value at risk calculation, and portfolio selection’, Journal of
+ Business & Economic Statistics 28(4), 559–571.
+
+Geweke, J. (2010), Complete and Incomplete Econometric Models, 1 edn, Princeton University
+ Press, Princeton.
+
+Goodhart, C. A. E. (2008), ‘The background to the 2007 financial crisis’, International Eco-
+ nomics and Economic Policy 4(4), 331–346.
+
+
+
+                                               16
+Guidolin, M. and Timmermann, A. (2008), ‘International Asset Allocation under Regime
+ Switching, Skew and Kurtosis Preferences’, Review of Financial Studies 21(2), 889–935.
+
+Hamao, Y., Masulis, R. and Ng, V. (1990), ‘Correlations in price changes and volatility across
+  international stock markets’, Review of Financial Studies 3(2), 281–307.
+
+Hamilton, J. D. (1989), ‘A New Approach to the Economic Analysis of Nonstationary Time
+  Series and the Business Cycle’, Econometrica 57(2), 357–384.
+
+Harvey, C. R. and Siddique, A. (2000), ‘Conditional Skewness in Asset Pricing Tests’, Journal
+  of Finance 55(3), 1263–1295.
+
+Horta, P., Mendes, C. and Vieira, I. (2008), ‘Contagion Effects of the US Subprime Crisis on
+  Developed Countries’, CEFAGE-UE Working Paper. URL: https://goo.gl/rLu375.
+
+Hwang, I., In, F. and Kim, T. S. (2011), Contagion and Spillover Effects of the U.S. Subprime
+ Crisis: Evidence from International Stock Markets, in R. W. Kolb, ed., ‘Financial Contagion’,
+ Wiley-Blackwell, pp. 253–260.
+
+Jeffreys, H. (1961), Theory of Probability, 3 edn, Clarendon Press, Oxford.
+
+King, M. and Wadhwani, S. (1990), ‘Transmission of volatility between stock markets’, Review
+  of Financial Studies 3(1), 5–33.
+
+Lahet, D. (2009), ‘Le repositionnement des pays émergents: De la crise financière asiatique de
+  1997 à la crise de 2008’, Revue d’Economie Financière 95(2), 275–306.
+
+Lin, W. L., Engle, R. F. and Ito, T. (1994), ‘Do bulls and bears move across borders? Interna-
+  tional transmission of stock returns and volatility’, Review of Financial Studies 7(3), 507–538.
+
+Longin, F. and Solnik, B. (2001), ‘Extreme correlation of international equity markets’, The
+  Journal of Finance 56(2), 649–675.
+
+Malliaris, A. G. and Urrutia, J. L. (1992), ‘The international crash of October 1987: Causality
+ tests’, Journal of Financial and Quantitative Analysis 27(3), 353–364.
+
+Marçal, E. and Valls Pereira, P. L. (2008), ‘Testing the Hypothesis of Contagion Using Multi-
+ variate Volatility Models’, Brazilian Review of Econometrics 28(2), 191–216.
+
+Meric, I., Ratner, M., Nygren, L. M. and Meric, G. (2008), ‘Co-Movements of Latin American
+ Equity Markets Before and After September 11, 2001’, Latin American Business Review
+ 8(3), 54–74.
+
+Pratt, J. W. (1964), ‘Risk aversion in the small and in the large’, Econometrica 32(1/2), 122–
+  136.
+
+Pukthuanthong, K. and Roll, R. (2009), ‘Global market integration: An alternative measure
+  and its application’, Journal of Financial Economics 94(2), 214–232.
+
+Ramchmand, L.and Susmel, R. (1998), ‘Volatility and cross correlation across major stock
+  markets’, Journal of Empirical Finance 5(4), 397–416.
+
+Reinhart, C. M. and Rogoff, K. S. (2008), ‘Is the 2007 US sub-prime financial crisis so different?
+  An international historical comparison’, American Economic Review 98(2), 339–344.
+
+                                               17
+Roll, R. W. (1988), ‘The international crash of October 1987’, Financial Analysts Journal
+  44(5), 19–35.
+
+Rotta, P. N. and Valls Pereira, P. L. (2016), ‘Analysis of contagion from the dynamic conditional
+  correlation model with Markov regime switching’, Applied Economics 48(25), 2367–2382.
+
+Sahu, S. K., Dey, D. K. and Branco, M. D. (2003), ‘A New Class of Multivariate Skew Distribu-
+  tions with Applications to Bayesian Regression Models’, The Canadian Journal of Statistics
+  31(2), 129–150.
+
+Sharma, A. and Seth, N. (2012), ‘Literature review of stock market integration: a global
+  perspective’, Qualitative Research in Financial Markets 4(1), 84–122.
+
+Solnik, B., Boucrelle, C. and Le Fur, Y. (1996), ‘International market correlation and volatility’,
+  Financial Analysts Journal 52(5), 17–34.
+
+
+
+
+                                                18
+

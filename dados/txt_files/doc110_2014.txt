@@ -1,0 +1,1332 @@
+            Propagation of Systemic Risk in Interbank Networks
+Vanessa Hoffmann de Quadros,1 Juan Carlos González-Avella,1 and José Roberto Iglesias1, 2
+                  1
+                  Instituto de Fı́sica, Universidade Federal do Rio Grande do Sul,
+                      Caixa Postal 15051, 90501-970 Porto Alegre RS, Brazil
+          2
+            Programa de Mestrado em Economia, Universidade do Vale do Rio dos Sinos,
+                      Av. Unisinos, 950, 93022-000 São Leopoldo RS, Brazil
+                                        (Dated: July 11, 2014)
+
+
+ Abstract One of the most striking characteristics of modern financial systems is its complex in-
+ terdependence, standing out the network of bilateral exposures in interbank market, through which
+ institutions with surplus liquidity can lend to those with liquidity shortage. While the interbank
+ market is responsible for efficient liquidity allocation, it also introduces the possibility for systemic
+ risk via financial contagion. Insolvency of one bank can propagate through the network leading to
+ insolvency of other banks.
+ Moreover, empirical studies reveal that some interbank networks have features of scale-free networks,
+ which means that the distribution of connections among banks follows a power law.
+ This work explores the characteristics of financial contagion in networks whose links distributions
+ approaches a power law, using a model that defines banks balance sheets from information of network
+ connectivity.
+ By varying the parameters for the creation of the network, several interbank networks are built,
+ in which the concentrations of debts and credits are obtained from links distributions during the
+ creation networks process. Three main types of interbank network are analyzed for their resilience
+ to contagion: i) concentration of debts is greater than concentration of credits, ii) concentration of
+ credits is greater than concentration of debts and iii) concentrations of debts and credits are similar.
+ We also tested the effect of a variation in connectivity in conjunction with variation in concentration
+ of links.
+ The results suggest that more connected networks with high concentration of credits (featuring
+ nodes that are large creditors of the system) present greater resilience to contagion when compared
+ with the others networks analyzed.
+ Evaluating some topological indices of systemic risk suggested by the literature we have verified the
+ ability of these indices to explain the impact on the system caused by the failure of a node. There is
+ a clear positive correlation between the topological indices and the magnitude of losses in the case
+ of networks with high concentration of debts. This correlation is smaller for more resilient networks.
+
+
+ Resumo Uma das caracterı́sticas mais marcantes dos sistemas financeiros modernos é sua complexa
+ interdependência, destacando-se a rede de exposições bilaterais no mercado interbancário, através
+ do qual as instituições com liquidez excedente podem emprestar para aqueles com falta de liquidez.
+ Enquanto o mercado interbancário é responsável pela alocação eficiente de liquidez, também introduz
+ a possibilidade de risco sistêmico através de contágio financeiro. A insolvência de um banco pode
+ se propagar através da rede, levando à insolvência outros bancos.
+    Além disso, os estudos empı́ricos revelam que algumas redes interbancárias têm caracterı́sticas de
+ redes livres de escala, que significa que a distribuição das conexões entre os bancos segue uma lei de
+ potências. Este trabalho explora as caracterı́sticas do contágio financeiro em redes cuja distribuição
+ de conexões se aproxima de uma lei de potência, utilizando um modelo que define o balance finan-
+ ceiro dos bancos usando as informações de conectividade de rede. Variando os parâmetros para a
+ criação da rede, várias redes interbancárias são construı́das, em que as concentrações de débitos e
+ créditos são obtidas a partir de distribuições de ligações durante o processo de construção das redes.
+ Três tipos principais de rede interbancária são analisados segundo sua resiliência ao contágio: i) con-
+ centração de dı́vidas maior que a concentração de créditos, ii) concentração de créditos maior do que
+ a concentração de dı́vidas e iii) concentrações de dı́vidas e créditos semelhantes. Testamos também
+ o efeito de uma variação na conectividade em conjunto com a variação na concentração de links.
+ Os resultados sugerem que redes mais conectadas e com alta concentração de créditos (apresen-
+ tando nós que são os grandes credores do sistema) apresentam maior resiliência ao contágio quando
+ comparado com as outras redes analisadas. Avaliando alguns ı́ndices topológicos de risco sistémico
+ sugeridos pela literatura podemos verificar a capacidade destes ı́ndices para explicar o impacto no
+ sistema causado pela falha de um nó. Há uma correlação positiva entre os ı́ndices topológicos e a
+ magnitude das perdas no caso de redes com alta concentração de dı́vidas. Esta correlação é menor
+ para redes mais resistentes.
+ Keywords: interbank exposures, power laws, systemic risk, complex networks, financial crashes.
+ Palavras chave: Exposição interbancária, leis de potência, risco sistémico, redes complexas, crisis
+                                                                                                                       2
+
+             financeiras.
+             JEL Classification: G01, G21.
+             Classificação ANPEC: Área 8
+
+
+
+                                                I.   INTRODUCTION
+
+   The financial crisis started in 2007 highlighted, once again, the high degree of interdependence of financial systems.
+A combination of excessive borrowing, risky investments, lack of transparency and high interdependence led the
+financial system to the worst financial meltdown since the Great Depression (FCIC [1]). An increasing interest in
+financial contagion, motivated by the crisis, gave rise to several works in this field in the last years, although the
+subject is not new.
+   The interdependence of financial systems exhibits multiple channels. Financial institutions are connected through
+mutual exposures created in the interbank market, through which institutions with surplus liquidity can lend to those
+with liquidity shortage. While the interbank market is responsible for efficient liquidity allocation, it also introduces
+the possibility for credit risk via financial contagion. Insolvency of one bank can propagate through its links leading
+to insolvency of other banks. Equally important, financial institutions are indirectly connected by holding similar
+assets exposures and by sharing the same mass of depositors.
+   With respect to the direct connections of mutual exposures, the structure of interdependence can be easily captured
+by using a network representation, in which the nodes of the network represent financial institutions, while the links
+represent exposures between nodes (Allen and Babus [2]). Mutual exposures networks are directed networks in which
+in links stand for credits while out links represent debts. The link direction indicates the cash flow at the time of
+debt payment (from debtor to creditor) and also indicates the direction of impact or financial loss in case of default
+of borrowers.
+   Theoretical studies (Allen and Gale [3], Freixas et. al. [4]) have shown that the possibility for contagion via
+mutual exposures depends on the precise structure of the interbank market. Allen and Gale [3] assess the contagion
+generated from an increased demand for liquidity (liquidity shock) of a system consisting of 4 identical regions. They
+demonstrate that if the system formed by these 4 regions is a complete network, in which all nodes have connections
+to each other, then contagion effect is minimized. The authors argue that in complete networks the impact of a
+liquidity crisis in one region may be distributed among all others and thus attenuated. Similar results are found by
+Freixas et. al. [4] in a model with money-centre banks.
+   In recent studies, different models of complex network have been used to generate artificial interbank networks, in
+order to identify if a given network is more or less prone to contagion.
+   Nier et al. [5] simulate contagion from the initial failure of a bank in an Erdös-Rényi random network, finding a
+negative nonlinear relationship between contagion and the level of capitalization of banks. The relationship between
+contagion and connectivity is also nonlinear. An increase in the number of interbank exposures initially has no effect
+on contagion, since the losses are absorbed by the capital of each affected node. However, as the number of connections
+is raised, contagion increases until the point where further increase in connectivity cause contagion to decline. The
+non-monotonic relationship between connectivity and contagion found by the authors reflects the action of two effects:
+on the one hand, the addition of new links adds new channels through which contagion can occur. On the other hand,
+increasing links also represent the distribution of losses among a larger number of nodes, diluting the impact of the
+failure and mitigating the effects of the crisis.
+   Studying a specific case of power-law network, Cont and Moussa [6] find similar results as Nier et al. [5] for the
+relation between connectivity, level of capitalization and contagion.
+   Battiston et al. [7] simulate contagion on a regular network and also find a nonlinear relationship between con-
+nectivity and contagion, but with opposite effect: initially the increase in the number of connections decreases the
+network contagion, while later additions make contagion to increase.
+   The differences in the results indicate that the possibility and extent of contagion depends considerably on the
+structure of each network and specific assumptions of each model.
+   Empirical studies reveal that some interbank networks have features of scale-free networks: this means that the
+distribution of connections among banks follows a power law, p(k) ∼ k −X (Boss et al. [8], Cont et al. [9], Soramäki
+et al. [10], Inaoka et al. [11]). In general terms, some of the most outstanding features reported in the literature are:
+
+   • Networks have low density of links, that is, they are far from complete;
+   • Asymmetrical in-degree and out-degree distribution;
+   • Power law distributions for in and out-degree whose exponent varies around 2 and 3.
+                                                                                                                         3
+
+   It is also noteworthy the characteristic reported by Cont et al. [9] in the study of the Brazilian network: there is
+a positive association between the size of exposures (assets) and the number of debtors (in-degree) of an institution,
+and a positive association between the size of liabilities and the number of creditors (out-degree) of an institution.
+More (less) connected financial institutions have larger (smaller) exposures (links weights).
+   The aim of this paper is to identify, through simulations of networks whose distributions approach power laws, how
+scale free networks behave with regard to financial contagion via mutual exposures and what characteristics make a
+given network more or less prone to propagate crises. Our particular interest is to evaluate the role of the exponents
+that characterize the scale free network, since these exponents determine the concentration of debts (out-degree) and
+credits (in-degree) in the financial network. We construct networks whose connectivity distribution approaches a
+power law using the algorithm introduced by Bollobás et al. [12], as extension of the method for network construction
+used by Barabasi and Albert [13]. Another important ingredient that we include in our analysis is to introduce a
+simplified model that determines the banks balance sheets from information of network connectivity; we simulate the
+patrimonial structure of the financial system by dividing each balance sheet in bank assets and liabilities (relationships
+with other financial agents) and nonbank assets and liabilities (relations with non-financial agents).
+   By varying the parameters for the creation of the network, several interbank networks are built, in which concen-
+trations of debts and credits are obtained from links distributions during the networks creation process. Three main
+types of interbank network are analyzed for their resilience to contagion: i) networks in which concentration of debts
+is greater than concentration of credits, ii) networks in which concentration of credits is greater than concentration
+of debts and iii) networks in which concentrations of debts and credits are similar. We also tested the effect of a
+variation in connectivity in conjunction with variation in concentration of links, as well as the effect of network size
+and the level of bank capitalization. For all networks that we have generated, the financial contagion starts from the
+single failure of a node, which affects neighboring nodes by default on its obligations in the interbank lending market.
+Thus, this work focuses on the problem of credit risk, disregarding other equally important sources of contagion, as
+the risk of adverse shocks reaching several institutions at the same time.
+   Some topological indices of systemic risk suggested in the literature (Cont et al. [9]) are evaluated in order to verify
+its ability to explain the impact of the failure of a node on the system.
+   The paper is structured as follows: section II describes the model used for simulation of financial networks. We
+describe the methodology used in the construction of connections between nodes, as well as the method for the
+simulation of their balance sheets. Section III introduces the method used to simulate financial contagion and presents
+the impact indices, by which we evaluate the nodes in respect to their default effect. For each simulated network all
+nodes are analyzed individually. Section IV presents the results of the various simulations performed by varying the
+parameters of the networks formation, the scale of the system (number of nodes) and the capital level. In section ??
+we investigate the contribution of local characteristics of the networks in explaining the level of contagion. Section V
+summarizes the main conclusions.
+
+
+                                 II.   GENERATING SCALE FREE NETWORKS
+
+   In their study on scale free networks, Barabasi and Albert [13] propose a preferential attachment mechanism to
+explain the emergence of the power-law degree distribution in nondirected graphs. The resulting network exhibits a
+few nodes with very high connectivity (called hubs) and a large number of nodes with a few or a single link. This
+is not really representative of real bank networks where there exist hubs but not so many single connected nodes.
+Bollobás et al. [12] proposed a modification of the algorithm: a generalization for directed networks of the model
+developed by Barabasi and Albert [13]. In their model the network is formed by preferential attachment that depends
+on the distribution of in-degree, kin and out-degree kout . This algorithm has the advantage of producing different
+exponents for the in and out degrees, which are necessary to reproduce the characteristics of real networks (Allen and
+Babus [2]). The following describes the steps for generating the network according to Bollobás et al. [12].
+   Let α, β, γ, δin and δout be non-negative real numbers such that α + β + γ = 1. Let G0 be any initial network[23],
+and let t0 be the number of links of G0 . At each step, t, starting with t = t0 + 1, we add a new link to the network,
+so that in step t the network has t links and a random number of nodes, n(t). At each step the addition of the new
+link may be accompanied or not by adding new node, according to the following method (Bollobás et al. [12]):
+
+   • With probability α, we add a new node v with a link from v to an existing node, u, selected with probability:
+
+                                                                  kin (ui ) + δin
+                                                   p(u = ui ) =                                                        (1)
+                                                                   t + n(t)δin
+                                                                                                                        4
+
+   • With probability β, we select an existing node v with probability:
+
+                                                                kout (vi ) + δout
+                                                 p(v = vi ) =                                                         (2)
+                                                                 t + n(t)δout
+
+     and add a link from v to an existing node u, chosen with probability:
+
+                                                                 kin (ui ) + δin
+                                                  p(u = ui ) =                                                        (3)
+                                                                  t + n(t)δin
+
+   • With probability γ, we add a new node u with a link from an existing node v to u, where v is selected with
+     probability:
+
+                                                                kout (vi ) + δout
+                                                 p(v = vi ) =                                                         (4)
+                                                                 t + n(t)δout
+
+  where kin (ui ) is the in-degree of node ui and kout (vi ) is the out-degree of node vi . Since the probability β refers
+to the addition of a link without any creation of a node, increasing the value of β implies increasing the average
+network connectivity. In turn, the parameters α and γ are related to the addition of new nodes while increasing the
+connectivity of existing nodes.
+  As stated above, for interbank networks the in-degree of a node, kin , represents its number of debtors, so large
+values of α tends to generate nodes that concentrate many credits, i.e., the most connected nodes are large creditors.
+In a complementary way, large values of γ (as opposed to α) tend to generate large debtors nodes. On the other hand,
+the parameters δin and δout represent weights distributed among the nodes, causing everyone to have a chance of
+being selected in the attachment process. For example, with δin > 0, even a node without any in link can be selected
+to receive an in link with probability:
+
+                                                                    δin
+                                                p(u = ui ) =                                                          (5)
+                                                                t + n(t)δin
+
+  The similar situation occurs when we have δout > 0.
+  In their work, Bollobás et al. [12] show that, when the number of nodes goes to infinity and the connectivity grows,
+we have:
+
+                                                                 −XIN
+                                                  p(kin ) ∼ CIN kin                                                   (6)
+
+                                                                  −XOU T
+                                                p(kout ) ∼ COU T kout                                                 (7)
+
+where:
+                                                           1 + δin (α + γ)
+                                               XIN = 1 +                                                              (8)
+                                                               α+β
+
+
+                                                           1 + δout (α + γ)
+                                             XOU T = 1 +                                                              (9)
+                                                                β+γ
+  The limit N → ∞ can obviously not be achieved, but the result is valid when the number of nodes grows and we
+take the more connected ones, i.e., power laws for kin and kout will emerge in the tail of the distribution of large
+networks. Performing several simulations using different parameter values we find that, as the network grows, the
+convergence to the limit values occurs from the left, i.e., from lower values than predicted by the formulas of XIN
+and XOU T .
+  We want to compare networks with different values for XIN and XOU T (featuring different concentrations of kin
+and kout ), while keeping other characteristics similar, such as average connectivity and total concentration of links
+distribution. We are particularly interested in networks whith values of XIN and XOU T around 2 and 3, in agreement
+with estimated empirical values (for example, Boss et al. [8], Cont et al. [9], Soramäki et al. [10]). We restrict the
+degrees of freedom of the model, imposing the following constraints on the parameters:
+                                                                                                                                      5
+
+
+
+                                                                      α + γ = 0, 75                                                 (10)
+
+                                                                      δin + δout = 4                                                (11)
+
+   For α + γ = 0, 75, we have β = 0, 25. Since β is the probability of creating a link without addition of a new node,
+we can not use a value of β too small, otherwise we will have a network with very low average connectivity. On the
+other hand, we would like to have values of α and γ high enough for creating asymmetry between the distributions
+of in-degrees and out-degrees. The values α + γ = 0, 75 and β = 0, 25 satisfy those requirements. For example, the
+asymmetry between the exponents estimated XIN and XOU T for networks of 1000 nodes is apparent if we use values
+α and γ in the ratio of 1:3 (or 3:1), which implies, with α + γ = 0, 75, the values α = 0.1875 and β = 0.5625 (or
+α = 0.5625 and β = 0.1875).
+   Also the differences between δin and δout cause asymmetry between the estimated exponents XIN and XOU T . We
+use δin and δout in the both ratios 1:3 and 3:1, in order to accentuate the asymmetry of the network.
+   In addition to the equations 10 and 11, we will cover the spaces of parameters α × γ e δout × δin by varying the
+following radial lines:
+
+                                                                  δout        4 − δin
+                                                             α=        γ → α=         γ                                             (12)
+                                                                  δin           δin
+  The intersection points of equation 12 with the constraints 10 and 11 give us the set (α, γ, δin , δout ), which in turn
+define pairs (XIN , XOU T ) as shown in figure 1.
+                                                                           γ, δin
+                           10                     8               6                 4       2                    0
+                                                                                                                     0
+
+
+
+
+                                                                                                                     2
+
+
+
+
+                                                                                                                     4
+                           7
+                    Xout                                                                                                  α, δout
+
+                                                                                                                     6
+                                   Xout = (Xin+15)/(Xin-1)
+                                   Network GD0
+                                                                                                α + γ = 0.75
+                                   Network S0
+                                                                                                δout + δin = 4
+                                   Network GC0
+                                                                                                                     8
+
+
+
+
+                           2                                                                                         10
+                               2                      4                6                8          10
+                                                                            Xin
+
+FIG. 1: Parameter space and space of exponents: spaces α × γ and δout × δin are represented with origin in the upper right
+corner and the space of exponents XIN × XOU T with origin at the bottom left.
+
+  Using the equations 10, 11 and 12 we restate the parameters α, β, γ e δout as functions of δin :
+                                                                            12 − 3δin
+                                                                      α=                                                            (13)
+                                                                               16
+
+                                                                               3
+                                                                       γ=         δin                                               (14)
+                                                                               16
+
+                                                                      δout = 4 − δin                                                (15)
+                                                                                                                           6
+
+Replacing expressions 13, 14 and 15 in the equations for XIN e XOU T respectively, we obtain the two parametric
+equations:
+                                                              16 + 12δin
+                                                 XIN = 1 +                                                            (16)
+                                                              16 − 3δin
+
+                                                               68 − 9δin
+                                                 XOU T = 1 +                                                          (17)
+                                                               4 + 3δin
+from which we finally have:
+                                                             XIN + 15
+                                                   XOU T =                                                            (18)
+                                                             XIN − 1
+   The networks constructed using relationship 18 are therefore generated through variation of a single degree of
+freedom, having similar average connectivity and link concentration (limited by the constraints 10 and 11), differing
+in the value of pairs (XIN , XOU T ). As we reported above, the exponent of a power law distribution reflects the
+concentration of the distribution: a smaller absolute value of the exponent corresponds to a more concentrated
+distribution (Kunegis and Preusse[14]). Therefore, differences between exponents XIN and XOU T represent differences
+between the concentrations in in-out degree distribution.
+   For our studies of contagion we selected three points on the curve in figure 1 (equation 18), representing three
+distinct networks, denominated as GD0 , S0 e GC0 . The network GD0 is more concentrated in debtor side: with a
+higher concentration of debts than credits it is generated so that the largest banks in the network are major debtors
+of the system. The network GC0 has higher concentration of credits: the biggest banks are major creditors of the
+network. The network S0 corresponds to the symmetric case, in which the concentration of debts and credits are
+similar. The limit values (XIN , XOU T ) for these networks are shown in Table I.
+
+
+ TABLE I: Limit values ??of the exponents XIN e XOU T , average connectivity and Gini index for three selected networks.
+
+                                 XIN   XOU T      <k>                 G           Gin            Gout
+                Network GD0 8.4286 3.1538 2.646 (±0.039) 0.457 (±0.006) 0.418 (±0.013) 0.746 (±0.009)
+                Network S0  5.0000 5.0000 2.663 (±0.041) 0.429 (±0.006) 0.578 (±0.015) 0.576 (±0.012)
+                Network GC0 3.1538 8.4286 2.652 (±0.028) 0.456 (±0.008) 0.748 (±0.011) 0.410 (±0.008)
+
+   The choice of such values takes into account that we simulate small networks of 1,000 nodes (in agreement with
+real financial networks, for example, Boss et al. [8], Soramäki et al. [10], Mistrulli [15]), for which the estimated
+exponents are below the limit values. Indeed, generating networks of 1,000 nodes with the selected parameters, we
+obtain exponents between 2.2 and 3.2. Networks with these values of parameters are shown in figure 2. The estimation
+of the exponents of the power law of each distribution is done using the maximum likelihood estimator for discrete
+power laws, according to Clauset et al.[16].
+   Table I also shows the values of the average connectivity for the generated networks, < k >, the Gini coefficient of
+distribution of links, G, the Gini coefficient of the distribution of in-links (in-degree distribution), Gin , and the Gini
+coefficient of the distribution of out-links (out-degree distribution). The values in the table are average values over
+20 simulations for networks with 1,000 nodes.
+   For a better visualization of the networks, we have represented in figure 3 examples of the networks GC0 , S0 and
+GD0 , whith number of nodes N = 100 and N = 1000. The smaller networks of 100 nodes provide better visualization
+of differences in the distribution of directed links.
+   In order to complete the information about an interbank network, it is necessary to assign weights to the links,
+since the weights represent the magnitude of exposures between banks. The sum of in-degree weights of a bank, i,
+represents its applications in other institutions of the financial system (loans to other banks), a variable that we define
+as bank assets, BAi . The sum of out-degrees weights represents the total obligations of i to other financial institutions
+(loans from other banks), which we will call bank liabilities, BLi . If there is a link from bank j to bank i, we define
+the exposure of bank i to j by wji , such that:
+
+                                                             X
+                                                    BAi =             wji                                             (19)
+                                                                i }
+                                                            j∈{kin
+                                                                                                                                                                                           7
+
+                                                                     In-degree and out-degree distributions
+                                                Network GC0                                       Network S0                                         Network GD0
+                                      1                                               1                                                    1
+
+
+          Frequencies (N = 10 )
+                                                     In-degree                                           In-degree                                         In-degree
+         6
+                                                     Out-degree                                          Out-degree                                        Out-degree
+                                                     Xin = 2.9113 (3.1538)                               Xin = 4.0362 (5.0000)                             Xin = 5.9516 (8.4286)
+                                    0.01             Xout = 5.6537 (8.4286)        0.01                  Xout = 4.0881 (5.0000)          0.01              Xout = 2.8823 (3.1538)
+
+
+
+
+                                  0.0001                                       0.0001                                               0.0001
+
+
+
+
+                                  1e-06                                      1e-06                                                   1e-06
+                                           1   10   100       1000       10000     1              10           100               1000      1        10   100       1000        10000
+
+                                      1                                               1                                                    1
+          Frequencies (N = 10 )
+
+
+
+
+                                                     In-degree                                           In-degree                                         In-degree
+         3
+
+
+
+
+                                                     Out-degree                                          Out-degree                                        Out-degree
+                                                     Xin = 2.2448 (3.1538)                               Xin = 2.6253 (5.0000)                             Xin = 3.0560 (8.4286)
+                                     0.1             Xout = 3.1947 (8.4286)          0.1                 Xout = 2.6186 (5.0000)           0.1              Xout = 2.2363 (3.1538)
+
+
+
+
+                                    0.01                                            0.01                                                 0.01
+
+
+
+
+                                   0.001                                           0.001                                                0.001
+                                           1        10                       100           1             10                       100           1        10                        100
+
+                                                                                           In-degrees and out-degrees
+
+FIG. 2: Log-log plots for the in and out degrees distributions for three selected networks. First row: plots of networks GC0 ,
+S0 and GD0 generated with 106 nodes. In the second row: plots of the same networks generated with 103 nodes. The values
+in parentheses next to estimated exponents refer to the limit values according to the model.
+
+
+         i
+where {kin } is the set of banks having obligations to the bank i. Similarly, if there is a link from bank i to bank j,
+we define the obligation of bank i to bank j by wij , such that:
+                                                            X
+                                                  BLi =          wij                                               (20)
+                                                                                                       i
+                                                                                                   j∈{kout }
+
+          i
+where {kout } is the set of banks for which bank i has obligations to pay.
+   In a study on the Brazilian interbank network, Cont et al.[9] highlight the non-linear positive relationship between
+link weights and connectivity of nodes in line with the widespread notion that the size of balance sheets and connec-
+tivity of banks are positively related (Arinaminpathy et al.[17]). From this assumption and in order to compute the
+weight of each of the links of a node, we define the following expression for the weight of the links:
+   • For a link from i to j:
+                                                                                                          i      j
+                                                                                                        kout · kin
+                                                                                               wij =    max · k max                                                                      (21)
+                                                                                                       kout     in
+
+   • For a link into i from j:
+                                                                                                          i    j
+                                                                                                        kin · kout
+                                                                                               wji =    max · k max                                                                      (22)
+                                                                                                       kin     out
+
+                         max        max
+In equations 21 and 22 kin   and kout   denote the maximum values of kin and kout found in the network. The values
+wij form matrix n × n of mutual exposures, W , where each element wij ∈ W represents the exposure of the bank j
+to the bank i. Note that the level of mutual exposures between any two banks is closely related to the local structure
+of the network.
+   Once established the values of bank assets and bank liabilities, BAi and BLi , we define the other elements of the
+balance sheet: nonbank assets, nonbank liabilities and equity.
+                                                                                                                       8
+
+
+
+
+                             FIG. 3: Visualization of selected networks: N=100 and N=1000.
+
+
+   1. Nonbank assets, N BA: refer to all applications except interbank ones. They include loans to non-financial firms
+      and households.
+   2. Nonbank liabilities, N BL: refer to funding from outside the system, mostly represented by deposits of non-
+      financial agents.
+   3. Equity, E: represents shareholders’ funds invested in the bank, i.e., the partners’ capital.
+
+   The balance sheets are represented in simplified form, in which we do not take into account elements such as
+different maturities and differences in assets liquidity and risk.
+   For each bank, i, the balance sheet obey the identity that total assets equals total liabilities:
+
+                                          BAi + N BAi = BLi + N BLi + Ei                                            (23)
+
+  Reflecting the minimum capital regulations of Basel Accords we set equity of each bank as a proportion of its assets:
+
+
+                                                Ei = λi (BAi + N BAi )                                              (24)
+
+where λi represents the capital/assets ratio.
+   For the simulations in this work we will adopt three values of capital/assets ratio: the undercapitalized case, with
+λ = 0.01, and values λ = 0.05 and λ = 0.1, consistent with the empirical values observed (IMF [18]). For each
+bank the capital/asset ratio is extracted from a normal distribution λi ∼ N (λ, σ) subject to the constraint λi > λ,
+i.e., σ is a stochastic positive deviation from the minimum λ, characterizing the heterogeneity of banks as regard to
+capitalization. The simulations are performed using σ = 0.01.
+   To represent the ratio of nonbank assets to total assets, we introduce the following relation that defines the nonbank
+assets for each bank, i, as:
+                                                                                                                    9
+
+
+
+                                                N BAi = ξ(BAi + BLi )                                            (25)
+
+  Defined this way, nonbank assets are a function of bank connectivity (via BAi and BLi ), maintaining consistency
+with the assumption that the balance size is related to connectivity. Let’s use ξ as calibration factor to control the
+N BAi to total assets ratio.
+  The identities 23, 24 and 25 form a system of equations by which the value of N BLi can be determined:
+
+                                  N BLi = (1 − λi )(1 + ξ)BAi + [(1 − λi )ξ − 1]BLi                              (26)
+
+  Thus, the nonbank assets to total assets ratio and the nonbank liabilities to total liabilities ratio are:
+
+
+                                             N BAi      ξ(BAi + BLi )
+                                                   =                                                             (27)
+                                               Ai    (ξ + 1)BAi + ξBLi
+
+
+                                  N BLi   (1 − λi )(1 + ξ)BAi + [(1 − λi )ξ − 1]BLi
+                                        =                                                                        (28)
+                                    Li       (1 − λi )(1 + ξ)BAi + (1 − λi )ξBLi
+
+   As BAi e BLi are random values (depending on network formation process) we evaluate the equations 27 and 28
+in three possible limits:
+
+   1. BAi  BLi :
+                                                         N BAi
+                                                               →1                                                (29)
+                                                           Ai
+
+
+                                                   N BLi   (1 − λi )ξ − 1
+                                                         →                                                       (30)
+                                                     Li      (1 − λi )ξ
+
+   2. BAi = BLi :
+                                                       N BAi     2ξ
+                                                             =                                                   (31)
+                                                         Ai    2ξ + 1
+
+
+                                                N BLi     2ξ(1 − λi ) − λi
+                                                      =                                                          (32)
+                                                  Li    2ξ(1 − λi ) − λi + 1
+
+   3. BAi  BLi :
+                                                       N BAi    ξ
+                                                             →                                                   (33)
+                                                         Ai    ξ+1
+
+                                                          N BLi
+                                                                →1                                               (34)
+                                                            Li
+
+   Figure 4 shows the ratios 27 and 28 for different values of ξ and for the three values of λ. For the simulations in
+this work we fix ξ = 2 in order to obtain balance sheets in which nonbank assets and nonbank liabilities represent on
+average more than 50% of total assets and liabilities.
+   From the method described in this section we are able to represent the balance sheet of each bank by using only
+information from the network and the parameters λ and ξ. In the following section we will describe the cascade of
+failures following the initial default of one bank of the network.
+                                                                                                                                                                     10
+
+                                         BA << BL                                  BA = BL                                    BA >> BL
+                         1.1                                         1.1                                        1.1
+                           1                                           1                                          1
+                         0.9                                         0.9                                        0.9
+                         0.8                                         0.8                                        0.8
+                         0.7                                         0.7                                        0.7
+                         0.6                                         0.6                                        0.6
+                         0.5                                         0.5                                        0.5                                      λ = 0.01
+                         0.4                                         0.4                                        0.4
+                         0.3                            NBL/L        0.3                           NBL/L        0.3                          NBL/L
+                         0.2                                         0.2                                        0.2
+                                                        NBA/A                                      NBA/A                                     NBA/A
+                         0.1                                         0.1                                        0.1
+                           0                                           0                                          0
+                        -0.1                                        -0.1                                       -0.1
+                               0     1              2           3          0   1             2             3          0   1              2           3
+
+
+                         1.1                                         1.1                                        1.1
+         NBA/A, NBL/L
+
+
+
+
+                           1                                           1                                          1
+                         0.9                                         0.9                                        0.9
+                         0.8                                         0.8                                        0.8
+                         0.7                                         0.7                                        0.7
+                         0.6                                         0.6                                        0.6
+                         0.5                                         0.5                                        0.5                                      λ = 0.05
+                         0.4                                         0.4                                        0.4
+                         0.3                                         0.3                                        0.3
+                                                        NBA/A                                      NBL/L                                     NBL/L
+                         0.2                                         0.2                                        0.2
+                         0.1                            NBL/L        0.1                           NBA/A        0.1                          NBA/A
+                           0                                           0                                          0
+                        -0.1                                        -0.1                                       -0.1
+                               0     1              2           3          0   1             2             3          0   1              2           3
+
+
+                         1.1                                         1.1                                        1.1
+                           1                                           1                                          1
+                         0.9                                         0.9                                        0.9
+                         0.8                                         0.8                                        0.8
+                         0.7                                         0.7                                        0.7
+                         0.6                                         0.6                                        0.6
+                         0.5                                         0.5                                        0.5                                      λ = 0.1
+                         0.4                                         0.4                                        0.4
+                         0.3                                         0.3                                        0.3
+                                                        NBL/L                                      NBL/L                                     NBL/L
+                         0.2                                         0.2                                        0.2
+                         0.1                            NBA/A        0.1                           NBA/A        0.1                          NBA/A
+                           0                                           0                                          0
+                        -0.1                                        -0.1                                       -0.1
+                               0     1              2           3          0   1             2             3          0   1              2           3
+
+                                                                                      ξ
+
+                                   FIG. 4: Ratios N BA/A and N BL/L as functions of ξ for the three values of λ.
+
+
+  III.   CONTAGION IN INTERBANK NETWORKS: DEFAULT CASCADE AND DEFAULT IMPACT
+
+   In this section we present the methodology used to evaluate the propagation of losses in the interbank network.
+We simulate the insolvency of a single bank, exposed to an external shock represented by the total loss of value of its
+nonbank assets. Each bank is tested independently and the impact of its default on the system evaluated.
+   In a hypothetical scenario a bank, i, becomes insolvent, being unable to completely fulfill its obligations. If at
+time t, bank j realize that its counterparty i is unable to repay its interbank liability wij in full, then bank j must
+                                                      0        0
+reevaluate its application in bank i, from wij to wij    : (wij  − wij ) < 0. This process adversely affect the capital of j,
+                   0                                                                          0
+since variation (wij − wij ) is incorporated as a loss. It happens that the smaller value, wij  , the defaulting bank i can
+effective afford, depends on the financial conditions of other banks, banks for which i had granted loans. Any further
+failure reduces the value of assets, increasing the losses of banks that have already defaulted.
+                                                                                            0
+   In their work Eisenberg and Noe [19] study the problem of calculating the values wij       that banks would be able to
+pay at the time of settlement of its multilateral obligations. Given the array of mutual exposures, W , the problem is
+to determine the vector of payments, p = (p1 , p2 , ..., pn ), where:
+
+                                                                                      n
+                                                                                      X
+                                                                                              0
+                                                                               pi =          wij                                                                    (35)
+                                                                                      j=1
+
+   The authors show that under mild regularity conditions, there is a unique payment vector that settle the system,
+and develop an iterative algorithm to solve the problem. In the context of our work, where we have a single node
+initially insolvent, the algorithm can be described as follows:
+   1. Compute the losses to all banks resulting from the failure of bank i assuming that all other banks are able to
+      repay their liabilities. Stop if no other bank fails, otherwise:
+   2. Let j denote the bank or group of banks whose losses exceed their equity. Compute the losses to all banks
+      resulting from the failure of banks i and j. Repeat step 2 until no further bank fails[24].
+                                                                                                                           11
+
+   The algorithm described above allows us to calculate two important measures to assess the impact of a bank failure
+on the network: the Default Impact and Default Cascade. For a bank i, the Default Impact, DIi refers to the reduction
+in total assets of the financial system as a result of losses incurred via contagion, as a proportion of total initial assets.
+If we denote the total assets of the system at the initial time as A0 and at final time (after the external shock) as At ,
+the Default Impact is given by:
+
+                                                         A0 − At − N BAi
+                                                 DIi =                                                                   (36)
+                                                               A0
+
+   The equation (36) excludes from the computation of DIi the value of Initial Impact (N BAi ), representing only the
+losses due to contagion. The Total Impact, T Ii , is simply the sum of the Initial Impact and the Default Impact:
+
+                                                     N BAi   A0 − At − N BAi
+                                            T Ii =         +                                                             (37)
+                                                      A0           A0
+
+  The measure Default Cascade, DCi , refers to the number of insolvent banks due to the failure of bank i, as a
+proportion of the total number of banks of the network. Both the Default Impact and Default Cascade of a bank
+reveal how the network would be affected by its failure, taking into account only the direct effects of loss propagation
+through interbank exposures. Although the Default Impact seems the most relevant measure, since it refers to the
+magnitude of impact in terms of asset value, equally important is the Default Cascade, since the way a crisis is felt
+by economic agents is also related to the number of affected banks.
+  To evaluate the sensitivity of contagion to local measures of connectivity and concentration, Cont et al. [9] propose
+the indices Counterparty susceptibility, CS(i), and Local network frailty, f (i). Below we reproduce the definitions of
+the authors [9].
+  Definition (Counterparty susceptibility): The counterparty susceptibility CS(i) of a node i is the maximal (relative)
+exposure to node i of its counterparties:
+                                                                       wij
+                                                      CS(i) = max
+                                                                   j   Ej
+
+  where Ej is the total exposures of counterparty j.
+  CS(i) is a measure of the maximal vulnerability of creditors of i to the default of i.
+  Definition (Local network frailty): The local network frailty f (i) at node i is defined as the maximum exposure to
+node i of its counterparties j (in % of capital of j), weighted by the size of their interbank liability:
+                                                                   wij
+                                                     f (i) = max       BLj
+                                                             j     Ej
+
+   As well as the measure CSi , the Local fragility network is a measure of the vulnerability of creditors, but it also
+reflects the sensitivity of indirect lenders of i, represented by the liabilities of counterparty j, BLj .
+   For the simulations implemented in this paper we calculate the indices CS(i) and f (i) in order to verify the
+relationship between these topological characteristics and the default impact and defaults cascade of the nodes.
+
+
+                                                      IV.   RESULTS
+
+  In this section we present the results obtained in contagion simulations for networks produced according to the
+methodology presented in section II. We have three principal networks as already defined: network GD0 presents
+a higher concentration of debts than credits, network GC0 has higher concentration of credits and S0 is symmetric,
+generated with equal concentrations.
+
+
+                                       A.   Default Impact and Default Cascade
+
+   For each set of parameters that defines a network category (GD0 , S0 and GC0 ) we implemented 20 simulations, so
+that the analysis is based on 20 realizations of networks of type GD0 , 20 realizations of S0 networks and 20 realizations
+of GC0 networks. For each generated network and for each bank, i, the Default Impact, DIi and Default Cascade,
+                                                                                                                                 12
+
+DCi , were calculated. The results presented in this section are for networks with 1000 nodes, with capital level of
+λ = 0.05.
+  Figure 5 shows the ranking of banks for the three networks, in decreasing order of DIi . The values shown are
+average values for each ranking position, for example, for each network type the greater Default Impact (first ranking
+position) is the average of greater impacts for 20 simulations. Equivalently, the subsequent positions of the ranking
+are average values.
+
+                                                      Default Impact (N = 1000, λ = 0.05)
+
+                            0.1                                                                  Network GD0 (ID: 0.4801)
+                                                                                                 Network GC0 (ID: 0.4332)
+                                                                                                 Network S0: (ID: 0.4551)
+                           0.08
+                                                                           Coefficient of variation for each ranking position
+                                                                 0.5
+
+
+                           0.06                                  0.4
+                     DIi
+
+
+
+
+                                                                 0.3
+
+                                                            cv
+                                                                 0.2
+                           0.04
+                                                                 0.1
+
+                                                                  0
+                           0.02                                        0   20    40     60   80 100 120 140 160 180 200
+                                                                                      Ranking (banks ordered by DIi)
+
+
+
+
+                             0
+                                  1   2   3   4   5    6   7 8 9 10 11 12 13 14 15 16 17 18 19 20
+                                                           Ranking (banks ordered by DIi)
+
+FIG. 5: Ranking of banks in decreasing order of DIi : The figure shows the values ??for the first banks causing major impact.
+Recall that, for each bank, i, the Default Impact, DIi refers to the losses suffered by the system via contagion (from the default
+of i) as a proportion of total assets of the network. The inset graph presents the values of the coefficient of variation (cv = σ/µ)
+at each ranking position for the 200 banks with greater impact.
+
+   As we can see, the difference between the three types of networks is more pronounced in the first ranking positions,
+although these positions show greater dispersion around the mean value: in the first position the standard deviation
+is, for the three categories of networks, around 40% of the average, as shown in the inset graph of Figure 5.
+   One can consider the area under the ranking curve, which corresponds to the sum of individual impacts, as a
+measure of the network systemic risk. We then have for each network an aggregate measure, DI, given by:
+
+                                                                           n
+                                                                           X
+                                                                 DI =            DIi                                            (38)
+                                                                           i=1
+
+   The measure DI corresponds to a measure of central tendency: in fact, if DI is divided by N (number of nodes) we
+have the average value of individual default impact. Ordering the three networks by the aggregate index, DI, we have
+GD0 network with greater impact (DI=0.48), followed by S0 (DI=0.46), and finally the GC0 network (DI=0.43) (see
+figure 5). The ordering follows the direction of increasing concentration of debt links, from the highest concentration
+in the GD0 network, then a moderate concentration in S0 , until the smallest concentration in GC0 .
+   Otherwise, if the three networks are evaluated according to their principal banks (first banks in the ranking), the
+network GD0 remains in the first position of impact, but the other two switch positions: banks of network GC0 with
+higher DIi presents greater effect over the system than the big banks of network S0 . This fact can be explained by
+differences in the asset concentrations of networks GD0 , GC0 and S0 . It happens that banks with large balance sheets
+impact more strongly the system and although we have constructed the networks in a way that they present similar
+concentrations of connectivity, interbank exposures as defined by the model accentuates assets concentrations, also
+increasing the differences between them. In fact, the Gini coefficient for asset concentration is 0.83 for the network
+GC0 , 0.80 for GD0 and 0.78 for S0 [25]. With the highest Gini, the network GC0 has a large bank whose total asset
+                                                                                                                             13
+
+is 122 times greater than the average assets of the network, while the largest bank in the symmetric network S0 owns
+a total asset 55 times greater than average.
+   The comparison between networks requires caution, since an estimation of actual losses would involve a study of
+stress scenarios leading to default of a node or a set of nodes of the system.
+   Comparison is more straightforward when the networks are evaluated by the default cascade of their nodes, because
+in this case the difference is more pronounced, as shown in figure 6. For default cascade we also define as aggregate
+measure the area under the ranking curve:
+
+                                                                  n
+                                                                  X
+                                                       DC =             DCi                                                (39)
+                                                                  i=1
+
+
+
+                                              Default cascade (N = 1000, λ = 0.05)
+                          0.07
+
+                                                                                      Network GD0 (DC: 0.99)
+                          0.06                                                        Network S0 (DC: 0.79)
+                                                                                      Network GC0 (DC: 0.49)
+                          0.05
+                                                       0.08
+
+                                                       0.07
+                          0.04
+                                                       0.06
+                    DCi
+
+
+
+
+                                                       0.05
+                          0.03
+                                                       0.04
+
+                                                       0.03
+                          0.02                         0.02
+
+                                                        0.01
+
+                          0.01                            0
+                                                               1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+
+
+                            0
+                                 0      50          100          150          200                  250              300
+                                                    Ranking (banks ordered by DCi)
+
+FIG. 6: Ranking of banks in decreasing order of DCi : The figure shows the values ??for the 300 banks causing greater cascades.
+As defined earlier, the Cascade Default, CDi , refers to the number of insolvent banks due to the initial failure of bank i as a
+proportion of total number of banks in the network. The inset graph shows in detail the top 20 banks.
+
+   Here the ordering of networks is clear: the network GD0 has greater potential to generate contagion in case of
+default of its nodes. Secondly we have the symmetric network S0 , and finally the network GC0 . The size of the
+balance sheet has less influence on the Default Cascade than over the Default Impact, and the effect of concentrations
+of debt and credit links becomes more apparent. In fact, as expected, the Default Cascade increase towards increased
+concentration of debts. Although having similar sizes, the bank that leads to higher cascade in network GD0 reaches
+about 6% nodes of the network, compared with less than 1% for GC0 network.
+
+
+                                              B.   The effect of network size
+
+   To evaluate the effect of scale on the indices of contagion, we vary the network size for the three kinds of network
+analyzed, producing networks with number of nodes N = 500, N = 1000, N = 5000 e N = 10000. The parameters are
+the same as those used in the previous section and therefore the average connectivity remains the same. The variation
+of size causes no change in the DI and DC measures. This feature implies that the average values of individual
+impacts, DIi and default cascade DCi , decrease when network increases, minimizing the importance of each node as
+the number of nodes increases. Thus, we conclude that larger networks exhibit nodes with less potential for contagion,
+situation already observed in previous simulation works (Cont and Moussa [6]).
+   Figure 7 presents the values of the first position in the rankings of DIi and DCi for the three categories of network
+and different sizes, showing the declining impact of individual nodes.
+                                                                                                                                                                               14
+
+                 Greater individual Default Impact for different network sizes                           Greater individual Default Cascade for different network sizes
+                                                                                                  0.125
+      0.125                                                                   Network GC0                                                                         Network GC0
+                                                                              Network S0                                                                          Network S0
+                                                                              Network GD0                                                                         Network GD0
+                                                                                                    0.1
+         0.1
+
+
+                                                                                                  0.075
+      0.075
+
+
+
+
+                                                                                            max
+max
+
+
+
+
+                                                                                             DCi
+ DIi
+
+
+
+
+       0.05                                                                                        0.05
+
+
+
+      0.025                                                                                       0.025
+
+
+
+             0                                                                                           0
+                          N = 500      N = 1000         N = 5000      N = 10000                                    N = 500     N = 1000     N = 5000      N = 10000
+
+
+ FIG. 7: Left: values of Default Impact of the first ranking position (bank with larger DIi ), DIimax , for different network sizes.
+ Right: values of Default Cascade of the first ranking position (bank with larger DCi ), DCimax , for different network sizes.
+
+
+                                                                       C.       Effect of capital level
+
+  We evaluated the effect of a change in the capital level, λ on the Default Impact and Default Cascade. The aggregate
+ measures, DIi and DCi are shown in figure 8.
+
+                          Default Impact for three capital levels                                               Default Cascade for three capital levels
+
+      0.6                                                                                          1.5
+                                                                              Network GC0                                                                         Network GC0
+                                                                              Network S0                                                                          Network S0
+                                                                              Network GD0         1.25
+      0.5                                                                                                                                                         Network GD0
+
+
+
+      0.4                                                                                            1
+                                                                                             DC
+DI
+
+
+
+
+      0.3                                                                                         0.75
+
+
+      0.2                                                                                          0.5
+
+
+       0.1                                                                                        0.25
+
+
+        0                                                                                           0
+                            λ = 0.01         λ = 0.05              λ = 0.10                                         λ = 0.01         λ = 0.05          λ = 0.10
+
+ FIG. 8: Left: values of DI in the three categories of network for λ = 0.01, λ = 0.05 and λ = 0.10. Right: values of DC in the
+ three classes of network for λ = 0.01, λ = 0.05 e λ = 0.10.
+
+   As expected, the increase of capital is responsible for a decrease in contagion for all network categories. Obviously
+ a decrease in capital has the reverse effect. Testing the network for lower values of λ gives us an idea of possible
+ amplified contagion in the event of macroeconomic stress, when much of the network may become less capitalized. As
+ one can see in figure 8, the variation of capital level has more effect on the Default Cascade than on Default Impact.
+
+
+                                                  D.       Effect of connectivity and links concentration
+
+   Previous studies that simulate contagion in different network topologies address the question of the influence of
+ connectivity on the propagation of losses. Conclusions differ, depending strongly on the structure of the networks
+ used in each work.
+   It should be considered that if we simply increase network connectivity through addition of new random links, the
+ distribution of connectivity turns less concentrated, which also affects network performance in propagation of losses.
+                                                                                                                         15
+
+We would like to separate these two effects: the effect of connectivity variation and changes in concentration. Here
+the term concentration refers to the distribution of links, in the sense that a more concentrated networks is a network
+where few nodes have many links (hubs), while the majority of nodes possess just a few. A less concentrated networks
+presents a more egalitarian distribution of links.
+  In an attempt to understand how these two features act on financial contagion, we have tested new types of network
+which are variants of the three networks previously evaluated, with different levels of connectivity and concentration.
+Thus, in addition to the original type, which we have named type 0 and consist of GD0 , S0 and GC0 , we have
+implemented 4 new types, each one detailed in the following sections. The type 1 networks have greater connectivity
+and are more concentrated than the original. Type 2 networks have greater connectivity and similar concentration
+to type 0. Type 3 networks have greater connectivity than type 0 but are less concentrated. Finally, type 4 networks
+maintain the same connectivity as the original type, but with lower concentration. Table II shows the parameters
+used in the construction of networks of type 0, 1, 2, 3 and 4.
+
+
+                TABLE II: Parameter values ??used in the construction of networks of type 0, 1, 2, 3 and 4.
+                                                   α      β       γ     δin   δout
+                                           GC0 0.5625 0.2500 0.1875 1.00 3.00
+                                           S0  0.3750 0.2500 0.3750 2.00 2.00
+                                           GD0 0.1875 0.2500 0.5625 3.00 1.00
+
+                                           GC1 0.1875 0.7500 0.0625 1.00 3.00
+                                           S1  0.1250 0.7500 0.1250 2.00 2.00
+                                           GD1 0.0625 0.7500 0.1875 3.00 1.00
+
+                                           GC2 0.1875 0.7500 0.0625 25.00 75.00
+                                           S2  0.1250 0.7500 0.1250 50.00 50.00
+                                           GD2 0.0625 0.7500 0.1875 75.00 25.00
+
+                                           GC3 0.5625 0.2500 0.1875 1.00 3.00
+                                           S3  0.3750 0.2500 0.3750 2.00 2.00
+                                           GD3 0.1875 0.2500 0.5625 3.00 1.00
+
+                                           GC4 0.5625 0.2500 0.1875 10.00 30.00
+                                           S4  0.3750 0.2500 0.3750 20.00 20.00
+                                           GD4 0.1875 0.2500 0.5625 30.00 10.00
+
+
+
+
+                                  1.   Greater connectivity and greater links concentration
+
+   In this case we have the networks GD1 , S1 and GC1 , constructed so that they have greater connectivity and are more
+concentrated than the original ones. This is done by increasing β from 0.25 to 0.75. We maintain the ratio 1:3 between
+α and γ and the same values of δin e δout . As the probability β refers to addition of new link without creation of new
+node, increasing β implies increasing the average network connectivity. As the connection mechanism is preferential
+attachment, ie nodes that receive links are chosen with probability that is proportional to its previous connectivity,
+an increase of β also increases links concentration in higher connected nodes, so that the Gini coefficient for links
+distribution increases. Table III shows the aggregate measures, DI and DC, as well as the average connectivity, the
+Gini coefficient for links concentration (G), Gini coefficient for distribution of credit links (Gin ) and Gini coefficient
+for distribution of debt links.
+   As we see, the increase in average connectivity when accompanied by an increase in the concentration of links
+have different effects depending on the symmetry of the network. As we move from network GC0 to GC1 we see a
+decrease of contagion effect in response to the increased number of connections and higher concentration of credits
+(concentration of in-links) that comes with the change in concentration. The average connectivity increase from 2.65
+links per node to 7.41 and the Gini coefficient, which is 0.46 in GC0 , becomes 0.63. The same behavior we see in Gini
+coefficient of the distribution of credit links (0.75 to 0.81) and in Gini of the distribution of debt links (0.41 to 0.56).
+The aggregate Default Impact does not suffer large variation, varying from 0.43 in GC0 to 0.42 in GC1 . On the other
+hand, the aggregate DC (Default Cascade) has a significant decrease from 0.49 to 0.33.
+                                                                                                                                    16
+
+
+TABLE III: Aggregate measures, DI and DC, average connectivity, < k >, Gini coefficient for links distribution, G, Gini
+coefficient for distribution of credit links, Gin , and Gini coefficient for distribution of debt links, Gout , for network types 0 and
+1.
+                          DI               DC             <k>                 G              Gin              Gout
+              GC0 0.433 (±0.001) 0.494 (±0.023) 2.652 (±0.028) 0.456 (±0.008) 0.748 (±0.011) 0.410 (±0.008)
+              S0    0.455 (±0.004) 0.792 (±0.024) 2.663 (±0.041) 0.429 (±0.006) 0.578 (±0.015) 0.576 (±0.012)
+              GD0 0.480 (±0.004) 0.988 (±0.015) 2.646 (±0.039) 0.457 (±0.006) 0.418 (±0.013) 0.746 (±0.009)
+
+              GC1 0.426 (±0.001) 0.331 (±0.028) 7.406 (±0.166) 0.630 (±0.008) 0.805 (±0.010) 0.561 (±0.010)
+              S1    0.429 (±0.001) 0.735 (±0.025) 7.484 (±0.227) 0.612 (±0.007) 0.669 (±0.009) 0.671 (±0.008)
+              GD1 0.437 (±0.002) 1.113 (±0.027) 7.425 (±0.165) 0.630 (±0.008) 0.560 (±0.010) 0.805 (±0.007)
+
+
+   We conclude that for networks GC, in which the credit concentration is larger than debt concentration, an increase
+in connectivity accompanied by an increase in concentration of links has the effect of increasing resistance to contagion.
+Increasing credit concentration in nodes that become major creditors of the system is certainly the factor responsible
+for the improvement in network resilience to contagion. Very connected creditors have many in-links, so that its
+failure propagates less, only through its few out-links. Moreover, when a neighbor bank of the big creditor defaults,
+the transmitted loss represents a small fraction of creditor bank total exposures, since it has many other counterparties.
+Here we see the positive results of having a major lender that has diversified its risk among many counterparties.
+   For symmetric networks there is only a small improvement in resilience when we go from S0 to S1 . As shown in
+table III, the values of DI and DC undergo a slight reduction (DI varying from 0.46 to 0.43 and DC varying from
+0.79 to 0.73).
+   For networks GD the situation is ambiguous: increased connectivity accompanied by increased links concentration
+causes a slight reduction of DI, from 0.48 to 0.44. At the same time we see an increase in Cascade Default, with
+DC varying from 0.99 to 1.11. For networks GD, the increase in links concentration favors the appearance of large
+debtor banks. These banks have great potential for contagion, since most of their links are directed to the system,
+having a destabilizing role in the network. The fact that DC has increased with the increase of connectivity and links
+concentration is a result of that effect. Even so, the concentration of links also increases the concentration of credit
+links in creditor banks, which is a stabilizing factor that, with the increase in connectivity, causes decrease in DI.
+
+
+                               2.   Increased connectivity and links concentration similar to type 0
+
+   In type 2 we consider networks where the average connectivity is raised by increasing β (from 0.25 to 0.75), while
+we raise δin and δout in order to offset the trend of increasing concentration. We keep the 1:3 ratio between α and γ.
+   As we have seen in section II, the parameters δin and δout represent probabilities distributed equally between nodes,
+giving every node a chance of being selected in the attachment process. The preferential attachment concentrates
+links in large connected nodes, while the parameters δin and δout can limit this tendency.
+   With β increased to 0.75, we raise δin and δout 25 times in order to maintain the Gini coefficient of the links
+distribution the closest to the value it has in type 0, i.e. around 0.45. The best approach we get with β = 0, 75 is
+a Gini of 0.47. The parameter values used in types 0 and 2 are shown again in table IV to facilitate comparison.
+Table V shows the aggregate measures DI and DC, and the values of average connectivity, concentration of links and
+partial concentrations (credit links and debt links).
+   When comparing networks GC0 and GC2 we notice the increase in Default Cascade, DC, from 0.49 to 0.57. The
+default impact index, DI, remains stable at 0.43.
+   Despite our attempt to isolate the connectivity effect by fixing Gini closest to the original value (0.45), we can not
+attribute the raising of the index DC only to the increased connectivity, because while the concentration of links
+remain close to the original value, there is a variation of partial concentrations, Gin and Gout . Indeed, when we
+change δin and δout , we observe the increase of concentration of debt links in large debtors nodes (Gout varying from
+0.41 to 0.46) and a reduction in concentration of credits (Gin from 0.75 to 0.55). These changes contribute to the
+worsening of index DC.
+   In the case of symmetric networks we see a slight improvement in indices: when comparing network S0 and S2 one
+can observe the variation of DI from 0.46 to 0.43 and of DC from 0.79 to 0.72.
+                                                                                                                                     17
+
+
+                        TABLE IV: Parameter values ??used to generate the networks of types 0 and 2.
+
+                                                       α       β       γ      δin   δout
+                                              GC0 0.5625 0.2500 0.1875 1.00 3.00
+                                              S0  0.3750 0.2500 0.3750 2.00 2.00
+                                              GD0 0.1875 0.2500 0.5625 3.00 1.00
+
+                                              GC2 0.1875 0.7500 0.0625 25.00 75.00
+                                              S2  0.1250 0.7500 0.1250 50.00 50.00
+                                              GD2 0.0625 0.7500 0.1875 75.00 25.00
+
+
+TABLE V: Aggregate measures, DI and DC, average connectivity, < k >, Gini coefficient of the distribution of links, G, Gini
+coefficient of the distribution of credit links, Gin , and Gini coefficient of the distribution of debt links, Gout , for types 0 and 2.
+
+                          DI               DC              <k>                G               Gin             Gout
+              GC0 0.433 (±0.001) 0.494 (±0.023) 2.652 (±0.028) 0.456 (±0.008) 0.748 (±0.011) 0.410 (±0.008)
+              S0    0.455 (±0.004) 0.792 (±0.024) 2.663 (±0.041) 0.429 (±0.006) 0.578 (±0.015) 0.576 (±0.012)
+              GD0 0.480 (±0.004) 0.988 (±0.015) 2.646 (±0.039) 0.457 (±0.006) 0.418 (±0.013) 0.746 (±0.009)
+
+
+              GC2 0.428 (±0.001) 0.574 (±0.023) 7.813 (±0.200) 0.476 (±0.006) 0.555 (±0.008) 0.465 (±0.007)
+              S2    0.429 (±0.001) 0.723 (±0.021) 7.812 (±0.141) 0.471 (±0.008) 0.507 (±0.009) 0.506 (±0.008)
+              GD2 0.430 (±0.001) 0.884 (±0.020) 7.817 (±0.139) 0.475 (±0.007) 0.463 (±0.008) 0.554 (±0.007)
+
+
+
+  For the network GD, an increases of connectivity slightly improves measure DI, from 0.48 to 0.43, and also improves
+the index DC, from 0.99 to 0.88. Here also stands out, besides the increased connectivity, the variation of the partial
+concentrations, towards a decreased concentration of debts and an increased concentration of credits.
+
+
+                                     3.   Increased connectivity and lower links concentration
+
+  The type 3 repeats the experiment of Cont and Moussa [6] to test an increasing in connectivity. Type 3 network is
+built with same parameter values as type 0. Subsequently its connectivity is increased by adding new links randomly
+distributed among its nodes. In this way, we have a more connected and less concentrated network: the Gini coefficient
+goes from 0.45 to 0.24 and the partial Gini coefficients also suffer reduction. The data are presented in table VI.
+
+
+TABLE VI: Aggregate measures, DI and DC, average connectivity, < k >, Gini coefficient of the distribution of links, G, Gini
+coefficient of the distribution of credit links, Gin , and Gini coefficient of the distribution of debt links, Gout , for types 0 and 3.
+
+                          DI               DC              <k>                G               Gin             Gout
+              GC0 0.433 (±0.001) 0.494 (±0.023) 2.652 (±0.028) 0.456 (±0.008) 0.748 (±0.011) 0.410 (±0.008)
+              S0    0.455 (±0.004) 0.792 (±0.024) 2.663 (±0.041) 0.429 (±0.006) 0.578 (±0.015) 0.576 (±0.012)
+              GD0 0.480 (±0.004) 0.988 (±0.015) 2.646 (±0.039) 0.457 (±0.006) 0.418 (±0.013) 0.746 (±0.009)
+
+
+              GC3 0.429 (±0.001) 0.678 (±0.020) 7.789 (±0.040) 0.245 (±0.006) 0.378 (±0.010) 0.276 (±0.005)
+              S3    0.434 (±0.001) 0.860 (±0.027) 7.800 (±0.041) 0.233 (±0.004) 0.318 (±0.007) 0.317 (±0.005)
+              GD3 0.450 (±0.005) 1.007 (±0.017) 7.794 (±0.043) 0.256 (±0.005) 0.277 (±0.005) 0.374 (±0.007)
+
+
+  As in types 1 and 2, all three networks (GC, S e GD) show a slight improvement of aggregate impact measure,
+                                                                                                                                   18
+
+DI, suggesting that the Default Impact decreases with increasing connectivity regardless if it is accompanied by an
+increase or decrease in links concentration. Nevertheless the Default Cascade certainly depends on concentrations, as
+can be seen from the data presented. With increased connectivity and reduction of concentration of links (including
+the partial concentrations), the network GC suffers an increase of Default Cascade, with the aggregate measure DC
+varying from 0.49 to 0.68. The symmetric network also suffers deterioration in index DC, from 0.79 to 0.85. In turn
+the network GD has the least change in the index, from 0.99 to 1.01. Again the data suggest that changes in links
+concentrations are important to determine the Default Cascade.
+
+
+                                       4.   Same connectivity and lower links concentration
+
+  Finally we tested the networks for a decrease in concentration of links, maintaining the same connectivity. We build
+networks of type 4 by maintaining the same value of β as the original networks, ie, beta = 0.25, and increasing by 10
+times the values of δin and δout . Parameter values ??are presented in table VII.
+
+
+                         TABLE VII: Parameter values ??used to build the networks of types 0 and 4.
+
+                                                      α       β       γ     δin   δout
+                                              GC0 0.5625 0.2500 0.1875 1.00 3.00
+                                              S0  0.3750 0.2500 0.3750 2.00 2.00
+                                              GD0 0.1875 0.2500 0.5625 3.00 1.00
+
+                                              GC4 0.5625 0.2500 0.1875 10.00 30.00
+                                              S4  0.3750 0.2500 0.3750 20.00 20.00
+                                              GD4 0.1875 0.2500 0.5625 30.00 10.00
+
+
+  The indices of impact, as well as data connectivity and concentration are shown in table VIII.
+
+
+TABLE VIII: Aggregate measures, DI and DC, average connectivity, < k >, Gini coefficient of the distribution of links, G,
+Gini coefficient of the distribution of credit links, Gin , and Gini coefficient of the distribution of debt links, Gout , for types 0
+and 4.
+
+                          DI                DC            <k>                G               Gin             Gout
+              GC0 0.433 (±0.001) 0.494 (±0.023) 2.652 (±0.028) 0.456 (±0.008) 0.748 (±0.011) 0.410 (±0.008)
+              S0    0.455 (±0.004) 0.792 (±0.024) 2.663 (±0.041) 0.429 (±0.006) 0.578 (±0.015) 0.576 (±0.012)
+              GD0 0.480 (±0.004) 0.988 (±0.015) 2.646 (±0.039) 0.457 (±0.006) 0.418 (±0.013) 0.746 (±0.009)
+
+
+              GC4 0.446 (±0.001) 0.714 (±0.016) 2.644 (±0.048) 0.394 (±0.006) 0.608 (±0.009) 0.385 (±0.011)
+              S4    0.459 (±0.001) 0.871 (±0.022) 2.635 (±0.046) 0.388 (±0.007) 0.509 (±0.009) 0.509 (±0.011)
+              GD4 0.466 (±0.002) 1.016 (±0.018) 2.661 (±0.036) 0.394 (±0.007) 0.383 (±0.013) 0.607 (±0.010)
+
+
+  For networks GC and S the lowest concentration of links causes worsening of the indices of contagion. For such
+networks the negative effect of the reduction in concentration of credits is superior to the positive effect of reducing
+the concentration of debts.
+  For networks GD the DI index shows a slight improvement (from 0.48 to 0.46), whereas the index DC has a slight
+worsening (0.99 to 1.01), indicating that in this case the two effects are balanced.
+  Figures 9 e 10 summarize the results of this section presenting the values of DI e DC for the 5 types of network
+analyzed.
+  Comparisons among types suggests that for networks constructed with the algorithm of Bollobás et al. [12] and
+with exposures positively related to connectivity, the best scenario is that of a more connected network with high
+concentration of credits, featuring large creditors nodes which act as stabilizers of the network. It should be emphasized
+again that in comparisons among network types performed in this work, we do not consider differences among nodes
+regarding their probabilities of default, differences that can change the evaluation of each network type.
+                                                                                                                     19
+
+                                      Default Impact (different types of connectivity/concentration)
+
+                                                                                             Network GC
+                                                                                             Network S
+                                                                                             Network GD
+                               0.5
+
+
+                               0.4
+
+
+                               0.3
+                          DI
+
+                               0.2
+
+
+                               0.1
+
+
+                                0
+                                         Type 0        Type 1    Type 2       Type 3      Type 4
+
+
+                     FIG. 9: Default Impact (aggregate measure) for the 5 types of network analyzed.
+
+                                     Default Cascade (different types of connectivity/concentration)
+                               1.5
+                                                                                             Network GC
+                                                                                             Network S
+                                                                                             Network GD
+                            1.25
+
+
+                                 1
+                          DC
+
+
+
+
+                            0.75
+
+
+                               0.5
+
+
+                            0.25
+
+
+                                0
+                                         Type 0        Type 1    Type 2       Type 3      Type 4
+
+
+                    FIG. 10: Default Cascade (aggregate measure) for the 5 types of network analyzed.
+
+
+                                                  V.      CONCLUSIONS
+
+   In this paper, we have analyzed the financial contagion via mutual exposures in the interbank market through
+simulations of networks whose degree distributions follows power laws.
+   We have seen that among the measures of systemic importance (DI and DC), Default Cascade (DC) is the one
+that most differentiates the categories of network analyzed. We also observe that, for all categories, both the Default
+Impact and Default Cascade of each node alone does not reach large percentage of the network assets and number
+of nodes, respectively. This result is in agreement with the results of stress tests on empirical networks (Upper, C.
+[20]). Although contagion generated by the failure of an individual node has been shown to be of small amplitude,
+the differences found among network types may be relevant in the event of market shocks that affect capital of several
+institutions simultaneously, which would make the system more vulnerable to contagion.
+   Comparisons among types of network suggest that, for networks whose distributions are close to power laws and
+exposure is positively related to connectivity, the best scenario is one with a more connected network with high
+concentration of credits, featuring large creditors nodes which act as stabilizers of the network. This results suggests
+that the asymmetry observed in distributions of certain real networks is a positive factor, as long as the network
+                                                                                                                              20
+
+be more concentrated in distribution of credits (in links). In real networks having power laws exponents estimated
+between 2 and 3, the results imply that the most stable networks are those with distribution of in links with exponent
+2 and distribution of out links with exponent 3.
+   As expected, the increase of capital level reduces contagion in all three categories of network, since the equity of
+banks absorbs impacts suffered by them. We also observed that larger networks have nodes with less potential for
+contagion, situation already observed in previous works (Cont and Moussa [6]).
+   Our simulation shows that the default impact is strongly determined by the initial impact, which was expected,
+since the assets of large banks (greater initial impact) represent significant portion of the network assets. However,
+the initial impact does not determines the default cascade to the same extent: default cascade appears to be more
+sensitive to characteristics of local connectivity.
+   The results suggest that the size of the balance sheet is the most important factor in determining the impact on
+assets resulting from the failure of a node, and should not be disregarded or replaced by topological measures that
+reflect only information of network connectivity. On the other hand, the network structure has important consequences
+on the default cascade. In some cases, the banks which trigger the largest cascades are not the ones with greater
+balance sheet. For those banks, topological measures such as Local network frailty are good indicators of their systemic
+importance.
+
+
+
+
+ [1]   FCIC, Available at http://www.gpo.gov/fdsys/pkg/GPO-FCIC, Financial crisis inquiry commission (2011).
+ [2]   F. Allen and A. Babus, Networks in Finance (Pearson Education, 2009), chap. 21.
+ [3]   F. Allen and D. Gale, Journal of Political Economy 108, 1 (2000).
+ [4]   X. Freixas, B. Parigi, and J.-C. Rochet, Journal of Money, Credit and Banking pp. 611–638 (2000).
+ [5]   E. Nier, J. Yang, T. Yorulmazer, and A. Alentorn, Journal of Economic Dynamics and Control 31, 2033 (2007).
+ [6]   R. Cont and A. Moussa, Financial engineering report, Columbia University (2010).
+ [7]   S. Battiston, D. D. Gatti, M. Gallegati, B. Greenwald, and J. E. Stiglitz, Working Paper 15611, National Bureau of
+       Economic Research (2009).
+ [8]   M. Boss, H. Elsinger, M. Summer, and S. Thurner, Quantitative Finance 4, 677 (2004), ISSN 1469-7688, URL http:
+       //www.informaworld.com/10.1080/14697680400020325.
+ [9]   R. Cont, A. Moussa, and E. B. e. Santos, Available at SSRN: http://ssrn.com/abstract=1733528 or
+       http://dx.doi.org/10.2139/ssrn.1733528 (2010).
+[10]   K. Soramäki, M. L. Bech, J. B. Arnold, R. J. Glass, and W. Beyeler, Staff Reports 243, Federal Reserve Bank of New York
+       (2006), URL http://EconPapers.repec.org/RePEc:fip:fednsr:243.
+[11]   H. Inaoka, T. Ninomiya, K. Taniguchi, T. Shimizu, and H. Takayasu, Bank of Japan working papers 04-E-04, Bank of
+       Japan (2004).
+[12]   B. Bollobás, C. Borgs, J. T. Chayes, and O. Riordan, in SODA (ACM/SIAM, 2003), pp. 132–139, ISBN 0-89871-538-5,
+       URL http://dblp.uni-trier.de/db/conf/soda/soda2003.html#BollobasBCR03.
+[13]   A.-L. Barabasi and R. Albert, Science 286, 509 (1999), URL http://www.citebase.org/abstract?id=oai:arXiv.org:
+       cond-mat/9910332.
+[14]   J. Kunegis and J. Preusse, in Proc. Web Science Conf. (2012), URL http://userpages.uni-koblenz.de/~kunegis/paper/
+       kunegis-preusse-fairness-on-the-web-alternatives-to-the-power-law.pdf.
+[15]   P. E. Mistrulli, Temi di Discussione, Banca d’Italia, Servizio Studi (2007).
+[16]   A. Clauset, C. R. Shalizi, and M. E. J. Newman, Power-law distributions in empirical data (2007), cite arxiv:0706.1062
+       Comment: 43 pages, 11 figures, 7 tables, 4 appendices; code available at http://www.santafe.edu/ aaronc/powerlaws/,
+       URL http://arxiv.org/abs/0706.1062.
+[17]   N. Arinaminpathy, S. Kapadia, and R. May, Bank of England working papers 465, Bank of England (2012), URL http:
+       //EconPapers.repec.org/RePEc:boe:boeewp:0465.
+[18]   IMF, Available at http://fsi.imf.org, Internacional Monetary Fund (2013).
+[19]   L. Eisenberg and T. Noe, Management Science 47, 236 (2001).
+[20]   C. Upper, Journal of Financial Stability 7, 111 (2011), URL http://EconPapers.repec.org/RePEc:eee:finsta:v:7:y:
+       2011:i:3:p:111-125.
+[21]   H. Elsinger, A. Lehar, and M. Summer, Management Science 52, 1301 (2006).
+[22]   H. M. Ennis, Economic Quarterly 87 (2001).
+[23]   In this work the simulations performed use an initial network, G0 , consisted of 2 nodes, 0 and 1, connected by 2 directed
+       links, 0 → 1 e 1 → 0.
+[24]   For more details about the algorithm see the original paper of Eisenberg and Noe [19].
+[25]   The concentration of assets in real networks is also quite high, as reported in the literature. For example, [21] report a
+       Gini of 0.88 for the Austrian network in 2002 and [22] reports a Gini of 0.90 for the United States in 2000.
+

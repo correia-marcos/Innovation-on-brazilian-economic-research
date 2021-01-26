@@ -1,0 +1,636 @@
+    Using the Moran’s I to Detect Bid Rigging in Brazilian Procurement Auctions
+
+
+   •   Ricardo Carvalho de Andrade Lima - Ministério Público Federal (MPF) e Universidade Católica
+       de Brasília (UCB).
+   •   Guilherme Mendes Resende – Conselho Administrativo de Defesa Econômica (CADE) e Instituto
+       Brasiliense de Direito Público (IDP).
+
+
+RESUMO:
+Em 2015, um suposto cartel de licitações que operava no mercado de dispositivos médicos implantáveis foi
+divulgado e as autoridades públicas passaram a investigá-lo. O presente trabalho avalia se há correlação
+sistemática entre os lances ofertados pelos competidores na fase selada das licitações, uma situação que
+poderia sugerir a existência de um comportamento coordenado e fraudulento. Aplicando a estatística I-
+Moran aos resíduos de uma regressão de lances controlada e usando uma base de dados pública e inédita,
+nós mostramos que os lances ofertados pelas empresas investigadas possuem uma autocorrelação positiva
+e estatisticamente significante. Além disso, quando separamos nossos dados em dois subperíodos: período
+em que o cartel provavelmente existiu (2005-2015) e período em que o cartel provavelmente não existiu
+devido a celebração de um acordo de leniência (2015-2017), a estatística I-Moran é estatisticamente
+significante apenas na primeira subamostra. Os nossos resultados se mantiveram robustos a eliminação de
+períodos de transição e a aplicação de filtros econômicos alternativos. Por fim, nós também discutimos as
+principais vantagens e desvantagens práticas para a implementação do filtro baseado na estatística I-Moran.
+Palavras-Chave: Cartel em Licitações, Econometria Espacial, Leilões Públicos, Cartel e Colusão, Política
+da Concorrência.
+
+Área Temática: Microeconomia, Métodos Quantitativos e Finanças
+
+
+ABSTRACT:
+
+In 2015, a supposed bid-rigging cartel that operated in the Brazilian implantable cardiac devices market
+was announced and public authorities began to investigate it. This paper evaluates if there is systematic
+correlation between the bids placed by competitors in the sealed phase of procurement auctions, a situation
+that may suggest a coordinated and fraudulent behavior. Applying the Moran´s I statistic to residuals of
+controlled bid regressions and using a novelty and public database, we show that the bids placed by the
+investigated companies have a positive and statistically significant autocorrelation. In addition, when we
+break the data into two subperiods: the period in which the cartel probably existed (2005-2015) and the
+period in which the cartel probably did not exist due to the conclusion of a leniency agreement (2015-2017),
+the Moran´s I statistic only points to autocorrelation in the first sub-sample. Our result has remained robust
+due to elimination of transitional periods and the use of alternative economic screens. Finally, we show the
+main practical advantages and disadvantages for the implementation of the screen based on Moran´s I
+statistic.
+
+Keywords: Bid-Rigging, Spatial Econometrics, Procurement Auctions, Cartel and Collusion, Competitive
+Policy.
+
+JEL Classification: D44, H57, L44
+1 – Introduction
+         Bid-rigging occurs when a group of companies participating in a public procurement establish
+cooperative agreements with each other to raise prices, divide the market or reduce the quality of goods and
+services that are purchased by the public administration. Considering that the value of public procurement
+account for an estimated 15% of gross domestic product (GDP) worldwide on average according to OECD
+(2009) and the cartel overcharge around 16% (Boyer and Kotchoni, 2015), bid-rigging schemes can roughly
+provoke an economic loss of approximately 2.3% of GDP in the public sector budget. In addition to the
+reduction in economic welfare resulting from the transfer of resources from society to cartel members, the
+practice also causes intangible damage to the economy. For example, cartelization tends to inhibit the entry
+of new, potentially more efficient competitors and, in addition, to reduce incentives for innovations
+(measured by investment in R&D), as evidenced by Günster et al. (2011).
+         For these reasons, the detection and fighting bid-rigging cartels has become a priority activity by
+antitrust authorities and anti-corruption agencies around the world. Relative to detection, public authorities
+may act in a reactive or proactive way. In the first case, the investigation is opened when occurs an
+anonymous complaint or when a cartel member makes a delation, situation that is materialized in leniency
+programs. Although it is an efficient strategy, leniency agreements have the limitation of detecting only
+those cartels that are unstable and are close to a breaking point, so that successful cartels remain unscathed
+(Abrantes-Metz and Bajari, 2012). Therefore, is essential to use a proactive approach in such a way that
+public authorities are no longer dependent on external information to initiate a cartel investigation. An
+example of proactive practice is the use of economic screenings. Economic screenings are characterized as
+statistical tests that seek to identify anomalous patterns in the distribution of economic variables (prices,
+costs, proposals, bids and market shares) that resemble a non-competitive behavior1.
+         In the present paper, we use an economic screening that identifies systematic correlation between
+bids to investigate the behavior of a bid-rigging cartel. More specifically, we follow the methodology
+recently proposed by Lundberg (2017), in which the Moran´s I statistic is applied to the residuals of a bid
+regression to detect complementary bidding on public contracts. The proposed screen is applied to a
+supposed bid-ringing cartel that operates in the implantable cardiac devices (ICD) market in Brazil. This
+bid-rigging scheme is under investigation by the Administrative Council for Economic Defense (CADE)
+and includes a partial leniency agreement involving a company that participates in the alleged collusion.
+The market covers the sector of implantable cardiac devices, which includes resynchronizers, pacemakers
+and accessory items such as electrodes and catheters. According to the investigative process, the cartel
+operated between 2004 and 2015 in all Brazilian territory and comprises a group of four companies, twenty-
+nine individuals and two industrial associations.
+         There is a vast empirical related literature that implements different types of economic screen to
+detect cartel behavior in public procurements. One tool traditionally employed is the variance screen. It is
+expected that the variance of the bid’s distributions will be lower in the presence of bid-rigging cartels.
+According to Imhof (2017), the idea is that by establishing collusion, cartel members exchange information
+and coordinate their bids to reach a minimum threshold of contract value, which tends to be higher than the
+contract value in case of competition. This practice restricts the possible universe of bid values (truncates
+the distribution) and, consequently, reduces variance. Abrantes-Metz et al. (2006) have shown that after the
+collapse of a bid-rigging cartel that supplied seafood to Philadelphia's military installations in the 1980s,
+the average price of the products decreased by 26% and the standard deviation increased by over 260%.
+The studies of Imhof (2017) and Imhof et al. (2018) that investigated bid-rigging cartels that operated in
+road construction sector in Switzerland also apply the variance screen as one of the stages of the cartel
+detection, claiming that this statistic is easy to implement due to few data requirements and the low level
+of complexity in its calculation.
+         In sealed-bid procurement auctions, companies submit their bids simultaneously, so that bid values
+
+1
+  As emphasized by Harrington (2008), the objective of economic screenings is to identify markets with high probability of
+collusion. Thus, the screens do not definitively prove the existence of a cartel and, like any other statistical test, may point to
+false positives or false negatives. Therefore, economic screens function as a step to determine in which markets it is necessary
+to open an investigative process or to conduct searches and seizures.
+are only revealed at the end of the auction and on a specific date. Commonly, the public administration
+establishes the company that gives the lowest bid value as the winner of the auction. In this way, if there is
+no coordination between the firms, individual bids will not be conditioned on competitors' bids. Therefore,
+it is expected that the bids will be independent of each other after the control of observed information. This
+condition - known as conditional independence hypothesis - was initially established by Bajari and Ye
+(2003) to characterize a distribution of bids to be generated by a model with competitive bidding. A set of
+empirical studies sought to detect bid-rigging cartels by analyzing the interdependence between the bids.
+Jakobsson (2007) tested the validity of the conditional independence hypothesis for asphalt-paving
+procurements auctions in Sweden by applying the spearman rank correlation in pairs of bids. Aryal and
+Gabrielli (2013) developed a two-step procedure using the Bajari and Ye (2003) approach and a structural
+model applied to asymmetric first-price auctions that compares bidder costs in both collusion and non-
+collusion scenarios. More recently, the conditional independence became analyzed with spatial statistical
+tools, allowing the hypothesis to be tested in a more flexible way by not limiting to tests focused on pair of
+bidders. Bergman et al. (2019) used spatial econometric models and Lundberg (2017) applied the Moran´s
+I statistic to detect whether there is a systematic correlation between bids of a group of companies accused
+of operating an asphalt bid-rigging cartel in Sweden from 1995 to 2001.
+         In addition to a smaller variance and bids interdependence, another common characteristic of bid-
+rigging cartels is the rotation of winners. The rotating behavior of cartel consists in the artificial exchange
+in relation to the winning bidder in procurement auctions that are frequently by the public administration.
+The study of Ishii (2009) analyzed this behavior in a detailed way. Using data from public procurements of
+Naha city (Japan) for consulting works service, Ishii (2009) showed that the variable that measures the
+score of favor exchange of a particular company in repeated auctions positively affects the win probability
+at a future auction. This evidence suggests that there was a bid-rigging cartel operating based on favor
+exchange with a rotational scheme. Imhof (2017) and Imhof et al., (2018) also proposed a graphical analysis
+of the bids that allows to check the existence of rotating behavior in pairs of competing companies.
+         Considering this empirical literature of economic screens applied to bid-rigging cartels, we intend
+to contribute in two ways: I) by applying a methodology that allows to test the conditional independence
+hypothesis in a more flexible manner in relation to previous studies and II) by analyzing the behavior of a
+investigated bid-rigging that operated in the Brazilian market of implantable cardiac devices using a novelty
+and public database. It should be noted that, to our best knowledge, there isn’t empirical studies that
+employed economic screenings to investigate bid-rigging in Brazilian procurement auctions. Most of the
+screens have been applied to detect price-fixing cartels operating in the fuel station sector (see, for example
+Ragazzo and Silva 2006; Vasconcelos and Vasconcelos, 2005).
+         The remainder of the paper is organized as follows: section 2 presents a brief description of the
+supposed bid-rigging that operated in the ICD market and describes the main rules of the Brazilian
+procurement auctions. In section 3, we present the econometric setup of the study, and in section 4, we
+describe the database and descriptive statistics. In section 5, we show and discuss the results. Finally, in
+section 6, we present the conclusions of the paper and summarizes the main practical advantages and
+disadvantages of applying our screen.
+2 – Institutional Background
+2.1 – Description of the supposed bid-rigging cartel
+        To evaluates the suitability of the screen based on Moran´s I statistic, we will analyze a supposed
+bid-rigging scheme that operated in the Brazilian market of implantable cardiac devices2 (ICD). The
+disclosure of the alleged bid-rigging cartel began in January 2015, when the Ministry of Health - the public
+agency that makes the purchase of medicines, medical prostheses and hospital equipment for the provision
+of public health services – made a set of complaints pointing to frauds involving the ICD suppliers. Initially,
+there were indications that ICD procurements auctions were being frauded by the observation of the
+following practices: identical allocation of contracts, bidding only for contracts that would be effectively
+won, and existence of figurative or coverage bids. After the complaint, the Administrative Council for
+Economic Defense (CADE) and the Federal Prosecutor's Office (MPF) began investigating the case and,
+in addition, two Parliamentary Inquiry Committees were opened.
+        In November 2015, an involved company signed a partial leniency agreement with CADE
+confessing the bid-rigging scheme in the ICD market and committing to collaborate with investigations.
+Due to the collaboration, the company obtained a reduction in administrative and criminal penalties. After
+the conclusion of the leniency agreement, the competition authority made search and seizure operations at
+the headquarters and offices of the companies involved and gathered more robust evidence about the
+existence of the bid-rigging cartel. Among the collected evidences, stands out a document created by the
+set of companies that contains a schedule with the indication of the firms that would win future ICD
+procurement auctions (Abreu, 2018). According to the administrative process, the bid-rigging scheme
+operated in Brazil from 2004 to 2015 and was operated by the four largest companies in the ICD market
+(CADE, 2017). The scheme was coordinated through face-to-face meetings involving company directors
+and, in some situations, were intermediated by industry associations. Public managers and physicians also
+participated in the bid-rigging scheme by facilitating the frauds of public procurement auctions and
+simulating the need for ICDs in exchange of bribes provided by the companies.
+        The anticompetitive practices investigated are the following: exchange of price information, supply
+agreements, customers allocation between competitors and combinations of proposals in the phase of sealed
+bidding. Currently, the case is still being evaluated by the technical area of CADE and the investigation
+involves four companies, 29 individuals and two industrial associations.
+
+2.2 - Procurement auction procedures in the ICD market
+
+        The public procurement auctions created for the purchase of ICD items are mostly carried out in the
+electronic modality3 and are governed by the rules of Brazilian Enactment 5.450/2005. In the electronic
+modality, the public procurements take place virtually and has two different stages. In the first stage, each
+of the competitors makes their bid by delivering a sealed envelope with the bid value to the auction
+organizer, functioning like as a sealed-bid auction. Following the opening of envelopes, the second stage
+of the acquisition process starts with a downward oral auction (with simultaneous bids) starting from the
+bid’s values made by the bidders in the first stage. It is not possible for a competitor to bid higher than their
+last registered bid. The auction winner is the company that presents the lowest bid in the second phase.
+Another important feature of electronic modality is that there is complete anonymity of bidders' identities
+both in the first stage and in the second stage. According to Mattos (2014) this characteristic introduces a
+destabilizing element for cartel formation, since becomes more difficult to discover possible deviations
+from the collusive agreements.
+
+
+2
+  The implantable cardiac device market involves the following items: (I) Implantable Dual-chamber and Unicameral
+Defibrillator Cardioverter (II) Cardiac Resynchronizer, (III) pacemakers - and accessory items - which include (IV) Endocardial
+Electrodes Temporary and Definitive, (V) Sets of Introducers and (VI) Catheter.
+3
+    Only 18 of the 1351 ICD contracts that we analyzed were taken in the live auction modality.
+        Taking these rules into consideration, coordinating first-stage bids makes possible to establish a
+larger starting point for the second stage and avoids offering low-value bids. This favor a potentially higher
+contract price than it would be in case of competition and facilitates the direction of the acquisition process.
+In this way, our screening method seeks to capture a possible bid coordination in the first stage of electronic
+procurement auction, which would be an indication of a broader collusive agreement.
+
+3 – Methodology
+
+        Before calculating the Moran´s I statistic, it is necessary to construct a weighting matrix (also called
+bidding matrix) that associates the set of potentially cartelized firms with each other. The bidding matrix
+was applied by Lundberg (2017) and Bergman et al. (2019) and has a construction similar to the traditional
+spatial matrices that are used to establish geographical relations between different spatial units. Initially, it
+is assumed that there are two types of bidders: those that engage in collusive activities (type A firms) and
+those that act competitively (type B firms). In first-price sealed auctions, type A firms place complementary
+bids, while bids placed among type B firms and across type A and type B firms tend to be independent.
+Complementarity of bids is a strategy that simulates competition and is commonly adopted by bid-rigging
+cartels. It is characterized when a firm (previously defined by cartel members) bid lower to win the
+procurement auction while other cartel members offer higher bids in exchange for future rewards, such as
+subcontracting, consortium formation, or auctions victory, for example. In the context of the Brazilian ICD
+procurement auctions, complementary bidding in the first stage of the electronic auction can be an optimal
+strategy to manipulate the final auction outcome (see subsection 2.2) and allows a potential overcharge in
+contracts.
+        Denote by 𝑏𝑖𝑐 the bid value placed by firm 𝑖 on contract 𝑐, 𝑛𝑎 the number of bids placed by
+companies of type A, 𝑛𝑏 the number of bids placed by companies of type B and 𝑛𝑐 is the total number of
+bids that is equal to the total number of observations 𝑁 = 𝑛𝑐 = 𝑛𝑎 + 𝑛𝑏 . Define the bidding matrix as a
+matrix 𝑾 of dimension 𝑁𝑥𝑁 with elements 𝑤𝑖𝑐,𝑗𝑐 such that 𝑤𝑖𝑐,𝑗𝑐 > 0 if 𝑖 ≠ 𝑗 and 𝑖, 𝑗 ∈ 𝐴. Otherwise,
+𝑤𝑖𝑐,𝑗𝑐 = 0. It is observed that the bids are independent across the different contracts (𝑤𝑖𝑐,𝑗𝑘 = 0 𝑖𝑓𝑐 ≠ 𝑘)
+and independent between the set of non-collusive bidders (𝑤𝑖𝑐,𝑗𝑐 = 0 if 𝑖 ∈ 𝐵 or/and 𝑗 ∈ 𝐵). Finally, the
+magnitude of the matrix 𝑾 weights is defined as follows: 𝑤𝑖𝑐,𝑗𝑐 = 1⁄(𝑁𝐴𝐶 − 1), where 𝑁𝐴𝑐 is the number
+of type A firms participating in the procurement auction relating to the contract 𝑐. This adjustment allows
+us to obtain a row standardized matrix. There are situations in which the identity of the companies
+participating in the bid-rigging schemes (type A firms) is unknown. In this case, Lundberg (2017) suggests
+defining potential cartel members on the basis of some prior suspicion (obtained through denunciations or
+leniency programs, for example) or by constructing a set of bidding matrices that simulate possible cartel
+combinations between three or four companies with higher market power or those that participate in the
+procurement auctions more frequently.
+        To detect a complementary bidding behavior - which may indicate the existence of a bid-rigging
+scheme - the next step is to calculate the global Moran´s I statistic, developed by Moran (1948) and widely
+used to detect the existence of spatial autocorrelation. The global Moran´s I statistic is obtained by
+calculating the following expression:
+
+                ∑𝑖 ∑𝑗 𝑤𝑖𝑐,𝑗𝑐 (𝑏𝑖𝑐 − 𝜇 )(𝑏𝑗𝑐 − 𝜇)
+           𝐼=                                                                                    (1)
+                         ∑𝑖(𝑏𝑖𝑐 − 𝜇)2
+
+         Where 𝑤𝑖𝑐,𝑗𝑐 is the elements of bidding matrix 𝑾 described above, 𝑏𝑖𝑐 is the bid value placed by
+firm 𝑖 on contract 𝑐, 𝑏𝑗𝑐 is the bid value placed by firm 𝑗 and, finally, 𝜇 is the average bid value. Under the
+hypothesis of absence of autocorrelation, it is possible to demonstrate that the expectation of Moran´s I
+statistic is given by 𝐸(𝐼 ) = −1⁄(𝑁 − 1), tending to zero to the extent that 𝑁 → ∞. To detect if there is
+autocorrelation between the bids, the null hypothesis 𝐻0 : 𝐼 = −1⁄(𝑁 − 1) is confronted with the
+alternative hypothesis 𝐻𝑎 : 𝐼 ≠ −1⁄(𝑁 − 1). If the null hypothesis is rejected, the Moran´s I test points to
+the existence of autocorrelation between the bids. In this case, there is evidence that companies are adopting
+a bidding complementarity behavior in a systematic way, characteristic of bid-rigging arrangements. The
+value of Moran´s I statistic ranges from -1 to +1. Negative values indicate negative autocorrelation and
+positive values indicate positive autocorrelation.
+        The problem with this approach is that bids may have autocorrelation in sealed auctions due to
+natural market factors, not necessarily related to collusive behavior. For example, bids tend to be correlated
+when the different companies participating in the procurement auction have a similar cost structure, operate
+in the same geographic market, have a similar scale of production or when the bidding process occurs for
+the supply of goods and services in a specific area. In these situations, the Moran´s I test can generate a
+series of false positives. One way to minimize this problem is to estimate a bid regression to generate 𝑏𝑖𝑐
+free from the influence of market variables. In this sense, we apply the Moran´s I statistic to the residuals
+of the following bid regression:
+
+                   𝑏𝑖𝑐 = 𝛾𝑋𝑖𝑐 + 𝜃𝑠 + 𝜆𝑝 + 𝜇𝑖 + 𝜀𝑖𝑐                                                           (2)
+
+
+        Where 𝑏𝑖𝑐 is the dependent variable and 𝑋𝑖𝑐 is set of controls that captures observable variables
+(company-specific and contract-specific) with potential to influence the magnitude of the placed bids. In
+addition to the observable variables, the bid regression can be estimated by including unobserved fixed-
+effects associated with the type and specification of the ICD item in question (𝜃𝑠 ), procurement specific
+effects (𝜆𝑝 ), and firm specific effects (𝜇𝑖 ). Therefore, when applying the Moran´s I statistics on the residuals
+of equation (2), a potential systematic correlation between the bids can be attributed to another unobservable
+variables, which include the collusive behavior.
+
+4 - Data and Descriptive Statistics
+
+
+        The database used in the present study is public and were obtained through the Integrated
+Administration and General Services System (Comprasnet - SIASG) of the Brazilian Federal Government.
+In this platform, the public administration operates and retains information regarding its purchase and
+contracts. This includes the registration and disclosure of public procurements, the correspondent record of
+prices and supplier’s identity and the registration and management of contracts. Considering our objective,
+we filtered this database to get information from the procurement auctions related to the Implantable
+Cardiac Devices (ICD) market and involving the participation of at least one of the firms investigated for
+bid-rigging collusion.
+        Thus, we obtained a dataset contain information on 238 public procurements involving 1351
+different contracts4 and 4679 bids submitted by 147 companies in the period from January 2005 to
+December 2017. The following information is available in our database: date of public procurement,
+identity of bidders, auction modality (electronic or live mode), municipality and public agency responsible
+for purchase, product code5, product specification, bid values placed in the first stage of the auction, value
+estimated6 by the public administration, number of demanded items, identification of the winner and the
+final value of the purchased item. Figure 1 shows the evolution of the total number of ICD contracts per
+year and the respective proportion of contracts won by the four companies investigated by bid-rigging
+collusion.
+
+
+
+4
+    A single public procurement may involve several different contracts. Thus, competition occurs at the contract level.
+5
+    There are 366 different categories of implantable cardiac devices.
+6
+ The estimated value of the item or reference value is a cost estimate that the requesting public agency stipulates as a forecast
+of how much will be spent on the contract.
+               Figure 1 - Evolution of the Number of Contracts in the ICD market.
+
+
+
+
+                             Note: Own elaboration based on SIASG data.
+
+We note that there is a strong variability in the number of contracts signed each year and an abrupt drop in
+2015 (58% in relation to the previous year), coinciding exactly with the year in which the leniency
+agreement was concluded with CADE. In addition, it is noted that the companies investigated by bid-
+rigging cartel have substantial participation in the ICD market, with participation varying from 54% to 89%
+per year.
+        Regarding the variables used in the bid regression estimation, our dependent variable will be
+measured as the ratio between the bid value placed in the first stage of electronic auction and the
+correspondent bid value estimated by the public administration. This adjustment by the estimated bid value
+is important to eliminate the effect generated by bidding for a common target, which would generate a
+spurious correlation between the placed bids of different competitors. In addition, this is also useful for
+standardizing the unit of measure of the dependent variable, since the monetary values of ICD items tend
+to vary according to their different types and specifications. In the vector of control variables, we will
+include the following: I) Capacity Rate of firm 𝑖: is defined as the ratio between the number of contracts
+won by the firm up to the date of the contract 𝑐 and the total number of contracts to be obtained until the
+end of the year in question; II) Number of employees of firm 𝑖; III) Number of competitors participating in
+the procurement auction associated to contract 𝑐, and IV) Number of ICD items to be contracted by the
+public administration through the contract 𝑐. The number of employees of each firm was obtained through
+the Annual Report of Social Information (RAIS) of the Ministry of Labor and Employment (MTE) and the
+number of competitors, the capacity rate, and the number of items per contract were directly calculated
+using our bid data. Table 1 shows the mean and standard deviation of the variables for the entire data set,
+for the subset restricted to the period in which the bid-rigging cartel was supposed to operate (January 2005
+to October 2015) and for the subset restricted to the period following the conclusion of the leniency
+agreement (November 2015 to December 2017).
+
+                    Table 1 – Descriptive Statistics: Mean and Standard Deviation
+                                             Whole Sample        Cartel Period   Post-Cartel Period
+                                              (2005-2017)         (2005-2015)       (2015-2017)
+                   Relative Bid                   1.106               1.082             1.163
+                                                 (0.44)              (0.42)            (0.471)
+                Actual Bid (in R$)             11495.933           11419.424          11675.06
+                                               (16754.09)          (16766.42)        (16729.86)
+           Estimated Bid Value (in R$)         10922.532           11064.977         10589.028
+                                                      (15659.35)            (15757)                (15428.8)
+                    Capacity Rate                        0.492               0.482                    0.517
+                                                         (0.43)              (0.38)                   (0.52)
+                Number of Employees                      339.2                314                     345.5
+                                                        (331.4)             (334.6)                  (345.9)
+               Number of Competitors                     3.754               3.835                    3.564
+                                                        (1.095)              (1.17)                   (0.86)
+                   Number of Items                      91.798                93.2                   88.514
+                                                       (174.26)            (177.286)                (166.97)
+             Number of Procurements                       238                 202                        36
+              Number of Contracts                         1351                928                       423
+           Number of Observations (Bids)                  4679                3293                     1386
+ Note: Standard deviation in parentheses. The bid value and estimated bid are in current currency (in Brazilian
+                                                  Reais, R$).
+
+From Table 1, it can be observed that there are no large discrepancies in the descriptive statistics of the
+variables selected between the period of the alleged bid-rigging (2005 to 2015) and the period after the
+leniency agreement (2015 to 2017). At first, this suggests that there was no structural change in the
+implantable cardiac devices market.
+
+5 – Results
+
+5.1 – Main Results
+
+        Table 2 shows the results of the estimation of equation (2) by Ordinary Least Squares (OLS) using
+three different specifications. The first one (column (1)) considers only the inclusion of observed control
+variables, the second (column (2)) adds the firm fixed effect and the ICD type fixed effect and the third
+specification (column (3)) presents the specification adding the procurement fixed effects. The dependent
+variable is the log of the adjusted bid value.
+
+                  Table 2 - Bid Regression for ICD public procurements (2005 to 2017).
+                                                       (1)                      (2)                    (3)
+                      Intercept                    0.4191***                  0.0729              0.7179**
+                                                     (0.049)                 (0.284)                (0.304)
+                   Capacity Rate                   -0.0526***             -0.0478***                -0.0386
+                                                     (0.020)                 (0.019)                (0.029)
+                  log (Employees)                  -0.0730***                -0.0298             -0.0853***
+                                                    (0.0063)                (0.0286)               (0.0328)
+              Number of Competitors                0.0238***                 -0.0013                 0.0196
+                                                     (0.008)                 (0.008)                (0.016)
+                  Number of Items                  -0.0002***             -0.0002***             -0.0002***
+                                                     (0.000)                 (0.000)                (0.000)
+               ICD Specification FE                    No                       Yes                   Yes
+                    Firm FE                            No                       Yes                    Yes
+                 Procurement FE                        No                       No                    Yes
+                     F-Test                         52.37***                12.4***               9.769***
+                   Adjusted R²                        0.042                    0.369                 0.461
+                Moran’s I Statistic                 0.266***               0.380***               0.384***
+              Number of Observations                  4679                     4679                   4679
+           Note:***p < 0.01, **p < 0.05, *p < 0.1. Standard errors in parenthesis. The Moran’s I statistic is
+           calculated using the row-standardized bidding matrix described in section 2. The dependent variable is
+           the log of the adjusted bid value.
+The Moran’s I statistic applied to the residuals of the bid regressions is showed at the bottom of the Table
+2. As can be seen, independent of the specification, the Moran’s I statistic is positive and statistically
+significant. This evidence indicates that the bids placed by the companies investigated by bid-rigging cartel
+in the ICD market have positive autocorrelation, violating the hypothesis of conditional independence. In
+practical terms, this positive correlation between bids of different competitors in the first stage of the
+electronic auction (which are governed by a sealed auction design) can suggest the existence of a
+coordinated scheme characterized by complementary bidding. Thus, our economic screen captures exactly
+what was identified by the documentary evidences collected by the Brazilian competition authority (see
+subsection 2.1).
+         Regarding the covariates, we observed a negative association between the capacity rate and the
+placed bid, indicating that firms that are closer to their supply limit end up making more aggressive bidding.
+However, this counterintuitive relationship does not hold in the most complete specifications (column (3)).
+The log of number of employees (proxy for firm size) and the number of items that are demanded in each
+contract also negatively affect the value of placed bids. This indicates that competitors tend to bid more
+aggressively when the firm size is larger and there is a greater possibility of economies of scale, an expected
+result. The number of competitors of a specific contract does not affect the behavior of companies in ICD
+procurement auctions.
+         Table 3 shows the estimates of our bid regression and the Moran’s I statistic separated for two data
+periods: the period from January 2005 to October 2015 (period in which there is documentary evidence of
+the operation of bid-rigging scheme) and the period between November 2015 and December 2017, where
+it is likely that the bid-rigging cartel not operate due to the conclusion of a leniency agreement with CADE.
+We show the results of the more complete bid regression specification.
+
+         Table 3 – Bid Regression for ICD public procurements using different subsamples.
+
+                                             Cartel Period (2005-2015)           Post-Cartel Period (2015-2017)
+                                                          (1)                                    (2)
+                    Intercept                        1.9081***                             -1.8252***
+                                                       (0.479)                                (0.396)
+                 Capacity Rate                         -0.0555                                0.0673*
+                                                       (0.038)                                (0.040)
+               log (Employees)                       -0.3519***                             0.5908***
+                                                       (0.050)                                (0.090)
+           Number of Competitors                       -0.0004                              0.0837***
+                                                       (0.021)                                (0.021)
+               Number of Items                       -0.0004***                               -0.0001
+                                                       (0.000)                                (0.000)
+             ICD Fixed-Effect                            Yes                                    Yes
+             Firm Fixed-Effect                           Yes                                    Yes
+              Procurement FE                             Yes                                    Yes
+                  F-Test                              8.567***                              11.58***
+                Adjusted R²                             0.4714                                 0.4782
+             Moran’s I Statistic                     0.4441***                               -0.02263
+           Number of Observations                        3293                                   1386
+         Note: ***p < 0.01, **p < 0.05, *p < 0.1. Standard errors in parenthesis. The Moran’s I statistic is calculated
+         using the row-standardized bidding matrix described in section 2. The dependent variable is the log of the
+         adjusted bid value.
+
+
+        The results shown in Table 3 indicate that the Moran’s I statistic is positive and statistically
+significant for the period of alleged ICD bid-rigging operation (column (1), suggesting complementary
+bidding in the first stage of the procurement auction) and is not statistically significant and close to zero for
+the period in which the bid-rigging cartel was not supposed to operate (column (2)). Thus, the applied
+economic screen accurately captures the coordinating behavior when the alleged cartel probably existed
+and does not capture the coordination behavior when the alleged cartel probably did not exist. The evidence
+from Table 3 is similar the results of Lundberg (2017) study, which analyzed an Swedish asphalt bid-rigging
+cartel and applied the Moran’s I statistic for two different time intervals and the screen pointed to the
+existence of the cartel only in the period in which the scheme was effectively observed. Therefore, the
+screen based on Moran’s I statistics to detect bid-rigging cartels seems to work well even in different
+institutional contexts.
+
+5.2 – Robustness Checks
+
+        Column (2) of Table 3 shows that our screen does not indicate a coordinating behavior after the
+leniency agreement has been made. However, the cartel firms may have incentives to keep the collusive
+scheme in the short term to reduce damages, even after the cartel has been discovered (Erutku, 2012).
+Another possibility is that the cartel discontinues the practice in the period immediately after the leniency
+agreement and returns to coordination after some time. In these situations, the estimated Moran’s I statistic
+for the post-cartel period would be underestimated and incorrectly suggesting that there is no coordination
+between firms in the post-cartel period. To reduce these concerns, we calculated the Moran’s I statistic for
+the post-cartel period by removing the supposed transition periods from the database (we assume the
+transition period of three, nine or twelve months after the leniency agreement). Table 4 presents the results.
+
+            Table 4 – Bid Regression in post-cartel period: eliminating transitional periods.
+
+                                                          6 months              9 months            12 months
+                                                              (1)                   (2)                  (3)
+                         Intercept                        -1.314**                -1.177               -2.442
+                                                           (0.687)                (0.72)              (2.154)
+                      Capacity Rate                       0.172***             0.1752***            0.1904***
+                                                           (0.058)               (0.060)              (0.068)
+                     log (Employees)                       0.385**                0.338*                0.701
+                                                           (0.198)                (0.21)               (0.64)
+                 Number of Competitors                   0.1265***             0.1323***            0.1435***
+                                                           (0.023)               (0.024)              (0.027)
+                    Number of Items                        -0.0001               -0.0001              -0.0001
+                                                           (0.000)               (0.000)              (0.000)
+                  ICD Fixed-Effect                            Yes                  Yes                   Yes
+                  Firm Fixed-Effect                           Yes                  Yes                   Yes
+                   Procurement FE                             Yes                  Yes                   Yes
+                       F-Test                             11.28***              8.01***              7.701***
+                     Adjusted R²                            0.5026                0.4002               0.4067
+                  Moran’s-I Statistic                        0.024                0.021                -0.027
+                Number of Observations                        978                  936                   734
+         Note: ***p < 0.01, **p < 0.05, *p < 0.1. Standard errors in parenthesis. Regressions are estimated using
+         only the post-cartel period and removing transition periods. We assume transitional periods of three months
+         (column (1)), nine months (column (2)) and twelve months (column (3)). The Moran’s I statistic is
+         calculated using the row-standardized bidding matrix described in section 2. The dependent variable is the
+         log of the adjusted bid value.
+
+As can be seen in Table 4, the Moran’s I statistic remains not statistically significant for the post-cartel
+period, suggesting that possible transition periods do not seem to be relevant to change our results.
+        To check the robustness of the results, we also tested the hypothesis of conditional independence
+using economic screenings different from the Moran’s I statistic. The first one is based on Bajari and Ye
+(2003) and tests the possibility of bid coordination by checking whether the residuals of firm 𝑖´𝑠 bid function
+and residuals of firm 𝑗´𝑠 bid function are correlated. Thus, it is a correlation test targeted to pairs of biddings
+sets of specific firms. Table 5 shows the number of simultaneous bids (which disputed the same contracts)
+and the Pearson and Spearman correlation coefficients considering the six possible combinations of pairs
+of companies accused of bid-rigging cartel in the ICD Brazilian market. The residuals were obtained by
+OLS estimation considering the most complete specification of equation (2).
+
+               Table 5 – Pearson and Spearman correlation coefficients of bid residuals.
+                                                              Pearson                  Spearman
+                 Firms       N. Simultaneous Bids
+                                                             Correlation               Correlation
+                  [1,2]               1045                    0.756***                  0.486***
+                                                               (0.000)                   (0.000)
+                  [1,3]                711                    0.677***                  0.572***
+                                                               (0.000)                   (0.000)
+                  [1,4]                399                      0.043                   0.250***
+                                                               (0.390)                   (0.000)
+                  [2,3]                702                    0.684***                  0.464***
+                                                               (0.000)                   (0.000)
+                  [2,4]                408                    0.226***                  0.443***
+                                                               (0.000)                   (0.000)
+                  [3,4]                306                    0.165***                  0.254***
+                                                               (0.004)                   (0.000)
+                            Note: ***p < 0.01, **p < 0.05, *p < 0.1. p-value in parenthesis.
+
+Table 5 reveals that in practically all pair of simultaneous bids placed by the accused firms the correlation
+coefficient is positive, and the hypothesis of no correlation is rejected (the only exception is the Pearson
+correlation coefficient associated with the set of bids of firm 1 and firm 4). Thus, this economic screen also
+points to the existence of a systematically correlation between bids in the first phase of the procurement
+auctions of Brazilian ICD market.
+        A second alternative way of testing the hypothesis of conditional independence is to use the
+Bergman et al. (2019) approach and estimate the bid regression with the inclusion of a spatial lag in the
+dependent variable, a specification known as Spatial Autoregressive Model (SAR):
+                    𝑛
+
+          𝑏𝑖𝑐 = 𝜌 ∑ 𝑤𝑖𝑗 𝑏𝑗𝑐 + 𝛾𝑋𝑖𝑐 + 𝜃𝑠 + 𝜆𝑝 + 𝜇𝑖 + 𝜀𝑖𝑐                                              (3)
+                   𝑗=1
+
+
+Where 𝑏𝑖𝑐 is the adjusted bid, 𝜌 is a parameter that captures the degree of dependence between bids placed
+by type A firms, 𝑋𝑖𝑐 is a vector of observables variables that can affect our dependent variable and 𝑤𝑖𝑗 are
+elements of the bidding matrix described in section 3. Thus, the dependence between bids (which suggests
+a coordinating behavior) can be evaluated by checking whether the spatial lag parameter (𝜌) is statistically
+significant. In this case, the interpretation would be that the bid placed by firm 𝑖 is associated with the bid
+placed by the firm 𝑗, controlling for all characteristics included in bid regression (3). Table 6 shows the
+estimated SAR using the maximum likelihood estimation. Column (1) presents the results restricting the
+data to the period in which the bid-rigging cartel was supposed to operate (2005-2015) and column (2)
+presents the results considering the post-cartel period (2015-2017).
+        Column (1) of Table 6 indicates that 𝜌 is positive and statistically significant, while column (2)
+shows that 𝜌 is close to zero and is not statistically significant. This suggests that bids placed by companies
+investigated for collusive behavior are positively correlated and violates the conditional independence
+hypothesis only in the period in which the bid-rigging cartel is supposed to exist. Thus, both the screen
+based on correlation tests between pairs of bid regression residuals (table 5) and the screen based on spatial
+bid regressions (table 6) confirm our conclusions obtained with the Moran’s I statistic and reinforce the
+existence of autocorrelation between the bids placed in the first stage of the ICD procurement auctions.
+     Table 6 – Spatial Bid Regression for ICD public procurements using different subsamples
+                                            Cartel Period (2005-2015)         Post-Cartel Period (2015-2017)
+                                                         (1)                                  (2)
+                        𝜌                            0.4521***                             -0.0343
+                                                       (0.013)                             (0.026)
+                    Intercept                        1.5094***                          -2.8472***
+                                                       (0.309)                             (0.423)
+                 Capacity Rate                       -0.0548**                            0.0661**
+                                                       (0.031)                             (0.038)
+               log (Employees)                      -0.3423***                           0.5858***
+                                                       (0.040)                             (0.086)
+           Number of Competitors                      -0.0085                            0.0860***
+                                                       (0.017)                             (0.020)
+               Number of Items                      -0.0003***                             -0.0001
+                                                       (0.000)                             (0.000)
+             ICD Fixed-Effect                            Yes                                 Yes
+             Firm Fixed-Effect                           Yes                                 Yes
+              Procurement FE                             Yes                                 Yes
+              Log-Likelihood                         -1672.609                           -82.66346
+                   AIC                                 4127.2                               411.33
+           Number of Observations                       3293                                 1386
+         Note: ***p < 0.01, **p < 0.05, *p < 0.1. Standard errors in parenthesis. The dependent variable is the log
+         of the adjusted bid value.
+
+
+6 – Conclusions
+         In the present paper we propose an economic screening that identifies systematic correlation
+between bids to investigate the behavior of alleged bid-rigging cartel that operates in the Brazilian market
+of implantable cardiac devices. Applying the Moran’s I statistic to residuals of bid regressions and using
+the SIASG database, we show that bids placed by the accused companies have a systematic autocorrelation
+in the sealed phase of the electronic auctions, which suggests a complementary bidding behavior, common
+characteristic of bid-rigging cartels. Additionally, in the period in which the alleged cartel probably existed
+(2005-2015), the Moran’s I statistic captured the coordinating behavior and in the period after the leniency
+agreement (2015-2017), the proposed screen does not capture the coordinating behavior. This result was
+robust to elimination of transitional periods and the use of other alternative economic screens that checks
+the hypothesis of conditional independence in sealed auctions.
+         The main advantage of the economic screen based on Moran’s I statistic is the low data requirements
+and the computational and statistical simplicity. In addition, the screen is versatile and can be applied to
+any type of market where the public procurements are governed by sealed auctions. However, the Moran’s
+I statistic requires prior knowledge regarding the identity of the companies that may form the bid-rigging
+cartel. Without information from documentary evidence, denunciations or leniency agreements, it becomes
+more difficult to construct the bidding matrix and to proceed with screen application. A partial solution to
+this disadvantage is to apply the economic screen to combinations of all sets of companies or apply only to
+those with the largest market share or to the most frequent bidders. Finally, another shortcoming of our
+economic screen is the possibility of pointing to the existence of a bid-rigging cartel when it does not really
+exist (false positives). This can occur when bids are correlated due to the existence of unobserved variables
+that influence the placed bids. Therefore, our screen cannot be used as an isolated and definitive proof of
+the existence of the bid-rigging scheme and makes necessary to collect additional documentary evidence.
+References
+
+
+Abrantes-Metz, R.M., Bajari, P., 2012. Screens for conspiracies and their multiple applications. Compet.
+      Policy Int. 8, 177–193.
+Abrantes-Metz, R.M., Froeb, L.M., Geweke, J., Taylor, C.T., 2006. A variance screen for collusion. Int. J.
+      Ind. Organ. 24, 467–486. https://doi.org/10.1016/j.ijindorg.2005.10.003
+Abreu, A., 2018. Por dentro do cartel dos implantes [WWW Document]. Piauí Folha.
+Aryal, G., Gabrielli, M.F., 2013. Testing for collusion in asymmetric first-price auctions. Int. J. Ind. Organ.
+      31, 26–35. https://doi.org/10.1016/j.ijindorg.2012.10.002
+Bajari, P., Ye, L., 2003. Deciding Between Competition and Collusion. Rev. Econ. Stat. 85, 971–989.
+Bergman, M.A., Lundberg, J., Lundberg, S., Stake, J.Y., 2019. Interactions Across Firms and Bid Rigging.
+      Rev. Ind. Organ. https://doi.org/10.1007/s11151-018-09676-0
+Boyer, M., Kotchoni, R., 2015. How Much Do Cartel Overcharge? Rev. Ind. Organ. 47, 119–153.
+      https://doi.org/10.1007/s11151-015-9472-1
+CADE, 2017. CADE’s General Superintendence initiates administrative proceeding to investigate a cartel
+      in the market of orthoses, prostheses and special medical supplies [WWW Document]. Assessor.
+      Comun. Soc.
+Erutku, C., 2012. Testing post-cartel pricing during litigation. Econ. Lett. 116, 339–342.
+      https://doi.org/10.1016/j.econlet.2012.03.033
+Günster, A., Carree, M., Dijk, M. van, 2011. Do Cartels Undermine Economic Efficiency?, in: The
+      American Economic Association.
+Harrington, J.E., 2008. Detecting cartels, in: Buccirossi, P. (Ed.), Handbook of Antitrust Economics.
+      London: MIT Press.
+Imhof, D., 2017. Simple Statistical Screens to Detect Bid Rigging (No. 484), Working Papers SES. Faculty
+      of Economics and Social Sciences, University of Fribourg (Switzerland).
+Imhof, D., Karagök, Y., Rutz, S., 2018. Screening for bid rigging-does it work? J. Compet. Law Econ. 14,
+      235–261. https://doi.org/10.1093/JOCLEC/NHY006
+Ishii, R., 2009. Favor exchange in collusion: Empirical study of repeated procurement auctions in Japan.
+      Int. J. Ind. Organ. 27, 137–144. https://doi.org/10.1016/j.ijindorg.2008.05.006
+Jakobsson, M., 2007. Bid Rigging in Swedish Procurement Auctions, Mimeo. Department of Economics,
+      Uppsala University, Sweden.
+Lundberg, J., 2017. On cartel detection and Moran’s I. Lett. Spat. Resour. Sci. 10, 129–139.
+      https://doi.org/10.1007/s12076-016-0176-4
+Mattos, C., 2014. Modalidades de licitação e cartéis no Brasil. Consult. Legis. da Câmara dos Deputados
+      1–17.
+Moran, P.A., 1948. The interpretation of statistical maps. J. R. Stat. Soc. Ser. B 10, 243–251.
+Ragazzo, C., Silva, R.M., 2006. Aspectos econômicos e jurídicos sobre cartéis na revenda de combustíveis:
+      uma agenda para investigações.
+Vasconcelos, S., Vasconcelos, C., 2005. Investigações e obtenção de provas de cartel: porque e como
+      observa o paralelismo de conduta. Ensaios FEE 26, 1–20.
+

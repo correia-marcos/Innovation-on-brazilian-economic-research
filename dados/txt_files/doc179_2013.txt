@@ -1,0 +1,730 @@
+       Modelo de Solow Espacial com Poupança
+                  Não-Homogênea
+João Plı́nio Juchem Neto, Pós-Doutorando no PPGE/UFRGS, jpjuchem@gmail.com
+ Sabino da Silva Pôrto Júnior, Professor no PPGE/UFRGS, sabino@ppge.ufrgs.br
+  Julio Cesar Ruiz Claeyssen, Professor no PPGMAp/UFRGS, julio@mat.ufrgs.br
+
+
+
+                                       Abstract
+   In this work we introduce a spatially non-homogeneous saving rate in a Spatial
+Solow Model. We then verify, numerically and in one spatial dimension, that this
+modification causes the aggregated economy to reach a higher level of capital per
+capita than when the saving rate is constant all over the economy. Besides of that,
+we also show that the economy as a whole reaches a higher level of capital per capita
+when there is economic cluster formation, and an even higher average level when it
+develops economic cycles.
+
+JEL Classification: R12, O40.
+Keywords: Spatial Solow Model, Regional Economics, Industrial Agglomeration.
+Thematic Area: (10) Regional and Urban Economics.
+
+
+                                       Resumo
+    Neste trabalho introduzimos uma taxa de poupança espacialmente não-homogênea
+no Modelo de Solow Espacial e verificamos, através de simulações numéricas em uma
+dimensão espacial, que tal modificação faz com que a economia agregada atinja um
+nı́vel maior de capital per capita do que no caso em que a poupança é constante em
+todas as localidades. Além disso, também mostramos que a economia como um todo
+atinge um nı́vel de capital per capita maior nos casos em que há formação de aglomer-
+ados econômicos, e um nı́vel médio ainda maior quando a economia desenvolve ciclos
+econômicos.
+
+Classificação JEL: R12, O40.
+Palavras-Chave: Modelo de Solow Espacial, Economia Regional, Aglomeração Industrial.
+Área Temática: (10) Economia Regional e Urbana.
+
+
+
+
+                                           1
+1    Introdução
+       O modelo de crescimento econômico neoclássico, considerado canônico até nossos dias,
+foi proposto por Solow (1956) e Swan (1956) na década de 50. Neste modelo, a taxa de
+poupança e o crescimento malthusiano da mão-de-obra são dados exogenamente e, como na
+grande maioria dos modelos de crescimento econômico encontrados na literatura, ele é espa-
+cialmente homogêneo (Wan Jr, 1971; Barro and Sala-i Martin, 2004). Isto significa que ele
+não leva em consideração a movimentação da mão-de-obra e do capital pelo espaço, sendo
+utilizado principalmente para descrever a evolução do produto agregado da economia ao
+longo do tempo – do produto interno bruto (PIB), por exemplo. Se observarmos os dados
+empı́ricos do censo do IBGE de 2010, entretanto, podemos constatar que a grande maioria
+das cidades brasileiras com maior PIB per capita estão concentradas nas regiões sul, sudeste
+e centro-oeste, enquanto que as cidades com menor PIB per capita se encontram no norte e
+nordeste brasileiros (Rolnik and Klink, 2011). De fato, esta é uma distribuição espacial que
+parece ser caracterı́stica da segunda metade do século XX no Brasil (Camarano and Beltrão,
+2000; Pôrto Júnior and Figueiredo, 2012). É evidente, portanto, que a variável espacial é
+um fator importante para descrever o crescimento econômico.
+
+      Na literatura podemos encontrar duas grandes linhas de pesquisa cujo intuito é de-
+screver e explicar a dinâmica espaço-temporal de uma economia e, em particular, descrever
+como se dá o processo de aglomeração econômica. A primeira destas linhas é mais antiga
+e advém da área de estudos denominada Ciência Regional, e a segunda, mais recente, é
+denominada de Nova Geografia Econômica.
+
+       A linha de pesquisa provinda da Ciência Regional (Isard, 1956, 2003; Isard and Lios-
+satos, 1975a,b, 1979) costuma descrever a dinâmica espaço-temporal da economia com um
+sistema de equações diferenciais parciais, as quais são derivadas a partir de argumentos de
+conservação de capital e trabalho, e em seguida encontrar a evolução espaço-temporal que
+maximiza uma função de bem-estar social, adotando uma abordagem de planejamento cen-
+tral. Apesar de não serem microfundamentados, estes modelos apresentam a vantagem de
+que é relativamente simples de se considerar a acumulação de capital (e portanto o cresci-
+mento econômico) em seu formalismo.
+
+       A Nova Geografia Econômica, sub-área recente da Geografia Econômica (Thisse, 2011),
+foi proposta inicialmente por Krugman (1991), sendo desenvolvida em mais detalhes por
+Fujita et al. (1999), Fujita and Thisse (2002) e Combes et al. (2008). Esta abordagem,
+microeconômica, é uma generalização espacial da Nova Teoria do Comércio proposta por
+Krugman (1979), e seu modelo básico é o modelo de centro-periferia. Através de uma
+análise de equilı́brio geral, os autores mostram que a interação entre retornos crescentes de
+escala, custos de transporte e mobilidade espacial da mão-de-obra pode causar aglomeração
+econômica. Este modelo é bastante útil para explicar a produção, o consumo e a formação
+de preços na economia, assim como a formação de aglomerados e cidades, mas possui algu-
+mas limitações: uma delas é o fato de que os agentes consomem toda a renda, o que implica
+que, em alguns casos, pode não haver crescimento econômico (Brito, 2004; Camacho et al.,
+2008); outra, a de que não é muito simples de se modificá-lo para adicionar a acumulação de
+capital, embora já existam algumas tentativas nesta direção. Por exemplo, no Capı́tulo 11
+de seu livro, Fujita and Thisse (2002) apresenta um modelo de crescimento endógeno de duas
+regiões, sendo este uma combinação de um modelo de centro-periferia ao estilo de Krugman
+
+
+                                               2
+com um modelo de crescimento endógeno com produtos diferenciados horizontalmente do
+tipo Grossman-Helpman-Romer. Desta forma, a taxa de crescimento da economia é medida
+pela variação no número de variedades produzidas. A principal conclusão deste modelo, nas
+palavras dos próprios autores, é a seguinte: “In fact, our analysis strongly supports the idea
+that agglomeration and growth reinforce each other ” (pag. 421, Fujita and Thisse (2002)).
+
+      O objetivo principal deste trabalho é dar uma pequena contribuição ao desenvolvi-
+mento de modelos de crescimento econômico espacial seguindo a linha de pesquisa da Ciência
+Regional, ao considerar uma taxa de poupança espacialmente não-homogênea no Modelo de
+Solow Espacial apresentado em Juchem Neto and Claeyssen (2013). A idéia é comparar,
+através de simulações numéricas, a evolução espaço-temporal gerada por este modelo com o
+caso em que a poupança é espacialmente homogênea.
+
+       O modelo aqui considerado é caracterizado por uma função de produção de Cobb-
+Douglas e por um crescimento logı́stico da mão-de-obra, o que implica que ela é limitada
+no longo prazo (comportamento este já considerado anteriormente no modelo não-espacial,
+conforme Donghan (1998), Mingari Scarpello and Ritelli (2003) e Guerrini (2006)). Quanto
+à mobilidade dos fatores de produção, consideramos que o capital/trabalho se move de
+regiões com alta densidade para regiões com baixa densidade de capital/trabalho de uma
+forma difusiva (tal comportamento está de acordo com o princı́pio neoclássico dos retornos
+marginais decrescente dos fatores) e que existe uma migração de trabalhadores induzida pelo
+capital, onde os trabalhadores tendem a se mover para regiões com uma maior densidade de
+capital disponı́vel (onde os trabalhadores podem encontrar mais fábricas e instalações para
+trabalhar, por exemplo). Desta forma, a distribuição espacial de mão-de-obra determina a
+distribuição espacial de capital, e vice-versa.
+
+       Este artigo está estruturado da seguinte maneira: na seção dois realizamos uma breve
+revisão da literatura abordando modelos de crescimento econômico espaciais
+seguindo a linha de estudos da Ciência Regional; na seção três introduzimos o modelo
+considerado neste trabalho; na seção quatro apresentamos alguns resultados de estabilidade
+linear para o caso em que a poupança é espacialmente homogênea; e na seção cinco temos
+os resultados das simulações numéricas. Por fim, fechamos o artigo com as conclusões e
+perspectivas de pesquisa futura.
+
+
+2    Breve Revisão Bibliográfica
+      Nesta seção apresentamos, em linhas gerais, o desenvolvimento da modelagem de
+crescimento econômico espacial seguida pela Ciência Regional, linha de pesquisa na qual
+este trabalho se enquadra. Embora a Ciência Regional tenha passado por uma espécie de
+crise no inı́cio dos anos 90, a partir dos anos 2000 houve um renovado interesse nesta área
+de estudos (Quigley, 2001).
+
+      Começamos com Isard and Liossatos (1975a,b), que propõem um modelo evolutivo bas-
+tante geral de crescimento econômico com dependência espacial, onde as variáveis espaço
+e tempo são contı́nuas. Este modelo é descrito por um sistema de duas equações diferen-
+ciais parciais governando a evolução espaço-temporal da densidade de capital/trabalho: a
+primeira equação é de conservação de capital/trabalho, o que em termos econômicos es-
+
+
+                                               3
+tabelece o balanço entre oferta e demanda; e a segunda equação descreve a dinâmica do
+fluxo (ou migração espacial) do capital/trabalho, a qual depende do gradiente das suas
+respectivas densidades. Dois importantes casos particulares deste modelo são: (i) caso
+reativo-difusivo-advectivo, de caráter parabólico, onde os fluxos de capital/trabalho respon-
+dem instantâneamente à alterações nos gradientes das densidades de capital/trabalho; e (ii)
+caso ondulatório, de caráter hiperbólico, onde os fluxos de capital/trabalho respondem com
+um certo atraso à mudanças nos gradientes das densidades de capital/trabalho. Seguindo
+Cattaneo (1958), este segundo caso é modelado com a aplicação da lei de Fourier modifi-
+cada para descrever os fluxos de capital/trabalho, o que implica que este modelo pode gerar
+comportamento econômico cı́clico e propagação de ondas. Utilizando estas equações, são
+então resolvidos problemas de otimização dinâmica em um horizonte finito de planejamento.
+Sistematizando e aprofundando estes trabalhos, Isard and Liossatos (1979) propõem uma
+teoria geral de dinâmica espacial e desenvolvimento espaço-temporal ótimo, considerando
+tanto modelos discretos quanto contı́nuos.
+
+       Nos anos 2000 há uma retomada destes trabalhos de Isard e Liossatos, com Cama-
+cho and Zou (2004) propondo o Modelo de Solow Espacial para uma economia de tamanho
+infinito, onde cada ponto do espaço representa um agente econômico imóvel que produz e
+consome um único bem agregado, identificado como o capital. Os autores apresentam este
+modelo como uma generalização espacial direta do Modelo de Solow, onde apenas o capital
+se move pelo espaço, se difundindo de regiões com alta densidade para regiões com baixa
+densidade de capital. De fato, este modelo é um caso particular – reativo-difusivo – do mod-
+elo proposto por Isard-Liossatos na década de 70. Em seguida, Brito (2005) adiciona a este
+modelo uma distribuição de mão-de-obra seguindo um crescimento malthusiano exógeno.
+Uma caracterı́stica destes modelos é que só há aglomeração econômica – ou a evolução para
+uma distribuição de capital e trabalho espacialmente não-homogênea – se for introduzido
+exogenamente no modelo uma tecnologia espacialmene assimétrica e constante ao longo do
+tempo.
+
+      Seguindo nesta linha, Brito (2004), considerando a dinâmica espaço-temporal proposta
+por Camacho and Zou (2004), propõe uma generalização espacial para o modelo de Ramsey,
+supondo uma economia centralizada, onde o planejador escolhe a alocação espaço-temporal
+de consumo que maximiza um funcional de utilidade social de Bergson-Samuelson. Para
+lidar com um domı́nio ilimitado, o autor se utiliza de uma função de utilidade (média) de
+Millian. Entre as conclusões deste trabalho está a de que este modelo pode gerar aglomera-
+dos endogenamente, através de um processo reativo-difusivo similar à formação de padrões
+espaciais proposto por Turing (1952), o qual foi aplicado em problemas de quimiotaxia1
+na área de Biomatemática primeiramente por Keller and Segel (1970). Este mesmo tipo
+de comportamento também aparece em modelos da Nova Geografia Econômica, quando o
+espaço é considerado contı́nuo (Fujita et al., 1999). Camacho et al. (2008) obtém resultados
+de existência rigorosos para um modelo similar a este proposto por Brito (2004), mas em um
+domı́nio compacto e considerando uma função de utlilidade linear. Além disso, propõem um
+esquema numérico para aproximar a solução do problema de otimização dinâmica resultante.
+Observe que neste modelo o problema de otimização associado está sujeito a restrições dadas
+por equações diferenciais parciais, o que dificulta substancialmente a sua resolução.
+   1
+    Quimiotaxia é o processo em que células, ou organismos, migram em resposta a gradientes quı́micos
+externos, seguindo na direção destes gradientes (Painter and Hillen, 2011). No presente contexto temos a
+mão-de-obra (células) migrando na direção do gradiente do capital (quı́mico).
+
+
+                                                    4
+      Mais recentemente, Engbers (2009) e Capasso et al. (2010), consideraram uma função
+de produção convexa-côncava no Modelo de Solow Espacial em um domı́nio limitado. Em
+Capasso et al. (2012), os autores introduzem uma mão-de-obra malthusiana exógena no
+modelo, considerando taxas de crescimento populacional espacialmente não-homogêneas, e
+mostram que, dependendo da distribuição inicial de capital, armadinhas de pobreza podem
+se formar em tal economia (Sachs, 2001).
+
+       Juchem Neto (2013) e Juchem Neto and Claeyssen (2013) propõem uma generalização
+do Modelo de Solow Espacial até então encontrado na literatura, levando em consideração a
+interação entre as distribuições de capital e mão-de-obra. Este modelo é, simultâneamente,
+um caso particular de uma versão modificada do Modelo de Isard-Liossatos (Isard and
+Liossatos, 1979) de crescimento econômico espacial2 , e uma generalização do Modelo de
+Solow Espacial encontrado na literatura até o momento (Camacho and Zou, 2004; Brito,
+2004, 2005; Capasso et al., 2010). Além de considerar um movimento difusivo para a mão-
+de-obra e o capital, este modelo considera a existência de uma migração de trabalhadores
+induzida pelo capital, onde estes se movem de regiões com baixa densidade de capital para
+regiões com alta densidade de capital. Desta forma, a distribuição de mão-de-obra também é
+determinada endogenamente. Através de uma análise de estabilidade linear, neste trabalho
+é mostrado que a introdução desta migração de mão-de-obra induzida pelo capital é uma
+condição necessária para o modelo entrar em um regime instável, no qual pode haver a
+formação de aglomerados econômicos ou ser gerada uma rica variedade de dinâmicas espaço-
+temporais de forma completamente endógena. Além disso, são apresentadas simulações
+numéricas em uma dimensão espacial mostrando que, dependendo da intensidade desta
+migração e do tamanho da economia, este modelo pode gerar endogenamente quatro tipos de
+comportamentos, fazendo a economia: (i) convergir para um estado estacionário homogêneo;
+(ii) convergir para um estado estacionário não-homogêneo; (iii) desenvolver ciclos espaço-
+temporais periódicos; (iv) e desenvolver ciclos espaço-temporais irregulares e aperiódicos.
+
+
+3         O Modelo de Solow Espacial
+      O modelo considerado neste trabalho descreve a evolução espaço-temporal das den-
+sidades de capital e mão-de-obra em um continuum de economias locais representadas por
+um intervalo compacto Ω = [0, l]. Desta forma, l > 0 é o tamanho do segmento de reta rep-
+resentando a economia. Em cada ponto x ∈ Ω, existe uma densidade de capital K(t, x) ≥ 0
+e de trabalho L(t, x) ≥ 0, fatores que são utilizados para produzir um bem agregado através
+de uma função de produção de Cobb-Douglas f (K, L) = AK φ L1−φ . Aqui, φ ∈ [0, 1] informa
+a intensividade do uso do capital no processo produtivo e A > 0 é um fator tecnológico
+constante. Observe que todas as economias locais utilizam a mesma função de produção
+e que a taxa de crescimento natural da mão-de-obra é dada pela mesma função logı́stica
+g(L) = aL − bL2 , onde a, b ≥ 0. Isto implica que ab ≥ 0 é a quantidade máxima de tra-
+balhadores que cada localidade suporta. O modelo, que por simplicidade consideramos em
+uma dimensão espacial, é derivado em Juchem Neto and Claeyssen (2013) para uma taxa
+de poupança espacialmente homogênea s(x) = s, s ∈ [0, 1], a partir de leis de conservação
+de capital e mão-de-obra. Se a poupança não é constante, o modelo pode ser descrito pelas
+seguintes equações diferenciais parciais não-lineares acopladas, com as respectivas condições
+    2
+        Tal modificação foi introduzida para evitar a existência de soluções negativas, o que seria irrealista.
+
+
+                                                            5
+iniciais e de fronteira:
+               ∂K                                  ∂2K
+                    = s(x)AK φ L1−φ − δK + dK 2 , para x ∈ (0, l), t > 0                    (1a)
+               ∂t                                  ∂x
+                                     ∂2L
+                                                         
+               ∂L                                ∂     ∂K
+                   = aL − bL2 + dL 2 − χL            L       , para x ∈ (0, l), t > 0      (1b)
+               ∂t                    ∂x         ∂x     ∂x
+              K(t, x) = K0 (x), L(t, x) = L0 (x), para x ∈ Ω = [0, l], t = 0                (1c)
+               ∂K         ∂L
+                    = 0,     = 0, para x ∈ ∂Ω = {0, l}, t > 0.                             (1d)
+               ∂x         ∂x
+       A equação (1a) governa a evolução espaço-temporal do capital na economia, onde
+s(x) é a taxa de poupança na localidade x tomando valores no intervalo [0, 1]; δ > 0 é a
+taxa de depreciação do capital (constante); dK > 0 é o coeficiente de difusão do capital,
+o qual informa a intensidade do movimento do capital para regiões onde há menos capital
+disponı́vel. Já (1b) governa a evolução da mão-de-obra, sendo a, b > 0 os parâmetros do
+crescimento logı́stico, dL > 0 o coeficiente de difusão da mão-de-obra e χL ≥ 0 a intensidade
+da migração da mão-de-obra induzida pelo capital, a qual faz com que os trabalhadores se
+movam para regiões onde haja mais capital disponı́vel. Neste modelo não são considerados
+custos de transporte. Observe que a difusão é uma força de dispersão espacial tanto de
+capital quanto do trabalho,     enquanto que a migração induzida pelo capital, representada
+                 ∂    ∂K
+                         
+pelo termo χL ∂x L ∂x , se caracteriza como uma força de agregação, pois a medida que os
+trabalhadores se movem para onde há mais capital, este tende a crescer mais rapidamente
+neste local de destino, enquanto que o contrário ocorre na região de origem. Desta forma, a
+diferença no nı́vel do capital entre as duas localidades se acentua, aumentando a intensidade
+da migração de trabalhadores para onde há mais capital.
+
+      Completando o modelo, temos as distribuições iniciais de capital (K0 (x) ≥ 0) e mão-
+de-obra (L0 (x) ≥ 0), dadas por (1c), e as condições de fronteira de Neumann homogêneas
+(1d), que garantem que não haja transferência de capital e de trabalhadores através das
+fronteiras da economia, ∂Ω, ou seja, a economia como um todo é uma autarquia.
+
+      A seguir mostramos que, se as distribuições iniciais de capital e trabalho são não-
+negativas, então as soluções K(t, x) e L(t, x) de (1a)-(1d) também são sempre não-negativas:
+
+Proposição 1 - Considere as distribuições iniciais não-negativas de capital e mão-de-obra
+K0 (x) ≥ 0 e L0 (x) ≥ 0. Se K(t, x) e L(t, x) são C 1 em relação à t e C 2 em relação à x, então
+as soluções de (1a)-(1d) são sempre não-negativas.
+
+Prova: A equação para a evolução espaço-temporal da mão-de-obra pode ser escrita como:
+                                            ∂2L
+                                                                 
+                       ∂L             2               ∂      ∂K
+                           = aL − bL + dL 2 − χL           L
+                       ∂t                   ∂x        ∂x     ∂x
+                                             2           2
+                                            ∂ L        ∂ K          ∂L ∂K
+                           = aL − bL2 + dL 2 − χL L 2 − χL                .
+                                            ∂x          ∂x          ∂x ∂x
+Seguindo Edelstein (1971), observe que, como L é contı́nua em relação ao tempo, e L0 (x) é
+função não-negativa, deve existir um primeiro ponto x0 ∈ Ω ∪ ∂Ω onde L = 0 (para algum
+t0 ), antes que este se torne negativo. Se isto ocorre em Ω, deve haver um mı́nimo local em
+x0 , e portanto:
+                                     ∂L        ∂2L
+                             L = 0,      =0e        > 0 em (t0 , x0 ).
+                                      ∂x       ∂x2
+                                                   6
+Substituindo estes resultados na equação anterior obtemos que:
+
+                           ∂K      ∂2L
+                               = dL 2 ≥ 0 em (t0 , x0 ), pois dL ≥ 0,
+                            ∂t     ∂x
+e assim L não pode se tornar negativo neste ponto, e desta forma não pode se tornar nega-
+tivo em Ω. Se L assumisse valor negativo na fronteira ∂Ω, L também deveria assumir valor
+negativo em algum ponto interior do domı́nio, pois L é contı́nua em relação à x, mas isto
+não pode ocorrer pelo argumento anterior. De forma similar mostramos que K(t, x) também
+não pode assumir valores negativos 
+
+       Quanto à existência de soluções, Senba and Suzuki (2004) demontraram, no capı́tulo
+7 de seu livro, a existência local (no tempo) de soluções clássicas para o problema (1a)-(1d).
+Em Osaki et al. (2001), Osaki et al. (2002) e Hillen and Potapov (2004) foi estabelecida
+existência global para um problema similar.
+
+       Temos os seguintes casos particulares do modelo aqui considerado: se s(x) = s for
+constante, recuperamos o modelo tratado em Juchem Neto and Claeyssen (2013), e se, além
+disso, considerarmos condições iniciais constantes, não haverá movimentação espacial de
+capital e mão-de-obra pela economia, e a solução do modelo será a mesma que a do mod-
+elo não-espacial, considerado em Mingari Scarpello and Ritelli (2003); se também fizermos
+b = 0 na função logı́stica, teremos crescimento malthusiano, e assim recuperamos o modelo
+de Solow-Swan (Solow, 1956; Swan, 1956). Por outro lado, se considerarmos uma economia
+de tamanho infinito Ω = R e a = b = dL = χL = 0, recuperamos o Modelo de Solow Espa-
+cial tratado por Camacho and Zou (2004); se Ω = R e b = χL = 0, então temos o modelo
+considerado por Brito (2005).
+
+      Finalizando a apresentação do modelo, cabe notar que (1a)-(1d) guarda certa semel-
+hança com modelos utilizados no estudo do movimento de células por quimiotaxia, os quais
+podem levar a formação de padrões (ou aglomerados) espaciais estáveis (Keller and Segel,
+1970; Zhu and Murray, 1995; Murray, 2003; Edelstein-Keshet, 2005) e a dinâmicas espaço-
+temporais mais complexas (Pearce et al., 2007; Painter and Hillen, 2011; Banerjee et al.,
+2012).
+
+
+4       Resultados de Estabilidade Linear para o Caso
+        em que a Poupança é Homogênea
+      Se considerarmos a taxa de poupança homogênea em toda a economia, s(x) ≡ s, temos
+que o único ponto de equilı́brio espacialmente homogêneo de (1a)-(1d), em que capital e
+trabalho são ambos não-nulos, é dado por3 :
+                                                                    1
+                                                                   1−φ
+                                                a            sA
+                                           K∞ =                                                                       (2a)
+                                                b             δ
+                                                a
+                                           L∞ =                                                                       (2b)
+                                                b
+    3                                      ∂K       ∂L          ∂K       ∂L         ∂2 K       ∂2L
+    Para encontrar estes pontos, fazemos   ∂t   =   ∂t   = 0,   ∂x   =   ∂x   =0e   ∂x2    =   ∂x2   = 0 nas equações (1a)
+e (1b).
+
+
+
+                                                         7
+       Adicionando uma perturbação espacialmente não-homogênea de pequena amplitude
+a este ponto de equilı́brio, temos que este será (linearmente) estável se a amplitude desta
+perturbação tender a zero quando o tempo tender ao infinito. Caso contrário, dizemos que
+o equilı́brio é (linearmente) instável. Quando o equilı́brio é estável, a economia sempre
+irá convergir para o estado homogêneo (2a)-(2b), enquanto que, quando ele for instável,
+podemos observar tanto a convergência da economia para um novo estado de equilı́brio es-
+pacialmente não-homogêneo, quanto o aparecimento de ciclos espaço-temporais periódicos
+e aperiódicos (Juchem Neto and Claeyssen, 2013). Neste mesmo trabalho foi demonstrado
+o seguinte resultado:
+
+Proposição 2 - Seja dK dL > 0. O ponto de equilı́brio dado por (2a)-(2b) é instavél se
+a seguinte desigualdade for satisfeita:
+                               φ  1−φ 1 r       s      !2
+                                 δ          δdL      dK
+                      χL ≥ b                    +           =: χc .                    (3)
+                                sA           a      1−φ
+Assim, existe um valor crı́tico, χc , para a intensidade da migração de mão-de-obra induzida
+pelo capital, no qual a dinâmica do sistema muda: se χL < χc , a economia converge para um
+estado homogêneo; se χL > χc , comportamentos espaço-temporais mais complexos podem
+se formar. Observe que, coeficientes de difusão maiores, dK ou dL , assim como uma taxa de
+depreciação do capital maior, δ, implicam em um maior χc , i.e., a intensidade da migração
+deve ser maior para desestabilizar o sistema. Da mesma forma, uma menor capacidade de
+mão-de-obra na economia, a/b (mantendo a fixo), e um menor fator tecnológico, A, também
+implicam em um maior χc . Por outro lado, uma maior taxa de crescimento exponencial
+para a mão-de-obra, a, e uma maior taxa de poupança, s, implicam em um menor χc .
+
+
+5       Simulações Numéricas
+      O objetivo desta seção é comparar, através de simulações numéricas4 , a solução do
+modelo quando a poupança é espacialmente não-homogênea, com o caso em que ela é con-
+stante em toda a economia, i.e., s(x) = 0.2 para todo x ∈ [0, 100]. Então, considerando este
+último caso com o seguinte conjunto de parâmetros:
+                 l = 100, a = 0.02, b = 0.01, δ = 0.05, s = 0.2, A = 1, φ = 0.5
+obtemos que o equilı́brio espacialmente homogêneo do sistema (2a)-(2b) é K∞ = 32, L∞ = 2,
+enquanto que o valor crı́tico para o coeficiente de migração induzida pelo capital (3) é igual
+a χc = 0.112.
+
+      Em todas as simulações iremos considerar as seguintes distribuições iniciais de capital
+e mão-de-obra:
+                                                (x − 50)2
+                                                         
+                                K0 (x) = exp −                                              (4a)
+                                                   100
+                                                  (x − 50)2
+                                                           
+                                L0 (x) = 16 exp −                                           (4b)
+                                                      100
+    4
+    Como não é possı́vel obter soluções analı́ticas para (1a)-(1d), nos utilizamos de um esquema numérico
+explı́cito, baseado em diferenças-finitas, conforme descrito no Apêndice A de Juchem Neto (2013). Nas
+simulações vamos considerar uma economia de tamanho l = 100, um tempo máximo T = 5000, um passo
+espacial dx = 0.5 e um passo temporal dt = 0.0075.
+
+                                                      8
+e três funcões para a taxa de poupança: (i) poupança constante, s(x) = 0.2 para x ∈ [0, 100],
+onde todas as localidades poupam igualmente; (ii) poupança constante por partes, s(x) = 0.1
+para x ∈ [0, 50] e s(x) = 0.3 para x ∈ [50, 100], onde a metade esquerda da economia poupa
+menos do que a metade direita; e poupança linear, s(x) = −0.004x + 0.4 para x ∈ [0, 100],
+onde as taxas de poupança são mais altas na metade esquerda, mas decrescem linearmente
+até zero na localidade x = 100. Na Figura 1 apresentamos os gráficos destas três funções:
+observe que todas elas resultam numa taxa de poupança média de 0.2 para a economia como
+um todo. Além disso, mudanças nas distribuições iniciais de capital e trabalho não alteram,
+qualitativamente, o comportamento do sistema.
+
+
+
+
+                           Figura 1: Funções para a Taxa de Poupança
+
+
+      A seguir, consideramos três valores para a intensidade de migração da mão-de-obra
+induzida pelo capital: (a) χL = 0, (b) χL = 0.125 e (c) χL = 0.25. Quando a poupança é
+constante (s(x) = 0.2), temos χc = 0.112, e os seguintes cenários aparecem nas simulações:
+o caso (a) implica em estabilidade, e portanto a economia converge para uma distribuição
+homogênea de capital e trabalho (primeira coluna das Figuras 2 e 3); o caso (b) é instável,
+havendo formação de aglomerados de capital e mão-de-obra estáveis ao longo de toda a
+economia (primeira coluna das Figuras 4 e 5); e o caso (c) também é instável, mas agora há
+formação de ciclos econômicos ao longo da economia (primeira coluna das Figuras 6 e 7).
+
+       Segue de (3) que, quando χL = 0.125, temos estabilidade para s(x) > 0.189 e insta-
+bilidade para s(x) < 0.189, o que implica que: no caso em que a poupança é constante por
+partes (ii), a região esquerda [0, 50] será estável e a direita [50, 100] será instável; no caso em
+que a poupança é linear (iii), a região [0, 53] será instável e a [53, 100] será estável. Já quando
+χ = 0.25, temos estabilidade quando s(x) > 0.134 e instabilidade quando s(x) < 0.134, e
+assim: para (ii) temos o mesmo comportamento anterior; enquanto que para (iii) a região
+[0, 67] será instável e [67, 100] será estável.
+
+      Então, para o caso (ii) temos os seguintes resultados: (a) na segunda coluna das Fig-
+uras 2 e 3 podemos ver que o capital converge para um estado não-homogêneo, o qual é con-
+sequência direta da não-homogeneidade introduzida exogenamente pela função de poupança,
+onde um maior nı́vel de capital é atingido nas regiões onde a taxa de poupança é maior, en-
+quanto que a mão-de-obra converge para um estado homogêneo (lembre que os parâmetros
+da logı́stica são constantes); (b) na segunda coluna das figuras de 4 e 5 podemos verificar
+a formação de aglomerados estáveis de capital e mão-de-obra no intervalo onde a taxa de
+poupança é maior [50, 100], e a convergência a um estado homogêneo onde ela é menor, em
+
+
+                                                    9
+[0, 50], o que confirma as considerações do parágrafo anterior; (c) na segunda coluna das
+Figuras 6 e 7 temos a formação de ciclos periódicos de capital e mão-de-obra no intervalo
+[50, 100], enquanto que no intervalo [0, 50] estas distribuições convergem para um estado
+aproximadamente homogêneo.
+
+       Já no caso (iii) verificamos que, quando há estabilidade em toda a economia (a),
+podemos observar a convergência da distribuição de capital para um estado estacionário
+não-homogêneo (terceira coluna das Figuras 2 e 3), causado exogenamente pela forma linear
+da poupança. Nos casos onde há instabilidade, (b) e (c), o comportamento dinâmico do
+sistema é similar ao apresentado no parágrafo anterior, mas considerando as regiões [0, 53]
+(instável) e [53, 100] (estável) para (b) – terceira coluna das Figuras 4 e 5, e [0, 67] (instável)
+e [67, 100] (estável) para (c) – terceira coluna das Figuras 6 e 7. A diferença mais perceptı́vel
+é que, como agora a poupança decresce linearmente com x, o valor máximo dos picos nos
+aglomerados de capital também apresenta um decaimento quando x aumenta.
+
+       Na Figura 8, primeira e segunda linhas, apresentamos as distribuições iniciais e finais
+de capital per capita (K(t, x)/L(t, x)) para os casos (a) e (b), enquanto que na terceira
+linha apresentamos as distribuições per-capita para o caso (c) nos tempos t = 0, t = 3000,
+t = 4000 e t = 5000, pois neste último caso temos a emergência de ciclos. Observando estes
+gráfico fica evidente que, independente do cenário, as localidades onde a poupança é maior
+gozam de um nı́vel significantemente maior de capital per capita.
+
+       Por Rfim, na Figura 9 mostramos a evolução temporal do capital agregado per capita
+              l
+Kapc (t) = 0 K(t,x)
+                L(t,x)
+                       dx. Nesta figura podemos observar que, quando há formação de agregados
+não-homogêneos na economia (χL = 0.125), um maior nı́vel de capital per capita é atingido,
+comparado com o caso em que a economia converge para um estado homogêneo (χL = 0).
+Da mesma forma, quando há formação de ciclos (χL = 0.25), os nı́veis de capital per capita
+são substancialmente maiores do que o caso (χL = 0.125). Este resultado fica bem claro na
+tabela abaixo, onde apresentamos o nı́vel de capital per capita atingido em cada caso (para
+χL = 0.25, quando temos ciclos, apresentamos o valor médio):
+
+                  Poupança                χL = 0.000      χL = 0.125      χL = 0.250
+                  Constante                   1608            1629            2355
+             Constante por Partes             2006            2858            6435
+                   Linear                     2145            3156            7727
+
+       Assim, de uma forma geral, a formação de aglomerados e ciclos
+econômicos levam a economia agregada a um nı́vel maior de capital per capita. Outra
+informação que pode ser extraı́da desta tabela é que taxas de poupança não-homogêneas
+também levam a um Kapc mais elevado, mesmo que a poupança média seja igual nos três
+casos.
+
+
+
+
+                                                 10
+      Figura 2: Evolução Espaço-Temporal no Caso Estável (χL = 0)
+
+
+
+
+Figura 3: Distribuições Iniciais e Finais de Capital e Mão-de-Obra (χL = 0)
+
+
+
+
+                                     11
+Figura 4: Evolução Espaço-Temporal no Caso Instável com Agregados (χL = 0.125)
+
+
+
+
+ Figura 5: Distribuições Iniciais e Finais de Capital e Mão-de-Obra (χL = 0.125)
+
+
+
+
+                                        12
+Figura 6: Evolução Espaço-Temporal no Caso Instável com Ciclos (χL = 0.25)
+
+
+
+
+ Figura 7: Alguns Perfis Temporais das Distribuições de K e L (χL = 0.25)
+
+
+
+
+                                     13
+                                Figura 8: Capital per Capita
+
+
+
+
+                    Figura 9: Evolução do Capital per Capita Agregado
+
+
+6    Conclusões e Perspectivas
+      Neste artigo introduzimos uma taxa de poupança espacialmente não-homogênea no
+Modelo de Solow Espacial considerado em Juchem Neto and Claeyssen (2013), e verificamos,
+através de simulações numéricas, que tal modificação faz com que a economia agregada at-
+inja um nı́vel maior de capital per capita do que no caso em que a poupança é constante
+
+
+                                             14
+em todas as localidades. Além disso, também obtivemos o resultado de que a economia
+como um todo atinge um maior nı́vel de capital per capita nos casos em que há formação
+de aglomerados econômicos (χL = 0.125), e um nı́vel médio maior ainda quando a economia
+desenvolve ciclos econômicos (χL = 0.25). Isto nos leva à conclusão de que uma economia
+onde há aglomerações e formação de ciclos econômicos é capaz de gerar um maior produto
+agregado do que o caso homogêneo, o que de certo modo vai de encontro, em um contexto
+diferente, a conclusão obtida por Fujita and Thisse (2002) e citada na introdução deste artigo.
+
+      No caso em que a poupança é constante, existe um certo valor crı́tico para a intensi-
+dade da migração da mão-de-obra induzida pelo capital, χc , tal que, se χL > χc , a economia
+desenvolve, de forma completamente endógena, uma dinâmica espaço-temporal mais com-
+plexa, com a formação de aglomerados e ciclos econômicos ao longo de toda sua extensão,
+sendo este comportamento consequência apenas da interação entre as distribuições de capi-
+tal e mão-de-obra. No caso em que a poupança é não-homogênea, é introduzido no modelo
+uma não-homogeneidade exógena, que se soma àquela gerada endogenamente, o que resulta
+numa dinâmica espaço-temporal mais complexa para as distribuições de capital e mão-de-
+obra apenas nas regiões onde a taxa de poupança é grande o suficiente para iniciar o processo
+endógeno de agregação.
+
+      Da mesma forma que consideramos a poupança dependente da variável espacial, pode-
+mos fazer o mesmo com os parâmetros da função logı́stica que governa o crescimento orgânico
+da mão-de-obra, assim como com os coeficientes de difusão e de migração de mão-de-obra
+induzida pelo capital. Tópicos para pesquisa futura incluem a obtenção de possı́veis resulta-
+dos analı́ticos, a adição de custos de transporte para o capital e a mão-de-obra, assim como
+a análise de um Modelo de Ramsey Espacial, considerando a dinâmica espaço-temporal
+gerada pelo modelo aqui apresentado.
+
+
+Referências Bibliográficas
+Banerjee, S., Misra, A. P., and Rondoni, L. (2012). Spatiotemporal evolution in a (2+1)-
+  dimensional chemotaxis model. Physica A, 391:107–112.
+
+Barro, R. J. and Sala-i Martin, X. (2004). Economic Growth. MIT Press, 2 edition.
+
+Brito, P. (2004). The dynamics of growth and distribution in a spatially heterogeneous
+  world. Working Paper, ISEG, WP13/2004/DE/UECE.
+
+Brito, P. (2005). Essays in Honour of Antonio Simoes Lopes, chapter A Spatial Solow Model
+  with Unbounded Growth, pages 277–298. ISEG/UTL.
+
+Camacho, C. and Zou, B. (2004). The spatial solow model. Economics Bulletin, 18(2):1–11.
+
+Camacho, C., Zou, B., and Briani, M. (2008). On the dynamics of capital accumulation
+  across space. European Journal of Operational Research, (186):451–465.
+
+Camarano, A. A. and Beltrão, K. I. (2000). Distribuição espacial da população brasileira:
+  Mudanças na segunda metade deste século. Texto para discussão n. 766, Instituto de
+  Pesquisa Econômica Aplicada (IPEA), Rio de Janeiro, RJ.
+
+
+
+                                               15
+Capasso, V., Engbers, R., and La Torre, D. (2010). On a spatial solow model with tech-
+  nological diffusion and nonconcave production function. Nonlinear Analysis: Real World
+  Applications, (11):3858–3876.
+
+Capasso, V., Engbers, R., and La Torre, D. (2012). Population dynamics in a spatial
+  Solow model with a convex-concave production function, pages 61–68. Mathematical and
+  Statistical Methods for Actuarial Sciences and Finance. Springer-Verlag, Milano, Italy.
+
+Cattaneo, C. (1958). Sur une forme de l’equation de la chaleur eliminat le paradoxe
+  d’une propagation instantanee. Comptes Rendus de Seances de L’Academie des Sciences,
+  247:431–433.
+
+Combes, P.-P., Mayer, T., and Thisse, J.-F. (2008). Economic Geography - The Integration
+  of Regions and Nations. Princenton University Press, UK.
+Donghan, C. (1998). An improved solow-swan model. Chinese Quarterly Journal of Math-
+ ematics, 13(2):72–78.
+Edelstein, B. B. (1971). Cell specific diffusion model and morphogenesis. Journal of Theo-
+  retical Biology, 30:515–532.
+
+Edelstein-Keshet, L. (2005). Mathematical Models in Biology. Classics in Applied Mathe-
+  matics. SIAM, Philadelphia, US.
+Engbers, R. (2009). Spatial Structures in Geographical Economics - Mathematical Model-
+  ing, Simulation and Inverse Problems. PhD thesis, Westfalische Wilhems-Universitat,
+  Munster.
+Fujita, M., Krugman, P., and Venables, A. J. (1999). The Spatial Economy. MIT Press.
+
+Fujita, M. and Thisse, J.-F. (2002). Economics of Agglomeration: Cities, Industrial Loca-
+  tion, and Regional Growth. Cambridge University Press, UK.
+Guerrini, L. (2006). The solow-swan model with a bounded population growth rate. Journal
+ of Mathematical Economics, 42:14–21.
+Hillen, T. and Potapov, A. (2004). The one-dimensional chemotaxis model: global existence
+  and asymptotic profile. Mathematical Methods in the Applied Sciences, 27:1783–1801.
+Isard (2003). History of Regional Science and the Regional Science Association International
+   - The Beginnings and Early History. Spring-Verlag, Berlin.
+Isard, W. (1956). Location and space-economy: a general theory relating to industrial loca-
+   tion, market areas, land use, trade, and urban structure. MIT Press & Wiley, NY.
+
+Isard, W. and Liossatos, P. (1975a). Parallels from physics for space-time development
+   models: Part i. Regional Science and Urban Economics, 1(1):5–40.
+Isard, W. and Liossatos, P. (1975b). Parallels from physics for space-time development
+   models: Part ii - interpretation and extensions of the basic model. Regional Science
+   Association, 35:43–66.
+Isard, W. and Liossatos, P. (1979). Spatial Dynamics and Optimal Space-Time Development,
+   volume 4 of Studies in Regional and Urban Economics. North-Holland, New York, US.
+
+                                            16
+Juchem Neto, J. (2013).      Modelos Evolutivos de Crescimento Econômico com De-
+  pendência Espacial.    PhD thesis, Universidade Federal do Rio Grande do Sul
+  (http://hdl.handle.net/10183/69937), Porto Alegre, RS.
+
+Juchem Neto, J. and Claeyssen, J. C. R. (2013). Capital-induced labor migration in a spatial
+  solow model. In XVI Encontro de Economia da Região Sul (Anpec-Sul), Curitiba, PR.
+
+Keller, E. F. and Segel, L. A. (1970). Initiation of slime mold aggregation viewed as an
+  instability. Journal of Theoretical Biology, 26(3):399–415.
+
+Krugman, P. (1979). Increasing returns, monopolistic competition and international trade.
+  Journal of International Economics, 9:469–479.
+
+Krugman, P. (1991). Increasing returns and economic geography. Journal of Political Econ-
+  omy, (99):483–499.
+
+Mingari Scarpello, G. and Ritelli, D. (2003). The solow model improved through the logistic
+ manpower growth law. Annali Università di Ferrara - Sez VII - Sc. Mat., II:73–83.
+
+Murray, J. D. (2003). Mathematical Biology - II: Spatial Models and Biomedical Applications.
+ Springer-Verlag, New York, US, third edition edition.
+
+Osaki, K., Tsujikawa, T., and Yagi, A. (2001). Finite dimensional attractor for one-
+  dimensional keller-segel equations. Funkcialaj Ekvacioj, 44:441–469.
+
+Osaki, K., Tsujikawa, T., Yagi, A., and Mimura, M. (2002). Exponential attractor for a
+  chemotaxis-growth system of equations. Nonlinear Analysis, 51:119–144.
+
+Painter, K. J. and Hillen, T. (2011). Spatio-temporal chaos in a chemotaxis model. Physica
+  D, 240:363–375.
+
+Pearce, I. G., Chaplain, M. A. J., Schofield, P. G., Anderson, A. R. A., and Hubbard,
+  S. F. (2007). Chemotaxis-induced spatio-temporal heterogeneity in multi-speacies host-
+  parasitoid systems. Journal of Mathematical Biology, 55:365–388.
+
+Pôrto Júnior, S. S. and Figueiredo, E. A. (2012). Persistência das desigualdades region-
+  ais no brasil: Divergência, polarizaçao e divergência. Texto para Discussão n. 2012/06,
+  PPGE/UFRGS.
+
+Quigley, J. M. (2001). The renaissance in regional research. The An, 35:167–178.
+
+Rolnik, R. and Klink, J. (2011). Crescimento econômico e desenvolvimento urbano - por
+  que nossas cidades continuam tão precárias? Novos Estudos, 89:89–109.
+
+Sachs, J. (2001). The strategic significance of global inequality. The Washington Quaterly,
+  24(3):189–198.
+
+Senba, T. and Suzuki, T. (2004). Applied Analysis: Mathematical Methods in Natural
+  Science. Imperial College Press, London, UK.
+
+Solow, R. (1956). A contribution to the theory of economic growth. Quarterly Journal of
+  Economics, LXX:65–94.
+
+
+
+                                             17
+Swan, T. W. (1956).     Economic growth and capital accumulation.        Economic Record,
+  (32):334–361.
+
+Thisse, J.-F. (2011). Economia Regional e Urbana - Teorias e métodos com ênfase no Brasil,
+  chapter Geografia Econômica, pages 17–42. Instituto de Pesquisa Econômica Aplicada
+  (IPEA).
+
+Turing, A. M. (1952). The chemical basis of morphogenesis. Philosophical Transactions of
+  the Royal Society of London, B237:37–72.
+
+Wan Jr, H. Y. (1971). Economic Growth: A critical review and summary of the modern
+ theories of economic growth. Harcourt Brace Jovanovich, Inc., US.
+
+Zhu, M. and Murray, J. D. (1995). Parameter domains for generating spatial pattern: A
+  comparison of reaction-diffusion and cell-chemotaxis models. International Journal of
+  Bifurcation and Chaos, 5(6):1503–1524.
+
+
+
+
+                                            18
+

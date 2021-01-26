@@ -1,0 +1,1916 @@
+Ambiente Urbano e Criminalidade: uma Abordagem de
+
+Machine Learning para o Caso da Cidade do Recife
+
+C´elio Henrique P. Belmiro - PIMES/UFPE
+Raul da Mota Silveira Neto - PIMES/UFPE
+Raydonal Ospina Mart´ınez - PPGE/UFPE
+
+Resumo. Este trabalho tem como objetivo veriﬁcar a associa¸c˜ao entre caracter´ısticas da vizin-
+han¸ca - setores censit´arios - e violˆencia na cidade do Recife. Busca-se, por meio da aplica¸c˜ao de um
+conjunto de t´ecnicas de regress˜ao penalizadas, a constru¸c˜ao de modelos parcimoniosos que auxiliem
+no entendimento da quest˜ao. Em especial, a utiliza¸c˜ao dos modelos propostos, ridge, lasso e elastic
+net s˜ao uma novidade no estudo da violˆencia para o pa´ıs, tanto pelo car´ater inovador da abordagem
+quanto pela regi˜ao geogr´aﬁca de estudo - mesmo para abordagens tradicionais, poucos estudos se
+prop˜oem a estudar a vizinhan¸ca com esse grau de desagrega¸c˜ao no caso brasileiro. A cidade do Recife,
+objeto de estudo, situa-se como a mais antiga das atuais capitais brasileiras e uma das mais violentas
+capitais do pa´ıs, motiva¸c˜ao adicional no entendimento de fatores que podem estar associados as altas
+taxas de CVLI – Crime Violento Letal e Intencional – na cidade. Adicionalmente, dada a natureza
+heterogˆenea da distribui¸c˜ao das ocorrˆencias no espa¸co, inclui-se na modelagem a presen¸ca de vari´aveis
+defasadas espaciais. Os resultados apontam para o incremento do desempenho preditivo de tais
+modelos em compara¸c˜ao com a abordagem tradicional, e possibilitam discutir, para a cidade do Recife,
+a associa¸c˜ao entre a violˆencia e uma s´erie de caracter´ısticas socioeconˆomicas, sociodemogr´aﬁcas e da
+vizinhan¸ca.
+
+Palavras-chave: Violˆenca. Criminalidade. Regress˜ao Penalizada.
+
+Abstract. This work aims to verify the association between neighborhood characteristics - census
+tracts - and violence. Through the application of a set of penalizing regression techniques, the
+construction of models that allow the selection of a set of variables that help in the understanding of
+the question. In particular, the construction of the proposed models, ridge, lasso and elastic net are
+novelties in the study of violence for the country, both for the innovative nature of the approach and
+for the geographic region of study - even for traditional approaches, few papers propose to study the
+neighborhood with this degree of disaggregation in the Brazilian case. The city of Recife is the oldest
+Brazilian capital and one of the most violent capitals in the country, an additional motivation in the
+understanding of factors that may be associated with high CVLI - Intentional Letal Violent Crimes -
+rates. In addition, given the heterogeneous nature of the distribution of occurrences in space, the
+presence of spatial lagged variables is included in the modeling. The results point to the increase in
+the performance of such models, and allow to discuss, for the city of Recife, a series of socioeconomic
+characteristics of the neighborhood and its association with the violence.
+
+Keywords: Violence. Criminality. Penalized Regression.
+
+´Area: 10 - Economia Regional e Urbana.
+
+JEL: R19.
+
+1
+
+1
+
+Introdu¸c˜ao
+
+Fenˆomeno marcante da vivˆencia urbana, o crime, em suas mais diversas manifesta¸c˜oes, est´a no
+cerne da aten¸c˜ao p´ublica. Seu impacto direto no bem-estar e implica¸c˜oes para decis˜ao de diferentes
+agentes tornam este complexo fenˆomeno objeto de estudo de diversos ramos das ciˆencias sociais.
+Principalmente, economistas, criminologistas e soci´ologos tem, ao longo dos anos, contribu´ıdo para o
+entendimento do fenˆomeno com uma s´erie de estudos emp´ıricos e desenvolvimentos te´oricos que buscam
+identiﬁcar quais fatores est˜ao associados `as ocorrˆencias de crimes nas cidades. Tais contribui¸c˜oes s˜ao
+sintetizadas atrav´es de estruturas anal´ıticas, entre as quais, destacam-se a Teoria da desorganiza¸c˜ao
+social (Shaw e Mckay, 1942), a abordagem da Eﬁc´acia coletiva (Sampson e Raudenbush, 1999), a
+abordagem econˆomica tradicional do crime de Becker (1968) e a Teoria das Atividades Rotineiras
+(Osgood et al.,1996; Tremblay e Tremblay, 1998). Contribui¸c˜oes mais recentes ressaltam tamb´em
+a relevˆancia de Intera¸c˜oes sociais (Glaeser et al., 1996; Zenou, 2003) e da distˆancia ao trabalho e
+amenidades locais (Verdier e Zenou, 2002), como situa¸c˜oes catalisadoras para a ocorrˆencia de crimes
+nas cidades. (GIBBONS, 2004) Tais diferentes perspectivas, em que pese suas pertinˆencias, trazem,
+por´em, grande desaﬁo para o trabalho emp´ırico que visa os condicionantes da criminalidade, uma vez
+que ampliam bastante o n´umero de tais condicionantes que devem ser considerados nos trabalhos
+aplicados.
+
+Na verdade, a profus˜ao de diferentes teorias e abordagens para explicar a ocorrˆencia de criminali-
+dade urbana ao mesmo tempo que atesta a complexidade do fenˆomeno, tamb´em revela um desaﬁo
+emp´ırico: a arbitragem do pesquisador quanto `as vari´aveis a considerar nos trabalhos aplicados, uma
+vez que nos modelos quantitativos econom´etricos tradicionais as fortes associa¸c˜oes entre diferentes
+condicionantes diﬁculta a identiﬁca¸c˜ao das diferentes inﬂuˆencias. Nos ´ultimos anos, contudo, o desen-
+volvimento da capacidade computacional contribuiu tanto para o incremento na gera¸c˜ao e obten¸c˜ao
+de dados como no surgimento de novas t´ecnicas de an´alise. O desenvolvimento das ferramentas na
+´area de aprendizagem de m´aquina - machine learning - possibilitam analisar e tomar decis˜oes sobre
+conjuntos de informa¸c˜oes denominados big data. Tais t´ecnicas, aplicadas em diversos campos da
+ciˆencia, como em Economia, Psicologia, F´ısica, Qu´ımica e Engenharia, representam um subcampo
+da inteligˆencia artiﬁcal cujo objetivo, como destacam Mehta et al. (2018), ´e desenvolver algoritmos
+capazes de aprender automaticamente com os dados.
+
+De maneira geral, ´e possivel caracterizar um problema de aprendizagem supervisionado como
+pr´oximo a um problema tradicional de regress˜ao. Como Mehta et al. (2018) e Hastie, Tibshirani
+e Friedman (2008) argumentam, dado um determinado conjunto de dados X, desejamos obter um
+modelo f (β), que ´e uma fun¸c˜ao dos parˆametros β, assumindo uma fun¸c˜ao custo C(X, f (β)), o que
+permite veriﬁcar qu˜ao bem o modelo proposto explica e performa sobre o conjunto de dados X.
+Os parˆametros β escolhidos s˜ao aqueles que minimizam a fun¸c˜ao custo adotada. Tratando-se de
+problemas envolvendo previs˜ao, o primeiro passo ´e dividir o conjunto de observa¸c˜oes em dois grupos
+distintos - mutualmente excludentes - denominados conjuntos de teste e valida¸c˜ao. Assim, o ajuste
+do modelo ´e feito utilizando-se o conjunto teste e sua performance testada aplicando os coeﬁcientes
+estimados para descrever os dados do conjunto de valida¸c˜ao.
+
+Como a ado¸c˜ao do modelo f (β), por exemplo, ´e apenas uma hip´otese para o processo gerador
+de dados, ´e extremamente comum que as abordagens envolvendo machine learning no estudo de
+determinado fenˆomeno envolvam m´ultiplos candidatos a modelos para o melhor ajuste dos parˆametros,
+como em Li (2015), Qiu (2015) e Vastrad et al., (2013). Surge ent˜ao a necessidade de uma medida -
+ou medidas - que permitam comparar os resultados obtidos. Para tanto, neste trabalho, considera-se
+os crit´erios de sele¸c˜ao de cross-validation, AIC, BIC, o Erro Quadrado M´edio de Previs˜ao - MSE de
+previs˜ao - e uma medida de apreens˜ao da variabilidade do ajuste, o pseudo-R2.
+
+Na literatura internacional, a aplicabilidade de tais modelos no estudo da criminalidade n˜ao ´e
+novidade. Felson et al., (1999) utiliza regress˜ao ridge para estudar, respectivamente, o conjunto de
+elementos contextuais relacionados a violˆencia entre diferentes grupos americanos e, a rela¸c˜ao entre
+crimes violentos e composi¸c˜ao racial das cidades americanas. J´a Wheeler (2008) compara associa¸c˜ao
+
+2
+
+entre crimes violentos e o consumo de ´alcool e apreens˜ao de drogas nas cidades de Houston e Columbus,
+utilizando um modelo de regress˜ao geograﬁcamente ponderada sem penaliza¸c˜ao e penalizado, com
+resultados que sinalizam o ganho de performance preditiva em rela¸c˜ao aos modelos n˜ao penalizados.
+No caso brasileiro, a violˆencia, em especial o CVLI 1 - Crime Violento Letal Intencional - representa
+um importante desaﬁo associado a implementa¸c˜ao de pol´ıticas de seguran¸ca p´ublica no conjunto das
+esferas governamentais, dada sua inter-rela¸c˜ao com outras esferas da atividade criminosa, como o
+tr´aﬁco de drogas. O pa´ıs ﬁgura, no cen´ario internacional, como um dos mais violentos do mundo, com
+uma taxa m´edia de homic´ıdios por 100.000 habitantes de 29.2 no per´ıodo 2000 – 2013, atr´as apenas
+da Colˆombia, na Am´erica do Sul. Neste contexto, o estado de Pernambuco, dentre as unidades da
+federa¸c˜ao, apresenta durante o per´ıodo 2006 – 2016, trajet´oria singular entre os estados brasileiros,
+considerado em 2006 como segundo estado mais violento da na¸c˜ao – 52.6 homic´ıdios por 100.000
+habitantes, atr´as apenas do estado de Alagoas (53.1). (ANDRADE, 2015; Atlas da Violˆencia, 2018)
+A despeito do resumido conjunto dos fatos descritos nos dois par´agrafos acima, muito pouco
+se conhece sobre a distribui¸c˜ao intra-urbana das ocorrˆencias de CVLI e o conjunto de fatores
+socioeconˆomicos, demogr´aﬁcos e espaciais associados. Assim, este trabalho busca contribuir para
+o entendimento da violˆencia urbana brasileira em dois importantes aspectos. Primeiro, a partir da
+aplica¸c˜ao de um conjunto de t´ecnicas de aprendizagem de m´aquina investiga a rela¸c˜ao entre um
+grande conjunto de vari´aveis - s˜ao tratados mais de 50 condicionantes - que caracterizam os setores
+censit´arios – menor unidade geogr´aﬁca de an´alise dos munic´ıpios, deﬁnida pelo IBGE com base em
+crit´erios populacionais – e a ocorrˆencia de CVLI na cidade do Recife, durante o per´ıodo 2008 – 2010.
+Segundo, como forma de comparar a capacidade destes modelos em apreender a variabilidade dos
+dados, s˜ao feitos cotejos entre os desempenhos emp´ıricos utilizados e aqueles que utilizam t´ecnicas mais
+tradicionais, como regress˜oes MQO ou modelos que incorporam dependˆencia espacial (especiﬁca¸c˜oes
+SDM e SLX, por exemplo).
+
+Dado o car´ater multidimensional da criminalidade, em especial dos homic´ıdios – englobando
+um conjunto de caracter´ısticas da v´ıtima, do agressor e do ambiente em que se encontram – e do
+amplo conjunto de covari´aveis para as quais buscamos associa¸c˜ao com a ocorrˆencia de CVLI nos
+setores censit´arios, a aplica¸c˜ao de um conjunto de t´ecnicas que permitam a obten¸c˜ao de coeﬁcientes
+interpret´aveis dados os usuais problemas associados a este tipo de an´alise – multicolinearidade e
+heterogeneidade – podem contribuir no entendimento da dispers˜ao e dinˆamica dos homic´ıdios na
+regi˜ao. Na verdade, poucos trabalhos, no caso brasileiro, se det´em ao n´ıvel de desagrega¸c˜ao geogr´aﬁca
+utilizado. A utiliza¸c˜ao da localiza¸c˜ao das ocorrˆencias e sua correspondˆencia com os setores censit´arios
+da cidade, permite capturar de maneira mais precisa um conjunto mais amplo da heterogeneidade
+local, que se perde nas an´alises mais agregadas. Ainda, foge ao conhecimento dos autores deste
+trabalho, desenvolvimentos para o caso brasileiro que fa¸cam uso das t´ecnicas de regress˜ao penalizadas
+utilizadas no estudo da violˆencia urbana.
+
+Al´em desta introdu¸c˜ao, o trabalho est´a organizado em mais 5 se¸c˜oes. A seguir, empreendemos
+uma breve revis˜ao de literatura, investigando os principais desenvolvimentos te´oricos que buscam
+compreender o fenˆomeno da criminalidade, bem como um conjunto de aplica¸c˜oes emp´ıricas para o caso
+brasileiro, em especial para cidade do Recife. Na terceira se¸c˜ao, apresentamos o conjunto de modelos
+desenvolvidos e crit´erios de sele¸c˜ao e performance aplicados para ent˜ao, na quarta se¸c˜ao, apresentarmos
+uma descri¸c˜ao e caracteriza¸c˜ao das bases de dados. Na se¸c˜ao 5, apresentamos os principais resultados
+referentes aos modelos de regress˜ao tradicionais e os modelos penalizados ridge, lasso, elastic net. Por
+ﬁm, na se¸c˜ao 6, discutimos sobre o conjunto de evidˆencias gerados no entendimento da criminalidade
+na cidade e poss´ıveis impactos na formula¸c˜ao de pol´ıticas de combate a violˆencia e desenvolvimentos
+futuros na ´area.
+
+1Por CVLI - Crime Violento Letal Intencional - atribuem-se os homic´ıdios, latroc´ınios - roubo seguido de morte -
+e demais crimes violentos seguidos de morte, como estupro e les˜ao corporal. Neste estudo, utilizaremos em alguns
+momentos como sinˆonimo de CVLI, o termo homic´ıdio, uma vez que representam cerca de 98% das ocorrˆencias para a
+cidade do Recife, no per´ıodo em quest˜ao.
+
+3
+
+2 Vizinhan¸ca e criminalidade: revis˜ao de literatura
+
+Nesta se¸c˜ao ´e apresentado e discutido um conjunto de desenvolvimento te´orico e emp´ırico na
+literatura internacional e brasileira que buscam compreender o fenˆomeno da violˆencia urbana, mais
+especiﬁcamente dos homic´ıdios, e que enfatizam a associa¸c˜ao entre os elementos locais, fatores
+socioeconˆomicos e demogr´aﬁcos e a violˆencia urbana, bem como da inter-rela¸c˜ao entre a tr´ıade
+agressor, v´ıtima e local, por meio do estudo das motiva¸c˜oes e caracter´ısticas da vitimiza¸c˜ao. Por
+´obvias limita¸c˜oes de espa¸co, foge ao escopo deste trabalho, contudo, uma ampla revis˜ao de literatura
+acerca do vasto conjunto de desenvolvimento te´orico dentro das ciˆencias sociais, em especial, a
+sociologia, economia e criminologia, que buscam compreender o fenˆomeno sobre uma mir´ıade de
+abordagens. Assim, os trabalhos discutidos e apresentados a seguir comp˜oem um n´ucleo substantivo
+de evidˆencias, mas representam apenas parte do amplo conjunto que se desenvolveu, principalmente
+no ﬁm do s´eculo XX e in´ıcio do s´eculo XXI, em especial no caso brasileiro, onde toma forma no
+per´ıodo um corpo de estudo da quest˜ao.
+
+A literatura envolvendo vizinhan¸ca e criminalidade come¸ca a tomar forma no decorrer do s´eculo
+XX com uma s´erie de trabalhos, dentro das ciˆencias sociais, que buscam entender a etiologia da
+violˆencia urbana dentro um amplo conjunto de perspectivas sociais, econˆomicas e culturais. Deve-se
+reconhecer, como destaca Andrade (2015) que o crime ´e um fenˆomeno complexo, envolvendo as
+a¸c˜oes e motiva¸c˜oes do indiv´ıduo perpetrador, uma v´ıtima e um local – espa¸co. Assim, na vis˜ao
+de Miethe e Regoeczi (2004), a constru¸c˜ao de um quadro anal´ıtico amplo, unindo elementos que
+busquem apreender a motiva¸c˜ao do agressor e o ambiente das ocorrˆencias constitui-se fundamental na
+compreens˜ao dos atos criminosos.
+
+A abordagem econˆomica tradicional enfatiza a racionalidade dos agentes potenciais criminosos
+(Becker, 1968) e relaciona a atividade criminosa a tomada de decis˜ao racional do indiv´ıduo como
+uma an´alise custo-benef´ıcio entre os ganhos com a pr´atica il´ıcita e fatores negativos associados,
+como probabilidade de deten¸c˜ao e rigidez da condena¸c˜ao e o custo de oportunidade da atividade
+criminosa, o sal´ario no mercado formal. Uma s´erie de trabalhos emp´ıricos busca evidenciar a rela¸c˜ao
+entre a tomada de decis˜ao racional do indiv´ıduo e fatores como urbaniza¸c˜ao, demograﬁa, pobreza
+e desigualdade, como apontado em Cerqueira e Moura (2015) e Cerqueira e Lob˜ao (2004). J´a a
+teoria das atividades de rotina, discute a rela¸c˜ao entre uma v´ıtima em potencial, um agressor em
+potencial e uma tecnologia de prote¸c˜ao. Nesta perspectiva, ´e na ausˆencia de recursos de prote¸c˜ao
+e exposi¸c˜ao de potenciais v´ıtimas a situa¸c˜oes de maior probabilidade de ocorrˆencia associadas a
+indiv´ıduos perpetradores, motivados a cometer atividade criminosa, onde residem as ocorrˆencias
+criminosas. Como destacam Cerqueira e Lob˜ao (2004), baseando-se em pesquisas de vitimiza¸c˜ao,
+alguns desenvolvimentos emp´ıricos tem evidenciado a rela¸c˜ao entre o estilo de vida e a criminalidade,
+como em Osgood et al., (1996) e Tremblay e Tremblay (1998).
+
+A teoria da desorganiza¸c˜ao social, como argumenta Sampson (1997), pode ser deﬁnida como a
+falta de capacidade de uma estrutura comunit´aria de empreender valores comuns em seus residentes
+e manter um efetivo de controle social sobre os mesmos. Trata-se, como bem descrevem Cerqueira
+e Lob˜ao (2004) de uma abordagem sistem´atica em torno das comunidades locais e vizinhan¸cas,
+incorporando as rela¸c˜oes entre indiv´ıduos pertencentes a comunidade que contribuam para o processo
+de socializa¸c˜ao e fatores estruturais, socioeconˆomicos e demogr´aﬁcos que incorporem heterogeneidade
+´etnica, mobilidade residencial, desagrega¸c˜ao familiar e urbaniza¸c˜ao. Assim, a violˆencia estaria
+associada `as vizinhan¸cas, no que se convencionou deﬁnir, em situa¸c˜ao de desvantagem ou fragilidade
+social - disadvantage – e uma s´erie de trabalhos emp´ıricos, como em Sampson (2009 e 2012), Becker
+(2016), Cavalcanti et al., (2017 e 2018) e Light e Harris (2012) tem evidenciado tais rela¸c˜oes.
+
+Outro importante potencial determinante da criminalidade, em especial no caso brasileiro, refere-se
+`a estrutura demogr´aﬁca e de gˆenero da popula¸c˜ao. Um resultado bem documentado na literatura
+internacional, as motiva¸c˜oes para o crime n˜ao s˜ao constantes no ciclo de vida do indiv´ıduo, como
+destaca Cerqueira (2014, apud Thornberry, 1996). Legge (2008) e Hirschi e Gottfredson (1983), por
+exemplo, apresentam amplo conjunto de evidˆencias que tomam a rela¸c˜ao entre idade e crime como
+
+4
+
+fator presente em diversos grupos sociais e em diversos momentos do tempo. No caso, brasileiro, Mello
+e Schneider (2004), ao estudarem a dinˆamica dos homic´ıdios no estado de S˜ao Paulo, identiﬁcam o
+componente demogr´aﬁco como um dos principais respons´aveis pela redu¸c˜ao observada nos ´ındices de
+homic´ıdios a partir dos anos 2000.
+
+A despeito da extrema varia¸c˜ao espacial nas ocorrˆencias de crime dentro das cidades brasileiras, n˜ao
+s˜ao abundantes, contudo, os trabalhos que procuram apreender os condicionantes locais (intra-urbanos)
+da violˆencia, baseando-se a maior parte dos trabalhos em compara¸c˜oes entre cidades ou estados, o que
+em certa medida reﬂete a maior disponibilidade de informa¸c˜oes a partir destes n´ıveis de agrega¸c˜ao.
+Note-se, contudo, que para a cidade do Recife, foco desta pesquisa, Menezes et al. (2013) apresentam
+pertinente contribui¸c˜ao para o entendimento da distribui¸c˜ao dos homic´ıdios a n´ıvel distrital - avaliando
+os bairros. De maneira geral, os resultados evidenciam a associa¸c˜ao espacial existente entre regi˜oes
+mais desiguais e o n´umero de homic´ıdios, gerando evidˆencia emp´ırica importante acerca da dimens˜ao
+espacial na distribui¸c˜ao das ocorrˆencias na cidade. E, mais recentemente, Cavalcanti et al. (2018)
+expandem a regi˜ao de an´alise para o conjunto mais amplo de munic´ıpios que comp˜oem a Regi˜ao
+Metropolitana do Recife e encontram forte evidˆencia emp´ırica que relaciona o n´umero de ocorrˆencias
+n˜ao s´o de homic´ıdios mas de outras categorias de crime - como roubo, estrupo e les˜ao corporal - ao
+consumo/tr´aﬁco de drogas nas regi˜oes de an´alise, resultados que corroboram com evidˆencias de De
+Mello (2015) para o estado de S˜ao Paulo.
+
+Daudelin e Ratton (2017) discutem sobre a dinˆamica dos mercados de drogas na cidade do Recife,
+associando a violˆencia sistˆemica inerente a estes mercados como elemento principal da rela¸c˜ao existente
+entre tr´aﬁco, repress˜ao policial e violˆencia, especialmente nos mercados caracterizados como abertos e
+descobertos, mais expostos e, no geral, associados as transa¸c˜oes entre grupos mais vulner´aveis de
+indiv´ıduos. Ainda, Andrade (2015) realiza uma excelente an´alise sobre os elementos sociol´ogicos
+associados a ocorrˆencia de CVLI no estado de Pernambuco, durante o per´ıodo de 10 anos entre 2004
+e 2014, identiﬁcando forte associa¸c˜ao entre caracter´ısticas sociodemogr´aﬁcas e as ocorrˆencias.
+
+Em que pese sua importˆancia por explorar as importantes varia¸c˜oes espaciais da criminalidade
+intra-urbana, note-se, por´em, que estes poucos estudos enfrentam um dif´ıcil e signiﬁcativo desaﬁo. Por
+utilizarem m´etodos tradicionais de investiga¸c˜ao - econometria tradicional ou espacial -, necessariamente
+devem, de alguma maneira, arbitrar quanto `as escolhas das vari´aveis que s˜ao consideradas potenciais
+condicionantes da criminalidade, o que, al´em de limitar o escopo da an´alise, termina por privilegiar
+enfoques particulares da abordagem do crime. Ao adotar uma perspectiva de aprendizado com os
+dados -machine learning -, a an´alise explorat´oria deste texto segue caminho diverso; aquele de maior
+autonomia das vari´aveis em rela¸c˜ao `a pr´opria relevˆancia para o fenˆomeno da criminalidade.
+
+3 Metodologia
+
+Nesta se¸c˜ao iremos apresentar o conjunto de t´ecnicas aplicadas no estudo dos fatores associados a
+ocorrˆencia de CVLI nos setores censit´arios do Recife. Faremos uma breve caracteriza¸c˜ao das t´ecnicas
+tradicionais de regress˜ao com componente espacial e penalizadas. A abordagem tradicional, que
+toma forma nos modelos de m´ınimos quadrados ordin´arios - MQO - e de regress˜ao log´ıstica - logit
+- s˜ao o ponto de partida das abordagens emp´ıricas envolvendo machine learning por duas raz˜oes
+principais: primeiro, tais modelos tendem a evidenciar uma s´erie de problemas nos dados, como
+multicolinearidade e heteroscedasticidade, quest˜oes que por si podem comprometer a qualidade dos
+coeﬁcientes de tais estimativas. Segundo, ´e um objetivo comum das an´alises empreendidas comparar
+a performance do amplo conjunto de t´ecnicas aplicadas frente ao desempenho da abordagem padr˜ao.
+Deve-se reconhecer ainda, que dado o car´ater espacial do fenˆomeno estudado, com forte evidˆencia
+emp´ırica, inclusive para a cidade do Recife – como em Menezes et al., (2013) e Cavalcanti et al., (2018)
+- da associa¸c˜ao espacial entre as ocorrˆencias de CVLI e as unidades geogr´aﬁcas consideradas – bairros
+- a desconsidera¸c˜ao de elementos das vizinhan¸cas e sua associa¸c˜ao com o crime pode gerar estimativas
+viesadas. Assim, como forma de incorporar caracter´ısticas das vizinhan¸cas e avaliar se a considera¸c˜ao,
+para os setores censit´arios, de tais vari´aveis contribui no entendimento do fenˆomeno, obtˆem-se tamb´em
+
+5
+
+estimativas para o modelo SDM - Spatial Durbin Model – que leva em considera¸c˜ao a defasagem
+espacial das caracter´ısticas dos vizinhos bem como da vari´avel resposta nas vizinhan¸cas. Finalmente,
+considera-se ainda nos casos dos modelos padr˜ao e regularizados a introdu¸c˜ao da defasagem espacial
+das covari´aveis utilizadas – abordagem espacial denominada SLX, Spatial Lagged X.
+
+3.1 Abordagens tradicionais: MQO e Regress˜ao Log´ıstica
+
+Na tradicional perspectiva de MQO, trata-se de obter a rela¸c˜ao linear entre a vari´avel dependente,
+y, sobre um conjunto X de covari´aveis por meio da minimiza¸c˜ao da soma do quadrado dos erros –
+fun¸c˜ao custo associada ao modelo MQO padr˜ao. O problema pode ser descrito pela express˜ao abaixo,
+onde y representa o vetor da vari´avel resposta, X a matriz de covari´aveis e  ´e um vetor dos erros.
+Temos:
+
+Y = Xβ + 
+
+(1)
+
+A estima¸c˜ao de β pode ser lida como resultado do problema de minimiza¸c˜ao da fun¸c˜ao custo S(β),
+que pode ser descrita na forma S(β) = ||y − Xβ||2, resultando no vetor de coeﬁcientes estimados
+ˆβ = (X(cid:48)X)−1X(cid:48)y. Ainda, ´e poss´ıvel mostrar que, estabelecidas as suposi¸c˜oes (a) exogeneidade estrita:
+termo de erro tem m´edia condicional zero, E[|X] = 0; (b) independˆencia dos regress˜oes da matrix X,
+ou seja, matriz X tem posto-rank completo; (c) var(|X) = σ2In, de onde se deriva a hip´otese de
+homocedasticidade – variˆancia constante e (d) normalidade dos erros, onde se assume que seguem
+uma distribui¸c˜ao normal com m´edia zero e variˆancia σ2I, na forma  ∼ N (0, σ2I), o estimador de
+MQO ser´a n˜ao-viesado e possuir´a variˆancia m´ınima. (Greene, 2008)
+
+A discuss˜ao das propriedades do modelo MQO padr˜ao torna-se importante, no ˆambito desta
+investiga¸c˜ao, em virtude da poss´ıvel estrutura de correla¸c˜ao entre as covari´aveis, o que pode ocasionar
+o problema de multicolinearidade, resultado em estimativas sem signiﬁcˆancia e nas quais, dada a
+estrutura de dependˆencias das observa¸c˜oes, torna-se muito dif´ıcil sua identiﬁca¸c˜ao. Adicionalmente,
+se detectada a presen¸ca de autocorrela¸c˜ao espacial entre as observa¸c˜oes, a viola¸c˜ao da suposi¸c˜ao de
+normalidade dos erros pode levar a estimativa de coeﬁcientes viesados, uma vez que o car´ater de
+associa¸c˜ao das observa¸c˜oes n˜ao est´a sendo levado em considera¸c˜ao no modelo.
+
+Em casos que envolvem vari´avel resposta dicotˆomica, como a ocorrˆencia ou n˜ao de crime na regi˜ao
+de an´alise, a modelagem ocorre por meio da regress˜ao log´ıstica - ou logit. Aqui, yi pode assumir os
+valores 0, com probabilidade πi e 1, com probabilidade 1− πi. Desejamos identiﬁcar as probabilidades
+πi dependentes de um vetor de covari´aveis xi. 2 Uma forma inicial de obter tais probabilidades ´e
+adotar a fun¸c˜ao linear na forma πi = x(cid:48)
+iβ, onde β s˜ao os coeﬁcientes da regress˜ao. No entanto, πi ´e
+um valor entre 0 e 1, enquanto x(cid:48)
+i pode assumir qualquer valor. Uma solu¸c˜ao para esse problema ´e
+aplicar a fun¸c˜ao logit, como em Qiu (2015), para obter uma estimativa dos coeﬁcientes. A fun¸c˜ao
+logit ou log das probabilidades pode ser obtida por:
+
+ηi = logit(πi) = log
+
+πi
+1 − πi
+
+(2)
+
+Ent˜ao, supondo um conjunto de n observa¸c˜oes indepentes y1, , yn, bin´arias, pode-se constuir o
+modelo logit como uma fun¸c˜ao linear do preditor na forma logit(πi) = x(cid:48)
+iβ. O modelo, como destaca
+(Rodr´ıguez, 2007) ´e linear generalizado com resposta binomial e fun¸c˜ao liga¸c˜ao logit. Os coeﬁcientes
+n˜ao podem continuar a ser interpretados como na formula¸c˜ao de modelos lineares, agora cada
+coeﬁciente βi representa uma mudan¸ca na fun¸c˜ao logit da probabilidade associada a uma mudan¸ca
+em βi mantendo todos os demais preditores constantes. Tomando o exponencial da express˜ao descrita
+acima, pode-se isolar a probabilidade para a i-´esima observa¸c˜ao, na forma:
+
+2Uma ´otima revis˜ao do t´opico pode ser vista em: Rodr´ıguez, G. (2007). Lecture Notes on Generalized Linear
+Models. URL: http://data.princeton.edu/wws509/notes/ e em Qiu (2015), que apresenta, detalhadamente, o processo
+de estima¸c˜ao por m´axima verossimilhan¸ca.
+
+6
+
+πi
+1 − πi
+
+= exp{x(cid:48)
+
+iβ}
+
+(3)
+
+Que deﬁne um modelo para as probabilidades, tornando mais clara a interpreta¸c˜ao dos parˆametros.
+Uma mudan¸ca no i-´esimo preditor, mantendo todas as demais vari´aveis constantes, pode-se ser obtida
+iβ}. Ou seja, o coeﬁciente exponencial representa uma
+multiplicando as probabilidades por exp{x(cid:48)
+taxa de probabilidades. Por ﬁm, a estima¸c˜ao do modelo ser´a feita por m´axima verossimilhan¸ca, de
+onde tamb´em ´e poss´ıvel obter a fun¸c˜ao de perda logar´ıtmica - logaritmic loss function - comumente
+usada em problemas de classiﬁca¸c˜ao para avaliar a perfomance dos modelos. A fun¸c˜ao de m´axima
+verossimilhan¸ca e de perca logaritmica s˜ao dadas, respectivamente, por:
+
+n(cid:88)
+n(cid:88)
+
+i=1
+
+i=1
+
+logL(β) =
+
+L = − 1
+n
+
+{yilog(πi) + (1 − yi)log(1 − πi)}
+
+{yilog(πi) + (1 − yi)log(1 − πi)}
+
+(4)
+
+Deve-se destacar ainda que, como na abordagem MQO padr˜ao, embora tal modelo n˜ao pressuponha,
+necessariamente, uma estrutura de independˆencia das covari´aveis, a presen¸ca de multicolinearidade
+e autocorrela¸c˜ao pode comprometer a estimativa dos coeﬁcientes, levando a resultados viesados e
+imprecisos.
+
+3.2 Econometria Espacial: Spatial Durbin Model e Spatial Lagged X
+
+Model
+
+Sob a suposi¸c˜ao de um padr˜ao de associa¸c˜ao espacial entre a distribui¸c˜ao das ocorrˆencias de CVLI
+na cidade do Recife, buscou-se apreender tal dinˆamica por meio dos modelos espaciais SLX - Spatial
+Lagged X - e SDM - Spatial Durbin Model. O modelo SLX incorpora as caracter´ısticas espaciais
+por meio de um vetor de parˆametros adicional, θ, que representa uma m´edia dos k vizinhos mais
+pr´oximos, a depender da escolha da matriz de defasagem espacial. Neste trabalho, optou-se por usar a
+matriz de pesos espaciais que considera como vizinho de determinado setor i, todos setores censit´arios,
+dando um peso maior ao vizinho mais pr´oximo. O fator de pondera¸c˜ao escolhido, foi o inverso da
+distˆancia euclidiana entre os centroides dos setores. Assim, utilizou-se a matriz inverso da distˆancia
+como matriz de defasagem espacial. O modelo SLX pode ser descrito como:
+
+y = Xβ + θW X + 
+
+(5)
+
+Onde X representa a matriz de covari´aveis, caracter´ısticas do setor censit´ario. E W representa
+a matriz de defasagem espacial. No entanto, pode-se ainda considerar que o CVLI, podendo ser
+enquadrado como uma das – ou a – manifesta¸c˜ao mais extrema de violˆencia contra o outro, pode
+estar associado as ocorrˆencias nas regi˜oes vizinhas. Assim, como forma de incorporar poss´ıveis
+ganhos associados a estrutura de correla¸c˜ao entre a associa¸c˜ao da vari´avel dependente na vizinhan¸ca,
+estimaremos, adicionalmente ao modelo SLX, o modelo SDM - Spatial Durbin Model, que pode ser
+descrito por:
+
+Y = ρWy + Zγ + 
+
+(6)
+Onde Z = [X W X] e γ = [α β θ](cid:48), observe que a estima¸c˜ao da defasagem da vari´avel dependente,
+requer, adicionalmente, a estima¸c˜ao de um parˆametro adicional, ρ que mede a signiﬁcˆancia da
+defasagem da vari´avel resposta dos vizinhos. Assim, ´e poss´ıvel ainda que ρ n˜ao seja signiﬁcante,
+indicando que a inclus˜ao de tal componente espacial n˜ao contribui no entendimento do fenˆomeno.
+(Lesage e Pace, 2009) Assim, o modelo SDM ser´a obtido, sem penaliza¸c˜ao da fun¸c˜ao custo, para a
+taxa de ocorrˆencia no setor censit´ario e para a vari´avel resposta bin´aria – se houve ou n˜ao, durante o
+per´ıodo de an´alise, ocorrˆencia de CVLI no setor.
+
+7
+
+3.3 Machine Learning : modelos de regress˜ao regularizados
+
+M´etodos de regress˜ao regularizados, como regress˜oes ridge e lasso foram criadas, nos ´ultimos
+anos, principalmente como uma alternativa para reduzir os erros preditivos das estima¸c˜oes por
+m´ınimos quadrados ordin´arios (Vastrad et al., 2013). Como destaca Heldwing (2017), a aplica¸c˜ao
+de penalizadores `a fun¸c˜ao custo MQO ´e uma forma de obter estimativas adicionando algum vi´es e
+se reduzindo a variˆancia, o que melhora o poder preditivo do modelo, obtendo-se coeﬁcientes mais
+interpret´aveis e est´aveis.
+
+3.3.1 Regress˜ao ridge
+
+Inicialmente desenvolvida por Hoerl e Kennard (1970), a regress˜ao ridge ´e uma forma de penaliza¸c˜ao
+quadr´atica da fun¸c˜ao custo no processo de estima¸c˜ao por m´ınimos quadrados que reduz e estabiliza
+os parˆametros do modelo por meio da adi¸c˜ao, na fun¸c˜ao que minimiza o quadrado dos res´ıduos,
+de um termo penalizador (cid:96)2. Na presen¸ca de preditores n˜ao correlacionados o estimador de MQO
+ser´a est´avel, uma que vez a matriz X(cid:48)X ser´a diagonal. No entanto, na existˆencia de covari´aveis
+altamente correlacionadas surge o problema de multicolinearidade e a matriz X(cid:48)X se aproxima de
+uma matriz singular. Formalmente, partindo-se da especiﬁca¸c˜ao padr˜ao de um modelo de regress˜ao
+linear Y = Xβ + , temos:
+
+ˆβridge = argminβ{ N(cid:88)
+
+(yi − β0 − p(cid:88)
+
+p(cid:88)
+
+i=1
+
+j=1
+
+j=1
+
+xijβj)2 + λ
+
+j}
+β2
+
+(7)
+
+Na express˜ao acima, λ > 0 ´e o parˆametro de penaliza¸c˜ao, que controla a redu¸c˜ao da magnitude
+dos parˆametros do modelo. Assim, quanto maior o valor de λ maior a penaliza¸c˜ao e mais pr´oximo
+de zero ser˜ao os coeﬁcientes. Seguindo a metodologia apresenta por Hastie, Tibshirani e Friedman
+(2009), uma forma equivalente de apresentar o problema ´e:
+
+ˆβridge = argminβ{ N(cid:88)
+
+i=1
+
+sujeito a
+
+(yi − β0 − p(cid:88)
+p(cid:88)
+
+j=1
+
+j ≤ t
+β2
+
+xijβj)2}
+
+(8)
+
+A adi¸c˜ao de termos positivos nos elementos diagonais da matriz X(cid:48)X, resultando em uma nova
+matriz (X(cid:48)X + λI)−1, garante que tal matriz ser´a invers´ıvel para dado valor de λ. Note-se que na
+presen¸ca de ortogonalidade dos preditores as estimativas do modelo ridge ser˜ao apenas uma forma
+escalonada das estimativas obtidas por MQO, i.e, ˆβridge = ˆβM QO/(1 + λ). A solu¸c˜ao para a regress˜ao
+ridge ´e, assim, dada por:
+
+j=1
+
+ˆβridge = (y − Xβ)(cid:48)(y − Xβ) + λβ(cid:48)β
+
+ˆβridge = (X(cid:48)X + λI)−1X(cid:48)y
+
+(9)
+
+3.3.2 Regress˜ao lasso
+
+Similar ao modelo ridge, a regress˜ao lasso consiste na aplica¸c˜ao de um penalizador de tratamento
+usando a norma (cid:96)1 na fun¸c˜ao custo.
+Introduzido por Tibshirani (1996), a natureza do termo
+penalizador λ tende a produzir alguns coeﬁcientes que s˜ao exatamente zero, propriedade que permite
+a aplicabilidade em problemas envolvendo sele¸c˜ao de vari´aveis na presen¸ca de multicolinearidade e
+grande n´umero de preditores. Nesse sentido, a regress˜ao performa tanto uma sele¸c˜ao de modelo (j´a
+que pode reduzir n´umero de vari´aveis) quanto uma penaliza¸c˜ao dos coeﬁcientes. Os coeﬁcientes s˜ao
+obtidos a partir de um problema de minimiza¸c˜ao an´alogo:
+
+8
+
+ˆβlasso = argminβ{1
+2
+
+N(cid:88)
+
+(yi − β0 − p(cid:88)
+
+i=1
+
+j=1
+
+p(cid:88)
+
+j=1
+
+| βj |}
+
+xijβ2
+
+j )2 + λ
+
+(10)
+
+Seguindo a metodologia apresentada por Hastie, Tibshirani e Friedman (2009) pode-se apresentar
+o problema de minimiza¸c˜ao como descrito abaixo. Para valores baixos de t alguns coeﬁcientes
+estar˜ao pr´oximos ou ser˜ao iguais a zero. Note-se que o penalizador (cid:96)2 produz coeﬁcientes iguais a
+zero, enquanto na regress˜ao ridge o penalizador (cid:96)1 reduz a magnitude dos parˆametros mas n˜ao zera
+determinados coeﬁcientes. De (10), tamb´em aqui ´e poss´ıvel fazer:
+
+(yi − β0 − p(cid:88)
+N(cid:88)
+p(cid:88)
+
+| βj |≤ t
+
+j=1
+
+i=1
+
+ˆβlasso = argminβ
+
+sujeito a
+
+xijβj)2
+
+(11)
+
+3.3.3 Regress˜ao elastic net
+
+j=1
+
+Uma terceira alternativa incorpora os penalizadores (cid:96)1 e (cid:96)2 como forma de incrementar a perfor-
+mance dos modelos lasso e ridge, constituindo-se, assim, o modelo rede el´astica - ou elastic net. Em
+particular, como destaca Heldwing (2017), quando n < p o modelo lasso pode apenas identiﬁcar um
+n´umero n de coeﬁcientes iguais a zero. Quando n > p e os preditores s˜ao altamente correlacionados a
+regress˜ao ridge tende a ter uma performance superior ao modelo lasso. Adicionalmente, na presen¸ca
+de 2 preditores - ou mais - altamente correlacionados o modelo lasso tende a selecionar um preditor e
+ignorar os demais correlacionados, i.e, assumir˜ao valor zero. Desenvolvido por Zou e Hastie (2005),
+trata-se de resolver o problema de minimiza¸c˜ao:
+
+N(cid:88)
+(yi − β0 − p(cid:88)
+p(cid:88)
+
+j=1
+
+i=1
+
+ˆβenet = argminβ
+
+xijβj)2
+
+sujeito a λ
+
+(αβ2
+
+j + (1 − α) | βj |)
+
+(12)
+
+j=1
+
+O parˆametro α controla a inﬂuˆencia dos penalizadores. Se α = 0 o algoritmo performa como
+uma regress˜ao ridge, por outro lado, se α = 1 o algoritmo performa como uma regress˜ao lasso, para
+valores de α entre 0 e 1 tem-se um processo de penaliza¸c˜ao h´ıbrido, que leva em considera¸c˜ao uma
+combina¸c˜ao dos dois penalizadores, como na express˜ao acima. O processo de minimiza¸c˜ao ´e realizado
+com a escolha de um conjunto de valores para α e ent˜ao aplicando cross-validation para selecionar
+um λ ´otimo para cada α. O par de parˆametros de regularia¸c˜ao (ˆλ, ˆα) que minimiza o crit´erio que
+cross-validation ´e ent˜ao aplicado na estima¸c˜ao dos coeﬁcientes (Heldwing, 2017).
+
+3.4 Crit´erios de sele¸c˜ao
+
+A performance geral de m´etodos de aprendizagem - machine learning - est´a relacionada, dentre
+outros elementos, com seu poder preditivo. Mais especiﬁcamente, com a capacidade preditiva em
+novos conjuntos de dados. A determina¸c˜ao de um conjunto de instrumentos para medir o desempenho
+dos modelos proposto ´e, assim, essencial. Foram adotados trˆes crit´erios de sele¸c˜ao de modelos. O
+crit´erio de Akaike - AIC - o crit´erio Bayesiano - BIC - e o crit´erio de cross-validation.
+O crit´erio de Akaike pode ser obtido por AIC = −2log(L | dados))− K onde L ´e o valor da fun¸c˜ao
+de m´axima verossimilhan¸ca. J´a o crit´erio Bayesiano, pode ser obtido por BIC = −2lnL + Klog(n).
+Por ﬁm, o processo de cross-validation consiste em dividir o conjunto de dados em subconjuntos de K
+amostras, obter o ajuste do modelo para K − 1 amostras e ent˜ao o erro predito a Kth subamostra do
+
+9
+
+conjunto. Tipicamente, k assume o valor 5 ou 10. O modelo selecionado ´e aquele apresenta o menor
+erro amostral da estat´ıstica utilizada.
+
+3.5 Crit´erios de Performance
+
+Como crit´erio de performance para compara¸c˜ao das diferentes abordagens, duas medidas foram
+aplicadas s˜ao utilizadas neste trabalho, o erro quadrado m´edio de previs˜ao - MSE - e o Pseudo-R2.
+O MSE representa uma medida da qualidade do estimador por meio da contabiliza¸c˜ao da m´edia do
+quadrado da diferen¸ca entre os valores estimados e a vari´avel resposta, podendo ser expresso como:
+M SE(ˆθ) = V ar(ˆθ)+vi´es2(ˆθ). Adicionalmente, neste trabalho, como medida de performance preditiva
+(cid:80)n
+dos modelos propostos, estamos considerando o MSE de previs˜ao, que consiste no erro quadrado
+m´edio obtido por meio do ajuste dos coeﬁcientes obtidos no conjunto de dados de valida¸c˜ao e sua
+i=1(ˆyval − y)2.
+respectiva compara¸c˜ao com a vari´avel dependente estudada, dado por M SEprev = 1
+n
+J´a o pseudo-R2 pode ser descrito como uma medida para comparar a qualidade do ajuste de
+diferentes modelos, seguindo a metodologia proposta por Florencio et al. (2012), que consiste no
+quadrado da correla¸c˜ao de Spearman entre a vari´avel resposta e os valores preditos.
+
+Por ﬁm, para os modelos de resposta bin´aria, ´e utilizada uma medida de performance que consiste
+na rela¸c˜ao entre a taxa de verdadeiros positivos e de falsos positivos preditos - a ´area sob a curva -
+AUC. Um classiﬁcador perfeito apresentar´a uma curva ROC que se extende, verticalmente, de 0 a 1,
+produzindo um ponto em (0,1) e ent˜ao horizontalmente, abrangendo a totalidade da ´area do quadrado
+unit´ario, assim, medidas da ´area sobre a curva mais pr´oximas de 1 representam modelos com melhor
+perfomance, enquanto uma AUC de 0.5 indica completa aleatoriedade dos valores preditos.
+
+4 Base de Dados
+
+Trˆes conjuntos distintos de informa¸c˜oes s˜ao utilizados na constru¸c˜ao de uma base de dados ´unica,
+que possibilita estudar fatores s´ocio-econˆomicos e caracter´ısticas do ambiente - como a presen¸ca
+de amenidades e desamenidades urbanas - associados `a ocorrˆencia de CVLI na cidade do Recife,
+durante o per´ıodo de Julho de 2008 a Junho de 2010. O Note-se que o georreferenciamento dessas
+ocorrˆencias permite associar cada ocorrˆencia a um ponto espec´ıﬁco no espa¸co e estabelecer uma
+micro vizinhan¸ca associada, no nosso caso, os setores censit´arios. A estrat´egia torna poss´ıvel obter,
+por meio de informa¸c˜oes do Censo e da Prefeitura do Recife, um conjunto bastante abrangente de
+caracter´ısticas associadas ao ambiente constituindo-se e, at´e aqui, ainda n˜ao utilizadas nos estudos de
+criminalidade intra-urbana no Brasil. Esta se¸c˜ao apresenta uma descri¸c˜ao e caracteriza¸c˜ao das bases
+utilizadas neste estudo.
+
+4.1 Secret´aria de Defesa Social - SDS/PE
+
+As informa¸c˜oes sobre a ocorrˆencia de Crimes Violentos Letais Intencionais - CVLI - na cidade
+do Recife foram disponibilizadas pela Secret´aria de Defesa Social - SDS - e cont´em, para o per´ıodo
+de Julho de 2008 a Junho de 2010, o georreferenciamento de 1674 ocorrˆencias na cidade. Deste
+conjunto de dados ´e poss´ıvel obter uma s´erie caracter´ıstica das ocorrˆencias, como gˆenero da v´ıtima,
+idade aproximada e per´ıodo do dia em que ocorreu o CVLI. Neste estudo, como estamos interessados
+nas caracter´ısticas do ambiente e nossa unidade de observa¸c˜ao s˜ao os setores censit´arios, a ´unica
+informa¸c˜ao relevante ´e a localiza¸c˜ao geogr´aﬁca das ocorrˆencias, que permitem associa¸c˜ao aos demais
+fatores locais. Espera-se, tamb´em, que a considera¸c˜ao das caracter´ısticas demogr´aﬁcas associadas a
+regi˜ao de an´alise captem parte do efeito destas vari´aveis. A ﬁgura a seguir apresenta a distribui¸c˜ao
+das ocorrˆencias por n´umero e taxa.
+
+10
+
+Figura 1: Distribui¸c˜ao da taxa de crimes (esquerda) e n´umero de ocorrˆencias (direita) por setor
+censit´ario na cidade do Recife. Fonte: elabora¸c˜ao pr´opria.
+
+4.2 Censo 2010
+
+O conjunto de observa¸c˜oes que permite obter as caracter´ısticas socioeconˆomicas das regi˜oes de
+an´alise foi obtido a partir dos dados do Censo Demogr´aﬁco para o ano de 2010. Disponibilizado
+pelo IBGE - Instituto Brasileiro de Geogr´aﬁca e Estat´ıstica - ´e descrito como: a principal fonte
+de referˆencia para o conhecimento das condi¸c˜oes de vida da popula¸c˜ao em todos os munic´ıpios do
+pa´ıs e em seus recortes territoriais internos. As informa¸c˜oes foram obtidas por setor censit´ario, a
+menor subdivis˜ao geogr´aﬁca dos munic´ıpios, deﬁnida pelo IBGE com base em crit´erios populacionais,
+respeitando a divis˜ao pol´ıtico-administrativa brasileira.
+
+4.3 Prefeitura da Cidade do Recife
+
+A presen¸ca de amenidades e desamenidades3 urbanas tem papel fundamental na caracteriza¸c˜ao da
+cidade. Existem dois ganhos expl´ıcitos na sua considera¸c˜ao: (a) por se tratar de um corte transversal,
+com informa¸c˜oes dispon´ıvel apenas para o ano de 2010, a considera¸c˜ao das amenidades urbanas capta
+parte do efeito ﬁxo associado aos setores censit´arios e (b) de forma complementar, dada sua integra¸c˜ao
+ao espa¸co, tem papel importante na decis˜ao individual de moradia, bem como do poder administrativo
+na concep¸c˜ao de pol´ıticas p´ublicas na cidade. Assim, consideramos as distˆancias euclidianas das
+fronteiras dos setores censit´arios `a praia de Boa Viagem, ao Rio Capibaribe, ao conjunto de parques e
+pra¸cas, `as 53 avenidas arteriais da cidade, `a rodovia BR-101 (´unica BR que cruza a cidade) e ao centro
+da cidade - regi˜ao administrativa que concentra maior parte do emprego (Rodrigues et al. 2018).
+Em adi¸c˜ao, uma vez que representam ´obvias situa¸c˜oes de presen¸ca do poder p´ublico, consideramos a
+presen¸ca de delegacias e batalh˜oes de pol´ıcia, policl´ınicas, hospitais, escolas da rede municipal de
+ensino, al´em da condi¸c˜ao do setor censit´ario estar ou n˜ao situado na fronteira da cidade (´e cont´ıguo a
+outro setor n˜ao pertencente ao munic´ıpio do Recife).
+
+Uma descri¸c˜ao de todo o conjunto de vari´aveis ´e apresentado na Tabela 1. No total, s˜ao
+consideradas 53 vari´aveis potencialmente associadas `a ocorrˆencia de CVLI na Cidade do Recife
+
+3Estamos considerando como amenidades e desamenidades urbanas um conjunto de caracter´ısticas da cidade do
+Recife que, de acordo com evidˆencias emp´ıricas, como em Seabra (2013) e Rodrigues et al., (2018) tem impacto na
+decis˜ao locacional dos indiv´ıduos e no pre¸co dos im´oveis da regi˜ao.
+
+11
+
+que capturam diferentes dimens˜oes da vida social das vizinhan¸cas. Destas, 22 vari´aveis dizem
+respeito `as caracter´ısticas demogr´aﬁcas e sociais das vizinhan¸cas atrav´es de informa¸c˜oes de seus
+domic´ılios, incluindo desde tradicionais informa¸c˜oes sobre condi¸c˜oes de renda como composi¸c˜ao
+et´aria e informa¸c˜oes sobre a escolaridade. Al´em destas, h´a mais 17 vari´aveis que informam sobre as
+condi¸c˜oes de infraestrutura domiciliar dos setores censit´arios, como, por exemplo, acesso a saneamento
+e ilumina¸c˜ao p´ublica. Finalmente, o conjunto ´e completado com mais 14 vari´aveis que informam
+sobre as condi¸c˜oes de localiza¸c˜ao dos setor censit´ario em rela¸c˜ao a diferentes aspectos e equipamentos
+p´ublicos da cidade, entres os quais, por exemplo, presen¸ca de escolas, delegacias e posi¸c˜ao com respeito
+`as amenidades urbanas.
+
+Vari´aveis
+num ocorrencias
+txcrime
+rend mensal media
+resp mulher
+mulher
+idade0 14
+idade15 25
+idade26 35
+idade36 45
+idade46 55
+idade55mais
+alfabetizados 15mais
+negros pardos
+renda dom percmed
+renda dom pc05
+renda dom pc025
+renda chefe05
+chefe semrenda
+soma renda10
+dom abastagua
+dom saneamento
+dom eletricidade
+dom coletalixo
+dom 10salarios
+dom moradequada
+dom pavimentacao
+dom iluminacao
+dom calcamento
+dom esgotoaberto
+dom arborizacao
+dom lixoacumulado
+morador pordom
+dom 3oumaisbanheiro
+dom semhomem
+dom alugados
+casas
+resp alfabetizado
+homem 15maisalfa
+neg par 15maisalfa
+
+Tabela 1: Descri¸c˜ao das vari´aveis
+
+Descri¸c˜ao
+N´umero de ocorrˆencias CVLI
+Taxa de ocorrˆencias por 10.000 habitantes
+Valor do rendimento m´edio mensal das pessoas de 10 anos ou mais de idade
+% de respons´aveis pelo domic´ılio do sexo feminino
+% de indiv´ıduos do sexo feminino
+% de indiv´ıduos entre 0 e 14 anos de idade
+% de indiv´ıduos entre 15 e 25 anos de idade
+% de indiv´ıduos entre 26 e 35 anos de idade
+% de indiv´ıduos entre 36 e 45 anos de idade
+% de indiv´ıduos entre 46 e 55 anos de idade
+% de indiv´ıduos com 55 ou mais anos de idade
+% de indiv´ıduos alfabetizados com 15 ou mais anos de idade
+% de indiv´ıduos negros e pardos
+Renda domicilar per capita m´edia
+% de domic´ılios com renda nominal mensal per capita 0.5 sal´ario m´ınimo
+% de domic´ılios com renda nominal mensal per capita 0.25 sal´ario m´ınimo
+% de chefes de domic´ılio com renda nominal mensal de at´e 0.5 sal´ario m´ınimo
+% de chefes de domic´ılio sem rendimento nominal mensal
+Rendimento m´edio per capita dos indiv´ıduos com 10 ou mais de idade
+% de domic´ılios com abastecimento de ´agua
+% de domic´ılios que tinham banheiro ou sanit´ario e esgotamento sanit´ario
+% de domic´ılios com acesso a luz el´etrica
+% de domic´ılios com coleta de lixo
+% de domic´ılios com renda mensal per capita acima de 10 sal´arios m´ınimos
+% de domic´ılios com infraestrutura completa* (moradia adequada)
+% de domic´ılios com pavimenta¸c˜ao
+% de domic´ılios com ilumina¸c˜ao p´ublica
+% de domic´ılios com cal¸cada
+% de domic´ılios com esgoto ao c´eu aberto
+% de domic´ılios com arboriza¸c˜ao
+% de domic´ılios com lixo acumulado
+N´umero m´edio de morados por domic´ılio
+% de domic´ılios com 3 ou mais banheiros para uso exclusivo dos moradores
+% de domic´ılios sem moradores do sexo masculino
+% de domic´ılios alugados
+% de domic´ılios que s˜ao casa (vs.apartamentos)
+% de indiv´ıduos respons´aveis pelo domic´ılio alfabetizados
+% de homens com 15 anos ou mais de idade alfabetizados
+% de negros e pardos com 15 ou mais alfabetizados
+
+12
+
+Tabela 1 – Descri¸c˜ao das vari´aveis (continua¸c˜ao)
+
+Descri¸c˜ao
+% de indiv´ıduos de at´e 10 aos de idade sem registro de nascimento
+% de indiv´ıduos que possuem renda
+´Area do setor censit´ario por km
+Densidade populacional do setor censit´ario por km
+Se h´a no setor censit´ario delegacias de pol´ıcia ou batalh˜oes de pol´ıcia
+Se h´a no setor censit´ario hospitais p´ublicos e policl´ınicas
+Se h´a no setor censit´ario presen¸ca de escolas da rede municipal
+Tipo do setor censit´ario (normal ou subnormal)
+Se o setor censit´ario encontra-se na fronteira do munic´ıpio
+Distˆancia em km da avenida mais pr´oxima
+Distˆancia em km da centro de neg´ocios da cidade
+Distˆancia em km do parque ou pra¸ca mais pr´oximo
+Distˆancia em km da praia de Boa Viagem
+Distˆancia em km do ponto mais pr´oximo do Rio Capibaribe
+Distˆancia em km do ponto mais pr´oximo da rodovia federal (BR-101)
+Distˆancia em km da esta¸c˜ao de metrˆo mais pr´oxima
+
+Vari´aveis
+pessoa sregistro
+pessoa srenda
+areakm2
+denskm2
+dpolicia
+dsaude
+descola
+dtiposetor
+dfronteira
+dist avenidaskm
+dist cbdkm
+dist parqpracakm
+dist praiakm
+dist riokm
+dist rodoviakm
+dist metrokm
+Fonte: elabora¸c˜ao pr´opria.
+
+5 Resultados
+
+Os resultados da pesquisa s˜ao apresentados e discutidos a partir da seguinte estrutura¸c˜ao. Na
+primeira subse¸c˜ao s˜ao apresentados os crit´erios de sele¸c˜ao dos modelos tradicionais (incluindo aqueles
+com dependˆencia espacial) e penalizadores (machine learning). Estimativas para os coeﬁcientes das
+vari´aveis para os modelos selecionados s˜ao apresentadas na segunda subse¸c˜ao, que tamb´em resume a
+importˆancia dos grupos de vari´aveis consideradas. Em todos os casos, s˜ao considerados especiﬁca¸c˜oes
+com a vari´avel dependente em termos de taxa de homic´ıdios (ocorrˆencia por 100.000) e com a mesma
+como indicador bin´ario de ocorrˆencia de homic´ıdio (modelos logit).
+
+5.1 Sele¸c˜ao dos modelos
+
+5.2 Modelos tradicionais e com dependˆencia espacial
+
+De in´ıcio, a suposi¸c˜ao inicial de dependˆencia espacial das observa¸c˜oes pode ser testada de modo
+a veriﬁcar se, em conformidade com a evidˆencia emp´ırica j´a existente para os bairros, em Menezes
+et al. (2013), evidencia-se algum padr˜ao de associa¸c˜ao espacial entre as ocorrˆencias para os setores
+censit´arios. Para tanto, aplicaremos duas medidas amplamente utilizadas na literatura que permitem
+veriﬁcar e testar a existˆencia de algum padr˜ao subsequente de associa¸c˜ao espacial. S˜ao elas o I de
+Moran e o LISA - Indicadores Locais de Autocorrela¸c˜ao Espacial. A tabela 2, abaixo, apresenta
+a estat´ıstica de I de Moran para a taxa e o n´umero de ocorrˆencias. ´E poss´ıvel ent˜ao perceber, a
+principio, que embora o ´ındice seja baixo, parece haver algum grau de dependˆencia espacial entre as
+observa¸c˜oes.
+
+Tabela 2: I de Moran
+
+txcrime
+
+I de Moran 0.0118
+p-value
+0.0000
+Fonte: elabora¸c˜ao pr´opria.
+
+ocorrˆencias
+0.0144
+0.0000
+
+13
+
+A ﬁgura 2, abaixo, tamb´em apresenta o conjunto de hot spots e cold spots ´areas -regi˜oes de maior
+e menor concentra¸c˜ao de ocorrˆencias - e o n´ıvel de signiﬁcˆancia, para a medida LISA adotada, o I de
+Moran Local. Os resultados evidenciam a heterogeneidade de um amplo conjunto de setores com
+altos ´ındices de criminalidade vizinhos de regi˜oes com baixos ´ındices de ocorrˆencias e vice-versa.
+
+Figura 2: Hot e Cold spots ´areas e n´ıvel de signiﬁcˆancia para I de Moran Local
+
+A tabela 3, a seguir, apresenta um conjunto de resultados para as estima¸c˜oes dos modelos tradici-
+onais MQO e Log´ıstico nas suas formas convencionais e tamb´em para suas expans˜oes considerando as
+duas formas de dependˆencia espacial consideradas no trabalho (especiﬁca¸c˜oes SDM e SLX). Note-se,
+ent˜ao, que tratando-se do crit´erio de sele¸c˜ao adotado, MSE de previs˜ao, observa-se que em ambas as
+formula¸c˜oes, os modelos sem defasagem especial, MQO e Logit, empreendem melhor poder preditivo.
+Os modelos de vari´avel resposta bin´aria tamb´em apreendem melhor a variabilidade dos dados - maior
+pseudo-R2.
+
+Tabela 3: Crit´erios de sele¸c˜ao e performance para os
+modelos tradicionais MQO e Logit
+
+No de observa¸c˜oes
+R2-ajustado
+Pseudo-R2
+MSE
+MSE previs˜ao
+Estat´ıstica-F
+Fonte: elabora¸c˜ao pr´opria.
+
+MQO
+1468
+0.169
+0.154
+3.277
+3.121
+6.743***
+
+MQO - SLX ML - SDM Logit Logit - SLX Logit - SDM
+1468
+0.192
+0.167
+3.070
+3.242
+4.361***
+
+1468
+-
+0.225
+0.191
+0.212
+-
+
+1468
+-
+0.193
+2.888
+4.149
+-
+
+1468
+-
+0.104
+0.221
+0.313
+-
+
+1468
+-
+0.268
+0.181
+0.215
+-
+
+5.3 Modelos penalizados - Vari´avel cont´ınua
+
+A tabela 4 abaixo, apresenta resumidamente, o n´umero de vari´aveis resultante de cada formula¸c˜ao,
+o crit´erio de sele¸c˜ao MSE e MSE de previs˜ao, o parˆametro penalizador λ resultado e o indicador
+de performance dos dados, o pseudo-R2. Os modelos ridge 1, lasso 1 e enet 1 correspondem `as
+
+14
+
+estima¸c˜oes sem a considera¸c˜ao das defasagens espaciais, enquanto os modelos ridge 2, lasso 2 e enet
+2 correspondem as estima¸c˜oes considerando as caracter´ısticas das vizinhan¸cas - componente especial.
+Observamos que o crit´erio de cross-validation ´e, em todas as formula¸c˜oes, o que apresenta o menor
+erro quadr´atico m´edio de previs˜ao.O modelo enet 1 tem performance signiﬁcativamente superior aos
+demais - maior poder preditivo relacionado `a taxa de ocorrˆencia de CVLI nos setores censit´arios a
+um conjunto de 22 vari´aveis. Note-se, tamb´em, que todos os modelos apresentam menor MSE de
+previs˜ao quando comparados a aqueles da Tabela 3 (modelos tradicionais).
+
+Tabela 4: Crit´erios de sele¸c˜ao e performance (vari´avel
+dependente ´e a taxa de ocorrˆencias de CVLI por 10.000
+habitantes no setor censit´ario)
+
+no var. MSE MSE previs˜ao
+
+λ
+
+pseudo-R2
+
+Ridge 1 CV
+AIC
+BIC
+Lasso 1 CV
+AIC
+BIC
+Enet 1 CV
+AIC
+BIC
+Ridge 2 CV
+AIC
+BIC
+Lasso 2 CV
+AIC
+BIC
+Enet 2 CV
+AIC
+BIC
+
+53
+53
+53
+20
+41
+34
+22
+44
+19
+106
+106
+106
+30
+93
+40
+41
+106
+44
+
+3.5203
+3.3967
+3.3967
+3.5463
+3.4022
+3.4179
+5.4006
+5.4933
+5.3893
+3.1865
+3.0377
+3.0377
+3.1748
+3.0055
+3.1038
+3.1305
+2.9964
+3.1035
+
+1.3448
+1.5173
+1.5173
+1.3121
+1.5055
+1.4591
+0.5538
+1.7304
+0.8354
+1.3271
+1.5398
+1.5398
+1.3163
+1.6240
+1.3922
+0.9764
+1.2303
+1.0378
+
+1.5315
+0.0489
+0.0489
+0.07622
+0.0061
+0.0142
+0.6382
+0.0120
+0.2630
+1.3496
+0.0473
+0.0473
+0.0508
+0.0004
+0.0200
+0.1885
+0.0000
+0.0894
+
+0.1815
+0.1781
+0.1781
+0.1734
+0.1773
+0.1734
+0.1195
+0.1842
+0.1347
+0.1843
+0.1856
+0.1856
+0.1864
+0.1843
+0.1853
+0.1885
+0.1856
+0.1885
+
+Vari´avel dependente ´e a taxa de ocorrˆencias por 10.0000 habitantes. Os mo-
+delos Ridge 2, Lasso 2 e Enet 2 referem-se aos modelos com defasagem espa-
+cial. Fonte: elabora¸c˜ao pr´opria.
+
+5.4 Modelos penalizados - Vari´avel bin´aria
+
+A tabela 5, abaixo, apresenta de maneira semelhante aos resultados da tabela 4, um conjunto
+resumido descritivo e de medidas de performance dos modelos com vari´avel resposta bin´aria. Os
+modelos ridge 3, lasso 3 e enet 3 representam as formula¸c˜oes sem a considera¸c˜ao da defasagem espacial
+dos vizinhos, enquanto as formula¸c˜oes ridge 4, lasso 4 e enet 4 representam o modelo expandido,
+com considera¸c˜ao das defasagens espaciais. A formula¸c˜ao que apresenta menor MSE de previs˜ao ´e a
+ridge onde n˜ao h´a sele¸c˜ao de modelo, apenas penaliza¸c˜ao da magnitude dos coeﬁcientes.
+
+Tabela 5: Crit´erios de sele¸c˜ao e performance (vari´avel de-
+pendente ´e bin´aria, indicando se houve, durante o per´ıodo
+de an´alise, ocorrˆencia de CVLI no setor)
+
+no var. MSE MSE previs˜ao
+
+λ
+
+pseudo-R2
+
+Ridge 3 CV
+AIC
+BIC
+
+53
+53
+53
+
+0.1984
+0.1960
+0.1960
+
+0.1043
+0.0178
+0.0178
+
+0.1164
+0.1866
+0.1866
+
+0.2172
+0.2157
+0.2157
+
+15
+
+AUC
+0.7588
+0.7647
+0.7647
+
+Lasso 3 CV
+AIC
+BIC
+Enet 3 CV
+AIC
+BIC
+Ridge 4 CV
+AIC
+BIC
+Lasso 4 CV
+AIC
+BIC
+Enet 4 CV
+AIC
+BIC
+
+35
+38
+8
+35
+28
+8
+106
+106
+106
+34
+41
+24
+42
+43
+25
+
+0.3123
+0.3123
+0.3308
+0.3068
+0.3046
+0.3160
+0.3013
+0.2997
+0.2997
+0.3111
+0.3051
+0.3111
+0.3068
+0.3046
+0.3160
+
+0.3807
+0.3944
+0.0333
+0.3853
+0.3944
+0.3899
+0.3013
+0.2997
+0.2997
+0.3111
+0.3051
+0.4311
+1.1512
+1.1712
+1.1188
+
+0.0051
+0.0022
+0.0333
+0.0090
+0.0040
+0.0240
+0.0359
+0.1710
+0.1710
+0.0072
+0.0072
+0.0072
+0.0104
+0.0060
+0.0200
+
+0.1428
+0.1413
+0.1347
+0.1163
+0.1201
+0.1129
+0.1406
+0.1417
+0.1417
+0.1410
+0.1502
+0.1413
+0.1475
+0.1510
+0.1475
+
+0.7583
+0.7638
+0.7215
+0.7589
+0.7637
+0.7469
+0.7702
+0.7747
+0.7747
+0.7644
+0.7685
+0.7577
+0.7654
+0.7922
+0.7273
+
+Vari´avel dependente ´e bin´aria, se houve ou n˜ao crime no setor. Os modelos Ridge 4,
+Lasso 4 e Enet 4 referem-se aos modelos com defasagem espacial. Fonte: elabora¸c˜ao
+pr´opria.
+
+5.5 Consolida¸c˜ao e vari´aveis
+
+A tabela 6 apresenta os coeﬁcientes estimados das formula¸c˜oes que apresentam, em cada categoria,
+o menor erro quadrado m´edio de previs˜ao. Nas colunas 2 e 4 - estimativas MQO e Enet1 - as
+estimativas referem-se a modelos com vari´avel dependente sendo a taxa de homic´ıdio, j´a nas colunas
+3 e 4 - Logit e Ridge 3 - as estimativas referem-se a especiﬁca¸c˜oes com vari´avel dependente bin´aria
+para a ocorrˆencia de homic´ıdio.
+
+Em rela¸c˜ao `as evidˆencias obtidas por MQO, aquelas obtidas via elastic net apresentam clara
+redu¸c˜ao de n´umero de coeﬁcientes, uma estrat´egia do m´etodo para melhorar a previs˜ao do modelo.
+Assim, nota-se que algumas das vari´aveis da abordagem tradicional apresentam-se como muito pouco
+relevantes para previs˜ao do homic´ıdio. De acordo com as estimativas para os coeﬁcientes da modelo
+elastic net, as vari´aveis que apreendem caracter´ısticas sociais e de infraestrutura domiciliar dos setores
+censit´arios s˜ao mais relevantes que aquelas associadas `a localiza¸c˜ao dos mesmos. Mais especiﬁcamente,
+por exemplo, os percentuais de crian¸cas/adolescentes e negros e pardos, n´ıveis mais desfavor´aveis de
+escolaridade e de renda s˜ao caracter´ısticas positivamente associadas `a taxa de homic´ıdios dos setores
+censit´arios que ajudam na previs˜ao de suas ocorrˆencias, assim como caracter´ısticas domiciliares como
+a condi¸c˜ao de ser um setor subnormal (comumente associado `a favela), a mais elevada densidade e
+o percentual de domic´ılios alugados. Por outro lado e curiosamente, s˜ao muito menos relevantes a
+localiza¸c˜ao do setor censit´ario quanto a equipamentos de servi¸cos p´ublicos e a presen¸ca ou proximidade
+de amenidades da cidade.
+
+Tabela 6: Coeﬁcientes dos modelos tradicionais e penali-
+zados conforme crit´erio de sele¸c˜ao - menor erro quadrado
+m´edio de previs˜ao
+
+MQO
+
+ˆβ
+
+Logit
+
+Enet 1
+
+Ridge 3
+
+ˆβ
+
+ˆβ
+
+Vari´aveis
+Intercepto
+resp mulher
+
+mulher
+
+idade0 14
+idade15 25
+idade26 35
+
+11.906**
+
+-12.224*
+
+-.663
+
+-.967
+
+-11.744***
+
+-.303
+1.134
+
+0
+0
+
+-.485
+3.542
+
+-
+
+11.714**
+
+.782
+
+4.196
+1.672
+
+0
+0
+
+16
+
+ˆβ
+
+2.118
+-.051
+-.121
+.081
+.684
+-.107
+
+Tabela 6: Coeﬁcientes dos modelos tradicionais e penalizados (continua¸c˜ao)
+
+Logit
+
+Enet 1
+
+Ridge 3
+
+Vari´aveis
+idade36 45
+idade46 55
+idade55mais
+
+alfabetizados 15mais
+
+negros pardos
+
+renda dom percmed
+
+renda dom pc05
+renda dom pc025
+
+renda chefe05
+chefe semrenda
+soma renda10
+
+rend mensal media
+
+dom abastagua
+dom saneamento
+dom eletricidade
+dom coletalixo
+
+dtiposetor
+
+dom 10salarios
+
+dom moradequada
+dom pavimentacao
+
+dom iluminacao
+dom calcamento
+dom esgotoaberto
+dom arborizacao
+
+dom lixoacumulado
+
+morador pordom
+
+dom 3oumaisbanheiro
+
+dom semhomem
+
+dom alugados
+
+casas
+
+resp alfabetizado
+homem 15maisalfa
+neg par 15maisalfa
+
+pessoa sregistro
+pessoa srenda
+
+denskm2
+areakm2
+dsaude
+descola
+
+dfronteira
+
+dist avenidaskm
+
+dist cbdkm
+
+dist parqpracakm
+
+dist praiakm
+
+dist riokm
+
+dist roadwaykm
+dist subwaykm
+
+dpolicia
+
+MQO
+
+ˆβ
+
+-5.361**
+-2.194
+.296
+-4.866
+2.043
+-.000
+-1.785
+5.610*
+-1.409
+.715
+-.000
+.000
+-.430
+.006
+.888
+
+-2.385***
+
+.072
+2.628
+.139
+-.189
+.384
+.190
+.017
+-.944
+-.141
+.168
+.224
+3.498*
+.711
+.245
+-.002
+
+ˆβ
+
+-2.150
+2.633
+
+-
+
+6.413
+-.432
+.001
+
+3.997**
+1.741
+-1.469
+2.397*
+.000
+-.001
+-.303
+.231
+-1.212
+-.773
+.224
+.712
+-.060
+-.647*
+.876**
+.621
+-.193
+-.872
+.3595
+.146
+-.788
+
+.197***
+2.501**
+
+.904
+.003
+
+-1.165***
+
+2.715***
+
+-1.921
+68.565
+3.834**
+
+.623
+92.991
+3.174
+
+-2.0e-05***
+
+.405***
+
+-.000***
+.738***
+
+.293
+.312**
+.144
+.042
+.033
+-.071
+-.072
+-.016
+.049
+.001
+.523
+
+.164
+.3282*
+.447
+
+-.256**
+.1794**
+-.0242
+-.266***
+-.207**
+-.0761
+.0491
+-.001
+
+17
+
+ˆβ
+0
+
+-.0517
+-.001
+-.060
+.360
+-.000
+.353
+.736
+.556
+
+0
+
+-.000
+
+0
+0
+0
+0
+0
+
+-.222
+
+0
+0
+0
+0
+0
+0
+0
+
+.000
+-.162
+
+0
+0
+
+.223
+
+0
+
+.265
+.339
+3.015
+
+0
+0
+
+.005
+
+0
+
+.058
+
+0
+0
+0
+0
+0
+0
+0
+
+-.000
+
+-4.54e-06
+-4.54e-06
+
+ˆβ
+
+-.072
+-.687
+-.115
+-.399
+.113
+.120
+-.000
+.348
+.519
+-.071
+.278
+-.000
+-.076
+.058
+-.091
+-.063
+.017
+.144
+.006
+-.122
+.131
+.079
+-.036
+-.105
+.024
+.006
+-.067
+.135
+.342
+.144
+-.000
+.381
+.103
+11.311
+.5063
+.080
+.067
+.051
+.077
+-.050
+.011
+.000
+-.022
+-.010
+-.006
+.001
+-.000
+
+-4.88e-06
+
+Tabela 6: Coeﬁcientes dos modelos tradicionais e penalizados (continua¸c˜ao)
+
+Vari´aveis
+
+no de observa¸c˜oes
+
+MSE
+
+MSE previs˜ao
+
+Pseudo-R2
+
+MQO
+
+ˆβ
+
+1468
+3.277
+3.121
+0.154
+
+Logit
+
+Enet 1
+
+ˆβ
+
+1468
+0.191
+0.212
+0.225
+
+ˆβ
+
+1468
+5.4006
+0.5538
+0.1195
+
+Ridge 3
+
+ˆβ
+
+1468
+0.1960
+0.2157
+0.1866
+
+N´ıvel de signiﬁcˆancia (para os modelos tradicionais MQO e Logit): *** (1%);
+** (5%) e * (10%). O modelo Enet 1 refere-se a formula¸c˜ao para vari´avel de-
+pendente cont´ınua - taxa de ocorrˆencias. E o modelo Ridge 3 refere-se a for-
+mula¸c˜ao para vari´avel dependente bin´aria - dummy de ocorrˆencia de CVLI no
+setor. Fonte: elabora¸c˜ao pr´opria.
+
+Quando se considera a vari´avel dependente bin´aria (indicadora de ocorrˆencia de homic´ıdio no
+setor censit´ario), o modelo escolhido (ridge) n˜ao implica redu¸c˜ao de vari´aveis, mas de valor dos
+coeﬁcientes. De acordo com os resultados da Tabela 6, h´a, em geral, semelhan¸ca em rela¸c˜ao ao sinais
+das vari´aveis (embora diferen¸cas tamb´em se fa¸cam presentes). Note-se, al´em disto, que, `a exce¸c˜ao do
+sinal do coeﬁciente obtido para condi¸c˜ao de ser um setor subnormal, todos os demais coeﬁcientes
+estimados s˜ao consistentes com aqueles obtidos no modelo da especiﬁca¸c˜ao elastic net para a vari´avel
+depende cont´ınua acima discutido. Note-se, por´em, que aqui h´a evidente relevˆancia com respeito `a
+proximidade de equipamentos de servi¸cos p´ublicos de sa´ude e educa¸c˜ao: como se percebe a partir
+da coluna 4 da Tabela 6, maiores distˆancias a tais equipamentos est˜ao positivamente associados `a
+probabilidade de ocorrˆencia de homic´ıdios nos setores censit´arios da cidade. Por outro lado, ainda
+que apresente efeitos de magnitudes menores, o distanciamento a amenidades da cidade (praia, rio e
+parques) tende a reduzir a probabilidade de ocorrˆencia de homic´ıdio.
+
+6 Considera¸c˜oes Finais
+
+Diante, de um lado, do fato de que homic´ıdios ocorrem de forma absolutamente assim´etrica no
+espa¸co intra-urbano e, do outro, da existˆencia de diferentes teorias que procuram explicar e entender
+a ocorrˆencia de crimes violentos urbanos a partir de diferentes perspectivas e enfatizando diferentes
+vari´aveis, este trabalho utilizou informa¸c˜oes de setores censit´arios, um amplo e in´edito conjunto
+de vari´aveis e t´ecnicas de machine learning para estudar a ocorrˆencia de homic´ıdio na Cidade do
+Recife. A perspectiva adotada, ao inv´es de privilegiar abordagens te´oricas particulares, permitiu
+explorar a capacidade de associa¸c˜ao de diferentes vari´aveis (mais de 50 foram tratadas), capturando
+diferentes aspectos da vida socio-econˆomicas dos indiv´ıduos das vizinhan¸cas (setores censit´arios), com
+a ocorrˆencia de homic´ıdios.
+
+O conjunto de evidˆencias do trabalho apontam para dois resultados principais. Primeiro, observou-
+se que os modelos que adotam uma perspectiva de aprendizado a partir dos dados machine learning
+foram capazes de gerar melhores(em termos de previs˜ao) que os modelos tradicionais baseados em
+regress˜oes por MQO ou em que incorpora¸c˜ao dependˆencia espacial (SDM e SLX). Segundo e n˜ao
+menos importante, as estimativas obtidas indicam que i) os percentuais de crian¸cas/adolescentes e ii)
+negros e pardos, iii) os n´ıveis mais desfavor´aveis de escolaridade e iv) de renda, v) a mais elevada
+densidade e vi) o percentual de domic´ılios alugados s˜ao as caracter´ısticas espaciais positivamente
+associadas `a taxa de homic´ıdios dos setores censit´arios que ajudam na previs˜ao de suas ocorrˆencias,
+Este conjunto de evidˆencia oferece, assim, suporte `a Teoria da Desorganiza¸c˜ao Social e ressalta a
+importˆancia do social guardianship para o entendimento da ocorrˆencia de homic´ıdio na Cidade do
+Recife.
+
+O trabalho pode e est´a sendo expandido em duas frentes. Primeiro, ´e poss´ıvel adicionar novos
+elementos associados aos momento da ocorrˆencia (manh˜a, tarde, noite e madrugada) `a an´alise, uma
+vez que as ocorrˆencias podem ser extremamente sens´ıveis `as varia¸c˜oes do social guardianship ao longo
+
+18
+
+dia. Segundo, embora haja ganhos na considera¸c˜ao do n´ıvel de agrega¸c˜ao aqui utilizado (setores
+censit´arios), para muitas das vari´aveis e circunstˆancias, tal n´ıvel pode ser restritivo e levar a resultados
+muitos dispares entre setores vizinhos e homogˆeneos, j´a que a cidade do Recife ´e caracterizada como
+macro-segregada do ponto de vista residencial (Oliveira e Silveira Neto, 2015). Neste sentido, a
+aplica¸c˜ao da mesma estrat´egia a partir de unidades espaciais maiores (por exemplo bairros) pode
+beneﬁciar o poder preditivo de um maior n´umero de vari´aveis.
+
+Referˆencias
+
+ANDRADE, Rayane Maria de Lima. Conﬁgura¸c˜oes de homic´ıdios dolosos em Pernambuco: uma
+
+investiga¸c˜ao sociol´ogica. Reposit´orio da Universidade Federal de Pernambuco, 2015.
+
+BECKER, Gary S.; MURPHY, Kevin M. A theory of rational addiction. Journal of political
+
+Economy, v. 96, n. 4, p. 675-700, 1988.
+
+BECKER, Jacob H. The dynamics of neighborhood structural conditions: the eﬀects of con-
+centrated disadvantage on homicide over time and space. City Community, v. 15, n. 1, p. 64-82,
+2016.
+
+CAVALCANTI, Filipe M. Silva; MIRANDA, Filipe P.; NETO, Raul da Mota S. Vizinhan¸ca e
+criminalidade: determinando um rankin de violˆecia para os bairros da regi˜ao metropolitana do Recife.
+VI Encontro Pernambucano de Economia, 2017.
+
+CAVALCANTI, Filipe M. Silva; MIRANDA, Filipe P.; NETO, Raul da Mota S. Spatial correlation
+between drugs traﬃc and violente in Brazil: evidence from urban neighborhoods. 46o Encontro
+Nacional de Economia, 2018.
+
+CERQUEIRA, Daniel Ricardo de Castro. Causas e consequˆencias do crime no Brasil. Banco
+
+Nacional de Desenvolvimento Econˆomico e Social, 2014.
+
+CERQUEIRA, Daniel; LOB ˜AO, Waldir. Determinantes da criminalidade: arcabou¸cos te´oricos e
+
+resultados emp´ıricos. DADOS-Revista de ciˆencias sociais, v. 47, n. 2, 2004.
+
+CERQUEIRA, Daniel; MOURA, Rodrigo Leandro. O efeito das oportunidades no mercado de
+trabalho sobre as taxas de homic´ıdios no Brasil. Anais do Encontro Associa¸c˜ao Nacional dos Centros
+de P´os-Gradua¸c˜ao em Economia. Florian´opolis (SC), 2015.
+
+DA SILVA SEABRA, Deborah Maria; NETO, Raul da Mota Silveira; DE MENEZES, Tatiane
+Almeida. Amenidades urbanas e valor das residˆencias: uma an´alise emp´ırica para a cidade do Recife.
+Economia Aplicada, v. 20, n. 1, p. 143-169, 2016.
+
+DA SILVA SEABRA, Deborah Maria; NETO, Raul da Mota Silveira; DE MENEZES, Tatiane
+Almeida. Amenidades urbanas e valor das residˆencias: uma an´alise emp´ırica para a cidade do Recife.
+Economia Aplicada, v. 20, n. 1, p. 143-169, 2016.
+
+FELSON, Richard B. et al. The subculture of violence and delinquency: Individual vs. school
+
+context eﬀects. Social Forces, v. 73, n. 1, p. 155-173, 1994.
+
+FLORENCIO, Lutemberg; CRIBARI-NETO, Francisco; OSPINA, Raydonal. Real estate appraisal
+
+of land lots using GAMLSS models. arXiv preprint arXiv:1102.2015, 2011.
+
+GIBBONS, Steve. The costs of urban property crime. The Economic Journal, v. 114, n. 499, p.
+
+F441-F463, 2004.
+
+GLAESER, Edward L.; SACERDOTE, Bruce; SCHEINKMAN, Jose A. Crime and social interac-
+
+tions. The Quarterly Journal of Economics, v. 111, n. 2, p. 507-548, 1996.
+
+GREENE, William H. The econometric approach to eﬃciency analysis. The measurement of
+
+productive eﬃciency and productivity growth, v. 1, n. 1, p. 92-250, 2008.
+
+HELWIG, Nathaniel E. Adding bias to reduce variance in psychological results: A tutorial on
+
+penalized regression. The Quantitative Methods for Psychology, v. 13, n. 1, p. 1-19, 2017.
+
+LEGGE, Sandra. Youth and violence: Phenomena and international data. New directions for
+
+youth development, v. 2008, n. 119, p. 17-24, 2008.
+
+LESAGE, James; PACE, Robert Kelley. Introduction to spatial econometrics. Chapman and
+
+Hall/CRC, 2009.
+
+19
+
+LI, Zhengyi. High Dimensional Model Selection and Validation: A Comparison Study. 2015.
+LIGHT, Michael T., HARRIS, Casey T. Race, Space, and Violence: Exploring Spatial Dependence
+in Structural Covariates of White and Black Violent Crime in US Counties. Journal of Quantitative
+Criminology. 2012;28:559–586.
+
+MEHTA, Pankaj et al. A high-bias, low-variance introduction to machine learning for physi-
+
+cists. arXiv preprint arXiv:1803.08823, 2018.
+
+MENEZES, Tatiane et al. Spatial correlation between homicide rates and inequality: Evidence
+
+from urban neighborhoods. Economics Letters, v. 120, n. 1, p. 97-99, 2013.
+
+MIETHE, Terance D.; REGOECZI, Wendy C.; DRASS, Kriss A. Rethinking homicide: Exploring
+
+the structure and process underlying deadly situations. Cambridge University Press, 2004.
+
+OSGOOD, D. Wayne et al. Routine activities and individual deviant behavior. American Sociolo-
+
+gical Review, p. 635-655, 1996.
+
+QIU, Derek. An applied analysis of high-dimensional logistic regression. 2017.
+RODRIGUES, Fl´avio A. da Cunha; BELMIRO, C´elio H. Pereira; Neto, Raul da Mota S. Mono-
+centrismo e estrutura urbana: uma an´alise emp´ırica para a cidade do Recife. 46o Encontro Nacional
+de Economia, 2018.
+
+SAMPSON, R. J. e RAUNDENBUSH, S. W. (1999). Systematic social observation of public
+spaces: a new look at disorder in urban neighbourhoods, American Journal of Sociology, vol. 105(3),
+pp. 603–51.
+
+SEABRA, Deborah Maria da Silva. Mercado imobili´ario e amenidades: evidˆencias para a cidade
+
+do Recife. Reposit´orio da Universidade Federal de Pernambuco, 2014.
+
+TIBSHIRANI, Robert. Regression shrinkage and selection via the lasso. Journal of the Royal
+
+Statistical Society. Series B (Methodological), p. 267-288, 1996.
+
+VASTRAD, Chanabasayya et al. Performance analysis of regularized linear regression models for
+
+oxazolines and oxazoles derivitive descriptor dataset. arXiv preprint arXiv:1312.2789, 2013.
+
+WHEELER, David C. Simultaneous coeﬃcient penalization and model selection in geographically
+weighted regression: the geographically weighted lasso. Environment and planning A, v. 41, n. 3, p.
+722-742, 2009.
+
+20
+
+

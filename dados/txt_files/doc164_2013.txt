@@ -1,0 +1,963 @@
+	                                                                                                                                                                                                                                           1	  
+                                                                   Análise de Estilo Dinâmica de Fundos Multimercados: Aplicação para o Mercado Brasileiro
+
+                                                                                                                                                                                                                            Isabel Schutt1
+                                                                                                                                                                                                                           João Caldeira2
+
+Resumo: Este artigo aplica o modelo de análise de estilo baseado em retornos (RBSA) considerando
+explicitamente a presença de exposições variantes no tempo. Inicialmente o modelo é estimado assumindo
+que os estilos são constantes ao longo do tempo. Posteriormente é utilizada a abordagem do filtro de Kalman
+para modelar as exposições dos fundos multimercado variantes ao longo do tempo. Usando uma base de
+dados de fundos multimercados brasileiros, os resultados mostram que a RBSA pode explicar mais de 50%
+da variância dos retornos dos fundos. Também evidencia significante exposição ao mercado de ações e que a
+exposição a fatores relacionados ao mercado de renda fixa vem crescendo. Finalmente, a modelagem
+considerada capta mudanças importantes no estilo de exposição a fatores de risco dos fundos multimercados
+brasileiros decorrentes da recente crise financeira global (2008-2009).
+Palavras-Chave: Análise de estilo dinâmica; Filtro de Kalman; Parâmetros variantes no tempo; Fundos
+multimercado; Persistência
+
+Abstract: This paper applies the traditional return-based style analysis (RBSA) in presence of time-varying
+exposures. Often the investment style is assumed to be constant through time. Alternatively, time variation is
+sometimes implicitly accounted for by using rolling regressions when estimating the style analysis. We use
+the Kalman filter to model time-varying exposures of hedge funds explicitly. This leads to a testable model
+and more efficient use of the data, which reduces the influence of spurious correlation between hedge fund
+returns and style indices. The aim of this study is to estimate the investment styles and reveal periodic return
+distributions of Brazilian hedge funds for the 2006-2011 period. In a large sample of funds, we find
+substantial evidence that hedge fund risk exposures vary along the time. We also find that the exposition to
+fixed income is increasing over the last years. The results have shown that style analyses explain over 50% of
+the funds returns. Finally, we analyze exposures during the global financial crisis (2008-2009).
+Keywords: Dynamic style analysis; Kalman filter; Time varying parameter; Hedge funds; Persistence
+JEL: C53 E43 G17
+Área 8 - Microeconomia, Métodos Quantitativos e Finanças
+        	  
+        1 Introdução
+             Uma parcela relevante de investidores ao redor do mundo aplica seus recursos no mercado financeiro
+através de fundos de investimento. Essse veículo de investimento permite ao investidor aplicar seus recursos
+em uma carteira de ativos constituída sob a forma de um condomínio fechado com a comunhão de bens de
+diversos investidores, a qual será administrada por profissionais do mercado financeiro. Uma das grandes
+vantagens para o investidor ao realizar suas aplicações via um fundo de investimento é justamente
+diversificar a alocação de seus recursos sem precisar acompanhar o mercado financeiro diariamente. Assim,
+ao invés de avaliar ativos disponíveis no mercado e suas possíveis combinações, o investidor avalia os fundos
+de investimento oferecidos por instituições especializadas na gestão de recursos.
+        O universo dos fundos de investimento, principalmente os multimercados, contém um amplo espectro
+de estilos que diferem no que diz respeito aos objetivos de performance, os ativos financeiros e as estratégias
+de trading adotadas pelos gestores quando montam e administram suas carteiras. Sendo que as diferenças de
+estilo de investimento, ou diferentes exposições aos fatores de risco, podem explicar boa parte da variação
+cross-sectional nos retornos dos fundos de investimento (Barberis & Shleifer (2003), Chan et al. (2002),
+
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+1
+        Analista de Risco Sênior do Banco Sicredi SA e PPGE – UFRGS. Email: isabel_schutt@sicredi.com.br.
+2
+        Departamento de Economia e PPGA – UFRGS. Email: joao.caldeira@ufrgs.br
+	                                                                                                         2	  
+Pattarin et al. (2004), Fung et al. (2005), Gibson & Gyger (2007) e Martin (2009))
+        Investidores racionais buscam alcançar um equilíbrio aceitável entre as condições de risco e retorno.
+Neste sentido, a alocação estratégica de ativos é de grande importância na gestão de portfolios e o
+estabelecimento de um equilíbrio depende da constituição de uma combinação eficiente de ativos. No
+entanto, com frequência, muitos investidores e mesmo a imprensa especializada comparam simplesmente os
+retornos realizados de fundos de investimento sem levar em conta as diferenças na exposição dos mesmos.
+        Em função do grande número de fundos multimercados existentes hoje em dia é quase impossível
+para o investidor identificar de forma adequada o estilo de investimento de um fundo específico. Neste
+contexto, para que o investidor tenha as informações necessárias para decidir qual fundo de investimento é
+mais adequado ao seu perfil de risco e retorno é importante dispor de ferramentas que permitam identificar as
+características e as exposições a fatores de risco de cada fundo.
+        Investidores e especialistas em finanças podem obter estimativas a respeito da exposição dos fundos
+de investimentos através da Análise de Estilo, modelo introduzido inicialmente por Sharpe (1992, 1998) e
+generalizado em Agarwal & Naik (2000); Agarwal (2004) e Fung & Hsieh (2002). O método proposto por
+Sharpe ficou conhecido como análise de estilo baseada nos retornos (return-based style analysis - RBSA) e é
+basicamente uma regressão restrita dos retornos dos fundos sobre os fatores de risco relevantes no mercado.
+O modelo pode ser usado como uma ferramenta valorosa para investidores e consultores na estimação da
+exposição de fundos de investimentos e na verificação de quão bem os gestores cumprem os objetivos de
+investimentos estabelecidos. A análise de estilo pode desempenhar ainda um papel fundamental ao inferir as
+exposições de fundos multimercado aos fatores de risco, ajudando a classificá-los e a determinar benchmarks
+apropriados para avaliar sua performance.
+        Assim, para um potencial investidor de fundos multimercados o modelo de Análise de Estilo
+introduzido por Sharpe (1992) é uma forma simples e objetiva de obter uma primeira impressão sobre o
+histórico de exposição de um fundo (Trzcinka, 2001). Neste contexto, o modelo RBSA teve amplo impacto e
+implicações do ponto de vista prático (Trzcinka, 2001), se tornando uma ferramente bastante popular na
+análise de fundos de investimento. Diversos autores apontaram pontos fracos e sugeriram adequações ao
+modelo original. Por exemplo, Swinkels & Sluis (2006); Christopherson & Trittin (1995) e Dibartolomeo &
+Witkowski (1997) destacam que um dos pontos fracos da RBSA na sua versão original é a hipótese de que o
+estilo de investimento de um fundo se mantém fixo ao longo do tempo. A crítica básica é que as exposições
+aos fatores de risco estimadas com base em dados históricos são instáveis e que é difícil capturar o estilo
+quando o gestor pode mudar de estratégia de investimento.
+        Neste artigo considera-se explicitamente a variação ao longo do tempo no estilo de investimento de
+um gestor de fundo multimercado. O modelo RBSA é colocado no formato de estado espaço e as exposições
+dos fundos aos fatores de risco são tratadas explicitamente como variantes ao longo do tempo. Utilizando o
+filtro de Kalman, toda a amostra é usada para estimar as exposições em cada ponto do tempo.
+Consequentemente não é necessário definir um tamanho para a janela de estimação, o filtro de Kalman
+determina de forma ótima o peso de cada informação em determinda exposição. Com as estimativas das
+exposições variantes ao longo do tempo é possível, além de identificar os estilos de investimento dos fundos,
+verificar a persistência das exposições ao longo do tempo.
+        Utilizando uma ampla base de dados composta por 388 fundos multimercados brasileiros para o
+período de janeiro de 2006 a outubro de 2011, os resultados encontrados sugerem que os fundos
+multimercados brasileiros apresentam significativa exposição positiva ao mercado de ações e a fatores
+relacionados a títulos de renda fixa. Em geral a análise de estilo pode explicar até 50% da variância dos
+retornos dos fundos multimercados. Fica evidente também a importância de se considerar a dinâmica das
+exposições na análise de estilo. Além disso, percebe-se que as maiores oscilações ao longo do tempo se
+verificam na exposição ao fator de risco relacionado ao mercado de ações, que diminuiu de forma
+considerável, principalmente a partir de 2008.
+        Neste sentido o artigo contribui para a literatura de duas formas: a análise de estilo baseada em
+retornos (RBSA) é aplicada pela primeira vez a uma ampla base de fundos multimercados brasileiros,
+	                                                                                                                                                                                                                         3	  
+incluindo o período da crise financeira deflagrada em 2008. Posteriormente, o modelo é colocado no formato
+de estado espaço e os parâmetros (exposições dos fundos aos fatores de risco) são estimados como variantes
+no tempo através do filtro de Kalman. Assim, as exposições dos fundos multimercado aos fatores de risco são
+tratadas explicitamente como variantes no tempo, o que permite analisar a persistência das mesmas ao longo
+do período considerado.
+        Além desta introdução, o presente trabalho destaca: a seção 2 apresenta uma revisão da literatura; a
+seção 3, uma breve descrição da indústria de fundos multimercado no Brasil; a seção 4 mostra o modelo na
+forma estado espaço; a seção 5 apresenta e discute a base de dados utilizada e destaca os resultados empíricos
+e sua discussão; e, por último, a seção 6 finaliza com as conclusões.
+
+        2 Revisão da Literatura
+        O modelo RBSA de Sharpe, conhecido como Modelo de Fatores para Classes de Ativos, partiu do
+fundamental teórico de modelos de fatores (Fung & Hsieh, 1997) e demonstrou empiricamente que apenas
+um número limitado de classes de ativos foram necessários para replicar com sucesso o desempenho de um
+amplo conjunto de fundos de investimento nos Estados Unidos. A RBSA proposta originalmente por Sharpe
+(1992, 1998) consiste basicamente em um processo investigativo a respeito da composição da carteira de um
+fundo de investimento. O método proposto por Sharpe (1992) envolve a análise dos retornos dos fundos em
+relação aos fatores de risco apropriados. As exposições estimadas são indicativos do estilo dos fundos (Dor et
+al., 2006). Mais especificamente, o trabalho analisou a forma como o retorno de um fundo se movimenta
+junto com o retorno das classes de ativos, utilizando o resultado para estimar a alocação efetiva do mix de
+ativos ou o estilo do fundo.
+        Outra contribuição chave desta abordagem, conforme o próprio autor explica, está na possibilidade de
+separar o retorno de uma carteira em dois componentes: um componente relacionado ao estilo, representado
+pelos fatores explicativos, e outro componente relacionado à seleção de ativos atribuída ao termo residual.
+Conforme destacado por Sharpe, em uma carteira bastante diversificada o risco idiossincrático se reduz
+fortemente e a parte do retorno atribuída ao estilo se torna ainda mais expressiva, enfatizando a utilidade do
+modelo. Dado que o estilo de investimento de um fundo nem sempre é claro para os investidores, Sharpe
+(1992) argumenta ainda que o modelo pode ser útil também na avaliação do desempenho dos fundos, pois
+fornece um meio para construção de benchmarks. Em outras palavras, a análise de estilo pode desempenhar
+um papel fundamental em inferir as exposições aos fatores de risco dos gestores, ajudando a classificá-los e a
+determinar um benchmark adequado para avaliar sua performance.
+        O modelo proposto por Sharpe foi amplamente difundido e a RBSA se tornou uma ferramenta
+bastante popular na análise de fundos de investimento. No entanto, Fung & Hsieh (1997) afirmaram que a
+Análise de Estilo tal como proposta por Sharpe não alcança o mesmo sucesso quando aplicada a hedge funds,
+isto por que o retorno dos hedge funds é determinado por no mínimo dois componentes: o retorno dos ativos
+que compõem a carteira e a dinâmica das estratégias adotadas, sendo que o modelo de Sharpe foca apenas no
+primeiro componente3. Em outras palavras, o modelo RBSA não leva em conta que as exposições em cada
+estratégia podem se alterar rapidamente dadas as oportunidades no mercado. Além disso, as restrições
+impostas no modelo impedem que os fundos tenham posições vendidas ou alavancadas, características usuais
+dos hedge funds.
+        Seguindo os trabalhos de Sharpe (1992, 1998) e Fung & Hsieh (1997), muitos autores analisaram as
+exposições de hedge funds regredindo seus retornos contra fatores de risco, por exemplo, Agarwal & Naik,
+2000; Brown, 2001; Mitchell & Pulvino, 2001 e mais recentemente Corielli & Meucci (2004); Otten & Bams
+(2004); Horst et al. (2004); Swinkels & Sluis (2006); Lau (2007); Bodson et al. (2010); Pojarliev & Levich
+(2010); Weng & Trück (2011) e Jawadi & Khanniche (2012), entre outros.
+        A RBSA convencional impõe restrições quanto à venda de ativos a descoberto e também que os pesos
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+3
+ Anson (2002) e Amin & Kat (2003) argumentam que os retornos de fundos multimercados são substancialmente mais complexos
+do que retornos de títulos de renda fixa ou de ações.
+	                                                                                                           4	  
+das exposições aos fatores de risco somem um, o que limita a aplicação do modelo à hedge funds.
+Alternativamente, Agarwal & Naik (2000) rotulam a RBSA sem essas restrições de análise de estilo
+generalizada, possibilitando estimar as exposições de hedge funds aos fatores de risco de forma mais robusta,
+já que estes veículos de investimento podem assumir posições alavancadas e realizar vendas a descoberto.
+Brown (2001) implementa uma abordagem usando o histórico de retornos e os estilos informados pelos
+gestores e encontra evidências de que as diferenças no estilo de investimento explicam aproximadamente
+20% da variabilidade cross-sectional na performance dos hedge funds. Vestergren (2009) aplicam RBSA
+generalizada a fundos suecos e encontram que aproximadamente 92% da variação dos retornos ao longo do
+tempo é explicada pelos estilos dos fundos. A literatura sobre modelagem de retornos de hedge funds usando
+modelos estáticos é extensa. Uma lista parcial inclui também Ackermann et al. (1999), Agarwal (2004),
+Kosowski et al. (2007), Agarwal et al. (2009), Patton (2009) e Jagannathan et al. (2010).
+         Geralmente, para avaliar como as exposições aos fatores de risco variam ao longo do tempo,
+pesquisadores implementaram RBSA através de OLS rolling-windows (ver, por exemplo, Sáez & Izquierdo,
+2000; Annaert & Van Campenhout, 2002, 2007). Dor & Jagannathan (2003) e Pattarin et al. (2004), sugerem
+aplicar análise de regressão em vários períodos ao longo do tempo para avaliar a consistência das exposições.
+Por outro lado, Brown & Goetzmann (2003), Corielli & Meucci (2004), Swinkels & Sluis (2006); Mamaysky
+et al. (2008) e Bodson et al. (2010), entre outros, argumentam que a abordagem do filtro de Kalman é a mais
+adequada para capturar a dinâmica nas exposições dos hedge funds aos fatores de risco ao longo do tempo.
+         Bollen & Whaley (2009) buscam identificar alterações na exposições dos hedge funds aos fatores de
+risco através de metodologia que permite identificar quebras estruturais nos pesos dos fatores. A abordagem
+empregada trata as exposições aos fatores de risco como constantes entre dois pontos de quebra, com uma
+mudança abrupta para um novo valor nos pontos de mudança. Os autores identificam mudanças significativas
+nos parâmetros dos fatores de risco em 40% da amostra de fundos analisada. Patton & Ramadorai (2011)
+aplicam o modelo RBSA a uma base de dados diária composta por aproximadamente 15.000 fundos de
+investimentos de diversos países e ressaltam a importância do uso de informações diárias para modelar as
+exposições de hedge funds aos fatores de risco. Patton & Ramadorai (2011) também destacam a relevância de
+se levar em conta as variações ao longo do tempo nas exposições aos fatores de risco.
+         Mais recentemente, Weng & Trück (2011) aplicaram análise de estilo a uma base de dados de fundos
+asiáticos. Os autores estimam o modelo RBSA no formato original e também analisam a dinâmica na
+exposição aos fatores de risco através de OLS rolling-windows com o objetivo de analisar variações ao longo
+do tempo nas exposições aos fatores de risco dos fundos asiáticos. Jawadi & Khanniche (2012) empregam
+modelos não-lineares como smooth transition regression - STR e modelos de Markov switching para capturar
+as variações nas exposições ao longo do tempo e assimetrias nas relações entre os retornos dos hedge funds e
+fatores de risco. Outras aplicações recentes da análise de estilo usando dados diários a diferentes amostras de
+hedge funds são encontradas também em Kugler et al. (2010) e Pojarliev & Levich (2010).
+         Aplicações de RBSA a dados de fundos multimercados brasileiros podem ser encontradas em Varga
+& Valli (1998), Pizzinga & Fernandes (2005); Pizzinga et al. (2006) e Pizzinga et al. (2008). Almeida et al.
+(2007) propõem o que chamam de análise de estilo robusta e aplicam a dois fundos de investimentos
+brasileiros encontrando evidências de mudanças nas alocações ao longo do tempo. Pizzinga et al. (2011)
+aplicam análise de estilo generalizada a fundos cambiais brasileiros no período de 2001 a 2004. Já Marques
+et al. (2012) aplicam uma versão dinâmica do modelo RBSA a fundos atuariais brasileiros e concluem que
+tais fundos investem principalmente em títulos indexados à inflação. Nota-se que existem poucos trabalhos
+envolvendo aplicações da análise de estilo a dados de fundos brasileiros, uma possível explicação é que a
+indústria brasileira de fundos vem ganhando relevância principalmente a partir da segunda metade dos anos
+90, com a estabilidade macroeconômica, consequentemente bases de dados consistentes são relativamente
+recentes.
+         Além disso, conforme Sharpe (1992) advertiu, a escolha de classes de ativos relevantes é um ponto
+essencial para o sucesso do modelo, e principalmente no Brasil, os trabalhos apontam não existirem muitos
+índices referenciais eficazes difundidos no mercado, o que dificulta a aplicação do modelo de Sharpe no País.
+	                                                                                                                                                                                                                         5	  
+Varga & Valli (1998) que foram os primeiros autores a introduzirem a análise de estilo no país, salientam que
+isto ocorre principalmente na busca de índices de investimento em renda fixa. Foi apenas mais recentemente
+que o mercado financeiro brasileiro desenvolveu e difundiu novos índices referencias, permitindo aplicar a
+Análise de Estilo para fundos brasileiros de forma mais confiável.
+
+        3 A Indústria de Fundos de Investimento no Brasil
+        De acordo com Alves Júnior (2003), no Brasil, diferentemente dos Estados Unidos, o surgimento dos
+fundos de investimento foi fruto direto da política econômica, sendo seu desenvolvimento inicial associado à
+iniciativa regulatória. O primeiro fundo de investimento fechado, Valéria Primeira, do grupo Deltec, iniciou
+suas operações em 1952. Já o primeiro fundo aberto, o Fundo Brasil, entrou em atividade pouco depois, em
+1954, e em 1957 foi estabelecido o fundo Crescinco, que tinha como objetivo financiar projetos para o
+crescimento do país no governo do mineiro Juscelino Kubitschek.
+        O mercado financeiro brasileiro, até então muito incipiente, recebeu um grande impulso e começou a
+mudar em 1964 com a Lei da Reforma Bancária, através da qual se criaram instituições como o Conselho
+Monetário Nacional (CMN) e o Banco Central. Nos anos 70, surgiram novas regras para estruturar o
+mercado financeiro nacional, destacando-se a legislação sobre fundos mútuos de investimento. Tanto a
+reforma de 1964, quanto as inúmeras resoluções e decretos que se seguiram visavam a constituição de um
+sistema financeiro capaz de ampliar a oferta privada de recursos financeiros a longo prazo, apoiado em
+operações de crédito e no mercado de capitais, visando construir mecanismos alternativos de financiamento
+de longo prazo que não fossem de origem estatal, substituindo o financiamento pela via dos déficits
+orçamentários e da expansão monetária (Alves Júnior, 2003).
+        A abertura da economia brasileira nos anos 1990 e a estabilidade monetária alcançada após o Plano
+Real foram os grandes propulsores da indústria de fundos de investimento nestas duas últimas décadas, pois
+propiciaram novas perspectivas de investimento para os brasileiros. Desde então, a indústria de fundos vem
+apresentando um crescimento expressivo, tanto no que diz respeito ao valor do patrimônio líquido
+administrado quanto em relação à quantidade de fundos oferecidos no mercado, representando hoje um
+instrumento de poupança importante à disposição de parcela significativa da população. Nas últimas duas
+décadas, o montante de recursos administrados pelos fundos de investimento no Brasil passou de menos de
+R$100 bilhões no início dos anos 1990, para aproximadamente R$1,88 trilhão, em abril de 2012, conforme
+dados da ANBIMA (2012)4, enquanto o número de fundos passou de aproximadamente 289 para algo em
+torno de 11.824 nos dias atuais.
+        Esse expressivo crescimento permitiu o desenvolvimento e a oferta de fundos com estratégias mais
+específicas, visando atender aos distintos perfis de risco e retorno dos investidores. Foi portanto, só apartir da
+métade da década 90 que surgiram os primeiro fundos multimercados no Brasil. A CVM (Comissão de
+Valores Mobiliários), órgão responsável pela regulação e fiscalização dos fundos de investimento no Brasil,
+define em suas as instruções normativas 5 que os fundos multimercados devem possuir políticas de
+investimento que envolvam vários fatores de risco, sem o compromisso de concentração em nenhum fator
+especial ou em fatores diferentes das demais classes de fundos, podendo utilizar derivativos, tanto para
+alavancagem, quanto para proteção da carteira, gerando possibilidades de perda superior ao patrimônio do
+fundo. Desta forma, os fundos multimercados são os que possuem maior liberdade de gestão, mas também
+apresentam maior risco, na medida em que seguem diversas estratégias de aplicação de recursos e que não
+existe nenhum benchmark amplamente aceito ao qual possam ser comparados.
+        Acompanhando o movimento de toda indústria de fundos, os fundos de investimento multimercados
+também vem apresentando um crescimento significativo. Segundo dados da ANBIMA (2012), em abril de
+2012, o volume administrado por estes fundos era de aproximadamente R$428 bilhões, o que representa
+20,46% do total da indústria brasileira, composta por 11.824 fundos de investimento, dentro dos quais 5.848
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+                    Brasileira das Entidades dos Mercados Financeiro e de Capitais.
+    	  	  Associação
+4
+
+5
+        A principal instrução normativa que regula os fundos de investimento no Brasil é a IN 409 da CVM.
+	                                                                                                                                                                                                                                               6	  
+(49,46%) são classificados na categoria multimercado da CVM.
+        O crescimento da indústria de fundos aumenta as possibilidades de aplicação para investidores, mas,
+ao mesmo tempo, torna a decisão de investimento mais complexa, principalmente no caso de fundos
+multimercados. Neste contexto, é cada vez maior a necessidade, por parte dos potenciais investidores, de
+informações detalhadas a respeito dos fundos e de suas estratégias de seleção de carteiras, para que estes
+possam alocar seus recursos de maneira mais eficiente.
+        Tendo em vistas estas dificuldades, e com o objetivo de estabelecer princípios e normas que fossem
+além das exigidas pela CVM, a ANBID6 criou no ano 2000 o código de Auto-Regulação dos Fundos de
+Investimento7, o qual deve ser observado por todas as instituições participantes a fim de receber o selo de
+qualificação que atesta maior transparência e padronização nos processos dos fundos. Atualmente,
+praticamente todos os fundos existentes no Brasil adotam as melhores práticas definidas no código de Auto-
+Regulação da ANBIMA8. Dentre outras exigências, o código define que os fundos devem obrigatoriamente
+possuir classificação ANBIMA. O modelo de classificação da ANBIMA visa diminuir a classificação de
+fundos com políticas distintas dentro de uma mesma classe, dessa forma os fundos classificados como
+Multimercados pela CVM são distribuídos em 10 classes distintas pela ANBIMA, descritas no apêndice B.
+
+            4 Metodologia – Análise de estilo baseada nos retornos
+            Embora seja possível determinar o estilo de investimento de um fundo a partir de uma análise
+detalhada da carteira mantida, a RBSA é uma abordagem simples que usa apenas os retornos realizados do
+fundo e dos fatores de risco. O interesse da análise de estilo conforme implementada neste artigo não é na
+real carteira mantida pelo fundo de investimento, mas sim nas exposições dos fundos a certos fatores de
+risco.
+            4.1 O modelo
+            Suponha que existam K fatores imitando portfolios, com vetor de retornos f t , que determinam os
+retornos dos ativos. Além disso, existem N fundos multimercados com vetor de retornos yit , para os quais
+temos o modelo de fatores linear,
+                                           yit = α + β1t f1t + … + β kt f kt + ε it                       (1)
+ onde ε i N (0, Σi ) é o ith vetor de erros de medidas e βit = (β1t ,…, β kt ) é a ith linha da matriz de pesos dos
+fatores β t , N × K . Assume-se que os termos de erros são não correlacionados,
+              [                                        ]
+ E ε it ε jt = 0 ∀i ∈ {1,..., K }∀j ∈ {1,..., N } . Geralmente, entretanto, são impostas duas restrições. A primeira é a
+restrição de portfolio, a qual requer que as estimativas para os parâmetros β i possam ser interpretados como
+os pesos mantidos pelo portfolio no ith fator de risco. A restrição fica:
+                                                                                                                                                                                                                           K
+
+                                                                                                                                                                                                                           ∑β     i   =1   (2)
+                                                                                                                                                                                                                           i =1
+        As equações (1) e (2) juntas são chamadas RBSA semi-forte. A segunda restrição refere-se a
+restrição de venda a descoberto, a qual impõe que todos os pesos estimados do portfolio devem ser positivos
+(apenas posições compradas).
+                                      βi = 1 ≥ 0, i = 1,…, K .                                (3)
+isto não significa que vendas a descoberto em geral são proibidas, implica que não são permitidas vendas a
+descoberto em categorias de estilo. A versão forte da RBSA é obtida pela equação (1) junto com as restrições
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+6
+  Associação Nacional dos Bancos de Investimento.
+7
+  Disponível no site da instituição em: http://www.anbima.com.br/supervisao/arqs/cod_fundos.pdf.
+8
+  Por decisão soberana de seus associados, em assembléia realizada no dia 21/10/2009, a ANBID integrou suas atividades às da
+Associação Nacional das Instituições do Mercado Financeiro (ANDIMA), passando ambas a constituir a Associação Brasileira das
+Entidades dos Mercados Financeiro e de Capitais (ANBIMA).
+	                                                                                                              7	  
+(2) e (3).
+        A imposição de que as sensibilidades a todas as classes de ativos somem 100% é um aspecto
+metodológico importante do modelo proposto por Sharpe (1992). Com isso os coeficientes podem ser vistos
+como os percentuais de alocação da carteira, tornando a sua interpretação mais intuitiva. No entanto, como
+Brown & Goetzmann (1997) ressaltam, os parâmetros representam na verdade as sensibilidades do retorno
+do fundo às classes de ativos, e não efetivamente os percentuais da composição da carteira do fundo, apesar
+de ser possível pensar neles como proxies destes percentuais.
+        Uma das hipóteses implícitas do modelo RBSA original é que as exposições são mantidas constantes
+ao longo do tempo, o que é altamente improvável na prática. Sharpe (1992) ressalta que o resultado obtido na
+análise de estilo é a média do estilo do período analisado, pois o fundo tem alta probabilidade sofrer
+mudanças de estilo ao longo do tempo. Dessa forma sugere que examinar comportamento do fundo ao longo
+do tempo pode ser útil e que para isto basta estimar uma série de análises de estilos usando um número de
+meses fixos em cada estimação. No entanto, o uso de sub-amostras ao invés da amostra inteira significa a
+introdução implícita de exposições variando ao longo do tempo de maneira ad hoc. Tal abordagem assume
+que as exposições se mantém constantes ao longo do período de estimação definido (janela). Em casos de
+mudança na gestão de um fundo, por exemplo, assumir que as exposições são constantes ao longo de um
+período pode ser bastante restritivo.
+        Na interpretação do resultado do modelo, Sharpe atribui ao R 2 estimado a parcela do retorno do
+fundo que é explicada pelo estilo e a diferença ( 1 − R 2 ) refere-se a parcela do retorno do fundo explicada pela
+seleção individual de ativos. Em outras palavras, define-se que um baixo R 2 representa uma gestão mais
+ativa e um elevado R 2 a uma gestão mais passiva: "In a sense, a passive fund manager provide an investor
+with an investment style, while an active manager provides both style and selection" (SHARPE, 1992, p.12).
+Sharpe reforça, contudo, que a interpretação do R 2 depende de que modelo inclua as classes de ativos mais
+relevantes, caso contrário, um baixo R 2 pode ser devido também à má especificação do modelo e não apenas
+a uma gestão ativa de seleção de ativos.
+        A abordagem proposta neste artigo consiste em estimar a dinâmica das exposições dos fundos ao
+longo do tempo através da estimação do modelo com parâmetros variando no tempo. Desta forma, o período
+amostral inteiro é usado para estimar a exposição em cada ponto do tempo, consequentemente, não é
+necessário escolher o tamanho da janela. A estimação através filtro de Kalman define os pesos ótimos de
+cada observação na determinação das exposições.
+
+        4.2 Estimação do modelo no formato estado espaço através de filtro de Kalman
+          Note que a Equação (1) pode ser escrita de forma geral como:
+                                                  yit = f t βt + ε t                              (4)
+ onde f t = [1, f1t ,…, f kt ] são as variáveis explicativas (fatores de risco) usadas no período de tempo t e
+βt = [α t , β1t ,…, β kt ] são os pesos dos fatores variantes no tempo.
+        Supondo que o vetor de parâmetros em (1) segue um passeio aleatório, temos:
+                                                  βt = βt −1 + ε t                                (5)
+ onde ε t N (0, Σε ) .
+        Com isso, (1) e (5) formam um modelo de estado espaço e seus parâmetros podem ser estimados por
+máxima verossimilhança. A função de verossimilhança de modelos de estado espaço pode ser construída
+através do filtro de Kalman e estimativas dos parâmetros variantes no tempo também podem ser obtidas (ver,
+por exemplo, Durbin & Koopman, 2001; Kim & Nelson, 1999).
+        Mais especificamente, seja a esperança condicional dos parâmetros variantes no tempo, dado as
+observações, denotada por β t|t −1 e a matriz de erro quadrático médio desta esperança denotada por Pt |t −1.
+Então, para dados valores de β t|t −1 e Pt |t −1, quando uma nova observação yit fica disponível, o erro de
+	                                                                                                                                                                                                                         8	  
+previsão pode ser calculado como vt = yit − f t β t|t −1 . Logo, após observar yit , uma inferência mais acurada a
+respeito dos estados (parâmetros variantes no tempo) pode ser feita:
+                 β t|t = β t|t −1 + Pt|t f t ʹ′vt
+                                                                                                                 Pt|t = Pt|t −1 − Pt|t −1 f tʹ′ Δ−t 1 f t Pt|t −1 ,
+       onde Δt = f tʹ′ Pt|t −1 f t + σ 2 é a matriz de covariância do erro de previsão vt . A previsão β t +1|t pode agora ser
+realizada usando β t|t e (5).
+                                                                                                                 β t +1|t = β t|t ,
+                Pt +1|t = Pt|t + Σ ε .
+       Estes cálculos podem ser realizados recursivamente para t = 1,…, T . Por causa da natureza não
+estacionária da equação de transição dos estados (5), o filtro de Kalman foi iniciado usando a formulação
+exata proposta por Koopman (1997). Os parâmetros desconhecidos na matriz de covariância Σ ε são
+coletados no vetor de parâmetros ψ , juntamente com σ 2 e qualquer outro parâmetro fixo no tempo. A
+estimação de ψ é obtida através da maximização numérica do log da função de verossimilhança, a qual é
+construída através da decomposição do erro de previsão e é dada por:
+                                    T          1 T             1 T
+                          l (ψ ) = − log(2π ) − ∑ log | Δ t | − ∑vt ʹ′ Δ−t1vt .
+                                    2          2 t =1          2 t =1
+
+        5 Dados e Resultados Empíricos
+          Esta seção apresenta os resultados empíricos da análise de estilo realizada usando fundos
+multimercados brasileiros. Inicialmente foram identificados os fatores de risco apropriados a serem usados na
+análise de estilo. Na segunda etapa o modelo de análise de estilo é implementada relaxando as hipóteses (2) e
+(3) do modelo original proposto por Sharpe (1992).
+        5.1 Os dados
+          A base de dados utilizada é composta por 388 fundos multimercados e como variáveis explicativas
+são consideradas sete fatores de risco relevantes para o mercado brasileiro. O período amostral vai de Janeiro
+de 2006 a Outubro de 2011, perfazendo um total de 1.493 observações diárias. As séries de retornos dos
+fundos foram obtida através da consulta e extração das cotas diárias do sistema Economática9 . O critério de
+seleção dos fundos foi:
+           • Ser classificado na CVM como Multimercado;
+           • Ter data do início da série de cotas anterior à 31/12/2005;
+           • O fundo deve estar ativo em 31/10/2011;
+           • Apresentar patrimônio Líquido superior à R$30 milhões em 31/10/2011.
+        Do universo de 11.377 fundos de investimentos cadastrados na Anbima em outubro de 2011, em
+torno de 6.185 estão classificados em categorias que permitem exposição a diversos fatores de risco e
+correspondem, portanto, aos fundos multimercados conforme a classificação da CVM10 . Após a aplicação
+dos filtros acima descritos, restaram em torno de 550 fundos na base de dados da Economática. Para o
+cálculo da rentabilidade diária, no entanto, só foram utilizados os dados de 388 fundos devido à ausência de
+informação na série histórica de cotas para alguns dias úteis em diversos fundos e a retirada de quatro
+outliers.
+        Apesar de serem da mesma classificação CVM, os fundos selecionados podem apresentar
+características bastante distintas entre si. Enquanto a Tabela 1 traz estatísticas da classificação ANBIMA
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+9
+  Mais informações em http://www.economatica.com/pt/.
+10
+  Nesta base estão incluídos também os fundos classificados na Anbima como fundos de Previdência com exposição a diversos
+fatores de risco.
+	                                                                                                                           9	  
+destes fundos, a Tabela 2 mostra alguns dados referente às principais características dos fundos da amostra,
+tais como: a cobrança de taxa de performance, tipo de fundo - exclusivo ou não, se permite alavancagem,
+aplicação em títulos de crédito privado, ou em ativos no exterior.
+
+                                     Tabela 1: Classificação dos Fundos pela Anbima
+          A tabela apresenta estatísticas referentes à classificação Anbima dos fundos classificados em categorias que permitem
+exposição a diversos fatores de risco, sendo classificados como multimercados. Uma descrição mais detalhada de cada categoria é
+a apresentada no apêndice A.
+                                          UNIVERSO DA ANBIMA                          UNIVERSO DO ESTUDO
+              FUNDOS                Nº de Fundos     Patrimônio Líquido         Nº de Fundos    Patrimônio Líquido
+                                  QTD         %    R$ milhões       %          QTD        %   R$ milhões       %
+   Balanceados                        49      1%          2,702     1%            12     3%          2,289     2%
+   Capital Protegido                  81      1%          5,677     1%           -       0%            -       0%
+   Long And Short - Neutro            83      1%          3,874     1%              8    2%            961     1%
+   Long And Short - Direcional        97      2%          5,914     1%              4    1%          1,044     1%
+   Multimercados Macro               388      6%        48,006     12%            39     10%         5,338     4%
+   Multimercados Trading              27 0.436540%        1,611     0%           -       0%            -       0%
+   Multim Multiestrategia          3,002     49%       216,974     53%           153     39%       58,026     47%
+   Multimercados Multigestor       1,579     26%        12,646      3%            54     14%         5,712     5%
+   Multim Juros e Moedas             267      4%        91,678     23%            63     16%       34,482     28%
+   Multim Estrategia Especifica      154      2%          7,731     2%            13     3%          5,111     4%
+   Prev Balanceados Até 15            41      1%          2,592     1%            10     3%            667     1%
+   Prev Balanceados 15 a 30           69      1%          1,832     0%            19     5%          3,735     3%
+   Prev Balanceados acima de 30       98      2%          2,447     1%            12     3%          2,266     2%
+   Prev Data Alvo                     35      1%            -       0%           -       0%            -       0%
+   Prev Multimercados                215      3%          2,594     1%              5    1%          1,179     1%
+   TOTAL                           6,185      0%       406,277      0%           392     0%       120,810      0%
+
+
+
+                                     Tabela 2: Características dos Fundos do Estudo
+          A tabela apresenta a estatística das principais características dos fundos do estudo, pela classificação Anbima. Uma
+descrição mais detalhada de cada categoria é a apresentada no apêndice A.
+   !"#$$%&%'#()*+,-.%/#           !*.0#+120&*0/#-'2   34'"5$%6*   ,"#6#-'#7*    !087%9*+10%6#7*   :-62$9+-*+34920%*0
+
+   ;#"#-'2#7*$                            <              =            <                <                  >
+   ?*-@+,-7+AB*09+C+D%02'%*-#"            >              <            >                <                  E
+   ?*-@+,-7+AB*09+C+F2590*                =              G            H                <                  I
+   J5"9%/+3$90#9+3$K2'%&%'#               >              I            >                I                  E
+   J5"9%/+L50*$+2+J*27#$                 GM             >G           G<               GN                 G=
+   J5"9%/20'#7*$+J#'0*                   G<             GM           GM                E                 GH
+   J5"9%/+J5"9%2$90#92@%#                IE             MO           MG               ><                 HE
+   J5"9%/+J5"9%@2$9*0                     E             >E           >=               GM                 EI
+   1026%7P-'%#+,(Q2$                      <              <            <                <                  G
+   1026+;#"#-'+GI+#+E<                    <             GO            <                G                  G
+   1026+;#"#-'+#'%/#+72+E<                <             GG            <                G                  <
+   1026+;#"#-'+,98+GI                     <              M            <                <                  <
+   1026+J5"9%/20'#7*$                     <              I            <                I                  <
+   RSR,?                                G<<             NIE          GHE              HO                G=<
+   T+7*+9*9#"+7*+2$957*                NIU>IT         O>UEHT       >OUIOT           NGUHHT             >EUNOT
+
+
+
+
+        5.2 Índices de Mercado – Fatores de Risco
+        Em relação aos fatores de risco considerados, em um primeiro momento, buscou-se identificar os
+principais riscos aos quais as classes de ativos do mercado brasileiro estão expostas, sendo eles,
+resumidamente: a curva de juros prefixada; o mercado de ações; a curva de cupom de inflação; mercado de
+câmbio, além do fator livre de risco. Num segundo momento, buscou-se identificar no mercado brasileiro os
+índices mais aceitos e difundidos que pudessem representar as classes de ativos expostas a estes riscos. Dessa
+	                                                                                                                                                                                                                                                                                           10	  
+forma, são apresentados a seguir os índices mais representativos dos investimentos no Brasil11:
+          • IRF-M1 e IRF-M1+: para o risco da curva de juros prefixada;
+          • IBOVESPA: para o risco do mercado de ações;
+          • IMA-B5 e IMA-B5+: para o risco de inflação;
+          • Dólar – PTAX: para risco de taxa de câmbio;
+          • CDI: para o fator livre de risco.
+       A tabela 3 apresenta estatísticas descritivas dos fundos multimercado e retornos dos fatores de estilo.
+
+                                                                                       Tabela 3: Estatísticas descritivas
+                                                     	  	  A tabela mostra a média dos retornos, mediana, desvio padrão, mínimo e máximo, assimetria e curtose para os fundos
+multimercados e fatores de estilo selecionados durante o período de janeiro de 2006 a outubro de 2011.
+                                                                                                                                                                                                                                      	  	  
+                                                                                                                                               Fundos                                                      IRF-M 1 IRF-M 1+ IRF-M IMA-B 5 IMA-B 5+ IMA-B       CDI     IBOV       PTAX
+                                                                 Média                                                                           0.043                                                        0.047   0.055   0.051   0.057   0.070   0.061    0.044     0.058     (0.017)
+                                                                 Mediana                                                                         0.044                                                        0.046   0.062   0.057   0.056   0.066   0.063    0.044     0.106     (0.056)
+                                                                 Max                                                                             9.784                                                        0.327   1.381   0.882   1.376   3.242   1.904    0.066    14.659      9.327
+                                                                 Min                                                                            -6.862                                                       (0.255) (2.677) (1.708) (1.326) (4.698) (2.671)   0.032   (11.393)    (8.803)
+                                                                 Desv. Pad                                                                       0.328                                                        0.029   0.242   0.142   0.172   0.493   0.290    0.008     2.023      1.052
+                                                                 Curtose                                                                         59.43                                                       24.875  20.300  25.487  13.262  15.404  13.246    0.131     6.299    13.483
+                                                                 Assimetria                                                                     -0.334                                                       (0.534) (1.334) (1.522) (0.474) (0.503) (0.751)   0.491     0.194      0.810
+                                                       	  	  	  
+O retorno diário médio dos fundos multimercado é 0.043% com desvio padrão de 0.328% . Os fatores de
+risco, em geral, apresentam retorno médio positivo, assimetria negativa e elevada curtose.
+        	  	  
+        5.3 Resultados Empíricos da Análise de Estilo
+            O modelo fatorial adotado neste estudo busca capturar a exposição e medir a sensibilidade dos
+fundos de investimento multimercado aos principais fatores de risco advindos dos mercados de renda fixa,
+variável e cambial. Nesse sentido, o modelo inclui quatro variáveis que atuam como proxies dos fatores
+relativos ao mercado de renda fixa (IRF-M1, IRFM1+, IMAB5, IMAB5+ e CDI), um fator relativo ao
+mercado de renda variável (Ibovespa) e um fator relativo ao mercado cambial (PTAX):
+
+                              yit = α − t + β1t IRFM 1t + β 2t IRFM 1t+ + β 3t IMAB 5t + β 4t IMAB 5t+ + β 5t IBOVt + β 6t PTAX t + β 7 t CDI t + ε it (6)
+
+         Analisando as críticas e contribuições já realizadas ao trabalho original de Sharpe (1992),
+principalmente no que diz respeito à aplicação da análise de estilo para o mercado de hedge funds e
+considerando que grande parte dos fundos multimercados pode operar alavancada e com posições vendidas,
+as restrições (2) e (3) são abandonadas neste estudo. Em outras palavras, será realizada uma análise de estilo
+fraca, conforme nomenclatura definida em Horst et al. (2004). Relaxando as restrições de desigualdade, os
+coeficientes podem ser obtidos através do método de mínimos quadrados (OLS).
+         Inicialmente, o modelo RBSA é estimado conforme proposto por Sharpe (1992), em que os
+parâmetros relativos às exposições são estimados usando toda a amostra. Posteriormente, levando-se em
+conta a possibilidade de mudança de estilo ao longo do tempo e a própria sugestão de Sharpe, a amostra é
+dividida em quatro períodos com 366 observações cada e o modelo é estimado para cada período
+separadamente.
+         A Tabela 4 apresenta os resultados para o modelo estimado com a amostra completa. A primeira
+coluna da tabela traz o R 2 médio, a primeira linha das demais colunas mostra as exposições médias do
+conjunto de fundos analisados a cada um dos fatores de risco. No restante da tabela são apresentadas outras
+estatísticas que ajudam na análise das exposições dos fundos a cada fator de risco. Nota-se que o R 2 médio
+
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+11
+          Uma descrição mais detalhada dos fatores de risco considerados neste estudo é apresentada no Apêndice B.
+	                                                                                                                                                                                                                                                                                                                  11	  
+para o conjunto de fundos ficou próximo de 0.50 . Considerando a interpretação proposta por Sharpe (1992),
+o R 2 refere-se à parte do retorno do fundo que é explicada pelo estilo, e a diferença ( 1 − R 2 ) é parcela do
+retorno do fundo explicada pela seleção individual de ativos. Comparando resultados encontrados em outros
+trabalhos (por exemplo, Weng & Trück, 2011), o R 2 encontrado aqui é relativamente alto, indicando uma
+gestão mais passiva por parte dos gestores de fundos multimercados brasileiros. Assim, a análise de estilo
+pode explicar 50% da variância dos fundos multimercado, a parcela da variância inexplicada pode ser
+atribuída a habilidade dos gestores.
+        Na segunda parte da tabela é analisado o resultado por quintil das exposições12. Nota-se que no quintil
+mais alto os fundos exibem R 2 superior a 0.71 . Em relação ao estilo dos fundos pode-se afirmar que o
+Ibovespa, o IRF-M1 e o IMA-B5 são os fatores de risco mais relevantes para explicar o retorno da indústria
+como um todo. Em particular, os fundos multimercado exibem elevada exposição à renda variável,
+representada aqui pelo Ibovespa, com média de 67%. A exposição líquida ao mercado de títulos de renda
+fixa13 é de aproximadamente 22%, indicando que os fundos multimercado mantém uma parcela significante
+de seus recursos em ativos relacionados a títulos públicos ou títulos de renda fixa privados.
+
+                                                                                                         Tabela 4: Análise de Estilo Generalizada dos Fundos Multimercado (OLS)
+                                                            A tabela mostra os resultados para a análise de estilo dos fundos multimercados brasileiros de janeiro de 2006 a outubro
+de 2011. A primeira linha traz os pesos para todos os fatores de estilo. O coeficiente de determinação ajustado,                                                                                                                                                                                     R 2 é reportado na
+primeira coluna.
+                                                                                                                                                                                                                                                     	  	  
+                                                                                                                                                                                                                                     Estatisticas dos Betas - Período todo
+                                                                                                                                                                                 R^2                                         !        IRF-M1 IRF-M1+ IMA-B5 IMA-B5+               IBOV      CDI      PTAX
+                                                                  Média                                                                                                     0.4686                                         -0.0041     0.1430   -0.0150         0.1140   0.0270   0.6700   -0.0220   0.0440
+                                                                  Mediana                                                                                                   0.5044                                         -0.0016     0.0600   -0.0040         0.0740   0.0150   0.7970   -0.0090   0.0070
+                                                                  Desv. Pad                                                                                                 0.2684                                          0.0305     0.4770    0.1230         0.1850   0.0420   0.6720    0.0430   0.0810
+                                                                  Curtose                                                                                                    1.788                                          10.328      8.501     7.847         11.515   12.569    6.499    24.567   22.641
+                                                                  Assimetria                                                                                                -0.215                                          -0.559      0.423    -0.268         -0.519    1.753   -0.562     0.525    3.275
+                                                                                                                                                                                                                                 Intervalo Interquintil Betas - Período todo
+                                                                  Quintil                                                                                                        R^2                                         !        IRF-M1 IRF-M1+ IMA-B5 IMA-B5+               IBOV      CDI      PTAX
+                                                                  Quintil 1                                                                                                 0.1700                                         -0.0188    -0.0870   -0.0700         0.0110   0.0010   0.2730   -0.0390   0.0000
+                                                                  Quintil 2                                                                                                 0.3980                                         -0.0045     0.0120   -0.0230         0.0550   0.0100   0.6260   -0.0180   0.0010
+                                                                  Quintil 3                                                                                                 0.5540                                          0.0007     0.1200    0.0050         0.1070   0.0250   0.8990   -0.0030   0.0160
+                                                                  Quintil 4                                                                                                  0.717                                           0.008      0.367     0.039          0.234    0.047    1.051    0.000     0.095
+                                                       	  	  
+        Considerando que dificilmente os fundos multimercado mantem fixas as exposições aos fatores de
+risco e com o intuito de verificar como o estilo dos fundos varia no período analisado, a amostra foi dividida
+em em quatro subperíodos e o modelo foi estimado para as quatro sub-amostras separadamente. A Tabela 5
+traz as exposições médias dos fundos aos fatores de risco por período, bem como um resumo das estatísticas
+referentes aos modelos estimados. Fica evidente que os parâmetros estimados são bastante distintos entre os
+períodos, indicando que a exposição dos fundos aos fatores de risco variam ao longo do tempo.
+        Nota-se que os fatores de risco com maior peso são os mesmos que apresentam maior oscilação nas
+exposições entre os períodos analisados: Ibovespa, o IRF-M1 e o IMA-B5. Por exemplo, a exposição ao
+mercado de ações cai de 77% no primeiro período para 29% no último, ficando evidente a diminuição da
+exposição dos fundos multimercados ao mercado de ações. Por outro lado, o peso da exposição aos fatores
+relacionados ao mercado de renda fixa exibe crescimento. As exposições aos demais fatores se mantiveram
+relativamente mais estáveis.
+
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+12
+   Os parâmetros referentes ao modelo estimado para cada fundo individualmente não foram apresentados para poupar espaço, mas
+podem ser fornecidos pelos autores mediante solicitação.
+13
+   Além de títulos de renda fixa públicos e privados, este fator de risco pode capturar também exposição à derivativos de renda fixa.
+	                                                                                                                                                                                                                                                                                                     12	  
+                                                                         Tabela 5: Exposições dos Fundos aos Fatores de Risco por Período
+                                                     	  	  A tabela apresenta as exposições dos fundos aos fatores de risco por período. Também são apresentadas estatísticas
+descritivas dos fatores de risco considerados neste estudo.
+                                                                                                                                                                                                                                              	  	  
+                                                                                                                                                                                                                            R^2        !     IRF-M1 IRF-M1+ IMA-B5 IMA-B5+   IBOV      CDI     PTAX
+                                                                                                                                                                    Média                                                   0.485   -0.008    -0.279  0.057  0.106   0.016   0.772    -0.053   0.020
+                                                                                                                                                                    Mediana                                                 0.554   -0.005    -0.151  0.033  0.070   0.010   0.854    -0.020   0.002
+                                                                                     Período 1                                                                      Desv. Pad                                               0.241    0.094    0.819   0.234  0.150   0.027   0.880    0.108    0.050
+                                                                                                                                                                    Curtose                                                 2.272    21.73     4.12   8.63   10.88   16.07    4.52    17.09    14.62
+                                                                                                                                                                    Assimetria                                             -0.303    1.232    -0.049  0.533  1.815   2.149   -0.775    1.119   2.127
+                                                                                                                                                                    Média                                                   0.572    0.004    0.094  -0.037  0.203   0.020   0.445    -0.029   0.043
+                                                                                                                                                                    Mediana                                                 0.684   -0.001    0.041  -0.017  0.058   0.014   0.350    -0.009   0.007
+                                                                                     Período 2                                                                      Desv. Pad                                               0.281    0.156    0.672   0.173  0.395   0.123   0.933    0.054    0.079
+                                                                                                                                                                    Curtose                                                 1.895    14.64     5.27   5.77   9.53    20.37    3.73    16.94    24.57
+                                                                                                                                                                    Assimetria                                             -0.532    0.994    -0.036 -0.210  2.367  -1.995   -0.383   -0.869   3.097
+                                                                                                                                                                    Média                                                   0.537   -0.003    0.145  -0.010  0.093   0.014   0.606    -0.006   0.051
+                                                                                                                                                                    Mediana                                                 0.528   -0.002    0.069   0.000  0.056   0.000   0.737    -0.001   0.004
+                                                                                     Período 3                                                                      Desv. Pad                                               0.330    0.042    0.427   0.120  0.172   0.059   0.771    0.027    0.099
+                                                                                                                                                                    Curtose                                                 1.504    13.50    12.26   44.49  15.63   16.07    5.30    61.73    20.46
+                                                                                                                                                                    Assimetria                                             -0.061    0.733    1.366   1.695  0.442   2.964   -1.026   2.775    3.259
+                                                                                                                                                                    Média                                                   0.546    0.020    0.216  -0.018  0.127   0.028   0.292    -0.004   0.057
+                                                                                                                                                                    Mediana                                                 0.593    0.006    0.099   0.001  0.049   0.004   0.513    -0.001   0.005
+                                                                                     Período 4                                                                      Desv. Pad                                               0.309    0.096    0.445   0.148  0.275   0.074   0.931    0.018    0.102
+                                                                                                                                                                    Curtose                                                 1.609    25.30     7.46   20.13  26.12   16.99    3.36    28.04    15.43
+                                                                                                                                                                    Assimetria                                             -0.248    2.116    1.544  -3.184  3.642   3.320   -0.867   -0.453   2.849
+                                                          	  	  
+          	  	  Conforme destacado anteriormente, um ponto fraco da RBSA é a hipótese de que o estilo de
+investimento de um fundo se mantém fixo ao longo do período amostral (ver, por exemplo, Laurens, 2006;
+Mamaysky, 2008; Bollen, 2009; Patton, 2011 e Fredj, 2012). Nota-se na tabela 5 que para o conjunto de
+fundos multimercados considerados a exposição aos fatores de risco não se mantém a mesma ao longo do
+tempo. Neste sentido, com o objetivo de tratar as exposições aos fatores de risco explicitamente como
+variantes no tempo, o modelo é colocado em formato estado espaço e é estimado através do filtro de Kalman.
+Uma das principais vantagens da estimação através do filtro de Kalman é o uso mais eficiente das
+informações, permitindo que as exposições variem ao longo do tempo sem que seja necessário definir uma
+janela de estimação. Além disso, com a estimação através do filtro de Kalman toda a amostra é usada para
+estimar as exposições em cada período, sendo determinado o peso ótimo de cada observação na mensuração
+da	  exposição.
+          A tabela 6 resume os resultados obtidos com a esimação do modelo de análise de estilo através do
+filtro de Kalman14. Nota-se que os pesos das exposições são bem parecidos com aqueles obtidos na estimação
+por OLS, o que era esperado, sendo que a maior diferença é observada no peso do fator Ibovespa.
+
+
+
+
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+14
+  Mais uma vez os resultados das estimações individuais para cada fundo são omitidos para poupar espaço, mas podem ser
+fornecidos mediante solicitação.
+	                                                                                                                      13	  
+         Tabela 6: Análise de Estilo Generalizada dos Fundos Multimercado (Filtro de Kalman)
+           A tabela apresenta estatísticas descritivas para o conjunto de dados composto por 388 fundos de investimentos
+classificados na CVM como multimercados. Também são apresentadas estatísticas descritivas dos fatores de risco considerados
+neste estudo.
+                                                               	  	  
+                                              Estatisticas dos Betas - Período todo
+                            R^2        !       IRF-M1 IRF-M1+ IMA-B5 IMA-B5+                IBOV     CDI      PTAX
+          Média             0.465    -0.001      0.165    -0.009           0.090    0.002    0.589    0.053   -0.021
+          Mediana           0.458    -0.001      0.118     0.052           0.065   -0.001    0.746    0.013   -0.012
+          Desv. Pad         0.279     0.028      0.621     0.830           0.308    0.116    0.905    0.088    0.037
+          Minimo            0.030    -0.135     -3.461    -4.667          -1.397   -0.484   -5.558   -0.054   -0.174
+          Maximo            0.969     0.186      2.058     3.306           1.712    0.517    5.186    0.833    0.326
+          Curtose           6.821     13.16      11.36     10.99            9.11    7.95     15.75    22.58    27.28
+          Assimetria        0.742     1.064     -1.347    -0.949           0.112   -0.481   -1.569    3.274    1.333
+                                           Intervalo Interquintil Betas - Período todo
+          Quintil           R^2        !        IRF-M1 IRF-M1+ IMA-B5 IMA-B5+               IBOV     CDI      PTAX
+          Quintil 1         0.170    -0.019     -0.087    -0.070          0.011    0.001    0.273    -0.039   0.000
+          Quintil 2         0.398    -0.005      0.012    -0.023          0.055    0.010    0.626    -0.018   0.001
+          Quintil 3         0.554     0.001      0.120     0.005          0.107    0.025    0.899    -0.003   0.016
+          Quintil 4         0.717     0.008      0.367     0.039          0.234    0.047    1.051     0.000   0.095
+                                                      	  	  
+          Na figura 1 são mostradas as exposições médias dos fundos estimadas através da abordagem do
+filtro de Kalman. Uma primeira observação sugere que as exposições variam substancialmente ao longo do
+tempo. Fica evidente um aumento na exposição ao fator livre de risco e redução na exposição ao mercado de
+ações. O ponto de mudança no estilo de investimento ocorre em meados de 2008, coincidindo com a crise
+financeira deflagrada no período. Cabe destacar que nesta abordagem as exposições em cada ponto do tempo
+são estimadas usando a amostra inteira, isto permite usar informações dos retornos posteriores ao período
+para estimar sua exposição naquele ponto do tempo.
+	                                                                                                                            14	  
+                                      Figura 1: Exposição aos Fatores de Risco
+         A figura abaixo apresenta as exposições médias dos fundos aos fatores de risco considerados (média das exposições de
+cada fundo ao respectivo fator de risco). As estimações dos parâmetros variando ao longo do tempo foram obtidas através do filtro
+de Kalman. Período considerado: Janeiro-2010 a Outubro-2011.
+
+
+
+
+                 	                                                                                            	  
+
+
+
+
+                                                                                              	  
+        Observando a variação no parâmetro estimado referente à exposição ao mercado de ações, aqui
+representado pelo índice Ibovespa, percebe-se que é a classe de ativo a qual os gestores possuem estratégias
+	                                                                                                                                                                                                                                                                                        15	  
+mais ativas, ora aumentando ora diminuindo a alocação neste fator de risco. De fato, é reconhecido no
+mercado financeiro brasileiro que os fundos multimercados tiveram seu desempenho fortemente relacionado
+ao mercado ações por muito tempo. Segundo um estudo realizado pelo HSBC Global Asset Management, por
+exemplo, a forte queda do Ibovespa em 2008, afetou fortemente a rentabilidade da indústria de fundos
+multimercados. O estudo mostra ainda que a partir daí, muitos gestores alteraram sua forma de gestão,
+buscando diminuir a alocação dos fundos multimercado em renda variável. Segundo este estudo, em junho
+2009, a correlação entres estes fundos e o Ibovespa estava em torno de 0.84, e em meados de 2011 era de
+aproximadamente 0.5215.
+        Além disso, com o objetivo de medir a persistência16 do estilo dos fundos no tempo é calculado o
+coeficiente de autocorrelação para a série de pesos de cada fator (ver, por exemplo, Tsay, 2010). Pode-se
+observar na tabela 7 que a persistência dos pesos dos fatores cai consideravelmente quando se considera
+defasagem de 63 dias, com destaque para a exposição ao Ibovespa, coeficiente que apresenta maior queda na
+persistência ao passar do horizonte de 21 para 63 dias. Este resultado corrobora o que foi observado
+anteriormente: os gestores possuem estratégias mais ativas da carteira de ações, isto é, alteram o percentual
+de exposição neste fator de risco mais recorrentemente que nos demais fatores.
+
+                                                                                                                      Tabela 7: Persistência das Exposições aos Fatores de Risco por Período
+A tabela apresenta as persistências das exposições dos fundos aos fatores de risco por período. Também são apresen- tadas
+estatísticas descritivas que auxiliam na análise das medidas de persistência.
+                                                                                                                                                                                              !                                IRF-M1 IRF-M1+ IMA-B5 IMA-B5+   IBOV      CDI     PTAX
+                                                                                Média                                                                                                      0.925                                0.966   0.979  0.907   0.800   0.962    0.814    0.791
+                                                                                Mediana                                                                                                    0.938                                0.982   0.986  0.923   0.835   0.976    0.939    0.884
+                            "(1)                                                Desv. Pad                                                                                                  0.057                                0.040   0.030  0.076   0.136   0.045    0.254    0.220
+                                                                                Minimo                                                                                                     0.430                                0.623   0.635  0.465   0.265   0.490    -0.157   -0.089
+                                                                                Máximo                                                                                                     0.995                                0.999   0.999  0.998   0.998   0.998    0.999    0.998
+                                                                                Média                                                                                                      0.740                                0.876   0.913  0.651   0.469   0.856    0.680    0.592
+                                                                                Mediana                                                                                                    0.782                                0.927   0.941  0.690   0.466   0.905    0.759    0.668
+                            "(5)                                                Desv. Pad                                                                                                  0.163                                0.130   0.111  0.256   0.251   0.140    0.272    0.275
+                                                                                Minimo                                                                                                     0.214                                -0.005 -0.097  -0.242 -0.154   0.163    -0.006   -0.044
+                                                                                Máximo                                                                                                     0.972                                0.993   0.994  0.987   0.989   0.991    0.995    0.991
+                                                                                Média                                                                                                      0.479                                0.716   0.765  0.455   0.271   0.626    0.586    0.542
+                                                                                Mediana                                                                                                    0.482                                0.782   0.820  0.474   0.180   0.703    0.638    0.601
+                        "(21)                                                   Desv. Pad                                                                                                  0.230                                0.193   0.178  0.289   0.248   0.237    0.271    0.268
+                                                                                Minimo                                                                                                     -0.164                               -0.021  0.011  -0.061 -0.104   -0.166   -0.016   -0.015
+                                                                                Máximo                                                                                                     0.890                                0.953   0.957  0.945   0.948   0.954    0.976    0.959
+                                                                                Média                                                                                                      0.173                                0.471   0.497  0.314   0.206   0.299    0.453    0.416
+                                                                                Mediana                                                                                                    0.163                                0.519   0.534  0.278   0.126   0.293    0.472    0.443
+                        "(63)                                                   Desv. Pad                                                                                                  0.223                                0.194   0.223  0.238   0.210   0.235    0.265    0.242
+                                                                                Minimo                                                                                                     -0.312                               -0.091 -0.125  -0.064 -0.038   -0.193   -0.073   -0.014
+                                                                                Máximo                                                                                                     0.715                                0.844   0.870  0.864   0.877   0.854    0.915    0.880
+                                                      	  	  
+                                                                                                                                                                                                                           2
+         A figura 2 mostra o R ajustado quando os pesos dos fatores variam ao longo do tempo e para o
+modelo estimado por OLS, gráficos 1 e 2, respectivamente. Na abordagem com parâmetros variando no
+tempo o R 2 ajustado médio é de 0.46 , indicando elevado poder explicativo da análise de estilo, no caso da
+estimação por OLS o R 2 médio é ainda maior, 0.56 . Assim, são encontradas evidências de que a análise de
+estilo pode explicar aproximadamente 50% da variância dos retornos dos fundos multimercados brasileiros,
+sendo o restante atribuído a habilidade dos gestores.
+
+	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  
+15
+   Um resumo do estudo, intitulado "Descolados da Bolsa", foi publicado no jornal Valor Econômico de 08/12/2011 e está
+disponível em http://clippingmp.planejamento.gov.br/cadastros/noticias/2011/12/8/descolados-da-bolsa.
+16
+   [12] estudam a persistência nas exposições e performance de 399 fundos de investimentos off shore para o período de 1989 a
+1995.
+	                                                                                                                                  16	  
+                                           Figura 2: R 2 Ajustado da Análise de Estilo
+               	  A figura abaixo apresenta o coeficiente R 2 de cada um dos fundos considerados na amostra. O primeiro gráfico traz o
+       2
+   R       para o modelo estimado através do filtro de Kalman, já o segundo apresenta o   R2   do modelo estimado por OLS.
+
+
+
+
+                     	  
+        Os resultados encontrados evidenciam a importância da análise de estilo como uma ferramenta útil
+através da qual investidores e até mesmo gestores podem obter uma primeira impressão a respeito do
+histórico de estilo do fundo e a quais fatores de risco estarão expostos. Também reforça a importância de se
+considerar a dinâmica na gestão dos fundos multimercados em aplicações empíricas da análise de estilo a
+esta categoria de fundos.
+
+        6 Considerações Finais
+         Os fundos de investimento multimercados abrangem uma ampla gama de estratégias com diferenças
+radicais em termos de risco. Portanto, a análise de estilo baseada nos retornos é uma ferramenta útil e
+rapidamente aplicável por investidores afim de se obter uma primeira impressão a respeito da filosofia de
+investimento dos fundos. Através da RBSA pode-se inferir as exposições ao risco dos gestores de fundos e
+ajuda a determinar um benchmark adequado para avaliar seu desempenho (Swinkels & Sluis, 2006).
+Empiricamente, existe ampla evidência de que o estilo de investimento de um fundo varia ao longo do tempo,
+o que dificulta a estimação de estilo através de modelo de regressão padrão.
+        Pesquisas recentes envolvendo análise de hedge funds e fundos mútuos tem destacado a importância
+de levar em conta a natureza dinâmica da exposição aos fatores de risco destes veículos de investimento
+administrados ativamente. Várias abordagens foram propostas na literatura, incluindo técnicas de regressão
+ótimas para identificar pontos de quebra e modelagem das exposições aos fatores de risco como fatores
+latentes não-observados, técnica que é empregada aqui para capturar as variações temporais nas exposições
+dos fundos multimercados brasileiros aos principais fatores de risco.
+        Neste trabalho, inicialmente a RBSA generalizada é implementada através de estimação por mínimos
+quadrados (OLS). Para se obter mais informações sobre a estrutura dinâmica dos pesos dos fatores de estilo e
+exposição ao risco a amostra é dividida em quatro partes e o modelo é estimado para cada sub-amostra.
+Geralmente, para levar em conta que as exposições aos fatores variam ao longo do tempo é utilizado um
+esquema de estimação rolling-window. Porém, nestes casos a escolha do tamanho da janela é geralmente ad
+hoc, sem motivação estatística. A alternativa considerada neste artigo para modelar explicitamente as
+variações nas exposições ao longo do tempo consiste na estimação através do filtro de Kalman. Com esta
+	                                                                                                          17	  
+abordagem a amostra inteira é usada de forma eficiente para se obter estimativas das exposições em cada
+ponto do tempo. Este é o primeiro estudo empírico que aplica estas técnicas com foco especial na indústria
+brasileira de fundos multimercado, usando uma ampla base de fundos.
+        Os resultados empíricos mostram que o mais significativo fator de risco ao qual os fundos
+multimercados brasileiros estão expostos refere-se ao mercado de ações, com este fator representando um
+peso médio de aproximadamente 60%. Em relação à exposição dos fundos ao mercado de renda fixa, em
+geral estes fatores juntos (IMA-B, IRF-M e CDI) representam um peso médio de aproximadamente 25%. A
+análise de estilo pode explicar até 50% da variância dos retornos fundos multimercados, a parcela da
+variância inexplicada pode ser atribuída a habilidade dos gestores. Os resultados evidenciam a importância de
+se considerar explicitamente a dinâmica na exposição aos fatores de risco em aplicações de análise de estilo a
+fundos multimercados, similar aos resultados encontrados por Bollen & Whaley (2009) e Jawadi &
+Khanniche (2012) em aplicações de RBSA a dados de hedge funds de outros países. Além disso, a
+abordagem com filtro de Kalman capta as importantes mudanças na exposição dos fundos multimercado aos
+fatores de risco decorrentes da recente crise financeira global (2008–2009).
+        Finalmente, observa-se que grande parte da dinâmica das exposições dos fundos multimercados está
+associada a estratégias envolvendo o mercado de ações, e que nos últimos anos os gestores de fundos no
+Brasil tem diminuído sua exposição direcional neste mercado. Vale ressaltar a importância deste tipo de
+investigação, principalmente para a indústria de fundos brasileira, onde não existem benchmarks claramente
+definidos. Desta forma a análise de estilo baseada nos retornos se coloca como uma ferramenta poderosa para
+o investidor identificar de forma simples os fatores de risco aos quais cada fundo está exposto e assim decidir
+por aquele que for mais adequado ao seu estilo.
+
+Apêndice A: Classificação dos fundos multimercados
+         Os Multimercados são fundos que buscam retorno no longo prazo através de investimento em
+diversas classes de ativos (renda fixa, renda variável, câmbio, ações, etc.). Sua classificação se baseia nas
+estratégias adotadas pelos gestores para atingir os objetivos dos fundos. Segundo a ANBIMA (2010), podem-
+se classificar em:
+           • Balanceados: Fundos que buscam retorno no longo prazo através de investimento em diversas
+classes de ativos (renda fixa, ações, câmbio, etc.). Estes fundos utilizam uma estratégia de investimento
+diversificada e deslocamentos táticos entre as classes de ativos ou estratégia explícita de rebalanceamento de
+curto prazo.
+           • Capital Protegido: Fundos que buscam retornos em mercados de risco procurando proteger,
+parcial ou totalmente, o principal investido. Não admitem alavancagem.
+           • Multimercados Estratégia Específica: Fundos que adotam uma estratégia de investimento que
+implique riscos específicos, tais como commodities e futuro de índice. Admitem alavancagem.
+           • Multimercados Juros e Moedas:Fundos que buscam retorno no longo prazo através de
+investimentos em ativos de renda fixa, admitindo-se estratégias que impliquem risco de juros, risco de índice
+de preço e risco de moeda estrangeira. Excluem-se estratégias que impliquem exposição de renda variável
+(ações, etc.). Admitem alavancagem.
+           • Long and Short – Direcional: Fundos que fazem operações de ativos e derivativos ligados ao
+mercado de renda variável, montando posições compradas e vendidas. O resultado deve ser proveniente,
+preponderantemente, da diferença entre essas posições.
+           • Long and Short – Neutro: Fundos que fazem operações de ativos e derivativos ligados ao
+mercado de renda variável, montando posições compradas e vendidas, com o objetivo de manterem a
+exposição neutra ao risco do mercado acionário.
+           • Multimercados Macro: Fundos que realizam operações em diversas classes de ativos, definindo
+as estratégias de investimento baseadas em cenários macroeconômicos de médio e longo prazo, atuando de
+forma direcional.
+           • Multimercados Multiestratégia: Fundos que podem adotar mais de uma estratégia de
+	                                                                                                        18	  
+investimento, sem o compromisso declarado de se dedicarem a uma em particular. Admitem alavancagem.
+          • Multimercados Multigestor: Fundos que têm por objetivo investir em mais de um fundo,
+geridos por gestores distintos. A principal competência envolvida consiste no processo de seleção de
+gestores.
+          • Multimercados Trading: Fundos que concentram as estratégias de investimento em diferentes
+mercados ou classes de ativos, explorando oportunidades de ganhos originados por movimentos de curto
+prazo nos preços dos ativos.
+
+Apêndice B: Índices de Mercado - Fatores de Risco
+         Os fatores de risco representados por índices de mercado utilizados neste estudo são:
+           • IRF-M1 e IRF-M1+: para o risco da curva de juros prefixada;
+           • IBOVESPA: para o risco do mercado de ações;
+           • IMA-B5 e IMA-B5+: para o risco de inflação;
+           • Dólar – PTAX: para risco de taxa de câmbio;
+           • CDI: para o fator livre de risco.
+         No caso da classe de ativos exposta ao mercado de ações, o IBOVESPA é um índice bastante
+abrangente além de ser o mais utilizado no mercado financeiro, portanto considera-se que é suficiente para
+representar essa classe de ativos. O CDI como fator livre de risco também já é amplamente aceito, além de
+ser utilizado como o benchmark oficial da indústria de fundos de renda fixa no Brasil.
+         No caso da classe de ativos exposta à variação cambial, o Dólar é a moeda estrangeira mais negociada
+no mercado à vista e também a com a maior liquidez no mercado futuro da BM&F. Por esta razão, reflete
+bem a maior parte das estratégias envolvendo moedas estrangeiras nos fundos multimercados. Para
+representar a variação deste fator de risco, escolhemos o taxa PTAX .
+         Para o mercado de renda fixa, a divulgação de índices é recente, e vem se aprimorando nos últimos
+anos com a divulgação do Índice de Mercado ANBIMA (IMA) . Com o objetivo de atender às necessidades
+dos diversos tipos de investidores, o IMA envolve uma família de sub-índices que representa a evolução, a
+preços de mercado, dos títulos públicos de acordo com seus indexadores (ASSOCIAÇÃO BRASILEIRA
+DAS ENTIDADES DOS MERCADOS FINANCEIRO E DE CAPITAIS, 2011). Abaixo segue os sub-
+índices desenvolvidos e apresentados pelo IMA:
+            • Títulos prefixados (NTN-F e LTN) são representados pelo IRF-M;
+           • Títulos indexados ao IPCA (NTN-B) representados pelo IMA-B;
+           • Títulos indexados ao IGPM (NTN-C) pelo IMA-C;
+           • Títulos pós-fixados (LFT) pelo IMA-S;
+         A utilização destes índices como referência (benchmark) para a indústria de fundos de renda fixa no
+brasil vem crescendo significativamente, sendo a utilização de tais índices cada vez mais difundida entre os
+participantes do mercado. Assim, para representar o risco da curva de juros prefixada foi utilizado o IRF-M,
+e para representar a curva de cupom de inflação o IMA-B. Quanto ao IMA-C, a dívida atrelada ao IGP-M
+vem perdendo relevância, devido à baixa liquidez observada neste segmento, e o IMA-S é um índice muito
+próximo ao CDI, e portando nenhum dos dois índices foi inserido no estudo.
+
+
+Referências
+      ACKERMANN, C., MCENALLY, R. & RAVENSCRAFT, D. The performance of hedge funds: Risk,
+return, and incentives. Journal of Finance, 54(3):833–874, 06 1999.
+      AGARWAL, V., NAVEEN D. D. & NAIK, N. Y. Role of managerial incentives and discretion in
+hedge fund performance. Journal of Finance, 64(5):2221–2256, October 2009.
+       AGARWAL, V. Risks and portfolio decisions involving hedge funds. Review of Financial Studies,
+17(1):63–98, 2004.
+    AGARWAL, V. & NAIK, N. Y. Generalyzed style analysis of hedge funds. Journal of Asset
+	                                                                                                    19	  
+Management, 1(1):93–109, 2000.
+ ALMEIDA, A. R., MENDES, B. V. & NAZARETH, M. Análise de Estilo Robusta. In Anais do 7 o
+Encontro Brasileiro de Finanças, 2007.
+ ALVES JÚNIOR, A. J. Fundos mútuos de investimentos no brasil. a expansão da indústria nos anos 1990 e
+perspectivas para o futuro. Textos para Discussão LC/BRS/R.143, CEPAL, 2003.
+        GAURAV S. A. & HARRY M. K. Stocks, bonds and hedge funds: Not a free lunch! Journal of
+Portfolio Management, 30(2):113–120, 2003.
+        ANSON, M. J.P. Symmetric performance measures and asymmetric trading strategies. Journal of
+Alternative Investments, 5(1):81–85, 2002.
+        BARBERIS, N. & SHLEIFER, A. Style investing. Journal of Financial Economics, 68:161–191,
+2003.
+ BODSON, L., COËN, A. & HÜBNER, G. Dynamic hedge fund style analysis with errors-in-variables.
+Journal of Financial Research, 33(3):201–221, 2010.
+        BOLLEN, N. P. B. & WHALEY, R. E. Hedge fund risk dynamics: Implications for performance
+appraisal. Journal of Finance, 64(2):985–1035, 04 2009.
+        BROWN, S. J., GOETZMANN, W. & IBBOTSON, R. G. Offshore hedge funds: Survival and
+performance, 1989-95. The Journal of Business, 72(1):91–117, January 1999.
+        BROWN, S. J. Hedge funds: Omniscient or just plain wrong. Pacific-Basin Finance Journal,
+9(4):301–311, August 2001.
+        BROWN, S. J. & GOETZMANN, W. Hedge funds with style. The Journal of Portfolio
+Management, 1(1):101–112, 2003.
+        BROWN, S. J. & GOETZMANN, W. Mutual fund styles. Journal of Financial Economics,
+43:373–399, 1997.
+        CHAN, L., CHEN, H. & LAKONISHOK, J. On mutual fund investment styles. Review of
+Financial Studies, 15:1407–1437, 2002.
+        CHRISTOPHERSON, J. & TRITTIN, D. An equity style classification sistem. In The Handbook of
+Equity Style Management. Fabozzi and Associates Publishing, 1995.
+        CORIELLI, F. & MEUCCI, A. Pitfalls in linear models for style analysis. Statistical Methods &
+Applications, 13(1):105–129, 2004.
+        DIBARTOLOMEO, D. & WITKOWSKI, E. Mutual fund misclassification: evidence based on style
+analysis. Financial Analyst Journal, 53(5):32–43, 1997.
+        DOR, A. B. & JAGANNATHAN, R. Understanding mutual fund and hedge fund styles using return
+based style analysis. Journal of Investment Management, 1(1):97–137, 2003.
+        FUNG, W. & HSIEH, A. D. Empirical characteristics of dynamic trading strategies: The case of
+hedge funds. Review of Financial Studies, 10(2):275–302, 1997.
+        FUNG, W. & HSIEH, A. D. Asset-Based Style Factors for Hedge Funds. Analyst Journal,
+58(5):16–27, 2002.
+        FUNG, W., HSIEH, A. D., NAIK, Y. N. & RAMADORAI, T. Hedge Funds: Performance, Risk, and
+Capital Formation. Journal of Finance, 63(4):1777–1803, 2005.
+        GIBSON, R. & GYGER, S. The style consistency of hedge funds. European Financial
+Management, 13:287–308, 2007.
+        HORST, J. D., NIJMAN, T. E. & DEROON, F. A. Evaluating style analysis. Journal of Empirical
+Finance, 11(1):29–53, January 2004.
+    AGANNATHAN, R., MALAKHOV, A. & NOVIKOV, D.. Do hot hands exist among hedge fund
+managers? an empirical evaluation. Journal of Finance, 65(1):217–255, 02 2010.
+        JAWADI, R. & KHANNICHE, S. Modeling hedge fund exposure to risk factors. Economic
+Modelling, 29(4):1003–1018, 2012.
+        KOOPMAN, S. J. Exact initial kalman filtering and smoothing for nonstationary time series models.
+Journal of the American Statistical Association, 92(440):1630–1638, 1997.
+	                                                                                                       20	  
+        KOSOWSKI, R., NAIK, N. Y. & TEO, M. Do hedge funds deliver alpha? a bayesian and bootstrap
+analysis. Journal of Financial Economics, 84(1):229–264, 2007.
+        KUGLER, P., HENN-OVERBECK, J. & ZIMMERMANN, H. Style consistency of hedge fund
+indexes across providers. Applied Financial Economics, 20(5):355–369, 2010.
+        LAU, W.R. An integrated framework for style analysis: how is it useful to malaysian equity trust
+investors? Managerial Finance, 33(2):122–141, 2007.
+        MAMAYSKY, H., SPIEGEL, M. & ZHANG, H. Estimating the dynamics of mutual fund alphas and
+betas. Review of Financial Studies, 21(1):233–264, 2008.
+        MARQUES, R., PIZZINGA, A. & VEREDA, L. Restricted kalman filter applied to dynamic style
+analysis of actuarial funds. Applied Stochastic Models in Business and Industry, page (no prelo), 2012.
+        MARTIN, E. Does hedge fund performance persist? overview and new empirical evidence.
+European Financial Management, 15(2):133–157, 2009.
+        MITCHELL, M. & PULVINO, T. Characteristics of risk and return in risk arbitrage. Journal of
+Finance, 56(6):2135–2175, December 2001.
+        OTTEN, R. & BAMS, D. How to measure mutual fund performance: economic versus statistical
+relevance. Accounting and Finance, 44(2):203–222, 2004.
+        PATTARIN, F., PATERLINI, S. & MINERVA, T. Clustering financial time series: an application to
+mutual funds style analysis. Computational Statistics & Data Analysis, 47:353–372, 2004.
+        PATTON, A. J. & RAMADORAI, T. On the high-frequency dynamics of hedge fund risk exposures.
+CEPR Discussion Papers 8479, C.E.P.R. Discussion Papers, July 2011.
+        PATTON, A. J. Are "market neutral" hedge funds really market neutral? Review of Financial
+Studies, 22(7):2295–2330, 2009.
+        PIZZINGA, A., VEREDA, L. & FERNANCES, C. A dynamic style analysis of exchange rate
+funds: the case of brazil at the 2002 election. Advances and Applications in Statistical Sciences, 6(1):111–
+135, 2011.
+        PIZZINGA, A., ARTHERINO, C. & FERNANCES, C. Semi-strong dynamic style analysis with
+time-varying selectivity measurement: Applications to brazilian exchange-rate funds. Applied Stochastic
+Models in Business and Industry, 24:3–12, 2008.
+        PIZZINGA, A. & FERNANCES. Análise dinâmica de estilo: monitoramento contínuo da política de
+gestão de fundos de investimento. Resenha BM&F, Abril:31–49, 2005.
+        PIZZINGA, A. & FERNANCES. State space models for dynamic style analysis of portfolios.
+Brazilian Review of Econometrics, 26(1):31–66, 2006.
+        POJARLIEV, M. & LEVICH, R. M. Trades of the living dead: Style differences, style persistence
+and performance of currency fund managers. Journal of International Money and Finance, 29(8):1752–
+1775, December 2010.
+        SHARPE, W. F. Asset allocation: management style and performance measurement. Journal of
+Portfolio Manegement, 18(2):7–19, 1992.
+        SHARPE, W. F. Determining a Fund’s Effective Asset Mix. Investment Management Journal,
+2(6):59–69, 1998.
+        SWINKELS, L. & SLUIS, P. V. Return-based style analysis with time-varying exposures.
+European Journal of Finance, 12(6-7):529–552, 2006.
+        TRZCINKA, C. Equity styles classifications: comment. Journal of Portfolio Manegement,
+21(3):44–46, 2001.
+        VARGA, G. & VALLI, M. Análise de estilo baseada no retorno. Revista da ANBID, Dez.(9), 1998.
+        VESTERGREN, D. Asset Allocation within Swedish Mutual Funds. Master’s thesis, Stockholm
+School of Economics, Sweden, 2009.
+        WENG, H. & TRÜCK, S. Style analysis and value-at-risk of asia-focused hedge funds. Pacific-
+Basin Finance Journal, 19(5):491–510, November 2011.	  
+

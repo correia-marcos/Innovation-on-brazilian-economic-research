@@ -1,0 +1,1187 @@
+Previs˜ao macroeconˆomica para o Brasil utilizando o modelo VAR
+
+com dados mistos
+
+Bruna Kasprzak Borges∗
+Marcelo Savino Portugal†
+
+Resumo
+
+Este trabalho tem como foco a previs˜ao emp´ırica de curto prazo de vari´aveis macroe-
+conˆomicas do Brasil aplicando o modelo mixed-frequency VAR (MF-VAR) que utiliza
+dados observados em frequˆencias mistas - mensais e trimestrais. Procuramos estudar se a
+inclus˜ao de dados mensais aumentam a precis˜ao da previs˜ao do VAR comparativamente
+ao modelo quarterly-frequency VAR (QF-VAR) estimado em duas vers˜oes distintas. Os
+resultados apontam que a utiliza¸c˜ao das observa¸c˜oes mensais dentro do trimestre au-
+mentam os ganhos das previs˜oes de curto prazo, tanto das s´eries trimestrais como das
+s´eries mensais, especialmente para um e dois trimestres a frente.
+
+Palavras-chaves: Previs˜ao macroeconˆomica. Vetor autoregressivo. Dados em frequˆen-
+cia mista. M´etodos bayesianos.
+
+Classiﬁca¸c˜ao JEL: E37, C32, C53.
+´Area 4: Macroeconomia, Economia Monet´aria e Finan¸cas.
+
+Abstract
+
+The aim of this paper is an empirical forecasting exercise to Brazil using mixed-fequency
+VAR (MF-VAR) to macroeconomic data. We evaluate forecasts from the mixed-frequency
+VAR and compare them to quarterly-frquency VAR (QF-VAR) with two diﬀerent ver-
+sions. We ﬁnd that the switch from a QF-VAR to a MF-VAR improves the forecasting
+performance for one and two quarters ahead. Overall, the improvements are most pro-
+nounced for short-horizont forecasts.
+
+Keywords: Macroeconomic forecasting. Vector autoregression. Mixed-frequency. Baye-
+sian methods.
+
+∗Doutoranda: PPGE – Universidade Federal do Rio Grande do Sul.
+†Departamento de Economia, PPGE, Universidade Federal do Rio Grande do Sul.
+
+1
+
+1 Introdu¸c˜ao
+
+Um fato inerente ao estudo de s´eries temporais econˆomicas ´e a diferen¸ca na frequˆencia de amos-
+
+tragem dos dados. Vari´aveis macroeconˆomicas importantes, como o PIB, somente s˜ao encontradas
+
+em frequˆencia trimestral, enquanto outras vari´aveis como inﬂa¸c˜ao e taxa de juros s˜ao divulgadas
+
+mensalmente ou at´e mesmo em frequˆencia mais elevada. Em aplica¸c˜oes emp´ıricas, os modelos
+
+econom´etricos s˜ao geralmente estimados exclusivamente com base em observa¸c˜oes mensais ou tri-
+
+mestrais. Nesse caso, considerando que todas as vari´aveis no modelo precisam estar amostradas na
+
+mesma periodicidade, dados mensais, frequentemente, devem ser convertidos em dados trimestrais
+
+(Clements & Galv˜ao, 2008). Contudo, esse processo de agrega¸c˜ao temporal descarta uma quanti-
+
+dade relevante de informa¸c˜oes e pode gerar subespeciﬁca¸c˜ao do modelo. A ideia de agregar s´eries
+
+temporais em diferentes frequˆencias foi originalmente proposta por Ghysels et al. (2004) com os
+
+modelos de regress˜ao MIDAS (Mixed Data Sampling). Inicialmente voltada para s´eries ﬁnanceiras,
+
+a abordagem MIDAS passou, tamb´em, a utilizar vari´aveis macroeconˆomicas para a previs˜ao. Novos
+
+desdobramentos da literatura voltaram-se ent˜ao para modelos MF-VAR (mixed-frequency VAR),
+
+isto ´e, com dados mistos (ver, por exemplo, Kuzin et al., 2011; Ghysels, 2012; Foroni & Marcellino,
+
+2014; Schorfheide & Song, 2015; Mikosch & Neuwirth, 2015)
+
+Nesse contexto, este trabalho tem como foco a previs˜ao emp´ırica de curto prazo de s´eries macroe-
+
+conˆomicas para o Brasil com o uso de dados em frequˆencia mista, isto ´e, s´eries mensais e trimestrais
+
+utilizando o modelo MF-VAR descrito em Schorfheide & Song (2015). Procuramos estudar se a
+
+inclus˜ao de dados mensais divulgados intratrimestre aumentam a precis˜ao da previs˜ao do VAR. A
+
+escolha das vari´aveis macroeconˆomicas segue a importˆancia na constru¸c˜ao emp´ırica de previs˜oes,
+
+sendo vari´aveis trimestrais como o Produto Interno Bruto (PIB) e mensais como taxa de desem-
+
+prego, taxa de inﬂa¸c˜ao, produ¸c˜ao industrial e taxa de juros selecionadas para a aplica¸c˜ao ao caso
+
+brasileiro. A literatura aponta que o uso de dados em frequˆencias mistas pode diminuir o vi´es da
+
+agrega¸c˜ao temporal e incorporar novas informa¸c˜oes `a estima¸c˜ao do modelo. Com o intuito de com-
+
+para¸c˜ao, o modelo VAR na qual todas as s´eries s˜ao agregadas em frequˆencia trimestral - QF-VAR
+
+(quarterly frequency-VAR) - ser´a implementado tamb´em com foco sobre previs˜ao e estimado em
+
+duas vers˜oes diferentes.
+
+No caso do Brasil, a revis˜ao bibliogr´aﬁca realizada neste trabalho indica que apenas Alves &
+
+Fasolo (2015) utilizam uma abordagem MF-VAR. Os autores desenvolvem um novo algoritmo e
+
+o aplicam para dados simulados e emp´ıricos brasileiros. Os resultados indicam que o MF-VAR
+
+desenvolvido pelos autores e o VAR bayesiano apresentam performance satisfat´oria em termos de
+
+nowcasting, mas n˜ao s˜ao melhores comparativamente a um sistema univariado com vari´aveis tri-
+
+mestrais para os outros horizontes de previs˜ao. Por sua vez, a especiﬁca¸c˜ao MIDAS foi utilizada
+
+por Zuanazzi & Ziegelmann (2014) para previs˜ao macroeconˆomica e por Junior & Pereira (2011) e
+
+dos Santos & Ziegelmann (2012) para a previs˜ao de volatilidade realizada.
+
+Os modelos VAR com dados mistos (MF-VAR) tem o intuito de capturar a dinˆamica conjunta
+
+entre s´eries, ao mesmo tempo em que evitam a agrega¸c˜ao temporal entre as vari´aveis. De forma
+
+2
+
+geral, podemos separar os modelos MF-VAR em duas categorias. A primeira utiliza uma abordagem
+
+de espa¸co de estado assumindo cada s´erie de menor frequˆencia como uma s´erie de alta frequˆencia
+
+parcialmente latente. A estima¸c˜ao ´e dada atrav´es de ﬁltro de Kalman (Kuzin et al., 2011; Bai
+
+et al., 2013; Foroni & Marcellino, 2014) ou m´etodos bayesianos (Chiu et al., 2012; Schorfheide
+
+& Song, 2015). A segunda categoria utiliza uma abordagem ”stacking”, onde as vari´aveis com
+
+a mesma frequˆencia s˜ao empilhadas em um vetor (Francis et al., 2011; Ghysels, 2012; Foroni &
+
+Marcellino, 2014; Mikosch & Neuwirth, 2015). Assim, considera-se que os modelos espa¸co de estado
+
+s˜ao parameter-driven, enquanto os modelos da segunda abordagem VAR s˜ao observation-driven.
+
+Modelos espa¸co de estado envolvem vari´aveis latentes e, por isso, a necessidade de ﬁltros para
+
+lidar com os estados n˜ao observ´aveis, sendo considerados modelos parameter-driven. Nessa classe
+
+de modelos, o trabalho de Kuzin et al. (2011) tem como foco nowcasting e previs˜oes dos modelos
+
+MIDAS e MF-VAR para o PIB da Zona do Euro. O MF-VAR ´e estimado com ﬁltro de Kalman
+
+permitindo a maximiza¸c˜ao da verossimilhan¸ca associada ao modelo espa¸co de estado subjacente. Os
+
+autores n˜ao encontram resultados indicando um dos modelos como superior em termos preditivos. A
+
+performance depende do horizonte de previs˜ao e das vari´aveis inclu´ıdas. Bai et al. (2013) examinam
+
+a rela¸c˜ao entre o modelo MIDAS e a abordagem de espa¸co de estado, comparando-os em termos de
+
+previs˜ao. Foroni & Marcellino (2014) comparam a performance de previs˜ao (nowcasting) dos bridge
+
+models, MF-VAR e MIDAS para o PIB trimestral da Zona do Euro utilizando um conjunto amplo
+
+de indicadores mensais. O resultado encontrado pelos autores sugere uma melhor performance do
+
+modelo MIDAS, especialmente no curto prazo.
+
+Uma primeira abordagem da estima¸c˜ao bayesiana do MF-VAR pode ser encontrada em Chiu
+et al. (2012).1 Os autores desenvolvem uma alternativa baseada no amostrador de Gibbs para o
+VAR com dados mistos e em frequˆencia irregular. O foco ´e a estima¸c˜ao dos parˆametros e fun¸c˜oes
+
+impulso-resposta. A aplica¸c˜ao emp´ırica conﬁrma o resultado das simula¸c˜oes que indicam ganhos
+
+de precis˜ao nas estimativas dos parˆametros comparativamente aos modelos que realizam agrega¸c˜ao
+
+temporal entre as s´eries. Na mesma linha de estima¸c˜ao bayesiana do MF-VAR, Schorfheide & Song
+
+(2015) tem como objetivo analisar os poss´ıveis ganhos de performance de previs˜ao em real-time com
+
+a incorpora¸c˜ao de dados mensais no VAR. A inferˆencia bayesiana ´e conduzida atrav´es do amostrador
+
+de Gibbs conjuntamente a especiﬁca¸c˜ao de uma priori Minnesota para lidar com a dimensionalidade
+
+do VAR. Os autores selecionam um conjunto de 11 vari´aveis em real-time da economia dos Estados
+
+Unidos, entre as quais 3 vari´aveis trimestrais e 8 vari´aveis mensais. Os resultados indicam que a
+
+incorpora¸c˜ao de vari´aveis mensais fornece ganhos de performance expressivos no curto prazo.
+
+Na classe dos modelos stacking approach encontram-se aqueles considerados observation-driven,
+
+isto ´e, formulados exclusivamente em termos dos dados observ´aveis e que n˜ao envolvem processos
+
+latentes. Ghysels (2012) generaliza o modelo MIDAS para o contexto multivariado do VAR. O autor
+
+1A abordagem bayesiana para estimar VAR foi originalmente proposta por Litterman (1980) como solu¸c˜ao para
+o problema de sobreparametriza¸c˜ao. Nesse caso, a solu¸c˜ao evita que sejam impostas restri¸c˜oes sobre os parˆametros,
+tal como coeﬁcientes iguais a zero, permitindo sua varia¸c˜ao. Assim, a distribui¸c˜ao a priori ´e atualizada por novas
+informa¸c˜oes atrav´es da fun¸c˜ao de verossimilhan¸ca, formando a distribui¸c˜ao a posteriori.
+
+3
+
+tem como foco as fun¸c˜oes impulso resposta baseadas nos dados observ´aveis (frequˆencias mistas) ao
+
+inv´es de choques gerados por algum processo latente.
+
+Nesse cen´ario, o principal objetivo deste artigo ´e comparar as previs˜oes de curto prazo do
+
+MF-VAR com o QF-VAR e analisar sua performance de previs˜ao usando um conjunto de vari´a-
+
+veis macroeconˆomicas para o Brasil. A aplica¸c˜ao emp´ırica do MF-VAR segue a especiﬁca¸c˜ao de
+
+Schorfheide & Song (2015) e os resultados apontam que a utiliza¸c˜ao das observa¸c˜oes mensais dentro
+
+do trimestre aumentam a precis˜ao das previs˜oes de curto prazo. Os resultados para PIB, taxa de
+
+desemprego, inﬂa¸c˜ao e taxa de juros indicam que o uso de informa¸c˜oes mensais leva a uma dimi-
+
+nui¸c˜ao consider´avel da raiz do erro quadr´atico m´edio de previs˜ao (RMSE) no curto prazo. No caso
+
+das previs˜oes do PIB, a previs˜ao h = 1 tem uma redu¸c˜ao de 6,87% do RMSE comparativamente
+
+ao mesmo horizonte de previs˜ao do QF-VAR. Para as s´eries mensais da taxa de desemprego, taxa
+
+de inﬂa¸c˜ao e taxa de juros, a redu¸c˜ao do RMSE gerada pelo MF-VAR para essas s´eries mensais ´e
+
+mais pronunciada do que para o PIB, a qual ´e observada em frequˆencia trimestral, em linha com
+
+Schorfheide & Song (2015). Para o horizonte h = 1, o MF-VAR ´e capaz de aumentar a precis˜ao das
+
+previs˜oes em 32,49% para a taxa de desemprego e 6,80% para a taxa de juros e 1,05% para a taxa
+
+de inﬂa¸c˜ao. O uso de informa¸c˜oes mensais no modelo de previs˜ao das s´eries trimestrais mostra-se
+
+relevante tamb´em para a previs˜ao da s´erie da produ¸c˜ao industrial e no caso da previs˜ao h = 1, o
+
+RMSE do MF-VAR ´e 13,32% menor em rela¸c˜ao ao QF-VAR.
+
+Em resumo, para o grupo das vari´aveis trimestrais PIB e investimento, os ganhos a partir
+
+da inclus˜ao de vari´aveis mensais ´e menor comparativamente ao grupo de vari´aveis mensais n˜ao
+
+ﬁnanceiras (taxa de desemprego, taxa de inﬂa¸c˜ao, produ¸c˜ao industrial e sal´ario mensal), consistente
+
+com os resultados de Schorfheide & Song (2015). Conforme o horizonte de previs˜ao h aumenta, os
+
+benef´ıcios de utilizar informa¸c˜oes mensais para a previs˜ao, na maioria dos casos, vai diminuindo,
+
+mas mant´em-se positivo para v´arias s´eries. Consistente com a literatura, se o objetivo ´e gerar
+
+previs˜oes para um ou dois trimestres a frente, o modelo MF-VAR torna-se bastante atraente em
+
+rela¸c˜ao ao QF-VAR. Se o horizonte de previs˜ao for de m´edio e longo prazo, os resultados indicam
+
+que n˜ao h´a incrementos adicionais e o modelo QF-VAR ´e suﬁciente para a previs˜ao.
+
+No Brasil, este trabalho ´e complementar aos estudos de Zuanazzi & Ziegelmann (2014) e Alves
+
+& Fasolo (2015) os quais utilizam dados em diferentes frequˆencias em conjunto, respectivamente, `as
+
+abordagens MIDAS e MF-VAR, com foco sobre previs˜ao macroeconˆomica. Apesar das diferen¸cas de
+
+dados e metodologia, os resultados s˜ao similares aos encontrados neste trabalho e sugerem ganhos
+
+na previs˜ao utilizando dados em frequˆencias distintas.
+
+O artigo est´a organizado como segue: na se¸c˜ao 2 ´e apresentada a metologia, na se¸c˜ao 3 s˜ao
+
+descritos os dados utilizados bem como a descri¸c˜ao do exerc´ıcio de previs˜ao, na se¸c˜ao 4 s˜ao apre-
+
+sentados os resultados da aplica¸c˜ao emp´ırica e do exerc´ıcio de previs˜ao e, por ﬁm, a ´ultima se¸c˜ao
+
+apresenta as considera¸c˜oes ﬁnais.
+
+4
+
+2 Modelo de Vetores Autoregressivos com dados mistos (MF-VAR)
+
+O objetivo desta se¸c˜ao ´e apresentar o modelo Vetores Autoregressivos com dados mistos (MF-
+
+VAR), o qual permite capturar os comovimentos entre s´eries de frequˆencias mistas. Seguimos o
+
+algoritmo de Schorfheide & Song (2015) que utiliza a representa¸c˜ao em espa¸co de estado e m´etodos
+
+bayesianos na estima¸c˜ao do modelo MF-VAR.
+
+Considerando que o MF-VAR aplicado neste trabalho ´e baseado em um VAR com frequˆencia
+
+mensal, as s´eries trimestrais possuem observa¸c˜oes perdidas em dois meses em cada trimestre. Nesse
+
+caso, os correspondentes valores mensais s˜ao tratados como n˜ao observ´aveis e o modelo ´e reescrito
+
+em espa¸co de estado.
+
+Em termos gerais, a equa¸c˜ao de transi¸c˜ao ´e dada por um VAR em frequˆencia mensal e as equa¸c˜oes
+
+de medida relacionam as s´eries observadas `as vari´aveis mensais no vetor de estados.
+
+O modelo assume que a economia evolui em frequˆencia mensal de acordo com o seguinte VAR(p):
+
+xt = Φ1xt−1 + ... + Φpxt−p + Φc + ut,
+
+u ∼ iidN (0, Σ),
+
+(1)
+
+o vetor n × 1 de vari´aveis macroeconˆomicas xt pode ser decomposto em xt = [x(cid:48)
+
+q,t], sendo
+xm,t as vari´aveis em frequˆencia mensal e xq,t as vari´aveis mensais n˜ao observ´aveis publicadas em
+frequˆencia trimestral. Al´em disso, zt = [x(cid:48)
+
+t−p+1](cid:48) e Φ = [Φ1, ..., Φp, Φc](cid:48).
+
+t, ..., x(cid:48)
+
+m,t, x(cid:48)
+
+Reescrevendo o VAR(p), a equa¸c˜ao de transi¸c˜ao ´e descrita por:
+
+zt = F1(Φ)zt−1 + Fc(Φ) + vt,
+
+vtm ∼ iidN (0, Ω(Σ)).
+
+(2)
+
+Denotando ym,t = xm,t, na equa¸c˜ao de medida quando a vari´avel trimestral est´a dispon´ıvel,
+
+ent˜ao, esse dado dado observado ´e uma m´edia do dado mensal n˜ao observ´avel:
+
+˜yq,t =
+
+1
+3
+
+(xq,t + xq,t−1 + xq,t−2) = Λqzzt.
+
+(3)
+
+Considerando que yq,t ´e observada somente a cada 3 meses ´e necess´ario deﬁnir Mq,t como a
+matriz identidade se t corresponde ao ´ultimo mˆes do trimestre e zero caso contr´ario. Essa m´edia de
+3 meses da s´erie mensal s´o ´e observada em cada terceiro mˆes. Quando observa¸c˜oes de yq,t n˜ao est˜ao
+dispon´ıveis, a linha correspondente de Mq,t ´e zero. Ent˜ao, deﬁnimos:
+
+yq,t = Mq,t ˜yq,t
+
+t = 1, ..., Tb.
+
+(4)
+
+Seja ym,t o subconjunto de vari´aveis mensais para as quais no per´ıodo t as observa¸c˜oes s˜ao
+
+divulgadas ap´os T e Mm,t a matriz de sele¸c˜ao:
+
+ym,t = Mm,txm,t
+
+t = Tb + 1, ..., T.
+
+(5)
+
+Portanto, a equa¸c˜ao de medida pode ser escrita como:
+
+5
+
+yt = MtΛzzt
+
+t = 1, ..., T.
+
+(6)
+
+Ent˜ao, Mt ´e uma sequˆencia de matrizes que selecionam o tempo t quando as vari´aveis s˜ao
+observadas . Isso inﬂuencia a equa¸c˜ao de medida que vai mudando ao longo do tempo dependendo
+
+se as vari´aveis trimestrais est˜ao dispon´ıveis ou n˜ao. Nota-se que a defasagem do modelo deve ser
+
+maior ou igual a 3. Esse ´e o m´ınimo lag permitido pela estrutura da equa¸c˜ao de medida.
+
+2.1 Estima¸c˜ao Bayesiana
+
+A estima¸c˜ao bayesiana do MF-VAR tem in´ıcio com a deﬁni¸c˜ao da distribui¸c˜ao conjunta das va-
+ri´aveis observ´aveis Y1:T , estados latentes Z0:T e parˆametros (Φ, Σ) condicionado a uma pr´e-amostra
+Y−p+1:0 para inicializar os lags. Neste caso, o amostrador de Gibbs ´e utilizado para a obten-
+¸c˜ao dos vetores de estado desconhecidos e implementado atrav´es do algoritmo de Carter & Kohn
+
+(1994). O amostrador de Gibbs permite gerar amostras a partir da distribui¸c˜ao a posteriori de
+(Φ, Σ)|(Z0:T , Y−p+1:T ) e Z0:T|(Φ, Σ, Y−p+1:T ). A partir dessas amostras ´e poss´ıvel simular trajet´o-
+rias futuras de yt para caracterizar a distribui¸c˜ao preditiva do modelo.
+
+2.1.1 Distribui¸c˜ao a priori
+
+A priori ´e essencial na estima¸c˜ao e previs˜ao em modelos bayesianos e neste caso ´e utilizada a
+priori Minnesota.2 Como ressalta Schorfheide & Song (2015), a ideia central da priori Minnesota
+´e centrar a distribui¸c˜ao de (Φ) de modo que implique em um passeio aleat´orio para cada um
+dos componentes de xt em (1). A variˆancia da distribui¸c˜ao a priori ´e controlada pelo vetor de
+hiperparˆametros (λ). ´E utilizada uma vers˜ao atualizada da original proposta por Doan et al. (1984).
+Schorfheide & Song (2015), baseados no trabalho de Sims & Zha (1998), aplicam a distribui¸c˜ao da
+
+priori na forma da distribui¸c˜ao Normal multivariada Wishart-Inversa (MNIW ). Essa ´e uma priori
+
+conjugada de modo que a priori MNIW resulta em uma posteriori que tamb´em ´e MNIW.
+
+A priori ´e implementada com o m´etodo de estima¸c˜ao proposto por Litterman (1986), de forma
+
+que os dados observados s˜ao aumentados (data augmentation) com observa¸c˜oes dummy. O uso
+
+de data augmentation (adi¸c˜ao de vari´aveis auxiliares ao amostrador) ´e realizado com o intuito de
+
+facilitar a implementa¸c˜ao do amostrador de forma que a an´alise ´e, ent˜ao, realizada em um espa¸co
+
+expandido incluindo n˜ao somente os parˆametros do modelo, mas, tamb´em, vari´aveis latentes e
+
+oberva¸c˜oes perdidas.
+
+A priori Minnesota ´e gerada por observa¸c˜oes dummy (x∗, w∗) que s˜ao indexadas por 5× 1 vetor
+de hiperparˆametros λ com elementos λi. Usando uma pr´e-amostra, seja x e s vetores n × 1 de
+m´edias e desvio padr˜ao. Para as s´eries mensais esse c´alculo ´e direta. Para as s´eries trimestrais,
+
+2Para Litterman (1986), a escolha da priori deve considerar trˆes regularidades estat´ısticas de s´eries macroeconˆo-
+micas: 1) o comportamento da tendˆencia das s´eries temporais macroeconˆomicas; 2) valores correntes possuem mais
+informa¸c˜ao que valores passados; 3)valores passados de uma dada vari´avel cont´em mais informa¸c˜ao de seu estado
+corrente comparativamente aos valores passados de outras vari´aveis.
+
+6
+
+equiparamos xq e s com, respectivamente, a m´edia e o desvio-padr˜ao da pr´e-amostra dos valores
+trimestrais observados.
+
+2.1.2 Inferˆencia a posteriori
+
+A distribui¸c˜ao conjunta dos dados, vari´aveis latentes e parˆametros condicionada em algumas
+
+observa¸c˜oes para inicializar os lags ´e dada por:
+
+p(Y1:T , Z0:T , Φ, Σ|Y−p+1:0, λ) = p(Y1:T|Z0:T )p(Z1:T|z0, Φ, Σ)p(z0|Y−p+1:0)p(Φ, Σ|λ)
+
+(7)
+A distribui¸c˜ao de Y1:T|Z1:T ´e dada pela probabilidade de Y1:T que satisfaz (6). A densidade
+p(Z1:T|z0, Φ, Σ) ´e obtida a partir da regress˜ao linear em (2). A densidade condicional p(z0|Y−p+1:0)
+´e deﬁnida como gaussiana. A inicializa¸c˜ao de zT− ´e dada utilizando as observa¸c˜oes atuais, sendo
+T− a pr´e-amostra. No caso das vari´aveis mensais isso ´e direto e nas vari´aveis trimestrais ´e dado
+como igual ao valores trimestrais observados, assumindo que durante esses per´ıodos os valores intra-
+trimestre s˜ao dados pela m´edias observadas durante o trimestre. Ent˜ao, p(zT−) ´e uma fun¸c˜ao de
+probabilidade. Φ e Σ s˜ao deﬁnidos como iguais a suas respectivas m´edias a priori e ´e aplicado
+o ﬁltro de Kalman para a pr´e-amostra YT−:0 para o sistema descrito em (2) e (6). Por sua vez,
+p(Φ, Σ|λ) representa a densidade a priori dos parˆametros do VAR. Ent˜ao, a densidade a posteriori
+condicional dos parˆametros VAR e estados latentes do MF-VAR ´e descrita por:
+
+p(Φ, Σ|z0:T , Y−p+1:T ) ∝ p(Z1:T|z0, Φ, Σ)p(Φ, Σ|λ)
+p(Z0:T|Φ, Σ, Y−p+1:T ) ∝ p(Y1:T , Z1:T )p(Z1:T|z0, Φ, Σ)p(z0|Y−p+1)
+
+(8)
+
+Neste caso, o amostrador de Gibbs que itera as duas distribui¸c˜oes a posteriori condicionais em
+
+(8)
+
+p(Φ, Σ|z0:T , Y−p+1:T )
+
+e p(Z0:T|Φ, Σ, Y−p+1:T )
+
+´e implementado atrav´es do algoritmo de Carter & Kohn (1994).3 Condicionada a Z0:T , a regres-
+s˜ao multivariada (2) ´e linear e gaussiana com priori conjugada. Como a priori pertence `a fam´ılia
+
+MNIW, ent˜ao o MCMC (Markov chain Monte Carlo) pode ser usado diretamente para obter a
+
+posteriori. Ent˜ao, o MF-VAR ´e um modelo espa¸co de estado linear gaussiano e a amostragem da
+posteriori condicional de p(Z0:T|Φ, Σ, Y−p+1:T ), isto ´e, a sequˆencia Z0:T condicional aos parˆametros
+do VAR, ´e implementada com um suavizador padr˜ao. A inicializa¸c˜ao para o passo do ﬁltro de
+Kalman do suavizador ´e obtida da distribui¸c˜ao p(z0|Y−p+1).
+
+3O amostrador de Gibbs segue o algoritmo eﬁciente de Carter and Kohn (1994) para a amostragem MCMC, onde
+todos os estados s˜ao atualizados conjuntamente em um passo. Esse algoritmo ´e mais eﬁciente do que os amostradores
+com um ´unico estado, os quais realizam a atualiza¸c˜ao de um vetor de estados de cada vez.
+
+7
+
+(cid:90)
+
+2.2 Fun¸c˜ao de verossimilhan¸ca marginal e sele¸c˜ao de hiperparˆametros
+
+Na estima¸c˜ao bayesiana, um dos aspecto importante refere-se `a sele¸c˜ao dos hiperparˆametros
+
+(λ), os quais controlam as regularidades estat´ısticas de s´eries macroeconˆomicas. No MF-VAR s˜ao
+escolhidos os hiperparˆametros que conjuntamente maximizam a densidade marginal dos dados4
+(MDD). De acordo com Schorfheide & Song (2015), a melhor performance para o MF-VAR ´e
+atingida para valores de λ entre os extremos λ = 0 e λ → ∞. A resolu¸c˜ao da MDD envolve integrar
+os estados latentes. A probabilidade a posteriori de λ ´e proporcional a MDD:
+
+p(Y1:T|Y−p+1:0, λ) =
+
+p(y1:T , Z0:T , Φ, Σ|Y−p+1:0, λ)d(Z0:T Φ, Σ).
+
+(9)
+
+Para gerar as previs˜oes do MF-VAR, condicionamos o valor de λT que maximiza o logaritmo da
+
+MDD:
+
+ln p(Y1:T|Y−p+1:0, λ) =
+
+(cid:90)
+
+ln
+
+T(cid:88)
+
+t=1
+
+p(yt|Y−p+1:t−1, Φ, Σ)p(Φ, Σ|Y−p+1:t−1)d(Φ, Σ).
+
+(10)
+
+O logaritmo da densidade marginal dos dados pode ser interpretado como a soma da pontua¸c˜ao
+
+preditiva um passo a frente. A escolha de λ baseada na MDD tende a funcionar bem em inferˆencia,
+
+assim como, em previs˜ao, de acordo com Schorfheide & Song (2015). No caso da gera¸c˜ao das
+previs˜oes do MF-VAR, cada horizonte de previs˜ao ´e condicionado sobre o valor ˆλT que maximiza o
+logaritmo da densidade marginal dos dados.
+
+2.2.1 Aproxima¸c˜ao da densidade marginal dos dados
+
+A resolu¸c˜ao da MDD a partir de (9) envolve resolver a integral envolvendo estados latentes.
+
+Uma forma de estimar a MDD ´e utilizando o estimador m´edia harmˆonica de Geweke (1999).
+
+1
+
+p(Y1:T|Y−p+1:0, λ)
+
+p(W1:T , w0|Y1:T , Y−p+1:0)
+p(W1:T , Y1:T , w0|Y−p+1:0)
+
+=
+
+(11)
+
+onde W1:T engloba os valores n˜ao observ´aveis de xq,t para o primeiro e o segundo mˆes de cada
+trimestre e w0 cont´em os valores correspondentes para o per´ıodo de inicializa¸c˜ao t = −p + 1, ..., 0.
+Ent˜ao, a aproxima¸c˜ao da MDD ´e dada por:
+
+ˆp(Y1:T|Y−p+1:0, λ) = c
+
+0 )f (W (i)
+1:T )
+
+f0(w(i)
+0 , λ)p(z(i)
+
+1:T|z(i)
+
+p(Z(i)
+
+(12)
+
+A constante c captura o termo Jacobiano associado com a mudan¸ca de vari´avel de (w0, W1:T , Y1:T )
+para (z0, Z1:T ). A fun¸c˜ao f segue Geweke (1999) sendo uma distribui¸c˜ao normal multivariada TRIM-
+. ´E
+MED com m´edia ˆµW1:T = 1
+N
+
+1:T e variˆancia ˆ(cid:80)
+
+1:T − ˆµW1:T ˆµ(cid:48)
+
+1:T W (i)(cid:48)
+
+(cid:80)N
+
+i=1 W (i)
+
+i=1 W (i)
+
+= 1
+N
+
+W1:T
+
+W1:T
+
+(cid:35)−1
+
+0 |Y−p+1:0, λ)
+(cid:80)N
+
+(cid:34)
+
+1
+N
+
+N(cid:88)
+
+i=1
+
+4Tamb´em chamada de verossimilhan¸ca marginal.
+
+8
+
+0 |Y−p+1:0, λ) de forma que os termos se cancelem. A avalia¸c˜ao do denomi-
+deﬁnido f0(w(i)
+nador ´e obtida usando as constantes de normaliza¸c˜ao para a distribui¸c˜ao MNIW (ver Del Negro &
+
+0 ) = p(z(i)
+
+Schorfheide (2011)).
+
+3 Aplica¸c˜ao emp´ırica
+
+Esta se¸c˜ao apresenta a aplica¸c˜ao emp´ırica dos modelos descritos na se¸c˜ao 2 para o caso brasi-
+
+leiro. S˜ao apresentadas as vari´aveis utilizadas, bem como a escolha dos hiperparˆametros utilizados
+
+na constru¸c˜ao das previs˜oes do MF-VAR e do VAR baseado na agrega¸c˜ao temporal em dados tri-
+
+mestrais (QF-VAR). A especiﬁca¸c˜ao QF-VAR ´e estimada de duas maneiras:
+
+i) QF-VAR(priori
+
+informativa), ou seja, estimado de forma semelhante ao MF-VAR e ii) VAR(OLS) estimado por
+M´ınimos Quadrados Ordin´arios (OLS).5
+
+3.1 Vari´aveis macroeconˆomicas
+
+S˜ao consideradas 9 vari´aveis, sendo 3 vari´aveis trimestrais e 6 vari´aveis mensais. As vari´aveis
+
+trimestrais s˜ao o PIB real (PIB), o consumo real do governo (GOV) e a forma¸c˜ao bruta de capital
+
+ﬁxo real (INV). As vari´aveis mensais s˜ao taxa de desemprego na Regi˜ao Metropolitana de S˜ao Paulo
+
+(UNR), taxa de juros SELIC (JUROS), taxa de inﬂa¸c˜ao IPCA (INF), Pesquisa Industrial Mensal
+Brasil6(IND), IPCA n´ucleo m´edias aparadas com suaviza¸c˜ao (INFCORE) e o ´ındice do sal´ario real
+m´edio na ind´ustria em S˜ao Paulo (AWI). As vari´aveis que entram no VAR em logaritmo s˜ao: PIB,
+
+GOV, INV, IND e AWI e as demais vari´aveis s˜ao divididas por 100.
+
+Os dados abrangem o per´ıodo de jan./96 a jun./17. A previs˜ao ´e realizada com uma abordagem
+recursiva a qual considera uma sequˆencia crescente de dados Y−p+1:T , T = Tmin, ..., Tmax, para
+reestimar os parˆametros dos modelos (MF-VAR e QF-VAR) e gerar as previs˜oes para os per´ıodos
+
+T + 1, ..., T + H. O horizonte de previs˜ao m´aximo ´e H = 12 meses. O per´ıodo t = 1 corresponde a
+jul./96, Tmin a jun./12 e Tmax a jun./16, resultando em 49 amostras de estima¸c˜ao.
+
+Observa¸c˜oes mensais para as 3 s´eries em frequˆencia trimestral s˜ao obtidas aplicando o amostrados
+de Gibbs para per´ıodo amostral inteiro (jan./96 a jun./17).7 Como as previs˜oes s˜ao avaliadas em
+m´edias trimestrais8, as trajet´orias mensais simuladas s˜ao agregadas da mesma forma. Considerando
+que as vari´aveis trimestrais somente s˜ao observadas nessa frequˆencia, avaliamos as previs˜oes das
+
+m´edias trimestrais apesar do modelo ser resolvido na frequˆencia mensal subjacente. Ent˜ao, h =
+
+1, ..., H ´e contado em trimestres ao inv´es de meses.
+
+As previs˜oes s˜ao avaliadas com base na raiz do erro quadr´atico m´edio (RMSE). A compara¸c˜ao
+
+entre o RMSE para as previs˜oes das m´edias trimestrais do MF-VAR e para as previs˜oes do QF-VAR
+
+5Como destacado por Giannone et al. (2015), no modelo VAR com priori ﬂat, a distribui¸c˜ao a posteriori dos
+
+parˆametros ´e centrada na estimativa OLS.
+
+6Os dados anteriores a Dez./01 foram retropolados a partir da s´erie antiga da Pesquisa Industrial Mensal (PIM)
+
+para construir uma s´erie com in´ıcio em 1996.
+
+7As 3 s´eries mensais inferidas s˜ao tratadas como dados na avalia¸c˜ao da previs˜ao pontual.
+8Nesse caso, m´edias trimestrais referem-se a m´edia para cada 3 meses.
+
+9
+
+´e realizada atrav´es do RMSE relativo:
+
+RMSE relativo(i|h) = 100 ×
+
+RM SE(i|h)
+
+RM SEbenchmark(i|h)
+
+(13)
+
+onde i denota a vari´avel e h refere-se ao horizonte de previs˜ao medido em trimestres. O modelo
+
+QF-VAR(priori informativa) e o QF-VAR(OLS) s˜ao utilizados como benchmarks.
+
+Baseado em an´alises pr´evias, deﬁnimos o n´umero de lags no equa¸c˜ao de transi¸c˜ao (mensal) do
+MF-VAR igual a p(m) = 6 e o n´umero de lags no QF-VAR (priori informativa) igual a p(q) = 2 e
+QF-VAR (OLS) igual a p(q) = 1 .
+
+Para cada amostra de estima¸c˜ao foram geradas 20.000 amostras a partir da distribui¸c˜ao a pos-
+
+terior dos parˆametros do VAR usando o algoritmo MCMC descrito na se¸c˜ao (2.1). S˜ao descartadas
+
+as primeiras 4.000 amostras e utilizadas as restantes para calcular as aproxima¸c˜oes dos momentos
+
+a posteriori.
+
+3.2 Sele¸c˜ao dos hiperparˆametros
+
+Como explicado na se¸c˜ao (2.2), os hiperparˆametros s˜ao determinados a partir da maximiza¸c˜ao
+
+da log-verossimilhan¸ca marginal. Como salientado por Schorfheide & Song (2015), a otimiza¸c˜ao
+
+da verossimilhan¸ca marginal ocorre em rela¸c˜ao a 5 hiperparˆametros que controlam: o ajuste geral
+da priori (λ1); a taxa de decaimento da variˆancia conforme aumenta a defasagem dos coeﬁcientes,
+implicando que quanto mais longa for a defasagem mais a variˆancia se aproximar´a de zero (λ2);
+n´umero de observa¸c˜oes utilizadas para obter a priori para a matriz de covariˆancia dos erros (λ3); a
+soma dos coeﬁcientes dos lags de uma vari´avel em dire¸c˜ao a unidade (λ4); e o parˆametro de ajuste
+para a co-persistˆencia entre os coeﬁcientes do VAR (λ5).
+
+A reotimiza¸c˜ao dos hiperparˆametros do MF-VAR ´e computacionalmente onerosa. Como espera-
+
+se que a escolha ´otima dos hiperparˆametros evolua suavamente ao longo do tempo, a reotimiza¸c˜ao ´e
+
+realizada aproximadamente a cada 2 anos, em linha com Schorfheide & Song (2015). Os resultados
+
+da reotimiza¸c˜ao indicam alguma mudan¸ca no valor dos hiperparˆametros. Com isso, optamos por
+
+manter os mesmos valores sucessivamente em cada amostra recursiva, realizando a mudan¸ca a partir
+
+da amostra em que ´e realizada a reotimiza¸c˜ao, nesse caso, na amostra recursiva 1, 25 e 49. A tabela
+(1) mostra a estimativa dos hiperparˆametros para a ´ultima reotimiza¸c˜ao.9
+
+Tabela 1: Hiperparˆametros
+λ4
+
+λ2
+
+λ1
+
+λ3
+
+MF-VAR 0,03
+QF-VAR 0,26
+
+3,4
+3,59
+
+1,00
+1,00
+
+3,40
+2,63
+
+λ5
+
+3,24
+1,62
+
+9Os valores dos hiperpˆametros do MF-VAR encontram-se no apˆendice A. No caso do QF-VAR (priori informativa),
+
+os resultados indicaram a manuten¸c˜ao dos mesmos valores para cada amostra recursiva.
+
+10
+
+4 Resultados emp´ıricos
+
+Nesta se¸c˜ao apresentamos os resultados do exerc´ıcio emp´ırico de previs˜ao do MF-VAR para o
+
+caso brasileiro.
+
+A tabela (2) apresenta a o RMSE relativo entre o modelo MF-VAR e o QF-VAR(priori infor-
+
+mativa) como descrito na equa¸c˜ao (13). De forma geral, a performance de previs˜ao fora da amostra
+
+aponta que a utiliza¸c˜ao das observa¸c˜oes mensais dentro do trimestre aumentam a precis˜ao das
+
+previs˜oes de curto prazo.
+
+Os resultados para PIB, taxa de desemprego, inﬂa¸c˜ao e taxa de juros indicam que o uso de
+
+informa¸c˜oes mensais leva a uma diminui¸c˜ao consider´avel do RMSE no curto prazo (Figura ??).
+
+No caso das previs˜oes do PIB, a previs˜ao um passo a frente tem uma redu¸c˜ao de 6,9% do RMSE
+
+comparativamente `a previs˜ao do QF-VAR(priori informativa). A redu¸c˜ao do RMSE permanece
+
+at´e o horizonte h = 3. Com o aumento do horizonte de previs˜ao para h = 4, o QF-VAR(priori
+
+informativa) alcan¸ca o MF-VAR e o diferencial do RMSE entre as previs˜oes dos modelos torna-se
+
+negligenci´avel.
+
+Para as s´eries mensais da taxa de desemprego, taxa de inﬂa¸c˜ao e taxa de juros, a redu¸c˜ao do
+
+RMSE gerada pelo MF-VAR para essas s´eries mensais ´e mais pronunciada do que para o PIB, a qual
+
+´e observada em frequˆencia trimestral, em linha com Schorfheide & Song (2015). Para as vari´aveis
+
+divulgadas em frequˆencia mensal, as diferen¸cas entre as previs˜oes do MF-VAR e do QF-VAR(priori
+
+informativa) tende a ser mais pronunciada do que para o PIB. Para o horizonte h = 1, o MF-VAR
+
+´e capaz de aumentar a precis˜ao das previs˜oes em 32,4% para a taxa de desemprego e 6,8% para a
+
+taxa de juros e 1,1% para a taxa de inﬂa¸c˜ao. Para a taxa de desemprego e a inﬂa¸c˜ao os resultados
+
+os ganhos tendem a diminuir com o horizonte h de previs˜ao, mas ainda mostram-se substanciais
+
+mesmo para h = 4. No caso da taxa de juros, o ganho com o uso de informa¸c˜oes mensais tende a
+
+aumentar conforme aumenta o horizonte h de previs˜ao.
+
+Tabela 2: RMSE relativo do MF-VAR versus QF-VAR (priori informativa)
+
+h UNR JUROS INF
+
+IND INFcore AWI PIB INV GOV
+
+1
+2
+3
+4
+
+-32,5
+-12,5
+-7,1
+-4,1
+
+-6,8
+-15,5
+-22,0
+-23,9
+
+-1,1
+-10,8
+-8,6
+-7,9
+
+-13,3
+-5,6
+-2,3
+-1,6
+
+12,0
+14,1
+1,0
+3,6
+
+-34,4
+-15,2
+-9,0
+-5,8
+
+-6,9
+-3,8
+-1,0
+0,3
+
+-4,3
+-6,6
+-6,2
+-3,1
+
+20,4
+7,0
+4,0
+3,1
+
+Nota: O RMSE para UNR, JUROS, INF, INFCORE refere-se `a previs˜ao do n´ıvel das
+s´eries. Para as vari´aveis restantes, o RMSE refere-se ao logaritmo da s´erie.
+
+O uso de informa¸c˜oes mensais no modelo de previs˜ao das s´eries trimestrais mostra-se relevante
+
+tamb´em para a previs˜ao da s´erie da produ¸c˜ao industrial. No horizonte h = 1, o RMSE da previs˜ao
+
+do MF-VAR ´e 13,3% menor em rela¸c˜ao ao QF-VAR(priori informativa). Para os horizontes h = 2, 3
+
+11
+
+e h = 4 o incremento decresce, mas o diferencial mant´em-se positivo. Considerando que a produ¸c˜ao
+
+industrial ´e comumente utilizada como um dos indicadores antecedentes do PIB, o resultado satis-
+
+fat´orio da previs˜ao dessa vari´avel pode colaborar para a deﬁni¸c˜ao mais precisa de estimativas para
+
+a pr´evia do PIB.
+
+No caso da previs˜ao do sal´ario mensal, os horizontes h = 1 e h = 2 indicam ganhos expressivos
+
+na redu¸c˜ao do RMSE do MF-VAR frente ao QF-VAR(priori informativa). Conforme h aumenta,
+
+o RMSE diminui, mas ainda assim mostra-se relevante mesmo com o aumento do horizonte de
+
+previs˜ao. Para as vari´aveis INFCORE e GOV, o modelo QF-VAR(priori informativa) ultrapassa
+
+o MF-VAR e os diferenciais tornam-se favor´aveis ao modelo que emprega as s´eries agregadas na
+
+frequˆencia trimestral.
+
+Em resumo, para os grupo das vari´aveis trimestrais PIB e INV, os ganhos a partir da inclus˜ao
+
+de vari´aveis mensais ´e menor comparativamente ao grupo de vari´aveis mensais n˜ao ﬁnanceiras
+
+(UNR, INF, IND e AWI), consistente com os resultados de Schorfheide & Song (2015). Conforme
+
+o horizonte de previs˜ao h aumenta, os benef´ıcios em utilizar informa¸c˜oes mensais para a previs˜ao,
+
+na maioria dos casos, vai diminuindo, mas mant´em-se positivo para v´arias s´eries.
+
+Tabela 3: RMSE relativo do MF-VAR versus QF-VAR (OLS)
+
+h UNR JUROS
+
+INF
+
+IND INFcore AWI
+
+PIB INV GOV
+
+1
+2
+3
+4
+
+-59,2
+-4,6
+55,0
+117,0
+
+-73,5
+-60,4
+-52,2
+-42,6
+
+-18,3
+0,0
+5,4
+12,9
+
+-68,0
+-42,0
+-11,9
+16,8
+
+-33,1
+-19,2
+-17,0
+-8,4
+
+-62,3
+-30,3
+3,7
+40,0
+
+-49,7
+-5,5
+44,3
+92,2
+
+-53,3
+-21,6
+21,1
+64,5
+
+-27,7
+-3,2
+36,6
+79,0
+
+Nota: O RMSE para UNR, JUROS, INF, INFcore refere-se `a previs˜ao do n´ıvel das
+s´eries. Para as vari´aveis restantes, o RMSE refere-se ao logaritmo da s´erie.
+
+A tabela (3) apresenta a o RMSE relativo entre o modelo MF-VAR e o QF-VAR(OLS). De
+
+forma geral, a performance de previs˜ao fora da amostra aponta que a utiliza¸c˜ao das observa¸c˜oes
+
+mensais dentro do trimestre aumentam a precis˜ao das previs˜oes para h = 1 e h = 2 passos a frente
+
+para todas as vari´aveis.
+
+Os resultados para PIB, taxa de desemprego, inﬂa¸c˜ao e taxa de juros indicam a diminui¸c˜ao
+
+do RMSE para h = 1 e h = 2. No caso do PIB, a previs˜ao um passo a frente tem uma redu¸c˜ao
+
+consider´avel de 49,7% do RMSE comparativamente `a previs˜ao do QF-VAR(OLS).
+
+Nesse caso, para os grupo das vari´aveis trimestrais os ganhos a partir da inclus˜ao de vari´aveis
+
+mensais foram similares ao grupo de vari´aveis mensais n˜ao ﬁnanceiras (UNR, INF, IND e AWI),
+
+diferentemente do caso QF-VAR(priori informativa). Na maioria das situa¸c˜oes, para o horizonte de
+
+previs˜ao superior a h = 3, os benef´ıcios em utilizar informa¸c˜oes mensais para a previs˜ao desaparece.
+
+Em ambos os casos, se o objetivo ´e gerar previs˜oes para h = 1 e h = 2 trimestres a frente,
+
+o MF-VAR indica ganhos de performance mais expressivos tanto em rela¸c˜ao ao QF-VAR(priori
+
+12
+
+informativa) como, tamb´em, ao QF-VAR(OLS). Para horizontes superiores a h = 3, o incremento
+
+diminuiu ou desaparece em rela¸c˜ao a ambas as vers˜oes do QF-VAR.
+
+5 Considera¸c˜oes ﬁnais
+
+Este trabalho teve como foco a previs˜ao emp´ırica de curto prazo de s´eries macroeconˆomicas do
+
+Brasil utilizando o modelo mixed-frequency VAR (MF-VAR), o qual utiliza dados que s˜ao observados
+
+em frequˆencias mistas - mensais e trimestrais. A especiﬁca¸c˜ao do MF-VAR (Schorfheide & Song
+
+(2015)) utiliza uma abordagem bayesiana com o intuito de lidar com a dimensionalidade do modelo,
+
+bem como, os hiperparˆametros s˜ao determinados pelos dados (data-driven) atrav´es da maximiza¸c˜ao
+
+do logaritmo da densidade marginal dos dados.
+
+Os resultados indicaram ganhos na precis˜ao das previs˜oes do MF-VAR comparativamente ao
+
+modelo QF-VAR (quarterly-frequency VAR). No caso da vers˜ao do QF-VAR isso indica que a uti-
+
+liza¸c˜ao de dados mensais melhora a previs˜ao de curto prazo, especialmente a previs˜ao para h = 1
+
+e h = 2 passos a frente. Com o horizonte de previs˜ao aproximando-se de um ano, o incremento
+
+entre as previs˜oes do MF-VAR e do QF-VAR(priori informativa) v˜ao diminuindo. Em rela¸c˜ao ao
+
+QF-VAR(OLS), os ganhos do MF-VAR ocorrerem at´e h = 2 trimestres a frente, pois ap´os esse
+
+per´ıodo os ganhos desaparecem.
+
+De forma geral, os resultados indicaram que a especiﬁca¸c˜ao do VAR com observa¸c˜oes em dife-
+
+rentes frequˆencias - mensais e trimestrais - ´e interessante para a previs˜ao das principais vari´aveis
+
+macroeconˆomicas brasileiras. O resultado principal indicou que incluir informa¸c˜ao mensal melhora
+
+a performance de previs˜ao de curto prazo, especialmente com o foco em h = 1 e h = 2 passos a
+
+frente.
+
+Pesquisas futuras podem avan¸car na an´alise da previs˜ao entre modelos alternativos que utilizam
+
+dados com frequˆencia mista. Al´em disso, podem ser testados conjuntos diferentes de vari´aveis de
+
+acordo o objetivo da previs˜ao.
+
+13
+
+Referˆencias
+
+Alves, Sergio, & Fasolo, Angelo. 2015. Not Just Another Mixed Frequency Paper. Tech. rept.
+
+Central Bank of Brazil, Research Department.
+
+Bai, Jennie, Ghysels, Eric, & Wright, Jonathan H. 2013. State space models and MIDAS
+
+regressions. Econometric Reviews, 32(7), 779–813.
+
+Carter, Chris K, & Kohn, Robert. 1994. On Gibbs sampling for state space models. Biome-
+
+trika, 81(3), 541–553.
+
+Chiu, Ching Wai Jeremy, Eraker, Bjørn, Foerster, Andrew, Kim, Tae Bong, & Seo-
+ane, Hern´an D. 2012. Estimating VAR’s sampled at mixed or irregular spaced frequencies: a
+Bayesian approach. Tech. rept. Federal Reserve Bank of Kansas City.
+
+Clements, Michael P, & Galv˜ao, Ana Beatriz. 2008. Macroeconomic forecasting with mixed-
+frequency data: Forecasting output growth in the United States. Journal of Business & Economic
+Statistics, 26(4), 546–554.
+
+Del Negro, Marco, & Schorfheide, Frank. 2011. Bayesian macroeconometrics. The Oxford
+
+handbook of Bayesian econometrics, 293, 389.
+
+Doan, Thomas, Litterman, Robert, & Sims, Christopher. 1984. Forecasting and conditional
+
+projection using realistic prior distributions. Econometric reviews, 3(1), 1–100.
+
+dos Santos, Douglas Gomes, & Ziegelmann, Fl´avio Augusto. 2012. Multi-Period Volatility
+Predictions: A Comparative Study Using MIDAS Regressions. In: 34o Meeting of the Brazilian
+Econometric Society.
+
+Foroni, Claudia, & Marcellino, Massimiliano. 2014. A comparison of mixed frequency
+approaches for nowcasting Euro area macroeconomic aggregates. International Journal of Fore-
+casting, 30(3), 554–568.
+
+Francis, Neville, Ghysels, Eric, & Owyang, Michael T. 2011. The Low-Frequency Impact
+of Daily Monetary Policy Shocks. Tech. rept. 2011-009. Federal Reserve Bank of St. Louis Working
+Paper Series.
+
+Geweke, John. 1999. Using simulation methods for Bayesian econometric models:
+
+inference,
+
+development, and communication. Econometric Reviews, 18(1), 1–73.
+
+Ghysels, Eric. 2012. Macroeconomics and the Reality of Mixed Frequency Data. Tech. rept. UNC.
+
+Ghysels, Eric, Santa-Clara, Pedro, & Valkanov, Rossen. 2004. The MIDAS Touch: Mixed
+
+Data Sampling Regression Models. Tech. rept. UNC and UCLA.
+
+Giannone, Domenico, Lenza, Michele, & Primiceri, Giorgio E. 2015. Prior selection for
+
+vector autoregressions. Review of Economics and Statistics, 97(2), 436–451.
+
+Junior, Marcos Vin´ıcio Wink, & Pereira, Pedro Luiz Valls. 2011. Modeling and Fore-
+casting of Realized Volatility: Evidence from Brazil. Brazilian Review of Econometrics, 31(2),
+315–337.
+
+14
+
+Kuzin, Vladimir, Marcellino, Massimiliano, & Schumacher, Christian. 2011. MIDAS vs.
+mixed-frequency VAR: Nowcasting GDP in the euro area. International Journal of Forecasting,
+27(2), 529–542.
+
+Litterman, Robert B. 1980. Techniques for forecasting with Vector Autoregressions. PhD Thesis,
+
+University of Minnesota, Minnesota.
+
+Litterman, Robert B. 1986. Forecasting With Bayesian Vector Autoregressions. Journal of
+
+Business & Economic Statistics, 4(1), 25–38.
+
+Mikosch, Heiner, & Neuwirth, Stefan. 2015. Real-time forecasting with a MIDAS VAR. Tech.
+
+rept. BOFIT Discussion Papers.
+
+Schorfheide, Frank, & Song, Dongho. 2015. Real-time forecasting with a mixed-frequency
+
+VAR. Journal of Business & Economic Statistics, 33(3), 366–380.
+
+Sims, Christopher A, & Zha, Tao. 1998. Bayesian methods for dynamic multivariate models.
+
+International Economic Review, 39(4), 949–68.
+
+Zuanazzi, Pedro Tonon, & Ziegelmann, Fl´avio Augusto. 2014. Previs˜oes para o cresci-
+mento do PIB trimestral brasileiro com s´eries ﬁnanceiras e econˆomicas mensais: uma aplica¸c˜ao
+de MIDAS. Economia Aplicada, 18(2), 295–318.
+
+15
+
+Apˆendice A
+
+Hiperparˆametros
+
+Tabela 4: Hiperparˆametros
+λ4
+
+λ2
+
+λ1
+
+λ3
+
+MF-VAR 0,05
+QF-VAR 0,26
+
+3,40
+3,59
+
+1,00
+1,00
+
+3,40
+2,63
+
+λ5
+
+2,19
+1,62
+
+Nota: Refere-se aos hiperparˆametros obtidos a partir da amostra recursiva 1.
+
+Tabela 5: Hiperparˆametros
+λ4
+
+λ2
+
+λ1
+
+λ3
+
+MF-VAR 0,04
+QF-VAR 0,26
+
+3,4
+3,59
+
+1,00
+1,00
+
+3,40
+2,63
+
+λ5
+
+3,24
+1,62
+
+Nota: Refere-se aos hiperparˆametros obtidos a partir da amostra recursiva 25.
+
+16
+
+

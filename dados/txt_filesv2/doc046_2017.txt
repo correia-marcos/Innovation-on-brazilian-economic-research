@@ -1,0 +1,2749 @@
+INVESTIGATING FORECASTING MODELS OF BRAZILIAN INFLATION 
+
+This version: July 2017. 
+
+MAURÍCIO MESQUITA BORTOLUZZO1 
+
+EMERSON FERNANDES MARÇAL2 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ABSTRACT 
+
+We perform a pseudo real time study on the predictability of Brazilian inflation, measured by the IPCA, 
+using  data  from  January  1995  to  December  2015.  The  main  objective  of  the  study  is  to  compare  the 
+predictive accuracy of multivariate adaptive VAR models, containing macroeconomic information, against 
+Naive models and against disaggregated data models of inflation, which in the recent literature have been 
+successful in overcoming benchmark models for Brazilian inflation. We found evidence that most models 
+with  macroeconomic  variables  have  predictive  accuracy  higher  than  the  traditional  benchmark  of  the 
+literature, the autoregressive model of order 1. There is also evidence regarding the superiority of forecasts 
+generated  by  the  model  with  greater  data  disaggregation.  In  addition,  the  ranking  of  model  forecasts 
+changes  when  we  change:  the  loss  function,  the  forecasts  horizons,  and  the  time  windows  used  for 
+evaluations. 
+
+Keywords:  Inflation.  Prediction.  Autometrics.  Model  Confidence  Set.  SPA  Test.  Unrestricted  VAR. 
+Disaggregated data. Asymmetric loss function. 
+
+Área 4: Macroeconomia, Economia Monetária e Finanças 
+
+Jel Classification: C53; E31; C52 
+
+ 
+
+RESUMO 
+
+Realizamos um estudo pseudo em tempo real sobre a previsibilidade da inflação brasileira, medida pelo 
+IPCA, utilizando dados de janeiro de 1995 a dezembro de 2015. O objetivo principal do estudo é comparar 
+a precisão preditiva dos modelos VAR adaptativos multivariados, contendo informações macroeconômicas, 
+contra modelos ingênuos e contra modelos de dados desagregados de inflação, que na literatura recente 
+conseguiram superar os modelos de referência para a inflação brasileira. Encontramos evidências de que a 
+maioria dos modelos com variáveis macroeconômicas possui precisão preditiva maior do que o benchmark 
+tradicional  da  literatura,  o  modelo  Autorregressivo  de  ordem  1.  Também  há  evidências  quanto  à 
+superioridade das previsões geradas pelo modelo com maior desagregação de dados. Além disso, o ranking 
+das previsões do modelo muda quando mudamos: a função de perda, os horizontes de previsão e as janelas 
+de tempo usadas para avaliações. 
+
+Keywords: Inflação. Previsão. Autometrics. Model Confidence Set. Teste SPA. VAR irrestrito. Dados 
+desagregados. Função de perda assimétrica. 
+
+                                                           
+1 Mackenzie Presbyterian University 
+2 Economics, Sao Paulo School of Economics, São Paulo, Brazil; Business Department, Mackenzie Presbyterian University, São 
+Paulo, Brazil 
+
+1 
+
+ 
+
+ 
+
+1.  INTRODUCTION 
+
+Forecasting economic series is  an extremely important  topic for a wide range of agents.  Formulators of 
+economic policies, central banks and private agents need to formulate their action plans. Whether economic 
+agents are on the monetary and financial sides, or on the real side of the economy, precise forecasts on the 
+evolution of price index is something important. 
+
+Central  banks  have  as  their  main  objective  to  maintain  inflation  stable.  The  fulfillment  of  this  mission 
+depends  on  optimal  forecasts  for  inflation,  and  the  less  information  asymmetry  the  policy  will  be  more 
+effective  (ROMER,  2012).  According  to  Faust  and  Wright  (2013),  the  main  tool  to  achieve  the  central 
+banks'  transparency  objective  in  the  implementation  of  monetary  policy  is  the  disclosure  of  inflation 
+forecasts  and  other  macroeconomic  variables.  According  to  the  authors,  it  is  agreed  that  a  forecast  of 
+accurate  inflation  is  a  necessity  for  households,  firms,  politicians  and,  especially,  the  central  bank  of  a 
+country. 
+
+Much  research  has  been  done  in  the  area  of  forecasting  economic  series  in  recent  years.  Large 
+computational  and  theoretical  gains  allow  the  use  of  a  wide  range  of  forecasting  models.  There  is  the 
+possibility of using overparameterized models, selection of models and other techniques that require high 
+computational cost. In the field of forecasting, the problem under analysis has come to be the ranking of a 
+huge range of forecasting models, which can be easily constructed by economists. 
+
+In  this  context,  the  present  study  aims  to  evaluate  the  role  of  macroeconomic  variables  in  predicting 
+inflation in Brazil. We use univariate and multivariate linear models with the model selection technique 
+developed  by  Hendry  and  Doornik  (2014),  called  Autometrics,  to  obtain  parsimonious  models  and  to 
+control  possible  outliers  and  structural  breaks  in  the  data.  Finally,  the  results  were  compared  with 
+benchmark models and with disaggregated inflation forecasting methods. 
+
+Regarding the ranking of the different models, two algorithms were used: the Model Confidence Set (MCS) 
+algorithm and the Superior Predictive Ability (SPA) test, developed by Peter Hansen and co-authors. In 
+addition to the traditional Forecast Mean Squared Error function (FMSE), asymmetric loss functions were 
+evaluated, as monetary authorities may be more concerned not to underestimate inflation. 
+
+The rest of the paper is organized as follows: in the next section the theoretical basis is elaborated and the 
+empirical literature on the subject  is reviewed; Section 3 presents the methodology of the study and the 
+database; Section 4 presents and discusses the research results, while the conclusion is made in section 5. 
+
+2.  LITERATURE REVIEW  
+
+According to Bodie, Kane and Marcus (2014), fiscal policy is probably the most direct way to stimulate or 
+to  slow  the  economy.  A  decrease  in  government  spending  directly  reduces  the  demand  for  goods  and 
+services. In the same way, an increase in tax burden instantly reduce consumer incomes and result in very 
+rapid decreases in consumption. 
+
+A common way to summarize the net impact of government fiscal policy is to look at the government's 
+budget surplus or deficit. A large primary deficit means that the government is spending more than it is 
+taking through taxes. In this way, the Government increases the demand for goods and services more than 
+reduces the demand for goods (via taxes), implying a net effect of increasing demand. When the supply of 
+goods and services does not keep up with this increase in demand, there is a generalized increase in prices 
+in the economy. The effect of fiscal policy is captured through two variables: the public sector borrowing 
+requirement  as a percentage of GDP (without exchange devaluation);  and the federal  public debt in  the 
+market. Both variables are among the most frequently selected as relevant for predicting national inflation 
+according to Silva (2016). 
+
+Monetary policy affects the economy in a less direct way than fiscal policy, which works through its impact 
+on interest rates. Increases (decreases) in the money supply lead to lower (higher) interest rates. According 
+
+2 
+
+ 
+
+ 
+
+to Fama (1981), there would be a negative relationship between inflation and economic activity, explained 
+by the combination of money demand theory and the quantity theory of money, a relationship that would 
+have been verified empirically in the work of Fama and also in Nelson (1979). Friedman's monetarist view 
+(1970), as well as Lucas's (1973) theory of rational expectations, also suggest the understanding that the 
+price level can influence and be influenced by the level of activity. 
+
+Using a general equilibrium model, Fuerst (1992) shows that an expansionary fiscal policy leads to a fall 
+in the real interest rate, which would lead to an increase in real activity. However, if the supply does not 
+increase, fiscal policy will imply an increase in inflation. In an empirical study with Danish data, Juselius 
+(1994) finds evidence that accumulated nominal interest rate shocks have generated inflation, while Juselius 
+(2006) justifies the use of the variables inflation, nominal interest rate, monetary base and income in VAR 
+models.  Regardless  of  the  cause-and-effect  relationship  between  variables,  it  seems  to  us  that 
+macroeconomic variables may contain some information relevant to the inflation forecast, especially when 
+used together. 
+
+Increases (decreases) in the money supply leads to lower (higher) interest rates. The nominal interest rate 
+equals  the  real  rate  plus  a  factor  to  compensate  for  the  expected  inflation.  Changes  in  interest  rate 
+expectations  may  be  due  either  to  changes  in  expectations  of  real  rates  or  due  to  changes  in  inflation 
+expectations  (Bodie,  Kane  and  Marcus,  2014).  Thus,  it  is  believed  that  the  interest  rate  swap  market 
+contains useful information for forecasting inflation. The fact that this market involves financial investment 
+by economic agents makes forecasts more credible (GARCIA, 1992). Unlike predictions announced in the 
+media or in economic reports, mistaken forecasts in this market generates a high financial cost and serves 
+as a stimulus to  the quality of forecasts.  Following this reasoning, Garcia (1992) uses pre-fixed interest 
+rates  to  obtain  better  forecasts  than  the  CB.  To  capture  this  information,  in  this  study  we  use  different 
+maturity dates of swap contracts between DI reference rates and pre-fixed rates. 
+
+Focusing on the empirical literature on inflation forecasting models, Swanson and White (1997) made a 
+forecast essay of 9 different macroeconomic variables, including inflation with several "adaptive" and "non-
+adaptive" univariate and multivariate linear models, as well as nonlinear models called "artificial neural 
+networks". An adaptive model means that a new specification is chosen before each new forecast is made, 
+in  a  rolling  window  estimation  methodology.  Non-adaptive  models  are  also  re-estimated  for  each  new 
+window, but the model specification remains fixed throughout the forecast horizon. Unreviewed data have 
+also  been  used  to  ensure  an  ex  ante  forecast,  comparable  to  forecasts  by  market  professionals  that  are 
+necessarily  drawn  up  on  the  basis  of  unverified  information.  The  authors  found  evidence  that  ex  ante 
+predictions, based on rolling window methods of multivariate "adaptive VARs", overcame a variety of: (i) 
+"adaptive" and "non-adaptive" univariate models; (ii) multivariate "non-adaptive" models, (iii) non-linear 
+"adaptive" models and (iv) professionally available research forecasts; 
+
+There is evidence that models based on the Phillips curve do not improve inflation prediction. Atkeson and 
+Ohanian  (2001)  evaluate  the  prediction  of  models  based  on  Phillips  curves,  comparing  its  prediction  to 
+simple mean prediction, over a period of 15 years. The authors found evidence that none of the predictions 
+of different  models based on the Phillips curve were more accurate than the naive prediction.  Sachsida, 
+Ribeiro and Santos  (2009) estimated a Phillips curve with  quarterly data, adopting a Markov-Switching 
+model. The authors rejected the hypothesis of linearity in the parameters of the Phillips curve. They further 
+suggest that the Phillips curve would be inadequate to explain the inflationary dynamics in the Brazilian 
+economy. 
+
+Stock  and  Watson  (2007)  examine  changes  in  the  inflation  process  over  time  and  whether  the  work  of 
+predicting American inflation has become more or less difficult. The main finding was that, in more recent 
+periods,  the  inflation  process  was  well  described  by  an  unobserved  component  of  cyclical  trend  and 
+stochastic volatility or, equivalently, by a moving average integrated process with time-varying parameters. 
+The authors found  evidence that predictions  of  multivariate models are  no better than predictions  made 
+using the time-varying univariate model for later periods. 
+
+ 
+
+3 
+
+ 
+
+Following the work of Stock and Watson (2007), many others began adopting methodologies that allow 
+coefficients to vary in time, such as recursive estimation and rolling window. Elliot and Timmerman (2008) 
+use these two methodologies to compare 12 different predictors of inflation in a monthly database, from 
+January  1959  to  December  2003.  The  combination  of  forecasts  was  the  one  with  the  best  predictive 
+accuracy,  although  the  difference  between  the  better  forecasts  has  been  relatively  small.  However,  the 
+authors found evidence  of the inferiority of predictions generated by Smooth  Transition  Autoregressive 
+(STAR) models. Barnett, Mumtaz and Theodoridis (2014) compare performances of a wide range of time-
+varying  parameter  models  in  English  inflation  forecasting,  and  found  that  the  factor-augmented  VAR 
+(FAVAR) model with time-varying parameters presents an FMSE 14% lower than that of an AR (p) model 
+in the one year horizon, being the model with the best performance in the sample. 
+
+In Brazil, Garcia (1992) analyzed the implicit inflation forecast in fixed interest rate contracts in a period 
+of hyperinflation (between October 1987 and February 1990). According to the author, the future market 
+and the implicit inflation forecast presented better forecasts than those of the Central Bank (CB). The author 
+concluded  that  the  CB  estimates  are  systematically  biased  downwards  with  the  intention  of  taxing  the 
+inflationary  financial  profit,  or  in  the  belief  that  optimistic  forecasts  would  play  a  role  of  coordinating 
+market expectations, leading to a reduction of official inflation. 
+
+Chauvet (2001) make use of a dynamic factor model to extract the common cyclical movements in a group 
+of variables which supposedly have the power to predict inflation. The empirical results confirm that the 
+antecedent indicators signal the alternation of future phases of inflation evolution in a real time exercise. 
+Figueiredo (2010) used a large volume of variables extracted from the CB Economic Indicators database 
+to generate inflation forecasts through two methods, the principal component factor model (PC) and partial 
+least squares factor modeling. The author finds evidence that PC generates better predictions for up to six 
+steps ahead. The author also finds evidence that the estimation with the use of rolling regressions obtains 
+better predictive performance than recursive estimation. 
+
+ Using Brazilian monthly data, Arruda, Ferreira and Castelar (2011) compared inflation forecasts with using 
+linear and nonlinear time series and the Phillips curve. Among the linear models, a VAR was the model 
+that presented the best predictions, being surpassed only by a nonlinear model based on the Phillips curve. 
+Medeiros, Vasconcelos and Freitas (2016) find evidence that the Phillips curve does not present relevant 
+information for the forecast of inflation. The authors present evidence that models based on Least Absolute 
+Shrinkage and Selection Operator (LASSO) have lower prediction errors for short horizons, whereas the 
+AR model works best for long horizons. 
+
+Gaglianone, Issler and Matos (2016) investigates forecast combination models for the period from January 
+2006 to May 2015. The researchers used the CB Focus's report forecasts combination with and without bias 
+correction, in addition to the combination of Granger and Ramanathan (1984), comparing the results with 
+the naive AR model (1). The authors found evidence that the average of biased corrected forecasts dominate 
+the prediction without bias correction. They also found that forecasts combination presents a lower FMSE 
+compared to the AR model (1). 
+
+Garcia, Medeiros and Vasconcelos (2016) used data from 2003 to 2015 in a real-time simulation to compare 
+forecasts of a wide range of models with the AR and random walk benchmark models, in addition to the 
+CB Focus report forecasts. The authors found evidence that prediction  combinations based on the MCS 
+shows better predictions than all models individually and also against the simple average combination of 
+all models. 
+
+Carlo  and  Marçal  (2016)  (C&M  from  this  point  forward)  use  the  monthly  IPCA  from  January  1996  to 
+March 2012 to compare the forecast efficiency up to 12 steps ahead of a set disaggregated and aggregated 
+data  models.  The  disaggregated  models  were  estimated  by  Seasonal  Autoregressive  Integrated  Moving 
+Average (SARIMA), while aggregated models were estimated by time series techniques as SARIMA, state-
+space structural models and Markov-switching. The authors found evidence of prediction gains in models 
+that use more disaggregated data when compared to models using aggregate data. In this paper we will use 
+
+ 
+
+4 
+
+ 
+
+C & M forecast data to test if any of the VAR models estimated here obtains predictive accuracy superior 
+to the SARIMA models of disaggregated inflation. 
+
+As described in the methodology section of this paper, the naive models that are tested in this paper can be 
+considered  as  "adaptive"  models  and,  thus,  also  allow  the  coefficients  to  vary  over  time,  including 
+characteristics of the models used by Swanson and White (1997) and Stock and Watson (2007). In Brazil, 
+as far as the author is aware, no other study has used such a wide window of time for both modeling and 
+forecast  comparison.  Few  Brazilian  studies  have  used  the  Hansen,  Lunde  and  Nason  (2011)  Model 
+Confidence  Set  (MCS)  methodology  and  the  Hansen  (2005)  superior  predictive  ability  test  (SPA),  for 
+comparison purposes, and none compared models Containing macroeconomic data with disaggregated data 
+models. 
+
+ 
+
+3.  METODOLOGY 
+
+The  present  work  uses  the  Gets  methodology  to  simplify  VAR  multivariate  models  with  the  use  of  the 
+Autometrics  algorithm.  A  pseudo  real-time  simulation  is  then  performed  in  an  attempt  to  simulate  the 
+available information as close as possible to the information available to an agent at the time of forecasting. 
+For each model, forecasts are generated from one to twelve steps ahead. Then we evaluate the accumulated 
+inflation  forecast  between  today  (t  =  0)  and  p  months  ahead 𝑌̂
+1 is  the  inflation 
+forecast  of 1 month for month  t. Forecasts are then grouped according to time horizons, resulting in  12 
+forecast groups, one for one month ahead, one for two months ahead and so on for up to twelve months 
+ahead. This procedure leads to the creation of a forecast database. This database is then used to compare 
+the predictive power of the models for Brazilian inflation measured by the IPCA. 
+
+𝑝 ≡ ∑ 𝑌̂
+𝑡+𝑝
+
+,  where 𝑌̂𝑡
+
+𝑝
+𝑖=1
+
+𝑖
+𝑡+𝑖
+
+To deal with the problem of prediction in the face of structural breaks and outliers, a number of automatic 
+outliers detection methodologies implemented in OxMetrics 7® are used in conjunction with Autometrics 
+algorithm. The methodologies of outliers detection are related to the work of Hendry, Johansen and Santos 
+(2006),  which  demonstrate  that  the  application  of  the  Gets  approach  presented  in  Hendry  and  Krolzig 
+(2005) can be used successfully for the selection of dummies.  
+
+When trying to find the best predictor model of a variable, there is always the possibility that one or more 
+good models will be found by pure chance, and not by their predictive ability. This problem, known as data 
+snooping,  was  treated  by  White  (2000)  as  endemic  in  time  series,  because  there  is  only  one  observed 
+realization  of  the  variable  and  the  consequent  reuse  of  this  information  for  the  purpose  of  estimating 
+competing models. Given this problem, Hansen (2005) suggests the Superior Predictive Ability test (SPA 
+test)  as  an  alternative  to  White's  (2000)  reality  check.  The  SPA  test  is  a  test  to  verify  the  predictive 
+superiority of a benchmark model, which is robust to the addition of bad models. 
+
+In a different approach to the SPA test, Hansen, Lunde and Nason (2011) present the Model Confidence 
+Set (MCS), which is a set of models that contain the best model with a certain level of confidence. The 
+objective  of  the  MCS  determination  procedure  is  to  create  a  set  M*,  consisting  of  the  best  model  (s) 
+extracted from a group of candidate models, M0, where the "best" criterion is defined by the lost function. 
+The 𝑀̂ *  models  are  evaluated  using  the  sample  information  of  the  relative  performances  of  the  models 
+contained in M0. For a given model i belonging to M0, the p-value of MCS, 𝑝𝑖̂ , is the threshold at which i 
+belongs to 𝑀̂1−𝛼
+ if and only if 𝑝𝑖̂  ≥ α. Therefore, a model presenting a low 𝑝𝑖̂  is unlikely to be part of the 
+"best" group of models (𝑀∗). 
+
+∗
+
+This  paper  uses  the  MCS  in  order  to  rank  models’  predictive  abilities,  and  also  uses  the  SPA  to  give 
+robustness to the results, verifying if any alternative model is superior to the bechmark models. 
+
+ 
+
+5 
+
+ 
+
+ADAPTATIVE VAR MODELS 
+
+As  a  consequence  of  the  work  of  Sims  (1980),  the  VAR  model  became  the  starting  point  for  any 
+macroeconomic  modeling  (ANDERSON  and  VAHID,  2010).  The  unrestricted  VAR  model  can 
+conveniently be considered as a summary of the  'stylized facts' of the data (JUSELIUS,  2006). Juselius 
+argues  that  if  the  'true'  model  satisfies  a  linear  first-order  approximation,  it  is  possible  to  make  several 
+hypothesis tests within a valid statistical framework using VAR models.  
+
+A problem with VAR models is the large number of parameters to be estimated. In a model of k variables 
+and p lags for each variable, in addition to the constant, there is a need for estimation of k+k2p parameters. 
+According to Anderson and Vahid (2010), one of the possible ways to deal with the problem is to allow the 
+number of lags in each equation to be determined separately. In this work we use the algorithm of automatic 
+selection of Autometrics models, developed in Hendry and Doornik (2014), in the VAR models to mitigate 
+this problem.  
+
+We used the technique of recursive estimation (expanding window) combined with Autometrics algorithm 
+of model selection. The estimated VAR models following this procedure are equivalent to the models that 
+Swanson and White (1997) called "adaptive VAR models", since it allows not only the reestimation of the 
+model parameters to each new set of information, but also allows that some of the variables or lags to be 
+deleted or reinserted into the model. It is also possible to use the recursive estimation technique in so-called 
+"non-adaptive" models, but in this case, it would only be possible to change the coefficients of the model 
+between two data windows used in the estimations, without excluding or including of lags and variables 
+between two or more estimates. 
+
+DATA BASE AND DESCRIPTIVE STATISTICS 
+
+The database, used in the recursive estimates to generate the predictions, presents data from January 1995 
+to  December  2015,  containing  252  observations  for  the  variables  with  complete  data.  The  last  12 
+observations were used only for forecasting purposes, so that the maximum size of the series used for the 
+estimates was 240 observations. The minimum size used for the estimates was 144 observations, since the 
+forecasts  began  in  January  2007.  The  database  used  for  the  comparison  of  the  forecasts  includes  the 
+predictions of 155 models, and for each of the 155 forecast models there are predictions from 1 to 12 steps 
+forward for the period from January 2007 to December 2015. The variables used in the models are listed 
+briefly in Table 1. The series graphs are presented in Figure 5, and their descriptive statistics are presented 
+in Table 2. All variables were collected from the IPEADATA website, with the exception of the Public 
+Debt variable, which was collected through the Secretaria do Tesouro Nacional spreadsheets. 
+
+Table 1 – Variables used in the initial general unrestricted models 
+
+Variable 
+
+Model Name  Name in DB 
+
+Inflation 
+
+ 
+
+ln_IPCA_IBGE 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+IPCGV 
+
+IPC 
+INCC 
+INPC 
+IGPDI 
+IPAEP 
+
+ln_IPC_FGV 
+ln_IPC_FIPE 
+ln_INCC_FGV 
+ln_INPC_IBGE 
+ln_IGP_DI_FGV 
+ln_IPA_EP_FGV 
+
+Description 
+𝐿𝑛(1 + 𝜋) Where π is the inflation 
+rate. We used models with 6 
+different inflation indices other 
+than IPCA to test its predictive 
+power over IPCA 
+ 
+ 
+ 
+ 
+ 
+ 
+
+SELIC interest rate 
+
+J 
+
+Lnselic 
+
+Sovereign bond interest rate 
+
+ 
+
+6 
+
+ 
+
+ 
+
+Sovereign bond real 
+interest rate 
+
+ 
+
+DJ 
+
+JR 
+
+Dlnselic 
+
+lnjuro-real 
+
+DJR 
+
+Dlnjuro-real 
+
+Industrial production 
+
+DPI 
+
+Dlnpi_lag2 
+
+Public sector 
+borrowing 
+requirement 
+
+Public debt 
+
+NFSP 
+
+Dln_NFSP_lag2 
+
+Divida 
+
+Dln_divida_lag2 
+
+Monetary base 
+
+M0 
+
+Dln_M0_lag2 
+
+Income 
+
+Renda 
+
+Dln_Renda_lag2 
+
+Term Structure of the 
+Interest Rate 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+spread_60 
+
+spread_90 
+
+spread_180 
+
+S 
+
+spread_360 
+
+Spreads 
+
+(spread_60, 
+spread_90, 
+spread_180, 
+spread_360) 
+
+Variation of the sovereign bond 
+interest rate 
+Sovereign bond real interest rate. 
+Annualized. 
+Variation of the annualized 
+sovereign bond interest rate 
+Second lag of the variation of 
+industrial production 
+Second lag of the variation of the 
+public sector borrowing 
+requirement 
+Second lag of the variation of 
+public debt 
+Second lag of the variation of 
+monetary base 
+Second lag of the variation of 
+Income 
+
+𝐿𝑛(1 + 60 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒)– 𝐿𝑛(1
++ 30 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒) 
+𝐿𝑛(1 + 90 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒)– 𝐿𝑛(1
++ 30 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒) 
+𝐿𝑛(1 +  180 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒)– 𝐿𝑛(1
++ 30 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒) 
+𝐿𝑛(1 + 360 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒)– 𝐿𝑛(1
++ 30 𝑑𝑎𝑦 𝑠𝑤𝑎𝑝 𝑟𝑎𝑡𝑒) 
+
+All four variables in the GUM 
+
+Note: the column Model Name is the short name of the variable that is included in the final model name. As an example, the 
+model MJDPI1 includes SELIC interest rate and industrial production variables in the initial GUM. The table including the 155 
+models names and variables included is available as an appendix to this work. 
+
+The variable we want to predict is the variation of the Índice Nacional de Preços ao Consumidor Amplo 
+(IPCA),  a  price  index  monthly  calculated  and  published  by  the  Brazilian  Institute  of  Geography  and 
+Statistics  (IBGE).  All  inflation  variables  were  inserted  into  the  database  after  transformation 𝐿𝑛(1 + 𝑖), 
+where i is the monthly inflation rate. Panel A of Figure 1 shows inflation series over time, while in Panel B 
+are the Autocorrelation Function (ACF), and the Partial Autocorrelation Function (PACF).  
+
+ 
+
+ 
+
+A 
+
+B 
+
+Figure 1: Panel A: Inflation time serie; Panel B: ACF and PACF of inflation time serie. 
+
+ 
+
+ 
+
+ 
+
+7 
+
+ 
+
+The naive AR(1) model, as described in equation (1), was used as a benchmark for predicting inflation. We 
+also suggest a more elaborated naive model, to make sure that the improvement in the forecast, if there is 
+none, was due to the inclusion of the macroeconomic variables, and not due to the inclusion of a greater 
+number  of  lags  or  seasonal  dummies.  So  the  suggested  naïve  model  is  an  AR(12)  model  with  seasonal 
+dummies (equation 2). 
+
+𝐼𝑃𝐶𝐴𝑡 = 𝛼1 + 𝛽1𝐼𝑃𝐶𝐴𝑡−1 + 𝑣𝑡 
+
+ 
+
+ 
+
+𝐼𝑃𝐶𝐴𝑡 = 𝛼2 + 𝜑1𝐼𝑃𝐶𝐴𝑡−1 + ⋯ + 𝜑12𝐼𝑃𝐶𝐴𝑡−12 + 𝜗𝑠𝑡 + 𝜖𝑡 
+
+ 
+
+ 
+
+ 
+
+ 
+
+(1) 
+
+(2) 
+
+Were 𝐼𝑃𝐶𝐴𝑡 is the dependent variable at time t, 𝛼1 e 𝛼2 are intercepts; 𝛽1, 𝜑1, … , 𝜑12 are coefficients to be 
+estimated; 𝑠𝑡 is an 11 seazonal dummies; 𝜗 is the vector of coefficients of the seasonal dummies. 
+
+The macroeconomic models were VAR  type  models with  12 lags and seazonal  dummies. So the macro 
+general unrestricted models are represented by Equation (3):  
+
+𝑦𝑡 = 𝛼3 + 𝜃1𝑦𝑡−1 + ⋯ + 𝜃12𝑦𝑡−12 + 𝛿𝑠𝑡 + 𝑒𝑡 
+
+ 
+
+ 
+
+ 
+
+(3) 
+
+Were 𝑦𝑡 is the (k x 1) vector of dependent variables, IPCA among them; 𝛼3 is the intercept vector; 𝜃𝑙 is the 
+(k x k) coefficient matrix to be estimated for the lag l; 𝑠𝑡 is the 11 seazonal dummies; 𝛿 is the (k x k) matrix 
+of coefficients for the seasonal dummies; while 𝑒𝑡 is the (k x 1) error vector. 
+
+Table 2 – Descriptive Statistics. 
+
+Variable 
+
+T max-min  Av. 
+
+DP 
+
+Ass.  Curt.  Min  Max  Med 
+
+JB  UR  
+
+ln_IPCA_IBGE 
+
+ln_INCC_FGV 
+
+ln_IPC_FGV 
+
+ln_IPC_FIPE 
+
+ln_INPC_IBGE 
+
+ln_IGP_DI_FGV 
+
+ln_IPA_EP_FGV 
+
+Lnselic 
+
+Dlnselic 
+
+lnjuro-real 
+
+Dlnjuro-real 
+
+Dlnpi_lag2 
+
+Dln_NFSP_lag2 
+
+Dln_divida_lag2 
+
+Dln_M0_lag2 
+
+Dln_Renda_lag2 
+
+spread_60 
+
+spread_90 
+
+spread_180 
+
+240-144 
+
+240-144 
+
+240-144 
+
+240-144 
+
+240-144 
+
+240-144 
+
+240-144 
+
+240-144 
+
+239-143 
+
+240-144 
+
+239-143 
+
+237-141 
+
+237-141 
+
+238-142 
+
+239-143 
+
+240-144 
+
+239-143 
+
+239-143 
+
+239-143 
+
+0,58%  0,47% 
+
+1,88 
+
+5,74 
+
+-0,5%  3,0% 
+
+0,50% 
+
+0 
+
+0 
+
+0,69%  0,74% 
+
+5,12  45,44 
+
+-0,5%  8,4% 
+
+0,52% 
+
+0  0,005 
+
+0,58%  0,58% 
+
+2,19 
+
+0,52%  0,56% 
+
+1,51 
+
+0,59%  0,50% 
+
+1,80 
+
+0,68%  0,82% 
+
+1,76 
+
+0,72%  1,17% 
+
+1,59 
+
+1,35%  0,66% 
+
+1,84 
+
+8,62 
+
+5,24 
+
+5,72 
+
+7,14 
+
+6,87 
+
+4,29 
+
+-0,5%  4,3% 
+
+0,52% 
+
+0  0,002 
+
+-1,0%  3,7% 
+
+0,40% 
+
+-0,5%  3,3% 
+
+0,52% 
+
+-1,1%  5,7% 
+
+0,56% 
+
+-2,4%  7,2% 
+
+0,52% 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0,5%  4,2% 
+
+1,22% 
+
+0  0,047 
+
+-0,01%  0,19% 
+
+1,74  15,24 
+
+-1,0%  1,3% 
+
+-0,02% 
+
+0 
+
+0 
+
+9,19%  7,57% 
+
+0,70 
+
+1,36 
+
+-17,4%  34,5% 
+
+8,30% 
+
+0  0,001 
+
+-0,12%  4,55% 
+
+-0,24 
+
+2,96 
+
+-21,3%  16,8% 
+
+-0,48% 
+
+0 
+
+0 
+
+0,14%  6,51% 
+
+0,11 
+
+0,15 
+
+-19,6%  17,5% 
+
+-0,02%  0,58  0,004 
+
+-0,14%  6,78% 
+
+-1,69  13,26 
+
+-51,2%  24,8% 
+
+-0,33% 
+
+0,89%  2,90% 
+
+1,68 
+
+1,13%  4,98% 
+
+0,01 
+
+9,74 
+
+4,24 
+
+-8,6%  20,0% 
+
+0,80% 
+
+-10%  21,6% 
+
+0,54% 
+
+0,51%  26,07% 
+
+-0,05 
+
+1,13 
+
+-87,0%  82,0% 
+
+0,90% 
+
+0,03%  0,66% 
+
+0,01 
+
+0,06%  0,97% 
+
+0,22 
+
+0,31%  1,65% 
+
+1,36 
+
+7,53 
+
+6,47 
+
+8,93 
+
+-2,6%  3,6% 
+
+0,03% 
+
+-3,6%  5,0% 
+
+0,08% 
+
+-5,8%  10,8% 
+
+0,24% 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+0 
+
+239-143 
+
+spread_360 
+Note:  Tmax-min  are  the  maximum  and  minimum  size  of  the  serie;  JB  is  the  p-value  of  the  Jarque-Bera  test  for 
+normality; UR is the p-value of the Augmented Dickey-Fuller (DICKEY e FULLER, 1979;  SAID, e DICKEY, 
+1984) test for the presence of unity root in the serie. 
+
+0,65%  2,19% 
+
+-6,4%  11,8% 
+
+0,48% 
+
+1,19 
+
+4,58 
+
+0 
+
+0 
+
+ 
+
+ 
+
+8 
+
+ 
+
+4.  RESULTS 
+
+Figure 2 ilustrate a significant gap between the naïve and the best performance models. We performed the 
+SPA  test  in  addition  to  the  MCS  and  FMSE  rankings.  In  this  case,  we  test  the  null  hypothesis  that  the 
+benchmark model is the best forecast model. Consistent p-value SPA indicates whether there is evidence 
+against this hypothesis. A low p-value (less than 0.1 or 0.05 for example) informs that the benchmark model 
+is less than one or more competing models. A high p-value indicates that the sample analyzed does not 
+provide strong evidence that the benchmark model is exceeded. Table 3 shows the result of the SPA test, 
+complementing the information in Figure 2. By the test, it can be stated that there are models with predictive 
+performance superior to the naive model AR(1), MNaive, for forecast windows from 2 to 12 steps forward. 
+In contrast, the naive model AR(12), MAR12_7, was only surpassed in its 1 step forward prediction ability. 
+The SPA test could not reject the null hypothesis of predictive superiority of the AR(12) for the other steps. 
+
+Table 4 presents the top ten models for each one the 12 steps according to FMSE lost function. Between 
+parentheses is the MCS p-value. If the p-value is below 0.1 the hypothesis that the model is part of the set 
+of best prediction models is rejected. Stated differently, a p-value below 10% indicates that the model is 
+statistically  lower  than  the  others  in  terms  of  predictability.  Our  AR(12)  benchmark  had  the  best 
+performance of all 155 models for 8 step ahead, and remain among the top ten best models from 4 to 12 
+steps ahead forecasts. The traditional benchmark, however, is out of the MCS for 12 months ahead3. This 
+result means that there are at least 140 models statistically superior to the traditional benchmark. 
+
+Table 3 – SPA test of the benchmark models. 
+
+Model 
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+0,660  0,084  0,013  0,001  0,000  0,000  0,000  0,000  0,000  0,000  0,000  0,001 
+0,097  0,139  0,594  0,887  0,987  0,996  0,998  0,999  0,999  0,987  0,988  0,944 
+
+MNaive 
+MAR12_7 
+Note: columns presents the SPA consistent p-values from 1 to 12 steps ahead. Values highlighted in gray indicate 
+that the model is outperformed by one or more competing models in terms of predictive performance with 10% of 
+significance. 
+
+ 
+
+                                                           
+3 The complete set of results are available upon request 
+
+ 
+
+9 
+
+ 
+
+    
+
+Figure 2: FMSE for 1 to 12 steps ahead forecasts. 
+ 
+One could question how the predictions rankings would be if the available sample were smaller. Figure 3 
+presents the result of a simulation of the hypothetical situation in which the researcher has only 2 years of 
+forecast data for comparison purposes of the competing models. The figure illustrates how the ranking of 
+models changes according to the period of the forecast window. Although the naive MNaive model has 
+been  worse  than  the  others  in  six  of  the  seven  forecast  windows,  in  the  last  window,  which  runs  from 
+January 2014 to December 2015, the naive model presented the second FMSE minor when compared to 
+The best models of the complete sample (the models in Figure 3 are the same as those shown in Table 3). 
+In addition, in 5 of the 7 windows the best model was different and in all the windows there were changes 
+in the positions of the models. 
+ 
+
+ 
+
+10 
+
+ 
+
+ Table 4 – 10 best models for each one of the 12 forecasts horizons.  
+
+ 
+
+1 
+ 
+
+1 
+
+MS1  
+0,0318 
+(1,0000) 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+MSIPCGV
+6 0,1114 
+(1,0000) 
+
+MSIPCGV
+6 0,2313 
+(1,0000) 
+
+MSDPI4 
+
+0,3633 
+(1,0000) 
+
+MSDPI4 
+
+0,5299 
+(1,0000) 
+
+MS7 0,6987 
+
+(1,0000) 
+
+7 
+
+MS7  
+0,8949 
+(1,0000) 
+
+2  MJM0Rend
+
+MSIPCGV
+
+5 0,116 
+(0,9950) 
+
+MSDPI4 
+
+0,2386 
+(0,9893) 
+
+MSIPCGV
+6 0,3753 
+(0,9823) 
+
+MSIPCGV
+6 0,5326 
+(0,9996) 
+
+MAR12_7 
+
+MAR12_7 
+
+0,9044 
+(0,9997) 
+
+a5 0,032 
+(1,0000) 
+3  MAR12_1 
+
+0,0323 
+(1,0000) 
+4  MAR12_3 
+
+0,0325 
+(1,0000) 
+
+MSIPCGV
+
+MDJDPI3 
+
+MDJDPI3 
+
+1 0,118 
+(0,9950) 
+
+0,2387 
+(0,9893) 
+
+0,387 
+
+(0,9823) 
+
+MS7 0,5438 
+
+(0,9996) 
+
+MIPCGV4 
+
+0,1229 
+(0,9950) 
+
+MSIPCGV
+5 0,2409 
+(0,9893) 
+
+MSIPCGV
+5 0,3882 
+(0,9823) 
+
+MDPI1 
+0,5455 
+(0,9996) 
+
+MDJDPI3 
+
+MSIPCGV5 
+
+5  MIPCGV4 
+
+MIPCGV5 
+
+MSIPCGV
+
+0,0325 
+(1,0000) 
+
+0,123 
+
+(0,9950) 
+
+6  MIPCGV3 
+
+MSDivida5 
+
+0,0333 
+(1,0000) 
+
+0,1233 
+(0,9950) 
+
+1 0,251 
+(0,9893) 
+
+MDJRDPI
+1 0,2528 
+(0,9893) 
+
+7  MIPCGV8 
+
+MIPCGV3 
+
+MSDPI1 
+
+0,0333 
+(1,0000) 
+
+0,1255 
+(0,9950) 
+
+0,2541 
+(0,9893) 
+
+MDPI1 
+0,2553 
+(0,9893) 
+
+MS6 0,1256 
+
+(0,9932) 
+
+MDPI1 
+
+0,389 
+
+(0,9823) 
+
+MS7 0,3936 
+
+(0,9823) 
+
+MSDPI1 
+
+0,3983 
+(0,9823) 
+
+MDPI3 
+0,4001 
+(0,9823) 
+
+MSIPCGV
+5 0,5512 
+(0,9996) 
+
+MDJDPI3 
+
+0,5517 
+(0,9996) 
+
+MDPI3 
+0,5554 
+(0,9996) 
+
+MAR12_7 
+
+0,5571 
+(0,9996) 
+
+MSIPCGV
+6 0,7362 
+(0,9999) 
+
+0,7062 
+(0,9999) 
+
+MDPI3 
+0,7303 
+(0,9999) 
+
+MSDPI4 
+
+0,7323 
+(0,9999) 
+
+0,733 
+
+(0,9999) 
+
+MSIPCGV
+5 0,7332 
+(0,9999) 
+
+MDPI1 
+0,7334 
+(0,9999) 
+
+0,9379 
+(0,9997) 
+
+0,9423 
+(0,9997) 
+
+0,9516 
+(0,9997) 
+
+MSDPI4 
+
+0,9524 
+(0,9997) 
+
+MDPI3 
+0,9542 
+(0,9997) 
+
+MIPC3 
+0,1268 
+(0,9950) 
+
+MIPC6 
+0,1272 
+(0,9950) 
+
+MSDivida5 
+
+0,2559 
+(0,9893) 
+
+MDJRDPI
+3 0,4048 
+(0,9823) 
+
+MDJRDPI
+3 0,2561 
+(0,9893) 
+
+MAR12_7 
+
+0,4048 
+(0,9823) 
+
+MDJRDPI
+5 0,5755 
+(0,9984) 
+
+MSIPCGV
+3 0,5764 
+(0,9947) 
+
+MDJDPI1 
+
+MSIPCGV4 
+
+0,7464 
+(0,9999) 
+
+MDJRDPI
+1 0,7554 
+(0,9999) 
+
+(0,9564 
+(0,9997) 
+
+MDPI1 
+0,9646 
+(0,9997) 
+
+8  MDPISprea
+ds3 0,0334 
+
+9 
+
+1
+0 
+
+(1,0000) 
+
+MIPC4 
+0,0337 
+(1,0000) 
+
+MINCC1 
+
+0,0339 
+(1,0000) 
+
+8 
+
+MAR12_7 
+
+1,0662 
+(1,0000) 
+
+MS7 
+
+ 1,0783 
+(0,9981) 
+
+9 
+
+MIPC7 
+
+1,174 
+
+(1,0000) 
+
+10 
+
+MIPC7 
+
+1,289 
+
+(1,0000) 
+
+11 
+
+MIPC7 
+1,4491 
+(1,0000) 
+
+MAR12_7 
+
+MSIGPDI5 
+
+MSIGPDI5 
+
+1,2028 
+(0,9988) 
+
+1,337 
+
+(0,9984) 
+
+1,4914 
+(0,9846) 
+
+MDPISprea
+ds7 0,9379 
+
+(0,9997) 
+
+MDPISprea
+ds7 1,0909 
+
+(0,9981) 
+
+MSIGPDI5 
+
+MAR12_7 
+
+1,2387 
+(0,9988) 
+
+1,3728 
+(0,9984) 
+
+MDPISprea
+ds3 1,4993 
+
+(0,9846) 
+
+MSpreads7 
+
+MSpreads7 
+
+12 
+
+MIPC7 
+1,6051 
+(1,0000) 
+
+MDPISprea
+ds3 1,6278 
+
+(0,9663) 
+
+MSIGPDI5 
+
+1,6625 
+(0,9663) 
+
+1,0909 
+(0,9981) 
+
+MIPC7 
+1,1053 
+(0,9981) 
+
+MDPISprea
+ds7 1,2391 
+
+(0,9988) 
+
+MDPISprea
+ds7 1,4041 
+
+(0,9984) 
+
+MAR12_7 
+
+MAR12_7 
+
+1,5555 
+(0,9846) 
+
+1,7137 
+(0,9071) 
+
+MSpreads7 
+
+MSpreads7 
+
+1,2391 
+(0,9988) 
+
+1,4041 
+(0,9984) 
+
+MDPISprea
+ds7 1,5602 
+
+(0,9846) 
+
+MDPISprea
+ds7 1,7185 
+
+(0,9071) 
+
+1,1061 
+(0,9981) 
+
+MSIPCGV5 
+
+1,1293 
+(0,9981) 
+
+1,2563 
+(0,9988) 
+
+MS7 
+
+ 1,2602 
+(0,9988) 
+
+MDPISprea
+ds3 1,4271 
+
+(0,9984) 
+
+MSpreads7 
+
+MSpreads7 
+
+1,5602 
+(0,9846) 
+
+1,7185 
+(0,9071) 
+
+MSIPCGV4 
+
+MSpreads6 
+
+MIPCGV5 
+
+1,4423 
+(0,9984) 
+
+1,5784 
+(0,9846) 
+
+1,759 
+
+(0,9071) 
+
+MDJDPI1 
+
+MSIPCGV5 
+
+MIPCGV5 
+
+MIPCGV5 
+
+MSpreads1 
+
+1,1548 
+(0,9981) 
+
+MDPI3 
+1,1554 
+(0,9981) 
+
+MDPI1 
+1,1623 
+(0,9981) 
+
+1,307 
+
+(0,9988) 
+
+MS6 
+
+ 1,3162 
+(0,9988) 
+
+MIPCGV4 
+
+1,3208 
+(0,9988) 
+
+1,4532 
+(0,9984) 
+
+MIPCGV4 
+
+1,4553 
+(0,9984) 
+
+MS7 
+
+ 1,4562 
+(0,9984) 
+
+1,5812 
+(0,9846) 
+
+1,7628 
+0,8775) 
+
+MDPISprea
+ds4 1,6009 
+
+(0,9662) 
+
+MSpreads3 
+
+1,6169 
+(0,9671) 
+
+MDPISprea
+ds4 1,7683 
+
+0,8353) 
+
+MJM0Rend
+a5 1,7855 
+
+0,8412) 
+
+MDJDPI1 
+
+MSIPCGV4 
+
+MSIPCGV4 
+
+Note: In each cell, it is shown the name of the model in bold, the FMSE, and the p-value (𝑝𝑖̂ ) of the MCS between parentheses.
+
+ 
+
+11 
+
+ 
+
+Figure 3: FMSE of the inflation forecast, calculated in 2 year windows. 
+
+VARIATIONS DUE TO CHANGES IN THE LOSS FUNCTION 
+
+  
+
+The results presented in Tables 3 and 4, and in Figure 2 and 3, were obtained using the FMSE loss function. 
+In  this  subsection,  we  analyze  the  results  obtained  when  the  tests  are  performed  with  the  loss  function 
+Assymetric Mean Squared Error with assimetry α (𝐴𝑀𝑆𝐸α): 
+
+ 
+
+ 
+
+𝑌̂𝐴𝑀𝑆𝐸α ≡ [α + (1 − 2α) × 𝐼(𝑌 − 𝑓(𝑍, 𝜃) < 0] × |𝑌 − 𝑓(𝑍, 𝜃)|𝑝   
+
+ 
+
+(4) 
+
+Where 𝐼(∙) is the characteristic function and α and p are parameters chosen by the user. The FMSE loss 
+function can be represented by the function presented in (4), assigning the values of 0.5 and 2 for α and p 
+respectively. Assigning any value other than 0.5 to α causes the function to be asymmetric.  
+
+As suggested by Elliott, Timmermann and Komunjer (2008), downward-biased forecasts (underestimation) 
+are considered to have a higher cost for the agent, in which α has values lower than 0.5. We used values of 
+0.4; 0.33 and 0.25 for α, which means weighting 1.5; 2 and 3 times higher, respectively, for forecast squared 
+errors when there is underestimation, compared to overestimation of observed inflation. We present only 
+the results obtained with α equal to 0.25 in Table 5. Results for different α values are available upon request. 
+
+An interesting result is the inclusion of the naive model AR(1) (MNaive) in the set 𝑀̂ * when the weight of 
+underestimation losses is increased. This indicates that the AR(1) model can be considered one of the best 
+prediction models when there is a high cost associated to the underestimation of inflation forecast. This 
+result appears for the forecast of accumulated inflation 11 and 12 months ahead, in which the weight of 
+underestimating inflation is 1.5 times greater than the overestimation weight and the higher the weight, the 
+more  evident  is  this  result.  When  the  weight  of  underestimating  inflation  is  3  times  greater  than  the 
+overestimation weight, as shown in Table 5, the MNaive does not appear in the set of better models only 
+for the 6 to 9 months ahead forecasts.  
+
+12 
+
+ 
+
+ 
+
+ 
+ 
+Table 5 – Best and naive models according to 𝐴𝑀𝑆𝐸0,25. 
+
+Model 
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+MIPC7 
+
+MSIGPDI5 
+
+0,018 
+(0,99) 
+MDPISpreads3  0,023 
+(0,77) 
+0,017 
+(0,99) 
+MDPISpreads7  0,018 
+(0,99) 
+0,016 
+(0,99) 
+0,017 
+(1,00) 
+0,015 
+MIPCGV5 
+(0,77) 
+MJM0Renda5  0,023 
+(0,77) 
+0,023 
+(0,91) 
+
+MSIPCGV7 
+
+MSpreads7 
+
+MDJDPI5 
+
+Benchmarks 
+
+ 
+
+0,071 
+(0,99) 
+0,096 
+(0,83) 
+0,066 
+(0,99) 
+0,071 
+(0,99) 
+0,065 
+(0,99) 
+0,070 
+(0,99) 
+0,066 
+(0,61) 
+0,082 
+(0,61) 
+0,082 
+(0,98) 
+
+ 
+
+0,142 
+(0,99) 
+0,202 
+(0,76) 
+0,133 
+(0,99) 
+0,144 
+(0,99) 
+0,133 
+(0,97) 
+0,164 
+(0,98) 
+0,163 
+(0,97) 
+0,152 
+(0,97) 
+0,152 
+(0,98) 
+
+ 
+
+0,213 
+(0,99) 
+0,309 
+(0,58) 
+0,209 
+(0,99) 
+0,224 
+(0,99) 
+0,203 
+(0,51) 
+0,290 
+(0,77) 
+0,276 
+(0,98) 
+0,231 
+(0,98) 
+0,231 
+(0,94) 
+
+ 
+
+0,291 
+(0,95) 
+0,411 
+(0,60) 
+0,303 
+(0,95) 
+0,313 
+(0,95) 
+0,283 
+(0,35) 
+0,437 
+(0,64) 
+0,408 
+(0,95) 
+0,322 
+(0,95) 
+0,322 
+(0,81) 
+
+ 
+
+0,376 
+(1,00) 
+0,499 
+(0,83) 
+0,398 
+(0,85) 
+0,420 
+(0,83) 
+0,384 
+(0,20) 
+0,590 
+(0,58) 
+0,556 
+(0,85) 
+0,417 
+(0,85) 
+0,417 
+(0,82) 
+
+ 
+
+0,492 
+(1,00) 
+0,591 
+(0,80) 
+0,517 
+(0,86) 
+0,541 
+(0,80) 
+0,512 
+(0,33) 
+0,743 
+(0,61) 
+0,714 
+(0,86) 
+0,534 
+(0,86) 
+0,534 
+(0,77) 
+
+ 
+
+0,591 
+(1,00) 
+0,674 
+(0,93) 
+0,617 
+(0,93) 
+0,642 
+(0,87) 
+0,611 
+(0,40) 
+0,847 
+(0,64) 
+0,824 
+(0,93) 
+0,633 
+(0,93) 
+0,633 
+(0,77) 
+
+ 
+
+0,668 
+(1,00) 
+0,719 
+(0,94) 
+0,689 
+(0,94) 
+0,733 
+(0,86) 
+0,687 
+(0,53) 
+0,896 
+(0,69) 
+0,870 
+(0,90) 
+0,722 
+(0,90) 
+0,722 
+(0,79) 
+
+ 
+
+0,753 
+(1,00) 
+0,778 
+(0,93) 
+0,776 
+(0,93) 
+0,822 
+(0,88) 
+0,780 
+(0,77) 
+0,922 
+(0,82) 
+0,892 
+(0,88) 
+0,819 
+(0,88) 
+0,819 
+(0,86) 
+
+ 
+
+0,850 
+(1,00) 
+0,869 
+(0,94) 
+0,879 
+(0,94) 
+0,901 
+(0,94) 
+0,894 
+(0,93) 
+0,950 
+(0,94) 
+0,934 
+(0,94) 
+0,917 
+(0,94) 
+0,917 
+(0,89) 
+
+ 
+
+0,944 
+(1,00) 
+0,964 
+(0,92) 
+0,971 
+(0,92) 
+0,994 
+(0,92) 
+1,005 
+(0,92) 
+1,011 
+(0,92) 
+1,013 
+(0,92) 
+1,014 
+(0,92) 
+1,014 
+(0,92) 
+
+ 
+
+MAR12_7 
+
+MNaive 
+
+0,021 
+(0,90) 
+0,016 
+(0,99) 
+
+0,076 
+(0,97) 
+0,067 
+(0,99) 
+
+0,142 
+(0,99) 
+0,159 
+(0,98) 
+
+0,215 
+(0,99) 
+0,285 
+(0,39) 
+
+0,300 
+(0,95) 
+0,435 
+(0,15) 
+
+0,384 
+(0,90) 
+0,599 
+(0,08) 
+
+0,503 
+(0,86) 
+0,768 
+(0,04) 
+
+0,607 
+(0,93) 
+0,890 
+(0,04) 
+
+0,690 
+(0,94) 
+0,954 
+(0,07) 
+
+0,787 
+(0,93) 
+0,987 
+(0,36) 
+
+0,900 
+(0,94) 
+1,013 
+(0,83) 
+
+1,007 
+(0,92) 
+1,061 
+(0,92) 
+
+Note: Columns show the Asymmetric Mean Squared Error (with alpha = 0.25) multiplied by 10,000 (𝐴𝑀𝑆𝐸0,25 ×
+104) of the forecasts of the 10 best models, plus the  AR(1) (MNaive), for the predictions of 1 to 12 steps ahead. 
+Below, in parentheses, we present the P-value (𝑝𝑖̂ ) of the MCS with the asymmetric loss function.  Highlighted in 
+gray are the smallest values for each step.  
+
+DISAGGREGATED DATA MODELS 
+
+As presented in the methodology section, a specific database with disaggregated inflation models was used 
+to  compare  disaggregated  models,  with  a  higher  number  of  competing  models  and  a  lower  number  of 
+forecast observations. The models that have been added to the database are in Table 4. 
+
+Through the analysis of Table 5, one can verify that the model with the highest degree of data disintegration, 
+SARIMA-52, was the best model by the FMSE loss function in all forecast horizons. This result is in line 
+with the findings of C&M. Due to the result of the SPA test in Table 6, the predictive superiority hypothesis 
+of the SARIMA-52 model can not be rejected for any time horizon. It is noticed that, as seen in the previous 
+section, the database that was used to attain these results has the same longitudinal length with respect to 
+the work of C&M, and is smaller than that used in the analysis of the comparison of the 155 original models 
+of this work. Even so, the analysis of Tables 5 and 6 is conclusive regarding the supremacy of the SARIMA-
+52  disaggregated  model.  None  of  the  VAR  models  with  macroeconomic  variables  was  superior  to 
+SARIMA-52.  
+
+With the inclusion of the 17 models presented in C&M work, the MAR12_7 model ceases to be among the 
+10 best models (as can be seen in Table 5), and it is rejected as the best model by the SPA test for 1 to 10 
+months ahead time horizons, as observed in Table 6. The naive AR(1) model continues to be rejected as 
+the best  model by the SPA test for long-term  forecasts (from  3 months  ahead, up to  12 months  ahead). 
+According to the MCS (Table 5), the AR (1) is no longer part of the best model group from 8 to 12 months 
+ahead forecast, perhaps because this database is smaller longitudinally, which decreases the power of the 
+test. 
+
+ 
+
+ 
+
+13 
+
+ 
+
+Table 4 – Models added to forecasts database from C&M. 
+
+Source: Table 3 from Carlo and Marçal (2016) 
+ 
+
+Table 5 – Best and naive models according to FMSE. 
+
+ 
+
+Modelo 
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+SARIMA-52  0,016 
+(1,00) 
+0,030 
+(0,79) 
+
+MIPAEP3 
+
+0,067 
+(1,00) 
+0,123 
+(0,74) 
+
+0,132 
+(1,00) 
+0,248 
+(0,62) 
+
+0,192 
+(1,00) 
+0,363 
+(0,46) 
+
+0,249 
+(1,00) 
+0,463
+(0,44) 
+
+0,318 
+(1,00) 
+0,574
+(0,66) 
+
+0,381 
+(1,00) 
+0,625
+(0,85) 
+
+0,444 
+(1,00) 
+0,679
+(0,86) 
+
+0,524 
+(1,00) 
+0,722
+(0,95) 
+
+0,592 
+(1,00) 
+0,743
+(0,96) 
+
+0,655 
+(1,00) 
+0,752
+(0,98) 
+
+0,732 
+(1,00) 
+0,786
+(0,99) 
+
+SARIMA-
+
+4NxSARIMA
+
+-9 
+
+0,021
+(0,79) 
+
+0,080
+(0,74) 
+
+0,158
+(0,72) 
+
+0,242
+(0,46) 
+
+0,310
+(0,49) 
+
+0,384
+(0,69) 
+
+0,451
+(0,85) 
+
+0,523
+(0,86) 
+
+0,615
+(0,95) 
+
+0,693
+(0,96) 
+
+0,749
+(0,98) 
+
+0,801
+(0,99) 
+
+3xSARIMA-9 
+
+SARIMA-
+
+MDJDPI3 
+
+SARIMA-9  0,021
+(0,79) 
+0,035
+(0,04) 
+0,020
+(0,79) 
+0,026
+MIPCGV3 
+(0,79) 
+SARIMA-4N  0,023
+(0,79) 
+MSDivida3  0,031
+(0,28) 
+0,030
+(0,73) 
+ 
+
+MIPCGV1 
+
+Benchmarks 
+
+MAR12_7 
+
+MNaive 
+
+0,037
+(0,26) 
+0,029
+(0,79) 
+
+ 
+
+0,077
+(0,74) 
+0,141
+(0,27) 
+0,082
+(0,74) 
+0,110
+(0,74) 
+0,087
+(0,74) 
+0,133
+(0,29) 
+0,128
+(0,65) 
+
+ 
+
+0,155
+(0,18) 
+0,139
+(0,74) 
+
+0,154
+(0,72) 
+0,252
+(0,56) 
+0,167
+(0,72) 
+0,240
+(0,72) 
+0,171
+(0,72) 
+0,274
+(0,41) 
+0,275
+(0,49) 
+
+ 
+
+0,303
+(0,21) 
+0,328
+(0,62) 
+
+0,232
+(0,46) 
+0,365
+(0,46) 
+0,259
+(0,46) 
+0,381
+(0,46) 
+0,265
+(0,46) 
+0,443
+(0,42) 
+0,417
+(0,32) 
+
+ 
+
+0,437
+(0,27) 
+0,593
+(0,45) 
+
+0,296
+(0,49) 
+0,461
+(0,47) 
+0,328
+(0,49) 
+0,495
+(0,49) 
+0,342
+(0,49) 
+0,584
+(0,39) 
+0,547
+(0,32) 
+
+ 
+
+0,552
+(0,32) 
+0,900
+(0,33) 
+
+0,364
+(0,69) 
+0,539
+(0,69) 
+0,402
+(0,69) 
+0,592
+(0,69) 
+0,426
+(0,69) 
+0,679
+(0,66) 
+0,667
+(0,46) 
+
+ 
+
+0,668
+(0,53) 
+1,227
+(0,21) 
+
+0,427
+(0,85) 
+0,613
+(0,85) 
+0,470
+(0,85) 
+0,666
+(0,85) 
+0,504
+(0,85) 
+0,731
+(0,85) 
+0,742
+(0,69) 
+
+ 
+
+0,739
+(0,76) 
+1,543
+(0,10) 
+
+0,496
+(0,86) 
+0,690
+(0,86) 
+0,534
+(0,86) 
+0,733
+(0,86) 
+0,588
+(0,86) 
+0,735
+(0,86) 
+0,814
+(0,71) 
+
+ 
+
+0,834
+(0,76) 
+1,847
+(0,01) 
+
+0,590
+(0,95) 
+0,738
+(0,95) 
+0,620
+(0,95) 
+0,779 
+(0,91) 
+0,687
+(0,92) 
+0,742
+(0,95) 
+0,868
+(0,78) 
+
+ 
+
+0,970
+(0,65) 
+2,135
+(0,00) 
+
+0,679
+(0,96) 
+0,801
+(0,96) 
+0,697
+(0,96) 
+0,812
+(0,96) 
+0,764
+(0,96) 
+0,770
+(0,96) 
+0,892
+(0,88) 
+
+ 
+
+1,090
+(0,68) 
+2,439
+(0,00) 
+
+0,743
+(0,98) 
+0,815
+(0,98) 
+0,762
+(0,98) 
+0,831
+(0,98) 
+0,823
+(0,98) 
+0,805
+(0,98) 
+0,870
+(0,98) 
+
+ 
+
+1,148
+(0,90) 
+2,715
+(0,00) 
+
+0,802
+(0,99) 
+0,816
+(0,99) 
+0,836
+(0,99) 
+0,861
+(0,99) 
+0,865
+(0,99) 
+0,874
+(0,99) 
+0,880
+(0,99) 
+
+ 
+
+1,199
+(0,86) 
+2,968
+(0,00) 
+
+14 
+
+ 
+
+Note: Columns show the Forecast Mean Squared Error multiplied by 10,000 (𝐹𝑀𝑆𝐸 × 104) of the forecasts of the 
+10  best  models,  plus  the  AR(1)  (MNaive),  for  the  predictions  of  1  to  12  steps  ahead.  Below,  in  parentheses,  we 
+present the P-value (𝑝𝑖̂ ) of the MCS. Highlighted in gray are the smallest values for each step. 
+
+ 
+
+Table 6 – SPA test for the naive models and SARIMA-52 model  
+
+Modelo 
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+11 
+
+12 
+
+0,190  0,124  0,097  0,028  0,005  0,001  0,000  0,000  0,000  0,000  0,000  0,000 
+MNaive 
+0,035  0,030  0,024  0,028  0,024  0,026  0,090  0,030  0,020  0,048  0,259  0,212 
+MAR12_7 
+SARIMA_52  0,972  0,941  0,925  0,912  0,961  0,965  0,998  1,000  1,000  0,993  0,939  0,637 
+Note: columns presents the SPA consistent p-values from 1 to 12 steps ahead. Values highlighted in gray indicate 
+that the model is outperformed by one or more competing models in terms of predictive performance with 10% of 
+significance. 
+
+ 
+
+5.  CONCLUSIONS 
+
+In  this  paper  we  presented  new  analytical  results  on  the  relative  forecast  accuracy  of  a  variety  of 
+macroeconomic unrestricted VAR models for Brazilian inflation in a pseudo real time experiment.  
+
+The empirical findings led us to conclude that the usual benchmark model AR(1) has good performance for 
+short periods ahead (one or two months), but can be easily outperformed to longer periods. Most of the 
+performance gain of the macroeconomic models seems to be due to the greater number of lags included 
+and  to  the  seazonal  dummies,  what  led  us  to  propose  the  AR(12)  with  seazonal  dummies  as  a  new 
+benchmark for forecasting IPCA. Focusing on the macroeconomics models, the spreads variable were the 
+most frequent among the best models, and other inflation indexes also seems to have some predictive power, 
+with  the  VAR  containing  the  IPC  index  from  FIPE  (MIPC7)  having  the  highest  forecast  accuracy, 
+considering the longer forecast dataset.  
+
+The analysis of assymetrics loss functions led us  to conclude that the AR(1) model perform better when 
+underestimated  forecasts  are  considered  to  have  a  higher  cost  for  the  agent.  When  the  weight  of 
+underestimating inflation is 3 times greater than the overestimation weight, the AR(1) does not appear in 
+the set of better models only for the 6 to 9 months ahead. 
+
+Using the database with disaggregated inflation models, we found evidence that the model with the highest 
+degree of data disaggregation, the SARIMA-52  model, was the best  model, considering the  FMSE loss 
+function, for all steps analyzed (from 1 to 12 ). This result is in line with the findings of C&M.  
+
+We  emphasize  that  the  size  and  the  period  of  the  sample  can  be  determinant  for  the  results  found.  A 
+simulation was made for the hypothetical situation where the researcher had only 2 years of forecast data 
+for  the  comparison  of  the  competing  models.  There  was  a  great  variation  in  the  position  of  the  models 
+among the 7 analyzed windows. We believe that a significantly smaller sample could lead to completely 
+different results from those observed here. 
+
+Analyzes with different classes of models, such as non-linear models, and particularly Factor-augmented 
+VAR  models  (FAVAR),  which  obtained  good  results  in  prediction  exercises  for  American  inflation 
+(BERNANKE,  BOIVIN  and  ELIASZ,  2005;  BARNETT,  MUZTAZ  and  THEODORIDIS,  2014),  are 
+beyond the scope of this paper but is a natural suggestion for future research. One could include the use of 
+rolling regressions, in addition to the recursive estimates adopted in this work for the purpose of comparing 
+the performance of the two techniques as another extension.  
+
+ 
+
+ 
+
+15 
+
+ 
+
+REFERÊNCIAS BIBLIOGRÁFICAS 
+
+ANDERSON,  Heather  M.;  VAHID,  Farshid  et  al.  VARs,  cointegration  and  common  cycle  restrictions. 
+Monash Econometrics and Business Statistics Working Papers, n. 1410, 2010. 
+
+ATKESON,  Andrew;  OHANIAN,  Lee  E.  Are  Phillips  curves  useful  for  forecasting  inflation?.  Federal 
+Reserve Bank of Minneapolis. Quarterly Review-Federal Reserve Bank of Minneapolis, v. 25, n. 1, p. 
+2, 2001.  
+
+BARNETT, Alina; MUMTAZ, Haroon; THEODORIDIS, Konstantinos. Forecasting UK GDP growth and 
+inflation under structural change. A comparison of models with time-varying parameters. International 
+Journal of Forecasting, v. 30, n. 1, p. 129-143, 2014. 
+
+BERNANKE, Ben S.; BOIVIN, Jean; ELIASZ, Piotr. Measuring the effects of monetary policy: a factor-
+augmented vector autoregressive (FAVAR) approach. The Quarterly Journal of Economics, v. 120, n. 1, 
+p. 387-422, 2005. 
+
+BODIE, Zvi; KANE, Alex; MARCUS, Alan J. Investments. New York: McGraw-Hill Education, 2014. 
+
+CARLO,  Thiago  Carlomagno;  MARÇAL,  Emerson  Fernandes.  Forecasting  Brazilian  inflation  by  its 
+aggregate and disaggregated data: a test of predictive power by forecast horizon. Applied Economics, p. 
+1-15, 2016. 
+
+CHAUVET, M. Indicadores Antecedentes da Inflação Brasileira. Pesquisa e Planejamento Econômico, 
+v.31, n.1, p.323-354, 2001. 
+
+DICKEY, David A.; FULLER, Wayne A. Distribution of the estimators for autoregressive time series with 
+a unit root. Journal of the American statistical association, v. 74, n. 366a, p. 427-431, 1979. 
+
+ELLIOTT,  Graham;  TIMMERMANN,  Allan;  KOMUNJER,  Ivana.  Estimation  and  testing  of  forecast 
+rationality under flexible loss. The Review of Economic Studies, v. 72, n. 4, p. 1107-1125, 2005. 
+
+FAUST, Jon; WRIGHT, J. Inflation forecasting. In: Handbook of Economic Forecasting, Elliott, G., and 
+Timmermann, A. North Holland, Amsterdam, 2013. 
+
+FIGUEIREDO, Francisco Marcos Rodrigues et al. Forecasting Brazilian inflation using a large data set. 
+Central Bank of Brazil Working Paper, n. 228, 2010. 
+
+FUERST, Timothy S. Liquidity, loanable funds, and real activity. Journal of monetary economics, v. 29, 
+n. 1, p. 3-24, 1992. 
+
+GAGLIANONE, Wagner Piazza; ISSLER, João Victor; MATOS, Silvia Maria. Applying a microfounded-
+forecasting approach to predict Brazilian inflation. Empirical Economics, p. 1-27, 2016. 
+
+GARCIA, Márcio GP. Política monetária e formação das expectativas de inflação: quem acertou mais, o 
+governo ou o mercado futuro? Pesquisa e Planejamento Econômico, v. 22, n. 3, 1992. 
+
+GARCIA,  Márcio  GP;  MEDEIROS,  Marcelo  C.;  VASCONCELOS,  Gabriel  FR.  Real-Time  Inflation 
+Forecasting With High-Dimensional Models: The Case Of Brazil. In: 16º Encontro Brasileiro de Finanças. 
+Rio de Janeiro, 2016. 
+
+GRANGER, Clive WJ; RAMANATHAN, Ramu. Improved methods of combining forecasts. Journal of 
+forecasting, v. 3, n. 2, p. 197-204, 1984. 
+
+HANSEN,  Peter  Reinhard.  A  test  for  superior  predictive  ability.  Journal  of  Business  &  Economic 
+Statistics, v. 23, i. 4, p. 365-380, 2005. 
+
+HANSEN, Peter R.; LUNDE, Asger; NASON, James M. The model confidence set. Econometrica, v. 79, 
+n. 2, p. 453-497, 2011. 
+
+16 
+
+ 
+
+ 
+
+HENDRY,  David  F.;  DOORNIK,  Jurgen  A.  Empirical  model  discovery  and  theory  evaluation: 
+automatic selection methods in econometrics. MIT Press, 2014. 
+
+HENDRY,  D.  F.;  JOHANSEN,  S.;  SANTOS,  C.  Selecting  a  regression  saturated  by  indicators. 
+Unpublished paper, Economics Department, University of Oxford, 2006. 
+
+HENDRY,  David  F.;  KROLZIG,  Hans‐Martin.  The  properties  of  automatic  Gets  modelling. The 
+Economic Journal, v. 115, n. 502, p. C32-C61, 2005. 
+
+MEDEIROS, Marcelo C.; VASCONCELOS, Gabriel; FREITAS, Eduardo. Forecasting Brazilian Inflation 
+with High-Dimensional Models. Brazilian Review of Econometrics, v. 99, n. 99, 2016. 
+
+NELSON,  Charles  R.  Recursive  structure  in  US  income,  prices,  and  output.  The  Journal  of  Political 
+Economy, p. 1307-1327, 1979. 
+
+ROMER,  D.  Optimal  Monetary  Policy  in  a  Simple  Forward-Looking  Model.  In  ROMER,  D.  (4a  ed.) 
+Advanced Macroeconomics. New York, McGraw-Hill, p.537-542, 2012. 
+
+SACHSIDA,  Adolfo;  RIBEIRO,  Marcio;  SANTOS,  Claudio  Hamilton  dos.  A  curva  de  Phillips  e  a 
+experiência brasileira. Texto para discussão, n.1429, IPEA. 2009.  
+
+SAID,  Said  E.;  DICKEY,  David  A.  Testing  for  unit  roots  in  autoregressive-moving  average  models  of 
+unknown order. Biometrika, v. 71, n. 3, p. 599-607, 1984. 
+
+SILVA,  Anderson  M.  Descobrindo  modelos  de  previsão  para  a  inflação  brasileira:  uma  análise  a 
+partir do algoritmo autometrics. Dissertação de Mestrado em Economia – Escola de Economia de São 
+Paulo, Fundação Getúlio Vargas, São Paulo, 2016. 
+
+SIMS, Christopher A. Macroeconomics and reality. Econometrica, v. 48, n. 1, p. 1-48, 1980. 
+
+STOCK,  James  H.;  WATSON,  Mark  W.  Why  has  US  inflation  become  harder  to  forecast?  Journal  of 
+Money, Credit and banking, v. 39, n. s1, p. 3-33, 2007. 
+
+SWANSON,  Norman  R.;  WHITE,  Halbert.  A  model  selection  approach  to  real-time  macroeconomic 
+forecasting using linear models and artificial neural networks. Review of Economics and Statistics, v. 79, 
+n. 4, p. 540-550, 1997. 
+
+WHITE, Halbert. A reality check for data snooping. Econometrica, v. 68, n. 5, p. 1097-1126, 2000. 
+
+ 
+
+ 
+
+17 
+
+

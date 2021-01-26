@@ -1,0 +1,1499 @@
+Amenidades Urbanas e Valor das Residências: uma Análise Empírica para a Cidade do Recife 
+
+ 
+
+Deborah M. S. Seabra – PIMES/UFPE. seabradms@gmail.com 
+ 
+Raul da Mota Silveira Neto – PIMES/UFPE. rau.silveira@uol.com.br 
+ 
+ 
+Resumo 
+Este  trabalho  fornece  estimativas  da  influências  das  amenidade  urbanas  sobre  o  valor  dos  imóveis 
+residenciais na Cidade do Recife, cidade, entre as capitais do país, particularmente afetada por presença 
+de praias e rios (“a Veneza Brasileira”). Para tal considera um modelo de preços hedônicos com correção 
+para diferentes tipos de dependências espaciais e utiliza rico banco de dados fornecidos pela prefeitura da 
+referida  cidade  do  anos  de  2012  e  informações  adicionais  sobre  amenidades  urbanas.  Em  relação  à 
+literatura brasileira, há três inovações presentes no trabalho. Primeiro, além das características intrínsecas 
+dos imóveis,  o banco de dados utilizado inclui  um  considerável  conjunto de informações a  respeito  das 
+amenidades:    são  utilizadas  informações  da  localização  das  residências  com  respeito  à  vista  do  mar,  à 
+distância  à  praia,  ao  Rio  Capibaribe,  ao  Centro  (CBD),  à  localização  da  ocorrência  de  homicídios,  às 
+Zonas Especiais de Interesse Social (ZEIS), aos parques públicos e às estações metrô da cidade. Segundo, 
+através de exaustivo trabalho de geocodificação dos endereços e amenidades, as informações sobre estas 
+últimas  são  individualizadas,  o  que  permite  maior  precisão  na  medida  da  influência  das  mesmas. 
+Finalmente,  ao  contrário  dos  trabalhos  disponíveis  na  literatura  brasileira  sobre  a  questão,  o  trabalho 
+fornece medidas de impactos diretos e indiretos das variáveis sobre o valor dos imóveis, fundamental na 
+presença  de  dependência  espacial  da  variável  dependente,  uma  vez  que  os  coeficientes  estimados  não 
+mais representam as influências dos regressores. A evidências obtidas indicam que “vista para o mar” e 
+proximidade  ao  rio  (mais  que  proximidade  ao  mar)  são  as  amenidades  mais  valorizadas  na  cidade;  por 
+outro lado, os valores dos imóveis tendem a ser negativamente afetados com a proximidade às ZEIS e a 
+locais de ocorrência de crimes. 
+Palavras-chave: Preços hedônicos, amenidades, econometria especial, Recife. 
+ 
+ 
+Abstract 
+This paper aims to estimate the implicit price of the urban amenities of the city of Recife, located in the 
+Brazilian Northeast. Using data from the Property Transfer Tax (ITBI) for 2012, a hedonic price model 
+with spatial dependence among the observations was estimated. Besides variables describing the property, 
+our database features a second group of information characterizing the neighborhood, with variables that 
+measure  the  degree  of  accessibility,  violence  and  proximity  to  main  urban  amenities  such  as  squares, 
+subway stations, river and the beach. As it could be expected from a tropical city, the results suggest that 
+proximity to the sea entails real estate appreciation. A less obvious evidence can be found if we consider 
+the  Capibaribe  River:  the  distance  to  it  causes  a  devaluation  40%  larger  than  that  derived  from  the 
+distance to the beach. Proximity to parks is related to an 1.2% increase in real estate prices, whereas the 
+Special Zones of Social Interest (ZEIS) and metro stations cause the same prices to decrease by 10% and 
+3.3% respectively. Each homicide case near to property causes market price devaluation of 0.2%. Finally, 
+distance to  downtown shows a nonlinear behavior, causing  a 10%  appreciation when properties located 
+within a short distance to the CBD get 1km farther from downtown, and a 0.5% decrease in the price for 
+those more distant from Marco Zero. Such evidences disclose the important role played by amenities on 
+the  formation  of  real  estate  prices  and  show  that  ignoring  spatial  effects  may  lead  to  misleading 
+conclusions. 
+Keywords: Hedonic prices; Amenities; Spatial econometrics; Recife 
+ 
+Código JEL: R31, R32. 
+ 
+Área Anpec: 10 - Economia Regional e Urbana 
+ 
+
+ 
+Amenidades Urbanas e Valor das Residências: uma Análise Empírica para a Cidade do Recife 
+ 
+1. Introdução 
+ 
+
+É  consenso  entre  os  economistas  que  a  imobilidade  espacial  que  caracteriza  as  residências  e 
+edificações em geral impõe condicionantes adicionais para o entendimento da valoração dos mesmos nas 
+economias de mercado. Primeiro, diferentemente dos bens tradebles, a oferta de residências e edificações 
+é restrita às condições locais de produção. Isto implica que diferenciais espaciais de valores destes bens 
+ou  ativos  persistem  mesmo  sobre  condições  de  livre  mercado.  Como  mostrou  Roback  (1982,  1988),  tal 
+fato,  por  sua  vez,  condiciona  o  valor  dos  salários  reais  das  localidades  e,  assim,  é  fundamental  para 
+entender  a  arbitragem  espacial  dos  trabalhadores  e  firmas  entre  localidades  alternativas.  Em  segundo 
+lugar,  o  caráter  de  imobilidade  também  implica  que  o  consumo  destes  bens  ou  ativos,  ou  dos  serviços 
+derivados  dos  mesmos,  não  pode  ser  dissociado  da  influência  do  ambiente  natural  ou  social  em  que  os 
+mesmos  estão  localizados.  Isto  significa  que  a  valoração  e  os  preços  dos  mesmos,  diferentemente 
+daqueles bens onde a dimensão espacial é irrelevante para seu consumo, tendem a refletir não apenas as 
+características  intrínsecas  destes,  mas  também  as  condições  do  ambiente  natural  e  social  de  sua 
+localização no espaço (Rosen, 1974).  
+
+Hoje,  embora  não  haja  dúvidas  que  as  especificações  de  um  imóvel,  tais  como  metragem 
+quadrada, número de quartos e área de lazer, alteram seu preço, há um consenso de que fatores exógenos 
+como  a  sua  localização,  a  qualidade  da  vizinhança  e  a  facilidade  de  acesso  ao  centro,  modificam  as 
+decisões  de  moradia  dos  agentes  econômicos  (Sheppard,  1999).  O  desafio,  porém,  persiste  quando  se 
+procura  precificar  empiricamente  tais  amenidades  urbanas.  Apesar  do  mercado  se  encarregar  da 
+determinação  dos  preços  de  equilíbrio  dos  aspectos  ambientais  que  transpassam  as  fronteiras  físicas  de 
+um  imóvel,  a  inexistência  das  conhecidas  curvas  de  oferta  e  demanda  impossibilitam  o  conhecimento 
+direto de tais valores. A precificação dos imóveis exige, pois, uma estratégia que permita a revelação da 
+influência do ambiente neste contexto de ausência de informação via mercado. 
+
+Nessas  circunstâncias,  o  modelo  de  preços  hedônicos  desenvolvido  por  Court  (1939)  é 
+particularmente importante na valoração das amenidades. O termo hedônico, cunhado pelo próprio autor, 
+se referia à mensuração da importância relativa dos componentes automotivos, de tal forma que alterações 
+de preços devido a mudanças na especificação do veículo poderiam ser calculadas dividindo o seu valor 
+final pelo referido índice hedônico. Posteriormente expandido e consolidado por Rosen (1974), o modelo 
+é amplamente utilizado para mensurar a disposição marginal de um consumidor a pagar por determinada 
+característica do bem. No caso imobiliário, essa metodologia é capaz de estimar como e em que dimensão 
+a  alteração  do  espaço  urbano  impacta  no  valor  das  moradias,  oferecendo,  assim,  ferramentas  para  que 
+possam  ser  desenhadas  políticas  públicas  que  visem  o  aumento  do  bem-estar  dos  indivíduos.  Talvez  a 
+descoberta  mais  instigante  no  trabalho  de  preços  hedônicos  durante  as  últimas  décadas  tenha  sido  o 
+crescente interesse e aplicação de técnicas de econometria espacial (Wihelmsson, 2002). 
+
+De fato, estimações dos valores dos atributos locais a partir de regressões baseadas no modelo de 
+preços  hedônicos  tem  sido  largamente  levadas  a  cabo  para  diversas  localidades  em  diferentes  países 
+(Dubin, 1990; Can, 1992; Benson et al, 1998; Kim et al., 2003; Cohen e Coughlin, 2008; Fuhrer, 2012), 
+inclusive para algumas cidades brasileiras (Macedo e Simões, 1998; Hermann e Haddad, 2005; Dantas, et 
+al.,  2007;  Pontes  et  al.,  2011),  com  os  resultados,  em  geral,  confirmando  a  importância  dos  atributos 
+locais para precificação dos imóveis. 
+
+Ao  menos  três  dificuldades,  porém,  persistem  nestas  investigações  empíricas.  Primeiro, 
+regularmente, há dificuldades na obtenção de dados para todas as localidades dos mercados urbanos em 
+análise, o que restringe a análise dos resultados a poucas vizinhanças e impede a incorporação adequada 
+dos efeitos de contágio (spillovers) entre as vizinhanças. Uma fragilidade adicional deriva da necessidade 
+de escolha das características ambientais a serem precificadas pelo pesquisador, o que, em geral, tende a 
+ser  condicionada  pela  disponibilidade  de  informação.  Finalmente,  a  quase  totalidade  dos  trabalhos 
+empíricos  não  apresentam  uma  análise  adequada  dos  spillovers  espaciais  associados  à  dependência 
+espacial no preço dos imóveis vizinhos, para o efeito das variáveis ambientais sobre o valor dos imóveis. 
+
+ 
+
+Como  mostraram  recentemente  LeSage  e  Pace  (2009),  quando  da  presença  de  dependência  espacial  na 
+variável dependente (preço do imóvel, por exemplo), a influência das variáveis explicativas sobre o valor 
+dos imóveis pode diferir significativamente do valor dos coeficientes estimados nas regressões. 
+
+Ciente  destas  dificuldades,  o  objetivo  do  presente  estudo  é  estimar  o  preço  implícito  das 
+amenidades e desamenidades urbanas da cidade do Recife, Brasil, informação decisiva para uma melhor 
+compreensão do mercado de habitação e da configuração espacial da cidade. Na verdade, a despeito das 
+caraterísticas  bastante  diferenciadas  de  seus  bairros,  muito  pouco  se  conhece  sobre  a  importância  das 
+amenidades da cidade para valoração dos imóveis no caso  do Recife. Situada entre as mais importantes 
+capitais do Nordeste e sendo a sexta maior cidade do Brasil, a cidade é particularmente interessante de ser 
+estudada pois,  além de sua configuração claramente monocêntrica, ela possui duas fortes características 
+naturais–  o  Rio  Capibaribe  e  a  Praia  de  Boa  Viagem.  Além  de  vizinhanças  com  caraterísticas  naturais 
+bem  diferenciadas,  a  cidade  também  apresenta  marcadas  diferenciações  espaciais  com  respeito  às 
+características  sociais.  Neste  sentido,  note-se  que  Recife  é  a  quinta  colocada  no  ranking  de  óbito  por 
+armas  de  fogo  e  está  entre  as  50  cidades  mais  violentas  do  país  (Mapa  da  Violência,  2013).  Como 
+mostraram  recentemente  Menezes  et  al.  (2013),  tal  situação  quanto  à  violência  apresenta  padrões 
+espaciais bastante diferenciados. 
+
+Certamente, tais características da cidade motivaram Dantas et al. (2007) em seu pioneiro estudo 
+sobre  o  valor  das  amenidades  na  cidade  do  Recife.  À  luz  das  limitações  apontadas  acima,  contudo,  o 
+referido trabalho apresenta algumas limitações. Primeiro, utiliza uma amostra de vendas de imóveis com 
+menos  de  250  observações  obtidas  de  um  banco  público  (Caixa  Econômica  Federal)  por  serem 
+financiadas  pelo  mesmo;  em  segundo  lugar,  o  trabalho  considera  um  número  reduzido  de  variáveis 
+ambientais; por fim, o trabalho deixa de considerar a influência da dependência ou spillovers espaciais na 
+interpretação dos resultados encontrados. 
+
+No  presente  trabalho,  as  dificuldades  e  limitações  acima  são  substantivamente  minimizadas  a 
+partir da utilização de uma base de dados obtida junto à Prefeitura da Cidade do Recife (PCR), derivada 
+do ITBI, com 9683 transações imobiliárias residenciais realizadas no ano de 2012, cobrindo cerca de 90% 
+dos  bairros  da  cidade.  Além  disto,  com  a  consideração  de  nove  distintas  características  ambientais 
+especificamente  associada  à  cada  observação,  através  de  georreferenciamento  e  cálculo  de  distâncias,  o 
+trabalho procurou incluir um conjunto abrangente de amenidades naturais e sociais presentes na cidade. 
+Ao  considerar  a  dependência  espacial  e  medir  os  efeitos  diretos  e  indiretos  das  variáveis,  a  pesquisa  é 
+também pioneira no Brasil na mensuração adequada das influências das amenidades urbanas sobre o valor 
+dos imóveis  da  cidade do Recife  em  situação em que a dependência  espacial se faz presente através da 
+variável dependente. 
+
+Esse artigo está dividido em mais cinco seções, além dessa introdução. A Seção 2 apresenta uma 
+breve  revisão  dos  estudos  disponíveis  na  literatura  internacional  e  nacional  sobre  a  influência  das 
+amenidades sobre os valores dos imóveis. Na seção 3 é apresentada a metodologia utilizada na pesquisa e, 
+na seção 4, é apresentada e discutida a base de dados utilizada na pesquisa. A seção 5 apresenta e discute 
+os resultados da pesquisa.  Finalmente, na seção 6, são apresentadas as conclusões da investigação. 
+ 
+ 
+2. Valor das amenidades urbanas: as evidências disponíveis 
+ 
+
+A precificação de amenidades não é novidade na literatura de Economia Urbana.  Roback (1982, 
+1988),  buscando  suporte  para  sua  teoria  de  salários  compensatórios  e  a  partir  da  proposta  de  preços 
+hedônicos  de  Rosen  (1974),  certamente  figura  como  uma  das  pioneiras  a  explorar  empiricamente  a 
+importância  das  características  locais  sobre  os  valores  dos  imóveis  das  cidades  americanas.  Após  suas 
+investigações iniciais, um grande número de pesquisadores, em diferentes contextos, buscaram evidências 
+empíricas para a influência de diferentes tipos de características locais sobre os valores das residências. 
+
+Dubin  (1990),  Can  (1992)  e  Basu  e  Thibodeau  (1998)  são  alguns  dos  artigos  seminais  que 
+buscaram  compreender  como  os  indivíduos  atribuem  valor  às  características  ambientais.  Além  desses, 
+outros  artigos  mais  recentes  vem  tratando  do  mesmo  tema.  Benson  et  al.  (1998)  precificaram  os  vários 
+tipos  de  vista  existentes  em  Bellinghan,  Washington  –  oceano,  lago  e  montanha.  O  trabalho  de  campo 
+
+ 
+
+realizado pelos autores permitiu a classificação da qualidade das vistas, sendo um diferencial em relação a 
+outros  estudos  previamente  realizados.  Como  esperado,  os  valores  dos  imóveis  aumentam  em  8%  por 
+uma  vista  pobre  para  o  oceano  a  até  58%  por  uma  vista  completa  para  o  mar,  enquanto  propriedades  à 
+beira de lagos são valorizadas em mais de 125%. 
+
+Seguindo essa linha, Luttik (2000) identificou quais fatores ambientais são atrativos à moradia em 
+oito cidades dos Países Baixos. Com dados de mais de três mil transações de venda e um extenso trabalho 
+de identificação local via mapas e visita às residências, o autor construiu um indicador de localidade. Para 
+tanto,  regrediu  o  preço  do  imóvel  sobre  suas  características  intrínsecas  ambientais  e  posteriormente 
+calculou a razão entre o preço estimado e o preço real de venda. Num segundo estágio, o autor utilizou 
+esses  indicadores  como  variáveis  explicativas  do  valor  do  imóvel.  Os  resultados  mostram  que  a  maior 
+valorização se deu na presença de água nas redondezas do imóvel, mas que espaços abertos e paisagens 
+agradáveis também exercem efeitos positivos no preço da residência.  
+
+No caminho oposto, visando precificar desamenidades, Kim  et al. (2003) mediram os benefícios 
+de se morar em áreas menos poluídas em Seul. Através de uma abordagem espacial de preços hedônicos, 
+os autores mostraram que quanto maior a concentração de SO2 no ar, menor o preço dos imóveis. Mais 
+tarde, Cohen e Coughlin (2008) utilizaram vários modelos espaciais de preços hedônicos para examinar o 
+impacto do barulho advindo do aeroporto de Atlanta, o segundo maior do mundo em movimentação, no 
+preço  das  residências.  Os  resultados  mostraram  que  o  valor  das  residências  que  são  mais  afetadas  pelo 
+barulho  cai  em  mais  de  20%  quando  comparados  àquelas  que  enfrentam  níveis  normais  de  distúrbios 
+sonoros. 
+
+Recentemente, Fuhrer (2012) aplicou dois modelos diferentes de preços hedônicos para o Cantão 
+de  Zurich  a  fim  de  precificar  atributos  ambientais.  O  autor  concluiu  que  a  distância  e  visibilidade  para 
+algumas  amenidades  tais  como  lago,  parques  e  montanhas  são  importantes  para  determinar  o  valor  dos 
+aluguéis. As desamenidades também possuem efeito significante no valor mensal pago pelos moradores, 
+pois os indivíduos estão dispostos a pagar pela redução no barulho advindo de estradas e trilhos de trem. 
+Mais importante, ele destaca que melhoras em determinadas características ambientais podem aumentar o 
+espaço habitado por pessoa e o espraiamento urbano, elevando assim o tempo gasto com commuting. 
+
+No  Brasil,  alguns  estudos  foram  conduzidos  aplicando  a  metodologia  de  preços  hedônicos  na 
+valoração  de  amenidades  e  desamenidades  urbanas.  Macedo  e  Simões  (1998)  é  um  dos  primeiros 
+trabalhos a tratar de amenidades incorporando a questão espacial. Com dados  das unidades espaciais de 
+Belo Horizonte, os autores procuram explicar, dentre outras coisas, qual a importância da vizinhança na 
+determinação das características da moradia e de serviços urbanos de cada unidade de planejamento (UP). 
+A  importante  contribuição  dos  autores  vem  com  a  utilização  de  outro  critério  de  vizinhança  além  da 
+contiguidade geográfica, estabelecendo que apenas regiões cujo  acesso  estivesse a até 60 minutos umas 
+das outras seriam positivamente ponderadas na estimação dos modelos. Os resultados gerais encontrados 
+mostram  que  a  matriz  de  acessibilidade  se  aplica  melhor  ao  modelo  de  serviços,  enquanto  a  matriz  de 
+contiguidade se aplica melhor ao modelo de habitação. 
+
+Hermann  e  Haddad  (2005)  realizam  testes  para  dois  tipos  de  configurações  da  cidade  de  São 
+Paulo,  monocêntrica  e  duocêntrica,  utilizando  em  um  primeiro  momento  variáveis  explicativas  puras  e 
+depois  fatores  capazes  de  condensar  os  aspectos  ambientais,  para  diminuir  o  problema  de 
+multicolinearidade.  Através  de  dados  da  POF  para  o  ano  de  1999,  os  autores  concluíram  que  a 
+proximidade  às  estações  de  trem,  a  presença  de  áreas  verdes  e  o  zoneamento  urbano  estritamente 
+residencial  valorizam  o  imóvel,  enquanto  a  criminalidade  reduz  o  seu  valor.  Já  Teixeira  e  Serra  (2006) 
+mensuraram a disposição marginal a pagar para residir em locais considerados mais seguros na cidade de 
+Curitiba,  coletando  os  valores  de  locação  dos  imóveis  através  de  um  jornal  eletrônico.  Quatro  modelos 
+foram estimados através do método de OLS e os autores concluíram que, em geral, o impacto da taxa de 
+roubos e furtos na desvalorização do imóvel é maior do que a de homicídios. A mesma análise foi feita 
+por  Pontes  et  al.  (2011)  para  a  cidade  de  Belo  Horizonte.  Utilizando  dados  do  ITBI  de  2004,  eles 
+concluíram que uma redução nas taxas de homicídio tem um impacto menor que uma redução na mesma 
+magnitude nas taxas de roubos a transeuntes na valoração imobiliária. 
+
+Para a cidade do Recife, Dantas et al. (2007) utilizaram dados concedidos pela Caixa Econômica 
+Federal (CEF) para apartamentos vendidos entre os anos de 2000 e 2002, afim de valorar alguns atributos 
+
+ 
+
+da cidade. A partir de um modelo OLS, eles concluíram que os imóveis se desvalorizam entre 6% e 8% à 
+medida  que  se  distanciam  do  parque  da  Jaqueira  e  da  praia,  respectivamente.  Os  autores  encontraram 
+ainda evidências de dependência espacial no preço dos imóveis e, após a estimação de um modelo SAR 
+por máxima verossimilhança, perceberam uma redução dos preços implícitos de certas amenidades. 
+
+Como  já  adiantado,  a  presente  pesquisa  se  diferencia  do  trabalho  de  Dantas  et  al.  (2007)  em  três 
+decisivos aspectos. Primeiro, emprega-se dados do ITBI para o universo de vendas formais imobiliárias 
+ocorridas  em  Recife  em  2012,  isto  é,  mais  de  nove  mil  transações,  em  contraste  às  menos  de  250 
+observações  do  trabalho  anterior.  Segundo,  a  investigação  aqui  conduzida  abrange  um  conjunto  de 
+amenidades  maior  e que tradicionalmente são considerados na literatura.  Finalmente, além  de empregar 
+novas  ferramentas  de  georreferenciamento  com  respeito  a  tais  amenidades  e  aos  imóveis,  a  partir  do 
+desenvolvimento da econometria espacial, o trabalho emprega novas medidas para mensurar a relevância 
+das variáveis sobre o valor dos imóveis, o que permite a obtenção de medidas mais precisas deste efeitos 
+e influências. 
+
+ 
+
+3. Estratégia Econométrica 
+
+ 
+A  metodologia  utilizada  nesse  artigo  se  baseia  na  modelagem  desenvolvida  por  Rosen  (1974), 
+conhecida  como  regressão  hedônica,  a  partir  da  qual  podem  ser  estimados  os  preços  implícitos  de 
+determinados atributos através de características observáveis. Por ser uma função conjunta que determina 
+o  equilíbrio  de  mercado,  tal  abordagem  não  é  capaz  de  identificar  individualmente  as  preferências  do 
+consumidor  nem  a  tecnologia  de  produção  do  produtor.  Assim,  para  a  avaliação  de  imóveis,  podemos 
+considerar  que  a  função  hedônica  assume  a  forma                ,  onde  P,  o  valor  de  mercado  da 
+moradia,  é  função  de  H,  que  designa  o  conjunto  de  características  estruturais  do  imóvel,  de  A,  que 
+representa as amenidades ambientais e de N, que caracteriza a vizinhança na qual o imóvel está situado. 
+
+Há dois problemas tradicionais associados à estimação do modelo de preços hedônicos: a escolha 
+da  forma  funcional  e  a  heteroscedasticidade  do  componente  estocástico,  este  último  causando  distorção 
+na  variância  dos  estimadores  e  perda  de  confiabilidade  nos  testes  de  hipóteses  usuais.  Para  contornar 
+essas  dificuldades,  foram  empregadas  duas  estratégias.  A  primeira  delas  foi  seguir  o  teste  da 
+transformação de Box-Cox1 e utilizar a especificação semi-log, pois, além de permitir que os coeficientes 
+estimados sejam interpretados como variações percentuais aproximadas, ela causa a redução da variância 
+quando comparada com a especificação linear (Follain e Mapezzi, 1980). Além disso, segundo Cropper et 
+al  (1988),  caso  algum  atributo  importante  tenha  sido  omitido  na  definição  da  função  hedônica,  essa 
+especificação  apresenta  resultados  mais  precisos.  A  segunda  técnica  foi  a  utilização  do  estimador  HC0 
+sugerido por White (1980) para obter resultados robustos à heteroscedasticidade. 
+
+Após  a  estimação  por  OLS  da  função  de  preços  hedônicos,  é  preciso  saber  se  há  algum  tipo  de 
+dependência espacial no objeto de estudo, isto é, se o valor de um imóvel está correlacionado com o de 
+outras  propriedades  da  região.  A  desconsideração  de  efeitos  espaciais  na  análise  pode  levar  à  perda  de 
+eficiência  nas  estimações  e  a  resultados  viesados.  A  fim  de  detectar  a  presença  clusters  no  arranjo 
+espacial de uma dada variável, é preciso calcular o índice de Moran (Moran, 1950). Sendo confirmada a 
+presença de efeitos espaciais, é preciso modelar essa dependência. 
+
+LeSage (1999) discorre sobre os métodos de modelagem de dependência espacial, conhecidos na 
+literatura  como  Spatial  Autoregressive  Models.  O  modelo  mais  simples,  chamado  de  Spatial 
+Autoregressive  Lag  Model  (SAR),  insere  o  termo  de  defasagem  espacial  na  variável  dependente,  isto  é, 
+                   , onde ρ é o coeficiente que captura as interações espaciais, W1 é a matriz de pesos 
+espaciais  escolhida  e  X  é  o  vetor  contendo  as  variáveis  explanatórias  da  função  hedônica.  O  ρ  tem  por 
+objetivo  mensurar  esses  spillovers  espaciais  e  sua  não  significância  implica  a  volta  ao  modelo  OLS.  É 
+plausível  também  admitir que a dependência espacial está presente tanto na variável  dependente quanto 
+no termo de erro, isto é, o valor de um imóvel estaria relacionado não só com o valor do imóvel vizinho, 
+mas  também  com  as  características  do  vizinho  que  não  são  captadas  pelo  modelo  especificado.  A  esse 
+modelo dá-se o nome de Spatial Mixed Regressive Autoregressive Complete (SAC), cuja forma funcional 
+                                                           
+1  Apesar  do  valor  de  lambda  que  maximiza  a  verossimilhança  do  modelo  escolhido  ser  0.22,  utilizou-se  sem  perda  de 
+generalidade λ=0, dada às dificuldades de interpretação advindas com esse tipo de transformação da variável dependente. 
+
+ 
+
+é  dada  por                     ,              .  Quando  a  matriz  W1  é  igual  à  matriz  W2,  o  modelo 
+recebe  o  nome  de  Spatial  Autoregressive  Moving  Average  Model  (SARMA).  Por  simplicidade,  os  dois 
+modelos serão denominados de SAC. 
+
+A endogeneidade gerada pelo termo defasado espacial faz com que os modelos SAR e SAC não 
+possam  ser  estimados  via  OLS,  uma  vez  que  seus  estimadores  seriam  viesados.  Para  contornar  esse 
+problema,  esses  modelos  são  comumente  estimados  por  máxima  verossimilhança  (ML),  que  faz  uso  de 
+métodos  iterativos  para  maximização  da  função,  pois  seus  parâmetros  não  possuem  forma  fechada. 
+Entretanto, devido à não-normalidade dos resíduos2 e ao grande número de observações da base de dados 
+utilizada, esse trabalho aplica as técnicas de variável instrumental e método dos momentos para estimação 
+dos  modelos,  sugeridas  por  Kelejian  e  Prucha,  (1998;  1999)  e  denominadas  respectivamente  de  spatial 
+two-stages  least  squares  (STSLS)  e  generalized  spatial  two-stages  least  squares  (GSTSLS).  Além  da 
+conveniência computacional, em ambos os casos não é necessária a hipótese de normalidade dos resíduos 
+e é possível  permitir versões robustas das estimações, ao contrário do estimador de ML. Apesar de não 
+estimar o coeficiente de correlação espacial nos resíduos, as estimativas dos parâmetros são consistentes, 
+não viesadas e assintoticamente normais mesmo na presença de erros autocorrelacionados espacialmente 
+(Tyszler, 2006). 
+
+Para  avaliar  a  autocorrelação  espacial  nos  modelos  definidos  acima,  é  preciso  criar  uma  medida 
+capaz de mensurar o vínculo existente entre duas ou mais observações afim de construir a matriz de pesos 
+espaciais, W. Como já explicitado previamente, a unidade de estudo nesse trabalho é a mais particionada 
+possível – o imóvel per se – de modo que não cabe a aplicação das tradicionais matrizes queen e rook na 
+sua  forma  estrita.  Devido  à  falta  de  fundamentação  teórica,  optou-se  também  por  não  trabalhar  com  a 
+matriz de k-vizinhos mais próximos (Anselin, 2002). Por conseguinte, nesse estudo foi utilizada a matriz 
+de  distância,  que  considera  vizinhos  apenas  as  observações  situadas  dentro  de  um  raio  pré-definido. 
+Seguindo  a literatura recente acerca do tema que está propondo raios  para ponderação de vizinhos cada 
+vez  menores  (Gerardi  et  al,  2012,  Campbell  et  al,  2009),  optou-se  por  trabalhar  com  a  matriz  onde 
+considera  vizinhas  todas  as  todas  as  propriedades  situadas  dentro  de  um  raio  de  1.5  km  (1  mile)  do 
+imóvel. É importante frisar que Recife tem barreiras físicas muito marcantes, como o Rio Capibaribe, o 
+que  faz  com  que  bairros  geograficamente  vizinhos  estejam  desconectados,  criando  em  alguns  casos 
+grandes disparidades socioeconômicas.  
+
+Diferente  de  um  modelo  clássico  de  regressão  linear  no  qual  os  coeficientes  são  interpretados 
+como  derivadas  parciais  em  relação  à  variável  dependente,  os  estimadores  dos  modelos  SAR  e  SAC 
+possuem  uma  interpretação  mais  elaborada  devido  a  presença  dos  spillovers  espaciais.  Sendo  assim,  é 
+preciso  desmembrá-los  em  impactos  diretos,  indiretos  e  totais  (as  derivadas  podem  ser  encontradas  em 
+LeSage  e  Pace,  2009).  O  impacto  direto  é  uma  medida  sintética  que  captura  a  média  dos  efeitos  da 
+observação  i  sobre  ela  mesma  (derivada  parcial  de  yi  em  relação  a  xi)  e  é  dada  pelo  traço  da  diagonal 
+principal de Sr(W), ou seja,                      , onde       = (In –  W)-1In  r  e n é o número de 
+observações.  Essa  medida  deve  ser  interpretada  de  forma  similar  aos  coeficientes  de  um  modelo  OLS, 
+uma  vez  que  representa  a  resposta  média  da  variável  dependente  em  relação  às  independentes.  Já  o 
+impacto total mede o efeito médio de todas as observações j incorporadas na matriz de vizinhança sobre 
+a observação i, incluído seu próprio efeito (derivadas parciais de yi em relação a xj para todo i, j). É dado 
+por               
+         , onde    é um vetor coluna unitário. Por fim, o impacto indireto mensura a 
+influência  média  das  observações  vizinhas  sobre  a  observação  i  (derivada  parcial  de  yi  em  relação  a  xj 
+para  todo  i  ≠  j).  Matematicamente  é  dado  pela  diferença  entre  os  efeitos  total  e  direto,  isto  é         
+             . 
+
+Uma  crítica  recorrente  à  utilização  dos  modelos  espaciais  é  a  da  volatilidade  dos  resultados  em 
+relação  à  escolha  da  matriz  de  ponderação.  Entretanto,  tal  parecer  é  muitas  vezes  baseado  em 
+interpretações  errôneas  dos  resultados  obtidos  nas  estimações  dos  modelos  SAR  e  SAC.  Modelos 
+diferindo  apenas  na  matriz  de  peso  espacial  podem  apresentar  valores  diferentes  de  ρ  e  β,  mas,  para 
+grandes amostras, eles devem reportar medidas de impacto semelhantes caso não haja má especificação 
+do  modelo  (LeSage  e  Pace,  2012).  Desse  modo,  esse  artigo  se  preocupa  em  explorar  os  efeitos  médios 
+
+                                                           
+2 Estatística do teste de Jarque-Bera= 21989.8; df = 2; P-valor < 2.2e-16 
+
+ 
+
+totais  das  variáveis  ambientais  sobre  o  valor  dos  imóveis  da  cidade,  que  são  reproduzidos  na  próxima 
+seção.  
+ 
+
+4. Dados e Análise Descritiva 
+ 
+
+Um problema comum na definição da função de preços é a escolha das variáveis explicativas que 
+devem  compô-la.  Sirmans  et  al  (2005)  fazem  um  extenso  apanhado  bibliográfico  com  os  principais 
+trabalhos  internacionais  acerca  do  tema,  listando  os  atributos  que  são  recorrentes  na  literatura.  Idade, 
+metragem  quadrada,  tamanho  do  lote  e  presença  de  vaga  de  garagem  são  as  características  físicas  do 
+imóvel mais citadas nos trabalhos, assim como vista para o mar, distância ao centro e criminalidade são as 
+mais  frequentemente  usadas  para  captar  o  efeito  do  meio  ambiente  e  da  vizinhança.  Assim,  para  a 
+elaboração desse trabalho foram utilizados três conjuntos de dados: o ITBI, shapefiles representativos das 
+amenidades da cidade e a base de Crimes Violentos Letais e Intencionais (CVLI). 
+
+A base de dados do  ITBI,  fornecida pela PCR, contém 9683 transações imobiliárias residenciais 
+realizadas no ano de 2012 em Recife e abrange cerca de 90% dos bairros da cidade. O ITBI é o imposto 
+sobre  a  transmissão  de  bens  imóveis  ou  de  direitos  reais  sobre  imóveis,  por  ato  oneroso  entre  vivos. 
+Trata-se  de  um  tributo  atribuído  aos  municípios  pela  Constituição  da  República  (art.  156,  II)  e  seu 
+pagamento  é  condição  indispensável  para  o  registro  no  cartório  de  um  imóvel  adquirido.  Em  Recife,  o 
+imposto consiste em uma alíquota de 2% no valor de mercado da propriedade, avaliada pelos auditores da 
+Secretaria de Finanças a pedido do contribuinte com base em critérios técnicos estabelecidos nas normas 
+da  ABNT.  Não  havendo  a  fiscalização,  a  referência  para  o  cálculo  do  imposto  é  o  maior  valor  entre  o 
+declarado  pelo  contribuinte  e  o  de  imóveis  com  características  estruturais  semelhantes  que  tenham  sido 
+negociados  nos  últimos  de  3  meses  na  mesma  localização.  Durante  o  registro  em  cartório  são  colhidas 
+informações detalhadas sobre características estruturais de cada imóvel.   
+
+Ainda pouco utilizados na literatura, o uso desses dados traz algumas vantagens à pesquisa. Por se 
+tratar  do  universo  de  transações  registradas  em  cartório,  a  quantidade  e  diversidade  de  informações 
+disponíveis costuma ser bem maior que a conseguida por outras fontes, abrangendo quase toda a cidade. 
+Além disso, os preços contidos nesse conjunto de dados tendem a ser mais próximos dos valores de fato 
+transacionados, uma vez que a subavaliação é economicamente desestimulada devido a cobrança de um 
+imposto  sobre  o  ganho  com  valorização  em  caso  de  venda  futura  do  imóvel,  e  a  sobreavaliação  traz 
+prejuízos  ao  comprador,  pois  será  pago  um  valor  mais  alto  de  IPTU.  Isso  mostra  que  os  valores  dos 
+imóveis  registrados  na  base  do  ITBI  são  tão  bons  ou  ainda  mais  próximos  do  valor  de  mercado  que 
+aqueles  do  IPTU,  já  que  são  mais  atuais  e  sujeitos  a  maior  fiscalização  dos  agentes  envolvidos  e  são 
+melhores que aqueles de oferta (anúncios no jornal, por exemplo) uma vez que também refletem o lado da 
+demanda. Uma limitação na utilização dessa base de dados é sua abrangência restrita ao mercado formal, 
+que acaba por não representar de maneira adequada a população de mais baixa renda (Aguiar e Simões, 
+2012). 
+
+Para  elaboração  desse  trabalho  foi  fundamental  o  georreferenciamento  de  cada  um  dos  imóveis 
+contidos  na  base  de  dados,  procedimento  esse  que  consistiu  em  localizar  no  espaço  todos  esses  pontos 
+através de sua latitude e longitude. Toda transação de venda da base de dados do ITBI contém o endereço 
+do  imóvel  e  a  ele  foi  atribuído  um  par  de  coordenadas  geográficas  no  sistema  geodésico  GWS84,  que 
+posteriormente  foi  projetado  para  sistema  de  projeção  utilizado  pela  Prefeitura  da  Cidade  do  Recife.  A 
+Figura 1 apresenta a distribuição espacial dos 9683 imóveis vendidos em Recife no ano de 2012. A área 
+destacada em vermelho indica a localização do central business district da cidade. É possível notar que há 
+uma forte aglomeração das vendas na  Zona Sul da cidade, especialmente no bairro de Boa Viagem, que 
+concentra a maior parte das transações, com 2324 imóveis comercializados. Na Zona Oeste, destaca-se o 
+bairro  da  Madalena,  com  566  imóveis  vendidos.  Os  bairros  da  Zona  Norte  que  margeiam  o  Rio 
+Capibaribe representam juntos 20,5% das vendas do período em questão.  
+
+ 
+
+ 
+
+Figura 1 – Distribuição espacial dos imóveis vendidos em 2012 
+Fonte: Elaborado pela autora baseado no georreferenciamento da base do ITBI 
+
+ 
+
+ 
+
+Desse modo, foram retirados da base de dados do  ITBI, além do valor dos imóveis, as seguintes 
+características estruturais dos mesmos: área construída (areaconst), tipo de imóvel (apt) – 1 indica que é 
+um  apartamento,  0  que  é  uma  casa  –  andar  em  que  ele  se  situa  (andar),  quantidade  de  pavimentos 
+(pavimentos) e de unidades (unidades) no edifício, padrão de construção (padrao) e idade (idade). 
+
+Para construção das variáveis relativas ao ambiente e à vizinhança foi preciso também localizar no 
+mapa  os  atributos  físicos  da  cidade.  Esse  método  residiu  em  delimitar  espacialmente  a  área  do  Rio 
+Capibaribe, da orla de Brasília Teimosa, Pina e Boa Viagem (aqui denominada genericamente de “Praia 
+de  Boa  Viagem”),  das  praças  e  parques  escolhidos  e  das  ZEIS,  através  da  manipulação  dos  shapefiles 
+fornecidos pela PCR no software ArcGIS 10.2. No caso das estações de metrô e integrações de ônibus da 
+cidade,  foi  necessário  mapeá-las  manualmente,  pois  não  foi  disponibilizado  pelo  Governo  do  Estado  o 
+shapefile  do  sistema  de  transporte  público  da  cidade.  Tendo  feito  isso,  foi  possível  calcular  a  distância 
+euclidiana  de  cada  imóvel  para  todas  as  amenidades  urbanas  supracitadas  e  adicioná-las  com  variáveis 
+explicativas no modelo hedônico. 
+
+Assim, para captar o efeito do ambiente na formação de preços dos imóveis foram escolhidos os 
+seguintes  atributos:  imóvel  possui  vista  para  o  mar  (vistamar),  imóvel  está  localizado  a  beira-rio 
+(beirario), distância à praia (dist_praia), distância ao Rio Capibaribe (dist_rio) e distância ao parque ou 
+praça mais próximo (dist_parq).  
+
+Definiu-se  que  possuem  vista  para  o  mar  aqueles  imóveis  cuja  varanda  ou  janela  da  sala  são 
+contemplados com uma vista desobstruída para o oceano. Analogamente, estão à beira-rio aqueles em que 
+não há qualquer tipo de construção entre o imóvel e o Rio Capibaribe. Enquanto a primeira variável tenta 
+assimilar primordialmente a beleza do cenário, a segunda busca captar as vantagens da plena e definitiva 
+circulação  de  ar.  Essas  duas  variáveis  foram  construídas  a  partir  de  um  extenso  trabalho  manual.  Para 
+vista ao mar, foi necessário fazer um trabalho de campo que constituiu em realizar uma visita a todos os 
+imóveis  da  base  que  se  encontravam  no  quarteirão  contíguo  à  praia,  incluídas  as  ruas  paralelas  e 
+transversais  à  avenida  localizada  a  beira-mar.  Tal  pesquisa  precisou  ser  feita  devido  à  existência  de 
+apartamentos cuja varanda encontra-se virada para outros locais que não o calçadão. Isso acontece quando 
+o prédio possui mais que um apartamento por andar, sendo mais frequente quando existem mais de dois 
+imóveis por pavimento.  
+
+Para a variável beirario foram selecionadas a priori, via Google Maps, todas as ruas da cidade que 
+estavam  nos  arrabaldes  do  Rio  Capibaribe.  Depois,  no  software  ArcGis  10.2,  foram  sobrepostos  os 
+
+ 
+
+shapefiles  de  lotes  e  logradouros  do  Recife  nas  imagens  de  satélite  fornecidas  pelo  Google  (2012)  e 
+assim, rua por rua, foram sendo identificados os números dos lotes que estavam nas proximidades do rio e 
+não tinham outras propriedades à sua frente. Por fim, tendo anotado todos os endereços de imóveis que 
+poderiam ser classificados como estando à beira-rio, foi possível identificar na base do ITBI quais deles 
+haviam sido transacionados naquele ano. 
+
+Por  fim,  os  parques  considerados  tiveram  como  critério  de  seleção  aspectos  que  vão  além  do 
+conforto proporcionado pela arborização e beleza arquitetônica. Prezou-se por selecionar aqueles que são 
+frequentados  primordialmente  com  a  finalidade  de  exercer  atividades  de  lazer,  tais  como  caminhadas, 
+prática de atividades esportivas e recreação infantil. Por essa razão, das praças e parques do Recife foram 
+escolhidos apenas a Praça de Casa Forte, o Parque da Jaqueira e o Parque Dona Lindu. 
+
+Caracterizando  a  vizinhança  e  a  localização,  foram  incluídas  na  base  de  dados  variáveis  que 
+medem distância ao centro de negócios (dist_centro), distância à ZEIS mais próxima (dist_zeis), distância 
+à estação de metrô ou integração de ônibus mais próxima (dist_metro) e número de homicídios ocorridos 
+dentro de um raio de 1.5 km do imóvel (crime_15). Optou-se ainda por inserir a variável de distância ao 
+centro  ao  quadrado  (dist_centro2)  para  tentar  capturar  um  efeito  cada  vez  mais  comum  nos  grandes 
+centros urbanos de  configuração  monocêntrica. Se por um  lado  a proximidade ao  centro implica  menor 
+tempo  gasto  com  deslocamento  ao  trabalho,  residir  nos  subúrbios  pode  significar  uma  vizinhança  mais 
+silenciosa  e  segura.  Sendo  assim,  é  possível  que  o  distanciamento  do  centro  provoque  uma  queda  no 
+preço das construções que  já se encontram  um  pouco mais afastadas do  mesmo, e quando consideradas 
+apenas  aquelas  edificações  instaladas  nos  arredores  do  CBD,  seja  menos  dispendiosa  a  compra  de  uma 
+casa ou apartamento um pouco mais perto do centro (McDonald e McMillen, 2010). 
+
+Além  dos  aspectos  históricos,  evidências  empíricas  corroboram  com  a  escolha  do  Marco  Zero 
+(Praça  Rio  Branco)  como  epicentro  comercial.  A  RPA  1,  região  político-administrativa  onde  fica 
+localizado  o  Marco  Zero,  figura  como  a  região  economicamente  mais  importante  do  Recife  tanto  em 
+função  da  presença  do  centro  administrativo  municipal  e  estadual,  representados  respectivamente  pela 
+PCR  e  pelo  Palácio  do  Governo,  quanto  por  causa  da  concentração  de  empresas  dos  setores  de  saúde, 
+bancário e de tecnologia.  
+
+A Tabela 1 apresenta a razão entre o número de residentes e o número de empresas para cada RPA 
+da cidade. As bases são da EMPREL para o ano de 2013 e do CENSO 2010, obtidos com a Secretaria de 
+Finanças da Cidade do Recife e com o IBGE, respectivamente. Os dados mostram que a RPA 1 possui a 
+menor quantidade de  residentes por empresa instalada na região, seguida  da RPA 6, cuja  razão  é  quase 
+cinco  vezes  maior.  Além  disso,  dados  da  PCR  para  o  ano  de  2009  mostram  que  a  RPA  1  concentra 
+43.26%  da  arrecadação  do  ISS  (Imposto  Sobre  Serviços  de  Qualquer  Natureza)  da  cidade  do  Recife, 
+mesmo cobrando uma taxa inferior a das outras cinco regiões (2% em contraste aos 5% das outras RPAs). 
+Em conjunto, as evidências sugerem que a formação de renda é maior na RPA 1 do que nas outras RPAs, 
+o que justifica a classificação da região como centro comercial. 
+
+ 
+
+Tabela 1 - Razão entre o número de empresas e o número de residentes por RPA 
+
+ 
+RPA 1 
+RPA 2 
+RPA 3 
+RPA 4 
+RPA 5 
+RPA 6 
+
+População residente  Número de empresas  Nº de empresas/1000 hab 
+
+78114 
+221234 
+312909 
+278947 
+263778 
+382650 
+
+25337 
+6188 
+13264 
+11322 
+9426 
+24865 
+
+324.35 
+27.97 
+42.38 
+40.58 
+35.73 
+64.98 
+
+Fonte: Elaborado pela autora com base nos dados da EMPREL para 2013 e do CENSO 2010 (PCR/IBGE) 
+
+ 
+As Zonas Especiais de Interesse Social (ZEIS) são comunidades que ganharam certa notoriedade 
+no contexto  urbano  e por isso foram  reconhecidas pela Prefeitura como tanto. Apesar de toda  ZEIS ser 
+composta  por  uma  ou  mais  área  pobre,  nem  todas  as  áreas  pobres  se  beneficiam  do  respaldo  legal  de 
+garantia  de  permanência  dos  moradores  no  local,  uma  vez  que  é  preciso  cumprir  alguns  critérios  se 
+classificar  como  ZEIS,  tais  como  população  com  renda  familiar  média  igual  ou  inferior  a  3  salários 
+
+ 
+
+mínimos,  carência  ou  ausência  de  serviços  de  infraestrutura  básica,  densidade  não  inferior  a  30 
+residências/hectare, entre outros. 
+
+O MetroRec possui 39.5 km de extensão e liga os municípios da Região Metropolitana do Recife 
+até a capital. De todo o complexo ferroviário, Recife conta com 18 estações de metrô, sendo 6 na linha 
+Sul  e  9  na  linha  Centro,  que  se  conectam  nas  estações  Joana  Bezerra  e  Estação  Central  do  Recife,  esta 
+última sendo o terminal  e localizada no  centro da cidade. Dessas 17 estações, 7 delas fazem  integração 
+com o Sistema Estrutural Integrado (SEI), permitindo ao usuário a troca de linha sem pagar nova tarifa. 
+Afora esses Terminais de Integração que possibilitam a conexão com o metrô/ônibus, mais dois terminais 
+foram  considerados,  a  saber  o  da  Macaxeira  e  o  da  Caxangá,  exclusivos  para  ligação  entre  ônibus, 
+abrangendo assim a totalidade de terminais de integração do SEI na cidade. É importante frisar que toda 
+malha de transporte urbano da cidade é de superfície, inclusive os trilhos do metrô, o que pode trazer um 
+incômodo aos moradores da região devido ao barulho gerado pelo constante fluxo de trens e passageiros. 
+
+Finalmente,  o  banco  de  dados  do  CVLI,  disponibilizado  pela  Secretaria  de  Defesa  Social  de 
+Pernambuco  e  já  georreferenciado,  contém  informações  a  nível  individual  acerca  do  número  de 
+homicídios ocorrido na cidade do Recife entre julho de 2008 e agosto de 2010 e abarca todo tipo de morte 
+–  homicídio,  latrocínio,  lesões  corporais  seguidas  de  mortes  –  com  as  mais  diversas  motivações  – 
+passional,  reação  a  assalto,  vingança,  drogas,  bala  perdida,  entre  outras.  Durante  o  período  em  questão 
+ocorreram 1.657 crimes distribuídos de forma não homogênea por todos os 94 bairros da cidade. Aqui, o 
+procedimento para construção da variável  relativa à criminalidade foi um pouco diferente, uma vez que 
+não foi computada a distância ao crime mais próximo, e sim o número de homicídios ocorridos dentro de 
+um raio predeterminado. Utilizando novamente o software ArcGis 10.2, criou-se um buffer de 1.5km para 
+cada imóvel  georreferenciado e em seguida, sobrepondo o shapefile oriundo da base de dados do CVLI 
+sobre esses buffers, contou-se quantas ocorrências de homicídio pertenciam à interseção entre eles. 
+
+Além dos aspectos urbanos que dão respaldo à escolha de algumas das amenidades consideradas 
+na  precificação  imobiliária,  foi  elaborado  um  mapa  de  quantis  para  os  resíduos  de  um  modelo  OLS 
+preliminar  (Figura  2),  visando  identificar  as  possíveis  características  geográficas  capazes  de  influir  no 
+valor dos imóveis. Nele, o preço do imóvel foi regredido apenas sobre suas características intrínsecas e os 
+resíduos mostram se o mercado está sub ou super avaliando a propriedade. A motivação por trás disso é 
+perceber  se  essa  diferença  entre  preço  estimado  e  preço  real  pode  ser  associada  às  características 
+ambientais. 
+
+Para  facilitar  a  análise,  foram  inseridas  nessa  figura  a  localização  de  algumas  amenidades:  os 
+parques  supracitados  (em  verde),  as  estações  de  metrô  e/ou  integrações  de  ônibus  (em  laranja),  o  Rio 
+Capibaribe  e  a  Praia  de  Boa  Viagem  (ambos  em  azul)  e  o  centro  de  negócios  (em  vermelho).  As  áreas 
+mais  claras  do  mapa  representam  os  bairros  com  resíduos  positivos,  ou  seja,  aqueles  locais  cujo  valor 
+médio das propriedades, dadas as suas características estruturais, ultrapassam o esperado. Nas figuras 3 e 
+4 estão  apresentados o  mapa de quantis para o  número de homicídios ocorridos na cidade entre  2008 e 
+2010 (por bairro) e a distribuição das ZEIS da cidade do Recife. 
+
+A  partir  da  comparação  das  informações  apresentadas  a  partir  das  Figuras  2,  3  e  4,  pode-se 
+perceber  que  os  bairros  situados  mais  próximos  ao  centro  expandido  (RPA  1)  estão  nos  quantis  mais 
+elevados,  havendo  dois  "clusters"  de  resíduos  positivos:  um  na  zona  sul,  puxado  pelo  Pina,  e  outro  na 
+zona  noroeste,  indo  do  Parnamirim  até  a  Madalena/Graças.  A  praia  e  a  criminalidade  emolduram  o 
+primeiro  conglomerado  de  bairros  enquanto  no  segundo  grupo  fica  clara  a  presença  do  rio  e  de  praças, 
+bem como da baixa violência. Essas evidências visuais já dão indícios de que a localização em relação à 
+praia importa, bem como em relação ao Rio Capibaribe. 
+
+É possível perceber, ainda, que não há estações de metrô ou integrações de ônibus localizadas em 
+bairros  com  resíduos  positivos,  sugerindo  que  esse  fator  de  acessibilidade  pode  ser  considerado  uma 
+desamenidades para o recifense ou não apresenta relevância para o mesmo. Além disso, grande parte dos 
+bairros  mais  violentos  se  encontram  na  zona  Sul  e  Oeste  da  cidade,  enquanto  os  bairros  contíguos  à 
+margem leste do Rio Capibaribe formam uma espécie de “corredor seguro”, tendo ocorrido em cada um 
+deles  no  máximo  três  homicídios  durante  dois  anos.  Vale  notar  ainda  que  nesse  corredor,  do  bairro  do 
+Poço da Panela até as Graças, não há cadastro de nenhuma das várias ZEIS da cidade. Enquanto isso, a 
+
+ 
+
+região  que  possui  resíduos  mais  negativos  da  zona  norte  se  encontra  bem  distante  ao  rio  e  está  tomado 
+pela presença de ZEIS, como pode ser observado na Figura 4.  
+
+  
+
+Figura 2 – Mapa de quantis para os resíduos do modelo OLS 
+
+ 
+
+ 
+ 
+
+    Figura 3 – Mapa de quantis para o   
+    número de homicídios por bairro 
+
+        
+
+ 
+
+ 
+
+Figura 4 – Localização das ZEIS  
+
+ 
+
+Fonte: Elaborado pela autora baseado nos atributos e nos shapefiles fornecidos pela PCR  
+
+Obs: Os bairros em branco na Figura 2 não tiveram vendas de imóveis no período em questão. 
+
+ 
+
+A  Tabela  2  apresenta  as  estatísticas  descritivas  das  variáveis  que  foram  utilizadas  no  modelo 
+empírico,  cada  uma  com  9.683  observações  correspondentes  a  quantidade  total  de  imóveis  residenciais 
+
+ 
+
+transacionados na cidade em 2012. Foram retiradas da base todas as vendas que não fossem de casas ou 
+apartamentos,  tais  como  salas  comerciais,  galpões,  terrenos,  entre  outras.  As  unidades  de  medida  das 
+variáveis  estruturais  são:  área  construída  (areaconst)  em  metros  quadrados;  idade  (idade)  em  anos  e 
+padrão de construção (padrao) é uma variável categórica que assume valores 1, 2 e 3, significando baixo, 
+médio  e  alto  padrão.  Para  as  variáveis  ambientais,  todas  as  distâncias  são  do  tipo  euclidianas  e  estão 
+apresentadas em quilômetros, enquanto a variável de criminalidade (crime_15) conta o número absoluto 
+de assassinatos ocorridos dentro do raio de 1.5km do imóvel. As três variáveis dummy – apt, vistamar e 
+beirario – representam a proporção de imóveis vendidos que são apartamentos, que possuem vista para o 
+mar e estão à beira-rio, respectivamente. 
+
+                      Tabela 2 – Estatísticas descritivas das variáveis estruturais ambientais 
+
+Variável 
+
+Média  Desvio P.  Mínimo  Máximo 
+
+ 
+
+Estruturais 
+andar 
+areaconst (m2) 
+pavimentos 
+unidades 
+idade (anos) 
+apartamento/casa (apartamento = 1) 
+padrão (baixo =1, médio =2, alto =3) 
+Ambientais  
+vistamar (sim = 1) 
+beirario (sim = 1) 
+dist_centro  (km) 
+dist_praia  (km) 
+dist_rio  (km) 
+dist_parq  (km) 
+dist_metro  (km) 
+dist_zeis  (km) 
+crime_15 (homicídios) 
+Total de observações: 
+
+7.132 
+
+130.319 
+15.345 
+53.282 
+14.208 
+0.892 
+2.186 
+
+ 
+
+0.051 
+0.013 
+6.087 
+4.061 
+2.345 
+2.494 
+2.155 
+0.450 
+61.377 
+9683 
+
+ 
+
+7.023 
+80.204 
+10.653 
+50.423 
+16.458 
+0.310 
+0.755 
+
+ 
+
+0.220 
+0.117 
+2.115 
+2.822 
+1.847 
+1.826 
+1.305 
+0.286 
+24.835 
+
+ 
+
+ 
+
+ 
+
+0 
+
+39 
+13.4  1333.96 
+51 
+465 
+73 
+1 
+3 
+
+1 
+1 
+0 
+0 
+1 
+
+ 
+
+0 
+0 
+0.834 
+0.035 
+0.010 
+0.001 
+0.032 
+0 
+4 
+
+ 
+
+ 
+
+1 
+1 
+15.190 
+16.466 
+9.407 
+10.653 
+8.030 
+5.604 
+152 
+ 
+
+                              Fonte: Elaborado pela autora com base nos shapefiles das amenidades, dados do ITBI e do CVLI (PCR/SDS-PE) 
+ 
+
+Os imóveis vendidos em 2012 tem, em média, uma área construída de 130m² e foram erguidos há 
+cerca  de  14  anos.  Os  edifícios  da  cidade,  que  abarcam  a  maior  parcela  de  vendas  (apenas  11%  dos 
+imóveis  residenciais  vendidos  em  2012  foram  casas)  possuem  em  torno  de  15  pavimentos  e  53 
+apartamentos no total, que estão localizados, em média, no sétimo andar. Quanto às amenidades, 5% das 
+propriedades  vendidas  em  2012  têm  vista  para  o  mar  e  apenas  1%  está  localizada  na  margem  do  Rio 
+Capibaribe. Em média, os apartamentos estão a 6 km de distância do CBD, a 4 km da praia, a 2.3 km do 
+Rio  Capibaribe,  2.4  km  da  praça  ou  parque  mais  próximo,  a  2.15  km  da  estação  de  metrô  ou  ponto  de 
+integração de ônibus mais próximo e a 500 metros da ZEIS mais próxima. Finalmente, dentro de um raio 
+de 1.5 km de cada propriedade ocorreram cerca de 61 homicídios.  
+
+A Tabela 3 apresenta a matriz de correlação para as variáveis ambientais definidas anteriormente. 
+É  possível  inferir  que  há  uma  forte  correlação  entre  distanciamento  do  Rio  Capibaribe  e  do  CBD,  na 
+verdade,  uma  característica  associada  ao  desenvolvimento  urbano  e  à  história  da  cidade,  indicando  que 
+quanto mais longes os imóveis vendidos estão do rio, mais longe eles estão do centro comercial. Por outro 
+lado, o afastamento dos imóveis do rio indica uma aproximação da praia, como comprova o coeficiente 
+negativo  de  correlação  entre  as  variáveis  dist_rio  e  dist_praia.  Essa  correlação  sugere  o  tradeoff 
+enfrentado pelo indivíduo entre morar próximo à praia ou ao rio. 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+            Tabela 3 – Matriz de correlação para as variáveis ambientais 
+
+1 
+
+ 
+1 
+
+                  Dist_centro  Dist_praia  Dist_rio  Dist_parq  Dist_metro  Dist_zeis  Crime_15  Vistamar  Beirario 
+dist_centro 
+dist_praia       0.134 
+dist_rio 
+0.671 
+dist_parq 
+0.179 
+dist_metro 
+-0.464 
+-0.018 
+dist_zeis 
+-0.023 
+crime_15 
+0.007 
+vistamar 
+beirario 
+-0.131 
+
+-0.536 
+-0.001 
+0.356 
+-0.242 
+0.319 
+-0.320 
+0.011 
+
+0.215 
+-0.519 
+0.182 
+-0.129 
+0.204 
+-0.144 
+
+-0.457 
+-0.268 
+0.102 
+0.066 
+-0.032 
+
+0.008 
+0.090 
+-0.024 
+0.007 
+
+-0.370 
+0.192 
+-0.031 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1 
+
+-0.245 
+-0.013 
+
+ 
+ 
+ 
+ 
+ 
+ 
+1 
+
+ 
+ 
+ 
+ 
+ 
+1 
+
+ 
+ 
+ 
+ 
+1 
+
+ 
+ 
+ 
+1 
+
+-0.027 
+
+ 
+ 
+1 
+
+Fonte: Elaborado pela autora com base nos shapefiles das amenidades, dados do ITBI e do CVLI (PCR/SDS-PE) 
+
+ 
+Como  esperado,  imóveis  com  vista  ao  mar  estão  localizados  mais  próximos  da  praia  e  possuem 
+uma vizinhança mais segura, enquanto as redondezas daqueles mais afastados da praia são mais violentas. 
+O  sinal  negativo  do  coeficiente  de  correlação  entre  distância  ao  metrô  e  distância  ao  rio/distância  ao 
+parque  evidencia  que  os  imóveis  negociados  mais  próximos  de  uma  estação  de  metrô/integração  de 
+ônibus estão necessariamente mais longes dessas duas amenidades. É interessante notar, ainda, que essa 
+relação  se  mantém  quando  trata-se  de  distância  ao  centro,  dando  evidências  de  que  os  pontos  de 
+integração de meios de transporte público estão afastados do CBD e mais pertos da praia, como revela o 
+valor positivo da correlação entre distância da praia e distância do metrô.  
+
+A presença das ZEIS, que estão espalhadas por toda a cidade, guarda uma relação ambígua com a 
+distância  às  amenidades  citadinas.  Se,  por  um  lado,  essa  ligação  se  dá  de  maneira  positiva  com  o 
+distanciamento  de  parques  e  da  praia,  ela  ocorre  de  forma  oposta  com  afastamento  do  rio,  isto  é,  os 
+imóveis  transacionados  mais  próximos  a  uma  zona  especial  de  interesse  social  estão,  em  média,  mais 
+próximos ao Rio Capibaribe.  
+
+ 
+ 
+
+5. Influência da amenidades no valor das residências na Cidade do Recife: resultados 
+ 
+
+A Tabela 4 reporta o resultado das estimações para o modelo OLS e para os modelos SAR e SAC, 
+todos  robustos  à  heteroscedasticidade  e  com  o  logaritmo  do  valor  da  propriedade  como  variável 
+dependente.  A estatística do  I de Moran  (Estatística do teste:  0.05322;  p-valor: < 2.2e-16) sugere que a 
+matriz  de  peso  captura  bem  a  relação  espacial  do  modelo  de  preços  hedônicos.  Assim,  os  modelos  de 
+SAR  e  SAC  foram  estimados  via  STSLS  e  GSTSLS,  respectivamente.  Vale  lembrar  que  o  foco  desse 
+artigo  é  a  interpretação  das  medidas  de  impacto,  reportadas  na  Tabela  5,  como  sugerido  por  LeSage  e 
+Pace (2009).  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+                        Tabela 4 – Resultados das estimações dos modelos – Variável dependente  
+                        é o logaritmo do valor do imóvel 
+
+ 
+Intercepto 
+
+ 
+andar 
+
+ 
+areaconst 
+
+ 
+pavimentos 
+
+ 
+unidades 
+
+ 
+idade 
+
+ 
+apto 
+
+ 
+padrao 
+
+ 
+vistamar 
+ 
+beirario 
+ 
+dist_centro 
+ 
+dist_centro2 
+ 
+dist_praia 
+ 
+dist_rio 
+ 
+dist_parq 
+ 
+dist_metro 
+ 
+dist_zeis 
+ 
+crime_15 
+ 
+Rho 
+ 
+Lambda 
+
+SAR 
+
+(0.011) 
+
+(0.022) 
+
+(0.022) 
+
+(0.0119) 
+
+(0.0005) 
+
+(0.0005) 
+
+(0.0002) 
+
+(0.0001) 
+
+(0.0009) 
+
+(0.0001) 
+
+(0.0006) 
+
+SAC 
+9.484** 
+(1.099) 
+
+OLS 
+11.621**  7.407* 
+(0.074) 
+(0.870) 
+0.007**  0.008**  0.008** 
+(0.0006) 
+(0.0006) 
+0.004**  0.004**  0.004** 
+(0.0002) 
+(0.0002) 
+0.016**  0.015**  0.017** 
+(0.001) 
+(0.0009) 
+-0.002**  -0.002**  -0.002** 
+(0.0002) 
+-0.003**  -0.003**  -0.003** 
+(0.0005) 
+-0.258**  -0.283**  -0.294** 
+(0.023) 
+0.170**  0.154**  0.154** 
+(0.011) 
+0.131**  0.136**  0.125** 
+(0.025) 
+-0.072 
+(0.044) 
+0.178**  0.095**  0.079** 
+(0.022) 
+-0.011**  -0.006**  -0.004** 
+(0.002) 
+-0.075**  -0.030**  -0.048** 
+(0.006) 
+-0.101**  -0.052**  -0.066** 
+(0.009) 
+(0.013) 
+-0.021**  0.0004 
+(0.003) 
+(0.003) 
+0.039**  0.012 
+(0.013) 
+(0.007) 
+0.105**  0.078** 
+0.044* 
+(0.022) 
+(0.030) 
+-0.002**  -0.001**  -0.001** 
+(0.0002) 
+- 
+- 
+- 
+
+(0.0002) 
+(0.0003) 
+0.337**  0.182* 
+(0.088) 
+(0.072) 
+- 
+0.583 
+
+(0.013) 
+-0.012* 
+(0.005) 
+0.027* 
+(0.013) 
+
+(0.028) 
+-0.012 
+(0.043) 
+
+(0.026) 
+-0.011 
+(0.042) 
+
+(0.017) 
+
+(0.017) 
+
+(0.001) 
+
+(0.001) 
+
+(0.011) 
+
+(0.011) 
+
+(0.020) 
+
+Fonte: Elaborado pela autora. ** Significante a 1%; * Significante a 5% - Desvio-padrão entre parênteses. 
+
+ 
+
+Em relação aos modelos espaciais, o parâmetro ρ, que representa a mudança no valor de um dado 
+imóvel como resultado da variação unitária no preço dos imóveis vizinhos, se mostra significativo tanto 
+no  modelo  SAR  quanto  no  SAC,  corroborando  com  o  resultado  obtido  no  teste  de  Moran.  Também 
+esperado,  o  coeficiente  de  defasagem  espacial  do  Wy  apresenta  menor  valor  no  modelo  SAC  quando 
+comparado ao modelo SAR, uma vez que nesse primeiro também é inserida a dependência espacial em 
+componentes  não  observados.  Ambos  os  modelos  produzem  estimativas  semelhantes  para  as 
+características  dos  imóveis  ao  passo  que,  no  tocante  às  variáveis  de  vizinhança,  esses  coeficientes 
+apresentam  maior  volatilidade,  com  valores  mais  elevados  (em  módulo)  para  grande  parte  das 
+amenidades e desamenidades no segundo modelo. 
+
+Os resultados gerais são os mesmos do modelo OLS, com o distanciamento de estações de metrô, 
+das ZEIS e do centro afetando positivamente o preço da habitação e o afastamento em relação à praia e ao 
+rio  influenciando  negativamente  o  valor  de  imóveis.  Tanto  no  modelo  SAR  quanto  no  SAC  a  variável 
+
+ 
+
+beirario não se mostra estatisticamente significante. Apesar de positivo no modelo SAR, o coeficiente de 
+distância à praça/parque também não se mostra significativo, assim como a distância ao metrô, não tendo, 
+por conseguinte, impactos relevantes.  
+
+Seguindo LeSage e Pace (2009), optou-se por utilizar apenas a especificação SAC para reportar as 
+medidas  de  impacto  apresentadas  na  Seção  3,  pois  ela  não  apresentará  estimativas  viesadas  caso  o 
+processo  gerador  de  dados  verdadeiro  seja  um  modelo  SAR,  o  contrário  não  sendo  verdadeiro.  A 
+significância dos efeitos totais é importante para que um efeito nulo (direto ou indireto) não invalide um 
+efeito  significativo  (direto  ou  indireto).  Uma  vez  que  o  valor  das  propriedades  está  loglinearizado  e  as 
+variáveis  explicativas são todas apresentados em nível, os efeitos médios podem ser interpretados como 
+semi-elasticidades. A Tabela 5 apresentada a seguir exibe os resultados. 
+
+ 
+
+Tabela 5 – Medidas de impacto para o modelo SAC 
+
+ 
+andar 
+areaconst 
+pavimentos 
+unidades 
+idade 
+apto 
+padrao 
+vistamar 
+beirario 
+dist_centro 
+dist_centro2 
+dist_praia 
+dist_rio 
+dist_parq 
+dist_metro 
+dist_zeis 
+crime_15 
+
+Indireto 
+
+Direto 
+0.002 
+0.008** 
+0.001 
+0.004** 
+0.017** 
+0.004 
+-0.002**  0.0004 
+-0.001 
+-0.003** 
+-0.066 
+-0.294** 
+0.034 
+0.154** 
+0.125** 
+0.028 
+-0.003 
+-0.011 
+0.018 
+0.079** 
+-0.004** 
+-0.001 
+-0.048**  -0.011* 
+-0.066**  -0.015* 
+-0.003 
+-0.012* 
+0.027* 
+0.006 
+0.078** 
+0.017 
+-0.001**  -0.0003 
+
+Total 
+
+0.010** 
+0.005** 
+0.021** 
+-0.002** 
+-0.004** 
+-0.360** 
+0.188** 
+0.153** 
+
+ -0.014 
+
+0.097** 
+-0.005** 
+-0.059** 
+-0.081** 
+-0.015** 
+0.033* 
+0.095** 
+-0.002** 
+
+Fonte: Elaborado pela autora ** Significante a 1%; * Significante a 5% 
+
+ 
+
+Em  relação  às  características  estruturais,  todas  as  variáveis  são  fortemente  significantes  para 
+explicar  o  preço  dos  imóveis.  Em  particular,  elas  revelam  que  há  um  aumento  1%  no  valor  do 
+apartamento  para  cada  andar  mais  alto  em  que  ele  se  encontra,  bem  como  um  acréscimo  de  2.1%  para 
+cada  pavimento  a  mais  que  o  edifício  possui.  A  preferência  por  residir  em  andares  mais  elevados  dos 
+edifícios pode estar ligada, entre outras coisas, ao clima. O alto grau de verticalização de alguns bairros 
+da  cidade  pode  impedir  a  livre  circulação  de  ar,  o  que  acaba  elevando  a  sensação  térmica  dentro  das 
+residências.  Quanto  mais  alto  estiver  o  imóvel,  maior  a  chance  de  não  ter  outros  imóveis  impedindo  a 
+circulação de ar, além das beneficies ligadas à vista. No segundo caso, é possível que edifícios com mais 
+pavimentos  sejam  mais  valorizados  devido  a  questões  espaciais.  Considerando  que  o  espaço  físico  é 
+limitado  e  que  os  indivíduos  desejam  morar  perto  de  determinadas  amenidades,  é  natural  que  haja  um 
+processo  de  verticalização  de  tal  região.  Assim,  na  ausência  de  regulação,  são  construídos  prédios  cada 
+vez mais altos nos ambientes mais desejados pela população, visando atender a alta demanda. 
+
+Por  outro  lado,  um  grande  número  de  unidades  num  mesmo  prédio  está  associado  a  menores 
+preços, com a queda de 0.2% para cada apartamento a mais no edifício. A qualidade do acabamento e a 
+área construída também estão positivamente correlacionadas com o preço final da residência, de tal forma 
+que  cada  metro  quadrado  construído  se  reflete  no  acréscimo  de  0.5%  do  valor  de  mercado  do  imóvel. 
+Imóveis mais antigos são menos valorizados, tendo uma redução de 0.4% preço de venda para cada ano. 
+Esse  baixo  valor  pode  ser  explicado  pela  carência  de  espaço  físico  para  edificação  de  novos 
+empreendimentos, o que acaba por diminuir a velocidade de desvalorização do imóvel perante às novas 
+construções. 
+
+Os  apartamentos  da  amostra  são  em  média  36%  mais  baratos  que  as  casas,  o  que  pode  ser 
+resultado  de  dinâmicas  de  mercado  disjuntas,  isto  é,  uma  consequência  das  preferências  dos  indivíduos 
+
+ 
+
+por  casas  devido  às  beneficies  associadas  a  esse  tipo  de  construção  ou  um  reflexo  da  transição  no 
+mercado imobiliário, onde as casas estão sendo vendidas a construtoras para a edificação de prédios e por 
+isso são mais valorizadas. 
+
+Para as variáveis ambientais, desfrutar de vista para o mar parece mesmo um privilégio. Usufruir 
+diretamente  dessa  amenidade  está  relacionado  com  um  valor  12.5%  maior,  enquanto  os  efeitos  totais 
+chegam a mais de 15%, sendo maiores que o encontrado no modelo OLS. Por outro lado, estar localizado 
+à  beira-rio  não  influencia  no  preço  de  mercado  das  propriedades,  como  mostra  a  não-significância  dos 
+efeitos  diretos,  indiretos  e  totais.  Há  duas  explicações  plausíveis  para  esse  fato.  A  primeira  é  que  o  rio 
+atravessa  áreas  muito  distintas  da  cidade,  indo  do  centro  popular  até  as  regiões  mais  nobres  da  urbe  e 
+apenas  os  imóveis  situados  na  margem  oeste  do  Capibaribe  possuem  varanda  nascente  e  desfrutam  de 
+pontos  de  instalações  de  lazer  públicos,  como  pista  de  cooper.  Para  que  as  edificações  situadas  na 
+margem  leste do Capibaribe sejam nascentes, elas precisam ter  ''as costas'' viradas para o  rio e por isso 
+não usufruem de todas as comodidades de estarem localizados à beira do Capibaribe. A segunda remonta 
+às  fortes  cheias  do  Rio  Capibaribe  na  década  de  1970  que  devastaram  alguns  bairros  nobres  como 
+Madalena e Casa Forte, tendo criado no imaginário popular um sentimento misto em relação à beira-rio. 
+
+Ao contrário do que o senso comum nos levaria a crer, a valorização imobiliária nas proximidades 
+do Rio Capibaribe é maior que nos arredores da praia. Tratando-se de efeitos diretos, se afastar 1 km da 
+praia está associado à queda de 4.8% no valor de mercado da residência, enquanto para o rio esse efeito é 
+de  6.6%.  Para  os  efeitos  totais  esses  valores  sobem  para  5.9%  e  8.1%  respectivamente,  uma 
+desvalorização quase 40% maior à medida em que os imóveis vendidos vão ficando mais distantes do rio 
+em  relação  ao  afastamento  da  praia.  Uma  provável  justificativa  para  esse  panorama  é  o  processo  de 
+urbanização  da  cidade.  Enquanto  o  início  do  povoamento  das  proximidades  do  Rio  Capibaribe  data  do 
+século XVI, com a instalação de grandes engenhos de açúcar, a ocupação dos bairros costeiros pela elite 
+ocorreu a partir de meados dos anos 1920, com a com a construção da ponte do Pina e a inauguração da 
+Avenida Beira Mar (Souza, 2009). 
+
+A  importância  dessas  duas  amenidades  para  o  recifense  se  reflete  ainda  na  significância  dos 
+efeitos indiretos, uma vez que não só os imóveis localizados nas adjacências da Praia de Boa Viagem e do 
+Rio  Capibaribe que se beneficiam desses dois  atributos naturais,  mas também  aquelas propriedades que 
+são  vizinhas  dessas  propriedades.  A  valorização  por  se  situar  nos  arrabaldes  de  um  imóvel  que  está 
+próximo  à  praia  ou  ao  rio  chega  1%  e  1.5%,  respectivamente.  Comparado  ao  modelo  OLS,  os  valores 
+aqui  encontrados  para  os  efeitos  totais  são  em  média  20%  menores,  comprovando  a  importância  de  se 
+considerar os vizinhos na precificação das amenidades. 
+
+A distância até o centro apresenta um comportamento não-linear, com uma valorização direta de 
+7.9%  à  medida  em  que  se  afasta  1  km  do  centro  para  as  propriedades  localizadas  dentro  de  uma  curta 
+distância  do  CBD  e  uma  queda  de  0.4%  no  preço  para  aquelas  mais  distantes  do  Marco  Zero.  O  efeito 
+total de 9.7% é quase 50% inferior ao estimado pelo modelo OLS para a variável dist_centro. 
+
+Os menores efeitos diretos e totais são em relação ao distanciamento de parques e praças. Apesar 
+dos elevados preços dos imóveis localizados nos arredores do Parque da Jaqueira, da Praça de Casa Forte 
+ou do Parque Dona Lindu, parece que tal valorização é menor que a esperada quando se compara com as 
+outras amenidades. O distanciamento de 1 km da praça mais próxima reflete uma queda de apenas 1.2% 
+no  valor  de  mercado  da  edificação,  coeteris  paribus.  Os  efeitos  totais  são  bastante  semelhantes, 
+apontando uma desvalorização de 1.5%, significativamente menor do que o estimado no modelo OLS. 
+
+As ZEIS aparentam ser fonte de forte desvalorização imobiliária. A aproximação em 1 km a uma 
+dessas  comunidades  está  associada  a  uma  queda  de  quase  10%  no  preço  do  imóvel,  já  consideradas  as 
+interações espaciais. As estações de metrô e pontos de integração de ônibus de fato são percebidas como 
+desamenidades pela população, pois o aumento do preço das propriedades é, em média, de 3.3% a cada 
+quilômetro de afastamento desses atributos. Isso ocorre provavelmente devido ao fato de que, em Recife, 
+estações  de  metrô  estão  localizados  nos  bairros  da  periferia  da  cidade  e,  dentre  os  bairros  mais 
+valorizados,  apenas  Boa  Viagem  conta  com  estações  de  metrô.  Além  disso,  como  explicado,  a  malha 
+metroviária  é  toda  de  superfície,  o  que  pode  trazer  um  incômodo  aos  moradores  da  região  devido  ao 
+barulho gerado pelo constante fluxo de trens e passageiros. Por fim, cada crime violento letal intencional 
+
+ 
+
+ocorrido dentro de um raio de 1.5km do imóvel está diretamente relacionado com uma desvalorização de 
+0.1% no valor de mercado da residência, sendo os efeitos totais duas vezes maiores. 
+
+Para garantir a robustez dos resultados encontrados, foi feita uma análise a posteriori dos dados. O 
+objetivo  foi  verificar  se  a  conclusão  de  que  os  indivíduos  estão  pagando  mais  para  morar  perto  do  rio 
+comparado a morar perto da praia não seria consequência de uma grande diferença no número de vendas 
+nas  proximidades  de  cada  amenidade.  Por  exemplo,  se  houvesse  um  maior  número  de  vendas  em  Boa 
+Viagem (e possivelmente maior variabilidade no valor dos imóveis) em relação aos bairros adjacentes ao 
+Rio Capibaribe, então a venda de um casarão colonial em Casa Forte poderia estar puxando o coeficiente 
+de dist_rio pra cima.  A distância estabelecida como área de  influência para cada amenidade – Praia de 
+Boa Viagem e Rio Capibaribe – foi de 1.6 km. Contando os imóveis vendidos que se encontram dentro da 
+desse  raio,  encontra-se  uma  quantidade  semelhante:  em  2012  foram  vendidos  2791  imóveis  nas 
+proximidades da orla e 2603 nos arrabaldes do rio. Esse é um forte indício de que os imóveis são, de fato, 
+mais  valorizados  nas  proximidades  do  Rio  do  que  da  praia  (coeficiente  de  dist_rio  é  maior  que 
+dist_praia). Vale ainda notar que a presença de parques nas áreas de influência não alteram o resultado, 
+uma vez que esse efeito é controlado pelo coeficiente de dist_parq. Além disso, as variáveis dicotômicas 
+de vista para o mar e de beira-rio anulam as amenidades associadas a estas condições.  
+ 
+6. Conclusões 
+ 
+
+O presente trabalho procurou aprofundar os estudos sobre precificação de amenidades residenciais 
+nas cidades brasileiras a partir do caso específico da Cidade do Recife, que, entre as capitais brasileiras, 
+apresenta  como  característica  distintiva  a  forte  presença  do  mar  e  de  rios  (conhecida  como  a  “Veneza 
+Brasileira”),  geralmente  consideradas  duas  amenidades  naturais  em  cidades  de  clima  tropical.  Neste 
+sentido, há três características distintivas da pesquisa. Primeiro, diferentemente dos trabalhos disponíveis 
+para  a  referida  cidade,  utilizou-se  uma  base  de  dados  com  mais  de  9  mil  vendas  de  residências, 
+englobando  cerca  de  90%  dos  bairros  da  cidade.  Em  segundo  lugar,  procurou-se  utilizar  um  grande 
+conjunto  de  amenidades  naturais  e  sociais  existente  na  cidade,  e,  a  partir  do  georreferenciamento,  cada 
+uma  desta  características  pode  ser  construída  de  modo  a  permitir  diferenciações  entre  as  unidades 
+residenciais. Por fim, o trabalho também é pioneiro entre as análises feitas para as cidades brasileiras com 
+respeito  às  estimativas  adequadas  dos  efeitos  das  varáveis  sobre  o  valor  dos  imóveis  na  presença  de 
+dependência espacial (estimativas de efeitos diretos e indiretos).   
+
+Todas as amenidades incluídas no trabalho se mostraram importantes no processo de formação de 
+preços dos imóveis residenciais. Especificamente, por um lado, os valores dos imóveis da referida cidade 
+tendem a apresentar apreciações se os mesmos apresentam vista para o mar, estão próximos do mar, do 
+rio e dos parques da cidade. Entre estas amenidades, a distância ao mar e a distância ao rio apresentam, 
+além disto, efeitos indiretos positivos, indicando elevação dos valores dos imóveis em função de situação 
+mais favoráveis (com  respeito a estas amenidades) de imóveis vizinhos. Por outro  lado, tais valores são 
+afetados negativamente com a proximidade das ZEIS , das estações de metrô e dos locais de ocorrência 
+de crimes.  
+
+Duas evidências em particular merecem destaque. A primeira diz respeito aos diferentes níveis de 
+influência  das  proximidades  ao  mar  e  ao  rio,  sem  dúvidas  as  duas  principais  amenidades  naturais  da 
+cidade  (o  Rio  Capibaribe  e  a  Praia  de  Boa  Viagem).  O  distanciamento  em  relação  a  cada  um  desses 
+atributos naturais implica queda no valor de mercado do imóvel, sendo, contudo, tal desvalorização quase 
+40% superior com o afastamento do rio quando se compara com o afastamento da praia. Esse resultado 
+parece  consistente  com  o  tipo  de  ocupação  da  capital  pernambucana,  que,  dadas  as  dificuldades  de 
+transporte,  privilegiou  primordialmente  a  proximidade  ao  Rio  Capibaribe.  Por  outro  lado,  também  cabe 
+destacar que os imóveis premiados com vista para o mar são em média 17% mais caros que aqueles que 
+não o são, sendo esta a amenidade de maior impacto sobre os valores dos imóveis. A segunda evidência 
+refere-se  a  importância  das  amenidades  sociais.  Neste  sentido,  note-se  que  a  distância  dos  imóveis  ao 
+Centro segue a tendência urbana de cidades monocêntricas e apresenta um efeito não-linear sobre o valor 
+dos  imóveis,  isto  é,  propriedades  localizadas  no  entorno  do  CBD  se  beneficiam  com  o  afastamento  do 
+
+ 
+
+mesmo,  enquanto  propriedades  mais  longe  do  Centro  tem  seu  valor  diminuído  com  o  aumento  dessa 
+distância.  
+
+Dado o elevado adensamento urbano que caracteriza a cidade do Recife, a revelação da valoração 
+do recifense quanto às amenidades ambientais obtida neste trabalho parece tanto confirmar a importância 
+dos  espaços  naturais  das  cidades  quanto  das  desamenidades  sociais  associadas  à  criminalidade  e  à 
+pobreza  para  o  bem-estar  de  seus  residentes.  Nesta  perspectiva,  tais  preferencias  aqui  reveladas,  em 
+conjunto  com  mudanças  demográficas  que  afetam  a  necessidade  de  espaço  urbano  para  residência 
+(diminuição do tamanho das famílias), podem servir de auxílio ao planejamento urbano da cidade. 
+
+ 
+
+ 
+
+Referências 
+ 
+Aguiar, M. M. e Simões, R. F. (2012). A influência da localização no preço dos imóveis: uma aplicação 
+do modelo hierárquico para o mercado de belo  horizonte (2004-2010). Anais  do XV Seminário sobre a 
+Economia Mineira. 
+Alonso,  W.  (1964).  Location  and  land  use:  toward  a  general  theory  of  land  rent.  Harvard  University 
+Press: Cambridge. 
+Anselin,  L.  (2002).  Under  the  hood:  issues  in  the  specification  and  interpretation  of  spatial  regression 
+models. Agricultural Economics, 27:247-267. 
+Basu, S.; Thibodeau, T. (1998). Analysis of spatial autocorrelation in house prices. Journal of Real Estate 
+Finance and Economics, 17:61-85. 
+Benson, E. D., Hanson, J. L., Schwartz Jr, A. L. e Smersh, G. T. (1998). Pricing Residential Amenities: 
+The Value of a View. Journal of Real Estate Finance and Economics, 16(1):55-73. 
+Brueckner, J. K. e Fansler, D. A. (1983). The Economics of Urban Sprawl: Theory and Evidence on  the 
+Spatial Sizes of Cities. Review of Economics and Statistics, 65(3):479-482. 
+Campbell,  J.  Y.,  Giglio,  S.  e  Pathak,  P.  (2009).  Forced  sales  and  house  prices.  NBER  Working  Paper 
+Series, 14866. 
+Can,  A.  (1992).  Specification  and  Estimation  of  Hedonic  Housing  Price  Models.  Regional  Science  and 
+Urban Economics, 22(3):453-474. 
+Cohen,  J.  P.  e Coughlin,  C.  C.  (2008).  Spatial  hedonic  models  of  airport  noise,  proximity,  and  housing 
+prices. Journal of Regional Science, 48(5):859-878 
+Court,  A.  T.  (1939).  Hedonic  Price  Indexes  with  Automotive  Examples.  The  Dynamics  of  Automobile 
+Demand: New York, General Motors. 
+Cropper, M.,  Leland, B.  e Mcconnell, K. E. (1998). On the choice of functional  form  for hedonic price 
+functions. The Review of Economics and Statistics, 70(4):668-675. 
+Dantas,  R.  A.,  Magalhães,  A.  e  Vergolino,  J.  R.  O.  (2007).  Avaliação  de  imóveis:  a  importância  dos 
+vizinhos no caso do Recife. Revista de Economia Aplicada 11:231-251. 
+Dubin, R. A. e Sung, C. H. (1990). Specification of hedonic regressions: Non-nested tests of measures of 
+neighboohod quality. Journal of Urban Economics, 27(1):97-110. 
+Follain,  J.  R.  e  Malpezzi,  S.  (1980).  Dissecting  Housing  Value  and  Rent.  The  Urban  Institute:  
+Washington, DC. 
+Fuhrer,  R.  (2012).  A  Hedonic  Rental  Price  Modelfor  the  Canton  Zurich.  Dissertação.  Institut  für 
+Verkehrsplanung und Transportsysteme (IVT), ETH Zürich. 
+Gerardi,  K.,  Rosenblatt,  E.,  Willen, P.  e  Yao,  V.  (2012).  Foreclosure  externalities:  some  new  evidence. 
+Federal Reserve Bank of Atlanta, Working Paper 2012(11). 
+Hermann, B. M. e Haddad, E. A. (2005). Mercado imobiliário e amenidades urbanas: a view through the 
+window. Estudos econômicos, 35(2):237-269. 
+Kelejian,  H.  H.  e  Prucha,  I.  R.  (1998).  A  generalized  spatial  two-stage  least  squares  procedure  for 
+estimating  a  spatial  autoregressive  model  with  autoregressive  disturbances.  The  Journal  of  Real  State 
+Finance and Economics, 17(1):99-121. 
+Kelejian, H. H. e Prucha, I. R. (1999). A generalized moments estimator for the autoregressive parameter 
+in a spatial model. International Economic Review, 40(2):509-533. 
+Kim,  C,  W.,  Phipps,  T.  T.  e  Anselin,  L.  (2003).  Measuring  the  benefits  of  air  quality  improvement:  a 
+spatial hedonic approach. Journal of Environmental Economics and Management, 45(1):24-39. 
+Lesage, J. P. (1999). The Theory and Practice of Spatial Econometrics. University of Toledo. 
+Lesage, J. P. e Pace, R. K. (2009). Introduction to Spatial Econometrics. Chapman and Hall/CRC Press. 
+
+ 
+
+Lesage,  J.  P.  e  Pace,  R.  K.  (2012).  The  biggest  myth  in  spatial  econometrics.  Disponível  em 
+http://www.wu.ac.at/wgi/en/file\_inventory/lesage20120110, 30 de outubro. 
+Luttik,  J.  (2000).  The  Value  of  Trees,  Water  and  Open  Space  as  Reflected  by  House  Prices  in  the 
+Netherlands. Landscape and Urban Planning, 48:161-167. 
+Macedo,  P.  B.  R.  e  Simões,  R.  (1998).  Amenidades  urbanas  e  correlação  espacial:  uma  análise  intra-
+urbana para BH/MG. Revista Brasileira de Economia, 52(4):525-541. 
+Mapa da Violência (2013). Disponível em http://www.mapadaviolencia.org.br/, 20 de julho. 
+McDonald, J. F. e McMillen, D. P. (2010). Urban Economics and Real Estate: Theory and Policy. Wiley, 
+2ª edição. 
+Menezes,  T.  A.,  Silveira-Neto,  R.,  Monteiro,  C.,  Ratton,  J.  L.  (2012).  Spatial  correlation  between 
+homicide rates and inequality: Evidence from urban neighborhoods. Economics Letters, 120 (1):97-99. 
+Mills, E. (1972). Urban Economics. Scott Foresman: New York. 
+Moran, P. (1950). Notes on continuous stochastic phenomena. Biometrika 37:17-23. 
+Muth, R. F. (1969). Cities and housing. University of Chicago Press: Chicago. 
+Pontes, E., Paixão,  L. A. e  Abramo,  P. (2011). O mercado imobiliário  como  revelador das preferências 
+pelos atributos espaciais: uma análise do impacto da criminalidade urbana no preço de apartamentos em 
+BH. Revista de Economia Contemporânea, 15(1):171-197. 
+Rosen,  S.  (1974).  Hedonic  Prices  and  Implicit  Markets:  Product  Differentiation  in  Pure  Competition. 
+Journal of Political Economy, 82(1):34-55. 
+Sheppard, S. (1999). Hedonic analysis of housing markets. Handbook of Regional and Urban Economics, 
+3(41):1595-1635. 
+Sirmans,  S.  G.,  Macpherson  D.  A.  e  Zietz,  E.  N.  (2005).  The  composition  of  hedonic  pricing  models. 
+Journal of Real Estate Literature, 13(1):1-44. 
+Souza, R. B. E. (2009). A arte de envelhecer a cidade: o processo de ocupação do bairro de Boa Viagem e 
+as ações de demolição para novas construções. Anais do XIII Encontro Nacional da ANPUR. 
+Teixeira, E. e Serra, M.  (2006). O impacto  da criminalidade no valor de locação de imóveis: o caso de 
+Curitiba. Economia e Sociedade, 15(1):175-207. 
+Tyszler,  M.  (2006).  Econometria  espacial:  discutindo  medidas  para  a  matriz  de  ponderação  espacial. 
+Dissertação. Escola de Administração de Empresas de São Paulo, FGV-SP. 
+Wheaton,  W.  (1974).  A  comparative  static  analysis  of  urban  spatial  structure.  Journal  of  Economic 
+Theory, 9:223-37. 
+Wihelmsson, M. (2002). Spatial Models in Real Estate Economics. Housing, Theory and Society 19:92-
+101. 
+White,  H.  (1980).  A  Heteroskedasticity-Consistent  Covariance  Matrix  Estimator  and  a  Direct  Test  for 
+Heteroskedasticity. Econometrica 48(4):817-838. 
+
+ 
+
+
