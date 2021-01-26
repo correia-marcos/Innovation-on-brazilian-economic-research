@@ -1,0 +1,2131 @@
+PRECIFICAÇÃO DE DERIVATIVOS DE TAXAS DE JUROS  
+
+UTILIZANDO O MODELO HJM MULTIFATORIAL  
+
+COM ESTRUTURA DE VOLATILIDADE NÃO-PARAMÉTRICA 
+
+ 
+
+Nelson Kazuo Nojima (EESP/FGV) 
+
+Afonso de Campos Pinto (EESP/FGV) 
+
+1 
+
+Resumo: Com o objetivo de precificar derivativos de taxas de juros no mercado brasileiro, este 
+trabalho  foca  na  implementação  do  modelo  de  Heath,  Jarrow  e  Morton  (1992)  em  sua  forma 
+discreta  e  multifatorial  através  de  uma  abordagem  numérica,  e,  que  possibilita  uma  grande 
+flexibilidade  na  estimativa  da  taxa  forward  sob  uma  estrutura  de  volatilidade  baseada  em 
+fatores  ortogonais  (PCA),  facilitando  assim  a  simulação  de  sua  evolução  por  Monte  Carlo, 
+como conseqüência da independência destes fatores. A estrutura de volatilidade foi construída 
+de maneira a ser totalmente não paramétrica baseada em vértices sintéticos que foram obtidos 
+por interpolação dos dados históricos de cotações do DI Futuro negociado na BM&FBOVESPA, 
+sendo o período analisado entre 02/01/2003 a 28/12/2012. Para possibilitar esta abordagem foi 
+introduzida uma modificação no modelo HJM desenvolvida por Brace e Musiela (1994). Foram 
+obtidos  preços  para  os  seguintes  derivativos:  DI  Futuro,  opções  sobre  IDI  e  opções  sobre  DI 
+Futuro. 
+
+Palavras-chave: Derivativos de taxas de juros, Modelo HJM, Monte Carlo, Análise de 
+Componentes Principais  
+
+Abstract: For the purpose of pricing interest rate derivatives in the Brazilian market, this paper 
+focuses on the numerical implementation of the Heath, Jarrow  and Morton model (1992) in its 
+multi-factor discrete form, which allows for great flexibility on the estimation of the forward rate 
+curve  under  a  volatility  term  structure  based  on  orthogonal  factors  (PCA),  thus  facilitating  the 
+Monte Carlo simulation of its dynamics as a consequence of the independence of these factors. 
+The  volatility  term  structure  is  built  in  a  non-parametric  way  based  on  synthetic  buckets 
+obtained  via  interpolation  of  historical  data  of  BM&FBOVESPA  DI  Futures  ranging  from 
+Jan/2nd/2003 to Dec/28th/2012. The Brace and Musiela (1994) adaptation of the HJM Model was 
+adopted in this study. The following derivatives are priced: DI Futures, options on the IDI index, 
+and options on DI Futures.  
+
+Keywords: Interest rate derivatives, HJM Model, Monte Carlo, Principal Component Analysis 
+ 
+JEL: C02, C63 
+
+Área Anpec: Área 8 - Microeconomia, Métodos Quantitativos e Finanças 
+ 
+
+ 
+
+1. 
+
+Introdução 
+
+2 
+
+Muito  se  tem  estudado  e  desenvolvido  com  relação  a  modelos  para  a  precificação  de 
+derivativos  de  taxas  de  juros  e  headging  de  portfólios  utilizando  estes  derivativos,  e,  embora 
+muito  também  tenha  sido  aplicado,  não  existe  um  consenso  no  mercado  em  relação  a  um 
+modelo  largamente  aceito  e  utilizado    como  ocorre  com  o  modelo de  Black  e  Scholes  (1973) 
+para a renda variável. Isto decorre de vários fatores, entre outros porque muitos modelos não 
+seriam  tão  eficazes  ou  porque  seriam  de  utilização  muito  complexa,  isto  é,  não  possuem 
+solução  analítica  e,  portanto,  exigiriam  um  tratamento  numérico,  ou  ainda  porque  teriam  uma 
+implementação complexa em termos metodológicos. Além disso, em um passado recente, em 
+alguns  casos1  sua  utilização  em  larga  escala  era  inviável,  pela  limitação  da  capacidade  de 
+processamento existente à época. Atualmente muito ainda se utiliza o modelo de Black (1976) 
+para precificação de opções de taxas de juros, apesar de suas limitações e do surgimento de 
+outros modelos mais abrangentes posteriormente. Possivelmente isto ocorre devido ao modelo 
+de  Black  possuir  solução  analítica,  tornando  a  sua  implementação  extremamente  simples,  e, 
+pelo fato dos resultados obtidos serem considerados satisfatórios pelo mercado. Porém, apesar 
+destes  fatores,  a  preferência  pela  abordagem  da  estimação  “implícita”  como  indicado  por 
+Rebonato (2004), está baseada na esperança de que a “visão de mercado” esteja refletida na 
+volatilidade implícita, a qual só será confiável se houver completude e eficiência informacional, 
+o que nem sempre é verdade ou pode ser garantido. Assim, se há razões para duvidar, uma 
+aplicação  cega  na  direção  da  estimação  implícita  deveria  ser  fortemente  questionada.  Os 
+modelos  que  surgiram  posteriormente  são  baseados  na  construção  da  estrutura  a  termo  da 
+taxa  de  juros  (ETTJ)  e  são  primordialmente  divididos  em  duas  categorias:  (i)  os  modelos  de 
+equilíbrio geral, e (ii) os modelos de não arbitragem. A abordagem de equilíbrio foi iniciada por 
+Cox, Ingersoll e Ross2 (1985), começando pela descrição de uma economia subjacente e pela 
+assunção  sobre  a  evolução  estocástica  de  um  ou  mais  fatores  exógenos  ou  variáveis  de 
+estado  na  economia  e  sobre  as  preferências  de  um  investidor  representativo.  Considerações 
+de  equilíbrio  geral  são  usadas  para  endogenamente  derivar  a  taxa  de  juros  e  o  preço 
+contingente de dívidas. A abordagem de arbitragem começa pela assunção sobre a evolução 
+estocástica de uma ou mais taxas de juros e deriva o preço de todas as dívidas pela imposição 
+da  condição  de  que  não  há  nenhuma  oportunidade  de  arbitragem  na  economia  (Longstaff  e 
+Schwartz,  1992).  Como  exemplos de modelos  de não arbitragem podem-se  citar:  Brennan    e 
+Schwartz (1977), Ho e Lee (1986), Hull and White (1990), Black, Derman e Toy (1990) e Heath, 
+Jarrow  e  Morton  (1992),  conhecido  como  modelo  HJM,  entre  outros.  Estes  autores 
+desenvolveram  uma  abordagem  geral  que  modela  a  dinâmica  de  toda  a  ETTJ  incorporando 
+muitos dos modelos previamente desenvolvidos, considerados como casos particulares deste. 
+O modelo HJM é um modelo multifator permitindo com isso capturar toda a dinâmica da ETTJ, 
+diferentemente  dos  modelos  desenvolvidos  até  então,  que  eram  unifatoriais  em  sua  grande 
+maioria.  Na  equação  diferencial  estocástica  do  modelo  HJM,  poucas  são  as  funções  de 
+volatilidade  que  permitiriam  uma  saída  analítica,  restando  portanto,  a  implementação  de 
+métodos numéricos para sua solução. Aliado a isso, a complexidade e flexibilidade do modelo 
+fez com que o modelo não fosse largamente utilizado, seja pela dificuldade em implementá-lo 
+ou seja pela necessidade de métodos trabalhosos para uso no dia a dia na calibração de seus 
+parâmetros. A utilização de técnicas como a Análise de Componentes Principais (PCA, da sigla 
+em  inglês)  que  permitem  a  redução  do  número  de  fatores,  tipicamente  três  fatores  para  uma 
+curva  de  juros,  bem  como  a  evolução  da  tecnologia  que  possibilitam  a  utilização  de 
+computadores cada vez mais rápidos, permitem a implementação e utilização do modelo HJM 
+de maneira mais rápida e simples e a utilização de técnicas como simulação de Monte Carlo de 
+maneira eficiente. Existem várias maneiras para discretizar a SDE como podem ser vistos em 
+
+                                                
+1 Quando o modelo exigia uma solução numérica. 
+2 Conhecido como modelo CIR. 
+
+3 
+Heath, Jarrow e Morton (1992) e Glasserman (2003) entre outros, e que utilizam o mesmo grid 
+para  as  duas  dimensões  de  tempo  do  modelo,  o  tempo  decorrido  e  a  maturidade.  Neste 
+trabalho, foi utilizado o prazo para maturidade no lugar da data de maturidade como argumento 
+da taxa forward, seguindo a parametrização de Brace e Musiela3 (1994) e foram utilizados dois 
+grids em separado, um para o tempo e outro para o prazo, o que possibilitou uma flexibilidade 
+maior  na  simulação.  Existem  também  várias  maneiras  para  avaliar  o  drift  no  tempo  discreto. 
+Neste  trabalho  adotam  a  solução  sugerida  por  Glasserman  (2003),  que  dentre  algumas 
+possibilidades para aproximação do limite de tempo contínuo, escolheu aquela que preserva a 
+propriedade martingal para o preço descontado de bonds.  
+
+O  objetivo  deste  trabalho  é  implementar  o  modelo  HJM  em  sua  forma  discreta  e 
+multifatorial  através  de  uma  abordagem  numérica  e  aplicá-lo  ao mercado  brasileiro.  Devido  a 
+grande  flexibilidade  do  modelo  HJM  no  que  se  refere  à  sua  aplicação  e  utilização,  e,  até  por 
+esta  razão  tem  sido  referenciado  em  muitos  trabalhos  como  framework  HJM.  Trabalhos 
+similares no Brasil e em outros mercados, modelam a ETTJ através do modelo HJM utilizando 
+formas funcionais4 para a volatilidade como, por exemplo, em Renò e Uboldi (2002), Driessen 
+et al. (2003) e em Dario e Fernández (2009), e, calibrando os parâmetros da função através de 
+PCA. Neste trabalho, a estimativa da volatilidade a ser utilizada no modelo, será totalmente não 
+paramétrica,  ou  seja,  não  será  definida  através  de  uma  função  contínua  que  represente  a 
+volatilidade,  e  sim  em  pontos  específicos  obtidos  dos  dados  históricos,  sendo  cada  ponto 
+referente a uma maturidade e a um fator5. A identificação dos fatores de volatilidade empírica 
+será obtida por PCA, e, conforme analisado por Litterman e Scheinkman (1991), em geral, três 
+fatores  deverão  ser  suficientes6  para  a  ETTJ,  o  que  é  confirmado  neste  trabalho.  Um  dos 
+problemas  encontrados  no  mercado  financeiro  brasileiro  no  que  se  refere  ao  estudo  e 
+aplicação  de  novos  modelos,  focando  especificamente  em  renda  fixa,  é  a  baixa  quantidade 
+tanto  da  variedade  de  instrumentos  financeiros  e  derivativos  de  taxas  de  juros,  quanto  do 
+volume de negociação que se traduz em dificuldades para avaliação e calibração dos modelos 
+sendo  estudados.  Particularmente  neste  trabalho,  uma  das  dificuldades  encontradas  foi  a 
+obtenção de pontos observáveis da expectativa de taxas de juros futuras em prazos fixos, pela 
+falta  de  instrumento  que  sintetize  esta  expectativa  nesta  condição.  Como  estes  pontos  são 
+necessários para a calibração da volatilidade histórica, foi utilizado um método de interpolação 
+baseado em splines para obtenção destes vértices7 sintéticos.  No Brasil o derivativo de taxas 
+de  juros  que  é  tido  como  referência  para  o  mercado  é  o  DI  Futuro8  negociado  na 
+BM&FBOVESPA que sintetiza a expectativa da taxa de juros futura. Dentre os derivativos, este 
+é o de maior liquidez no mercado brasileiro. Os demais derivativos negociados na bolsa como 
+a  opção  sobre  DI  Futuro  e  a  opção  sobre  IDI9  tem  baixa  liquidez  atualmente.  Assim  foram 
+utilizadas as cotações históricas do DI Futuro para a obtenção da volatilidade da taxa forward 
+em prazos específicos e utilizá-las no modelo.  
+
+O trabalho está dividido em seis seções, sendo esta introdução a inicial. A seção 2 trata 
+da  revisão  bibliográfica  contextualizando  o  trabalho  em  relação  aos  estudos  e  técnicas  já 
+realizadas ao longo do tempo. Na seção 3 é apresentado o modelo HJM com a parametrização 
+Musiela  e  a  forma  discreta  do  modelo  para  possibilitar  sua  abordagem  numérica.  A  seção  4  
+apresenta  a  metodologia  para  a  implementação  do  modelo,  na  qual  são  apresentadas  as 
+técnicas  para  o  tratamento  numérico  por  Monte  Carlo,  bem  como  para  a  calibração  da 
+volatilidade por PCA. Na seção 5 são apresentados os resultados da aplicação do modelo em 
+
+                                                
+3 Daqui para a frente nos referiremos como “parametrização Musiela”. 
+4 Texto referente a escolha de formas funcionais para a volatilidade podem ser vistos em James e Weber (2000) e Renò e 
+
+Uboldi (2002). 
+
+5 No caso de três fatores estes representam o nível, a inclinação e a curvatura conforme Litterman e Scheinkman (1991). 
+6 Soma dos fatores que representem de forma significativa a volatilidade, em geral mais do que 92%. 
+7 Pontos com prazos fixos pré estabelecidos p. e. 30, 60, 90, 180, 360 dias, ou em dias úteis, 21, 42, 63, 252. 
+8 Contrato Futuro de Taxa Média de Depósitos Interfinanceiros de Um Dia. 
+9 Índice da Taxa Média de Depósitos Interfinanceiros de um Dia. 
+
+4 
+alguns  derivativos  do  mercado  brasileiro  e  a  seção  6  encerra  com  a  conclusão  do  trabalho  e 
+possíveis extensões. 
+
+2.  Revisão Bibliográfica 
+
+Heath, Jarrow e Morton (1992) desenvolveram um framework geral para modelar as dinâmicas 
+de  toda  a  curva  da  taxa  forward.  Nesse  sentido  muitos  dos  modelos  que  foram  previamente 
+desenvolvidos são casos particulares deste, como os modelos de Ho e Lee (1986) e Hull and 
+White (1990). Um ponto chave do modelo é que assunção de não arbitragem define o  drift da 
+SDE  como  função  da  volatilidade,  porém,  por  sua  característica  torna  o  modelo  não 
+Markoviano. Além disso, uma das dificuldades encontradas para sua aplicação no mercado é 
+que  o  processo  estocástico  que  o  dirige  é  n-dimensional.  Litterman  e  Scheinkman  (1991) 
+empregam uma pesquisa empírica para determinar os fatores comuns que afetam os retornos 
+no  passado  sobre  papéis  do  Tesouro  americano.  A  análise  sugere  que  a  maior  parte  da 
+variação do retorno sobre papéis de renda fixa pode ser explicada em termos de três fatores, 
+ou atributos da yield curve, os quais os chamaram nível, inclinação e curvatura. Renò e Uboldi 
+(2002) descrevem a implementação de um modelo para a representação da  estrutura a termo 
+da taxa de juros desenvolvido dentro  do  framework proposto por Heath et al. (1992). Indicam 
+que o framework HJM é capaz de representar as principais características da estrutura a termo, 
+excluindo as oportunidades de arbitragem por construção.  O modelo HJM é assim atraente por 
+suas propriedades teóricas e por sua flexibilidade, embora sua calibração seja usualmente não 
+trivial,  e,  que  através  da  análise  de  componentes  principais  (PCA)  isto  pode  ser  feito  de 
+maneira  rápida  e  fácil  de  utilizar.  Utilizam  uma  forma  funcional  para  a  volatilidade,  cujos 
+parâmetros  são  calibrados  através  de  PCA  sobre  yield  curves  de  taxas  de  juros  de  Euro. 
+Tamagushiku  (2006)  investigou  a  performance  do  modelo  HJM  na  precificação  de  opções  de 
+compra  sobre  bill  futures  negociados  na  Sidney  Future  Exchange,  considerando  um,  dois  ou 
+três  fatores.  Os  resultados  mostram  que  o  modelo  com  três  fatores  consistentemente 
+apresenta  um  desempenho  superior.  Rebonato  (2004)  mostra  que  o  estado  atual  de 
+modelagem  se  deve  muito  a  como  os  modelos  foram  historicamente  desenvolvidos  na 
+indústria,  e  salienta  a  importância  do  desenvolvimento  tecnológico  (tais  como  computadores 
+mais  rápidos  e  técnicas  de  Monte  Carlo  mais  eficientes)  orientando  a  direção  da  pesquisa 
+teórica.  Björk  et  al.  (2012)  foca  na  aproximação  numérica  na  precificação  de  instrumentos 
+financeiros  no  mercado  de  bonds,  usando  o  modelo  HJM.  Considera  que  na  valorização  de 
+derivativos no mercado de bonds é importante o uso de modelos que são consistentes com a 
+estrutura a termo inicial observada no mercado e que o modelo HJM para as taxas foward tem 
+esta propriedade e em adição oferece a liberdade para escolher a estrutura de volatilidade, por 
+exemplo  para  ajustar  para  outros  derivativos  cotados  no  mercado.  Krivko  e  Tretyakov  (2013) 
+ponderam que o framework proposto por HJM em que as dinâmicas da curva da taxa  forward 
+são descritas por uma equação estocástica multifator de dimensão infinita, com a curva inteira 
+como  variável  de  estado  e  que  o  modelo  tem  solução  fechada  apenas  para  alguns  casos 
+especiais  de  volatilidade  e  como  conseqüência  requer  uma  aproximação  numérica,  e,  tanto 
+quanto se sabe, a literatura para o tratamento numérico é bastante escassa. 
+
+Caldeira  (2011)  em  seu  trabalho  compara  os  principais  métodos  de  interpolação  da 
+estrutura a termo da curva de juros. Os resultados encontrados mostram a superioridade dos 
+modelos  baseados  em  splines,  modelos  não  paramétricos,  em  relação  aos  modelos 
+paramétricos  no  que  diz  respeito  ao  ajuste  da  curva  de  juros,  embora,  a  interpretação 
+econômica  dos  fatores  que  compõe  os  modelos  paramétricos  e  seu  bom  desempenho  para 
+fazer previsões da curva de juros faz com que recebam muita atenção. Ferreira (2011) em seu 
+trabalho  precificou opções  de futuros de  DI  de  um dia  através  do  modelo  HJM  de  um fator  e 
+volatilidade constante e comparou-as com os prêmios de referência divulgados  pela BMF. De 
+outubro de 2009 a abril de 2011 foram avaliadas as quatro séries principais de opções do tipo 
+2.  O  resultado  obtido  foi  que  a  BMF&BOVESPA  sobreapreçou  as  opções  comparado  com  o 
+
+5 
+modelo,  ressaltando  que  não  foi  possível  obter  amostras  extensas  para  cada  tipo  de  opção, 
+uma vez que esse mercado possui baixíssima liquidez. Considerando a modificação proposta 
+por Brace e Musiela (1994) parametrizando a taxa  forward com prazo de maturidade no lugar 
+da data de maturidade, este trabalho implementa o modelo HJM  baseado no modelo discreto 
+proposto por Glasserman (2003) e considera ainda  a utilização de  grids de tempo e de prazo 
+de forma independente. Já a calibração da volatilidade histórica foi obtida seguindo o método 
+sugerido  por  Shreve  (2004),  utilizando  PCA  e  interpolando  os  vértices  sintéticos  com  cubic 
+spline conforme já mencionado. 
+
+3.  Arcabouço Teórico 
+
+A seguir será brevemente descrito o modelo HJM na sua forma original e a mudança proposta 
+por  Brace  e  Musiela  (1994)  com  a  introdução  de  um  tempo  relativo     (prazo),  bem  como  a 
+abordagem utilizada a para discretização do modelo e assim possibilitar a simulação numérica 
+por Monte Carlo. 
+
+3.1  O Modelo HJM 
+
+O framework HJM se refere a uma família de modelos que modelam diretamente as dinâmicas 
+da taxa forward instantânea, mais precisamente, o processo da taxa forward         é modelada 
+através  de  uma equação  diferencial  estocástica  multivariada, na  qual  a  dinâmica  de  todas  as 
+maturidades   estão representadas conforme a seguinte equação 
+
+ 
+
+ 
+
+                                                         
+
+ 
+
+          
+
+(1)  i 
+
+   
+
+onde          representa o diferencial em relação a   com   mantido constante e os processos 
+    são  movimentos  Brownianos  independentes  sob  a  medida  real10   .  Para  simplificar  a 
+notação  vamos  admitir  por  enquanto  que o processo da taxa  forward  está  sujeito a  um único 
+movimento  Browniano.  O  drift     e  a  difusão      são  funções  da  própria  taxa  forward         , 
+porém  daqui  para  a  frente  iremos  omiti-la  para  não  carregar  a  notação,  então           
+                 e                            . A questão chave no modelo HJM é a condição da não 
+existência  de  oportunidades  de  arbitragem  para  a  modelagem  da  estrutura  a  termo  de  zero-
+coupon  bonds  em  todas  as  maturidades  em         .  Essa  condição  é  garantida  se  existe  um 
+processo      tal que: 
+
+ 
+
+                                   
+
+(2)  
+
+para todo               , onde         e         são o drift e a difusão da taxa forward,           
+ 
+           
+,  e        é  o  preço  do  risco  de  mercado.  A  prova  deste  teorema  pode  ser 
+ 
+encontrado,  p.  e.,  em  Shreve  (2004).  Assim,  o  processo  da  taxa  forward  satisfazendo  a 
+condição de não arbitragem no modelo HJM é 
+
+ 
+
+                                              
+
+(3)  
+
+onde                  
+o drift 
+
+ 
+ 
+
+ 
+
+       é um movimento Browniano sob a medida neutra ao risco11   , e 
+
+                          
+
+(4)  
+
+                                                
+10 Medida de probabilidade no mundo real em contraponto à medida no mundo livre de risco. 
+11 Usando o Teorema de Girsanov para a mudança na medida de probabilidade. Demonstração em Shreve (2004). 
+
+sob  a medida neutra  ao  risco      onde                       
+com n fatores temos 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+.  Para o  caso  geral  n-dimensional 
+
+6 
+
+                       
+
+       
+
+                      
+
+ 
+
+          
+
+(5)  i 
+
+3.2  O Modelo HJM com parametrização Musiela 
+
+   
+
+   
+
+O  modelo  HJM  possui  dois  parâmetros  de  tempo,  um  é  o  tempo     “agora”  e  um  outro  tempo 
+(absoluto)   à frente. Brace e Musiela (1994) propõe uma mudança no framework de tempo do 
+modelo  HJM  de  maneira  que  existe  um  tempo     “agora”  e  um  tempo  futuro         relativo  a 
+agora.  Isso  produz  um espaço  de estados que  são  convenientemente  úteis  porque  as  curvas 
+forward  assim  são  sempre  definidas  em    .  O  modelo  da  estrutura  a  termo  da  taxa  de  juros 
+proposto é baseada na família de taxas                     , onde         representa a taxa na qual 
+pode-se entrar em um contrato na data  , para emprestar ou tomar emprestado, por um curto 
+período  de  tempo  até a  data              .  Isto  difere do  introduzido  por  HJM,  no  qual           
+           ,  onde           é  a  taxa  forward  analisada  por  HJM.  Pelo  Teorema  2.1  em  Brace  e 
+Musiela (1994), seja            
+
+  , e            
+
+  , onde 
+
+ 
+
+Se      
+
+            resolve 
+
+                              
+
+  
+
+ 
+
+ 
+
+ 
+
+            
+
+ 
+  
+
+                                      
+
+(6)  i 
+
+(7)  i 
+
+onde                     é  um  movimento  Browniano   -dimensional  definido  no  espaço  de 
+probabilidade                      ,  então  pode-se  afirmar  que 
+       para  todo 
+
+      
+
+        
+    
+
+    
+
+         
+
+   e                         
+
+   
+         ,  onde                    
+          é  o  valor  no 
+ 
+tempo   de um investimento de valor 1 no tempo  , continuamente reinvestido pela  taxa spot 
+instantânea         .  Assim,  sob  a  hipótese  do  Teorema  2.1  em  Brace  e  Musiela  (1994)  os 
+todas  as  maturidades  são           -martingais. 
+preços  dos  zero-coupon  bonds  em 
+Consequentemente, pode-se dizer que a equação (7) descreve a dinâmica livre de arbitragem 
+da família de taxas forward                     , e o drift conforme a equação (6). 
+ 
+3.3  A Forma Discreta do Modelo HJM 
+
+ 
+ 
+
+Solução  analítica  para  o  modelo  HJM  é  possível  somente  para  alguns  casos  especiais  de 
+volatilidade,  assim,  em  geral  uma  avaliação  utilizando  o  framework  HJM  requer  uma  solução 
+numérica.  Como observado por Krivko e Tretyakov (2013), tanto quanto sabemos, é bastante 
+escassa  a  literatura  sobre  tratamento  numérico  do  modelo  HJM.  A  abordagem  mais  comum, 
+que  pode  ser  vista  em  Heath  et  al.  (1992),  Jarrow  (2002),  Björk  et  al.  (2012)  e  Glasserman 
+(2003), é utilizar grids de tempo   e de maturidade   coincidentes. Estes métodos diferem entre 
+si  na  maneira  como  a  aproximação  é  feita  na  integral  do  drift  livre  de  arbitragem  do  modelo 
+HJM. Todos eles utilizam o método do tipo Euler para discretização no tempo.  
+
+Neste trabalho a proposta é utilizar o modelo HJM com a parametrização Musiela e na 
+solução numérica considerar dois grids de tempo em separado, um grid de tempo   e um outro 
+para o prazo de maturidade  , tendo como base a abordagem proposta por Glasserman (2003) 
+e  introduzindo  estas  modificações.  Com  a  mudança  da  variável  maturidade     para  a  variável 
+prazo  , no lugar de considerarmos maturidades em 2010, 2011, 2015, consideraremos prazos 
+para maturidade de 0,25; 0.5; 1; 2; 5 anos, ou seja,                                , conforme visto 
+
+7 
+na seção anterior. Com isso, ganharemos flexibilidade no modelo, sem a necessidade de nos 
+atermos aos grids coincidentes para o passo de tempo e maturidade. 
+
+ 
+
+3.3.1  O drift discreto livre de arbitragem 
+
+Conforme  Glasserman  (2003)  os  dois  argumentos  de           requerem  discretização. 
+Estabelecendo  um  grid  de  tempo                        para  o  primeiro  argumento,  em  geral 
+mesmo para um tempo fixo   , não é possível representar toda a curva forward        ,         
+  , assim fixa-se também um grid de maturidades   e aproxima-se a curva forward pelos seus 
+valores  apenas  nestas  maturidades.  Com  a  parametrização  Musiela  na  dinâmica  da  taxa 
+forward  conforme  a  equação  (7),  onde           requer  também  a  discretização  de  dois 
+parâmetros, estabelecemos para o primeiro, um grid de tempo                     , e, para o 
+segundo,  um  grid  de  prazos  para  maturidade                  ,  e,  da  mesma    maneira, 
+aproximamos  a  curva  forward  pelos  seus  valores  apenas  nestes  prazos.  Considerando 
+inicialmente  um  modelo  com  apenas  com  um  fator,  a  dinâmica  da  taxa  forward  no  modo 
+discreto, com a parametrização Musiela segue a equação: 
+
+                             
+
+                             
+
+         
+
+                           
+
+(8)  
+
+                              
+
+ 
+ 
+
+             e              onde           . Utilizou-se a notação com “chapéu” para distinguir  do 
+correspondente contínuo, no qual para que o mesmo seja livre de arbitragem, o drift deve ser  
+                              
+ (6), que é a questão chave do modelo HJM. Para o modelo discreto 
+iremos  adotar  a  solução  proposta  por  Glasserman  (2003),  que  dentre  algumas  possibilidades 
+para  aproximação  do  limite  de  tempo  contínuo,  escolheu  aquela  que  preserva  a  propriedade 
+martingal  para  o  preço  descontado  de  bonds.  Partindo  do  modelo  discretizado  de  um  bond 
+como  sendo                     
+           ,  onde           e             é  a  short  rate  no 
+tempo   , Glasserman (2003) demonstrou que para ser martingal em    para cada    o drift deve 
+ser: 
+
+          
+
+   
+   
+
+                   
+
+ 
+
+ 
+
+            
+
+ 
+
+   
+
+ 
+
+ 
+
+ 
+
+                                     
+   
+
+   
+
+ 
+
+ 
+
+                                      
+
+ 
+
+   
+
+   
+
+   
+
+3.3.2  O modelo multifator em tempo discreto 
+
+O modelo HJM multifator em tempo discreto, seguindo a parametrização Muziela, terá então a 
+seguinte forma 
+
+ 
+
+ 
+
+                             
+
+                             
+
+         
+
+ 
+
+                                
+
+  
+
+   
+
+                           
+
+(9)  i 
+
+8 
+              e                onde                               são  vetores  aleatórios  independentes 
+      ,       o  n-ésimo  elemento  do  vetor    ,              ,  sendo  o     o  número  de  fatores  do 
+modelo, e, conforme discutido na seção anterior, o drift terá a forma 
+
+ 
+
+              
+
+ 
+
+            
+
+ 
+
+   
+
+ 
+
+ 
+
+ 
+
+                              
+   
+
+   
+
+ 
+
+ 
+
+                               
+
+ 
+
+   
+
+   
+
+   
+
+(10)  i 
+
+4.  Metodologia 
+
+Esta  seção  descreve  os  passos  necessários  para  a  implementação  do  modelo  HJM  na  sua 
+forma discreta, de maneira a possibilitar o tratamento numérico da dinâmica das taxas  forward 
+através  de  simulação  por  Monte  Carlo,  bem  como  o  tratamento  dos  dados  de  mercado,  para 
+calibração da volatilidade a ser utilizada no modelo. 
+
+4.1    PCA e a estimação da volatilidade das taxas forward 
+
+PCA é uma das possíveis técnicas estatísticas através da qual podemos extrair a volatilidade 
+subjacente  de  uma  série  histórica.  Neste  trabalho  iremos  utilizar  esta  técnica  para  extrair  a 
+volatilidade  na  série  histórica  das  mudanças  na  taxa  forward  dos  Certificados  de  Depósito 
+Interbancários (CDI) de um dia e utilizar estas volatilidades no modelo HJM.  As taxas forward 
+serão  inferidas  dos  contratos  futuros  de  DI  de  um  dia  negociados  na  BM&F,  em  algumas 
+maturidades  pré  estabelecidas.    O  conceito  teórico  de  PCA  por  ser  bastante  conhecido  e 
+registrado na literatura, não será detalhado aqui. Aplicação de PCA em taxas de juros podem 
+ser obtidas, por exemplo, em Alexander (2008). Podemos usar dados históricos para estimar a 
+difusão         no modelo HJM  porque o processo de difusão na dinâmica das taxas forward é 
+o mesmo tanto sobre a medida no mundo real conforme a equação (1), onde os processos    
+são movimentos Brownianos independentes sob a medida real12  , quanto no mundo neutro ao 
+risco  conforme  a  equação  (5),  onde  onde          são  movimentos  Brownianos  sob  a  medida 
+neutra ao risco   . Em James e Webber (2000) são discutidas algumas formas funcionais para 
+a volatilidade em HJM. Os autores ponderam que é usual, na prática, para evitar complexidade 
+que           seja  Markov  e  nesta  direção  há  quatro  abordagens  distintas:  formas  funcionais 
+padrão,  funções  Gaussianas  gerais,  funções  para  obtenção  de  taxas  spot  Markovianas  e 
+funções  implícitas  de  preços  de  opções.  As  consequências  da  escolha  da  especificação  da 
+volatilidade são enormes. Uma especificação Gaussiana pode levar, para opções mais simples, 
+a  fórmulas  explícitas.  Uma  especificação  Markov  provavelmente  resultará  em  uma  estimativa 
+usando  uma  aproximação  em  árvore.  No  caso  geral  quando           é  não  Markov,  só  será 
+possível  avaliar,  mesmo  uma  opção  simples,  somente  por meio de  simulações  complexas  ou 
+árvores  não  recombinantes.  Várias  formas  funcionais  padrão  tem  sido  estudadas  sendo  as 
+duas primeiras muito utilizadas na prática. Para estimar a volatilidade através de PCA  iremos 
+utilizar o método sugerido por Shreve (2004) descrito a seguir. Vamos assumir que         é da 
+forma                                    , para alguma função não aleatória      ,      , e alguma 
+constante  positiva   13.  Escolhendo             para  coincidir  com  dados  de  mercado,  a  taxa 
+forward evolve de acordo com o modelo  
+
+                                                
+12 Medida de probabilidade no mundo real em contraponto à medida no mundo livre de risco. 
+13 Limite superior para a taxa forward para prevenir a explosão da taxa que podem ocorrer quando t e T estão 
+
+muito próximos. 
+
+                                                        
+
+9 
+
+Suponha que observamos as taxas forward nos tempos                      no passado, e as 
+taxas  forward  que  observamos  naqueles  tempos  referem-se  aos  prazos  para  maturidades 
+                 (isto é, observamos                para              e             ). Suponha alem 
+do mais que   é suficientemente pequeno de maneira que               para                  e 
+          . De acordo com o modelo então: 
+
+ 
+
+                                   
+
+                                                                       
+
+Definindo 
+
+ 
+
+      
+
+                                   
+ 
+
+                         
+
+e substituindo em (11) temos: 
+
+      
+
+                
+
+                      
+
+        
+
+                 
+
+  
+
+  
+
+(11)  i 
+
+(12)  
+
+O primeiro termo do lado direito é pequeno em relação ao segundo porque tem o fator   . Se 
+definirmos: 
+
+ 
+
+    
+
+                 
+
+  
+
+                   
+
+(13)  
+
+a expressão que aparece no segundo termo, que é uma variável aleatória, temos 
+
+ 
+
+                
+
+(14)  i 
+
+Como                  são  variáveis  aleatórias  normais  e  independentes,  significa  que  podemos 
+considerar                       como observações independentes das taxas forward tomadas nos 
+tempos                  relativas  à  maturidade    .  A  covariância  empírica  será  dada  por          
+ 
+    
+    onde                   
+  a 
+
+ 
+                 Utilizando  PCA, temos            
+  são os autovalores de   e os vetores                são os autovetores correspondentes e   
+transposta de   . Assim, a melhor aproximação para    é 
+
+   A  covariância  teórica  calculada  a  partir  de  (14),  é                    
+
+              
+
+            
+
+          
+
+ 
+   
+
+      
+      
+
+ 
+ 
+ 
+       
+
+ 
+
+ 
+ 
+ 
+ 
+
+         
+
+10 
+Para melhorar  a  aproximação  para    podemos  introduzir  mais movimentos Brownianos (mais 
+fatores)  na  equação  da  dinâmica  da  taxa  forward,  cada  um  com  seu  próprio  vetor      (     , 
+     , etc.). Como um passo final na calibração, pode ser introduzido uma função não aleatória 
+     na evolução da taxa forward sob a medida neutra ao risco, fazendo: 
+
+ 
+
+                                                                      
+
+(15)  i 
+
+onde  
+
+                                             
+
+ 
+
+ 
+
+ 
+
+                      
+
+                                     
+
+  
+
+(16)  i 
+
+ 
+
+ 
+
+Mesmo  introduzindo      ,  o  modelo  continua  livre  de  arbitragem  quando            em  (15)  é 
+definido  por  (16).  Tipicamente  o  valor  de        é  uma  constante  e  esta  constante  é  livre  para 
+fazer o modelo coincidir com os valores de mercado. Inicialmente assume-se          e obtêm-
+se os valores de          , e, posteriormente alterando-se      e evoluindo a curva forward pelo 
+modelo, calibra-se seu valor. 
+
+4.2    O tratamento dos dados de mercado históricos 
+
+Esta seção descreve o tratamento dado  às cotações históricas de mercado de futuros de DI14 
+de  um  dia  negociados  na  BM&F  que  serão  utilizados  para  o  cálculo  das  mudanças  na  taxa 
+forward ao longo do tempo  , em pontos específicos da curva, que chamaremos de prazos  , e 
+que correspondem aos prazos de maturidade (tenors) de zero-bonds. O futuro de DI de um dia 
+tem como ativo subjacente a taxa dos depósitos interfinanceiros de um dia de prazo, apurada 
+pela Cetip, acumulada entre a data da negociação até o dia útil anterior à data do vencimento 
+do contrato futuro 
+
+ 
+
+   
+
+   
+ 
+      
+
+                       
+
+ 
+
+     
+
+(17)  i 
+
+   
+
+onde   é a data de vencimento do contrato futuro e        é taxa de um dia em                  , 
+assim,  o  DI  Futuro  reflete  a  expectativa  de  taxas  forward  de  um  dia,  acumulados  até  o 
+vencimento. Os vencimentos destes contratos ocorrem no primeiro dia útil dos quatro primeiros 
+meses subsequentes ao da negociação e, a partir daí, nos meses que se caracterizam como 
+início  de  trimestre  (janeiro,  abril,  julho  e  outubro).  No  exterior  são  mais  comuns  os  contratos 
+futuros de juros onde o ativo subjacente é a taxa de um título que, no vencimento do contrato 
+futuro, tem um prazo a decorrer até a maturidade do título, sendo a maturidade destes títulos 
+padronizados em prazos específicos. Pelas características do contrato futuro de DI de um dia 
+negociados  na  BM&F,  descritas  acima,  temos  cotações  diárias  destes  futuros  em  datas  de 
+maturidades  (vencimentos)  específicas,  e,  a  cada  dia  que  passa,  o  prazo  (tenor)  para 
+maturidade  diminui  um  dia.  Porém,  para  estimarmos  a  volatilidade  sobre  os  dados  históricos, 
+precisaremos das taxas forward em prazos específicos e fixos (p. e., 1 mês, 2 meses, 6 meses, 
+1 ano, 2 anos, etc.). Assim, será necessário proceder algum método para interpolar os prazos 
+cotados em cada dia para os prazos fixos necessários. Caldeira (2011) em seu trabalho avaliou 
+
+                                                
+14 Depósitos Interfinanceiros, negociados entre instituições financeiras. 
+
+11 
+os  principais  métodos  de  interpolação  da  estrutura  a  termo  da  curva  de  juros  no  Brasil.  Os 
+resultados  encontrados  mostram  a  superioridade  dos  modelos  baseados  em  splines.  Assim, 
+utilizaremos um método baseado em cubic splines para a interpolação da curva de juros para 
+os  prazos  requeridos.  Este  método  é  bastante  conhecido  e  com  diversas  referências  na 
+literatura,  não  sendo  objetivo  deste  trabalho  detalhar  esta  técnica.  Finalmente,  como  os 
+modelos  desenvolvidos  consideram  que  as  taxas  são  continuamente  compostas  e,  no  modo 
+discreto, continuamente compostas em base diária, convertemos as taxas compostas em taxa 
+continuamente compostas equivalentes, através da relação 
+
+ 
+
+          
+
+     
+
+    
+
+           
+     
+
+  
+
+(18)  i 
+
+onde      é  a  taxa  composta  anual  (considerando  252  dias  úteis  por  ano)  e      é  a  taxa 
+equivalente  continuamente  composta.  Esta  relação  foi  obtida  a  partir  das  seguintes  relações 
+para um bond 
+
+ 
+
+e 
+
+               
+
+     
+
+    
+ 
+
+        
+
+       
+ 
+   
+
+  
+
+(19)  i 
+
+(20)  i 
+
+onde      e      são  os  valores  do  bond  repectivamente  em     e  em   .  Igualando  (19)  e  (20) 
+obtemos a equação (18). Similarmente, a relação para taxas de um dia será  
+
+ 
+
+    
+
+                
+
+     
+
+  
+
+(21)  
+
+onde    e    são as taxas diárias equivalentes. 
+
+4.3  A simulação do modelo por Monte Carlo 
+
+Obtendo a taxa forward das cotações históricas interpoladas nos prazos específicos desejados 
+e  aplicando  os  métodos  discutidos  nas  seções  4.1  e  4.2,  estimamos  a  volatilidade  por  PCA 
+para  os     fatores  (em  geral  3  fatores  são  suficientes),  para  cada  um  dos  prazos  específicos 
+(  ).  Com  a  volatilidade  estimada  para  cada  um  dos  fatores  e  para  cada  prazo,  calculamos  o 
+drift  discreto  utilizando  a  equação  (10)  conforme  discutido  na  seção  3.3.  Finalmente, 
+implementando a equação (9), podemos simular por Monte Carlo a evolução da taxa forward e 
+assim  obter  a  ETTJ  para  uma  data     e  para  prazos      específicos.  Simulando  a  evolução  da 
+taxa  de  juros  por  Monte  Carlo  podemos  obter  o  preço  de  derivativos  de  taxas  de  juros.  Na 
+seção  seguinte  são  apresentados  os  resultados  de  testes  feitos  com  derivativos  de  taxas  de 
+juros negociados no mercado brasileiro negociados na bolsa bem como a descrição dos dados 
+utilizados para o teste. 
+
+5.  Resultados 
+
+Aqui  são  descritos  os  dados  utilizados  para  calibrar  e  testar  o  modelo  e  são  abordadas  as 
+questões sobre a interpolação de cotações para a obtenção dos “vértices” em prazos fixos e a 
+análise para a escolha do período adequado para a determinação da estrutura de volatilidade. 
+Na  sequência,  como  exemplos  de  aplicação,  são  apresentados  os  resultados  obtidos  com  a 
+simulação por Monte Carlo do modelo HJM, onde são precificados alguns derivativos de taxas 
+
+12 
+de juros negociados na BM&FBOVESPA cujos valores estimados pelo modelo são comparados 
+com  os  valores  reais  de  mercado.  Os  derivativos  testados  são:  a  Opção  sobre  IDI,  a  Opção 
+sobre  Contrato  de  DI  Futuro  e  o  Contrato  de  DI  Futuro.  Os  programas  para  tratamento  dos 
+dados e para a simulação do modelo foram totalmente desenvolvidos em MATLAB, incluindo a 
+PCA e a geração dos gráficos apresentados neste trabalho foram feitas em planilha Excel. 
+
+5.1  Dados Utilizados 
+
+Os  dados  utilizados  para  testar  o  modelo  implementado  foram  obtidos  através  do  site  da 
+BM&FBOVESPA disponíveis na forma de arquivos diários. Os dados se referem às cotações de 
+mercadorias  e  futuros  negociadas  na  bolsa  no  período  entre  02  de  janeiro  de  2000  a  30  de 
+dezembro  de  2012.  A  estrutura  a  termo  da  taxa  de  juros  foi  gerada  a  partir  das  taxas  dos 
+contratos DI Futuro negociados na BM&FBOVESPA, o qual constitui-se em uma referência para 
+o  mercado  por  sintetizar  a  expectativa  da  taxa  de  juros  futura.  O  DI  Futuro  tem  como  ativo 
+subjacente a taxa média dos depósitos interfinanceiros de um dia de prazo, apurada pela Cetip, 
+acumulada entre a data da negociação até o dia útil anterior à data do vencimento do contrato 
+futuro. Essa taxa é composta por dia útil e  anualizada tomando como base 252 dias úteis por 
+ano, conforme a equação (17), e sua cotação reflete a expectativa do mercado em relação ao 
+comportamento futuro  da  taxa  DI.  Cada  contrato  de  DI  Futuro  negociado  na  BM&FBOVESPA 
+estabelece um acordo  de  compra e  venda  de  R$  100.000,00  descontado  pela  taxa  média  de 
+depósitos interfinanceiros de um dia (DI), compreendida entre o dia da negociação e o dia do 
+vencimento do contrato.  A cotação de ajuste informada pela bolsa no arquivo do pregão diário, 
+está  expresso  em  preço  unitário  do  contrato.  Assim,  calcula-se  a  taxa  equivalente  ao  preço 
+unitário através da equação 
+
+           
+
+       
+        
+
+   
+ 
+       
+
+ 
+
+     
+
+onde          é a cotação de ajuste informada pela BM&FBOVESPA,         é a taxa de ajuste 
+equivalente  ao            e           é  o  número  de  dias  úteis  entre  a  data  da  cotação  e  o 
+vencimento  do  contrato  de  DI  Futuro.  Os  contratos  de  DI  Futuro  vencem  sempre  no  primeiro 
+dia  útil  do  mês  de  vencimento,  e,  conforme  já  mencionado,  têm  vencimento  em  aberto  nos 
+quatro  próximos  meses  e  nos  meses  que  se  caracterizarem  como  de  início  de  trimestre. 
+Existem vencimentos em aberto em prazos longos (p. e. 12 anos) que podem ser negociados, 
+porém, dificilmente têm liquidez. Em geral, é mais comum existirem negócios com prazos para 
+vencimentos até 5  ou 6  anos. Como a data de vencimento é fixo no primeiro dia útil de cada 
+mês, a cada dia que passa, o prazo para vencimento de todos os contratos diminui em um dia, 
+assim,  não  é  possível  construir  uma  série  de  tempo  com  cotações  diretamente  observadas 
+referentes aos prazos fixos  desejados  (p.  e. um mês, um semestre, um ano, dois anos, etc.). 
+Para contornar este problema, as séries de cotações com prazos fixos pré estabelecidos, são 
+geradas a partir de interpolações das cotações de mercado. O método de interpolação utilizado 
+foi o cubic spline conforme discutido na seção  4.2. Definindo “vértices” de uma curva discreta 
+de juros como o conjunto de pontos            , onde os prazos    são os pontos discretos para 
+os  quais  o  modelo  irá  estimar  as  taxas  forward,  assim                                 é  o  vetor  de 
+vértices da simulação, onde         
+ é expresso em fração anual por dias úteis e     é o 
+prazo  em  dias  úteis.  A  partir  das  cotações  de  mercado  históricas  obtém-se  as  taxas  forward 
+das  taxas  DI  de  um  dia  observadas  nos  vértices  desejados.  Com  estas  taxas  forward 
+observadas  obtém-se  as  mudanças  na  taxa,  seguindo  o  método  descrito  na  seção  4.1, 
+obtendo-se os     . Calculando-se a matriz de covariâncias   sobre os      e aplicando a PCA 
+obtemos as variâncias estimadas para os para os   fatores para cada prazo   .  Utilizando as 
+idéias  discutidas  por  Scherer  e  Avellaneda  (2002)  em  seu  artigo,  porém  em  outro  contexto, 
+
+    
+
+13 
+iremos  observar  o  comportamento  das  taxas  forward  em  períodos  subsequentes  de  2  em  2 
+anos entre 2003 e 2012 e avaliar o nível de estacionariedade da variância ao longo dos anos, 
+através  do  coeficiente  de  acoplamento  (percentual  de  variação  explicado  pelo  primeiro 
+componente)  e  da  influência  do  segundo  e  terceiro  componentes.  O  coeficiente  de 
+
+acoplamento é dado por 
+
+  
+
+ 
+
+ 
+   
+
+  
+
+  onde    são os autovalores de  . 
+
+Coeficientes de Acoplamento 
+
+100% 
+
+80% 
+
+60% 
+
+40% 
+
+20% 
+
+0% 
+
+2003-2004 
+
+2005-2006 
+
+2007-2008 
+Períodos 
+
+2009-2010 
+
+2011-2012 
+
+ 
+
+Figura 1 - Coeficientes de Acoplamento 
+
+Conforme pode ser visto na Figura 1, nos três primeiros períodos entre 2003 a 2008, o primeiro 
+fator destes três períodos foram praticamente iguais indicando que as taxas  forward nos seus 
+diversos  prazos     tiveram  um  deslocamento  paralelo  fortemente  acoplado,  entre  85%  a  90%, 
+indicando  uma  relativa  estabilidade  da  taxa  ao  longo  dos  anos.  Porém  isso  se  alterou  no 
+período seguinte, entre 2009-2010 indicando a possibilidade de alguma alteração estrutural no 
+mercado.  De  fato  ocorreu  uma  crise  no  final  de  200815  que  provocou  uma  alta  na  taxas  de 
+juros,  porém  esta  alta  influenciou  a  expectativa  do  mercado  de  maneira  diferente  para  as 
+diferentes  maturidades  como  pode  ser  constatado  pela  diminuição  do  fator  1  e  conseqüente 
+aumento  nos  fatores  2  e  3  como  podem  ser  vistos  nos  Figura  1  e  Figura  2.  As  crises  tiram  a 
+estacionariedade do comportamento dos juros em uma conjuntura de estabilidade econômica e 
+consequentemente alterando o perfil de volatilidade nas diferentes maturidades. 
+
+25% 
+
+20% 
+
+15% 
+
+10% 
+
+5% 
+
+0% 
+
+ 
+l
+
+a
+t
+o
+t
+ 
+/
+
+s
+
+ 
+l
+
+a
+u
+t
+n
+e
+c
+r
+e
+P
+
+Influência dos Componentes 2 e 3 
+
+Componente 2 
+Componente 3 
+
+2003-2004 
+
+2005-2006 
+
+2007-2008 
+
+2009-2010 
+
+2011-2012 
+
+Períodos 
+
+ 
+
+Figura 2 - Influência dos Componentes 2 e 3 
+
+Para  fazer  um  teste  de  adequação  do  modelo,  estimaremos  os  preços  de  alguns  derivativos 
+em  2012  e  compararemos  como  os  valores  reais  ocorridos.  Em  2012  o  comportamento  da 
+economia  tendia  novamente  para  a  estabilidade  e  isto  também  pode  ser  observado  nos 
+gráficos  nas  Figura  1  e  Figura  2.  Assim,  para  a  estimar  a  taxa  forward  para  2012,  utilizamos  a 
+volatilidade do período entre 2005 a 2008. Ao executar uma PCA no período entre 2005 a 2008 
+e  comparar  o  coeficiente  de  acoplamento  deste  período  com  os  períodos  considerados 
+                                                
+15 Crise provocada pelos prejuízos nos financiamentos imobiliários nos Estados Unidos em setembro de 2008 e 
+
+que se estenderam em 2009 e 2010. 
+
+14 
+anteriormente foi obtido o gráfico da Figura 3 – Comparativo do Coeficiente de Acoplamento com o período 
+2005-2008. A mesma comparação foi feita com a influência dos componentes 2 e 3 no gráfico da 
+Figura 4. 
+ 
+
+Coeficiente de Acoplamento 
+
+com o período 2005-2008 
+
+100% 
+
+80% 
+
+60% 
+
+40% 
+
+20% 
+
+0% 
+
+2003-2004  2005-2006  2007-2008  2009-2010  2011-2012  2005-2008 
+
+Perídos avaliado 
+
+Figura 3 – Comparativo do Coeficiente de Acoplamento com o período 2005-2008 
+
+ 
+ 
+
+Influência dos Componentes 2 e 3 
+
+com o período 2005-2008 
+
+Componente 2 
+Componente 3 
+
+ 
+l
+
+a
+t
+o
+t
+ 
+/
+
+s
+
+ 
+l
+
+a
+u
+t
+n
+e
+c
+r
+e
+P
+
+25% 
+
+20% 
+
+15% 
+
+10% 
+
+5% 
+
+0% 
+
+2003-2004 
+
+2005-2006 
+
+2007-2008 
+
+2009-2010 
+
+2011-2012 
+
+2005-2008 
+
+Períodos 
+
+Figura 4 – Comparativo da Influência dos Componentes 2 e 3 com o período 2005-2008 
+
+ 
+
+ 
+
+Como esperado, pode-se observar pelas Figura 3 e Figura 4 que os dados do período de 2005 
+a 2008 apresentam o comportamento de um período de estabilidade (sem alteração estrutural). 
+A  seguir  nesta  seção  serão  apresentados  testes  do  modelo  implementado  com  alguns 
+derivativos negociados na BM&FBOVESPA. 
+
+5.2  Opção de compra sobre o IDI 
+
+O  ativo  objeto  desta  opção  (do  tipo  europeu)  é  o  Índice  da  Taxa  Média  de  Depósitos 
+Interfinanceiros  de  um  Dia  (IDI).  O  prêmio  desta  opção  é  expresso  em  pontos  do  IDI,  sendo 
+cada  ponto  equivalente  ao  valor  em  reais  estabelecido  pela  Bolsa.  As  séries  de  preços  de 
+exercícios são expressos em pontos de IDI, para cada mês de vencimento (vencimentos todos 
+os  meses  no  1º  dia  útil  de  cada  mês).  O  IDI  é  definido  como  o  valor  teórico  de  100.000,00 
+pontos  na  data  de  início  de  valorização  fixada  pela  BM&FBOVESPA,  quando  passa  a  ser 
+corrigido pela Taxa Média de Depósitos Interfinanceiros de Um Dia (DI), calculada pela Central 
+de  Custódia  e  de  Liquidação  Financeira  de  Títulos  (Cetip)  por  meio  da  seguinte  fórmula: 
+                         onde      é a Taxa Média de Depósitos Interfinanceiros de Um Dia (DI) 
+referente ao dia anterior. O payoff da opção de compra é 
+
+ 
+
+                  
+
+(22)  i 
+
+onde   é o preço de exercício e      é o valor do IDI na data de exercício. Na simulação  
+
+15 
+
+   
+
+                                        
+
+   
+
+   
+
+onde      é o Índice da Taxa Média de Depósitos Interfinanceiros de um Dia acumulado em   , 
+   é a data de exercício e            é a taxa forward estimada pela simulação em    referente à 
+  .  Simulando     trajetórias  por  Monte  Carlo  e  calculando-se  em  cada  trajetória  o  payoff 
+conforme (22), obtém-se o preço da opção de compra dado por 
+
+ 
+
+        
+
+ 
+
+   
+
+ 
+   
+ 
+
+  
+
+(23)  i 
+
+onde   é o número de trajetórias,     é o payoff na trajetória   e      é a fator de desconto 
+pela  taxa  livre  de  risco  entre      e    .  Conforme  discutido  na  seção  1.5.1  serão  utilizadas  as 
+cotações  históricas,  mais  estáveis,  do  período  de  03/01/2005  a  30/12/2008  para  estimar  a 
+volatilidade  e  utilizá-la  para  simular  as  trajetórias  para  2012  e  assim  precificar  os  derivativos. 
+Aplicando  a  PCA  na  matriz  de  covariâncias  das  mudanças  das  taxas  forward  conforme 
+discutido em 4.1 obtém-se os seguintes autovalores, já ordenados pelo valor: 
+
+Tabela 1 - Autovalores da Taxa Forward 
+
+Componente 
+
+Valor 
+
+Acumulado 
+
+1o. Fator (nível) 
+
+2o. Fator (inclinação) 
+
+3o. Fator (curvatura) 
+
+89.3% 
+
+6.6% 
+
+1.2% 
+
+89.3% 
+
+95.9% 
+
+97.1% 
+
+Pode-se observar que os três primeiros fatores representam mais de 97% da variação da taxa 
+forward. Estimando a volatilidade        utilizando estes autovalores e autovetores, evolui-se a 
+taxa  forward  até  a  data  de  exercício  da  opção  e  de  (23)(23)  calcula-se  o  valor  da  opção. 
+Calibrando        em                   e  utilizando  as  cotações  de  mercado  de  opções  de 
+compra de IDI cujas datas de exercício eram                , foram estimados os seguintes 
+valores 
+
+Tabela 2 - Calibração de      em 04/01/2012 
+
+Strike 
+
+Cotação de Mercado 
+
+     
+
+Preço Calibrado 
+
+141,100 
+
+141,200 
+
+141,300 
+
+141.59 
+
+78.96 
+
+37.04 
+
+1.29 
+
+1.46 
+
+1.58 
+
+141.99 
+
+78.08 
+
+37.63 
+
+Com os parâmetros calibrados, os preços estimados pelo modelo em 05/01/2012 e 06/01/2012 
+são apresentados na Tabela 3. As diferenças entre a cotação de mercado e o preço estimado 
+podem  ser  atribuídas  ao  baixo  volume  de  negócios  que  pode  gerar  uma  formação  de  preço 
+imperfeita e pela inferência da volatilidade implícita pelo mercado utilizando o modelo de Black 
+(1976). 
+
+ 
+
+ 
+
+Tabela 3 - Preços estimados em 05/01/2012 e 06/01/2012 
+
+Data 
+
+Strike 
+
+Cotação de Mercado 
+
+Preço Estimado  Diferença  Diferença / Cotação 
+
+16 
+
+141,100 
+
+05/01/2012 
+
+141,200 
+
+141,300 
+
+141,100 
+
+06/01/2012 
+
+141,200 
+
+141,300 
+
+146.87 
+
+84.24 
+
+41.35 
+
+124.44 
+
+66.46 
+
+29.54 
+
+142.98 
+
+78.15 
+
+37.22 
+
+3.89 
+
+6.09 
+
+4.13 
+
+126.67 
+
+-2.23 
+
+66.24 
+
+0.22 
+
+30.01 
+
+-0.47 
+
+2.6% 
+
+7.2% 
+
+10.0% 
+
+-1.8% 
+
+0.3% 
+
+-1.6% 
+
+Observa-se também que o modelo tende a estimar valores maiores que o mercado para preços 
+de exercício menores e valores menores para os preços de exercício maiores. 
+
+5.3  Opções de venda sobre Contratos de DI Futuro 
+
+O ativo objeto desta opção (do tipo europeu) é o Contrato Futuro de Taxa Média de Depósitos 
+Interfinanceiros de Um Dia (DI Futuro), com vencimento determinado conforme o tipo de série 
+da opção (tipos 1, 2, 3 e 4).  O preço de exercício é expresso em taxa de juro efetiva ao ano, 
+base  252  dias  úteis.  Para  o  cálculo  do  payoff  desta  opção,  calcula-se  o  Preço  Unitário  (PU) 
+equivalente ao preço de exercício que é expresso em taxa 
+
+     
+
+       
+
+       
+
+  
+
+    
+
+  
+
+onde     é  o  preço  de  exercício  expresso  em  taxa  e      é  o  prazo  em  dias  úteis  do  DI  Futuro, 
+ativo  objeto  da  opção.  Assim,  o  payoff  da  opção  de  compra  sobre  DI  Futuro  calcula-se 
+(lembrando que compra de taxa é venda de PU) 
+
+ 
+
+                    
+
+(24)  i 
+
+onde     é o preço do  DI  Futuro,  ativo objeto da opção, na data de exercício, e, de maneira 
+equivalente, o payoff da opção de venda sobre DI Futuro calcula-se 
+
+ 
+
+                    
+
+(25)  i 
+
+Em cada trajetória da simulação calcula-se     por 
+
+     
+
+     
+
+   
+   
+
+       
+                     
+
+  
+
+ 
+
+onde      é  a  data  de  exercício  da  opção  e              é  a  taxa  forward  em      referente  à    , 
+estimada  pela  simulação.  Simulando     trajetórias  por  Monte  Carlo  e  calculando-se  em  cada 
+trajetória o payoff dado por (24), obtém-se o preço da opção de compra 
+
+ 
+
+        
+
+ 
+
+ 
+   
+
+     
+ 
+
+  
+
+ou, calculando-se o payoff  dado por (25), obtém-se o preço da opção de venda 
+
+ 
+
+        
+
+ 
+
+ 
+   
+
+     
+ 
+
+  
+
+(26)  
+
+(27)  
+
+17 
+onde       é o payoff na trajetória   e      é a fator de desconto pela taxa livre de risco entre 
+    e    .  Utilizando  as  cotações  de  mercado  em                   para  calibrar        foram 
+estimados os seguintes valores pelo modelo 
+
+Tabela 4 - Preços em 18/04/2012 para calibração de      
+
+Strike 
+
+8.50% 
+
+8.75% 
+
+9.00% 
+
+Cotação de Mercado 
+
+     
+
+Preço Calibrado 
+
+89.43 
+
+125.51 
+
+173.85 
+
+1.00 
+
+0.95 
+
+0.89 
+
+89.92 
+
+125.62 
+
+172.75 
+
+ 
+
+A data de exercício destas opções foi em 02/01/2013, o vencimento do DI Futuro, ativo objeto 
+destas opções, será em 02/01/2014. O preço estimado destas opções em 19/04/2012 está na 
+Tabela 5 abaixo. 
+
+Tabela 5 – Preços estimados das opções sobre DI Futuro em 19/04/2012 
+
+Cotação de Mercado  Preço Estimado  Diferença 
+
+Diferença / Cotação 
+
+125.36 
+
+168.81 
+
+227.19 
+
+123.08 
+
+170.14 
+
+231.43 
+
+2.28 
+
+-1.33 
+
+-4.24 
+
+1.8% 
+
+-0.8% 
+
+-1.9% 
+
+Strike 
+
+8.50% 
+
+8.75% 
+
+9.00% 
+
+Conforme  pode-se  observar,  os  valores  estimados  ficaram  bem  próximos  aos  valores  reais. 
+Deve-se  considerar  ainda  que  estes  derivativos  têm  baixa  liquidez  e  pode  haver  erro  na 
+captura  da  volatilidade  implícita  pelo  próprio  mercado,  que  depende  muito  do  período 
+considerado. Aliado a isso, deve-se considerar também que, o prazo envolvido para o exercício 
+das  opções  (pouco  mais  de  8  meses)  somado  com  o  vencimento  do  contrato  futuro,  ativo 
+objeto destas opções (1 ano),  é relativamente longo para o mercado brasileiro. 
+
+5.4  Contrato de DI Futuro 
+
+O  Contrato  de  DI  Futuro  da  BM&FBOVESPA  é  o  derivativo  de  referência  utilizado  neste 
+trabalho  para  a  calibração  da  volatilidade  utilizada  pelo  modelo  para  a  construção  da  ETTJ, 
+conforme discutido na seção 5.1. A taxa do Contrato de DI Futuro é dado por 
+
+   
+
+                                          
+
+   
+
+   
+
+                             onde            é a taxa forward estimada pela simulação em    referente 
+à     e             é a taxa do Contrato de DI Futuro em     com vencimento em    . Utilizando o 
+mesmo  período  dos  casos  anteriores  para  a  estimativa  da  volatilidade  por  PCA,  são 
+apresentadas nas Tabela 6 e 7 os preços estimados de contrato de DI Futuro em            
+e  em            ,  considerando  que  a  simulação  foi  feita  em                 .  Para  os 
+contratos de DI Futuro, não foi utilizado o parâmetro       porque neste caso, ao se calcular o 
+valor esperado do preço,      não tem influência na média da simulação de   trajetórias. Como 
+as  datas  de  vencimento  são  fixas,  a  cada  dia  o  prazo  para  vencimento  do  contrato  diminui, 
+assim, na simulação utilizam-se prazos padrões (21,42,63, ,252, ), que representam um mês 
+de 21 dias úteis, um trimestre de 63 dias úteis, um ano de 252 dias úteis, e assim por diante. 
+ 
+ 
+ 
+ 
+ 
+
+Tabela 6 - Estimativa de Preço de DI Futuro em            
+
+Cotação Real 
+
+Vencimento 
+
+em 
+
+Prazo 
+em dias 
+
+Preço Estimado 
+Interpolado para 
+
+Diferença 
+
+04/01/2012 
+
+úteis 
+
+o Prazo 
+
+Diferença 
+/ Cotação 
+
+Prazo 
+
+Preço 
+
+padrão da 
+simulação 
+
+Estimado no 
+Prazo Padrão 
+
+18 
+
+02/04/2012 
+
+02/07/2012 
+
+01/10/2012 
+
+02/01/2013 
+
+01/04/2013 
+
+01/07/2013 
+
+02/01/2014 
+
+ 
+
+97,637  
+
+95,370  
+
+93,096  
+
+90,906  
+
+88,753  
+
+86,434  
+
+81,816  
+
+61 
+
+123 
+
+187 
+
+249 
+
+309 
+
+372 
+
+502 
+
+97,656 
+
+95,469 
+
+93,299 
+
+91,230 
+
+89,210 
+
+87,058 
+
+82,588 
+
+19 
+
+99 
+
+203 
+
+324 
+
+457 
+
+624 
+
+772 
+
+0.02% 
+
+0.10% 
+
+0.22% 
+
+0.36% 
+
+0.51% 
+
+0.72% 
+
+0.94% 
+
+63 
+
+126 
+
+189 
+
+252 
+
+315 
+
+378 
+
+504 
+
+97,583 
+
+95,365 
+
+93,232 
+
+91,129 
+
+89,011 
+
+86,850 
+
+82,519 
+
+Desta maneira após a estimativa de preço obtida pela simulação faz-se uma interpolação para 
+o prazo real utilizando o método cubic-spline já discutido anteriormente. 
+
+Tabela 7 - Estimativa de Preço de DI Futuro em            
+
+Vencimento 
+
+Cotação 
+Real em 
+
+Prazo 
+em dias 
+
+03/02/2012 
+
+úteis 
+
+Preço 
+
+Estimado 
+Interpolado 
+para o Prazo 
+
+Diferença 
+
+Diferença 
+/ Cotação 
+
+Prazo 
+
+padrão da 
+simulação 
+
+Preço 
+
+Estimado no 
+
+Prazo 
+Padrão 
+
+02/04/2012 
+
+98,519 
+
+02/07/2012 
+
+96,350 
+
+01/10/2012 
+
+94,208 
+
+02/01/2013 
+
+92,150 
+
+01/07/2013 
+
+87,968 
+
+02/01/2014 
+
+83,470 
+
+01/04/2014 
+
+81,353 
+
+39 
+
+101 
+
+165 
+
+227 
+
+350 
+
+480 
+
+541 
+
+98,518 
+
+96,313 
+
+94,125 
+
+-1 
+
+-37 
+
+-83 
+
+0.00% 
+
+-0.04% 
+
+-0.09% 
+
+92,038 
+
+-112 
+
+-0.12% 
+
+87,830 
+
+-138 
+
+-0.16% 
+
+83,323 
+
+-147 
+
+-0.18% 
+
+81,189 
+
+-164 
+
+-0.20% 
+
+42 
+
+105 
+
+168 
+
+231 
+
+357 
+
+483 
+
+546 
+
+98,408 
+
+96,174 
+
+94,023 
+
+91,903 
+
+88,316 
+
+83,219 
+
+81,016 
+
+Pode-se  observar  nas  duas  datas  que  os  preços  estimados  são  próximos  dos  valores  reais 
+ocorridos, sendo maiores para os vencimentos.  
+
+6.  Conclusões 
+
+O  objetivo  do  presente  trabalho  é  implementar  um  modelo  HJM  multifatorial  que  modela  a 
+evolução  de  toda  a  curva  de  juros  possibilitando  uma  grande  flexibilidade  na  simulação  da 
+estrutura  a  termo  da  taxa  de  juros,  e,  utilizando  uma  estrutura  de  volatilidade  adequada  de 
+maneira  que  os  fatores  sejam  ortogonais  e  assim  permitir  que    os  movimentos  brownianos 
+possam  ser  independentes  e  simplificar  a  simulação  de  sua  dinâmica.  Além  disso,  foram 
+realizados  testes  de  precificação  de  derivativos  de  taxas  de  juros  negociados  no  mercado 
+brasileiro  em  um  período  já  decorrido16  ,  e  assim  possibilitar  uma  avaliação  do  modelo  pela 
+comparação entre o valor encontrado pelo modelo e o valor real ocorrido. Foram testados três 
+derivativos de taxas de juros negociados na BM&FBOVESPA, a saber, opção sobre IDI, opção 
+sobre  DI  Futuro  e  o  próprio  DI  Futuro.  Os  melhores  resultados  foram  para  o  DI  Futuro  como 
+esperado porque a calibração da volatilidade histórica da taxa forward foi obtida a partir deste 
+derivativo que é o de maior liquidez da bolsa. Os resultados apresentaram diferenças menores 
+do que 1% para o DI Futuro, nas datas testadas, conforme visto na seção 5.4. Já para o caso 
+das  opções  sobre  IDI  e  sobre  DI  Futuro  os  resultados  apresentaram  diferenças  um  pouco 
+                                                
+16 Normalmente conhecido em inglês como back-test. 
+
+19 
+maiores, da ordem de 2% no caso da opção sobre DI Futuro e de 1% a 10% no caso da opção 
+sobre IDI, mostrando um resultado nem sempre muito consistente. Isto pode ser explicado em 
+parte  pela  baixa  liquidez  destas  opções.  Não  é  objetivo  deste  trabalho  realizar  uma  análise 
+estatística  dos  erros,  porém,  possivelmente  a  dispersão  dos  erros  será  bem  maior  na 
+precificação  das  opções  do  que  no  DI  Futuro,  parte  devido  à  baixa  liquidez  como  já  citado  e 
+parte  porque  provavelmente  o  mercado  utiliza  o  modelo  de  Black  (1976)  para  precificar  as 
+opções.  Uma  possível  extensão  deste  trabalho  seria  a  realização  destes  testes  estatísticos, 
+porém,  pode-se  antecipar  que  serão  de  difícil  conclusão  em  função  da  baixa  liquidez  dos 
+negócios  com  as  opções.  Pelos  resultados  apresentados  pode-se  considerar  que  o  modelo 
+HJM  multifatorial  conforme  foi  implementado  neste  trabalho  apresenta  resultados  bastante 
+satisfatórios, e pela sua grande flexibilidade e precisão poderia ser utilizada na precificação de 
+derivativos  negociados  em  balcão.  Entretanto,  é  importante  salientar  alguns  aspectos.  A 
+calibração da volatilidade histórica deve ser feita com um período no qual a taxa de juros tenha 
+um  comportamento  similar  ao  período  para  o  qual  se  quer  estimar,  o  que  nem  sempre  é 
+possível  ou  viável.  O  que  está  se  diferenciando  aqui  são  os  períodos  de  estabilidade  com 
+períodos  de  “crise”,  que  causa  uma  alteração  estrutural.  Uma  outra  possível  extensão  para 
+este  trabalho  seria  incorporar  ao  modelo  uma  aleatoriedade  em  relação  à  “crise”.  Uma 
+abordagem  alternativa  interessante  seria  a  calibração  do  parâmetro        como  função  do 
+tempo  e  que  neste  trabalho  foi  tratado  como  uma  constante  como  em  geral  considerado  na 
+literatura. Isso eventualmente possibilitaria um melhor ajuste do modelo com relação ao tempo. 
+Uma  outra  possibilidade  nessa  linha  seria  tratar        de  forma  paramétrica  definindo  uma 
+função que a represente, entretanto, a calibração dos parâmetros desta função seria bastante 
+complexo em função da baixa liquidez das opções. Os dados do DI Futuro não poderiam ser 
+utilizados neste caso porque o DI Futuro não é afetado pelo     , como visto na seção anterior. 
+Outras  questões  que  poderão  ser  avaliadas  em  trabalhos  futuros  seriam  uma  avaliação 
+estatística do erro gerado pela aproximação pelo método de Euler da SDE  do modelo HJM em 
+espaço dimensional infinito e a avaliação em que condições no modelo de tempo discretizado, 
+quando       ou      , poderá ocorrer um “estouro” no valor da taxa forward         no modelo 
+HJM. 
+
+ 
+
+REFERÊNCIAS 
+
+ALEXANDER,  C.  Quantitative  Methods  in  Finance:  Market  Risk  Analysis.  West  Sussex, 
+
+England: John Wiley & Sons, 2008. v.1. 
+
+BJÖRK,  T.;  SZEPESSY,  A.;  TEMPONES,  R.  e  ZOURARIS.  G.  E.  Monte  Carlo  Euler 
+approximations  of  HJM  term  structure  financial  models.  The  Swedish  National  Network  in 
+Applied Mathematics (NTM), 2012. 
+
+BLACK,  F.;  SCHOLES  M.  The  pricing  of  options  and  corporate  liabilities,  Journal  of  Political 
+
+Economy, v. 81, p. 637-654, 1973. 
+
+BLACK  F. The  Pricing  of  Commodity  Contracts.  Journal  of  Financial  Economics,  n.  3,  p.  167-
+
+179, 1976. 
+
+BLACK, F.; DERMAN, E.; TOY, W. A One Factor Model of Interest Rates and Its Application to 
+
+Treasury Bond Options. Financial Analysts Journal, n. 46, p.33- 39, 1990. 
+
+BRACE, A. e MUSIELA, M. A multifactor Gauss Markov implementation of Heath, Jarrow, and 
+
+Morton. Mathematical Finance, n. 4, p. 259-283, 1994. 
+
+BRENNAN, M. J. e SCHWARTZ, E. S. Savings bonds, rectractable bonds, and callable bonds. 
+
+Journal of Financial Economics, n. 3, p. 133-155, 1977. 
+
+CALDEIRA,  J.  F.  Estimação  da  Estrutura  a  Termo  da  Curva  de  Juros  no  Brasil  através  de 
+
+Modelos Paramétricos e Não Paramétricos. Análise Econômica, n.5, p. 95-122, 2011. 
+
+COX,  J.;  INGERSOLL,  J.  e  ROSS,  S.  A  Theory  of  the  Term  Structure  of  Interest  Rates. 
+
+Econometrica, n. 53, p. 385-407, 1985. 
+
+20 
+DARIO, A. G. e FERNÁNDEZ, M. Geração de cenários para a taxa de juros. In: IX ENCONTRO 
+em 
+
+BRASILEIRO  DE  FINANÇAS, 
+<http://bibliotecadigital.fgv.br/ocs/index.php/ebf/9EBF/paper/viewFile/852/144>. 
+
+Leopoldo,  RS.  Disponível 
+
+2009,  São 
+
+DRIESSEN,  J.;  KLAASSEN,  P.  e  MELENBERG,  B.  The  Performance  of  Multi-Factor  Term 
+Structure  Models  for  Pricing  and  Hedging  Caps  and  Swaptions.  Journal  of  Financial  and 
+Quantitative Analysis, Cambridge, n. 38(03), p. 635-672, 2003. 
+
+FERREIRA, J. F. F. Apreçamento de Opções de Futuro de DI Utilizando o Modelo HJM. 2011. 
+Dissertação  (Mestrado  em  Administração de  Empresas)  -  PUC  do  Rio  de  Janeiro,  Rio  de 
+Janeiro, 2011. 
+
+FLESAKER,  B.  Testing  the  Heath-Jarrow-Morton/Ho-Lee  model  of  interest  rate  contingent 
+
+claims pricing. Journal of Financial and Quantitative Analysis, n. 28, p. 483- 495, 1993. 
+
+GIBSON,  R.  A.  J.;  SIM,  A.  B.  e  THURSTON,  D.  C.  Empirical  Comparisons  of  One-Factor 
+Heath-Jarrow-Morton  Term  Structure  Models.  Working  Paper,  University  of  New  South 
+Wales, n. 79, p. 1-19, 1995. 
+
+GLASSERMAN, P. Monte Carlo Methods in Financial Engineering. New York: Springer, 2003. 
+HEATH, D.; JARROW, R. e MORTON, A. Bond Pricing and Term Structure of Interest Rates: A 
+
+New Methodology for Contingent Claims Valuation. Econometrica, n. 60, p. 77-105, 1992. 
+
+HO, T. S. Y. e LEE, S. B. Term structure movements and pricing interest rate contingent claims. 
+
+Journal of Finance, n. 41, p. 1011-1029, 1986. 
+
+HULL,  J.  C.  &  WHITE,  A.  D.  Pricing  Interest  Rate  Derivative  Securities.  Review  of  Financial 
+
+Studies, n. 3, p. 573-592, 1990. 
+
+HULL, J. C. e WHITE, A. D. Bond Option Pricing Based on a Model for the Evolution of Bond 
+
+Prices. Advances in Futures and Options Research, n. 6, p. 1-13, 1993. 
+
+JAMES, J. e WeBber, N. Interest Rate Modelling. West Sussex, England: John Wiley & Sons, 
+
+2000. 
+
+KRIVKO,  M.  e  TRETYAKOV,  M.  V.  Numerical  integration  of  Heath-Jarrow-Morton  model  of 
+
+interest rates. IMA Journal of Numerical Analysis, p. 1-50, 2013. 
+
+LAURINI,  M.  P.  e  MOURA,  M.  Constrained  smoothing  BB-splines  for  the  term  structure  of 
+
+interest rates. Insurance: Mathematics and Economics, n. 46, p.339–350, 2010. 
+
+LITTERMAN,  R.  e  SCHEINKMAN,  J.  Common  factors  affecting  bond  returns.  The  Journal  of 
+
+Fixed Income, 1991. 
+
+LONGSTAFF, F. A. e  SCHWARTZ, E. S.  Interest rate volatility and the term structure: A two-
+
+factor general equilibrium model. The Jornal of Finance, n. 4, p. 1259-1282, 1992. 
+
+REBONATO,  R.  Interest-Rate  Term-Structure  Pricing  Models:  A  Review.  Proceedings: 
+MATHEMATICAL, PHYSICAL AND ENGINEERING SCIENCES, THE ROYAL SOCIETY, n. 
+460, p. 667-728, 2004. 
+
+RENÒ,  R.  e  UBOLDI,  A.  PCA  based  calibration  of  an  HJM  model.  Quaderno  IAC,  Q28-002, 
+
+2002. 
+
+SCHERER, K. P. e AVELLANEDA, M. All for one one for all? A principal component analysis of 
+Latin American brady bond debt from 1994 to 2000. International Journal of Theoretical and 
+Applied Finance, n. 5, p. 79-106, 2002. 
+
+SHREVE,  S.  E.  Stochastic  Calculus  for  Finance  II:  Continuous-Time  Models.  New  York: 
+
+Springer, 2004. 
+
+TAMAGUSHIKU,  C.  Heath  ,  Jarrow  ,  and  Morton  Interest  Rate  Modelling  Using  Principal 
+
+Component Analysis. Working Paper, University of Otago, 2006. 
+
+VASICEK,  O.  An  Equilibrium  Characterization  of  the  Term  Structure.  Journal  of  Financial 
+
+Economics, n. 5, p. 177-188, 1977. 
+
+

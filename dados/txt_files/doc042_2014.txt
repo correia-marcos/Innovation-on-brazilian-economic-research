@@ -1,0 +1,1265 @@
+ Choques Fiscais e Instabilidade Financeira
+     no Brasil: uma abordagem T VAR
+
+
+
+
+                                           Gian Paulo Soave
+                                                  FEA-IPE
+                                         Universidade de São Paulo
+                                         Departamento de Economia
+
+
+
+
+Resumo
+Este artigo investiga os efeitos não lineares da polı́tica fiscal no Brasil sob dois diferentes regimes de
+condições financeiras. Emprega-se um modelo vetorial autorregressivo com limiar (Threshold Vector
+Autoregression-TVAR) utilizando uma variável estimada indicadora das condições de liquidez para
+a economia brasileira. Tal variável é estimada utilizando filtro de Kalman e métodos bayesianos e
+cobre vários aspectos financeiros. Os resultados mostram que as respostas não lineares são estado-
+dependentes, sendo os multiplicadores maiores e os choques mais persistentes em regime sob liquidez
+restrita.
+
+
+Abstract
+The present paper aims to investigate non-linear effects of the Brazilian fiscal policy under two different
+regimes of financial conditions. We employ a Threshold Autoregression Model (TVAR) in which
+the threshold variable is an estimated indicator of financial liquidity to the Brazilian economy. This
+variable was estimated based on both Kalman filter and Bayesian methods to encompass many financial
+aspects. The results show that the non-linear responses are state-dependent, with higher and persistent
+multipliers under restricted liquidity regime.
+
+
+    Palavras-chave. Polı́tica Fiscal, VAR com Limiar (TVAR), Fricções Financeiras, Acelerador Financeiro
+    Key-words. Fiscal Policy, Threshold VAR, Financial Frictions, Financial Accelerator
+
+Classificação ANPEC. Área 4 - Macroeconomia, Economia Monetária e Finanças
+Classificação JEL. E32, E62, E44, C33
+1    Introdução
+Muito se tem debatido na literatura macroeconômica acerca do papel e da capacidade das polı́ticas fiscal
+e monetária de restaurar o crescimento econômico após um choque financeiro como aquele ocorrido em
+2008. Sob certas condições – e.g., no chamado zero lower bound –, a polı́tica monetária sozinha tende a
+ser inefetiva, motivando os policymakers a recorrerem à polı́tica fiscal, possivelmente implementando
+uma combinação entre ambos instrumentos, na tentativa de mitigar os efeitos macroeconômicos da
+crise.
+     Em tempos “normais” de liquidez, o setor financeiro pode atenuar as fricções financeiras de modo a
+mitigar seus possı́veis efeitos macroeconômicos. Entretanto, em tempos de elevado estresse financeiro
+e grande persistência dos choques, tal setor tende a agir como propagador de instabilidade macroe-
+conômica devido à fatores como elevação do risco e piora nas expectativas, deterioração da qualidade
+dos ativos financeiros, potenciais efeitos sobre a riqueza dos agentes etc, dando origem a uma espiral
+financeira que tende à afetar o balanço dos bancos, reduzindo abruptamente o crédito (Brunnermeier
+et al., 2012). Assim, mecanismos transmissores como o acelerador financeiro (Bernanke et al., 1999;
+Gertler e Kiyotaki, 2010) tendem amplificar a magnitude dos choques de modo não linear, a depender
+de pelo menos dois estados de natureza associados ao crédito: um “normal” e outro “restrito”. Por estas
+razões, do ponto de vista do policymaker, há um claro interesse em entender os efeitos de choques de
+polı́tica sob regimes de crédito, já que eles podem ser potencialmente assimétricos.
+     Este artigo visa contribuir com a literatura que avalia efeitos de polı́tica fiscal no Brasil utilizando e
+modelos autorregressivos com limiar (Threshold Vector Autoregression model, TVAR, Tsay (1998)) com
+o intuito de analisar a efetividade da polı́tica fiscal em estimular ou não a economia durante regimes de
+alta e baixa instabilidade financeira na economia brasileira. Utiliza-se o TVAR com um indicador de
+condições financeiras para o Brasil como variável limiar que determina endogenamente as mudanças
+de regime, o que permite analisar se a polı́tica fiscal tem efeitos contrastivos sob regimes de fricções
+financeiras em termos de magnitudes e sinais em cada estado de natureza. De modo similar à Ferraresi
+et al. (2013); Tagkalakis (2008), conjectura-se que choques fiscais tendem a ser mais efetivos em perı́odos
+de maior restrição de liquidez, já que em tais perı́odos o mau funcionamento do mercados financeiros
+implica que o consumo e o investimento passam a depender mais, respectivamente, da renda e dos lucros
+presentes em detrimento de seus valores futuros, o que tende a elevar os multiplicadores (Blanchard
+e Leigh, 2013). Além disso, como observa Ferraresi et al. (2013), num regime restrito, choques fiscais
+podem relaxar as crescentes restrições de liquidez das firmas devido à queda no valor de seus colaterais.
+     Infelizmente, para o caso brasileiro, não há um ı́ndice de liquidez que cubra o perı́odo aqui analisado
+e que capture a abrangência desejada. Por esta razão, inicialmente constrói-se um ı́ndice de condições
+financeiras (FCI) baseado num fator comum dinâmico entre 20 séries cobrindo um grande escopo
+de variáveis financeiras brasileiras utilizando o procedimento proposto por Koop e Korobilis (2013).
+O ı́ndice é estimado utilizando-se uma estrutura VAR bastante geral com parâmetros variando no
+tempo e aumentado por fatores, em que aspectos macroeconômicos são modelados conjuntamente
+com os financeiros para se expurgar do indicador de liquidez os efeitos de variáveis macroeconômicas
+não financeiras. O FCI estimado é utilizado num segundo estágio para se determinar a existência de
+não-linearidades associadas à polı́tica fiscal e ao setor financeiro no caso brasileiro. Condicionalmente
+ao valor limiar, estima-se o TVAR com dois regimes financeiros e computa-se as funções de resposta ao
+impulso não lineares (Koop et al., 1996) de choques fiscais e de polı́tica monetária. Além disso, seguindo
+Ferraresi et al. (2013), computa-se os multiplicadores fiscais associados ao produto e ao consumo privado
+dos choques simulados nos dois regimes.
+     Os resultados da análise revelam que o modelo com mudança regime é corroborado pelos dados,
+sugerindo a existência de não linearidades no caso brasileiro. Além disso, tanto o produto quanto
+a renda respondem positivamente à choques fiscais em ambos os regimes, sendo tanto a magnitude
+quanto a duração dos efeitos maiores nos perı́odos de restrição de liquide. Assim, em ambos os regimes,
+verificam-se os chamados “efeitos keynesianos’’ sobre o consumo privado. Tais resultados mostraram-se
+
+
+                                                      2
+robustos à especificações distintas.
+    O artigo esta organizado da seguinte forma: a seção 2 revê brevemente a literatura empı́rica anali-
+sando efeitos de polı́tica fiscal com e sem relação com mercados financeiros. A seção três apresenta
+a metodologia, os dados e a estimação do FCI. A seção quatro discute a metodologia empı́rica para
+análise de efeitos não lineares de polı́tica fiscal. Na seção 5 os resultados são apresentados e em seguida
+segue as conclusões.
+
+
+2        Revisão da Literatura
+Comparativamente à literatura que trata dos efeitos de choques de polı́tica monetária sobre a economia,
+o número de trabalhos analisando os efeitos macroeconômicos da polı́tica fiscal ainda era substanci-
+almente menor até o inı́cio da crise de 2008, quando a literatura passou a se preocupar mais com os
+efeitos de curto prazo de tal polı́tica e sua efetividade em estimular a economia em recessões (Ramey,
+2011a). Entretanto, diferentemente da polı́tica monetária, os impactos fiscais ainda apresentam aspectos
+em que há carência de consenso, especialmente quanto à duração e magnitude dos efeitos. Uma possı́vel
+explicação diz respeito à existência de não linearidades, algo que a literatura passou a considerar apenas
+recentemente (Afonso et al., 2010; Ferraresi et al., 2013).
+     A maior parte da literatura empı́rica concentra-se em modelos VAR com diferentes formulações,
+amostras, estratégias de identificação e métodos de estimações que levam à resultados diversos. Em
+termos de identificação dos choques fiscais em modelos lineares, as estratégias mais comuns têm sido:
+(i) VARs Estrutuais (SVAR) baseados em fatoração de Choleski, em que a recursividade dos choques
+é atendida devido ao timing da polı́tica fiscal, como nos trabalhos seminais de Fatás e Mihov (2001),
+Blanchard e Perotti (2002) e Galı́ et al. (2007); (ii) VARs com abordagem narrativa, que associa dummies
+à perı́odos conhecidos de mudança exógena de polı́tica fiscal, como em Ramey (2011b) e Alesina et al.
+(2012); (iii) VARs Bayesianos (BVAR) baseado no método de restrição de sinal, como em Mountford e
+Uhlig (2009), e (iv) estratégias hı́bridas como em Gerba e Hauzenberger (2013), que consideram, por
+exemplo, (i) e (iii). Os principais resultados desta literatura, conforme Ramey (2011a), é a obtenção
+dos chamados “efeitos keynesianos”, com multiplicadores fiscais variando entre 0.5 e 2.1 Para o caso
+brasileiro, há uma escassa literatura baseada em VAR, encontrando resultados divergentes, como
+     Recentemente, a literatura empı́rica passou a estudar efeitos de choques fiscais sob instabilidade
+financeira. No nı́vel microeconômico, usando dados em painel para 99 paı́ses e os estimadores OLS e
+Logit truncado, Baldacci et al. (2009) proveem evidências de que a polı́tica fiscal é significante para a
+duração da crise financeira e que a composição do pacote fiscal é relevante para o sucesso da polı́tica.
+Tagkalakis (2008) analisa a polı́tica fiscal sob perı́odos de recessões e “booms” em um painel de paı́ses
+industrializados e em desenvolvimento e mostra que nas recessões o impacto dos choques tende a ser
+mais intenso. De modo semelhante, Almunia et al. (2010) mostra que o multiplicador fiscal é maior em
+recessões, tomando o caso da chamada Grande Depressão como exemplo. Os autores concluem que
+os multiplicadores são maiores em situações em que o sistema bancário se reduz e o zero lower bound
+restringe a polı́tica monetária. Contudo, tais evidências não estão livres de controvérsia: Bouthevillain
+e Dufrénot (2011), usando modelo Markov-switching com probabilidade variando no tempo e Afonso
+et al. (2010), usando painel com paı́ses da OCDE e não OCDE não rejeitam a hipótese de que os efeitos
+de choques fiscais são iguais durante as crises relativamente aos perı́odos normais.
+     O presente trabalho contextualiza-se na recente literatura empı́rica que analisa a existência de
+efeitos não lineares e assimétricos da polı́tica fiscal a depender do estado de natureza nos mercados
+financeiros. Esta análise foi inicialmente sugerida no contexto de polı́tica fiscal por Afonso et al. (2011)
+com dados para a Alemanha, Estados Unidos, Inglaterra e Itália e empregando o modelo TVAR para
+analisar os efeitos da polı́tica fiscal, medida pela razão dı́vida/PIB, utilizando como variável limiar
+um ı́ndice estresse financeiro que engloba o sistema bancário, o mercado de tı́tulos e câmbio. Seus
+
+    1
+        Para importantes surveys desta literatura, ver, além de Ramey (2011a), Hebous (2011) e Favero e Giavazzi (2012).
+
+
+                                                               3
+resultados corroboram a hipótese de não linearidades entre as condições financeiras e a polı́tica fiscal,
+com respostas positivas do crescimento econômico tanto no regime alto quanto baixo estresse financeiro.
+Além disso, os multiplicadores associados ao regime de maior instabilidade financeira são mais elevados.
+Similarmente para os Estados Unidos, Ferraresi et al. (2013) utiliza como variáveis limiares um indicador
+financeiro relacionado às decisões de investimento por parte das firmas, além de um indicador de
+crédito. Nos resultados para o perı́odo analisado, o impacto de choques de governo sobre o produto
+foram de maior magnitude e persistência quando a economia se encontrava em regime de aperto de
+crédito, situação em que os multiplicadores dinâmicos são maiores comparativamente aos perı́odos de
+crédito normais.
+
+
+3     Construindo o ı́ndice de condições financeiras
+Há uma mirı́ade de possibilidades na construção de ı́ndices baseados em componentes principais, sendo
+a maioria deles impraticáveis para o caso brasileiro, já que seus fundamentos teóricos são baseados em
+quantidades enormes de séries com muitas observações no tempo, algo não disponı́vel no Brasil.
+     Para superar estas dificuldades, constrói-se o ı́ndice de condições financeiras (FCI) aplicando-se a
+metodologia proposta por Koop e Korobilis (2013), que visa estimar um fator comum não observável
+entre um conjunto de variáveis por métodos de espaço de estado e filtro de Kalman – e, portanto, não
+requer um número muito grande de séries temporais longas, embora apresente um custo computacional
+elevado –, interpretando este fator comum como indicador de condições financeiras. De acordo com os
+autores, a construção do FCI deve obedecer à 3 questões fundamentais: (i) a seleção do conjunto de
+variáveis para a composição do FCI; (ii) a relação entre o ı́ndice e variáveis macroeconômicas, e (iii) os
+pesos dados para ponderar tais variáveis.
+     Quanto ao item (i), selecionou-se 20 variáveis financeiras cobrindo diversos aspectos econômicos,
+quer sejam, spreads de taxas de juros e de retornos associados ao setor financeiro, indicadores de
+adimplência das famı́lias e no sistema financeiro como um todo, indicadores de crédito oferecido pelo
+sistema bancário e indicadores de finanças externas como reservas.
+     Com relação à (ii), Koop e Korobilis (2013) argumentam que é necessário expurgar os efeitos
+macroeconômicos do ı́ndice de para que ele reflita puramente as condições financeiras da economia. Por
+esta razão, o fator comum entre as séries é estimado por meio de um VAR com parâmetros variando no
+tempo e aumentado por fatores (TVP-FAVAR). Considera-se, então, uma especificação bastante geral e
+flexı́vel permitindo variação temporal tanto nos coeficientes quanto nas cargas dos fatores e volatilidade
+estocástica. Esta configuração é especialmente adequada ao caso brasileiro comparativamente aos
+modelos mais restritos dadas as transformações no ambiente macroeconômico no perı́odo considerado
+neste trabalho pelas quais o Brasil passou, citando como exemplos a mudança do regime de controle
+cambial para o sistema de metas de inflação, a mudança no ambiente polı́tico ocorrida em 2002 e a
+ocorrência das crise financeiras da década de 1990 de 2008.
+     Por fim, relativamente à (iii), recorre-se à métodos bayesianos de ponderação de modelos para aco-
+modar as incertezas quanto às variáveis que compõem o fator comum assim como quanto à manutenção
+do subconjunto de variáveis escolhidas em um certo perı́odo ao longo do tempo. O algoritmo lida
+com tais incertezas escolhendo as variáveis a cada perı́odo, ao invés de escolher um conjunto fixo ao
+longo do tempo, e a ponderação é feita baseado na probabilidade de que certo modelo seja escolhido
+no perı́odo atual dado o conjunto de informação disponı́vel até o perı́odo anterior. Esta metodologia
+é particularmente preferida neste trabalho dado que não há informação a priori de outros trabalhos
+semelhantes para auxiliar a escolha das variáveis. A seção a seguir apresenta o método de estimação do
+FCI.
+
+
+
+
+                                                       4
+3.1     FAVAR com instabilidade estrutural
+Seja x t ∶ (n × 1), em que t = 1, . . . , T, um vetor com variáveis financeiras pertencentes ao conjunto de
+possı́veis variáveis compondo um ı́ndice de condições financeiras, e h t = (g t , m t , u t , π t , i t )′ , em que g t é
+a taxa de crescimento do PIB, m t é a taxa de crescimento do M1, u t é a taxa de variação do desemprego,
+π t é a taxa de variação do nı́vel de preços e i t é a taxa de juros. Assume-se um TVP-FAVAR com a
+seguinte forma:
+                                                xt = λt ht + λt ft + ut
+                                                         y        f
+
+
+                                   h                   h                       h                                        (1)
+                                  [ t ] = c t + B t,1 [ t−1 ] + ⋅ ⋅ ⋅ + B t,p [ t−p ] + ε t
+                                   ft                  f t−1                   f t−p
+                                       y     f
+em que p é a ordem do VAR, λ t e λ t são, respectivamente, coeficientes de regressão e carga dos fatores
+potencialmente variantes no tempo, f t é o fator não observável aqui interpretado como indicador
+de condições financeiras (FCI), c t é o intercepto e (B t,1 , . . . , B t,p ) são coeficientes. u t ∼ N(0, Vt )
+e ε t ∼ N(0, Q t ), em que as matrizes de covariâncias Vt e Q t variam possivelmente no tempo. A
+identificação é baseada na hipótese comum na literatura de fatores de que Vt é diagonal, de modo que u t
+é um vetor de choques idiossincráticos e f t contem toda a informação comum às variáveis financeiras.
+Os parâmetros variantes no tempo evoluem como passeios aleatórios da forma
+
+                                                         λ t = λ t−1 + v t
+                                                                                                                               (2)
+                                                         β t = β t−1 + η t
+                                  ′
+em que λ = ((λ t )′ , (λ t )′ ) , β t = (c ′t , vec(B t,1 )′ , . . . , vec(B t,p )′ )′ , v t ∼ N(0, Wt ) e η t ∼ N(0, R t ), e v t ,
+                     y       f
+
+η t , u t e ε t são termos não correlacionados ao longo do tempo e em cada equação.
+      Seguindo a tradição recente da literatura de modelos aumentados por fatores, o modelo em (1)
+consiste de duas equações: uma que permite a extração do FCI a partir das variáveis financeiras em
+x t e a segunda que busca acomodar as relações dinâmicas entre as variáveis macroeconômicas em h t
+e o FCI, f t . Como já mencionado, a motivação para tal estrutura é expurgar os efeitos das condições
+macroeconômicas do ı́ndice, resultando num indicador que contém apenas informações associadas ao
+setor financeiro.
+      A estimação do modelo (1) não é uma tarefa trivial, dado que tanto os fatores quanto suas cargas
+não são observáveis. Para lidar com tal dificuldade, Koop e Korobilis (2013) utilizam um algoritmo
+iterativo de dois estágios baseado no dual linear Kalman filter, que atualiza os parâmetros θ t = (λ t , β t )
+dada uma estimativa de f t inicial – dado pelo componente principal de x1∶t – e seguida atualiza o fator f t
+condicionando na estimativa de θ t . O algoritmo simplificado para o cálculo está descrito no apêndice.
+      Na aplicação empı́rica deste trabalho, x t contém 20 séries financeiras, havendo, portanto J = 220
+possı́veis modelos baseados em todas as possı́veis combinações entre as variáveis em x que podem ser
+utilizadas no FCI. Na prática, um modelo especı́fico M j , j = 1, . . . , J diferencia-se relativamente aos
+outros dada a restrição de que certa variável financeira tenha carga zero no fator no perı́odo t ou que a
+coluna referente àquela variável assuma valor zero.
+      Como há incerteza quanto à qual destes modelos deve ser o escolhido, Koop e Korobilis (2013)
+utilizam um método de ponderação dinâmico (Dynamic Model Average, DMA) em que os pesos
+atribuı́dos a cada modelo variam ao longo do tempo.
+      Tal ponderação é factı́vel calculando-se a probabilidade de que o modelo j seja escolhido no perı́odo
+t dada a informação disponı́vel até t − 1, denotada por π t∣t−1, j . Uma vez que π t∣t−1, j tenha sido calculada
+para j = 1, . . . , J, ela pode ser utilizada para se calcular o DMA perı́odo a perı́odo. Como π t∣t−1, j varia
+no tempo, o tamanho do modelo selecionado pode variar ao longo do perı́odo analisado. As condições
+iniciais para a estimação do FCI são apresentadas no apêndice.
+
+
+
+
+                                                                5
+3.2     FCI: dados e estimações
+Na construção do FCI, selecionou-se 20 variáveis cobrindo vários aspectos financeiros como mercado
+financeiro, ı́ndices de volatilidade, condições de crédito e setor bancário, preços e endividamento. Todas
+as variáveis, tanto macroeconômicas quanto financeiras, foram transformadas em estacionárias quando
+necessário e dessazonalizadas utilizando o filtro X-12. A estimação do FCI baseou-se em dados mensais
+no perı́odo de 1992M01 a 2014M3 e no filtro suavizador, de forma a utilizar toda informação disponı́vel2 .
+Na estimação do FCI, fixou-se 3 séries no DMA para evitar a possibilidade de que apenas uma série
+fosse sorteada gerando um fator comum com pouca informação financeira. A tabela 1 no apêndice
+deste trabalho apresenta as variáveis financeiras selecionadas, as fontes dos dados, as transformações
+realizadas e aquelas mantidas fixas na ponderação. Como algumas das séries apresentam missings,
+requereu-se que as 3 séries selecionadas como fixas tivessem informação em todo perı́odo, permitindo
+que ao menos o fator comum entre elas pudesse ser estimado a cada instante do tempo.
+    Estimou-se o modelo (1) com p = 6. A figura 1 mostra a evolução do ı́ndice estimado a partir de
+1995. Note-se que há uma grande volatilidade ao longo de todo o perı́odo. De acordo com a figura, o
+FCI estimado pareceu captar as altas instabilidades financeiras enfrentadas pela economia brasileira
+durante as crises de 1990, as eleições de 2002 e especialmente no ultimo trimestre de 2008 com a crise
+financeira dos sub-primes. Note-se que há maior frequência de outliers indicando piora no ı́ndice do
+que o oposto.
+                                                            FCI baseado no DMA
+                1
+
+
+               0.5
+
+
+                0
+
+
+              −0.5
+
+
+               −1
+              1995M01   1997M05 1998M10            2002M08             2005M05           2008M10   2011M03
+
+                                               Figura 1: Evolução do FCI
+
+
+                                                    Tamanho esperado do modelo no DMA
+
+
+                                          12
+
+
+                                          10
+
+
+                                           8
+
+
+                                           6
+
+
+                                           4
+
+
+                                           2
+
+
+                                           0
+                                                  1997M07       2003M01        2008M07
+
+
+
+                            Figura 2: Tamanho médio do modelo ao longo do tempo
+
+    A figura 2 apresenta a evolução do tamanho do modelo ao longo do perı́odo considerado para a
+construção do FCI. Somadas às 3 variáveis mantidas fixas, o modelo considerou em média entre 8.5 e
+9.3 variáveis ao longo do perı́odo. Para entender porque, observa-se na figura 3 que a probabilidade de
+inclusão da maioria das variáveis não mantidas fixas no DMA varia consideravelmente ao longo do
+tempo.
+
+
+
+    2
+     Posteriormente, as estimativas para o perı́odo não utilizado no TVAR foram desprezadas e calculou-se a média
+trimestral do ı́ndice para o perı́odo de interesse.
+
+
+                                                                 6
+                     Prob. de Ibovespa           Prob. de Inadimplencia Familias              Prob. de Provisões               Prob. de Spread CDI−Selic         Prob. de Spread TJLP − TBR
+             1                                  1                                   1                                     1                                 1
+
+            0.8                                0.8                                 0.8                                   0.8                               0.8
+
+            0.6                                0.6                                 0.6                                   0.6                               0.6
+
+            0.4                                0.4                                 0.4                                   0.4                               0.4
+
+            0.2                                0.2                                 0.2                                   0.2                               0.2
+
+             0                                  0                                   0                                     0                                 0
+                    1999M06 2006M10                     1999M06 2006M10                       1999M06 2006M10                     1999M06 2006M10                    1999M06 2006M10
+
+                   Prob. de Capital/Ativos                Prob. de Basileia              Prob. de Commodities − Brasil             Prob. de Illiquidity            Prob. de Indice Liquidez
+             1                                  1                                   1                                     1                                 1
+
+            0.8                                0.8                                 0.8                                   0.8                               0.8
+
+            0.6                                0.6                                 0.6                                   0.6                               0.6
+
+            0.4                                0.4                                 0.4                                   0.4                               0.4
+
+            0.2                                0.2                                 0.2                                   0.2                               0.2
+
+             0                                  0                                   0                                     0                                 0
+                    1999M06 2006M10                     1999M06 2006M10                       1999M06 2006M10                     1999M06 2006M10                    1999M06 2006M10
+
+              Prob. de LTN 12/LTN 1 − Spread         Prob. de Inadimplência SFN            Prob. de Crédito Famílias             Prob. de Credito/PIB                Prob. de Reservas
+             1                                  1                                   1                                     1                                 1
+
+            0.8                                0.8                                 0.8                                   0.8                               0.8
+
+            0.6                                0.6                                 0.6                                   0.6                               0.6
+
+            0.4                                0.4                                 0.4                                   0.4                               0.4
+
+            0.2                                0.2                                 0.2                                   0.2                               0.2
+
+             0                                  0                                   0                                     0                                 0
+                    1999M06 2006M10                     1999M06 2006M10                       1999M06 2006M10                     1999M06 2006M10                    1999M06 2006M10
+
+                  Prob. de Spread Bancario           Prob. de Volatilidade de LP
+             1                                  1
+
+            0.8                                0.8
+
+            0.6                                0.6
+
+            0.4                                0.4
+
+            0.2                                0.2
+
+             0                                  0
+                    1999M06 2006M10                     1999M06 2006M10
+
+
+
+
+                                   Figura 3: Evolução das probabilidades de inclusão das variáveis
+
+
+4     Captando não linearidades da polı́tica fiscal via TVAR
+Recentemente, tem crescido o interesse em aproximações de processos geradores de dados em economia
+por modelos dinâmicos não lineares, especialmente em modelos teóricos baseados em aproximações
+de ordem elevada e soluções globais, já que aproximações lineares podem ignorar aspectos importantes
+da dinâmica dos processos. Não linearidades neste contexto são esperadas tanto pelos resultados da
+literatura empı́rica recente quanto pela teoria macroeconômica moderna. Por exemplo, Kocherlakota
+(2000) mostra que boa parte da dinâmica dos ciclos econômicos possui um caráter assimétrico pos-
+sivelmente associado às condições de crédito. Por outro lado, no acelerador financeiro de Bernanke
+et al. (1999), por exemplo, há uma relação convexa entre o patrimônio lı́quido do empreendedor e o
+financiamento externo do projeto que se repercute nas respostas das variáveis econômicas aos choques.
+Relações não lineares similares emergem na maioria dos modelos canônicos teóricos que admitem
+fricções financeiras, mesmo em abordagens com restrições de quantidades de crédito no espı́rito de
+Stiglitz e Weiss (1981).
+     Assim, do ponto de vista teórico, estı́mulos fiscais que se relacionam com o produto e o investimento
+deverão também ter impactos não lineares que dependem das condições de liquidez da economia.
+Não obstante, os efeitos dos choques fiscais deverão se contrastar nos booms e nas recessões, dadas
+as mudanças ocorridas nos mercados financeiros. Ademais, pode-se esperar efeitos distintos sobre o
+consumo privado. Por exemplo, Galı́ et al. (2007) mostra que sob determinadas condições, a presença de
+agentes restritos ao crédito pode invalidar a equivalência ricardiana para o consumo agregado, gerando
+“efeitos keynesianos”. Com isso, em contextos recessivos, em que a proporção de agentes restritos ao
+crédito tente a ser maior, deve-se observar um impacto distinto de gasto de governo sobre o consumo
+privado agregado entre os regimes.
+     Entretanto, do ponto de vista empı́rico, a frequente questão na literatura com relação à capacidade
+do governo de estimular a economia com um gasto temporariamente elevado num contexto recessivo
+tem ignorado a potencial assimetria relacionada aos mercados financeiros. Como discutido por Schmidt
+
+                                                                                                 7
+(2013), ignorar potenciais não linearidades advindas de mudanças de regimes pode potencialmente
+resultar em previsões incorretas, invalidando as funções de resposta ao impulso calculadas.
+    Para analisar os efeitos dos choques fiscais, este trabalho utiliza o TVAR como uma estratégia
+econométrica capaz de acomodar não linearidades advindas de mudanças endógenas de regimes,
+determinadas pelo indicador de condição de liquidez anteriormente discutido. Esta abordagem pode
+ser entendida como a contra-partida empı́rica para a classe de modelos teóricos não lineares sujeitos à
+efeitos limiares (Schmidt, 2013).
+    O TVAR é um modelo bastante flexı́vel que pode ser entendido como um caso particular de uma
+classe geral de modelos de mudança de regime markoviana (MSVARs) no espı́rito de Hamilton (1989).
+Esta classe de modelos multivariados tem como caracterı́sticas serem robusta à não linearidades como
+mudança de regime, multiplicidade de equilı́brios, respostas assimétricas à choques, dependência de
+condições iniciais, entre outros. Em especial, e diferentemente dos modelos MSVARs, no TVAR a
+mudança de regime é dada endogenamente pela variável limiar, sendo uma estrutura mais realista
+comparativamente às mudanças exógenas no MSVAR. Além disso, o modelo é de simples estimação:
+condicional ao regime, o modelo é linear. Assim, a estimação é feita por mı́nimos quadrados condicio-
+nais. O sistema de equações na forma reduzida com um limiar – e, portanto, dois regimes – na aplicação
+empı́rica deste trabalho é
+
+                Yt = c1 + A1 Yt + B1 (L)Yt−1 + v1,t + (c2 + A2 Yt + B2 (L)Yt−1 + v2,t )I[s t−d > ω],                  (3)
+
+em que Yt ∶ (6 × 1) é um vetor de endógenas, c j ∶ (6 × 1) é um vetor de termos deterministas que afetam
+o regime j, I é uma variável indicadora que toma valor 1 se o valor limiar ω for ultrapassado e 0 caso
+contrário, B j (L) ∶ (6 × 6) são polinômios de defasagem e A j ∶ (6 × 6) relacionam contemporaneamente
+as variáveis à cada um dos regimes e v j,t , em que j = {1, 2} indica os dois regimes, são os distúrbios
+estruturais que podem variar em cada regime. A defasagem d da variável limiar é determinada pelo
+critério BIC em conjunto com o teste de não linearidade. Assume-se que A1 e A2 tenham estrutura
+recursiva. Assim, na forma geral, o TVAR pode ser escrito como:
+                                                          p
+                                              Yt = c j + ∑ Vj,i Yt−i + υ j,t                                          (4)
+                                                         i=1
+
+em que r j−1 < ω t−d ≤ r j e r indica os limites de cada um deles, Vj,i ∶ (6 × 6) é a matriz de coeficientes
+autorregressivos associada à defasagem i e ao regime j e υ j,t é um vetor de erros aleatórios na forma
+reduzida dependente do regime e que definem uma matriz de variância-covariância para cada regime,
+Σ j.
+     Como discutido, assume-se dois regimes de condição financeira, quer sejam, normal e restrito.
+Os choques estruturais são identificados de modo análogo à Fatás e Mihov (2001) e Galı́ et al. (2007).
+Conforme Blanchard e Perotti (2002), o arranjo institucional implica um atraso tal que o gasto do
+governo não deve reagir de modo automático às condições da economia. Neste caso, a recursividade
+dos choques fiscais será válida desde que a variável representando o gasto do governo seja a primeira na
+ordenação do VAR utilizando-se a fatoração de Cholesky (Fatás e Mihov, 2001). Devido ao pequeno
+tamanho da amostra e ao problema da proliferação de parâmetros no modelo não linear, considera-se o
+VAR apenas com o gasto do governo como variável fiscal. Entretanto, como sugerido por Blanchard
+e Leigh (2013)3 , o VAR neste trabalho contém variáveis de polı́tica monetária, que são a inflação e a
+taxa nominal de juros. Assim, configurou-se o TVAR com Yt = (g t , y t , c t , π t , i t , f t )′ , em que g t é a taxa
+de crescimento dos gastos, y t é a taxa de crescimento do PIB, c t é um indicador de consumo, π t é a
+variação do nı́vel de preços, i t é a taxa de juros e f t é o FCI. O modelo é estimado por minimização
+da soma dos quadrados dos resı́duos condicional ao valor limiar, computando-se posteriormente as
+    3
+      De acordo com os autores, parte das erros das previsões equivocadas sobre os ajustes fiscais realizados no perı́odo
+pós-2008 devem-se ao fato de que não se considerou o estado e as restrições da polı́tica monetária no computo dos
+multiplicadores. Por essa razão, incluiu-se variáveis de interesse das autoridades monetárias.
+
+
+                                                               8
+funções de resposta ao impulso não lineares. O critério BIC é utilizado para a seleção dos modelos. O
+exercı́cio é simular choques de polı́tica fiscal seus impactos dinâmicos sobre o produto e o consumo
+privado em cada um dos regimes restrição de liquidez.
+    O limiar é determinado endogenamente por um processo de grid search sobre todos os valores
+limiares que atendem ao critério da quantidade de dados requerida em cada regime. Neste trabalho,
+o valor limiar foi calculado requerendo-se ao menos 30% da amostra em cada regime. Dos valores
+obtidos através do grid search, o limiar escolhido é aquele que minimiza o determinante da matriz de
+covariância dos resı́duos,
+
+                                           ω∗ = argmin log∣Σv (ω)∣
+                                                     ω
+
+     O passo seguinte é testar se o modelo com variável limiar é corroborado pelos dados. Como observa
+Balke (2000), se ω fosse conhecido, um teste simples seria testar se A2 = B2 = 0 por meio de um teste de
+Wald, que teria distribuição χ2 conhecida. Entretanto, no procedimento, ω não é conhecido a priori e
+deve ser estimado, o que implica que a inferência sobre um teste desse tipo não seja padrão, pois ω não
+é identificado sob a nula de ausência de valor limiar. Uma das alternativas é empreender um teste LR
+comparando a verossimilhança de um modelo com limiar com a de um modelo linear (Hansen, 1999;
+Lo e Zivot, 2001), cuja estatı́stica seria LR N L = T(ln(∣(Σ N L )∣) − (ln(∣(Σ L )∣). Como a distribuição de tal
+estatı́stica não é conhecida, utiliza-se o método de bootstrap para gerar uma distribuição empı́rica para
+o teste, da qual é possı́vel calcular os p-valores assintóticos.
+     Para investigar as diferentes respostas à polı́tica fiscal das variáveis de interesse e a validade das
+hipóteses que motivam a análise deste trabalho, procedeu-se ao teste utilizando a configuração do TVAR
+descrita anteriormente, obtendo-se um valor de estatı́stica LR N L = 180.60 com p-valor associado de
+0.03, implicando na rejeição da hipótese nula de que a verossimilhança dos modelos com e sem limiar
+não diferem sistematicamente. Tal resultado fornece a primeira evidência de efeitos limiares no VAR.
+
+4.1    Funções de resposta ao impulso não lineares
+Em um VAR linear, as funções de resposta ao impulso podem ser obtidas diretamente a partir dos
+coeficientes estimados, e elas são simétricas, por construção, tanto em termos de sinal quanto de
+magnitude dos choques estruturais. Além disso, estas funções são definidas sob a hipótese de que a
+economia se mantém num mesmo regime, que estava vigente no instante do choque. Como o TVAR é
+linear condicional ao regime, funções de resposta ao impulso convencionais podem ser calculadas de
+maneira trivial, com o intervalo de confiança sendo calculado por simulação de Monte Carlo.
+     Entretanto, tais funções ignoram potenciais mudanças endógenas de regimes. A mudança de regime
+ocorre se o choque afetar a variável limiar de um modo tal que ocorra uma mudança no estado de
+natureza no horizonte de previsão. A alternativa para acomodar mudanças endógenas de regime são
+funções de resposta ao impulso não lineares. Tecnicamente, como discute Koop et al. (1996), num
+modelo não linear sob mudança de regime, a representação MA para o TVAR é não linear nos erros
+estruturais, v t , o que implica que o teorema para a decomposição de Wold não é aplicável. Em palavras,
+enquanto as funções de resposta ao impulso num VAR linear independem da história e são proporcionais
+à elas mesmas, num TVAR as respostas são dependentes da história, já que o sistema pode estar em
+um regime ou noutro. Por esta razão, Koop, Pesaran, e Potter (1996) propõem o uso de complicadas
+funções de resposta ao impulso não lineares chamadas funções de resposta ao impulso generalizadas
+(GIRF), que são calculadas pela simulação da evolução do sistema dependendo do regime em que o
+sistema se encontra no instante do choque. Condicionalmente à história Ω t−1 até o instante t, as GIRF
+são definidas como a diferença entre a trajetória prevista das variáveis com e sem um choque sobre
+
+
+
+
+                                                         9
+uma variável de interesse. Formalmente,
+
+    GIRF y (k, υ t , Ω t−1 ) = E(Yt+k ∣υ t , υ t+1 = 0, . . . , υ t+k = 0, Ω t−1 )−
+                                                                          E(Yt+k ∣υ t = 0, υ t+1 = 0, . . . , υ t+k = 0, Ω t−1 ) (5)
+
+em que Yt+k é o vetor de variáveis previsto até o horizonte k. Assim, sob tal formulação, a GIRF no
+contexto de um TVAR depende das condições iniciais, do passado e estado da economia (regime) no
+perı́odo t e não há quaisquer restrições com relação à simetria dos choques, possibilitando analisar
+efeitos de magnitude e sinais distintos.
+    Entretanto, para se obter o conjunto completo de informações sobre a dinâmica do modelo, deve-se
+simular as GIRF para vários possı́veis pontos iniciais, horizonte k e choques utilizando métodos de
+bootstrap. O algoritmo utilizado para o calcular (5) é descrito no apêndice. Como em Ferraresi et al.
+(2013); Schmidt (2013), métodos similares de simulação são empregados para a obtenção do intervalo
+de confiança.
+
+
+5        Dados
+Para a estimação do TVAR, utilizou-se dados trimestrais no perı́odo entre o primeiro trimestre de 1995
+até o primeiro trimestre de 2014. Seguindo Afonso et al. (2010), as variáveis de gasto do governo, PIB,
+consumo e nı́vel de preços são medidas como taxa de crescimento anual – e.g., y t = ln(PIB t )−ln(PIB t−4 ).
+Gasto do governo, PIB e o consumo privado foram obtidos das contas nacionais trimestrais divulgadas
+pelo IBGE. Variáveis nominais estão expressas em Reais do primeiro trimestre de 2000. Variáveis
+mensais como a taxa de inflação e a taxa de juros são expressas como a médias trimestrais. A variável
+indicadora de mudança no nı́vel de preços foi o IPCA a partir da qual calculou-se um ı́ndice que
+foi utilizado para a construção da variável de mudança de preços anual. Como variável indicadora
+de polı́tica monetária, selecionou-se a taxa Selic. O TVAR foi completado com os valores estimados
+do FCI utilizado como variável limiar endógena, servindo como proxy para as condições de liquidez
+da economia brasileira. A figura 4 no apêndice apresenta o gráfico com a evolução das variáveis
+transformadas. A exceção da taxa de juros, todas as variáveis foram dessazonalizadas pelo filtro X-12.
+     Para atestar a robustez dos resultados, considerou-se a especificação do TVAR tanto com o hiato do
+produto, calculado como o desvio em relação à tendência obtida por meio do filtro HP sob a série do
+PIB trimestral dessazonalizado em log4 .
+
+
+6        Resultados
+De posse do indicador de condição de liquidez e do resultado do teste LR conforme seção 4 – que
+proveu evidência de existência de não linearidade no sistema –, segue-se então a análise dos efeitos da
+polı́tica fiscal sob diferentes regimes de liquidez, observando especialmente as respostas do produto e do
+consumo privado. Como discutido anteriormente, a estratégia de identificação empregada é recorrente
+na literatura que analisa efeitos de gasto de governo sobre o produto e o consumo privado (Blanchard e
+Perotti, 2002; Fatás e Mihov, 2001; Galı́ et al., 2007) e pode ser entendida como análoga à literatura que
+analisa efeitos não lineares de polı́ticas macroeconômicas (Balke, 2000; Ferraresi et al., 2013), incluindo
+também a análise de possı́veis impactos distintos sobre o consumo privado.
+
+     4
+      Adicionalmente, substitui-se o consumo das famı́lias agregado pelo ı́ndice de quantidade de consumo de bens semi e
+não-duráveis do IPEADATA – o que reduziu o tamanho da amostra, já que este indicador tem atualmente dados disponı́veis
+apenas até 11/2013. Esta variável é interessante para se manter os resultados comparáveis aos da literatura internacional, em
+que o indicador de consumo é dado pelo consumo de bens não-duráveis. Entretanto, os resultados para esta especificação
+alternativa não serão apresentados por limitação de espaço, estando disponı́veis mediante solicitação. Reporta-se que,
+embora alguma mudança na dinâmica seja observada, os resultados qualitativos foram similares.
+
+
+                                                                 10
+     O critério BIC (-1307.49) favoreceu a escolha do modelo com uma defasagem (TVAR(1)). A defa-
+sagem da variável limiar foi também de ordem um, sendo os resı́duos minimizados ao valor limiar
+ ω = −0.0228. Assim, valores abaixo de ω indicam que a economia esta entrando em regime de restrição
+de liquidez. O limiar e os episódios em que o sistema se encontrava no regime 2 (áreas hachuradas),
+indicando liquidez normal, e no regime 1, indicando restrição de liquidez, estão explı́citos na figura 4.
+     Seguindo o algoritmo apresentado no apêndice, calculou-se as funções de resposta ao impulso
+generalizadas a fim de estudar os impactos médios sobre o produto e o consumo privado de choques
+fiscais de pequena e grande magnitudes, sendo 0.5 e 1.5 desvios-padrão, respectivamente. Os resultados
+são apresentados nas figuras 5 a 8.
+     Note-se, inicialmente, que a não linearidade do sistema é bem captada pelas GIRFs. As figuras 5
+e 6 evidenciam os impactos distintos dos gastos do governo no Brasil sobre o produto. Não apenas
+a dinâmica é afetada num contexto de restrição de liquidez (Regime 1), como, principalmente, a
+persistência dos choques. Por exemplo, um choque positivo de grande magnitude no regime normal
+seria dissipado completamente após 3 trimestres, enquanto no regime de restrição de crédito os efeitos
+perdurariam até o quinto trimestre, de acordo com o intervalo de confiança estimado. Padrão similar
+ocorre após um choque negativo. Comparando-se as figuras, percebe-se que há não linearidades
+também em relação ao sinal dos choques, dado tanto pelas distintas respostas dinâmicas do produto
+quanto pelas diferentes magnitudes dos impactos. Note-se, ainda, que os efeitos dos choques de grande
+magnitude repercutem-se principalmente na persistência dos efeitos e não nas magnitudes.
+     Observando, em seguida, as figuras 7 e 8, nota-se que padrão muito semelhante de impactos ocorre
+sobre o consumo privado, a despeito de pequena diferença na dinâmica até que o sistema se reequilibre.
+Assim, tanto em situação normal nos mercados de crédito ou mesmo sob estresse financeiro, observa-se
+“efeitos keynesianos’’ na economia brasileira.
+     Em resumo, após acomodar o estado de natureza dos mercados financeiros, os resultados aqui
+obtidos dão evidências de que as repostas dos choques fiscais são distintas nos regimes para a economia
+brasileira, sendo tal resultado invariante à magnitude e ao sinal do choque. Para atestar o resultado,
+repetiu-se os exercı́cios utilizando o hiato do produto ao invés do crescimento anual. Os resultados
+estão expressos nas figuras 9 a 12, mostrando padrões bastante semelhantes aos aqui apresentados.
+     Assim, de acordo com os resultados, os efeitos da polı́tica fiscal são amplificados em contexto de crise
+financeira no Brasil. Isso significa que quando firmas e famı́lias se defrontam com custos financeiros
+crescentes, polı́ticas expansionárias podem ser devidamente implementas visando um aumento na
+demanda agregada. Entretanto, esta recomendação requer cuidado, já que o estado de natureza do
+mercado financeiro poderá ser alterado caso o governo incorra indefinidamente em déficits fiscais
+elevando seu nı́vel de endividamento. Como pode ser observado pelas figuras, os impactos de choques
+fiscais negativos em perı́odos de regime normal são dissipados com rapidez, de modo que a consolidação
+fiscal após o perı́odo de turbulência financeira teria impactos pouco persistentes e reduziria os riscos da
+polı́tica fiscal ao longo do tempo.
+
+
+7     Conclusões
+Neste artigo, investigou-se empiricamente a existência de efeitos não lineares de polı́tica fiscal sobre o
+produto e o consumo privado na economia brasileira sob instabilidade financeira. Tais não linearidades
+são sugeridas pela literatura teórica que trata fricções financeiras (Bernanke et al., 1999; Gertler e
+Kiyotaki, 2010) e consumo sob restrições financeiras (Galı́ et al., 2007), além da recente literatura
+empı́rica (Afonso et al., 2010; Ferraresi et al., 2013).
+     Conjecturando que o governo tem maior poder de afetar a economia em situações de estresse
+financeiro, empregou-se um modelo autorregressivo com limiar (TVAR) num procedimento em dois
+estágios em que no primeiro um ı́ndice de liquidez para a economia brasileira foi estimado e no segundo
+tal ı́ndice foi utilizado para se determinar o valor limiar de dois regimes: um em que o estado de
+liquidez é normal e outro em que é restrito. O ı́ndice financeiro foi estimado como fator comum entre
+
+                                                     11
+20 variáveis financeiras cobrindo vários aspectos do mercado financeiro brasileiro combinando-se filtro
+de Kalman e métodos bayesianos.
+    O modelo com efeitos limiares foi corroborado pelos dados, indicando efeitos não lineares para
+a economia brasileira. Utilizando uma estratégia de identificação comum na literatura que analisa
+efeitos de gastos de governo sobre o consumo privado, calculou-se as funções de resposta ao impulso
+não lineares (GIRF) estado-dependentes para analisar a efetividade dos choques fiscais em estimular o
+produto e o consumo privado nos diferentes regimes financeiros.
+    Os principais resultados sugerem que há diferenças na dinâmica, na magnitude e, principalmente,
+na persistência dos choques no caso brasileiro, sendo os multiplicadores associados aos choques fiscais
+distintos entre os regimes, conforme sugerido pelas funções de resposta ao impulso não lineares.
+    De acordo com os resultados, o governo é capaz de estimular tanto o PIB quanto o consumo privado
+em ambos os regimes de liquidez. Assim, estes resultados sugerem que no caso brasileiro há “efeitos
+keynesianos’’ de polı́tica fiscal mesmo após acomodar as fricções financeiras.
+
+
+Referências
+Afonso, A., J. Baxa, e M. Slavik (2011). Fiscal Developments and Financial Stress: A Threshold VAR
+ Analysis. Working Paper Series, European Central Bank 1319.
+
+Afonso, A., H. Gruener, e C. Kolerus (2010). Fiscal policy and growth: Do financial crises make a
+ difference? Working Paper Series, European Central Bank 1217, June.
+
+Alesina, A., C. Favero, e F. Giavazzi (2012). The output effect of fiscal consolidations.
+
+Almunia, M., A. Bénétrix, B. Eichengreen, K. H. ORourke, e G. Rua (2010, April). From Great Depression
+  to Great Credit Crisis: similarities, differences and lessons. Economic Policy 25(62), 219–265.
+
+Baldacci, E., S. Gupta, e C. Mulas-Granados (2009). How Effective is Fiscal Policy Response in Systemic
+  Banking Crises?(EPub). IMF Working Paper 09/160.
+
+Balke, N. (2000). Credit and economic activity: credit regimes and nonlinear propagation of shocks.
+ Review of Economics and Statistics 82(2), 344–349.
+
+Bernanke, B. S., M. Gertler, e S. Gilchrist (1999). The financial accelerator in a quantitative business
+ cycle framework. In J. B. Taylor e M. Woodford (Eds.), Handbook of Macroeconomics, Chapter 21, pp.
+ 1341–1393. Elsevier.
+
+Blanchard, O. e D. Leigh (2013). Growth forecast errors and fiscal multipliers. IMF Working Paper 1301.
+
+Blanchard, O. e R. Perotti (2002, November). An Empirical Characterization of the Dynamic Effects of
+  Changes in Government Spending and Taxes on Output. The Quarterly Journal of Economics 117(4),
+  1329–1368.
+
+Bouthevillain, C. e G. Dufrénot (2011). Are the effects of fiscal changes different in times of crisis and
+ non crisis? The French case. Revue d’économie politique.
+
+Brunnermeier, M., T. Eisenbach, e Y. Sannikov (2012). Macroeconomics with financial frictions: A
+  survey. NBER Working Papers 18102.
+
+Fatás, A. e I. Mihov (2001). The Effects of Fiscal Policy on Consumption and Employment: Theory and
+  Evidence. Technical Report 2760.
+
+Favero, C. e F. Giavazzi (2012, May). Measuring Tax Multipliers: The Narrative Method in Fiscal VARs.
+  American Economic Journal: Economic Policy 4(2), 69–94.
+
+                                                    12
+Ferraresi, T., A. Roventini, e G. Fagiolo (2013). Fiscal policies and credit regimes: a tvar approach. LEM
+  Papers Series 2013/03.
+
+Galı́, J., J. D. López-Salido, e J. Vallés (2007, March). Understanding the Effects of Government Spending
+ on Consumption. Journal of the European Economic Association 5(1), 227–270.
+
+Gerba, E. e K. Hauzenberger (2013). Estimating US Fiscal and Monetary Interactions in a Time Varying
+ VAR. Working Paper March.
+
+Gertler, M. e N. Kiyotaki (2010). Financial intermediation and credit policy in business cycle analysis.
+ Handbook of monetary economics 3, 547–599.
+
+Hamilton, J. (1989). A new approach to the economic analysis of nonstationary time series and the
+ business cycle. Econometrica 57(2), 357–384.
+
+Hansen, B. (1999, December). Testing for Linearity. Journal of Economic Surveys 13(5), 551–576.
+
+Hebous, S. (2011). The effects of discretionary fiscal policy on macroeconomic aggregates: a reappraisal.
+ Journal of Economic Surveys.
+
+Kocherlakota, N. (2000). Creating business cycles through credit constraints. Federal Reserve Bank of
+ Minneapolis Quarterly Review 24(3), 2–10.
+
+Koop, G. e D. Korobilis (2013). A New Index of Financial Conditions. SSRN Working Paper Series De-
+ cember.
+
+Koop, G., M. Pesaran, e S. M. Potter (1996, September). Impulse response analysis in nonlinear
+ multivariate models. Journal of Econometrics 74(1), 119–147.
+
+Lo, M. e E. Zivot (2001). Threshold cointegration and nonlinear adjustment to the law of one price.
+ Macroeconomic Dynamics, 533–576.
+
+Mountford, A. e H. Uhlig (2009). What are the effects of fiscal policy shocks? Journal of Applied
+ Econometrics 24(6), 960–992.
+
+Ramey, V. A. (2011a). Can government purchases stimulate the economy? Journal of Economic Literature.
+
+Ramey, V. A. (2011b, March). Identifying Government Spending Shocks: It’s all in the Timing. The
+ Quarterly Journal of Economics 126(1), 1–50.
+
+Schmidt, J. (2013). Country Risk Premia, Endogenous Collateral Constraints and Non-linearities: A
+  Threshold VAR Approach. Working Paper (May).
+
+Stiglitz, J. e A. Weiss (1981). Credit rationing in markets with imperfect information. The American
+  economic review 71(3), 393–410.
+
+Tagkalakis, A. (2008, June). The effects of fiscal policy on consumption in recessions and expansions.
+  Journal of Public Economics 92(5-6), 1486–1508.
+
+Tsay, R. (1998). Testing and modeling multivariate threshold models. Journal of the American Statistical
+  Association.
+
+
+
+
+                                                    13
+A     Apêndice
+A.1   Dados
+
+                                                      Tabela 1: Descrição das variáveis
+                                                          Vari áveis Macroecon ômicas no TVP-VAR
+
+
+         F             Variável                                       Descrição                         T        Perı́odo        Fonte
+
+              Crescimento do PIB            Taxa de crescimento do PIB trimestral                          *     1995T1-2014T1     BACEN
+              Crescimento do M1             Taxa de crescimento do M1                                      *     1995T1-2014T1     BACEN
+              Variação do desemprego      Média no trimestre da taxa média de desemprego               *     1995T1-2014T1     Dieese
+                                            nas regiões metropolitanas
+              Taxa de inflação            IPCA                                                                 1995T1-2014T1     BACEN
+              Selic                         Média da Selic no trimestre                                         1995T1-2014T1     BACEN
+
+                                                                           Fator comum
+
+
+         F             Variável                                       Descrição                         T        Perı́odo        Fonte
+
+         *    Ações - Selic               Spread entre rentabilidade das ações e taxa Selic                 1992M02-2014M03     BACEN
+         *    CDB-Poupança                 Spread entre rentab. CDB pós-fixado e poupança                    1992M02-2014M03     BACEN
+              Custo Titulos                 Custo médio de captação Tı́tulos do Banco Central                1994M05-2014M03     BACEN
+         *    Ibovespa                      Variação do ı́ndice do IBOVESPA                                   1992M02-2014M03     BACEN
+              Inadimplencia Familias        Inadimplência no SPC                                          *    1992M02-2014M03     BACEN
+              Provisões                    Proporção de provisões do crédito                          *    1992M02-2014M03     BACEN
+              Spread CDI-Selic              Spread entre taxa CDI e taxa Selic                                  1992M02-2014M03     BACEN
+              Spread TJLP - TBR             Spread entre TJLP e TBR                                             1995M06-2014M03     BACEN
+              Capital/Ativos                Índice de capital sobre ativos dos Bancos                     *    2001M01-2014M03     BACEN
+              Basileia                      Índice da Basiléia                                           *    2001M01-2014M03     BACEN
+              Commodities - Brasil          Índice de Commodities - Brasil                                *    1998M01-2014M03     BACEN
+              Illiquidity                   Índice de iliquidez                                                2001M01-2014M03   Nefin-USP
+              Indice Liquidez               Índice de liquidez do sistema financeiro                           2006M01-2014M03     BACEN
+              LTN 12/LTN 1 - Spread         Estrutura a termo da LTN 12 meses/ LTN 1 mês                       2000M03-2014M03   IPEADATA
+              Inadimplencia SFN             Inadimplência da carteira de crédito                         *    2000M03-2014M03     BACEN
+              Crédito Famı́lias            Proporção do crédito destinado às pessoas fı́sicas         *    1992M02-2014M03     BACEN
+              Credito/PIB                   Relação crédito/PIB                                         *    1992M02-2014M03     BACEN
+              Reservas                      Reservas internacionais/PIB                                    *    1992M02-2014M03     BACEN
+              Spread Bancario               Spread Bancário                                               *    1995M06-2012M12     BACEN
+              Volatilidade de LP            Volatilidade de Longo Prazo                                         2008M05-2014M03     BACEN
+
+                                                              Vari áveis Macroecon ômicas TVAR
+
+
+                       Variável                                       Descrição                         T                        Fonte
+
+              Gasto do Governo              Taxa de crescimento em 12 meses                                **                     IPEADATA
+              PIB                           Taxa de crescimento em 12 meses                                **                     IPEADATA
+              PIB                           Hiato do produto                                                                      IPEADATA
+              Consumo das Famı́lias         Taxa de crescimento em 12 meses                                **                     IPEADATA
+              Índice de Consumo            Desvio do indicador de consumo de bens semi e não duráveis                          IPEADATA
+              Taxa de Inflação            Variação do ı́ndice baseado no IPCA                          **                     IPEADATA
+              Taxa de Juros                 Média da Selic no trimestre                                                            BACEN
+
+         Notas: Variáveis mensais foram transformadas em médias trimestrais.
+         F: Fixa no DMA.
+         T: * Transformada em Log-diferença. ** Transformada na diferença entre o log em t e t − 4.
+
+
+
+
+                                                                                 14
+                                                               Governo
+                 0.2
+                 0.1
+                   0
+                −0.1
+                                                                 PIB
+                 0.2
+                 0.1
+                  0
+
+                                                              Consumo
+                0.15
+                 0.1
+                0.05
+                   0
+
+                                                               Inflação
+
+                0.15
+                 0.1
+                0.05
+
+                                                                Juros
+
+                 0.5
+                   0
+                −0.5
+                                                                 FCI
+                 20
+                  0
+                −20
+
+
+
+
+                           Figura 4: Evolução das variáveis no TVAR com valor limiar
+
+
+A.2     Condições iniciais, ponderação dinâmica e hiperparâmetros para o FCI
+Nesta seção discute-se brevemente o cálculo da probabilidade de que o modelo j seja escolhido no
+perı́odo t. Dada uma condição inicial, π0∣0, j , para todo j = 1, . . . , J, a equação de predição do modelo é
+dada por:
+                                                             α
+                                                           π t∣t−1, j
+                                            π t∣t−1, j = J α
+                                                         ∑l=1 π t∣t−1,l
+em que α é um forgetting factor usado para estimar a matriz de covariância dos erros. A equação de
+atualização do modelo é dada por:
+
+                                                  π t∣t−1, j f j (Dados t ∣Dados1∶t−1 )
+                                   π t∣t, j =
+                                                ∑l=1 π t∣t−1,l f l (Dados t ∣Dados1∶t−1 )
+                                                 J
+
+
+em que f j (Dados t ∣Dados1∶t−1 ) é uma medida de ajuste do modelo j à verossimilhança associada à
+predição das variáveis macroeconômicas, p j (h t ∣Dados1∶t−1 ). Na aplicação empı́rica, estabeleceu-se o
+forgetting factor α = 0.99, o que resulta num peso dado à previsão de 5 anos antes recebendo 80%
+relativamente ao peso dado à ultima previsão, enquanto um α = 1 resultaria numa ponderação bayesiana
+de modelos tradicional.
+    As condições iniciais para o FCI, os parâmetros variando no tempo θ t e as matrizes de covariâncias
+variantes no tempo, Vt , Q t , π0∣0, j , j = 1, . . . , J, seguem uma configuração razoavelmente não informativa,
+como se segue:
+                                       f0 ∼ N(0, 4),            λ0 ∼ N(0, 4 × I n(s+1) ),
+                                  β0 ∼ N(0, Vmin ),                  V0 ≡ 1 × I n ,
+                                       Q0 ≡ 1 × Is+1 ,                π0∣0, j = 1J
+em que Vmin é uma matriz diagonal com uma priori semelhante à Minnesota prior, penalizando as
+
+
+
+                                                              15
+defasagens mais distantes:
+                                       ⎧
+                                       ⎪ 4, para interceptos
+                                       ⎪
+                               Vmin   =⎨4
+                                       ⎪
+                                       ⎪    , para coeficiente na defasagem r
+                                       ⎩ r2
+em que r = 1, . . . , p.
+   A tabela a seguir resume o algoritmo básico baseado no dual linear Kalman filter:
+
+                                    Algoritmo para estimação do TVP-FAVAR
+               1   a) Inicialize os parâmetros, λ 0 , β 0 , f 0 , V0 , Q 0
+                   b) Obtenha uma estimativa do(s) componente(s) principal(is), f˜t
+               2   Estime θ t dado f˜t
+                   a) Estime Vt , Q t , R t , e Q t usando Variance Discounting
+                   b) Estime λ t e β t dado (Vt , Q t , R t , Q t ) usando o filtro e o suavizador de Kalman
+               3   Estime f t dado θ t usando o filtro e o suavizador de Kalman
+
+
+
+A.3    GIRFs
+
+                                         Algoritmo para cálculo das GIRF
+               1   Selecione uma história Ω rt−1 ;
+               2   Selecione uma sequencia de choques por meio de bootstrap sobre os resı́duos,
+                   levando-se em conta as diferentes matrizes de covariâncias nos regimes;
+               3   Dado Ω rt−1 , os coeficientes do TVAR e os resı́duos bootstrapped, simule a
+                   evolução do modelo no horizonte desejado;
+              4    Repita 1-3 para um novo choque em t = 0;
+              5    Repita 1-4 B vezes;
+              6    Compute a diferença média entre os estados com e sem choque;
+              7    Repita 1-6 sob todos os possı́veis pontos iniciais;
+              8    Compute a GIRF média associada a cada regime com R observações.
+                                Algoritmo para cálculo do intervalo de confiança
+               1   Gere dados artificiais recursivamente usando os coeficientes e resı́duos do TVAR;
+               2   Use os dados recursivos para recalcular os coeficientes do TVAR assim como os
+                   resı́duos;
+               3   Use os dados empı́ricos e os coeficientes e resı́duos em 2 e calcule as GIRF como
+                   descrito anteriormente;
+              4    Repita os passos 1-3 S vezes para gerar uma distribuição empı́rica das GIRF e
+                   obternha os intervalos de confiança para a significância desejada.
+              Utilizou-se B=1000 e S=1000
+
+
+
+
+                                                           16
+A.4   Resultados
+
+
+
+                                                                               PIB
+
+
+                                        0.2                                           0.2
+                  Choque de +0.5 dp
+
+
+
+
+                                       0.15                                          0.15
+
+                                        0.1                                           0.1
+
+                                       0.05                                          0.05
+
+                                          0                                             0
+
+                                      −0.05                                      −0.05
+                                              2     4     6    8     10   12                2   4   6    8    10      12
+       Regime 1
+
+
+
+
+                                                                                                                           Regime 2
+                                        0.2                                           0.2
+                  Choque de +1.5 dp
+
+
+
+
+                                       0.15                                          0.15
+
+                                        0.1                                           0.1
+
+                                                                                     0.05
+                                       0.05
+                                                                                        0
+                                          0
+                                                                                 −0.05
+                                      −0.05
+                                              2     4     6    8     10   12                2   4   6    8    10      12
+                                              Figura 5: Respostas não lineares do PIB a choques positivos de gasto
+
+
+                                                                               PIB
+
+                                       0.05                                          0.05
+                  Choque de −0.5dp
+
+
+
+
+                                          0                                             0
+
+
+                                      −0.05                                      −0.05
+
+
+                                       −0.1                                          −0.1
+
+
+                                      −0.15                                      −0.15
+
+                                              2     4     6    8     10   12                2   4   6    8    10      12
+       Regime 1
+
+
+
+
+                                                                                                                           Regime 2
+
+
+
+
+                                       0.05                                          0.05
+                  Choque de −1.5dp
+
+
+
+
+                                          0                                             0
+
+
+                                      −0.05                                      −0.05
+
+
+                                       −0.1                                          −0.1
+
+
+                                      −0.15                                      −0.15
+
+                                              2     4     6    8     10   12                2   4   6    8    10      12
+                                              Figura 6: Respostas não lineares do PIB a choques negativos de gasto
+
+
+
+
+                                                                               17
+                                                                  Consumo
+
+
+                                 0.2                                        0.2
+           Choque de +0.5 dp
+
+
+                                0.15                                       0.15
+
+                                 0.1                                        0.1
+
+                                0.05                                       0.05
+
+                                   0                                          0
+
+                               −0.05                                   −0.05
+                                       2    4    6     8    10   12               2   4   6    8    10   12
+Regime 1
+
+
+
+
+                                                                                                               Regime 2
+                                 0.2                                        0.2
+           Choque de +1.5 dp
+
+
+
+
+                                0.15                                       0.15
+
+                                 0.1                                        0.1
+
+                                                                           0.05
+                                0.05
+                                                                              0
+                                   0
+                                                                       −0.05
+                               −0.05
+                                       2    4    6     8    10   12               2   4   6    8    10   12
+                                   Figura 7: Respostas não lineares do Consumo a choques positivos de gasto
+
+
+                                                                  Consumo
+                                 0.1                                        0.1
+
+                                0.05                                       0.05
+           Choque de −0.5dp
+
+
+
+
+                                   0                                          0
+
+                               −0.05                                   −0.05
+
+                                −0.1                                       −0.1
+
+                               −0.15                                   −0.15
+
+                                       2    4    6     8    10   12               2   4   6    8    10   12
+Regime 1
+
+
+
+
+                                                                                                               Regime 2
+
+
+
+
+                                 0.1                                        0.1
+
+                                0.05                                       0.05
+           Choque de −1.5dp
+
+
+
+
+                                   0                                          0
+
+                               −0.05                                   −0.05
+
+                                −0.1                                       −0.1
+
+                               −0.15                                   −0.15
+
+                                       2    4    6     8    10   12               2   4   6    8    10   12
+                                   Figura 8: Respostas não lineares do Consumo a choques positivos de gasto
+
+
+
+
+                                                                      18
+A.5                                        Testes de Robustez
+
+
+                                                                             PIB                                                                                                                PIB
+                                                                                                                                                                              4                          4
+                                                         10                         10
+                                                                                                                                                                              2                          2
+                                                           8                          8
+                                     Choque de +0.5 dp
+
+
+
+
+                                                                                                                                                         Choque de −0.5dp
+                                                                                                                                                                              0                          0
+                                                           6                          6
+                                                                                                                                                                            −2                         −2
+                                                           4                          4
+                                                                                                                                                                            −4                         −4
+                                                           2                          2
+                                                                                                                                                                            −6                         −6
+                                                           0                          0
+                                                                                                                                                                            −8                         −8
+                                                               5   10   15                5   10   15                                                                             5   10   15                5   10   15
+      Regime 1
+
+
+
+
+                                                                                                        Regime 2
+
+
+
+
+                                                                                                                           Regime 1
+
+
+
+
+                                                                                                                                                                                                                           Regime 2
+                                                                                                                                                                              4                          4
+                                                         10                         10
+                                                                                                                                                                              2                          2
+                                                           8                          8
+                                     Choque de +1.5 dp
+
+
+
+
+                                                                                                                                                         Choque de −1.5dp
+                                                                                                                                                                              0                          0
+                                                           6                          6
+                                                                                                                                                                            −2                         −2
+                                                           4                          4
+                                                                                                                                                                            −4                         −4
+                                                           2                          2
+                                                                                                                                                                            −6                         −6
+                                                           0                          0
+                                                                                                                                                                            −8                         −8
+                                                               5   10   15                5   10   15                                                                             5   10   15                5   10   15
+
+  Figura 9: Respostas não lineares do hiato do PIB a                                                                   Figura 10: Respostas não lineares do hiato do PIB a
+              choques positivos de gasto                                                                                            choques negativos de gasto
+
+
+                                                                         Consumo                                                                                                            Consumo
+                                                                                                                                                                            0.1                        0.1
+
+                                                         0.2                        0.2                                                                            0.05                               0.05
+                 Choque de +0.5 dp
+
+
+
+
+                                                                                                                                      Choque de −0.5dp
+
+
+                                               0.15                                0.15
+                                                                                                                                                                              0                          0
+                                                         0.1                        0.1
+                                                                                                                                                         −0.05                                    −0.05
+                                               0.05                                0.05
+                                                                                                                                                                  −0.1                                −0.1
+                                                           0                          0
+                                                                                                                                                         −0.15                                    −0.15
+                                     −0.05                                     −0.05
+                                                               5   10   15                5   10   15                                                                             5   10   15                5   10   15
+      Regime 1
+
+
+
+
+                                                                                                        Regime 2
+
+
+
+
+                                                                                                                           Regime 1
+
+
+
+
+                                                                                                                                                                                                                           Regime 2
+                                                                                                                                                                            0.1                        0.1
+
+                                                         0.2                        0.2                                                                            0.05                               0.05
+                 Choque de +1.5 dp
+
+
+
+
+                                                                                                                                      Choque de −1.5dp
+
+
+
+
+                                               0.15                                0.15
+                                                                                                                                                                              0                          0
+
+                                                         0.1                        0.1
+                                                                                                                                                         −0.05                                    −0.05
+                                                                                   0.05
+                                               0.05
+                                                                                                                                                                  −0.1                                −0.1
+                                                                                      0
+                                                           0
+                                                                                                                                                         −0.15                                    −0.15
+                                                                               −0.05
+                                     −0.05
+                                                               5   10   15                5   10   15                                                                             5   10   15                5   10   15
+
+   Figura 11: Respostas não lineares do Consumo a                                                                        Figura 12: Respostas não lineares do Consumo a
+ choques positivos de gasto (TVAR com hiato do PIB)                                                                     choques positivos de gasto (TVAR com hiato do PIB)
+
+
+
+
+                                                                                                                   19
+

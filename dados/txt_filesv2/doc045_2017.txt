@@ -1,0 +1,1391 @@
+Impactos das Políticas Fiscais Federal e Estadual nas
+
+Regiões Brasileiras
+
+Paulo de Carvalho Lins∗
+
+Gian Paulo Soave†
+
+Anpec: Área 4 - Macroeconomia, Economia Monetária e Finanças
+
+Resumo
+
+Neste artigo, buscamos acessar empiricamente os efeitos de choques de política ﬁscal
+sobre a atividade privada nos estados brasileiros. Para tanto, propomos uma metodologia
+que permite analisar simultaneamente choques advindos de entidades ﬁscais estaduais e
+federais. Além disso, nossa metodologia acomoda a potencial heterogeneidade de respostas
+a choques ﬁscais, uma vez que as regiões brasileiras apresentam diferenças signiﬁcantes em
+termos de desenvolvimento econômico. Por meio de um modelo VAR em Painel (PVAR)
+estimado utilizando métodos bayesianos e que assume uma priori hierárquica, encontramos
+que os multiplicadores de gastos federais são bastante heterogêneos em nossa amostra,
+sendo em média positivos e de magnitude próxima a 0.485, mas não signiﬁcante para
+algumas regiões. Já os multiplicadores de gasto estaduais são relativamente homogêneos,
+atingindo, no longo prazo, o valor médio de 0.825.
+
+cal
+
+Palavras-chaves: Painel Hierárquico Bayesiano Vetorial; Restrições de Sinal; Política Fis-
+
+Classiﬁcação JEL: E60, E62
+
+Abstract
+
+This paper aims to assess the empirical eﬀects of ﬁscal shocks on private activity in
+the Brazilian states. To do so, we ﬁrst propose a method that makes it possible to analyze
+shocks coming from both federal and state levels. Especially, the method accounts for
+the potential heterogeneity in the impulse responses for the states, which might be a
+problem because of the known substantial diﬀerences in the Brazilian regions regarding
+economic development. Using a Panel VAR (PVAR) estimated through Bayesian methods
+coupled with a hierarchical prior, we ﬁnd that federal spending multipliers show a high
+degree of heterogeneity in our sample, being positive on average and with size of 0.485,
+but indistinguishable from zero in some regions. Multipliers for state-level spending are
+relatively homogeneous, reaching 0.825 in the long-run on average.
+
+Keywords: Vector Bayesian Hierarchical Model; Sign Restrictions; Fiscal Policy
+JEL - Classiﬁcation: E60, E62
+
+∗Instituto Brasileiro de Economia - IBRE/FGV. Email: paulo.lins@fgv.br
+†Universidade de São Paulo - IPE/USP. Email: gianps@usp.br
+
+1
+
+1 Introdução
+
+A maioria dos economistas na academia brasileira provavelmente concordaria que o pacote
+de política ﬁscal implementado no Brasil em resposta à crise mundial de 2008 obteve algum
+êxito momentâneo. Entretanto, já no início da década de 2010, o aparente consenso sobre a
+eﬁcácia dos estímulos ﬁscais no Brasil começava a se diluir, em um processo que se intensiﬁcou
+conforme a crise econômica atual se pronunciava. Enquanto o contexto recessivo sugeria a
+alguns a continuação – ou mesmo expansão – da política de estímulos ﬁscais, outros defendiam
+uma redução drástica dos gastos do governo como resposta ao crescente endividamento público.
+Debates similares, com opiniões antagônicas de membros da academia, ocorreram ao redor do
+mundo por conta da lenta resposta da economia mundial após 2008, especialmente nos EUA e
+na Zona do Euro.
+
+Grande parte da falta de consenso quanto à aplicação de políticas ﬁscais ativas advém da
+falta de consenso teórico sobre como deve ser sua implementação e da grande imprecisão das
+estimativas dos seus impactos na economia – os chamados multiplicadores ﬁscais. Esses proble-
+mas surgem como consequência direta das diﬁculdades de se acessar empiricamente os canais
+de transmissão pelos quais a política ﬁscal pode afetar a atividade econômica – especialmente
+em contextos recessivos, de estresses ﬁnanceiros, ou de rápido crescimento do endividamento
+do governo. Mesmo quando considerados sob horizontes de tempo longos (e.g., por meio de
+séries temporais longas), os efeitos observados mostram-se consideravelmente heterogêneos en-
+tre países e regiões. Os multiplicadores ﬁscais parecem depender de vários fatores, como, por
+exemplo, condições iniciais da economia, grau de abertura, condução de políticas monetária
+e cambial, condições de liquidez e acesso ao mercado de crédito, distribuição de renda, entre
+outros (e.g. Ilzetzki et al. (2013), Corsetti et al. (2012), Blanchard & Leigh (2013)).
+
+Nesse artigo, nós contribuímos com o debate nacional sobre os impactos ﬁscais e seus canais
+de transmissão ao analisar os efeitos nacionais e regionais da política ﬁscal dos estados brasileiros
+e do Distrito Federal. A metodologia que implementamos nos permite analisar simultaneamente
+os impactos das políticas ﬁscais federal e estadual. Nós acreditamos que esse tipo de análise é
+relevante uma vez que as regiões brasileiras são bastante heterogêneas entre si, o que sugere a
+existência de multiplicadores regionais de magnitude distinta. Além disso, tal metodologia nos
+permite analisar como o setor privado em cada estado reage aos diferentes estímulos de cada
+entidade ﬁscal.
+
+Nosso artigo se diferencia da literatura já existente que analisa impactos ﬁscais no Brasil
+em diversos aspectos. Primeiro, a quase totalidade dos estudos analisa apenas o impacto da
+política ﬁscal do governo central ou do setor público consolidado; pouco se sabe sobre qual é o
+comportamento e a magnitude do impacto econômico da política ﬁscal de cada ente subnacio-
+nal na economia, sendo que a idiossincrasia estadual importa para a determinação dos efeitos
+agregados. Segundo, ao invés de analisarmos os efeitos da política ﬁscal no PIB, usamos uma
+medida de PIB privado como sugerido em Ramey (2013). A razão é que as variáveis relevantes
+para a análise dos impactos de política ﬁscal devem levar em conta primordialmente o com-
+portamento do setor privado, como observa a autora Ramey. Entretanto, as contas nacionais
+regionais divulgadas pelo IBGE não apresentam estimativas para o consumo e investimentos
+privados. Nossa medida, portanto, visa preencher esta lacuna, servindo como uma indicação
+do valor adicionado bruto gerado pelo privado em cada estado brasileiro, o que, em última
+instância, guarda uma relação direta com o dispêndio privado em cada estado.
+
+Ao analisar os efeitos da política ﬁscal sobre os estados no caso brasileiro, é imperativo levar
+Isso decorre da possibilidade
+em conta a ação tanto dos entes estaduais quanto do federal.
+de a entidade ﬁscal estadual complementar um gasto ﬁscal em certo estado, o que tende a
+superestimar o multiplicador federal. Além disso, o aparato legal brasileiro impõe restrições
+sobre os gastos federais caso as entidades estaduais incorram em deﬁcit. Assim, ignorar tais
+
+2
+
+interações pode potencialmente enviesar a análise dos choques ﬁscais, uma vez que os agentes
+econômicos em cada estado podem antecipar as ações do ente local. Nosso trabalho lida com
+tais problemas empregando métodos bayesianos de estimação. A metodologia é baseada em um
+modelo VAR em Painel (PVAR) que contém um bloco de variáveis estaduais e outro de variáveis
+federais. O método que empregamos assume uma priori hierárquica similar à Jarociński (2010) e
+que reﬂete as potenciais similaridades entre as respostas dos estados. Este método é conveniente,
+uma vez que o número de observações na dimensão temporal para cada estado é pequeno, e
+ele permite combinar eﬁcientemente a informação de corte transversal contida na amostra, sem
+impor restrições difíceis de serem justiﬁcadas do ponto de vista econômico de que as unidades
+na cross-section possuem parâmetros homogêneos, divergindo-se apenas por um efeito ﬁxo.
+Em nosso caso, os parâmetros individuais são estimados levando em conta, de modo eﬁciente,
+a informação disponível advinda dos outros estados. Assim, permitimos aos dados dizerem
+se certas relações são melhor descritas como homogêneas ou heterogêneas em cada estado sem
+impor tais restrições a priori. Métodos uniequacionacis e multiequacionais seguindo metodologia
+similar têm apresentado enormes ganhos de eﬁciência e acurácia comparativamente aos métodos
+frequentistas comumente utilizados (ver Hsiao et al. , 1999; Gilhooly et al. , 2012).
+
+Identiﬁcamos choques estruturais através de restrições de sinal à la Mountford & Uhlig
+(2009) adaptada ao contexto de painel. Fazemos isso assumindo que cada estado atua como
+uma pequena economia aberta em que o choque ﬁscal em certo estado não afeta os outros.
+Entretanto, o governo federal, por razões legais, é afetado pelos choques estaduais ao mesmo
+tempo em que é capaz de afetar isoladamente cada estado, de modo que nos mantemos agnós-
+ticos sobre o potencial efeito de feedback deste canal.
+
+Nossos resultados apontam para a presença de grande heterogeneidade regional de choques
+federais de gastos: enquanto a região norte responde de modo fortemente positivo a tais choques,
+as regiões Centro-Oeste e Sul tendem a ter respostas não distintas de zero – no caso da primeira
+– ou mesmo de crowding out – no caso da última. Já para o caso dos choques de gastos estaduais,
+os impactos tendem a ser bastante similares nas regiões, com efeitos positivos. Em se tratando
+de choques de elevação de impostos, as respostas tendem a ser relativamente homogêneas para
+o PIB privado, mas com alguma heterogeneidade para o emprego. Para melhor analisar os
+impactos ﬁscais em cada estado, calculamos os multiplicadores ﬁscais a valor presente como
+em Ilzetzki et al.
+(2013). Os resultados, em grande parte, reverberam aqueles obtidos pela
+análise das funções de resposta ao impulso: há forte heterogeneidade de respostas a choques
+federais no Brasil, com algumas regiões possuindo multiplicadores maiores ou iguais a um
+(Norte e Sudeste), ao mesmo tempo em que há regiões em que os efeitos são indistinguíveis ou
+negativos. O multiplicador de longo prazo médio entre as regiões é da ordem de 0.485 para o
+gasto federal. Já para o caso de gastos estaduais, os multiplicadores são relativamente similares
+entre as regiões, sendo positivos e signiﬁcantes e, em média, da ordem de 0.825 no longo prazo.
+Para o caso de tributos, os multiplicadores federais possuem magnitude bastante maior e mais
+heterogênea do que no caso estadual.
+
+O artigo está organizado da seguinte forma: a seção 2 apresenta um resumo sucinto da
+literatura sobre choques ﬁscais no Brasil, especialmente aquela que utiliza modelos VAR. A
+seção 3 discute a metodologia empregada, enquanto a apresentação dos dados é feita na seção
+4. Os resultados são apresentados na seção 5, seguida pelas conclusões.
+
+2 Literatura Relacionada
+
+A primeira literatura com a qual nosso artigo se relaciona é a que utiliza Vetores Autore-
+gressivos (VARs) para analisar política ﬁscal e a magnitude dos multiplicadores. O primeiro
+trabalho foi o de Blanchard & Perotti (2002), que utiliza um VAR linear para recuperar o
+impacto de política ﬁscais para a economia americana. Para identiﬁcar os choques ﬁscais, os
+
+3
+
+autores utilizam restrições de parâmetros na matriz de impactos de curto prazo. Uma parte da
+literatura avançou testando novos métodos de identiﬁcação em VARs. Por exemplo, Mountford
+& Uhlig (2009) utiliza restrições de sinal para identiﬁcar o choque ﬁscal. Outra parte identi-
+ﬁca choques ﬁscais usando fontes exógenas, como Ramey & Shapiro (1998), Romer & Romer
+(2010), Romer & Romer (2016) e Alesina et al. (2017). Recentemente, a literatura avançou em
+estimar modelos não lineares. Um exemplo é Auerbach et al. (2012), que estima um smooth
+transition VAR. Em uma resenha dos resultados da literatura que utiliza dados agregados para
+os Estados Unidos, Ramey (2011) conclui que o multiplicador ﬁscal para gastos governamen-
+tais ﬁnanciados por um aumento do déﬁcit é provavelmente algo entre 0.8 e 1.5. Segundo a
+autora, as estimativas de multiplicadores ﬁscais de um aumento na tributação variam bastante
+na literatura, indo de -0.5 a -5.0.
+
+Ramey (2011) e Chodorow-Reich (2017) fazem resenhas da literatura que avalia efeitos de
+política ﬁscal ao nível estadual (no contexto de uniões monetárias). Ambos discutem o ceticismo
+da literatura quando à possibilidade de extrapolar essas estimativas de multiplicadores regionais
+para encontrar o multiplicador nacional. Segundo Ramey, a maior parte dos trabalhos encontra
+efeitos positivos no nível de emprego e, em termos de renda, encontra multiplicadores próximos
+de 0.5 a 2.0. Porém, a autora argumenta que são necessários mais estudos para encontrar
+a relação entre os multiplicadores regionais e o nacional. Já segundo Chodorow-Reich, sua
+estimativa pontual de preferencia é um multiplicador regional do produto de magnitude 1.8,
+sendo os multiplicadores regionais um limite inferior para a magnitude dos multiplicadores
+nacionais. O limite inferior reﬂete a alta abertura das regiões locais e os pequenos efeitos do
+ﬁnanciamento externo. A maior parte dos estudos revisados pelos autores utilizam técnicas
+como variáveis instrumentais e regressões descontínuas para identiﬁcar a política ﬁscal.
+
+Para o Brasil, o primeiro artigo que analisa o impacto de políticas ﬁscais por meio de
+VARs é Peres & Junior (2009), que estima o modelo de Blanchard & Perotti (2002) com
+dados nacionais. Os trabalhos de Cavalcanti & Silva (2010) e de Pires (2011) seguem a mesma
+metodologia. Porém, esses dois últimos estudam o impacto do setor público consolidado (as três
+esferas do governo agregadas), enquanto o primeiro estuda apenas do governo central (governo
+federal). Matheson & Pereira (2016) estima um VAR estrutural com dados do governo central,
+incluindo mais variáveis no modelo que os trabalhos anteriores. O trabalho de Mendonça et al.
+(2009) se baseia no modelo de Mountford & Uhlig (2009), que utiliza restrição de sinais para
+identiﬁcar o choque estrutural. A maior parte encontra multiplicadores ﬁscais pequenos quando
+comparados com a literatura internacional, sendo que Cavalcanti e Mendonça e seus respectivos
+coautores encontram multiplicadores próximos de zero. Os trabalhos ﬁscais mais recentes no
+Brasil têm se concentrado em estimar modelos VARs não lineares, como é o caso de Pires
+(2014), Castelo-Branco et al. (2015), Orair et al. (2016), Mendonça et al. (2016) e Mereb &
+Zilberman (2017). Os dois primeiros estimam um Markov-switching VAR, os terceiros e quintos
+estimam um smooth transition VAR e os quartos um threshold VAR.
+
+Entre os artigos que usam dados de entes subnacionais, o de Caçador et al.
+
+(2013) é o
+que mais se aproxima do nosso trabalho. Os autores concluem que há assimetrias entre os
+estados brasileiros na resposta da produção industrial a um choque ﬁscal. Outros trabalhos
+estudam política ﬁscal em entes subnacionais. Por exemplo, Corbi et al.
+(2014) exploram
+descontinuidades nas regras de distribuição de recursos federais para os municípios brasileiros
+como forma de identiﬁcar o efeito causal de aumentos do gasto municipal na economia local.
+Os autores encontram um multiplicador ﬁscal de 2. Rocha & Giuberti (2008) apontam que
+a política ﬁscal dos governos estaduais foi anticíclica e assimétrica antes da adoção da Lei de
+Responsabilidade Fiscal, sendo que após essa ela se tornou pró-cíclica, mais fraca e simétrica.
+Rocha & Giuberti (2007) determinam quais componentes do gasto público inﬂuenciaram o
+crescimento econômico dos estados brasileiros. Divino & Silva Junior (2012) faz uma análise
+semelhante para o caso dos municípios brasileiros.
+
+4
+
+3 Metodologia Empírica
+
+Esta seção discute sucintamente a metodologia utilizada neste trabalho. Iniciamos discu-
+tindo como as políticas ﬁscais federal e estadual podem ser analisadas em cada estado, individu-
+almente, por meio de um sistema de equações simultâneas cuja forma reduzida é a de um VAR
+padrão. Em seguida, discutimos como a informação disponível em cada um dos E − 1 estados
+pode ser eﬁcientemente utilizada na estimação dos parâmetros do estado e sob a hipótese de
+uma estrutura hierárquica representada através de uma priori. Finalmente, discutimos a ma-
+neira como recuperamos os choques estruturais por meio de restrições de sinais no contexto de
+um VAR em painel, e como utilizamos as funções de resposta ao impulso estruturais derivadas
+de nossa metodologia para calcular os multiplicadores de longo prazo.
+
+3.1 Painel de VARs e Estrutura Hierárquica
+
+Para acessar os efeitos das políticas ﬁscais estadual e federal em uma mesma estrutura,
+modelamos E = 27 sistemas de equações contendo um bloco de variáveis subnacionais e outro
+t ](cid:48), em que o super-escrito f indica que a variável é
+com variáveis federais, ou seja, yit = [Y f
+determinada pelo ente federal e e diz respeito ao estadual. O vetor de variáveis federais é dado
+por Y f
+t as receitas federais. Já o vetor de
+t são os gastos
+variáveis para cada estado e é dado por Y e
+são nossa medida de PIB privado construído
+estaduais, T e
+de acordo com Ramey (2013) e ue
+Cada sub-sistema i ∈ {1,··· , 27} inclui variáveis do estado e e do ente nacional num sistema
+
+t = [Ge
+t são as receitas estaduais, P IBpriv,e
+
+t são as taxas de desemprego estadual.
+
+t são os gastos federais e T f
+
+t ](cid:48), em que Ge
+ue
+
+t ](cid:48), em que Gf
+
+t P IBpriv,e
+
+t = [Gf
+
+t T e
+
+t Y e
+
+t T f
+
+t
+
+t
+
+de equações simultâneas autorregressivo que possui a seguinte forma reduzida:
+
+(cid:48)
+it =
+
+y
+
+yit−lBi,l + ztΓe + u
+
+(cid:48)
+it
+
+(1)
+
+L(cid:88)
+
+l=1
+
+em que yit é um vetor com K = 6 variáveis endógenas e zt é um vetor com termos deterministas
+que inclui uma constante, uma dummy que assume o valor de 1 no período posterior à introdução
+do sistema de metas de inﬂação e outra para a introdução da lei de responsabilidade ﬁscal. O
+vetor u
+
+(cid:48)
+it contém as inovações no VAR, que são assumidas i.i.d N (0, Σi).
+
+A estimação dos coeﬁcientes associados a yit−l e zt segue procedimento similar ao proposto
+por Jarociński (2010), exceto pela estratégia de identiﬁcação, que será discutida mais adiante.
+As prioris para Γe são não informativas. Entretanto, para os coeﬁcientes autorregressivos,
+assumimos uma priori hierárquica – no sentido de Gelman (2006) – que expressa nossa crença
+de que muitos dos estados em nossa amostra tendem a ter respostas similares. Para clariﬁcar
+(cid:48)
+a aplicação dessa priori, deﬁnimos os vetores x
+i =
+it−l = [y
+[z1 ··· zt](cid:48) e empilhamos verticalmente os vetores para cada estado, tal que Y i = [yit−1 ··· yiT ](cid:48),
+X i = [xit−1 ··· xiT ](cid:48) e Z i = [zi1 ··· ziT ](cid:48). Usando tais deﬁnições, podemos reescrever a equação
+anterior como
+
+it−l], Bi = [Bi,1 ··· Bi,l](cid:48), z(cid:48)
+
+it−1 ··· y
+
+(cid:48)
+
+(cid:48)
+
+yi = (I i ⊗ X i)βi + (I i ⊗ Z i)γi + ui
+
+em que ui ∼ N (0, Σi ⊗ It), yi = vec(Y i), βi = vec(Bi), γi = vec(Γi) e ui = vec(U i).
+
+Sob a hipótese de normalidade dos erros, a verossimilhança para cara estado é dada por:
+
+p(yi|βi, γi, Σi) = N ((I i ⊗ X i)βi + (I i ⊗ Z i)γi, Σi ⊗ It)
+
+(3)
+
+por:
+
+Com isso, a distribuição conjunta dos parâmetros para os estados no painel pode ser expressa
+
+p(Y |Θ) ∝ N(cid:89)
+
+n=1
+
+|Σi|− Ti
+
+2 ×exp
+
+(cid:18)− 1
+
+(cid:19)
+(cid:80)N
+i=1((I i ⊗ X i)βi + (I i ⊗ Z i)γi)(cid:48)×
+(Σi ⊗ It)((I i ⊗ X i)βi + (I i ⊗ Z i)γi)
+
+2
+
+(2)
+
+(4)
+
+5
+
+3.2 Prioris
+
+Dada a hipótese de normalidade dos erros, os coeﬁcientes em cada estado serão também
+normalmente distribuídos. Adicionalmente, assumimos uma priori hierárquica normal, o que
+resulta numa posterior normal conjugada.
+
+p(βi| ¯β, Λi) = N ( ¯β, Λi)
+
+(5)
+
+em que ¯β é a média comum ao painel e às covariâncias. Para estas, nós seguimos Jarociński
+(2010) especiﬁcando uma priori no espírito da priori Minnesota dada por λLi, em que:
+
+Li = φnk
+
+σ2
+in
+σ2
+ik
+
+j é estimado utilizando-se
+e que n e k referem-se às variáveis n e k no estado e. Na prática, ˆσ2
+os resíduos de um AR(p) para cada j ∈ {1, 2,··· , K} variável. O parâmetro φnk assume o valor
+de 1 se n = k e 0.5 caso contrário. Isso implica que o peso dado à própria defasagem é duas
+vezes maior do que o peso dado às defasagens das outras variáveis. A vantagem desta priori é
+que os pesos dados para as defasagens são inferidos através dos dados. Para tanto, Jarociński
+(2010) introduz a seguinte priori para o parâmetro λ:
+
+p(λ|s, v) = IG2 ∝ λ− v+2
+
+2 exp
+
+s +(cid:80)
+
+(cid:80)
+
+(cid:80)
+
+I
+
+K
+
+N
+
+(cid:104)
+(cid:105)2
+βi(k, n) − ¯β(k, n)
+
+−1
+
+2
+
+(6)
+
+(cid:17)
+
+ (7)
+
+(cid:16)σ2
+
+in
+
+σ2
+
+ik
+
+/
+
+(cid:19)
+
+(cid:18)
+
+−1
+2
+
+s
+λ
+
+λr
+
+Sob tal priori, pode-se mostrar que a posterior para λ é:
+
+p(λ|s, v) = IG2 ∝ λr
+
+− CN K+2
+
+2
+
+exp
+
+em que N = K ∗ p. Adicionalmente, assumimos as seguintes prioris não informativas p( ¯β) ∝
+p(γi) ∝ 1 e a prior difusa p(Σi) ∝ |Σi|− 1
+
+Finalmente, convém notar que o bloco com variáveis ﬁscais federais possui variáveis que
+poderiam ser excluídas do modelo hierárquico, já que estão presentes em todas as equações
+estaduais. Entretanto, por conta do pequeno tamanho de amostra na dimensão temporal, nós
+mantivemos tais variáveis no esquema hierárquico, uma vez que a informação condicional obtida
+em cada estado pode elevar a precisão da estimação de tais parâmetros. Assim, embora tal
+escolha implique custos computacionais, acreditamos que os ganhos de eﬁciência são positivos.
+
+2 (N +1)
+
+3.3 Estimação Bayesiana por Amostragem de Gibbs
+
+Como expresso em (7), o modelo empírico aqui empregado contém um número grande de
+parâmetros. Entretanto, o método empregado neste trabalho é capaz de estimá-los de modo
+eﬁciente por combinar a informação da amostra e das prioris de modo eﬁciente. Tal método
+tem se mostrado extremamente vantajoso com relação às alternativas frequentistas para painéis
+dinâmicos, especialmente por suas propriedades em pequenas amostras, mesmo com poucas
+observações na dimensão temporal (ver Hsiao et al. , 1999; Gilhooly et al. , 2012).
+
+Pelo fato de (7) ter formato conhecido (normal), um algorítimo baseado em amostragem de
+Gibbs é computacionalmente eﬁciente. Deﬁnindo Φ =
+e usando a notação
+Φ/χ para denotar todos os parâmetros do modelo exceto χ, o algoritmo bayesiano opera do
+seguinte modo:
+
+i=1, ¯β, λ
+
+(cid:110){βi, γi, Σi}27
+
+(cid:111)
+
+6
+
+1. Amostre um candidato estável a partir de p(βi|Φ/βi, yi)
+2. Amostre a partir de p(γi|Φ/γi, yi)
+3. Amostre a partir de p(Σi|Φ/Σi, yi)
+4. Repita os passos 1 a 3 para i = 1,··· , 27
+5. Amostre um candidato estável a partir de p( ¯β|Φ/ ¯β, yi)
+6. Amostre a partir de p(τ|Φ/τ, yi)
+7. Repita os passos 1 a 6 até que o número desejado de amostras seja obtido.
+
+Nós executamos o algoritmo 300.000 vezes, descartando as 100.000 primeiras amostras como
+burn-in. Seguindo Gelman (2006) e Jarociński (2010), nós assumimos uma prior uniforme para
+os desvios-padrão, o que implica a seguinte prior para as variâncias:
+
+p(λ) ∝ λ
+
+− 1
+2
+
+(8)
+
+3.4
+
+Identiﬁcação dos Choques
+
+A identiﬁcação dos choques no presente contexto não é uma tarefa trivial. A razão é que há
+potenciais efeitos de feedback entre o ente federal e seus membros e vice-versa, como também
+efeitos de transbordamento entre os órgãos subnacionais. Neste trabalho, impomos a restrição
+de que este último canal não ocorrerá. Isso decorre do fato de termos modelado cada estado
+como uma pequena economia aberta, que não afeta seus vizinhos, mas é afetada pelo ente
+federal. Contudo, por conta do aparato legislativo, não restringimos a possibilidade de que a
+ação de um estado afete o comportamento do ente federal. Nós acreditamos que a maneira
+como foi desenhada a Lei de Responsabilidade Fiscal (LRF)1 justiﬁque essa nossa hipótese.
+
+Segundo a LRF, cada ente federativo deve estabelecer na Lei de Diretrizes Orçamentárias
+(LDO) sua meta de resultado primário pela metodologia conhecida como “abaixo da linha”, ou
+seja, a variação da dívida líquida total, interna ou externa. Para os estados, não é possível
+alterar o resultado ﬁscal “abaixo da linha”, pois, desde a renegociação das suas dívidas com o
+governo federal em 19972, os estados não podem emitir dívida e nem podem contrair emprés-
+timos sem o aval da união. Caso um estado não cumpra suas obrigações ﬁnanceiras, o Tesouro
+Nacional é autorizado a bloquear o repasse de verbas federais a este ente. Consequentemente,
+o governo federal sempre especiﬁca um valor na meta ﬁscal do setor público consolidado que
+os estados possam cumprir. Quando um estado, por algum motivo, não cumpre sua parcela na
+meta ﬁscal do setor público consolidado, o governo federal compensa aumentando sua parcela
+na meta. Observe que cada meta estadual é independente das dos outros estados. Porém, no
+caso do governo federal não cumprir a sua parte, ele pode basicamente alterá-la através do
+processo legislativo. Esse arranjo institucional justiﬁca nossas restrições de identiﬁcação.
+
+A maioria dos trabalhos que analisam efeitos de choques ﬁscais seguem Blanchard & Perotti
+(2002) ao aceitarem a proposição de que arranjos institucionais inviabilizam o setor público a
+responder às oscilações econômicas num mesmo trimestre. Contudo, tal hipótese torna-se irra-
+zoável no contexto de dados anuais. Por isso, identiﬁcamos choques ﬁscais, tanto federais quanto
+estaduais, impondo restrições de sinais similares à Mountford & Uhlig (2009). A vantagem de
+tal metodologia é que ela permite introduzir restrições com apelo econômico, ao mesmo tempo
+em que o pesquisador se mantém agnóstico em relação aos choques de interesse. Entretanto,
+
+1Lei Complementar nº 101, de 04/05/2000.
+2Lei nº 9.496, de 11/09/1997.
+
+7
+
+como discutido em Arias et al. (2016), o método de restrição de sinal aplicado em Mountford
+& Uhlig (2009) impõe restrições adicionais que afetam a computação das funções de resposta
+ao impulso de interesse. Por isso, nós computamos as funções de resposta ao impulso utilizando
+o algorítimo descrito em Rubio-Ramírez et al. (2010), que não impõe tais restrições adicionais
+e ainda assim nos permite mantermos agnósticos sobre os impactos dos choques ﬁscais sobre as
+variáveis de interesse.
+
+A tabela 1 resume as restrições de sinais impostas. Exceto pelas variáveis relacionadas à
+tributação, nosso esquema é similar ao de Mountford & Uhlig (2009). Requeremos que choques
+ﬁscais positivos sobre os gastos federais (estaduais) elevem os gastos federais (estaduais), en-
+quanto mantemo-nos agnósticos sobre seus efeitos sobre a atividade privada. Assumimos que
+choques positivos de ciclos econômicos elevam o PIB e as receitas com impostos, mas que redu-
+zem o desemprego. Finalmente, choques de tributação elevam as receitas, mas são permitidos
+elevar o PIB privado. Em suma, assumimos um esquema de restrições de sinais com choques
+parcialmente identiﬁcados.
+
+Tabela 1: Restrições de Sinal
+Estadual
+
+Federal
+
+Variável / Choque Gasto Tributo Gasto Tributo Ciclo Econômico
+
+Gf
+
+T f
+
+Ge
+
+T e
+
+PIB Privado
+Desemprego
+
++
+*
+*
+*
+*
+*
+
+*
++
+*
+*
+≤ 0
+*
+
+*
+*
++
+*
+*
+*
+
+*
+*
+*
++
+≤ 0
+*
+
+Nota: * indica que nenhuma restrição foi imposta
+
+*
++
+*
++
+*
+-
+
+O passo seguinte é o cômputo das funções de resposta ao impulso no painel. A estratégia
+empírica aqui empregada é bastante ﬂexível e permite uma análise média – considerando-se o
+comportamento do painel como um todo, separada por grupos ou individual. Por conta dos
+custos computacionais, restringiremos nossas atenções à análise ao nível regional, dividindo os
+estados nas cinco regiões (Norte, Nordeste, Centro-Oeste, Sudeste e Sul), conforme a classiﬁca-
+ção do IBGE amplamente utilizada. Para o caso em painel, as funções de resposta ao impulso
+são calculadas utilizando as amostragens dos parâmetros médios, ¯β, calculando-se a matriz
+¯Σ = 1
+i=1 βi,Rj
+27
+e ¯ΣRj = 1
+i=1 Σi,Rj, em que NRj é o número de estados na região Rj e os parâmetros
+NRj
+idiossincráticos, βi,Rj e Σi,Rj, foram obtidos utilizando toda a amostra.
+
+i=1 Σi. No caso das análises regionais, substituímos ¯β por ¯βRj = 1
+NRj
+
+(cid:80)NRj
+
+(cid:80)NRj
+
+(cid:80)27
+
+3.5 Multiplicadores Fiscais
+
+Para acessar os impactos ﬁscais nas regiões brasileiras, seguimos Ilzetzki et al.
+
+(2013)
+e calculamos os multiplicadores acumulados até o instante T em cada região. Dada nossa
+estratégia de identiﬁcação de choques descrita previamente, o multiplicador para a variável
+ﬁscal ft na região r é deﬁnido como:
+
+(9)
+
+mr
+
+T =
+
+t=0(1 + i)−1∆yr
+t=0(1 + i)−1∆ft
+
+t
+
+(cid:80)T
+(cid:80)T
+
+8
+
+em que i é a mediana da taxa Selic no período.
+
+4 Dados
+
+No nosso trabalho, nós estudamos os 26 estados brasileiros, o Distrito Federal e o Governo
+Central conjuntamente. Porém, ﬁcará claro que, ao contrário da metodologia adotada pelo
+restante da literatura nacional que utiliza VARs para analisar política ﬁscal, nós não agregamos
+os entes da federação em uma só série. Nossa metodologia permite analisar simultaneamente os
+impactos das políticas ﬁscais federal e estadual, além de permitir analisar como o setor privado
+em cada estado reage aos diferentes estímulos de cada entidade ﬁscal. Dada a diﬁculdade de
+se trabalhar com dados macroeconômicos no Brasil, nós tivemos de fazer algumas hipóteses.
+Dado a limitações nos dados – que serão explicadas –, nossas séries são anuais e vão de 1995 a
+2014.
+
+4.1 PIB Privado
+
+Pelas identidades básicas das Contas Nacionais, para o PIB pela ótica da produção, o go-
+verno contribui contratando trabalhadores e consumindo bens de capital para produzir serviços,
+como educação e segurança. Todo o resto da economia é produzido pelo setor privado. Já para
+o PIB pela ótica do consumo, o governo contribui consumindo bens e serviços. O restante é
+consumido pelo setor privado como consumo, investimento e exportação líquida. Como apon-
+tado por Ramey (2013), o consumo do governo é igual à produção do governo – ele produz e
+ele próprio consome sua produção – mais o consumo de bens e serviços produzidos pelo setor
+privado. No nosso trabalho, nós criamos uma medida de PIB privado, ou seja, o PIB total
+menos a produção do governo. Nossa medida é uma medida do montante produzido pelo setor
+privado. No Brasil, muitos dos que advogam a favor de políticas ﬁscais argumentam que essas
+são capazes de estimular a produção do setor privado e, consequentemente, a economia nacional
+como um todo. Com a nossa medida de PIB privado, nós queremos observar empiricamente se
+o governo realmente é capaz de incentivar a produção privada.
+
+Para criarmos nossa medida de PIB privado, nossa primeira fonte de dados primários foram
+as Contas Regionais calculadas pelo Instituto Brasileiro de Geograﬁa e Estatística (IBGE).
+Estas estão disponíveis em frequência anual e somente pela ótica da produção3. Nossa medida
+de PIB privado é o PIB estadual menos o Valor Adicionado Bruto (VAB) do setor público.
+Esse inclui o acréscimo ao PIB estadual advindo da produção de serviços da administração,
+educação, saúde, pesquisa e desenvolvimento públicas, defesa, seguridade social.
+
+4.2 Dados Fiscais
+
+Os principais trabalhos internacionais feitos sobre política ﬁscal utilizam dados de contas
+nacionais de base trimestral4. Porém, para fazer o mesmo tipo de exercício para o Brasil,
+encontram-se diversas diﬁculdades . A primeira é que, ao calcular as contas nacionais brasileiras,
+o IBGE não desagrega o investimento em uma parte pública e uma parte privada, apresentando
+
+3Em razão de alteração de metodologia em 2012, quando o IBGE compatibilizou a série a partir de 2002 com
+o novo manual System of national accounts 2008 (ONU, 2008). Porém, as séries do período de 1995-2001 ainda
+utilizam a metodologia de 2002. Nós combinamos essas duas séries com metodologia diferente como maneira de
+utilizar a maior quantidade de dados disponíveis.
+
+4Estão inclusos nesse grupo: Blanchard & Perotti (2002), Mountford & Uhlig (2009) e Auerbach et al.
+(2012). Em todos, a variável “gasto” é igual aos gastos correntes do governo – salários e bens intermediários –
+mais os gastos com investimento. A variável “receita” é igual ao imposto líquido, ou seja, o total de receitas do
+governo menos as transferências para as famílias e para as ﬁrmas e menos o pagamento de juros.
+
+9
+
+apenas o montante agregado. Outro problema é o cálculo do imposto líquido, principalmente
+pelo cálculo do montante de transferências para as famílias e ﬁrmas.
+
+Os autores que estudaram política ﬁscal nacional contornaram o problema de escassez de
+dados utilizando diretamente ou indiretamente as execuções ﬁscais dos entes federativos5. Nossa
+estratégia não difere do restante da literatura, já que usamos as mesmas execuções ﬁscais para
+calcularmos nossas variáveis de gasto e receita. Uma grande diferença do nosso trabalho é que
+nós não agregamos todos os gastos dos entes nacionais, mas sim criamos uma série de gasto e
+uma de receita para cada estado brasileiro e uma para o governo federal. Consequentemente,
+nós temos 28 séries de gasto e 28 de receita.
+
+Assim como Matheson & Pereira (2016), nós optamos por usar a deﬁnição de gasto e receita
+primários. Nossa principal justiﬁcativa é que toda nossa estratégia de identiﬁcação baseia-se
+nos mecanismos da LRF, que é baseada no conceito de primário. Os dados de execução ﬁscal
+estão disponíveis no site da Secretaria do Tesouro Nacional para todos os anos a partir de 1996.
+Dada a restrição do PIB regional só estar disponível na frequência anual, nós construímos as
+séries de gasto e receita também na frequência anual. Dessa forma, evitamos as simpliﬁcações
+e as hipóteses que outros pesquisadores utilizam para construir as mesmas séries em outras
+frequências, como trimestral ou até mensal. Evitamos também alguns dos problemas gerados
+pelas particularidades da lei orçamentária brasileira, porem não tratamos o caso dos restos a
+pagar. Optou-se por manter a consistência da série, principalmente pela abertura dos restos a
+pagar só estar disponível para anos recentes6.
+
+4.3 Taxa de Desemprego
+
+A taxa de desemprego que usamos no trabalho é a série compatibilizada e retropolada da
+Pesquisa Nacional por Amostra de Domicílios Contínua (PNADC), calculada por Ottoni &
+Barreira (2016)7. Nós poderíamos ter usado a taxa de desemprego calculada pela Pesquisa
+Nacional por Amostra de Domicílios (PNAD). Porém, por causa de diferenças na amostragem
+e no conceito de desemprego entre a PNADC e a PNAD, nós optamos por usar a primeira. A
+diferença na amostragem entre as pesquisas é que, enquanto na segunda não se inclui, antes
+de 2004, os municípios das zonas rurais da Região Norte (compreendida por Acre, Rondônia,
+Roraima, Amazonas, Pará e Amapá), na primeira se inclui. Essa divergência é corrigida na
+metodologia de retropolação.
+
+Há diversas divergências quanto ao conceito de desemprego entre PNADC e a PNAD. Na
+segunda, inclui-se na deﬁnição de ocupados aquelas pessoas que trabalham uma hora, ou menos,
+por semana. Já na primeira, essas pessoas são consideradas inativas. Outra diferença é no
+cálculo da População em Idade Ativa (PIA): na primeira, considera pessoas a partir de 14 anos,
+enquanto na segunda considera pessoas a partir de 10 anos. O processo de compatibilização é
+feito a partir dos microdados de ambas pesquisas. Ottoni & Barreira (2016) apresentam outras
+diferenças na deﬁnição de desemprego entre as pesquisas.
+
+5Orair et al. (2016) explica detalhadamente a abordagem adotada por cada autor para contornar a escassez
+
+de dados brasileira.
+
+6O não tratamento dos restos a pagar e a falta de dados quanto atrasos de pagamento e de salários, causa
+diferenças quanto ao superávit primário calculado pela metodologia “acima da linha”, calculado pela diferença
+entre os ﬂuxos de receitas e saídas, e pela metodologia “abaixo da linha”, calculado pela variação da dívida
+líquida total. Enquanto para a LRF e, consequentemente, para a nossa estratégia de identiﬁcação o conceito
+pela primeira metodologia é mais importante, nós só conseguimos calculá-lo pela primeira metodologia usando
+as execução ﬁscal dos estados.
+
+7O motivo que nos levou a não usar a Pesquisa Mensal de Emprego (PME) foi sua abrangência regional
+
+apenas para algumas regiões metropolitanas.
+
+10
+
+5 Resultados
+
+t
+
+t
+
+, f e
+
+t ) para nossa medida de PIB privado no estado e e corr(ue
+
+Como primeiro indicativo de como a política ﬁscal afeta os ciclos econômicos nas diferen-
+t ) e
+tes regiões brasileiras, nós calculamos para cada estado as correlações corr(P IBpriv,e
+, f f
+t ) e corr(ue
+corr(P IBpriv,e
+t , f e
+t )
+t , j ∈ {f, e} indica o instrumento de política ﬁscal federal
+para o desemprego no estado e, onde f j
+ou estadual, respectivamente. Por conta do tamanho limitado das séries na dimensão temporal,
+apresentamos os resultados agrupando-os convenientemente entre as regiões Norte, Nordeste,
+Centro-Oeste, Sudeste e Sul, além das estatísticas agregadas para Brasil como um todo. As
+correlações nos ajudam a identiﬁcar o grau de homogeneidade/ heterogeneidade nas relações
+entre a atividade privada e o setor público em nossa amostra. Além disso, elas oferecem uma
+luz acerca da existência de pró-ciclicidade da política ﬁscal nas diferentes regiões brasileiras.
+Os resultados estão expressos na tabela 2 e são baseados nos desvios percentuais das variáveis
+estaduais relativos a uma tendência quadrática, posteriormente agregadas de acordo com sua
+região. Todas séries são deﬂacionadas utilizando o deﬂator do PIB nacional e são utilizadas em
+termos per capita.
+
+t , f f
+
+Tabela 2: Correlações entre variáveis ﬁscais e privadas nas regiões brasileiras
+
+Região
+
+PIB Privado
+
+Desemprego
+
+σ(Gf )
+σ(yp,r )
+
+σ(Tf )
+σ(yp,r )
+
+σ(Gr )
+σ(yp,r )
+
+σ(Tr )
+σ(yp,r )
+
+Norte
+Nordeste
+Centro-Oeste
+Sudeste
+Sul
+Brasil*
+
+0,816
+1,012
+0,678
+0,887
+1,337
+0,882
+
+1,029
+1,275
+0,855
+1,118
+1,684
+1,111
+
+1,890
+2,025
+1,316
+1,684
+3,278
+1,867
+
+1,875
+1,284
+1,231
+1,494
+2,958
+1,615
+
+σ(Gf )
+σ(ur )
+
+0,232
+0,375
+0,406
+0,421
+0,395
+0,322
+
+σ(Tf )
+σ(ur )
+
+0,293
+0,473
+0,512
+0,530
+0,497
+0,406
+
+σ(Gr )
+σ(ur )
+
+0,538
+0,751
+0,788
+0,798
+0,968
+0,683
+
+σ(Tr )
+σ(ur )
+
+0,533
+0,476
+0,736
+0,708
+0,873
+0,591
+
+ρ(yp,r, Gf )
+
+ρ(yp,r, Tf )
+
+ρ(yp,r, Gr)
+
+ρ(yp,r, Tr)
+
+ρ(ur, Gf )
+
+ρ(ur, Tf )
+
+ρ(ur, Gr)
+
+ρ(ur, Tr)
+
+Norte
+Nordeste
+Centro-Oeste
+Sudeste
+Sul
+Brasil*
+
+0,280
+0,094
+-0,078
+0,333
+0,006
+0,140
+
+0,235
+0,012
+-0,073
+0,311
+0,003
+0,101
+
+0,272
+0,147
+0,151
+0,578
+0,312
+0,253
+
+0,333
+0,159
+0,171
+0,480
+0,043
+0,250
+
+-0,198
+-0,338
+-0,080
+-0,439
+-0,333
+-0,257
+
+-0,194
+-0,396
+-0,124
+-0,535
+-0,464
+-0,300
+
+-0,198
+-0,066
+0,232
+-0,150
+0,257
+-0,059
+
+-0,286
+-0,249
+-0,171
+-0,280
+-0,364
+-0,267
+
+*Calculado agrupando-se todos os estados mais o Distrito Federal.
+σ(·): Desvio padrão.
+ρ(yp,r, fj): coeﬁciente de correlação entre o PIB privado e o instrumento ﬁscal na região r.
+ρ(ur, fj): coeﬁciente de correlação entre o desemprego e o instrumento ﬁscal na região r.
+
+Os resultados sugerem que a política ﬁscal tem implicações sobre os ciclos econômicos de
+maneira bastante heterogênea no Brasil, variando consideravelmente entre as regiões. Por exem-
+plo, o desvio-padrão relativo entre o gasto federal e o PIB privado no Brasil é da ordem de 0,88,
+indicando que os PIBs estaduais tendem a ser mais voláteis do que o gasto federal. Contudo,
+nas regiões Nordeste e Sul, tal situação se inverte. Em geral, a volatilidade ﬁscal é maior do
+que a volatilidade da atividade privada. Para o desemprego, entretanto, as volatilidades são
+bastante mais pronunciadas do que as das variáveis ﬁscais.
+
+Em termos da análise de correlações, convém destacar que a política ﬁscal nas regiões bra-
+sileiras é majoritariamente pró-cíclica, tanto no âmbito das variáveis federais quanto estaduais,
+seja para o gasto, seja para a tributação. A única exceção é a região Centro-Oeste para a
+política ﬁscal federal, em que a correlação com o PIB privado é levemente anti-cíclica. Padrão
+similar ocorre no caso do desemprego, excetuando-se as regiões Centro-Oeste e Sul. Esse resul-
+tado é condizente com o de Rocha & Giuberti (2008), que encontram evidências de que, desde a
+
+11
+
+Figura 1: FRI para diversos choques. Respostas do PIB privado e do desemprego para o Brasil
+
+adoção da Lei de Responsabilidade Fiscal, a política ﬁscal dos governos estaduais é pró-cíclica.
+
+5.1 Transmissão de Choques Fiscais nas Regiões Brasileiras
+
+Para melhor investigar os impactos dos diferentes instrumentos ﬁscais nos estados brasileiros,
+passamos, então, para a análise por meio da metodologia discutida na seção 3. Iniciamos a
+análise para o caso das respostas médias para o Brasil, passando em seguida para a análise das
+médias regionais. Após a estimação bayesiana de (1), selecionamos as últimas 1.000 amostras
+de ¯β e computamos, em cada uma delas, ¯Σ = 1
+i=1 Σi, utilizando ambas as estatísticas para
+27
+calcular as funções de resposta ao impulso (FRI) estruturais. O modelo selecionado contém
+uma defasagem. Simulamos choques de gasto federal, tributos federais, gasto estadual e tributos
+estaduais e analisamos os efeitos de cada um deles no agregado. Os resultados para choques em
+cada um dos instrumentos de política físcal sobre o PIB privado e o desemprego estão dispostos
+na ﬁgura 1, que apresenta os percentis 10, 50 e 90 de cada simulação.
+
+(cid:80)27
+
+Como expresso pela ﬁgura, os impactos de políticas federais e estaduais são similares em
+termos de sinais, mas distintos no que diz respeito à magnitude em nossa amostra. Tanto
+choque nos gastos federais, quanto nos estaduais tendem a elevar o PIB privado com grande
+probabilidade, sendo o efeito maior no âmbito do segundo. Os impactos sobre o desemprego
+são similares, ocorrendo quedas tanto após um choque federal quanto estadual. Entretanto, os
+intervalos de conﬁabilidade são maiores no caso dos choques federais, sugerindo algum grau de
+heterogeneidade de respostas no painel. Relativamente a choques de tributos, de modo similar
+ao caso dos gastos, embora o sinal do choque seja o mesmo para a média da distribuição de cada
+uma das FRI calculadas, os impactos estaduais são bastante mais drásticos. Especiﬁcamente,
+choques na tributação federal possuem grande probabilidade de serem negativos, mas com
+probabilidade não desprezível de serem iguais a zero, especialmente no caso da resposta do
+desemprego.
+
+Passamos então a avaliar as interações entre as políticas ﬁscais estaduais e federais nas re-
+giões brasileiras. Para tanto, estimamos os parâmetros regionais tal como descrito na seção 3,
+mas utilizando toda a amostra de modo a aumentar a acurácia das estimações pela estrutura
+hierárquica empregada neste trabalho. Os resultados estão expressos nas ﬁguras 4 a 8 no apên-
+dice, e são sintetizados na ﬁgura 2 que expressa a resposta regional média aos choques de gasto
+federal, tributos federais, gasto estadual e tributos estaduais. A ﬁgura explicita que o grau de
+heterogeneidade nas respostas aos choques ﬁscais varia dependendo se é um choque federal ou
+estadual. Choques da primeira fonte são propagados com grande heterogeneidade, enquanto
+
+12
+
+2468012PIBChoque em Gf2468-0.500.5Choque em Tf24680123Choque em Ge2468-3-2-10Choque em Te2468-3-2-10DesempregoChoque em Gf2468-101Choque em Tf2468-4-20Choque em Ge2468024Choque em Tel
+u
+S
+
+o
+ã
+i
+g
+e
+r
+
+a
+n
+
+o
+g
+e
+r
+p
+m
+e
+s
+e
+d
+
+o
+d
+
+e
+
+o
+d
+a
+v
+i
+r
+p
+B
+I
+P
+o
+d
+
+s
+a
+t
+s
+o
+p
+s
+e
+R
+
+.
+s
+e
+u
+q
+o
+h
+c
+
+s
+o
+s
+r
+e
+v
+i
+
+d
+
+a
+r
+a
+p
+
+I
+
+R
+F
+
+:
+2
+
+a
+r
+u
+g
+i
+F
+
+13
+
+1234560246PIBChoque em Gf123456-3-2-10Choque em Tf12345602468Choque em Ge123456-4-20Choque em Te123456-3-2-10DesempregoChoque em Gf123456-2-10Choque em Tf123456-202Choque em Ge1234560123Choque em TeNorteNordesteCentro-OesteSudesteSulchoques da segunda possuem relativa homogeneidade. Especiﬁcamente, enquanto a região norte
+tem a maior resposta no impacto a choques de gastos federais, as regiões Centro-Oeste e Sul
+apresentam evidências de efeitos crowding out para nossa medida de atividade privada. En-
+tretanto, choques de gastos estaduais possuem resposta positiva da atividade econômica em
+todas as regiões consideradas. Além disso, os impactos são surpreendentemente similares. As
+respostas a choques de tributação federal são bastante similares, mas apresentam algum grau
+de heterogeneidade nas regiões. Os resultados obtidos para choques de tributação expressam as
+implicações do complexo aparato institucional ﬁscal brasileiro: como grande parte da tributação
+estadual se dá sob consumo, consumidores em regiões mais pobres deverão ser relativamente
+mais afetados do que consumidores em regiões mais ricas, uma vez que tal tipo de tributação
+é menos suscetível à informalidade. Isso ﬁca claro nas respostas do desemprego, que são re-
+lativamente menos intensas nas regiões Sudeste e Sul comparativamente à região Norte, por
+exemplo.
+
+Tendo as estimativas das FRI em mãos, passamos então ao calculo dos multiplicadores ﬁscais
+utilizando a deﬁnição (9). Esta análise é importante, uma vez que leva em conta não apenas
+os efeitos no instante do choque sobre a variável que recebeu o choque, como também suas
+consequências dinâmicas de longo prazo. Isso implica que, embora as respostas das variáveis
+indicadoras da atividade privada tenham sido similares em alguns casos, o comportamento
+dinâmico e a persistência dos choques ﬁscais podem ter um carácter idiossincrático, resultando
+em um multiplicador dinâmico distinto.
+
+Novamente, concentramo-nos nos casos regionais para ﬁns de comparação. A ﬁgura 3 apre-
+senta os gráﬁcos dos multiplicadores ﬁscais regionais médios sobre o PIB privado. Os intervalos
+de conﬁabilidade foram omitidos para ﬁns de clareza de exposição. De acordo com os resultados,
+os multiplicadores sobre a atividade privada para um choque de gastos federais são bastante
+distintos entre as regiões brasileiras: enquanto a região norte apresenta um multiplicador de
+longo prazo médio da ordem de 1.35, os multiplicadores nas regiões Centro-Oeste e Sul são
+próximos de zero, sendo negativo para a última. O multiplicador médio na amosta é de 0.485,
+valor similar ao obtido pela literatura nacional8. Comparativamente, os multiplicadores para
+choques estaduais são próximos de 0.825 no longo prazo. Tais resultados sugerem que expan-
+sões ﬁscais federais terão efeitos fortemente idiossincráticos na atividade econômica brasileira.
+Entretanto, os impactos estaduais tendem a ser similares. Padrões semelhantes são encontrados
+para o caso de choques de tributos, conforme expressa a ﬁgura 3.
+
+Figura 3: Multiplicadores de Gasto sobre o PIB privado
+
+6 Conclusão
+
+Desde a crise mundial de 2008, iniciou-se no Brasil e em outros países do mundo um debate
+sobre a utilização de políticas ﬁscais como forma de estimular a economia e a produção do setor
+
+8A ﬁgura 9 apresenta as estimativas com seus devidos intervalos de conﬁança.
+
+14
+
+2468-0.200.20.40.60.811.2PIB - Regiões 1 a 5Multiplicador de Gf2468-2.2-2-1.8-1.6-1.4-1.2PIB - Regiões 1 a 5Multiplicador de Tf24680.70.750.80.850.90.9511.05PIB - Regiões 1 a 5Multiplicador de Ge2468-1.1-1-0.9-0.8-0.7PIB - Regiões 1 a 5Multiplicador de TeNorteNordesteCentro-OesteSudesteSulprivado. Porém, não há um consenso na literatura nacional quanto à eﬁcácia desse instrumento
+e, muito menos, quanto aos seus mecanismos de transmissão. Nesse artigo, nós contribuímos
+com o debate nacional sobre os impactos ﬁscais ao analisar especiﬁcamente os efeitos da política
+ﬁscal dos estados brasileiros e do governo federal sobre a atividade privada dos estados. Para
+captar esta, nós usamos a taxa de desemprego pela deﬁnição da PNAD contínua e uma medida
+de PIB privado baseada em Ramey (2013).
+
+Analisando a correlação entre as séries indicadoras da atividade econômica e as séries indica-
+doras de política ﬁscal federal e estadual, encontramos que a política ﬁscal nas regiões brasileiras
+é majoritariamente pró-cíclica, tanto no âmbito das variáveis federais quanto estaduais. Esse
+resultado vai em linha com os resultados encontrados anteriormente pela literatura.
+
+Para melhor acessarmos os canais de transmissão dos choques ﬁscais, nós propomos uma me-
+todologia que permite analisar simultaneamente choques advindos de entidades ﬁscais estaduais
+e federais e nos permite acomodar a potencial heterogeneidade de respostas à choques ﬁscais.
+Especiﬁcamente, nós utilizamos um modelo VAR em Painel (PVAR) estimado utilizando mé-
+todos bayesianos e que assume uma priori hierárquica. Nós encontramos que os multiplicadores
+de gastos federais são bastante heterogêneos em nossa amostra, sendo em média positivos e
+da ordem de 0.485, mas não signiﬁcante para algumas regiões. Já os multiplicadores de gasto
+estaduais são relativamente homogêneos, atingindo, no longo prazo, o valor médio de 0.825.
+
+Referências
+Alesina, Alberto, Barbiero, Omar, Favero, Carlo, Giavazzi, Francesco, & Paradisi, Matteo.
+2017. The Eﬀects of Fiscal Consolidations: Theory and Evidence. NBER Working Paper
+No. 23385.
+
+Arias, Jonas E., Rubio-Ramírez, Juan F., & Waggoner, Daniel F. 2016. Inference Based on
+SVARs Identiﬁed with Sign and Zero Restrictions: Theory and Applications. Working Paper.
+Auerbach, Alan J, Gorodnichenko, Yuriy, et al. . 2012. Measuring the Output Responses to
+
+Fiscal Policy. American Economic Journal: Economic Policy, 4(2), 1–27.
+
+Blanchard, Olivier, & Leigh, Daniel. 2013. Growth forecast errors and ﬁscal multipliers. The
+
+American Economic Review, 103(3), 117–120.
+
+Blanchard, Olivier, & Perotti, Roberto. 2002. An empirical characterization of the dynamic
+eﬀects of changes in government spending and taxes on output. The Quarterly Journal of
+Economics, 117(4), 1329–1368.
+
+Caçador, Sávio Bertochi, Monte, Edson Zambon, & Moreira, Ricardo Ramalhete. 2013. Efeitos
+Regionais de Política Fiscal no Brasil: Uma Análise por Vetores Autoregressivos. Revista
+Economia e Desenvolvimento, 12(2).
+
+Castelo-Branco, Marco Antonio, Lima, Elcyon Rocha, & de Paulo, Luiz Fernando. 2015. Mu-
+danças de estado e multiplicadores ﬁscais no Brasil entre 1999-2012: Uma avaliação empírica.
+Anais do XLIII Encontro Nacional de Economia da Anpec.
+
+Cavalcanti, Marco AFH, & Silva, Napoleão LC. 2010. Dívida pública, política ﬁscal e nível de
+atividade: uma abordagem VAR para o Brasil no período 1995-2008. Economia Aplicada,
+14(4), 391–418.
+
+Chodorow-Reich, Gabriel. 2017. Geographic Cross-Sectional Fiscal Multipliers: What Have We
+
+Learned? NBER Working Paper No. 23577.
+
+15
+
+Corbi, Raphael, Papaioannou, Elias, & Surico, Paolo. 2014. Regional Transfers. NBER Working
+
+Paper No. 20751.
+
+Corsetti, Giancarlo, Meier, Andre, & Müller, Gernot J. 2012. What determines government
+
+spending multipliers? Economic Policy, 27(72), 521–565.
+
+Divino, José Angelo, & Silva Junior, Rogério Lúcio Soares da. 2012. Composição dos gastos
+
+públicos e crescimento econômico dos municípios brasileiros. Revista Economia, 13(2).
+
+Gelman, Andrew. 2006. Prior distributions for variance parameters in hierarchical models.
+
+Bayesian Analysis, 1, 515–534.
+
+Gilhooly, Robert, Weale, Martin R., & Wieladek, Tomasz. 2012. Estimation of Short Dynamic
+Panels in The Presence of Cross-Sectional Dependence and Dynamic Heterogeneity. Bank of
+England Working Paper, No. 38.
+
+Hsiao, C., Pesaran, M. H., & Tahmiscioglu, A. K. 1999. Bayes Estimation of Short-Run
+Coeﬃcients in Dynamic Panel Data Models. Pages 268–296 of: Hsiao, C., Lahir, K., Lee, L.-
+E, & Pesaran, M. H. (eds), Analysis of Panels and Limited Dependent Variables: A Volume
+in Honour of G. S. Maddala. Cambridge University Press.
+
+Ilzetzki, Ethan, Mendoza, Enrique G, & Végh, Carlos A. 2013. How big (small?) are ﬁscal
+
+multipliers? Journal of monetary economics, 60(2), 239–254.
+
+Jarociński, Marek. 2010. Responses to monetary policy shocks in the east and the west of
+
+Europe: a comparison. Journal of Applied Econometrics, 25(5), 833–868.
+
+Matheson, Troy, & Pereira, Joana. 2016. Fiscal multipliers for Brazil. IMF Working Paper.
+
+Mendonça, Diogo de Prince, Marçal, Emerson Fernandes, & Holland, Marcio. 2016. Is ﬁscal
+
+policy eﬀective in Brazil? An empirical analysis. CEMAP Working Paper Series No. 9.
+
+Mendonça, Mário Jorge, Medrano, Luis Alberto, & Sachisda, Adolfo. 2009. Avaliando os efeitos
+da política ﬁscal no Brasil: resultados de um procedimento de identiﬁcação agnóstica. Texto
+para Discussão nº1377 IPEA.
+
+Mereb, Julio, & Zilberman, Eduardo. 2017. Multiplicadores no Brasil em Tempos de Fragilidade
+
+Fiscal. Nota Técnica do IBRE.
+
+Mountford, Andrew, & Uhlig, Harald. 2009. What are the eﬀects of ﬁscal policy shocks?
+
+Journal of Applied Econometrics, 24(6), 960–992.
+
+ONU. 2008. System of National Accounts. United Nations.
+
+Orair, Rodrigo Octávio, Siqueira, Fernando de Faria, & Gobetti, Sergio Wulﬀ. 2016. Política
+ﬁscal e ciclo econômico: uma análise baseada em multiplicadores do gasto público. XXI
+Prêmio do Tesouro Nacional.
+
+Ottoni, Bruno, & Barreira, Tiago Cabral. 2016. Metodologia de Retropolação da Pesquina
+
+Nacional por Amostra de Domicílios Contínua de 1992 a 2012. Nota Técnica do IBRE.
+
+Peres, Marco Aurélio Ferreira, & Junior, Roberto de Góes Ellery. 2009. Efeitos dinâmicos dos
+choques ﬁscais do governo central no PIB do Brasil. Pesquisa e Planejamento Econômico,
+39(2).
+
+16
+
+Pires, Manoel Carlos de Castro. 2011. Controvérsias recentes sobre multiplicadores ﬁscais.
+
+Anais do VII Encontro Internacional da Associação Keynesiana Brasileira.
+
+Pires, Manoel Carlos de Castro. 2014. Política ﬁscal e ciclos econômicos no Brasil. Economia
+
+Aplicada, 18(1), 69–90.
+
+Ramey, Valerie A. 2011. Can government purchases stimulate the economy?
+
+Economic Literature, 49(3), 673–685.
+
+Journal of
+
+Ramey, Valerie A. 2013. Government Spending and Private Activity. Fiscal Policy after the
+
+Financial Crisis, 19.
+
+Ramey, Valerie A, & Shapiro, Matthew D. 1998. Costly capital reallocation and the eﬀects of
+government spending. Pages 145–194 of: Carnegie-Rochester Conference Series on Public
+Policy, vol. 48. Elsevier.
+
+Rocha, Fabiana, & Giuberti, Ana Carolina. 2007. Composição do gasto público e crescimento
+econômico: uma avaliação macroeconômica da qualidade dos gastos dos Estados brasileiros.
+Economia Aplicada, 11(4), 463–485.
+
+Rocha, Fabiana Fontes, & Giuberti, Ana Carolina. 2008. Assimetria cíclica na política ﬁscal
+
+dos Estados brasileiros. Pesquisa e Planejamento Econômico, 38(2).
+
+Romer, Christina D, & Romer, David H. 2010. The Macroeconomic Eﬀects of Tax Changes:
+Estimates Based on a New Measure of Fiscal Shocks. American Economic Review, 100,
+763–801.
+
+Romer, Christina D, & Romer, David H. 2016. Transfer Payments and the Macroeconomy:
+The Eﬀects of Social Security Beneﬁt Increases, 1952–1991. American Economic Journal:
+Macroeconomics, 8(4), 1–42.
+
+Rubio-Ramírez, Juan F., Waggoner, Daniel F., & Zha, Tao. 2010. Structural Vector Autore-
+gressions: Theory of Identiﬁcation and Algorithms for Inference. The Review of Economic
+Studies, 77(2), 665–696.
+
+17
+
+A Anexo: Figuras Regionais
+
+Figura 4: FRI para diversos choques. Respostas do PIB privado e do desemprego na região
+Norte
+
+Figura 5: FRI para diversos choques. Respostas do PIB privado e do desemprego na região
+Nordeste
+
+18
+
+246801234PIBChoque em Gf2468-1-0.500.5Choque em Tf246801234Choque em Ge2468-3-2-10Choque em Te2468-4-20DesempregoChoque em Gf2468-101Choque em Tf2468-4-20Choque em Ge2468024Choque em Te24680123PIBChoque em Gf2468-0.500.5Choque em Tf24680123Choque em Ge2468-2-1.5-1-0.50Choque em Te2468-4-3-2-10DesempregoChoque em Gf2468-101Choque em Tf2468-4-20Choque em Ge24680123Choque em TeFigura 6: FRI para diversos choques. Respostas do PIB privado e do desemprego na região
+Centro-Oeste
+
+Figura 7: FRI para diversos choques. Respostas do PIB privado e do desemprego na região
+Sudeste
+
+19
+
+246800.511.52PIBChoque em Gf2468-1-0.500.5Choque em Tf24680123Choque em Ge2468-2-10Choque em Te2468-3-2-10DesempregoChoque em Gf2468-101Choque em Tf2468-4-20Choque em Ge2468-10123Choque em Te24680123PIBChoque em Gf2468-1-0.500.51Choque em Tf24680123Choque em Ge2468-2-1.5-1-0.50Choque em Te2468-4-3-2-10DesempregoChoque em Gf2468-101Choque em Tf2468-4-3-2-10Choque em Ge24680123Choque em TeFigura 8: FRI para diversos choques. Respostas do PIB privado e do desemprego na região Sul
+
+Figura 9: Multiplicadores Fiscais sobre PIB privado para diversos choques
+
+20
+
+2468-0.500.511.5PIBChoque em Gf2468-1.5-1-0.500.5Choque em Tf246801234Choque em Ge2468-3-2-10Choque em Te2468-2-10DesempregoChoque em Gf2468-101Choque em Tf2468-4-20Choque em Ge2468024Choque em Te246811.21.41.61.8PIB Região 1Multiplicador de Gf24680.811.2PIB Região 1Multiplicador de Ge24680.50.60.7PIB Região 2Multiplicador de Gf2468100.811.2PIB Região 2Multiplicador de Ge2468-0.200.2PIB Região 3Multiplicador de Gf2468100.650.70.750.80.85PIB Região 3Multiplicador de Ge24680.70.80.91PIB Região 4Multiplicador de Gf2468100.80.911.11.2PIB Região 4Multiplicador de Ge2468-0.8-0.6-0.4-0.20PIB Região 5Multiplicador de Gf2468100.70.80.91PIB Região 5Multiplicador de Ge

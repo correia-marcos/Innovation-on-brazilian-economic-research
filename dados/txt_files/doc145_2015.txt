@@ -1,0 +1,1206 @@
+     Efeito Dose Resposta do Fundo Constitucional de Financiamento do
+                  Centro-Oeste (FCO) no Estado de Goiás
+
+             Guilherme Oliveira∗               Rafael Terra†             Guilherme Resende‡
+                UnB / IMB                         UnB                          IPEA
+
+                                               Resumo
+O estudo avalia o Fundo Constitucional de Financiamento do Centro-Oeste (FCO) no estado
+de Goiás entre os anos de 2004 e 2011 por meio dos microdados da RAIS - Relação Anual de
+Informações Sociais, e dos empréstimos do Programa Empresarial do FCO. Os impactos dos fi-
+nanciamentos no crescimento do emprego e salários das empresas instaladas no estado foram
+estatisticamente significantes e positivos. Os métodos utilizados foram o Propensity Score Mat-
+ching (PSM) e o Propensity Score Generalizado (PSG), que identifica a variável de tratamento
+como contı́nua - inédito na literatura de avaliação de fundos regionais. Ademais, o efeito dose
+indica que o valor do empréstimo influencia na quantidade de empregos gerados, assim como na
+variação dos salários, onde os resultados do PSG sugerem que até o limite de aproximadamente
+R$ 200.000,00 as variações proporcionais de emprego e salário são maiores quanto maiores os
+montantes contratados de crédito.
+Palavras-Chave: Fundo Constitucional de Financiamento do Centro-Oeste (FCO), Avaliação de
+impacto, Propensity Score Generalizado.
+
+
+                                           Abstract
+The study evaluates the Constitutional Financing Fund for the Center-West (FCO) in the state
+of Goiás between the years 2004 and 2011, using RAIS microdata, and loans from the FCO
+“Empresarial” Program. The results show a positive and statistically significant impact of the
+FCO on employment and wage growth at the firm level. We use the Propensity Score Matching
+(PSM) and the Generalized Propensity Score (GPS) methods. The GPS identifies the treatment
+variable as continuous. This approach is original in the literature on regional funds evaluation.
+Moreover, the dose response results indicate that the loans values affect wages and employment,
+as well the PSG results suggest that around the limit of R$ 200,000.00 the proportional variation
+of employment and wages are higher as higher are the loans.
+Keywords: Constitutional Financing Fund, Impact evaluation, Generalized Propensity Score.
+JEL classification: C52,R58.
+Área 10 - Economia Regional e Urbana
+
+
+
+
+     ∗
+     Endereço: Instituto Mauro Borges de Estatı́sticas e Estudos Socioeconômico (IMB), Av. República do Lı́bano
+ o
+n 1945, 3o andar, Setor Oeste, Goiânia, GO, 74.125-125, Brasil. E-mail: resendego@yahoo.com.br.
+   †
+     Endereço: Universidade de Brası́lia (UnB), Departamento de Economia, FACE. Brası́lia, DF, 70910-900, Brasil.
+E-mail: rflterra@yahoo.com.br.
+   ‡
+     Endereço: SBS - Quadra 1 - Bloco J - Ed. BNDES. Brası́lia, DF, 70076-900, Brasil, E-mail: gui-
+lherme.resende@ipea.gov.br.
+
+                                                        1
+1       Introdução
+
+   A redução das desigualdades regionais é o objetivo de algumas polı́ticas públicas. A Constituição
+Federal de 1988 criou alguns mecanismos, como os Fundos Constitucionais de Financiamento,
+que visam promover e financiar as atividades econômicas nas regiões menos favorecidas, como o
+Norte, o Nordeste e o Centro-Oeste, de modo a dinamizar suas economias locais. Entretanto, a
+disparidade persiste e é alta, sendo refletida em diversos indicadores, como a renda, PIB per capita,
+IDHM, entre outros. É fundamental investigar a distribuição desses recursos, assim como avaliar
+os impactos econômicos desses fundos no desenvolvimento regional. Neste trabalho, estuda-se
+o caso do Estado de Goiás, o maior beneficiário do Fundo Constitucional de Financiamento do
+Centro-Oeste (FCO).
+
+   Os Fundos Constitucionais de Financiamento previstos pela Constituição Federal de 1988, em
+seu artigo 159, inciso I, alı́nea “c”, foram regulamentados pela Lei n.o 7.827/89, a qual criou os
+Fundos Constitucionais de Financiamento do Centro-Oeste, do Nordeste (FNE) e do Norte (FNO),
+com o objetivo de contribuir para o desenvolvimento econômico e social das respectivas regiões
+onde atuam. As fontes de financiamento são os 3% da arrecadação do Imposto sobre Produtos
+Industrializados (IPI) e do Imposto de Renda (IR). Deste montante, 20% destinam-se ao FNO, 20%
+ao FCO e os 60% restantes deliberam-se ao FNE. As demais fontes são os retornos e resultados
+das aplicações dos Fundos – o resultado da remuneração dos recursos, momentaneamente, não
+aplicados e as disponibilidades dos exercı́cios anteriores, portanto, fica implı́cito que os Fundos
+não são aplicados a fundo perdido e seu patrimônio é crescente.
+
+   Alguns dos principais propósitos dos Fundos Constitucionais são promover o desenvolvimento
+econômico e social e mitigar as desigualdades em múltiplas escalas geográficas. Um modo de
+atingir esse objetivo é por meio da geração de empregos e renda, o qual pode ser alcançado com o
+financiamento das atividades produtivas. Atualmente, estes fundos se inserem na Polı́tica Nacional
+de Desenvolvimento Regional – PNDR, proposta em 2003, tornando-se uma das principais ações
+do Governo Federal para intensificar os potenciais de desenvolvimento das regiões 1 .
+
+   A maior parte dos estudos anteriores foi aplicada ao FNE e aqueles realizados para o Centro-
+Oeste são inconclusivos no que diz respeito à redução da desigualdade regional. Silva, Resende
+e Silveira Neto (2009) não encontraram em nenhuma das estimativas diferenças de desempenho
+entre as firmas beneficiadas e não beneficiadas pelo FCO no perı́odo 2000-2003, concluindo que
+não houve impacto favorável do programa sobre a geração de empregos ou aumento dos salários.
+Por sua vez, Resende, Cravo e Pires (2014) utilizaram várias escalas geográficas para analisar os
+impactos do FCO sobre o crescimento do PIB per capita entre 2004 a 2010. O estudo mostrou
+impactos positivos sobre o crescimento do PIB per capita em nı́vel municipal e os resultados
+sugerem que estes efeitos positivos são em grande medida influenciados pelos empréstimos do
+FCO da modalidade Empresarial. As estimações para escalas geográficas de micro e mesorregião
+sugerem que o FCO não estimula crescimento em nı́veis geográficos mais agregados.
+
+   A contribuição deste trabalho é investigar os microefeitos do FCO para o perı́odo recente, 2004
+a 2011. O estudo do caso goiano pode ajudar na melhor interpretação dos resultados obtidos
+para a região Centro-Oeste como um todo, já que os resultados dos estudos anteriores (SILVA,
+RESENDE E NETO, 2009 E RESENDE, CRAVO E PIRES, 2014) podem não estar evidenciando
+importantes diferenças entre os estados da macrorregião.
+
+    1
+    Entretanto, a PNDR somente se efetivou como polı́tica pública com o Decreto no 6.047, de 22 de fevereiro de
+2007.
+
+                                                       2
+   Este trabalho se limita a analisar o programa Empresarial, pois a maioria dos financiamentos
+do programa Rural foi feita por meio do CPF (Cadastro de Pessoas Fı́sicas), de modo que não
+puderam ser identificados na RAIS. Além disso, a maior parte das contratações (mais de 70% do
+número total de contratos) foi concedida para indivı́duos que possuem pequenas firmas agrı́colas no
+setor informal e, por isso, não estão na RAIS. Por essas questões o setor agropecuário foi excluı́do
+da análise. Por sua vez, o Programa Empresarial é voltado para as empresas dos setores industrial,
+comércio e serviços que podem, em sua maioria, ser identificadas na RAIS 2 . No estado de Goiás,
+o Programa Empresarial representa 39,1% do valor total emprestado no perı́odo 2004-2011.
+
+   Uma das maiores dificuldades da avaliação de polı́ticas públicas é lidar com o viés de seleção
+na participação do programa eleito. Os métodos empı́ricos deste trabalho, PSM e PSG, buscam
+reduzi-lo por meio do pareamento, o qual utiliza o escore de propensão para compararar empre-
+sas beneficiadas com as não financiadas. Contudo, todos os estudos supracitados consideraram
+apenas aspecto dicotômico do tratamento sem levar em conta o montante da dose, isto é, o va-
+lor dos empréstimos. Assim, o estudo complementa esta lacuna da literatura, com a aplicação
+da metodologia econométrica, Propensitity Score Generalizado (HIRANO E IMBENS, 2004), que
+mensura o efeito-dose levando em conta o valor do empréstimo, ao invés de simplesmente comparar
+as empresas financiadas pelo FCO Empresarial com as não beneficiadas. Portanto, verifica-se o
+efeito diferenciado na geração de empregos e crescimento dos salários de acordo com o montante
+emprestado.
+
+    O estudo se divide em cinco seções, com esta introdução. A segunda faz uma revisão de
+literatura, que retoma os trabalhos que investigaram os Fundos Constitucionais de Financiamento.
+A terceira traz a metodologia, que faz uma breve descrição da base de dados, variáveis e métodos
+utilizados. A quarta mostra os principais resultados encontrados. E por fim, a quinta conclui o
+estudo faz as considerações finais.
+
+
+
+2       Revisão de Literatura
+
+   Esta seção faz uma revisão de literatura dos trabalhos que avaliaram os Fundos Constitucionais
+de Financiamento (FNE, FNO e FCO). Os estudos nessa área são relativamente escassos, porque
+na década de 90 o volume de recursos era baixo em comparação ao perı́odo recente, e, portanto,
+havia poucos interessados no impacto dessa polı́tica. Além disso, os recursos computacionais para
+a aferição econométrica de seus efeitos eram limitados. O impacto dos fundos tem sido verificado
+por meio de diferentes métodos: Mı́nimos Quadrados Ordinários (MQO), MQO Empilhados, pai-
+nel com efeitos fixos, Propensity Score Matching (PSM) e diferenças em diferenças. Abaixo são
+apresentados os principais estudos acadêmicos sobre os referidos fundos.
+
+   A investigação conduzida por Silva, Resende e Neto (2006) foi uma das primeiras e teve como
+objetivo principal avaliar a aplicação dos recursos do FNE e FNO entre 2000 e 2003, por meio da
+utilização do Propensity Score das firmas beneficiadas com recursos desses fundos em comparação
+
+    2
+     Este programa de financiamento está disponı́vel para todas as empresas da região referente ao Fundo Cons-
+titucional, de modo que a solicitação é direcionada para linha ou programa especı́fico de acordo com o valor e
+objeto do financiamento, porte da empresa e outras caracterı́sticas. Além disso, a proposta de programas para
+aplicação dos recursos previstos respeita as Diretrizes e Prioridades estabelecidas pelos Conselhos Deliberativos
+das Superintendências de Desenvolvimento e cada Banco Administrador, em articulação com estes órgãos e demais
+parceiros. Após a solicitação, o Banco analisa as condições do financiamento e da empresa, como por exemplo, as
+garantias oferecidas, e libera o montante, de acordo com a disponibilidade de recursos.
+
+
+                                                         3
+ao conjunto de firmas não beneficiadas. De forma geral, os resultados não apontaram impacto sobre
+a variação do salário médio, pois não se observou efeitos significativos entre o grupo de tratamento
+e controle, no que diz respeito à aplicação dos fundos nessas empresas. Por sua vez, em relação à
+variação do número de empregos, ambos os fundos apresentaram resultados significativos sobre as
+firmas beneficiadas.
+
+    Almeida, Silva e Resende (2006) analisaram os Fundos Constitucionais de Financiamento por
+municı́pio e o saldo dos recursos até 2004. Tal trabalho teve uma visão macro dos financiamen-
+tos e serviu como ponto de partida para a avaliação mais detalhada dos impactos econômicos
+e sociais dos empréstimos. Os autores observaram que os empréstimos não se direcionam, ma-
+joritariamente, para os Estados e/ou municı́pios mais pobres. Verificou-se que as liberações do
+FNE por Estado não tinha nenhuma relação clara com o PIB per capita, e nem com o Índice
+de Desenvolvimento Humano (IDH). Isso significa que as liberações do fundo eram fortemente
+influenciadas pela demanda, e não apenas pelo objetivo principal do fundo, que é a redução das
+desigualdades regionais. Diferente do FNE e FNO, a correlação de FCO per capita e PIB per
+capita foi positiva, indicando que não existe uma prioridade no FCO para que sua distribuição se
+dê, preferencialmente, nos locais mais pobres.
+
+   Silva, Resende e Neto (2009) avaliaram a aplicação dos recursos do FNE, do FNO e do FCO
+na perspectiva das firmas entre os anos de 2000 e 2003. Para atingir seus objetivos, os autores
+utilizaram o método de PSM para estimar o impacto do fundo sobre o salário médio e o número de
+empregados. Os resultados apontaram, que para o FNO e FCO, não houve diferenças significativas
+entre a taxa de variação do emprego e dos salários com o controle e os tratados. Por sua vez, para
+o FNE não foi possı́vel encontrar evidências de impactos significativos sobre os salários médios.
+Mas, em relação à taxa de variação do número de empregados, os resultados apontaram que a
+aplicação dos recursos desse fundo sobre as firmas beneficiadas tem efeitos positivos.
+
+   Soares, Sousa e Neto (2009) ampliaram a análise de Silva, Resende e Neto (2009) sobre os impac-
+tos do FNE ao expandir o perı́odo analisado. Utilizando a metodologia de PSM para as empresas
+financiadas em 1999 e 2005, foram encontrados impactos positivos do repasse sobre o crescimento
+do emprego e massa salarial revelando que o crédito subsidiado provocou uma dinâmica diferenci-
+ada no ritmo de contratações das firmas. No entanto, os resultados não apontaram evidências de
+impacto sobre o salário médio das mesmas.
+
+   Dois trabalhos de Resende (2014a, 2012) foram os primeiros estudos publicados que investiga-
+ram, em várias escalas espaciais, os impactos dos empréstimos concedidos pelo FNE (da modali-
+dade industrial) em todo o Nordeste e especificamente para o caso do estado do Ceará. Analisando
+o perı́odo entre 2000 e 2003, o autor chamou atenção para o tratamento do viés nas estimativas de
+trabalhos anteriores ocasionado pela omissão das caracterı́sticas não observáveis, esperadas como
+relevantes, a exemplo do empreendedorismo e da motivação. Este ressalta que o viés de seleção,
+que provém das caracterı́sticas não observáveis, é um dos principais problemas na avaliação das
+polı́ticas públicas, contudo, pode ser minimizado pelo uso da técnica de diferenças em diferenças,
+por exemplo. Estes dois trabalhos não encontraram impactos significantes do FNE-industrial
+(indústria, comércio e serviços) sobre o crescimento dos salários no perı́odo 2000 a 2003 para o
+Nordeste como um todo, nem para o Ceará, apesar de ter encontrado significância sobre o cres-
+cimento do emprego. Os resultados sugerem que os micros e macros impactos do FNE industrial
+sobre o crescimento do emprego no Estado do Ceará apresentam uma magnitude maior daqueles
+observados para a região Nordeste como um todo.
+
+  Resende (2014a) usou modelos em painel de efeito fixo. Os resultados sugerem que os recursos
+
+
+                                                   4
+do FNE-total apresentaram impactos positivos sobre o crescimento do PIB per capita entre os
+anos de 2004 e 2010, nos nı́veis municipal e microrregional, principalmente no setor agropecuário.
+Por outro lado, não identificou impactos estatisticamente significativos dos empréstimos na escala
+mesorregional. Resende, Cravo e Pires (2014) e Resende (2014b) fazem análises similares para
+os Fundos Constitucionais das outras regiões para o mesmo perı́odo. O primeiro mostrou que os
+recursos do FCO apresentam impactos positivos sobre o crescimento do PIB per capita em nı́vel
+municipal. Os resultados sugerem que estes efeitos positivos são, em grande medida, influenciados
+pelos empréstimos do FCO do programa Empresarial. O segundo trabalho sugere que os recur-
+sos do FNO-setorial também geraram impactos positivos sobre o crescimento do PIB per capita
+municipal.
+
+   Soares et al. (2014) fez um estudo recente sobre o FNE. Eles estimam os efeitos do FNE entre
+2002 e 2008 nos municı́pios por meio de modelos empı́ricos da literatura empı́rica de crescimento
+econômico (BARRO e SALA-I-MARTIN, 1992). O trabalho faz a análise para quatro clubes
+de renda. O estudo justifica que os municı́pios que compõem os grupos apresentam padrões de
+crescimento do PIB per capita similares e encontra que o fundo não teve efeito estatisticamente
+significativo para municı́pios com PIB per capita menor que R$ 2.143 e maior que R$ 7.406. Por
+outro lado, se registraram efeitos positivos e significativos nos municı́pios com PIB per capita
+dentro do respectivo intervalo.
+
+   A maior parte dos trabalhos que verificou o impacto econômico encontrou efeitos positivos do
+FNE no crescimento econômico na região Nordeste. Por vezes, a evidência para o FNO e FCO foi
+de efeitos insignificantes para o crescimento do PIB per capita regional. Vale salientar, o objetivo
+dos fundos é reduzir as desigualdades regionais por meio do financiamento de setores produtivos
+e este objetivo não tem uma definição clara e/ou precisa em relação a quais variáveis devem ser
+avaliadas.
+
+    Por fim, é importante ressaltar alguns trabalhos que fazem a avaliação da polı́tica regional ao
+redor do mundo. A revisão da literatura internacional mostra uma grande quantidade de artigos
+que tratam do caso da polı́tica regional da União Europeia. A maioria dos estudos se concentra
+na avaliação dos macroimpactos de fundos estruturais da União Europeia sobre desigualdades
+regionais. Esses estudos incluem Rodrı́guez-Pose e Fratesi (2004), Leonardi (2006), e Esposti
+Bussoletti (2008), e Dall’erba e Le Gallo (2008) e Mohl Philipp e Tobias Hagen (2009). Seguindo
+a literatura recente que tenta determinar efeitos causais de polı́ticas de forma mais rigorosa, Becker
+et al. (2010) utilizam o método de regressão descontı́nua e em outro estudo Becker et al. (2012)
+empregam o Propensity Score Generalizado (PSG). Accetturo e de Blasio (2012) combinam os
+métodos de Propensity Score Matching (PSM) e diferença em diferença para avaliar os fundos
+estruturais na Itália.
+
+    Becker et al. (2010) examinam como as transferências do Structural Funds Programme contri-
+buem para reduzir a desigualdade regional na União Européia (UE). O programa é dividido em
+três objetivos, sendo avaliado o Objetivo 1, o qual foca no atendimento das regiões com PIB per
+capita menor que 75% da média da EU. Os autores utilizaram o método de regressão descontı́nua.
+Os resultados sugerem que no perı́odo de 1989 a 2006 as regiões beneficiadas tiveram um maior
+crescimento do PIB per capita do que o grupo de controle, evidenciando os impactos positivos da
+polı́tica. Além disso, eles apontam que o crescimento induzido justifica os custos incorridos, isto é,
+que a polı́tica gerou benefı́cio lı́quido. Por outro lado, o crescimento da taxa de emprego, avaliado
+pela mesma estratégia empı́rica, não foi afetado pelos fundos.
+
+  O estudo de Becker et al. (2012) examina como a intensidade do tratamento, no caso o fundo
+
+
+                                                   5
+regional europeu, afeta o crescimento regional usando a função dose resposta, mesma técnica
+empregada nesta pesquisa. Seu estudo chama atenção para um possı́vel efeito declinante do
+tratamento, que surge com a hipótese de retornos decrescente dos investimentos, prevista na
+teoria de produção neoclássica. Logo, existe um nı́vel máximo desejável de transferência dos
+fundos regionais, o qual é confirmado pelos resultados, que sugerem uma relação não linear entre
+as transferências e o crescimento do PIB per capita, no perı́odo entre 1994 e 2006. Acima deste
+nı́vel de intensidade do tratamento, a hipótese nula de as transferências não afetarem o crescimento
+não pode ser rejeitada, o que levanta questionamentos sobre a eficiência e alocação de repasses
+maiores do que o valor determinado pelos resultados.
+
+   Accenturo e de Blasio (2012) avaliam o “Patti Territoriali” (programa de desenvolvimento
+regional italiano) comparando o desempenho econômico em termos de empregos e número de
+empreendimentos dos municı́pios que participaram com os que não se beneficiaram da polı́tica
+entre 1996 e 2004. O método empı́rico adotado foi diferença em diferenças combinado com o PSM
+e os resultados sugerem que o programa não foi efetivo em estimular o crescimento econômico,
+apesar das diferentes estratégias de identificação adotadas.
+
+
+
+3     Metodologia
+
+    Este estudo estende as investigações de Silva, Resende e Neto (2009), Resende (2012) e Resende
+(2014a), os quais avaliam os Fundos Constitucionais por meio dos métodos de MQO, Dados em
+Painel com Efeitos Fixos, Propensity Score Matching e Diferenças em Diferenças. Esta seção
+faz uma breve descrição das metodologias utilizadas e do método Propensity Score Generalizado,
+inédito na literatura.
+
+   O MQO não controla a existência de qualquer viés de seleção na relação de interesse, pois
+apenas isola o efeito do tratamento, sem considerar a relação deste com a composição do grupo
+de tratamento. Quando a participação no programa está correlacionada com algum fator não
+observável, diz-se que há viés de seleção. Portanto, há necessidade do uso de métodos alternativos
+de avaliação de impactos econômicos.
+
+    O método de PSM, utilizado neste trabalho, é um dos mais adotados na avaliação de impactos
+econômicos, conforme apresentado na revisão de literatura, e busca comparar as firmas benefi-
+ciadas com os recursos do fundo, denominada de grupo de tratamento, com as companhias não
+beneficiadas, grupo de controle ou contra-factual. Assim, reduz o viés de seleção existente por
+meio do pareamento entre os dois grupos acima. Ressalta-se que Resende (2012) tentou diminuir
+esse viés por meio do método de primeira diferença, o qual usa a diferenciação para excluir a
+heterogeneidade individual das firmas analisadas, em outras palavras, os fatores não observáveis
+e fixos no tempo que contribuem para um desempenho diferenciado na avaliação.
+
+   Apresenta-se abaixo brevemente o método de maneira formal. Considere uma empresa i e o
+resultado potencial Y (T ), onde T indica o tratamento e tem dois possı́veis estados: 1 para a
+situação de beneficiada pelo FCO e 0 para o caso de não ter sido financiada pelo fundo. Assim, o
+resultado observado para firma i na variável estudada é representado por:
+
+
+                                      Yi = T Yi (1) + (1 − T )Yi (0)                                 (1)
+
+
+
+                                                    6
+   Assim, o impacto do financiamento na empresa i, Vi = Yi (1) − Yi (0), sendo o impacto médio nas
+firmas que receberam o empréstimo, isto é, a expectativa do impacto condicional ao tratamento,
+dado por:
+
+
+                             V = E[Vi |T = 1] = E[Yi (1) − Yi (0)|T = 1]                            (2)
+
+   De modo geral, nesse caso não seria possı́vel observar uma mesma firma nas situações si-
+multâneas dos diferentes estados, beneficiada e não beneficiada pela polı́tica. O resultado médio
+para o grupo de controle corresponderia ao resultado médio do contra-factual dos tratados na
+ausência do tratamento, se não fosse o viés de seleção. Logo, usa-se na avaliação um grupo de
+controle, o qual não recebeu o financiamento, e se obtém uma medida aproximada do impacto do
+tratamento:
+
+
+             E[Yi (1)|T = 1] − E[Yj (0)|T = 0] = V + E[Yi (0)|T = 1] − E[Yj (0)|T = 0]              (3)
+
+   O termo acima entre {.} representa o viés de seleção proveniente da participação no tratamento,
+neste caso, na escolha da empresa em tomar ou não o FCO. Este é amenizado pelo método
+de estimador de pareamento (matching), o qual tem algumas premissas básicas. A principal
+hipótese desse modelo, que busca estimar o efeito médio do tratamento sobre os tratados, é que
+as variáveis observáveis Xi contém todas as informações do resultado potencial ex-ante à firma
+decidir participar do tratamento (Yi (T )). Logo, ao controlar pelo vetor X, a variável Yi (0) torna-se
+independente de T . Esta é a hipótese de seleção em observáveis (ou ignorabilidade) e pode ser
+descrita como:
+
+
+                                             Yi (0)⊥Ti |Xi                                          (4)
+
+   A implicação desta hipótese é que o resultado da firma do grupo de controle é uma boa con-
+jectura do que seria o resultado da empresa sem tratamento que possui as mesmas caracterı́sticas
+observáveis (X). Então para estimar o efeito médio do tratamento sobre os tratados por meio
+do pareamento, precisa-se que a firma do grupo de tratamento tenha um par parecido no grupo
+de controle. Assim, outra hipótese necessária é que a região do vetor X que engloba os fatores
+observáveis dos tratados se sobreponha às caracterı́sticas das empresas no grupo de controle, por
+isso chamada de hipótese de sobreposição. Esta é formalizada por:
+
+
+                                        0 < P r[Ti = 1|Xi ] < 1                                     (5)
+
+   Mesmo sob a suposição de que as caracterı́sticas das empresas para a variável de interesse
+sejam similares entre os dois grupos, provavelmente a estimativa não fornece um valor exato do
+impacto da polı́tica, já que a própria participação no programa revela diferenças entre as firmas
+dos dois grupos. Assim, o matching busca contornar as dificuldades acima por meio da sı́ntese
+das informações contidas nas variáveis em X, que afetam a participação no programa. Isso é feito
+através da estimação (via probit, logit ou outro método) condicionada em observáveis. Portanto,
+ao invés de utilizar cada fator observável diretamente, usa-se a probabilidade de participação de-
+rivada dessa estimativa, propensity score. O método de propensity score (ROSENBAUM, RUBIN,
+1983) faz o pareamento nos escores de propensão em vez de fazê-lo no X diretamente, sendo este
+
+
+                                                   7
+denotado por p(x), onde:
+
+
+                                            p(x) = P r[T = 1|X = x]                                      (6)
+
+   Existem diferentes tipos de matching baseados nas estimativas de propensity score. Uma des-
+crição mais cuidadosa pode ser encontrada na literatura empı́rica de avaliação de impacto de
+polı́ticas públicas (ver DEHEJIA, WAHBA, 2002 e BECHER, ICHINO, 2002). O pareamento
+pode ser feito a partir de diferentes tipos, entre seus estão: o de estratos (Stratification Matching),
+o vizinho mais próximo (Nearest Neighbor Matching), de vizinhos dentro de um raio fixo (Radius
+Matching) e o matching a partir de uma função densidade (Kernel Matching). Como se tratam
+de meios diferentes opta-se aqui por utilizar os métodos mais usados nesta literatura, que são os
+do vizinho mais próximo e de kernel.
+
+   Os resultados obtidos via PSM consideram o tratamento como uma intervenção homogênea
+entre os tratados, isto é, com a variável de tratamento binária. Entretanto, o crédito obtido via
+FCO é uma variável contı́nua e, possivelmente, tem efeito de acordo com o montante emprestado,
+o que é esperado pela teoria microeconômica, especialmente devido à hipótese neoclássica de
+retornos decrescentes do capital. Logo, a reflexão natural consiste em verificar se o tratamento
+tem efeitos heterogêneos sobre o emprego e a renda, isto é, analisar se um aumento da intensidade
+do tratamento, no caso, valor do financiamento, produz efeitos maiores que um tratamento de
+menor intensidade.
+
+   O desafio é comparar empresas com caracterı́sticas suficientemente similares, mas com diferentes
+intensidades de tratamento, com o objetivo de construir um cenário de quase-experimento. Neste
+sentido, Imbens (2000) e Hirano e Imbens (2004) propõem a estimação de uma função dose-
+resposta. Essa função se baseia na estimação da probabilidade de recebimento de cada nı́vel de
+tratamento Ti = t, dado por r(t, X). Os autores demonstram que, condicional à probabilidade
+de recebimento do tratamento t, o status de tratamento independerá do resultado potencial na
+ausência da intervenção. Essa propriedade, análoga à hipótese do modelo PSM, é dado o nome de
+ignorabilidade fraca.
+
+
+                                            Y (t)⊥1[T = t]|r(t, X), ∀t                                   (7)
+
+   Para estimar r(t, X) assume-se que o tratamento tenha uma distribuição normal, condicional
+nas variáveis de controle, i.e. Ti |X ∼ N (β0 + β1 Xi , σ 2 ). Após estimar os parâmetros β, é possı́vel
+obter o valor da função densidade de probabilidade associado ao valor observado da variável de
+tratamento.
+
+                                             1                1
+                                  rˆi = √            exp(−         (Ti − f (β̂, Xi ))2 )                 (8)
+                                            2πσ̂ 2           2σ̂ 2
+
+   Para obter a relação condicional Y |r(t, X) regride-se o resultado sobre o tratamento para definir
+os propensity scores generalizados.
+
+
+                  E[Yi |Ti , rˆi ] = α0 + α1 f (Ti ) + α2 f (Ti )2 + α3 rˆi + α4 rˆi 2 + α5 f (Ti )rˆi   (9)
+
+
+
+                                                             8
+   A equação acima informa a relação entre o resultado observado, o tratamento e a probabilidade
+de receber cada nı́vel de tratamento. Uma vez estimados os coeficientes αi , pode-se avaliar os
+resultados potenciais para cada nı́vel de tratamento.
+
+                                N
+                            1X
+             Ê[Y (T̃ ] =         αˆ0 + α1 f (T̃i ) + α2 f (T̃i )2 + α3 r˜i (T̃i ) + α4 r˜i 2 (T̃i ) + α5 r˜i (T̃i )   (10)
+                            n i=1
+
+   Cada nı́vel de tratamento T̃ informa um resultado potencial médio Ê[Y (T̃ )]. A avaliação de
+vários nı́veis de tratamento permite descrever a função dose-resposta. Em seguida, pode-se estimar
+o efeito de um incremento marginal ( > 0) no empréstimo sobre o crescimento do emprego e do
+salário, variáveis de interesse. Assim, esse efeito é dado por:
+
+
+                                          θ(T̃ ) = E[Yi (T̃ + )] − E[Yi (T̃ )]                                        (11)
+
+   Por fim, como demonstra Angrist e Pischke (2009), ressalta-se que as técnicas de pareamento
+(propensity score) fazem a suposição de independência condicional para estabelecer relação causal
+entre as variáveis de regressão. Neste sentido, o pareamento é uma estratégia de controle com
+a premissa de seleção em observáveis, de modo que a causalidade não e diretamente verificada e
+deve ser relativizada nas interpretações seguintes.
+
+
+3.1     Base de dados e especificações
+
+    A análise dos microimpactos do FCO Empresarial no estado de Goiás necessitou da junção
+de duas bases de dados. Uma parte dos microdados utilizou as informações da RAIS, que pos-
+sui cobertura censitária das empresas brasileiras do setor formal. E outra parte, dos dados de
+contratações das firmas que requisitaram empréstimos3 no perı́odo analisado, junto ao agente
+concessor em Goiás - CDE/FCO da SIC/GO (Conselho de Desenvolvimento Econômico, ligado
+à Secretaria de Indústria e Comércio do Governo do Estado de Goiás), o qual é repassado pelo
+Banco do Brasil. Os valores agregados foram conferidos nos Relatórios de Informações Gerenciais,
+publicado anualmente pelo Ministério da Integração Nacional.
+
+   A partir das informações fornecidas acima foi possı́vel identificar as empresas presentes no banco
+de dados da RAIS dos anos analisados, tanto das que tinham recebido o financiamento do FCO,
+quanto as que não foram beneficiadas. A identificação das firmas financiadas com os dados da
+RAIS foi feita por meio do Cadastro Nacional das Pessoas Jurı́dicas – CNPJ, respeitando o caráter
+de sigilo das informações.
+
+   Os grupos de tratamento e de controle têm diferentes números de empresas de acordo com
+a regressão. No grupo de tratamento estão as companhias que receberam empréstimos do FCO
+Empresarial no perı́odo analisado e puderam ser identificadas na RAIS – em alguns casos verificou-
+se o financiamento apenas no primeiro ano do perı́odo, em outros, o empréstimo em qualquer um
+dos anos do intervalo especificado, assim como em Resende (2012). O grupo de controle é composto
+por empresas existentes na RAIS que não receberam financiamento do FCO Empresarial em todo
+o perı́odo analisado. Vale ressaltar que nem todas as empresas que receberam financiamentos
+   3
+    O ı́ndice de preços utilizado para atualização dos valores monetários foi o IPCA do IBGE, mesmo utilizado
+em diversos estudos dessa área.
+
+                                                               9
+apareceram na RAIS naquele determinado ano, pois algumas utilizaram o CPF para obter o
+financiamento, em raros casos.
+
+    Duas variáveis dependentes foram utilizadas na avaliação: variação percentual do emprego e do
+salário médio. A variável de tratamento FCO é representada por uma dummy em que 1 indica se a
+firma recebeu o empréstimo e zero se ela não foi beneficiada. As variáveis de controle são as mesmas
+de Resende (2012)4 e foram levantadas a partir dos dados da RAIS do ano base da regressão, isto
+é, do primeiro ano do intervalo. Elas são: anos de escolaridade média dos trabalhadores; idade
+média dos trabalhadores; dummy para cada mesorregião do estado (Sul, Norte, Noroeste, Centro
+e Leste); dummy de porte, de acordo com o número de empregados5 ; e dummy de setor econômico
+(indústria e comércio/serviços), baseado na CNAE 2.0.
+
+
+
+4       Resultados
+
+   Nesta seção são apresentados os microimpactos do FCO Empresarial, verificando as variáveis
+no nı́vel da firma, a tabela 1 apresenta as médias das variáveis usadas no estudo de acordo com a
+amostra referente ao perı́odo considerado. Percebe-se que a maior parte das empresas do estado
+e que tomaram o FCO Empresarial se localizam nas mesorregiões centro e sul, são de pequeno
+porte e pertencem ao setor de comércio e serviços. Ademais, se vê que na média, a escolaridade
+dos trabalhadores entre os perı́odos aumentou, assim como a remuneração e a idade média, além
+do número de empregados.
+
+   Vale ressaltar que todas as variáveis foram balanceadas para a estimativa do propensity score
+e nenhum dos testes de diferenças de médias mostra diferença estatisticamente significante para
+as variáveis independentes após o pareamento, indicando que os grupos de tratamento e controle
+se tornaram similares. E que a divisão entre os perı́odos 2004-2008 e 2008-2011 visa entender a
+diferença intertemporal do efeito do fundo, especialmente porque os intervalos se encaixam no pré
+e pós-crise econômica, o que pode influenciar a contratação e salário dos empregados.
+
+   Excluı́ram-se todas as empresas do perı́odo que tomaram o financiamento no resto do perı́odo
+para composição do grupo de controle. A tı́tulo de exemplo, na primeira coluna as empresas
+tratadas pegaram empréstimo do fundo em 2004 e as de controle não pegaram neste ano e nem
+nos demais anos do intervalo considerado.
+
+   As tabelas 2, 3 e 4 apresentam parte dos principais resultados da avaliação. A tabela 2 mostra
+o efeito do FCO Empresarial para as variáveis dependentes, variação do emprego e variação do
+salário médio. É avaliado o perı́odo 2004 a 2011, além de dois sub-perı́odos, 04-08 e 08-11, sendo
+observado se a firma tomou empréstimo no inı́cio de cada perı́odo, ou seja, no intervalo de 04-11,
+verifica-se o efeito do FCO de 20046 .
+
+  Inicialmente constam os resultados da regressão de MQO sem as variáveis de controle, que
+pode ser entendida como a diferença de médias entre os grupos de tratamento e controle. Em
+    4
+      A exceção foi uma variável que é a interação entre a idade média e dummy de indústria. Essa interação foi
+necessária para balancear as variáveis após o pareamento.
+    5
+      Pequena empresa (1 a 49 empregados), média (50 a 99) e grande (maior que 100).
+    6
+      Com o objetivo de sintetizar os resultados, apenas os coeficientes referentes ao tratamento (dummy FCO
+Empresarial) foram apresentados, de modo que os parâmetros das variáveis de controle não são disponibiliza-
+dos. Pode-se dizer que estes foram significantes na maior parte das regressões MQO e Probit – para a etapa de
+pareamento.
+
+
+                                                           10
+             Tabela 1: Estatı́sticas das variáveis no nı́vel da empresa, por perı́odo e grupo.
+
+                   Variáveis                Trata Contr             Trata Contr            Trata Contro
+                                               2004 - 2011             2004 - 2008            2008 - 2011
+        Mesorregiăo
+         Centro                              61.90%      63.30%      62.50%      64.70%     55.50%       55.60%
+         Norte                               4.60%       5.20%       4.90%       3.80%      2.50%        2.30%
+         Leste                               2.60%       1.60%       2.20%       2.20%      5.30%        5.40%
+         Sul                                 28.20%      27.00%      28.70%      26.90%     33.60%       33.70%
+         Noroeste                            2.80%       3.00%       1.60%       2.40%      3.10%        3.10%
+        Setor
+         Indústria                          21.20%      20.80%      21.10%      20.20%     21.10%       21.10%
+         Comércio/Serviços                 78.80%      79.20%      78.90%      79.80%     78.90%       78.90%
+        Tamanho (empregados)
+         Pequenas (1 a 49)                   96.20%      95.60%      97.10%      96.50%     96.20%       96.60%
+         Médias (50 a 99)                   1.40%       2.60%       1.30%       2.00%      2.30%        2.00%
+         Grandes (mais que 99)               2.40%       1.80%       1.60%       1.50%      1.40%        1.40%
+        Idade média dos empregados            29.3       29.58       29.35       29.29       30.3        30.3
+        Escolaridade média (anos)            10.02       10.04       10.04       10.14      10.32        10.34
+        Número médio de empregados          18.96       20.34       18.34       17.66      15.61         18.7
+        As médias acima se referem aos grupos com suporte comum, após pareamento.
+        Fonte: RAIS 2004 e 2008.
+
+
+seguida, estende-se para a regressão de MQO com as variáveis de controle. Essa regressão testa
+a importância do efeito do tratamento sobre o crescimento dos empregos e salários independente-
+mente do viés de seleção. Dificilmente as estimativas produzidas a partir desta regressão trariam
+um valor confiável para o impacto dos empréstimos do FCO, tendo em vista a omissão de variáveis
+relevantes no modelo ou o fato de a escolha dos tratados não se dar de forma aleatória, havendo
+um viés de seleção. Entretanto, essas estimativas são apresentadas para efeitos de comparação
+com as outras estratégias empı́ricas.
+
+   Como se vê na tabela 2, as regressões têm coeficientes similares, os quais são igualmente signifi-
+cantes e seguem a mesma direção para ambos os casos (com e sem controle). Na maioria dos casos
+os parâmetros estimados por MQO e PSM se assemelham com os encontrados após o pareamento7 .
+Em alguns casos os coeficientes estimados pelo método PSM perdem a significância estatı́stica.
+Isso justifica o uso do método alternativo, que é mais robusto por reduzir o viés que afeta os
+resultados do efeito de tratamento na análise de MQO. Por exemplo, os resultados de MQO,
+que indicam efeito na variação dos salários médios entre 2004 e 2008 devido à sua significância
+estatı́stica, se mostraram insignificantes na análise mais robusta e conclusiva do PSM.
+
+   De acordo com o método de PSM vizinho mais próximo (e PSM kernel) entre os anos de
+2004 e 2008, as empresas que tomaram financiamento do FCO Empresarial no ano de 2004,
+incrementaram seus empregos em média em 63,3% (e 45,9%, kernel) a mais que as companhias
+que não pegaram empréstimos do FCO nestes anos. Em média e após o pareamento do vizinho
+mais próximo8 , as firmas que receberam financiamento aumentaram o número de empregos em
+    7
+     Os coeficientes da regressão Probit, no tratamento (financiamento do FCO Empresarial) não foram apresen-
+tados para não tornar a leitura exaustiva.
+   8
+     Ressalta-se que a diferença entre a amostra superior (MQO) e a inferior (PSM) é igual ao número de observações
+que ficaram fora do suporte comum.
+
+                                                          11
+78,5%, enquanto as que não usaram o fundo aumentaram em apenas 15,1% - salienta-se que esses
+valores não constam na tabela. Essa diferença (63,3%) é o efeito médio do tratamento sobre as
+tratadas. Esse resultado está em acordo com pesquisas anteriores sobre os Fundos Constitucionais
+(SILVA, RESENDE, NETO, 2006 e SOARES, SOUSA, NETO, 2009).
+
+   Chama atenção o provável impacto do FCO Empresarial nos salários médios. Todas as re-
+gressões que analisam o perı́odo de 2004 a 2011 são estatisticamente significantes e mostram que
+as firmas que se financiaram com o fundo tiveram um incremento no salário médio maior que
+as empresas que não foram beneficiadas com o FCO Empresarial. Esse resultado é importante
+porque, em geral, os estudos anteriores não encontraram efeitos significantes dos Fundos Consti-
+tucionais sobre o salário médio. Além disso, a variação nos salários indica que as empresas podem
+estar aumentando a sua produtividade.
+
+Tabela 2: Microimpactos do FCO Empresarial do primeiro ano do intervalo sobre o crescimento
+dos empregos e salários médios.
+
+   FCO ano inicial             Variação do emprego                Variação do salário médio
+                            04 -11      04 - 08  08 - 11             04 -11     04 - 08    08 - 11
+   MQO sem controle       0.416*** 0.3375***         0.1302***     0.0946***    0.0876*** 0.0056
+                            (5.48)     (4.2)           (3.81)        (7.35)       (4.43)   (0.93)
+   MQO com controle       0.4044*** 0.3308***        0.0997***     .0607***     0.0703*** -0.0028
+                            (5.19)    (4.09)           (2.85)        (4.63)       (3.54)   (0.47)
+   N obs (controle)         27845     35363            47009         27845        35363    47009
+   (tratamento)              6004      2110             8048          6004         2110     8048
+   Propensity Score       0.4888*** 0.4901***          0.2234        0.0272     0.1005*** 0.0142
+   vizinho mais próx.      (5.78)    (5.20)           (0.53)        (1.16)       (2.67)   (0.50)
+   Propensity Score       0.4061*** 0.3633***        0.1256***     0.0590***    0.0914*** -0.0056
+   kernel                   (5.92)    (4.07)           (4.11)        (4.61)       (2.67)   (1.05)
+   N obs (controle)         27845     35363            47007         27845        35363    47007
+    (tratamento)             5404      1899             7255          5404         1899     7255
+   Estatı́stica T em parênteses (∗p < 0.10, ∗ ∗ p < 0.05, ∗ ∗ ∗p < 0.01)
+   Número de observações: No PSM a amostra usada foram as firmas que tiveram suporte comum.
+
+
+   Na análise por perı́odo, o FCO Empresarial provavelmente impactou positivamente no maior
+número de empregos entre os anos de 2004 e 2008, quando a economia cresceu mais. Por outro
+lado, entre os anos de 2008 e 2011 há fracas evidências de diferença nas contratações das empresas
+que utilizaram ou não o fundo. Em relação ao salário médio, não se verifica impacto no perı́odo
+de 2008 a 2011. E entre 2004 e 2008, as regressões de MQO encontraram relação do FCO com
+o salário, entretanto, o método mais robusto, PSM, não verifica efeito. Entretanto, considerando
+todo o perı́odo, o FCO afetou o crescimento dos salários médios. Possivelmente a crise provocou
+quebras estruturais das séries de crescimentos, consequentemente, influenciando nos efeitos dos
+financiamentos.
+
+   Em seguida se verifica o efeito do FCO utilizando todas as empresas que pegaram empréstimos
+em qualquer um dos anos do intervalo especificado na coluna. Esta é outra maneira de compor
+o grupo de tratamento e verificar os efeitos do fundo. A similaridade dos resultados corrobora a
+significância dos resultados anteriores.
+
+  Entre as empresas que receberam financiamento no perı́odo de 2004 e 2011, elas pegaram, em
+
+                                                   12
+média, 1,9 empréstimos. Para o intervalo de 2004 a 2008, a média das tratadas foi de 2,2 contratos.
+E para os anos de 2008 e 2011, a média foi de 1,5 financiamentos para as beneficiadas. Desse modo,
+mensura-se o efeito do FCO Empresarial agregado de todo o perı́odo (tabela 3) e não apenas para
+um ano especı́fico.
+
+Tabela 3: Microimpactos do FCO Empresarial do intervalo sobre o crescimento dos empregos e
+salários médios.
+
+   FCO intervalo               Variação do emprego                Variação do salário médio
+                            04 -11      04 - 08  08 - 11             04 -11     04 - 08    08 - 11
+   MQO sem controle       0.416*** 0.3375***         0.1302***     0.0946***    0.0876*** 0.0056
+                            (5.48)    (4.20)           (3.81)        (7.35)       (4.43)   (0.93)
+   MQO com controle       0.4044*** 0.3308***        0.0997***     .0607***     0.0703*** -0.0028
+                            (5.19)    (4.09)           (2.85)        (4.63)       (3.54)   (0.47)
+   N obs (controle)         27845     35363            47009         27845        35363    47009
+    (tratamento)             6004      2110             8048          6004         2110     8048
+   Propensity Score       0.4888*** 0.4901***          0.2234        0.0272     0.1005*** 0.0142
+   vizinho mais próx.      (5.78)    (5.20)           (0.53)        (1.16)       (2.67)   (0.50)
+   Propensity Score       0.4061*** 0.3633***        0.1256***     0.0590***    0.0914*** -0.0056
+   kernel                   (5.92)    (4.07)           (4.11)        (4.61)       (2.67)   (1.05)
+   N obs (controle)         27845     35363            47007         27845        35363    47007
+    (tratamento)             5404      1899             7255          5404         1899     7255
+   Estatı́stica T em parênteses (∗p < 0.10, ∗ ∗ p < 0.05, ∗ ∗ ∗p < 0.01)
+   Número de observações: No PSM a amostra usada foram as firmas que tiveram suporte comum.
+
+
+   Após o pareamento pelo vizinho mais próximo, as empresas que usaram o FCO em qualquer um
+dos anos entre 2004 e 2011 incrementaram em média 102,3% o número de empregos. Já as firmas
+que não tomaram cresceram 53,4% os empregos gerados. Apesar desses valores não constarem na
+tabela acima, sua diferença, revela o impacto de 48,8% sobre o incremento no número de empregos.
+Para essa variável, o pareamento por kernel leva a resultados mais parecidos com os verificados
+pelas regressões de MQO, em torno de 40%. Em ambos os casos, o valor é estatisticamente
+significativo e alto.
+
+   No que diz respeito aos salários médios, os resultados indicam um impacto do FCO Empresarial
+de aproximadamente 10% para o perı́odo de 2004 e 2008. Entre 2004 e 2011 existem evidências
+de efeito positivo do fundo, exceto pelo método do vizinho mais próximo.
+
+  Assim como o estudo de Silva, Resende e Neto (2009), este trabalho faz uma análise das firmas
+por porte. O efeito do fundo entre as empresas pequenas difere das empresas médias e grandes.
+Para o perı́odo total (2004 e 2011), o FCO afetou mais as contratações nas empresas pequenas do
+que nas empresas grandes e médias.
+
+   Em relação ao salário médio, diferentemente do estudo supracitado, encontrou-se efeito esta-
+tisticamente significante do fundo, cerca de 12%, entre 2004 e 2011 nas empresas pequenas. Já
+as empresas médias e grandes beneficiadas, não tiveram seus salários médios afetados pelo FCO
+Empresarial. Provavelmente, o investimento gera um incremento de capital que se reflete na pro-
+dutividade, e logo, nos salários das firmas menores, ao contrário das maiores, aonde os empréstimos
+têm um efeito nulo.
+
+
+
+                                                   13
+Tabela 4: Microimpactos do FCO Empresarial do primeiro ano do perı́odo sobre o crescimento
+dos empregos e salários médios – por porte.
+
+      FCO intervalo              Variação do emprego              Variação do salário médio
+                                04 -11     04 - 08 08 - 11            04 -11      04 - 08 08 - 11
+                                                 Pequenas
+      MQO sem controle       0.6476**     0.4418*** -0.0725        0.1297*** .1140***          0.01
+                               (2.56)        (2.83)    (1.05)        (3.17)    (3.10)         (0.82)
+      MQO com controle       0.6259**      .4303*** -0.1124*        0.0967** 0.0958***        0.0037
+                               (2.46)        (2.75)    (1.61)        (2.37)    (2.60)         (0.30)
+      N obs (controle)         26647         34023    45138          26647     34023          45138
+      (tratamento)              523           572      1847            523      572            1847
+      Propensity Score        0.7944*     0.6292**    0.0068        0.1182**   0.1224         0.0301
+      vizinho mais próx.      (1.70)        (2.14)    (0.01)        (2.16)    (1.33)         (1.17)
+      Propensity Score         0.6968       0.4809* -0.0741*       0.1291***   0.1128         0.0005
+      kernel                   (1.55)        (1.66)    (1.76)        (3.52)    (1.29)         (0.06)
+      N obs (controle)         26647         34023    45136          26647     34023          45136
+      (tratamento)              471           515      1663            471      515            1663
+                                           Médias e   grandes
+      MQO sem controle        0.2229      0.4334***    -0.0626      -0.0204       -0.0481     0.0803*
+                               (0.74)       (3.57)      (0.30)       (0.15)        (0.53)      (1.81)
+      MQO com controle         0.3045     0.4893***    -0.0034       0.0245       -0.0582     0.0712*
+                               (1.00)       (3.97)      (0.02)       (0.18)        (0.63)      (1.59)
+      N obs (controle)          1198         1340        1871         1198         1340         1871
+      (tratamento)               37           39          77           37            39          77
+      Propensity Score         0.1255     0.7132***     0.0511      0.0166        -0.1163      0.0412
+      vizinho mais próx.      (0.33)       (2.68)      (0.49)       (0.12)        (0.70)      (0.48)
+      Propensity Score        0.3337*     0.4914**     -0.0307       -.0598       -0.0759      0.0705
+      kernel                   (1.64)       (2.09)      (0.35)       (0.56)        (0.95)      (1.37)
+      N obs (controle)          1073         1209        1734         1073         1209         1734
+      (tratamento)               34           36          70           34            36          70
+      Estatı́stica T em parênteses (∗p < 0.10, ∗ ∗ p < 0.05, ∗ ∗ ∗p < 0.01))
+      Número de observações: No PSM a amostra usada foram as firmas que tiveram suporte comum.
+
+
+4.1     Propensity Score Generalizado e Função Dose-Resposta
+
+   Esta seção apresenta os resultados obtidos pelas estimações do propensity score generalizado
+e da função dose-resposta. Ao invés de usar o tratamento na forma logarı́tmica, usou-se a
+transformação Box-Cox, a fim de obter resı́duos normalmente distribuı́dos como em (9). Logo,
+           λ
+f (T ) = (Y λ−1) para λ 6= 0, e f (T ) = lnY para λ = 0.
+
+   Foram avaliados os efeitos do total de crédito contratado entre 2004 e 2011, entre 2004 e 2008,
+e entre 2008 e 2011, utilizando o método PSG. Apesar dos coeficientes médios do tratamento
+variarem entre os perı́odos, como foi apresentado pelo método anterior, as curvas de efeito mar-
+ginal foram similares entre os perı́odos, apresentando, em média, um efeito dos financiamentos
+ascendente no caso dos empregos e descendente no caso dos salários médios.
+
+
+
+                                                     14
+   No caso da primeira variável de tratamento, para balancear as covariadas dos grupos de tratados
+e controles foi necessário excluir 5% das observações em cada extremo da distribuição, ou seja,
+foram excluı́dos os financiamentos de valores mais altos e mais baixos. Com isso, o teste de
+Komolgorov-Smirnov de normalidade dos resı́duos é satisfeito a 5% de significância e as covariadas
+apresentam valores mais similares entre tratados e controles com um Fator Mı́nimo de Bayes9 igual
+a 0,185.
+
+   Os resultados do PSM indicam um efeito geral do FCO Empresarial nos empregos constante.
+Entretanto, o método de dose-resposta aponta que o efeito variou conforme o valor do financia-
+mento. Na figura à esquerda da figura 1 (a) nota-se que um aumento do crédito contratado entre
+2004 e 2011 aumenta a taxa de crescimento do emprego, especialmente para empréstimos até R$
+50.000. A partir daı́ o efeito se reduziria de forma expressiva, o que poderia indicar que o impacto
+do aumento do valor do financiamento não mudaria tanto. Isso é demonstrado pelo gráfico à
+direita, que mostra o efeito marginal do tratamento, no qual se pode observar que este decairia
+substancialmente até os financiamentos com valor de R$ 50.000. Os intervalos de confiança foram
+obtidos por bootstrap, com 500 replicações. Em virtude do tamanho dos intervalos de confiança
+a 95% não se pode dizer que tal relação é estatisticamente significativa, pois o efeito marginal
+nulo se encontra dentro do intervalo de confiança em todos os nı́veis de tratamento avaliados. As
+interpretações para os outros perı́odos são análogas, e, portanto, serão sucintas.
+
+   Os resultados da figura 1 (c) foram obtidos excluindo-se 10% da amostra em cada extremo da
+distribuição, a fim de balancear as covariadas. Nessa figura nota-se que o crédito contratado entre
+2004 e 2008 está positivamente relacionado com a taxa de variação do emprego. O limite inferior
+do intervalo de confiança nesse caso é superior a zero para alguns nı́veis de tratamento analisados,
+o que sugere que a relação é estatisticamente significativa. O salário médio também apresenta
+uma relação positiva com o montante de crédito contratado. Em ao menos um pequeno trecho
+da figura 1 (d), pode-se observar que o limite inferior do intervalo de confiança é maior do que
+zero o que referenda a significância estatı́stica da relação entre o tratamento e o salário médio.
+Quando se considera como tratamento somente o crédito contratado entre 2008 e 2011, as relações
+positivas são visualmente observadas, mas não há significância estatı́stica nessa associação.
+
+   Na figura 1 (b), nota-se que os empréstimos até R$ 50.000 apresentam uma associação positiva
+com a taxa de crescimento dos salários. Para empréstimos de valores superiores essa relação
+se inverte. Entretanto, pouco se pode afirmar devido ao tamanho dos intervalos de confiança,
+especialmente da função do efeito do tratamento. Em ambos os perı́odos analisados, o efeito
+do aumento do financiamento sobre o incremento do salário é crescente, sugerindo uma relação
+positiva entre o valor do FCO Empresarial e um aumento da produtividade do trabalho.
+
+    Finalmente, ao se trabalhar com intervalos de confiança de 90% (não apresentados no artigo),
+nota-se que o limite inferior do intervalo de confiança é superior à zero ao menos para algum
+nı́vel de tratamento nos três perı́odos analisados. Por motivo de rigor estatı́stico, este trabalho
+apresenta somente os intervalos de 95% de confiança10 .
+
+   Em suma, a função dose-resposta encontrada pelo PSG apresenta evidências de que os nı́veis de
+financiamento do FCO Empresarial de 2004 estão relacionados positivamente com maiores nı́veis
+de crescimento de empregos e salários, entre 2004 e 2011.
+
+
+   9
+      Instrumento usado na seleção de modelos ou alternativa bayesiana para teste de significância, relacionado com
+o teste da razão de verossimilhança.
+   10
+      Os demais resultados podem ser obtidos junto aos autores.
+
+                                                         15
+                                                                                                                                                                                                            FunçãoiDoseiResposta                                                                                    FunçãoiEfeitoidoiTratamento
+
+
+
+
+                                                                                                                                                                                                                                                            E[vremanomed0411%t=20000F]-E[vremanomed0411%tF]
+                                                                                                                                                                                                  1+4
+
+
+
+
+                                                                                                                                                                                                                                                                                                              +2
+                                                                                                                                                                                                  1+3
+                                                                                                                                                                           E[vremanomed0411%tF]
+
+
+
+
+                                                                                                                                                                                                                                                                                                              +1
+                                                                                                                                                                                                  1+2
+
+
+
+
+                                                                                                                                                                                                                                                                                                              0
+                                                                                                                                                                                                  1+1
+
+
+
+
+                                                                                                                                                                                                                                                                                                              -+1
+                                                                                                                                                                                                  1
+                                                                                                                                                                                                        0       50000      100000 150000 200000                                                                     0         50000 100000 150000 200000
+                                                                                                                                                                                                                    NívelidoiTratamento                                                                                         NívelidoiTratamento
+                                                                                                                                                                                                                DoseiResposta             LimiteiInferior                                                                   EfeitoidoiTratamento         LimiteiInferior
+                                                                                                                                                                                                                LimiteiSuperior                                                                                             LimiteiSuperior
+
+
+
+                                                                                                                                                                                                        LimitesidoiIntervaloideiConfiançaiaoinívelide95iC                                                               LimitesidoiIntervaloideiConfiançaiaoinívelide95iC
+                                                                                                                                                                                                        FunçãoiDoseiRespostai=iPrevisãoiLinear                                                                          FunçãoiDoseiRespostai=iPrevisãoiLinear
+
+
+
+                                            (a) Emprego 2004 a 2011                                                                                                                                                        (b) Salário 2004 a 2011
+
+
+                               FunçãoLDoseLResposta                                                                     FunçãoLEfeitoLdoLTratamento                                                         FunçãoiDoseiResposta                                                                                    FunçãoiEfeitoidoiTratamento
+
+
+
+
+                                                                                                                                                                                                                                                            E[vremanomed04089t=20000%]-E[vremanomed04089t%]
+                                                                                                                                                                                                  2
+                                                                                                                  .8
+16
+
+
+
+
+                      3
+
+
+
+
+                                                                                                                                                                                                                                                                                                              33
+                                                                            E[vemp+4+8ãtF2++++9]PE[vemp+4+8ãt9]
+
+
+
+
+                                                                                                                                                                                                  135
+                                                                                                                  .6
+
+
+
+
+                                                                                                                                                                           E[vremanomed04089t%]
+                      2
+
+
+
+
+                                                                                                                                                                                                                                                                                                              32
+     E[vemp+4+8ãt9]
+
+
+
+
+                                                                                                                  .4
+
+
+
+
+                                                                                                                                                                                                  1
+
+
+
+
+                                                                                                                                                                                                                                                                                                              31
+                      1
+
+
+
+
+                                                                                                                  .2
+
+
+
+
+                                                                                                                                                                                                  35
+
+
+
+
+                                                                                                                                                                                                                                                                                                              0
+                      +
+
+
+
+
+                                                                                                                  +
+
+
+
+
+                                                                                                                                                                                                  0
+
+
+
+
+                                                                                                                                                                                                                                                                                                              -31
+                                                                                                                  P.2
+                      P1
+
+
+
+
+                           +       5++++ 1+++++ 15++++ 2+++++                                                           +       5++++ 1+++++ 15++++ 2+++++                                              0       50000 100000 150000 200000                                                                          0         50000 100000 150000 200000
+                                     NívelLdeLTratamento                                                                          NívelLdeLTratamento                                                             NívelideiTratamento                                                                                           NívelideiTratamento
+                                                                                                                                                                                                               DoseiResposta             LimiteiInferior                                                                    EfeitoidoiTratamento         LimiteiInferior
+                                  DoseLResposta           LimiteLInferior                                                      EfeitoLdoLTratamento      LimiteLInferior
+                                                                                                                                                                                                               LimiteiSuperior                                                                                              LimiteiSuperior
+                                  LimiteLSuperior                                                                              LimiteLSuperior
+
+                           LimitesLdeLConfiançãoLaoLnívelLdeL95Lu                                                       LimitesLdeLConfiançãoLaoLnívelLdeL95Lu                                          IntervalosideiConfiançãoiaoinívelidei95C                                                                    IntervalosideiConfiançãoiaoinívelidei95C
+                                                                                                                                                                                                        FunçãoiDoseiRespostai=iPrevisãoiLinear                                                                      FunçãoiDoseiRespostai=iPrevisãoiLinear
+                           FunçãoLDoseLRespostaL=LPrevisãoLLinear                                                       FunçãoLDoseLRespostaL=LPrevisãoLLinear
+
+
+
+
+                                            (c) Emprego 2004 a 2008                                                                                                                                                        (d) Salário 2004 a 2008
+
+                      Figura 1: Função Dose Resposta do FCO sobre Emprego e Salário para dois perı́odos: 2004-2011 e 2004-2008
+                                FunçãoIDoseIResposta                                                                       FunçãoIEfeitoIdoITratamento                                                           FunçãoLDoseLResposta                                                                                  FunçãoLEfeitoLdoLTratamento
+
+
+
+
+                                                                                                                                                                                                                                                              E[vremanomed08119tã20000%]PE[vremanomed08119t%]
+                                                                                                                                                                                                       -55
+                                                                                                                     66
+
+
+
+
+                                                                                                                                                                                                                                                                                                                -1
+                      165
+
+
+
+
+                                                                               E[vemp0811%tP20000F]4E[vemp0811%tF]
+
+
+
+
+                                                                                                                                                                                                       -5
+                                                                                                                     64
+
+
+
+
+                                                                                                                                                                                E[vremanomed08119t%]
+
+
+
+
+                                                                                                                                                                                                                                                                                                                -05
+                      1
+     E[vemp0811%tF]
+
+
+
+
+                                                                                                                                                                                                       -45
+                                                                                                                     62
+
+
+
+
+                                                                                                                                                                                                       -4
+                      65
+
+
+
+
+                                                                                                                                                                                                                                                                                                                0
+                                                                                                                     0
+
+
+
+
+                                                                                                                                                                                                       -35
+                      0
+
+
+
+
+                                                                                                                                                                                                       -3
+
+
+
+
+                                                                                                                                                                                                                                                                                                                P-05
+                                                                                                                     462
+                            0       50000 100000 150000 200000                                                             0        50000 100000 150000 200000                                               0       50000 100000 150000 200000                                                                        0       50000 100000 150000 200000
+                                      NívelIdoITratamento                                                                             NívelIdoITratamento                                                              NívelLdeLTratamento                                                                                       NívelLdeLTratamento
+                                                                                                                                                                                                                    DoseLResposta           LimiteLInferior
+                                    DoseIResposta            LimiteIInferior                                                      EfeitoIdoITratamento        LimiteIInferior                                                                                                                                                 EfeitoLdoLTratamento      LimiteLInferior
+                                                                                                                                                                                                                    LimiteLSuperior
+                                    LimiteISuperior                                                                               LimiteISuperior                                                                                                                                                                             LimiteLSuperior
+
+                            IntervaloIdeIConfiançãoIaoInívelIdeI95çl                                                       IntervaloIdeIConfiançãoIaoInívelIdeI95çl                                          IntervaloLdeLConfiançaLaL95u                                                                              IntervaloLdeLConfiançaLaL95u
+                            FunçãoIDoseIRespostaI=IPrevisãoILinear                                                         FunçãoIDoseIRespostaI=IPrevisãoILinear                                            FunçãoLDoseLRespostaL=LPrevisãoLLinear                                                                    FunçãoLDoseLRespostaL=LPrevisãoLLinear
+
+
+
+
+                                            (a) Emprego 2008 a 2011                                                                                                                                                            (b) Salário 2008 a 2011
+
+
+
+                                            Figura 2: Função Dose Resposta do FCO sobre Emprego e Salário para o perı́odo 2008-2011
+17
+5     Conclusão
+
+   O objetivo do FCO é gerar desenvolvimento econômico e social, além de reduzir as desigualdades
+regionais, por meio do financiamento do setor produtivo. Como a definição de desenvolvimento
+não é precisa, elegeram-se neste trabalho as mesmas variáveis que foram analisadas em estudos
+anteriores (SOARES, SOUSA, NETO, 2009; SILVA, RESENDE, NETO, 2009; RESENDE, 2102;
+RESENDE, 2014a). A abordagem utilizada focou na estimação dos microimpactos do FCO sobre
+emprego e salário médio das empresas, já que o impacto imediato do fundo é esperado que ocorra
+em nı́vel micro.
+
+   Ambos os métodos de pareamento, tanto a forma binária quanto a que considera a intensidade
+do tratamento, apresentam evidências de que o FCO Empresarial afetou positivamente os cres-
+cimentos dos empregos e salários médios nas firmas, especialmente entre 2004 e 2008. O PSM
+indicou um efeito linear positivo do FCO nos empregos e salários. A inovação do trabalho con-
+sistiu na aplicação do efeito dose-resposta, ou PSG, método de fundamental importância para
+entender o efeito dos Fundos Constitucionais, já que os estudos anteriores, utilizando microdados,
+consideraram apenas o aspecto dicotômico do tratamento sem levar em conta o montante do fi-
+nanciamento. Ao invés de comparar as empresas financiadas pelo FCO Empresarial com as não
+beneficiadas, verificou-se o efeito diferenciado na geração de empregos e salários dos empréstimos
+de acordo com o montante emprestado. O PSG revelou que os efeitos nesses crescimentos são re-
+lacionados não linearmente ao valor dos empréstimos, isto é, a dose-resposta aponta que os efeitos
+variaram conforme a magnitude do financiamento, o que era esperado pela teoria econômica, dada
+a hipótese de retornos decrescentes do capital.
+
+   A relação positiva entre o FCO Empresarial e a geração de empregos indica que um dos prin-
+cipais objetivos dos Fundos Constitucionais é cumprido. Outros resultados sugerem que o FCO
+Empresarial também teve efeito positivo no aumento do salário médio entre 2004 e 2008. Desse
+modo, pode-se dizer que o FCO vem contribuindo para o desenvolvimento econômico e social da
+região Centro-Oeste. Entretanto, a polı́tica deve ser aperfeiçoada, dada a elevada concentração de
+recursos em alguns municı́pios, que contribui para a perpetuação da desigualdade intra-estadual.
+
+   Ressalta-se que possivelmente a crise econômica provocou quebras estruturais das séries de cres-
+cimentos de empregos e salários, consequentemente, influenciando no efeito dos financiamentos, por
+isso a análise foi dividida entre diferentes perı́odos. Entre 2004 e 2008 o fundo teve efeito positivo
+nos salários médios, diferente do perı́odo posterior. Além disso, outra diferenciação realizada foi a
+respeito do porte das empresas, a qual mostrou que as pequenas se comportaram diferentemente
+das médias e grandes. Estas últimas, por exemplo, não tiveram seus salários médios afetados pelo
+FCO Empresarial.
+
+   Silva, Resende e Neto (2009) ressaltam que, como os demais estudos que usam a metodologia
+de Propensity Score, existe a ressalva a respeito do viés de seleção, uma vez que o empréstimo é
+alocado para firmas que se candidataram ao financiamento e passaram pelo crivo do banco credor
+com sua aprovação. Assim, o viés seria positivo em favor das empresas tomadoras, já que elas
+seriam mais dinâmicas e competitivas. Tal fator se destaca ainda mais no caso do PSG, visto
+que, comparam-se apenas empresas beneficiadas. Ademais, não necessariamente a seleção em
+observáveis se aplica, já que os fatores observáveis analisados não são suficientes para garantir
+que as empresas financiadas (tratadas) sejam parecidas com as firmas não tomadoras (controle).
+Desse modo, a diferença em caracterı́sticas não observáveis também pode levar ao viés.
+
+    Outra hipótese do modelo prevê que não haja substituição do tratamento, algo difı́cil de ga-
+
+                                                   18
+rantir, já que é improvável que empresas do grupo de controle não busquem outros mecanismos
+de financiamento subsidiado, caso das linhas do BNDES, principalmente. Como esse conjunto
+de informações não está disponı́vel, dado o sigilo dos contratos, este e nem os estudos anteriores
+foram capazes de eliminar esse efeito.
+
+
+
+Referências
+Accetturo, A. & De Blasio, G. (2012), ‘Policies for local development: An evaluation of italy’s
+  ’patti territoriali”, Regional Science and Urban Economics 42(1), 15–26.
+
+Almeida, M. F., Silva, A. M. A. d. & Resende, G. M. (2006), ‘Uma análise dos fundos constituci-
+  onais de financiamento do nordeste (fne), norte (fno) e centro-oeste (fco)’.
+
+Alvarenga, G. V. (2012), ‘Impactos dos fundos setoriais nas empresas: novas perspectivas a partir
+  da função dose-resposta’.
+
+Barro, R. J. & Sala-i Martin, X. (1992), ‘Convergence’, Journal of political Economy pp. 223–251.
+
+Becker, S. O., Egger, P. H. & Von Ehrlich, M. (2010), ‘Going nuts: The effect of eu structural
+  funds on regional performance’, Journal of Public Economics 94(9), 578–590.
+
+Becker, S. O., Egger, P. H. & Von Ehrlich, M. (2012), ‘Too much of a good thing? on the growth
+  effects of the eu’s regional policy’, European Economic Review 56(4), 648–668.
+
+Becker, S. O., Ichino, A. et al. (2002), ‘Estimation of average treatment effects based on propensity
+  scores’, The stata journal 2(4), 358–377.
+
+da Silva, A. M. A., Resende, G. M. & Raul da Mota, S. N. (2006), Avaliação econômica dos
+  fundos constitucionais de financiamento do nordeste e do norte (fne e fno), in ‘Anais do XXXIV
+  Encontro Nacional de Economia [Proceedings of the 34th Brazilian Economics Meeting]’, num-
+  ber 132, ANPEC-Associação Nacional dos Centros de Pósgraduação em Economia [Brazilian
+  Association of Graduate Programs in Economics].
+
+Dall’Erba, S. & Le Gallo, J. (2008), ‘Regional convergence and the impact of european structural
+ funds over 1989–1999: A spatial econometric analysis*’, Papers in Regional Science 87(2), 219–
+ 244.
+
+Dehejia, R. H. & Wahba, S. (2002), ‘Propensity score-matching methods for nonexperimental
+  causal studies’, Review of Economics and statistics 84(1), 151–161.
+
+Ertur, C., Le Gallo, J. & Baumont, C. (2006), ‘The european regional convergence process, 1980-
+  1995: Do spatial regimes and spatial dependence matter?’, International Regional Science Re-
+  view 29(1), 3–34.
+
+Esposti, R. & Bussoletti, S. (2008), ‘Impact of objective 1 funds on regional growth convergence
+  in the european union: a panel-data approach’, Regional Studies 42(2), 159–173.
+
+Federal, S. (1988), ‘Constituição da república federativa do brasil’, Brası́lia: Senado .
+
+Hirano, K. & Imbens, G. W. (2004), ‘The propensity score with continuous treatments’, Applied
+  Bayesian modeling and causal inference from incomplete-data perspectives 226164, 73–84.
+
+
+                                                   19
+Imbens, G. W. (2000), ‘The role of the propensity score in estimating dose-response functions’,
+  Biometrika 87(3), 706–710.
+
+Mohl, P. & Hagen, T. (2010), ‘Do eu structural funds promote regional growth? new evidence
+ from various panel data approaches’, Regional Science and Urban Economics 40(5), 353–365.
+
+Nacional, M. D. I. (2009), ‘Relatório de desempenho operacional: Fundos constitucionais de fi-
+  nanciamento, 20 anos’.
+
+Nacional, M. D. I. (2012), ‘Fundos regionais e incentivos fiscais: contribuem para a redução das
+  desigualdades regionais e ajudam o brasil a crescer’.
+
+Nacional, M. D. I. (ND), ‘Polı́tica nacional de desenvolvimento regional, pndr’.
+
+Pischke, J.-S. & Angrist, J. (2009), ‘Mostly harmless econometrics: an empiricist‘s companion’.
+
+Resende, G. M. (2012), ‘Micro e macroimpactos de polı́ticas de desenvolvimento regional: O caso
+  dos empréstimos do fne-industrial no estado de ceará’.
+
+Resende, G. M. (2014a), ‘Avaliação dos impactos econômicos do fundo constitucional de financi-
+  amento do nordeste entre 2004 e 2010’.
+
+Resende, G. M. (2014b), ‘Measuring micro-and macro-impacts of regional development policies:
+  The case of the northeast regional fund (fne) industrial loans in brazil, 2000–2006’, Regional
+  studies 48(4), 646–664.
+
+Resende, G. M., Cravo, T. A. & Pires, M. J. d. S. (2014), ‘Avaliação dos impactos econômicos do
+  fundo constitucional de financiamento do centro-oeste (fco) entre 2004 e 2010’.
+
+RodrÍguez-Pose*, A. & Fratesi, U. (2004), ‘Between development and social policies: the impact
+  of european structural funds in objective 1 regions’, Regional Studies 38(1), 97–113.
+
+Rosenbaum, P. R. & Rubin, D. B. (1983), ‘The central role of the propensity score in observational
+  studies for causal effects’, Biometrika 70(1), 41–55.
+
+Rubin, D. B. (1974), ‘Estimating causal effects of treatments in randomized and nonrandomized
+ studies.’, Journal of educational Psychology 66(5), 688.
+
+Silva, A. M. A. d., Resende, G. M., Neto, S. & da Mota, R. (2009), ‘Eficácia do gasto público:
+   uma avaliação do fne, fno e fco’, Estudos Econômicos (São Paulo) 39(1), 89–125.
+
+Soares, R. B., Linhares, F. C., Gonçalves, M. F. & Viana, L. F. G. (2014), ‘Fondo constitucional
+  de financiamiento del nordeste del brasil: efectos diferenciados sobre el crecimiento económico
+  de los municipios’, Revista de la CEPAL (113), 183–201.
+
+Soares, R., Sousa, J. & Neto, A. P. (2009), ‘Avaliação de impacto do fne no emprego, na massa
+  salarial e no salário médio em empreendimentos financiados’, Revista econômica do Nordeste
+  40(1), 217–234.
+
+
+
+
+                                               20
+

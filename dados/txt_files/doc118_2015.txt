@@ -1,0 +1,853 @@
+    DETERMINANTES DA CRIMINALIDADE NO ESTADO DE SÃO PAULO:
+        UMA ANÁLISE ESPACIAL DE DADOS EM CROSS-SECTION
+                                                                           Maiara Patti Gaulez1
+                                                                   Vladimir Fernandes Maciel2
+RESUMO
+
+O objetivo deste artigo é analisar os determinantes da criminalidade contra o patrimônio
+no estado de São Paulo. Desde as últimas décadas do século XX, diversos estudos de
+Análise Explanatória de Dados Espaciais diagnosticaram a importância da dimensão
+espaço na investigação do fenômeno criminal. Como se sabe, a existência de
+autocorrelação nos erros por omissão dos efeitos de vizinhança torna a estimação por
+MQO e a respectiva interpretação dos coeficientes viesadas. A partir disso, passou a se
+levar em conta nas pesquisas o espraiamento do crime no espaço. Portanto, este artigo
+analisa os determinantes do crime contra o patrimônio no estado de São Paulo,
+considerando a dimensão espacial. Ainda são poucos os trabalhos nacionais que levam
+em conta a distribuição no espaço desse fenômeno para entender suas causalidades. Este
+trabalho busca suprir essa lacuna, acreditando que essas técnicas possam contribuir para
+o aperfeiçoamento do desenho, da implantação e da avaliação de políticas de combate ao
+crime. Os dados de crime contra o patrimônio utilizados neste artigo foram obtidos
+através de boletins de ocorrência disponibilizados pelo SEADE, no ano de 2011. Os dados
+utilizados mostraram-se espacialmente distribuídos de forma que o melhor modelo para
+o especificar foi o Spatial Autoregressive Model, com dependência espacial na variável
+dependente e nos erros. Os resultados mostram que renda, densidade demográfica e grau
+de urbanização afetam positivamente a criminalidade, indo ao encontro da literatura.
+Aparentemente, o crime contra o patrimônio ocorre onde o retorno esperado é maior. O
+que se pode afirmar, portanto, de forma preliminar é que a criminalidade é maior em
+regiões mais urbanizadas, mais densamente ocupadas e com maior nível de renda. Como,
+ao longo das décadas, outras partes do estado, que não a Região Metropolitana de São
+Paulo (RMSP), foram assumindo características metropolitanas, houve maiores
+incentivos para espraiamento dessa modalidade de crime – daí a percepção de
+“interiorização da criminalidade” – como se fosse o preço a pagar pela desconcentração
+das atividades produtivas da RMSP para outras partes do estado. Este artigo está dividido
+em três seções, além da introdução e das considerações finais. A primeira seção faz a
+revisão da literatura teórica e empírica relevante sobre economia do crime. A segunda
+seção apresenta as variáveis adotadas, os dados utilizados, suas fontes de obtenção e as
+respectivas estatísticas descritivas e estatísticas espaciais. A terceira seção, por fim,
+realiza a análise empírica dos determinantes dos crimes contra o patrimônio por meio da
+aplicação de técnicas de econometria espacial.
+PALAVRAS-CHAVES: Economia do Crime, Econometria Espacial, São Paulo
+
+
+
+
+1
+ Mestranda em Economia Aplicada pela Universidade Federal de São Carlos, Campus de Sorocaba.
+2
+ Docente e Pesquisador da Universidade Presbiteriana Mackenzie. Coordenador do Núcleo de Pesquisas
+em Qualidade de Vida (NPQV).
+
+                                                                                                     1
+ABSTRACT
+The purpose of this paper is to analyze the determinants of crime against property in the
+State of São Paulo considering its spatial dimension. There are few studies in Brazil that
+take into account the spatial distribution of this phenomenon in order to understand their
+causalities. This paper seeks to fill this gap, believing that these techniques can contribute
+to improving the design, implementation and evaluation of crime-fighting policies. The
+crime against property data used were obtained from police reports provided by SEADE
+Foundation for 2011. We found out the best model specification was the Spatial
+Autoregressive Model (with spatial dependence in the dependent variable and in the error
+term). The results show that income, population density and degree of urbanization
+positively affect crime, as explained by the applied literature. Apparently, the crimes
+against property occurs where the expected return is higher. In a preliminary way, we
+conclude that crime is higher in more urban areas, more densely populated and with
+higher levels of income. Over the decades, regions of the State of São Paulo other than
+the metropolitan area have had metropolitan characteristics. Thus, there are larger
+incentives for crime against property - hence the perception of "spread crime towards
+countryside" - as it would be the price to pay for the decentralization of economic
+activities to other regions of the state. This paper is divided into three sections, beyond
+the introduction and concluding remarks. The first section reviews the relevant theoretical
+and empirical literature about economics of crime. The second section presents the
+variables used, the data used, its sources and the descriptive and spatial statistics. The
+third section, finally, conducts empirical analysis about the determinants of crimes against
+property through the application of spatial econometrics techniques.
+KEYWORDS: Economics of Crime, Spatial Econometrics, São Paulo
+
+
+ÁREA DE SUBMISSÃO: Área 12 - Economia Social e Demografia Econômica
+
+
+JEL: K14, C21, H41
+
+
+
+
+                                                                                            2
+INTRODUÇÃO
+
+
+O objetivo deste trabalho é analisar os determinantes da criminalidade contra o
+patrimônio 3 no estado de São Paulo. O crime é um fenômeno estudado por diversas áreas
+sociais. Na teoria econômica, Gary Becker (1967) foi um dos primeiros pesquisadores a
+introduzir esse campo como objeto de estudo, considerando-o como uma atividade
+econômica na qual o individuo que comete o crime é um ser racional e ao escolher entre
+uma atividade legal ou ilegal ele leva em consideração o retorno de cada uma delas, as
+chances de ser pego e a severidade da punição, caso opte pela atividade ilícita. Outro
+ponto levantado por Becker é a influência do que ele chama de “custo moral”, no qual o
+indivíduo levaria em consideração a opinião da sociedade (incluindo sua rede próxima:
+família e amigos) e a dificuldade que encontraria em se reintroduzir a ela após sofrer sua
+punição. Trabalhos como o de Fajnzylber e Araújo Junior (2001) buscam uma forma de
+mensurar essa variável. Posteriormente outras variáveis agregaram-se ao modelo, como
+evidencia Ehrlinch (1973), questões sociais, tais como, desemprego e renda, também
+influenciam na tomada de decisão do indivíduo.
+O crime é uma atividade que traz custos à sociedade, não apenas monetários – como roubo
+e furtos ou a perda de capital humano, causada por homicídios –, mas também custos de
+perda de bem estar. A sociedade deve buscar minimizar esses custos por meio de gastos
+com segurança, que podem modificar a probabilidade de ser punido, e de sanção adequada
+para cada crime, cujos incentivos a cometê-lo são alterados.
+O aumento das taxas de criminalidade no país ocorreu de forma considerável a partir da
+década de 80, sendo que, nos últimos anos, houve convergência destas no território
+brasileiro (SANTOS e SANTOS FILHO, 2011). Os crimes contra a pessoa (homicídio),
+em 2012 foram de 56.337 assassinatos de acordo com o DATASUS, o que representa
+uma taxa de aproximadamente 29 homicídios por cem mil habitantes. Esse valor é mais
+alto do que o número de mortes na Guerra do Vietnã (1959-1975), na qual morreram
+43.700 indivíduos. As regiões Norte e Nordeste apresentam as maiores taxas por cem mil
+habitantes. Por outro lado, o crime contra o patrimônio (incluindo todos os tipos de
+roubos) não restringe suas altas taxas apenas nas regiões Norte e Nordeste. A taxa de
+roubos por cem mil habitantes no Brasil, em 2011, foi de 985,98, na qual, o estado de São
+Paulo foi o que mais contribuiu para essa taxa (321,84), seguido pelo estado do Pará
+(204,54) (ANUÁRIO BRASILEIRO DE SEGURANÇA PUBLICA, 2013).
+Os dados de crime contra o patrimônio utilizados neste artigo foram obtidos através de
+boletins de ocorrência disponibilizados pelo SEADE, no ano de 2011. As maiores taxas
+de criminalidade estão presentes na Região Metropolitana de São Paulo e de Campinas;
+percebe-se que ao longo desses anos essa “mancha” de criminalidade tem aumentado em
+torno de Campinas e interiorizado para a região noroeste do estado.
+Desde as últimas décadas do século XX, diversos estudos de Análise Explanatória de
+Dados Espaciais (AEDE) diagnosticaram a importância da dimensão espaço na
+investigação do fenômeno criminal. Como se sabe, a existência de autocorrelação nos
+erros por omissão dos efeitos de vizinhança torna a estimação por MQO e a respectiva
+interpretação dos coeficientes viesadas. A partir disso, passou a se levar em conta nas
+pesquisas o espraiamento do crime no espaço. Portanto, este artigo analisa os
+
+3
+ O crime contra o patrimônio, nesse trabalho, incluí: todos os tipos de furto (coletivo, estabelecimento
+comercial, veículos, residência, outros) e todos os tipos de roubo (coletivo, estabelecimento comercial,
+veículos, transeunte, bancos, carga, roubo seguido de morte, outros)
+
+                                                                                                           3
+determinantes do crime contra o patrimônio no estado de São Paulo, considerando a
+dimensão espacial. Ainda são poucos os trabalhos nacionais que levam em conta a
+distribuição no espaço desse fenômeno para entender suas causalidades. Este trabalho
+busca suprir essa lacuna, acreditando que essas técnicas possam contribuir para o
+aperfeiçoamento do desenho, da implantação e da avaliação de políticas de combate ao
+crime.
+Este artigo está dividido em três seções, além da introdução e das considerações finais. A
+primeira seção faz a revisão da literatura teórica e empírica relevante sobre economia do
+crime. A segunda seção apresenta as variáveis adotadas, os dados utilizados, suas fontes
+de obtenção e as respectivas estatísticas descritivas e estatísticas espaciais. A terceira
+seção, por fim, realiza a análise empírica dos determinantes dos crimes contra o
+patrimônio por meio da aplicação de técnicas de econometria espacial.
+
+
+1. O CRIME PELA ÓTICA ECONÔMICA: TEORIA E EVIDÊNCIAS
+   EMPÍRICAS
+
+
+ A criminalidade interfere diretamente na atividade econômica ao desincentivar o
+investimento, e reduzir a produtividade, o acúmulo de capital humano e social e a
+qualidade de vida das pessoas. Sendo assim, o crime também é um objeto de estudo
+importante para a economia, à medida que é necessário alocar os recursos de forma a
+minimizar as perdas sociais advindas dele. Segundo Gary Becker (1958) é possível
+entender o crime através de uma análise custo-benefício. Ao escolher entre uma atividade
+lícita ou ilícita, o indivíduo analisa racionalmente os custos e benefícios atrelados à
+atividade criminal e cometerá o crime caso o segundo seja maior que o primeiro.
+Os benefícios envolvem o retorno monetário e psicológico; por outro lado, os custos
+apresentam um maior número de componentes, são eles: (1) Custo material para o
+planejamento e execução do crime; (2) Custo de oportunidade devido à perda de
+rendimento por parte da atividade lícita que o indivíduo abriu mão em favor da ilícita; (3)
+Custo psicológico da atividade criminal, como medo, culpa, “custo moral”, etc.; (4) Custo
+de punição que envolve a probabilidade de ser pego, a probabilidade de ser efetivamente
+condenado e o tipo de punição. De acordo com Jorge, Lemos e Santos Filho (2008), o
+indivíduo cometeria o crime se:
+                  𝐵𝑀𝑂𝑁 + 𝐵𝑃 > 𝐶𝑚𝑎𝑡 + 𝑛𝑤 + 𝐶𝑝 + 𝜃 (𝐹 + 𝛾)                            (Eq.1)
+Onde, BMON é o benefício monetário, BP é o benefício psicológico, Cmat é o custo
+material, nw é o custo de oportunidade, Cp é o custo psicológico, Ѳ é a probabilidade de
+punição e condenação, F é o tipo de punição e γ representa a condenação efetiva (JORGE
+et all. 2008. p. 19). Dessa equação podemos depreender que alterações, tanto na
+probabilidade de punição e severidade, quanto no custo de oportunidade, por meio de
+aumento nos salários do mercado de trabalho, podem mudar o incentivo a cometer um
+crime. Outra questão que pode ser incorporada nesta equação é a reincidência do crime,
+que tende a ser maior devido à redução nos custos materiais ao diminuir o custo de
+aprendizagem, e no custo de oportunidade ao aumentar o “custo moral” e dificuldade de
+reinserção no mercado de trabalho (ARAÚJO e FAJNZYLBERG, 2001, p.6).
+Para entender quais, e em que magnitude as variáveis econômicas, sociais e psicológicas
+influenciam na decisão do indivíduo em cometer o crime, diversos estudos utilizam
+variáveis e modelos diferentes. Algumas das principais variáveis deste modelo
+
+                                                                                         4
+apresentam problema de endogeneidade, tanto em trabalhos nacionais, quanto
+internacionais, por esse motivo alguns resultados apresentam sinais contrários ao
+esperado pela teoria. Entre elas está a renda, desemprego e o número de policiais (ou
+gasto com segurança).
+No caso da renda, existe um efeito duplo dessa variável, no qual, o incentivo ao crime
+depende de uma baixa renda por parte do indivíduo que pretende cometê-lo, que reduz o
+custo de oportunidade da atividade ilícita; e da alta renda por parte das vítimas, que leva
+a um maior retorno do crime, o que aumenta o beneficio material. Isto pode ser
+exemplificado pelos trabalhos de Fleisher (1966) que apresenta sinal negativo na renda,
+enquanto o trabalho de Araújo e Fajnzylber (2001) mostra sinal positivo. Uma das formas
+encontradas para reduzir a endogeneidade, encontra-se, por exemplo, no trabalho de
+Marques Junior (2012), que buscou diferenciar esses efeitos dividindo a variável renda
+dos mais pobres e renda dos mais ricos, encontrando sinal negativo no primeiro
+(correlação negativa) e sinal positivo no segundo (correlação positiva).
+De acordo com a teoria, o desemprego não deveria influenciar as taxas criminais no
+mesmo período, pois antes de optar pela atividade ilegal é esperado que o indivíduo
+procure, por um tempo, atividades legais. Dessa forma alguns trabalhos apresentam sinal
+negativo, ou seja, quanto menor o desemprego maior a taxa de criminalidade. O que é
+contrario a teoria, pois o indivíduo desempregado tem um menor custo de oportunidade,
+o que incentivaria uma maior taxa de crime. Freeman (1994) estimou a taxa de
+desemprego atual e a taxa de desemprego com uma defasagem e encontrou a taxa de
+desemprego negativamente correlacionada à taxa de crime no primeiro caso, mas
+positivamente correlacionada no segundo (com a defasagem uma maior taxa de
+desemprego causa o aumento da criminalidade). Dessa forma, o desemprego defasado no
+tempo parece a variável mais adequada.
+Por fim, a variável número de policiais é uma proxy para a probabilidade de ser pego pelo
+delito cometido. No entanto, as cidades que apresentam maior taxa de criminalidade são
+também aquelas com maior efetivo policial ou maior gasto público e privado com
+segurança, salvo algumas exceções. Dessa forma, dificulta entender a real causalidade
+entre essas variáveis, pois elas irão crescer conjuntamente. Levitt (1997) tentou resolver
+esse problema a partir da variável de controle ano de eleição, pois, segundo ele um maior
+número de policias é contratado durante o período eleitoral devido à importância que a
+população atribui à segurança.
+Além dessas variáveis outras são recorrentes dentre os trabalhos existentes, como por
+exemplo, a desorganização social – normalmente representada pela variável proxy
+percentual de famílias uniparentais – desigualdade social – na maioria das vezes
+representada pelo Índice de Gini, no entanto Araújo e Fajnzylber (2001) testaram diversas
+outras variáveis representativas para desigualdade como o índice Theil-T ou a razão entre
+a renda dos 20% mais ricos e dos 20% mais pobres – a inércia criminal – por meio da
+variável defasada do crime (ANDRADA, e LISBOA, 2001, FERNANDES e PEREIRA,
+2000) – densidade populacional (BEATO, 1998 e OLIVEIRA, 2005), nível de atividade
+econômica – através da taxa de crescimento do PIB – entre outras.
+Além de buscar entender as causalidades da criminalidade, outra linha de trabalhos mais
+recentes busca entender a influência do espaço na variável criminalidade. É possível
+dividir esses trabalhos em duas vertentes. A primeira estaria interessada em entender a
+propagação da criminalidade no espaço, como exemplo há o trabalho de Sartoris (2000),
+que utilizou uma extensão do modelo ARMA espacial para prever o espalhamento da
+criminalidade nos distritos policiais no município de são Paulo e o trabalho de Almeida
+
+                                                                                         5
+(2000) que investigou a convergência do crime no espaço nos municípios de Minas Gerais
+a partir da estimação do modelo SARMA.
+Por outro lado, a segunda vertente ao perceber a existência de autocorrelação nos erros,
+estimados por MQO, que ocorria devido à omissão dos efeitos de vizinhança, passaram a
+incorporar o espaço para entender a real causalidade das variáveis explicativas na
+criminalidade. É possível observar essa preocupação através dos trabalhos de Almeida
+(2010) que incorporou o espaço na análise de dados em cross-section, a partir de
+defasagem espacial na variável dependente, ao investigar as causalidades da renda,
+população urbana, policiais per capita e crianças pobres na criminalidade na Região
+Metropolitana de Belo Horizonte. Outro exemplo é o trabalho de Delbecq, Guillain e
+Legros (2013) que incorpora o espaço em dados em painel, utilizou o modelo DURBIM,
+para análise das causalidades da criminalidade nos setores censitários em Chicago.
+A partir das referências apresentadas, o presente trabalho busca dar continuidade ao
+entendimento sobre a influência do espaço na criminalidade e seus fatores de causalidade
+com base na abordagem da escolha racional. Isso não significa que não haja outros fatores
+de influência, como aqueles discutidos pelas óticas da economia comportamental, da
+sociologia e da antropologia, por exemplo. Todavia, neste artigo se optou por uma
+abordagem específica.
+
+
+2. MEDIDAS DE CRIMINALIDADE E VARÍAVEIS SOCIOECONÔMICAS
+
+   2.1 Bases de dados e variáveis
+Como variável proxy de criminalidade o presente trabalho utilizou a taxa de crime contra
+o patrimônio por cem mil habitantes de 2011 nos municípios do estado de São Paulo.
+Neste caso, o crime contra o patrimônio inclui todos os tipos de furtos e roubos (pessoas,
+veículos, carga, banco etc.; incluindo latrocínio). As informações foram obtidas da
+Fundação Sistema Estadual de Análise de Dados (Fundação SEADE) que divulga os
+dados de criminalidade a partir dos boletins de ocorrência disponibilizados pela Secretaria
+de Segurança Pública do Estado de São Paulo. Por serem informações referentes a
+Boletins de Ocorrência, apresentam algumas limitações como a subnotificação, pois nem
+todos os crimes são reportados; ademais, há diferença na forma de registro entre os
+estados brasileiros.
+A variável proxy mais utilizada nos trabalhos sobre o crime é o homicídio disponibilizado
+pelo sistema SIM, cujos registros são feitos junto aos Institutos Médico Legal. Esses
+dados apresentam menor subnotificação, além de serem padronizados em todo o país,
+sendo sua abrangência nacional o principal motivo para o seu uso. Porém, essa variável
+também possuem algumas restrições, pois não há Institutos Médico Legal em todos os
+municípios. Dessa forma, pode ocorrer subnotificação em algumas regiões e
+supernotificação em outras. Como esse trabalho se refere ao estado de São Paulo, a proxy
+de crime contra o patrimônio é mais indicada por responder melhor a variações
+socioeconômicas, sendo mais adequada a teoria da economia do crime proposta por
+Becker (1964).
+As variáveis explicativas utilizadas nesse trabalho são mostradas no Quadro 1, em que
+são apresentadas suas descrições e fontes. As variáveis explicativas escolhidas se devem
+a sua importância na determinação do crime, de acordo com a teoria até então discutida e
+a existência das mesmas para o nível de agregação escolhido nesse trabalho. O número
+de policiais, por exemplo, é uma informação que só está disponível a partir do âmbito
+
+                                                                                         6
+estadual. Dentre essas variáveis, duas não são comumente utilizadas, o número de
+agências bancárias por cem mil habitantes e o número de médicos por cem mil habitantes.
+A primeira foi incluída devida ao crime contra o patrimônio envolver roubos a bancos,
+que aumentou muito nos últimos anos, este trabalho testou sua significância. É esperado
+que quanto maior o número de agências bancárias por cem mil habitantes maior a
+criminalidade. Quanto a segunda, é uma proxy de qualidade e espera-se que quanto maior
+o número de médicos, melhor seria o acesso a saúde e as condições de vida e menores os
+incentivos a cometer crimes – conforme indicam os trabalhos de Lemos, Santos Filho e
+Jorge (2005) e Lima e Ferreira (2013). As estatísticas descritivas dessas variáveis são
+apresentadas na Tabela 1.
+
+QUADRO 1: Descrição das Variáveis utilizadas no modelo.
+ Variável            Descrição                                             Fonte
+ RENDA               Remuneração média dos trabalhadores por município     RAIS
+                     em SM.
+ BANCO               Número de agencias bancaria por 100 mil habitantes.   BACEN/SEADE
+ DENSIDADE                                    𝑛° 𝑑𝑒 ℎ𝑎𝑏𝑖𝑡𝑎𝑛𝑡𝑒𝑠             IBGE/SEADE
+                     Densidade demográfica:                      .
+                                                𝑒𝑠𝑡𝑒𝑛𝑠ã𝑜 𝑘𝑚
+
+
+
+ JOVENS              Proporção da população de jovens homens na            Censo
+                                𝑝𝑜𝑝.𝑑𝑒 𝑗𝑜𝑣𝑒𝑛𝑠 𝑑𝑜 𝑠𝑒𝑥𝑜 𝑚𝑎𝑠𝑐𝑢𝑙𝑖𝑛𝑜            Demográfico
+                     população:                                 .
+                                        𝑝𝑜𝑝𝑢𝑙𝑎çã𝑜 𝑡𝑜𝑡𝑎𝑙                    IBGE
+
+
+ MÉDICOS             Número de médicos por 100 mil habitantes.             CRM-SP/SEADE
+ GRAU DE             Proporção de domicílios urbanos em cada município:    Censo
+ URBANIZAÇÃO         𝑑𝑜𝑚𝑖𝑐í𝑙𝑖𝑜𝑠 𝑒𝑚 á𝑟𝑒𝑎 𝑢𝑟𝑏𝑎𝑛𝑎                             Demográfico
+                                               .
+                        𝑡𝑜𝑡𝑎𝑙 𝑑𝑒 𝑑𝑜𝑚𝑖𝑐í𝑙𝑖𝑜𝑠
+                                                                           IBGE (obtido no
+                                                                           IPEAData)
+Fonte: Elaboração Própria.
+
+
+É interessante notar na Tabela 1 a grande heterogeneidade de valores de algumas das
+variáveis socioeconômicas no estado de São Paulo – o que reflete a grande disparidade
+de porte e de atividade entre os 645 municípios. Crimes contra o patrimônio variam de
+situações de ausência do delito até 7.334,36 ocorrências por cem mil habitantes – ou seja,
+a criminalidade não é distribuída de modo uniforme no estado.
+A densidade demográfica também possui grande variabilidade – o desvio padrão é
+praticamente quatro vezes superior à média e o intervalo de variação vai de 3,74 hab/km2
+até 12.593,96 hab/km2. O número de agências por cem mil habitantes é outra variável
+com grande desvio-padrão (equivale a dois terços do valor da média) e compreende
+situações em que há ausência de agências bancárias até 124,22 por cem mil habitantes.
+Número de médicos por cem mil habitantes, por seu turno, também possui grande
+variabilidade – o seu desvio-padrão 1,3 vezes superior ao valor médio (0,72) e há casos
+de municípios sem presença de médicos até situação em que o número é de 6,56 por cem
+mil habitantes.
+A variável que apresenta o menor valor de desvio-padrão em termos de sua média é o
+grau de urbanização (corresponde a 17%). A média é elevada (84,63%), refletindo a
+predominância de municípios bastante urbanizados no estado de São Paulo. A renda
+
+                                                                                             7
+média dos municípios e a proporção de homens jovens não apresenta grandes desvios-
+padrões em relação às suas médias (R$ 1.559,25 em 2011 e 8,93% em 2010
+respectivamente).
+
+
+TABELA 1: Estatísticas descritivas das variáveis.
+ Variável                              Média           DP      Máx.     Mín.
+ CRIME CONTRA O PATRIMÔNIO 1.161,11                 704,53   7.334,56    0,00
+ RENDA                                1.559,25      393,80   3.661,77 903,49
+ GRAU DE URBANIZAÇÃO                    84,63        14,17    100,00    25,28
+ DENSIDADE DEMOGRÁFICA                 304,72 1.205,85 12.593,96         3,74
+ POP. JOVEM                               8,93        2,26     32,25     3,12
+ TAXA DE AGENCIA BANCARIA               19,16        12,77    124,22     0,00
+ MÉDICOS                                  0,72        0,91      6,56     0,00
+Fonte: Elaboração própria com dados do IBGE, IPEA, RAIS e SEADE.
+
+
+Na Figura 1 podemos observar espacialmente como se comportou a taxa de crime contra
+o patrimônio por cem mil habitantes nos municípios do estado de São Paulo em 2011.
+Segundo Waiselfisz (2011) no final da década de 1990 as grandes capitais do país
+passaram a apresentar menores taxas de crescimento do crime, algumas tiveram até
+redução. O que está ocorrendo, segundo ele, é uma interiorização da criminalidade,
+principalmente no Norte e Nordeste, para municípios de médio porte, onde existe menor
+presença do Estado para conter esse aumento da violência.
+
+
+
+
+FIGURA 1: Taxa de criminalidade nos municípios do estado de São Paulo em 2011.
+Fonte: Elaboração própria com o software ArcMap 10.1 a partir dos dados da Fundação SEADE.
+
+
+
+
+                                                                                             8
+      2.2 Análise exploratória de dados espaciais de criminalidade
+Uma análise da distribuição espacial dos dados inicia-se com testes de correlação
+espacial. Nesse trabalho foram utilizados os testes I de Moran Global e o I de Moran
+Local. Esse último é considerado um indicador LISA, ou seja, satisfaz os critérios
+levantados por Anselin (1995), a saber, capacidade de indicar clusters espaciais
+significativos e o somatório de todas as regiões deve ser proporcional aos indicadores
+espaciais globais. A matriz de pesos utilizada nesses testes foi a “queen” com uma
+defasagem espacial4. O I de Moran global5 varia entre [-1,1], resultados próximos de -1
+mostram correlação negativa, ou seja, existem mais relações entre os espaços de clusters
+de vizinhos com baixos níveis de crime. Por outro lado, resultados próximos de 1 mostram
+correlação positiva, existem mais vizinhos com alto nível de crime. E, por fim, resultados
+próximos de zero mostram baixa correlação espacial. O I de Moran global encontrado a
+partir dos dados foi de 0,3733, o que mostra considerada correlação espacial da taxa de
+crime contra o patrimônio entre os municípios do estado de São Paulo.
+Quanto ao I de Moran Local6, este apresenta clusters de alto ou baixo níveis (“high-high”
+e “low-low”) de criminalidade e os chamados enclaves, regiões com alto nível de
+criminalidade circundadas com vizinhos de baixo nível de criminalidade, ou o contrário,
+baixo nível cercado com alto nível (“high-low” e “low-high”). O outro indicador local, o
+G de Getss-Ord7, mostra apenas regiões de alto nível rodeadas por vizinhos altos (“hot
+spots”) ou regiões com baixo nível cercadas por vizinhos com baixo nível (“cold spots”).
+Os resultados do I de Moran Local estão presentes na figura 2 e do G de Getss-Ord na
+figura 3.
+As regiões que mostram clusters de alta criminalidade, presentes nos dois indicadores
+locais, é o litoral sul do estado, a Região Metropolitana de São Paulo e próximo a Região
+Metropolitana de Campinas indo em sentido a Ribeirão Preto. Sem contar a Região
+Metropolitana da Baixada Santista e seus vizinhos, os outros dois grandes clusters são
+regiões de grande dinamismo econômico e com alta concentração urbana. Por outro lado,
+os clusters de baixa criminalidade estão localizados no Vale do Ribeira, na parte centro-
+sul do estado e na região do oeste e noroeste paulista.
+
+
+
+
+4
+  Os testes também foram feitos com a matriz de pesos “rook”, a matriz “queen" com duas defasagens e a
+matriz de 20 vizinhos, no entanto, os resultados não se mostraram significativamente diferentes. Desta
+forma, este artigo optou para o uso da matriz de pesos “queen” com uma defasagem.
+                                                  𝑛       ∑ 𝑖 ∑ 𝑗𝑤𝑖𝑗 (𝑥𝑖 − 𝑥̅ )(𝑥𝑗 − 𝑥̅ )
+5
+    O Índice de Moran Geral é dado por 𝐼 =    ∑ 𝑖 ∑ 𝑗𝑤𝑖𝑗         ∑ 𝑖 (𝑥𝑖 − 𝑥̅ )2
+                                                                                        .
+                                             (𝑦𝑖 − 𝑦̅) ∑ 𝑗𝑤𝑖𝑗(𝑦𝑗 − 𝑦̅)
+6
+    O índice de Moran Local é dado por 𝐼 =       ∑ 𝑖 (𝑦𝑖 − 𝑦̅)2⁄       .
+                                                                𝑛
+                                                   ∑ 𝑗𝑤𝑖𝑗 (𝑑)𝑥𝑗
+7
+    O Índice G de Getss-Ord é dado por 𝐺𝑖 (𝑑) =        ∑ 𝑦𝑥𝑗
+                                                                    , no qual “d” é o raio de distância dos vizinhos.
+
+                                                                                                                    9
+FIGURA 2: Resultado da estatística I de Moran Local para o ano de 2011.
+Fonte: Elaboração própria com o software GEODA a partir dos dados da Fundação SEADE.
+
+
+
+
+FIGURA 3: Resultado da estatística G de Getss-Ord para o ano de 2011.
+Fonte: Elaboração própria com o software GEODA a partir dos dados da Fundação SEADE.
+A dependência espacial no caso da criminalidade pode ocorrer por dois motivos, pela
+externalidade dos vizinhos impactando em uma dada região ou pela heterogeneidade
+espacial, ou seja, a forma de agregação utilizada (ALMEIDA e LOPARDI, 2010). No
+primeiro caso podemos ter como exemplo a variável RENDA, uma região de alta renda
+que possui vizinhos com alta renda pode atrair a criminalidade daquela primeira região
+para as demais. No segundo caso, cada agregação diferente no espaço resulta em
+
+                                                                                       10
+dependências espaciais diferentes, por isso é possível encontrar dependência espacial em
+um tipo agregação e não em outro.
+
+
+    2.3 Análise exploratória de dados espaciais socioeconômicos
+Esse trabalho também se preocupou em analisar a distribuição espacial das variáveis
+explicativas do modelo estimado. A partir do teste I de Moran local (ver Figuras 4 a 9)
+foi possível perceber que o padrão espacial das variáveis renda e grau de urbanização são
+mais próximos do padrão espacial do crime. Além disso, a variável médico tem pouco
+padrão espacial. A variável BANCO apresenta cluster com baixo número de agências
+bancarias por cem mil habitantes nos locais onde ocorrem as maiores taxas de
+criminalidade. Desta forma, apenas RENDA e GRAU DE URBANIZAÇÃO ajudam na
+compreensão da distribuição espacial do crime.
+
+
+
+
+FIGURA 4: I de Moran local para a variável RENDA no ano de 2011.
+Fonte: Elaboração própria com o software GEODA.
+
+
+
+
+FIGURA 5: I de Moran local para a variável GRAU DE URBANIZAÇÃO no ano de 2011.
+Fonte: Elaboração própria com o software GEODA.
+
+
+
+
+                                                                                      11
+FIGURA 6: I de Moran local para a variável DENSIDADE DEMOGRÁFICA no ano de 2011.
+Fonte: Elaboração própria com o software GEODA.
+
+
+
+
+FIGURA 7: I de Moran local para a variável HOMENS JOVENS no ano de 2011.
+Fonte: Elaboração própria com o software GEODA.
+
+
+
+
+FIGURA 8: I de Moran local para a variável BANCO no ano de 2011.
+Fonte: Elaboração própria com o software GEODA.
+
+
+
+                                                                                   12
+FIGURA 9: I de Moran local para a variável MÉDICO no ano de 2011.
+Fonte: Elaboração própria com o software GEODA.
+
+
+3. ANÁLISE EMPÍRICA DE CRIMES CONTRA O PATRIMÔNIO
+
+    3.1 Modelos de estimação
+Os dados utilizados nesse trabalho apresentam-se em cross-section. Mesmo após os testes
+de estatística espacial é necessário saber com maior acuidade se os dados são
+correlacionados no espaço ou não. Florax, Folmes e Rey (2003) sugeriram os seguintes
+passos para isso: (1) Estimar os Mínimos Quadrados Ordinários (MQO); (2) Testar a
+existência de autocorrelação espacial a partir do Multiplicador de Lagrange e o
+Multiplicador de Lagrange Robusto; (3) Caso os resultados não sejam significantes o
+modelo clássico ainda é o melhor, caso contrário, é necessário usar o modelo com
+defasagem espacial mais apropriado. Abaixo se encontra o modelo simples,
+                                  y = α + Xβ + u                           (Eq. 2)
+Em que y é a variável dependente, α é o intercepto, X é a matriz de variáveis explicativas,
+β e o vetor de parâmetros que serão estimados e u é o termo de erro.
+A inclusão da relação espacial entre os indivíduos, por meio da matriz de pesos espaciais,
+pode ocorrer através de três tipos de interações: 1) Interação endógena, através da variável
+dependente; 2) Interação exógena, através das variáveis explicativas e 3) Interação através
+do termo de erro. Elas podem ocorrer separadamente ou de forma combinada, dessa
+forma, existem diversos modelos espaciais. Nesse trabalho serão testados três modelos:
+1) O modelo SAR (Spatial AutoRegressive Model), que apresenta defasagem espacial
+   apenas na variável dependente. Ele pode ser escrito da seguinte forma,
+                                    y = ρWy + Xβ + u                        (Eq.3)
+2) O modelo SEM (Spatial Error Model), com defasagem espacial apenas no erro. Ele
+   pode ser escrito da seguinte forma,
+                          y = Xβ + u , onde 𝑢 = 𝜆𝑊𝑢 + 𝑒                     (Eq.4)
+3) O modelo SARAR (Spatial Autoregressive Model with Autocorrelation Error), que
+   é praticamente uma junção dos modelos anteriores, ou seja, apresenta defasagem
+   espacial na variável dependente e no erro. Podendo ser escrito da seguinte forma,
+                                                                                         13
+                    y = ρWy + Xβ + u , onde 𝑢 = 𝜆𝑊𝑢 + 𝑒                     (Eq.5)
+A escolha do modelo para os dados utilizados nesse trabalho será feita por meio dos
+seguintes testes de dependência espacial: I de Moran, multiplicador de Lagrange (LM),
+LM robusto (para dependência espacial da variável dependente e do erro), Anselin-
+Kelejian (no caso do modelo SAR) e a significância dos parâmetros de spillover espacial
+(ρ e 𝜆).
+
+
+   3.2 Resultados empíricos
+Conforme descrito na seção anterior, os primeiros resultados obtidos foram da regressão
+sem efeito espacial estimada através dos MQO. Esses resultados estão presentes na Tabela
+2. As únicas variáveis que não foram significativas foram JOVENS (PERCENTUAL DA
+POPULAÇÃO DE HOMENS JOVENS) e MÉDICOS, isso pode ser explicado pela alta
+correlação entre essas variáveis, entretanto, não existe uma relação teórica explícita entre
+elas que justifique esse resultado. As variáveis RENDA, GRAU DE URBANIZAÇÃO e
+DENSIDADE DEMOGRÁFICA apresentaram significância estatística e sinais esperados,
+somente a variável MÉDICOS foi não-significante, mas com sinal contrário ao esperado
+(não intuitivo). De acordo com esse resultado a variável que apresenta maior impacto na
+criminalidade é GRAU DE URBANIZAÇÃO, o aumento de 1% dessa variável aumenta
+em 12,4% a criminalidade.
+Os testes presentes na Tabela 2 mostram que os erros da regressão são normalmente
+distribuídos (teste Jaque-Bera) e que não há presença de heterocedasticidade (testes
+Breusch-Pagan e White). Por outro lado, os testes de dependência espacial mostram a
+possibilidade da existência de influência do espaço na variável dependente e no erro.
+Desta forma, aparentemente o melhor modelo é o SARAR.
+
+
+
+
+                                                                                         14
+TABELA 2: Resultado da regressão por MQO.
+R2                                                 0.2196
+  2
+R -ajustado                                        0.2123
+Variáveis                       Coeficiente       t-valor
+Constante                         -271.9874        -1.366
+Renda                                0.4040         5.739 ***
+Banco                                -6.2379       -3.158 ***
+Dens                                 0.0642         2.944 ***
+Jovens                             -18.0103        -1.626
+medicos                             20.8684         0.764
+Urb                                 12.3942         6.506 ***
+                      Diagnóstico da regressão
+Multicoliniaridade                                               20.001
+                                                       n°         Prob.
+Jarque-Bera                                             2         0.000
+Breusch-Pagan test                                      6         0.000
+White (robusto)                                        27         0.000
+                        Diagnostico Espacial
+                                                    Valor         Prob.
+I de Moran (erro)                                   0.985        0.3240
+LM (erro)                                           0.848         0.357
+LM robusto (erro)                                   1.404        0.2360
+LM (lag)                                            2.146        0.1430
+LM robusto (lag)                                    2.702        0.1000
+Nota: Estatística de significância: 1% (***), 5% (**), 10%(*).
+Fonte: Elaboração própria por meio do software Stata 12.1.
+
+
+Em seguida foram estimados os modelos SAR, SEM e SARAR por Máxima
+Verossimilhança, seus resultados estão presentes na Tabela 3. Os parâmetros de spillover
+espacial do modelo SEM e SAR não foram significativos e os testes de Wald, Likelihood
+Ratio e LM mostram que não é possível rejeitar a hipótese nula, ou seja, não é possível
+dizer que esses parâmetros são diferentes de zero. Dessa forma, o melhor modelo para a
+especificação dos dados deste trabalho é o SARAR, que apresentou significância
+estatística nos parâmetros e no teste de Wald.
+
+
+
+
+                                                                                     15
+TABELA 3: Resultado dos modelos espaciais.
+                           SEM                                    SAR                         SARAR
+ R2                                 0.223                                0.220
+ Variáveis          coeficiente   t-valor             Coeficiente       t-valor          coeficiente        t-valor
+ Constante           -264.3243      -1.34               -374.7061        -1.78 *           -469.101          -2.34 ***
+ Renda                  0.4045       5.79 ***                0.4071       5.83 ***           0.2492           3.65 ***
+ Banco                 -6.1381      -3.13 ***              -6.1278       -3.12 ***          -3.2521          -1.76 *
+ Dens                   0.0641       2.96 ***                0.0634       2.93 ***           0.0681           3.02 ***
+ Jovens               -17.8044      -1.62                -17.2752        -1.57             -11.9900          -1.16
+ Médicos               19.5887       0.72                 21.3311         0.79               5.6177           0.23
+ Urb.                  12.2554       6.46 ***             12.2979         6.50 ***          13.2844           7.00 ***
+                                                                                     𝜆       0.0380          -2.34 ***
+               𝜆        0.6051       0.94        ρ           0.0829       1.44       ρ       0.0592           5.09 ***
+ Testes                    chi2     prob.                      chi2      prob.                 chi2          prob.
+ Wald                    0.884      0.347                     2.081      0.149              116.214          0.000
+ Likelihood
+ ratio                   0.877      0.349                     2.059      0.151                     -              -
+ LM                      0.848      0.357                     2.146      0.143                     -              -
+Nota: Estatística de significância: 1% (***), 5% (**), 10% (*).
+Fonte: Elaboração própria por meio do software Stata 12.1.
+
+
+Os resultados encontrados no modelo SARAR mostram que todas as variáveis são
+estatisticamente significantes (ao menos a 10%) exceto MÉDICOS e JOVENS. Das
+variáveis estatisticamente significantes apenas banco apresentou sinal contrário ao
+esperado.
+
+
+      3.3 Análise dos resultados
+
+A primeira conclusão obtida da análise econométrica é que a distribuição de crimes contra
+o patrimônio possui padrões espaciais no estado de São Paulo. Ou seja, existe efeito de
+vizinhança ou de transbordamento de ocorrências criminais entre municípios vizinhos.
+Levando-se isso em consideração, os resultados obtidos são discutidos por meio do
+Quadro 2.
+
+
+
+
+                                                                                                       16
+Quadro 2 – Análise dos resultados
+ Variável           A que se refere               Sinal      Sinal            Comentário
+                                                            Obtido
+                                                 Esperado
+ RENDA              Maior custo de                 +-         +      O segundo efeito para ter
+                    oportunidade por um                              predominado (cada R$ 1,00 a
+                    lado, porém renda maior                          mais aumenta a taxa de crimes
+                    pode se relacionar com                           por cem mil habitantes em
+                    patrimônio acumulado                             0,24), o que pode indicar a
+                    maior (benefício                                 necessidade de se construir
+                    monetário)                                       melhor variável proxy para
+                                                                     custo de oportunidade.
+ BANCO              Incentivo a cometer             +         -      Sinal oposto ao esperado. Pode
+                    crime (roubo a bancos)                           indicar a possibilidade de
+                                                                     quantidade de agência
+                                                                     bancárias estar, de certa forma,
+                                                                     relacionada a alguma variável
+                                                                     omitida que se refira a
+                                                                     probabilidade de ser pego (a
+                                                                     princípio maior a quantidade de
+                                                                     agências bancárias maior o
+                                                                     número de seguranças
+                                                                     privados) – possível
+                                                                     endogeneidade – necessidade
+                                                                     de variável instrumental.
+ DENSIDADE          Maior concentração de           +         +      Cada habitante a mais por km2
+                    pessoas (maior                                   aumenta a ocorrência de crimes
+                    concentração espacial de                         por cem mil habitante em
+                    renda e patrimônio)                              0,0681.
+ HOMENS             Perfil demográfico mais         +         -      Proporção de homens jovens
+                    provável de cometer                              sem levar em conta a taxa de
+ JOVENS
+                    delito                                           desemprego e a desigualdade
+                                                                     nesse estrato não está captando
+                                                                     a maior probabilidade de se
+                                                                     cometer delito. Não foi
+                                                                     significativo estatisticamente.
+ MÉDICOS            Maior qualidade de vida:        -         +      Sinal oposto ao esperado, pode
+                    dependendo do meio em                            indicar que sozinha não é uma
+                    que o indivíduo viva,                            boa proxy para qualidade de
+                    sem acesso a saúde,                              vida. Não foi significativo
+                    saneamento, emprego,                             estatisticamente.
+                    lazer, ele tem mais
+                    probabilidade de
+                    cometer crime.
+ GRAU DE            Maior concentração de           +         +      Cada 1 ponto percentual a mais
+                    patrimônio no espaço e                           na taxa de urbanização implica
+ URBANIZAÇÃO        maiores chances de                               crescimento de 13,28 crimes
+                    existirem também                                 por cem mil habitantes.
+                    parcela de população
+                    vivendo em
+                    assentamentos precários
+                    (favelas e equivalentes) -
+                    maior incentivo a crimes
+                    contra o patrimônio.
+Fonte: elaboração própria
+
+
+
+                                                                                                     17
+CONSIDERAÇÕES FINAIS
+
+
+São Paulo está entre os estados com maiores taxas de crime contra o patrimônio no Brasil.
+Os custos dessa atividade não levam apenas a perda monetária, mas também de bem-
+estar. Para reduzir a criminalidade é necessário entender suas causas e dessa forma, mudar
+o sistema de incentivos que leva o individuo a escolher este caminho. O estudo da
+concentração desse fenômeno em certas regiões pode levar a sua maior compreensão e,
+dessa forma, seja possível aperfeiçoar o desenho, a implantação e a avaliação de políticas
+de combate ao crime.
+Esse trabalho tinha como objetivo introduzir a relação de vizinhança presente nos dados
+de criminalidade para análise da causalidade de variáveis socioeconômicas nesse
+fenômeno. Os dados utilizados mostraram-se espacialmente distribuídos de forma que o
+melhor modelo para o especificar foi o Spatial Autoregressive Model (SARAR), com
+dependência espacial na variável dependente e nos erros. Os resultados mostram que
+renda, densidade demográfica e grau de urbanização afetam positivamente a
+criminalidade, indo ao encontro da literatura. Aparentemente, o crime contra o patrimônio
+ocorre onde o retorno esperado é maior. Todavia há dificuldade em construir variáveis
+proxies que captem, de fato, as dimensões socioeconômicas que parecem afetar a tomada
+de decisão de cometer crimes contra o patrimônio por parte dos indivíduos.
+O que se pode afirmar de modo preliminar é que a criminalidade é maior em regiões mais
+urbanizadas, mais densamente ocupadas e com maior nível de renda – ou seja, as Regiões
+Metropolitanas do Estado de São Paulo. Como, ao longo das décadas, outras partes do
+estado, que não a RMSP, foram assumindo características metropolitanas, houve maiores
+incentivos para espraiamento dessa modalidade de crime – daí a percepção de
+“interiorização da criminalidade” – como se fosse o preço a pagar pela desconcentração
+das atividades produtivas da RMSP para outras partes do estado.
+Do ponto de vista da política de segurança pública, os resultados permitem uma inferência
+preliminar: o efetivo policial e de equipamento de repressão ao crime têm que crescer
+mais que proporcionalmente à população dessas municipalidades – o implicaria
+remanejamento de orçamento, pessoal e equipamento – tarefas que não são simples e
+rápidas de serem executadas.
+Desenvolvimentos futuros deste trabalho seguem na direção de se construírem variáveis
+proxies mais acuradas, incorporarem técnicas de dados em painel para compreender as
+mudanças desse fenômeno ao longo do tempo, isto é, serem incluídas maiores
+informações. Existe uma percepção de que a criminalidade esta se interiorizando nos
+estados brasileiros e o estudo dessa mudança espacial no tempo pode levar a uma maior
+compreensão do complexo fenômeno da criminalidade no Brasil contemporâneo.
+
+
+REFERÊNCIAS BIBLIOGRÁFICAS
+
+
+ALMEIDA, E. S., HADDAD, E. A. e HEWINGS, G. J. D. The spatial Pattern of crime
+in Minas Gerais: an exploratory analysis. Núcleo de Economia Regional e Urbana da
+universidade de São Paulo, 2003. Disponível em http://www.usp.br/nereus/wp-
+content/uploads/TDNereus_22_03.pdf, acessado em 20 de novembro de 2014.
+
+
+
+                                                                                       18
+ALMEIDA, M. A. S. e GUANZIROLI, C. H. “Análise exploratória espacial e a
+convergência condicional das taxas de crimes em Minas Gerais nos anos 2000”. Foz do
+Iguaçu: ANPEC, 41° Encontro Nacional de Economia, 2013. Disponível em http
+http://www.anpec.org.br/novosite/br/encontro-2013#AREA_10.
+ALMEIDA, M. A. S. e LOPARDI, A. L. S. “Crime contra o patrimônio na região
+metropolitana de Belo Horizonte: Uma análise econômica espacial”. Revista Vianna
+Sapiens. v.1, n.2, p. 91-120, out. 2010.
+ANSELIN, L. et al. “Spatial analysis of crime”. Criminal Justice, vol. 4, 2000.
+ANSELIN, L. “Local Indicators of spatial association – LISA”. Geographical Analysis,
+v.27, insue (2), p.93-115, 1995.
+ANDRADE, M. e LISBOA, M. Hopeless life: homicide in Minas Gerais, Rio de Janeiro
+e São Paulo: 1981 to 1997. Belo Horizonte: mimeo, 2000.
+ARAÚJO JR, A. e FAJNZYLBER, P. “Violência e criminalidade”. In LISBOA, M. e
+MENEZES FILHO, N. (orgs). Microeconomia e Sociedade no Brasil. Rio de Janeiro:
+Contracapa / FGV, 2001.
+BEATO FILHO, C. “Determinantes da criminalidade em Minas Gerais”. Revista
+Brasileira de Ciências Sociais, v.13, n. 37, jun/98.
+BECKER, G. S. Crime and punishment: an economic approach. Journal of Political
+Economy, v.76, n. 1, p. 169-217, 1968.
+CANO , I. e SANTOS, N. “Violência letal, renda e desigualdade no Brasil”. In
+IPEA/CESEC. Fórum de Debates: Criminalidade, Violencia e Segurança Pública no
+Brasil. Uma discussão sobre as bases de dados e questões metodológicas. 5°
+Encontro, Nov.2000. Disponível em http://www.ipea.gov.br
+CERQUEIRA , D. e LOBÃO, W. Determinantes da criminalidade: uma resenha dos
+modelos teóricos e resultados empíricos. Rio de Janeiro IPEA – Texto para Discussão
+n°956, jun/2003.
+CERQUEIRA , D. e LOBÃO, W. Condicionantes sociais, poder de policia e o setor de
+produção criminal. Rio de Janeiro IPEA – Texto para Discussão n° 957, jun/2003.
+CERQUEIRA , D. e LOBÃO, W. Criminalidade: social versus policia. Rio de Janeiro
+IPEA – Texto para Discussão n° 958, jun/2003.
+CERQUEIRA , D. e LOBÃO, W. e CARVALHO, A. “Socioeconomic structure, self-
+fulfilment, homicides and spatial dependence in Brazil”. Rio de Janeiro IPEA – Texto
+para Discussão n° 1.105, jun/2005.
+CERQUEIRA , D. e LOBÃO, W. e CARVALHO, A. “O jogo dos sete mitos e a miséria
+da segurança pública no Brasil”. Rio de Janeiro IPEA – Texto para Discussão n° 1.144,
+jun/2005.
+CRUZ, G. T. e MENEZES, T. A. “Estudo da criminalidade violenta no estado do Recife:
+O espaço Realmente é relevante?”. Foz do Iguaçu: ANPEC, 41° Encontro Nacional de
+Economia, 2013. Disponível em http://www.anpec.org.br/novosite/br/encontro-
+2013#AREA_10.
+DELBECQ, B., GUILLAIN R. e LEGROS D. “Analysis of crime in Chicago: new
+perspectives to an old question using spatial panel econometrics”. East Virginia
+University, Regional Research Institute, XII World Conference of tSpatial
+
+
+                                                                                  19
+Econometrics Association, Jul. 2013. Disponível em http://www.rri.wvu.edu/wp-
+content/uploads/2013/07/Fullpaper_5.B.1.pdf Acessado em 12 de outubro de 2014.
+EHRLICH, I. “Participation in illegitimate activities: a theoretical and empirical
+investigation”. Jornal of Political Economy, v. 81, p.521-563, 1973.
+FAJNZYLBER, P. & ARAÚJO, A. F. “Violência e criminalidade”. In Lisboa. Org. M.B.
+& Menezes Filho, N.A., Microeconomia e Sociedade no Brasil, p.333-394. Contra
+Capa, Rio de Janeiro, 2001.
+FLORAX, R. J. G., FOLMER, H. e REY, S. J. “Specification searchs in spatial
+econometrics: The relevance of Hendry’s methodology”. Regional Science and Urban
+Economics, v. 33, n. 5, p. 557-579, 2003.
+LEMOS, A. A. M., SANTOS FILHO, E. P., JORGE, M. A. “Um Modelo para Análise
+Socioeconômica da Criminalidade no Município de Aracaju”. Estudos Econômicos, V.
+35, N. 3, P. 569-594, julho-setembro, 2005.
+LIMA, A. G., FERREIRA, M. O. “Homicídios e Suicídios nos Estados Brasileiros:
+haverá alguma correlação com as variáveis socioeconômicas?”. II Encontro
+Pernambucano de Economia, Crescimento, Bem-Estar e Sustentabilidade,
+CORECON-PE,                    2013.                Disponível           em:
+http://www.enpecon.org.br/wa_files/2E2013004_20-
+_20artigo_Homicidios_suicidios_variaveis_socioeconomicas_IIENPECON.pdf,
+Acessado em 05 de julho de 2015.
+MARQUES JUNIOR, K. “A renda, desigualdade e criminalidade no Brasil: uma análise
+empírica”. Forum de Debates: Econometria e Sociedade. 15° Encontro de economia da
+Região           Sul,          jun.          2012.          Disponível        em
+http://www.pucrs.br/eventos/encontroeconomia/download/mesas/ARendaDesigualdade
+ECriminalidade.pdf, acessado em 20 de outubro de 2014.
+MESSNER, S. F. e ANSELIN, L. “Spatial analyses of homicide with areal data”. In
+GOODCHILD E JANELE, Spatially integrated social science, Oxford University
+Press, 2004
+OLIVEIRA, C. “Criminalidade e o tamanho das cidades brasileiras: um enfoque da
+economia do crime”. Natal: ANPEC- XXXIII. Encontro Nacional de Economia, 2005.
+Disponível em http://www. anpec.org.br/encontro_2005.htm, acessado em 15 de outubro
+de 2014.
+REZENDE, A. C. Sistema prisional no Brasil em crise. Ha solução para isso? .
+Disponível em:
+<http://www.escritorioonline.com/webnews/noticia.php?id_noticia=1416&>. Acesso
+em: 19 set. 2014.
+SANTOS, M. J. e SANTOS FILHO, J. I. “Convergência das taxas de criminalidade no
+território brasileiro”. Revista ANPEC, Vol. 12, n. 1, p.131_147, 2011.
+SARTORIS NETO, A. Homicídios na cidade de São Paulo: uma analise da
+causalidade e autocorrelação espaço-temporal. 2000. Tese (Doutorado em Teoria
+Econômica) Instituto de Pesquisa Econômica de São Paulo, São Paulo, 2000.
+UCHÔA, C. F A. e MENEZES, T. A. “Spillover espacial da criminalidade: Uma
+aplicação de painel espacial, para os estados brasileiros”. Porto de Galinhas - ANPEC-
+40°.    Encontro       Nacional      de     Economia,        2012.    Disponível    em
+http://www.anpec.org.br/encontro/2012, acessado em 19 de set. de 2014.
+
+                                                                                   20
+WAISELFISZ, J. J. Mapa da violência 2010, anatomia dos homicídios no Brasil.
+Instituto Sangari. São Paulo, 2010.
+________________. Anuário Brasileiro de segurança pública, São Paulo, 2013.
+Disponível em: < http://www.forumseguranca.org.br/storage/download//anuario_2013-
+corrigido.pdf>. Acesso em 30 de nov. 2014
+
+
+
+
+                                                                                21
+

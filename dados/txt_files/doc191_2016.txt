@@ -1,0 +1,1468 @@
+                ÁREA 12 – ECONOMIA SOCIAL E DEMOGRAFIA ECONÔMICA
+
+
+   Avaliação de Impacto das Guardas Municipais com o Uso de Tratamentos
+                    Binários, Multivalorados e Contínuos
+
+                                       Oliveira Alves Pereira Filho
+                      Ministério do Planejamento, Desenvolvimento e Gestão – MP
+                                  e-mail: oliveira.ap.filho@gmail.com
+
+                                  Maria da Conceição Sampaio de Sousa
+                                 Departamento de Economia – UnB e UFPB
+                                  e-mail: csampaiodesousa@gmail.com
+
+                                                       RESUMO
+   Este artigo avalia se a implantação de Guardas Municipais – GMs produziu melhorias nos indicadores de segurança
+   pública dos entes que as adotaram (taxas de homicídios por 100 mil habitantes e de roubos e furtos de veículos por
+   100 mil emplacamentos). Na tentativa de se contornar o viés de autosseleção e a endogeneidade por simultaneidade
+   presentes em análises desse tipo, foram testadas diversas estratégias de identificação baseadas na literatura de
+   resultados potenciais, com destaque para diferenças-em-diferenças – DID, propensity score matching – PSM simples
+   e com diferenças-em-diferenças (DID-PSM) e modelos com tratamentos multivalorados discretos e contínuos
+   (generalized propensity score com função dose-resposta – DR). A base de dados consiste em dois conjuntos de
+   painéis não balanceados compreendendo os Municípios da Federação como unidades de análise (de 1991 a 2012 para
+   homicídios e de 2009 a 2011 para roubos e furtos de veículos). Os principais resultados indicam que apenas o
+   tratamento binário não é suficiente para a aferição fidedigna dos impactos causais desejados. Quando adicionados à
+   análise, os tratamentos multivalorados de longevidade das GMs (categóricos e contínuos) evidenciaram reduções nas
+   taxas de homicídios dos Municípios pequenos e médios, comportamento antes negligenciado pelos métodos
+   dicotômicos. No entanto, os impactos sobre os crimes contra o patrimônio se mostraram nulos.
+   Palavras-Chave: Guardas Municipais; Segurança Pública; PSM; Diferenças-em-Diferenças; Tratamentos
+   Multivalorados; GPS; Dose-Resposta.
+
+
+                                                    ABSTRACT
+   This article evaluates if the implementation of Brazilian Municipal Guards - GMs produced improvements in public
+   safety indicators (homicide rates per 100,000 inhabitants and vehicle robbery and theft per 100,000 registrations).
+   In an attempt to overcome the bias of self-selection and endogeneity by simultaneity, various identification strategies
+   based on potential outcomes literature were tested, highlighting differences-in-differences - DID, simple propensity
+   score matching - PSM and differences-in-differences propensity score matching (DID-PSM) and models with discrete
+   and continuous multivalued treatments (generalized propensity score with dose-response function - DR). The
+   database consists of two sets of unbalanced panels where the municipalities are the units of analysis (1991 to 2012
+   for homicide and 2009 to 2011 for vehicle robbery and theft). The main results indicate that only the binary treatment
+   is not sufficient for the reliable measurement of the causal impacts. When added to the analysis, the multivalued
+   treatments (categorical and continuous) showed reductions in homicide rates of the small municipalities due to the
+   longevity of GMs, behavior before neglected by dichotomous methods. However, there were no impacts on property
+   crime.
+   Keywords: Local Police; Public Safety; PSM; Differences-in-Differences; Multivalued Treatment; GPS; Dose-
+   Response.
+
+
+JEL CODES: K42, K32, H41, H76, C23.
+                                                                                                             2
+
+1. Introdução
+          Pouco ainda há para se debater sobre o quão importante a segurança pública é para o cidadão
+brasileiro. Em conjunto com o recado incômodo passado pelas estatísticas do setor, pesquisa de
+opinião recente do Datafolha a elegeu como a 2º maior preocupação da população, atrás somente da
+saúde (SEGURANÇA..., 2014). Se por um lado está claro qual é o incômodo, as estratégias sobre
+como viabilizar menores índices de criminalidade ainda continuam objeto de debate.
+          Fator agravante para esse quadro parece ser a divisão de competências imposta pela
+Constituição Federal de 1988 – CF 88. Por esse diploma, coube aos Estados e ao DF a parcela mais
+expressiva das atividades de segurança pública, relegando-se aos Municípios o papel subsidiário e
+facultativo de implantação de Guardas Municipais civis – GMs em seus limites territoriais e com
+atribuições circunscritas de “... proteção de seus bens, serviços e instalações, conforme dispuser a
+lei.”. Ocorre, no entanto, que aos olhos dos eleitores/cidadãos os problemas acontecem em seus
+quintais, não sendo plenamente possível desassociar criminalidade e atuação política local.
+          Nesse sentido, um número crescente de Municípios tem optado por criar e gerir seus
+próprios aparatos de GMs, esperançosos de que possam responder aos anseios da sociedade em
+termos de redução na criminalidade. Todavia, esse movimento tem sido posto em prática de maneira
+predominantemente empírica, sem avaliações de eficiência ou de impacto que o referendem. Se tais
+iniciativas forem, por algum motivo, inócuas, ter-se-á o pior dos cenários, a saber: continuidade da
+sensação de insegurança com a prevalência de maiores gastos orçamentários, antes inexistentes.
+          Objetivando contribuir com o preenchimento dessa lacuna acadêmica, este artigo tem por
+finalidade avaliar e mensurar os impactos advindos da criação e da manutenção dessas estruturas
+municipais de segurança pública (GMs) sobre os principais indicadores de criminalidade disponíveis
+(taxa de homicídios por 100 mil habitantes e taxa de roubos e furtos de veículos por 100 mil
+emplacamentos). A hipótese básica é de que essas corporações possuem pouco potencial de afetar
+esses indicadores e isso se daria por conta do seu pequeno tamanho relativo (em relação ao papel dos
+Estados e do DF e também em relação a União) e, principalmente, pela indefinição em torno do seu
+modelo de atuação, ora identificado como de segurança patrimonial ou de policiamento comunitário
+ou ainda possivelmente como força repressora auxiliar.
+          Isso posto, este artigo está subdividido em mais 4 seções, além desta Introdução.
+Imediatamente a seguir são debatidas as principais características legais e funcionais dessas
+corporações. Na seção 3 há a apresentação mais detalhada dos métodos econométricos anteriormente
+citados, ao passo que nas seções 4 e 5 detalham-se, respectivamente, a base de dados utilizada e os
+diversos resultados estimados. O estudo se encerra com uma síntese dos principais achados, feita em
+seção própria (6).
+
+2. As Guardas Municipais no Brasil
+          O instituto das Guardas Municipais – GMs, visto de maneira ampla como a possibilidade
+de participação dos Municípios nos esforços de segurança pública, não é um fenômeno recente no
+Brasil, contudo toma relevo apenas após a consolidação legal trazida pela Constituição Federal de
+1988 – CF 88 que, em seu art. 144, §8º, especifica e delimita a abrangência de tais iniciativas 1.
+          Restou inconteste o caráter subsidiário relegado pelos Constituintes aos Municípios
+(“poderão”), assim como, pela letra fria da lei, deverão atuar numa dimensão notadamente restrita
+(“proteção de seus bens, serviços e instalações”). Afora esse caráter normativo, impende ponderar as
+mudanças no tecido social ocorridas após 1988, em especial o cenário desfavorável de crescimento
+da criminalidade, sobretudo nos grandes centros urbanos nos anos 1990. Essas questões de cunho
+prático passam a pautar as criações e a atuação de tal aparato, como uma possível resposta em termos
+de política pública aos anseios da sociedade que invariavelmente identifica também o Prefeito como
+
+1
+  De acordo com dados da Munic 2012 (BRASIL, 2013), dos 993 Municípios que declararam possuir GM, cerca de 9,8%
+informaram que elas existem desde antes de 1988.
+                                                                                                                 3
+
+um possível responsável pelo quadro deteriorado da segurança e não apenas Governadores ou
+Presidentes.
+          Pelos dados da Munic é possível verificar que houve incremento inconteste no quantitativo
+de Municípios que optaram pela instalação desses aparatos de segurança pública, haja vista serem
+apenas 318 em 1995 e em 2012 passaram para 993 (17,8% do total de Municípios existentes), isto é,
+foram criadas 675 novas GMs no período. Como essas corporações são mais presentes em cidades
+maiores, tem-se que o percentual da população atendida por tal serviço atingiu em 2012 o maior valor
+da série, 58,9% (em 1995 eram apenas 26,7%). Em termos de recursos financeiros, a trajetória
+ascendente é praticamente a mesma, ainda que a participação relativa dessas alocações orçamentárias
+no total do setor de segurança pública brasileiro seja discreta, houve um crescimento real de 251,9%
+nessas despesas, as quais saíram de R$ 0,8 bilhão em 2000 para R$ 2,8 bilhões em 2011. A ocorrência
+de GMs se intensificou, em termos relativos, nos Municípios pequenos, ao passo que caiu nas grandes
+cidades. Em 1991, cerca de 27,5% das GMs existentes encontravam-se em localidades com menos
+de 20.000 habitantes e em 2012 essa participação já era de 32,9%. Em caminho contrário, nos
+Municípios maiores (população acima de 250.000) o percentual relativo retraiu-se de 12,6% (em
+1991) para 8,6% em 2012.
+          No contexto evolutivo dessas GMs, Vargas e Oliveira Junior (2010) conseguem visualizar
+indicativos de que essas instituições de fato têm extravasado seu restrito mandato constitucional e,
+sob um enfoque positivo, propõem um modelo para a análise do funcionamento e da atuação desses
+entes pautado por três critérios, não necessariamente excludentes:
+               1) Polícia Municipal – Aplicador da lei e repressor;
+               2) Polícia Comunitária – Apaziguador e mediador; e
+               3) Guarda Patrimonial – Protetor de bens e de pessoas.
+          De forma complementar, o questionário da Munic 2012 (BRASIL, 2013) dá números a esse
+tipo de debate, na medida em que registra quais são as principais atividades exercidas por essas GMs.
+A atuação dessas corporações é diversificada e com características convergentes aos três critérios
+estabelecidos por Vargas e Oliveira Junior (2010). Nota-se que há grande prevalência de atividades
+de proteção a bens (93,4%), mas também se observa componentes de policiamento, propriamente
+dito, (por exemplo, Auxílio à Polícia Militar – 72,9%, Patrulhamento ostensivo – 67,7% e Auxílio à
+Polícia Civil – 59,3%). Portanto, parecem existir evidências suficientes em favor do entendimento de
+que as GMs não se comportam apenas como vigilantes ou porteiros do patrimônio público e que a
+cada ano o seu potencial de influenciar os indicadores do sistema de segurança pública brasileiro vem
+aumentando. Se isso é verdade, convém sejam envidados esforços para se estimar em qual magnitude
+se dá esse impacto, seara em que este artigo pretende contribuir por meio das estratégias detalhadas
+em seções posteriores.
+          Apesar do crescente apelo envolvendo tais atividades locais de segurança pública, ainda são
+poucas as contribuições empíricas que tomam como base o modelo de racionalidade econômica
+aplicado a atividades criminais para mensurar o impacto das GMs brasileiras nos diversos indicadores
+de criminalidade. Entre eles, destacam-se a contribuição de Resende e Andrade (2011) e a de Ferreira
+(2012). A busca na literatura internacional retornou evidências de que o modelo de GMs utilizado no
+Brasil é sui generis, em especial pelo seu componente de participação facultativo. Até onde foi
+possível pesquisar, não foram encontradas experiências empíricas similares, inclusive em modelos
+regionalizados de policiamento. Mesmo para esses, notou-se a obrigatoriedade de sua existência
+como uma característica marcante, relacionada ao fato de que os serviços de segurança pública são
+monopólios estatais resguardando de maneira inalienável o uso da força ao Poder constituído. Para
+situações como essa, métodos baseados no arcabouço de resultados potenciais (que em geral
+necessitam de grupos de controle) não se mostram tão eficazes como, por exemplo, estimações
+comparativas por meio de fronteiras 2.
+
+2
+  Um pouco mais de informação sobre os modelos europeus e norte-americano de policiamento pode ser obtido em Bayley
+(1990) e em Monet (2001).
+                                                                                                                      4
+
+3. Metodologia
+          Conforme debatido nas seções anteriores, a decisão de implantar uma GM é uma faculdade
+inerente aos próprios Municípios, diferindo, portanto, das demais ações da área de segurança pública
+que são constitucionalmente mandatórias (por exemplo, existência de polícias civis e militares nos
+Estados e no DF). Essa nuance indica, entre outras consequências, que a designação ao tratamento
+(criação de uma GM) não é um processo aleatório. Mais ainda, pode existir um componente de
+autosseleção associado com características não observáveis desses participantes e isso os tornaria
+uma espécie de subamostra especializada, com possíveis impactos sobre suas variáveis de resultado.
+Como esse parece ser o caso, a tarefa de se isolar o efeito causal desse tipo de programa se torna ainda
+mais dificultosa.
+          Nesse contexto comparativo, busca-se definir como os Municípios tratados (com GM) se
+sairiam sem possuí-las e também como seria o desempenho daqueles entes que não foram tratados,
+caso o fossem. Como não é possível observar os mesmos indivíduos simultaneamente em duas
+situações, há a necessidade de se estimar resultados potenciais com o auxílio de contrafactuais. O
+trabalho de Imbens e Wooldridge (2009) resenha de maneira crítica os desenvolvimentos recentes
+desse campo de pesquisa.
+          Neste artigo optou-se por avaliar os possíveis impactos advindos da criação de GMs, uma
+lacuna na pesquisa econômica do crime, por três enfoques distintos, cada um com suas respectivas
+estratégias de identificação. No primeiro caso investigamos apenas o aspecto binário (se possui ou
+não possui GM) e logo após analisamos de duas maneiras distintas também a intensidade do
+tratamento (anos com a GM): i) como se composto por múltiplos níveis 3; e ii) como um processo
+contínuo. Para cada uma dessas abordagens há uma subseção a seguir definindo, ainda que de maneira
+breve, seus supostos.
+                3.1 Tratamento binário (DID, PSM e DID-PSM)
+          A estratégia de identificação nesse caso é composta de estimações comparativas envolvendo
+o método DID, seguido pelo PSM e por uma combinação de ambos (DID-PSM). Os Municípios são
+divididos em dois grupos, o de tratamento composto por aqueles que possuem GM e o de controle,
+formado por aqueles entes que não possuem GM. Em adição, buscou-se contornar o possível
+problema de endogeneidade por simultaneidade, comum em atividades de segurança pública, por
+meio da criação de grupos de controle e de tratamento defasados, isto é, foram criadas diversas
+variáveis binárias definindo há quantos anos o Município conta com a GM e para cada uma dessas
+situações foram rodadas regressões individualizadas, com e sem covariadas de controle.
+          O método de diferenças-em-diferenças requer um painel de dados com unidades tratadas e
+não tratadas e com períodos anteriores e posteriores à intervenção. A sua principal hipótese diz que
+as trajetórias das variáveis de resultado entre os dois grupos possuem a mesma tendência no período
+pré-intervenção, o que remeteria possíveis mudanças pós-intervenção à designação ao tratamento
+(MEYER, 1995) 4.
+            Outra estratégia utilizada para se mitigar a questão da autosseleção na avaliação de impacto
+das GMs é o método de pareamento por escore de propensão – PSM (ROSENBAUM e RUBIN,
+1983). A intuição reside na busca por indivíduos que não foram tratados (dentro do grupo de controle),
+mas que possuem características observáveis similares àquelas dos que fazem parte do programa, ou
+seja, a comparação se dá em termos da probabilidade predita de receber o tratamento, condicional às
+variáveis de controle. Após a obtenção desse subgrupo de controle, suficientemente parecido com os
+tratados, qualquer diferença em termos de resultado será devida apenas ao efeito do tratamento.
+
+
+3
+  Nesse caso, as variáveis de tratamento são agrupadas em 5 categorias distintas, conforme sua dosagem, sendo o primeiro
+nível referente aos Municípios sem GM e o último, por gradação, remete àqueles entes que possuem maior exposição ao
+programa.
+4
+  A contribuição crítica de Bertrand et. al. (2004) enfoca com mais profundidade os benefícios e as limitações desse
+método.
+                                                                                                   5
+
+          Conforme Caliendo e Kopeinig (2005), temos que o efeito do tratamento para um indivíduo
+é dado pela diferença entre os seus resultados potenciais tendo recebido e não tendo recebido o
+tratamento. Como não observamos simultaneamente ambas as situações, precisamos de um
+contrafactual. Assim:
+                                        =τ i Yi (1) − Yi (0)
+         Neste artigo estamos interessados em estimar o Efeito do Tratamento sobre os Tratados –
+ATT (em inglês, Average Treatment Effect on the Treated), representado por:
+                                      = τ ATT E= (τ | D 1)
+                                                 1] − E [Y (0) | D =
+                                    E [Y (1) | D =
+                              τ ATT =                              1] ,
+em que o último termo representa o contrafactual.
+         A hipótese básica para se estimar o ATT é a Independência Condicional (ou seleção em
+observáveis ou ignorabilidade ou unconfoundedness, do inglês). Por esta temos que, após controlar
+pelo PSM, os resultados potenciais são independentes da designação ao tratamento, como segue:
+                                            Y (0), Y (1)  D | P( X ), ∀X
+          Isso implica que, dado um mesmo escore de propensão, os resultados de indivíduos no grupo
+de controle podem ser vistos como boas aproximações do resultado potencial de um tratado, caso este
+não recebesse o tratamento. Há que se considerar também a hipótese de suporte comum (ou overlap,
+em inglês) que requer a existência de regiões de sobreposição entre os escores de propensão estimados
+tanto para tratados quanto para controles, de forma que:
+                                                0 < P( D = 1| X ) < 1
+          Sob as duas hipóteses citadas, também conhecidas em conjunto como “ignorabilidade
+forte”, podemos reescrever o ATT obtido por meio da técnica de PSM como:
+                     τ ATT
+                       PSM
+                           =EP ( D =1| X ) {[Y (1) | D =1, P ( X ) ] − [Y (0) | D =0, P ( X ) ]}
+          De maneira resumida, o estimador PSM é dado simplesmente pela diferença entre os
+resultados médios de tratados e de controles sobre o suporte comum e para P(X) suficientemente
+parecidos.
+          Em contraposição ao método DID, que estima um modelo tendo como variável dependente
+uma medida de resultado, no PSM a variável dependente é a própria participação ou não no programa
+(critério binário), por isso também conhecido como modelo de tratamento. O conjunto de variáveis
+explicativas, a depender do fenômeno em análise, pode ser o mesmo nas duas situações. Na prática,
+os escores de propensão para cada observação da amostra de tratados e não tratados são preditos por
+meio de uma regressão Logit ou Probit, podendo-se aplicar restrições adicionais como a de que o
+ATT esteja definido apenas na região de suporte comum (inclusive com critérios de descarte) e
+aquelas relacionadas à qualidade do pareamento (testes de balanceamento).
+          Os trabalhos de Heckman et. al. (1997 e 1998) sugeriram ganhos adicionais pela
+combinação dos métodos PSM e DID, uma vez que há o relaxamento de algumas das hipóteses usuais,
+como a de seleção em observáveis. Na utilização conjunta, a estimação ainda será não visesada
+mesmo que existam fatores não observáveis comuns aos dois períodos (constantes ao longo do tempo)
+e que afetem simultaneamente a decisão de participar do programa e os resultados potenciais. Em
+termos práticos, aplica-se por meio de regressão linear a estimação DID na subamostra selecionada
+pelo PSM.
+                3.2 Tratamentos multivalorados (categóricos)
+          Nem sempre é crível imaginar que participantes de um dado tratamento recebam doses
+homogêneas dessa intervenção, superiores apenas àquelas dos que não participaram do programa,
+como é o suposto implícito das avaliações de impacto com variáveis binárias. No caso prático deste
+                                                                                                                              6
+
+artigo, é de se conjecturar que, mesmo entre os tratados, a longevidade das GMs em cada Município
+(anos em funcionamento) possa afetar o seu desempenho 5.
+          Para situações multivaloradas como essa, a contribuição pioneira de Imbens (2000) registra
+que para a estimação de efeitos causais não é de fato necessário dividir a amostra de indivíduos em
+subpopulações em que as comparações causais seriam válidas, como faz o PSM, sendo suficiente
+repartir essa base de dados em subpopulações em que os produtos potenciais médios possam ser
+estimados.
+          De acordo com a notação de Wooldridge (2010, p.962), suponha que a variável indicativa
+de tratamento, w i , assuma G + 1 diferentes valores, de forma que {0, 1, 2, ..., G}, sendo zero o grupo
+de controle e 1, ..., G os diferentes níveis ou opções para o tratamento. Há, portanto, G + 1 resultados
+contrafactuais, que são denotados, para uma dada amostra aleatória i, {y ig : g = 0, 1, ..., G}. Os
+resultados observados, y i , são expressos como:
+                             yi = 1[ wi = 0] yi 0 + 1[ wi = 1] yi1 + ... + 1[ wi = G ] yiG
+         Definindo µ g = E ( yig ) como a média populacional dos contrafactuais e utilizando um vetor
+de covariadas x i , uma condição de ignorabilidade suficiente para a identificação das médias é a
+assunção de independência condicional:
+                         =  E ( yig | wi , xi ) E=
+                                                 ( yig | xi ), g 0,1,..., G .
+           Sob essa condição, segue que:
+           E ( yig | wi , xi ) = 1[ wi = 0] E ( yi 0 | xi ) + 1[ wi = 1] E ( yi1 | xi ) + ... + 1[ wi = G ] E ( yiG | xi ),
+o que demonstra que a função das médias E ( y g | x) é identificada porque
+                                                    y g | x) E=
+                                                 E (=         ( y | w g , x).
+          Portanto, é possível estimar E ( y | w = g , x) para cada g, dada uma amostra aleatória,
+restringindo a atenção às unidades em que wi = g . Esse ajustamento pode ser feito por meio de
+regressões, tornando a situação multivalorada uma extensão do caso em que wi é binário.
+           Dadas as estimativas para a média condicional {mˆ g (x) : g = 0,1,...,G} , é possível estimar o
+ATT para o nível de tratamento h relativo ao nível g, como
+                                                             N
+                                 =τˆghATT,reg N −1 ∑  mˆ h (xi ) − mˆ g (xi ) .
+                                                             i =1
+
+           Em palavras, se τ       ATT
+                                   gh    for o ATT para aqueles nos grupos g ou h, τˆghATT,reg será obtido tomando
+as médias das diferenças mˆ h (xi ) − mˆ g (xi ) dentre a subamostra com wi = g e wi = h . Para tanto, a
+hipótese de sobreposição (overlap) é imprescindível, haja vista a necessidade de se contar com
+observações com probabilidade positiva de designação em todos os níveis de tratamento.
+          Respeitadas as hipóteses debatidas, as rotinas de estimação para o efeito causal de
+tratamentos multivalorados discretos, como os utilizados neste artigo, consistem no uso, em separado,
+de modelos preditores para: i) a variável de resultado (ajustamento por regressão – RA, do tipo log-
+linear e de Poisson, dada a natureza não negativa das taxas criminais); e ii) a variável de designação
+ao tratamento (estimadores baseados em ponderação pelo inverso da probabilidade – IPW, obtidos
+com o uso de um logit multinomial). Isso feito, são adicionalmente testados estimadores do tipo
+duplamente robustos (doubly robust), associando os benefícios de cada uma das abordagens
+
+
+
+
+5
+  Essa variável está dividida em cinco categorias, denotando sempre dosagens maiores a partir do primeiro estrato (de não
+tratados).
+                                                                                                                        7
+
+anteriores (IPWRA) 6, conforme definição e apresentação detalhada de Hirano e Imbens (2001),
+Wooldridge (2010, p.930-934) e de STATACORP (2013).
+                3.3 Tratamentos contínuos
+          Outra maneira de verificar se o aumento na intensidade do tratamento (longevidade das
+GMs) acarreta impactos diferenciados sobre as variáveis de resultado (taxas de criminalidade) é
+encarando essas intervenções como contínuas. Como em outras ocasiões, tal estratégia necessita de
+unidades com características observáveis suficientemente similares, mas que agora contem com
+níveis diferenciados nas doses dos respectivos tratamentos 7.
+          Os trabalhos pioneiros de Imbens (2000) e de Hirano e Imbens (2004) fornecem o arcabouço
+teórico para aplicações desse tipo, baseando-as inicialmente na noção de Escore de Propensão
+Generalizado – GPS, isto é, na probabilidade condicional de se receber um nível particular de
+tratamento (t) dadas as variáveis pré-tratamento (x ∈ X). Assim:
+                             r (t , X=               ) E [ D(t ) | X= x ] ,
+                                           = t | X= x=
+                                     ) pr (T
+em que D(t ) é o indicador binário de recebimento do nível de tratamento t.
+               Nesse contexto, os autores sugerem o relaxamento da hipótese de independência
+condicional, demonstrando que uma análoga, denominada ignorabildiade fraca, se mantém dado o
+GPS:
+                                       D(t ) ⊥ Y (t ) | r (t , X ), ∀ t ∈ T
+               Portanto, a hipótese de ignorabilidade fraca é menos restritiva, visto requerer que o
+indicador de tratamento em t, D(t), seja independente do resultado potencial somente em t, Y(t), dado
+X (ou o r(t, X)). Na hipótese tradicional para tratamentos binários é esperado que D(t) seja
+independente do conjunto completo de resultados potenciais (IMBENS e WOOLDRIDGE, 2009,
+p.73).
+               Sob ignorabilidade fraca é possível então estimar de maneira não viesada o resultado
+esperado de um indivíduo sob o nível de tratamento t, dado o GPS r (t , X ) = r , aqui denotado por
+ β (t , r ) . Assim, para todo t:
+                               =                  [Y (t ) | r (t , X ) r ]
+                                      β (t , r ) E=
+                                                               r (t , X ) r ]
+                                                   E [Y | T t ,=
+                                                  ==
+          Logo após, o valor esperado dos resultados potenciais de indivíduos sob um dado nível de
+tratamento t (função dose-resposta) é obtido calculando-se a média de β (t , r (t , X )) para toda a
+distribuição de r (t , X ) , como segue:
+                                             E [Y (t ) ] = E [ β (t , r (t , X )) ]
+         A rotina de operacionalização econométrica seguiu as contribuições de Guardabascio e
+Ventura (2013) 8.
+
+4. Bases de Dados
+         Neste artigo as rotinas econométricas encontram-se pautadas na utilização dos Municípios
+(exceto o Distrito Federal) como unidades de análise, portanto o universo potencial são todos os entes
+locais que existiam em cada ano do painel analisado (em 2012, por exemplo, eram 5.564). Dado o
+
+6
+  De acordo com Robins e Rotnizky (1995) apud Hirano e Imbens (2001, p.264), após combiná-los (IPWRA), basta que
+apenas um dos dois modelos (RA ou IPW) estejam corretamente especificados para que os estimadores resultantes sejam
+consistentes.
+7
+  É oportuno ressaltar que nesse arcabouço, ao contrário daquele focado em tratamentos multivalorados discretos, não se
+está mais analisando as diferenças em diversos níveis de tratamento em relação ao grupo de controle (dosagem = 0), mas
+sim averiguando se a intensidade do tratamento, entre uma subamostra de tratados, repercute sobre as respectivas variáveis
+de resultado.
+8
+  O comando utilizado foi o doseresponse2 para o software STATA 13.
+                                                                                                                    8
+
+número satisfatório de observações, foi possível investigar os fenômenos de interesse por meio de
+classes de Municípios, isto é, agrega-los por similaridades populacionais a fim de minimizar
+problemas de regressão à média. Assim, utilizamos os seguintes agrupamentos de cidades: Grupo 1
+– Municípios Pequenos (população de 20.000 a 49.999); Grupo 2 – Municípios Médios (de 50.000 a
+99.999); Grupo 3 – Municípios Intermediários (de 100.000 a 249.999); e Grupo 4 – Municípios
+Grandes (acima de 250.000) 9.
+          Utilizam-se nas estimações dos modelos econométricos dois conjuntos distintos de dados,
+a saber: i) um painel fortemente balanceado compreendendo os anos de 1991 a 2012, nas situações
+em que a variável de resultado sejam as taxas de homicídios por 100 mil habitantes (proxy para os
+crimes contra a pessoa); e ii) um painel não equilibrado com informações dos anos de 2009 a 2011
+para quando a variável dependente tratar das taxas de roubos e furtos de veículos para cada 100 mil
+veículos emplacados (estimativa para os crimes contra o patrimônio).
+          Os registros de homicídios são provenientes do Sistema de Informações sobre Mortalidade
+do Ministério da Saúde – SIM. Optou-se pela sua utilização basicamente por possuírem adequada
+abrangência espacial e temporal e por ser a variável criminal menos sujeita ao problema de sub-
+registro presente em ocorrências policiais, garantindo com isso a comparabilidade entre os entes
+avaliados 10. O mesmo se aplica à série de roubos e furtos de veículos, com o benefício adicional de
+se possibilitar a utilização de uma proxy também para as atividades de segurança pública relacionadas
+aos crimes contra o patrimônio. Por fim, até onde foi possível investigar, a compilação dessa série
+em nível municipal para os anos de 2009 a 2011configura-se como uma contribuição inédita para a
+pesquisa de segurança pública nacional 11.
+          Consoante a cada estratégia de identificação adotada, foram 2 (duas) as variáveis de
+interesse utilizadas para se estimar o possível impacto das guardas municipais na criminalidade: i)
+dummy = 1 caso o Município possua guarda municipal em dado ano, zero caso contrário; e ii) tempo
+de existência (em anos) da guarda municipal em um dado município em cada ano. Todas foram
+elaboradas a partir de diversas edições da Pesquisa de Informações Básicas Municipais – Munic do
+Instituto Brasileiro de Geografia e Estatística – IBGE (Munic 2012 e a Munic 2014).
+          Os controles utilizados seguem as recomendações da teoria da racionalidade econômica
+aplicada a atividades criminosas e também de componentes da teoria da desorganização social. Na
+Tabela 1 são apresentadas, com uma breve definição e com as respectivas estatísticas descritivas,
+cada uma das variáveis utilizadas tanto nos modelos que explicam os resultados (taxas de
+criminalidade) quanto nas especificações que investigam os condicionantes ao tratamento (existência
+ou não de guarda municipal e a sua longevidade). Todas estão separadas pelos grupos populacionais
+estipulados para o agrupamento dos Municípios da amostra.
+
+
+
+
+9
+  Os Municípios muito pequenos (abaixo de 20.000 habitantes) foram propositalmente excluídos da amostra porque nessas
+localidades a dinâmica da criminalidade ainda é muito distante do que existe nos seus congêneres. Por exemplo, em 1991
+existiam 3.093 desses entes na nossa base, sendo que em 2.992 não haviam sido registrados nenhum homicídio (96,7%
+do total). Em 2012, tínhamos 3.896 entes com população menor do que 20.000, sendo que em 2.866 observações não
+ocorreram homicídios (73,6% do total).
+10
+   Até 1995 esses registros são os constantes do Grande Grupo da CID9 “E55 Homicídios e lesões prov intenc p/outr
+pessoas”. A partir de 1996 extraímos os homicídios dos Grandes Grupos da CID-10 “X85-Y09 Agressões” e “Y35-Y36
+Intervenções legais e operações de guerra”.
+11
+   Como citado anteriormente, essas séries foram obtidas diretamente da base de registros “BIN Roubos e Furtos” do
+Departamento Nacional de Trânsito – DENATRAN em extração pontual realizada pela Confederação Nacional de
+Seguros – CNSeg, uma das poucas entidades a ter acesso a tais dados. As informações estão disponíveis apenas para os
+Municípios que em 2009 possuíam frota igual ou superior a 5.000 veículos (1.292 observações anuais). Não foram
+utilizados os dados provenientes dos Estados da Bahia e do Amazonas, pois neles todos os registros locais são
+armazenados nos Municípios da Capital (Salvador e Manaus), o que prejudicaria a comparabilidade.
+                                                                                                                                                                                                                                                                                        9
+
+
+
+
+Tabela 1 – Estatísticas Descritivas (1991-2012)
+                                                                                                                 Grupo 1 – (20.000 a 49.999)                 Grupo 2 - (50.000 a 99.999)                  Grupo 3 - (100.000 a 249.999)                 Grupo 4 - (Acima de 250.000)
+                                                     Variável                                                             Desv.                                       Desv.                                         Desv.                                         Desv.
+                                                                                                           Obs. Média              Mín.     Máx.     Obs. Média                 Mín.     Máx.     Obs. Média                  Mín.     Máx.     Obs. Média                 Mín.     Máx.
+                                                                                                                         Padrão                                      Padrão                                        Padrão                                        Padrão
+txhom - Taxa de homicídios por 100 mil habitantes.                                                         21.621 14,4       15,9     0,0    160,6   6.651     19,6      18,1       0,0   212,4   3.245      27,7      21,9      0,0    183,8   1.856      36,1      24,1      0,0   157,6
+txroubfurt - Taxa de roubos e furtos de veículos por 100 mil veículos emplacados.                           1.612 211,5 205,9         4,3 2.380,7      787    284,4     278,7       5,5 2.268,2     499     489,0     411,1      1,9 2.419,2      283     734,2     462,4      1,0 2.713,2
+gm - Dummy = 1 se o Município possui guarda municipal, zero caso contrário.                                21.621    0,2      0,4       0        1   6.651      0,3       0,5         0       1   3.245       0,5       0,5        0        1   1.856       0,6       0,5        0       1
+tgm - Tempo de existência da guarda municipal (em anos).                                                   21.621    1,5      4,8       0      48    6.651      3,1       7,2         0      52   3.245       7,3      11,9        0      65    1.856      10,9      16,6        0      88
+efetivo - Efetivo das guardas municipais por 100 mil habitantes.                                            1.073 141,6 150,8         0,0 2.460,6      515     99,0      93,7       1,0   794,6     431      98,4      82,8      3,3    645,0     295      63,4      35,8      6,4   214,6
+armas - Proxy para a difusão de armas de fogo (% de suicídios e homicídios com armas de fogo, defasado).   21.417 35,2       32,0     0,0    100,0   6.651     43,6      25,6       0,0   100,0   3.245      51,2      22,0      0,0    100,0   1.856      58,4      19,9      0,0   100,0
+cmoral - Proxy para o custo moral (% de pessoas que vivem em domicílios com aparelho de televisão).        21.610 75,4       22,1     2,8    100,0   6.648     84,4      16,1       7,4    99,8   3.234      91,2       9,7     16,6     99,8   1.856      94,5       5,1     52,2    99,3
+prefgov - Dummy = 1 se o Prefeito é do mesmo partido que o Governador do Estado, zero caso contrário.      19.322    0,2      0,4       0        1   6.074      0,2       0,4         0       1   3.064       0,2       0,4        0        1   1.818       0,2       0,4        0       1
+prefcol - Dummy = 1 se o Prefeito é da mesma coligação que elegeu o Presidente, zero caso contrário.       19.322    0,3      0,4       0        1   6.074      0,3       0,5         0       1   3.064       0,3       0,5        0        1   1.818       0,3       0,5        0       1
+dens - Densidade demográfica (pessoas por km2 ).                                                           21.580 63,0      96,1      0,2 1.594,3    6.636    185,8    434,5      0,4 5.808,4     3.230     768,9 1.522,4       0,6 12.223,0    1.853 2.240,5 2.881,2         5,2 13.500,8
+txurbana - % da população vivendo em áreas urbanas (em %).                                                 21.586 64,6      22,2      3,4    100,0   6.648     78,8     18,9      1,6   100,0     3.245      90,6    11,1      14,5    100,0    1.856    95,1     6,6        31,1    100,0
+txhomensj - % homens na faixa etária dos 15 aos 39 anos.                                                   21.597 20,7       1,8     10,4     63,2   6.645     21,0      1,5     13,8    33,6     3.245      21,6     1,3      16,2     32,1    1.856    21,5     1,0        17,5     24,6
+atraso - % de 15 a 17 anos no ensino médio com 2 anos de atraso.                                           19.707 13,3       9,6      0,0     91,5   6.616     11,4      6,8      0,0    53,3     3.245      10,0     5,7       0,0     48,3    1.856     8,9     4,0         1,1     26,4
+densdom - % da população vivendo em domicílios com densidade maior que 2 pessoas por dormitório.           21.621 39,9      16,5      3,7     94,7   6.651     37,4     15,1      6,7    91,0     3.245      36,4    13,5       8,1     83,4    1.856    34,9    12,5         8,4     72,3
+nopai - % mães chefes de famílias sem fundamental completo e com filhos menores de 15 anos.                21.621 17,8       7,8      1,2     88,3   6.651     16,9      6,9      0,0    57,5     3.245      15,7     5,5       4,0     51,2    1.856    14,1     4,3         3,9     30,0
+gini - Índice de desigualdade de Gini da renda domiciliar per capita .                                     21.621 54,5       5,9     24,2     84,0   6.651     54,0      5,5     32,5    74,0     3.245      52,5     5,7      33,7     68,0    1.856    53,9     6,7        33,2     72,5
+capital - Dummy = 1 se o Município é capital de Estado.                                                    21.621   0,2      0,4        0        1   6.651      0,3      0,5        0       1     3.245       0,5     0,5         0        1    1.856     0,8     0,4           0        1
+rm - Dummy = 1 se o Município faz parte de uma região metropolitana.                                       21.621   0,0      0,1        0        1   6.651      0,0      0,0        0       1     3.245       0,0     0,1         0        1    1.856     0,3     0,4           0        1
+fronteira - Dummy = 1 se o Município faz fronteira internacional.                                          21.621   0,0      0,0        0        1   6.651      0,0      0,1        0       1     3.245       0,0     0,1         0        1    1.856     0,0     0,1           0        1
+recprop - Receita própria por habitante (exceto transferências).                                           14.672 203,0    341,0      0,0 18.989,0   4.727    276,4    301,2      0,4 4.116,7     2.398     432,7   448,4       5,6 4.403,8     1.455   544,6   391,9        26,4 2.502,7
+abandono - Taxa de abandono escolar no ensino médio (em %).                                                 3.085 13,3       7,3      0,1     53,1     954     13,3      7,2      0,2    44,5       542      11,7     6,6       0,2     37,9      295    12,0     6,4         0,7     28,0
+Fonte: DATASUS (MSaúde), CNSEG, DENATRAN, IBGE, INEP, TSE e STN. Elaboração do autor.
+                                                                                             10
+
+        Ainda sobre a escolha das demais variáveis explicativas, uma das grandes limitações
+que se impõe em modelagens para o comportamento da criminalidade em nível municipal está
+em como se controlar para os diversos tipos de efeitos dissuasórios reconhecidos pela teoria
+(por exemplo, tamanho do efetivo policial estadual, taxa de encarceramento, ações do Poder
+Judiciário, entre outros). Em especial porque no caso brasileiro a maior parcela dessa provisão
+está a critério dos Estados e do DF, os quais não disponibilizam esses dados regionalizados por
+Municípios. Nesse tipo de encruzilhada três possíveis vias podem ser tomadas: i) negligenciar
+parte desses possíveis efeitos e entender que as demais variáveis elencadas são suficientes para
+captar essa heterogeneidade; ii) interpretar a intensidade das atividades de cada Estado como
+diferentes entre si, mas fixas entre todos os seus Municípios, utilizando para isso apenas um
+conjunto de 26 (vinte e seis) dummies; ou ii) utilizar proxies ou instrumentos minimamente
+aceitáveis para captar tal dinâmica. Neste artigo optou-se por uma combinação entre os três
+enfoques.
+        Em primeiro lugar, cumpre destacar que de acordo com a Munic 2014 (BRASIL, 2015,
+p.80), os principais critérios utilizados naquele ano pelas Secretarias Estaduais de Segurança
+Pública para a alocação municipal de seus efetivos da Polícia Militar foram a densidade
+demográfica (23 respondentes), a incidência de criminalidade (21 respostas), a existência de
+presídios (7 respostas); se em localidade de fronteira (7 respostas), se é polo
+industrial/comercial (6 respostas); e outros (11 respostas). Nesse sentido, é possível verificar
+que as variáveis de controle sugeridas já englobam boa parte desses critérios (densidade
+demográfica, cidades de fronteira e condições econômicas), o que fortalece todas as
+justificativas para o seu uso.
+        Logo após, foram utilizadas, sempre que possível, as dummies estaduais com vistas a
+capturar as heterogeneidades estaduais fixas no tempo. Assim, ainda que entre os Estados exista
+valoração diferente no que concerne aos seus efeitos repressivos, se sua política interna de
+atendimento municipal segue critérios fixos no tempo (digamos, tamanho do ente), a estratégia
+será efetiva para reconhecer tais idiossincrasias.Como precaução adicional para mitigar a
+omissão de variáveis dissuasórias possivelmente relevantes, foi feito uso de uma medida
+defasada para a difusão de armas de fogo nas localidades, seguindo a ampla resenha literária de
+Cerqueira e Mello (2012) sobre o tema. Trata-se da proporção entre os óbitos perpetrados por
+armas de fogo (suicídios e homicídios) em relação ao total desses tipos de mortes (armas). A
+racionalidade por trás da opção sugere que Municípios que observaram num passado recente
+uma expansão em seu estoque de armas de fogo são também aqueles em que a atuação policial,
+responsabilidade dos Estados, foi menos presente, uma vez que tais indicadores estão
+associados a mercados mais ativos de criminalidade, bem como com maiores níveis de
+criminalidade.Por fim, espera-se que as variáveis dummy referentes ao ciclo político apoiem
+subsidiariamente tal estratégia, minimizando possível viés de omissão de variáveis na medida
+em que captam diferenças entre as orientações políticas dos respectivos Prefeitos, bem como
+suas proximidades relativas com Governadores (prefgov) e Presidentes da República (prefcol).
+Em termos apenas de conjectura, se um daqueles critérios para alocação dos efetivos policiais
+dos Estados nos seus respectivos Municípios, classificados na Munic 2014 como “Outros”, for
+a realização ou o desfazimento de uma aliança política, este fenômeno possivelmente estaria
+contemplado pelas variáveis dicotômicas sugeridas.
+
+5. Resultados
+          Nesta seção são apresentadas as estimativas para o impacto nas taxas de criminalidade
+(homicídios e roubos e furtos de veículos) provenientes da criação de GMs nos Municípios
+brasileiros. Optou-se pela apresentação desses resultados em subseções distintas, cada uma
+direcionada a uma das estratégias de estimação escolhidas (tratamentos binários,
+multivalorados por categorias e contínuos).
+                                                                                                                11
+
+          5.1 Tratamentos binários (DID, PSM e PSM-DID)
+          As estimativas para o método de diferenças-em-diferenças (DID) com efeitos fixos
+(within), tendo como variável dependente a taxa de homicídios por 100 mil habitantes, foram
+obtidas a partir do seguinte modelo, rodado em separado para cada um dos 4 (quatro) grupos
+populacionais de Municípios:
+   ln txhomit =+β 0 β1 gmit + β 2 ln armasit + β3 ln cmoralit + β 4 prefgovit + β5 prefcolit
+                      + β 6 ln densit +β 7 ln txurbanait + β8 ln txhomensjit + β9 ln atrasoit
+                        + β10 ln densdomit + β11 ln nopaiit + β12 ln giniit + θ 2 di 2 + ... + θτ diτ + α i + ε it ,
+em que o subscrito i (i = 1, 2, ..., n) refere-se a cada um dos entes das subamostras municipais
+e t (t = 1, 2, ..., 22) denota a dimensão temporal do painel. Todas as variáveis foram previamente
+definidas na Seção 3.4 (Tabela 1), com exceção de θ 2 di 2 + ... + θτ diτ , que representam o conjunto
+de dummies anuais (sem o primeiro ano), e de α i e de ε it que apontam, respectivamente, para
+os efeitos fixos e para o elemento tradicional do termo de erro. Por fim, a variável de interesse
+(estimador DID) é β1 , dummy que indica a existência de GM nas localidades em determinado
+ano 12.
+            Isso posto, a Tabela 2, adiante, sintetiza os diversos coeficientes obtidos em três
+contextos distintos: OLS1 (sem controles, sem efeitos fixos e sem dummies de tempo), OLS2
+(com controles e com dummies de tempo e de Estado, mas sem efeitos fixos) 13 e o DID
+completo, por efeitos fixos 14.
+            Por meio do modelo OLS1 é possível notar que os grupos são de fato distintos no que
+diz respeito à variável de resultados, haja vista que em quase todas as especificações há
+significância estatística para o teste de médias, isto é, os Municípios do grupo de tratamento
+convivem com taxas de homicídio sistematicamente maiores do que os seus equivalentes do
+grupo de controle, reforçando a suspeita de que possa existir simultaneidade. Nos Municípios
+pequenos essa diferença é de cerca de 28%, ao passo que é bem menor ou inexistente nos entes
+mais populosos (acima de 250.000).
+            O modelo OLS2 (sem efeitos fixos, mas com controles e com dummies de tempo e de
+Estado) sugere cenário qualitativamente diferente na medida em que as novas estimativas para
+o impacto da existência de GMs na criminalidade foram em sua maioria estatisticamente iguais
+a zero ou mesmo benéficas (no Grupo 2, entes com GM há pelo menos 3 anos e acima). Pode-
+se interpretar que o conjunto de controles sugeridos possui o potencial de captar razoavelmente
+bem a heterogeneidade dos entes da amostra, promovendo adequado tratamento ao problema
+de simultaneidade. Ainda, a inclusão dos efeitos fixos com as variáveis de controle e com as
+dummies de tempo em um cenário de diferenças-em-diferenças (DID) sugere ainda mais
+fortemente que a existência de GMs (mesmo defasadas) pouco interferiu na dinâmica da
+variável dependente, isto é, não parece existir impacto oriundo da decisão de se implantar tal
+programa, isolados os demais fatores.
+
+
+12
+   Como anteriormente esclarecido, foram criadas diversas defasagens dessas dummies com o fito de se mitigar o
+problema de endogeneidade por simultaneidade, presente em atividades de segurança pública. Dessa forma,
+existem dummies indicando Municípios que possuem GM há pelo menos 1 ano (situação contemporânea), há pelo
+menos 2 anos (defasagem 1), há pelo menos 3 anos (defasagem 2) e assim sucessivamente.
+13
+   Além das variáveis citadas, essa especificação inclui mais quatro dummies invariantes no tempo, suprimidas
+automaticamente em efeitos fixos. São elas: i) indicação para Municípios que possuem GM; ii) entes com fronteira
+internacional; iii) que fazem parte de regiões metropolitanas; e iv) que são capital de Estado.
+14
+   Todos os modelos foram, em conjunto, estatisticamente significantes ao nível de 1% ou menos. Os diversos
+testes de Hausman indicaram as especificações com efeitos fixos em detrimento daquelas com efeitos aleatórios.
+As magnitudes individuais dos controles, coerentes em termos de sinais e significâncias, foram propositalmente
+omitidas por questões de fluidez no texto, mas podem ser requisitadas a qualquer tempo junto ao autor.
+                                                                                                                                    12
+
+
+Tabela 2 – Estimativas DID do Impacto da Existência de GMs (1991-2012). Variável
+dependente = log da Taxa de Homicídios
+                                        OLS1                           OLS2                                       DID
+    Possui GM há
+                                     P-                             P-                                         P-
+pelo menos "X" anos          β               C     T         β              C              T           β              C         T
+                                    value                          value                                      value
+                                           Grupo 1 = População (20.000 a 49.999)
+          gm1              0,271    0,000   17.994   3.627      -0,006   0,906   14.344   3.316      0,089    0,157   14.344   3.316
+          gm2              0,276    0,000   18.500   3.121      -0,018   0,721   14.794   2.866      0,053    0,388   14.794   2.866
+          gm3              0,287    0,000   18.766   2.855      -0,005   0,925   15.030   2.630      0,074    0,229   15.030   2.630
+          gm4              0,284    0,000   19.018   2.603      -0,017   0,732   15.253   2.407      0,052    0,396   15.253   2.407
+          gm5              0,287    0,000   19.255   2.366      -0,012   0,808   15.463   2.197      0,060    0,351   15.463   2.197
+          gm10             0,351    0,000   20.231   1.390      0,024    0,687   16.352   1.308      0,143    0,074   16.352   1.308
+          gm15             0,283    0,000   20.829   792        -0,069   0,360   16.944   716        -0,071   0,414   16.944   716
+          gm20             0,229    0,000   21.213   408        -0,122   0,242   17.320   340        -0,176   0,108   17.320   340
+                                             Grupo 2 = População (50.000 a 99.999)
+          gm1              0,241    0,000    4.725   1.926      -0,053   0,404   4.174    1.861      0,030    0,700   4.174    1.861
+          gm2              0,231    0,000    4.954   1.697      -0,081   0,183   4.388    1.647      0,046    0,518   4.388    1.647
+          gm3              0,218    0,000    5.073   1.578      -0,101   0,094   4.501    1.534      0,034    0,616   4.501    1.534
+          gm4              0,211    0,000    5.193   1.458      -0,110   0,065   4.614    1.421      0,040    0,540   4.614    1.421
+          gm5              0,193    0,000    5.306   1.345      -0,131   0,028   4.722    1.313      0,021    0,751   4.722    1.313
+          gm10             0,155    0,001    5.806   845        -0,199   0,002   5.200    835        -0,108   0,182   5.200    835
+          gm15             0,070    0,223    6.129   522        -0,227   0,005   5.523    512        -0,124   0,195   5.523    512
+          gm20             -0,124   0,092    6.346   305        -0,264   0,015   5.740    295        -0,298   0,045   5.740    295
+                                            Grupo 3 = População (100.000 a 249.999)
+          gm1              0,238    0,000    1.592   1.653      -0,029   0,716   1.442    1.614      0,130    0,113   1.442    1.614
+          gm2              0,224    0,000    1.746   1.499      -0,008   0,916   1.584    1.472      0,099    0,202   1.584    1.472
+          gm3              0,222    0,000    1.826   1.419      -0,021   0,790   1.657    1.399      0,090    0,271   1.657    1.399
+          gm4              0,213    0,000    1.908   1.337      -0,035   0,661   1.735    1.321      0,087    0,291   1.735    1.321
+          gm5              0,204    0,000    1.984   1.261      -0,066   0,399   1.806    1.250      -0,007   0,931   1.806    1.250
+          gm10             0,166    0,000    2.359   886        -0,116   0,120   2.174    882        -0,204   0,019   2.174    882
+          gm15             0,213    0,000    2.643   602        -0,048   0,548   2.458    598        -0,187   0,083   2.458    598
+          gm20             0,296    0,000    2.844   401        0,046    0,568   2.659    397        -0,085   0,314   2.659    397
+                                            Grupo 4 = População (Acima de 250.000)
+         gm1               0,202    0,000     668    1.188      0,096    0,320     635    1.181      0,097    0,373     635    1.181
+         gm2               0,142    0,001     765    1.091      -0,002   0,981     730    1.086      0,002    0,987     730    1.086
+         gm3               0,117    0,006     819    1.037      -0,055   0,523     783    1.033      -0,054   0,532     783    1.033
+         gm4               0,094    0,028     873    983        -0,083   0,319     837    979        -0,079   0,335     837    979
+         gm5               0,080    0,062     926    930        -0,106   0,199     890    926        -0,090   0,250     890    926
+        gm10               0,078    0,079    1.181   675        -0,120   0,130   1.145    671        -0,061   0,412   1.145    671
+        gm15               0,066    0,180    1.396   460        -0,085   0,308   1.360    456        0,034    0,680   1.360    456
+        gm20               0,002    0,975    1.556   300        -0,085   0,343   1.520    296        0,076    0,452   1.520    296
+  Dummies de Tempo                      Não                                  Sim                                  Sim
+    Efeitos Fixos                       Não                                  Não                                  Sim
+     Controles                          Não                                  Sim                                  Sim
+Fonte: Elaboração do autor com base nas estimativas fornecidas pelo programa Stata 13.
+Nota: Erros-Padrão robustos à heteroscedasticidade e à correlação serial. "C" = untreated (grupo controle) e "T" = treated (grupo de
+tratamento).
+
+          Contudo, há sempre a possibilidade de que as hipóteses subjacentes ao método DID
+(em especial o paralelismo nas tendências) não estejam presentes na amostra analisada, o que
+acarretaria estimadores ainda viesados para a relação debatida. Como medida de prudência,
+operacionalizaram-se mais duas estratégias de identificação, sendo a primeira baseada no uso
+do pareamento por PSM e a segunda na combinação do DID com esse mesmo PSM (DID-
+PSM).
+          Para o PSM estimam-se modelos que buscam explicar a designação ao tratamento,
+isto é, não se tenciona mais explicar a variável de resultado diretamente (como no DID) e sim
+qual é o escore de propensão associado a cada ente no que diz respeito à probabilidade de
+                                                                                                             13
+
+possuir ou não uma GM, condicional às suas características observáveis (pré-intervenção).
+Entes não tratados, mas com escores de propensão suficientemente parecidos com os dos
+tratados, são ditos bons contrafactuais e têm suas médias da variável de resultado comparadas
+para o cálculo do ATT. Portanto, para cada um dos quatro grupos populacionais estima-se, por
+meio de um modelo Probit, a seguinte relação:
+      gmit =  β 0 + β1txhomit + β 2 armasit + β3cmoralit + β 4 prefgovit + β5 prefcolit + β 6 densit
+                  +β 7txurbanait + β8txhomensjit + β9 atrasoit + β10 densdomit + β11nopaiit
+                 + β12 giniit + β13 rmi + β14 fronteirai + β15capitali + ε it ,
+em que as variáveis utilizadas são, em essência, as mesmas já apresentadas, mas sem a
+transformação logarítmica e defasadas em pelo menos um período para captar heterogeneidades
+pré-intervenção 15. Os resultados pertinentes estão sintetizados na Tabela 3.
+          Novamente, por questões de fluidez na apresentação foram omitidos os resultados da
+regressão por probit, bem como os testes de balanceamento realizados em cada uma das
+especificações propostas. Contudo, vale ressaltar que em todos os modelos abordados houve
+significância conjunta para as variáveis utilizadas (sempre a menos de 1%) e a condição de
+balanceamento foi amplamente satisfeita, seja nos critérios individuais (variável a variável) e,
+especialmente, no quesito da significância conjunta 16. Dessa forma, os testes de diferenças de
+médias sugerem, em termos estatísticos, que os grupos de controle e de tratamento, antes
+sensivelmente diferentes, se tornaram suficientemente similares após o pareamento, o que
+legitima os resultados potenciais estimados 17.
+          Os resultados apresentados sumarizam, em termos qualitativos, comportamentos
+similares em todos os modelos apresentados, remetendo à inexistência de impactos
+provenientes da implantação de GMs nas taxas de homicídios dos diversos grupos
+populacionais analisados. A presença de simultaneidade também parece contornada, haja vista
+que os sinais e as significâncias permanecem basicamente os mesmos quando defasamos a
+variável de tratamento. Dito em outras palavras, controlando-se por estratégias de resultados
+potenciais que mitigam possíveis endogeneidades, as diferenças nas médias de homicídios entre
+aqueles entes que possuem GM e aqueles que não as implantaram não é, em termos estatísticos,
+diferente de zero 18.
+          É possível conjecturar sobre o porquê desse comportamento, em particular uma das
+razões pode ser a já citada amplitude de atribuições com as quais essas corporações se
+defrontam. Nesse sentido, pode acontecer que na prática estejam mesmo mais próximas de
+serviços de portaria e/ou vigilância (interpretação literal da CF 88) do que de potenciais
+repressoras de ilícitos (compreensão mais focada no espírito da lei). Outra sinalização pode vir
+do fato de que, ainda que tentem de fato executar serviços de segurança pública, suas estratégias
+e os seus recursos não sejam os mais adequados para tal tarefa e quando se controlam para o
+ambiente em que operam e para o papel de outras instâncias (por exemplo, os Estados), sua
+contribuição se torna negligenciável. Há ainda a possibilidade de que a natureza de atuação das
+GMs, ainda que realizadora de serviços de segurança pública, tenha poucas condições de
+
+
+15
+   A taxa de homicídios e a proxy para a difusão de armas de fogo (e para a atuação da polícia estadual) possuem
+duas defasagens por interpretação de que as políticas públicas de segurança acontecem sempre reativamente e
+sujeitas a uma institucionalidade que demanda tempo adicional para ser atualizada (por exemplo, debates
+legislativos, prazos para a realização de concursos e para treinamento do efetivo, atraso na publicação de
+estatísticas de interesse etc.).
+16
+   No STATA 13, os testes são obtidos com o uso do comando pstest, logo após os resultados da rotina psmatch2.
+17
+   Os resultados detalhados podem ser requisitados a qualquer tempo junto ao autor.
+18
+   Existem algumas estimativas PSM (NNM e kernel) que foram significativas, entretanto não conseguiram
+demonstrar um padrão de estabilidade. Ademais, quando testadas em conjunto com o DID, todas perderam a
+significância. Os resultados podem ser requisitados aos autores a qualquer tempo.
+                                                                                                                                                         14
+
+produzir resultados devido à própria natureza dos crimes de homicídios, motivados por fatores
+múltiplos e que não se restringem apenas aos materiais.
+
+Tabela 3 – Estimativas do Impacto da Existência de GMs (1991-2012). Variável
+dependente = Taxa de Homicídios (PSM) e a sua Diferença (PSM-DID)
+      Possui GM há               PSM 1 (NNM)           PSM 2 (kernel )      PSM 1 - DID                    PSM 2 - DID                   Observações
+  pelo menos "X" anos             att  P-value           att P-value        att P-value                    att  P-value              n       C       T
+                                                      Grupo 1 = População (20.000 a 49.999)
+            gm1                  0,492     0,239          0,572     0,059         0,301      0,279         0,242     0,253          16.123   13.427    2.696
+            gm2                  0,667     0,157          0,700     0,037         0,160      0,370         0,243     0,273          16.165   13.849    2.316
+            gm5                  1,055     0,075          1,106     0,003         0,391      0,267         0,386     0,197          16.225   14.448    1.777
+            gm10                 0,631     0,260          0,853     0,073         -0,122     0,390         0,131     0,375          16.304   15.235    1.069
+            gm15                 0,013     0,399          0,123     0,389         -0,110     0,393        -0,106     0,389          16.357   15.765      592
+            gm20                 -0,365    0,375          -0,158    0,389         -0,711     0,286         0,082     0,395          16.390   16.093      297
+                                                      Grupo 2 = População (50.000 a 99.999)
+            gm1                  -0,809    0,215          -0,381    0,275         -0,259     0,374        -0,095     0,384           5.531    3.950    1.581
+            gm2                  -0,848    0,213          -0,622    0,179         -0,431     0,259        -0,285     0,273           5.551    4.153    1.398
+            gm5                  -1,013    0,177          -1,032    0,035         -0,122     0,389        -0,283     0,297           5.583    4.467    1.116
+            gm10                 -1,832    0,065          -1,246    0,032         -0,466     0,311        -0,414     0,252           5.627    4.911      716
+            gm15                 -0,859    0,299          -0,940    0,133         -0,453     0,329        -0,263     0,353           5.538    5.099      439
+            gm20                 -1,214    0,247          -2,080    0,015         0,065      0,398         0,039     0,398           5.558    5.306      252
+                                                     Grupo 3 = População (100.000 a 249.999)
+            gm1                  -0,313    0,384          -0,325    0,353         0,282      0,364         0,198     0,369           2.737    1.358    1.379
+            gm2                  -0,758    0,322          -0,775    0,213         -0,232     0,371        -0,076     0,395           2.751    1.495    1.256
+            gm5                  0,039     0,399          -0,445    0,311         0,471      0,299         0,181     0,375           2.772    1.706    1.066
+            gm10                 0,021     0,399          -0,533    0,303         0,486      0,307         0,341     0,322           2.807    2.059      748
+            gm15                 1,217     0,229          0,593     0,303         1,206      0,279         0,746     0,156           2.781    2.273      508
+            gm20                 -0,753    0,361          0,396     0,363         -0,857     0,272         0,103     0,394           2.800    2.460      340
+                                                     Grupo 4 = População (Acima de 250.000)
+            gm1                  -1,655    0,274          -2,326    0,069         -0,589     0,311        -1,009     0,147           1.619      602    1.017
+            gm2                  -1,997    0,190          -2,295    0,061         -0,507     0,317        -0,898     0,181           1.628      691      937
+            gm5                  -3,406    0,035          -2,950    0,003         -0,837     0,295        -0,409     0,316           1.732      843      889
+            gm10                 -1,280    0,278          -1,035    0,194         0,364      0,357         0,079     0,395           1.668    1.089      579
+            gm15                 -0,178    0,396          -0,901    0,230         -0,473     0,354        -0,059     0,397           1.689    1.296      393
+            gm20                 -3,172     0,101         -1,818    0,089          0,454    0,357          -0,193     0,385           1.704    1.449     255
+Fonte: Elaboração do autor com base nas estimativas fornecidas pelo programa Stata 13.
+Nota: Intervalos de confiança obtidos por bootstrap (200 replicações). "C" = untreated (grupo controle) e "T" = treated (grupo de tratamento).
+
+          Sobre essa última suposição, a base de dados explorada permite que exercício similar
+aos realizados até agora seja feito tendo a taxa de roubos e furtos de veículos por 100 mil
+emplacamentos como variável de resultado ao invés das taxas de homicídios. Nesse caso, ocorre
+a utilização de uma proxy aceitável para os crimes contra o patrimônio, que em geral tendem a
+ser determinados por condicionantes não exatamente iguais àquelas relacionadas ao fenômeno
+do homicídio. Os modelos especificados seguem a mesma estrutura daqueles utilizados para a
+taxa de homicídios, mas contam com duas variáveis adicionais: a taxa de abandono escolar no
+ensino médio (abandono) e a receita corrente própria per capita dos Municípios (recprop),
+destinadas a captar as possibilidades de renda no mercado formal e a situação financeira da
+localidade, respectivamente.
+          As estimativas OLS e DID, omitidas por questões de espaço, relatam cenário análogo
+àquele relacionado aos crimes contra a pessoa. Em primeiro lugar, sem os controles as taxas de
+roubos e furtos de veículos chegam a ser até 60% maiores nos Municípios com GM. Quando
+se incluem as covariadas, esse indício de simultaneidade é dissipado e, sob DID, pode-se
+depreender que não há evidência robusta em favor da hipótese de redução nos crimes contra o
+patrimônio advinda da existência de GMs em nenhum dos grupos populacionais 19.
+
+
+19
+   Uma vez que a base para crimes contra o patrimônio conta com apenas três anos (2009-2011), optou-se por
+fundir os dois últimos grupos populacionais. Assim, para a situação em que a variável dependente é a taxa de
+roubos e furtos de veículos, temos agrupados, no último estrato, os Municípios acima de 100.000 habitantes.
+                                                                                                               15
+
+           Contudo, quando se observam os resultados dos modelos PSM e PSM-DID aplicados
+às taxas de roubos e furtos de veículos (tabelas omitidas por questão de espaço), é possível notar
+um quadro ligeiramente diferente do comportamento exposto para a taxa de homicídios 20. Isso
+ocorre porque o PSM aparentemente não foi capaz de, mesmo selecionando em observáveis
+coerentemente balanceados, reduzir completamente as diferenças entre os grupos, haja vista a
+prevalência de estimativas sugestivas de endogeneidade (impactos positivos e significantes).
+Todavia, a sua utilização em conjunto com o arcabouço de diferenças-em-diferenças (PSM-
+DID) revelou impactos causais mais confiáveis, revertendo sensivelmente o padrão de
+simultaneidade e apresentando, em sua maioria, estimativas não significativas em termos
+estatísticos, inclusive com o sinal negativo esperado pela teoria em alguns casos (grupos 1 e 3,
+principalmente).
+           Em síntese, além das conjecturas já expostas para a possível falta de impacto das GMs
+na criminalidade, os resultados obtidos sob condições de tratamento binárias, ainda que
+meritórios e instigadores de novas considerações, nada informam sobre possíveis diferenças na
+dosagem dessas iniciativas, isto é, ainda podem existir impactos diferenciados nos resultados
+advindos de níveis desiguais de exposição ao programa. Seguindo essa indicação, as próximas
+duas subseções tratam dessas possibilidades por meio de estratégias de identificação distintas.
+          5.2 Tratamentos multivalorados (categóricos)
+           Uma alternativa às limitações impostas pela abordagem binária está na interpretação
+do tratamento como se administrado em níveis ou em múltiplos valores (ou ainda, em
+categorias). Sob essa ótica, o grupo de controle continuaria sendo composto por aqueles que
+não receberam dosagem alguma, contudo os membros do grupo de tratamento estariam agora
+sujeitos a múltiplas medidas de intensidade para referenciar a sua participação no programa.
+Neste artigo propõe-se como medida para a dosagem do tratamento oriunda da existência de
+GMs o número de anos em que o Município contou com o funcionamento dessas corporações.
+Se o programa for de fato efetivo, registrar-se-á uma relação benéfica (redução da
+criminalidade) em função do aumento da intensidade nessas dosagens.Os múltiplos valores para
+o tratamento foram estabelecidos como segue:
+                •   Dose = 0 (Municípios sem GM);
+                •   Dose = A (Municípios em que a GM possui entre 1 e 3 anos de funcionamento);
+                •   Dose = B (idem, mas entre 4 e 6 anos);
+                •   Dose = C (idem, mas entre 7 e 10 anos);
+                •   Dose = D (idem, mas acima de 10 anos).
+         Conforme antecipado na Subseção 3.2, as estratégias de estimação envolvem os
+modelos para determinação das variáveis de resultado (taxas de criminalidade) por meio de
+ajustamento por regressão (RA) e, no tocante à determinação do escore de propensão ao
+tratamento, pelo uso das técnicas de IPW (pesos pelo inverso da probabilidade). As ferramentas
+também são combinadas (IPWRA) com o intuito de fornecer estimadores duplamente robustos,
+conforme aspectos detalhados em Hirano e Imbens (2001) e em Wooldridge (2010, p.930-934).
+A equação estimada em RA (especificações log-log e Poisson) é idêntica ao procedimento
+estipulado para DID, ao passo que IPW é obtido com as mesmas variáveis utilizadas no PSM,
+mas aplicando-se um modelo multinomial logit por conta dos diferentes níveis de dosagem que
+agora compõem as variáveis dependentes (tempo com GM e efetivos) 21.
+
+
+
+20
+   Todos os testes de balanceamento foram realizados e mostraram-se coerentes, indicando que os grupos de
+controle e de tratamento se tornaram, após o pareamento, estatisticamente similares. Por conta da amostra reduzida,
+utilizou-se, juntamente com a opção de suporte comum, a opção trimming a somente 2,5%. As demais
+configurações permaneceram as mesmas do exercício com a taxa de homicídios.
+21
+   Todas as rotinas foram realizadas no âmbito do programa STATA 13 e por meio do comando teffects, opções
+ra, ipw, ipwra e overlap.
+                                                                                                           16
+
+          Isso posto, a Tabela 4 sumariza as estimativas e as inferências levando em
+consideração os múltiplos níveis de tratamento para os anos de existência das GMs e os seus
+possíveis impactos sobre as taxas de homicídios por 100 mil habitantes.
+          Em primeiro lugar, cumpre ressaltar que as condições de sobreposição foram
+devidamente checadas por meio de inspeções gráficas nas densidades de cada um dos níveis de
+tratamento e em cada uma das especificações aventadas e demonstraram-se fortemente
+satisfatórias, sugerindo boa qualidade de ajustamento nos potenciais contrafactuais. Os efeitos
+individuais e as significâncias conjuntas de cada uma das equações estimadas também se
+mostraram adequados, mas foram omitidos para não tornar o texto enfadonho 22.
+          Logo após, cumpre ressaltar que as estimativas apresentadas podem ser consideradas
+coerentes em termos de manutenção de sinais, magnitudes e significâncias, sugerindo que os
+problemas de endogeneidade por simultaneidade e a autosseleção foram adequadamente
+contornados pelas técnicas abordadas. Tomando como base os modelos mais completos
+(IPWRA), é possível verificar que as GMs acarretaram impactos positivos sobre a
+criminalidade, isto é, redutores da taxa de homicídios, em todas as faixas populacionais (em
+pelo menos um nível da dosagem).
+          No tocante aos grupos populacionais, a existência de GMs parece produzir
+proporcionalmente mais impacto nos Municípios menores (grupos 1 e 2). Nesses entes, os
+tratados apresentaram reduções nas taxas de homicídios que variaram de 11,1% a 30,5% em
+comparação com o grupo de controle de não tratados (IPWRA log-log). O modelo Poisson
+correspondente estima a mesma relação, mas em termos de pontos na taxa de homicídios, e nos
+diz que possuir uma GM, nos grupos comentados e com determinada faixa etária, pode reduzir
+esse indicador em até 4,8 mortes por 100 mil habitantes, se comparado com a situação de
+inexistência desses aparatos. Para as cidades entre 20.000 e 49.999 habitantes, o impacto em
+relação ao grupo de controle se dá em todos os múltiplos valores do tratamento, inclusive no
+primeiro nível (GM de 1 a 3 anos), segmento em que se imagina que tais corporações ainda
+estejam se estruturando como resposta às demandas da sociedade local e que, portanto, podem
+apresentar resultado nulo ou até mesmo alguma simultaneidade. De fato, é o que acontece no
+grupo de Municípios imediatamente superior (população de 50.000 a 99.999), em que os
+impactos das GMs marginalmente se fazem sentir apenas a partir do segundo nível do
+tratamento (a partir de 4 anos de existência).
+          Uma explicação possível para esse fenômeno é que em localidades menores a
+disseminação de uma dada política pública pode ser mais intensa em função das facilidades em
+se mobilizar as comunidades envolvidas e também dos controles sociais mais rígidos. Em
+termos de um modelo Agente-Principal, pode ser dito que em tais cidades problemas de ação
+coletiva podem ser mais facilmente contornados. Outra conjectura, baseada no enquadramento
+proposto por Vargas e Oliveira Junior (2010) e nos argumentos de Beato Filho (2002), é que
+nessas cidades pode estar sendo implantado, pelas condições expostas, um processo mais
+acentuado de policiamento comunitário via GMs, prática amplamente reconhecida como
+indutora de maiores níveis de segurança e mudanças de comportamentos 23.
+          Por outro lado, o comportamento nos demais grupos de Municípios não é,
+aparentemente, tão homogêneo. Para os componentes do Grupo 3 (população entre 100.000 e
+249.999) não parece haver ganhos advindos de tal estratégia, com exceção da dosagem “C”
+(GM de 7 a 10 anos) do modelo IPWRA Poisson. Contudo, esse comportamento não é reprisado
+
+22
+   Cada especificação gera 5 modelos (um para cada nível de tratamento) em cada grupo populacional, sendo que
+esses valores dobram em IPWRA. Todos esses resultados podem ser requisitados ao autor.
+23
+    Poder-se-ia argumentar também que nessas localidades há maior ausência de policiamento estadual,
+criminalidade de menor potencial ofensivo e estruturas urbanas menos complexas, contudo tais fatores já foram,
+de uma maneira ou outra, controlados nas regressões propostas pela inclusão de proxies específicas, o que,
+desejavelmente, relegaria a causa dos efeitos verificados somente ao tratamento.
+                                                                                                                                                               17
+
+em mais nenhum outro modelo dessa mesma dosagem de tratamento (RA, IPW e IPWRA log-
+log), o que pode sugerir se tratar de um resultado espúrio associado unicamente à modelagem
+citada.
+Tabela 4 – Estimativas para o Impacto Multivalorado das GMs (1991-2012). Variável
+dependente = Taxa de Homicídios
+                                    RA                                                                                         IPWRA
+  Níveis de                                                            IPW
+                         log-log         Poisson        n                            n                                log-log         Poisson              n
+  Tratamento
+                      att    P-value   att   P-value               att   P-value                                   att    P-value   att   P-value
+                                                   Grupo 1 = População (20.000 a 49.999)
+    (A vs 0)         -0,051    0,316       -0,269    0,674      17.695         0,176     0,755     16.422         -0,111    0,032       -1,234   0,041   15.740
+    (B vs 0)         -0,218    0,001       -1,217    0,094                     0,855     0,227                    -0,236    0,000       -1,753   0,011
+    (C vs 0)         -0,167    0,015       -1,703    0,013                     1,481     0,046                    -0,246    0,001       -2,498   0,000
+    (D vs 0)         -0,217    0,001       -1,792    0,003                     -0,034    0,963                    -0,305    0,000       -2,895   0,000
+                                                             Grupo 2 = População (50.000 a 99.999)
+    (A vs 0)         -0,025    0,692       -0,221    0,819      6.018          0,716     0,379      5.706         -0,029    0,610       -0,696   0,420   5.673
+    (B vs 0)         -0,112    0,159       -1,466    0,162                     1,134     0,227                    -0,136    0,090       -1,935   0,059
+    (C vs 0)         -0,214    0,006       -3,715    0,000                     -0,585    0,490                    -0,279    0,000       -4,847   0,000
+    (D vs 0)         -0,266    0,001       -4,036    0,000                     -0,718    0,542                    -0,240    0,005       -3,325   0,003
+                                                         Grupo 3 = População (100.000 a 249.999)
+    (A vs 0)         0,100     0,157       3,473     0,015      3.054          -0,414    0,713      2.890         0,019     0,759       0,272    0,820   2.885
+    (B vs 0)         0,071     0,299       2,265     0,133                     -0,647    0,600                    -0,028    0,686       -0,150   0,914
+    (C vs 0)         0,040     0,555       0,217     0,873                     -1,048    0,396                    -0,106    0,154       -3,332   0,013
+    (D vs 0)         0,194     0,001       6,293     0,000                     0,350     0,791                    0,015     0,815       1,509    0,264
+                                                          Grupo 4 = População (Acima de 250.000)
+    (A vs 0)         0,028     0,644       -1,742    0,396      1.816          -3,138    0,052      1.732         -0,004    0,933       -1,435   0,388   1.731
+    (B vs 0)         0,000     0,994       -2,847    0,201                     -2,589    0,313                    -0,068    0,281       -2,469   0,241
+    (C vs 0)         -0,202    0,003       -9,687    0,000                     3,212     0,723                    -0,181    0,012       -7,967   0,000
+    (D vs 0)         -0,156     0,023       -5,861    0,007                    -3,890    0,079                    -0,163    0,021       -3,066   0,189
+Fonte: Elaboração do autor com base nas estimativas fornecidas pelo programa Stata 13.
+Nota: Erros padrão robustos. Nível 0 = sem GM; A = GM de 1 a 3 anos; B = GM de 4 a 6 anos; C = GM de 7 a 10 anos; D = GM há mais de 10 anos.
+
+          Nas grandes cidades (mais de 250.000 habitantes), as estimativas IPWRA log-log são
+de uma taxa de homicídios cerca de 17% menor (categorias “C” e “D”) do que a dos Municípios
+com dosagem do programa nula. Uma suposição inicial seria de que nesses entes a dinâmica
+social e econômica seria mais complexa e, portanto, a curva de aprendizado é mais acentuada,
+o que levaria essas corporações a demorarem um pouco mais de tempo para apresentarem
+resultados. Além disso, o argumento de capacidade de coordenação exposto para os Municípios
+pequenos pode atuar aqui, mas de maneira contrária. Em outra abordagem, há que se ponderar
+que foram nesses entes, em geral com melhor estrutura, que o processo de instalação de GMs
+foi, em termos relativos, iniciado e, por isso, contam atualmente com a maior parte de suas
+corporações nas categorias “C” ou “D”.
+          Portanto, diferentemente do que fora observado junto aos resultados dos tratamentos
+binários, a existência de GMs parece de fato exibir o potencial de contribuir para a redução da
+taxa de homicídios nas localidades que decidiram por implantá-las, possuindo uma resposta à
+dosagem proporcionalmente maior nos Municípios menores (de 20.000 a 49.999 habitantes e
+de 50.000 a 99.999).
+          Por fim, há que se comentar os resultados da metodologia proposta em relação à base
+de dados de crimes contra o patrimônio. Novamente, a dimensão reduzida desse painel (2009-
+2011) demandou adaptações nos grupos populacionais, sendo a separação neste caso refeita em
+termos de apenas dois segmentos: i) localidades com população maior do que 20.000 e menor
+do que 99.999; e ii) cidades com mais de 100.000 habitantes. Sob o mesmo conjunto de
+variáveis utilizado no DID e no PSM, tem-se os resultados da Tabela 5.
+          Conforme disposto, os três modelos são qualitativamente similares informando que
+não há efeitos significativos da existência de GMs, e das suas diversas dosagens, na redução da
+criminalidade relacionada com crimes contra o patrimônio, ao contrário do que foi relatado para
+as taxas de homicídios (em algumas faixas populacionais). Aventa-se a possibilidade de que
+dada a natureza operacional das GMs possa existir um efeito diferenciado em relação aos crimes
+contra a pessoa e aos crimes contra o patrimônio. Uma explicação factível pode estar no fato
+                                                                                                                       18
+
+de que os roubos e furtos de veículos estão relacionados primordialmente com atividades de
+crime organizado e que as atuações mais circunscritas das GMs não os atinjam. Se isso for
+verdade, tal variável provavelmente não seria uma boa proxy para os crimes contra o patrimônio
+sob os quais essas corporações poderiam exercer alguma melhoria, cogitando a sua reanálise
+para trabalhos futuros que sigam essa mesma abordagem.
+Tabela 5 - Estimativas para o Impacto Multivalorado das GMs (2009-2011). Variável
+dependente = log da Taxa de Roubos e Furtos de Veículos
+      Níveis de                RA                           IPW                                     IPWRA
+     Tratamento      att     P-value    n           att   P-value     n                    att     P-value        n
+                                    Grupo 1 = População (20.000 a 99.999)
+      (A vs 0)       -0,13     0,286        1.994       -0,10     0,481       2.126        -0,20    0,145         1.815
+      (B vs 0)       0,15      0,195                     0,00     0,978                    0,13     0,328
+      (C vs 0)       0,06      0,641                    -0,15     0,366                    0,00     0,991
+      (D vs 0)       0,09      0,368                     0,10     0,587                    0,18     0,164
+                                       Grupo 4 = População (Acima de 100.000)
+      (A vs 0)       0,24      0,034         683        -0,29     0,527         735        0,23     0,161             640
+      (B vs 0)       0,21      0,261                    -0,56     0,235                    0,10     0,654
+      (C vs 0)       0,18      0,173                    -0,34     0,463                    0,27     0,134
+      (D vs 0)        -0,01     0,973                     -0,40     0,382                    0,02     0,928
+Fonte: Elaboração do autor com base nas estimativas fornecidas pelo programa Stata 13.
+Nota: Erros padrão robustos. Nível 0 = sem GM; A = GM de 1 a 3 anos; B = GM de 4 a 6 anos; C = GM de 7 a 10 anos; D = GM
+há mais de 10 anos.
+
+          Além disso, por ser um crime altamente especializado, é provável que os fatores para
+a sua redução passem por atuações investigativas mais incisivas a cargo das respectivas Polícias
+Civis e que em nossos modelos já estariam devidamente controlados. Outro aspecto relacionado
+com esse indicador criminal é o seu controle por meio da inclusão tecnológica (rastreadores,
+bloqueadores etc.). Se esses fatores alheios às atuações das GMs forem de fato de alguma
+relevância para o comportamento desses indicadores, ter-se-á que já estariam provavelmente
+incluídos no modelo pelos controles propostos (em especial, as dummies temporais). Por fim,
+deve-se destacar que a base de dados utilizada para esse fim, em que pese se configurar numa
+contribuição ao debate, pode ainda ser suficientemente limitada para inferências focadas em
+subpopulações e subdivisões da amostra, como foi o caso aqui apresentado.
+          Na subseção seguinte tenciona-se explorar um pouco mais desse aspecto
+multivalorado dos tratamentos, mas agora sob um enfoque contínuo, possibilitando a aplicação
+de testes adicionais às inferências aqui debatidas.
+          5.3 Tratamentos contínuos (GPS e Dose-Resposta)
+          Os resultados obtidos por meio das estimações do GPS e da função Dose-Resposta,
+doravante denominada apenas DR, seguem os procedimentos operacionais estabelecidos por
+Bia e Mattei (2008), com os ajustes sugeridos por Guardabascio e Ventura (2013) 24. Consistem,
+como referenciado, em três etapas:
+          1) As estimativas do GPS, r (t , X ) , que fizeram uso do mesmo conjunto de variáveis
+             explicativas do PSM e dos modelos IPW 25;
+          2) Logo após, computa-se o resultado esperado de um indivíduo sob o nível de
+             tratamento t, dado o GPS, β (t , r ) , com formas funcionais flexíveis (quadrática para
+             ambos os termos, com interação); e
+
+24
+   Comando doseresponse2 do STATA 13.
+25
+   Guardabascio e Ventura (2013) flexibilizam o pressuposto de que o tratamento deva ser normalmente
+distribuído, condicional às covariadas (BIA e MATTEI, 2008), incluindo nas possibilidades de estimação
+distribuições da família exponencial. Nos resultados apresentados optou-se pela distribuição gamma para o
+tratamento, após a realização de testes que rejeitaram o uso da distribuição normal (Kolmogorov-Smirnov).
+                                                                                                                                                                                                                                                                                                                      19
+
+         3) Tomando-se a média dessas expectativas condicionais estimadas, obtém-se a
+            função DR.
+         Entre o primeiro e o segundo passo é feita a checagem da condição de balanceamento.
+Contudo, a rotina computacional implementada não o faz por meio de testes com viés
+padronizado usuais (tanto para variáveis individuais quanto para a significância conjunta). De
+acordo com o exposto por Guardabascio e Ventura (2013, p.9), os critérios de inferência desse
+comando (e do seu antecessor doseresponse e gpscore) baseiam-se apenas no valor mais
+extremo das diversas estatísticas t obtidas, o que pode levar a rejeições precipitadas. Nas
+estimações propostas, por exemplo, foram analisados os testes de média de até 56 parâmetros
+em cada especificação, sendo que, em média, em apenas 4 situações as estatísticas t superaram
+o valor consagrado de 1,96 (significância a 5%, bicaudal), limitando-se a um máximo de 2,45.
+Na ausência de uma medida de significância conjunta para o balanceamento e em face das
+situações relatadas, assumiu-se que essa condição foi satisfatoriamente obtida para a base de
+dados em questão.
+         Os grupos de Municípios, as medidas de intensidade e as variáveis de resultado
+seguem as mesmas considerações feitas na subseção anterior referente a múltiplos tratamentos
+categóricos. Cabe ainda acentuar que as análises adiante não têm mais como base o grupo de
+Municípios que não implantou GMs, passando a se restringir somente àqueles que de fato
+receberam alguma dosagem positiva do programa.
+
+Gráfico 1 – Função DR e Efeitos do Tratamento (Anos com GM). Variável dependente =
+Taxa de Homicídios (1991-2012)
+                            Painel “a” – Municípios Pequenos                                                                                                                          Painel “b” – Municípios Médios
+                            Dose Response Function                                                             Treatment Effect Function                                            Dose Response Function                                                              Treatment Effect Function
+                   20
+
+
+
+
+                                                                                                      0
+
+
+
+
+                                                                                                                                                                                                                                                              0
+                                                                                                                                                                           28
+                   19
+
+
+
+
+                                                                                                                                                                                                                                                              -2
+                                                                                                                                                                           26
+                                                                                                      -2
+                                                                          E[txhom(t+1)]-E[txhom(t)]
+
+
+
+
+                                                                                                                                                                                                                                  E[txhom(t+1)]-E[txhom(t)]
+                   18
+
+
+
+
+                                                                                                                                                                                                                                                              -4
+     E[txhom(t)]
+
+
+
+
+                                                                                                                                                             E[txhom(t)]
+
+                                                                                                                                                                           24
+                                                                                                      -4
+                   17
+
+
+
+
+                                                                                                                                                                           22
+
+
+
+
+                                                                                                                                                                                                                                                              -6
+                                                                                                      -6
+
+
+
+
+                                                                                                                                                                           20
+                   16
+
+
+
+
+                                                                                                                                                                                                                                                              -8
+                                                                                                                                                                           18
+
+
+
+
+                                                                                                                                                                                                                                                              -10
+                   15
+
+
+
+
+                                                                                                      -8
+
+
+
+
+                        0        5      10     15     20             25                                    0        5      10     15           20       25                      0        5      10     15     20             25                                     0        5      10     15           20       25
+                                      Treatment level                                                                    Treatment level                                                      Treatment level                                                                     Treatment level
+
+                                Dose Response              Low bound                                               Treatment Effect           Low bound                                 Dose Response              Low bound                                                Treatment Effect           Low bound
+                                Upper bound                                                                        Upper bound                                                          Upper bound                                                                         Upper bound
+
+                        Confidence Bounds at .95 % level                                                   Confidence Bounds at .95 % level                                     Confidence Bounds at .95 % level                                                    Confidence Bounds at .95 % level
+                        Dose response function = Linear prediction                                         Dose response function = Linear prediction                           Dose response function = Linear prediction                                          Dose response function = Linear prediction
+
+
+
+
+                    Painel “c” – Municípios Intermediários                                                                                                                           Painel “d” – Municípios Grandes
+                            Dose Response Function                                                             Treatment Effect Function                                            Dose Response Function                                                              Treatment Effect Function
+                                                                                                                                                                           50
+
+
+
+
+                                                                                                                                                                                                                                                              2
+                   34
+
+
+
+
+                                                                                                      6
+
+
+
+
+                                                                                                                                                                                                                                                              0
+                   32
+
+
+
+
+                                                                          E[txhom(t+1)]-E[txhom(t)]
+
+
+
+
+                                                                                                                                                                                                                                  E[txhom(t+1)]-E[txhom(t)]
+                                                                                                      4
+
+
+
+
+                                                                                                                                                                           45
+
+
+
+
+                                                                                                                                                                                                                                                              -2
+     E[txhom(t)]
+
+
+
+
+                                                                                                                                                             E[txhom(t)]
+                   30
+
+
+
+
+                                                                                                      2
+
+
+
+
+                                                                                                                                                                                                                                                              -4
+                                                                                                                                                                           40
+                   28
+
+
+
+
+                                                                                                      0
+
+
+
+
+                                                                                                                                                                                                                                                              -6
+                   26
+
+
+
+
+                                                                                                                                                                           35
+                                                                                                      -2
+
+
+
+
+                                                                                                                                                                                                                                                              -8
+
+
+
+
+                        0        5      10     15     20             25                                    0        5      10     15           20       25                      0        5      10     15     20             25                                     0        5      10     15           20       25
+                                      Treatment level                                                                    Treatment level                                                      Treatment level                                                                     Treatment level
+
+                                Dose Response              Low bound                                               Treatment Effect           Low bound                                 Dose Response              Low bound                                                Treatment Effect           Low bound
+                                Upper bound                                                                        Upper bound                                                          Upper bound                                                                         Upper bound
+
+                        Confidence Bounds at .95 % level                                                   Confidence Bounds at .95 % level                                     Confidence Bounds at .95 % level                                                    Confidence Bounds at .95 % level
+                        Dose response function = Linear prediction                                         Dose response function = Linear prediction                           Dose response function = Linear prediction                                          Dose response function = Linear prediction
+
+
+
+
+ Fonte: STATA 13, comando doseresponse2.
+ Nota: Intervalos de confiança obtidos com bootstrap de 500 replicações.
+                                                                                                                                                                                                                                                                                                                                                          20
+
+           Com relação à intensidade do tratamento pelos anos de funcionamento das GMs sobre
+a taxa de homicídios, é possível verificar, por meio dos painéis do Gráfico 1, que, em geral, a
+criminalidade está negativamente relacionada com essa modalidade de participação dos
+Municípios na segurança pública. Em alguns casos mais intensamente e em outros de maneira
+mais moderada ou até mesmo estável (Municípios Grandes). Nas localidades com população
+entre 20.000 e 49.999 (pequenos) e entre 50.000 e 99.999 (médios), os intervalos de confiança
+a 95% para os efeitos marginais não tocam o zero e, portanto, tem-se uma relação
+estatisticamente significante por toda a curva. Pode-se inferir, nesses casos, que há um impacto
+negativo (benéfico) da existência prolongada de GMs sobre a taxa de homicídios, resultados
+similares aos obtidos e debatidos na subseção anterior (que leva em consideração também o
+grupo de não tratados). As magnitudes dessas reduções nas taxas de homicídios variaram na
+continuidade proposta, contudo estima-se que foram, em média, de -1,1 ponto nos Municípios
+pequenos e de -2,1 nos Municípios médios.
+           Para os demais grupos populacionais, no entanto, a dinâmica é um pouco diferente.
+Nos Municípios de porte intermediário (população entre 100.000 e 249.999) os resultados
+também equivalem aos obtidos com tratamentos multivalorados, isto é, não se vislumbram
+ganhos da longevidade das corporações locais de segurança pública sobre a taxa de homicídios.
+No que concerne aos entes mais populosos, o limite superior do intervalo de confiança encontra-
+se relativamente próximo do zero e o restante todo abaixo, em especial nos níveis mais altos de
+tratamento, o que poderia ensejar interpretações menos rígidas de significância na margem
+(próximas a 10%) e, se assim fosse possível conjecturar, ter-se-iam resultados que novamente
+se aproximariam daqueles obtidos pelo método constante da subseção anterior (benéficos).
+           Por fim, a base de dados disponível também permite um olhar sobre o comportamento
+da função DR no contexto dos crimes contra o patrimônio, em especial a proxy de roubos e
+furtos de veículos. Em ambos os grupos de Municípios estipulados (pequenos e médios no
+painel “a” e intermediários e grandes no painel “b”), esse tipo de criminalidade tende a ser
+maior nas localidades que já contam há mais tempo com GMs. É provável que, em cada uma
+das subdivisões populacionais, esses entes sejam aqueles que contam proporcionalmente com
+maiores oportunidades econômicas para que esses ilícitos aconteçam e que em face dessa
+mesma dotação benéfica sejam também aqueles que iniciaram o ciclo de criação/implantação
+de GMs ainda no início dos anos 1990.
+
+Gráfico 2 – Função DR e Efeitos do Tratamento (Anos com GM). Variável dependente =
+Taxa de Roubos e Furtos de Veículos (2009-2011)
+               Painel “a” – Municípios Pequenos e Médios                                                                                                                      Painel “b” – Municípios Intermediários e Grandes
+                                  Dose Response Function                                                                        Treatment Effect Function                                                    Dose Response Function                                                                         Treatment Effect Function
+                                                                                                                                                                                                   800
+
+
+
+
+                                                                                                                                                                                                                                                                                                 200
+                        400
+
+
+
+
+                                                                                                                      200
+                                                                                E[txroubfurt(t+1)]-E[txroubfurt(t)]
+
+
+
+
+                                                                                                                                                                                                                                                           E[txroubfurt(t+1)]-E[txroubfurt(t)]
+                                                                                                                                                                                                   700
+                                                                                                                      150
+
+
+
+
+                                                                                                                                                                                                                                                                                                 100
+                        300
+     E[txroubfurt(t)]
+
+
+
+
+                                                                                                                                                                                E[txroubfurt(t)]
+
+                                                                                                                                                                                                   600
+                                                                                                                      100
+
+
+
+
+                                                                                                                                                                                                                                                                                                 0
+                        200
+
+
+
+
+                                                                                                                                                                                                   500
+                                                                                                                      50
+
+
+
+
+                                                                                                                                                                                                                                                                                                 -100
+                        100
+
+
+
+
+                                                                                                                                                                                                   400
+                                                                                                                      0
+
+
+
+
+                              0        5      10     15     20             25                                               0        5      10     15           20       25                              0        5      10     15     20             25                                                0        5      10     15           20       25
+                                            Treatment level                                                                               Treatment level                                                              Treatment level                                                                                Treatment level
+
+                                      Dose Response              Low bound                                                          Treatment Effect           Low bound                                         Dose Response              Low bound                                                           Treatment Effect           Low bound
+                                      Upper bound                                                                                   Upper bound                                                                  Upper bound                                                                                    Upper bound
+
+                              Confidence Bounds at .95 % level                                                              Confidence Bounds at .95 % level                                             Confidence Bounds at .95 % level                                                               Confidence Bounds at .95 % level
+                              Dose response function = Linear prediction                                                    Dose response function = Linear prediction                                   Dose response function = Linear prediction                                                     Dose response function = Linear prediction
+
+
+
+
+ Fonte: STATA 13, comando doseresponse2.
+ Nota: Intervalos de confiança obtidos com bootstrap de 500 replicações.
+        Os efeitos marginais da iniciativa, no entanto, parecem ser nulos em ambos os casos,
+com leve possibilidade de simultaneidade no primeiro painel (limite inferior do intervalo de
+                                                                                            21
+
+confiança exatamente sobre o zero). Essas inferências são em grande parte compatíveis com o
+que foi debatido na subseção anterior, evidenciando novamente uma dinâmica própria para esse
+tipo de crime, possivelmente distante da esfera de influência das atividades das GMs, inclusive
+daquelas implantadas há vários anos.
+
+6. Conclusões
+          Neste estudo foram propostas estratégias baseadas no arcabouço de resultados
+potenciais para se estimar o impacto causal da existência de Guardas Municipais nos
+indicadores de segurança pública selecionados. Foi visto que, apesar dessa iniciativa estar
+arregimentado cada vez mais usuários, ainda não existem, em quantidades desejáveis,
+contribuições empíricas destinadas a mensurar suas possíveis repercussões, algo de especial
+interesse na medida que os modelos de atuação escolhidos por tais iniciativas são díspares,
+podendo ter como foco tanto a vigilância patrimonial quanto o policiamento comunitário e até
+mesmo atividades policias tipicamente repressoras.
+          Por ocasião desse vácuo acadêmico, pleiteou-se a utilização de abordagens para o
+tratamento que não o descrevessem apenas como um fenômeno binário, mas que também
+estivessem sujeitos a diferentes níveis de intensidade. Especial atenção foi dedicada ao
+tratamento dos problemas de autosseleção e de simultaneidade, fortemente associados ao
+contexto explorado. Outra contribuição julgada relevante foi a compilação da base de dados em
+formato de painel, congregando com ineditismo variáveis de resultado tanto para os crimes
+contra a pessoa (homicídios) quanto para aqueles relacionados ao patrimônio (roubos e furtos
+de veículo).
+          Com o auxílio dos métodos de DID, PSM e a combinação de ambos (PSM-DID),
+todos baseados na abordagem binária do fenômeno, não foi possível rejeitar a hipótese de que
+essas corporações possuem pouco potencial para interferir beneficamente nos indicadores de
+segurança pública. Ainda que as estratégias propostas tenham se mostrado confiáveis para
+reverter os problemas clássicos de simultaneidade, os parâmetros estimados por todos esses
+métodos apontaram, em essência, para efeitos nulos decorrentes da implantação da iniciativa.
+          No entanto, ao se expandir essa abordagem para tratamentos com critérios
+multivalorados ou, equivalentemente, com dosagens diferenciadas entre os participantes do
+programa (categóricas e contínuas), surgem evidências de que, para algumas localidades, a
+implantação das GMs pode sim gerar impactos redutores sobre a criminalidade. Sob a égide
+dos tratamentos multivalorados por categorias, destacam-se os ganhos relativos sobre a taxa de
+homicídios em favor de Municípios pequenos e médios tratados em comparação com seus
+congêneres que não o fizeram. A principal conjectura para isso remete à possibilidade de que
+nessas localidades, por serem menores, haja uma disseminação mais efetiva das iniciativas de
+segurança pública em função da mobilização das comunidades envolvidas e de controles sociais
+mais rígidos.
+          Ao se considerarem modelos com tratamentos contínuos, o foco comparativo passou
+a se dar apenas em relação àqueles Municípios com algum nível de tratamento e a sua resposta
+em termos das variáveis de resultados. Contudo, de maneira análoga ao modelo anterior,
+persistem evidências de que nas localidades menores há impactos benéficos da existência de
+GMs sobre a taxa de homicídios por 100 mil habitantes, contando com reduções que variam
+entre -1,1 e -2,1 pontos em função da exposição contínua a esse programa.
+          No que concerne à avaliação do tratamento pelos anos de existência das GMs em
+função da variável de resultados proxy para os crimes contra o patrimônio (taxas de roubos e
+furtos de veículos), não parecem existir impactos consistentes sobre a variável de resultado em
+nenhum dos modelos multivalorados abordados (categóricos e contínuos).
+          Em face das considerações expostas, é possível inferir que as iniciativas municipais
+relacionadas à segurança pública parecem dispor de algum potencial redutor sobre a
+                                                                                             22
+
+criminalidade, em especial nas localidades menores e que, portanto, convém sejam mais bem
+estruturadas do ponto de vista operacional com o intuito de maximizarem essa efetividade. Se
+mesmo com o arcabouço jurídico e administrativo vigente, complexo e com organizações cujas
+funções práticas são pouco nítidas, aventa-se a possibilidade de que as GMs reduzam a
+criminalidade contra a pessoa, resta projetar os ganhos ainda maiores que existiriam caso
+operassem sob regras mais racionais.
+          De fato, seguindo esse raciocínio mais gerencial, uma possível extensão acadêmica
+para a temática aqui proposta parece residir na mensuração dos impactos oriundos da recente
+promulgação da Lei nº 13.022, de 8 de agosto de 2014, que dispõe sobre o Estatuto Geral das
+Guardas Municipais, buscando racionalizar a atuação dessas corporações. Outro ponto que pode
+nortear contribuições futuras relaciona-se com a criação de proxies mais efetivas para o tipo de
+atividade de fato desempenhada por essas instituições (vigilância, repressão etc.). A base de
+dados da Munic novamente contribui ao perguntar, por exemplo, que tipo de ferramentas esses
+agentes utilizam no cumprimento do seu dever (sem armas, apenas com armas não letais, apenas
+com armas de fogo e assim por diante).
+
+7. Referências
+BAYLEY, D. Patterns of Policing. New Jersey: Rutgers University Press, 1990.
+BEATO FILHO, C. C. Reinventando a polícia: a implementação de um programa de
+policiamento comunitário. In: Policiamento comunitário: experiências no Brasil, 2000-2002.
+São Paulo, Página Viva, pp. 113-166, 2002.
+BECKER, G. S. Crime and Punishment: An Economic Approach. The Journal of Political
+Economy. v.76, n.2, p. 169-217, mar.-abr. 1968.
+BECKER, S. O.; ICHINO, A. Estimation of average treatment effects based on propensity
+scores. The Stata Journal. v.2, n.4, p. 358-377, 2002.
+BERTRAND, M.; DUFLO, E.; MULLAINATHAN, S. How Much Should We Trust
+Differences-in-Differences Estimates? The Quarterly Journal of Economics. v.119, n.1, p.
+249-275, fev.2004.
+BIA, M.; MATTEI, A. A Stata package for the estimation of the dose-response function through
+adjustment for the generalized propensity score. The Stata Journal. v.8, n.3, p. 354-373, 2008.
+BRASIL. Constituição (1988). Constituição da República Federativa do Brasil. Brasília, DF,
+1988.
+______. Lei nº 13.022, de 8 de agosto de 2014. Dispõe sobre o Estatuto Geral das Guardas
+Municipais. Diário Oficial da União, Brasília, DF, Seção 1, 2014.
+CALIENDO, M.; KOPEINIG, S. Some Practical Guidance for the Implementation of
+Propensity Score Matching. Institute of the Study of Labor (IZA), maio 2005 (Working Paper
+n.1588).
+CENTERWALL, B. S. Television and Violence. The scale of the problem and where to go
+from here. JAMA, vol. 267, n.22, p. 3059-3063, 1992.
+CERQUEIRA, D. R. C.; MELLO, J. M. P. Menos Armas, Menos Crimes. Brasília: Instituto
+de Pesquisa Econômica Aplicada, mar. 2012. (Texto para Discussão nº 1721).
+DUFLO, E.; GLENNERSTER, R.; KREMER, M. Using Randomization in Development
+Economics Research: A Toolkit. BREAD - Bureau of Research and Economic Analysis of
+Development. Working Paper n.136, 2006.
+FERREIRA, L. R. C. O Papel das Guardas Municipais na Redução de Homicídios:
+Evidências Empíricas para o Brasil. Dissertação (Mestrado em Finanças e Economia). Escola
+de Economia de São Paulo da Fundação Getúlio Vargas, São Paulo, Brasil, 2012, 45f.
+GUARDABASCIO, B; VENTURA, M. Estimating the dose-response function through the
+GLM approach. Munich: MPRA, 2013. (MPRA Paper nº 45013).
+                                                                                          23
+
+HECKMAN, J. J.; ICHIMURA, H.; TODD, P. E. Matching as an Econometric Evaluation
+Estimator: Evidence from Evaluating a Job Training Programme. The Review of Economic
+Studies. v.64, n.4, Special Issue: Evaluation of Training and Other Social Programmes. p.605-
+654, out.1997.
+______; ______; ______. Matching as an Econometric Evaluation Estimator. The Review of
+Economic Studies. v.65, p.261-294, 1998.
+HENNIGAN, K. M. et. al. Impact of the Introduction of television n Crime in United States:
+Empirical Findings and Theoretical Implications. Journal of Personality and Social
+Psychology. v. 42, n.3, p. 461-477, 1982.
+HIRANO, K.; IMBENS, G. W. Estimation of Causal Effects using Propensity Score Weighting:
+A Application to Data on Right Heart Catheterization. Health Services & Outcomes Research
+Methodology, v.2, n.3-4, p.259-278, 2001.
+______; ______. The Propensity Score with Continuous Treatments. In: GELMAN, A.;
+MENG, X.-L. (Eds.). Applied Bayesian Modeling and Causal Inference from Incomplete-
+Data Perspective. Nova York: Wiley, 2004.
+IMBENS, G. W. The Role of the Propensity Score in Estimating Dose-Response Functions.
+Biometrika, v.87, n.3, p.706-710, set.2000.
+______; WOOLDRIDGE, J. M. Recent Developments in the Econometrics of Program
+Evaluation. Journal of Economic Literature. v.47, n.1, p. 05-86, 2009.
+KUBRIN, C. E.; WEITZER, R. New Directions in Social Disorganization Theory. Journal of
+Research in Crime and Delinquency. v.40, n.4, p.374-402, nov. 2003.
+MEYER, B. D. Natural and quasi-experiments in economics. Journal of Business &
+Economic Statistics. v.13, n.2, p.151-161, abr.1995.
+MONET, J-C. Polícia e sociedades na Europa. São Paulo: Edusp, 2001.
+RESENDE, J. P; ANDRADE, M. V. Crime Social, Castigo Social: Desigualdade de Renda e
+Taxas de Criminalidade nos Grandes Municípios Brasileiros. Estudos Econômicos. v.41, n.1,
+p.173-195, jan-mar. 2011.
+ROBERTSON, L. A.; MCANALLY, H. M.; HANCOX, R. J. Childhood and Adolescent
+Television Viewing and Antisocial Behavior in Early Adulthood. Pediatrics. vol.131, n. 3,
+p.439-446, 2013.
+ROSENBAUM, P. R.; RUBIN, D. B. The Central Role of the Propensity Score in Observational
+Studies for Causal Effects. Biometrika, v.70, n.1, p. 41-55, abr. 1983.
+SEGURANÇA é a 2ª maior preocupação dos brasileiros, segundo pesquisa. G1 Jornal
+Nacional. 05 de maio de 2014. Disponível em: < http://g1.globo.com/jornal-
+nacional/noticia/2014/08/seguranca-e-2-maior-preocupacao-dos-brasileiros-segundo-
+pesquisa.html>. Acesso em: 10 nov. 2015.
+SHAW, C.; MCKAY, H. Juvenile delinquency and urban areas: A study of rates of
+delinquents in relation to differential characteristics of local communities in american
+cities. Chicago: University of Chicago Press, 2.ed. 1942. 394p.
+STATACORP.           Stata      Treatment-Effects       Reference       Manual:    Potential
+Outcomes/Counterfactual Outcomes. Realese 13. College Station, Texas: StataCorp LP,
+2013.
+VARGAS, J. D.; OLIVEIRA JUNIOR, A. As guardas municipais no Brasil: Um modelo de
+análise. DILEMAS: Revista de Estudos de Conflito e Controle Social. v.3, n.7, p.85-108,
+jan-fev-mar. 2010.
+WOOLDRIDGE, J. M. Econometric analysis of cross section and panel data. 2ed. MIT
+Press: Cambridge, Mass, 2010.
+

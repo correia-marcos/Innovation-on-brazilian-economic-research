@@ -1,0 +1,1173 @@
+Efeitos de Pares em Active Learning
+
+Explorando Alocac¸˜ao Ex´ogena de Grupos∗
+
+Vinicius Lima†
+
+Vladimir Ponczek‡
+
+Priscilla Tavares§
+
+EESP/FGV
+
+EESP/FGV
+
+EESP/FGV
+
+Resumo: Este artigo investiga efeito de pares em ambiente de active learning que coloca grande im-
+portˆancia na interac¸˜ao entre alunos como insumo na func¸˜ao de produc¸˜ao de educac¸˜ao. A estrat´egia
+emp´ırica usa a variac¸˜ao ex´ogena na alocac¸˜ao dos alunos em grupos de trabalho para estimar efeito de
+pares em diferentes exerc´ıcios. N˜ao h´a evidˆencia de impacto da habilidade m´edia dos pares (linear-
+in-means). H´a evidˆencia de um efeito n˜ao linear. O desempenho dos alunos no topo da distribuc¸˜ao
+de habilidade melhora na presenc¸a de pares de habilidade intermedi´aria e o desempenho de alunos
+na faixa inferior piora na presenc¸a de alunos desse mesmo grupo. N˜ao h´a evidˆencia de que interac¸˜ao
+pr´evia dos alunos seja relevante para o desempenho.
+
+Palavras-chave: efeito de pares, ensino superior, active learning.
+
+Abstract: This paper investigates peer effects in higher education in an environment of active learn-
+ing that gives great importance for students’ interaction through group work. Our empirical strategy
+uses exogenous variation in group composition to estimate peer effects in different exercises. We ﬁnd
+no evidence of peer effects in a basic linear-in-means speciﬁcation. However, we ﬁnd positive impact
+of mid-ability peers on high-ability students’ achievement and negative effect from low-ability peers
+on low-ability students. We ﬁnd no evidence of impact from peers with previous interaction.
+
+Keywords: peer effects, higher education, active learning.
+
+C´odigos JEL: I23, C21
+
+ment´arios sobre vers˜oes preliminares deste trabalho.
+
+∗Agradecimentos a Fernanda Estevan, Bruno Ferman e participantes do semin´ario de tese da EESP/FGV por co-
+†Doutorando EESP/FGV (viniciuslimafgv@gmail.com)
+‡Professor EESP/FGV
+§Professora EESP/FGV
+
+1
+
+1
+
+Introduc¸ ˜ao
+
+A organizac¸˜ao da vida humana em grupos faz das interac¸ ˜oes interpessoais algo relevante na
+determinac¸˜ao das preferˆencias individuais e das tomadas de decis˜oes. Para Durlauf and Young (2001),
+atrav´es do seus m´etodos a Economia pode contribuir para aprofundar o entendimento de como resul-
+tados de interesse dependem da interac¸˜ao entre indiv´ıduos. De fato, nas ´ultimas duas d´ecadas, a
+literatura econˆomica intensiﬁcou o estudo do efeito de pares (peer effects) como fator relevante na
+determinac¸˜ao de resultados em diversas ´areas como crime, sa´ude, trabalho e educac¸˜ao.
+
+No contexto da educac¸˜ao, pares usualmente s˜ao os indiv´ıduos que interagem em um mesmo am-
+biente de aprendizagem. A deﬁnic¸˜ao de um grupo de referˆencia, que delimita o ambiente de interac¸˜ao
+relevante, pode ser ampla. O grupo de pares de um estudante pode ser formado por seus colegas
+de classe ou por um conjunto mais amplo como, por exemplo, todos seus colegas da escola. Em
+educac¸˜ao, peer effects s˜ao relevantes na discuss˜ao de escolha de escola, pol´ıticas de tracking ou
+vouchers, entre outros.1
+
+Alguns dos primeiros trabalhos emp´ıricos para ensino superior analisaram a interac¸˜ao entre cole-
+gas alocados aleatoriamente para um mesmo quarto (roommates) em dormit´orios de universidades
+dos EUA. Sacerdote (2001) usa dados do Dartmouth College e estima que o desempenho acadˆemico
+(GPA) de um dado aluno ´e positivamente afetado por ter um roommate do quartil superior da distribuic¸˜ao
+de habilidade (SAT) comparado a ter um roommate do quartil inferior. Explorando um mecanismo de
+alocac¸˜ao similar, Zimmerman (2003) encontra impacto positivo da habilidade verbal dos roommates
+sobre desempenho dos alunos da faixa central (70%) da distribuic¸˜ao de habilidade.
+
+Entretanto, a magnitude dos efeitos em ambos os trabalhos ´e menor do que a magnitude do efeito
+positivo estimado por Carrell et al. (2009). Este ´ultimo trabalho usa dados da Academia da Forc¸a
+A´erea Americana e deﬁne como grupo de referˆencia o conjunto de alunos aleatoriamente alocados
+em cada esquadr˜ao, isto ´e, o conjunto de alunos que realiza a maior parte das atividades acadˆemicas
+em conjunto. Segundo os autores, os roommates s˜ao apenas um subconjunto dos pares relevantes e a
+diferenc¸a dos resultados evidencia a importˆancia de deﬁnir corretamente o grupo relevante.2
+
+Neste trabalho estudamos peer effects no contexto da graduac¸˜ao em economia da Escola de Econo-
+mia de S˜ao Paulo da Fundac¸˜ao Get´ulio Vargas (EESP/FGV). O per´ıodo analisado compreende coortes
+de alunos que interagem em um ambiente de active learning. Na organizac¸˜ao das disciplinas, os
+alunos s˜ao distribu´ıdos de forma ex´ogena em pequenos grupos e durante o semestre trabalham con-
+juntamente em problemas semanais. A contribuic¸˜ao do trabalho ´e analisar peer effects num contexto
+em que a interac¸˜ao entre os alunos ´e um insumo fundamental na produc¸˜ao de educac¸˜ao. Ou seja, peer
+effects ´e um objetivo da estrat´egia pedag´ogica, o que oferece um mecanismo claro para os efeitos
+estimados. Al´em disso, a alocac¸˜ao dos alunos ´e feita a partir de uma regra determin´ıstica que nos
+permite implementar estrat´egias de identiﬁcac¸˜ao conﬁ´aveis do ponto de vista da validade interna das
+estimativas produzidas.
+
+Al´em desta introduc¸˜ao, o trabalho cont´em a pr´oxima na qual se discute active learning e se apre-
+
+1Epple and Romano (2011) resumem diversos modelos te´oricos e Sacerdote (2011) discute alguns dos resultados
+
+emp´ıricos da literatura.
+
+2Os dados em Carrell et al. (2009) tamb´em permitem usar a deﬁnic¸˜ao de roommates. Os resultados sob essa deﬁnic¸˜ao
+
+s˜ao consistentes com Sacerdote (2001) e Zimmerman, 2003.
+
+2
+
+sentam os dados utilizados. Na sec¸˜ao seguinte, alguns desaﬁos metodol´ogicos s˜ao discutidos assim
+como a estrat´egia emp´ırica para lidar com eles. Em seguida s˜ao apresentados os resultados e a con-
+clus˜ao resume o trabalho apontando para a direc¸˜ao na qual seguir´a a pesquisa.
+
+2 Organizac¸ ˜ao Institucional
+
+Active Learning ´e uma forma de aprendizado caracterizada pelo uso de um conjunto de pr´aticas
+que buscam fazer dos alunos os principais respons´aveis pelo seu pr´oprio processo de aprendizado
+(Prince, 2004). O problem-based learning (PBL) ´e um tipo de active learning que utiliza problemas
+concretos para motivar o processo de aprendizado. H´a muitas possibilidades de implementac¸˜ao do
+PBL, mas alguns dos principais elementos s˜ao: a) o aprendizado ´e centrado no aluno e ocorre em
+pequenos grupos; b) um tutor atua como facilitador nas atividades; e c) os problemas s˜ao apresentados
+antes de qualquer preparac¸˜ao espec´ıﬁca dos alunos e s˜ao usados como ferramentas para alcanc¸ar os
+objetivos de aprendizado. (Barrows, 1996, apud Gijbels et al. (2005))
+
+Em 2013, a EESP/FGV implementou o PBL no seu curso de graduac¸˜ao em economia, que entre
+2013 e 2016 admitiu at´e 60 alunos por ano dentre cerca de 1500 candidatos. Os alunos admitidos
+cursam cerca de 50 disciplinas ao longo de 4 anos e em quase todas os alunos matriculados s˜ao
+divididos em grupos de 8 a 15 alunos chamados de tutorias. Os alunos n˜ao escolhem as tutorias
+de que far˜ao parte. A distribuic¸˜ao ´e feita pela escola de modo centralizado a partir de uma regra
+de alocac¸˜ao determin´ıstica, que se baseia no desempenho pr´evio dos alunos. Para disciplinas do 1o
+semestre, desempenho pr´evio ´e o desempenho no vestibular e para disciplinas a partir do 2o semestre,
+desempenho pr´evio ´e a m´edia no curso no semestre anterior.
+
+A cada semana, em algumas das disciplinas, todos os alunos tˆem uma aula com um professor
+respons´avel pela disciplina (professor-l´ıder) e dois encontros semanais nas tutorias dirigidas por um
+tutor. Em outras disciplinas n˜ao h´a a aula semanal com o professor-l´ıder e os alunos interagem apenas
+durante as tutorias. O tutor garante que todos os alunos participem ao longo das sess˜oes e em cada
+uma avalia individualmente a participac¸˜ao dos alunos com uma nota de 0 a 1. Ao ﬁnal do semestre (ou
+trimestre) o desempenho ﬁnal ´e avaliado por provas e trabalhos ponderados pela nota de participac¸˜ao.
+H´a dois aspectos cruciais em trabalhos emp´ıricos de peer effects com os quais a organizac¸˜ao
+descrita acima permite lidar: (i) an´alise do problema para uma populac¸˜ao em que efeito de pares
+sejam relevantes para o resultado de interesse e (ii) deﬁnic¸˜ao de um grupo de pares relevante para o
+aluno. Primeiro, a avaliac¸˜ao permanente introduz incentivo `a participac¸˜ao durante a resoluc¸˜ao dos
+problemas nas tutorias. Isso faz dos pares componentes fundamentais do processo de aprendizado
+do aluno, o que se relaciona com o ponto (i). Outro fato relevante ´e que os registros administrativos
+permitem saber exatamente quais s˜ao e como s˜ao compostos os grupos nos quais os alunos interagem.
+A dinˆamica de funcionamento do curso faz com que seja do interesse do aluno trabalhar para uma
+disciplina com colegas do grupo ao qual foi designado naquela disciplina, o que se vincula com o
+ponto (ii).
+
+Embora haja limitac¸ ˜oes com relac¸˜ao `a validade externa dos exerc´ıcios realizados dados o tipo de
+organizac¸˜ao do curso e a seletivadade no ingresso no curso, a regra de alocac¸˜ao dos alunos nas tutorias
+
+3
+
+(discutido adiante) possibilita uma abordagem emp´ırica que representa ganhos em termos de validade
+interna.
+
+2.1 Regra de Alocac¸ ˜ao
+
+A regra de alocac¸˜ao dos alunos nos grupos ser´a apresentada a partir de um exemplo simpliﬁcado
+em que 12 alunos s˜ao admitidos e ser˜ao alocados em quatro grupos por disciplina. A colocac¸˜ao
+dos alunos no vestibular n˜ao ´e necessariamente consecutiva. Por exemplo, entre os matriculados o
+aluno de melhor desempenho pode ser o primeiro colocado no vestibular, mas o segundo de melhor
+desempenho pode ser o terceiro colocado.3 No entanto, para efeito da alocac¸˜ao, os matriculados s˜ao
+ordenados de 1 a 12 de acordo com a sua posic¸˜ao no vestibular e ent˜ao distribu´ıdos nas tutorias A e B
+das disciplinas “X” e “Y” pelas regras:
+
+Table 1: Regra de Alocac¸˜ao
+
+X
+5
+6
+8
+7
+
+A 1
+B 2
+C 3
+D 4
+
+9
+10
+12
+11
+
+1
+2
+7
+4
+
+Y
+6
+5
+8
+3
+
+9
+10
+12
+11
+
+A depender da organizac¸˜ao dos hor´arios e disponibilidade de espac¸o f´ısico em cada ano pode ser
+necess´ario que, no mesmo hor´ario, os alunos dos grupos A e B cursem a disciplina “X” e os alunos
+dos grupos C e D cursem a disciplina “Y”. Isso implica que as regras de alocac¸˜ao das duas disciplinas
+sejam parecidas para n˜ao haver conﬂito de hor´arios para um dado aluno. No entanto, ainda pode
+haver alguma variac¸˜ao condicional no subgrupo de alunos (posic¸ ˜oes em vermelho). De modo geral,
+existe sempre alguma variac¸˜ao entre as disciplinas, o que gera grupos diferentes. Por ﬁm, vale notar
+que os grupos resultantes n˜ao s˜ao necessariamente balanceados em termos da posic¸˜ao no vestibular.
+Para “X”, por exemplo, o grupo A tem mediana menor do qualquer outro grupo. Na apresentac¸˜ao da
+sec¸˜ao emp´ırica este ponto ´e explorado mais detidamente.
+
+3 Dados
+
+O trabalho usa dados administrativos e de desempenho acadˆemico dos alunos no vestibular e nas
+disciplinas do curso. As informac¸ ˜oes referem-se a alunos admitidos no per´ıodo 2013-2016. Os dados
+administrativos cont´em ano de ingresso dos alunos, escola onde ﬁzeram o ensino m´edio e a tutoria
+onde foram alocados em cada disciplina do 1o ano da graduac¸˜ao. As notas do vestibular, organizado
+pela VUNESP, s˜ao compar´aveis ao longo dos anos. Ser˜ao utilizadas as notas de redac¸˜ao e da parte
+objetiva de matem´atica. A escolha dessas duas medidas de habilidade segue alguns trabalhos em peer
+effects como Sacerdote (2001) e Zimmerman (2003). Al´em disso, as duas mat´erias cobrem a maior
+parte das habilidades necess´arias para bom desempenho no curso. Essas notas s˜ao normalizadas entre
+
+3Um aluno classiﬁcado no vestibular pode optar por n˜ao se matricular.
+
+4
+
+os alunos convocados para a matr´ıcula em cada ano.4 A tabela (7) no apˆendice apresenta estat´ısticas
+descritivas sobre os dados do vestibular.
+
+S˜ao utilizados dados relativos a sete disciplinas cursadas no primeiro semestre ap´os ingresso.5 A
+restric¸˜ao ao primeiro semestre garante que n˜ao h´a selec¸˜ao na amostra de alunos, pois todos realizam
+as mesmas mat´erias obrigatoriamente. A medida de desempenho utilizada ´e a nota ﬁnal usada como
+crit´erio de aprovac¸˜ao em cada disciplina. Embora a interac¸˜ao formal dos alunos se dˆe em grupos
+menores durante a maior parte da disciplina, as provas s˜ao uniformes e aplicadas simultaneamente na
+mesma sala para todos os alunos, independente do seu grupo tutorial. No trabalho, utiliza-se a m´edia
+ﬁnal padronizada por disciplina em cada ano. Por ﬁm, com a informac¸˜ao da escola do ensino m´edio
+´e criada uma vari´avel que conta, para um dado aluno, o n´umero de pares do grupo que vieram da
+mesma escola.
+
+4 Background Te´orico
+
+Os trabalhos emp´ıricos em peer effects precisam lidar com alguns desaﬁos metodol´ogicos. Nesta
+sec¸˜ao apresentamos o problema de identiﬁcac¸˜ao econom´etrica a partir do modelo linear-in-means,
+o mais frequente em aplicac¸ ˜oes `a educac¸˜ao (Sacerdote, 2011). Seja y o desempenho acadˆemico do
+aluno i em um grupo g formado por n alunos:
+
+yig = α + β
+
++γxi + εig.
+
+(1)
+
+(cid:80)
+(cid:124)
+
+(cid:80)
+(cid:124)
+
+j(cid:54)=i yjg
+n − 1
+
+(cid:123)(cid:122)
+
+˜yig
+
+(cid:125)
+
++δ
+
+j(cid:54)=i xjg
+n − 1
+
+(cid:123)(cid:122)
+
+˜xig
+
+(cid:125)
+
+A vari´avel xi ´e uma medida de habilidade.6 No lado direito da equac¸˜ao (1), al´em de xi, h´a duas
+m´edias, ˜yig e ˜xig, computadas para todos os alunos em g exceto o aluno i. O coeﬁciente γ captura
+o efeito da habilidade do aluno no seu pr´oprio desempenho. J´a os coeﬁcientes δ e β capturam,
+respectivamente, os efeitos contextual e end´ogeno, conforme Manski (1993). O efeito contextual diz
+respeito ao impacto da habilidade m´edia dos pares de i sobre o seu desempenho. J´a o efeito end´ogeno
+compreende ao impacto do desempenho m´edio dos colegas de i sobre o desempenho dele.
+
+No entanto, essa mesma equac¸˜ao, se escrita para um aluno j (cid:54)= i, mostra que o desempenho
+de i tamb´em afeta o desempenho de j. Desse modo, estimar a equac¸˜ao (1) por m´ınimos quadrados
+ordin´arios seria problem´atico pela determinac¸˜ao simultˆanea de yi e yj. No entanto, assumindo |β| <
+4Um fator adicional para a escolha das duas provas ´e o fato de que s˜ao realizadas em dias diferentes e, portanto, a
+
+combinac¸˜ao de ambas tem o potencial de minimizar o erro de medida.
+
+5Os alunos s˜ao matriculados em oito disciplinas. Uma dessas disciplinas ´e voltada para adaptac¸˜ao dos alunos ao
+m´etodo pedag´ogico e praticamente n˜ao h´a variac¸˜ao de desempenho dos alunos na avaliac¸˜ao ﬁnal da disciplina. Por isso a
+disciplina ´e exclu´ıda da an´alise.
+
+6Utilizamos uma ´unica vari´avel explicativa para simpliﬁcar a exposic¸˜ao sem perda de generalidade. No trabalho
+
+usamos nota no vestibular.
+
+5
+
+1, a seguinte forma reduzida pode ser estimada por MQO (Bramoull´e et al., 2009):
+
+yig =
+
++
+
+α
+1 − β
+
+(cid:124)(cid:123)(cid:122)(cid:125)
+
+π0
+
+γ +
+
+β (γβ + δ)
+
+(n − 1 + β)(1 − β)
+
+(cid:123)(cid:122)
+
+π1
+
+xi +
+
+(1 + β
+
+γβ + δ
+
+(cid:123)(cid:122)
+n−1)(1 − β)
+
+π2
+
+˜xig + εig.
+
+(2)
+
+(cid:21)
+(cid:125)
+
+(cid:34)
+(cid:124)
+
+(cid:35)
+(cid:125)
+
+(cid:20)
+(cid:124)
+
+A equac¸˜ao (2) mostra que xi, a habilidade de i, afeta seu desempenho diretamente (γ), mas
+tamb´em indiretamente, via seu impacto sobre os pares (δ) que por sua vez voltam a afetar i (via
+β). Al´em disso, a equac¸˜ao torna evidente que se γ (cid:54)= 0, ent˜ao π2 (cid:54)= 0 signiﬁca a existˆencia de peer
+effects, embora n˜ao seja poss´ıvel separar nessa equac¸˜ao os efeitos end´ogeno e contextual.7 Identiﬁcar
+peer effects a partir de (2) requer, portanto, a observac¸˜ao de variac¸˜ao ex´ogena em ˜xig.
+
+Se os grupos fossem formados endogenamente, isto ´e, se resultassem de escolhas dos alunos, a
+exigˆencia de variac¸˜ao ex´ogena em ˜x poderia n˜ao ser satisfeita e a estimativa de π2 seria viesada pela
+prov´avel existˆencia de fatores n˜ao observados que determinam tanto a selec¸˜ao para o grupo quanto
+o desempenho. Como exemplo, suponha que alunos de desempenho parecido no vestibular escol-
+hessem estar no mesmo grupo devido a alguma caracter´ıstica n˜ao observada. Ent˜ao provavelmente
+observar´ıamos uma correlac¸˜ao entre ε e ˜x nos grupos.
+
+Entretanto, o modelo linear-in-means ´e restritivo. Se ele for o verdadeiro processo gerador,
+ent˜ao em termos de bem-estar n˜ao h´a espac¸o para uma pol´ıtica de realocac¸˜ao. Ganhos a partir do
+realocac¸ ˜oes de alunos que aumentam a m´edia de habilidade de um grupo s˜ao compensados pelas per-
+das nos grupos que tem a m´edia reduzida pela realocac¸˜ao (Sacerdote, 2011). Al´em disso, o efeito
+de pares pode ser n˜ao linear. Isto ´e, alunos de determinada faixa de habilidade podem ser afetados
+de modos diferentes por pares de diferentes n´ıveis de habilidade. A habilidade m´edia pode n˜ao ser a
+caracter´ıstica relevante do grupo. Estimativas de forma reduzida em Carrell et al. (2009) mostram que
+alunos do tercil inferior da distribuic¸˜ao de habilidade (low) se beneﬁciam da interac¸˜ao com alunos do
+tercil superior (high), sem que estes sejam prejudicados por essa interac¸˜ao.
+
+Carrell et al. (2013) implementam uma alocac¸˜ao na tentativa de obter a melhora Pareto sugerida
+por este ´ultimo resultado.8 O impacto do experimento, no entanto, ´e negativo sobre os alunos low. Os
+autores encontram evidˆencia de que, como poss´ıvel decorrˆencia da formac¸˜ao end´ogena de redes, nos
+grupos experimentais aumenta a interac¸˜ao entre alunos tipo low e n˜ao entre alunos low e high.
+
+Para ilustrar esse mecanismo suponha que os alunos em um grupo s˜ao divididos em dois tipos,
+low (L) e high (H). O desempenho acadˆemico de um aluno i pode depender da composic¸˜ao do grupo
+diretamente e tamb´em atrav´es do n´umero de conex˜oes que ele forma com os pares de cada tipo em
+uma dada rede, o seu degree. Para simpliﬁcar, suponha que importe apenas o degree com alunos do
+
+7Lee (2007) prop˜oe um m´etodo que explora variac¸˜ao em n para estimar os efeitos separadamente. No entanto, n˜ao
+
+vamos estender a an´alise nessa direc¸˜ao pois h´a pouca variac¸˜ao nos tamanhos dos grupos analisados.
+
+8A alocac¸˜ao gera grupos de controle com alunos alocados aleatoriamente e grupos de tratamento de dois tipos: um tipo
+composto predominantemente por alunos low e high e outro tipo composto por maioria de alunos mid. A ideia era que os
+grupos de primeiro tipo melhorassem o desempenho de alunos low, conforme as estimativas de Carrell et al. (2009).
+
+6
+
+tipo low, dig:9
+
+yig = ∆dig + θLP L
+dig = ϕLP L
+
+g + ϕHP H
+
+g + θHP H
+g + eig
+
+g + uig
+
+(3)
+(4)
+
+g e P H
+
+g e P H
+
+g s˜ao as proporc¸ ˜oes de pares de i no grupo g. Se h´a, por exemplo, um aumento ex´ogeno
+onde P L
+g , o impacto ﬁnal sobre Y pode ser negativo se ∆ for suﬁcientemente negativo e ϕL, ϕH >
+em P L
+0, mesmo que θL, θH > 0. O desaﬁo emp´ırico reside na diﬁculdade de medir dig e eventualmente
+manipular essa vari´avel atrav´es de experimentos.
+
+A pr´oxima sec¸˜ao discute como a regra de alocac¸˜ao adotada pela Escola ´e utilizada na identiﬁcac¸˜ao
+e detalha os exerc´ıcios emp´ıricos realizados no trabalho que percorrem as quest˜oes te´oricas expostas
+acima.
+
+5 Estat´egia Emp´ırica
+
+No trabalho s˜ao utilizados duas estrat´egias de identiﬁcac¸˜ao. Uma das estrat´egias explora a pos-
+sibilidade de se observar um mesmo aluno em diferentes disciplinas. Como existe variac¸˜ao na regra
+de alocac¸˜ao de uma disciplina pra outra, os pares de um dado aluno tamb´em variam entre as tutorias
+onde ele ´e alocado. A hip´otese de identiﬁcac¸˜ao ´e de que, condicional na heterogeneidade individual,
+a variac¸˜ao nos pares entre as disciplinas ´e ex´ogena. Isso ´e suﬁciente para controlar o fato de que as
+alocac¸ ˜oes dependem do desempenho pr´evio do aluno.
+
+A outra estrat´egia estima os efeitos de interesse por meio da comparac¸˜ao de alunos semelhantes
+em termos de desempenho no vestibular e que s˜ao observados em tutorias diferentes para uma dada
+disciplina. Para entender essa estrat´egia, vale ressaltar dois pontos j´a mencionados sobre a regra de
+alocac¸˜ao: (i) A distribuic¸˜ao de alunos entre os grupos ´e baseada na posic¸˜ao do vestibular e (ii) entre
+os grupos de uma dada disciplina h´a variac¸˜ao com relac¸˜ao `a habilidade dos alunos.
+
+Embora a colocac¸˜ao no vestibular dos alunos matriculados n˜ao seja necessariamente consecutiva,
+o fato ´e que entre os ingressantes no per´ıodo analisado 59,6% dos alunos podem ser agrupados em
+blocos de 2 ou 3 alunos de posic¸˜ao consecutiva no vestibular. Isto ´e, num dado ano, podemos por
+exemplo deﬁnir v´arios blocos de alunos adjacentes na classiﬁcac¸˜ao do vestibular.10 Se a deﬁnic¸˜ao
+do bloco ´e relaxada para admitir alunos a duas posic¸ ˜oes de distˆancia (14 e 16, por ex.), ent˜ao 83%
+dos alunos podem ser agrupados em blocos de 2 ou 3 alunos. Como no primeiro semestre todos os
+alunos tˆem que cursar as mesmas disciplinas, a proporc¸˜ao de observac¸ ˜oes correspondentes a alunos
+organizados segundo as duas deﬁnic¸ ˜oes de blocos ´e muito pr´oxima `as proporc¸ ˜oes de alunos por bloco:
+60,4% e 83,7%.
+
+A tabela (2) abaixo mostra que para uma dada disciplina a correlac¸˜ao entre posic¸˜ao no vestibular
+e “qualidade” dos grupos n˜ao ´e estatisticamente signiﬁcante (condicional no bloco de alunos).11 Em
+
+9Baseado em Jackson (2010, cap. 13) com modiﬁcac¸ ˜oes.
+10Exemplos: Bloco com os alunos de classiﬁcac¸ ˜oes 15 e 16 ou bloco com os alunos de classiﬁcac¸ ˜oes 22, 23 e 24.
+11A qualidade dos grupos de uma disciplina ´e deﬁnida pelo ordenamento a partir da mediana do vestibular em cada um:
+
+1o Grupo - Menor mediana / 4o Grupo - Maior mediana.
+
+7
+
+cada bloco um dos alunos vai para um grupo de menor mediana e como a tabela mostra isso n˜ao est´a
+correlacionado com a posic¸˜ao do aluno no bloco. A hip´otese de identiﬁcac¸˜ao dos efeitos de interesse
+nesse caso ´e de que alunos semelhantes, no sentido de estarem no mesmo bloco, teriam desempenho
+em m´edia parecidos se expostos ao mesmo grupo de pares. Na subsec¸˜ao a seguir, a implementac¸˜ao
+das estrat´egias ´e detalhada para cada um dos exerc´ıcios realizados no trabalho.
+
+Table 2: Exogeneidade da Alocac¸˜ao
+Vestibular
+
+Vestibular
+
+1o Grupo
+
+2o Grupo
+
+3o Grupo
+
+Constant
+
+-1.14
+(2.06)
+-1.88
+(2.00)
+-0.32
+(2.09)
+9.71∗∗∗
+(1.68)
+833
+
+0.56
+(1.53)
+0.16
+(1.57)
+-0.05
+(1.59)
+8.34∗∗∗
+(1.57)
+1170
+
+Observations
+Def. de Bloco
+Baseline: Grupo de maior mediana. Erro-padr˜ao robusto em parˆenteses.
+Dummies de ano, disciplina e bloco. Signiﬁcˆancia: ∗p < 0.10,∗∗ p < 0.05,∗∗∗ p < 0.01
+
+At´e 2 posic¸ ˜oes
+
+Consecutivo
+
+5.1 Especiﬁcac¸ ˜oes
+
+Linear-in-Means
+
+Este exerc´ıcio reproduz a abordagem b´asica em diversos trabalhos j´a mencionada. A estimativa
+de peer effects usando a variac¸˜ao dos pares entre disciplinas para um mesmo aluno ´e obtida a partir
+da equac¸˜ao
+
+yid = β(cid:48) ˜xid + ci + uid
+
+(5)
+
+onde yid ´e a nota do aluno i na disciplina d, ˜xid ´e a m´edia de habilidade dos pares de i na disciplina e
+ci ´e um efeito-ﬁxo de aluno que controla a heterogeneidade individual.
+
+Usando a estrat´egia da comparac¸˜ao de alunos em um mesmo bloco a equac¸˜ao estimada ´e
+
+yibd = β(cid:48) ˜xibd + ηb + ηd + uibd
+
+(6)
+
+onde yibd ´e o desempenho do aluno i do bloco b na disciplina d. A vari´avel ˜xibd ´e um vetor com me-
+didas de habilidade m´edia dos pares de i no grupo onde foi alocado para a discplina d. As estimativas
+de β s˜ao obtidas condicional no bloco do aluno (ηb) e na disciplina (ηd).
+
+8
+
+N˜ao Linear
+
+Neste exerc´ıcio o objetivo ´e avaliar se h´a peer effects atrav´es de outras dimens˜oes do conjunto de
+
+pares. As estimativas s˜ao obtidas a partir das equac¸ ˜oes
+
+yid = β1P low
+
+id + β2P mid
+
+id + β3P high
+
+id + ci + uid
+
+usando a variac¸˜ao within e
+
+yibd = β1P low
+
+ibd + β2P mid
+
+ibd + β3P high
+
+ibd + ηb + ηd + uibd
+
+(7)
+
+(8)
+
+usando a variac¸˜ao no bloco de alunos. As vari´aveis P t indicam o n´umero de pares do tipo t que o
+aluno i tem no grupo em que foi alocado para a disciplina d. As categorias de alunos s˜ao deﬁnidas a
+partir dos tercis da lista de classiﬁcac¸˜ao dos ingressantes no vestibular.
+
+Schoolmates
+
+No per´ıodo analisado, v´arios ingressantes de um mesmo ano ﬁzeram pelo menos o 3o ano do en-
+sino m´edio na mesma escola. Cerca de um terc¸o dos ingressantes vieram das mesmas seis escolas,
+por exemplo. Isso faz com que haja tutorias onde foram alocados exogenamente dois ou mais alunos
+vindos da mesma escola (schoolmates).12 Se esse alunos j´a interagiram previamente ao ingresso na
+graduac¸˜ao, ent˜ao ´e poss´ıvel que a presenc¸a de um schoolmate na tutoria esteja correlacionada, posi-
+tiva ou negativamente, com a formac¸˜ao de uma conex˜ao relevante para o desempenho na disciplina.
+Assim, uma vari´avel indicando o n´umero de schoolmates no grupo, Sid pode ser vista como um in-
+strumento para o n´umero de conex˜oes que um aluno forma no grupo num contexto similar ao das
+equac¸ ˜oes (3) e (4)
+
+yid = ∆did + ci + uid
+
+did = θSid + eid
+
+Como n˜ao h´a informac¸˜ao sobre o degree did, estimamos a forma reduzida
+
+yid = πSid + ci + νid
+
+(9)
+(10)
+
+(11)
+
+onde π = ∆θ. Entretanto, nesta aplicac¸˜ao utiliza-se apenas a abordagem do efeito-ﬁxo de aluno,
+uma vez que ´e preciso controlar as diferentes probabilidades de se ter um schoolmate no grupo para
+diferentes alunos.13
+
+12Do total das observac¸ ˜oes, 12,9% correspondem a alunos com 1 schoolmate no grupo, 4,9% com 2 schoolmates e
+
+1,7% com 3 schoolmates.
+
+13Por exemplo, um aluno oriundo de um col´egio que teve 3 ingressantes tem maior chance de observar um schoolmate
+
+no seu grupo do que um aluno de um col´egio com apenas 2 ingressantes.
+
+9
+
+6 Resultados
+
+6.1 Linear-in-Means
+
+A tabela (3) apresenta os resultados para o modelo linear-in-means sob as diferentes estrat´egias
+
+de identiﬁcac¸˜ao. As vari´aveis em ˜x s˜ao as m´edias de matem´atica e redac¸˜ao dos pares no vestibular.
+
+Table 3: Linear-in-Means
+
+Matem´atica
+
+Redac¸˜ao
+
+Nota
+0.07
+(0.12)
+0.10
+(0.14)
+833
+
+Nota
+0.05
+(0.11)
+-0.07
+(0.12)
+1170
+
+Nota
+0.06
+(0.11)
+-0.03
+(0.10)
+1364
+Within
+
+Observations
+Identiﬁcac¸˜ao
+Consecutivo
+Erro-padr˜ao robusto em parˆenteses.
+Dummies de disciplina e bloco em (1) e (2).
+Efeito-ﬁxo de aluno em (3).
+Signiﬁcˆancia: ∗p < 0.10,∗∗ p < 0.05,∗∗∗ p < 0.01
+
+At´e 2 posic¸ ˜oes
+
+A coluna “Bloco 1” mostra os resultados a partir da variac¸˜ao do grupo de pares para alunos
+de classiﬁcac¸˜ao consecutiva. Para interpretar o coeﬁciente, vale notar que para essa deﬁnic¸˜ao de
+bloco os alunos nos grupos de menor mediana do bloco tem pares com m´edia de matem´atica 6%
+de desvio-padr˜ao maior, em m´edia. Isso signiﬁca que o coeﬁciente para matem´atica implicaria um
+efeito de 6% × 7% = 0, 42% de um desvio-padr˜ao na m´edia da disciplina. No entanto, sob os
+n´ıveis usuais de signiﬁcˆancia n˜ao se rejeita efeito zero tanto para habilidade m´edia dos pares em
+matem´atica quanto em redac¸˜ao. Sob a deﬁnic¸˜ao de bloco para alunos a uma distˆancia de at´e 2 posic¸ ˜oes
+(coluna “Bloco 2”) e utilizando efeito ﬁxo de aluno (coluna “Within”) as estimativas tamb´em n˜ao s˜ao
+estatisticamente diferente de zero. Como j´a discutido, a m´edia de habilidade dos pares pode n˜ao uma
+caracter´ıstica relevante para o efeito de pares. Al´em disso, embora haja diferenc¸a entre os grupos em
+termos de posic¸˜ao dos alunos no vestibular, talvez a variˆancia das medidas de habilidade dos pares
+seja insuﬁciente para o poder do teste de hip´otese.
+
+6.2 N˜ao Linear
+
+A tabela (4) mostra as estimativas do impacto da composic¸˜ao dos grupos sobre desempenho.
+Os resultados em todas as especiﬁcac¸ ˜oes sugerem efeito positivo do n´umero de pares no tercil in-
+termedi´ario da distribuic¸˜ao de habilidade (medida pela posic¸˜ao no vestibular) e efeito negativo do
+n´umero de pares no tercil inferior (exceto na segunda coluna). A presenc¸a de um aluno low a mais
+est´a associado em m´edia a um desempenho cerca de 4% de um desvio-padr˜ao menor e um par mid a
+mais est´a associado em m´edia a um desempenho cerca de 6% de um desvio-padr˜ao maior.
+
+Quando se observam os efeito por tipo de aluno (tabela 6 no apˆendice), veriﬁca-se que os alunos
+impactados negativamente pelo pares low s˜ao os alunos de tipo low. O impacto varia entre 7% a 11%
+
+10
+
+No de Pares
+Low
+
+Mid
+
+High
+
+Table 4: N˜ao Linearidade
+
+Nota
+
+Nota
+
+Nota
+
+-0.05∗∗
+(0.02)
+0.07∗∗∗
+(0.03)
+-0.02
+(0.03)
+833
+
+-0.02
+(0.02)
+0.06∗∗∗
+(0.02)
+-0.02
+(0.03)
+1170
+
+-0.04∗
+(0.02)
+0.06∗∗∗
+(0.02)
+-0.01
+(0.03)
+1364
+Within
+
+Observations
+Identiﬁcac¸˜ao
+Consecutivo
+Erro-padr˜ao robusto em parˆenteses.
+Dummies de disciplina e bloco em (1) e (2).
+Efeito-ﬁxo de aluno em (3).
+Signiﬁcˆancia: ∗p < 0.10,∗∗ p < 0.05,∗∗∗ p < 0.01
+
+At´e 2 posic¸ ˜oes
+
+de um desvio-padr˜ao a menos no desempenho conforme a especiﬁcac¸˜ao. Esse resultado pode decorrer
+da dinˆamica de formac¸˜ao do grupo de pares relevantes.14 Para o aluno low, ter `a disposic¸˜ao mais
+alunos low pode tornar mais prov´avel a formac¸˜ao de conex˜oes entre alunos desse tipo, aumentando a
+distˆancia (no sentido de rede) para os alunos mid e high e, portanto, reduzindo o benef´ıcio de peer-
+teaching (Kimbrough et al., 2017).15 Alternativamente, a diferenc¸a na composic¸˜ao pode simplesmente
+alterar a dinˆamica de funcionamento das atividades no grupo, isto ´e, o n´ıvel de profundidade da
+abordagem dos t´opicos ou o andamento das discuss˜oes, por exemplo. Com os dados `a disposic¸˜ao n˜ao
+´e poss´ıvel distinguir entre as duas hip´oteses.
+
+A mesma tabela mostra que o impacto positivo dos alunos mid ocorre para os alunos high. O efeito
+na estimativa mais conservadora ´e de 9% de um desvio-padr˜ao. Nesse caso n˜ao parece plaus´ıvel haver
+peer-teaching, uma vez que se esperaria observar impacto positivo dos alunos de maior habilidade
+para os de menor habilidade. Novamente, a dinˆamica formac¸˜ao de grupos pode ocorrer de modo
+que alguma caracter´ıstica da interac¸˜ao entre mid e high seja ben´eﬁca para estes. No entanto, para
+as coortes analisadas n˜ao h´a dados sobre a rede de alunos das tutorias para testar essas hip´oteses.
+Uma tentativa de se analisar a relevˆancia da formac¸˜ao de conex˜oes para o desempenho ´e analisada de
+maneira indireta no pr´oximo exerc´ıcio.
+
+6.3 Schoolmates
+
+Para investigar em alguma medida a relevˆancia da formac¸˜ao de conex˜oes dentro dos grupos, anal-
+isamos a seguir os resultados da presenc¸a de schoolmates nas tutorias (tabela 5). Como discutido na
+apresentac¸˜ao da estrat´egia emp´ırica, os resultados podem ser interpretados como forma reduzida de
+um modelo em que a presenc¸a no grupo de algu´em com quem j´a houve interac¸˜ao pr´evia (potencial-
+
+14Essa hip´otese ´e consistente com Carrell et al. (2013), por exemplo.
+15A distˆancia no sentido de rede signiﬁca quantos pares existem entre dois alunos quaisquer que n˜ao se conectam
+
+diretamente.
+
+11
+
+mente) aumenta (ou reduz) a chance se de formar uma conex˜ao relevante e que essa conex˜ao importa
+para desempenho.
+
+Table 5: Presenc¸a de Schoolmate
+
+Schoolmate
+
+Todos
+0.06
+(0.05)
+1364
+
+Low
+0.05
+(0.10)
+486
+
+Mid
+0.06
+(0.09)
+436
+
+High
+0.09
+(0.09)
+442
+
+Observations
+Vari´avel dependente: nota padronizada. Apenas variac¸˜ao within.
+Erro-padr˜ao robusto em parˆenteses.
+Dummies de disciplina e bloco em (1) e (2).
+Efeito-ﬁxo de aluno em (3).
+Signiﬁcˆancia: ∗p < 0.10,∗∗ p < 0.05,∗∗∗ p < 0.01
+
+Os resultados mostram estimativas pontuais de um impacto na ordem de 6% de um desvio-padr˜ao
+sobre o desempenho para toda a amostra, mas em todos os casos s˜ao estimativas imprecisas. Esti-
+mativas separando a amostra por tipo de alunos tamb´em n˜ao apresentam resultados estatisticamente
+signiﬁcante. Uma possibilidade para a ausˆencia de efeito positivo ´e de que potencial interac¸˜ao pr´evia
+´e um fator irrelevante para formac¸˜ao de conex˜oes no contexto analisado. Ou mesmo que fosse algo
+relevante, a vari´avel utilizada pode ser uma medida inapropriada de interac¸˜ao pr´evia. Isto ´e, pode
+haver heterogeneidade na interac¸˜ao pr´evia de alunos da mesma escola, que pela medida utilizada tˆem
+um padr˜ao sim´etrico. Alternativamente, a interac¸˜ao pr´evia relevante pode ser aquela ocorrida em am-
+bientes diferentes da escola de origem, como num curso preparat´orio para o vestibular. Em resumo,
+o exerc´ıcio n˜ao sugere a prevalˆencia de alguma das explicac¸ ˜oes para peer effects n˜ao lineares.
+
+7 Conclus˜ao
+
+O trabalho investigou peer effects numa instituic¸˜ao de ensino superior que adota o problem based
+learning como estrat´egia pedag´ogica. Esse ambiente oferece a oportunidade de se observar grupos
+de alunos cuja interac¸˜ao ´e um elemento central tanto do aprendizado quanto da avaliac¸˜ao. A alocac¸˜ao
+dos alunos nos grupos a partir de uma regra determin´ıstica implica variac¸˜ao ex´ogena nos grupos de
+pares que diferentes alunos tˆem em diferentes disciplinas. Essa caracter´ıstica fortalece a validade
+interna dos resultados obtidos com as estrat´egias emp´ıricas implementadas.
+
+As estimativas de efeito a partir do modelo linear-in-means s˜ao imprecisas. Em nenhum dos
+casos se rejeita a hip´otese de efeito zero. No caso do impacto de da habilidade m´edia de matem´atica
+dos pares sobre desempenho, a magnitude dos coeﬁcientes varia de 5% a 7% de um desvio-padr˜ao
+das notas ﬁnais nas disciplinas. J´a com relac¸˜ao `a habilidade m´edia em redac¸˜ao, o sinal varia sob
+diferentes selec¸ ˜oes de amostra. O modelo linear-in-means ´e um tanto restritivo e nesse sentido a
+m´edia de habilidade dos pares pode n˜ao ser a caracter´ıstica relevante para desempenho. No entanto,
+a regra determin´ıstica de alocac¸˜ao faz com que haja pouca variac¸˜ao na habilidade dos pares entre
+grupos, embora os grupos sejam diferentes e exista variac¸˜ao em termos da posic¸˜ao do vestibular.
+
+12
+
+Os resultados para o modelo em que o efeito de pares varia conforme os n´ıveis de habilidade dos
+pares e do aluno mostram que os alunos low tem desempenho cerca de 9% de um desvio-padr˜ao menor
+quando tˆem no seu grupo um aluno low a mais e que alunos high tˆem desempenho cerca de 9% de
+um desvio-padr˜ao maior quando tem um aluno mid a mais no grupo. Com os dados dispon´ıveis n˜ao ´e
+poss´ıvel distinguir entre um impacto da presenc¸a desses alunos sobre o funcionamento das atividades
+ou impacto via formac¸˜ao de redes. No exerc´ıcio que analisa o impacto da presenc¸a de um schoolmate,
+n˜ao h´a evidˆencia de que diferentes tipos de alunos tˆem o desempenho afetado pela presenc¸a de pares
+com os quais possivelmente j´a houve interac¸˜ao pr´evia.
+
+Concluindo, o trabalho mostrou evidˆencia de um efeito de pares que depende da posic¸˜ao de alunos
+e pares na distribuic¸˜ao de habilidade, mas com os dados dispon´ıveis n˜ao foi poss´ıvel distinguir entre
+explicac¸ ˜oes alternativas. A pesquisa pode ser estendida no sentido comparar o desempenho de alunos
+alocados exogenamente com o desempenho em grupos onde existe algum padr˜ao de interac¸˜ao n˜ao
+aleat´orio. Para isso, torna-se indispens´avel o mapeamento das redes de alunos para aprofundar o
+entendimento de como pol´ıticas de alocac¸˜ao ´otima de alunos podem ser desenvolvidas.
+
+Referˆencias
+
+Barrows, H. S. (1996). Problem-based learning in medicine and beyond: A brief overview. New
+
+directions for teaching and learning, 1996(68):3–12.
+
+Bramoull´e, Y., Djebbari, H., and Fortin, B. (2009). Identiﬁcation of peer effects through social net-
+
+works. Journal of econometrics, 150(1):41–55.
+
+Carrell, S. E., Fullerton, R. L., and West, J. E. (2009). Does your cohort matter? measuring peer
+
+effects in college achievement. Journal of Labor Economics, 27(3):439–464.
+
+Carrell, S. E., Sacerdote, B. I., and West, J. E. (2013). From natural variation to optimal policy? the
+
+importance of endogenous peer group formation. Econometrica, 81(3):855–882.
+
+Durlauf, S. N. and Young, H. P. (2001). The new social economics. Social dynamics, pages 1–14.
+
+Epple, D. and Romano, R. (2011). Peer effects in education: A survey of the theory and evidence.
+
+Handbook of social economics, 1(11):1053–1163.
+
+Gijbels, D., Dochy, F., Van den Bossche, P., and Segers, M. (2005). Effects of problem-based learning:
+
+A meta-analysis from the angle of assessment. Review of educational research, 75(1):27–61.
+
+Jackson, M. O. (2010). Social and economic networks. Princeton university press.
+
+Kimbrough, E. O., McGee, A. D., and Shigeoka, H. (2017). How do peers impact learning? an
+experimental investigation of peer-to-peer teaching and ability tracking. Technical report, National
+Bureau of Economic Research.
+
+Lee, L.-f. (2007). Identiﬁcation and estimation of econometric models with group interactions, con-
+
+textual factors and ﬁxed effects. Journal of Econometrics, 140(2):333–374.
+
+13
+
+Manski, C. F. (1993). Identiﬁcation of endogenous social effects: The reﬂection problem. The review
+
+of economic studies, 60(3):531–542.
+
+Prince, M. (2004). Does active learning work? a review of the research. Journal of engineering
+
+education, 93(3):223–231.
+
+Sacerdote, B. (2001). Peer effects with random assignment: Results for dartmouth roommates. The
+
+Quarterly Journal of Economics, 116(2):681–704.
+
+Sacerdote, B. (2011). Peer effects in education: How might they work, how big are they and how
+
+much do we know thus far? Handbook of the Economics of Education, 3(3):249–277.
+
+Zimmerman, D. J. (2003). Peer effects in academic outcomes: Evidence from a natural experiment.
+
+Review of Economics and statistics, 85(1):9–23.
+
+14
+
+0.038
+(0.039)
+
+-0.033
+(0.045)
+
+486
+
+-0.033
+(0.033)
+
+0.051
+(0.037)
+
+-0.015
+(0.041)
+
+436
+
+0.019
+(0.037)
+
+0.094**
+(0.037)
+
+0.032
+(0.046)
+
+Table 6: N˜ao linearidade - Impacto por tipos de alunos
+
+-0.112**
+(0.044)
+
+-0.093**
+(0.037)
+
+Subamostra: Alunos Low
+Low
+
+Mid
+
+High
+
+-0.073*
+(0.039)
+
+-0.008
+(0.040)
+
+0.013
+(0.048)
+
+0.002
+(0.049)
+
+0.011
+(0.064)
+
+Observac¸ ˜oes
+
+304
+
+299
+
+Subamostra: Alunos Mid
+Low
+
+Mid
+
+High
+
+-0.060**
+(0.030)
+
+-0.016
+(0.033)
+
+0.010
+(0.037)
+
+-0.035
+(0.030)
+
+0.013
+(0.034)
+
+-0.040
+(0.038)
+
+Observac¸ ˜oes
+
+440
+
+449
+
+Subamostra: Alunos High
+Low
+
+Mid
+
+High
+
+Observac¸ ˜oes
+Identiﬁcac¸˜ao
+
+-0.005
+(0.043)
+
+0.055
+(0.039)
+
+0.177***
+(0.047)
+
+0.140***
+(0.037)
+
+-0.100*
+(0.059)
+
+-0.014
+(0.047)
+
+283
+Consecutivo At´e 2 posic¸ ˜oes Within
+
+422
+
+442
+
+Vari´avel dependente: Nota padronizada. Erro-padr˜ao robusto em parˆenteses.
+Dummies de disciplina e bloco em (1) e (2). Efeito-ﬁxo de aluno em (3).
+∗p < 0.10,∗∗ p < 0.05,∗∗∗ p < 0.01.
+
+15
+
+Table 7: Estat´ısticas Descritivas
+
+2013
+
+2014
+
+2015
+
+2016
+
+Matem´atica
+Redac¸˜ao
+Vestibular (mediana)
+
+M´edia Desv. Pad. N
+55
+6.08
+5.15
+55
+77.00
+
+0.73
+0.90
+
+M´edia Desv. Pad. N
+52
+52
+
+0.87
+1.00
+
+5.96
+5.20
+101.00
+
+M´edia Desv. Pad. N
+61
+6.27
+5.19
+61
+64
+
+0.80
+1.01
+
+M´edia Desv. Pad. N
+46
+5.98
+5.25
+46
+70
+
+0.75
+0.97
+
+Notas da prova objetiva de matem´atica e de redac¸˜ao. Embora usualmente haja 60 vagas, os registros de 2015 computam empate entre dois candidatos.
+
+2013
+
+2014
+
+2015
+
+2016
+
+Table 8: N´umero de pares nos grupos por tipo
+
+1
+6
+
+Low
+Mid
+High
+
+M´edia M´ınimo M´aximo N
+440
+4.42
+4.20
+440
+440
+4.21
+
+2.00
+2.00
+2.00
+
+7.00
+6.00
+7.00
+
+M´edia M´ınimo M´aximo N
+446
+4.377
+4.827
+446
+446
+4.146
+
+0.00
+2.00
+1.00
+
+7.00
+7.00
+7.00
+
+As categorias low, mid e high s˜ao deﬁnidas por tercis da classiﬁcac¸˜ao no vestibular
+A m´edia signiﬁca o n´umero de pares que um aluno tem em m´edia nos grupos.
+
+M´edia M´ınimo M´aximo
+4.54
+3.995
+3.695
+
+1
+1
+2
+
+7 417.00
+7 417.00
+6 417.00
+
+N
+
+M´edia M´ınimo M´aximo N
+7 339
+3.76
+3.71
+7 339
+7 339
+3.76
+
+1
+1
+1
+
+

@@ -1,0 +1,786 @@
+           A Eficácia da Política Fiscal no Brasil: Uma Abordagem SVAR identificado com Restrições
+                                            de Sinais e de Zeros
+
+                                                                                   Thiago Felipe Ramos de Abreu1
+                                                                                      Elcyon Caiado Rocha Lima2
+
+
+RESUMO: Este trabalho tem por objetivo auferir a eficácia da política fiscal no Brasil, verificando
+inclusive se seus impactos são significativamente afetados quando ela não altera o déficit fiscal do
+governo ou quando são utilizados períodos de tempo distintos. Para este fim, foi adotado um modelo de
+Vetor Autorregressivo Estrutural Bayesiano com uma identificação inovadora, proposta por Arias et al.
+(2018) em outro contexto, que não só impõe restrições de sinais, mas também restrições de zeros nas
+Funções Impulso Resposta. Esta nova forma de identificar as inovações fiscais permite evitar
+ambiguidades na identificação dos choques. Como não há consenso, na literatura teórica e empírica, sobre
+os efeitos da política fiscal é importante mensurá-los sob hipóteses de identificação alternativas. Os
+resultados indicam uma mudança na resposta do PIB no Brasil nos dois períodos distintos de tempo
+considerados: no primeiro intervalo de tempo (1999-2007), uma redução de impostos e aumento do
+consumo do governo aumenta o PIB; no segundo período analisado (2009-2016), a resposta do PIB se dá
+de forma contrária.
+
+Palavras-chave: Política Fiscal, Modelo de Vetores Autorregressivos Estruturais (SVAR), Restrições de
+Sinais e de Zeros, Função de Impulso Resposta (IRF).
+
+ABSTRACT: The objective of this study is to assess the effectiveness of fiscal policy in Brazil, including
+whether its impacts are significantly affected when it does not alter the government's fiscal deficit or
+when different periods of time are considered. For this purpose, it was adopted a Structural Bayesian
+Vector Autoregression model with an innovative identification, proposed by Arias et al. (2018) in another
+context, which not only imposes signal constraints, but also zeros constraints on the Impulse Response
+Functions. This new way of identifying fiscal innovations allows avoiding ambiguities in the
+identification of shocks. As there is no consensus in the theoretical and empirical literature on the effects
+of fiscal policy, it is important to measure them under alternative hypotheses of identification. The results
+indicate a change in the GDP response in Brazil in the two different time periods considered: in the first
+period of time (1999-2007), a reduction of taxes and increase of expenses increases the GDP; in the
+second period analyzed (2009-2016), the GDP response is the opposite.
+
+Keywords: Fiscal Policy, Model of Autoregressive Structural Vectors (SVAR), Signal and Zero
+Constraints, Impulse Response Function (IRF).
+
+Área 4 - Macroeconomia, Economia Monetária e Finanças
+JEL Codes: C32; E62; H30.
+
+
+
+
+1
+    É economista, doutorando pelo PPGCE/UERJ
+2
+    É economista, Ph.D. pela Universidade de Yale e professor associado da UERJ.
+INTRODUÇÃO
+        Este trabalho tem por objetivo auferir a eficácia da política fiscal no Brasil, verificando inclusive
+se seus impactos são significativamente afetados quando ela não altera o orçamento público. Para este
+fim, foi adotado um modelo de Vetor Autorregressivo Estrutural (SVAR) com uma identificação
+inovadora, proposta por Arias et al. (2018) em outro contexto, que não só impõe restrições de sinais, mas
+também restrições de zeros nas Funções Impulso Resposta (IRFs). Esta nova forma de identificar as
+inovações fiscais permite evitar ambiguidades na identificação dos choques. Como não há consenso, na
+literatura teórica e empírica, sobre os efeitos da política fiscal é importante mensurá-los sob hipóteses de
+identificação alternativas.
+        Na história econômica recente do Brasil, mais precisamente a partir da crise de 2008, políticas
+anticíclicas foram utilizadas na tentativa de mitigar a contração do nível de atividade econômica
+provocada pela recessão, sendo um de seus canais a redução do superávit orçamentário primário.
+Entretanto, passado esse primeiro momento, essas políticas foram mantidas, gerando descontrole
+orçamentário.
+        Segundo Perotti (2007), mesmo que a política fiscal seja um tema clássico na macroeconomia, a
+maior parte dos economistas discordam até mesmo de seus efeitos básicos. Por esta razão o impacto dos
+choques ﬁscais é um tópico de discussão recorrente na literatura econômica. A discordância se dá tanto do
+ponto de vista teórico como empírico. Há economistas que defendem uma política fiscal passiva,
+conduzidas por regras bem definidas, dada a dificuldade de se prever seu impacto e já que existe um hiato
+de tempo entre a implementação das políticas fiscais e seus efeitos. Já outros defendem a necessidade de
+uma política fiscal ativa e discricionária para prevenir desvios da economia em relação à sua trajetória de
+crescimento equilibrado.
+        Os artigos de Ramey e Shapiro (1998), Burnside et al. (2004) e Cogan et al. (2009) são exemplos
+de trabalhos, com metodologias distintas, mas que concluem que uma política fiscal passiva seria de
+melhor proveito do ponto de vista econômico. Já trabalhos como os de Blanchard e Perotti (2002), Fatás
+e Mihov (2001), Perrotti (2004) e Forni et al. (2009), que também utilizam metodologias diferentes,
+defendem uma política fiscal mais ativa.
+         Os resultados empíricos para o Brasil não poderiam ser mais distintos. Enquanto Peres e Ellery
+Jr. (2009), Carvalho et al. (2013) encontram resultados condizentes com a teoria keynesiana, que postula
+uma política fiscal ativa, para Cavalcanti e Silva (2009), Silva e Portugal (2010) e Mendonça et al. (2009)
+os resultados indicam que medidas fiscais ativas podem aumentar a incerteza enfrentada pelos agentes
+econômicos, produzindo flutuações cíclica economicamente ineficientes.
+        O presente trabalho pretende investigar que política fiscal é mais eficiente para estimular a
+economia: expansão dos gastos públicos, cortes nos impostos do governo ou aumento da formação bruta
+de capital fixo do governo (FBCFG). Também procura avaliar se as inovações fiscais apresentam
+divergência, na resposta do PIB (Produto Interno Bruto), quando afetam o orçamento do governo.
+        Os resultados obtidos revelam uma mudança nas respostas do PIB aos choques exógenos nos
+impostos e no consumo do governo, quando se considera diferentes intervalos de tempo, 1999-2007 e
+2009-2016. Para o primeiro período, o aumento de impostos reduz o PIB e o aumento do consumo do
+governo tem o poder de expandi-lo. Estes resultados não se repetem no segundo período analisado, onde a
+resposta do PIB aos choques se dá de forma contrária. A diferença dos resultados, nos dois intervalos de
+tempo, pode estar diretamente relacionada à preocupação dos agentes econômicos com a solvência do
+governo.
+        Quando o choque fiscal não afeta o orçamento do governo as IRFs do PIB têm uma maior
+probabilidade de reagir de forma positiva aos choques no consumo do governo para ambos os intervalos
+de tempo. Em relação a choques na FBCFG, há uma variação do sinal da resposta do PIB nos diferentes
+instantes de tempo: para o primeiro intervalo, 1999-2007, o PIB reagiu de forma negativa, enquanto no
+segundo, 2009-2016, a resposta foi positiva.
+        O trabalho está organizado da seguinte forma: além desta introdução, no segundo capítulo é feita
+uma revisão da literatura internacional e nacional sobre os impactos da política fiscal; no terceiro capítulo
+são apresentados a metodologia, os dados e as hipóteses de identificação; no quarto capítulo são descritos
+os principais resultados; e, por fim, no quinto capítulo são apresentadas as principais conclusões.
+
+2. REVISÃO DE LITERATURA
+        Há uma considerável gama de modelos e abordagens que são utilizados para estimar os efeitos das
+inovações fiscais sobre os ciclos econômicos. Dar-se-á, nessa seção, o devido destaque aos principais
+trabalhos empíricos internacionais e nacionais sobre o tema.
+        Com relação aos trabalhos empíricos, diferentes resultados são encontrados a partir da
+metodologia adotada. Tanto nos trabalhos empíricos internacionais como nacionais, não há consenso
+quanto aos efeitos de choques ﬁscais sobre a economia. Um elemento importante que explica os
+diferentes resultados consiste na forma como choques ﬁscais são identiﬁcados, ou seja, está no fato de
+diferenciar adequadamente o componente exógeno, associado a mudanças discricionárias na adoção da
+política fiscal; de seu componente endógeno, que tem relação com o ciclo econômico.
+        Um dos primeiros trabalhos a esse respeito é o de Giavazzi e Pegano (1990). Através de uma
+análise de dados em painel, os autores identificam períodos em que houve um ajustamento fiscal
+significativo. Nestes períodos observam como certas variáveis-chave se comportam quando comparadas
+ao desempenho das mesmas variáveis em períodos considerados normais. ou seja, sem o mesmo nível de
+ajustamento fiscal. Encontrou-se episódios em países da Europa em que as variáveis se comportaram
+tanto como preconizado pela teoria novo-keynesiana, caso da Irlanda, como pela teoria novo-clássica,
+caso da Dinamarca.
+        Ramey e Shapiro (1998) e Burnside et al. (2004) utilizaram-se de um modelo autorregressivo
+vetorial (VAR) em sua forma reduzida. O método foi escolhido para analisar como a expansão nos gastos
+militares realizados pelo governo americano durante períodos de guerra afetaram o produto, consumo,
+emprego e entre outras variáveis de interesse. Para isso, constrói-se uma variável dummy correspondente
+a tais eventos, que é então incorporada ao modelo VAR. Os resultados mostram quedas no consumo e no
+salário real quando seguidos por um choque ﬁscal, o que corrobora com as implicações teóricas dos
+modelos novos-clássicos, sendo que em Burnside et al. (2004), o consumo não apresenta variação
+signiﬁcativa. Um argumento a favor dessa metodologia é a de que, por se tratarem de variáveis dummies,
+que por definição são exógenas, não são necessárias hipóteses adicionais sobre a identificação do VAR.
+        Já em Romer e Romer (2007) é utilizado outro tipo de abordagem. Na tentativa de medir os efeitos
+em mudanças na carga tributária, os autores focam sua análise em observar as ações tomadas através da
+legislação e documentos oficias nas quais ficassem claro quais seriam as reais motivações dos
+formuladores da política fiscal. A partir daquelas consideradas exógenas, ou seja, que não tinham o
+motivo de causar mudanças no nível de atividade da economia, estima-se uma regressão da taxa de
+crescimento do PIB. Tiveram como resultado que para os Estados Unidos, o aumento em um por cento na
+receita de impostos provocaria uma redução em torno de três por cento no PIB.
+        A abordagem do modelo de vetores autoregressivos estruturais (SVAR) é uma das abordagens que
+mais se desenvolveu ao longo dos últimos anos, e será utilizada nesse trabalho. Ela pode ser tanto baseada
+na identificação dos choques fiscais estruturais, que é feito a partir de informações sobre o lag com que
+determinada política adotada tem seus resultados e outras características institucionais. Como através da
+imposição de sinais sobre a resposta de determinadas variáveis.
+        No primeiro método de identificação são destaques os trabalhos de Blanchard e Perotti (2002),
+Fatás e Mihov (2001) e Perotti (2004), que apresentam resultados consistentes com a teoria novo-
+keynesiana, onde um aumento nos gastos do governo é seguido por uma elevação do consumo privado e
+do salário real. Para Perotti (2007), o problema com esta abordagem está na existência de certa defasagem
+entre o anúncio de um aumento nos gastos e a implementação dessa política. Essa diferença temporal
+permite uma reação antecipada por parte do setor privado à implementação da inovação fiscal, o que
+resultaria em funções impulso-resposta enviesadas.
+        O outro método de identificação mencionado, proposto por Mountford e Uhlig (2008) e Uhlig
+(2005), identiﬁca o modelo SVAR a partir de hipóteses sobre os sinais das respostas esperadas a choques
+fiscais. Mountford e Uhlig (2008), a partir de uma amostra contendo diversas variáveis trimestrais dos
+EUA de 1955 a 2000, encontram que choques ﬁscais estimulam o produto, onde déficits orçamentários
+provocados por corte nas taxas de impostos apresentam melhores resultados em provocar um aumento no
+nível de atividade econômica.
+         A metodologia escolhida nesse trabalho se utilizará do avanço metodológico proposto por Arias et
+al. (2018). Em seu trabalho os autores expandem o algoritmo proposto por Rubio-Ramírez et al. (2010),
+em outro contexto, que não só impõe restrições de sinais, mas também restrições de zeros. A partir da
+mesma base de dados de Mountford e Uhlig (2008), em Arias et al. (2018) os largos intervalos de
+confiança das IRFs impossibilitaram aferir qualquer mudança das inovações ficais sobre a economia
+americana.
+         A divergência nos resultados entre as metodologias se dá pelo fato, como apontado por Arias et al.
+(2018), de que o algoritmo mais utilizado, o de Mountford e Uhlig (2008), tem pelo menos três problemas
+possíveis. Onde a matriz ortogonal ótima, a matriz Q * , que resolve o sistema de equações do Problema
+de Minimização da Função Perda (PFA), pode não satisfazer as restrições de sinais impostas; uma vez
+que somente uma matriz ortogonal é escolhida, o exame crítico não está claramente considerando todos
+os valores possíveis dos parâmetros estruturais condicionais às restrições de sinais; e por fim, ao escolher
+somente um sinal da matriz ortogonal para minimizar a função perda, se as IRFs de duas variáveis a um
+choque particular são correlacionadas, pode-se estar introduzindo viés em suas IRFs e em outras
+estatísticas de interesse.
+         Dessa maneira, ao escolher uma matriz ortogonal particular, que maximiza a resposta de uma
+variável a um choque fiscal pela minimização da função perda, está se enviesando a resposta das outras
+variáveis ao mesmo choque. De certo modo, a PFA comporta-se como se houvesse restrições de sinais
+adicionais nas variáveis que são similarmente irrestritas e, consequentemente, viola a agnosticidade de
+qualquer esquema de identificação utilizado.
+         Vale ainda destacar a utilização, em alguns trabalhos, de modelos dinâmicos estocásticos de
+equilíbrio geral (DSGE), calibrados ou estimados diretamente na forma estrutural como Cogan et al.
+(2009) e Forni et al. (2009). O primeiro trabalho encontrou como resultado, que para os Estados Unidos
+seria de mais valia um anuncio por parte do governo federal que haveria uma redução de sua participação
+na economia. A sinalização faria com que as famílias esperassem uma queda na carga tributária, onde
+essa medida seria mais estimulante do que um eventual aumento nos gastos. Já Forni et al. (2009)
+encontram evidencias mais ligadas a teoria novo-keynesiana com efeitos mais significativos sobre o nível
+de atividade quando também há reduções na arrecadação do governo.
+         A partir do que foi destacado sobre trabalhos empíricos internacionais, é possível notar que não
+existe um consenso sobre como as inovações fiscais afetam os ciclos econômicos, uma vez que os
+resultados variam em função da metodologia adotada, bem como das características dos modelos, do
+método de identificação e do período amostral utilizado.
+         Para pesquisas nacionais, os resultados não poderiam ser diferentes. Entre os trabalhos que se
+utilizam da metodologia SVAR são destaques Peres e Ellery Jr. (2009), Cavalcanti e Silva (2010),
+Mendonça et al. (2009) e Castelo-Branco et al. (2017). Já aqueles que tentaram responder à pergunta
+sobre uma ótica da estimação de modelos DSGE são destaques Silva e Portugal (2010), Mussolini e Teles
+(2012) e Carvalho et al. (2013).
+         Peres e Ellery Jr. (2009), utilizando-se da metodologia SVAR de Blanchard e Perotti (2002),
+obtiveram como resultado que a resposta do produto aos choques fiscais é pequena e tem característica
+tipicamente keynesiana para o período de 1994-2005. Os resultados apontam que uma elevação de gastos
+tem uma relação positiva com o nível de produto, e aumentos na carga tributária relação negativa.
+         Cavalcanti e Silva (2010) avançaram na pesquisa ao levar em consideração o papel da dívida
+pública, com base no trabalho de Favero e Giavazzi (2007), em que os autores evidenciaram que a
+ausência da variável resulta numa provável superestimação do modelo. Desse modo, encontraram para o
+período de 1995-2008 resultados próximos a zero no nível de produto a um choque nos gastos e
+levemente positivo para o PIB no médio prazo para aumentos na receita. Para os autores, esse efeito se dá
+devido a uma possível preocupação com a solvência da dívida pública no período.
+        Em Mendonça et al. (2009), os resultados foram semelhantes. Ao se utilizar da metodologia
+proposta por Mountford e Uhlig (2008), identificando o modelo SVAR através da imposição de restrições
+de sinais sobre as IRFs, encontraram resultados tipicamente não-keynesianos. Onde um aumento
+inesperado do gasto corrente do governo pode conduzir a uma retração do produto real, enquanto que um
+choque positivo na carga tributária líquida pode levar, a médio prazo, a uma resposta positiva do PIB.
+        Castelo-Branco et al. (2017), utilizaram a metodologia SVAR, mas com um enfoque Markov-
+Switching (MS), através de um modelo de Vetores Autorregressivos Estrutural Bayesiano (SBVAR). Os
+autores encontraram que choques no consumo do governo são pouco eficazes para realizar qualquer
+alteração no PIB, enquanto o aumento da carga tributária tem um impacto negativo. Em contrapartida, os
+multiplicadores fiscais da FBCFG são eficazes com impacto permanente e de longo prazo no PIB.
+        Os trabalhos que se utilizaram da mensuração de modelos DSGE, tiveram, resumidamente os
+seguintes resultados: enquanto Carvalho et al. (2013) mostram que choques fiscais elevam tanto a taxa de
+emprego como o salário real, resultado tipicamente novo keynesiano; Silva e Portugal (2010) encontrou
+exatamente o oposto, queda do consumo como consequência de choques nos gastos do governo com uma
+redução do salário real; e para Mussolini e Teles (2012) a variável carga tributária é a mais importante
+para explicar o nível do produto além da produtividade.
+
+3. METODOLOGIA
+        Os modelos SVARs são amplamente utilizados para a análise de políticas e para fornecer fatos
+estilizados para a teoria económica. Porém, antes de se realizar qualquer análise empírica através dessa
+metodologia particular, é necessário que o modelo seja corretamente identificado, já que, caso contrário,
+os resultados empíricos seriam enganosos.
+        Em Rubio-Ramírez et al. (2010), há o desenvolvimento de condições gerais para a identificação e
+de algoritmos eficientes para estimação, sobretudo, em modelos SVARs com restrições não lineares.
+Arias et al. (2018) através dos resultados obtidos em Rubio-Ramírez et al. (2010) expande o algoritmo
+proposto para permitir restrições de zeros. Dessa forma, considere um VAR em sua forma estrutural,
+como em Rubio-Ramírez et al. (2010):
+                                                 p
+                                      yt ' A0   yt l ' Al  c   't   para   1 t  T                     (1)
+                                                l 1
+      Onde y t é um vetor n x 1 de variáveis endógenas,  t é um vetor n x 1 de choques estruturais
+exógenos, A l é uma matriz n x n dos parâmetros para 1  l  p com A 0 , a matriz de relações
+contemporâneas, invertível, c é um vetor 1 x n de parâmetros, p é a extensão do lag e T é o tamanho da
+amostra. O vetor  t , condicional as informações passadas e as condições iniciais de y0 ,..., y1 p , é
+Gaussiano com média zero e matriz de covariância I n , a matriz de identidade n x n . O modelo tem sua
+forma compacta dada por:
+                                yt ' A0  xt ' A   't para 1  t  T                            (2)
+Sendo A'   A'1 ... A' p c ' e x't   y 't 1 ... y 't  p 1 para 1  t  T . A dimensão de A  é
+m x n , onde m  np  1 . A representação da forma reduzida implícita pela equação (2) é:
+                                      yt '  xt ' B  u 't       para 1  t  T                         (3)
+Onde B  A  A 01 , u 't   't A 10 e E [ut u 't ]    (A 0 A'0 ) 1 . As matrizes B e  são os parâmetros do
+modelo em sua forma reduzida, enquanto A 0 e A  são os parâmetros em sua forma estrutural.
+        Arias et al. (2018) propõe um algoritmo, onde o conjunto de parâmetros estruturais condicionais
+às restrições de sinal e de zero será de medida positiva. A dificuldade vem do fato que as restrições de
+zero impõem restrições não lineares nos parâmetros estruturais ( A0 , A ) . Propõe-se portanto, transformar
+estas restrições não-lineares nos parâmetros estruturais ( A0 , A ) em restrições lineares na matriz ortogonal
+Q , de modo a permitir que extrações dos parâmetros na forma reduzida combinadas com extrações da
+matriz Q da distribuição uniforme com respeito a medida de Haar no O ( n ) , possam ser transformar em
+extrações de parâmetros estruturais respeitando tanto as restrições de sinal como as de zero. Que será
+realizado a partir dos seguintes teoremas.3
+
+Teorema 1. Sendo ( A0 , A ) qualquer valor dos parâmetros estruturais. O parâmetro estrutural
+( A0Q , A Q ) , onde Q é ortogonal, satisfaz as restrições de zeros se e somente se || q j || 1 e
+
+                                                        R j ( A0 , A ) q j  0   para        1 j  n     (4)
+Onde:
+                                                               Z i f ( A0 , A ) 
+                                        R j ( A0 , A ) q j                     .
+                                                               Q ' j 1 
+Além disso, se a ordenação de Z i é menor ou igual a n  j , então não haverá solução de zero para a
+equação (12) independente dos valores de Q j  1 .
+
+        O que implica que para qualquer valor dos parâmetros em sua forma estrutural, combinações
+lineares podem ser feitas de modo que, ao impor as restrições de zeros sobre a matriz ortogonal Q , as
+restrições de zeros sobre as IRFs serão satisfeitas, já que ( A0 , A ) e ( A0Q , A Q ) são equivalentes
+observacionalmente.
+        Mas para isso precisa-se obter extrações da distribuição uniforme com respeito a medida de Haar
+no O ( n ) condicional às restrições de zeros. O que será obtido da seguinte forma:
+
+Teorema 2. Sendo 1  j  n , onde Z j representa restrições de zeros com as equações do sistema dada
+por (1) ordenado tal que z j  n  j . Dado ( A0 , A ) qualquer valor dos parâmetros estruturais, a matriz Q
+será obtida através de:
+    1. Sendo j  1 ;
+    2. Acha-se uma matriz N j 1 tal que as colunas formam bases ortogonais para o espaço nulo de
+            R j ( A0 , A ) ;
+       3. Extrai x j da distribuição normal padrão em  n .
+                           N ' j 1 x j 
+   4. Sendo q j  N j 1 
+                           || N ' x || 
+                                           ;
+                                 j 1 j 
+   5. Se j  n para, caso contrário, sendo j  j  1 move-se para o passo 2.
+A matriz randômica Q tem distribuição uniforme com respeito a medida de Haar no O ( n ) condicional
+aos ( A0Q , A Q ) satisfazendo as restrições de zeros.
+
+       Admitindo que g denota o mapping do parâmetro estrutural para a forma reduzida dos parâmetros
+dado por g ( A0 , A )  ( A A10 ,( A0 A '0 ) 1 ) . Sendo h qualquer mapping continuamente diferenciável do
+conjunto de matrizes simétrica n x n positiva definida para o conjunto de matrizes n x n tal que
+h ( X ) ' h ( X )  X . Por exemplo, h ( X ) poderia ser a decomposição Cholesky de X , onde h ( X ) é
+triangular superior com diagonal positiva. Usando h , podemos definir uma função ĥ que transforma o
+
+
+3
+    Devido ao espaço curto, para mais detalhes sobre a metodologia ver Arial et al. (2018).
+produto do conjunto de parâmetros da forma reduzida com o conjunto das matrizes ortogonais em
+parâmetros estruturais dados por hˆ ( B ,  , Q )  ( h ( ) 1 Q , Bh (  ) 1 Q ) , que será feito com base no Teorema
+3.
+
+Teorema 3. Sendo  a densidade priori dos parâmetros na forma reduzida. Se ( B ,  ) é uma extração
+dos parâmetros na forma reduzida a partir de sua posteriori e Q é uma extração da distribuição
+uniforme com respeito a medida de Haar no O ( n ) condicional ao hˆ( B, , Q )  ( h( ) 1 Q , Bh() 1 Q ) que
+satisfaz as restrições de zeros como no Teorema 4, então hˆ( B, , Q ) é uma extração da posteriori dos
+parâmetros estruturais com respeito à priori ˆ ( A0 , A )   ( B, ) | det(hˆ '( B, , Q)) | , condicional às
+                                                                                                 1
+
+
+restrições de zeros.
+
+       O que permite obter extrações independentes dos parâmetros estruturais de sua distribuição a
+posteriori condicionais as restrições de sinais e de zeros. E será feito a partir do seguinte Algoritmo.
+
+Algoritmo
+      1. Extrai ( B ,  ) da distribuição posteriori dos parâmetros na forma reduzida;
+      2. Usa-se o Teorema 4 para extrair uma matriz ortogonal                                         Q     tal    que
+         hˆ( B, , Q )  ( h( ) 1 Q , Bh() 1 Q ) satisfaz as restrições de zeros;
+      3. Mantem-se a extração se as restrições de sinais são satisfeitas para 1  j  n ;
+      4. Retorna ao passo 1 até que o número de extrações requerida da distribuição posteriori dos
+         parâmetros estruturais condicional às restrições de zeros e de sinais sejam obtidas.
+
+3.1. Dados
+
+        As séries utilizadas a fim de compor o vetor y t de variáveis endógenas são dadas pelo PIB, o
+Consumo do Governo, como também a sua arrecadação através dos Impostos e a Formação Bruta de
+Capital Fixo do Governo, todas essas a nível do governo geral, ou seja, somando União, Estados e
+Municípios.
+        Para o PIB foi utilizado a série disponibilizada pelo Instituto Brasileiro de Geografia e Estatística
+(IBGE) através dos indicadores das contas nacionais trimestrais. Trata-se da série do PIB em valores
+constantes de 1995 com ajuste sazonal. A série para o Consumo do Governo foi obtida através da mesma
+fonte, recebendo o mesmo tratamento, ou seja, trata-se da série a preços constantes de 1995 com ajuste
+sazonal.
+        A variável Impostos foi obtida também pelo IBGE, através da série Impostos dos indicadores das
+contas nacionais trimestrais, disponibilizadas a preços constantes de 1995. Para o ajuste sazonal foi
+utilizado o pacote estatístico Demetra, através do método X-13, onde se obteve como resultado que a
+série em questão seguia o processo Sarima [(0,1,1)(0,1,1)].
+        Para a FBCFG foi utilizado a série construída por Dos Santos et al. (2011). A fim de se obter um
+maior tamanho da amostra optou-se ainda por um encadeamento, a partir do quarto trimestre do ano de
+2015, dos dados junto a série de Aquisição de Ativos Não Financeiros disponibilizada pela Secretaria do
+Tesouro Nacional (STN)4. A série encadeada foi trazida a preços constantes de 1995 pelo deflator
+implícito da Formação Bruta de Capital Fixo Agregada disponibilizado pelo IBGE. Sendo o ajuste
+sazonal realizado pelo pacote estatístico Demetra, utilizando o método X-13, onde se obteve como
+resultado que a série em questão seguia o processo Sarima [(1,0,0)(1,1,1)].
+
+
+
+4
+    Para mais informações sobre o encadeamento da série ver Anexo B.
+        Foi criada ainda a série Orçamento, que se trata do logaritmo natural dos Impostos reduzido dos
+logaritmos naturais do Consumo do Governo e da FBCFG. A sua criação é realizada a fim de identificar
+inovações fiscais sem que haja alteração no orçamento público.
+        Com essa finalidade, optou-se por dois conjuntos diferentes de variáveis: O primeiro conjunto
+(Amostra I) contém as séries temporais do PIB, Impostos, Consumo do Governo e FBCFG; e o outro
+conjunto (Amostra II) é dado pelo PIB, a variável Orçamento, o Consumo do Governo e a FBCFG. Na
+Amostra II, optou-se pela retirada da variável Impostos para que não houvesse problema de
+multicolinearidade.
+        Para a estimação do modelo optou-se por utilizar o logaritmo natural das séries em nível. Após a
+transformação em logaritmo natural, multiplicou-se os valores por cem. A finalidade da multiplicação é a
+de que fosse feita uma mudança na escala dos dados, a fim de conseguir uma amostra maior dos
+parâmetros do modelo SBVAR, extraídos conforme o Algoritmo apresentado.
+        As IRFs foram construídas através de uma amostra de dez mil extrações da distribuição a
+posteriori em que se respeitasse às restrições de sinais e de zeros impostas às IRFs, exibindo um intervalo
+de confiança de 68%.
+        Além da divisão em duas amostras, optou-se por trabalhar com três períodos de tempo distintos
+devido a possibilidade de quebra estrutural da série. Diante desse problema, os intervalos de tempo
+escolhidos foram o do segundo trimestre do ano de 1999, quando houve a adesão do regime de metas para
+a inflação, ao quarto trimestre de 2007 (Intervalo I); outra amostra compreendendo o intervalo de tempo
+do segundo trimestre de 2009 ao quarto de 2016 (Intervalo II); além da amostra compreendendo do
+segundo trimestre do ano de 1999 ao quarto trimestre de 2016, ou seja, o período completo (Intervalo III)
+para averiguação da consistência dos resultados encontrados, por se tratar de uma amostra maior.5 A
+divisões aqui realizadas tem por base os resultados encontrados por Castelo-Branco et al. (2017), onde se
+obteve como resultado, através de uma metodologia MS-SBVAR, a ocorrência de três regimes distintos.
+        Vale destacar que por se tratar de um modelo que estima os parâmetros do SVAR através de um
+procedimento bayesiano há a eliminação do problema da ordem de integração das séries, bem como a
+relevância da importância do tamanho da amostra, como advogado por Sims (1988). Na mesma forma em
+que, testes de cointegração e testes que mensuram a existência de raízes unitárias são de baixa potência
+em relação a alternativas plausíveis, especialmente no que se refere à hipótese alternativa de tendência
+estacionária. Como exposto também por Sims et al. (1990), a metodologia empregada não exibe
+problemas de inconsistência estatística.
+        Por fim, foi realizado um teste a fim de avaliar o número de lags a serem utilizados para a
+mensuração do modelo. Para o teste de Lag Lenght Criteria foi utilizado o pacote estatístico Eviews 8. Os
+resultados do teste encontram-se na Tabela 1.
+        Optou-se por apresentar os resultados apenas para a Amostra I, uma vez que o teste apresentou os
+mesmos resultados para ambas amostras, visto que se trata das mesmas variáveis, apesar da
+transformação realizada para construção da variável Orçamento. O critério de Schwarz (SC) foi escolhido
+como ferramenta de decisão frente aos demais critérios, pois é o mais utilizado na literatura e o de melhor
+interpretação bayesiana. O critério ainda se destaca por ser o que mais penaliza o número de parâmetros.
+Assim, trabalhou-se em todos os processos de estimação, aqui apresentados, com apenas uma defasagem.
+
+
+
+
+5
+ Devido ao espaço curto, optou-se por omitir a apresentação das IRFs para o Intervalo III. Os resultados foram semelhantes
+aos encontrados para o primeiro período (Intervalo I), porém será destacado ao longo do texto quando os períodos em questão
+se comportaram de forma diferente.
+Tabela 1 - Resultado do teste de seleção de defasagem do VAR.
+
+
+
+
+Legenda: AIC: Critério de informação de Akaike; SC: Critério de informação de Schwarz; HQ: Critério de informação de
+       Hannan-Quinn.
+Fonte: Os autores, 2018.
+
+3.2. Identificação dos Choques
+
+        Nas Tabelas 2 e 3 são apresentadas as restrições de sinais e de zeros impostas para a identificação
+dos diversos choques de política fiscal, os quais são representados nas linhas das referidas tabelas. Optou-
+se pela identificação de choques fiscais restritivos através de um aumento dos Impostos por parte do
+governo, e expansionistas através de um aumento do Consumo do Governo e da FBCFG.
+        De acordo com as restrições sumariadas na Tabela 2, os classificados como Agnósticos são os
+choques cuja identificação é amplamente utilizada na literatura. São impostas somente restrições de sinais
+na variável ao qual se deseja mensurar um choque exógeno. Para as identificações agnósticas foi utilizado
+uma janela de restrições de 4 passos à frente, sendo a primeira restrição imposta no horizonte zero.
+        Através das restrições de zeros é possível identificar choques exógenos restritos, ou seja, choques
+em que somente as variáveis de interesse sofrem alterações durante horizontes específicos das IRFs.
+Nesse sentido, a vantagem de se trabalhar com restrições de zeros está em anular possíveis alterações
+provocadas por outras variáveis, que não seja a de interesse.
+        Seria o caso, por exemplo, de uma identificação agnóstica de um choque exógeno dos Impostos,
+Tabela 2 – linha A.T . Ao interpretar as IRFs a esse choque pode se estar cometendo um erro, uma vez
+que não é possível dizer se existe uma relação de causalidade entre as variáveis. O aumento dos impostos
+pode ter impactado positivamente o PIB, da mesma forma em que um aumento de produtividade pode ter
+elevado o PIB, que por consequência provocou um aumento na arrecadação do governo.
+        A dificuldade de se obter relações de casualidade vem do que fato de que através do Algoritmo
+apresentado, a medida em que se faz uma extração de uma matriz ortogonal Q e se realiza combinações
+lineares junto aos parâmetros na forma reduzida de um VAR, a fim de se obter parâmetros em sua forma
+estrutural condicionais as restrições de sinais e de zeros, tem-se que para cada extração da matriz Q um
+novo modelo SVAR é extraído. Ou seja, para a construção das IRFs inúmeros modelos SVAR são
+extraídos junto a matriz Q , de modo em que não se tem uma representação exata desse modelo.
+        A identificação de choques de política fiscal, sem que afetasse o orçamento do governo, teve como
+como base o sumário exposto na forma da Tabela 3. Para o caso exposto, as restrições de zeros
+possibilitaram não somente a mensuração de choques restritos, como também a identificação de choques
+de política fiscal sem que afetasse o orçamento público. Como demonstrado na identificação do choque
+da linha RE CG .K G , onde buscou-se mensurar como um choque restrito na FBCFG impacta as demais
+variáveis dado orçamento e consumo do governo constante no horizonte zero.
+Tabela 2 - Restrições de sinais e de zeros utilizadas para identificação dos choques na política fiscal.
+
+
+
+
+Fonte: Os autores, 2018.
+
+Tabela 3 - Restrições de sinais e de zeros utilizadas para identificação dos choques na política fiscal
+          que não afetam o Orçamento Público.
+
+
+
+
+Fonte: Os autores, 2018.
+
+4. RESULTADOS
+4.1 As IRF dos Choques nos Impostos
+
+        As IRFs encontradas para os choques nos impostos identificado de acordo com a Tabela 2, linhas
+         C ,K          C ,K ,Y
+ A.T , R G G .T e R G G .T , para os três intervalos de tempo, são dadas pelas figuras que se seguem
+(Figuras 1 e 2).
+       Através das IRFs é possível observar como as identificações via restrições de sinais e de zeros
+funcionam. Ao tentar identificar de maneira agnóstica uma política fiscal restritiva via aumento dos
+impostos (coluna A.T ), para todos os intervalos de tempo houve uma resposta positiva por parte do PIB,
+assim como as das demais variáveis, onde os intervalos de confiança das IRFs para a maioria dos
+horizontes analisados contêm zero. Como mencionando anteriormente, a relação de casualidade é dúbia
+ao se impor somente restrições de sinais. A metodologia não possibilita a apresentação do modelo SVAR
+exato com o qual se criou as IRFs aqui apresentadas. Portanto, pode ter se identificado tanto uma
+inovação no nível do produto como no dos impostos. O mesmo resultado positivo por parte do PIB é
+                                                                                          CG ,KG
+obtido quando se impõe restrições de zeros no consumo do governo e na FBCFG, coluna R              .T .
+Figura 1 – Funções Impulso Resposta para Choques nos Impostos no período 1999-2007.
+
+
+
+
+Fonte: Os autores, 2018.
+
+Figura 2 – Funções Impulso Resposta para Choques nos Impostos no período 2009-2016.
+
+
+
+
+Fonte: Os autores, 2018.
+           Nesse sentido, destacam-se os resultados encontrados quando se adiciona uma restrição de zero
+                                                                 C ,K ,Y
+para a resposta do PIB no horizonte zero, coluna R G G .T . É possível ver uma mudança na resposta
+para um choque nos impostos entre os intervalos de tempo: enquanto para o período 1999-2007, o PIB
+apresentou uma resposta negativa, como defendido pelas principais teorias econômicas; para o segundo
+intervalo de tempo, 2009-2016, o PIB responde de forma positiva.
+                                                       C ,K ,Y
+       Ainda em relação a identificação R G G .T , enquanto no período 1999-2007 o consumo do
+governo recua e a FBCFG aumenta, para o segundo período há uma resposta positiva de ambas as
+variáveis, ainda que o consumo caia até o segundo trimestre seguinte ao choque. Essa mudança na
+resposta do PIB pode estar diretamente relacionada a um quadro de dominância fiscal, fruto de uma piora
+nas finanças governamentais, onde os agentes reagem de forma otimista a uma tentativa de recuperar o
+nível de solvência por parte do governo.
+
+4.2. As IRF Choques no Consumo do Governo
+
+        As IRFs encontradas para os choques no consumo do governo, referente a Tabela 2 identificadas
+conforme as linhas A.CG , R K G ,T .CG e R K G ,T, Y .C G , para todos os intervalos de tempo, são dadas pelas
+figuras que se seguem (Figuras 3 e 4). Diferente do que foi mensurado para os choques dos impostos,
+para o período 1999-2007 as IRFs aos choques no consumo do governo se comportaram de maneira
+similar independente das restrições de zeros impostas.
+        Em todos os casos, obteve-se que choques de gastos são seguidos por aumento de impostos, esse
+resultado pode ser explicado pelo elevado nível de rigidez orçamentária brasileira. Segundo o Relatório
+Resumido da Execução Orçamentária (RREO), para o ano de 2016,6a participação das Despesas
+Obrigatórias da União na Receita Total Líquida é de 88,1%.
+        Soma-se ao fato a resposta positiva por parte do PIB ao choque no consumo do governo, onde o
+aumento da arrecadação pode estar seguindo o crescimento do PIB. Esse resultado também foi observado
+nas IRFs a choques nos impostos, onde ambas as variáveis tendem a se comportar de maneira análoga,
+com exceção de quando foram impostas restrições de zeros na resposta do PIB. Para esse caso específico,
+os resultados apontaram uma maior probabilidade de se obter resultados negativos a um aumento dos
+impostos para os períodos compreendidos entre 1999-2007 e 1999-2016.
+        Quando se observa as IRFs para o período de 2009-2016 o PIB passa a responder de forma
+negativa, com exceção ao choque agnóstico (coluna A.CG ). Assim como o PIB as demais variáveis
+reagiram de forma negativa a um choque nos gastos do governo. Esse resultado compactua com a
+resposta do PIB a um choque nos impostos para o mesmo período, intensificando a ideia de um possível
+quadro de dominância fiscal.
+
+
+
+
+6
+    Disponível em: http://bit.ly/2p8KYti. Acesso em 18 de junho de 2017.
+Figura 3 – Funções Impulso Resposta para Choques no Consumo do Governo no período 1999-
+2007.
+
+
+
+
+Fonte: Os autores, 2018.
+
+Figura 4 – Funções Impulso Resposta para Choques no Consumo do Governo no período 2009-
+2016.
+
+
+
+
+Fonte: Os autores, 2018.
+        As IRFs encontradas para os choques no consumo do governo sem afetar o orçamento público,
+referente a Tabela 3 identificadas conforme as linhas AE.CG , RE K G ,T .C G e RE KG ,T, Y .CG , para todos os
+intervalos de tempo, são dadas pelas figuras que se seguem (Figuras 5 e 6).
+        Quando se observa as IRFs para choques no consumo governamental que não afetam o orçamento,
+para ambos os intervalos de tempo obteve-se resultados similares para a resposta do PIB. Apesar de em
+certos horizontes de tempo a resposta do PIB apresentar uma maior probabilidade de queda para o
+segundo período analisado, 2009-2016.
+        A maior diferença de resultados, entre os intervalos de tempo, aparece quando se compara as
+respostas das demais variáveis. Enquanto para 1999-2007, a cada aumento dos gastos, a FBCFG também
+é elevada reduzindo o valor do orçamento. No período de 2009-2016, há uma resposta positiva da
+variável orçamento, que é fruto de uma redução da FBCFG para compensar o aumento do consumo do
+governo.
+        Vale ainda destacar, que o único caso em que a resposta do PIB se deu de forma diferente entre os
+períodos de 1999-2007 e 1999-2016, período completo, foi através da identificação de um choque restrito
+nos gastos do governo, sem afetar o orçamento e com restrições de zeros no PIB e na FBCFG. Enquanto
+para o primeiro período o PIB se comportou de forma positiva, para o período com amostra maior a
+variável se comportou de forma negativa. Do mais, os resultados entre os períodos são equiparáveis.
+        Mais uma vez, os resultados demonstram que as inovações fiscais devem ser realizadas a partir de
+uma análise mais minuciosa a respeito das expectativas dos agentes em relação a essas políticas, o nível
+de solvência das contas públicas e o hiato entre a implementação das políticas fiscais e os seus efeitos.
+
+Figura 5 – Funções Impulso Resposta para Choques no Consumo do Governo que não afetam o
+Orçamento Público no período 1999-2007.
+
+
+
+
+Fonte: Os autores, 2018.
+Figura 6 – Funções Impulso Resposta para Choques no Consumo do Governo que não afetam o
+Orçamento Público no período 2009-2016.
+
+
+
+
+Fonte: Os autores, 2018.
+
+4.3. As IRF Choques na Formação Bruta de Capital Fixa do Governo
+
+       Apesar dos intervalos de confiança da resposta do PIB para os choques na FBCFG conterem zero
+no período de1999-2007, em todas as hipóteses de identificação, as IRFs apontam para uma maior
+probabilidade do produto reagir de forma positiva.
+       Com relação as demais variáveis, os resultados são equivalentes. Inovações na FBCFG
+produziram uma maior probabilidade de reposta positiva por parte dos impostos e do consumo do
+governo em todos os períodos analisados. Em alguns casos, porém, tanto os impostos como o consumo
+governamental reagiram de forma negativa nos primeiros horizontes de tempo após o choque na FBCFG.
+Em contrapartida, esse resultado é rapidamente modificado demonstrando uma resposta positiva a médio
+e longo prazo.
+       Enquanto as IRFs para os choques no consumo do governo, sem afetar o orçamento público, não
+demonstraram mudança da resposta do PIB entre os períodos analisados, as IRFs para os choques na
+FBCFG apresentaram, apesar dos intervalos de confianças das IRFs conterem zero, uma resposta com
+maior probabilidade do PIB ser negativo durantes os anos de 1999-2007, enquanto para o período de
+2009-2016 a resposta foi positiva.
+       Esse resultado pode ter sido, em parte, provocado pela a forma divergente de como o consumo do
+governo reagiu para ambos os períodos. Enquanto para o primeiro período a resposta ao longo de todos os
+horizontes se deu de forma negativa, para o segundo período o mesmo teve uma resposta positiva a médio
+e longo prazo.
+       Cabe ainda destacar que os intervalos de confiança das IRFs da FBCFG apresentaram valores
+muito largos, deixando dúvidas sobre a plausibilidade da identificação dos choques na FBCFG sem afetar
+o orçamento.
+Figura 7 – Funções Impulso Resposta para Choques na FBCFG no período 1999-2007.
+
+
+
+
+Fonte: Os autores, 2018.
+
+Figura 8 – Funções Impulso Resposta para Choques na FBCFG no período 2009-2016.
+
+
+
+
+Fonte: Os autores, 2018.
+Figura 9 – Funções Impulso Resposta para Choques na FBCFG que não afetam o Orçamento
+Público no período 1999-2007.
+
+
+
+
+Fonte: Os autores, 2018.
+
+Figura 10 – Funções Impulso Resposta para Choques na FBCFG que não afetam o Orçamento
+Público no período 2009-2016.
+
+
+
+
+Fonte: Os autores, 2018.
+5. CONSIDERAÇÕES FINAIS
+        Este trabalho avaliou eficácia da política fiscal no Brasil, verificando inclusive se seus impactos
+são significativamente afetados quando ela não altera o orçamento público ou quando são considerados
+períodos distintos de tempo. Para este fim, foi adotado um modelo de SBVAR com uma identificação
+inovadora, proposta por Arias et al. (2018) em outro contexto, que não só impõe restrições de sinais, mas
+também restrições de zeros nas IRFs. Esta nova forma de identificar as inovações fiscais permite evitar
+ambiguidades na identificação dos choques.
+        Como não há consenso na literatura teórica e empírica sobre os efeitos da política fiscal, é
+importante mensurá-los sob hipóteses de identificação alternativas. O modelo aqui empregado teve
+grande êxito em mensurar choques de política fiscal restritos, a medida em se que pode se trabalhar com
+imposição de restrições de zeros nas IRFs.
+        Foi detectada uma mudança na resposta do PIB entre os diferentes intervalos de tempo aqui
+estudados: no primeiro intervalo de tempo considerado (1999-2007), aumentos de impostos reduzem o
+PIB e aumento nos gastos tem poder de aumentar o PIB; no segundo período analisado (2009-2016), a
+resposta do PIB se dá de forma contrária, o que pode estar diretamente relacionada à preocupação dos
+agentes econômicos com a solvência do governo, fazendo com que as medidas fiscais reajam de forma
+distinta do que normalmente se espera.
+        Além do mais, as restrições de zeros ainda possibilitaram auferir como as variáveis reagem a
+medidas fiscais quando elas não alteram o orçamento. Neste caso, um aumento no consumo do governo
+tem maior probabilidade de afetar o PIB de forma positiva. Este resultado não se mantém no segundo
+período de tempo analisado quando se permite que o déficit orçamentário do governo possa ser
+simultaneamente alterado.
+        Por se trabalhar com priores vagas, grande parte das IRFs não demonstraram ser estatisticamente
+significante quando foram identificadas inovações fiscais que não afetavam o orçamento do governo.
+        Quando se considera choques na FBCFG sem afetar o orçamento público, há uma variação de
+sinal na resposta do PIB para os diferentes intervalos de tempo. Devido a forma de como as outras
+variáveis estudadas reagiram ao choque, enquanto para o primeiro intervalo de tempo o PIB reagiu de
+forma negativa, para o segundo período o resultado foi positivo.
+        Cenários de descontrole orçamentário elevam o risco de investimento no país, provando mudanças
+nas taxas de juros, e dessa maneira, mudanças nos canais de expectativa e renda das famílias.
+        Dessa forma, os resultados revelam que os formadores de política econômica devem se preocupar
+não só com a forma em que as medidas fiscais são adotadas, como também pelas expectativas dos agentes
+em relação a essas políticas, o nível de solvência das contas públicas e o hiato entre a implementação das
+políticas fiscais e os seus efeitos.
+        Os resultados demonstram que a política fiscal pode ser tanto proveitosa para tentar reduzir
+flutuações cíclicas, como também pode ser, em parte, responsável por um aumento ainda maior no desvio
+da trajetória de crescimento equilibrado.
+        Deve haver, portanto, uma política passiva conduzida por regras – em vista a dificuldade de
+previsão da economia – comprovadas pelos diversos resultados encontrados nos trabalhos empíricos para
+o Brasil, como pelo presente trabalho, onde houve mudanças no sinal de resposta do PIB às inovações
+fiscais, não só em intervalos de tempos distintos, mas também na forma com a qual esses choques foram
+identificados.
+REFERÊNCIAS BIBLIOGRÁFICAS
+
+ARIAS, J. E.; RUBIO-RAMÍREZ, J. F.; WAGGONER, D. F.. Inference Based on SVARs Identified with
+Sign and Zero Restrictions: Theory and Applications. International Finance Discussion
+Papers, Washington, D.C., abr. 2014.
+BANCO CENTRAL DO BRASIL. Série histórica da Dívida Líquida e Bruta do Governo Geral.
+Disponível em: <http://bit.ly/2FiT5Pd>. Acesso em: 03ago. 2017.
+BLANCHARD, O.; PEROTTI, R. An empirical characterization of the dynamic effects of changes in
+government spending and taxes on output. The Quarterly Journal of Economics, Cambridge,
+Massachusetts, v. 117, n. 4, p. 1329-1368, ago. 2002.
+BURNSIDE, C.; EICHENBAUM, M.; FISCHER, J. D. M.. Fiscal shocks and their consequences.
+Journal of Economic Theory, Nova Iorque, v. 115, p. 89-117, 2004.
+CARVALHO, D. B.; DA SILVA, M. E. A. ; SILVA, I. É. M.. Efeito dos Choques Fiscais sobre o
+Mercado Brasileiro. Revista Brasileira de Economia, Rio de Janeiro, v. 67, n. 2, p.177-200, abr. 2013.
+CASTELO-BRANCO, M. A.; LIMA, E. C. R. ; PAULA, L. F. R. . Mudanças de Regime e
+Multiplicadores Fiscais no Brasil em 1999-2012: uma avaliação empírica com uso da metodologia MS-
+SBVAR. Pesquisa e Planejamento Econômico, Rio de Janeiro, v.47, n.2, p.7-62, ago. 2017.
+CAVALCANTI, M. A. F. H.; SILVA, N. L. C. Dívida pública, política fiscal e nível de atividade: uma
+abordagem VAR para o Brasil no período 1995-2008. Economia Aplicada, São Paulo, v. 14, n. 4, p. 391-
+418, set. 2010.
+COGAN, J. F.; CWIK, T.; TAYLOR, J. B.; WIELAND, V. New Keynesian versus Old Keynesian
+government spending multipliers. NBER Working Paper, Cambridge, Massachusetts, n. 14782, mar.
+2009.
+DOS SANTOS, C. H. et al. Uma metodologia de estimação da formação bruta de capital fixo das
+administrações públicas brasileiras em níveis mensais para o período 2002-2010. IPEA: Texto para
+discussão, n. 1660, set. 2011.
+FATÁS, A.; MIHOV, I. The effects of fiscal policy on consumption and employment. CEPR Discussion
+Paper, n. 2760, abr. 2001.
+FAVERO, C.; GIAVAZZI, F. Debt and the effects of fiscal policy. Federal Reserve of Boston Working
+Paper, n. 07-4, 2007.
+FORNI, L.; MONTEFORTE, L.; SESSA, L. The general equilibrium effects of fiscal policy. Estimates
+for the Euro Area. Journal of Public Economics, v. 26, n. 2, p. 231-252, 2009.
+GIAVAZZI, F.; PAGANO, M. Can severe fiscal contractions be expansionary? Tales of two small
+European contries. NBER Macroeconomics Annual 1990, MIT Press, p. 75-111, 1990.
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Contas Nacionais Trimestrais.
+Disponível em: <http://bit.ly/2sU19AS>.Acesso em: 29 ago. 2017.
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Sistema Nacional de Índices de Preços
+ao Consumidor. Disponível em: <http://bit.ly/2EX3Raq>.Acesso em:15jun. 2017.
+INSTITUTO DE PESQUISA ECONÔMICA APLICADA. EMBI+ Risco Brasil. Disponível em:
+<http://www.ipeadata.gov.br >. Acesso em:29out. 2017.
+KING, R. G.; PLOSSER, C. I.. The Behavior of Money, Credit, and Prices in a Real Business
+Cycle. NBER Working Paper, Cambridge, n. 853, fev. 1982.
+KRANTZ, S. G.; PARKS, H. R. Geometric Integration Theory. Birkhauser. 2008
+MENDONÇA, M. J. C.; MEDRANO, L. A.; SACHSIDA, A. Avaliando os efeitos da política fiscal no
+Brasil: resultados de um procedimento de identificação agnóstica. Texto para Discussão IPEA, n. 1377,
+fev. 2009.
+MOUNTFORD, A.; UHLIG, H. What are the Eﬀects of Fiscal Policy Shocks? Journal of Applied
+Econometrics, v. 24, n. 6, p.960–992, dez. 2008.
+MUSSOLINI, C. C.; TELES, V. K.. Ciclos Reais e Política Fiscal no Brasil. Estudos Econômicos, São
+Paulo, v. 42, n. 1, p.75-96, jan. 2012.
+PERES, M. A. F.; ELLERY JUNIOR, R. G.. Efeitos dinâmicos dos choques fiscais do governo central no
+PIB do Brasil. Pesquisa e Planejamento Econômico, Rio de Janeiro, v. 29, n. 2, p.159-206, ago. 2009.
+PEROTTI, R. Estimating the effects of fiscal policy in OECD countries. CEPR Discussion Paper, n.
+4842, 2004.
+PEROTTI, R. In search of the transmission mechanism of fiscal policy. NBER Working Paper, n.
+13143, 2007.
+RAMEY, V. A.; SHAPIRO, M. D. Costly capital reallocation and the effects of government spending.
+Carnegie Rochester Conference on Public Policy, p. 145-194, 1998.
+RESENDE, A. L..A Moeda Indexada: uma Proposta para Eliminar a Inflação Inercial. Revista de
+Economia Política, v. 5, n. 2, p. 130-134, 1985.
+RUBIO-RAMÍREZ, J.; WAGGONER, D. ; ZHA, T. Structural Vector Autoregressions: Theory of
+Identiﬁcation and Algorithms for Inference. Review of Economic Studies, v. 77,n. 2, p. 665–696, 2010.
+ROMER, C.; ROMER, D. The macroeconomic effects of tax changes: estimates based on a new measure
+of fiscal shocks. NBER Working Paper, n. 13264, 2007.
+SECRETATARIA DO TESOURO NACIONAL. Resultado Fiscal do Governo Central – Estrutura Nova.
+Disponível em: <http://bit.ly/2CV3cnT>. Acesso em: 03 ago. 2017.
+SIMS, C.. Bayesian skepticism on unit root econometrics. Journal of Economic Dynamics and Control,
+v. 12, p. 463-474, jun. 1988.
+SIMS, C.; STOCK, J. H.; WATSON, M. W.. Inference In Linear Time Series Models With Some Unit
+Roots. Econometrica, v. 58, n.1, p. 113-144, 1990.
+SILVA, F. S.; PORTUGAL, M. S.. O Impacto de Choques Fiscais na Economia Brasileira: Uma
+Abordagem DSGE. In: ENCONTRO BRASILEIRO DE ECONOMETRIA, 32., 2010, Salvador. Anais...
+. Rio de Janeiro: Sociedade Brasileira de Econometria, 2010. Disponível em: <http://bit.ly/2t3pOD0>.
+Acesso em: 27 fev. 2018.
+STEWART, G. The Efficient Generation of Random Orthogonal Matrices with an Application to
+Condition Estimators. SIAM Journal on Numerical Analyses, Stanford, v. 17, n. 3, p. 2-16, 1980.
+UHLIG, H. What are the Eﬀects of Monetary Policy on Output? Results from an Agnostic Identiﬁcation
+Procedure. Journal of Monetary Economics, v. 52, n. 2, p. 381–419, 2005
+ANEXO A – Encadeamento da série Formação Bruta de Capital Fixo do Governo
+        Para a FBCFG, além de se trabalhar com a série construída em Dos Santos et al. (2011), optou-se
+por aumentar o tamanho da amostra a partir de um encadeamento dos dados junto a série de aquisição de
+ativos não financeiros disponibilizada pela STN, sendo ambas trimestrais.
+        O encadeamento é realizado através da seguinte fórmula:
+                                                 Yt  (1   X t 1 )Yt 1 .
+Onde:
+            Yt é a série em que se deseja aumentar o tamanho da amostra, no caso seria a série
+               construída por Dos Santos et al. (2011);
+            X t é a série utilizada para aumentar o tamanho da amostra de Yt , trata-se, portanto, da série
+               disponibilizada pela STN.
+        Para que a nova série encadeada apresente certo nível de robustez ao tentar representar valores
+coerentes com a série original, é necessário que ambas as séries, Yt e X t , tenham um nível alto de
+similaridade. Para testar a identidade entre as séries, optou-se por mensurar uma Regressão Simples, via
+Mínimos Quadrados Ordinários (OLS), entre as taxas de variação trimestrais das séries a preços
+constantes de 1995, deflacionados pelo deflator implícito da formação bruta de capital fixo agregada
+disponibilizada pelo IBGE através da publicação das contas nacionais trimestrais, os resultados
+encontrados são apresentados na tabela a seguir.
+
+Tabela 11 – Tabela ANOVA: Regressão das séries da FBCFG.
+     Estatística de regressão
+R múltiplo                      1,00
+R-Quadrado                      0,99
+R-quadrado ajustado             0,99
+Erro padrão                     0,03
+Observações                       22
+
+                           gl          SQ          MQ       F     F de significação
+Regressão                         1         2,00     2,00 2193,13           6,42E-22
+Resíduo                          20         0,02 9,00E-04
+Total                            21         2,01
+
+                     Coeficientes Erro padrão Stat t valor-P 95% inferiores 95% superiores
+Interseção                    0,00        0,01  -0,16    0,88           -0,01          0,01
+Variável X                    0,99        0,02  46,83    0,00            0,95          1,04
+Fonte: Os autores, 2018.
+
+        Como se pode observar, através dos resultados obtidos na Tabela 11, temos um valor para o R –
+Quadrado elevado, ao mesmo tempo em que o parâmetro de intercepto é estaticamente igual a zero, e o
+parâmetro de inclinação da regressão se encontra com 95% de confiança no intervalor entre 0,95 a 1,04,
+ou seja, aproximadamente igual a 1.
+        Portanto, é consistente dizer que ambas as séries têm um alto nível de similaridade, onde a série
+encadeada tem alto nível de robustez para representar a série original num intervalo de tempo maior.
+

@@ -1,0 +1,1030 @@
+Aplicação de modelos espaciais e fronteiras não estocásticas na análise da eficiência
+ambiental no Brasil
+
+                                    Thiago Costa Soares
+                            Universidade Federal de Juiz de Fora
+                                        (UFJF/GV)
+
+                                  Dênis Antônio da Cunha
+                               Universidade Federal de Viçosa
+                                        (UFV/DER)
+
+Resumo: Este artigo tem como objetivo analisar a eficiência ambiental dos municípios
+brasileiros e relacioná-la a um conjunto de características socioeconômicas locais, controlando
+aspectos como heterogeneidade tecnológica e dependência espacial. Para tanto, utilizou-se o
+método de Análise Envoltória de Dados (DEA) “metafrontier” para construir o indicador, que
+foi baseado nas emissões de gases de efeito estufa. Em seguida, ajustou-se um modelo que
+relaciona eficiência ambiental, características socioeconômicas e dependência espacial (Spatial
+Autoregressive Model). Os principais resultados revelaram que renda per capita e IDH se
+relacionaram positivamente com o indicador de eficiência. Por outro lado, as variáveis
+desigualdade e educação mostraram relação negativa com o índice. Ademais, houve evidências
+de efeito “spillover ambiental” entre municípios, indicando que a criação de práticas
+sustentáveis em âmbito local pode produzir externalidades positivas regionalmente.
+
+Palavras-chave: Gases de efeito estufa. Eficiência ambiental. Municípios brasileiros. Análise
+Envoltória de Dados. Modelo de Regressão Espacial.
+
+Abstract: This paper aims to analyze the environmental efficiency of Brazilian municipalities
+and to relate it to a set of local socioeconomic characteristics, controlling technological
+heterogeneity and spatial dependence. A “metafrontier” Data Envelopment Analysis (DEA)
+method has been applied to measure the efficiency, based on the Brazilian greenhouse gas
+emissions. Afterward we estimate a Spatial Autoregressive model (SAR) relating environmental
+efficiency to municipal socioeconomic characteristics. The main results show that variables
+such as income and HDI were positively related to the environmental efficiency. On the other
+hand, inequality and education showed negative relations. In addition, we found evidence of
+“environmental spillover” effect, which could indicate positive externalities when sustainable
+practices are implanted at reginal level.
+
+Keywords: Greenhouse Gas. Environmental efficiency. Brazilian municipalities; Data
+Envelopment Analysis. Spatial Autoregressive Model.
+
+Classificação JEL: C6, Q50; Q54
+
+               Área 8: Microeconomia, Métodos Quantitativos e Finanças
+
+1. Introdução
+       As mudanças climáticas, bem como suas causas e consequências, representam um dos
+principais desafios que as diferentes sociedades ao redor do planeta enfrentam no século XXI
+(MARTIN; MARIS; SIMBERLOFF, 2016). Esse fenômeno está diretamente associado às
+emissões antrópicas de gases de efeito estufa (GEE) (Intergovernmental Panel on Climate
+Change – IPCC, 2014). Por essa razão, cada vez mais países têm procurado aumentar a
+eficiência de suas atividades produtivas para garantir a redução de emissões (ZHANG; XING;
+WANG, 2016). O Brasil, que figura entre os dez maiores emissores mundiais de GEE (WORLD
+BANK, 2016), tem assumido diversos compromissos voluntários de controle de suas emissões
+perante órgãos internacionais. Por meio de sua mais recente iniciativa, o país se comprometeu
+a reduzir as emissões de GEE em 43% abaixo dos níveis de 2005 até 2030 (Intended Nationally
+Determined Contribution Towards Achieving the Objective of the United Nations Framework
+Convention on Climate Change – iNDC, BRASIL, 2015).
+        O atendimento de metas de redução de emissões, como as que o Brasil propõe, está
+diretamente ligado à melhoria da eficiência dos processos produtivos dos diferentes setores
+econômicos. Isso ocorre devido ao fato de que a produção de bens e serviços envolve,
+necessariamente, a geração de bens indesejáveis, como as emissões de GEE. Ademais,
+formuladores de política têm identificado que condições socioeconômicas e produtivas
+regionais desiguais têm causado incertezas e obstáculos ao êxito de políticas de mitigação
+(ZHANG; XING, WANG, 2016).
+        Nesse sentido, o presente estudo teve como objetivo analisar a eficiência ambiental
+brasileira, relacionando-a às emissões de GEE. Foi desenvolvida uma medida de eficiência
+ambiental a nível municipal, considerando a relação entre a produção de bens/serviços e
+emissões GEE. Procurou-se, ainda, analisar o efeito de variáveis exógenas sobre a performance
+ambiental regional, controlando aspectos como a heterogeneidade tecnológica e spillovers
+ambientais.
+        A análise proposta neste artigo oferece importante contribuição à literatura em diferentes
+aspectos. Ao considerar as heterogeneidades municipais (área e condições edafoclimáticas,
+intensidade e especialização produtiva, consumo energético, problemas ambientais, pobreza
+etc.), pode-se oferecer direcionamento mais concreto para o atendimento das metas propostas
+pela iNDC nacional, ampliando as possibilidades de redução das emissões. Além disso,
+verificando o efeito das características regionais sobre os indicadores de eficiência, bem como
+a existência de relação espacial entre eles, são fornecidas informações sobre possíveis trajetórias
+que municípios brasileiros podem percorrer para produzirem de forma menos danosa ao meio
+ambiente. Isso poderia subsidiar a concessão de financiamentos baseados na eficiência das
+emissões, uma das propostas da política climática brasileira. Por fim, embora a análise
+desagregada da eficiência ambiental relacionada às emissões de GEE esteja consolidada na
+literatura internacional (KORTELAINEN, 2008; LI; WANG, 2014; MEI; GAN; ZHANG,
+2015; ZHANG; XING, WANG, 2016), o presente estudo é pioneiro ao considerar essa
+problemática em âmbito nacional.
+        O estudo está organizado em outras quatro seções. A seção 2 aborda as questões teóricas
+que norteiam a análise sobre eficiência ambiental. Na seção 3 são descritos os procedimentos
+metodológicos realizados para criar e relacionar o indicador de eficiência ambiental às
+características socioeconômicas municipais. Na seção 4 os resultados são apresentados e
+discutidos. As principais conclusões e sugestões de política fecham o trabalho na seção 5.
+
+2. A produção com produtos desejáveis e não desejáveis
+       Modelos de eficiência ambiental têm sido amplamente sustentados pelo quadro teórico
+da fronteira de possibilidades de produção (FPP), já que este permite a inclusão dos recursos
+naturais e da poluição (bem não desejável) na função de produção (FÄRE; GROSSKOPF;
+TYTECA, 1996; CHIU et al., 2012; SONG; HAO; ZHU, 2015).
+       Formalmente, denotam-se bens desejáveis (produtos) por y   y1 ,..., yD  D , bens
+não desejáveis (emissões de GEE, no presente estudo) por b   b1 ,..., bU   U e insumos
+(incluindo os naturais) por x   x1 ,...,xI  I 1. Assume-se que esses conjuntos são limitados
+
+1
+    A seção 3 aborda essa notação mais detalhadamente.
+e fechados. Portanto, quantidades finitas de insumos produzem quantidades finitas de produtos
+e emissões. A tecnologia de produção pode ser definida por
+                            P  x =  x,y,b  : x produz  y,b  .                    (1)
+       O vetor de insumos x produz os vetores y e b simultaneamente. Essa tecnologia é
+consistente com o modelo neoclássico tradicional, com exceção da especificação das emissões
+(FÄRE et al., 2005). Supõe-se que as emissões de GEE são externalidades negativas do
+processo produtivo, isto é, bens que a sociedade não deseja. Assim, para qualquer nível positivo
+de produto, haverá emissão de poluentes. Para mitigar totalmente as emissões, a sociedade deve
+abrir mão da produção associada. Essa condição foi definida por Färe et al. (1989) por “weak
+disposability”. Em notação,
+                  se  y,b   P  x  e 0    1 , então  y,  b   P  x  ,          (2)
+em que  é o fator de abatimento de b. Zhang e Choi (2013) argumentam que a condição
+exposta em (2) significa que algum nível b  0 é inevitável, uma vez que a única forma de
+mitigar totalmente as externalidades é deixando de produzir. Segundo Färe et al. (1989), as
+propriedades (1) e (2) podem ser utilizadas para mensurar o esforço individual (de países,
+estados ou municípios) no controle das emissões (eficiência ambiental) através de dados
+observáveis.
+       Para concluir, pode-se afirmar que o desempenho ambiental dos municípios brasileiros
+pode ser mensurado por uma FPP que contém produtos e emissões de GEE. A pressuposição
+de que os bens sejam produzidos conjuntamente permite analisar o desempenho municipal para
+produzir ao menor custo ambiental possível. Dessa forma, é possível criar medidas de
+desempenho que são compatíveis com o arcabouço teórico-analítico da economia neoclássica,
+adicionando as externalidades na função objetivo.
+
+3. Metodologia
+3.1. Construção dos indicadores de eficiência ambiental
+        No presente estudo, empregou-se o método de Análise Envoltória de Dados (Data
+Envelopment Anaysis, DEA) para construir a FPP com produção e emissões de GEE. Trata-se
+de procedimento não paramétrico, baseado em programação matemática, que vem se tornando
+popular em análises de eficiência ambiental.
+        Retomando a notação da seção anterior, consideram-se vetores de variáveis de produção
+ydn   y1 ,..., yD  D , emissões bun   b1 ,..., bU  U e insumos xin   x1 ,..., x I   I , de tal
+forma que toda unidade tomadora de decisão (municípios)  n N  apresente uma estrutura
+do tipo descrito em (1). A função (1) descreve o produto municipal e as emissões resultantes
+para dado nível de recursos (incluindo os naturais). As regiões eficientes no controle das
+emissões (escores unitários) são aquelas que se encontram sobre a FPP, no ponto onde não é
+possível expandir o produto sem emitir grande quantidade de poluentes. Em adição, o grau de
+ineficiência dos municípios pode ser medido pela distância geométrica da FPP. Ele representa
+o potencial de abatimento de GEE.
+        Por construção, o DEA assume que as unidades analisadas fazem parte da mesma
+fronteira tecnológica. Entretanto, essa condição pode não se aplicar aos municípios brasileiros,
+uma vez que fatores como localização, estrutura produtiva e tamanho populacional podem
+influenciar a forma de produzir. Para ilustrar, 23% dos municípios brasileiros (geralmente
+pequenos) empregam mais da metade dos trabalhadores no setor agrícola, ao passo que, em
+localidades com população acima de 200 mil habitantes, esse percentual é quase nulo (Instituto
+Brasileiro de Geografia e Estatística – IBGE, 2016). Por esse motivo, a comparação direta de
+municípios com características distintas pode ocasionar problemas na construção dos
+indicadores de eficiência.
+        Este estudo considerou essas diferenças. Para isso, foi utilizada a abordagem DEA
+“metafrontier”, que busca dividir os municípios em grupos mais homogêneos e analisar a
+eficiência ambiental considerando a existência de k fronteiras. Essa ideia baseia-se em
+O’Donnell et al. (2008) e pode ser resumida dessa forma: primeiramente, constroem-se
+indicadores de eficiência considerando uma única fronteira, de modo que
+T m =  x,y,b  : x produz  y,b  . Por conseguinte, são construídos k grupos a partir de unidades
+(municípios) com tecnologias homogêneas, tal que
+  T k =  x,y,b  : x produz  y,b  no grupo k , definindo                                   (3a)
+ T m  T 1  T 2  T 3                T k.                                                 (3b)
+         Dessas duas etapas, extraem-se informações sobre a eficiência da estrutura produtiva
+(tecnológica, meta-technology: MME) e do controle de emissões (group – technological
+efficiency: GTE). Na primeira definição, um município poderia ser ineficiente se sua estrutura
+produtiva for intensiva em poluentes. Por exemplo, localidades com elevada concentração de
+indústrias tendem a ser ineficientes em comparação a regiões onde o setor de serviços
+predomina. Na segunda, a ineficiência decorre da comparação entre unidades que pertencem ao
+mesmo grupo. Nesse caso, determinado município, mesmo com maior participação do setor
+industrial, poderia ser eficiente no controle de suas emissões se suas práticas forem as mais
+limpas quando comparado a outros com as mesmas características.
+         Outra questão que merece destaque são os retornos de escala, que podem variar com a
+fase produtiva dos municípios. Considere, por exemplo, que para municípios menores existe a
+possibilidade de ganhos de escala mais que proporcionais aos recursos empregados, situação
+denominada de produção com “retornos crescentes de escala”. Em outros, a expansão dos
+recursos pode proporcionar elevações menos que proporcionais na produção e emissões,
+característica dos “retornos decrescentes de escala”. Além dessas, ainda existe a situação na
+qual a elevação da quantidade produzida é exatamente proporcional ao aumento dos recursos
+(retornos constantes). Por isso, a resposta produtiva à aplicação dos recursos pode variar,
+mesmo em estruturas homogêneas.
+         Nesse sentido, buscou-se flexibilizar a curvatura das FPPs para permitir que municípios
+possam apresentar “retornos variáveis de escala” (variable returnos to scale, VRS - BANKER
+et al., 1984). Este procedimento permite separar “eficiência de escala” e “eficiência técnica”. O
+segundo tipo representa a eficiência municipal no controle das emissões, variável importante
+neste estudo. Os problemas de programação linear (PPL) podem ser expressos por (4) e (5):
+    max  m
+        K    Nk
+   s.t.  nk xink  xiok ,                      i = 1,2,...,I,
+       k 1 n 1
+        K   Nk
+
+        
+       k 1 n 1
+                   k
+                   n
+                        k
+                       ydn  ydo
+                              k
+                                 ,                d = 1,2,...,D,
+       K    Nk
+                                                                                                (4)
+        1 b                    1 b do ,
+                   k          k            k
+                   n          un
+                                                  u = 1,2,...,U,
+      k 1 n 1
+        K   Nk
+
+        
+       k 1 n 1
+                   k
+                   n    1,                       k = 1,2,...,K,
+
+      nk  0,                                    n = 1,2,...,N k ,
+    max  k
+          K    Nk
+    s.t.   nk xink  xiok ,                      i = 1,2,...,I,
+         k 1 n 1
+         K    Nk
+
+         
+         k 1 n 1
+                     k
+                     n
+                          k
+                         ydn  ydo
+                                k
+                                   ,                d = 1,2,...,D,
+        K     Nk
+                                                                                                             (5)
+         1 b                     1 b do ,
+                     k          k            k
+                     n          un
+                                                    u = 1,2,...,U,
+        k 1 n 1
+         K    Nk
+
+         
+         k 1 n 1
+                     k
+                     n    1,                       k = 1,2,...,K,
+
+       nk  0,                                     n = 1,2,...,N k ,
+
+em que nk e nk são as variáveis de decisão dos modelos (4) e (5) que projetam o municípioo
+para a FPP quando  m  1 e  k  1 , respectivamente.
+        Para definir os k grupos, a literatura consultada recomenda critérios proxies da
+tecnologia produtiva municipal, que podem ser geográficos, sociais, econômicos etc. (CHIU et
+al., 2012; LI; WANG, 2014; MEI et al., 2015). No caso brasileiro, apenas critérios geográficos
+não são suficientes para definir fronteiras tecnológicas, pois existem diversos municípios com
+estruturas produtivas semelhantes que estão localizados em regiões diferentes. Este argumento
+se estende à renda e outras variáveis. Dessa forma, primeiramente foi realizada uma divisão
+seguindo critérios populacionais, estabelecendo cinco agrupamentos (Tabela 1)2.
+
+Tabela 1. Classificação dos municípios por porte populacional
+     Porte                         Regra           Municípios (qt)                     Percentual (%)
+     Pequeno I (PQI)             Até 20.000             3244                                67,76
+     Pequeno II (PQII)        20.001 até 50.000          991                                20,71
+     Médio (MD)              50.001 até 100.000          309                                06,45
+     Grande (GR)            100.001 até 900.000          226                                04,72
+     Metrópole (MT)           Mais de 900.000             17                                00,36
+     Total                                              4787                               100,00
+
+       A partir da subdivisão apresentada na Tabela 1, foram criados subgrupos em cada classe
+de tamanho com base em um conjunto de variáveis sugeridas por Iyer et al. (2006), Oh e Lee
+(2010), Chiu et al. (2012) e Zhang e Choi (2013). As variáveis utilizadas representam a
+especialização produtiva (através dos indicadores de escolaridade e participação dos setores na
+economia) e o desenvolvimento municipal (através dos indicadores de renda e
+desenvolvimento). Assim como em Chiu et al. (2012), foi utilizada a técnica cluster analysis.
+Adotaram-se o procedimento k-médias e a distância Euclidiana padronizada, delimitando um
+máximo de quatro grupos.
+
+3.2. Relação entre eficiência ambiental e características regionais
+       O indicador de eficiência ambiental é a variável que demonstra a habilidade de um
+município para produzir, minimizando a emissão de GEE. Portanto, conhecer a relação que
+características municipais e regionais têm com o indicador pode fornecer importantes
+informações para a formulação de políticas ambientais. Metodologicamente, o procedimento
+consiste em estimar o indicador de eficiência ambiental descrito na seção anterior e utilizá-lo
+
+2
+    Regra semelhante foi adotada por Rocha et al. (2012) em análise sobre a eficiência na gestão da saúde.
+como variável dependente em um modelo econométrico no qual características municipais e
+regionais são utilizadas como variáveis explicativas. Esta análise se justifica visto que existem
+diversas variáveis exógenas que podem afetar a eficiência ambiental dos municípios, mas que
+não devem ser incorporadas diretamente no cálculo do indicador de eficiência por não terem
+características de insumos ou produtos. Por isso, o estudo se propõe a relacionar o indicador de
+eficiência ambiental do grupo (GTE) às principais características municipais, considerando a
+existência de dependência espacial:
+                              kn  Wnk  Zn  n ,                                        (6)
+em que nk é a eficiência ambiental do n-ésimo município ( n  1, 2,..., N ), estimada pelo
+procedimento bootstrap de Simar e Wilson (1998)3; Wik denota a defasagem espacial do
+indicador de eficiência ambiental; o termo W é uma matriz de pesos espaciais que captura a
+estrutura da dependência espacial da variável dependente (neste estudo, adota-se a matriz do
+tipo “rainha”4); e  é um parâmetro a ser estimado que fornece a direção da relação. Admitindo
+a existência de transbordamentos, espera-se   0 . Utiliza-se o coeficiente I de Moran para
+calcular a autocorrelação espacial entre as localidades5.  é o vetor  Zx1 de parâmetros a
+serem estimados, os quais fornecem os efeitos marginais das variáveis explicativas; Z n é a
+matriz  NxZ  de variáveis explicativas com informações sobre as características municipais; e
+                                                       
+ n é um distúrbio estocástico,  n ~ iid 0,  . Os escores de eficiência estão restritos a um
+                                              2
+
+
+intervalo (0,1]. Portanto, assumindo que todos os municípios produzem quantidades positivas
+de bens desejáveis e não desejáveis (poluentes), a eficiência relativa será, no máximo, igual à
+unidade (situação na qual o município é ambientalmente eficiente).
+        O modelo descrito na expressão (6) é denominado Spatial Autoregressive (SAR). O
+SAR mostra a existência de transbordamentos ambientais quando a variável dependente do
+município i afeta a variável dependente do município j (e vice-versa)6. A inclusão do termo
+espacial se justifica em razão da importância da difusão tecnológica no contexto ambiental
+(BEISE; RENNINGS, 2005; ASHWORTH et al., 2006; HUBER, 2008). É razoável supor que
+municípios menos eficientes podem aprender com os mais eficientes, tornando possível a
+existência de agrupamentos de alto ou baixo desempenho. Por exemplo, se agricultores em i
+percebem que seus pares adotaram com êxito técnicas de redução de emissões de GEE em j,
+eles podem também procurar alterar suas práticas para obter resultados semelhantes. Esse tipo
+de comportamento caracteriza a existência de spillovers ambientais e justifica, portanto, o uso
+da modelagem SAR.
+
+
+
+3
+  O procedimento bootstrap torna a variável “eficiência” um processo gerado por dados aleatórios, suposição
+necessária para a construção de modelos econométricos. Além disso, esse procedimento reduz substancialmente
+os problemas de sensibilidade dos escores de eficiência (SIMAR; WILSON, 1998).
+4
+  A matriz rainha considera vizinhos aqueles municípios que partilham fronteiras geográficas físicas e os vértices
+do mapa. Para LeSage (1999), essa estrutura é uma das mais indicadas por ampliar a definição de vizinhos
+geográficos. Além disso, após testes preliminares (procedimento de Baumont et al., 2004), constatou-se que essa
+estrutura capturou melhor a correlação espacial nos dados.
+5
+  Seja w a matriz de ponderação espacial, z a eficiência ambiental padronizada para as unidades espaciais i e j; o
+coeficiente I de Moran é dado por: I   n S0  z' Wz z' z  , em que n é o número de municípios, Wz são os valores
+médios da eficiência ambiental padronizada nos vizinhos, definida pela matriz de ponderação espacial W; e S 0
+define que todos os elementos da matriz devem ser somados. O I de Moran pode ser entendido como o coeficiente
+angular da reta de regressão da defasagem espacial, dada a matriz de pesos espaciais (ANSELIN, 1988).
+6
+  A especificação do SAR indica um possível problema de endogeneidade, pois a dependência espacial ocorre de
+forma multidirecional (processo de causação circular). Para corrigir esse problema, estima-se o modelo por
+máxima verossimilhança (MV).
+3.3. Dados e variáveis utilizados
+        A construção da base de dados e das variáveis necessárias para responder às questões
+propostas na presente pesquisa foram baseadas em diferentes critérios que serão descritos nesta
+seção. Antes de apresentar detalhes sobre cada aspecto, ressalta-se que (i) as variáveis
+incorporadas nas diversas etapas da pesquisa foram baseadas na literatura internacional sobre o
+tema, como os trabalhos de Chung et al. (1997), Färe et al. (1989, 1995, 2005), Färe e Grosskopt
+(2004), Kuosmanen e Kortelainen (2005), Afonso et al. (2006), Kortelainen (2008), Zhou e Ang
+(2008), Zhou et al. (2008, 2010), Oh e Lee (2010), Chiu et al. (2012), Wang et al. (2013) e
+Zhang e Choi (2013); (ii) a estrutura dos dados (cross-section) e a escolha do ano de 2010 foram
+baseadas na disponibilidade comum de dados.
+        As emissões de GEE foram representadas por um indicador de emissões em toneladas
+equivalentes de CO2, considerando a equivalência das moléculas de dióxido de carbono (CO2),
+metano (CH4) e óxido nitroso (N2O), que são os principais GEE segundo o IPCC (2014). Os
+dados foram extraídos da base Emissions Database for Global Atmospheric Research (EDGAR,
+FT V4.2 2010). Essa base é desenvolvida pela European Commission (Joint Research Centre
+– JRS) e pela Netherlands Environmental Assessment Agency (PBL). Seus dados são calculados
+separadamente para cada gás e país, utilizando informações de atividade econômica por setor
+(agricultura, indústria e serviços, considerando diferentes tipos de atividades setoriais, tais
+como manejo, transporte, queima de combustíveis fósseis e biocombustíveis, emissões
+agrícolas, tratamento e incineração de resíduos, processos industriais, decomposição de
+biomassa etc.). É utilizada uma combinação de tecnologia específica de cada país, setor e gás,
+com fatores de emissão que dependem desse nível tecnológico (incluindo tecnologias de
+redução de emissões instaladas em cada país) (GÜTSCHOW et al., 2016).
+        A base EDGAR disponibiliza observações georreferenciadas por coordenadas
+geográficas em um grid de 0,1º (cerca de 123,5 km²). Dessa forma, para a construção da base
+utilizada neste estudo, os pontos do grid foram unidos às fronteiras municipais usando suas
+coordenadas de latitude e longitude, gerando médias das emissões municipais do gás g, em que
+g se refere a CO2, CH4 ou N2O. Os dados foram extraídos em médias anuais das emissões em
+quilogramas por metro quadrado por segundo (kg/m²/seg) e convertidos em toneladas
+equivalentes de CO2 por ano (ton/km²/ano). Todos os GEE foram associados comparativamente
+ao CO2 a partir de seu potencial de aquecimento global (PAG) (Global Warming Potential,
+GWP), que traduz o quanto um determinado gás contribui para o aquecimento global a partir
+da quantidade de CO2 que causaria um impacto similar. Neste estudo, a conversão do GEE para
+CO2eq se deu por meio do PAG de 310 para o N2O e de 21 para o CH4, enquanto o CO2, por
+ser o gás de referência para a conversão, possui PAG igual a 1 (BRASIL, 2013).
+        É preciso ressaltar que a base possui algumas limitações. Primeiramente, a EDGAR FT
+V4.2 2010 utiliza outras bases de dados extraídas de fontes primárias, medições próprias e
+projeções, podendo ter, portanto, algum grau de imprecisão. Essa limitação, entretanto, não
+inviabiliza seu uso, já que o próprio IPCC utiliza esses dados como parte da construção de
+cenários de mudanças climáticas. Ademais, apesar de ser a base com o menor nível de
+agregação possível ao tipo de dado necessário a esta pesquisa, observa-se que 649 municípios
+(11,7% do total em 2010) apresentam dimensões inferiores a 123,5 km² (tamanho do grid).
+Logo, as emissões dessas localidades poderiam estar associadas aos seus vizinhos. Outro
+problema recorrente é o compartilhamento do grid, ou seja, dois municípios poderiam estar
+dividindo uma mesma área. Essas limitações poderiam fazer com que a emissão de certo
+município fosse dada por uma média da área municipal com relação à emissão do grid,
+descaracterizando o produto indesejável da unidade e tornando enviesada a estimativa dos
+escores de eficiência. Para contornar tal problema, foram excluídos do estudo os 649 municípios
+com extensão inferior a 123,5 km². Assim, a pesquisa considerou 4787 municípios em 20107.
+        Para representar a produção, utilizou-se o Produto Interno Bruto Municipal (PIB-M).
+Conceitualmente, trata-se do valor adicionado, em termos monetários, de todos os setores da
+economia. Esses dados foram extraídos do IBGE (2016).
+        Em relação aos insumos da função de produção, relacionaram-se variáveis proxies de
+“capital”, “trabalho” e “recursos naturais”. Para representar o capital, utilizou-se a frota de
+veículos automotores produtivos, como caminhões, caminhões-tratores, tratores de roda e
+caminhonetes. Uma variável semelhante foi utilizada como capital por Speight e Thompson
+(2006) em uma análise desagregada sobre os gastos com investimentos e também por der Eng
+(2008), como forma de estimar o estoque de capital na Indonésia. Essa variável foi retirada do
+Departamento Nacional de Trânsito (DENATRAN, 2016). Com referência à variável trabalho,
+adotou-se a população economicamente ativa de 18 anos ou mais (PEA). A PEA representa o
+potencial de mão-de-obra do município. Os dados foram extraídos do Programa das Nações
+Unidas para o Desenvolvimento (PNUD, 2016). Para representar o uso dos recursos naturais,
+Zhou et al. (2010) e Chiu et al. (2012) propõem incorporar o consumo de energia como insumo
+na função de produção. Os autores argumentam que a redução do uso de energia poderia
+diminuir as emissões de poluentes. Não obstante, essa variável não está disponível a nível
+municipal no Brasil. Para representá-la, optou-se por utilizar o número de domicílios com
+energia elétrica. Os dados foram extraídos do Portal Brasileiro de Dados Abertos (PBDA,
+2016).
+        Sobre as variáveis “capital” e “recursos naturais”, é importante ressaltar algumas
+limitações. Primeiramente, a variável estoque de capital pode ter sido subestimada, uma vez
+que a frota de veículos produtivos compõe somente uma parte da formação de capital. Apesar
+disso, verificou-se que essa variável foi altamente correlacionada com a evolução do estoque
+de capital a nível nacional (o coeficiente de correlação de Pearson apontou correlação superior
+a 0,99). Ademais, os veículos produtivos fazem parte da estimativa da formação de capital,
+sendo, portanto, adequados teoricamente.
+        Com respeito aos “recursos naturais”, dada a dimensão do seu uso como insumos no
+processo produtivo, qualquer proxy dessa natureza também subestimaria sua real importância
+no contexto econômico. Por exemplo, para um número significativo de municípios, a expansão
+das fronteiras agrícolas representa o principal recurso ambiental demandado pela atividade
+econômica (como é o caso da região Centro-Oeste). Por outro lado, a queima de combustíveis
+fósseis também poderia desempenhar esse papel em municípios com características
+predominantemente industriais. De fato, além da escassez de dados, a problemática da dimensão
+vem sendo um dos principais desafios enfrentados por pesquisas sobre o impacto ambiental,
+incluindo o presente estudo.
+        Mesmo não havendo consenso sobre a questão (ou ampla disponibilidade de dados),
+parece razoável supor que o crescimento do setor energético aumente a pressão sobre o meio
+ambiente. Concretamente, no Brasil a principal fonte de energia elétrica são as usinas
+hidroelétricas, as quais são implementadas em territórios que geralmente precisam ser
+inundados e desmatados. Além do mais, a decomposição de matéria orgânica do solo e da
+biomassa nessas áreas emitem quantidade significativa de GEE (FEARNSIDE, 2015). Diante
+disso, e considerando a questão da disponibilidade dos dados e a manutenção da estrutura do
+modelo empírico, optou-se pela inclusão de uma proxy do consumo energético para representar
+o uso dos recursos naturais.
+        Por seu turno, a escolha do conjunto de variáveis utilizadas na segunda etapa (estimação
+do indicador de eficiência contra as características municipais) baseou-se novamente não
+
+7
+    Mais detalhes sobre a base de dados EDGAR podem ser obtidos em Gütschow et al. (2016).
+somente na questão teórica, como também na disponibilidade de dados. De modo geral, as
+dimensões discutidas foram desigualdade, renda, desenvolvimento, especialização produtiva,
+educação e pobreza – dados extraídos da PNUD (2016). Além desses aspectos, para retratar as
+políticas ambientais promovidas pelos municípios, foram inseridas dummies que indicam a
+presença (quando a dummy assume valor igual a 1) ou a ausência de determinadas ações em
+prol do meio ambiente – essas informações foram obtidas no PBDA (2016).
+        Deve-se notar que, mesmo abordando tais extensões, outras variáveis poderiam ser
+incorporadas, como leis de proteção ambiental, acesso ao financiamento da agricultura de baixo
+carbono etc., porém, não existem dados dessa natureza a nível municipal ou, quando existem,
+não são compatíveis com os demais dados em termos temporais. Dessa forma, supõe-se que o
+efeito das variáveis omitidas seja pequeno, não correlacionado com os demais regressores e
+nulo na média, de modo que elas possam ser incorporadas ao termo de erro aleatório do modelo.
+        Mesmo diante dessa limitação, de fato todas as variáveis inseridas na segunda etapa
+possuem relação estreita com o produto e, ou, com as emissões de GEE. Em vista disso, é
+natural supor que elas também tenham relação com o desempenho ambiental (eficiência). Dada
+a importância dessa questão, são apresentados a seguir alguns aspectos que podem sustentar as
+relações.
+        Especificamente sobre a desigualdade, Boyce (1994) e Gassebner et al. (2006)
+argumentam que a concentração de renda pode aumentar a taxa de uso dos recursos naturais (e
+as emissões), pois nesse contexto a sociedade possui baixa disposição a pagar pela preservação.
+Além disso, em ambientes desiguais, minorias de maior poder econômico têm grande influência
+sobre as leis municipais, incluindo as ambientais. Dessa maneira, espera-se que essa variável se
+associe negativamente com a eficiência ambiental.
+        Em contrapartida, municípios com renda e níveis de desenvolvimento mais elevados
+tendem não somente a se especializar em atividades menos intensivas em emissões (em
+serviços, por exemplo), como também a se preocupar mais com as questões ambientais (maior
+disposição a pagar pela preservação). Inclusive, esse é um dos argumentos utilizados pelos
+autores que defendem a “curva ambiental de Kuznets – CAK8”. Nesse sentido, são esperados
+reflexos positivos dessas variáveis sobre a eficiência ambiental.
+        Outra importante questão diz respeito à especialização produtiva. Por construção, o
+DEA “metafrontier” compara unidades que pertencem à mesma função de produção. Por
+exemplo, municípios que possuem maior atividade industrial são comparados a pares com
+características análogas. Isso permite na prática que determinada região seja eficiente, mesmo
+desenvolvendo atividades mais intensivas em emissões. Nessa perspectiva, o aumento da
+participação relativa de algum setor pode se associar positivamente com a eficiência ambiental,
+pois a especialização produtiva naturalmente melhora a forma na qual os recursos disponíveis
+são utilizados.
+        Em algumas situações, no entanto, a direção da relação pode ser variada, como no caso
+da educação. Daren (2007) verifica que a elevação da educação pode melhorar a produtividade
+e, consequentemente, aumentar a produção e suas emissões associadas. Já sob a perspectiva da
+CAK, o nível educacional poderia se correlacionar positivamente com a consciência ambiental
+(STERN et al., 1996). Por isso, a relação entre educação e eficiência ambiental pode ser positiva
+(prevalência do efeito conscientização), negativa (prevalência do efeito produtividade) ou até
+inexistente (caso em que os efeitos se anulam).
+        Esse também é o caso da pobreza. Conforme argumenta Yusuf (2004), não há consenso
+a respeito do efeito dessa variável sobre as emissões. Por um lado, a demanda pela redução da
+pobreza pode intensificar o uso dos recursos naturais e as emissões de poluentes. Por outro lado,
+
+
+
+8
+    Para melhor descrição sobre essa linha de pesquisa, ver Stern et al. (1996).
+a incidência dessa variável pode indicar a concentração de atividades de menor impacto
+ambiental, como agricultura para autoconsumo e pequenas atividades extrativistas.
+       Do ponto de vista da criação de políticas ambientais, espera-se que ações que promovam
+a conscientização ambiental (como as iniciativas para o consumo sustentável, incentivos para a
+redução do uso de sacolas plásticas, água e energia) e, ou, a existência de mecanismos que
+incentivam a conservação (como critérios ambientais para concorrer a licitações) possam estar
+associados à redução das emissões e, evidentemente, ao aumento da eficiência ambiental. Para
+capturar esse possível efeito, incluíram-se dummies.
+
+4. Resultados e discussões
+        Conforme já mencionado, esta pesquisa buscou construir e relacionar indicadores de
+eficiência ambiental a características municipais, sobretudo aos aspectos socioeconômicos.
+Com o propósito de evitar problemas relacionados à heterogeneidade produtiva da amostra, foi
+necessário primeiramente organizar os municípios em grupos mais homogêneos. Por exemplo,
+pode não fazer sentido comparar metrópoles a localidades com população inferior a 20 mil
+habitantes. Nesse sentido, inicialmente os municípios brasileiros foram organizados em cinco
+grandes grupos, com base no critério populacional, e classificados como: metrópoles,
+municípios de grande, médio e pequeno portes (categorias I e II).
+        Mesmo que essa divisão reduza parte da heterogeneidade da FPP, esse procedimento
+ainda não é suficiente para tornar a comparação municipal realista, pois, em determinada faixa
+populacional, podem existir localidades com estruturas produtivas bastante distintas. Para
+exemplificar, na faixa que varia de 50 a 100 mil habitantes existem municípios com aptidão
+extrativista e outros com elevada participação do setor industrial. Portanto, a estratégia adotada
+consistiu na subdivisão das cinco classes, aplicando a técnica de clusters a dimensões que
+podem denotar a estrutura produtiva municipal. Para tanto, utilizaram-se as variáveis:
+percentual da população com ensino superior, participação relativa dos setores industrial,
+agropecuário, serviços e de extração, renda média dos ocupados e IDH. Ao final, os municípios
+foram divididos em 19 grupos.
+        Após esse processo, obtiveram-se os indicadores de eficiência ambiental por meio da
+comparação técnica entre municípios com características populacionais e produtivas
+semelhantes. Esses indicadores, por sua vez, foram utilizados como variável dependente na
+modelagem da eficiência (modelo SAR).
+          Dito isso, apresentam-se a seguir os principais resultados obtidos. Primeiramente,
+constatou-se que a eficiência ambiental dos municípios foi baixa na meta-fronteira (0,222), a
+qual desconsidera a existência de heterogeneidade entre as observações. Estimando o
+desempenho dentro dos grupos, os escores médios subiram para 0,315. Em termos
+metodológicos, é importante destacar esse resultado como avanço deste estudo, porque diversas
+aplicações do método na área ambiental utilizam unidades com características distintas na
+mesma função de produção, como visto em Honma (2012) e Halko e Tzeremes (2013). Tendo
+em vista a magnitude da diferença dos escores médios, pode-se dizer que essa estratégia não é
+adequada, pois tende a transmitir conclusões equivocadas sobre a eficiência ambiental.
+          Nas Tabelas 2 e 3 são apresentados os resultados sobre o desempenho ambiental por
+grupos e os indicadores de eficiência por faixas, respectivamente. Os resultados da Tabela 2
+mostram que as metrópoles brasileiras são relativamente mais eficientes do que os municípios
+de grande, médio e pequeno portes. Para elucidar, observa-se a coluna “EFC’: enquanto a
+eficiência está acima de 80%9 nesse grupo, seu valor não passa, em média, de 31% nos
+municípios de pequeno porte (II). Para entender melhor esse resultado, é necessário verificar
+com mais detalhes certas características dos agrupamentos.
+
+9
+    As apresentações do indicador em termos percentuais são obtidas pela multiplicação do escore por 100.
+         No grupo das metrópoles, percebeu-se que os dados utilizados na fronteira de produção
+são bastante próximos entre si, em termos relativos. Por exemplo, comparando especificamente
+Fortaleza (CE, eficiência de 73%) e Salvador (BA, eficiência de 99%), constatou-se que no
+primeiro a renda, o número de veículos e as emissões, todas por habitante, foram de R$ 15 mil,
+0,03 veículos e 1,3 toneladas, respectivamente. No segundo, essas variáveis apresentaram
+valores de R$ 13,7 mil, 0,02 veículos e 1,2 toneladas, respectivamente.
+         Por outro lado, há bastante dispersão de dados nos demais grupos. Escolhendo como
+referência o grupo de municípios pequenos (categoria II), verificou-se que Ituberá (BA,
+eficiência de 91%) apresentou dados relativamente destoantes de Alta Floresta (MT, eficiência
+de 11%). Em Ituberá, as variáveis renda, emissões e quantidade de veículos produtivos, per
+capita, foram cerca de R$ 6 mil, 1,3 toneladas e 0,02 veículos, respectivamente. Já em Alta
+Floresta, essas variáveis apresentaram valores de R$ 14 mil, 28 toneladas e 0,10 veículos, nessa
+ordem.
+         Desse modo, ao comparar regiões dentro do seu respectivo grupo, é natural que a
+eficiência relativa seja maior, em média, nas classes relativamente mais semelhantes. A ideia
+exposta aqui é simples: como as metrópoles produzem (e emitem) de modo similar, não há
+grandes oportunidades para melhorar sua eficiência tendo como correspondência outras
+metrópoles. Não está sendo afirmado aqui que esse resultado indica que essas regiões não
+possam reduzir suas emissões. Pelo contrário, reforça-se o argumento de que, para melhorar sua
+qualidade ambiental, tais localidades devem encontrar soluções que vão além das práticas
+adotadas. Uma alternativa, em linha com a iNDC brasileira, seria desenvolver melhorias na
+infraestrutura de transportes, incentivando e melhorando a eficiência do transporte público em
+áreas urbanas. Em contrapartida, municípios menores podem reduzir suas emissões observando
+localidades com melhor desempenho ambiental. Por exemplo, há muitos municípios de pequeno
+porte com vocação agrícola (especialmente no Nordeste) com grandes áreas cultivadas
+utilizando sistemas agroflorestais que poderiam ser “imitados” por vizinhos menos eficientes.
+Admite-se, contudo, que essa alternativa pode esbarrar em diversos fatores, como na limitação
+produtiva do município, na resistência social, na disponibilidade de recursos naturais etc.
+Portanto, tais resultados devem ser interpretados com ponderação e analisados caso a caso.
+         Outro resultado que chama a atenção é a alta ineficiência causada pelo controle
+inadequado das emissões, sobretudo nos municípios de menor porte. Individualmente, o
+indicador GMI (que indica a ineficiência gerencial) foi superior ao TGI (que indica a
+ineficiência tecnológica ou estrutural) em mais de 95% das localidades. O problema de
+ineficiência gerencial ocorre quando uma região não adota boas práticas produtivas por uma
+questão de gerenciamento incorreto. Pode-se citar como exemplo a questão dos aterros
+sanitários: grande parte dos municípios brasileiros ainda não trata adequadamente seus resíduos,
+mesmo havendo legislação sobre o tema. Com efeito, esses municípios emitem quantidade de
+poluentes que poderia ser evitada, caracterizando claramente um problema de gestão.
+Tabela 2. Indicadores de eficiência ambiental por grupos, em 2010
+
+                                                                                      Metrópoles (17 observações)
+      Grupo          Características                                                              GTE         MEE                   MTR             TGI            GMI             MTI             EFC
+       MT1           Escolaridade e desenvolvimento médios                                        0,999       0,724                 0,725           0,274          0,001           0,275           0,998
+       MT2           Industriais e desenvolvimento alto                                           0,965       0,685                 0,709           0,280          0,034           0,315           0,926
+       MT3           Industriais e desenvolvimento médio                                          0,941       0,744                 0,775           0,196          0,059           0,256           0,871
+       MT4           Escolaridade e desenvolvimento altos                                         0,914       0,756                 0,820           0,157          0,085           0,243           0,811
+                                                                                      Grandes (226 observações)
+      Grupo          Características                                                              GTE         MEE                   MTR             TGI            GMI             MTI             EFC
+       GR1           Comerciais e desenvolvimento médio                                           0,441       0,376                 0,860           0,064          0,558           0,623           0,354
+       GR2           Industriais e desenvolvimento médio                                          0,570       0,418                 0,743           0,152          0,429           0,581           0,462
+       GR3           Agrícolas e desenvolvimento baixo                                            0,411       0,360                 0,878           0,050          0,588           0,639           0,311
+                                                                                       Médios (309 observações)
+      Grupo          Características                                                              GTE         MEE                   MTR             TGI            GMI             MTI             EFC
+      MD1            Comerciais e desenvolvimento baixo                                           0,388       0,323                 0,855           0,064          0,611           0,676           0,313
+      MD2            Agrícolas e desenvolvimento baixo                                            0,621       0,342                 0,515           0,279          0,378           0,657           0,529
+      MD3            Industriais e desenvolvimento médio                                          0,468       0,383                 0,851           0,084          0,531           0,616           0,370
+      MD4            Extrativistas e desenvolvimento médio                                        0,708       0,424                 0,571           0,284          0,291           0,575           0,518
+                                                                                     Pequenos II (991 observações)
+      Grupo          Características                                                              GTE         MEE                   MTR             TGI             GMI              MTI            EFC
+      PQII-1         Agrícolas e desenvolvimento baixo                                            0,409       0,229                 0,526           0,180           0,590            0,770          0,354
+      PQII-2         Extrativistas e desenvolvimento médio                                        0,377       0,186                 0,501           0,190           0,622            0,813          0,277
+      PQII-3         Junção e desenvolvimento baixo                                               0,256       0,211                 0,883           0,045           0,743            0,788          0,194
+      PQII-4         Industriais e desenvolvimento médio                                          0,295       0,213                 0,724           0,081           0,704            0,786          0,238
+                                                                                     Pequenos I (3244 observações)
+      Grupo          Características                                                              GTE         MEE                   MTR             TGI            GMI             MTI             EFC
+      PQI-1          Junção e desenvolvimento médio                                               0,229       0,190                 0,839           0,039          0,770           0,809           0,189
+      PQI-2          Agrícolas e desenvolvimento baixo                                            0,363       0,192                 0,523           0,170          0,636           0,807           0,307
+      PQI-3          Agrícolas e desenvolvimento baixo II                                         0,236       0,201                 0,864           0,035          0,763           0,798           0,199
+      PQI-4          Industriais e desenvolvimento médio                                          0,320       0,213                 0,683           0,107          0,679           0,786           0,271
+
+Fonte: Resultados da pesquisa
+Nota: GTE = Eficiência ambiental estimada dentro do grupo; MEE = Eficiência ambiental estimada na meta-fronteira; MTR = Taxa meta-tecnologia; TGI = Ineficiência ambiental causada pelo gap tecnológico; GMI =
+Ineficiência ambiental causada pelo mau gerenciamento; MTI = Ineficiência ambiental total; e EFC = Eficiência ambiental bootstrapping intra grupo
+   Tabela 3. Indicadores de (in)eficiência ambiental, por faixas
+                      MEE                GTE                TGI                 GMI                MTI
+   Faixas
+                   Nº       %        Nº        %        Nº       %         Nº         %         Nº        %
+0,750 – 1,000     107      2,14     264       5,52       9      0,10      2326      48,59      3516     73,45
+0,500 – 0,749     182      3,80     436       9,12      51      1,07      1765      36,87      983      20,54
+ 0,25 – 0,499     987     20,62     1775     37,08     301      6,29      432        9,02      182       3,80
+ 0,01 – 0,249     3511    73,34     2312     48,38     4426     92,46     264        5,52      106       2,21
+   Nota: MEE = Eficiência ambiental estimada na meta-fronteira; GTE = Eficiência ambiental estimada dentro
+   do grupo; TGI = Ineficiência ambiental causada pelo gap tecnológico; GMI = Ineficiência ambiental
+   causada pelo mau gerenciamento; MTI = Ineficiência ambiental total
+   Fonte: Resultados da pesquisa
+
+           Ademais, verificou-se que poucos municípios tiveram sérios problemas de
+   ineficiência tecnológica (somente 7,46% mostraram ineficiência acima de 25%, coluna
+   TGI, Tabela 3). Especificamente, essa falha decorre da adoção de tecnologias produtivas
+   mais intensivas em poluentes. Por exemplo, municípios com características industriais
+   podem ser comparativamente menos eficientes que aqueles onde o setor industrial é
+   pouco representativo. Isto é, o desempenho nesse cenário trata-se de uma questão
+   estrutural. Dessa forma, um município que apresenta tanto ineficiência gerencial quanto
+   tecnológica está não somente produzindo com estruturas mais intensivas, como também
+   está gerindo mal suas emissões quando comparado a seus pares (municípios que também
+   produzem com a mesma estrutura). Apesar de não haver muitos municípios com sérios
+   problemas de ineficiência tecnológica, quase 95% deles apresentaram ambos os tipos de
+   ineficiência. Abre-se espaço, portanto, para o desenvolvimento de ações que visem
+   promover novos padrões tecnológicos no setor industrial, ampliando a infraestrutura de
+   baixo carbono das firmas brasileiras. Essa seria mais uma ação importante para o alcançar
+   as metas da iNDC brasileira.
+           Feitas essas considerações, é importante compreender a relação entre a eficiência
+   ambiental dos municípios brasileiros e suas características. Para essa análise, inicialmente
+   testou-se a presença de correlação espacial entre os indicadores de eficiência ambiental
+   por meio de uma análise exploratória de dados espaciais (AEDE). Utilizando a matriz
+   rainha de pesos espaciais, o coeficiente I de Moran calculado foi de aproximadamente
+   0,20, levando à conclusão de que os escores de eficiência estão espacialmente
+   correlacionados. O sinal positivo do parâmetro indica a existência de clusters Alto-Alto
+   (agrupamento de municípios mais eficientes) e Baixo-Baixo (agrupamento de municípios
+   menos eficientes). Para melhor visualizá-los, apresenta-se a Figura 2.
+           A Figura 2 demonstra importante aspecto no que diz respeito às emissões de GEE
+   do país. Embora não haja padrão bem definido de agrupamentos do tipo Alto-Alto, parte
+   expressiva dos agrupamentos Baixo-Baixo encontra-se no Centro-Oeste. É possível que
+   esse resultado seja decorrente da relevante atividade pecuária da região, que concentra
+   34% do rebanho nacional (IPEADATA, 2016). Conforme salientam Bustamante et al.
+   (2012), a produção bovina caracteriza-se pela frequente expansão da fronteira agrícola
+   (que aumenta as emissões de GEE, devido ao desmatamento) e por altas emissões de
+   metano, outra fonte expressiva das emissões do Brasil. Uma maneira custo-efetiva de
+   contornar esse resultado negativo, em conformidade com a iNDC, seria investir em
+   políticas de intensificação da pecuária brasileira, caminhando em direção a sistemas mais
+   produtivos e eficientes (COHN et al., 2014). Silva, Ruviaro e Ferreira Filho (2017)
+   reforçam essa ideia ao afirmar que tais sistemas poderiam reduzir emissões, sobretudo na
+   Amazônia e no Centro-Oeste.
+             Clusters Alto-Alto
+             Clusters Baixo-Baixo
+             Não significativo/ Não inserido
+
+
+Figura 2. Clusters para os indicadores de eficiência ambiental dos municípios brasileiros
+Fonte: Resultado da pesquisa
+
+        Após a confirmação da existência de correlação espacial, assumiu-se que o
+desempenho ambiental dos municípios brasileiros depende da especialização produtiva e
+da capacidade de inovação da região na qual se inserem. Por este motivo, estimou-se o
+modelo SAR utilizando o indicador de eficiência ambiental intra grupo, obtido por
+bootstrap (EFC), e as variáveis que representam as características socioeconômicas
+municipais abordadas nesse estudo.
+        Foram utilizados os testes de homocedasticidade de White, Breusch-Pagan e
+Koenker-Bassett, que rejeitaram a hipótese de variância constante. Por isso, o modelo
+espacial foi estimado considerando a matriz de erros robustos de White. Foi calculado
+ainda o Fator de Inflacionamento da Variância (FIV) com o intuito de analisar possíveis
+problemas de multicolinearidade, os quais não foram identificados (FIV = 3,89). Os
+resultados do modelo são apresentados na Tabela 4.
+
+Tabela 4. Resultados do modelo da eficiência ambiental dos municípios brasileiros (EFC)
+                                  Variáveis                                SAR
+ Dependência Espacial
+                                                                         0,3185***
+ Efeito Spillover
+                                                                          (0,0160)
+ Características socioeconômicas
+                                                                        -0,3943***
+ Índice de Gini
+                                                                          (0,0543)
+                                                                         0,0043***
+ Percentual de pessoas pobres
+                                                                          (0,0004)
+                                                                        -0,0032***
+ Percentual de pessoas empregadas com ensino superior
+                                                                          (0,0009)
+                                                                                          0,0001
+ Percentual de domicílios com coleta de lixo
+                                                                                         (0,0002)
+                                                                                        0,0002***
+ Renda média dos ocupados
+                                                                                         (0,0001)
+                                                                                        0,0018***
+ Percentual dos ocupados na indústria
+                                                                                         (0,0003)
+                                                                                        0,0009***
+ Percentual dos ocupados na agropecuária
+                                                                                         (0,0002)
+                                                                                        0,0050***
+ Percentual dos ocupados na extração mineral
+                                                                                         (0,0012)
+                                                                                        0,0024***
+ IDH-M
+                                                                                         (0,0004)
+ Ações ambientais
+                                                                                          0,0081
+ Inciativas de consumo sustentável
+                                                                                         (0,0052)
+                                                                                         -0,0047
+ Redução do consumo de sacolas plásticas
+                                                                                         (0,0062)
+                                                                                          0,0017
+ Redução do consumo de água/energia
+                                                                                         (0,0061)
+                                                                                          0,0009
+ Critérios ambientais para licitação
+                                                                                         (0,0076)
+ Dummies regionais
+                                                                                          0,0074
+ Nordeste
+                                                                                         (0,0075)
+                                                                                        0,0210**
+ Norte
+                                                                                         (0,0091)
+                                                                                       -0,0688***
+ Centro-Oeste
+                                                                                         (0,0078)
+                                                                                        0,0110**
+ Sul
+                                                                                         (0,0059)
+                                                                                       -0,0700***
+ Constante
+                                                                                         (0,0056)
+ Pseudo R²                                                                                0,4320
+Fonte: Resultados da pesquisa
+Notas: (***), (**) e (*) indicam significância a 1%, 5% e 10%, respectivamente; os valores entre parênteses
+referem-se aos erros-padrão.
+
+        Como esperado, o coeficiente espacial foi positivo e significativo, indicando que
+um município (in)eficiente tende a se agrupar regionalmente a pares com (pior) melhor
+performance ambiental (Tabela 4). Esse resultado pode estar associado a diversos fatores,
+como concentração de atividades produtivas similares, agrupamentos de localidades com
+o mesmo perfil ambiental, efeito transbordamento de tecnologias ambientais etc. Por
+exemplo, como já foi falado, os municípios da região Centro-Oeste podem ser ineficientes
+em razão de sua atividade produtiva. Dada a tendência de concentração produtiva em
+âmbito regional, é possível que parte desses agrupamentos esteja relacionada a esse
+aspecto. Esse também pode ser o caso de regiões metropolitanas, que se mostraram
+eficientes por não haver melhor padrão para serem comparadas, isto é, uma outra
+metrópole com melhor técnica produtiva (menos intensiva).
+        Um corolário importante da confirmação da existência de transbordamentos de
+tecnologias ambientais (Tabela 4) é a necessidade de fortalecimento regional das
+estratégias da iNDC brasileira. Por exemplo, para atender à necessidade de aumentar a
+participação de energias renováveis na matriz energética, determinado município poderia
+incentivar o investimento em micro e minigeração distribuída de energia solar por meio
+de painéis fotovoltaicos. A partir disso, é possível que ocorra a difusão da tecnologia, ou
+seja, a criação de práticas sustentáveis locais possivelmente gerará externalidades
+positivas regionais.
+         Os resultados da Tabela 4 também mostram que pobreza, renda e IDH
+apresentaram relação positiva com a eficiência ambiental dos municípios. Sobre a
+pobreza, conforme argumentado anteriormente, sua incidência pode sugerir concentração
+de atividades com menor efeito relativo sobre as emissões, tal como a agricultura familiar
+ou de autoconsumo. Dessa forma, municípios com maior percentual de pobres tendem a
+ser mais eficientes ambientalmente em função do tipo de atividade que desempenham.
+De fato, esse parece ser o efeito que prevalece no caso brasileiro.
+         Do mesmo modo, municípios com renda e IDH mais elevados (mais
+desenvolvidos) também podem se concentrar em atividades com menor impacto
+ambiental, como os setores de serviços, tecnologia, informação etc. Nesse contexto,
+haveria relação positiva entre essas variáveis e a eficiência ambiental, como o presente
+estudo indica. Ademais, regiões mais desenvolvidas podem apresentar maior disposição
+a pagar pela preservação (ou maior resistência a atividades intensivas em emissões).
+         Em sentido contrário, desigualdade e educação mostraram relação negativa com
+a eficiência ambiental (Tabela 4). Sobre a desigualdade, o argumento é que a
+concentração de renda intensifica o uso dos recursos naturais e as emissões, visto que a
+sociedade pode ter baixa disposição a pagar pela preservação. Outro ponto que pode ser
+levantado é a influência de minorias no desenvolvimento de leis ambientais municipais.
+Esses argumentos estão em linha com a hipótese de que sociedades mais ricas têm maior
+potencial de adaptação a efeitos ambientais adversos e, portanto, estão menos dispostas a
+investir em mitigação no curto prazo (AKLIN et al. 2013).
+         No caso da educação, prevaleceu o efeito “produtividade”: relação negativa entre
+grau educacional e eficiência ambiental. Concretamente, no grupo das metrópoles, os
+municípios com maior percentual de ocupados com ensino superior foram os menos
+eficientes. Esse fato se estende aos municípios de médio e pequeno portes. Deve-se notar
+que esse resultado não contradiz, necessariamente, os argumentos da CAK. Retomando
+suas hipóteses, os autores que a defendem alegam que a educação é uma das variáveis-
+chave para diminuir o nível de emissões. No entanto, seu efeito somente será percebido
+em uma etapa do desenvolvimento na qual a sociedade terá alta educação e renda. Ou
+seja, para os países em desenvolvimento, apenas no médio-longo prazos. Entretanto, o
+presente estudo, pela restrição de dados, não permite análises nesse horizonte temporal,
+já que os resultados aqui apresentados referem-se ao curto prazo.
+         Outro fator que merece ser destacado refere-se ao grau de especialização dos
+municípios, medido pelo percentual dos ocupados nos setores produtivos. Verificou-se
+relação positiva entre especialização produtiva e desempenho ambiental. Ocorre que a
+especialização produtiva pode melhorar a forma na qual os municípios gerenciam
+recursos naturais e emissões. Pode-se considerar, por exemplo, o caso de alguns
+municípios extrativistas de médio porte. Apesar de possuírem maior ineficiência
+tecnológica (pois o setor é mais intensivo em emissões), sua eficiência gerencial foi maior
+em relação aos demais. Isso leva a crer que a especialização produtiva pode expandir a
+produção e minimizar os efeitos ambientais em proporção. A magnitude do parâmetro
+indica a intensidade do “efeito especialização” do setor sobre a eficiência ambiental.
+Pode-se observar que municípios com especialização industrial possuem melhores
+indicadores e, em seguida, os extrativistas e agropecuários.
+         Por fim, em relação às ações ambientais, notou-se que nenhuma variável foi
+estatisticamente significativa, reflexo, sobretudo, do baixo enforcement da legislação
+ambiental do país, apesar dos esforços que têm sido feitos no sentido de estabelecer
+diretrizes para a redução das emissões (BRASIL, 2016). Observa-se que a maioria dos
+municípios (58%) não desenvolveu ações ambientais para incentivar o consumo
+sustentável no ano da pesquisa. A inexistência de mecanismos econômicos de incentivo
+a nível local, como critérios ambientais para concorrer a licitações, pode explicar o
+presente resultado, já que apenas alguns municípios (8%) mostraram propostas como
+essa. Em geral, regiões com piores indicadores de eficiência, como o Centro-Oeste,
+apresentam um número relativamente pequeno de propostas para melhorar o quadro
+ambiental.
+
+5. Conclusões
+        Considerando a importância do estudo do desempenho ambiental dos países no
+que se refere às emissões de GEE, o presente artigo obteve evidências de que a eficiência
+ambiental do Brasil tem sido baixa. Os problemas de controle das emissões foram
+preponderantes em quase todos os municípios do país, indicando que as cidades
+brasileiras não estão lidando adequadamente com a questão. A falta de normas rígidas,
+baixa fiscalização, inexistência e, ou, ineficácia de políticas ambientais etc., podem ser
+possíveis explicações para esse quadro.
+        Evidenciou-se que a eficiência ambiental não está somente relacionada com a
+forma de produzir, mas também com certas características municipais. Existe a tendência,
+por exemplo, de que municípios de renda e desenvolvimento mais elevados sejam mais
+eficientes, principalmente por se concentrarem em setores com menor grau de emissões,
+como serviços e tecnologia. Ademais, a disposição para pagar pela preservação pode ser
+maior nessas regiões. Ao mesmo tempo, localidades muito pobres também podem ter
+níveis elevados de eficiência. Nesse caso, a incidência da pobreza poderia indicar maior
+proporção de atividades menos intensivas, como agricultura para autoconsumo. Também
+merece ser destacado o fato de que regiões com maior percentual de pessoas com ensino
+superior foram menos eficientes. Constatou-se que no país prevaleceu o efeito
+“produtividade”, o qual ocorre quando a escolaridade se associa mais com a elevação do
+produto do que com a “consciência ambiental”.
+        Pode-se concluir ainda que há significativas desigualdades regionais no que diz
+respeito à (in)eficiência ambiental. A princípio, esse fato poderia representar dificuldade
+à implementação de uma política nacional de redução de emissões, como aquela proposta
+pela iNDC do Brasil. Não obstante, a observação dessa particularidade deveria guiar uma
+reformulação da política climática brasileira no sentido de dar-lhe caráter local e
+descentralizado, ao invés de apenas considerar especificidades setoriais, como é feito
+atualmente. Algumas políticas, tais como aquelas voltadas ao cumprimento do Código
+Florestal (redução do desmatamento, aumento da restauração florestal etc.), ao
+fortalecimento do Plano de Agricultura de Baixa Emissão de Carbono e à expansão do
+uso de fontes renováveis na matriz energética (eólica, biomassa e solar) têm caráter
+essencialmente regional. Assim, se fossem descentralizadas, considerando as
+especificidades de cada localidade, poderiam ser potencializadas pelo efeito spillover
+identificado neste estudo.
+        Diante do exposto, pode-se concluir que um dos grandes desafios que o Brasil
+enfrentará nas próximas décadas será o de preparar os municípios, sobretudo os de menor
+porte, para se desenvolver economicamente, respeitando os limites do meio ambiente. As
+políticas ambientais em âmbito regional terão papel importante, pois os municípios
+tendem a aprender com as boas práticas, isto é, a criação de ações sustentáveis pode
+produzir externalidades positivas regionalmente, contribuindo para a difusão de um
+modelo econômico menos intensivo em emissões.
+       Por fim, este estudo não teve a pretensão de dar uma resposta definitiva à questão
+da (in)eficiência ambiental em termos de emissões de GEE no Brasil. Ainda existem
+limitações, sobretudo de dados, que precisam ser superadas pelos órgãos oficiais para que
+estudos futuros avancem em relação à presente pesquisa. Não obstante, os resultados aqui
+apresentados, inéditos na literatura nacional, demonstram que há necessidade de
+planejamento para que as metas de crescimento/desenvolvimento econômico não
+ultrapassem as barreiras ambientais e nem comprometam os compromissos nacionais de
+redução de emissões. Nesse sentido, a política climática brasileira deveria considerar as
+questões aqui debatidas.
+
+Referências
+AFONSO, A.; SCHUKNECHT, L.; TANZI, V. Public Sector Effiiency: Evidence for New EU Members States and
+Emerging Markets. European Central Bank Working Paper, n. 581, 2006.
+
+AKLIN, M. et al. Understanding environmental policy preferences: New evidence from Brazil. Ecological Economics,
+94, n. 1, 2013. 28-36.
+
+ANSELIN, L. Spatial Econometrics: Methods and Models. [S.l.]: Kluwer Academic Publishers, 1988.
+
+ASHWORTH, J.; GEYS, B.; HEYNDELS, B. Determinants of tax innovation: The case of environmental taxes in
+Flemish municipalities. European Journal of Political Economy, 2006. 223–247.
+
+BANKER, R. D.; CHARNES, A.; COOPER, W. W. Some models for estimating technical and scale. Management
+Science, 30, n. 9, 1984. 1078-1092.
+
+BAUMONT, C.; ERTUR, C.; LE GALO, J. Spatial analysis of employment and population density: the case of the
+agglomeration of Dijon (1999). Geographical Analysis, 36, n. 2, 2004. 146-176.
+
+BEISE, M.; RENNINGS, K. Lead markets and regulation: a framework for analyzing the international diffusion of
+environmental innovations. Ecological Economics, n. 52, 2005. 5-17.
+
+BOYCE, J. K. Inequality as a cause of environmental degradation. Ecological Economics, 11, 1994.
+
+BRASIL. Estimativas anuais de emissões de gases de efeito estufa no Brasil. MINISTÉRIO DA CIÊNCIA,
+TECNOLOGIA             E       INOVAÇÃO,          Brasília,     p.      76,       2013. Disponivel em:
+<http://gvces.com.br/arquivos/177/EstimativasClima.pdf>. Acesso em: 25 jul. 2014.
+
+BRASIL. Intended Nationally Determined Contribution Towards Achieving the Objective of the United Nations
+Framework Convention on Climate Change - iNDC. Brasília. 2015.
+
+BUSTAMANTE, M. M. C. et al. Estimating greenhouse gas emissions from cattle raising in Brazil. Climatic Change,
+115, 2012. 559-577.
+
+CHIU, C. et al. Decomposition of the environmental inefficiency of the meta-frontier with undesirable output. Energy
+Economics, 2012. 1392-1399.
+
+COHN, A. S. et al. Cattle ranching intensification in Brazil can reduce global greenhouse gas emissions by sparing
+land from deforestation. PNAS, 111, n. 20, 2014. 7236-7241.
+
+DAREN, C. Education and Economic Growth: Is There a Link? Munich Personal RePEc Archive, n. 18176, 2007.
+
+DENATRAN. Departamento Nacional de Trânsito, 2015. Disponivel em: <http://www.denatran.gov.br/>. Acesso em:
+2015.
+
+DER ENG, P. Capital Formation and Capital Stock in Indonesia, 1950-2007. Working Papers in Trade and
+Development, 2008.
+FÄRE, R.; GROSSKOPF, S. Modeling undesirable factors in efficiency evaluation: Comment. European Journal of
+Operational Research, 2004. 242–245.
+
+FÄRE, R.; GROSSKOPF, S.; LOVELL, C. A. K. Multilateral productivity comparisons when some outputs are
+undesirable: a nonparametric approach. The Review of Economics and Statistics, 1989. 90–98.
+
+FÄRE, R.; GROSSKOPF, S.; NOH, D. Characteristics of a Polluting Technology: Theory and Practice. Journal of
+Econometrics, 2005. 469-492.
+
+FÄRE, R.; GROSSKOPF, S.; TYTECA, D. An activity analysis model of the environmental performance of firms
+application to fossil-fuel-fired electric utilities. Ecological Economics, n. 18, 1996. 161-175.
+
+FÄRE, R.; PRIMONT, D. Multi-output Production and Duality: Theory and Applications. Kluwer Academic
+Publishers, 1995.
+
+FEARNSIDE, P. M. Hidrelétricas na Amazônia: impactos ambientais e sociais na tomada de decisões sobre grandes
+obras. [S.l.]: Instituto Nacional de Pesquisas da Amazônia, v. 2, 2015.
+
+GASSEBNER, M.; LAMLA, M.; STURM, J. Economic, demographic and political determinants of pollution
+reassessed: a sensitivity analysis. CESifo working paper, 1699, 2006.
+
+GÜTSCHOW, J. et al. The PRIMAP-hist national historical emissions time series. Earth System Science Data, 8,
+2016. 571-603.
+
+HALKOS, G. E.; TZEREMES, N. G. A conditional directional distance function approach for measuring regional
+environmental efficiency: Evidence from UK regions. European Journal of Operational Research, n. 227, 2013a.
+182-189.
+
+HONMA, S. Environmental and economic efficiencies in the Asia-Pacific region. Munich Personal RePEc Archive,
+n. 43361, 2012.
+
+HUBER, J. Pioneer countries and the global diffusion of environmental innovations: Theses from the viewpoint of
+ecological modernisation theory. Global Environmental Change, n. 18, 2008. 360-367.
+
+IBGE. Instituto Brasileiro de Geografia e Estatística, 2016. Acesso em: Dezembro 2016.
+
+IPCC. Intergovernmental Panel on Climate Change, 2014. Disponivel em: <http://www.ipcc.ch/>. Acesso em:
+Janeiro 2014.
+
+IPEA. Instituto de Pesquisa Econômica Aplicada, 2016. Disponivel em: <http://www.ipeadata.gov.br/>. Acesso em:
+2016.
+
+IYER, K.; RAMBALDI, A.; TANG, K. K. Globalisation and the Technology Gap: Regional and Time Evidence,
+Leading Economic and Managerial Issues Involving Globalisation. Nova Science New York, 2006. 213–227.
+
+KORTELAINEN, M. Dynamic environmental performance analysis: A Malmquist index approach. Ecological
+Economics, 2008. 701 -715.
+
+KUOSMANEN, T.; KORTELAINEN, M. Measuring Eco-efficiency of Production with Data Envelopment Analysis.
+Journal of Industrial Ecology, 9, n. 4, 2005.
+
+LESAGE. The Theory and Practice of Spatial Econometrics. [S.l.]: [s.n.], 1999. Disponivel em:
+<http://raptor1.bizlab.mtsu.edu/s-drive/TEFF/sbook.pdf>.
+
+LI, M.; WANG, Q. International environmental efficiency differences and their determinants. Energy, n. 78, 2014.
+411-420.
+
+MARTIN, J. L.; MARIS, V.; SIMBERLOFF, D. S. The need to respect nature and its limits challenges society and
+conservation science. PNAS, 113, n. 22, 2016. 6105-6112.
+
+MEI, G.; GAN, J.; ZHANG, N. Metafrontier Environmental Efficiency for China’s Regions: A Slack-Based Efficiency
+Measure. Sustainability, n. 7, 2015. 4004-4021.
+O'DONNELL, C. J.; RAO, D. S. P.; BATTESE, G. E. Metafrontier frameworks for the study of firm-level efficiencies
+and technology ratios. Empirical Economics, 34, 2008. 231–255.
+
+OH, D. H.; LEE, J. D. A metafrontier approach for measuring Malmquist productivity index. Empirical Economics,
+38, n. 1, 2010. 47-64.
+
+PBDA. Portal Brasileiro de Dados Abertos, 2016. Disponivel em: <http://dados.gov.br/>. Acesso em: Janeiro 2016.
+
+PNUD. Programa das Nações Unidas, 2016. Disponivel em: <http://www.pnud.org.br/>. Acesso em: 2016.
+
+ROCHA, F. et al. Mais recursos ou mais eficiência? Uma análise de oferta e de demanda por serviços de saúde no
+Brasil. Textos para Discussão, Tesouro Nacional, n. 10, 2012.
+
+SILVA, J. G.; RUVIARO, C. V.; FERREIRA FILHO, J. B. Livestock intensification as a climate policy: Lessons from
+the Brazilian case. Landy Use Policy, 62, 2017. 232–245.
+
+SIMAR, L.; WILSON, P. W. Sensitivity Analysis of Efficiency Scores: How to Bootstrap in Nonparametric Frontier
+Models. Management Science, 44, n. 1, 1998.
+
+SONG, X.; HAO, Y.; ZHU, X. Analysis of the Environmental Efficiency of the Chinese Transportation Sector Using
+an Undesirable Output Slacks-Based Measure Data Envelopment Analysis Model. Sustainability, n. 7, 2015. 9187-
+9206.
+
+SPEIGHT, A.; THOMPSON, P. Is Investment Time Irreversible? Some Empirical Evidence for Disaggregated UK
+Manufacturing Data. Applied Economics, 38, n. 19, 2006. 2265-2275.
+
+STERN, D. I.; COMMON, M. S.; BARBIER, E. B. Economic Growth and Environmental Degradation: The
+Environmental Kuznets Curve and Sustainable Development. World Development, , 1996. 1151-1160.
+
+WANG, Q.; ZHANG, H.; ZHANG, W. A Malmquist CO2 emission performance index based on a metafrontier
+approach. Mathematical and Computer Modelling, 2013. 1068-1073.
+
+WORLD BANK. World Bank Group, 2016. Disponivel em: <http://www.worldbank.org/>. Acesso em: Janeiro 2016.
+
+YUSUF, A. A. Poverty and Environmental Degradation: Searching for Theoretical Linkages. Working Paper in
+Economics and Development Studies, n. 200403, 2004.
+
+ZHANG, J.; XING, Z.; WANG, J. Analysis of CO2 emission performance and abatement potential for municipal
+industrial sectors in Jiangsu, China. Sustainability, 8, n. 7, 2016. 697-711.
+
+ZHANG, N.; CHOI, Y. Total-factor carbon emission performance of fossil fuel power plants in China: A metafrontier
+non-radial Malmquist index analysis. Energy Economics, 2013. 549-559.
+
+ZHOU, P.; ANG, B. W. Decomposition of aggregate CO2 emissions: A production-theoretical approach. Energy
+Economics, 2008. 1054-1067.
+
+ZHOU, P.; HAN, J. Y.; ANG, B. W. Total factor carbon emission performance: A Malmquist index analysis. Energy
+Economics, 2010. 194–201.
+

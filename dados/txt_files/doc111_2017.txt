@@ -1,0 +1,761 @@
+    Instability Constraints and Development Traps: An Empirical Analysis of Growth
+                              Cycles and Economic Volatility
+                                                                                          Danilo Sartorello Spinola1
+        Abstract
+
+
+Macroeconomic volatility is an issue that creates major constrains to the process of economic development,
+affecting long-term decisions and imposing periodic crises (Stiglitz, 2000). This article consists in an
+empirical exercise focused on understanding economic volatility in developing countries using developed
+countries as a benchmark. The paper starts by analyzing the evolution and standard deviation of GDP growth
+during the period 1950 – 2016 for 136 countries. Data comes originally from the Maddison Project Database.
+In order to look and analyze stable and recurrent patterns of volatility, the same data is filtered into cyclical
+components. This filtering methodology consists in the use of an Asymmetric Band Pass-Filter (Christiano
+and Fitzgerald, 2003) to decompose the original time series into band components. Stable economic cycles
+emerge from market, investment and technological reasons. In order to capture the distinct sources of cycles,
+we decompose data into four types of cycle and a trend according to their time range: the Kitchin cycle (up to
+8 years), the Juglar cycle (8-15 years), the Kuznets Swing (15-30 years), the Kondratiev wave (30-60 years),
+and a structural residual long-run trend. Attributes related to amplitude, duration and the synchronization
+between cycles (Harding-Pagan index) are computed for each country and time range. Countries are grouped
+and compared using Cluster Analysis, resulting in a classification of patterns of volatility.
+Keywords: Macroeconomic Volatility, Economic Cycles, Time Series, Filter Decomposition
+JEL: C21, C32, 047.
+Área 6 - Crescimento, Desenvolvimento Econômico e Instituições
+
+
+        Introduction
+
+
+Historically, sustaining growth has been a central problem for a virtuous development strategy (Foster-
+McGregor, Kaba, & Szirmai, 2015). Short-term growth and high volatility of macroeconomic prices are
+constantly observed in developing countries, reducing their average period of stable growth. It results in an
+endogenous pattern of instability, reproduction of inequality, net outflows of financial capital, and halt in
+investments. Macroeconomic volatility creates major constrains to the process of economic development,
+affecting long-term decisions and imposing periodic crises (Stiglitz, 2000). This volatility has impacts on the
+economic structure, affecting long-run economic growth. This impact is understood as the structural cause of
+Macroeconomic Instability.
+Macroeconomic Instability is not a new issue and is a central problem currently affecting developing
+countries. Despite its importance, little effort has been made to understand the consequences of the type of
+instability that emerges from the productive structure, affecting the growth potential of developing countries.
+It is mostly treated in the literature as related to fluctuations in stock markets and government debt
+1
+  PhD Fellow at United Nations University – Maastricht Economic and Social Research Institute on Innovation and Technology
+(UNU-MERIT).
+                                                                                                                        1
+(Eichengreen & Hausmann, 2010) and not linked to structural fragility and to the productive structure, which
+opens a gap in the literature.
+Based on the Structuralist theory (Taylor, 1991), we plan to address the periodical phenomenon of volatility
+that emerges from the structural fragilities (defined as the weakness of an economy to absorb external
+economic shocks). In this article, we focus on understanding the aspects concerning GDP growth volatility.
+We empirically show distinct patterns of volatility that emerges in different countries.
+The first step in this research is to show some stylized facts of per capita GDP growth volatility. We apply
+filtering techniques to decompose the time series of per capita economic growth in distinct cycles and
+analyze the patterns that emerge from them. The second step is to build a typology using cluster analysis that
+groups patterns of volatility according to the average amplitude and duration of countries’ cycles. This
+methodology gives us an approach about the type of expansion-cycle processes that exists. Finally, the
+residual that appears after the filtering techniques can be observed as a structural component that relates
+macroeconomic volatility with the economic structure of an economy.
+In section 1 we discuss the literature review regarding the main theories behind the idea of economic cycles,
+its empirical evidences and the debates behind cycle synchronization. In section 2, we present the data that is
+being used in this research. In section 3, we briefly explain the methodologies employed – the Christiano-
+Fitzgerald’s Band Pass Filter, the Harding-Pagan index of cycle synchronization, the K-Means method of
+cluster analysis, and the MICE imputation method used to input missing data and clean the database. In
+section 4, we show some evidences from the data before applying the filtering analysis. In section 5, we
+apply the filters in the data and discuss the results for the different types of cycle and the residual structural
+component. Finally, in section 6, main results and the conclusion of the paper are discussed.
+
+
+   1. Cycle Theory
+
+
+The study and development of economic cycle theories has enabled many analysts to understand the behavior
+of the economic dynamic. Distinct theories explained in this section approached the observance of cycles
+with its own explanations of the phenomenon. The relevance on the study of these cycles lays in the fact that
+their occurrence affects countries’ short- and long-run economic behavior and their development strategies.
+Understanding the existence and causes of a cyclical behavior is a topic largely addressed by a whole
+tradition in cliometrics and cliodynamics.
+In the first half of the XX century, relevant economists claimed the identification of cyclical patterns for
+economic prices and growth. Clement Juglar identified cycles related to business activities that range from 8
+to 11 years caused by the maturity processes of investments. This behavior was later developed in the
+Business Cycle Theory. In terms of long run cycles, Kondratiev (1935) discussed the existence of periods of
+volatility between 45 to 60 years in the world economy. These long cycles are still sources of long debates in
+terms of their identification and the causes behind it (Korotayev et al, 2010). Another type of cyclical
+behavior, with a medium-run period, was discovered by Kuznets (1940), relating it to the behavior of
+infrastructure investments. This cycle was broadly discussed by Abramovitz (1961, 1968), that analyzed the
+recurrence for a broad range of countries of deep depressions at similar intervals.
+Joseph Schumpeter wrote in 1933 a classical book about business cycle. Schumpeter described the
+technological aspects related to cyclical behavior and proposed a typology of business cycles according to
+periodicity. An update of his typology (Jadevicius & Huston, 2014) leads us to identify four types of cycles:
+the Kitchin cycle (3 to 5 years); the Juglar cycle (8 to 11 years); the Kuznets cycle (15 to 25 years) and the
+                                                                                                                2
+Kondratiev wave (45 to 60 years). In this research we will use this typology. We will expand, though, the
+range for each cycle in order to make a perfect coverage of all the cycles that range between 2 and 60 years.
+According to Schumpeter (1939), any of these cycles are divided into four phases: (1) expansion and growth;
+(2) turning point; (3) recession and crisis; and (4) recovery. The most important aspect of these economic
+cycles is that these fluctuations are not only related to a certain aspect of the economy, but affect and are
+diffused through the whole economic system, having pervasive effects in the economic system.
+The reasons behind the existence of these cycles are also a topic of great debate in the economic theory.
+Different kinds of explanation try to answer the causes of these cycles. These answers range from the
+appearance of inventories (Kitchin ,1923; Metzler. 1941), to credit behavior, the maturity of investments
+(Besomi, 2005; Fukuda, 2009), investments in infrastructure (Kuznets, 1930; Abramovitz, 1968) and
+technology development (Schumpeter, 1939; Perez, 2009). Also important explanations to mention are the
+Debt Deflation theory by Fischer (1933) and the Financial Instability Hypothesis by Minsky (1974).
+The Post-Keynesian and the Structuralist traditions have theories that aim to explain the behavior of cycles
+looking for demand-side aspects. These theories have the specificity of observing the existence of cycles aas
+endogenous to the behavior of the economic system. Distinct from the traditional Real Business Cycle (RBC)
+framework that observes the main sources of cycles as exogenous (Kydland & Prescott, 1990). In this RBC’s
+perspective, well-functioning markets results in a stable equilibrium (Lucas, 1975), being fluctuations a result
+of bad policies or market failures.
+A relevant aspect of the structuralist tradition, used in this paper, is the fact that this tradition deals with
+issues that puts developing countries in the center of the analysis and links cycles to the productive structure.
+Remounting to the seminal works started with Prebisch (1950) and later developed in a whole tradition, this
+tradition sees the existence of a north-south dynamic in the international division of labor that result in
+distinct trajectories between advanced and developing economies. The Structuralist and Post-Keynesian
+theoretical approaches are used in order to evaluate the results of the research.
+
+
+   1.1 Methodologies for cycle analysis and some empirical evidence from economic cycles
+
+
+Most recently, many empirical works were made to observe the existence of cycles in the world economy.
+The main methodologies used are the Spectral Analysis (Kuczynsky, 1978; Bossier & Huge (1981); Van
+Ewijk (1981); Korotayev et al (2010)), the Filter design approach (Metz & Stier, 1992; Kriegel et al, 2009)
+and Wavelet analysis (Gallegati et al, 2017). These methodologies focus on analyzing the distinct frequencies
+that emerge from time series. These are methods usually applied to economic variables.
+Spectral analysis applies Fourier transformations to the time series and observes its spectrum in different
+frequencies. Using power accumulated frequencies it is then possible to identify the existence of periodic
+oscillations in the time series. This method initially removes the trend from the series as a requirement of
+stationarity. Fourier transformations uses combinations of sines and cosines to represent a non-local function
+– so changes affect the whole function. This is a restriction that allowed using windowed transformation (use
+of bands). The wavelet analysis is analogous to the Spectral analysis but it uses a finite domain.
+This research uses a Filter Design approach, which is a development of the Spectral Analysis defining a
+specific band filter. There are distinct filters as described and enumerated by Pollock (2014). One commonly
+used filter is the low pass filter, the Hodrick-Prescott’s filter (Hodrick and Prescott, 1980), heavily criticized
+by Hamilton (2016). Another important methodology is the Band-Pass filter, in which we observe the
+symmetric (Baxter King) and asymmetric (Christiano-Fitzgerald) versions. This latter method is used to
+                                                                                                                3
+observe long waves and growth cycles. The procedure filter coefficients to isolate specific frequencies
+looking for the ideal filter band.
+Baxter and King (1999) developed the symmetric band-pass filter inverting the Fourier series and truncating
+the data building a moving average. This methodology had an issue related to reach the ends of the sample.
+This issue has been solved by the asymmetric Band-Pass filter of Christiano and Fitzgerald (2003). They
+proposed a way to extrapolate the end of the data. In this research we use the Asymmetric Band-Pass filter.
+It is relevant to observe some empirical evidences of cycles for GDP growth. There are many works that test
+the existence of cycles for the world level. Korotayev et al (2010), using spectral analysis, claim that there is
+a very high significance for the existence of Kitchin, Juglar and Kondratiev cycles. Kuznets cycles, in the
+authors’ argument can be understood as a third harmonic of the Kondratiev cycle, detected for the world
+level for each 17 years. In another relevant work, Diebol & Doliger (2006, 2008) identified Kuznets swing
+for GDP growth.
+Despite the fact that these works pointed to the existence of cyclical behavior in the economic systems, it is
+important to point out that the results are still contrasting and contradictory, depending on the methodology
+applied. There are still disagreements about the empirical existence of short and long waves (Bosserelle,
+2013).
+
+
+   2. Data
+
+
+In this paper we are using the Maddison Project Database (MPD), updated with data from the World Bank
+Database (WBD). The MPD continued the works of Maddison (2001) and Maddison (2003). The database
+was most recently updated by Bolt and Van Zanden (2013). These authors calculated the long-run historical
+data of per capita GDP for a large number of countries and regions. The MPD has data since ancient roman
+times until 2010. We select from the MPD the period from 1950 to 2010 and update for 2010 to 2016 using
+the growth rates of per capita GDP from the World Bank Database (WBD). The reason why we choose this
+period is data availability and biases caused by the war period (post-World War II). Before 1950’s many
+countries also did not have available data for GDP per capita. There are some corrections in the database
+concerning the fact that there are many countries that did not exist before 1991 (Former soviet republics and
+former Yugoslavia) and because the element of war strongly affected the data. As we want to observe the
+economic causes of economic cycles, data during periods of war were treated, and seen as an exogenous
+element.
+The database after updating consists of 132 countries using per capita GDP growth data from 1951 to 2016.
+For each country’s time series we applied the Christiano and Fitzgerald (2003)’s Band Pass Filter and
+decomposed the actual data in distinct cycles, 2-8 years (Kitchin Cycle), 8-15 (Juglar cycle), 15-30 years
+(Kuznets cycle), and 30-60 years (Kondratiev cycle). We observe in these cycles the average amplitude and
+the duration of periods of growth and crisis. The results were grouped in clusters using the K-means
+methodology, dividing the instability patterns in different groups.
+
+
+   3. Methodology
+
+
+   3.1 Band-Pass filter
+
+
+                                                                                                               4
+In this section we follow the approach of Erten and Ocampo (2013) and use the asymmetric Band-Pass (BP)
+filter of Christiano and Fitzgerald (2003), to identify cycles in our different GDP per capita growth. The BP
+filter allows for a time-series to be decomposed into different frequency components, which then identify the
+cycles in the different series. The approach we adopt in this analysis follows closely the approach of Erten
+and Ocampo (2013), the major addition being that we further search for the possibility of medium-run cycles
+following Comin and Gertler (2006) and Drehmann et al (2012). The approach we adopt therefore splits the
+per capita GDP growth (𝑦) into five components: (i) a long-run cycle (𝑦 LR ) – with periodicities of 30 to 60
+years, corresponding to the Kondratiev cycle; (ii) a medium-run component (𝑦 MR ) – with periodicities
+between 15 and 30 years corresponding to the Kuznets cycle; (iii) a short-run cycle (𝑦 SR ) – with periodicities
+between 8 and 15 years corresponding to the Juglar cycle; (iv) a very short-term cyclical component (𝑦 SSR ) –
+with periodicities less than 8 years corresponding to the Kitchin cycle; and a residual component (𝑒), that will
+be later discussed as the structural component.
+
+
+                                   𝑦𝑡 ≡ 𝑦 𝐿𝑅 𝑡 + 𝑦 𝑀𝑅 𝑡 + 𝑦 𝑆𝑅 𝑡 + 𝑦 SSR + 𝑒                              (1)
+
+
+The average length of a super-cycle reported by Erten and Ocampo (2013) in their analysis is 35.7 years,
+with a minimum of 24 years and just three (of 18) super-cycles being more than 40 years in length. We
+therefore consider Kuznets cycles with a periodicity between 15 and 30 years. The long-run trend therefore
+has a periodicity greater than 30 years, until 60 years, following the Kondratiev waves. A medium-run cycle
+Juglar wave is then defined as having a periodicity between 8 and 20 years, with the short term cyclical
+Kitchin cycle trend having a periodicity less than 8 years.
+The analysis is undertaken using annual data from the Maddison Project Database and the World Bank
+Database for the period 1950-2015, thus allowing us to consider the most recent data.
+
+
+                              Table 1. Cycles in economic theory and its periods
+      Cycle Name      Main origin                   Period      Main Cause
+      Kitchin         Market Cycle                  0y-8y       Inventories (Consumption)
+      Juglar          Business Investment Cycle     8y-15y      Medium-run Investments
+      Kuznets         Structural       Investment 15y-30y       Long-run Investments
+                      Cycle
+      Kondratiev      Technological Cycle           30y-60y     Technological paradigm change
+      Residual        Trend                         -           Structural element
+
+
+
+   3.2 Cycle Synchronization – Harding-Pagan index
+
+
+We are interested in examining whether the cycles for different countries are synchronized. To the extent that
+if cycles are not particularly well synchronized then we may expect that cycles could develop differently for
+different countries and regions.
+
+                                                                                                                5
+In our analysis we are interested in examining the synchronization of each cycle between different countries.
+In order to do that we use the concordance index developed by Harding and Pagan (2006), which defines the
+interdependence between cycles as the probability that their phases coincide. This is achieved in the
+following way. For each per capita GDP value, 𝑖, a dummy variable, 𝑆𝑖𝑡 , is created that takes the value 1
+when the cycle is going through an upward phase and zero otherwise. The concordance index is then defined
+– for a given pair of cycles in two different countries – as the probability that both cycles are simultaneously
+going through the same phase (either upward or downward), i.e. Pr(𝑆𝑖𝑡 = 𝑆𝑗𝑡 ). The concordance index is
+then calculated as:
+
+
+                                    1   𝑇           𝑇                                                     (2)
+                         𝐼𝐶 (𝑝) =     {∑ 𝑆𝑖𝑡 𝑆𝑗𝑡 + ∑ (1 − 𝑆𝑖𝑡 )(1 − 𝑆𝑗𝑡 )}
+                                    𝑇   𝑡=1         𝑡=1
+
+
+
+The index takes values between zero (i.e. always in the opposite phase) and one (i.e. phases always coincide),
+with a value of 0.5 indicating no synchronization between these cycles during the sample period. In addition
+to reporting values of the concordance index we further report the correlation coefficient between the two
+dummy variables (along with information on whether these correlations are significant).
+
+
+   3.3 Cluster Analysis
+
+
+Cluster Analysis consists on grouping elements in similar groups or clusters. There is no general way of
+clustering, but many distinct methodologies used to group elements with similar attributes. In this paper
+countries are divided into distinct groups based on their cycle attributes of amplitude and duration. The
+methodology used is the K-Means, a method of vector quantization that partitions observations in cluster
+partitioning the data space into regions.
+
+The K-Means method divides 𝑘 distinct clusters composed of certain means. The 𝑛 objects are then grouped
+according to the nearest mean to the clusters. The best number of clusters is not known and must be
+exogenously defined. The objective of this methodology is to minimize intra-cluster variance (The squared
+error function). This is made through defining an objective function 𝑗 that calculates a distance function that
+must be minimized. The objective function can be written as:
+                                             𝑘   𝑛                                                        (3)
+                                                                2
+                                                     (𝑗)
+                                        𝑗=   ∑ ∑‖𝑥𝑖        − 𝑐𝑗 ‖
+                                             𝑗=1 𝑖=1
+
+
+
+Where 𝑥𝑖 represents the case 𝑖 and 𝑐𝑗 represents the centroid for cluster 𝑗. The method firstly computes the
+clusters into the exogenously giver 𝑘 variables. Then it selects randomly cluster centers and assign objects to
+clusters following the distance function ad calculate the mean of each object. This method repeats itself until
+minimizing the distances. This method will create groups of clusters in which countries will be divided. I
+have selected exogenously to divide countries into 6 country groups, from the less to the most volatile.
+
+
+   4. Evidence from the Data
+
+                                                                                                                6
+From the per capita GDP growth data described in the last section, it is possible to observe its average and
+standard deviation (volatility). In Figure 1, we see that most countries have an average growth rate between
+0% and 3.5%. The exceptions are Japan and the Asian tigers (South Korea, Taiwan, Thailand, Hong-Kong,
+Singapore), Myanmar and Botswana, that show a high growth with low volatility and Jordan and Angola,
+countries that showed high growth but also very high volatility. On the other hand, there are Kuwait, Qatar,
+Congo, and Madagascar, countries that showed a reduction in their per capita GDP between 1950 and 2015.
+Most of the countries are in the big cloud in the center.
+
+
+
+
+      Figure 1. Relationship between Average per capita GDP growth, and Standard deviation of per capita GDP growth.
+                                   Source: Author’s own and Maddison Project Database
+
+
+Observing only the big cloud in Figure 1, we see some different patterns. Among countries with low standard
+deviation, we have most developed countries such as Australia, Norway, France, Netherlands, Belgium,
+Denmark, Sweden, Norway, USA, Austria, Germany, and Switzerland. These countries showed a stable
+growth in the observed period. There are cases of developed country that showed high growth right after the
+second war and then a reduction afterwards, which increases their volatility. These are the cases of Japan and
+Finland. Countries with very high volatility are usually associated with war. We have the example of former
+Yugoslavian republics and Sub-Saharian Africa.
+
+
+
+
+                                                                                                                       7
+                     Figure 2. Per Capita GDP level in 2005 versus Standard Deviation of GDP growth.
+                                   Source: Author’s own and Maddison Project Database
+
+Another interesting observation is that countries that in the end of our analysis showed a higher per capita
+GDP have on average lower volatility. This can be seen observing Figure 2. Still a high number of countries
+with low per capita GDP also showed low volatility, so an automatic relationship between being a rich
+country and having low volatility is visible but not strong. For this reason we should further investigate the
+different elements behind each economy, in order to build a typology of different volatility groups. In this
+sense, extracting cycles from original time series will be the first effort to give a picture about the patterns of
+volatility.
+
+
+   5. Analysis by type of cycle
+
+
+This research proposes to capture four cyclical components and a long-run trend. These components are
+associated with the four distinct type of cycle discussed in the economic theory. Starting from a very short-
+run cycle, The Kitchin cycle is associated with cycles with less than 8 years. The Juglar cycle is associated
+with fixed investments with periods between 8 and 15 years. The infrastructural investment Kuznets cycle
+deals with medium cycles that have a periodicity adjusted in this research to between 15 to 30 years. Finally
+the Kondratiev wave captures long-run trends with periodicity higher than 30 years until 60 years.
+In every cycle it is possible to identify four phases: expansion, turning point, stagnation and recession. In
+each of these phases we observe the amplitude and the duration of each process in order to observe the
+average type of growth-crisis dynamics that each country shows. The heteroscedasticity will also be
+analyzed, as there are relevant changes in the growth dynamics of different countries since the post-war
+1950’s until the globalized post-financial crisis world in 2016. Finally, we group countries into categories
+that can represent a typology of instability patterns.
+In order to extract the cycles we made the following procedure: initially, from the original time series, we
+applied the band-pass filter to remove the high frequency filter Kitchin cycle. From the residuals of the
+Kitchin cycle we adjusted the band and filtered the Juglar cycle. From the residuals of the Juglar cycle we
+made a new adjustment and filtered the Kuznets cycle. Finally we did the same to extract the Kondratiev
+
+                                                                                                                 8
+cycle. The resulting residual after all filtering cycles were finally extracted. This last element will be further
+discussed, as it results in a fundamental variable to discuss the structure of the economic conditions of
+countries.
+The different patterns of cyclicality observed in different countries can be grouped using cluster analysis.
+These patterns are compared in terms of the average duration of the cycles and their amplitude. Also, for
+comparison, we observe the cross-correlation in cycles of different countries, calculated with the Harding-
+Pagan index which measures the degree of synchronization. The results showed here use the cycle of the
+USA as a reference, and how cycles in other countries are related to the biggest economy in the world.
+In order to illustrate the methodology and the results obtained, we can observe the filter methodology applied
+on the USA’s and the BRIC’s data. In Figure 3 we see the four types of cycle filtered from the original per
+capita GDP time series for selected countries. Each cycle has a detailed aspect and can be used to help
+identifying some historical turns in countries’ economies. This extraction shows the different degrees of
+stable volatility. An interesting aspect is the residual non-cyclical component finally extracted from the data.
+This residual show the long-run aspects related to the countries’ economic structures. It is a topic discussed
+in Section 5.2.
+
+
+
+
+                                                                                                                9
+                  Figure 3. Volatility, cycles and residual in the US and the BRIC countries
+
+
+
+
+                                Source: Author’s own and Maddison Project Database
+
+In this example we can see the decomposition of per capita growth time series into cycles and trend for the
+USA and the BRIC countries. The scales are different in each graph, which represents the big difference in
+terms of volatility patterns in each country. In red we see the short-run Kitchin cycles with a high frequency
+and variance. This cycle is marked with higher amplitude and smaller duration. Presence of major economic
+crisis can be easily seen in this market cycle, as in the case of 1950’s to China, 1980’s to Brazil and 2010 to
+USA and Russia. The cycles are then smoother in larger ranges with bigger duration but smaller amplitudes.
+                                                                                                            10
+These cycles show some stable patterns and can also be used to think about possible predictions in the case of
+no exogenous major shock. Each cycle can linked to a major element, following the literature. The short-run
+Juglar cycles follows the investment cycles for each economy while the Kuznets cycle is related to longer
+investment cycles related to infrastructure. The Kondratiev cycle is related to technology. We can also
+observe the presence of the residual component. This does not follow a cyclical behavior but a trend. This
+residual can be used to explain changes in the productive structure – such as the reduction on the weight of
+the industrial sector in the USA, which started with the outsourcing processes present on globalization. We
+see the results of each cycle below.
+
+
+   5.1 Results by Cycle
+
+
+The Kitchin Cycle is a short-run market cycle that lasts until 8 years. This cycle is associated with investment
+in inventories. The cycle can be explained in the case of a positive commercial situation that raises output.
+Firms increase the employment of their factors of production – capital and labor until the limit of their fixed
+assets. The market ends up being full of commodities, leading to overproduction. There is then the
+emergence of stocks in inventories. This leads to a lagged decision to reduce production and decrease the
+amount of commodities on inventories. This consumption-based cycle then coeteris paribus returns to its
+initial condition.
+We extracted the Kitchin cycles for all countries in the database. The results were grouped using cluster
+analysis (Figure 4) and show that in terms of this type of cycle we can group the countries. The data was
+calculated in terms of amplitude (Average distance between peaks and valleys) and duration (average time
+spent to complete a full cycle).
+
+
+
+
+             Figure 4. Cluster K-Means Analysis of the Kitchin Cycles (Each color consists of a different group)
+                                  Source: Author’s own and Maddison Project Database
+
+
+Countries in Group 1 (Red) show smaller volatility in terms of their market adjustments in inventories. These
+economies since 1950 until 2015 showed a less volatile combination of amplitude and duration in terms of
+their Kitchin cycles. With few exceptions developed countries can be found in groups 1 or 2 (Black). In
+groups 4 (Purple), 5 (Light Blue), and 6 (Green).
+                                                                                                                   11
+The Juglar cycle is related to an identified investment cycle that takes between 8 to 15 years. The existence
+of this type of cycle is related to the maturity time related to investments in fixed capital. Initially thought by
+Juglar (1862) as a cycle caused by an increase of commodity prices, the evidence of the cycle was later
+related to overproduction and overinvestment. Finally, it was understood as a mismatch between fixed capital
+investment decisions and the maturity of these investments, (Lewis, 1978).
+
+
+
+
+              Figure 5. Cluster K-Means Analysis of the Juglar Cycles (Each color consists of a different group)
+                                   Source: Author’s own and Maddison Project Database
+
+
+The groups of countries that emerge from the Juglar cycle differ from the one resulted from the Kitchin
+cycles. In group 1 (Red) we can see the countries that are able to show a lower variability in their investment
+mismatches. The results are interesting when analyzing individual cases. Japan for instance, despite being a
+very developed country, is defined as group 3 (Purple). Observing the data behind this fact we see that Japan
+show a high heteroscedasticity with a likely structural break between the periods that range from 1950 to
+1980 and the one from 1980 to 2016. The countries with higher volatility though suffered from war and so
+their results are biased by exogenous aspects that will be controlled.
+A medium-run cycle observed in the literature was initially discussed by Kuznets (1930). Initially linked to
+demographic processes, this cycle is currently linked to infrastructural investments. Despite the main reasons
+behind the cycle, the presence of this cycle is a very important element as it gives a good picture of the
+economic recent history of most countries. The duration of the cycle is related to the speed that
+infrastructural investments operate in the economy while the amplitude is related to the weight that a crisis
+impact in investment cycles. This discussion is directly related to the Keynesian topic about uncertainty,
+which affects the long-run investment decision. This relates as well with the smaller time range cycles – the
+most uncertainty caused by instability, the harder is to the investors to make a decision to immobilize capital
+with major investments. These investments are central to change the characteristics of the economic
+structure, moving toward new and modern sectors with a virtuous structural change.
+
+
+
+
+                                                                                                                   12
+                              Figure 6. Cluster K-Means Analysis of the Kuznets Cycles
+                                Source: Author’s own and Maddison Project Database
+Concerning the cluster analysis that selected countries in different group cases, we see that most developing
+countries find themselves in groups 3 (Red), 4 (Green) and 5 (Black). In group 6 (Blue) we observe countries
+marked by a known high political and economic instability and oil producers – Saudi Arabia and Venezuela.
+Group 4 (green) is composed by many Latin American and Caribbean. A group of African countries and
+some south European countries are also in this group. Group 2(purple) and 3(red) are a heterogeneous group
+composed of many African and Asian countries. In group 1 (light blue) there are many developed countries
+such as Australia, Austria, Belgium, Canada, Finland, France, Netherlands, New Zealand, Sweden,
+Switzerland and the UK.
+
+
+
+
+                            Figure 7. Cluster K-Means Analysis of the Kondratiev Cycles
+                               Source: Author’s own and Maddison Project Database
+
+
+
+
+                                                                                                          13
+Kondratiev cycles are long-run economic cycles that last between 30 and 60 years. These cycles were
+discovered by Kondratiev (1935) and have been subject of big discussion since its identification. Recently it
+has been linked by authors such as Perez (2009) to waves of technological changes. By applying a band-pass
+filter for a period between 30 and 60 years and applying the cluster analysis, there is the following result in
+Figure 7.
+Among the groups selected by the cluster analysis, we see that in group 1 (less volatile) is composed by most
+developed countries. Some African countries are also in this list, such as Burkina Faso, Guinea Bissau,
+Madagascar, Mali, Mauritania, Morocco, São Tomé e Principe, South Africa, Tunisia and Zambia. Some
+Asian countries are also in this less volatile group, such as Bangladesh, Laos, Mongolia, Nepal, Sri Lanka,
+Thailand and Vietnam.
+Group 2 is composed mainly by developing countries with the expection of Norway and New Zealand. China
+and India as well as Mexico enter in this classification. Group 3 have a big group of countries from Latin
+America (Argentina, Brazil, Costa Rica, Dominican Republic, Ecuador, Guatemala, Panama, Paraguay,
+Uruguay, Venezuela, Jamaica, and El Salvador) and a big group of countries in Asia. There are some African
+countries and also exceptions such as South Korea, Greece, and Turkey. Group 5 is mainly composed by
+former URSS countries Middle Eastern economies and some African countries. Finally Group 6 has African
+countries such as Nigeria, Saudi Arabia and Sudan; some Middle Eastern economies such as Oman, Qatar
+and Saudi Arabia; Russia and Ukraine.
+
+
+   5.2 Structural Residual
+
+
+Finally we can see the residual that appears after the extraction of all different cyclical component. This
+structural residual is a non-cyclical component associated with a trend and with long-run economic growth.
+Following a separation between cycles and trends we can have a short run behavior of the economic captured
+by the cyclical aspects and the long run behavior captured by the trend residual. This long-run aspect of the
+economy can be linked to the structural conditions of the economic system, especially the productive
+structure. There is a large tradition that links the economic performance with the structural conditions of the
+economy (Cimoli et al, 2010; Cimoli and Porcile, 2011).
+
+
+
+
+                Figure 8. Cluster K-Means Analysis of the Residual (Each color consists of a different group)
+                                   Source: Author’s own and Maddison Project Database
+                                                                                                                14
+The structural residual was analyzed in basis of its average and standard deviation. The average indicates
+which countries managed to keep a higher non-cyclical growth. Countries with high average and high
+standard deviation were the ones that managed to achieve a higher catch-up. In blue we see that many East
+Asian countries are in this catch-up group, as well as Japan, country with higher standard deviation in its
+structural component. Countries that were reconstructed after World War II and became developed ones are
+also in this higher Black (Italy, and Spain and Portugal after) and some in the eastern part of the purple group
+such as Germany, France and The Netherlands. In light blue we see the countries with worst performance in
+terms of their structural non-cyclical components. These ones, as well as countries in the red group, did not
+manage to advance in the elements that change their structural component – which is related to structural
+change. The light blue and red groups, as well as some in purple groups can be seen stuck in development
+traps. Either in poverty traps or middle income traps. In green we see countries that managed to keep a higher
+structural component without a strong break in their growth pattern.
+African and Latin American countries are mainly in this western region of Figure 8 associated with
+development traps. The fragility of their structural component is directly associated with the weaknesses of
+their productive structure. Countries that did not manage to catch up and make a big structural change are
+then seen in these groups.
+
+
+   6. Cycle concordance
+As we can observe in the Annex, in Figure 9 we observe which countries show higher synchrony of their
+Kitchin cycles with the USA. Canada shows higher synchrony, followed by Germany, Thailand, France and
+the UK. The hypothesis here is that countries with bigger economic interaction with the USA are the ones
+with higher synchrony of their short-run market cycles. This result may look a tautology, but this is not true
+for the other cyclical components as it will be further discussed.
+Observing the concordance between the Juglar cycles of distinct countries related to the USA we see
+interesting results. Considering that 0.5 means no relation between the selected country and USA, most of the
+countries, as expected show a positive correlation with the investment cycles in the USA. The demand
+generated by the USA end up being an important aspect to stimulate investments in other parts of the world.
+The countries with higher correlation with the USA involve some Latin American countries such as Bolivia,
+Costa Rica, El Salvador and Honduras. Also Canada, Australia, UK and Norway, economies directly linked
+to the US economy show high synchronization. Some surprises involve countries such as Turkey, Tanzania,
+Romania, Hungary and Iraq, with a high positive synchronization. The countries with negative concordance
+are Bahrain, Zimbabwe, Iran, Liberia and Congo.
+The concordance of the Kuznets cycles with US economy brings interesting elements. Firstly, most countries
+have not their cycles synchronized with the USA. The countries with highest positive synchronization are
+Australia, UK and Canada, followed by some African countries such as Mauritania and Burkina Faso, and
+Denmark and Finland. On the other hand, the countries with negative synchronization of their Kuznets cycles
+with the USA includes most Latin American countries, such as Argentina, Brazil, Colombia, Ecuador,
+Honduras, Paraguay, Uruguay and Venezuela. Some African countries are also included with negative
+synchronization with the USA such as Jordan, Serbia, Gambia, Lesotho, Mauritius, Somalia and Tunisia.
+The main characteristics of the Kondratiev cycle is related to the fact that is much smoother than other cycles
+and it is related to international patterns of technological change. Most countries show a positive
+synchronization of their Kondratiev cycles with the USA. There are still some countries with negative
+synchrony with the USA, especially in the middle east and Sub-Saharian Africa, as well as Ukraine and
+                                                                                                             15
+Uruguay. These countries can be seen as the ones with bigger lag in the adaption of new international
+technological standards. Their growth in the technological cycle may indicate a slow adoption of new
+technologies.
+
+
+   7. Conclusion
+
+
+Discovering the regularities in economic behavior is a relevant topic to understand some elements that trap
+economies in underdevelopment. In this paper we made an empirical effort to observe volatile regularities by
+looking at the cyclical behavior related to per capita GDP, an important measure of economic development.
+We initially showed some stylized facts about the relationship between volatility and per capita GDP growth.
+This analysis gives us an idea about economic instability, especially in developing countries. Though, it does
+not allow us to observe the regularities in volatility that can be associated with the economic structures of an
+economy. For this reason, we applied filtering analysis in order to discuss the distinct regularity patterns of
+economic behavior. As database we used the Maddison Project Database and adjusted data using methods to
+identify structural breaks and outliers (that may be associated to the presence of wars, a non-economic
+component). After removing this data we re-estimated the results using a MICE (Multivariate Imputation by
+Chained Equations) framework.
+The Asymmetric Band-Pass Filter was applied on data extracting four types of cycle (Kitchin, Juglar,
+Kuznets and Kondratiev), and a residual non-cyclical trend. The results were grouped using Cluster Analysis
+(K-means algorithm) into 6 distinct groups based on two main measures – amplitude and duration of the
+cycles. The cycles were compared for different countries using the Harding-Pagan index of cycle
+synchronization.
+The results confirmed some expected outcomes. Cycles in developed countries are less volatile than
+developing countries, despite some exceptions. There are some developed countries, though, that do not
+appear in the less volatile group for some cycles, such as Japan. In terms of short run cycles (Kitchin) the
+country groups with most volatility are also the ones with smaller synchronization with the cycle of the USA
+– but this is not true for medium run cycles. Latin American countries, which in the short run follow a similar
+behavior as the USA, in the medium-run Cycle results show themselves having a completely opposite
+behavior. This is interesting not only because it shows that distinct cycles result in distinct behaviors, but
+because the investment cycles in Latin America follows a different pace than in the USA, which raises
+elements to think if the low resilience to external shocks long known in Latin America is only a matter of
+short-run reactions. The development of the economic structure (structural investments and the structural
+residual) follows a different pace.
+Among the most volatile regions we can cite the Middle East, West Africa and Former Soviet countries
+followed them by Latin American economies. The most stable regions are North America, Western Europe
+and Oceania. Eastern Asia, a region with a big amount of countries that managed to catch-up recently showed
+a medium volatility, but this should be tested with heteroscedasticity, as we can suppose the existence of two
+time dynamics – before after starting the industrialization strategy. Wars had a big impact on volatility – so
+they were identified and treated in the data. This paper aims to give inputs to the observance of the economic
+reasons behind instability.
+The explanation behind the cycles let us understand the main economic mechanisms that generate this
+unstable behavior in the economic system. The very short run cycles are linked to demand answers of the
+economy to inventory changes and to price modification (case of exchange-rate devaluation). This very short
+cyclicality also affects investment decisions, having a lagged impact on the short run Juglar cycle, which is
+                                                                                                             16
+related to investments. High short-run instability will create an environment with high uncertainty that
+impacts on the investment decisions, affecting the Juglar cycle and also the structural component. This latter
+is seen as the element that is directly linked with the quality of the productive structure of the economy. The
+next step is to capture the relationship between the structural component, structural change, increases in
+technological capabilities and modernization.
+The medium-run Kuznets cycle, which is related to structural investments have a very important aspect in
+this discussion. Infra-structural investments affect directly the productive structure, a central element related
+to the long-run economic growth. In this sense the Kuznets cycle links more directly the short-run volatility
+to the long-run growth. Finally, Kondratiev cycles are linked to technological changes. The speed in which
+countries absorb and adapt their structure to the technological frontier can be seen through Kondratiev’s
+cycle synchronization.
+In further research, the results found in this empirical analysis will be used as inputs to the development of
+the Chronic Macroeconomic Instability model. This model links volatility, productive structure and the
+fragility pattern of countries. Theoretically built on the Sructuralist theory (Taylor, 1991), the model aims to
+explain how some countries are trapped in development issues that do not let them catch-up in their
+economic development strategies.
+
+
+    8. References
+
+
+Abramovitz, M. (1961). The nature and significance of Kuznets cycles. Economic Development and Cultural Change,
+9(3), 225-248.
+Abramovitz, M., 1968. The passing of the Kuznets cycle. Economica, 35(140), pp.349-367.
+Barbosa‐Filho, N.H. and Taylor, L., 2006. Distributive and demand cycles in the US economy—a structuralist
+Goodwin model. Metroeconomica, 57(3), pp.389-411.
+Benkemoune, R., 2009. Charles Dunoyer and the Emergence of the Idea of an Economic Cycle. History of Political
+Economy, 41(2), pp.271-295.
+Besomi, D., 2005, December. Clément Juglar and the transition from crises theory to business cycle theories. In a
+Conference on the Occasion of the Centenary of the Death of Clement Juglar. Paris (Vol. 2).
+Bolt, J. and Van Zanden, J.L., 2013. The first update of the Maddison project; re-estimating growth before 1820.
+Maddison-Project Working Paper WP-4, University of Groningen, January, 5
+Bosserelle, É., 2015. Mouvements longs Kondratieff, transformations institutionnelles et performances du capitalisme.
+Revue française de socio-Economie, (1), pp.283-298.
+Bossier, F. and Huge, P., 1981. Une vérification empirique de l'existence de cycles longs à partir de données
+belges. Brussels Economic Review, 90, pp.253-267.
+Christiano, L.J. and Fitzgerald, T.J., 2003. The band pass filter. international economic review, 44(2), pp.435-465.
+Cimoli, M., Porcile, G. and Rovira, S., 2010. Structural change and the BOP-constraint: why did Latin America fail to
+converge?. Cambridge Journal of Economics, 34(2), pp.389-411.
+Cimoli, M. and Porcile, G., 2011. Global growth and international cooperation: a structuralist perspective. Cambridge
+Journal of Economics, 35(2), pp.383-400.
+Comin, D. and Gertler, M., 2006. Medium-term business cycles. The American Economic Review, 96(3), pp.523-551.
+Diebolt, C. and Doliger, C., 2006. Economic cycles under test: A spectral analysis. NATO security through science
+series e human and societal dynamics, 5, p.39.
+                                                                                                                       17
+Diebolt, C. and Doliger, C., 2008. New international evidence on the cyclical behaviour of output: Kuznets swings
+reconsidered. Quality & Quantity, 42(6), pp.719-737.
+Drehmann, M., Borio, C.E. and Tsatsaronis, K., 2012. Characterising the financial cycle: don't lose sight of the
+medium term!.
+Eichengreen, B. and Hausmann, R. eds., 2010. Other people's money: debt denomination and financial instability in
+emerging market economies. University of Chicago Press.Michal Snyder (2010)
+Erten, B. and Ocampo, J.A., 2013. Super cycles of commodity prices since the mid-nineteenth century. World
+Development, 44, pp.14-30.
+Fisher, I., 1933. The debt-deflation theory of great depressions. Econometrica: Journal of the Econometric Society,
+pp.337-357.
+Foster-McGregor, N., Kaba, I. and Szirmai, A., 2015. Structural change and the ability to sustain growth (No. 048).
+United Nations University-Maastricht Economic and Social Research Institute on Innovation and Technology
+(MERIT).
+Fukuda, K., 2009. Measuring major and minor cycles in univariate economic time series. Economic Modelling, 26(5),
+pp.1093-1100.
+Gallegati, M., Gallegati, M., Ramsey, J.B. and Semmler, W., 2017. Long waves in prices: new evidence from wavelet
+analysis. Cliometrica, 11(1), pp.127-151.
+Goodwin, R.M., 1982. A growth cycle. In Essays in Economic Dynamics (pp. 165-170). Palgrave Macmillan UK.
+Granger, C. W. J., & Hatanaka, M. (2015). Spectral Analysis of Economic Time Series.(PSME-1). Princeton university
+press.
+Harding, D. and Pagan, A., 2006. Synchronization of cycles. Journal of Econometrics, 132(1), pp.59-79.
+Hodrick, R.J. and Prescott, E.C., 1997. Postwar US business cycles: an empirical investigation. Journal of Money,
+credit, and Banking, pp.1-16.
+Hamilton, J.D., 2016. Why You Should Never Use the Hodrick-Prescott Filter. University of California, Working
+Paper.
+Hodrick, R.J. and Prescott, E.C., 1997. Postwar US business cycles: an empirical investigation. Journal of Money,
+credit, and Banking, pp.1-16. (1980)
+Jadevicius, A. and Huston, S., 2014. A “family of cycles”–major and auxiliary business cycles. Journal of Property
+Investment & Finance, 32(3), pp.306-323.
+Juglar, C., 1862. IDes crises commerciales et de leur retour périodique en France. Angleterre et aux ÉtatsYUnis,
+PaperbacN, Adamant Media Corporation.
+Kitchin, J., 1923. Cycles and trends in economic factors. The Review of economic statistics, pp.10-16.
+Kondratiev, N. D. 1935. The long waves in economic life, Review of Economic Statistics, no. 17, 105-15. Juglar(1862)
+Korotayev, A.V. and Tsirel, S.V., 2010. A spectral analysis of world GDP dynamics: Kondratieff waves, Kuznets
+swings, Juglar and Kitchin cycles in global economic development, and the 2008–2009 economic crisis. Structure and
+Dynamics, 4(1).
+Kriegel, H.P., Kröger, P. and Zimek, A., 2009. Clustering high-dimensional data: A survey on subspace clustering,
+pattern-based clustering, and correlation clustering. ACM Transactions on Knowledge Discovery from Data (TKDD),
+3(1), p.1.
+Kuczynski, T., 1978, August. Kondratieff cycles—appearance or reality. In Proceedings of the Seventh International
+Economic History Congress, Edinburgh.
+Kuznets S. 1930. Secular Movements in Production and Prices. Their Nature and their Bearing upon Cyclical
+Fluctuations. Boston: Houghton Mifflin.
+                                                                                                                  18
+Kuznets, S., 1940. Schumpeter's business cycles. The American Economic Review, pp.257-271.
+Kydland, F.E. and Prescott, E.C., 1990. Business cycles: Real facts and a monetary myth. Real business cycles: a
+reader, 383.
+Larrain, F. and Sachs, J.D., 1986. Contractionary devaluation, and dynamic adjustment of exports and wages.
+Lewis, W. Arthur (1978). Growth and Fluctuations 1870–1913. London: Allen & Unwin. pp. 33–68.
+Lucas Jr, R.E., 1975. An equilibrium model of the business cycle. Journal of political economy, 83(6), pp.1113-
+1144.Prebisch (1950)
+Maddison, Angus (2001). The World Economy. A millennial perspective. Paris, OECD.
+Maddison, Angus (2003). The World Economy. Historical Statistics. Paris, OECD.
+Metz, R. and Stier, W., 1992. Filter design in the frequency domain. In New Findings in Long-Wave Research (pp. 45-
+79). Palgrave Macmillan UK.
+Metzler, L.A., 1941. The nature and stability of inventory cycles. The Review of Economics and Statistics, 23(3),
+pp.113-129.
+Minsky, H.P., 1974. The modeling of financial instability: An introduction. Modelling and Simulation, 5(1), pp.267-
+272.
+Perez, C., 2009. Technological revolutions and techno-economic paradigms. Cambridge journal of economics,
+p.bep051.
+Pollock, D.S.G., 2014. Cycles, syllogisms and semantics: Examining the idea of spurious cycles. Journal of Time
+Series Econometrics, 6(1), pp.81-102.
+Prebisch, R., 1950. The economic development of Latin America and its principal problems. Economic Bulletin for
+Latin America. Economic Commission for Latin America – United Nations.
+Rostow, W. W. (1975). Kondratieff, Schumpeter, and Kuznets: trend periods revisited. The Journal of Economic
+History, 35(04), 719-753.
+Donald B Rubin (1987), Multiple Imputation for Nonresponse in Surveys. Wiley, NY.
+Schumpeter, J.A., 1939. Business cycles (Vol. 1, pp. 161-74). New York: McGraw-Hill.
+Silverberg, G.; Verspagen, B. (2000). Breaking the Waves: A Poisson Regression Approach to Schumpeterian
+Clustering of Basic Innovations. Maastricht: MERIT.
+Sismondi, J.C.L. Simonde de. 1966 (1815). Political Economy. New York: Augusts M. Kelley
+Sismondi, J.C.L. 1991 [1819]. New Principles of Political Economy. Richard Hyse, Translator and Annotator.
+Foreword by Robert Heilbroner. New Brunswick, NJ: Transaction Publishers
+Stiglitz, J.E., 2000. Capital market liberalization, economic growth, and instability. World development, 28(6),
+pp.1075-1086Taylor, 1991
+Taylor, L., 1991. Income distribution, inflation, and growth: lectures on structuralist macroeconomic theory. MIT
+Press.
+Tobin, J., 1975. Keynesian models of recession and depression. The American Economic Review, 65(2), pp.195-202.
+Van Ewijk, C., 1981. The long wave—a real phenomenon?. De Economist, 129(3), pp.324-372.
+
+
+
+
+                                                                                                                  19
+Annex. Cycle Concordance with the USA
+
+
+
+
+                    Figure 9. Country's concordance of the Kitchin Cycles related to the USA
+                              Source: Author’s own and Maddison Project Database
+
+
+
+
+                    Figure 10. Country's concordance of the Juglar Cycles related to the USA.
+                             Source: Author’s own and Maddison Project Database
+
+
+
+                                                                                                20
+ Figure 11. Country's concordance of the Kuznets Cycle related to the USA
+           Source: Author’s own and Maddison Project Database
+
+
+
+
+Figure 12. Country's concordance of the Kondratiev Cycles related to the USA
+            Source: Author’s own and Maddison Project Database
+
+
+
+
+                                                                               21
+

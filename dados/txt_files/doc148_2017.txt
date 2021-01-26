@@ -1,0 +1,1277 @@
+   WHICH INFORMATION MATTERS TO MARKET
+    RISK SPREADING IN BRAZIL? VOLATILITY
+       TRANSMISSION MODELLING USING
+        MGARCH-BEKK, DCC, t-COPULAS
+               Felipe Araújo de Oliveira∗                  Sinézio Fernandes Maia†
+               Cássio da Nóbrega Besarria‡                    Diego Pitta de Jesus§
+
+
+
+
+                                               Abstract
+
+       The recent period have present difficulties to predict sources of risk in Brazil. The objective
+       of this article was to analyze the spillover effects and channels of volatility from and
+       to Brazilian stock market (Bovespa) in the period that goes from 2014 to 2016. In this
+       period, is marked as one of the most volatile periods since the subprime crisis. A political
+       and economic crisis, followed by federal police investigation combined with a period of
+       slow economic growth in the world, downtrend in commodities prices and unconventional
+       monetary policies in the world, makes the task to identify the sources of price risk dubious.
+       Using a MGARCH-BEKK, DCC and t-Copulas modelling, the main results of the article
+       suggest US monetary policy and rebalancing of portfolios generates volatility to Brazil.
+       However, Bovespa also generates volatility to commodity markets and US bonds market.
+       This is explained by the role that Brazil plays as mediator of these markets when allocators
+       diversify their positions with Latin America and in commodities. In this regard, Policy
+       Makers must observe portfolio rebalancing and its consequences to risk spreading before
+       implementing economic policies.
+
+
+       Keywords: DCC, GARCH-BEKK, t-Copulas, Spillover, Market Risk.
+
+
+Área 8 - Microeconomia, Métodos Quantitativos e Finanças.
+JEL classification: C32, C58, G32.
+   ∗
+     Graduando em Economia pela UFPB <felipe.8.araujo@gmail.com>+55 83 94218868
+   †
+     Professor Adjunto da Universidade Federal da Paraíba - UFPB <sineziomaia@yahoo.com.br>
+   ‡
+     Professor Adjunto da Universidade Federal da Paraíba - UFPB <cassiodanobrega@yahoo.com.br>
+   §
+     Mestrando em Economia pelo PPGE/UFPB <diegopitta13@hotmail.com>
+
+
+
+
+                                                     1
+1 Introduction
+       In his seminal work about volatility transmission, Engle, Ito e Lin (1988) explains
+the volatility process lies in an agile reaction to a contemporary information or in a sluggish
+information pricing by the market. Particularly, in Brazil, the period between 2014 and 2016,
+marked Brazilian financial Market as one of the most volatile periods since the subprime crisis.
+A political crisis, combined with the federal police investigation – called in a free translation as
+“Car Wash”-, and geopolitical events as the BREXIT, expectations about monetary policy and
+presidential elections in USA generated volatility on markets.
+       In the middle of this turbulence of information, it is difficult for portfolio managers
+to discern the relevant news. While most analysts attributed to politics the performance of
+the stock market index, Vladimir Signorelli in Rapazza (2016) says that investors are not
+interpreting Brazilian market well. The commodities were pushing Bovespa up to him. The
+Figure 1 in section 5 shows the relationship of GDP, commodities and stock markets.
+        A correct understanding about the co-dependence between markets is critical to portfolio
+performance and to policy makers interventions. The causes and consequences from Macro-
+prudential Policies lies in implement the correct variables in models. A correct measurement of
+correlation is used as input in diversificated portfolios. On the other hand, recent crisis revealed
+the importance of the interdependence between financial institutions and markets to systemic
+risk (see Ibragimov, Jaffee e Walden (2011)).
+        Additionally, the technology advances in trading provides agility and easier access to
+international markets to traders. Consequently, strategies of international diversification, and
+arbitrage opportunities, are easier to implement. Solnik (1995) suggest that internationally
+diversificate portfolios perform better than domestically ones. Of course, as Markowitz (1952)
+formalized in his seminal work, the low correlation between assets reduces risk while improves
+return. However,Longin e Solnik (1995) shows that the correlation between countries tend to
+variate in time, and to become higher in level, as well.
+        In a highly-integrated world, both in an economical and a financial perspective, issues
+about temporal cross dependence of assets return gain importance. The recent literature
+recognizes the existence of financial co-volatility movements. Particularly, considering these
+features, they have the potential to carry out the best decisions of hedging, portfolio selection,
+pricing of assets and derivatives, and market risk management Bauwens, Laurent e Rombouts
+(2006). Engle (1982) pioneered the development in financial econometrics risk measures, that
+in advance allow to solve problems of aggregation of risk. Developing multivariate models as
+MGARCH, CCC, DCC or models with flexibilizations of normally distributed returns as copulas
+1
+  .
+        As noted by Bekaert, Hodrick e Zhang (2009), co-volatilities have received too much
+attention because of the highly-correlated risk that marked crises in emerging markets. These
+structural breaks in correlation patterns are termed as contagion. A profound discussion about
+this survey can be find in Calvo e Reinhart (1996);Dornbusch, Park e Claessens (2000);Forbes e
+Rigobon (2002); Marçal e Pereira (2009).
+        This article deals with well-known and expected effect of interdependence that occur
+between markets in periods of stability, as referred by Forbes e Rigobon (2002). The transmission
+of volatility in Brazil might occur, first in pathway channels that institutional investors (pensions
+funds, hedge funds) creates to gain exposure on commodities markets throughout Brazilian
+companies (such Vale and Petrobras) or other emerging markets highly correlated with Brazil,
+1
+    Patton (2009)presents a broad discussion about using Copula functions when modelling financial times series,
+    and their desirable density distribution assumptions to risk modelling.
+
+
+                                                       2
+but with less liquidity. In this regard, Cardona, Gutiérrez e Agudelo (2017) attest to the
+leadership role played by capital market of Brazil in Latin America.
+        A second motive to spillover of risk occur, relates to portfolio allocators pursuing emerging
+market shares to balance their risk and return strategies. Of course, it cannot be ignored the
+existence of herd behavior in markets, that drives mainly contagion effect, but also, spillover of
+risk. The literature that understand the channels and what generates capital flow is too wide to
+survey here, a profound analysis can be found in Bonizzi (2016), Froot e Donohue (2002), and
+Hsieh et al. (2011).
+       The seminal paper of Engle, Ito e Lin (1988), stablished transmission effects in comparison
+with market efficiency. Modelling Yen/USD, to a wide group of markets, they tested the
+hypothesis of Heat Waves and Meteor Shower. The first relates to the fundamentals of an
+economy, which must not widespread to other markets. In contrast, the Meteor Shower hypothesis
+proposes the tendency of less efficient markets to widespread information. The recent literature
+on transmission effects still is concerned with the impact of events in economic variables, or
+about the identification of factors that spread waves of risk among existing channels and with
+the contagion effect in times of crisis, as well.
+        Ahmadi, Behmiri e Manera (2016) investigates the effects of different oil-related shocks
+on the volatility of agricultural prices using a Vector Autorregressive (VAR) model. The main
+results suggest a significant impact of oil volatility in agricultural markets. Baldi, Peri e Vandone
+(2016) additionally uses a GARCH-BEKK model to identify transmission effects between SP 500
+and commodities market, finding a negative relationship in transmission effects. Beckmann
+e Czudaj (2014) adopts a different approach; using future markets they find out a spillover
+effect within commodity prices. Gozgor, Lau e Bilgin (2016) broadens the precedent literature
+by trying to measure the role of uncertainty and risk perceptions on commodity’s volatility.
+However, the effects of risk perception and uncertainty are statistically robust just for few
+products.
+        Particularly, oil plays a leadership role in world’s economic activity. Broadstock, Cao e
+Zhang (2012) in a fama-french three factor model, oil prices changes can be interpreted as a
+systemic risk to related stocks from Chinese energy sector. In Broadstock e Filis (2014), the
+authors disentangled oil-prices into specific shock series (supply, demand, aggregate demand)
+and add US stock market. This approach is important to understand the existence of asymmetric
+specific shock responses depending on economic signals and sectors. Boldanov, Degiannakis e
+Filis (2016) expands the analysis to discern shocks in oil-exporting and oil-importing countries.
+Supply side shocks tend to affect both countries differently, whereas demand side tend to affect
+all countries positively.
+        The versatility of the Multivariate GARCH models is used to analyze the vulnerability
+that countries face about regional or global shocks. Alotaibi e Mishra (2015) studies the effects
+of volatility spillovers from regional and global factors over GCC stock markets attesting
+an asymmetry of responses. Cardona, Gutiérrez e Agudelo (2017) tested the hypothesis of
+decoupling between United States and Latin American Countries – such as Mexico, Brazil, Chile,
+Peru, Colombia, Argentina. They used a Multivariate GARCH-BEKK model to averiguate the
+spillover relationships between these markets. The aftermath of the study suggests that Brazil
+have a leadership role on the region since it transmits volatility to other countries. Additionally,
+the country is the only one to transmit volatility to the United States. However, the results do
+not provide support to the financial decoupling hypothesis though.
+        Liu, Hammoudeh e Thompson (2013) and Hammoudeh et al. (2013) disentangle economic,
+financial and political risk on BRICS countries. Using a MTAR and an ADRL framework they
+try to measure the transmission of risk by these factors.
+
+                                                 3
+        A few works focusing on Brazil’s markets movements using MGARCH models can be
+found. Using DCC and GARCH-BEKK models, Chaine (2011) tested the spillover effect from
+the S&P 500 on the Bovespa index, along the subprime crisis. The hypothesis of transmission is
+attested, suggesting that during the crisis co-movement is highly positively correlated. Righi
+e Ceretta (2013) splits the sample in before, during and after the financial crisis of 2008 to
+evaluate the transmission effect on Brazil’s stock market. The results are illustrative as they
+reveal that Brazil index started to influence other indexes during the crisis, and after the crisis,
+its market emerged as more integrated to the world. Ferreira et al. (2012) analyzes the contagion
+effect on the same period under sectorial indexes, finding evidences of a rising co-volatilities,
+affecting mainly the real estate and financial sectors.
+       The stylized fact about non-normality of distributions in financial series is a motivation
+to use a more appealing modelling about this fact. Lee e Long (2009) proposes the use of a
+Copulas function modelling Multivariate GARCH models such DCC, BEKK and VC. Another
+approach in this sense is proposed by Christoffersen et al. (2011), that uses copula allowing to
+asymmetries and tail dependence combined with DCC and DECO models.
+         Empirical studies applied to Brazil that we had access test the interdependencies in
+periods of crisis. Therefore, they fit better to Forbes e Rigobon (2002) definition of contagion
+effects, instead of transmission effect. Barroso, Silva e Sales (2016) attempt to provide evidence
+of a portfolio rebalancing effect due to unconventional monetary policies in US. To attest the
+effects of Quantitative Easing on capital inflows in Brazil, the authors built a counterfactual
+exercise. Their detailed analysis confirmed some intuitions about spillover effects from US
+monetary policy. Capital inflows led to exchange rate appreciation, stock market boom, and
+credit growth. Moreover, the results are as revealing as enlightening to the effects of capital
+flows to economic variables in Brazil.
+         The objective of this article is to analyze and identify the transmission effects and
+channels of volatility from and to Brazilian stock market. The hypothesis tested here is the
+existence of these channels because of: i) Brazil is a mediator of perturbance and volatility of
+commodities (metals, energy, and agricultural) and Latin American markets; ii) The volatility of
+financial market in Brazil is highly dependent of international disturbances (politic, geopolitics,
+economic); iii) The fundamentals of the Brazilian economy explain by themselves the volatility in
+stock markets. The methodology chosen to test the transmission of volatility to Brazil is based on
+Cardona, Gutiérrez e Agudelo (2017), that uses a bivariate and a trivariate GARCH-BEKK and
+the estimation is based on Lütkepohl (2005) and Tsay (2013). Even though these models present
+difficulties to encounter significant parameters, their outcomes are intuitive and objective.
+        The difficulty to disentangle the sources of shocks is evident in the literature review, it
+intensifies in a country with political and fiscal instability as Brazil in this period. This factors
+shed light on the need to clarify the right channels of risk to the financial market in Brazil.
+Portfolio managers and Policy Makers (see Barroso et al. (2014)) interventions decisions to
+control systemic risk, can directly be benefited by exercises like this. Moreover, the lack of
+empirical applications focusing on Brazil highlights the contribution of this article.
+       Besides this introduction, this paper is organized in four additional sections. The next
+present the data main features. The third section discusses the methodology applied, followed
+by the fourth that presents and discusses the results. Finally, the fifth section is the conclusion.
+
+
+2 Data
+        The times series used are daily logarithmic returns of Brazil and USA stock index;
+agricultural commodities as Corn, Sugar, Soybeans, Coffee and Etanol; other commodities are
+
+                                                 4
+Iron ore and Brent Oil (is the most relevant to oil companies in Brazil); and financial products
+as Credit Default Swaps (CDS) of 5 years maturity, Brazilian and USA bonds of 10 years
+maturity, as well. The data was provided by Thomson Reuters Database, and the sample of
+study goes from January of 2014 to December of 2016.
+
+          Table 1 – Descriptive Statistics of returns – Period: jan/2014 to dec/2016
+
+                Min.        Mean       Median     Max.       S.D.      C.V (%)    Kurtosis (excess)   J.B.
+  Bovespa       - 4.9880    0.0246     0.0103     6.3867     1.5925    64.573     0.5847              14.25(0.00)
+  SP500         - 4.2021    0.0282     0.0349     3.8291     0.8600    30.470     2.1609              160.63(0.00)
+  Gold          - 3.3842    - 0.0083   - 0.0574   4.6866     0.9440    -112.955   2.1496              135.52(0.00)
+  Iron          -15.8374    - 0.0764   0.0514     12.0955    1.8811    -24.593    -2.3083             148.74(0.00)
+  Brent         - 10.2449   - 0.0901   - 0.1785   10.3094    2.4907    -27.630    2.0159              33.01(0.00)
+  CDS5y         - 15.6975   0.0492     0.0000     14.1385    3.2812    66.623     2.2683              160.24(0.00)
+  BR Bonds10y   - 5.2182    - 0.0200   - 0.0398   4.6228     1.1464    -57.238    1.5400              74.25(0.00)
+  US Bonds10y   - 11.0214   - 0.0259   - 0.1455   10.7081    2.3485    -90.5484   1.5262              71.71(0.00)
+  Corn          - 5.5197    0.0071     - 0.0894   5.3725     1.3666    190.214    0.6684              19.42(0.00)
+  Sugar         - 4.7055    0.0358     0.0371     3.7537     1.1678    32.5624    0.2895              2.85(0.24)
+  Soybeans      - 7.6265    - 0.0441   0.0178     9.0971     1.3986    -31.7029   5.2865              876.69(0.00)
+  Coffee        - 9.3006    0.0320     0.0191     9.1640     2.1976    68.5139    1.5771              78.91(0.00)
+  Ethanol       - 5.8230    0.0113     0.0022     9.0269     14.5958   128.0351   2.8073              251.57(0.00)
+
+
+
+       The agricultural commodities are justified due the close relationship they have with
+economic activity in Brazil (see Figure 1). The American stock index and 10 years bonds, are
+used to analyze rebalancing effects due to unconventional monetary policies there. Exist evidence
+they cause rearrangement of carry trade portfolios around the world (GUNES, 2012). Credit
+Default Swaps (CDS) became known after the financial crisis, as a source of security to default
+of debt in Brazil, have been mostly used by analysts and academia as country risk indicator.
+       The descriptive statistics shows that some series present outliers, as US Bonds and
+Iron. The test of normality rejects the null hypothesis of normality to almost all the series.
+Additionnaly, is possible to identify that the agricultural commodities market has a more
+disperse distribution than the metals and financials. The excess of kurtosis different from zero
+suggests the adequacy of these series to a conditional heteroscedasticity modelling.
+       The political crisis in Brazil was one of the major features of the period of this study.
+In some way, have driven prices on financial markets due expectations relating conduction
+of economic policy. Moreover, the presidential election in 2014 was cutthroat, it expanded
+uncertainty and disturbed investor’s portfolios.
+        In fact, is possible to observe on Figure 1 the uptrend since 2014, followed by a reversal
+movement that marks Brazilian stock market’s phase of downtrend. Amorim (2016) highlights
+that the presidential election generated a polarized dispute between the candidate of Social
+Democratic Party (PSDB) Aécio Neves and the representant of Labor Party (PT) Dilma Rousseff.
+The expectations of a possible election of the first forced at that time a raising tendency of
+stock markets’ prices until 2015. This pressure of buyers became known in a free translation as
+“bull election’s market”.
+       Afterwards, in 2015, the political climate worsens. As Globo (2014) pointed the elected
+president Dilma Rousseff peddled a lie on society when she changed all the economic team
+and pivoted to an austerity economic policy – meanwhile her proposals were about more fiscal
+expansion policies. Moreover, Almeida e Salto (2016) explain that is in this period that the
+problems about public debt becomes explicit. In the same period, the stock market’s prices of
+the companies became more volatile.
+       August of the same year, the govern delivered to congress the budget of the next year in
+
+                                                         5
+a deficit situation. This event is sparkled as the first time on the history of the country (GLOBO,
+2015). It reinforces the fiscal problems that the country faces, what motivates a downgrade on
+credit rating by risk agencies Standard and Poor’s and Fitch. Finally, at end of the year the
+leader of the government went to jail as suspect of bribery.
+        Nevertheless, this context conjectures a political crisis with consequences on Bovespa’s
+(brazilizan stock exchange) volatility. Once an impeachment, in the prevailing political system
+in Brazil could solve the crisis (ABRANCHES, 1988). Just the raising probability of these event
+resulted in a bull market in Brazil. However, at the same period the international environment
+enhanced beginning an uptrend as well. Is possible to note when observing the trend of prices
+of Brent Oil, S&P500 index and the other commodities1 . The high correlation between them
+is explained by the highly dependence of Brazil of exports of primary products and due the
+dynamic of trading of certain commodities as oil and iron. Speculators and investors might prefer
+to reduce costs of trading by buy and sell financial products of companies highly associated with
+its markets as Vale and Petrobras. Its worsen analysis of portfolio managers making difficult to
+discern correlation from causality.
+
+
+3 Methodology
+        Since Markowitz (1952), the analysis of risk is based on statistical measures. Sharpe
+(1964), Lintner (1965) and Mossin (1966) relativized in a linear relationship the notion of risk
+with the Capital Assets Pricing Model (CAPM). Problems of adherence to data experienced
+by this models motivated Ross (1976) to propose Arbitrage Price Theory (APT) to increase
+robustness of beta as measure of exposure to systemic risk.
+        However, Mandelbrot (1963) notes the misbehaving of models of risk measurement
+due to the inconsistency between the assumption of normally distributed returns and real
+world financial returns behavior. Financial times series tend to cluster, a problem solved by
+modelling the conditional heteroscedasticity. Proposed by Engle (1982) with the Autorregressive
+Conditional Heteroscedasticiy(ARCH) model. Bollerslev (1986) proposed a generalization with
+the Generalized ARCH(GARCH), pioneering a set of extensions trying to capture leverage effect
+of financial time series.
+         Moreover, as Cardona, Gutiérrez e Agudelo (2017) suggest, the aftermath of financial
+crisis led scholars to propose models allowing to predict idiosyncratic risk and their effects on
+other markets. Additionally, portfolio managers must base their decisions of allocation on cross-
+assets effects (DANÍELSSON, 2011). Policy makers must feed up their macroeconometric models
+with the interdependence between economic variable before taking a decision, as well. Although
+valuable, the positive definiteness and the excess of parameters generated by a multivariate
+model, requires imposing some restrictions (FRANCQ; ZAKOIAN, 2011).
+       Among them, the most direct generalization is the VEC Model proposed in Bollerslev,
+Engle e Wooldridge (1988) 2 . The literature that comes after, state forms to solve the problem
+of overparameterizations of VEC specification. A model relying on univariate GARCH is
+1
+    In the appendix, the figure 1 shows the relationship between economic activity in Brazil, its Stocks and
+    commodities.
+2
+    Even though it assumes a multivariate form, its interpretations are closely related to univariate GARCH
+    models. Supposing a VEC(1,1):
+                                          ht = c + Aηt−1 + Ght−1
+    where ηt−1 and Ght−1 can be stacked by an operator vec(.) to become a vector. A and G are squared
+    parameter matrices and c is a vector.
+
+
+
+
+                                                     6
+the Constant Conditional Correlation (CCC) Bollerslev (1990), an extension is the Dynamic
+Conditional Correlation(DCC) model proposed in Engle (2002) and Tse e Tsui (2002).
+          As Tsay (2013) stablish, the DCC is used modelling the conditional correlation matrix
+as
+                                      ρ = Dt−1          Dt−1 , Dt = diag(σii,t )
+                                                 X
+                                                                                                             (1)
+                                                   t
+
+         Dt is the diagonal of the variance-covariance matrix at time t. The model uses marginal
+volatility series to extract the conditional correlation matrix of them. Supposing ηt = (η1t ,· · · ,
+ηkt )‘ as the standardized innovation vector. In this regard, pt is the volatility matrix of ηt . The
+model proposed by Engle (2002), differs from Tse e Tsui (2002) because instead of assuming the
+past correlation information just as feeding the model output, it considers the ηt .
+        Following the approach in Tsay (2013), is used a Copula function (C) to provide a better
+understanding about the dependence structure of the joint distribution of this variables. This is
+justified to empirical evidences suggesting the dependence structure between asset returns as
+being non-normal(PATTON, 2006).
+           The Copula links together marginal distribution functions to form joint distribution
+functions. Supposing a vector random variable X = [X1 , X2 , · · · , Xn ]‘ , with distributions
+F1 , F2 , · · · , Fn . Their joint distribution function F (PATTON, 2009). It can be easily understood
+using the Sklar (1959) theorem:
+
+                             F (x) = C(F1 (x1 ), F2 (x2 ), · · · , Fn (Xn ), ∀x ∈ Rn                         (2)
+
+        Thus, a multidimensional distribution is represented by the product of n univariate
+distributions and a copula function. As pointed by Patton (2009), extracting the marginal
+distributions from a multivariate function, is very useful for time series modelling, because the
+Copula function (C) does not requires the same distribution of all variables to extract information
+from the model. Additionally, when dealing with financial times series, the non-normality of
+them is a stylized fact. Therefore, this is an advantage when the shape and the adherence of
+the data is the main interest of the model. In this study, will be used a t-Copula function as
+suggested by Tsay (2013). Using the model based in Creal, Koopman e Lucas (2013) to describe
+the conditional volatilities and correlations in a manner analogous to a DCC model.
+        Another approach used in the literature to relax the tight conditions of VEC specification
+is the BEKK model. Engle e Kroner (1995) proposed a new parametrization for ht that imposes
+it to take a positive semi-definite form. In other words, the BEKK model is an specific case of a
+VEC model 3 . To our application here, the use of this model will be important to understand
+the direction of the flow of shocks and volatilities the GARCH-BEKK model is appealing and
+intuitive, even though it presents some difficulties of estimation.Resende (2015) proves that a
+stochastic sequence of a variable X = (t )t∈N is a GARCH-BEKK model if:
+                                                                        1
+                                                  n
+                                                       t = (Ht ) 2 ηt
+
+                                      q X
+                                        K                                   p X
+                                                                              K
+                                      X                     0       0       X                   0
+                          Ht = Ω +              Aik t−i t−1 Aik +                   Bjk Ht−j Bjk           (3)
+                                      i=1 k=1                               j=1 k=1
+
+       Francq e Zakoian (2011) defines this relation as a strong GARCH process. Where K is
+an integer, Ω, Aik and Bjk are square mxm matrices, and ω is positive definite; ηt is an i.i.d
+sequence. The specification ensures positive definites to Ht .
+3
+     In applications, it is more used due the reduction of the number of parameters. Engle e Kroner (1995) proves
+     that the restrictions atributed on BEKK parameters, can easily be equivalent to a vech(.) form.
+
+
+                                                                7
+        Francq e Zakoian (2011) derives the vector form of the equation specification Ht :
+
+
+                            q          k                                          p          k
+                            X
+                                   +
+                                       X             0                    0       X
+                                                                                         +
+                                                                                             X             0
+vech(Ht ) = vech(Ω)+              Dm       (Aik ⊗Aik )Dm vech(εt−i εt−i )+              Dm       (Bik ⊗Bik )Dm vechHt−j
+                            i=1        k=1                                        i=1        k=1
+                                                                                                                              (4)
+       Beeing the matrix in the form (mxm), in a diagonal vector representation, are also
+positive semi-definite matrices. Then exists Aik and Bik and the parametrization is equivalent
+to a vec (FRANCQ; ZAKOIAN, 2011).
+        Engle e Kroner (1995) shows that the BEKK in the bivariate case becomes:
+                        "           #0 "                                 #"             #    "        #0              "          #
+                  a∗ a∗12
+                  0                           ε21,t−1    ε2,t−1 ε1,t−1        a∗11 a∗12        ∗
+                                                                                          g ∗ g12                          ∗
+                                                                                                                          g11  ∗
+                                                                                                                              g12
+        Ht = ΩΩ + 11                                                                    + 11                   Ht−1               (3)
+                  a∗21 a∗22                ε2,t−1 ε1,t−1    ε22,t−1             ∗
+                                                                              a21 a22∗      ∗  ∗
+                                                                                          g21 g22                          ∗   ∗
+                                                                                                                          g21 g22
+        Suppressing the time subscripts and the GARCH terms, it becomes:
+
+                                    H11 = Ω + a211 ε21 + 2a∗11 a∗21 ε1 ε2 + a221 ε22
+                      H12 = Ω + a∗11 a∗12 ε21 + (a∗21 a∗12 + a∗11 a∗22 )ε1 ε2 + a∗2  2    ∗ ∗ 2
+                                                                                 21 ε2 + a21 a22 ε2
+
+                                    H22 = Ω + a212 ε21 + 2a∗12 a∗22 ε1 ε2 + a222 ε22
+
+        This model becomes more parsimonious than a vec specification as it economizes on
+parameters (ENGLE; KRONER, 1995). As stated by (TSAY, 2013), even though the framework
+provided by the BEKK model produces some positive-definite volatility matrices and attractive
+representations. It has problems of application, whereas their parameter are constantly non-
+significant at 5% level. To encounter a good estimation, the model should be used at maximum
+three variables.
+        The process of estimation of the MGARCH-BEKK model in this article will follow
+ Cardona, Gutiérrez e Agudelo (2017) proposal, and the approach of (LÜTKEPOHL, 2005) and
+(TSAY, 2013). 4 The algorithm used is as follows. First, we encounter the stationary series
+ applying the tests of unit root as Dickey-Fuller, Phillips Perron, and KPSS. Then, the series are
+ grouped in pairs with the Bovespa, and the estimation process will follow the CRAN Package
+‘MTS’, developed by Ruey Tsay. To estimate the DCC and t-Copula dynamic correlation. First,
+ smoothing the covariance returns of the series using a Vector Autorregressive (VAR) model.
+Then, their residuals are fitted to capture the conditional heteroscedastic process in a univariate
+ GARCH model. Finally, these uncorrelated residuals will be used as input of a DCC and
+ t-copulas process, to capture the cross-dependence of this series. described in this section.
+        Thereafter, the Portmanteau Test select the models considered to analysis. Table 6 in
+the appendix provides the test results of all Bivariate estimation done. This rigorous treatment
+with the residuals of this series is justified because it will be followed by a structural analysis.
+The ARCH parameter will be interpreted as a shock or a perturbance in the cross relation of
+the series. Whereas the GARCH term represents the volatility transmitted to the other country.
+The direction of this process is determined by the position of the coefficients, the magnitude
+and their significance.
+4
+    These models can be estimated maximizing the log likelihood,
+                                                              T                   −1
+                                                           1X        X     0 X
+                                   L(θ) = −T ln(2π) −          (ln |   | +t   t )                                            (5)
+                                                           2 t       t       t
+
+     Where T is time, and θ is the vector of parameters to be estimated.
+
+
+                                                             8
+4 Results
+        However, is of interest from Policy Makers and Portfolio Managers a correct measurement
+of correlation risk. Correlation is an importante input when applying diversification principle.
+Moreover, recent crisis revealed the importance of the interdependence between financial
+institutions and markets to systemic risk (see Ibragimov, Jaffee e Walden (2011)).
+
+4.1 Dynamic Correlation
+        A preliminary analysis on tables 3, 3 and 4 shows that in average, the most volatile
+Variable is the CDS(58%), followed by Brent(38%), US treasury Bonds(36%) and Iron(29%).
+The first differs from others because is a derivative. However, all of them are important variables
+to Brazilian stock market. Reflecting monetary policy, world’s economic activity and, political
+and default uncertainty in Brazil.
+
+       Table 2 – Dynamic Correlation of Bovespa vs US Bonds, Stocks and CDS Brazil
+                                                                   Bivariate
+                                          Bovespa   SP500          US Bonds 10y    BR Bonds 10y       CDS 5y
+ Anualized Volatility (%)                 24.89     12.98          36.97           17.69              58.64
+ DCC - GARCH (Engle) (%)                            45.36          - 40.10         - 4.76             2.46
+                             Q1                     11.97(0.28)    9.15(0.51)      26.23(0.00)        8.16(0.61)
+                             Robust Q1              34.07(0.73)    38.61(0.53)     30.09(0.87)        45.57(0.25)
+ DCC - GARCH (Tse & Tsui)                           44.32          - 37.47         - 4.79             2.51
+                             Q1                     11.97(0.28)    8.71(0.55)      26.23(0.00)        8.10(0.61)
+                             Robust Q1              34.07(0.73)    33.38(0.76)     30.09(0.87)        45.43(0.25)
+                                                                   Trivariate
+ t Copulas - GARH                                   45.36          - 40.81         - 3.33             2.92
+                             Q1                     11.97(0.28)    14.89(0.13)     21.05(0.02)        6.05(81.80)
+                             Robust Q1              34.07(0.73)    98.29(0.25)     109.15(0.08)       128(0.00)
+Note:The parameters estimated are followed by (.), that is their p-value. The null hypothesis is
+not rejecting the significance of parameters.
+
+
+
+                     Table 3 – Dynamic Correlation of Bovespa vs Metals
+
+                                                                    Bivariate
+                                                         Bovespa    Brent         Iron            Gold           Copper
+Anualized Volatility (%)                                 24.89      38.78         29.68           14.84          19.88
+DCC - GARCH (Engle) (%)                                             2.46          7.74            2.04           7.58
+                            Portmanteau (Q1 )                       8.16(0.61)    3.52(0.96)      11.90(0.29)    11.78(0.29)
+                            Robust - Portmanteau (Q1 )              45.57(0.25)   55.61(0.05)     43.37(0.32)    42.80(0.35)
+DCC - GARCH (Tse & Tsui)                                            2.51          8.08            2.04           7.52
+                            Portmanteau (Q1 )                       8.10(0.61)    3.34(0.96)      11.90(0.29)    12.27(0.26)
+                            Robust - Portmanteau (Q1 )              45.43(0.25)   64.91(0.00)     43.37(0.32)    39.61(0.48)
+                                                                    Trivariate                    Trivariate
+t Copulas - GARH                                                    2.92          9.05            4.06           7.73
+                            Portmanteau (Q1 )                       6.05(81.80)   6.05(81.80)     21.05(0.02)    13.10(0.21)
+                            Robust - Portmanteau (Q1 )              128(0.00)     128(0.00)       109.15(0.08)   84.17(0.65)
+Note:The parameters estimated are followed by (.), that is their p-value. The null hypothesis is
+the not rejecting the significance of parameters.
+
+
+       The analysis of the correlations show that just the S&P 500, and the Treasury bonds
+of Brazil are highly correlated with the Bovespa Index. The first presents an average of 45%
+when considering the DCC (Engle), 44% when considering the DCC(TseTsui), and 46% when
+
+                                                    9
+                       Table 4 – Dynamic Correlation of Bovespa vs Agriculturals
+
+                                                          Bovespa Corn          Sugar       Ethanol       Soy           Coffee
+Anualized Volatility (%)                                  24.89   21.46         -           22.56         21.24         36.67
+DCC - GARCH (Engle) (%)        Diagnostic Test                    0.09          -           - 0.21        3.46          - 2.64
+                               Q1                                 15.29(0.12)   -           4.30(0.93)    4.40(0.92)    9.62(0.47)
+                               Robust Q1                          26.22(0.95)   -           52.07(0.00)   40.86(0.43)   48.48(0.17)
+DCC - GARCH (Tse & Tsui) (%)                                      0.09          -           - 0.06        3.46          -2.62
+                               Q1                                 15.70(0.10)   -           4.74(0.90)    4.40(0.92)    9.68(0.46)
+                               Robust Q1                          26.11(0.95)   -           49.25(0.14)   40.84(0.43)   48.89(0.16)
+                                                                  -
+t Copulas - GARH (%)                                              2.32          2.42        0.04        5.20        0.01
+                               Portmanteau(Q1 )                   15.59(0.11)   4.13(0.93) 8.42(0.58) 4.13(0.93) 8.42(0.58)
+                               Robust- Portmanteau(Q1 )           74.82(0.87)   88.05(0.53) 98.27(0.25) 88.05(0.53) 98.27(0.25)
+
+Note:The parameters estimated are followed by (.), that is their p-value. The null hypothesis is
+the not rejecting the significance of parameters.
+
+
+considering the t-Copulas. Whereas the second presents a negative correlation with the stock
+market index.
+       These results are important because is expected that the US stock market affects the
+Brazil(BR) stock market, directly or indirectly. As referred in the introduction section 1,
+important money flow channels are encountered in portfolio balancing due unconventional
+monetary policies in US (see Barroso, Silva e Sales (2016). In the following sections this results
+become clear.
+        Another important result is that the average dynamic correlation with the stock market
+in Brazil is low. Suggesting a good potential of diversification among markets in this time span,
+as well as, the Bovespa presents low vulnerability to commodities market. In the figure 4, is
+possible to note that the agricultural commodities are in a downtrend of correlation in the
+mid-term. Moreover, especially in high volatile variables(Brent and CDS), the correlation is
+more unstable on time.
+       Comparing the different models, whereas that in average correlation, the t-Copulas
+model is more volatile than the DCC’s. Intuitively, this model considers in a higher precision,
+tail movements in the joint distribution of the series.
+       Summing up, dynamic correlation between Bovespa and the variables of this study are
+low to almost all of them. Just Bonds and S&P500 have relatively higher correlation. However,
+some series, such Brent Oil and CDS have a more unstable relation with brazilian stock. This
+can be noted in Figure 4, mainly when t-copulas - DCC is considered 5 .
+
+4.2 Bivariate Risk Transmission Analysis
+        Table shows the main results found in the estimation of a Bivariate GARCH-BEKK. In
+the agricultural group of commodities, just soybeans lasts. Sugar, corn and ethanol did not fit
+well in the model, presenting serial autocorrelation. Therefore, they were excluded of the part
+of the bivariate estimation.
+        A structural analysis in the table 3 estimation, given the significance of the param-
+eters, reveals that gold, iron ore, brent oil and US long term bonds cause a perturbance to
+Bovespa, without persistence. Meanwhile, Brazil’s index does not affect other variables. The
+5
+    This experiment with a Copulas function might suggest the existence of some dependence behavior, more
+    proeminent on tails, that might be important to explain transmission between these markets. However, is
+    just a sign, and deeper analysis is needed.
+
+
+
+                                                             10
+interdependence in volatility generates a bidirectional channel with monetary policies in US,
+and unidirectional from copper, iron and gold and to soy.
+        The use copper, as a main input in many real state business in China, and in the
+production of electronics, is recently highly associated with the economic activity in the world.
+This justifies the effects of copper on Brazil. The results of Gold suggest as it is a precious metal
+used mainly as reserve of value by investors in a kind of flight to security, that the movements
+of gold that affect the Bovespa are related to risk aversion behavior, not implying a problem in
+the fundamentals of the economy. Extreme events tend to increase volatility of Gold, what per
+se affect the willingness by allocators to rebalancing their portfolio. These kinds of events tend
+to have less persistence (ENGLE; ITO; LIN, 1988).
+        Extending the findings of Barroso, Silva e Sales (2016), where unconventional monetary
+policies in US leads to an exchange rates appreciation, stock market’s boom and credit growth.
+Whereas he suggests the existence of strong propagation channels based on inflow of excess
+monetary supply from US to Brazil, the analysis here reinforce this channel as a path of risk
+spreading to stock’s markets. In this regard, there is a portfolio rebalancing implication in carry
+trade portfolios because there is a wealth effect on the economy given the Quatitative Easing
+(QE) policy. However, as Gunes (2012) propose, ‘fear factors’ incorporated on the Volatility
+Index (VIX), have strong implications in carry trade balancing.
+        The results found with iron ore, brent oil and none relationship with SP500 is not
+consistent to what is expected to capital market in Brazil. In part, it contradicts the results
+found in Righi e Ceretta (2013), where before the subprime crises in 2008, S&P 500 generated
+volatility to Brazil, and after the crisis, the transmission becomes bidirectional. Chaine (2011)
+reinforces that Brazil was decoupling from US stock markets, but the crisis reversed this trend.
+Ferreira et al. (2012) goes further, identifying that real state sector pursued a bidirectional
+relationship of risk with US Stock Market.
+        The Bovespa index is mainly constituted by metals companies such CSN and Vale, a big
+player in the oil market as Petrobras and some banking companies. Thus, the significance of
+these commodities is expected. Might exist some limitations in a bivariate analysis, whereas it
+does not consider arbitrage effects among stocks exchange along the world. Different markets
+closing and opening are sufficient to traders seek opportunities generated by the same news
+in different stock exchanges. In his seminal work, Engle, Ito e Lin (1988) has an intuitive
+illustration about this:
+
+         "[...]when the monetary supply statistics are announced in the market in New
+      York at 4:10pm of Thursday, there are less than thirty minutes to trade actively
+      in New York. If all traders do not share the common belief about the meaning of
+      the announced money supply, then it takes a few hours of actual trading to settle
+      the difference in traders’ priors. [...]some types of technical analysis behavior could
+      have this characteristic. Suppose that there was a large yen appreciation in the
+      Tokyo maket. If the shock creates the expectation of more appreciation , then the
+      speculation may take place in the European markets of the same day and not wait
+      until the Tokyo market of the next day" (ENGLE; ITO; LIN, 1988, p. 5).
+
+        This article also intends to test the channel of investment flows due to costs reduction –
+invest in a pathway created by the high correlation of Petrobras and Vale with such commodities.
+To accomplish this objective, the analysis will be expanded to a trivariate model, following
+Cardona, Gutiérrez e Agudelo (2017). Being: i) Bovespa, Brent Oil, and Petrobras; ii) Bovespa,
+Iron Ore, SP500; iii) Bovespa, SP500 and BR Bonds 10y.
+
+
+                                                 11
+4.3 Trivariate Risk Transmission Analysis
+        In contrast with bivariate models, the parameter of trivariate of the relationships arised
+as dubious when treated in a direct manner. The first insightful result is that the perturbance
+from Bovespa to Brent Oil becomes significant when Petrobras is introduced. Even though the
+effect of Oil on stock market is stronger (0.085vs − 0.037), what suggests that Bovespa plays
+an indirect role on the oil market. This conclusion is reinforced by the dynamic assumed by
+Petrobras and Brent Oil. While Brent oil causes shocks on Petrobras, the persistence waves
+of risk are spread to oil market by Petrobras. This result deserves further study, because the
+company does not play just the role of a big state oil company, but, recently have been target
+of investigations about corruption. In some way, Petrobras is today a proxy of political stability
+in Brazil. Furthermore, a more profound understanding about the interdependence between
+oil companies around the world in a scenario of low oil price – EBITDA margins are harder to
+obtain.
+       A similar effect is found in the interconnection between Vale and Iron Ore market
+given by the significance of the parameters. Observing the vector containing SP500, Iron Ore
+and Bovespa, both indexes become relevant to explain codependences in the Iron Ore market.
+Additionally, Brazil’s index appears to have more vulnerability to disturbances of the commodity.
+This interdependence becomes even more stronger when considering the vector of Bovespa, Iron
+Ore, and Vale. Bovespa plays a bidirectional role with Iron Ore (−0.0190vs0.1181 respectively).
+The intuition is that the index act as mediator in the transmission effect to Vale, as the company
+has a persistence of covolatility caused by the commodity.
+
+
+
+
+                                               12
+Table 5 – Estimation of the Trivariate – BEKK(1,1) relative to Bovespa – Period: jan/2014 to
+          dec/2016
+
+   Bovespa - Brent Oil - Petrobras                    Bovespa - Iron Ore - Vale
+  Shock from Bovespa to Brent Oil        -0.0371*     Shock from Bovespa to Iron Ore         -0.0958***
+  Shock from Brent Oil to Bovespa        0.0885**     Shock from Iron Ore to Bovespa         0.1233
+Volatility from Bovespa to Brent Oil     0.0041       Volatility from Bovespa to Iron Ore    -0.0190***
+Volatility from Brent Oil to Bovespa     -0.0119      Volatility from Iron Ore to Bovespa    0.1181***
+  Shock from Bovespa to Petrobras        -0.1161***   Shock from Bovespa to Vale             -0.1682***
+  Shock from Petrobras to Bovespa        0.0060       Shock from Vale to Bovespa             -0.2781**
+Volatility from Bovespa to Petrobras     0.0273***    Volatility from Bovespa to Vale        0.0426***
+Volatility from Petrobras to Bovespa     -0.0570***   Volatility from Vale to Bovespa        -0.0802
+ Shock from Brent Oil to Petrobras       -0.0757***   Shock from Iron Ore to Vale            0.0901***
+ Shock from Petrobras to Brent Oil       0.0885       Shock from Vale to Iron Ore            0.0694
+Volatility from Brent Oil to Petrobras   -0.0128      Volatility from Iron Ore to Vale       -0.0077
+Volatility from Petrobras to Brent Oil   0.0626***    Volatility from Vale to Iron Ore       -0.0169***
+
+
+ Bovespa - Iron Ore - SP500                         Bovespa - SP500 - US Bonds10y
+ Shock from Bovespa to Iron Ore          -0.0475** Shock from Bovespa to SP500               -0.0935
+ Shock from Iron Ore to Bovespa          -0.0245    Shock from SP500 to Bovespa              0.0719***
+ Volatility from Bovespa to Iron Ore     -0.0036*** Volatility from Bovespa to SP500         0.0127
+ Volatility from Iron Ore to Bovespa     0.0121     Volatility from SP500 to Bovespa         -0.0162***
+ Shock from Bovespa to SP500             0.0263     Shock from Bovespa to US Bonds10y        -0.0141
+ Shock from SP500 to Bovespa             0.0363     Shock from US Bonds10y to Bovespa        0.0662***
+ Volatility from Bovespa to SP500        -0.0076    Volatility from Bovespa to US Bonds10y   0.0066***
+ Volatility from SP500 to Bovespa        -0.0071    Volatility from US Bonds10y to Bovespa   0.0201***
+ Shock from Iron Ore to SP500            0.0349     Shock from SP500 to US Bonds10y          -0.0065
+ Shock from SP500 to Iron Ore            -0.0012    Shock from US Bonds10y to SP500          0.0246
+ Volatility from Iron Ore to SP500       0.0979     Volatility from SP500 to US Bonds10y     0.0201***
+ Volatility from SP500 to Iron Ore       -0.0141*** Volatility from US Bonds10y to SP500     -0.0048
+Note: The estimation of the model follows the methodology applied in Tsay (2014). Significance
+of the parameters: *, **,***; corresponds respectively to 10, 5 and 1% of confidence level.
+
+
+
+        All these results emphasize the first channel of risk spreading proposed in this article.
+Bovespa serves as pathway throughout fund managers open and close positions on commodities.
+A different perspective to the position of the Brazil in the international financial market system
+is when it plays a role of a negatively correlated asset to portfolio allocators. Solnik (1995)
+proposed the benefits that managers could accomplish in this approach and Gunes (2012) the
+implication of these news to carry trade portfolios. The intuitive interpretation when observing
+the connections between Bovespa, SP500 and US treasury bonds, differently than the bivariate
+analysis, now the relation between SP500 and Bovespa is significant with a unidirectional effect
+from SP500. Additionally, the US treasury bonds tend to affect Bovespa, in both generating
+perturbance and volatility. This results are aligned with the recent literature about portfolio
+and of capital flow.
+        Barroso et al. (2013) and Barroso, Silva e Sales (2016) suggested that QE policies affects
+portfolio rebalancing, generating flow of capital to Brazil. Bonizzi (2016) attested the eagerness
+of international investors for risk-return balancing. Gunes (2012) shed lights on the importance
+waves of risk in a carry trade portfolio. All these arguments reinforce the result found about
+transmissions channel between US bonds and stock markets and Brazil’s stock market due
+portfolio rebalancing.
+
+
+                                                      13
+5 Conclusion
+        The objective of this article was to analyze the transmission effects and channels of
+volatility from and to Brazilian stock market. The hypothesis tested here is the existence of
+these channels because of: i) Brazil plays a role of mediator of perturbance and volatility of
+commodities (metals, energy, and agricultural) and Latin American markets such presented in
+Cardona, Gutiérrez e Agudelo (2017) ; ii) The volatility of financial market in Brazil is highly
+dependent of international disturbances (politic, geopolitics, economic); iii) The fundamentals
+of the Brazilian economy explain by themselves the volatility in stock markets.
+        The dynamic correlation models suggest that just US stock markets and Brazil trea-
+sury bonds are highly correlated (positive and negative respectively) with Brazil stock index.
+Commodities in general are low correlated with Bovespa, and the agricultural ones have a
+downtrend association with the index.The empirical results suggest that the stock market in
+Brazil is strongly affected by monetary policies noises from US, and world economic activity.
+Additionally, receives shocks of risk due risk aversion moves. In the trivariate analysis, the
+evidences imply that Brazil is a mediator of waves of volatility, to and from Brent Oil, Iron Ore
+and US treasury Bonds.
+        The literature review conjecture the existence of portfolio rebalancing of fund managers
+investing in Latin America. Risk-return allocation and effects of unconventional monetary
+policies are appointed as determining money flow to Brazil. Additionally, there are evidences
+that Brazil is a pathway to intermediate trading in commodities such iron and brent oil. This
+article contributes identifying the propagation of risk among these channels, helping traders,
+fund managers and scholar’s, to identify the information that matters. Moreover, Policy Makers
+may benefit of this exercise by identifying the right incremental variables to implement in models
+and the possible consequences and effects of Macro Prudential Policies.
+        Further works could fill the gap here answering: i) which channel is more relevant; and, ii)
+quantify this channel. In this regard, should consider different frequencies, periods and variables
+to test. The limitations of multivariate modelling here must be surpassed with more robust
+approaches, such copulas functions families or Extreme Value Theory(EVT). Other techniques
+considered are neural networks or algorithms.
+
+
+
+                                         Bibliography
+
+
+ABRANCHES, S. Presidencialismo de coalizão: o dilema institucional brasileiro. Dados, Iuperj
+Rio de Janeiro, v. 31, n. 1, p. 5–38, 1988.
+
+AHMADI, M.; BEHMIRI, N. B.; MANERA, M. How is volatility in commodity markets linked
+to oil price shocks? Energy Economics, Elsevier, v. 59, p. 11–23, 2016.
+
+ALMEIDA, M.; SALTO, F. Finanças públicas. [S.l.]: Editora Record, 2016.
+
+ALOTAIBI, A. R.; MISHRA, A. V. Global and regional volatility spillovers to gcc stock
+markets. Economic Modelling, Elsevier, v. 45, p. 38–49, 2015.
+
+AMORIM, R. Depois da Tempestade. [S.l.]: Pratta, 2016.
+
+
+
+
+                                                14
+BALDI, L.; PERI, M.; VANDONE, D. Stock markets’ bubbles burst and volatility spillovers in
+agricultural commodity markets. Research in International Business and Finance, Elsevier,
+v. 38, p. 277–285, 2016.
+
+BARROSO, J. et al. Realized volatility as an instrument to official intervention. Banco Central
+do Brasil Working Paper Series, v. 363, 2014.
+
+BARROSO, J. B. R.; SILVA, L. A. P. da; SALES, A. S. Quantitative easing and related
+capital flows into brazil: measuring its effects and transmission channels through a rigorous
+counterfactual evaluation. Journal of International Money and Finance, Elsevier, v. 67, p.
+102–122, 2016.
+
+BARROSO, J. B. R. et al. Quantitative Easing and Related Capital Flows into Brazil:
+measuring its effects and transmission channels through a rigorous counterfactual evaluation.
+[S.l.], 2013.
+
+BAUWENS, L.; LAURENT, S.; ROMBOUTS, J. V. Multivariate garch models: a survey.
+Journal of applied econometrics, Wiley Online Library, v. 21, n. 1, p. 79–109, 2006.
+
+BECKMANN, J.; CZUDAJ, R. Volatility transmission in agricultural futures markets.
+Economic Modelling, Elsevier, v. 36, p. 541–546, 2014.
+
+BEKAERT, G.; HODRICK, R. J.; ZHANG, X. International stock return comovements. The
+Journal of Finance, Wiley Online Library, v. 64, n. 6, p. 2591–2626, 2009.
+
+BOLDANOV, R.; DEGIANNAKIS, S.; FILIS, G. Time-varying correlation between oil and
+stock market volatilities: Evidence from oil-importing and oil-exporting countries. International
+Review of Financial Analysis, Elsevier, v. 48, p. 209–220, 2016.
+
+BOLLERSLEV, T. Generalized autoregressive conditional heteroskedasticity. Journal of
+econometrics, Elsevier, v. 31, n. 3, p. 307–327, 1986.
+
+BOLLERSLEV, T. Modelling the coherence in short-run nominal exchange rates: a multivariate
+generalized arch model. The review of economics and statistics, JSTOR, p. 498–505, 1990.
+
+BOLLERSLEV, T.; ENGLE, R. F.; WOOLDRIDGE, J. M. A capital asset pricing model with
+time-varying covariances. Journal of political Economy, The University of Chicago Press, v. 96,
+n. 1, p. 116–131, 1988.
+
+BONIZZI, B. Institutional investors’ allocation to emerging markets: A panel approach to asset
+demand. Journal of International Financial Markets, Institutions and Money, Elsevier, 2016.
+
+BROADSTOCK, D. C.; CAO, H.; ZHANG, D. Oil shocks and their impact on energy related
+stocks in china. Energy Economics, Elsevier, v. 34, n. 6, p. 1888–1895, 2012.
+
+BROADSTOCK, D. C.; FILIS, G. Oil price shocks and stock market returns: New evidence
+from the united states and china. Journal of International Financial Markets, Institutions and
+Money, Elsevier, v. 33, p. 417–433, 2014.
+
+CALVO, S. G.; REINHART, C. M. Capital flows to latin america: is there evidence of contagion
+effects? 1996.
+
+CARDONA, L.; GUTIÉRREZ, M.; AGUDELO, D. A. Volatility transmission between us and
+latin american stock markets: Testing the decoupling hypothesis. Research in International
+Business and Finance, Elsevier, v. 39, p. 115–127, 2017.
+
+
+                                               15
+CHAINE, M. Testando a hipótese de contágio entre o índice bovespa e o s&p500 ao longo da
+crise de 2008 com modelos multivariados de volatilidade. Revista de Economia e Administração,
+v. 10, n. 2, 2011.
+
+CHRISTOFFERSEN, P. et al. Is the potential for international diversification disappearing?
+2011.
+
+CREAL, D.; KOOPMAN, S. J.; LUCAS, A. Generalized autoregressive score models with
+applications. Journal of Applied Econometrics, Wiley Online Library, v. 28, n. 5, p. 777–795,
+2013.
+
+DANÍELSSON, J. Financial risk forecasting: the theory and practice of forecasting market risk
+with implementation in R and Matlab. [S.l.]: John Wiley & Sons, 2011. v. 588.
+
+DORNBUSCH, R.; PARK, Y. C.; CLAESSENS, S. Contagion: How it spreads and how it can
+be stopped. World Bank Research Observer, Citeseer, v. 15, n. 2, p. 177–197, 2000.
+
+ENGLE, R. Dynamic conditional correlation: A simple class of multivariate generalized
+autoregressive conditional heteroskedasticity models. Journal of Business & Economic Statistics,
+Taylor & Francis, v. 20, n. 3, p. 339–350, 2002.
+
+ENGLE, R. F. Autoregressive conditional heteroscedasticity with estimates of the variance
+of united kingdom inflation. Econometrica: Journal of the Econometric Society, JSTOR, p.
+987–1007, 1982.
+
+ENGLE, R. F.; ITO, T.; LIN, W.-L. Meteor showers or heat waves? Heteroskedastic intra-daily
+volatility in the foreign exchange market. [S.l.]: National Bureau of Economic Research
+Cambridge, Mass., USA, 1988.
+
+ENGLE, R. F.; KRONER, K. F. Multivariate simultaneous generalized arch. Econometric
+theory, Cambridge Univ Press, v. 11, n. 01, p. 122–150, 1995.
+
+FERREIRA, D. M. et al. O efeito contágio da crise do subprime no mercado acionário brasileiro.
+Universidade Federal de Viçosa, 2012.
+
+FORBES, K. J.; RIGOBON, R. No contagion, only interdependence: measuring stock market
+comovements. The journal of Finance, Wiley Online Library, v. 57, n. 5, p. 2223–2261, 2002.
+
+FRANCQ, C.; ZAKOIAN, J.-M. GARCH models: structure, statistical inference and financial
+applications. [S.l.]: John Wiley & Sons, 2011.
+
+FROOT, K. A.; DONOHUE, J. T. The persistence of emerging market equity flows. Emerging
+Markets Review, Elsevier, v. 3, n. 4, p. 338–364, 2002.
+
+GLOBO, O. O nome da carta. Estad. o, São Paulo, dec 2014.
+
+GLOBO, O. Governo entrega orçamento com déficit de r$ 30,5 bilhões e previsão de 0.2% no
+crescimento do pib. O Globo, dec 2015.
+
+GOZGOR, G.; LAU, C. K. M.; BILGIN, M. H. Commodity markets volatility transmission:
+Roles of risk perceptions and uncertainty in financial markets. Journal of International
+Financial Markets, Institutions and Money, Elsevier, v. 44, p. 35–45, 2016.
+
+GUNES, D. Understanding Carry Trade Risks using Bayesian Methods: A Comparison with
+Other Portfolio Risks from Currency, Commodity and Stock Markets. Tese (Doutorado) —
+Citeseer, 2012.
+
+                                              16
+HAMMOUDEH, S. et al. The dynamics of brics’s country risk ratings and domestic stock
+markets, us stock market and oil price. Mathematics and Computers in Simulation, Elsevier,
+v. 94, p. 277–294, 2013.
+
+HSIEH, M.-F. et al. Evidence of herding and positive feedback trading for mutual funds in
+emerging asian countries. Quantitative Finance, Taylor & Francis, v. 11, n. 3, p. 423–435, 2011.
+
+IBRAGIMOV, R.; JAFFEE, D.; WALDEN, J. Diversification disasters. Journal of financial
+economics, Elsevier, v. 99, n. 2, p. 333–348, 2011.
+
+LEE, T.-H.; LONG, X. Copula-based multivariate garch model with uncorrelated dependent
+errors. Journal of Econometrics, Elsevier, v. 150, n. 2, p. 207–218, 2009.
+
+LINTNER, J. The valuation of risk assets and the selection of risky investments in stock
+portfolios and capital budgets. The review of economics and statistics, JSTOR, p. 13–37, 1965.
+
+LIU, T.; HAMMOUDEH, S.; THOMPSON, M. A. A momentum threshold model of stock
+prices and country risk ratings: Evidence from brics countries. Journal of International
+Financial Markets, Institutions and Money, Elsevier, v. 27, p. 99–112, 2013.
+
+LONGIN, F.; SOLNIK, B. Is the correlation in international equity returns constant:
+1960–1990? Journal of international money and finance, Elsevier, v. 14, n. 1, p. 3–26, 1995.
+
+LÜTKEPOHL, H. New introduction to multiple time series analysis. [S.l.]: Springer Science &
+Business Media, 2005.
+
+MANDELBROT, B. The variation of certain speculative prices. The Journal of Business, v. 36,
+n. 4, p. 394–419, 1963.
+
+MARÇAL, E. F.; PEREIRA, P. L. V. Testing the hypothesis of contagion using multivariate
+volatility models. 2009.
+
+MARKOWITZ, H. Portfolio selection. The journal of finance, Wiley Online Library, v. 7, n. 1,
+p. 77–91, 1952.
+
+MOSSIN, J. Equilibrium in a capital asset market. Econometrica: Journal of the econometric
+society, JSTOR, p. 768–783, 1966.
+
+PATTON, A. J. Estimation of multivariate models for time series of possibly different lengths.
+Journal of applied econometrics, Wiley Online Library, v. 21, n. 2, p. 147–173, 2006.
+
+PATTON, A. J. Copula–based models for financial time series. In: Handbook of financial time
+series. [S.l.]: Springer, 2009. p. 767–785.
+
+RAPAZZA, K. Why post-impeachment buzz might not last in brazil. Forbes, apr 2016.
+
+RESENDE, P. A. A. Estimação de ordem em modelos ar, arch e bekk-garch usando o critério
+edc. 2015.
+
+RIGHI, M. B.; CERETTA, P. S. Efeito da crise de 2007/2008 na transmissão internacional de
+volatilidade no mercado de capitais brasileiro. Revista Eletrônica de Administração, v. 19, n. 2,
+p. 384–400, 2013.
+
+SHARPE, W. F. Capital asset prices: A theory of market equilibrium under conditions of risk.
+The journal of finance, Wiley Online Library, v. 19, n. 3, p. 425–442, 1964.
+
+
+
+                                               17
+SKLAR, M. Fonctions de répartition à n dimensions et leurs marges. [S.l.]: Université Paris 8,
+1959.
+
+SOLNIK, B. H. Why not diversify internationally rather than domestically? Financial analysts
+journal, CFA Institute, v. 51, n. 1, p. 89–94, 1995.
+
+TSAY, R. S. Multivariate Time Series Analysis: with R and financial applications. [S.l.]: John
+Wiley & Sons, 2013.
+
+TSE, Y. K.; TSUI, A. K. C. A multivariate generalized autoregressive conditional
+heteroscedasticity model with time-varying correlations. Journal of Business & Economic
+Statistics, Taylor & Francis, v. 20, n. 3, p. 351–362, 2002.
+
+
+Appendix
+
+           Figure 1 – GDP, CRB Index and Bovespa - Monthly Cycle (2014-2016)
+                                                     Hodrick−Prescott filter BOVESPA Cycle
+                    10000
+                    5000
+                    0
+                    −5000
+                    −10000
+
+
+
+
+                                  2014.0   2014.5    2015.0            2015.5               2016.0   2016.5   2017.0
+
+                                                                      Time
+
+
+
+                                                    Hodrick−Prescott filter Commodities Cycle
+                    30
+                    20
+                    10
+                    0
+                    −10
+                    −20
+                    −30
+
+
+
+
+                                  2014.0   2014.5    2015.0            2015.5               2016.0   2016.5   2017.0
+
+                                                                      Time
+
+
+
+                                                        Hodrick−Prescott filter GDP Cycle
+                    10000 20000
+                    0
+                    −10000
+                    −30000
+
+
+
+
+                                  2014.0   2014.5    2015.0            2015.5               2016.0   2016.5   2017.0
+
+                                                                      Time
+
+
+
+
+                                                                    18
+   Table 6 – Autocorrelation test to White Noise Process – Period: jan/2014 to dec/2016
+
+                                                                                   Pormanteau Test
+                                                                                                            m=5        m=10
+                                          S&P500                                                         2.54(0.76)  7.62(0.66)
+                                          Gold                                                          10.33(0.06) 15.56(0.74)
+                                          Iron                                                           0.10(0.99)  0.02(0.88)
+                                          Brent                                                          5.55(0.35) 10.75(0.37)
+                                          Copper                                                         9.01(0.10) 16.18(0.70)
+                                          CDS5y                                                         97.67(0.00) 116.56(0.00)
+                                          BR Bonds10y                                                   70.21(0.00) 26.10(0.00)
+                                          US Bonds10y                                                    2.26(0.81)   -0.0259
+                                          Corn                                                          72.30(0.00) 124.19(0.00)
+                                          Sugar                                                               -           -
+                                          Soybeans                                                       3.57(0.61)  4.72(0.90)
+                                          Coffee                                                         5.14(0.39) 10.52(0.39)
+                                          Ethanol                                                       54.30(0.00) 84.91(0.00)
+Note:The parameters estimated are followed by (.), that is their p-value. The null hypothesis is
+the not rejecting the significance of parameters.
+
+
+
+Figure 2 – Time series of returns Bonds and Agricultural Commodities Period: jan/2014 to
+           dec/2016
+                                                  BR Bonds 10y                                                       Sugar                                                    Soybeans
+                                                                                              0.04
+                                 0.04
+
+
+
+
+                                                                                              0.02
+
+
+
+
+                                                                                                                                                           0.05
+                                 0.02
+
+
+
+
+                                                                                   SUGARret
+
+                                                                                              0.00
+                                 0.00
+                       BRBret
+
+
+
+
+                                                                                                                                                  Soyret
+
+                                                                                                                                                           0.00
+                                 −0.02
+
+
+
+
+                                                                                              −0.02
+
+
+
+
+                                                                                                                                                           −0.05
+                                 −0.04
+
+
+
+
+                                                                                              −0.04
+
+
+
+
+                                         2014.0   2015.0         2016.0   2017.0                      2014.0   2015.0         2016.0     2017.0                    2014.0   2015.0         2016.0   2017.0
+
+                                                           Ano                                                          Ano                                                          Ano
+
+
+
+                                                       Corn                                                          Coffee                                                    Ethanol
+                                 0.04
+
+
+
+
+                                                                                              0.05
+
+
+
+
+                                                                                                                                                           0.05
+                                 0.02
+
+
+
+
+                                                                                   COFFEE
+                       Cornret
+
+
+
+
+                                                                                                                                                  Ethret
+                                 0.00
+
+
+
+
+                                                                                              0.00
+
+
+
+
+                                                                                                                                                           0.00
+                                 −0.02
+
+
+
+
+                                                                                              −0.05
+                                 −0.04
+
+
+
+
+                                                                                                                                                           −0.05
+                                                                                              −0.10
+
+
+
+
+                                         2014.0   2015.0         2016.0   2017.0                        0      200       400       600                             2014.0   2015.0         2016.0   2017.0
+
+                                                           Ano                                                          Ano                                                          Ano
+
+
+
+
+                                                                                                                     19
+   Figure 3 – Time series of returns Bonds, CDS and Metals Period: jan/2014 to dec/2016
+                                                        US Bonds 10y                                                    CDS 5y                                                        Iron
+
+
+
+
+                                                                                                    0.15
+                                       0.10
+
+
+
+
+                                                                                                                                                                0.10
+                                                                                                    0.10
+
+
+
+
+                                                                                                                                                                0.05
+                                       0.05
+
+
+
+
+                                                                                                    0.05
+
+
+
+
+                                                                                                                                                                0.00
+                                                                                         CDSret
+                           USBret
+
+
+
+
+                                                                                                    0.00
+
+
+
+
+                                                                                                                                                      Ironret
+                                       0.00
+
+
+
+
+                                                                                                                                                                −0.05
+                                                                                                    −0.05
+                                       −0.05
+
+
+
+
+                                                                                                                                                                −0.10
+                                                                                                    −0.10
+                                       −0.10
+
+
+
+
+                                                                                                                                                                −0.15
+                                                                                                    −0.15
+                                               2014.0   2015.0         2016.0   2017.0                      2014.0   2015.0         2016.0   2017.0                     2014.0   2015.0         2016.0   2017.0
+
+                                                                 Ano                                                          Ano                                                         Ano
+
+
+
+                                                           Copper                                                     BRENT Oil                                                       Gold
+
+
+
+
+                                                                                                    0.10
+                                       0.04
+
+
+
+
+                                                                                                                                                                0.04
+                                                                                                    0.05
+                                       0.02
+
+
+
+
+                                                                                                                                                                0.02
+                           Copperret
+
+
+
+
+                                                                                         Brentret
+                                       0.00
+
+
+
+
+                                                                                                                                                      Gldret
+                                                                                                    0.00
+
+
+
+
+                                                                                                                                                                0.00
+                                       −0.02
+
+
+
+
+                                                                                                    −0.05
+
+
+
+
+                                                                                                                                                                −0.02
+                                       −0.04
+
+
+
+
+                                                                                                    −0.10
+
+
+
+
+                                               2014.0   2015.0         2016.0   2017.0                      2014.0   2015.0         2016.0   2017.0                     2014.0   2015.0         2016.0   2017.0
+
+                                                                 Ano                                                          Ano                                                         Ano
+
+
+
+
+ Figure 4 – Dynamic Correlations of all variables vs Bovespa - Period: jan/2014 to dec/2016
+
+
+
+
+Table 7 – Estimation of the Bivariate – BEKK(1,1) relative to Bovespa – Period: jan/2014 to
+          dec/2016
+
+                                       S&P500                               US Bonds10y                                                 Gold                                      Iron                            Brent Oil    Copper      Soybean
+Shock from Bovespa                       0.0276                                   0.0036                                        -0.0457                                      -0.0457                            6.3867        1.5925***     -0.0309
+Shock to Bovespa                         0.0408                                 0.2250***                                      0.1633***                                    0.2331***                           3.8291          0.8600      -0.0022
+Volatility from Bovespa                  0.0022                                  -0.0049                                         0.0215                                      -0.0215                            4.6866          0.9440      0.0066*
+Volatility to Bovespa                   -0.0018                                 -0.0543**                                       -0.0283                                      -0.0283                           12.0955          1.8811      -0.0011
+Portmanteau Test                       1.54(0.76)                               2.26(0.81)                                     7.82(0.16)                                  0.10(0.99)                         0.55(0.45)      0.09(0.75)   3.57(0.61)
+Portmanteau – Rank Based               7.98(0.15)                               2.58(0.76)                                    10.33(0.06)                                  12.83(0.02)                        0.23(0.62)      1.56(0.21)   3.36(0.64)
+Note: The estimation of the model follows the methodology applied in Tsay (2014). Significance
+of the parameters: *, **,***; corresponds respectively to 10, 5 and 1% of confidence level. The
+(.) in the portmanteau test is the p-value. The null hypothesis is not rejecting the significance
+of parameters.
+
+
+
+
+                                                                                                                        20
+

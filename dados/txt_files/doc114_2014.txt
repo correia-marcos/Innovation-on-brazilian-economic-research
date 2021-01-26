@@ -1,0 +1,1054 @@
+Modelo Nelson-Siegel com condições de não-
+arbitragem para previsão de inflação a partir
+do mercado de títulos brasileiro
+                             1
+Lucas Argentieri Mariani
+
+                         2
+Marcio Poletti Laurini
+
+
+                                          Resumo
+
+              A breakeven inflation (BEI), diferenciais entre rendimentos dos títulos reais
+      e nominais de mesma maturidade, é frequentemente usada como preditor da inflação
+      futura. O modelo aqui apresentado faz uma decomposição desse diferencial de juros
+      em prêmios de risco e inflação implícita usando um modelo paramétrico baseado
+      em condições de não-arbitragem. Este modelo estima conjuntamente as duas curvas
+      usando um modelo de 4 fatores da família Nelson-Siegel. Os resultados obtidos
+      obtém tem previsões melhores em erro quadrático médio que as previsões do Boletim
+      Focus. As estimações de breakeven inflation e de inflação implícita do modelo se
+      mostram estimadores não viesados da inflação futura para horizontes mais curtos e
+      carregam informação para horizontes mais longos. Os resultados indicam também
+      que há ganhos na imposição de não arbitragem.
+      Palavras-chaves:Inflação, prêmios de risco e mercado de títulos
+      Classificação JEL: C53, E43, G17
+      Classificação Anpec: Área 8 - Microeconomia, Métodos Quantitativos e Finanças.
+
+
+
+                                           Abstract
+
+
+             The breakeven inflation (BEI), differential between nominal and real yields
+      of bonds of the same maturity, is often used as a predictor of future inflation. The
+      model presented here makes a decomposition of that interest rate differential in risk
+      premiums and implied inflation using a parametric model based on no-arbitrage
+      conditions. This model jointly estimates the two curves using a model of 4 factors of
+      Nelson-Siegel family. The results obtained have better forecasts on average squared
+      error than the Focus Bulletin forecasts. The estimations of breakeven inflation and
+      implied inflation of the model are shown unbiased estimators of future inflation for
+      shorter horizons and carry information for longer horizons. The results also indicate
+      that there are gains in the imposition of no-arbitrage.
+      Keywords:Inflation, Risk Premium e Bond Markets
+
+1
+    Departmento de Economia, FEA-RP/USP
+2
+    Departmento de Economia, FEA-RP/USP
+
+
+
+                                               1
+1 Introdução
+        Para gerir bem uma política monetária os Bancos Centrais estão interessados nas
+expectativas de inflação dos consumidores e empresários. Essas expectativas dos agen-
+tes são importantes na determinação da inflação futura. Em geral os dados de inflação
+futura vem de duas fontes principais: das pesquisas de expectativas (surveys) e das infor-
+mações contidas em ativos no mercado financeiro. Dados provenientes de pesquisas tem
+uma frequência mais baixa, enquanto os dados do mercado de ativos transacionados tem
+frequência mais alta. Outra limitação das pesquisas é que temos expectativas de mercado
+somente para horizontes de 1 ano, o que faz com que não tenhamos acesso à inflação de
+longo prazo. Isso faz com que o Banco Central não possa verificar se as expectativas de
+mercado da inflação de longo prazo estão alinhadas com as metas da autoridade monetá-
+ria.
+        Já no caso de preços do mercado financeiro, podem ser acessados diariamente ou
+até mesmo de forma intra-day, além de poderem gerar informação para uma variedade
+maior de horizontes. No caso brasileiro podemos estimar a inflação esperada de até 5 anos
+a frente. Além disso, como pondera Val, Barbedo e Maia (2011) as pesquisas refletem a
+opinião das instituições financeiras, mas não as apostas que elas fazem no mercado. Assim,
+quando analisamos as informações do mercado financeiro temos informações diariamente
+atualizadas, com horizontes diferentes e de forma que reflitam as expectativas futuras que
+foram diretamente precificadas pelos agentes.
+        Devido a estes problemas com as expectativas retiradas de surveys, diversas formas
+de extração de expectativas implícitas em ativos financeiros foram propostas. Um trabalho
+fundamental nesta literatura foi Svensson e Soderling (1997), que discute como extrair
+expectativas através de variações de preços de ativos. No nosso caso usamos diferenciais
+de juros entre os títulos nominais, que pagam um montante fixo de juros, e os títulos
+reais, que são indexados a índices de preços mais um juro nominal. Os títulos nominais
+tem embutidos neles a chamada inflação implícita. No presente trabalho, para estimarmos
+a inflação esperada utilizamos as Letras do Tesouro Nacional (ou LTN), que são um título
+nominal, e as Notas do Tesouro Nacional do tipo B (ou NTN-B), que são títulos indexados
+ao IPCA (Índice de Preços ao Consumidor Amplo). Utilizamos a NTN-B pois a inflação
+que serve de âncora para a tomada de decisão dos formuladores de política monetária
+para cumprimento das metas de inflação é o IPCA, além de ser o título de maior liquidez.
+        O diferencial de juros entre os títulos nominais e reais de mesma maturidade é
+conhecido como breakeven inflation (BEI). A BEI é um indicador da inflação esperada,
+porém, é um indicador imperfeito pelo fato de incluir prêmios de risco da inflação. O
+grande problema é que a estimação do prêmio de risco em geral depende da especificação
+de um modelo paramétrico, que define o prêmio de risco de mercado para a incerteza
+associada a inflação futura.
+        Diversos trabalhos foram feitos utilizando os títulos do governo para extrair a infla-
+
+                                              2
+ção esperada para o mercado internacional (e.g. Woodward (1990) e Deacon e Derry (1994)
+para o mercado britânico, Shen e Corning (2001) para o mercado americano, Alonso,
+Blanco e Rio (2001) para o mercado francês). Christensen, Dion e Reid (2004) acham
+uma BEI rate consistentemente maior que as expectativas de mercado para o caso do
+mercado canadense. Concluem portanto que a pesquisa de mercado é a estimativa consis-
+tente das expectativas de inflação e que a BEI rate é uma estimativa viesada pela presença
+de prêmios de risco. O trabalho de Scholtes (2002) conclui, que para o caso inglês, a BEI
+rate possui uma performance empírica superior a das pesquisas a respeito das expectativas
+de inflação.
+        A decomposição da taxa BEI em prêmio de risco de inflação e expectativa de in-
+flação usando um modelo paramétrico para o prêmio de risco pode ser feita através de
+um modelo livre de arbitragem (arbitrage free) afim, que é o mais usado para representar
+a estrutura a termo da taxa de juros na área de finanças. Esses modelos são normalmente
+especificados usando um conjunto de fatores latentes que capturam os movimentos nas
+curvas de juros no tempo. Duffie e Kan (1996) afirmam que esse modelo é popular porque
+faz com que as curvas de rendimento sejam uma função linear dos fatores latentes e das
+cargas, o que representa uma vantagem devido a existência de soluções analíticas e o fato
+que esta estrutura linear pode ser estimada usando o Filtro de Kalman. No entanto a
+forma canônica desse modelo sofre de dois problemas. O primeiro é que a estimação por
+máxima verossimilhança dessa classe de modelos é sujeita a um problema de máximos
+locais. Assim sendo podemos obter estimações com implicações econômicas diferentes.
+Além de ter uma performance empírica no ajuste do modelo às curvas observadas e na
+construção de previsões em geral bastante pobre, como discutido em Duffee (2002).
+        Outra linha de pesquisa paralela na modelagem da estrutura a termo é baseada
+em modelos estatísticos. Esses modelos são baseados em representações fatoriais sem ne-
+nhuma interpretação econômica direta, como decomposições de componentes principais
+e modelos baseados na parametrização de Nelson e Siegel (1987), em uma formulação
+dinâmica baseada em uma estrutura de fatores latentes proposta em Diebold e Li (2006).
+Estes modelos obtêm ajustes e previsões mais acuradas que os modelos afins, e por isso
+foram adotados intensivamente na modelagem de curvas de juros, como discutido em Di-
+ebold e Rudebusch (2011).
+        No entanto, a ausência de uma interpretação econômica completa, a imposição de
+condições de não-arbitragem e formas explícitas para prêmios de mercado para o risco
+impedem seu uso em aplicações que necessitem de uma interpretação estrutural dos re-
+sultados. Uma versão dos modelos Nelson-Siegel dinâmicos com a imposição de condições
+de não-arbitragem em uma formulação afim foi proposta em Christensen, Diebold e Ru-
+debusch (2011), obtendo uma representação com bom poder de ajuste e consistência com
+não-arbitragem. Com isso conseguem decompor a BEI rate em inflação implícita e prê-
+mio de risco. Os autores concluem que suas estimativas estão próximas das pesquisas
+
+
+                                            3
+de mercado e os prêmios de risco variam em torno de zero. Além disso, sugerem que as
+expectativas de longo prazo estão bem ancoradas. Dizem também que essa abordagem
+usada por eles tem a vantagem de ser facilmente atualizada e reestimada pelo Filtro de
+Kalman, gerando a vantagem de se ter resultados em alta frequência o que é desejável
+para os formuladores de política monetária e profissionais do mercado financeiro.
+        Para o mercado brasileiro podemos citar o trabalho Val, Barbedo e Maia (2011)
+que aplica várias metodologias diferentes para estimar a inflação implícita e compará-la
+com as estimativas da BEI rate. Os autores encontram um prêmio de risco inflacionário
+relativamente baixo para o mercado brasileiro. Ainda dizem que as pesquisas de mercado
+embutem um prêmio de risco maior que os próprios títulos negociados. Outro ponto im-
+portante levantado pelos autores é que o mercado de títulos indexados só passou a ter
+participação importante a partir de 2006, com aumentos de liquidez e volume negociados.
+        No trabalho de Vicente e Guillen (2013) os autores testam se a breakeven inflation
+é uma boa medida da inflação futura. Com dados dos títulos do governo brasileiros os
+autores realizam dois testes, usando métodos de regressão univariadas. Realizam um teste
+para ver se essas breakeven inflation são um estimador não viesado das inflações futuras.
+Os autores acham evidências de que a breakeven inflation é um estimador não viesado
+para horizontes curtos (3 e 6 meses), já para horizontes de médio prazo (12 e 18 meses)
+essa variável tem pouco poder explicativo e em horizontos mais longos (24 e 30 meses)
+acham um resultado contraintuitivo de que há uma relação negativa entre a inflação fu-
+tura e as BEI rates.
+        Caldeira e Furlani (2014) utilizam um modelo Svensson (1994) com quatro fatores
+latentes para os títulos nominais e quatro fatores para os títulos reais. A partir desse
+modelo acham a BEI rate pelo diferencial entre os rendimentos dos títulos. Em seguida
+adotam um teste semelhante ao utilizado por Vicente e Guillen (2013) mas além de fazer
+regressões simples também utilizam uma formulação em espaço de estado para realizar o
+teste. Com isso os autores acham que a breakeven inflation é um estimador não viesado
+para a inflação 3 meses a frente e que ela fornece informação somente para horizontes mais
+curtos. Além disso, comparam as previsões do modelo com as de um modelo VAR e das
+expectativas de mercado dos Top5 do Boletim Focus. As BEI rates se mostram superiores
+aos modelos VAR propostos pelos autores porém piores que as dos Top 5.
+        A grande contribuição do presente trabalho é comparar os resultados dos diferen-
+ciais de juros das curvas de juros nominais e reais com as de um modelo Nelson-Siegel
+com restrições de não arbitragem. Através deste modelo conseguimos então decompor a
+BEI em inflação esperada e prêmio de risco. Replicamos aqui essa abordagem visando
+comparar os modelos entre eles e com as previsões do Boletim Focus como benchmark
+para o mercado brasileiro.
+        O trabalho está dividido da seguinte forma: na seção a seguir descreveremos o mo-
+delo e como podemos decompor os diferenciais de juros dos títulos indexados e nominais
+
+
+                                            4
+em inflação esperada e prêmio de risco. Posteriormente apresentaremos a metodologia
+utilizada, a escolha da especificação e os coeficientes encontrados na Seção 3. Na seção 4
+apresentamos os principais resultados encontrados, o ajustamento do modelo e testaremos
+se nossa medida de inflação implícita é útil para previsão da inflação futura, comparando
+os resultados do modelo com as previsões do Boletim Focus. Para finalizar a Seção 5
+apresenta as conclusões e os resultados mais relevantes do trabalho.
+
+
+2 Modelo
+        Nesta seção descreveremos um Modelo Livre de Arbitragem Nelson-Siegel em da-
+dos diários retirados da BM&F/BOVESPA para os títulos prefixados e NTN-B zero cu-
+pom. Com esse modelo podemos decompor o diferencial de juros entre inflação esperada
+e um prêmio de risco. A seguir apresentaremos uma discussão teórica de como decompor
+os diferenciais de juros em inflação implícita e prêmios de risco e a abordagem empírica
+utilizada no trabalho.
+
+
+2.1 Discussão teórica
+        Seguindo as abordagens de Cochrane (2005) e Christensen, Lopez e Rudebusch
+(2010) faremos a decomposição do spread dos títulos nominais e reais em inflação implícita
+e prêmio de risco usando uma formulação em tempo contínuo. Definindo 𝑀𝑡𝑅 e 𝑀𝑡𝑁 como
+os fatores de desconto estocásticos para os títulos reais e nominais, respectivamente. Pelas
+condições de não-arbitragem temos que que:
+
+                                                   [︁                    ]︁
+                                 𝑃𝑡𝑖 𝑀𝑡𝑖 = 𝐸𝑡𝑃 𝑃𝑡+𝜏
+                                                 𝑖   𝑖
+                                                    𝑀𝑡+𝜏                                (1)
+
+
+sendo 𝑖 = 𝑅, 𝑁 . Essa equação representa a tomada de decisão do agente abrindo mão
+de consumo presente para investir e consumir no futuro. A igualdade em 1 é derivada
+da condição de primeira ordem, para maiores detalhes consulte Cochrane (2005). Assim
+                              𝑖
+podemos normalizar o preço 𝑃𝑡+𝜏   = 1 , ou seja, um payoff unitário no período 𝜏 e
+reescrever os preços como:
+
+                                                              𝑖
+                                                        [︃          ]︃
+                                                             𝑀𝑡+𝜏
+                                   𝑃 (𝜏 )𝑖𝑡   =   𝐸𝑡𝑃                                   (2)
+                                                             𝑀𝑡𝑖
+
+Além disso, a condição de não arbitragem exige que haja consistência entre os preços dos
+títulos reais e nominais. Assim podemos definir 𝑄𝑡 como o nível geral de preços, que nada
+mais é do que a relação entre os fatores de desconto estocásticos:
+
+                                                      𝑀𝑡𝑅
+                                          𝑄𝑡 =                                          (3)
+                                                      𝑀𝑡𝑁
+
+                                                  5
+       Sob hipótese de que os fatores de desconto estocásticos tem a seguinte dinâmica:
+
+                                           𝑑𝑀𝑡𝑖
+                                                = −𝑟𝑡𝑖 𝑑𝑡 − Γ𝑡 𝑑𝑊𝑡𝑃                                          (4)
+                                           𝑀𝑡𝑖
+
+ou seja, a parte de drift do processo é determinada pela taxa juros instantânea, que varia
+para cada um dos tipos de títulos, e uma parte de difusão de que depende Γ𝑡 , que é o preço
+de mercado do risco que é constante entre os tipos de títulos e os choques do movimento
+browniano. A partir de 3, podemos então achar pelo Lemma de Itô a dinâmica do nível
+de preços:
+
+
+
+                                            𝑑𝑄𝑡 = (𝑟𝑡𝑅 − 𝑟𝑡𝑁 )𝑄𝑡 𝑑𝑡                                          (5)
+
+portanto, na ausência de arbitragem a taxa instantânea de crescimento dos preços é
+determinada pelo diferencial das taxas instantâneas de juros entre os títulos nominais
+e reais, portanto a equação de Fisher se mantém para a taxa instantânea e não há prêmio
+de risco. Novamente utilizando o Lema de Itô, podemos ver que:
+
+                                 1        1 1         1
+                  𝑑𝑙𝑛(𝑄𝑡 ) =        𝑑𝑄𝑡 −      𝑑𝑄2𝑡 =    𝑑𝑄𝑡 = (𝑟𝑡𝑅 − 𝑟𝑡𝑁 )𝑑𝑡                                (6)
+                                 𝑄𝑡       2 𝑄𝑡        𝑄𝑡
+
+integrando dos dois lados e tomando o exponencial, temos:
+                                                          ∫︀ 𝑡+𝜏
+                                                                   (𝑟𝑡𝑅 −𝑟𝑡𝑁 )𝑑𝑡
+                                          𝑄𝑡+𝜏 = 𝑄𝑡 𝑒      𝑡                                                 (7)
+
+
+       Com isso podemos escrever o preço do título nominal em função do nível de preço
+e do preço dos títulos reais, assim:
+
+                                                                   ⎛                                    ⎞
+                                                                                       𝑀𝑅      𝑄𝑡
+                               𝑅                                                   𝑐𝑜𝑣( 𝑀𝑡+𝜏
+                                                                                          𝑅 , 𝑄     )
+                         [︃          ]︃           [︃      ]︃
+                              𝑀𝑡+𝜏                      𝑄𝑡
+          𝑃 (𝜏 )𝑁    𝑃
+                                          × 𝐸𝑡𝑃
+                                                             ⎜                        ⎟         𝑡+𝜏
+                𝑡 = 𝐸𝑡                                      ×⎜1+   [︂ 𝑅 ]︂            ⎟   𝑡
+                                                                                                             (8)
+                              𝑀𝑡𝑅                      𝑄𝑡+𝜏       𝑃 𝑀𝑡+𝜏
+                                                                             [︁    ]︁
+                                                                                𝑄𝑡
+                                                             ⎝                        ⎠
+                                                                           𝑃
+                                                                 𝐸𝑡 𝑀 𝑅 × 𝐸𝑡 𝑄𝑡+𝜏
+                                                                                      𝑡
+
+
+convertendo o preço dos ativos em yield:
+
+                                   𝑁 𝑦𝑡𝑁           1 [︁ 𝑁            ]︁
+                      𝑃 (𝜏 )𝑁
+                            𝑡 = 𝑃 𝑡 𝑒    → 𝑦𝑡
+                                             𝑁
+                                               = −   𝑙𝑛 𝑃 𝑡 /𝑃 (𝜏 )𝑁
+                                                                   𝑡                                         (9)
+                                                   𝜏
+
+podemos reescrever 8 como:
+
+                                 𝑦𝑡𝑁 (𝜏 ) = 𝑦𝑡𝑅 (𝜏 ) + 𝜋𝑡𝑒 (𝜏 ) + 𝜑𝑡 (𝜏 )                                   (10)
+
+                                                          6
+sendo 𝑦𝑡𝑁 (𝜏 ) o rendimento dos títulos nominais para a maturidade 𝜏 , 𝑦𝑡𝑅 (𝜏 ) o rendimento
+dos títulos reais para a mesma maturidade, 𝜋𝑡𝑒 (𝜏 ) a inflação implícita do mercado de
+títulos no período t para o período 𝑡 + 𝜏 e 𝜑𝑡 (𝜏 ) o prêmio de risco de se manter um título
+nominal com rendimento em 𝑡 + 𝜏 . Podemos escrever a inflação implícita como:
+
+                                1                  1
+                                                                  [︂
+                                                            ∫︀ 𝑡+𝜏 𝑅 𝑁             ]︂
+                  𝜋𝑡𝑒 (𝜏 )                                −
+                             = − 𝑙𝑛 [𝑄𝑡 /𝑄𝑡+𝜏 ] = − 𝑙𝑛𝐸𝑡 𝑒 𝑡 (𝑟𝑡 −𝑟𝑡 )𝑑𝑡
+                                                       𝑃
+                                                                                        (11)
+                                𝜏                  𝜏
+
+e o prêmio de risco como:
+                                            ⎛                                  ⎞
+                                                             𝑀𝑅      𝑄𝑡
+                                   1 ⎜                   𝑐𝑜𝑣( 𝑀𝑡+𝜏
+                                                                𝑅 , 𝑄
+                                                                  ⎟   𝑡+𝜏
+                                                                          )
+                        𝜑𝑡 (𝜏 ) = − 𝑙𝑛 ⎜1 +   [︂ 𝑅
+                                                    ]︂          𝑡 ⎟                     (12)
+                                   𝜏 ⎝       𝑃 𝑀𝑡+𝜏
+                                                         [︁    ]︁
+                                                            𝑄𝑡
+                                                                  ⎠
+                                                       𝑃
+                                            𝐸𝑡 𝑀 𝑅 × 𝐸𝑡 𝑄𝑡+𝜏
+                                                            𝑡
+
+
+
+portanto o prêmio de risco em se manter um título nominal pode ser positivo ou negativo.
+                                                 𝑀𝑅      𝑄𝑡
+O prêmio de risco só será positivo se a 𝑐𝑜𝑣( 𝑀𝑡+𝜏  𝑅 , 𝑄
+                                                         𝑡+𝜏
+                                                             ) < 0, ou seja, um aumento do
+                                                   𝑡
+nível de preços, que é um momento de perda de poder aquisitivo, tem efeito positivo
+sobre o preço dos títulos reais. Assim sendo, as pessoas preferem investir nesses títulos
+ao invés dos nominais e exigem um retorno extra para os títulos não-indexados. Isso está
+relacionado com as pessoas preferirem um consumo mais suave durante a vida, então os
+agentes preferem ativos que tenham covariância negativa com seu consumo.
+        Como definimos na primeira parte desse trabalho a BEI (breakeven inflation) para
+𝑡+𝜏 é o diferencial de juros entre os títulos nominais e reais para a maturidade 𝜏 . Conforme
+vimos na equação 10 podemos decompor a BEI em inflação implícita e prêmio de risco:
+
+                             𝐵𝐸𝐼(𝜏 )𝑡 = 𝑦𝑡𝑁 (𝜏 ) − 𝑦𝑡𝑅 (𝜏 ) = 𝜋𝑡𝑒 (𝜏 ) + 𝜑𝑡 (𝜏 )        (13)
+
+
+2.2 Abordagem empírica
+        Para sabermos qual a melhor especificação para o modelo conjunto com os rendi-
+mentos dos títulos reais e nominais, precisamos determinar o número de fatores latentes
+para o modelo. Em geral os modelos para estrutura termo de taxa de juros utilizam três
+fatores: o de nível, o de inclinação e o de curvatura. Esses fatores geralmente são sufici-
+entes para explicar a variação cross-section dos títulos. O primeiro termo é o nível que
+determina os fatores de longo prazo. O segundo fator pode ser considerado a inclinação ou
+fator de curto prazo ou ainda o spread enquanto o terceiro fator é considerado a curvatura
+ou fator de médio prazo.
+        Para testarmos quantos fatores devemos utilizar usaremos a analise de componen-
+tes principal, analisando os dados de Janeiro de 2006 até Outubro de 2013 para os títulos
+nominais com maturidade de 1, 3, 6, 12, 15, 18, 21 , 24, 30, 36, 42, 48 e 60 meses e para
+
+
+                                                     7
+os títulos indexados para as mesmas maturidades. Utilizamos esse período pois os títulos
+indexados ao IPCA parecem ter pouca liquidez para períodos anteriores a esse. Na Tabela
+1 fazemos uma análise de componentes principais para vermos quantos componentes são
+suficientes para explicar as curvas, 4 fatores explicam mais de 99,2% das curvas. Assim
+propomos um modelo com: dois fatores de nível diferentes, um para cada tipo de título,
+um fator inclinação e um fator curvatura comuns.
+        Christensen, Lopez e Rudebusch (2010) mostraram que o modelo Livre de Arbi-
+
+      Tabela 1 – Analise de componentes principais dos títulos indexados e nominais
+
+              Maturidade
+               Indexados         1o PC       2o PC       3o PC       4o PC       5o PC           6o PC
+                    1 mês     0.134553    0.467604    0.014705     0.78545    -0.27805        0.258406
+                  3 meses     0.167591    0.357665    -0.04919    0.114176    0.344071          -0.6968
+                  6 meses     0.179627    0.265103    -0.06309    -0.05793    0.038507        -0.29027
+                  9 meses     0.184117    0.190391    -0.07081    -0.14773      -0.0671       -0.12424
+                 12 meses     0.185925    0.142082    -0.08897    -0.17352    -0.13651        -0.02966
+                 15 meses         0.187   0.102497    -0.11464    -0.16004    -0.16635        -0.01608
+                 18 meses     0.187608    0.069742      -0.1429   -0.13853    -0.15875        0.002999
+                 21 meses     0.187898    0.044778    -0.16131    -0.12077    -0.13889        0.036049
+                 24 meses     0.188104    0.024581    -0.17109    -0.10158    -0.11191         0.06148
+                 26 meses     0.188119    0.014526    -0.17766    -0.09155    -0.09786         0.07519
+                 30 meses     0.188029    0.002117    -0.19071    -0.07273    -0.06763        0.095541
+                 36 meses     0.187785    -0.01158    -0.20881      -0.0501   -0.01124        0.109623
+                 42 meses     0.187566    -0.01581    -0.21758    -0.03581    0.040968        0.136009
+                 48 meses     0.187261    -0.01559    -0.22502    -0.02648    0.096531        0.159568
+                 60 meses     0.185982      -0.0109   -0.25463    -0.02256    0.192267        0.217021
+                Nominais
+                    1 mês      0.17434     0.24443    0.298763    -0.13154    0.433621        0.344089
+                  3 meses     0.178917    0.184721     0.32384    -0.12935    0.265464        0.226057
+                  6 meses      0.18341    0.087963    0.325201    -0.11281    0.041807        0.086815
+                  9 meses     0.185225    0.013704    0.303282    -0.08272      -0.0904       0.003123
+                 12 meses      0.18595    -0.04622    0.267105    -0.04997    -0.16666        -0.05446
+                 15 meses     0.186054    -0.09489    0.225593    -0.01842    -0.19623        -0.08444
+                 18 meses     0.185835    -0.13181     0.18619    0.012417    -0.19224        -0.08931
+                 21 meses      0.18548    -0.16085     0.14918    0.040502    -0.16129        -0.08079
+                 24 meses     0.185047    -0.18271    0.116719     0.06492      -0.1155       -0.07936
+                 26 meses     0.184668    -0.19485    0.099642    0.081025    -0.08334        -0.07678
+                 30 meses     0.183836    -0.21435    0.064917    0.114015    -0.02108        -0.06584
+                 36 meses     0.182727      -0.2304   0.014199    0.154256    0.072478          -0.0617
+                 42 meses     0.181714    -0.23768    -0.03153    0.179167    0.168997        -0.03893
+                 48 meses     0.180514    -0.24503    -0.06206    0.196124    0.245654        -0.01913
+                 60 meses     0.178209    -0.25433    -0.11583    0.223583    0.346699        0.008125
+              % explicada       0.9216        0.964      0.981      0.9922       0.9961          0.9986
+
+
+
+tragem com Fatores Nelson-Siegel tem um bom grau de ajustamento para estrutura termo
+de taxa de juros além de gerar boas previsões fora da amostra. Para capturar possíveis
+diferenças de escala entre as inclinações dos títulos nominais e reais estimamos também
+o 𝛼, o que não foi feito em trabalhos anteriores.
+       A dinâmica Q dos fatores Nelson-Siegel para os títulos nominais é dada pelas se-
+guintes equações diferenciais estocásticas:
+        ⎛         ⎞       ⎛                      ⎞⎛                      ⎞                ⎛               ⎞
+                                                                 𝑃,𝐽                                  𝑁
+
+        ⎜
+            𝑑𝐿𝑁
+              𝑡   ⎟       ⎜
+                              0 0  0 0           ⎟⎜
+                                                        𝐿𝑁
+                                                         𝑡−1 − 𝜃1        ⎟         ⎜
+                                                                                              𝐷𝑊 𝐿𝑡 ,𝑃    ⎟
+            𝑑𝑆𝑡               0 −𝜆 𝜆 0                  𝑆𝑡−1 − 𝜃2𝑃,𝐽                          𝐷𝑊 𝑆,𝑃
+        ⎜         ⎟       ⎜                      ⎟⎜                      ⎟         ⎜                      ⎟
+                                                                         ⎟ 𝑑𝑡 + Σ𝑗 ⎜
+        ⎜         ⎟       ⎜                      ⎟⎜                      ⎟         ⎜                      ⎟
+        ⎜         ⎟   =   ⎜                      ⎟⎜                                                       ⎟   (14)
+            𝑑𝐶𝑡               0 0 −𝜆 0                  𝐶𝑡−1 − 𝜃3𝑃,𝐽                          𝐷𝑊 𝐶,𝑃
+        ⎜         ⎟       ⎜                      ⎟⎜                      ⎟         ⎜                      ⎟
+        ⎜         ⎟       ⎜                      ⎟⎜                      ⎟         ⎜                      ⎟
+        ⎝         ⎠       ⎝                      ⎠⎝                      ⎠         ⎝                      ⎠
+                                                                 𝑃,𝐽                              𝑅
+            𝑑𝐿𝑅
+              𝑡               0 0  0 0                  𝐿𝑅
+                                                         𝑡−1 − 𝜃4                             𝐷𝑊 𝐿𝑡 ,𝑃
+
+
+                                                       8
+e a dinâmica P é dada por:
+ ⎛         ⎞       ⎛                                                       ⎞⎛                      ⎞        ⎛               ⎞
+                        𝑃,𝐽      𝑃,𝐽               𝑃,𝐽       𝑃,𝐽                         𝑃,𝐽                          𝑁
+
+ ⎜
+     𝑑𝐿𝑁
+       𝑡   ⎟       ⎜
+                       𝐾11      𝐾12               𝐾13       𝐾14            ⎟⎜
+                                                                                𝐿𝑁
+                                                                                 𝑡−1 − 𝜃1          ⎟         ⎜
+                                                                                                                 𝐷𝑊 𝐿𝑡 ,𝑃   ⎟
+                        𝑃,𝐽      𝑃,𝐽               𝑃,𝐽       𝑃,𝐽
+     𝑑𝑆𝑡               𝐾21      𝐾22               𝐾23       𝐾24                 𝑆𝑡−1 − 𝜃2𝑃,𝐽                     𝐷𝑊 𝑆,𝑃
+ ⎜         ⎟       ⎜                                                       ⎟⎜                      ⎟         ⎜              ⎟
+                                                                                                   ⎟ 𝑑𝑡 + Σ𝑗 ⎜
+ ⎜         ⎟       ⎜                                                       ⎟⎜                      ⎟         ⎜              ⎟
+ ⎜         ⎟   =   ⎜
+                        𝑃,𝐽      𝑃,𝐽               𝑃,𝐽       𝑃,𝐽
+                                                                           ⎟⎜                                               ⎟   (15)
+     𝑑𝐶𝑡               𝐾31      𝐾32               𝐾33       𝐾34                 𝐶𝑡−1 − 𝜃3𝑃,𝐽                     𝐷𝑊 𝐶,𝑃
+ ⎜         ⎟       ⎜                                                       ⎟⎜                      ⎟         ⎜              ⎟
+ ⎜         ⎟       ⎜                                                       ⎟⎜                      ⎟         ⎜              ⎟
+ ⎝         ⎠       ⎝                                                       ⎠⎝                      ⎠         ⎝              ⎠
+                        𝑃,𝐽      𝑃,𝐽               𝑃,𝐽       𝑃,𝐽                         𝑃,𝐽                         𝑅
+     𝑑𝐿𝑅
+       𝑡               𝐾41      𝐾42               𝐾43       𝐾44                 𝐿𝑅
+                                                                                 𝑡−1 − 𝜃4                        𝐷𝑊 𝐿𝑡 ,𝑃
+
+com Σ𝑗 diagonal. Como vimos na seção anterior a dinâmica P é muito importante para
+decompormos a BEI em inflação implícita e prêmio de risco. As yield curves são:
+
+                                     −𝜆𝜏
+            𝑦(𝜏 )𝑁 = 𝐿𝑁
+                      𝑡 + 𝑆𝑡 ((1 − 𝑒     )/𝜆𝜏 ) + 𝐶𝑡 ((1 − 𝑒−𝜆𝜏 )/𝜆𝜏 − 𝑒−𝜆𝜏 ) + 𝜖𝑁,𝜏                                            (16)
+
+
+                                    −𝜆𝜏
+           𝑦(𝜏 )𝑅 = 𝐿𝑅
+                     𝑡 + 𝛼𝑆𝑡 ((1 − 𝑒    )/𝜆𝜏 ) + 𝛼𝐶𝑡 ((1 − 𝑒−𝜆𝜏 )/𝜆𝜏 − 𝑒−𝜆𝜏 ) + 𝜖𝑅,𝜏                                            (17)
+sendo 𝐿𝑁      𝑅
+        𝑡 e 𝐿𝑡 os fatores de nível dos títulos nominais e reais, respectivamente, 𝑆𝑡 o fator
+de inclinação e 𝐶𝑡 , o fatode curvatura e 𝛼 um termo de ajuste para os títulos reais.
+        Por facilitar a estimação faremos uma discretização desse processo como Mouabbi
+(2013), sendo 𝑋𝑡 = (𝐿𝑁                  𝑅
+                         𝑡 , 𝑆𝑡 , 𝐶𝑡 , 𝐿𝑡 ) podemos reescrever a equação 15 como:
+
+
+                                                             𝑃 (𝑇 −𝑡)                 𝑃 (𝑇 −𝑡)
+                                𝑋𝑇 = [𝐼 − 𝑒𝐾                               ]𝜃𝑃 + 𝑒𝐾              𝑋𝑡 + 𝜂𝑡                        (18)
+
+
+desse modo a equação de transição pode ser estimada em tempo discreto como sendo
+um VAR(1). Esse procedimento de estimação já foi utilizado em Christensen, Lopez e
+Rudebusch (2012), e nesse trabalho jutamente com o pressuposto de erros Gaussianos
+mostra-se que podemos realizar esta estimação por quasi-máxima verossimilhança usando
+o filtro de Kalman. Essa transformação nos permite estimar e recuperar os parâmetros
+da dinâmica P da equação 15. No trabalho de Christensen, Lopez e Rudebusch (2010) os
+autores demonstram que para uma abordagem gaussiana podemos reescrever a equação:
+                                    [︂       ∫︀ 𝑡+𝜏                   ]︂
+                                         −            (𝑟𝑡𝑅 −𝑟𝑡𝑁 )𝑑𝑡
+                              𝐸𝑡𝑃    𝑒        𝑡                            = 𝑒𝑥𝑝 [𝐵 𝜋 (𝜏 )𝑋𝑡 + 𝐴𝜋 (𝜏 )]                         (19)
+
+
+sendo 𝐵 𝜋 (𝜏 ) e 𝐴𝜋 (𝜏 ) soluções das equações diferenciais resolvidas pelo método de Runge-
+Kutta de quarta ordem. A partir disso podemos calcular a inflação implícita e os prêmios
+de risco.
+
+
+3 Estimação
+       As estimações feitas nesse trabalho utilizaram a metodologia do Filtro de Kalman,
+seguindo Christensen, Lopez e Rudebusch (2012). As equações de medida 16 e 17 podem
+
+                                                                            9
+ser reescritas como:
+                                            𝑦𝑡 = 𝐵𝑋𝑡 + 𝜖𝑡                                       (20)
+
+sendo que 𝜖𝑡 representam os erros das equações de medida que são por hipótese indepen-
+dentes e identicamente distribuídos (iid) para cada maturidade. A equação de estado dos
+fatores é dada pela Equação 18, pode ser reescrita como:
+
+                                         𝑋𝑡 = Θ + Φ𝑋𝑡−1 + 𝜂𝑡                                    (21)
+
+com estrutura do erro dada por:
+                                    ⎛      ⎞          ⎛               ⎞
+                                     𝜂
+                                    ⎝ 𝑡 ⎠∼𝑁⎝
+                                             0 𝑅 0 ⎠
+                                              ,                                                 (22)
+                                      𝜖𝑡     0 0 𝑄
+
+onde 𝑅 = 𝑑𝑖𝑎𝑔(𝜎𝑖2 ) (4×4) e as equações de medida tem a mesma variância com 𝑄 =
+𝑑𝑖𝑎𝑔(𝜎 2 ). Além disso, pela otimalidade do Filtro de Kalman necessitamos que os erros
+sejam ortogonais à variável de estado: 𝐸(𝑋𝑡 𝜂𝑡 ) = 0 e 𝐸(𝑋𝑡 𝜖𝑡 ) = 0.
+        Uma estimação deve ser ao mesmo tempo flexível e parcimoniosa. Por isso é im-
+portante que o modelo esteja bem especificado. Além disso, para decompormos a BEI
+rate é muito importante que nossa dinâmica P esteja correta. Para tanto conduzimos tes-
+tes estatísticos de critério de informação para escolha da melhor especificação, saindo do
+modelo irrestrito e indo até o modelo com 12 restrições. Os resultados destes testes estão
+presentes na tabela 2 . Para anaisar as especificações mostramos na tabela o valor do
+logaritmo da máxima verossimilhança, o número de parâmetros estimados, e os critérios
+de informação de Akaike (AIC), Bayesian (BIC) e Hannan-Quinn. Usamos como critério
+de escolha os três últimos testes citados e todos eles indicam que a melhor especificação
+é a do modelo diagonal.
+
+
+                                Tabela 2 – Testes de Especificação
+
+                                                           Testes
+                                  logL   Parâmetros         AIC          BIC    Hannan-Quinn
+              Irrestrito      -32612.9           27     34.10648     34.18487        34.13533
+              1 Restrição     -32853.9           26     34.33927     34.41473        34.36704
+              2 Restrições    -32836.5           25     34.32009     34.39264        34.34679
+              3 Restrições    -32546.7           24     34.01634     34.08599        34.04197
+              4 Restrições      -32569           23     34.03865      34.1054        34.06321
+              5 Restrições    -32393.3           22     33.85406      33.9179        33.87755
+              6 Restrições      -32339           21     33.79632     33.85726        33.81875
+              7 Restrições    -32338.1           20     33.79432     33.85236        33.81568
+              8 Restrições    -32339.5           19     33.79479     33.84993        33.81508
+              9 Restrições    -32159.1           18     33.60533     33.65757        33.62456
+              10 Restrições   -32161.2           17     33.60646     33.65579        33.62461
+              11 Restrições   -31986.1           16     33.42252     33.46895        33.43961
+              Diagonal        -31972.2           15    33.40701     33.45054        33.42303
+
+ Nota - Impusemos que o parâmetro menos significante fosse igual a zero em cada restrição.3
+
+
+
+
+                                                      10
+                          Tabela 3 – Parâmetros Estimados do modelo escolhido
+
+                   𝜑, 1          𝜑, 2         𝜑, 3         𝜑, 4              𝜃              𝛼               𝜆
+       𝜑1,        0.995                                                  -0.016          0.972           0.193
+             (0.001184)                                             (0.009498)    (0.00000689)   (0.000000759)
+       𝜑2,                      0.878                                     0.264
+                           (0.002268)                               (0.007128)
+       𝜑3,                                   0.972                        0.060
+                                        (0.003295)                  (0.017272)
+       𝜑4,                                                1.000          -0.007
+                                                     (0.000119)   (0.00000968)
+
+
+
+       A tabela 3 apresenta os valores estimados para o modelo escolhido. Nessa tabela
+apresentamos os parâmetros estimados para a matriz 𝜑, os 𝜃, os Σ além do fator de decai-
+mento da equação de medida (𝜆) e do 𝛼 para os títulos reais. Podemos ver que estimamos
+um fator de decaimento de 0.19, valor próximo de outros trabalhos aplicados ao Brasil. O
+parâmetro 𝛼 estimado foi de 0.97, o trabalho de Christensen, Lopez e Rudebusch (2010)
+acha um valor de 0.92, por exemplo.
+
+
+
+
+4 Resultados
+        Nessa seção apresentaremos primeiramente os valores encontrados para os fatores
+latentes, assim como as projeções para os títulos analisados. Posteriormente mostraremos
+os valores encontrados para a inflação implícita e para os prêmios de risco para o mercado
+nacional.
+
+
+4.1 Fatores Latentes e ajustamento dos títulos
+        As Figuras 1 e 2 mostram os fatores de nível e inclinação estimados para os tí-
+tulos nominais e reais para o período analisado. A correlação entre esses dois fatores de
+nível é de 91,71% e podemos notar que que tanto o fator nível real quanto o nominal
+apresentam um aumento para 2008, período da crise do Lehmann Brothers. Isso mostra
+que a crise influenciou tanto os títulos reais quanto nominais provavelmente pelo canal
+macroeconômico. No trabalho de Diebold, Rudebusch e Aruoba (2006) os autores indicam
+que a inflação presente influencia o fator nível. Isso pode explicar o aumento desse fator
+tanto para 2008 quanto para 2013. Já os fatores nível e inclinação são bem menos voláteis
+que os de nível seguindo a literatura, como Diebold e Li (2006).
+3
+    Modelo com 1 restrição: 𝜑1,4 = 0. Modelo com 2 restrições: 𝜑1,4 = 𝜑4,1 = 0. Modelo com 3 restrições:
+    𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 0. Modelo com 4 restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 𝜑3,4 = 0. Modelo com 5
+    restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 𝜑3,4 = 𝜑2,4 = 0. Modelo com 6 restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 =
+    𝜑3,4 = 𝜑2,4 = 𝜑3,1 = 0. Modelo com 7 restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 𝜑3,4 = 𝜑2,4 = 𝜑3,1 = 𝜑4,2 = 0.
+    Modelo com 8 restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 𝜑3,4 = 𝜑2,4 = 𝜑3,1 = 𝜑4,2 = 𝜑1,3 = 0. Modelo com
+    9 restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 𝜑3,4 = 𝜑2,4 = 𝜑3,1 = 𝜑4,2 = 𝜑1,3 = 𝜑2,1 = 0. Modelo com 10
+    restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 𝜑3,4 = 𝜑2,4 = 𝜑3,1 = 𝜑4,2 = 𝜑1,3 = 𝜑2,1 = 𝜑1,2 = 0. Modelo com 11
+    restrições: 𝜑1,4 = 𝜑4,1 = 𝜑4,3 = 𝜑3,4 = 𝜑2,4 = 𝜑3,1 = 𝜑4,2 = 𝜑1,3 = 𝜑2,1 = 𝜑1,2 = 𝜑3,2 = 0.
+
+
+                                                         11
+                          Figura 1 – Fatores de nível estimados
+
+
+
+
+                   Figura 2 – Fatores inclinação e curvatura estimados
+
+
+        A Tabela 4 mostra como medidas de ajustamento do modelo para as diversas
+maturidades dos títulos o Erro Médio e o Erro Quadrático Médio. Essas medidas mos-
+tram que o modelo em geral oferece um bom grau de ajustamento, especialmente para os
+títulos reais, como poder ser observado pelo menor os Erros Quadráticos para estas séries.
+
+
+
+4.2 Inflação Implícita e Prêmios de Risco
+     A parir da equação 19 podemos calcular a inflação implícita do nosso modelo.
+Como discutimos na seção 2 a BEI rate pode ser decomposta em inflação implícita e
+
+                                           12
+                           Tabela 4 – Medidas de ajustamento
+
+                                             Erro Médio   Erro Quadrático Médio
+                     Reais
+                     Maturidade   1 mês       -0.095609                2.798753
+                     Maturidade   3 meses       0.05489                 0.57199
+                     Maturidade   6 meses     -0.015383                0.195772
+                     Maturidade   9 meses     -0.007725                0.113417
+                     Maturidade   12 meses     0.001921                0.086818
+                     Maturidade   15 meses    -0.001644                 0.07728
+                     Maturidade   18 meses     -0.00026                0.074582
+                     Maturidade   21 meses    -0.002758                0.077102
+                     Maturidade   24 meses    -0.007826                0.079358
+                     Maturidade   26 meses    -0.009574                0.081415
+                     Maturidade   30 meses    -0.007437                0.083792
+                     Maturidade   36 meses      0.01013                0.085904
+                     Maturidade   42 meses     0.036823                 0.09254
+                     Maturidade   48 meses     0.063338                0.100567
+                     Maturidade   60 meses     0.128385                0.139267
+                     Nominais
+                     Maturidade   1 mês        0.042264                0.876392
+                     Maturidade   3 meses       0.02634                 0.40592
+                     Maturidade   6 meses      0.028155                0.224233
+                     Maturidade   9 meses      0.046288                0.199712
+                     Maturidade   12 meses     0.047124                0.203884
+                     Maturidade   15 meses     0.028979                0.209178
+                     Maturidade   18 meses     0.009476                0.210486
+                     Maturidade   21 meses    -0.007772                0.204806
+                     Maturidade   24 meses    -0.023365                0.197345
+                     Maturidade   26 meses    -0.032977                 0.19443
+                     Maturidade   30 meses    -0.040021                0.193084
+                     Maturidade   36 meses     -0.04179                0.196226
+                     Maturidade   42 meses    -0.049769                0.203946
+                     Maturidade   48 meses    -0.053981                0.211662
+                     Maturidade   60 meses    -0.049313                0.235099
+
+
+
+prêmio de risco. A partir da equação 13 e tomando a inflação implicíta como descrito
+anteriormente podemos calcular os prêmio de risco para cada maturidade.
+        Utilizando a mesma abordagem de Christensen, Lopez e Rudebusch (2010), com-
+paramos nossos resultados com as previsões de mercado. No presente trabalho usamos
+como benchmark as previsões médias das expectativas de mercado publicadas no Boletim
+Focus. Os resultados do modelo se aproximam das previsões do Boletim Focus com o
+passar do tempo. Isso pode ser resultado de um mercado mais eficiente de títulos ou da
+perda de credibilidade do BC na condução da política monetária levando os agentes a
+reportarem previsões menos conservadoras.
+        Podemos ver na Figuras 3 e 4 que a inflação implícita do modelo parece ser melhor
+do que as previsões do Focus tanto para o horizonte de 6 quanto de 12 meses. Quando
+realizamos novamente os testes de medida de ajuste vemos que tanto o erro médio quanto
+o erro quadrático médio são menores do que os das previsões do Focus, como podemos ver
+na Tabela 5. Quando comparamos as BEI rates com a inflação implícita também vemos
+que a inflação implícita parece ser um preditor superior.
+        Já a Figura 5 apresenta os prêmios de risco do modelo para as maturidades de: 6,
+12, 24 e 60 meses. Vemos que prêmios de risco são maiores para horizontes mais curtos.
+A dinâmica dos prêmios de risco parece ser igual entre os títulos de até 24 meses, apre-
+sentando apenas uma diferença de nível. Já para horizontes mais longos (60 meses) os
+
+                                                 13
+          8
+
+
+          7
+
+
+          6
+
+
+          5
+
+
+          4
+
+
+          3
+
+
+          2
+              2006    2007     2008    2009     2010    2011    2012    2013
+
+                                      IPCA(6)
+                                      IMPLICITA_6MESES
+                                      FOCUS6
+
+
+ Figura 3 – Boletim Focus, Inflação Esperada do Modelo e IPCA realizado 6 meses a frente
+
+          8
+
+
+          7
+
+
+          6
+
+
+          5
+
+
+          4
+
+
+          3
+
+
+          2
+              2006    2007     2008    2009     2010    2011    2012    2013
+
+                                      IPCA(12)
+                                      IMPLICITA_12MESES
+                                      FOCUS12
+
+
+Figura 4 – Boletim Focus, Inflação Esperada do Modelo e IPCA realizado 12 meses a frente
+
+
+agentes podem ancorar suas expectativas na inflação de longo prazo o que pode explicar
+a dinâmica diferente para esses títulos. Outro ponto interessante do presente trabalho é
+que os prêmios de risco parecem ser variantes tanto no tempo quanto na maturidade.
+
+
+                                           14
+                               Tabela 5 – Grau de ajustamento
+
+                                            6 meses              12 meses
+                                          EM          EQM        EM      EQM
+                        Implicita     -0.04912   0.592281   0.006084   1.127463
+                          BEIR        0.043947    0.75811   0.195837   1.247082
+                         FOCUS        0.454405   1.471076   0.619568   1.456684
+
+
+          1.6
+
+          1.2
+
+          0.8
+
+          0.4
+
+          0.0
+
+          -0.4
+
+          -0.8
+
+          -1.2
+
+          -1.6
+
+          -2.0
+
+          -2.4
+                  06      07           08         09        10         11         12   13
+
+                                            PREMIO6           PREMIO12
+                                            PREMIO24          PREMIO60
+
+
+
+
+            Figura 5 – Prêmios de risco para 6, 12, 24 e 60 meses de maturidade
+
+
+4.3 Inflação implícita como preditor da inflação futura
+        Os trabalhos de Vicente e Guillen (2013) e Caldeira e Furlani (2014) propõem uma
+metodologia para testar o poder preditivo da inflação implícita sobre a inflação futura.
+Definindo ℎ(1)𝑡 como a taxa anual de juros continuamente composta, podemos definir a
+inflação acumulada entre o período t e 𝑡+𝜏 como: ℎ(𝜏 )𝑡 = 𝜏1 𝑗=𝑡+𝜏
+                                                             ∑︀
+                                                                𝑗=𝑡  ℎ𝑗 (1). Podemos testar
+se a inflação implícita tem poder preditivo sobre a inflação utilizando uma regressão com
+a seguinte forma funcional:
+
+                                    ℎ(𝜏 )𝑡 = 𝑐0 + 𝑐1 𝜋𝑡𝑒 (𝜏 ) + 𝜖𝑡+𝜏                        (23)
+
+a equação 23 mostra que se o termo 𝑐1 for significante, então a inflação implícita fornece
+alguma informação sobre a inflação futura, e se 𝑐0 = 0 e 𝑐1 = 1 a inflação implícita
+é um estimador não viesado da inflação futura. Assim como Vicente e Guillen (2013),
+estimamos primeiramente a equação 23 pelo Método dos Mínimos Quadrados Ordinários
+(OLS). Posteriormente para evitarmos possíveis problemas de endogeneidade faremos uma
+estimação por Mínimos Quadrados em dois estágios (TSLS) com a primeira defasagem
+
+                                                      15
+da inflação implícita como instrumento e uma estimação pelo Método dos Momentos
+generalizado (GMM) com as três primeiras defasagens como instrumentos. Os autores
+propõem uma estimação por TSLS e GMM pois a inflação futura deve ser influenciada
+pelas expectativas de inflação assim como as expectativas são contaminadas pela inflação
+realizada, gerando endogeneidade. Com isso testaremos a significância de 𝑐1 e se 𝑐0 = 0
+e 𝑐1 = 1 através de um teste de Wald. Outro ponto que merece ser notado é que Vicente
+e Guillen (2013) afirmam que suas estimativas só estarão corretas sob a hipótese de que
+os prêmios de risco são constantes no tempo, o que não parece ser verdade para o caso
+brasileiro.
+        Nas tabelas 6, 7 e 8 temos os testes utilizando as estimações propostas por Vicente
+e Guillen (2013). Podemos ver que em geral os testes são robustos e indicam os mesmos
+resultados. Podemos ver pela estimação por OLS que a inflação implícita extraída pelo
+modelo parece ser estimador não viesado para horizontes de até 9 meses. Já utilizando as
+estimações por TSLS e GMM os resultados indicam que elas são estimadores não viesados
+da inflação realizada para os horizontes de 6, 9 e 36 meses. Apesar de o horizonte de 48
+meses apresentar um resultado contraintuitivo, parece que a inflação implícita fornece
+informação relevante sobre a inflação realizada para os horizontes 3, 6, 9, 36 e 60 meses.
+        Já para as BEI rates os resultados não são tão robustos, indicando resultados
+
+                     Tabela 6 – OLS das inflações implícitas do modelo
+
+                                                     Maturidade
+                              3        6        9      12       24       36       48       60
+                   𝑐0      1.15     1.10     0.83    0.43     0.10     0.65    -0.53     0.40
+                           0.00     0.00     0.00    0.07     0.60     0.00     0.00     0.03
+                   𝑐1     -0.01    -0.01     0.01    0.03     0.05     0.02     0.09     0.04
+                           0.24     0.53     0.44    0.02     0.00     0.02     0.00     0.00
+                   𝑅2    56.2%    50.9%    29.3%    8.1%    -0.4%    34.2%    22.7%    21.6%
+                F-test     0.30     0.82     0.62    0.04     0.00     0.06     0.00     0.00
+
+              Os valores abaixo dos coeficientes são do P-valor dos coeficientes
+
+
+
+                    Tabela 7 – TSLS das inflações implícitas do modelo
+
+                                                     Maturidade
+                              3        6        9      12       24       36       48       60
+                   𝑐0      1.35     1.18     0.84    0.37     0.16     0.84    -0.72     0.50
+                           0.00     0.00     0.00    0.18     0.52     0.00     0.00     0.02
+                   𝑐1     -0.02    -0.01     0.01    0.03     0.05     0.01     0.10     0.03
+                           0.04     0.39     0.53    0.03     0.00     0.41     0.00     0.01
+                   𝑅2    56.3%    50.1%    27.1%    5.8%    -1.7%    34.8%    29.3%    21.2%
+                F-test     0.08     0.68     0.71    0.06     0.00     0.42     0.00     0.01
+
+              Os valores abaixo dos coeficientes são do P-valor dos coeficientes
+
+
+diferentes dependendo de qual método de estimação estamos usando. Podemos ver que
+em geral os testes são robustos e indicam os mesmos resultados. Podemos ver tanto pela
+estimação por OLS quanto por TSLS que a BEI rate parece ser estimador não viesado
+
+                                                    16
+                    Tabela 8 – GMM das inflações implícitas do modelo
+
+                                                      Maturidade
+                              3         6        9      12       24       36       48       60
+                   𝑐0      1.20      1.05     0.76    0.27    -0.02     0.70    -0.70     0.40
+                           0.00      0.00     0.00    0.17     0.93     0.00     0.00     0.04
+                   𝑐1     -0.01      0.00     0.01    0.04     0.06     0.02     0.10     0.04
+                           0.16      0.78     0.25    0.00     0.00     0.07     0.00     0.00
+                   𝑅2    55.2%     49.3%    25.9%    4.2%    -2.9%    33.1%    32.8%    20.5%
+                F-test     0.02      0.96     0.45    0.00     0.00     0.16     0.00     0.00
+
+              Os valores abaixo dos coeficientes são do P-valor dos coeficientes
+
+
+
+para horizontes de 6 e 9 meses. Já utilizando a estimação por GMM os resultados não
+indicam as BEI rates são estimadores não viesados da inflação realizada. Apesar disso,
+parece que as BEI rates fornecem informação relevante sobre a inflação realizada para os
+horizontes mais curtos(até 9 meses) e para os horizontes de 24 e 60 meses, apresentando
+𝑐0 contraintuitivo para o horizonte de 48 meses.
+       Os resultados encontrados nessa seção mostram que tanto a inflação implícita
+
+                                  Tabela 9 – OLS para as BEI rates
+
+                                                      Maturidade
+                              3         6        9      12       24       36       48       60
+                   𝑐0      0.53      0.75     0.71    0.38     0.06     0.76    -0.44     0.41
+                           0.00      0.00     0.00    0.05     0.74     0.00     0.02     0.08
+                   𝑐1      0.02      0.01     0.02    0.03     0.05     0.02     0.08     0.04
+                           0.00      0.08     0.10    0.00     0.00     0.06     0.00     0.00
+                   𝑅2    30.3%     41.0%    29.7%    8.3%    -1.1%    37.8%    12.0%    16.4%
+                F-test     0.00      0.17     0.26    0.01     0.00     0.00     0.00     0.00
+
+              Os valores abaixo dos coeficientes são do P-valor dos coeficientes
+
+
+
+                              Tabela 10 – TSLS para as BEI rates
+
+                                                      Maturidade
+                              3         6        9      12       24       36       48       60
+                   𝑐0      0.73      0.83     0.71    0.31     0.09     0.92    -0.61     0.51
+                           0.00      0.00     0.00    0.14     0.69     0.00     0.00     0.05
+                   𝑐1      0.01      0.01     0.02    0.04     0.05     0.01     0.09     0.04
+                           0.04      0.33     0.13    0.00     0.00     0.37     0.00     0.01
+                   𝑅2    28.5%     39.6%    29.5%    8.1%    -1.3%    37.0%    13.4%    15.0%
+                F-test     0.04      0.61     0.31    0.01     0.00     0.00     0.00     0.00
+
+              Os valores abaixo dos coeficientes são do P-valor dos coeficientes
+
+
+quanto as BEI rates parecem ser estimadores não viesados para até 9 meses, mostrando-
+se resultados superiores aos encontrados nos trabalhos de Vicente e Guillen (2013) e
+Caldeira e Furlani (2014). os resultados também corroboram que para o médio prazo
+(de 24 a 48 meses) os títulos não parece fornecer boas informações. Os resultados para
+inflação implícita para 36 meses indicam que ele é estimador não viesado da inflação
+realizada. Para o longo prazo (60 meses) tanto a inflação implícita quanto as BEI rates
+parecem fornecer informações explicando mais de 20% e de 15% da variação da inflação,
+
+                                                     17
+                              Tabela 11 – GMM para as BEI rates
+
+                                                     Maturidade
+                              3        6        9      12       24       36       48       60
+                   𝑐0      0.56     0.63     0.66    0.34    -0.02     0.84    -0.47     0.42
+                           0.00     0.00     0.00    0.07     0.90     0.00     0.01     0.06
+                   𝑐1      0.02     0.02     0.02    0.04     0.06     0.01     0.08     0.04
+                           0.00     0.01     0.04    0.00     0.00     0.20     0.00     0.00
+                   𝑅2    30.3%    37.9%    29.7%    8.1%    -3.1%    36.1%    18.2%    15.5%
+                F-test     0.00     0.04     0.09    0.00     0.00     0.00     0.00     0.00
+
+              Os valores abaixo dos coeficientes são do P-valor dos coeficientes
+
+
+
+respectivamente. Os resultados quanto a superioridade de uma das medidas indicam que
+temos ganhos ao impor de restrições de não-arbitragem nas previsões da inflação.
+
+
+5 Conclusão
+        O objetivo do presente trabalho foi utilizar o mercado de títulos pré-fixados e
+indexados e estimar a inflação a partir deles. Para isso utilizamos de títulos nominais e
+das Notas do Tesouro Nacional do tipo B. Utilizamos a metodologia de fatores latentes
+proposta por Nelson e Siegel (1987) na sua forma dinâmica, baseando-se no trabalho de
+Christensen, Lopez e Rudebusch (2010) estimamos um modelo livre de arbitragem que usa
+4 fatores: 2 diferentes para o fator nível e 2 comuns para os fatores inclinação e curvatura.
+A partir de critérios de escolha de especificação escolhemos o modelo mais parcimonioso
+Esse modelo com quatro fatores na sua forma diagonal mostrou bom ajuste aos valores
+dos rendimentos dos títulos nominais e indexados.
+        Os resultados apresentados aqui tanto para a inflação implícita quanto das BEI
+rates se mostram superiores nas previsões para 6 e 12 meses a frente se comparados com
+a média das previsões de mercado apresentadas no Boletim Focus. Os resultados do teste
+proposto por Vicente e Guillen (2013) mostram que a imposição de restrições de não-
+arbitragem aumentam o poder preditivo do modelo. Além disso, o teste parece não ser
+consistente para as BEI rates, pois tem por hipótese de que os prêmios de risco não são
+variantes no tempo (nosso modelo apresentou prêmios de risco variantes no tempo). Esse
+teste indica que para horizontes mais curtos as duas previsões são estimador não viesado
+da inflação futura para horizontes de até 9 meses. Já para horizontes de médio prazo
+e longo prazo os resultados não são conclusivos, como já mostrado em outros trabalhos
+aplicados ao mercado brasileiro. Esse trabalho fecha um gap na literatura do uso de títulos
+públicos para previsão de inflação com restrições de arbitragem para o mercado brasileiro.
+
+
+
+
+                                                    18
+                                     Referências
+
+
+ALONSO, F.; BLANCO, R.; RIO, A. del. Estimating inflation expectations using French
+government inflation-indexed bonds. [S.l.]: Banco de Espana, Servicio de Estudios, 2001.
+CALDEIRA, J. F.; FURLANI, L. Inflação implícita eo prêmio pelo risco: Uma alternativa
+aos modelos var na previsão para o ipca. Estudos Econômicos (São Paulo), v. 43, n. 4,
+2014.
+CHRISTENSEN, I.; DION, F.; REID, C. Real Return Bonds, Inflation Expectations, and
+the Break-Even Inflation Rate. [S.l.]: Bank of Canada, 2004.
+CHRISTENSEN, J. H.; DIEBOLD, F. X.; RUDEBUSCH, G. D. The affine arbitrage-free
+class of Nelson-Siegel term structure models. Journal of Econometrics, v. 164, n. 1, p. 4
+– 20, 2011. Annals Issue on Forecasting.
+CHRISTENSEN, J. H.; LOPEZ, J. A.; RUDEBUSCH, G. D. Inflation expectations and
+risk premiums in an arbitrage-free model of nominal and real bond yields. Journal of
+Money, Credit and Banking, Wiley Online Library, v. 42, n. s1, p. 143–178, 2010.
+CHRISTENSEN, J. H. E.; LOPEZ, J. a.; RUDEBUSCH, G. D. Can Spanned Term Struc-
+ture Factors Drive Stochastic Yield Volatility? SSRN Electronic Journal, 2012. ISSN 1556-
+5068. Disponível em: <http://www.ssrn.com/abstract=2023715>.
+COCHRANE, J. H. Asset pricing. [S.l.]: Princeton university press Princeton, 2005.
+DEACON, M.; DERRY, A. Estimating market interest rate and inflation expectations
+from the prices of uk government bonds. Bank of England Quarterly Bulletin, v. 34, n. 3,
+p. 232–240, 1994.
+DIEBOLD, F. X.; LI, C. Forecasting the term structure of government bond yields. Jour-
+nal of econometrics, Elsevier, v. 130, n. 2, p. 337–364, 2006.
+DIEBOLD, F. X.; RUDEBUSCH, G. D. Yield Curve Modeling and Forecasting The
+Dynamic Nelson-Siegel Approach. 2011.
+DIEBOLD, F. X.; RUDEBUSCH, G. D.; ARUOBA, S. B. The macroeconomy and the
+yield curve: a dynamic latent factor approach. Journal of econometrics, Elsevier, v. 131,
+n. 1, p. 309–338, 2006.
+DUFFEE, G. R. Term premia and interest rate forecasts in affine models. The Journal of
+Finance, Wiley Online Library, v. 57, n. 1, p. 405–443, 2002.
+DUFFIE, D.; KAN, R. A yield-factor model of interest rates. Mathematical finance, Wiley
+Online Library, v. 6, n. 4, p. 379–406, 1996.
+MOUABBI, S. An arbitrage-free nelson-siegel term structure model with stochastic vola-
+tility for determination of risk premia. 2013. Job Market Paper - Queen Mary, University
+of London - November, 2013.
+NELSON, C. R.; SIEGEL, A. F. Parsimonious modeling of yield curves. Journal of busi-
+ness, JSTOR, p. 473–489, 1987.
+
+                                           19
+SCHOLTES, C. On market-based measures of inflation expectations. Bank of England
+Quarterly Bulletin, Spring, 2002.
+
+SHEN, P.; CORNING, J. Can tips help identify long-term inflation expectations? Econo-
+mic Review-Federal Reserve Bank of Kansas City, Federal Reserve Bank of Kansas City,
+v. 86, n. 4, p. 61–87, 2001.
+
+SVENSSON, L.; SODERLING, P. New techniques to extract market expectations from
+financial instruments. Journal of Monetary Economics,, v. 40, p. 383–429, 1997.
+
+SVENSSON, L. E. Estimating and interpreting forward interest rates: Sweden 1992-1994.
+[S.l.], 1994.
+
+VAL, F. de F.; BARBEDO, C. H. da S.; MAIA, M. V. Expectativas inflacionárias e infla-
+ção implícita: será que pesquisas de mercado fornecem medidas precisas? BBR-Brazilian
+Business Review, FUCAPE Business School, n. 3, p. 88–107, 2011.
+
+VICENTE, J. V. M.; GUILLEN, O. T. d. C. Do inflation-linked bonds contain information
+about future inflation? Revista Brasileira de Economia, SciELO Brasil, v. 67, n. 2, p. 277–
+286, 2013.
+
+
+
+
+                                            20
+

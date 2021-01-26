@@ -1,0 +1,882 @@
+Evidências de Bull e Bear Market no índice Bovespa:
+ Uma aplicação de modelos de regime markoviano e
+               duration dependence
+                      Fernando Henrique de Paula e Silva Mendes∗
+                               Guilherme Valle Moura†
+
+
+                                                  Resumo
+   O objetivo deste trabalho é identificar tendências de alta e de baixa no índice Bovespa através de
+   modelos de mudança de regime markoviano que incorporam dependência de duração. Conforme
+   evidenciado pela literatura, os resultados mostraram um regime de retorno positivo e baixa volatili-
+   dade e outro com alta volatilidade e retorno negativo. Nestes modelos a probabilidade de transição
+   não é só função do regime atual como também do número de períodos em que o processo se encontra
+   em determinado estado. A parametrização proposta revelou que a probabilidade de troca de regime
+   diminui com a persistência do mercado de alta e de baixa. A análise das probabilidades suavizadas
+   destaca que as especificações captaram os principais episódios de instabilidade na bolsa brasileira.
+   Por fim, os modelos propostos são usados na construção de uma estratégia de investimento.
+
+          Palavras-Chave: Dependência de Duração, Mudança Markoviana, Volatilidade
+
+
+
+                                                 Abstract
+   This study proposes to identify Bull and Bear Market for the Brazilian stock market using a markov
+   switching model that incorporates duration dependence. Following the existing literature, the model
+   sorts returns into a high return stable state and a low return volatile state, which are labeled as Bull
+   and Bear Market. In these models the transition probabilities are functions of both the inferred cur-
+   rent state and also the number of periods that the process has been in that state. The parameterization
+   showed that the probability of switching out of the states declines with duration in that state. The
+   smoothed probabilities highlighted the major instabilities phases at Brazilian stock market. Finally,
+   the proposed models are used in order to develop an investment strategy.
+
+          Key-Words: Duration Dependence, Markov Switching, Volatility
+
+          JEL: C22, G17
+
+          Anpec: Área 8 - Microeconomia, Métodos Quantitativos e Finanças
+
+
+∗ Programa  de Pós-Graduação em Economia, UFSC. Email: fernandohpsm@hotmail.com
+† PPGE,   UFSC. Email: guilherme.moura@cse.ufsc.br
+
+
+                                                      1
+1     Introdução
+    Nas últimas décadas, diversos trabalhos na área de finanças empíricas vêm documentando
+algumas peculiaridades dos retornos financeiros. Os principais fatos estilizados desses retornos
+são: observações atípicas, agrupamento de volatilidade e distribuições com caudas pesadas, que
+em geral são assimetricas (Campbell et al. 1997). Em contrapartida, pouca atenção tem sido
+dada às tendências em que esses ativos se mantém valorizados (desvalorizados)..
+    Os termos, Bull Market e Bear Market, mercado de alta e mercado de baixa, respectiva-
+mente, há décadas descrevem tendências ascendentes e descendentes nas cotações das ações.
+Segundo Harris (2003), a expressão Bull Market advém do movimento que o touro faz quando
+ataca - de baixo para cima, Bear Market assemelha-se ao ataque do urso - de cima para baixo.
+    Apesar da conotação folclórica trazida aqui não há uma definição formal quanto o uso desses
+termos na literatura. Um investidor que possa prever antecipadamente um mercado de alta ou de
+baixa pode evitar perdas inesperadas ou até mesmo aferir lucros. Para as empresas, é preferível
+emitir ações em um mercado de alta, isso devido à baixa captação de recursos em momentos de
+pessimismo (Kole & Dijk 2012).
+    Identificar mercado de alta (baixa) não interessa apenas às estratégias de investimento ou a
+avaliação de risco entre os agentes econômicos. Para Stock & Watson (2006) a cotação acionária
+não deixa de ser uma indicativa sobre o ambiente econômico, uma vez que elas antecipam
+futuros dividendos1 . O conhecimento destes estados pode ajudar na predição de ciclos (Chauvet
+1999) e na formulação de política econômica (Rigobon & Sack 2003).
+    Os métodos tradicionais na avaliação de Bull e Bear Market remontam aos trabalhos de Pa-
+gan & Sossounov (2003) e Lunde & Timmermann (2004). A metodologia explorada por estes
+autores busca determinar pontos extremos nos dados e em seguida aplica regras que caracter-
+izam esses “picos” e “depressões” como possíveis pontos de reversão (turning points) entre
+períodos ascendentes e descendentes. Para tanto, os trabalhos se baseiam na metodologia pro-
+posta por Bry & Boschan (1971), usada na delineação de recessões e expansões econômicas.
+    Em contraste com o seu vasto uso, a metodologia acima apresenta algumas limitações. O
+uso de um algoritmo ex-post indentifica pontos de reversão várias observações após as suas
+ocorrências. Porém, na maioria das vezes, os investidores estão interessados em estimar a
+probabilidade desses momentos no futuro. Por exemplo, montar uma estratégia de investimento
+levando em conta a chance do mercado estar em um Bear Market na próxima semana?
+    Paralelamente a abordagem apresentada, o emprego de modelos de mudança de regime gan-
+hou bastante destaque na literatura. Um grande atrativo dessa metodologia é fazer inferências
+quanto à probabilidade de permanência no regime não observado. Neste contexto, o trabalho de
+Hamilton (1989) foi fundamental para o desenvolvimento do tema. O autor mostrou que o PIB
+norte americano podia ser modelado como um processo que possui dois estados, um no qual a
+economia encontra-se em expansão e outra em que a economia está em um processo recessivo.
+Neste modelo a mudança de estado se dá através de uma cadeia de markov de primeira ordem,
+a estimação é realizada pelo método da máxima verossimilhança. O trabalho tentou com isto
+caracterizar os ciclos econômicos pelos quais a economia americana passou.
+    Nos últimos anos diversos trabalhos buscaram estender a metodologia de Hamilton. Por
+    1 Para mais informações ver Estrella & Mishkin (1998), Stock & Watson (2003), Marcellino (2006) entre outros.
+
+
+
+
+                                                        2
+exemplo, Cai (1994) e Hamilton & Susmel (1994) não só abrangem a metodologia acima como
+também generalizam os trabalhos de Engle (1982) e Bollerslev (1986) ao incorporar mudança
+de regime na estrutura da variância dos dados. Já Durland & McCurdy (1994) buscam explo-
+rar o papel da dependência cíclica dos dados. A modelagem proposta pelos autores condiz
+com o fato de que a dinâmica de mudança dos regimes é governada não só pelo regime atual
+como também pelo número de períodos em que o processo se encontra em determinado estado.
+Diferentemente de Hamilton (1989), o artigo dinamiza a matriz de transição de probabilidade
+até então considerada estática e introduz o conceito dependência de duração (duration depen-
+dence).
+    Devido à característica cíclica do mercado de ações, um trabalho pioneiro na tentativa de
+identificar mercado de alta e de baixa é o de Maheu & McCurdy (2000). Através de diversos
+modelos da classe, Duration Dependent Markov Switching Models (DDMS), os autores encon-
+tram evidências de não linearidade dos retornos mensais das ações da bolsa de Nova York. O
+artigo estende a metodologia de Durland & McCurdy (1994) ao modelar a volatilidade e explo-
+ram modelos em que a duração do regime é vista como uma variável dependente tanto na média
+como na variância do processo. Os resultados obtidos pelos autores destacam que períodos
+de retorno positivo, Bull Market, corresponderam a menor volatilidade do que em períodos de
+retorno negativo, Bear Market.
+    A ideia do duration dependence é retratar a dependência na cotação acionária. Por exemplo,
+a persistência de um estado ascendente, Bull Market, torna os investidores otimistas em relação
+ao futuro, atraindo mais investimento para um determinando ativo. Consequentemente essa
+resposta positiva faz com que a probabilidade de troca de regime varie no tempo. Essa mesma
+análise é vista na baixa, Bear Market, devido o pessimismo dos investidores. Após o trabalho
+de Maheu & McCurdy (2000) uma vasta literatura foi desenvolvida no âmbito Bull e Bear
+Market 2 , porém, nenhum trabalho que usa dependência de duração foi feito para o mercado
+brasileiro.
+    O objetivo deste trabalho é identificar períodos de Bull e Bearl Market no índice Bovespa
+utilizando modelos econométricos da classe DDMS - Duration Dependece Markov Switching
+Models. Adicionalmente, as especificações usadas serão usadas para construir uma estratégia
+de investimento para o índice Bovespa. As rentabilidades obtidas serão comparadas com o buy
+and hold, isto é comprar um ativo e vende-lo no final do período.
+    O artigo está organizado da seguinte maneira, a presente introdução, a seção 2 explora o
+conceito duration dependence e os modelos da classe DDMS. Na seção 3 são apresentadas as
+estimativas dos parâmetros e a análise dos pontos de reversão. Na penútima seção é elaborada
+uma estratégia de investimento e na seção final a conclusão
+  2 Para   mais informações ver Chena & Shen (2007), Castro (2011), Shibata (2011) entre outros.
+
+
+
+
+                                                       3
+2        Mudança de Regime e Dependência de Duração
+2.1       Duration Dependence
+    A metodologia do trabalho caracteriza Bull e Bear Market através da variável de estado
+St = i, em que, i = 0,1, onde t = 1, . . . , T 3 . Diferentemente dos modelos tradicionais de mu-
+dança de regime, a idéia do duration dependence é capturar da dependência temporal da variável
+de estado. Neste contexto, busca-se dinamizar a matriz de probabilidade de transição entre os
+estados através da variável D(St ). Esta variavél retrata a memória na ocorrência consecutiva do
+estado St e pode ser definida pela equação abaixo:
+
+                                  D(St ) = min(D(St−1 )I(St , St−1 ) + 1, τ).                          (1)
+A função indicadora I(St , St−1 ) é 1 caso St = St−1 e 0 no contrário. Nota-se que um parâmetro
+limite τ é estabelecido na equação. O valor da estimativa do paramêtro é um número discreto e
+será estabelecido através da estimação de verossimilhança4 .
+    Segundo Maheu & McCurdy (2000), uma maneira de parametrizar as probabilidades de
+transição é através do emprego de uma função logística. Isso garante que as probabilidades
+estejam entre 0 e 1. Usando i e d para indexar a realização de estados e duração, a probabilidade
+de transição para i = 0, 1 e para os parâmetros γ1 (i) e γ2 (i) é dada por:
+                                              ( exp(γ (i)+γ (i)d)
+                                                       1      2
+                                                 1+exp(γ1 (i)+γ2 (i)d) , d≤τ
+          P(St = i|St−1 = i, D(St−1 ) = d) =      exp(γ1 (i)+γ2 (i)τ)           i = 0, 1,     (2)
+                                                 1+exp(γ1 (i)+γ2 (i)τ) , d  > τ
+
+    Conforme proposto por Durland & McCurdy (1994), o efeito duração permite que a matriz
+de transição de probabilidade varie no tempo até atingir τ. Uma maneira útil de discutir estes
+efeitos é através de uma função de troca de estado. Essa função é a probabilidade condicional
+de mudança de estado assumindo a memória d. Em termos de transição de probabilidade, a
+função troca de estado é dada por:
+                                                                        1
+               1 − P(St = i|St−1 = i, D(St−1 ) = d) =                                  ,   i = 0, 1.   (3)
+                                                             1 + exp(γ1 (i) + γ2 (i)d)
+
+uma função decrescente refere-se a um efeito negativo na dependência de duração enquanto uma
+função crescente refere-se a um efeito positivo. A análise acima pode ser resumida pelo valor
+do parâmetro: γ2 (i). Por exemplo, γ2 (i) < 0 significa dependência positiva, γ2 (i) = 0, denota
+dependência nula e γ2 (i) > 0 significa duração negativa. É interessante destacar que, caso a
+dependência seja nula, γ2 (i) = 0, a parametrização acima, colapsa no processo de Markov de
+primeira ordem, tal como: P(St = i|St−1 = i, D(St−1 ) = d) = P(St = i|St−1 = i), ou seja, apenas
+dependerá do valor passado mais recente da variável de estado.
+    3   T é o tamanho da amostra
+    4 Para  maior detalhamento ver a seção sobre estimação
+
+
+
+
+                                                        4
+2.2   Modelos DDMS
+   Devido ao fato de que a maioria das séries financeiras apresentam heterocedasticidade
+condicional, o principal modelo desta deste trabalho é aquele em que a volatilidade é incorpo-
+rada na dependência de duração, Duration-Dependent Markov Switching Autoregressive Het-
+eroskedasticity, (DDMS-ARCH). Neste modelo o retorno segue um processo auto-regressivo
+com mudança de regime, tal como:
+
+                 Rt = µ(St ) + φ1 {Rt−1 − µ(St−1 )} + φ2 {Rt−2 − µ(St−2 )} +                                    (4)
+                      + · · · + φP {Rt−P − µ(St−P )} + εt .
+
+sendo φ1 , . . . , φP os parâmetros, P o número de defasagens, e εt um termo de erro no período t.
+µ(St ) é visto como uma variável de estado St :
+
+                                       µ(St ) = µ0 (1 − St ) + µ1 St ,                                          (5)
+
+em que µ0 e µ1 são parâmetros. Se St = 0, temos µ(St ) = µ0 , caso St = 1, segue µ(St ) = µ1 .
+   O termo de erro εt da equação (4) é expresso por:
+                                             p
+                                         εt = ht vt ,                                          (6)
+
+tal que vt é uma variável independente e identicamente distribuída de acordo com uma dis-
+tribuição normal padrão e ht dado por:
+                                                               K
+                                                            2
+                                          ht = mst + ∑ αk ε̃t−k ,                                               (7)
+                                                           k=1
+
+na qual K denota o número de defasagens, e α1 , . . . , αK são os parâmetros. A diferença entre
+este modelo e um modelo ARCH padrão com K parâmetros é que o modelo acima depende de
+uma variável de estado mst . Desta forma, se St = 0, temos mst = m0 , no entanto, se St = 1, segue
+que mst = m1 , os parâmetros m0 e m1 vão ser estimados.
+    Na equação (7), ε̃t−k é o erro de previsão dado por:
+
+                                     ε̃t−k = Rt−k − Et−k−1 [Rt−k ],                                             (8)
+
+em que Et−k−1 [Rt−k ] é o valor esperado de Rt−k dado o conjunto de informação Ωt−k−1 =
+{R1 , R2 , . . . , Rt−k−1 }, tal como:
+
+       Et−k−1 [Rt−k ] =               ∑                  E[Rt−k |St−k , St−k−1 , . . . , St−k−P , d, Ωt−k−1 ]
+                           St−k ,St−k−1 ,...,St−k−P ,d
+                           ×P[St−k , St−k−1 , . . . , St−k−P , d|Ωt−k−1 ].                                      (9)
+
+   A fim de comparar as estimativas deste modelo, serão estimados mais dois modelos da classe
+
+
+
+
+                                                           5
+DDMS também encontrados em Maheu & McCurdy (2000): O primeiro deles é o DDMS-1:
+
+                  Rt = µ(St ) + φ1 {Rt−1 − µ(St−1 )} + φ2 {Rt−2 − µ(St−2 )} +
+                       + · · · + φP {Rt−P − µ(St−P )} + σvt .                                    (10)
+
+onde σ é um parâmetro a ser estimado. A mudança de regime ocorre apenas na média incondi-
+cional do processo. Já o segundo é o DDMS-2:
+
+                  Rt = µ(St ) + φ1 {Rt−1 − µ(St−1 )} + φ2 {Rt−2 − µ(St−2 )} +
+                       + · · · + φP {Rt−P − µ(St−P )} + σ(St )vt .                               (11)
+
+neste, tanto a média como a variância incondicional mudam de regime, ou seja, Bull e Bear
+Market, µ(St ) = µ0 (1 − St ) + µ1 St , e σ(St ) = σ0 (1 − St ) + σ1 St . Em ambos os modelos vt ∼
+NID(0, 1) e St = 0, 1.
+
+2.3    Estimação
+    Os modelos da classe DDMS foram estimados usando o método da máxima verossimil-
+hança. Para mais detalhes ver os apêndices de Maheu & McCurdy (2000) e Hamilton (1994).
+    Estes modelos podem ser entendidos como uma extensão do modelo de Mudança de Regime
+Markoviano de Hamilton (1989). A expressão 2P+1 denota as possíveis combinações de de-
+pendência de Rt em St , e seus valores defasados St−1 , . . . , St−P , através de µ(St ), . . . , µ(St−P ),
+sendo que cada estado St , . . . , St−P assume valor 0 ou 1.
+    Já a expressão 2(τ − P − 1) é a soma das combinações de dependência Rt , em que τ > P,
+ou seja, a estrutura de duração é maior que a defasagem P. Sendo assim, devemos consid-
+erar a combinação de estados St−P−1 , . . . , St−P−τ que não são observados pela especificação do
+modelo.
+    Por exemplo: uma possibilidade seria todas as variáveis de estados do modelo St , St−1 , . . . , St−P
+sejam iguais a um e D(St ) = P+2. Outra combinação tornariam os mesmos estados St , St−1 , . . . , St−P
+iguais a um, porém, D(St ) = P + 3, assim sucessivamente, ou seja, a soma destas combinações
+seria τ − P − 1. A mesma ideia é vista no caso em que St , St−1 , . . . , St−P são iguais a zero.
+    Seja N o número total de estados, temos: N = 2P+1 + 2(τ − P − 1). Cada estado será
+representado tal como: ψt = j, j = 1, . . . , N.
+    Tomando ξt como um vetor aleatório de dimensão (N × 1) segue:
+                                                    0
+                                   1  0  0  . . . 0    ,   quando ψt = 1,
+                                                    0
+                             0 1 0 . . . 00 ,             quando ψt = 2,
+                            
+                            
+                            
+                      ξt =          0 0 1 ... 0 ,           quando ψt = 3,                            (12)
+                                                         .
+                                                          .
+                                                          .
+                            
+                            
+                            
+                            
+                                                    0
+                                    0 0 0 ... 1 ,           quando ψt = N.
+
+ξˆ t|t−1 é um vetor em que o j-ésimo elemento é P(ψt = j|Rt−1 , . . . , R1 , θ) , tal que θ representa
+os parâmetros e P(ψt = j|(·) é a probabilidade de predição do estado j condicionado em (·). Já
+
+
+                                                  6
+ξˆ t|t é um vetor em que o j elemento é dado por P(ψt = j|Rt , . . . , R1 , θ), ou seja, a probabilidade
+filtrada.
+       Seja ηt um vetor em que o j-ésimo elemento é a densidade condicional de Rt , temos:
+                                                                           
+                                      f (Rt |ψt = 1, Rt−1 , . . . , R1 , θ)
+                                     f (Rt |ψt = 2, Rt−1 , . . . , R1 , θ) 
+                               ηt =                                        .                      (13)
+                                                                           
+                                                      ..
+                                                      .                    
+                                      f (Rt |ψt = N, Rt−1 , . . . , R1 , θ)
+
+    Assume-se que P é a matriz de transição de probabilidade de ψt , tal que:
+                                                          
+                                      p11 p21 . . . pN1
+                                     p12 p22 . . . pN2 
+                               P =  ..                 ..  ,                                                              (14)
+                                                          
+                                             ..
+                                     .       .          . 
+                                      p1N p2N . . . pNN
+
+onde p ja jb = P(ψt = jb |ψt−1 = ja ), ja , jb = 1, . . . , N.
+   A probabilidade filtrada ξˆ t|t para t = 1, . . . , T pode ser obtido através do seguinte par de
+equações:
+
+                                                  ξˆ t|t−1     ηt
+                                                                        = ξˆ t|t
+                                               10 (ξˆ t|t−1     ηt )
+                                                              ξˆ t+1|t = Pξˆ t|t .                                          (15)
+
+    A iteração da equação (15) começa em t = P + K + 1 dado R1 , . . . , RP+K , em que sig-
+nifica multiplicação elemento por elemento entre os vetores 5 . Nota-se que para inicializar as
+equações acima, o valor inicial ξˆ P+K+1|P+K é a probabilidade incondicional. Neste caso esta-
+mos considerando que a cadeia de markov seja estacionaria e ergótica6 .
+    Por fim, a função de log verossimilhança é dada pela expressão:
+                                                  T
+                                  Ł(θ) =         ∑       ln f (Rt |Rt−1 , . . . , R1 , θ),                                  (16)
+                                             t=P+K+1
+
+onde o termo do lado esquerdo é visto por: f (Rt |Rt−1 , . . . , R1 , θ) = 10 (ξˆ t|t−1 ηt ). As es-
+pecificações DDMS-1 e DDMS-2 também foram estimados da mesma forma que o modelos
+DDMS-ARCH.
+   5R
+     t−k−1 , . . . , Rt−k−P é necessário para construir ε̃t−k (termo que aparece do lado direito da equação ht            = mst +
+ K        2 ). Já h precisa de R
+∑k=1 αk ε̃t−k          t            t−k−1 , . . . , Rt−k−P , pois dado R1 , . . . , RP+K , o modelo é estimado para t =   P+K +
+1, . . . , T .
+     6 Para mais detalhes ver Hamilton (1994).
+
+
+
+
+                                                                    7
+3        Resultados
+3.1      Dados
+    A série de dados utilizada no artigo é o log-retorno7 do índice Bovespa com periodicidade
+semanal. O período de análise inicia-se em julho de 1994 até final de 2012, totalizando 966
+observações. A fim de comparar os resultados dos modelos não-lineares desenvolvidos neste
+trabalho, foi estimado por OLS um modelo linear AR (2), o número de defasagens foi estabele-
+cido segundo o critério BIC.
+    A existência de alguma dependência não-linear que não foi avaliada pelo modelo autore-
+gressivo é retratada ao aplicar o teste BDS8 sobre os resíduos da regressão. A hipótese nula é
+que o modelo linear é suficiente para captar a estrutura de dependência existente na média ver-
+sus a hipótese alternativa que retrata alguma estrutura não linear ainda presente no resíduo do
+modelo. Os resultados mostram que o modelo linear não é suficiente para modelar a estrutura
+da média, fato que implica a necessidade de testar modelos não lineares.
+    Outra evidência para o emprego de modelos não lineares é visto ao analisar as estimativas
+da Tabela 1. Nota-se que a curtose do retorno do Ibovespa é maior que o valor da distribuição
+normal, e a sua assimetria é negativa, ou seja, retornos negativos tendem a ocorrer com mais
+frequência. A não normalidade da série é mostrada no teste Jarque Bera, que rejeita a hipótese
+nula de retornos normais, revelando novamente a possibilidade do uso de modelos não lineares.
+
+
+                                      Table 1: Retorno do Ibovespa
+
+                                             Média             0.2762
+                                        Desvio-Padrão          4.6874
+                                           Assimetria         −0.5622
+                                             Curtose           6.0715
+                                          Jarque-Bera        427.9487
+                                             P-Valor           0.0000
+
+
+
+
+    7A série do índice Bovespa, Pt , foi convertida em termos de log-retorno Rt = 100 × (ln Pt − ln Pt−1 ), onde a
+primeira observação é dada por R2 .
+   8 Para mais informações ver Brock et al. (1987).
+
+
+
+                                                        8
+3.2     Diagnóstico dos Resíduos
+    Devido a variável latente St , os resíduos dos modelos com mudança de regime não são
+observados. Usando a equação equação (17), o teste Ljung-Box Portmanteau pode ser aplicado
+através dos resíduos ponderados para testar a adequação dos modelos. Seguindo Maheu &
+McCurdy (2000), o resíduo normalizado do modelo DDMS-ARCH é dado por:
+
+                      Rt − E[Rt |St , . . . , St−P , d, Rt−1 , . . . , R1 ]
+            ∑                            p                                  × P(St , . . . , St−P , d|Rt−1 , . . . , R1 ),   (17)
+      St ,...,St−P ,d                         ht (St )
+                                                                       p
+em que o desvio padrão condicional é dado por                           ht (St ), tal que:
+
+                                  ht (St ) =        ∑            ht (St )P(St , . . . , St−P , d|YT ),                       (18)
+                                               St ,...,St−P ,d
+
+o último termo a direita                                               9
+                      p da equação acima é a probabilidade suavizada . Para os modelos
+DDMS-1 e DDMS-2, ht (St ) na equação (17) é substituído por σ e σ(St ), respectivamente.
+   A estatística Ljung-Box para a autocorrelação dos resíduos ponderados com defasagem h é
+dado por:
+                                                 j   ρ̂2j
+                                   Q = n(n + 2) ∑         ,                           (19)
+                                                j=1 n − j
+
+onde ρ̂ j , j = 1, 2, . . . , h é a autocorrelação e n é o tamanho da amostra dos resíduos.
+
+3.3     Parâmetros estimados
+    As estimativas, o desvio padrão e log-verossimilhança dos modelos da classe DDMS estão
+apresentados na Tabela 2. Adicionalmente um modelo ARCH (5) é apresentado frente o modelo
+DDMS-ARCH. A defasagem da estrutura da variância foi estabelecida segundo o critério BIC.
+    É importante destacar que o teste da razão da verossimilhança não é aplicado entre os mod-
+elos DDMS-1 e AR(2), e DDMS-ARCH versus ARCH, isso porque os modelos não são an-
+inhados10 , porém, nota-se que o valor da verossimilhança entre os mesmos, indica o uso dos
+modelos da classe DDMS.
+    Uma característica geral dos modelos apresentados é que as estimativas tanto da média
+como da variância condicional (incondicional) foram estatisticamente significantes e diferentes
+de zero, ou seja, temos um período de retorno positivo e baixa volatilidade versus um regime
+em que a volatilidade é alta e retorno negativo.
+
+
+
+
+   9 Para   mais detalhes ver próxima seção.
+  10 Para   mais detalhes ver Hamilton (1994).
+
+
+                                                                      9
+                                      Table 2: Resultado das Estimativas
+
+     Parâmetros             AR(2)          ARCH           DDMS-1            DDMS-2          DDMS-ARCH
+                           0.2840∗∗       0.3821∗∗∗      −12.9729∗∗∗        −1.0011∗         −3.0295∗∗
+              µ0 , µ
+                           (0.1536)       (0.1292)        (1.0979)          (0.7397)          (1.4171)
+                                                          0.6863∗∗∗         0.5411∗∗∗         0.4938∗∗∗
+               µ1
+                                                          (0.1355)          (0.1311)          (0.1232)
+                          4.6529∗∗∗       7.8386∗∗∗       4.0272∗∗∗
+              m, σ
+                          (0.1060)        (0.9455)        (0.0981)
+                                                                           8.3769∗∗∗            63.3478∗∗∗
+             m0 , σ0
+                                                                            (0.6376)            (15.2916)
+                                                                           3.4143∗∗∗             7.6925∗∗∗
+             m1 , σ1
+                                                                            (0.1150)             (1.0970)
+                                                           −1.3350∗        −1.0433∗              −0.9601
+             γ1 (0)
+                                                            (0.9590)        (0.8485)             (0.8668)
+                                                             0.7290         −0.8776               0.4637
+             γ1 (1)
+                                                            (0.6638)        (0.9233)             (1.8890)
+                                                             0.2229        0.6111∗∗∗             0.4952∗∗
+             γ2 (0)
+                                                            (0.5444)        (0.2192)             (0.2176)
+                                                           0.5861∗∗∗       0.8275∗∗∗              0.4755∗
+             γ2 (1)
+                                                            (0.1374)        (0.2135)             (0.3543)
+                          −0.0558∗∗      −0.0924∗∗∗        −0.0869∗∗       −0.0741∗∗∗           −0.0807∗∗∗
+               φ1
+                           (0.0321)       (0.0241)          (0.0380)        (0.0316)             (0.0317)
+                          0.0800∗∗∗      0.1057∗∗∗         0.0781∗∗         0.0711∗∗             0.0657∗∗
+               φ2
+                           (0.0321)       (0.0276)          (0.0385)        (0.0322)             (0.0306)
+                                         0.1181∗∗∗                                                0.0000
+               α1
+                                          (0.0291)                                               (0.0000)
+                                          0.0595∗                                                 0.0000
+               α2
+                                          (0.0334)                                               (0.0000)
+                                         0.1836∗∗∗                                               0.1101∗∗∗
+               α3
+                                          (0.0451)                                               (0.0435)
+                                         0.2208∗∗∗                                               0.1091∗∗∗
+               α4
+                                          (0.0401)                                               (0.0427)
+                                          0.0913∗∗                                               0.1200∗∗
+               α5
+                                          (0.0379)                                               (0.0460)
+               τ                                              6                6                     7
+              ln L         −2850.0         −2760.5          −2794.8          −2747.4             −2718.6
+
+∗∗∗ ,∗∗ ,∗   significância em 1%, 5% e 10% respectivamente. Desvio padrão está em parênteses.
+ln L é o valor da log verossimilhança.
+
+
+                                                         10
+    A estatística Ljung-Box dos modelos acima é visto na Tabela 3. Segundo o p-valor, nota-se
+que o modelo mais parcimonioso DDMS-1, apresentou significativa persistência para os seus
+resíduos, como também evidências de efeito ARCH. Diferente do resultado acima, o modelo
+DDMS-2 superou a autocorrelação na estrutura a média condicional, porém, para os resíduos
+ao quadrado esse resultado não pode se assegurar.
+    Para o modelo DDMS-ARCH, a hipótese de ausência de autocorrelação não pode ser re-
+jeitada tanto para o resíduo, quanto para o resíduo quadrado. A duas séries são ruídos brancos,
+sugerindo que o modelo teve um ajustamento melhor frente os dados.
+
+
+                                          Table 3: Teste de Especificação
+
+                         Teste     ARCH          DDMS-1          DDMS-2        DDMS-ARCH
+                                    6.013        38.389∗∗∗         5.444          4.326
+                          Q(8)
+                                   (0.646)        (0.000)         (0.709)        (0.827)
+                                   12.209       182.041∗∗∗       17.440∗∗        10.403
+                         Q2 (8)
+                                   (0.142)        (0.000)         (0.025)        (0.238)
+
+Parênteses são os p-valores.
+∗∗∗ ,∗∗ ,∗   significância de rejeitar a hipótese nula de não autocorrelação a 1%, 5% e 10%.
+
+    Ao analisar novamente a Tabela 2, nota-se que o coeficiente de volatilidade no Bear Mar-
+ket, m0 , é muito maior que no período de Bull Market, m1 , ou seja, 63.3478 e 7.6925 respec-
+tivamente. Além disso, a soma dos coeficientes na estrutura da variância é estacionária. Os
+parâmetros da equação da média φ1 e φ2 são significativos e mostra alternância de sinal, resul-
+tado condizente com o modelo ARCH sem mudança de regime 11 .
+    As estimativas dos parâmetros γ2 (0) e γ2 (1) para os modelos DDMS-2 e DDMS-ARCH,
+mostram uma função de troca de estado decrescente, desta forma, a probabilidade do ativo
+permanecer nos regimes de Bear e Bull Market aumenta.
+
+
+
+
+             (a) Prob. de duração em semanas - DDMS2          (b) Prob. de duração em semanas - DDMS-ARCH
+
+   11 Para estimar os parâmetros do modelo DDMS-ARCH foi necessário restringir os parâmetros para maximizar
+
+a função verossimilhança. Foi empregado o método Delta para aproximar a matriz de covariância dos parâmetros
+Kim & Nelson (1999).
+
+
+
+                                                            11
+    A figura (a) mostra o resultado para o modelo DDMS-2. A probabilidade do Bear Market
+(linha pontilhada) é 0.39 quando d = 1 e 0.48 no Bull Market (linha continua). A probabilidade
+de mudança de regime, ou seja, Bull para o Bear ou Bear para o Bull é maior. Uma vez d > τ
+a probabilidade de ficar no mercado de baixa e alta são 0.93 e 0.98 respectivamente. Neste
+modelo τ foi 6 12 . Da mesma forma, a figura (b) mostra a mesma dinâmica para o modelo
+DDMS-ARCH. Neste modelo o parâmetro τ foi 7. A probabilidade do Bear Market (linha
+pontilhada) é 0.41 quando d = 1 e 0.72 no Bull Market (linha continua). Diferente do que foi
+visto no primeiro resultado, modelar a variância acarretou em uma probabilidade maior para o
+Bull Market. No contexto de probabilidade fixa, ou seja, d > τ, a probabilidade do Bear Market
+é 0.92 e a do Bull Market é 0.97.
+
+3.4      Probabilidades Suavizadas e Pontos de Reversão
+    A probabilidade suavizada associada a St no modelo DDMS-ARCH foi estimada usando o
+algoritmo descrito em Kim & Nelson (1999)13 . ξˆ T |T , ξˆ T −1|T −1 , e ξˆ T |T −1 são os estados filtrados
+obtidos através da estimação por verossimilhança. ξˆ T −1|T é obtido por:
+                                                                    n h                       io
+                                ξˆ T −1|T = ξˆ T −1|T −1             P0 ξˆ T |T (÷)ξˆ T |T −1                                (20)
+
+      onde (÷) significa divisão de elemento por elemento e P foi definido na equação (14).
+      Tomando t = T − 2, . . . , K + P + 1, e os vetores ξˆ t|t e ξˆ t+1|t decorrentes da estimação por
+máxima verossimilhança, tal que ξˆ t+1|T vem da iteração passada, a probabilidade suavizada
+ξˆ t|T é dado por:
+                                             n h                       io
+                                 ξˆ = ξˆ  t|T  P0 ξˆt|t  (÷)ξˆ        t+1|T.        t+1|t          (21)
+
+    O i-ésimo elemento de ξˆ t|T é a probabilidade de ψt = i sobre o conjunto de informação
+RT , . . . , R1 e θ. Isso é representado no modelo DDMS-ARCH por:
+    P(ψt = i|RT , . . . , R1 , θ) ou P(St , St−1 , . . . , St−K−P , D(St )|RT , . . . , R1 , θ).
+    A análise de Bull e Bear Market é dada pela soma da probabilidade conjunta em cada peri-
+odo:
+
+      P(St |RT , . . . , R1 , θ) =              ∑               P(St , St−1 , . . . , St−K−P , D(St )|RT , . . . , R1 , θ)   (22)
+                                     St−1 ,...,St−k−P ,D(St )
+
+para os modelos DDMS-1 e DDMS-2, o procedimento é análogo.
+    As Figuras(1) e (2) mostram as probabilidades suavizadas de Bear Market para os modelo
+DDMS-2 e DDMS-ARCH.
+    O início da amostra, ou seja, segunda metade da década de 90 é um período caracterizado
+por grandes turbulências nos mercados financeiros internacionais, especialmente nas economias
+emergentes. Os modelos mostraram o desempenho do Ibovespa em decorrência do influxo de
+  12 A estimação de τ foi estabelecida segundo o valor da verossimilhança. O conjunto de escolha deste parâmetro
+variou de 5 à 18.
+  13 Para mais detalhes ver Hamilton (1994).
+
+
+
+                                                                    12
+                                Figure 1: Bear Market DDMS-2× Ibovespa.
+
+
+
+
+                            Figure 2: Bear Market DDMS-ARCH× Ibovespa.
+
+capital estrangeiro nas crises; do México (fim de 1994), da Tailândia, Indonésia, Malásia e
+Coreia do Sul (1997) e da Rússia (1998).
+   Através da análise das regiões cinzas 14 nas Figuras (1) e (2), a probabilidade do Bear
+Market em agosto de 1994 é superior à meio, indicando o início da crise mexicana deflagrada
+  14 As   áreas cinzas destacam os principais episódios de instabilidade no Ibovespa.
+
+
+                                                         13
+em dezembro de 1994. Segundo o noticiário econômico da época, entre 1995 a 1996 o volume
+diário médio negociado na bolsa não ultrapassou a média anual dos 100 milhões de dólares, em
+comparação com os 400 milhões milhões de dólares em 1994. A alta e persistente probabilidade
+nos anos seguintes, 1997 e 1999, também mostram evidências que os modelos captaram as
+baixas históricas durante a crise asiática e russa. O período foi marcado por diversas ocorrências
+de circuitbreaker15 devido o alto pessimismo dos investidores.
+    Os efeitos do estouro da bolha Nasdaq e as consequências do ataque terrorista às torres
+gêmeas são retratados por ambas especificações. Entre março a abril de 2000 o índice Bovespa
+caiu 17% anulando a valorização que vinha sendo construída desde a crise russa. Poucos dias
+após o ataque terrorista em 11 de setembro de 2001, o índice atingiu o menor nível desde agosto
+de 1999 ao registrar 10.038 pontos.
+    Amplamente conhecido pelo mercado por “efeito Lula” e “efeito Tango”, o ano 2002 foi
+marcado pela forte desvalorização dos ativos na bolsa. As incertezas do pleito eleitoral e os
+rumores da moratória da Argentina contribuíram para a baixa de 65% entre Janeiro e Outubro
+naquele ano. As Figuras (1) e (2) mostram que a probabilidade do Bear Market nesse período é
+elevada e se estende até começo de 2003.
+    A análise dos turning points também mostrou o excesso de otimismo que precedeu a crise
+imobiliária americana, ou seja, a forte valorização do índice em 2003 até o final de 2007. Ape-
+sar do aumento da volatilidade em alguns períodos específicos (abril de 2004 e julho de 2007), a
+Bovespa triplicou o volume médio de negócios e houve uma grande quantidade de ofertas inici-
+ais de ações (IPO) nesse período. Em abril de 2007 a bolsa brasileira chegou à marca histórica
+de 50.000 pontos, representando valorização de mais de 1000% desde o plano Real, naquele
+período o índice beirava 4.000 pontos. No ano seguinte, a expressiva valorização ganhou ainda
+mais força e atingiu a marca de 73.589 pontos em maio de 2008.
+    O aumento gradativo da chance de reversão do quadro até então apelidado como “céu de
+brigadeiro” é mostrado no inicio do segundo semestre de 2008. É interessante destacar que o
+modelo captou o movimento de deterioração do índice semanas antes de atingir quedas históri-
+cas no mês de outubro de 2008.
+    O último turning point de significância na análise de Bull e Bear Market é mostrado pela alta
+volatilidade e retorno negativo em agosto de 2011. Isso devido à reação negativa do mercado
+após o anúncio do rebaixamento da nota da dívida soberana americana. As operações no pregão
+estiveram perto de serem suspensas e o índice chegou a registrar a maior queda desde outubro
+de 2008. Conforme visto na figura, nesse período as probabilidades suavizadas ficaram bem
+próximas de meio.
+
+
+4          Estratégia de Investimento
+    Utilizando as probabilidades de predição (P(St |Rt−1 , . . . , R1 , θ)) de Bull e Bear Market ab-
+straídas a cada instante do tempo, a estratégia de investimento explorada aqui, segue de maneira
+geral o trabalho de Almeida & Valls (2000). Os autores mostram que os modelos de mudança
+de regime apresentaram bom desempenho nos retornos, quando aplicados a regras de mercado.
+    15 A
+      regra geral para o uso do circuitbreaker é quando o Ibovespa atinge limite de baixa de 10% em relação ao
+fechamento do dia anterior.
+
+
+                                                     14
+Desta forma, espera-se que os modelos da classe DDMS também possam ser utilizados na con-
+strução de trading systems.
+    A estratégia de investimento consiste em investir no ativo de risco, neste caso, o índice
+Bovespa, exatamente na proporção dada pela probabilidade do regime de retorno positivo e
+baixa volatilidade, Bull Market. O restante, um menos essa probabilidade será investido no
+ativo livre de risco, ou seja, o certificado de deposito interbancário (CDI).
+    Para a estratégia de investimento ganhar maior realismo, devemos usar a probabilidade de
+predição estimada a cada período de tempo, ao invés de estima-la levando em consideração a
+série como um todo. Conforme visto na seção anterior, a probabilidade de predição nos dá
+a previsão do período t baseada na informação do período t − 1. A cada nova informação o
+modelo é reestimado, ou seja, essas probabilidades são computadas através de uma janela em
+expansão.
+    A janela em expansão, e consequentemente a estratégia de investimento abordada, abrange
+junho de 2003 a dezembro de 2012. A previsão será feita para aproximadamente 10 anos de
+amostra. As primeiras 466 observações do total das 966 são usadas como pré-amostra para ini-
+ciar a estimação dos modelos. Os resultados a seguir apresentam o desempenho das estratégias
+de investimento para os modelos DDMS-2 e DDMS- ARCH. Os retornos aqui não levam em
+conta os custos de transação e corretagem.
+
+                             Table 4: Retorno Acumulado ao Ano
+
+            Ano             DDMS-2           DDMS-ARCH           Ibovespa         CDI
+           2003∗            93, 53%           94, 52%           93, 49%         23, 21%
+           2004              21, 40%          22, 33%           16, 71%         16, 01%
+           2005              28, 53%          28, 89%           27, 71%         19, 00%
+           2006              34, 14%          35, 29%           32, 93%         15, 16%
+           2007              41, 47%          46, 46%           43, 65%         11, 84%
+           2008             −25, 76%          −18, 79%          −37, 01%        12, 41%
+           2009              72, 09%          70, 64%           70, 43%          9, 88%
+           2010               2, 04%           2, 39%            1, 05%          9, 68%
+           2011             −14, 83%          −14, 66%          −18, 11%        11, 59%
+           2012              8, 50%            9, 72%            7, 40%          8, 49%
+           Média             21, 31%           23, 23%           18, 05%        13, 64%
+        Desvio Padrão         36, 88            36, 00            39, 18         4, 64
+    Índice de Sharpe          0, 34                0, 39           0, 26          0, 00
+    ∗   2003 é computado a parir de junho.
+
+    A tabela acima mostra que os retornos anuais das estratégias de investimento são superiores
+à estratégia buy and hold para o índice Bovespa, ou seja, investir no índice e desfazer-se do
+mesmo no final do período. Entretanto, é interessante destacar que o retorno médio entre os
+anos de 2005 a 2007 - tanto da bolsa quanto das estratégias – são muito próximos. Nesse
+
+
+                                              15
+período a probabilidade de Bull Market foi alta e persistente, desta forma, a estratégia seguiu o
+mercado.
+    A análise para o período como um todo (2003 – 2012), revela que o retorno médio das
+estratégias são 23, 23% e 21, 31% - muito superiores ao retorno médio da bolsa 18, 05%. O
+mesmo resultado é assegurado quando comparado com o retorno médio do CDI, 13, 34%. Ape-
+nas nos anos de 2008 e 2011, o CDI apresentou uma rentabilidade maior que as estratégias
+investimento. Isso é explicado pela previsibilidade dos modelos, uma vez que as probabilidades
+de Bear Market foram mais elevadas no período da crise do subprime e do rebaixamento da
+nota dos títulos americano. Destaque é dado ao modelo DDMS-ARCH, pois a estratégia ap-
+resentou maior índice de Sharpe (0,39). Uma explicação para isso, é que no modelo em que a
+volatilidade é heterocedástica o risco é menor.
+    A fim de comparar o retorno das estratégias de investimento oferecidas pelos modelos da
+classe DDMS, foram estimados modelos de mudança de regime sem duration dependece. Con-
+forme visto na seção 2.1, os modelos acima, podem ser restritos, de tal forma, que a matriz de
+probabilidade de transição seja fixa. Neste caso, os modelos serão mais parcimoniosos uma vez
+que reduziremos o numero de parâmetros que definem a transição de estado. Para fim de com-
+paração, a ordem tanto da média quanto da variância condicional, foram mantidas na estimação.
+Os valores dessas estimativas ficaram dentro do circulo unitário.
+
+                                        Table 5: Resultado das Estimativas
+
+                             Parâmetros         AR(2)            MS-2      MS-ARCH
+                                               0.2840∗∗        −0.9684∗    −2.4857∗∗
+                                  µ0 , µ
+                                               (0.1536)        (0.7178)     (1.0726)
+                                                               0.5343∗∗∗   0.4787∗∗∗
+                                   µ1
+                                                               (0.1310)     (0.1223)
+                                              4.6529∗∗∗
+                                  m, σ
+                                              (0.1060)
+                                                               8.1586∗∗∗   58.9153∗∗∗
+                                 m0 , σ0
+                                                               (0.5512)    (12.4826)
+                                                               3.4924∗∗∗    8.2014∗∗∗
+                                 m1 , σ1
+                                                               (0.0996)     (1.0146)
+                                                               2.8144∗∗∗     2.2073
+                                 γ1 (0)
+                                                               (0.4347)     (0.5416)
+                                                               4.4549∗∗∗     4.2816
+                                 γ1 (1)
+                                                               (0.4042)     (0.4538)
+                                  ln L         −2850.0         −27498.2    −27215.8
+
+∗∗∗ ,∗∗ ,∗   significância em 1%, 5% e 10% respectivamente. Desvio padrão está em parênteses.
+ln L é o valor da log verossimilhança.
+
+   Os resultados mostram que a estratégias de investimento dos modelos sem duration de-
+pendece, apresentaram um desempenho muito similar aos modelos da classe DDMS quando
+
+                                                          16
+comparados com a estratégia buy and hold, assim atingindo os resultados esperado desta seção.
+   Entretanto, retorno médio oferecido pelos modelos sem duration dependece foi maior para
+ambas as especificações. No caso em que a variância incondicional muda de regime, o modelo
+MS-2 apresentou um retorno médio de 24, 22% contra 21, 31% do modelo DDMS-2. No caso
+em que a variância condicional é modelada, o mesmo resultado é evidenciado, o modelo MS-
+ARCH proporcionou um retorno médio de 26, 33% contra 23, 33% do modelo DDMS-ARCH.
+Uma explicação para o maior retorno das estratégias de investimento em modelos em que não
+tem duration dependece, baseia-se na evidência empirica de que modelos mais parcimoniosos
+tem melhor capacidade de previsão.
+   A análise do índice de Sharpe mostrou novamente que no modelo onde a variância é condi-
+cional, o retorno é maior que na especificação homocedástica. Quando comparados com os
+modelos da classe DDMS, ambos apresentaram melhor valor para o índice.
+
+                             Table 6: Retorno Acumulado ao Ano
+
+            Ano                MS-2          MS-ARCH           Ibovespa          CDI
+           2003∗             95, 02%         95, 33%           93, 49%          23, 21%
+           2004               24, 61%        26, 57%           16, 71%          16, 01%
+           2005               29, 36%        29, 74%           27, 71%          19, 00%
+           2006               35, 56%        37, 67%           32, 93%          15, 16%
+           2007               43, 65%        50, 58%           43, 65%          11, 84%
+           2008              −16, 57%        −10, 16%          −37, 01%         12, 41%
+           2009               76, 23%        72, 21%           70, 43%           9, 88%
+           2010               2, 42%          3, 31%            1, 05%           9, 68%
+           2011              −12, 99%        −12, 30%          −18, 11%         11, 59%
+           2012               9, 06%         11, 17%            7, 40%           8, 49%
+           Média              24, 22%         26, 33%           18, 05%         13, 64%
+        Desvio Padrão          36, 22          34, 98            39, 18          4, 64
+    Índice de Sharpe           0, 41              0, 48          0, 26           0, 00
+    ∗   2003 é computado a parir de junho.
+
+   Por fim é interessante destacar que o valor da verossimilhança obtido ao estimar os modelos
+dentro da amostra, mostra que os modelos com duration dependece obtiveram melhor ajuste e
+apresentram melhor capacidade de identificar Bull e Bear Market. Esse resultado já era esper-
+ado, uma vez que a parametrização proposta neste artigo buscou captar a dinâmica intra-regime.
+
+
+
+
+                                             17
+5    Conclusão
+    O principal objetivo deste trabalho foi identificar períodos de Bull e Bear Market no índice
+Bovespa. Os resultados mostraram que no regime ascendente, o parâmetro da média foi positivo
+acompanhado por uma baixa variância. Já no regime descendente, a média foi negativa e a
+variância alta. Esses resultados são similares aos encontrados por Maheu & McCurdy (2000) e
+Shibata (2011).
+    Diferentemente do modelo de mudança de regime tradicional, o emprego do duration de-
+pendence caracterizou a dependência de longo prazo na estrutura cíclica do retorno acionário.
+A parametrização empregada, captou o efeito de que a persistência do estado ascendente torna
+os investidores mais otimistas em relação ao futuro. Essa resposta positiva faz com que a prob-
+abilidade de troca de regime diminua ao longo do tempo, ou seja, aumento na probabilidade de
+permanência no estado. De modo reciproco, a persistência do estado descendente aumenta o
+pessimismo dos investidores sobre os retornos futuros.
+    Devemos ter cautela em especificar a estrutura dos dados financeiros apenas por um pro-
+cesso de markov de primeira ordem, fato evidenciado pela memória curta dos parâmetros. Os
+modelos da classe DDMS, tanto na média como na variância condicional, buscaram corrigir
+a influencia intra-regime ao melhorar a estimação das probabilidades suavizada - destaque foi
+dado ao modelo DDMS-ARCH, pois este apresentou melhor ajuste.
+    Por fim, o retorno obtido pelos modelos da classe DDMS ao construitr estratégias de in-
+vestimento, fora da amostra, foi similar aos dos modelos que não incorporam duration depen-
+dence. Ambas especificações superaram os retornos do Ibovespa e CDI. Já a análise do índice
+de Sharpe, revelou que os modelos de mudança de regime sem dependência de duração, ob-
+tiveram melhor desempenho. Em contrapartida, a estimação desses modelos dentro da amostra,
+revelou que os modelos da classe DDMS têm melhor capacidade de indentificar Bull e Bear
+Market.
+
+
+References
+Almeida, N. & Valls, P. (2000), ‘Switching regimes models for financial time series: an empir-
+  ical study for trading rules’, Annals of the XXII Brazilian Econometric Meeting 1, 49–68.
+
+Bollerslev, T. (1986), ‘Generalized autoregressive conditional heteroskedasticity’, Journal of
+  Econometrics (31), 307–27.
+
+Brock, W., Dechert, W. & Sheinkman, J. A. (1987), A test for independence based on the
+  correlation dimension. Working Paper 8702, University of Wiscosin, Dept. of Economics.
+
+Bry, G. & Boschan, C. (1971), ‘Cyclical analysis of time series: Selected procedures and com-
+  puter programs’, NBER, New York, NY, USA .
+
+Cai, J. (1994), ‘A markov model of switching-regime arch’, Journal of Business & Economic
+  Statistics (12), 309–316.
+
+
+
+                                              18
+Campbell, J., Lo, A. & Mackinley, A. (1997), The Econometrics of Financial Markets, Prince-
+  ton University Press, USA; Princeton, New Jersey.
+
+Castro, V. (2011), The portuguese stock market cycle: Chronology and duration dependence.
+  Working Paper NIPE WP 13.
+
+Chauvet, M. (1999), ‘Stock market fluctuations and the business cycle’, Journal of Economic
+  and Social Measurement 25(3/4), 235–258.
+
+Chena, S.-W. & Shen, C.-H. (2007), ‘Evidence of the duration-dependence from the stock mar-
+  kets in the pacific rim economies’, Applied Economics 39, 1461–1474.
+
+Durland, J. & McCurdy, T. (1994), ‘Duration-dependent transitions in a markov model of u.s
+  gnp growth’, Journal of Business & Economics Statistics .
+
+Engle, R. (1982), ‘Autoregressive conditional heteroskedasticity with estimates of the variance
+  of uk inflation’, Econometrica (50), 987–1008.
+
+Estrella, A. & Mishkin, F. (1998), ‘Predicting us recessions: Financial variables as leading
+  indicators’, Revies of Economics and Statistics 80(1), 45–61.
+
+Hamilton, J. (1994), Time series analysis, Princeton University Press, Princeton, New Jersey.
+
+Hamilton, J. D. & Susmel, R. (1994), ‘Autoregressive conditional heteroskedasticity and
+  changes in regime’, Journal of Econometrics (64), 307–333.
+
+Harris, L. (2003), Trading and Exchanges: Market Microstructure for Practitioners, Oxford
+  University Press, USA; New York, New York.
+
+Kim, C.-J. & Nelson, C. (1999), State-space models with regime switching, MIT Press, London,
+  England; Cambridge, Massachusetts.
+
+Kole, E. & Dijk, J. (2012), How to identify and predict bull and bear markets? Econometric
+  Institute, Erasmus School of Economics, Erasmus University Rotterdam.
+
+Lunde, A. & Timmermann, A. (2004), ‘Duration dependence in stock prices: an analysis of bull
+  and bear markets’, Journal of Business & Economic Statistics (22), 253–273.
+
+Maheu, J. & McCurdy, T. (2000), ‘Identifying bull and bear markets in stock returns’, Journal
+ of Business & Economic Statistics (18(1)), 100–112.
+
+Marcellino, M. (2006), Handbook of economic forecasting, Elsevier, Amsterdam, Netherlands,
+ chapter Leading indicators: What have we learned?, pp. 876–960.
+
+Pagan, A. & Sossounov, K. (2003), ‘A simple framework for analyzing bull and bear markets’,
+  Journal of Applied Econometrics (18(1)), 23–46.
+
+Rigobon, R. & Sack, B. (2003), ‘Measuring the reaction of monetary policy to the stock market’,
+  Quaterly Journal of Economics 118(2), 639–669.
+
+                                              19
+Shibata, M. (2011), ‘Identifying bull and bear markets in japan’, Asia-Pacific Financial Markets
+  (19(2)), 99–117.
+
+Stock, J. & Watson, M. (2003), ‘How did leading indicator forecasts do during the 2001 reces-
+  sion?’, Federal Reserve Bank of Richmond Economic Quaterly 89, 71–90.
+
+Stock, J. & Watson, M. (2006), ‘Why has u.s. inflation become harder to forecast’, Journal of
+  Money, Credit and Banking 39(1).
+
+
+
+
+                                              20
+

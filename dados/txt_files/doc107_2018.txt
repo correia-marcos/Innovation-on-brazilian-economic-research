@@ -1,0 +1,785 @@
+                                                                                                                     1
+
+A EFICIÊNCIA DAS INSTITUIÇÕES DE ENSINO SUPERIOR PÚBLICAS E PRIVADAS PARA
+O CURSO DE CIÊNCIAS ECONÔMICAS
+Felipe César Marques1
+Marcia Regina Gabardo da Camara2
+
+O artigo tem como objetivo avaliar a eficiência das instituições de ensino superior (IES) públicas e
+privadas em relação ao seu potencial de agregar conhecimento acadêmico aos alunos concluintes em
+ciências econômicas em 2015, a partir de um modelo de análise envoltória de dados (DEA) em dois
+estágios, com base no desempenho dos alunos na prova do Enade. Emprega-se no trabalho a
+decomposição do DEA em dois componentes: um relativo ao desempenho do aluno, e outro relacionado à
+eficiência das IES; como input, foi utilizada a nota esperada dos alunos na prova do Enade, calculada a
+partir de um modelo de regressão hierárquico de três níveis, controlando para fatores pessoais e
+socioeconômicos. Para a obtenção de fronteiras de eficiência robustas foi utilizado também o método
+Jackstrap para identificação de outliers. Os resultados indicam a inexistência de diferenças significativas
+de eficiência nas instituições públicas e privadas e seus alunos. Considerando a eficiência conjunta de
+aluno e IES, a maior parte da ineficiência encontrada advém do desempenho dos estudantes. No segundo
+estágio, a única variável que apresentou significância estatística na determinação da eficiência média das
+IES foi o percentual de professores doutores.
+
+Palavras-chave: DEA em dois estágios, Jackstrap, Ensino Superior.
+
+PUBLIC AND PRIVATE HIGHER                           EDUCATION          INSTITUTIONS           EFFICIENCY            IN
+ECONOMICS GRADUATION
+
+The objective of the paper is to evaluate public and private higher education institutions’ (HEI) efficiency
+regarding their potential to aggregate academic knowledge to economics senior students in 2015, from a
+two-stage data envelopment analysis (DEA) model, based on students’ performance in the Enade test. It is
+applied the decomposition of DEA in two components: one concerned to pupil’s performance and another
+one related to HEIs efficiency; as an input, it is used the predicted score from the students in the Enade
+test, calculated from a three level hierarchical regression model, controlling for personal and
+socioeconomic factors. In order to obtain a robust efficient frontier, it was also used the Jackstrap method
+for outlier detection. Results indicate the inexistence of significant differences in the efficiency of public
+and private institutions and their pupils. Considering the aggregate efficiency of students and HEIs, most
+of the inefficiency found is related to students’ performance. On the second stage, the sole variable that
+showed statistical significance to determine the average efficiency of the HEIs is the percentage of PhD.
+professors.
+
+Keywords: Two-stage DEA, Jackstrap, Higher Education.
+
+Área 8: Microeconomia, Métodos Quantitativos e Finanças
+
+Classificação JEL: C14; I21
+
+
+
+
+1
+    Doutorando do Programa de Pós-Graduação em Ciências Econômicas da Universidade Estadual de Maringá (PCE-UEM).
+2
+    Professora do Programa de Pós-Graduação em Economia Regional da Universidade Estadual de Londrina (PPE-UEL).
+                                                                                                         2
+
+1. INTRODUÇÃO
+
+        No início dos anos 2000 verificou-se no Brasil o crescimento acelerado no acesso ao ensino
+superior. Entre 2002 e 2015, houve crescimento de 122% no total de cursos superiores ofertados no país.
+Além do investimento público, observa-se desde meados da década de 1990 uma forte expansão das
+instituições privadas, que correspondem a 73% do total de matrículas no ano de 2015 (INEP, 2016).
+Ainda assim, segundo relatório da OCDE (2016), o país apresenta baixa formação superior quando
+comparado aos dados internacionais. Apenas 16% da população brasileira na faixa etária 25-34 anos
+concluiu o ensino superior, valor muito distante da líder Coréia do Sul (69%) e de países em
+desenvolvimento como México (21%) e Colômbia (27%).
+        Diante da necessidade de reavaliar o ensino superior no país, surge o interesse na análise das
+Instituições de Ensino Superior (IES) atuantes no Brasil, em busca de possíveis fontes de ineficiência e
+possibilidades de aprimoramento. Se por um lado, a literatura da eficiência costuma apontar as
+instituições privadas como mais eficientes, devido ao fato de estarem expostas às forças de mercado
+(OSÓRIO et al., 1998; MANCEBÓN; MUÑIZ, 2008), por outro, há muito tempo no país, as
+universidades públicas são apontadas como instituições de excelência, gozando de grande prestígio social.
+        Este trabalho propõe-se, portanto, a analisar a eficiência das IES brasileiras, com enfoque na
+comparação das instituições públicas e privadas para o curso de ciências econômicas. Alguns estudos já
+foram realizados no país na tentativa de avaliar a eficiência pública e privada do ensino superior. Em
+geral, estes trabalhos têm apontado para a maior eficiência das IES privadas (FAÇANHA; MARINHO,
+2001; FRANÇA, 2004; COELHO JÚNIOR, 2011; WAGNER, 2011). No entanto, todos estes trabalhos
+utilizam dados agregados relativos às IES, desconsiderando desta forma as diferenças de eficiência que
+podem existir em uma mesma instituição, entre seus diferentes cursos, bem como o papel atribuído aos
+alunos no processo educacional. Dessa forma, o presente estudo contribui com a análise do ensino
+superior público e privado, ao avaliar e quantificar a eficiência das IES em economia, a partir de uma
+nova abordagem, proposta por Thanassoulis e Portela (2002), que permite a decomposição da eficiência
+em fatores relacionados ao desempenho do aluno e à eficiência da IES.
+        O trabalho desenvolve-se a partir da base de dados do Exame Nacional de Desempenho de
+Estudantes (Enade), referente aos alunos concluintes no curso de Ciências Econômicas de 2015. A
+escolha do curso justifica-se por sua heterogeneidade, que inclui na análise 60 IES públicas e 39 privadas,
+variando entre 25 e 314 alunos por IES, e ainda assim possuindo um total relativamente baixo de alunos
+(6.854), o que permite a aplicação de ferramentas computacionalmente intensivas com relativa facilidade.
+        Para atingir suas finalidades, este estudo está divido em cinco seções. Além desta introdução, a
+segunda seção trata dos conceitos da eficiência, explicitando a técnica da análise envoltória de dados, a
+decomposição da eficiência entre alunos e instituições, a detecção de observações influentes e a obtenção
+de uma fronteira de eficiência robusta com o método Jackstrap e a forma de obter inferências válidas a
+partir da análise envoltória de dados em dois estágios, por meio do algoritmo de Simar e Wilson (2007).
+        A terceira seção discute a base de dados, a metodologia e o tratamento dos dados a serem
+utilizados no trabalho. A quarta seção analisa os resultados obtidos, apresentando a análise econométrica
+multinível e os diferentes índices de eficiência calculados para alunos e IES públicas e privadas, a
+discussão acerca destes resultados e também os resultados econométricos do segundo estágio. Por fim, a
+última sessão apresenta as considerações finais do estudo, suas limitações e potenciais oportunidades para
+futuros trabalhos a respeito do tema abordado.
+
+2. A MENSURAÇÃO DA EFICIÊNCIA POR MEIO DA ANÁLISE ENVOLTÓRIA DE DADOS
+
+       O conceito da eficiência, no contexto da produção, refere-se à possibilidade de obter o maior
+produto (benefício) possível de uma quantidade escassa de insumos (recursos).
+       Em termos práticos, a análise envoltória de dados (Data Envelopment Analysis – DEA) é um
+exercício de estimação da fronteira de eficiência. O DEA parte do pressuposto da existência de um
+número finito ( ) de unidades tomadoras de decisão (Decision Making Units – DMUs), que realizam
+atividades similares, utilizando diferentes combinações dos N insumos disponíveis, e convertendo-os em
+                                                                                                           3
+
+M diferentes produtos. Estas unidades são então comparadas entre si e avaliadas de acordo com sua
+eficiência relativa. O primeiro modelo, inicialmente proposto por Charnes, Cooper e Rhodes (1978) –
+DEA CCR - apresenta orientação a insumos e pressupõe retornos constantes à escala, é dado pelo
+seguinte problema de otimização:
+
+
+
+
+        Onde representa a matriz NxI formada pelos vetores de insumo de todas as DMUs avaliadas, e
+   é a matriz MxI dos vetores de produtos das DMUs; já e              referem-se aos insumos e produtos
+utilizados pela DMU avaliada. Por fim, é o vetor de pesos a ser calculado. A ideia central do DEA é
+permitir a própria amostra determinar os pesos atribuídos a cada uma das DMUs; neste problema
+matemático é escolhido sempre o conjunto de pesos mais favoráveis a cada DMU em particular.
+        Posteriormente, Banker, Charnes e Cooper (1984) expandiram o modelo DEA-CCR mediante a
+possibilidade do cálculo de retornos variáveis de escala, ao incluir uma restrição de convexidade:
+ , no qual é um vetor composto por valores unitários. Este modelo, denominado DEA-BCC, em sua
+orientação a produtos, é dado por:
+
+
+
+                       ,
+
+
+2.1. A decomposição da eficiência
+
+        De acordo com Thanassoulis et al. (2016), os trabalhos relativos à eficiência educacional podem
+ser classificados em dois grandes grupos, diferenciados em relação à base de dados: os trabalhos que
+utilizam dados agregados das instituições de ensino, mais comuns, e aqueles que usam dados
+desagregados, relativos aos alunos, mais escassos devido a problemas relacionados à disponibilidade de
+dados e à intensidade computacional exigida. Os autores destacam ainda que, levando em consideração a
+maior desagregação dos dados ao nível dos alunos, a análise destes dados é capaz de prover um maior
+número de informações.
+        A aplicação da Análise Envoltória de Dados para medida da eficiência na área educacional é uma
+técnica amplamente difundida. Porém, a maior parte dos trabalhos na área possui foco de avaliação
+apenas no nível escolar, supondo assim que toda possível causa de ineficiência é decorrente da instituição
+de ensino, ignorando a parcela de responsabilidade devida aos estudantes neste processo. A avaliação
+única da eficiência com base nas instituições de ensino não consegue captar possíveis variações existentes
+dentro de uma mesma instituição, visto que esta se esconde atrás da média (GOLDSTEIN, 1997).
+        Neste sentido, Thanassoulis e Portela (2002) desenvolveram um novo critério de avaliação, a
+partir da metodologia DEA, que permite mensurar a participação de ambos agentes neste processo, ao
+decompor o nível de eficiência em duas parcelas – uma parcela relativa à eficiência da instituição de
+ensino, e outra correspondente à eficiência e à motivação do estudante. A ilustração desta metodologia é
+apresenta na Figura 1.
+        Considere as instituições de ensino IES1, cujos alunos são representados por pontos, e IES2, cujos
+alunos são representados por cruzes. Desta forma, a linha tracejada ABCD representa a fronteira de
+eficiência local para os alunos da IES1; a linha contínua EFGH, por sua vez, corresponde à fronteira de
+eficiência local dos alunos da IES2.
+        Seja Z um determinado aluno da IES1. Sua eficiência em relação à IES em que estuda (eficiência
+do aluno -      ) capta apenas o efeito de seu esforço e motivação, e será igual a 1, caso o estudante situe-
+se na fronteira local de sua IES. Esta medida é dada então pela razão:
+                                                                                                          4
+
+Figura 1 – Decomposição da eficiência técnica entre alunos e IES
+
+
+
+
+Fonte: Adaptado de Thanassoulis e Portela (2002).
+
+        Já, o segmento ABGH refere-se à fronteira de eficiência global, que considera os alunos de ambas
+as instituições. Neste caso, situar-se na fronteira global depende não apenas do desempenho do aluno,
+mas também da eficiência da IES em que estuda. Para o aluno Z, seu coeficiente de eficiência em relação
+à fronteira global (eficiência conjunta do aluno e instituição -  ) será:
+
+        Alterando o foco de análise para as IES, observa-se que o segmento            representa a distância
+entre as fronteiras local e global da instituição IES1, sob o ponto de vista do aluno Z. Deste modo, pode-
+se isolar a eficiência devida apenas à IES1 em relação à fronteira global (eficiência da instituição -     )
+da seguinte forma:
+
+
+2.2. Detecção de outliers no DEA: método Jackstrap
+
+        A principal desvantagem no uso da análise envoltória de dados consiste no fato de que esta técnica
+não leva em considerações perturbações aleatórias nos dados. Na ótica do DEA, desvios em relação à
+fronteira de produção representam apenas ineficiência. (SCHETTINI, 2014).
+        Dessa forma, a aplicação direta do DEA, sem uma prévia inspeção nos dados pode comprometer a
+credibilidade dos scores, pois as fronteiras de eficiência são muito sensíveis ao tamanho da amostra, à
+quantidade de insumos e produtos definidos, e especialmente, à existência de observações discrepantes
+(SAMPAIO DE SOUSA; STOSIC, 2015).
+        Visando a obtenção de índices de eficiências robustos, que não dependam da inspeção manual dos
+dados, inviabilizado em grandes amostras, Stosic e Sampaio de Sousa (2003) desenvolveram uma nova
+técnica de detecção de outliers, computacionalmente intensiva, denominada Jackstrap, combinando
+elementos das técnicas de Jacknife e Bootstrap, que calcula o efeito da remoção de uma DMU sobre os
+scores de eficiência no restante da amostra (alavancagem). Formalmente, a alavancagem é definida como
+o desvio padrão dos índices de eficiência antes e após a remoção de uma observação.
+        A aplicação do Jackstrap segue o seguinte algoritmo:
+    1. Seleciona-se aleatoriamente um subconjunto de L DMUs. Os autores sugerem que L contenha
+        entre 10% e 20% do número total de K DMUs. Calcula-se o índice de eficiência de cada DMU,
+        considerando toda a subamostra, e posteriormente, retirando uma DMU de cada vez, recalcula-se
+        os scores das L-1 observações. Define-se então a alavancagem de cada DMU selecionada:
+                                                                                                        5
+
+
+
+
+      Onde      corresponde ao score da DMU quando retirada a -ésima DMU e é o score da DMU
+       , considerando toda a subamostra L.
+   2. Repete-se o passo 1 acima B vezes, acumulando os valores das alavancagens obtidas nas
+      diferentes subamostras aleatórias (   . B deve ser suficientemente grande para que cada DMU
+      seja selecionada vezes (onde         BL/K).
+   3. Calcula-se a alavancagem média para cada DMU:
+
+
+
+   4. Obtém-se a alavancagem média global:
+
+
+       Entre as propostas apresentadas pelos autores para a detecção e tratamento dos outliers com base
+nas alavancagens calculadas, aquela que apresentou o melhor resultado em recuperar a distribuição dos
+índices de eficiência originais, após a inclusão de outliers em seus experimentos, foi a função heaviside,
+que define a seguinte regra de corte, levando em consideração o tamanho da amostra:
+
+
+       Sampaio de Sousa e Stosic (2005) consideram que a função heaviside providencia uma
+aproximação razoável do número de outliers.
+
+2.3. DEA em dois estágios
+
+        Outro método comumente empregado na literatura da eficiência é a combinação do DEA com
+técnicas econométricas (método semiparamétrico ou método de dois estágios). Normalmente, o método
+de dois estágios envolve o uso dos scores de eficiência obtidos com o DEA como variável endógena em
+um modelo de regressão truncado ou censurado, no qual as variáveis explicativas são ambientais e não
+discricionárias (BOUERI, 2015).
+        Alguns problemas existentes nesta abordagem são explicitados por Simar e Wilson (2007).
+Primeiramente, os índices de eficiências obtidos no primeiro estágio são estimativas dos verdadeiros
+índices (não observáveis), construídos a partir de combinações lineares de outros elementos da amostra, e
+portanto, são serialmente correlacionados, de uma forma intrincada e desconhecida. Em segundo lugar,
+podem existir altas correlações entre os insumos e produtos do primeiro estágio, e as variáveis
+explicativas no segundo estágio, o que por sua vez implica que o termo de erro da regressão também seja
+correlacionado com estas variáveis.
+        Ainda segundo os autores, as estimativas de máxima verossimilhança para os parâmetros do
+segundo estágio serão consistentes (ambos os problemas são mitigados assintoticamente), mas
+apresentam uma taxa de convergência muito mais lenta que as usuais, comprometendo as técnicas usuais
+de inferência.
+        Simar e Wilson (2007) propõem uma nova abordagem, visando a obtenção de inferências
+consistentes válidas no segundo estágio dos métodos semiparamétricos. O algoritmo proposto pelos
+autores é:
+        1. Obter      para                por meio do DEA
+        2. Utilizando apenas as DMUs não eficientes (          ), realizar a regressão truncada
+              , e obter estimativas para e .
+        3. Gerar resíduos artificiais       a partir de uma distribuição normal truncada à esquerda em
+                      , com média 0 e desvio-padrão .
+        4. Computar                     .
+                                                                                                           6
+
+       5. Realizar uma nova regressão truncada, utilizando como variável dependente os valores de ,
+          obtidos em 4, gerando estimativas de e       .
+       6. Repetir os passos 3 a 5 L vezes, obtendo o conjunto de estimativas de bootstrap
+                         .
+       7. Com base nos valores de        e as estimativas originais de e , construir intervalos de
+          confiança para cada elemento de e para .
+
+3. BASE DE DADOS E METODOLOGIA
+
+        A base de dados utilizada no trabalho consiste nos microdados Enade de 2015, referente aos
+alunos concluintes do curso de Ciências Econômicas, e nos microdados do Censo de Educação Superior
+de 2015. Ambos podem ser encontrados na plataforma de microdados disponibilizada pelo Instituto
+Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira – Inep.
+        O desenvolvimento do trabalho é realizado em quatro etapas. Na primeira delas estima-se, por
+meio de um modelo hierárquico, uma função relacionando a nota objetiva de formação específica obtida
+pelos alunos concluintes em ciências econômicas aplicadas no Enade 2015 e suas respectivas
+características pessoais e socioeconômicas.
+        Embora representem uma importante ferramenta de análise para pesquisadores e formuladores de
+políticas, considera-se aqui que os alunos possuem, de fato, poucos incentivos para responderem
+corretamente a todas as questões propostas pelo Enade. Este argumento ganha força quando se analisa as
+questões em branco, ou notas zero na parte discursiva da prova. Após uma seleção preliminar dos dados,
+excluindo da amostra alunos que não responderam às questões socioeconômicas necessárias,
+respondentes indígenas, devido sua baixa representatividade, e aqueles que não estiveram presentes na
+prova ou com o resultado invalidado, restaram na amostra 7.628 alunos concluintes em Ciências
+Econômicas. Deste total, 933 obtiveram nota zero na parte discursiva da prova de formação geral, sendo
+901 destas provas em branco; 1.930 alunos obtiveram nota zero na parte discursiva da prova de
+componente específico, foram 1.536 destas provas em branco. Em contrapartida, foram contabilizados
+apenas 47 notas zero na parte objetiva de formação geral e 20 no componente específico.
+        Desta forma, optou-se por considerar apenas a parte objetiva da prova como objeto de análise,
+visando minimizar os possíveis efeitos desta falta de incentivo. Portanto, excluiu-se também da amostra
+alunos com nota zero na parte objetiva no Enade. Finalmente, também se optou por desconsiderar alunos
+provenientes de IES com menos de 25 alunos concluintes, para obter uma estimação mais robusta das
+fronteiras de eficiência.
+        O modelo hierárquico utilizado é representado por três níveis - aluno, IES e categoria
+administrativa das instituições (pública ou privada), e fica definido da seguinte forma:
+
+        Onde a variável independente            corresponde à nota objetiva do componente específico da
+prova do aluno , matriculado na IES , pertencente à categoria administrativa . refere-se a um vetor de
+variáveis que contém idade e nota objetiva de formação geral, e ao vetor de variáveis dummy, que
+inclui sexo, moradia, cor, renda familiar, trabalho, educação dos pais, ensino médio e frequência de
+estudo, de determinado aluno , da instituição , e categoria . Como variáveis dummy omitidas foram
+definidas: homem, mora sozinho/outras moradias, branco ou amarelo, até 1,5 salários mínimos, não
+trabalha, nível educacional dos pais até o 9º do ensino fundamental, ensino médio em escola pública e
+estuda no máximo sete horas por semana.
+        Por fim,      representa o efeito aleatório do segundo nível, referente a região geográfica da
+instituição , de categoria , e      é o intercepto aleatório de terceiro nível (categoria administrativa tipo
+ ). Assume-se adicionalmente que:                                                          ; e que    ,     ,
+    sejam independentes.
+                                                                                                           7
+
+        Miranda et al. (2015) constataram, a partir de um levantamento de 52 artigos nacionais e
+internacionais sobre o desempenho acadêmico na área de negócios, que o conhecimento anteriormente
+acumulado do estudante foi a variável que apareceu com maior frequência entre os resultados
+significantes. Devido à impossibilidade de obter dados relacionados ao desempenho escolar anterior dos
+alunos, a nota de formação geral do estudante na prova do Enade foi utilizada como variável
+independente, tratada como proxy do conhecimento prévio do aluno. A utilização desta proxy tem como
+base o argumento de Moriconi e Nascimento (2014):
+
+                       Existe uma diferença entre os resultados relativos ao Componente Específico e à
+                       Formação Geral (...) O curso em que o aluno está ajuda a explicar muito mais a nota no
+                       Componente Específico (...) No caso da Formação Geral (...) por serem conhecimentos de
+                       cunho geral, dependerão muito mais do background do aluno e do ambiente no qual ele
+                       está inserido do que de quaisquer tipos de atividades que ele desenvolva no curso de
+                       ensino superior (MORICONI; NASCIMENTO, 2014, p. 268).
+
+        Ainda assim, deve-se considerar o potencial problema de endogeneidade na utilização desta
+variável, que capta não apenas os efeitos diretamente observados da formação geral do aluno, mas
+também de sua capacidade e habilidades intrínsecas, não observáveis e que, portanto, exigem o devido
+cuidado nas inferências do parâmetro desta variável.
+        Na segunda etapa utiliza-se o método Jackstrap, descrito na sessão anterior, a partir da análise
+envoltória de dados com retornos variáveis de escala e orientação ao produto, considerando o índice de
+eficiência conjunta        definido anteriormente. Como ponto de corte, considera-se a função heaviside.
+        Em seguida, aplica-se o método de decomposição da eficiência técnica de Thanassoulis e Portela
+(2002), exposta na seção anterior, na base de dados. Como produto, emprega-se a nota objetiva do
+componente específico (variável dependente da regressão estimada), considerada como indicador do
+conhecimento acadêmico adquirido pelos alunos ao final da graduação.
+        Entretanto, como apontam Sampaio e Guimarães (2009), este produto é um reflexo não apenas da
+qualidade e eficiência da IES, mas também envolve fatores pessoais e sociais, cognitivos e demográficos
+dos alunos. Portanto, o valor esperado da nota dos alunos estimado na regressão é empregado como
+insumo na análise, visando o controle destes fatores. Dessa forma, a eficiência de cada estudante – e IES -
+será dada com base no termo de erro da regressão estimada ( ), interpretada como a parcela do
+desempenho acadêmico do aluno não explicada pelos fatores externos considerados.
+        O modelo utilizado no trabalho é o DEA-BCC, apresentado na equação (2), que supõe retornos
+variáveis de escala e orientação a produto. São realizados 100 procedimentos DEA: um para cada uma
+das 99 IES (fronteira local) e um para todo o conjunto de dados (fronteira global).
+        Finalmente, na quarta etapa, procura-se identificar possíveis fatores que expliquem os índices de
+eficiência das IES. Para tanto, a eficiência média de cada IES        é utilizada como variável dependente
+em um modelo de regressão truncada, a partir do método proposto por Simar e Wilson (2007) para
+obtenção de inferências válidas. Como variáveis explicativas são usadas as razões professor/aluno,
+receita/aluno e a porcentagem de professores doutores de cada IES; onde a receita é dada pela soma da
+receita própria, o valor das transferências e de outras receitas declaradas pelas IES. Cabe destacar aqui
+que as informações utilizadas nesta etapa são referentes aos valores declarados pelas instituições no
+Censo da Educação Superior de 2015, e refletem as características globais da Instituição, e não apenas ao
+curso de ciências econômicas.
+
+4. RESULTADOS
+
+4.1. Análise preliminar dos dados
+
+        Após a seleção dos dados descrita na metodologia, restaram 4.506 alunos distribuídos em 60 IES
+públicas, e 2.348 alunos matriculados em 39 IES privadas, totalizando, portanto, 6.854 alunos e 99
+instituições. As informações dos dados estão presentes na Tabela 1.
+                                                                                                     8
+
+Tabela 1 – Alunos concluintes em Ciências Econômicas no Brasil – Instituições públicas e privadas -
+2015
+                                                           Público (4.506)       Privado (2.348)
+                        Variáveis
+                                                        Média     Desv. Pad.   Média    Desv. Pad.
+Variável Dependente
+   Nota Objetiva Componente Específico                  40,44        15,94     40,96       16,57
+Variáveis Independentes
+   Nota Objetiva Formação Geral                         63,31        19,71     59,94       20,11
+   Idade                                                 26           5,24      25          5,15
+Variáveis Dummy                                         Soma           %       Soma          %
+ Sexo
+   Mulheres                                             1.940        43,05      894        38,07
+   Homens                                               2.566        56,95     1.454       61,93
+ Cor
+   Negro                                                 318          7,06      111         4,73
+   Pardo                                                1.322        29,34      430        18,31
+   Branco ou Amarelo                                    2.866        63,60     1.807       76,96
+ Moradia
+   País / Parentes                                      2.690        59,70     1.677       71,42
+   Cônjuge e/ou filho(s)                                 789         17,51      323        13,76
+   Sozinho / Outros                                     1.027        22,79      348        14,82
+ Renda Familiar
+   Até 1,5 SM                                            388          8,61      79          3,36
+   1,5 SM - 3 SM                                         807         17,91      259        11,03
+   3 SM - 4,5 SM                                         791         17,55      314        13,37
+   4,5 SM - 6 SM                                         593         13,16      285        12,14
+   6 SM - 10 SM                                          838         18,60      467        19,89
+   10 SM - 30 SM                                         881         19,55      601        25,60
+   Acima de 30 SM                                        208          4,62      343        14,61
+ Trabalho
+   Não trabalha                                         1.734        38,48      632        26,92
+   Trabalho até 20h                                      437          9,70      167         7,11
+   Trabalho acima de 20h                                2.335        51,82     1.549       65,97
+ Educação dos Pais
+   Até o 5º ano                                          550         12,21      187         7,96
+   Até o 9º ano                                          407          9,03      221         9,41
+   Ensino Médio                                         1.542        34,22      707        30,11
+   Superior/Pós Graduação                               2.007        44,54     1.233       52,51
+ Educação / Estudos
+   Ensino Médio Público                                 2.307        51,20     1.046       44,55
+   Ensino Médio Privado                                 2.199        48,80     1.302       55,45
+   Estuda até 7 hrs semanais                            3.537        78,50     1.832       78,02
+   Estuda mais de 7 hrs                                  969         21,50      516        21,98
+Variáveis IES                                           Soma          %        Soma         %
+ Região
+   Norte                                                 438          9,72      30          1,28
+   Nordeste                                             1.075        23,86      159         6,77
+   Centro-Oeste                                          372          8,26      79          3,36
+   Sudeste                                              1.669        37,04     1.614       68,74
+   Sul                                                   952         21,13      466        19,85
+Fonte: Elaboração própria, a partir de dados do Inep.
+                                                                                                     9
+
+        Verifica-se semelhante nota média do componente específico para as IES públicas e privadas,
+enquanto os alunos das IES públicas obtiveram, em média, nota ligeiramente superior na prova de
+formação geral. Predomina na amostra alunos homens, e que moram com os pais, ou parentes. Alunos
+brancos ou asiáticos também são maioria, especialmente nas instituições privadas, onde correspondem a
+mais de 75% do total de estudantes.
+        Com relação à renda familiar dos alunos, a faixa de renda predominante em ambos os grupos é
+entre 10 a 30 salários mínimos; entre as IES privadas, mais de 40% dos alunos possui renda familiar
+superior a 10 salários mínimos. Mais da metade da amostra declara trabalhar mais de 20h semanais. Um
+número maior de alunos das instituições públicas pode se dedicar exclusivamente aos estudos (38%). A
+maior parte dos alunos possui ao menos um dos pais com ensino superior, sendo que entre os estudantes
+das IES privadas, este número ultrapassa os 50%. Já em relação ao ensino médio dos estudantes, a
+amostra é equilibrada entre aqueles que estudaram a maior parte do tempo em escolas públicas ou em
+escolas privadas. Apenas um quinto dos discentes tinha como hábito estudar mais de sete horas semanais.
+Observa-se também a concentração regional. Aproximadamente um terço dos alunos das IES públicas, e
+dois terços dos alunos das Instituições privadas realizaram seus estudos na região Sudeste.
+
+4.2. Modelo hierárquico
+
+       Os parâmetros da regressão estimada estão apresentados na Tabela 2, bem como o erro padrão das
+variáveis e as estimativas das variâncias dos efeitos aleatórios de segundo e terceiro nível.
+
+Tabela 2 – Resultado do modelo de regressão hierárquico: nota dos alunos
+Variável                                                    Coeficiente             Erro Padrão
+Formação geral                                             0,22779         *          0,00866
+Idade                                                     -0,17308         *          0,03807
+Mulher                                                    -3,43155         *          0,34471
+Negro                                                     -1,26518       ***          0,71189
+Pardo                                                     -0,36701                    0,41545
+Pais/Parentes                                             -0,36211                    0,44521
+Cônjuge/Filhos                                             0,13457                    0,61117
+1,5 SM - 3 SM                                              1,61848        **          0,76384
+3 SM - 4,5 SM                                              2,15237         *          0,78416
+4,5 SM - 6 SM                                              2,98762         *          0,83218
+6 SM - 10 SM                                               3,96056         *          0,80638
+10 SM - 30 SM                                              4,95640         *          0,83713
+Acima de 30 SM                                             4,21126         *          1,01123
+Trabalha até 20h                                          -1,30940        **          0,62044
+Trabalha acima de 20h                                     -2,43985         *          0,38931
+Pais 9º ano                                                0,53410                    0,74473
+Pais médio                                                 0,68308                    0,60821
+Pais superior                                              0,71491                    0,65493
+Médio privado                                             -0,54371                    0,41260
+Estuda mais de 7h                                          2,48543         *          0,41018
+Constante                                                 39,82439         *          1,04665
+Parâmetros de efeito aleatório                              Estimativa              Erro padrão
+                                                          1,07E-11                   2,96E-10
+                                                          29,42419                    4,93840
+                                                         180,03260                    3,10039
+Nota: *p<0,01; **p<0,05; ***p<0,1.
+Fonte: Elaboração própria.
+                                                                                                      10
+
+        A nota de formação geral, empregada como o desvio em relação à nota média, captando o
+conhecimento prévio do aluno, mostra-se positivo e significante ao nível de 1%. A variável idade,
+também utilizada aqui como o desvio da idade média dos estudantes (26 anos) é igualmente significativa
+em 1% e negativa, indicando que alunos concluintes em ciências econômicas mais velhos que a média
+possuem desempenho inferior na prova de componente específico do Enade.
+        As variáveis dummy referentes ao sexo e a cor dos alunos são significativas e negativas. Quando
+comparado com alunos homens, as mulheres tendem a apresentar desempenho inferior, bem como negros
+(significante a 10%), em comparação com brancos ou amarelos, mantendo demais fatores constantes;
+alunos pardos não apresentaram desempenho estatisticamente diferenciado. As condições de moradia dos
+estudantes não é um fator determinante de seus desempenhos; alunos que moraram sozinho, ou em outras
+formas de moradia, não se saíram melhor que aqueles morando com pais ou parentes, nem aqueles que
+moram com seus cônjuges e/ou filhos.
+        Por sua vez, todas as faixas de renda foram estatisticamente significantes. Ademais, o efeito das
+faixas de renda cresce monotonicamente até a faixa de 30 salários mínimos, sendo a faixa superior a 30
+SM ligeiramente inferior a anterior. Embora a renda familiar seja um fator positivo no desempenho dos
+estudantes, o trabalho apresenta um efeito inverso – alunos que trabalham, independente da carga horária
+apresentam resultado, em média, inferior àqueles que podem dedicar-se exclusivamente aos estudos;
+ainda assim, o impacto das jornadas de trabalho acima de 20 horas semanais é superior ao de 20 horas
+semanais. Destaca-se que nestas variáveis não são considerados os contratos tipo estágio.
+        Já a educação dos pais, independente do nível educacional avaliado, não possui influência
+significativa na determinação da nota dos estudantes. Foram testadas também hipóteses alternativas,
+separando a educação materna da educação paterna; no entanto, em nenhum caso encontrou-se
+significância estatística.
+        Igualmente, o desempenho dos discentes de economia que concluíram o ensino médio em escolas
+públicas não se difere daqueles que realizaram todo, ou a maior parte do ensino médio em instituições
+privadas. Por sua vez, o hábito de estudo dos alunos mostrou-se significativo, sendo superior a nota de
+alunos que disseram estudar mais de sete horas por semana.
+        Com relação aos efeitos hierárquicos aleatórios, chama atenção a baixa variância apresentada no
+terceiro nível ( ), que mede as diferenças de desempenho entre estudantes das IES públicas e privadas.
+De fato, como foi visto, a nota média do componente específico destes grupos foi bastante semelhante.
+
+4.3. Detecção de outliers
+
+        Após a estimação da regressão multinível, pôde-se calcular a nota esperada na prova do Enade dos
+alunos concluintes em Ciências Econômicas, a serem utilizadas como input no método Jackstrap de
+detecção de outliers. No estudo, foram definidas subamostras de 700 DMUs, e 2.000 repetições. Cada
+observação foi escolhida, portanto, 204 vezes em média, variando entre 154 e 264 vezes.
+        Entre os 6.854 alunos analisados, 97% apresentaram alavancagem igual a zero, de modo que
+alavancagem média foi de 7,81x10-5. Aplicando a regra determinada pela função Heaviside, o ponto de
+corte foi definido em = 0,003. Desta forma, foram retiradas do restante da análise 113 DMUs, restando
+98% da amostra original. Após a retirada das DMUs identificadas como potenciais outliers, a Escola de
+Economia de São Paulo (ESSP-FGV) passou a contar com 24 estudantes na amostra; devido à relevância
+da instituição, decidiu-se por manter a IES no estudo.
+        É possível perceber a influência das DMU detectadas por meio do Jackstrap a partir do Gráfico 1
+abaixo, que apresenta o histograma de eficiência das DMUs. Na parte (a) do gráfico foram calculados os
+índices de eficiência conjunta considerando todos os dados disponíveis (n = 6.854); já na parte (b), os
+índices foram recalculados, desconsiderando as amostras consideradas de maior influência (n = 6.741). O
+aumento generalizado dos scores é nítido.
+                                                                                                        11
+
+Gráfico 1 – Histograma de eficiência conjunta antes e após remoção de outliers
+
+
+
+
+Fonte: Elaboração própria.
+
+4.4. Resultados DEA
+
+        A seguir, no estudo, aplicou-se a decomposição da análise envoltória de dados, com base na nota
+esperada (input) e na nota de fato observada (output) dos alunos. Dessa forma, foram calculados três
+indicadores de eficiência para cada um dos estudantes. A Tabela 3 apresenta o ranking das 20 Instituições
+de Ensino de economia mais eficientes, ordenadas segundo a média geométrica de seus scores.
+        A escolha da média geométrica em vez da média aritmética se deve a dois fatores. Primeiramente,
+a média geométrica será tanto maior, quanto mais homogêneo são os valores que a compõe. Desta forma,
+entre duas instituições com igual média aritmética, será mais bem avaliada aquela IES que apresenta
+eficiência mais homogênea entre seus alunos. Além disso, ao empregar a média geométrica, pode-se
+calcular a eficiência média conjunta como o produto da eficiência média dos alunos e da eficiência média
+das IES (                    ), conferindo um resultado mais intuitivo à analise.
+        O ranking das 20 melhores instituições em economia, segundo o índice EFI, é variado, composto
+de onze de IES públicas e nove privadas; por tratar-se de índices médios de eficiência das IES, nenhuma
+delas apresenta eficiência máxima (igual a um). Ao considerar o índice EFI médio do conjunto de alunos,
+separado por categoria administrativa, a média das IES públicas é ligeiramente superior às IES privadas.
+No entanto, o teste para igualdade de médias tem o valor calculado igual a 1,2017, rejeitando a hipótese
+alternativa de que a eficiência média das instituições públicas e privadas seja estatisticamente diferente.
+        Com relação à eficiência dos alunos, o ranking das 20 IES com maiores médias altera a
+composição da classificação, sendo formada por onze IES privadas e nove públicas. Dentre as instituições
+que compõe o primeiro ranking, apenas a Escola Brasileira de Economia e Finanças (EBEF), o Ibmec-
+MG e a Universidade de Brasília (UnB) também estão presentes no ranking de eficiência dos alunos;
+entre estas, o grande destaque é a EBEF, obtendo o segundo maior índice EFI e a primeira classificada de
+acordo com a EFA. Novamente, rejeita-se a hipótese alternativa de que a eficiência média dos alunos das
+IES públicas e privadas seja diferente, ao nível de significância de 5% ( = 1,8033).
+        Considerando o índice de eficiência conjunta de IES e alunos, doze estabelecimentos públicos e
+oito privados estão entre os mais eficientes. Estendendo a análise para o conjunto de todas IES, a
+eficiência média das duas categorias é muito próxima (0,52 e 0,529 para IES públicas e privadas
+respectivamente). Ademais, observa-se que a ineficiência conjunta encontrada é resultante principalmente
+da ineficiência dos alunos; o índice médio de eficiência conjunta global é de 0,523, sendo 0,606 devido
+aos alunos, e 0,864 a parcela relativa às instituições.
+                                                                                                       12
+
+
+Tabela 3 – Ranking de eficiência das Instituições de Ensino Superior em economia - 2015
+Pos. IES                          Pos. IES                              Pos. IES
+  1 INSPER               0,981     1 EBEF                       0,852    1 EBEF                    0,832
+  2 EBEF                 0,976     2 UNIP                       0,737    2 IBMEC-MG                0,664
+  3 UFRJ                 0,975     3 UDESC                      0,730    3 UFMG                    0,655
+  4 IBMEC-MG             0,971     4 FECAP                      0,724    4 FECAP                   0,655
+  5 UFPE                 0,961     5 UFMG                       0,716    5 UNB                     0,652
+  6 MACKENZIE            0,961     6 UFABC                      0,696    6 UDESC                   0,651
+  7 URCA                 0,959     7 EESP                       0,695    7 INSPER                  0,638
+  8 PUCSP                0,958     8 UNINORTE                   0,692    8 UFABC                   0,628
+  9 UNB                  0,958     9 NEWTON PAIVA               0,691    9 EESP                    0,619
+ 10 UNICAMP              0,952 10 UNESC                         0,687 10 UFRGS                     0,598
+ 11 UFRRJ                0,950 11 IBMEC-MG                      0,684 11 UFRJ                      0,597
+ 12 UFAM                 0,944 12 UFJF                          0,683 12 UNICAMP                   0,597
+ 13 UFC                  0,942 13 UFSM                          0,682 13 UFV                       0,589
+ 14 FAE                  0,941 14 USJT                          0,682 14 UNIFESP                   0,585
+ 15 FMU                  0,939 15 UMA                           0,681 15 UNIP                      0,581
+ 16 UFMT                 0,938 16 UNB                           0,681 16 IBMEC-RJ                  0,578
+ 17 PUC-RIO              0,931 17 UEG                           0,675 17 UNIMONTES                 0,567
+ 18 UFRR                 0,931 18 UFG                           0,674 18 UFPR                      0,565
+ 19 UNIOESTE             0,931 19 UNIFAL-MG                     0,670 19 UFJF                      0,564
+ 20 IBMEC-RJ             0,930 20 FCV                           0,670 20 UNISINOS                  0,559
+Públicas                 0,871 Públicas                         0,597 Públicas                     0,520
+Privadas                 0,853 Privadas                         0,620 Privadas                     0,529
+Total                    0,864 Total                            0,606 Total                        0,523
+Fonte: Elaboração própria.
+
+         Os gráficos 2 e 3 buscam avaliar o comportamento das IES mais eficientes, separadas por
+categoria administrativa. O eixo vertical mostra a Eficiência Técnica das Instituições, calculadas para
+cada um dos alunos das cinco IES públicas e privadas mais eficientes, enquanto o eixo horizontal plota a
+nota de esperada obtida na regressão.
+         O comportamento verificado entre as IES mais eficientes é o mesmo, não importa a categoria
+administrativa avaliada: a eficiência é mais baixa e crescente entre seus alunos de menor potencial,
+estabilizando-se a partir de certo nível entre os alunos com desempenho esperado médio e alto. Mesmo
+considerando estes estabelecimentos os de maior eficiência técnica, a variabilidade existente nas próprias
+instituições impede que estas atendam todos os seus alunos com a mesma eficiência, de forma que
+acabam por privilegiar seus estudantes de maior nota esperada.
+         Alguns cuidados devem ser levados em consideração ao comparar os resultados deste estudo com
+os demais trabalhos que abordem o mesmo tema na literatura brasileira. O primeiro deles é que este
+trabalho trata unicamente de alunos e instituições de ensino do curso de ciências econômicas, enquanto
+demais trabalhos da área analisam as IES como um todo, desconsiderando a heterogeneidade dos cursos
+de uma mesma instituição. Além disso, deve-se considerar a desagregação entre o desempenho de alunos
+e instituições que aqui foi realizado, enquanto os demais trabalhos encontrados tratem da questão somente
+sob o ponto de vista das universidades, o que pode levar a conclusões errôneas, conforme Goldstein
+(1997) e Thanassoulis et al. (2016). Ademais, a escolha dos inputs e outputs não permite que se faça a
+comparação devida. Entre todos os trabalhos levantados, a eficiência técnica das DMUs é avaliada
+segundo a quantidade de alunos que as IES eram capazes de matricular ou formar, dado a quantia de
+recursos humanos e físicos disponíveis.
+                                                                                                      13
+
+Gráfico 2 – Instituições de Ensino Superior privadas mais eficientes em economia -Brasil - 2015
+
+
+
+
+Fonte: Elaboração própria.
+
+Gráfico 3 – Instituições de Ensino Superior públicas mais eficientes em economia – Brasil - 2015
+
+
+
+
+Fonte: Elaboração própria.
+
+       Tendo em conta estas diferenças, os resultados do presente trabalho assemelham-se aos de
+Machado (2008), que não encontra diferenças sistemáticas entre a eficiência das instituições de ensino
+públicas e as Pontifícias Universidades Católicas. Por outro lado, os resultados diferem daqueles
+presentes na maioria dos trabalhos, que indicam a maior eficiência das IES privadas (FAÇANHA;
+MARINHO, 2001; FRANÇA, 2004; COELHO JÚNIOR, 2011; WAGNER, 2011).
+
+4.5. Regressão de segundo estágio
+
+         Embora a aplicação da Análise Envoltória de Dados não tenha sido capaz de detectar diferenças
+estatisticamente significantes de eficiência na comparação das Instituições de Ensino Superior públicas e
+privadas do curso de ciências econômicas, é possível ainda testar outros fatores associados às IES que
+podem impactar na determinação de sua eficiência.
+                                                                                                        14
+
+        Para tanto, esta seção estima a regressão truncada proposta por Simar e Wilson (2007), utilizando
+como variável depende a eficiência média das IES ( ), e como variáveis explicativas, a proporção de
+professores doutores, a razão professor/aluno e a razão receita/aluno. As estimativas do erro padrão foram
+calculadas utilizando a técnica de bootstrap, com 2.000 replicações. Os resultados do modelo são
+apresentados na Tabela 4.
+        Percebe-se que entre as variáveis testadas, a única que apresentou significância estatística foi o
+percentual de professores doutores das IES, sendo seu efeito positivo, porém baixo. O número de
+professores e a receita das instituições, em relação ao total de alunos não possuem poder explicativo para
+a eficiência das Instituições.
+
+Tabela 4 – Resultado do modelo de regressão truncada: eficiência das IES
+             Variável                          Coeficiente                        E. P. Boostrap
+Doutores (%)                                               0,00102 *                            0,00035
+Professor/Aluno                                           -0,03537                              0,27901
+Receita/Aluno                                            3,45E-07                              3,96E-07
+Constante                                                  0,80882                              0,01661
+                                                           0,06266                              0,00526
+Nota: *p<0,01.
+Fonte: Elaboração própria.
+
+        Outras especificações foram testadas, incluindo também as variáveis: porcentagem de professores
+com regime de trabalho integral e a razão número de profissionais técnico-administrativos/alunos. No
+entanto, a única variável que se manteve significante em todas as especificações foi o percentual de
+professores doutores.
+        Banker e Natarajan (2008) propõem um método alternativo para lidar com o segundo estágio da
+análise envoltória de dados. Segundo os autores, um modelo log-linear calculado a partir dos mínimos
+quadrados ordinários é suficiente para a obtenção de estimativas consistentes dos parâmetros, desde que a
+função de produção relacionando inputs e outputs seja monotonicamente crescente e côncava nos inputs e
+as variáveis ambientais sejam todas não negativas. Testando este novo modelo, o percentual de doutores
+permanece como única variável significativa na determinação da eficiência das IES.
+
+5. CONSIDERAÇÕES FINAIS
+
+        Este trabalho teve como objetivo comparar a eficiência das Instituições de Ensino Superior
+brasileiras de ciências econômicas públicas e privadas. Na primeira parte do trabalho, aplicou-se o
+modelo de regressão multinível, tendo como base o questionário socioeconômico das provas do Enade de
+2015 dos graduandos em economia, visando o controle destes fatores no desempenho dos alunos. As
+variáveis que apresentaram impacto positivo no desempenho acadêmico dos alunos são: a nota de
+formação geral, a renda familiar e os hábitos de estudo. Entre as variáveis de efeito negativo estão idade,
+sexo feminino, cor (negros) e trabalho.
+        Em sequência, a aplicação do DEA a partir da metodologia proposta por Thanassoulis e Portela
+(2002) permitiu desagregar a eficiência global em relação ao desempenho das IES e dos discentes. Os
+resultados encontrados não apontam para diferenças sistemáticas entre a eficiência das IES públicas e
+privadas, seja pelo ponto de vista dos alunos (EFA), seja a partir das instituições (EFI). Considerando a
+eficiência conjunta (EFC) de estudantes e IES foi possível constatar que, para o curso de economia, a
+maior parte da ineficiência observada é decorrente do desempenho dos alunos. Quando estes resultados
+são comparados com demais trabalhos na área, os achados são divergentes; a maior parte deles confirma
+os resultados iniciais apontados por Façanha e Marinho (2001), atestando a maior eficiência das IES
+privadas. Apesar disto, os resultados devem ser comparados levando em consideração as diferentes
+metodologias aplicadas. Na última parte do trabalho foram testadas algumas características que pudessem
+explicar a eficiência média das IES, com base no Censo da Educação Superior de 2015. As inferências
+                                                                                                      15
+
+revelam que o único fator significativo na determinação da eficiência das IES é a proporção de
+professores doutores.
+        Cabe aqui levantar mais duas ressalvas com relação aos resultados deste estudo. Primeiramente, é
+preciso deixar claro que IES e alunos mais eficientes não necessariamente implicam em notas mais altas,
+e consequentemente, desempenho acadêmico superior por parte destes alunos. A eficiência técnica aqui se
+refere à possibilidade de obter a maior nota possível dentro do potencial do aluno, calculado a partir de
+sua nota esperada. Neste sentido, uma IES pode ser avaliada como eficiente, e ainda assim, seus alunos
+não apresentarem as notas mais altas no exame.
+        Em segundo lugar, todos os resultados apresentados referem-se, com rigor, apenas aos alunos
+concluintes no curso de ciências econômicas em 2015, e suas respectivas instituições de ensino, não
+sendo possível generalizar as conclusões para todo o universo do sistema educacional superior brasileiro.
+Portanto, abre-se aqui a necessidade da ampliação do escopo deste estudo em maior abrangência de
+alunos, IES, e cursos envolvidos e em um horizonte mais amplo de tempo.
+
+REFERÊNCIAS
+
+BANKER, R. D.; CHARNES, A.; COOPER, W. W. Some models for estimating technical
+and scale inefficiencies in data envelopment analysis. Management Science, vol. 30, n. 9, p. 1078-1092,
+1984.
+
+BANKER, R. D.; NATARAJAN, R. Evaluating contextual variables affecting productivity using data
+envelopment analysis. Operations research, v. 56, n. 1, p. 48-58, 2008.
+
+BOUERI, R. Modelos não paramétricos: Análise Envoltória de Dados (DEA). In: BOUERI, R.; ROCHA,
+F.; RODOPOULOS, F. M. A (organizadores). Avaliação da qualidade do gasto público e mensuração
+da eficiência. Brasília: Secretaria do Tesouro Nacional, 2015.
+
+CHARNES, A.; COOPER, W. W,; RHODES, E. Measuring the efficiency of decision marking units.
+European Journal of Operational Research, vol. 2, n. 6, p. 429-444, 1978.
+
+COELHO JÚNIOR, A. F. Avaliação das eficiências técnicas das Instituições de Ensino Superior
+(públicas e privadas) por meio da Data Envelopment Analysis (DEA) no período de 2004-2007.
+Dissertação de Mestrado, Universidade Federal da Paraíba. João Pessoa, 2011.
+
+FAÇANHA, L. O.; MARINHO, A. Instituições de ensino superior governamentais e particulares:
+avaliação comparativa de eficiência. Texto para discussão, n. 813. Rio de Janeiro: Ipea, 2001.
+
+FRANÇA, J. M. F. Gestão produtiva em universidades públicas e privadas brasileiras: um estudo
+comparativo sobre eficiência técnica. IV Colóquio Internacional sobre Gestão Universitária na América
+do Sul, 2004.
+
+GOLDSTEIN, H. Methods in school effectiveness research. School Effectiveness and School
+Improvement, vol. 8, n. 4, p. 369-395, 1997.
+
+INSTITUTO NACIONAL DE ESTUDO E PESQUISAS EDUCACIONAIS ANÍSIO TEIXEIRA.
+Sinopse Estatística da Educação Superior 2015. Brasília: Inep, 2016. Disponível em
+<http://portal.inep.gov.br/web/guest/sinopses-estatisticas-da-educacao-superior>.
+
+MACHADO, E. Z. Análise envoltória de dados sobre as universidades brasileiras: uma análise sobre
+eficiência. Dissertação de Mestrado, Pontifícia Universidade Católica do Rio Grande do Sul. Porto
+Alegre, 2008.
+                                                                                                     16
+
+MANCEBÓN, M. J.; MUÑIZ, M. A. Private versus public high schools in Spain: disentangling
+managerial and programme efficiencies. Journal of the Operational Research Society, v. 59, n. 7, p.
+892-901, 2008.
+
+MIRANDA, G. J.; LEMOS, K. C. S.; OLIVEIRA, A. S.; FERREIRA, M. A. Determinantes do
+desempenho acadêmico na área de negócios. Revista Meta: Avaliação, v. 7, n. 20, p. 175-209, 2015.
+
+MORICONI, G. M.; NASCIMENTO, P. A. M. M. Fatores associados ao desempenho dos concluintes de
+engenharia no Enade 2011. Estudos em Avaliação Educacional, v. 25, n. 57, p. 248-278, 2014.
+
+ORGANIZAÇÃO PARA A COOPERAÇÃO E DESENVOLVIMENTO ECONÔMICO
+(OCDE). Education at a glance 2016: OECD indicators. OECD Publishing, Paris, 2016.
+
+OSÓRIO, A.; MENDES, V.; REBELO, J. A eficiência econômica nas empresas públicas e privadas:
+uma análise comparada. In: III Congresso dos Economistas da Língua Portuguesa, Macau, Anais. 1998.
+
+SAMPAIO, B.; GUIMARÃES, J. Diferenças de eficiência entre ensino público e privado no Brasil.
+Econ. aplic. São Paulo, vol. 13, n. 1, p. 45-68, 2009.
+
+SAMPAIO DE SOUZA, M. C.; STOSIC, B. D. Detecção de outliers em modelos não paramétricos: o
+método Jackstrap ampliado. In: BOUERI, R.; ROCHA, F.; RODOPOULOS, F. M. A (organizadores).
+Avaliação da qualidade do gasto público e mensuração da eficiência. Brasília: Secretaria do Tesouro
+Nacional, 2015.
+
+SAMPAIO DE SOUZA, M. C.; STOSIC, B. D. Technical efficiency of the Brazilian municipalities:
+correcting nonparametric frontier measurements for outliers. Journal of Productivity analysis, v. 24, n.
+2, p. 157-181, 2005.
+
+SCHETTINI, B. P. Eficiência Técnica dos Municípios Brasileiros na Educação Pública: Escores
+Robustos e Fatores Determinantes. Texto para discussão, n. 2001. Brasília: Ipea, 2014.
+
+SIMAR, L.; WILSON, P. W. Estimation and inference in two-stage, semi-parametric models of
+production processes. Journal of Econometrics, v. 136, p. 31-64, 2007.
+
+STOSIC, B.; M. C. SAMPAIO DE SOUSA. Jackstrapping DEA Scores for Robust Efficiency
+Measurement. Anais do XXV Encontro Brasileiro de Econometria, SBE, 2003.
+
+THANASSOULIS, E.; DE WITTE, K.; JOHNES, J.; JOHNES, G.; KARAGIANNIS, G.; PORTELA, M.
+C. Applications of Data Envelopment Analysis in Education. In: ZHU, J. (editor). Data Envelopment
+Analysis: A Handbook of Empirical Studies and Applications, Springer, 2016.
+
+THANASSOULIS, E; PORTELA, M. C. School Outcomes: Sharing the Responsibility Between Pupil
+and School1. Education Economics, v. 10, n. 2, p. 183-207, 2002.
+
+WAGNER, P. A. R. Análise de eficiência das instituições de ensino superior pública e privada.
+Dissertação de Mestrado, Universidade Católica de Brasília. Brasília 2011.
+

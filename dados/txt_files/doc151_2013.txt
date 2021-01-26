@@ -1,0 +1,1069 @@
+                             Systemic Risk Measures
+
+                                     Solange Maria Guerra∗
+                                   Benjamin Miranda Tabak∗
+                               Rodrigo Andrés de Souza Penaloza†
+                                Rodrigo César de Castro Miranda∗
+
+
+                                                 Resumo
+Neste trabalho nós apresentamos medidas de risco sistêmico a partir da abordagem de ativos
+contingentes, da construção de densidade multivariada do sistema bancário e de análise de
+clusters. Os indicadores buscam capturar o estresse advindo do risco de crédito que poderia
+tornar-se sistêmico. As medidas propostas capturam não só as vulnerabilidades individuais dos
+bancos, mas também a estrutura de dependência de estresse entre eles. Elas podem ser úteis
+para determinar bancos sistemicamente importantes. Os resultados obtidos na análise empírica
+mostram que os indicadores captam os momentos de aumento de risco sistêmico vivenciado
+pelo sistema bancário brasileiro nos últimos anos. Os resultados obtidos são importantes para
+o desenvolvimento de políticas macroprudenciais.
+
+
+
+                                                Abstract
+
+In this paper we present systemic risk measures based on contingent claims approach, bank-
+ing sector multivariate density and cluster analysis. These indicators aim to capture credit risk
+stress and its potential to become systemic. The proposed measures capture not only individual
+bank vulnerability, but also the stress dependency structure between them. Furthermore, these
+measures can be quite useful for identifying systematically important banks. The empirical
+results show that these indicators capture with considerable fidelity the moments of increasing
+systemic risk in the Brazilian banking sector in recent years. This empirical soundness serves
+as a proof of how pertinent these indicators are to the formulation of macroprudential policies.
+
+
+Palavras-chave: Risco Sistêmico; Indicador de default conjunto; Clusters.
+Keywords: Systemic Risk; Joint Default Indicator; Clusters.
+
+
+JEL Classification: C61, G01, G21.
+Área ANPEC: Área 8 - Microeconomia, Métodos Quantitativos e Finanças
+
+
+  ∗
+      Research Department, Banco Central do Brasil.
+  †
+      Universidade de Brasília
+1    Introduction
+The possibility of one bank putting the soundness and/or confidence of the whole financial sector
+at risk has been recognized since the beginning of the 19th century (Thornton (1802)). However,
+among other factors, financial innovations and strong and continuous integration between global
+and local financial markets, made possible by advances in the IT and computing sectors, have
+largely increased the complexity and systemic consequences of this risk structure.
+Unlike the other types of risk to which financial institutions are exposed, systemic risk is much
+more recognized for it’s effects rather than it’s causes, as it generally occurs in many distinct
+forms and is the result of the interconnection of a number of factors. These traits make it
+difficult to describe systemic risk clearly ex ante, but, once materialized, this risk becomes
+easily identifiable and it’s consequences can be quite dire, specially when affecting the real side
+of the economy.
+Ever since the genesis of the discipline, researchers have tried to find ways to better comprehend
+systemic risk and the means to mitigate it. The sub-prime crisis has renewed the interest on
+the theme not only among academic circles, but also among regulatory bodies and Central
+Banks, which, in turn, instigated the production of a wide array of papers and works regarding
+the measurement of systemic risk, it’s regulation and the identification of threats to financial
+system stability.
+The definition of systemic risk is the first step to measure it accurately. However, despite
+the ever increasing number of works regarding this theme, there’s still no agreement over the
+definition of this type of risk. For example, Kaufman (1995) defines it as the risk of occurrence
+of a chain reaction of bankruptcies. The European Central Bank (ECB (2004)), on the other
+hand, describes systemic risk as the probability that the default of one institution will make
+other institutions also default, this risk interdependence would harm liquidity, credit and the
+stability and confidence of the markets. Acharya et al. (2009) affirm that systemic risk may
+be seen as generalized bankruptcies or capital market freezing, which may cause a substantial
+reduction in financial intermediation activities.
+While such a wide spectrum of definitions may indicate the comprehension of the various
+nuances of systemic risk, it may also, however, make systemic risk measurement harder and
+suggest the need for more than one type of measure in order to properly capture the complexity
+and the adaptability of the financial system. Using only one single measure might not prove to
+be adequate or even possible as it’s relative simplicity may not reflect an unpredicted aspect or a
+new mechanism created by the market. On the contrary, a robust framework for monitoring and
+managing financial stability must incorporate a range of perspectives and a continuous process
+of revaluation of the financial system structure and adaptation of systemic risk measures to
+reflect eventual changes. This premise is supported by the literature, where one may find
+various models of systemic risk measurement.
+Considering only the most recent literature, Lehar (2005) proposes a method, derived from
+correlated assets portfolios, to measure systemic risk. Based on the structural approach, he
+uses the contingent claims analysis to estimate the market value of a bank’s assets and Monte
+Carlo simulations to encounter the probability of a these assets falling below a given proportion
+of the total assets of the financial system. Gray et al. (2008) also use the contingent claims
+analysis to provide a general form of systemic risk measurement between countries and various
+sectors of the economy.
+
+
+                                                2
+Other examples of systemic risk measuring are found in the literature, among then: De Jonghe
+(2009) uses the extreme-value analysis; Acharya et al. (2010) use Systemic Expected Shortfall
+(SES) to measure the contribution of each single financial institution to systemic risk, i.e., it’s
+propensity to become decapitalized given the decapitalization of the whole system. Brownlees
+and Engle (2010) measure systemic risk by focusing on the Marginal Expected Shortfall (MES).
+They develop ways to estimate and predict MES using econometric tools (GARCH and DCC
+- Dynamic Conditional Correlation) together with non-parametric tail expectation estimators.
+Using CDS (Credit Default Swap) of financial firms and correlations between their stock returns,
+Huang et al. (2009) estimate a systemic risk indicator as the credit portfolio’s expected loss
+that is above a proportion of a sector’s total obligations. Huang et al. (2011) propose some
+methodological changes developed by Huang et al. (2009), as the heteroskedasticity of bank
+interconnectivity and the possibility of estimating each bank individual contribution to the
+systemic risk in the financial system. Adrian and Brunnermeier (2009) measure the Value
+of Risk (VaR) of the financial sector conditioned by the VaR loss in one single bank of the
+system, denoted by CoVaR, using quantile regressions. Segoviano and Goodhart (2009) define
+the financial sector as a portfolio of individual financial firms and build the multivariate density
+of this portfolio tail adjusted with empirical data from each institution. This density provides
+some measures of systemic risk.
+This paper contributes with the systemic risk indicator construction literature in many ways.
+First, using accounting data and following the approach in Souto et al. (2009), we adapt the
+method for building the banking system multivariate density proposed by Segoviano and Good-
+hart (2009). Accounting data becomes relevant when analyzing banking system stability when
+Credit Default Swaps, stocks and other public information are not available for every bank.
+Therefore, this paper expands the applicability of the measures proposed by Segoviano and
+Goodhart (2009) including the analysis of important banks which are not listed on the stock
+exchange. Second, we propose feasible new measures of systemic risk. One of the main critiques
+on the methodology developed by Segoviano and Goodhart (2009) is the quadratic growth of
+the dependency matrix. To bypass this methodological limitation, we propose an indicator
+built upon the joint distribution of pairs of banks and the analysis of clusters generated by the
+correlation of individual default probability of each bank. We also propose indicators from the
+analysis of pairs of banks that enable the measurement of the primary effects of the bankruptcy
+of one bank over the whole system. This indicator may be used to identify systematically
+important banks. Third, we include the idea of Loss Given Default in the construction of risk
+indicators. Fourth, we apply the measures proposed in this paper to the Brazilian case to
+analyze how their banking system was affected by the recent global crisis.
+The paper is organized as follows. Section 2 presents the methodology used to build the systemic
+risk indicators. Section 3 present definitions of the indicators. Section 4 presents a detailed
+description of the data and the empirical aspects of these indicators. Section 5 presents the
+empirical analysis for the Brazilian case. Section 6 presents final considerations.
+
+
+2    Methodology
+The structural approach is one of the most important methods of modeling the credit risk of a
+loan portfolio. The basic premise of this approach lies in the stochastic evolution of the value of
+subjacent assets through time and the deflagration of default by the decline of the value of an
+
+
+                                                 3
+asset below a predefined barrier. Once the parametric distribution of the subjacent asset value
+and the corresponding value barrier are defined, the probability of default can be calculated.
+Assuming the validity of the basic premise of the structural approach, Segoviano (2006) pro-
+poses a methodology, called CIMDO (for Consistent Information Multivariate Density Opti-
+mizing Methodology), to get the multivariate distribution of a portfolio based on the minimal
+cross-entropy approach presented by Kullback (1959). The idea is to build this multivariate
+distribution based on the empirically observed barrier and probability of default. Once the mul-
+tivariate distribution is calculated, it allows for a wide spectrum of financial stability measures.
+Before defining systemic risk measures, we present the contingent claims approach, used to
+obtain individual default probabilities for each bank, to build the Multivariate Banking System
+Density (MBSD,) and the methodology proposed by Segoviano and Goodhart (2009).
+
+
+2.1    Contingent Claims Approach
+
+It is assumed that the market value of a bank’s assets (A) evolves stochastically and that the
+default happens when this value falls below a predefined limit called distress barrier (DB). The
+probability of default is determined by:
+(a) Market value of a bank asset (A);
+(b) Uncertainty or asset value volatility (σA );
+(c) The extension of the bank’s contractual obligations, measured as a function of the account-
+    ing value of these obligations.
+Therefore, before calculating default probability (P D from now on) we must determine the
+market value and the volatility of the asset, as these variables are not observed. For such,
+we use Merton’s Structural Model (Merton (1974)). In this model, the firm’s total value V is
+financed by the capital C and a zero-coupon bond contract D, which is non redeemable before
+maturity T and has face value F . Disconsidering taxes, the relation Vt = Dt + Ct is valid. Firm
+value is then equal to asset value (V = A) and does not depend on capital structure. This
+corresponds to the Modigliano-Miller theorem.
+The value evolution of firm assets is uncertain. Price changes between two points in time
+may be attributed to a certainty component (drift term) and an uncertainty component (the
+stochastic or random term). The drift component corresponds to the expected (or mean)
+asset value growth rate. The stochastic term is a random walk where the variance is time
+proportional and, consequently, the standard deviation is proportional to the square root of
+time. It represents the uncertainty regarding the asset’s value evolution. The price dynamic of
+assets through time is then described by a Brownian geometric movement.
+
+
+                                    dAt = µA At dt + σA At dWt ,                                (1)
+
+where µA is the asset’s drift (i.e the instantaneous expected asset value return rate per time
+unit), σA is the standard deviation of the asset’s returns (i.e the volatility of returns) and dWt
+is the Wiener process.
+In this theoretical framework where the firm’s asset value evolve stochastically, credit risk
+is related to the possibility that the bank’s assets (granted loans) are worth less than its
+
+
+                                                   4
+obligations (deposits received) in T . If this risk materializes, the bank will default. To evaluate
+the probability of credit risk materialization, we use the contingent claims model proposed by
+Merton (1974).
+The basic methodological idea of Merton (1974) is modeling bank capital as an European call
+option, with strike price equal to the promised payment for the obligations and maturity T,
+where T is the maturity of the bank’s obligations. Then, considering the promised obligation
+payment as being the face value of contract bonds F , in case of default, shareholders receive
+nothing, otherwise they receive the difference between asset and debt values; which means that
+the payoff of this option would be:
+
+
+                                       E = M ax[A − F, 0],                                      (2)
+
+Applying the option pricing formula of Black and Scholes (1973) for this option (2), we have:
+
+
+                                  E = AN (d1 ) − F e−rT N (d2 ),                                (3)
+
+where r is the risk-free interest rate and N (.) is the rate of cumulative normal standard
+distribution,
+
+                                                A           2
+                                                                   
+                                                              σA
+                                           ln    F
+                                                      + r+     2
+                                                                       T
+                                    d1 =                √                                       (4)
+                                                      σA T
+and
+
+                                                A           2
+                                                                   
+                                                              σA
+                                           ln   F
+                                                      + r−     2
+                                                                       T
+                                    d2 =                √                  .                    (5)
+                                                      σA T
+Given that A = D + E, we can express the debt value in T as:
+
+
+                             D = A−E
+                                                              
+                               = A − AN (d1 ) − F e−rT N (d2 )
+                                  = A (1 − N (d1 )) + F e−rT N (d2 )
+                                  = AN (−d1 ) + F e−rT N (d2 ).                                 (6)
+
+To obtain asset values (A) and volatility (σA ), we explore the theoretical relation given between
+capital and asset volatilities, the first being denoted by σE . From Black and Scholes (1973)
+formula we derive the value of σE :
+
+                                                σA N (d1 )
+                           σE =                                   √ .                           (7)
+                                  N (d1 ) − (F e−rT )σA N (d1 − σA T )
+
+Capital values E and their volatility σE are observed for any listed firm. Therefore, from the
+system formed by equations 3 and 7, we obtain the market value of the assets and it’s volatility,
+A and σA , respectively.
+
+                                                      5
+Although Merton’s theoretical model establishes that a default happens when the asset values
+are lower than the face value of debts, in the real world, however, default usually happens with
+higher asset values. This is due to contract breakage or liquidity scarcity problems when the
+bank needs to sell assets or due to debt renegotiation (Gray and Malone (2008)). In order to
+capture this characteristics, we use, as a trigger for default, a barrier called distress barrier
+(DB), set to be higher than the face value of debts.
+This approach is used on the MKV model (KMV (1999) and KMV (2001)), where the barrier
+level is calculated using accounting data and is defined as:
+
+
+                           DB = (short-term debt) + α(long-term debt),                                  (8)
+
+where short term debts are those with maturity equal to or less than one year, while long term
+debt has maturity greater than one year, and α is a parameter between 0 and 1, generally equal
+do 0.51 . Then, the probability of default of a bank in time horizon T is defined as:
+
+
+                                        P D = P rob(AT 6 DB).                                           (9)
+
+Having established how to obtain the parameters A, σA and DB needed to calculate PD,
+we define the T horizon in which the debts must be payed, typically assuming it to be one
+year. Furthermore, we assume that the firm’s asset values are log-normal, which, according to
+empirical results obtained by Crouhy et al. (2000) is a robust hypothesis. We can, therefore,
+obtain information regarding the distribution of lnAT :
+
+                                                         
+                                                 1 2
+                             lnAT ∼ N lnA0 + µA − σA T, σA T ,
+                                                         2
+                                                                                                       (10)
+                                                 2
+and, so, PD may be expressed as:
+
+
+
+                              P D = P rob(lnAT 6 lnDB)
+                                               A0
+                                                               !
+                                           ln DB  + µA − 12 σA2 T
+                                  = N −              √
+                                                   σA T
+                                  = N (−d∗2 ).                                                         (11)
+
+The PD above is the expected probability in t = 0 of a bank defaulting in time horizon T when
+the asset values are known.
+Comparing the values of d2 and d∗2 , we can notice that the probability of default also occurs at
+the end of the debt price equation ((6)). This is due to the fact that N (d2 ) is the probability
+that the call option would be exercised, and the bank wouldn’t default. So, 1 − N (d2 ) =
+N (−d2 ) characterizes the default probability. However, while N (−d∗2 ) gives us the probability
+of default in a real world, N (−d2 ) represents the default probability in a risk-neutral world. In
+the real world, investors demand a return rate µA higher than the risk-free return rate r used
+   1
+    A practical rule to calculate the long-term component of the distress barrier established in De Servigny
+and Renault (2007) is using 0.5 from long-term debt if the ratio between long-term (LT) and short-term (ST)
+debts is lower than 1.5; otherwise, multiply long-term debt by (0.7 − 0.3ST /LT ).
+
+
+                                                     6
+in a risk-neutral world. Then, d∗2 > d2 , indicating that the risk-neutral default probability is
+an upper limit to the real default probability (N (−d∗2 ) < N (−d2 )).
+From the equation (9), we can observe that the PD is a function of the distance between the
+current value of the assets and the distress barrier DB. So, the distance to the distress (D2D),
+considering the risk-neutral default probability, is defined as:
+
+
+                                           D2D = −d2                                           (12)
+
+and gives us, in terms of standard deviations, how distant the market value of assets is from
+the distress barrier.
+The difference between the probabilities of real and risk-neutral default can be seen graphically
+in the figure 1. The real and risk-neutral default probabilities are, respectively, the areas of the
+real distributions of asset values (continuous line) and adjusted to risk (dashed line) under the
+distress barrier.
+
+
+                                         Asset’s value distribution in time T
+Asset’s value
+
+
+
+                     Asset’s Return
+                     (µA )
+
+              A0      Risk-Free Rate
+                      (r)                                  Distress Barrier
+                                                           (promised payments)
+                         Real
+                                            Risk-Neutral
+                     Probability of
+                                        Probability of Default
+                        Default
+
+                                    T                       Tempo
+
+           Figure 1: Contingent assets approach
+    Source:Gray and Malone (2008)
+
+
+
+Besides individual PDs, we will use the expected loss concept to build systemic risk indicators.
+The expected loss given default (LGD) is usually defined as the incurred loss percentage over
+owed credit in case of default. When faced with the counterpart’s default, the lender will recover
+only a fraction of the amount lent. The percentage of recovered amount, called recovery rate
+(RR), complements the LGD when recovery costs are null; RR+LGD = 1. There are three ways
+to measure LGD: market LGD - observed from market prices of defaulted bonds or marketable
+loans right after the actual default event; workout LGD - obtained from the set of estimated
+cash flows resulting from the workout and/or collections process, properly discounted, and
+the estimated exposure; and finally, the implied market LGD - derived from risky (but not
+defaulted) bond the prices using a theoretical asset pricing model (Schuermann (2004)). In this
+paper, we use the implied LGD, following the theoretical model presented below.
+The recovery rate, assuming no liquidation cost after the default, is given by the ratio between
+the bank’s asset value in T over the face value of debt F , given the occurrence of a default.
+
+                                                  7
+Formally,
+
+                                      AT             1
+                         RR = E(         | AT < F ) = E(VT | VT < F ),                           (13)
+                                      F              F
+given that the firm’s value V is equal to its asset values A.
+Note that when we assume that asset value is a log-normal variable, we have that lnA is
+normally distributed with mean µ and variance σ 2 . Therefore, Z = (lnA−µ)
+                                                                       σ
+                                                                           follows the normal
+standard distribution and the value of the assets can be described by: A = exp(σZ + µ). So,
+
+
+
+                    E(A | A < F ) = E(exp[σZ + µ] | exp[σZ + µ] < F )
+                                  = E(exp[σZ + µ] | Z < (lnF − µ)/σ)                             (14)
+
+Defining g = (lnF − µ)/σ e h = N (g) , where N (·) is the cumulative standard normal
+distribution function, (14) becomes:
+
+                            Z   g
+                                     exp[σz + µ](2π)−1/2 exp[−z 2 /2]dz
+                                −∞
+        E(A | A < F ) =
+                            Z                     h
+                                g
+                                     exp[(2σz)/2 + µ + σ 2 /2 − σ 2 /2](2π)−1/2 exp[−z 2 /2]dz
+                                −∞
+                        =
+                                              Z                      h
+                                                  g
+                                                            −1/2
+                                                       (2π)        exp[−(z − σ)2 /2]dz
+                                                  −∞
+                        = exp[µ + σ 2 /2]
+                                                       h
+                                          N ((lnF − µ)/σ − σ)
+                        = exp[µ + σ 2 /2]                     .                                  (15)
+                                            N ((lnF − µ)/σ)
+
+Considering the parameters of the normal distribution of lnA specified in (10), we can write
+the expected value of AT given that AT < F as:
+
+
+                                                                   
+            E(AT | AT < F ) = exp lnA0 + µA − σA2 /2 T + (σA2 T )/2
+                                                            √           √ 
+                              N (lnF − (µA − σA2 /2) T ) / σA2 T − σA2 T
+                            .                                          √ 
+                                   N (lnF − (lnA0 µA − σA2 /2) T ) σA2 T
+                                                      A                 
+                                                     ln F0 +(µA +σA   )
+                                                                  2 /2 T
+                                                 N −          √
+                                                            σA T
+                            = exp [lnA0 + µA T ]      A0                
+                                                     ln F +(µA −σA    )
+                                                                  2 /2 T
+                                                 N −        σ
+                                                              √
+                                                                T            A
+
+                                                        N     (−d∗1 )
+                                = A0 exp [µA T ]                      .                          (16)
+                                                        N     (−d∗2 )
+
+Substituting the term above in equation (13), we get an expression for the expected recovery
+rate in time T, in t = 0:
+
+                                                       8
+                                        A0             N (−d∗1 )
+                                 RR =      exp [µA T ]           .                          (17)
+                                        F              N (−d∗2 )
+
+Similarly to the case of PDs, there’s a distinction between real and risk-neutral recovery rates.
+To obtain the risk-neutral rate, we substitute µA for the risk-free rate r and debt face value F
+for the distress barrier.
+
+                                        A0           N (−d1 )
+                                 RR =      exp [rT ]          .                             (18)
+                                        DB           N (−d2 )
+
+The risk-neutral recovery rate is lower than the real counterpart. Therefore, real LGD is higher
+than risk-neutral LGD, given that LGD = 1 − RR when recovery costs are null.
+Having analyzed the theoretical aspects in the calculation of LGD, we get the final formula to
+estimate the expected loss rate at time T from the asset value at time t = 0, measured in real
+terms and including bankruptcy administrative costs, denoted by ϕ:
+
+                                            A0           N (−d1 )
+                             LGD0 = 1 − ϕ      exp [rT ]          ,                         (19)
+                                            DB           N (−d2 )
+
+being d1 e d2 defined as in equations (4) and (5).
+We can then estimate in t the expected bank loss for time T, as being:
+
+
+                                   ELt = P Dt .LGDt .EADt ,                                 (20)
+
+where EAD (Exposure at Default) is the amount of the bank’s assets that are exposed to losses
+due to its counterpart’s default.
+
+
+2.2    Cluster Definition
+
+The clusters were established considering banks that are strongly related. The definition of
+pairs of banks with more intense relationship is based on a concept analogous to the distance
+between the knots of a web. Following Bonanno et al. (2004), we define distance d(i, j) between
+banks i and j, as:
+
+                                                È
+                                    d(i, j) =    2(1 − ρ(i, j))                             (21)
+
+where ρ(i, j) is the correlation between PDs of banks i and j. Having calculated these distances,
+a Minimum Spanning Tree (MST) is drawn. Given a graph G, a MST is a tree that minimizes
+the distance between the knots of G. Given the distance definition above, the M ST generated
+has the trait that knots connected by a corner have lower distances and higher correlations.
+
+
+
+
+                                                  9
+2.3    Banking System Multivariate Density
+
+Segoviano and Goodhart (2009) present a set of banking stability measures, built from an
+adjusted multivariate density with empirical information, denominated Consistent Information
+Multivariate Density Optimizing methodology or simply CIMDO methodology, established in
+Segoviano (2006). This section aims to detail this methodology.
+The CIMDO methodology can be used by considering the banking system as a portfolio of N
+banks. However, as to avoid notation overloading, we will consider a portfolio composed of
+two banks: bank X and bank Y , with logarithmic returns defined as the random variables x
+and y. It is assumed, from an initial hypothesis, that the portfolio’s stochastic process multi-
+variate distribution follows a parametric distribution q(x, y) ∈ R 2 , called a prior distribution
+from now on. The initial hypothesis about the distribution of returns is taken according to
+economic hypotheses (default is deflagrated by the decline of asset value below a given barrier)
+and theoretical models (structural approach), but not necessarily in accordance with empirical
+observation.
+The CIMDO methodology allows for the inference of a multivariate distribution p(x, y) ∈ R 2 (a
+posterior distribution) from the prior distribution. This is done by means of an optimization
+process in which the prior density is updated with empirical information extracted from P Ds
+and DBs by means of the restrictions set.
+Formally, the DMSB is obtained by the resolution of the following optimization problem:
+
+
+                                              Z Z                 p(x, y)
+                        Minp(x,y) C[p, q] =         p(x, y) ln[           ]dxdy,                   (22)
+                                                                  q(x, y
+                                                                       sujeito a
+                                      Z Z
+                                            p(x, y)X(DB x ,∞) dxdy = P Dtx                         (23)
+                                      Z Z
+                                            p(x, y)X(DB y ,∞) dydx = P Dty                         (24)
+                                                    Z Z
+                                                          p(x, y)dxdy = 1                          (25)
+                                                                   p(x, y) ≥ 0.                    (26)
+
+where p(x, y), the multivariate posterior distribution, is to be found. P Dtx and P Dty are the em-
+pirically estimated default probabilities of banks x and y, respectively, at time t. X[DB x ,∞) , X(DB y ,∞)
+are indicator functions. The restrictions (23) and (24), imposed on the marginal densities of the
+DMSB (p(x, y)), assure that the information obtained through the empirical estimation of PDs
+and distress barriers of each bank of the portfolio are integrated in the DMSB. The restrictions
+(25) and (26) assure that the solution of optimization problem p(x,  ×   y) is a valid density; that
+is, they guarantee that the solution satisfies de additivity and non-negativity conditions.
+Therefore, the CIMDO density is generated by minimizing the functional:
+
+
+
+
+                                                     10
+                                    Z Z                     Z Z
+                       L[p, q] =       ln p(x, y)dxdy −       p(x, y) ln q(x, y)dxdy
+                                     Z Z                                   
+                                + λ1       p(x, y)X(DB x ,∞) dxdy − P Dtx
+                                     Z Z                                   
+                                                                          y
+                                + λ2       p(x, y)X(DB y ,∞) dydx − P Dt
+                                    Z Z                   
+                                = µ       p(x, y)dxdy − 1 .                                              (27)
+
+
+Through the calculation of variations, one can obtain the optimal a posterior multivariate
+density:
+
+                                          h                                     i
+                   ×
+                   p(x, y) = q(x, y) exp{− 1 + µ̂ + λˆ1 X(DB x ,∞) + λˆ2 X(DB y ,∞) }.                   (28)
+
+Intuitively, the set of restrictions guarantees that the multivariate density of the banking system
+           ×
+(DMSB), p(x,    y), contains marginal densities that satisfy the empirically observed PDs for each
+bank of the portfolio.
+The DMSB characterizes individual and joint movement of asset values for the banks of the
+portfolio that represent the banking system. Furthermore, DMSB incorporates the linear and
+non-linear distress dependencies between banks included in the portfolio. Such dependency
+structure is characterized by the copula function related to DMSB, called CIMDO copula,
+which changes for each time period in a way consistent with the changes in the empirically
+estimated PDs. Therefore, the DMSB captures the linear and non-linear distress dependency
+between the assets of the banks in the portfolio and its changes throughout economic cycles2 .
+
+
+3        Financial Stability Indicators
+The DMSB characterizes the individual default probability of the banks included in the portfo-
+lio, the stress dependency between them and changes in economic cycles. This set of information
+allows us to analyze the financial stability indicators that quantify (i) the common distress be-
+tween banks, (ii) distress between specific banks and (iii) distress in the system associated with
+a specific bank. This section presents the systemic risk indicators proposed in this paper using
+DMSB, contingent claims approach and cluster analysis.
+Before defining the indicators, let’s formalize the joint, individual and conditional probabilities
+calculated from DMSB. These probabilities are stability indicators by themselves, as established
+in Segoviano and Goodhart (2009). As in the CIMDO methodology presentation, we’ll consider,
+for parsimony, the banking system as being made of two banks, X and Y.
+    • Individual Probability of Default (PD(X))
+         The probability of bank X defaulting can be calculated from the marginal distribution of
+         DMSB:
+    2
+        For more details regarding the copula associated with DMSB, see Segoviano and Goodhart (2009).
+
+
+
+
+                                                      11
+                             P D(X) = P (X ≥ DB x )                                   (29)
+                                      Z +∞
+                                      +∞  Z
+                                    =        ×
+                                            p(x, y)dxdy.
+                                          −∞ DB x
+
+
+• Joint Probability of Default (PDConj(X,Y))
+ The probability that all the banks of the portfolio (banking system) default is given by
+ the joint probability of default (PDConj):
+
+
+                      P DConj(X, Y ) = P (X ∩ Y )                                     (30)
+                                     = P (X ≥ DB x , Y ≥ DB y )
+                                           Z
+                                        Z +∞
+                                        +∞
+                                     =         ×
+                                               p(x, y)dxdy.
+                                            DB y DB x
+
+
+• Conditional Probability of Default (PDCond(X,Y))
+ The probability of default of bank X given that bank Y has defaulted is given by condi-
+ tional probability:
+
+
+                      P DCond(X, Y ) = P (X|Y )                                       (31)
+                                     = P (X ≥ DB x |Y ≥ DB y )
+                                       P (X ≥ DB x , Y ≥ DB y )
+                                     =                          .
+                                            P (Y ≥ DB y )
+
+ Having formalized the individual, conditional e joint probability equations, let’s define
+ the systemic risk indicators proposed in this article. For such, consider a banking system
+ (portfolio) with N banks, denoted by B1 , B2 , . . . , BN .
+• IndPD Indicator
+ The IndPD Indicator is built considering the average of the individual probabilities of
+ default weighted by assets:
+
+                                            X
+                                            N
+                                 IndP D =          wj P D(Bj ),                       (32)
+                                            j=1
+                                            j6=k
+
+
+
+ where wj is the ratio between the assets of bank Bj and the total assets of the banking
+ system.
+ This indicator is an upper limit to the probability of default of one or more banks of the
+ system. As it does not consider the dependency structure between financial institutions,
+ this limit is overestimated and must be seen as an indicator of the stability tendency of
+ the banking system. As the indicator is made of the PDs of all banks, an increase in the
+
+                                         12
+ PD of one single bank would have to be quite large to change the whole tendency. That
+ means that changes in the indicator would only happen if the PD of more than one bank
+ also changed. Therefore, an increase in this indicator suggests that the banking system
+ as a whole is more exposed to systemic risk.
+• IndPDcond indicator
+ The IndPDcond indicator is built considering the average of the conditional probabilities
+ of default weighted by assets:
+ for each k ∈ {1, 2, . . . , N } , we define:
+
+                                                       N X
+                                                       X N
+                               IndP DCond =                         wj P (Bj |Bk ),        (33)
+                                                       k=1   j=1
+                                                             j6=k
+
+
+
+ where wj is the asset share of bank j compared to the total assets of the system.
+ The IndPDCond indicator tries to capture the first round effects of the default of one
+ bank over the probability of default of other banks. The higher it is, the higher is the
+ vulnerability of the financial system and the higher is the propagation possibility of shocks
+ to the system.
+ This indicator can be calculated for several periods to allow for the analysis of its evolution
+ through time.
+• IndPDConj Indicator
+ The IndPDConj Indicator is built considering the weighted average of the probability
+ that any two banks default at the same time:
+
+                                                X
+                            IndP DConj =               wij P DConj(Bi ∩ Bj ),              (34)
+                                                i6=j
+
+
+ where i, j ∈ {1, 2, . . . , N } and wij are the shares of assets of banks i and j compared to
+ the total assets of the banking system.
+ The IndPDConj indicator aims to capture the macruprudential risk effects. An increase
+ in its value means that the financial system is more exposed to this kind of risk.
+• Evolution of the Expected Loss given the default of two banks (IndLGD)
+ For each pair of banks (i, j), we calculate the joint probability of default P (Bi ∩ Bj ).
+ Considering LGDi and LGDj as expected loss rates due to banks’ i and j defaults, and
+ EADi and EADj the amount of assets of the banks i and j that are exposed at risk,
+ we define the maximum expected loss and LGD statistics, quantiles for example, in each
+ period of time t:
+
+
+                 P Emaxt = M axi,j (LGDi .EADi + LGDj .EADj )P (Bi ∩ Bj ).                 (35)
+
+ This indicator allows us to evaluate the evolution of expected losses in the worst case
+ scenario, when both banks default and the losses are maximum. We have then an upper
+ limit to expected losses.
+
+                                                13
+        This indicator can be specified for joint default of three or more banks. The literature
+        supports that LGD is higher in periods of financial market stress, an increase in this
+        indicator would then suggest that the market is indicating the existence of vulnerabilities
+        in the banking system.
+
+
+4       Data and Estimations of PDs and LGDs
+The risk-neutral PDs were estimated using a structural approach, as described in section 2.1. As
+there’s no market data (bonds, derivatives and Credit Default Swaps) for many Brazilian banks,
+it’s pretty much impossible to apply methodologies that depend on this type of data in order
+to obtain asset volatility for the majority of the banking system. As we want to estimate the
+proposed indicators for as many banks as possible, we try to incorporate asset volatility in PD
+estimations using accounting data as in Souto et al. (2009). Despite losing the "collective view"
+that characterizes Merton’s Model, accounting data still offers relevant information. We used
+monthly accounting data from the Brazilian Central Bank’s database from January 2002 to June
+2012. The sample includes banks and conglomerates from Independent Banking Institutions I
+and II, with a minimum of 20 observations in the studied period.3 Beyond filtering the data
+for the number of observations, banks with low deposits or with a low number of loans were
+also excluded from the sample.4 . The sample does not include treasury or assembler’s banks.
+By applying these filters we focus our sample on financial institutions with commercial bank
+activities. Banks may also be excluded from the sample due to bankruptcy or M&A, or included
+due to the start of its activities. This flexibility eliminates the survivorship bias problem in the
+estimation of our indicators. The sample then represents 65 banks, equivalent to about 68% of
+the Brazilian Financial System’s assets, considering data from June 2012.
+Given that the PDs have unit roots, the in-difference correlations between them were used to
+identify clusters. To calculate these correlations we need to consider a fixed number of banks
+through time. Thus, clusters were established considering only banks that were active during
+the whole period analyzed.
+By using accounting data to estimate indicators, equations (3) and (7) become unnecessary
+to estimate the system as described in section 2.1. Instead, the book value of assets and its
+volatility were used to estimate the indicators D2D and PD, defined by equations (12) and
+(11), respectively, substituting µA for the risk-free rate r. For the asset volatility estimation,
+we used the standard definition in finance literature, i.e., the annualized standard deviation of
+the book value of assets considering a moving time frame of 12 months; that is:
+                                               Î
+                                                   X
+                                                   11
+                                                      (At−i − A)2
+                                                   i=0
+                                                                        √
+                                      σ At =                        ·       12,                             (36)
+                                                         11
+                                                                                         5
+where A is the average book value of assets inside the moving time frame.                    As said in section
+    3
+     Banking Institutions I is composed of one of the following independent financial institutions (not part of a
+conglomerate): Commercial Bank, Universal Bank holding a commercial bank portfolio or a Savings and Loans.
+Banking Institutions II is made of financial institutions that are not part of a conglomerate and are either an
+Universal Bank not holding a commercial bank portfolio or an Investment Bank.
+   4
+     Banks with average loans over assets lower than 15% were excluded from the sample.
+   5
+     The assets’ volatility was calculated using the semi-variance and downside variance concepts, however,
+
+
+                                                         14
+2.1, the distress barrier is usually calculated as the short-term obligations plus a proportion of
+long-term obligations. Given that this information was not available for the whole period, we
+calculated the distress barrier as 85% of the liabilities. This percentage was chosen for being
+the closest to the barrier that would be built from the short-term obligations plus 50% of the
+long-term obligations in the period with available data.
+As with the PDs, the risk-neutral LGDs were estimated considering the rate of CDI (Certificados
+de Depósito Interbancário, Interbank Deposit Certificates) as the risk-free rate. Administrative
+costs for asset recovery were set to 15%. Given these parameters, average LGD is about 30%.
+In order to build the DMSB, bank returns were considered to follow a Student distribution with
+5 degrees of freedom.
+
+
+5     Empirical Results
+The proposed risk measures are used to analyze the Brazilian Banking System systemic risk
+and, in particular, how it was affected by the 2008 crisis.
+Five bank clusters were identified based on the correlation of the in-difference default prob-
+abilities (given that these probabilities present unit roots). The cluster identification shows
+that the Brazilian banking system is formed of "money centers", as described by Freixas et al.
+(2000). Each cluster is composed of: Group 1 - Eighteen banks, Group 2 - Ten banks, Group
+3 - Thirteen banks, Group 4 - Seven banks, Group 5 - Ten banks (Figure 2, where the ball size
+stands for the bank size: large, medium or small). The clusters have distinct characteristics
+regarding joint bankruptcy probability and contagion possibility.
+Regarding the indicators built from the PDs and the multivariate density, we can observe that
+they capture moments of higher tension in the Brazilian banking system in 2002, due to the
+election period, and in 2007/2008 due to global crisis (Figures 2 and 6).
+Banks that form group 5 have higher IndPD than banks of other groups. Unlike other groups,
+group 5 does not have a large bank among its members. This result may indicate that smaller
+banks are more vulnerable to credit market volatilities and unbalances. Furthermore, group 5
+has higher IndPDCond, indicating that its banks would be more affected if another bank in the
+system defaulted (3 e 4).
+The IndPDCond and IndPDConj consider not only the individual probability of default, but
+they also incorporate dependency structures between banks. Thus, these measures may present
+higher non-linear increases than individual PDs. This can be observed when comparing the
+results of group 4 and 5. Group 5 banks have higher individual PDs (see figure 3, however, in
+moments of higher market stress, the IndPDCond and IndPDConj measures of group 4 banks
+are higher than those of group 5 (see figures 4 and 5). It means that, in stressful moments, not
+only individual PDs increase, but there’s also an increase in stress dependency.
+Regarding the indicators using the Loss Given Default rate, figure 6 suggests that the use of
+value losses due default is more informative than the use of descriptive statistics such as quantile
+or maximum.
+given the characteristics of some banks with positive returns over long periods of time, these definitions have
+shown to be inadequate for the construction of a credit risk indicators time series. RoA (Return on Assets) and
+RoE (Return on Equity) volatilities were also tested, but the results were not reasonable.
+
+
+                                                      15
+                                                                                                   Grupo 5
+
+
+
+                           Grupo 1                                                                                        Grupo 4
+
+
+
+
+                                                                                                   Grupo 3
+
+
+
+
+                              Grupo 2
+
+
+
+
+                             Figure 2: Cluster Definition
+       Bank groups are determined using a Minimum Spanning Tree (MST), considering
+the in difference PDs correlations as the distance. The size of the circles corresponds to
+bank size: large, medium and small.
+
+
+
+
+                                 Figure 3: Probability of default in the banking system (IndPD)
+
+
+      35%
+
+
+      30%
+
+
+      25%
+
+
+      20%
+
+
+      15%
+
+
+      10%
+
+
+      5%
+
+
+      0%
+        1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri
+        2002 2002 2003 2003 2004 2004 2005 2005 2006 2006 2007 2007 2008 2008 2009 2009 2010 2010 2011 2011
+                                   Todos          Grupo1           Grupo2           Grupo3           Grupo4           Grupo5
+
+
+
+
+                                                                                                             16
+                       Figure 4: First round effects of a bank’s bankruptcy (IndPDCond)
+
+
+42%
+39%
+36%
+33%
+30%
+27%
+24%
+21%
+18%
+15%
+12%
+9%
+6%
+3%
+0%
+  1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri
+  2002 2002 2003 2003 2004 2004 2005 2005 2006 2006 2007 2007 2008 2008 2009 2009 2010 2010 2011 2011
+                             Todos          Grupo1           Grupo2           Grupo3           Grupo4           Grupo5
+
+
+
+
+              Figure 5: Probability that two banks default simultaneously (IndPDConj)
+
+
+10%
+
+9%
+
+8%
+
+7%
+
+6%
+
+5%
+
+4%
+
+3%
+
+2%
+
+1%
+
+0%
+  1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri 1º Tri 3º Tri
+  2002 2002 2003 2003 2004 2004 2005 2005 2006 2006 2007 2007 2008 2008 2009 2009 2010 2010 2011 2011
+                             Todos          Grupo1           Grupo2           Grupo3           Grupo4           Grupo5
+
+
+
+
+                                                                                                       17
+                   Figure 6: Expected Loss indicators and rate of Loss Given Default
+
+
+    7,000                                                                                                      0.018
+
+                                                                                                               0.016
+    6,000
+
+                                                                                                               0.014
+    5,000
+                                                                                                               0.012
+
+    4,000                                                                                                      0.01
+
+
+    3,000                                                                                                      0.008
+
+                                                                                                               0.006
+    2,000
+                                                                                                               0.004
+
+    1,000
+                                                                                                               0.002
+
+       0                                                                                                       0
+            200201
+            200205
+            200209
+            200301
+            200305
+            200309
+            200401
+            200405
+            200409
+            200501
+            200505
+            200509
+            200601
+            200605
+            200609
+            200701
+            200705
+            200709
+            200801
+            200805
+            200809
+            200901
+            200905
+            200909
+            201001
+            201005
+            201009
+            201101
+            201105
+            201109
+            201201
+            201205
+            Perda Esperada (eixo esquerdo em R$ Bi)   LGD (Q .99) (Eixo direito)    LGD (MAX) (Eixo direito)
+
+
+
+
+6      Final Considerations
+In this paper we presented some measures of systemic risk that may be used to evaluate even-
+tual vulnerabilities of the banking system due to credit risk. The theory establishes that the
+uncertainty regarding the value of an asset is a font of risk to the banking system, given that it
+may fall below such a point that it may become impossible for the bank to honor it’s obligations
+with shareholders. The measures obtained were built considering this theoretical framework,
+as well as the stress dependency structure between banks captured by the multivariate density
+of the banking system.
+The indicators were empirically evaluated by analyzing data from the Brazilian banking system.
+The indicators capture the moments of higher stress in the last decade, caused, in a great deal,
+by the uncertainty regarding the 2002 elections and the global crisis of 2008.
+The use of indicators together with the definition of clusters has proven to be an efficient ap-
+proach to bypass the issue with the quadratic increase in the dependency matrix. Furthermore,
+the definition of clusters allows for a more detailed analysis of sets of similar banks.
+
+
+
+
+                                                                                   18
+References
+V.V Acharya, L. H. Pedersen, T. Philippon, and M. Richardson. Mesuring systemic risk. SSRN
+  paper, 2010.
+
+T. Adrian and M. Brunnermeier. Covar. SSRN paper, 2009.
+
+F. Black and M. Scholes. The pricing of options and corporate liabilities. Journal of Political
+  Economy, 81:637, 1973.
+
+G. Bonanno, G. Caldarelli, F. Lillo, S. Micciché, N. Vandewalle, and R.N. Mantegna. Networks
+  of equities in financial markets. The European Physical Journal B - Condensed Matter and
+  Complex Systems, 38:363–371, 2004. ISSN 1434-6028. doi: 10.1140/epjb/e2004-00129-6.
+  URL http://dx.doi.org/10.1140/epjb/e2004-00129-6.
+
+C. Brownlees and R. Engle. Volatility, correlation and tails for systemic risk measurement.
+  Manuscrito, 2010.
+
+M. Crouhy, D. Galai, and R. Mark. A comparative analysis of current credit risk models.
+ Journal of Banking and Finance, page 59, 2000.
+
+O. De Jonghe. Back to the basics in banking? a micro-analysis of banking system stability.
+  European Banking Center Discussion, 13, 2009.
+
+A. De Servigny and O. Renault. Measuring and managing credit risk. McGraw-Hill Co., New
+  York, 2007.
+
+ECB. Annual Report. European Central Bank, Frankfurt, 2004.
+
+X. Freixas, Parigi. B., and J-C Rochet. Systemic risk, interbank relations and liquidity provision
+  by the central bank. Journal of Money, Credit and Banking, 32, 2000.
+
+D. Gray and S. W. Malone. Macrofinancial Risk Analysis. John Wiley & Sons, Inc, 2008.
+
+D.F Gray, R.C. Merton, and Z. Bodie. New framework for measuring and managing macrofi-
+  nancial risk and financial stability. manuscrito, 2008.
+
+X. Huang, H. Zhou, and H. Zhu. A framework for assessing the systemcis risk of major financial
+  institutions. Journal of Banking and Finance, page 2036, 2009.
+
+X. Huang, H. Zhou, and H. Zhu. Assessing the systemic risk of a heterogeneous portfolio of
+  banks during the recent financial crisis. Journal of Financial Stability, 2011.
+
+G. Kaufman. Banking, Financial Markets, and Systemic Risk, Research in Financial Services,
+  volume 7. 1995.
+
+KMV. Modeling Default Risk. KMV corporation, 1999.
+
+KMV. Modeling Default Risk. KMV corporation, 2001.
+
+J. Kullback. Information Theory and Statistics. John Wiley, New York, 1959.
+
+A. Lehar. Measuring systemic risk: A risk management approach. Journal of Banking and
+  Finance, page 2557, 2005.
+
+                                               19
+R.C. Merton. On the pricing of corporate debt: the risk structure of interest rates. Journal of
+  Finance, page 449, 1974.
+
+T. Schuermann. What do we know about loss given default?           In:SHIMKO,D. Credit Risk
+  Models and Management, 2004.
+
+M. A. Segoviano and C. Goodhart. Banking stability measures. IMF Working Paper, 2009.
+
+Miguel A. Segoviano. Consistent information multivariate density optimizing methodology.
+ Financial Markets Group, London school of Economics, Discussion Paper 557, 2006.
+
+M. Souto, B.M. Tabak, and F. Vasquez. Linking financial and macroeconomic factors to credit
+ risk indicators of brazilian banks. Banco Central do Brasil, Working Paper Series, 189, 2009.
+
+H. Thornton. Inquiry into the nature and effects of the paper credit of great britain. Edinburgh
+  Review, 1:172–201, 1802.
+
+
+
+
+                                              20
+

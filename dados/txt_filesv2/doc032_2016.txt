@@ -1,0 +1,3026 @@
+AVALIAÇÃO DA MEDIDA DE NÚCLEO DE INFLAÇÃO BASEADA NO MÉTODO 
+
+WAVELET PARA O BRASIL 
+
+Anderson Antonio Denardin1 
+
+ 
+
+Alice Kozakevicius2 
+Alex A. Schmidt3 
+
+ 
+
+Área 4: Macroeconomia, Economia Monetária e Finanças 
+
+ 
+
+Resumo 
+
+Este  artigo  tem  como  propósito  a  utilização  do  método  de  wavelet  para  a  estimação  de  uma medida de 
+núcleo de inflação para o Brasil. Considerando que a política monetária opera sob o regime de metas de 
+inflação, a identificação de um indicador que consiga separar o sinal do ruído, ou seja, identificar qual a 
+parte da inflação é persistente, e qual é meramente transitória é fundamental para estabelecer as regras de 
+política monetária e o sucesso do controle da inflação. Na prática, os bancos centrais realizam esta tarefa 
+utilizando  as  chamadas  “medidas  de  núcleo  de  inflação”.  Uma  medida  adequada  de  núcleo  de  inflação 
+tende  a  ser  compatível  com  as  duas  funções  básicas,  ou  seja,  trata-se  de  uma  boa  representação  para  a 
+tendência de inflação, e um bom previsor para a inflação futura. Tomando isso em conta, o artigo propõe-
+se a construir uma medida alternativa de núcleo de inflação, as chamadas “Medidas de Núcleo de Inflação 
+baseada em funções Wavelet” (MIW) e “Análise de Resolução Múltipla” (ARM), considerando o período 
+para análise 1996.01 – 2015.05. Comparações com os núcleos de inflações oficiais utilizados pelo Banco 
+Central e medidas baseadas em regressões procuram testar sua eficácia em seguir a tendência da inflação 
+e sua capacidade de prever a inflação futura. Os resultados sugerem que as medidas de núcleo baseadas 
+em wavelet para o Brasil demonstram um melhor desempenho que a abordagem tradicional de núcleo de 
+inflação, pois apresentam uma performance superior e uma maior robustez em termos de análise de longo 
+prazo  e  podem  auxiliar  na  melhora  das  projeções  de  curto  prazo,  indicando  que  o  método  wavelet 
+constitui  um  caminho  promissor  para  futuras  pesquisas  de  núcleo  de  inflação  e  um  mecanismo  mais 
+eficiente para orientar a política monetária. 
+Palavras-chave: Núcleo de inflação, Wavelets, Tendência de Inflação, Previsão de Inflação 
+Classificação JEL: C32, E31, E37, E52. 
+ 
+
+Abstract 
+
+This  article  aims  to  use  the  wavelet  method  for  the  estimation  of  a  core  inflation  measure  for  Brazil. 
+Considering that monetary policy operates under the regime of inflation targeting, the identification of an 
+indicator that can separate the signal from noise, ie, identify which part of the inflation is persistent, and 
+what  is  merely  transient  is  essential  to  establish  monetary  policy  rules  and  the  success  of  controlling 
+inflation.  In  practice,  central  banks  perform  this  task  using  so-called  "core  inflation  measures."  An 
+appropriate measure of core inflation tends to be compatible with the two basic functions, namely, it is a 
+good  representation  for  the  inflation  trend,  and  a  good  predictor  for  future  inflation.  Taking  this  into 
+account,  the  article  proposes  to  build  an  alternative  measure  of  core  inflation,  the  so-called  "Wavelet-
+based  core  Inflation  Measures"  (WIM)  and  "Multiple  Resolution  Analysis"  (ARM),  considering  the 
+period  for  analysis  1996.01  -  2015.05.  Comparisons  with  the  official  core  inflation  used  by  the  central 
+bank and measures based on regression functions seeking to test their effectiveness to follow the trend of 
+inflation and its ability to predict future inflation. The results suggest that the measures based on wavelets 
+to Brazil show a better performance than the traditional approach of core inflation, since they have proven 
+superior in  terms  of long-term performance  and  can help  improve short-term projections, indicating the 
+wavelet method is a promising avenue for future core inflation research and a more efficient mechanism 
+to guide monetary policy. 
+Keywords: Core inflation, Wavelets, Inflation Trend, Forecast Inflation 
+Classificação JEL: C32, E31, E37, E52. 
+_______________________________________ 
+1. Departamento de Ciências Econômicas da Universidade Federal de Santa Maria – UFSM. E-mail: aadenardin@gmail.com 
+2. Departamento de Matemática da Universidade Federal de Santa Maria – UFSM. E-mail: alice.kozakevicius@gmail.com 
+3. Departamento de Matemática da Universidade Federal de Santa Maria – UFSM. E-mail: aaschmidt1@gmail.com 
+ 
+ 
+ 
+
+2 
+
+ 
+1 Introdução 
+
+ 
+Uma  completa  compreensão  da  dinâmica  do  comportamento  da  inflação,  que  compreende  a 
+identificação  de  sua  natureza  e  de  seus  principais  determinantes,  é  essencial  para  a  definição  de  um 
+padrão adequado de política monetária e para garantir a eficiência na estabilização do sistema de preços 
+em  uma  economia.  Em  tais  circunstâncias,  a  distinção  entre  os  indicadores  de  inflação  tem  sido  de 
+extrema relevância para a definição do padrão da política monetária, principalmente, no contexto em que 
+passou  a  vigorar  os  regimes  de  metas  de  inflação.  A  diferenciação  mais  relevante  para  um  melhor 
+entendimento  da  dinâmica  de  ajustamento  do  sistema  de  preços  é  feita  entre  o  indicador  do  índice  de 
+inflação  agregado  (indicador  de  volatilidade  de  curto  prazo)  e  o  indicador  de  núcleo  de  inflação 
+(indicador de tendência de longo prazo), que possibilita uma separação entre mudanças que são de caráter 
+permanente, daquelas que são de caráter puramente transitório.  
+
+Com  a  difusão  da  adoção  do  regime  de  metas  de  inflação,  os  Bancos  Centrais  passaram  a  se 
+preocupar  com  a  escolha  da  meta  de  inflação  correta  a  ser  perseguida,  e  utilizada  como  indicador  de 
+política monetária. Como observa Blinder (1997), com baixos níveis de inflação o grande desafio consiste 
+em separar o sinal do ruído, ou seja, identificar qual a parte da inflação é duradoura, e qual é meramente 
+transitória, pois essa distinção torna-se crucial para estabelecer as regras de política monetária e o sucesso 
+do controle da inflação. 
+
+Os  Bancos  Centrais  procuram  executar  essa  tarefa  utilizando  a  medida  de  núcleo  de  inflação.  A 
+literatura  de  núcleo  de  inflação  sugere  duas  definições  alternativas  para  o  termo,  Bryan  et  al  (1997)  e 
+Cecchetti  (1997)  definem  o  núcleo  de  inflação  como  uma  medida  de  tendência  subjacente  do  nível  de 
+preços,  por  sua  vez,  Blinder  (1997)  e  Smith  (2004),  definem  o  núcleo  de  inflação  como  sendo  um  dos 
+principais indicadores do nível de preços futuro. Na prática, uma medida adequada de núcleo de inflação 
+tende  a  ser  compatível  com  as  duas  definições,  ou  seja,  trata-se  de  uma  boa  representação  para  a 
+tendência de inflação, e um bom previsor para a inflação futura. 
+
+Medidas  de  núcleo  de  inflação  podem  ser  classificadas  em  duas  categorias  amplas:  medidas 
+baseadas  na  exclusão,  as  quais  são  obtidas  subtraindo  alguns  preços  específicos  do  índice  de  preços 
+agregados;  e  medidas  baseadas  em  estatísticas,  as  quais  são  obtidas  usando  métodos  estatísticos  para 
+extrair a tendência de inflação do índice de inflação agregado. Medidas de inflação baseadas em exclusão 
+são  geralmente  preferidas  pelos  gestores  da  política  monetária  porque  são  mais  fáceis  de  serem 
+construídas,  e  comunicadas  entre  os  gestores  da  política  e  o  público,  e  menos  prováveis  de  sofrerem 
+alterações. 
+
+Assim, partindo-se de um índice de inflação agregado, podemos derivar uma medida de núcleo de 
+inflação intimamente relacionada a ele, e que satisfaça as propriedades desejáveis, de capturar a tendência 
+e de prever a série original.  
+
+No Brasil, o sistema de metas de inflação foi introduzido em julho de 1999 e, desde então, o Banco 
+Central vem utilizando as medidas de núcleo de inflação como parte do amplo conjunto de informações 
+que  utiliza  para  programar  a  política  monetária.  O  principal  objetivo  do sistema  de  metas  de  inflação  é 
+estabelecer uma âncora nominal para orientar a política monetária, de modo que a atuação da autoridade 
+monetária  consista  em  levar  a  inflação  a  convergir  com  a  meta  preestabelecida.  Com  esse  propósito,  a 
+autoridade  monetária  deve  monitorar  as  oscilações  dos  preços  correntes,  bem  como,  estimar  seu 
+comportamento futuro, o que requer total informação sobre as causas das oscilações dos preços e de seus 
+possíveis determinantes, dado que suas decisões de política monetária dependerão das fontes de oscilação 
+e da trajetória da inflação. Para o sucesso dessa estratégia, é necessário que o sistema de metas conquiste 
+credibilidade, o que pode ser obtido apenas mediante o rigoroso cumprimento da meta. 
+
+Nesse contexto, as medidas de núcleo têm a função de ampliar a visibilidade do Banco Central  no 
+que  se  refere  às  verdadeiras  fontes  de  pressão  inflacionária,  principalmente,  quando  a  orientação  da 
+política  monetária  parte  de  um  indicador  agregado,  como  é  o  caso  do  índice  de  Preços  ao  Consumidor 
+Amplo (IPCA). Dada a utilização do índice pleno, justifica-se o emprego de mecanismos que possibilitam 
+a  identificação  das  flutuações  captadas  pelo  IPCA,  classificando-as  segundo  o  seu  caráter  que  pode  ser 
+permanente  ou  transitório.  Assim,  ampliam-se  as  chances  de  sucesso  do  sistema  de  metas  de  inflação, 
+principalmente na identificação da natureza dos choques. 
+
+3 
+
+ 
+
+Nesse sentido, grande parte da literatura de núcleo de inflação para o Brasil tem sido  referenciada 
+na  taxa  de  inflação  medida  pelo  IPCA,  o  qual  representa  o  índice  oficial  para  o  regime  de  metas  de 
+controle da inflação no país. Com base na abordagem do sistema de exclusão, consideram-se as medidas 
+de  núcleo  de  inflação  derivadas  diretamente  dos  componentes  que  agregam  esse  índice  amplo,  como 
+referência para a orientação da política monetária. 
+
+Apesar da popularidade dos núcleos de inflação baseados na abordagem  de exclusão, amplamente 
+adotados pelo Banco Central que adotam o regime de metas, criticas são sugeridas com relação à eficácia 
+dessas  medidas  de  núcleo  para  estimar  a  tendência  e  prever  a  inflação  e,  portanto,  com  relação  à 
+eficiência de sua utilização na condução da política monetária para o controle da inflação. Bermingham 
+(2010) avalia diferentes medidas de núcleo para os Estados Unidos e conclui que elas não conseguem ser 
+melhores  do  que  simples  modelos  de  referência  para  indicar  a  tendência  e  prever  a  inflação  no  longo 
+prazo.  Para  o  caso  do  Brasil,  Silva  Filho  e  Figueiredo  (2011)  demonstram  que  as  medidas  de  núcleo 
+usadas pelo Banco Central não ajudam a prever a inflação e recomendam que sejam usadas com cautela. 
+
+Considerando  que  existe  uma  diversidade  de  medidas  de  núcleos  que  podem  ser  utilizadas  como 
+padrão de referência para a orientação da política monetária no controle da inflação, a presente pesquisa 
+propõe  a  construção  de  uma  medida  alternativa  de  núcleo  de  inflação  para  o  Brasil  com  base  nas 
+chamadas  “Medidas  de  Núcleo  de  Inflação  baseada  em  funções  Wavelets”  (MIW)  e  “Análise  de 
+Resolução Múltipla” (ARM), e então avaliar sua relevância para a política monetária. 
+
+A  construção  de  medidas  de  núcleo  de  inflação  com  base  na  análise  de  wavelet  é  relativamente 
+nova  na  literatura  econômica,  sendo  esta  pesquisa  a  primeira  tentativa  formal  para  analisar  seu 
+desempenho  para  o  caso  do  Brasil.  Assim  sendo,  utilizaremos  a  vantagem  da  flexibilidade  do  método 
+wavelet para estudar o comportamento dinâmico da inflação brasileira no período  1996.01 a 2015.05. A 
+vantagem de se utilizar o método de wavelets, é que ele pode prover uma nova percepção para a análise 
+de dados econômicos, porque fornece maior flexibilidade para lidar com séries de dados irregulares, pois 
+oferece  maior  precisão  para  localizar  irregularidades,  isolar  choques,  identificar  mudanças  de  regime  e 
+maior habilidade para tratar com a não estacionariedade das séries de tempo, padrões bastante comum do 
+comportamento das séries de inflação, o que possibilita identificar a tendência de longo prazo e choques 
+locais com maior rigor e precisão. 
+
+ As  wavelets  são  localizadas  no  tempo  e  escala,  característica  que  as  torna  adequadas  para  a 
+representação de sinais  de comprimento  finito ou que demonstram  diferentes padrão de  comportamento 
+no tempo. As wavelets não são homogêneas sobre o tempo (elas apresentam energia finita) e apresentam 
+suporte compacto (duram por um período de tempo curto) e, por conseguinte, são indexadas no domínio 
+de tempo. Tais características permitem observar o sinal da função em um número de diferentes escalas, o 
+que  possibilita  observar,  a  partir  de  uma  certa  distância  inicial,  as  características  gerais,  bem  como,  a 
+partir de aproximações sucessivas  revelar seus detalhes mais finos. 
+
+A motivação para essa medida alternativa é fundamentada na idéia de que, se o núcleo de inflação é 
+para ser interpretado como um sinal subjacente de um processo de inflação originalmente ruidoso, então 
+será  possível  estimar  o  núcleo  de  inflação  utilizando  uma  adequada  extração  de  sinal  ou  método  de 
+filtragem,  que  leve  em  consideração  a  não  estacionariedade  da  série.  O  método  de  wavelet  é 
+especialmente  designado  para  este  tipo  de  problema  e  tem  sido  usado,  com  grande  sucesso,  em  muitas 
+áreas da ciência aplicada. Essa metodologia evita a arbitrariedade da abordagem que estima o núcleo de 
+inflação  simplesmente  excluindo  certas  componentes  da  taxa  de  inflação  padrão.  Ao  contrário  dos 
+métodos estatísticos convencionais o método wavelet não requer fortes suposições acerca da tendência e 
+do ruído em torno dela. 
+
+Com  vistas  a  cumprir  o  propósito  da  pesquisa,  o  artigo  está  organizado  como  segue.  Após  uma 
+breve introdução, a seção 2 apresenta uma análise da aplicação da metodologia de wavelet para a análise 
+de séries de tempo. A seção 3 apresenta uma análise descritiva dos dados e o processo para construção de 
+medidas alternativas de núcleo de inflação utilizando-se do método de wavelet. Na seção 4 será avaliada a 
+performance das wavelet em relação às medidas oficiais de núcleo de inflação sob diferentes critérios de 
+análise. Por fim, são apresentadas as principais conclusões fundamentadas nas evidências empíricas. 
+
+ 
+ 
+
+4 
+
+ 
+2 Análise do método baseado em funções wavelet 
+
+ 
+As wavelet  são  representações  funcionais com características  especiais que permitem  a análise de 
+imagens e de séries temporais, com a perspectiva de processamento de sinais, conceitos muito difundidos 
+em  matemática  e  física.  Embora  as  funções  wavelet  originalmente  aparecem  em  Haar  (1910),  a  teoria 
+matemática formal tem experimentado um avanço mais recente com Grossmann e Morlet (1984),  Marllat 
+(1989), Daubechies (1992), Percival e Walden (2000) e Gençay et. al., (2003). 
+
+A transformada wavelet representa uma ferramenta essencial para descrever características de dados 
+que  são  locais  no  tempo  e  na  freqüência,  por  isso,  tem  sido  considerado  um  instrumento  poderoso, 
+usualmente  aplicado  para  a  análise  de  séries  temporais.  Como  destaca  Gençay  et.  al  (2002),  a 
+transformada wavelet inteligentemente se adapta para capturar características através de uma ampla gama 
+de freqüência e assim apresenta a habilidade de capturar eventos que são locais e específicos no tempo. 
+Essa  característica  faz  da  transformada  wavelet  uma  ferramenta  superior  na  análise  de  séries  temporais 
+não estacionárias. Essa ferramenta tem sido considerada superior para análises no domínio da freqüência 
+tais como as usualmente aplicadas para a análise de séries temporais como as transformadas de Fourier. 
+
+Para cumprir o propósito da pesquisa, usaremos a construção de uma medida alternativa de núcleo 
+de  inflação  para  o  Brasil  com  base  nas  chamadas  “Medidas  de  Núcleo  de  Inflação  baseada  em  funções 
+Wavelet”  (MIW)  e  uma  das  aplicações  das  funções  wavelet  mais  difundidas  na  literatura,  a  chamada 
+Análise de Resolução Múltipla (ARM), a qual decompõe a série temporal em componentes que contem 
+informações em diferentes níveis de tempo e escala (onde a escala está relacionada com a freqüência). 
+
+ 
+
+2.1 Definição de Wavelet 
+
+ 
+Uma wavelet ψ(t) é uma função que satisfaz duas propriedades básicas:  
+1)  Sua Integral é zero: que afirma que ψ(t) é tal que todos os valores positivos são cancelados pelos 
+
+valores negativos. 
+
+∞
+  ψ 𝑠 𝑑𝑠 = 0
+−∞
+
+                                                                  (1) 
+
+2)  O quadrado de sua integrável é unitário: é referida como sendo de energia unitária e afirma que 
+
+ψ(t) nem sempre igual a zero. 
+
+ 
+
+∞
+  ψ2 𝑠 𝑑𝑠 = 1
+−∞
+
+                                                                   (2) 
+
+A propriedade (2) implica que para qualquer ε que satisfaz 0 < 𝜀 < 1, existe um intervalo finito [T, 
+
+ 
+
+ 
+
+ 
+
+-T] tal que: 
+
+𝑇
+  ψ2 𝑠 𝑑 < 1 − 𝜀
+−𝑇
+
+                                                                 (3) 
+
+ 
+Conseqüentemente, quando ε é muito próximo de 𝜓(𝑠) toma valores não zero somente no intervalo 
+finito [T, -T]. Assim, as propriedades (1) e (2) descrevem ψ(t) como uma função que oscila em torno de 
+zero, mas sua flutuação é limitada para um intervalo finito. 
+
+A wavelet mais básica é a Haar (1910), a qual é definida como: 
+ 
+
+−
+
+ψH t  =  
+
+1
+
+ 2
+1
+
+ 2
+
+,    − 1 < 𝑡 ≤ 0
+
+,      0 < 𝑡 ≤ 1
+
+                                                            (4) 
+
+ 
+Como se pode perceber, a função ψH t  satisfaz as propriedades (1) e (2) o que a caracteriza como 
+uma wavelet. Além da wavelet de Haar, outras formas de wavelet que se destacam, e também satisfazem 
+essas propriedades, são as de Morlet e Mexican Hat. 
+
+0,            c. c
+
+ 
+
+A  função  wavelet  nos  informa  como  a  média  ponderada  de  um  sinal  muda  de  um  período  médio 
+para o próximo. Tomando como referência Percival e Walden (2000), deixe x(.) ser o valor real de uma 
+função  no  tempo  t,  usualmente  chamada  de  “sinal”.  O  valor  real  de  x(.)  sobre  o  intervalo  [a,  b] é  dado 
+por: 
+
+5 
+
+ 
+Esta  função  pode  ser  re-escrita  em  termos  de  comprimento  de  intervalo  𝜆 ≡ 𝑏 − 𝑎  e  o  momento 
+
+𝛼(𝑎, 𝑏) ≡
+
+1
+
+𝑏−𝑎
+
+𝑏
+  x 𝑢 𝑑𝑢, 𝑎  < 𝑏
+𝑎
+
+                                                   (5) 
+
+central de intervalo 𝑡 =
+
+𝑎+𝑏
+
+2
+
+, como segue: 
+
+𝐴 𝜆, 𝑡  ≡ 𝛼  𝑡 −
+
+𝜆
+
+𝑡
+
+, 𝑡 +
+
+𝜆
+
+𝑡
+
+  =
+
+1
+
+𝜆
+
+𝜆
+𝑡+
+𝑡
+ 
+𝜆
+𝑡−
+𝑡
+
+𝑥 𝑢 𝑑𝑢
+
+                                             (6) 
+
+ 
+Onde, λ refere-se a “escala” associada com a média. Assim, A(λ, t) é chamado de valor médio do 
+sinal  x(.)  sobre  uma  escala  de  λ  centrada  em  t.  A  mudança  dessa  média  de  um  período  para  o  outro  é 
+definida como: 
+
+𝐷 𝜆, 𝑡  ≡ 𝐴  𝜆, 𝑡 +
+
+𝜆
+
+2
+
+  − 𝐴  𝜆, 𝑡 −
+
+𝜆
+
+2
+
+  =
+
+1
+
+𝜆
+
+𝑡+𝜆
+ 
+𝑡
+
+𝑥 𝑢 𝑑𝑢 −
+
+1
+
+𝜆
+
+𝑡
+ 
+𝑡−𝜆
+
+𝑥 𝑢 𝑑𝑢
+
+                      (7) 
+
+ 
+Dado que D(λ, t) envolve dois  períodos adjacentes não sobrepostos, [t  – λ, t] e [t,  t+λ], a integral 
+
+pode ser combinada em uma única: 
+
+ 
+
+Onde 
+ 
+
+𝐷 𝜆, 𝑡  =   𝑥 𝑢 𝛹 𝜆,𝑡(𝑢)𝑑𝑢
+
+∞
+−∞
+
+                                                   (8) 
+
+𝛹 𝜆,𝑡(𝑢) ≡  
+
+1
+
+−
+1
+
+,   t − λ < 𝑢 ≤ 𝑡
+
+λ
+,      t < 𝑢 ≤ 𝑡 + 𝜆
+
+λ
+
+0,            c. c
+
+                                                   (9) 
+
+ 
+Quando λ=1 e t = 0, D(1, 0) torna-se: 
+ 
+
+𝐷 1,0  =   𝑥 𝑢 𝛹 1,0(𝑢)𝑑𝑢
+
+∞
+−∞
+
+                                                   (10) 
+
+−1,    − 1 < 𝑢 ≤ 0
+
+𝛹 𝜆,𝑡(𝑢) ≡  
+
+1,      0 < 𝑢 ≤ 1
+
+0,            c. c
+
+                                                  (11) 
+
+É simples constatar que a Haar wavelet 𝛹𝐻 .   e 𝛹 1,0(𝑢) são relacionadas por 𝛹 1,0 𝑢  =  2𝛹𝐻 𝑢 . 
+Assim sendo, olhando para a diferença das médias em uma escala unitária no tempo t = 0 é equivalente a: 
+
+𝑊𝐻 1,0  =   𝑥 𝑢 𝛹𝐻(𝑢)𝑑𝑢
+
+                                                   (12) 
+
+∞
+−∞
+
+ 
+Assim, através da equação (12), uma wavelet de Haar extrai a informação referente à dimensão da 
+diferença  que  existe  entre  duas  médias  de  escala  unitária  de  x(.)  limitada  em  tempo  t  =  0.  Da  mesma 
+maneira,  para  extrair  similar  informação  sobre  outra  escala  λ  e  tempo  t,  a  wavelet  de  Haar  pode  usar  a 
+seguinte equação: 
+
+(𝜆,𝑡) =   𝑥 𝑢 𝛹𝐻(𝑢)𝑑𝑢
+
+∞
+−∞
+
+∝ 𝐷(𝜆, 𝑡)                                            (13) 
+
+𝑊𝐻
+
+Onde 
+ 
+
+𝑊𝐻
+
+(𝜆,𝑡) =
+
+1
+
+ 𝜆
+
+𝛹𝐻  
+
+𝑢−𝑡
+
+𝜆
+
+−
+
+1
+
+ 2λ
+
+,   t − λ < 𝑢 ≤ 𝑡
+
+  ≡  
+
+1
+
+ 2λ
+
+,      t < 𝑢 ≤ 𝑡 + 𝜆
+
+0,            c. c
+
+                                       (14) 
+
+ 
+Com 
+ 
+
+ 
+
+ 
+
+ 
+
+Ao variar λ é possível analisar como a média de x(.) sobre diferentes escalas estão mudando de um 
+
+6 
+
+período (de comprimento λ) para outro. 
+
+ 
+
+ 2.2 Transformadas Wavelet contínuas e discretas 
+
+ 
+A  coleção  de  variáveis   𝑊𝐻 𝜆, 𝑡 : 𝜆 > 0, −∞ < 𝑡 < ∞   é  conhecida  como  Transformada  Wavelet 
+Continua de Haar de x(.). A interpretação de 𝑊𝐻 𝜆, 𝑡  é que esta é proporcional  a diferença entre duas 
+médias adjacentes de escala λ, a primeira média começando no tempo t e a segunda terminando no tempo 
+t.  Em  geral,  é  possível  construir  uma  Transformada  de  Wavelet  Continua  (TWC)  usando  qualquer 
+wavelet ψ(.) que satisfaça as propriedades (1) e (2). 
+
+ Formalmente, a Transformada de Wavelet Continua (TWC) pode ser definida como  uma coleção 
+de elementos W(λ,t) que são obtidas como uma projeção de uma função x(.) para uma particular função 
+wavelet ψ(λ, t) (u): 
+
+ 
+
+𝑊(𝜆, 𝑡) =   𝑥 𝑢 𝜓𝜆,𝑡(𝑢)𝑑𝑢
+
+                                                     (15) 
+
+∞
+−∞
+
+ 
+Uma  característica  chave  do  TWC  é  que  todo  coeficiente  é  obtido  dilatando  e  transladando  uma 
+
+função wavelet particular ψ(.), chamada “wavelet mãe”, de acordo com: 
+
+ 
+
+𝜓𝜆,𝑡(𝑢) =
+
+1
+
+ 𝜆
+
+𝜓  
+
+𝑢−𝑡
+
+𝜆
+
+                                                           (16) 
+
+ 
+Onde λ é o parâmetro de dilatação, t é o parâmetro de translação, e ψ(λ, t) (u) refere-se a uma família 
+de  wavelet.  Assim,  todo  o  membro  da  família  ψ(λ,  t)  (u)  é  associado  a  uma  escala  específica  e  a  uma 
+localização no temporal, chamado “tempo-escala”. 
+
+O parâmetro de escala λ permite  expandir a média de uma wavelet, tal  que, quando λ  é  alto, ψ(.) 
+completa seu movimento ao longo de uma gama mais ampla do que quando λ é baixo. Por outro lado, o 
+parâmetro de translação t permite mover o intervalo de ψ(.). 
+
+Assim, a TWC é uma função de escala λ e uma localização t apesar de a função original somente 
+depender  do  tempo,  e  conseqüentemente,  prove  uma  rica  descrição  de  x(.)  ao  transladar  e  dilatar  uma 
+função wavelet mãe. O processo de dilatação e translação de uma wavelet para construir uma TWC torna 
+a wavelet capaz de capturar eventos que são locais no tempo e na freqüência. 
+
+Uma  importante  condição  que  é  adicionada  às  propriedades  (1)  e  (2),  que  tornam  as  funções 
+wavelet úteis na prática é chamada condição de admissibilidade, a qual denotamos como propriedade (3). 
+
+∞
+Deixe 𝐶𝛹 ≡  
+0
+
+ 𝛹(𝑓) 2
+
+𝑓
+
+ 
+
+ 
+
+𝑑𝑓, onde Ψ(f) denota o transformada de Fourier de uma wavelet ψ(.): 
+
+𝛹(𝑓) ≡   𝜓(𝑢)𝑒−𝑖2𝜋𝑓𝑢 𝑑𝑢
+
+∞
+−∞
+
+                                                   (17) 
+
+Onde f denota a freqüência. Então, a wavelet ψ(.) é admissível se 0 < 𝐶𝛹 < ∞. Se a função wavelet 
+satisfaz as propriedades (1), (2) e (3), então a correspondente TWC de x(.) preserva todas as informações 
+de  x(.).  Alem  disso,  se  a  função  x(.)  é  tal  que    𝑥2 𝑡 𝑑𝑡 < ∞
+,  então  x(.)  pode  ser  recuperada  de  sua 
+TWC usando: 
+
+∞
+−∞
+
+ 
+
+ 
+Onde 
+ 
+
+𝑥 𝑡  =
+
+1
+𝐶𝛹
+
+∞
+     𝑊 𝜆, 𝑢 𝜓𝜆,𝑡 𝑢 𝑑𝑢
+0
+
+∞
+−∞
+
+ 
+
+𝑑𝜆
+𝜆2                                           (18) 
+
+ 
+Assim,  a  função  x(.)  e  sua  correspondente  TWC  são  duas  representações  equivalentes  da  mesma 
+
+∞
+  𝑥2𝑑𝑡 =
+−∞
+
+1
+𝐶𝛹
+
+∞
+     𝑊2 𝜆, 𝑢 𝑑𝑡
+0
+
+∞
+−∞
+
+ 
+
+𝑑𝜆
+𝜆2                                          (19) 
+
+entidade matemática. 
+
+A análise de uma função baseada em TWC resulta em um conjunto enorme de informações, nesse 
+contexto, uma versão mais simplificada da TWC, a saber, a Transformada Wavelet Discreta (TWD) pode 
+
+7 
+
+ 
+ser mais informativa. A TWD é obtida usando escala diática, as quais são definidas por λ’s que assumem 
+valores  discretos  na  forma  de  2𝑗 ,  para  j=1,2,3,...,J.  Assim,  a  TWD  pode  ser  considerada  como  uma 
+subamostra dos elementos da TWC, W(λ, t) na qual somente escalas diáticas são consideradas e dentro de 
+uma dada escala diádica 2𝑗  pontos no tempo t são escolhidos tal que eles são separados por múltiplos de 
+2𝑗 −1.  Uma  particular  TWD  que  é  obtida  por  translação  e  dilatação  de  uma  função  wavelet  usando 
+𝑡 = 𝑘2−𝑗  e 𝜆 = 2−𝑗 , a qual implica 𝜓𝜆,𝑡 𝑢 2
+
+𝑗
+2𝜓(2𝑗 𝑢 − 𝑘) é chamada uma amostragem critica da TWC. 
+
+Uma  variante  muito  útil  da  TWD  é  a  chamada  Máxima  Sobreposição  da  Transformada  Wavelet 
+Discreta  (MSTWD).  A  MSTWD  pode  ser  pensada  como  uma  sub-amostra  da  TWC  em  escala  diática, 
+mas,  em  contraste  com  a  TWD,  são  levados  em  conta  todos  os  momentos  t  e  não  apenas  os  que  são 
+múltiplos de 2𝑗 . Em particular, a MSTWD é obtida usando t = k e 𝜆 =   2−𝑗 . Retendo todos os possíveis 
+instantes t pode levar para um mais apropriado resumo das TWC, porque pode eliminar certos artefatos de 
+alinhamento atribuídos à forma como DWT sub-amostra CWT ao longo do tempo. 
+
+ 
+
+2.3 Análise de Resolução Múltipla (ARM) 
+
+ 
+A análise de resolução múltipla (ARM) é a formalização matemática que permite obter sucessivas 
+aproximações  de  uma  função  (sinal)  x(.),  tal  que  cada  nova  aproximação  corresponde  a  uma  melhor 
+aproximação  do  que  a  anterior.  Se   … , 𝑆𝐽 , 𝑆𝐽 −1, 𝑆𝐽 −2, …    representa  a  ARM,  então  𝑆𝐽 −1  constitui  uma 
+melhor  aproximação  que  𝑆𝐽 ,  ou  seja,  apresenta  uma  melhor  resolução.  A  diferença  entre  as  sucessivas 
+aproximações  são  chamadas  de  detalhes  e  podem  ser  denotadas  por  𝐷𝐽 ≡ 𝑆𝐽 −1 − 𝑆𝑗 .  Assim,  uma 
+aproximação pode ser expressa como a soma de uma resolução inferior mais um detalhe 𝑆𝐽 −1 = 𝐷𝐽 − 𝑆𝑗 . 
+
+Se 𝑆1denota a melhor aproximação de uma função x(t), ou seja, o que apresenta a melhor resolução, 
+então  𝑥 𝑡  = 𝑆1 + 𝐷1.  Assim  sendo,  se  a  ARM  para  uma  função  x(t)  existe,  então  é  possível  obter 
+diferentes aproximações para a função expressa como a soma de uma aproximação de baixa resolução e 
+um detalhe, como segue: 
+
+ 
+
+𝑆1 = 𝐷2 + 𝑆2, 𝑆2 = 𝐷3 + 𝑆3, … , 𝑆𝐽 −2 = 𝐷𝐽 −1 + 𝑆𝐽 −1, 𝑆𝐽 −1 = 𝐷𝐽 + 𝑆𝐽                        (20) 
+
+ 
+Em tais circunstâncias, a análise de resolução múltipla permite expressar uma função x(t) como  a 
+
+soma de uma aproximação 𝑆𝑗 e diferentes detalhes 𝐷𝑗 , como segue: 
+
+ 
+
+𝑥 𝑡  = 𝑆𝐽 + 𝐷𝑗 + 𝐷𝐽 −1 + ⋯ + 𝐷𝐽 + ⋯ + 𝐷1                                          (21) 
+
+ 
+A análise de resolução múltipla pode ser realizado utilizando-se wavelet. Um dos mais importantes 
+resultados  referentes  a  teoria  de  wavelet  é  a  existência  de  uma  correspondência  entre  a  análise  de 
+resolução múltipla de uma função e a família wavelet. 
+
+Daubechies (1992) demonstra que se existe uma ARM para uma função x(t) no espaço 𝐿2(ℜ), então 
+existe    uma  associada  base  wavelet  ortogonal    para  𝐿2(ℜ),  tal  que  é  possível  decompor  a  função  em 
+componentes ortogonais 𝑆𝑗  e 𝐷𝑗  representado por: 
+
+ 
+
+ 
+
+𝐷𝐽 =   𝑑𝑗 ,𝑡𝜓𝑗 .𝑡(𝑢)
+
+𝑡
+
+                                                              (22) 
+
+𝑆𝑗 =   𝑠𝑗 ,𝑡𝜙𝐽 ,𝑡(𝑢)
+
+𝑡
+
+                                                              (23) 
+
+ 
+Os detalhes  𝐷𝑗  são associados à escala j  = 1,2,3,..., J. Formalmente, esses detalhes são obtidos  de 
+uma transformada wavelet discreta baseada em uma família de wavelet 𝜓𝑗 ,𝑡(𝑢), a qual é gereralizada por 
+translação e dilatação de uma wavelet 𝜓, usando como translação o fator 𝑡 = 𝑘2𝑗  e 𝜆 = 2𝑗  como fator de 
+dilatação  ,  com  j  =  1,2,3,...,  J.  A  função  wavelet  𝜓  é  chamada  “wavelet  mãe”  e  é  usada  para  capturar 
+componentes associados à baixa escala, a qual corresponde usualmente a altas freqüências.  
+
+ 
+
+Por outro lado, a aproximação 𝑆𝑗  é a componente associada para a maior escala J de uma função, a 
+qual é obtida como a projeção de uma função para uma família de wavelet 𝜙𝐽 ,𝑡(𝑢), a qual é gerada pela 
+translação  de  uma  wavelet  𝜙  com  escala  𝜆 = 2𝑗   usando  o  fator  t.  A  função  wavelet  𝜙  é  chamada  de 
+“wavelet  pai”,  e  é  utilizada  para  capturar  a  componente  de  tendência  usualmente  associada  a  baixas 
+freqüências. 
+
+De  um  modo  geral,  𝑆𝑗   representa  a  componente  de  tendência  de  uma  função  enquanto  ela  está 
+associada  a  escalas  mais  elevadas  (baixa  freqüência),  enquanto  os  detalhes  𝐷𝑗   representam  movimentos 
+de baixa escala (alta freqüência). 
+
+Como  ilustrado  por  Bruce  et.  al.  (1996),  se  os  coeficientes  das  wavelet  são  aproximados  pela 
+
+8 
+
+integral: 
+
+ 
+
+ 
+
+𝑠𝑗 ,𝑘 ≈   𝑥 𝑡 𝜙𝑗 ,𝑘 𝑡 𝑑𝑡                                                           (24) 
+
+𝑑𝑗 ,𝑘 ≈   𝑥 𝑡 𝜓𝑗 ,𝑘 𝑡 𝑑𝑡                                                           (25) 
+
+ 
+Então a representação da resolução múltipla da função x(t) pode ser dada por: 
+  
+
+𝑥 𝑡  =   𝑠𝑗 ,𝑡
+
+𝑡
+
+𝜙𝑗 ,𝑡 𝑢  +   𝑑𝑗 ,𝑡
+
+𝑡
+
+𝜓𝑗 ,𝑡 𝑢  +   𝑑𝑗 −1,𝑡𝜓𝑗 −1,𝑡 𝑢 
+
+𝑡
+
++ ⋯ +   𝑑1,𝑡𝜓1,𝑡 𝑢 
+
+𝑡
+
+            (26) 
+
+ 
+j = 1, 2, 3, ...., J, onde J é o máximo da escala factível obtido com os dados disponíveis. 
+A  decomposição  da  função  x(t)  em  diferentes  escalas  de  tempo  (associados  à  diferentes 
+freqüências)  é  referida  como  decomposição  tempo-escala,  e  é  representada  por  𝑆𝐽 , 𝐷𝐽 , 𝐷𝐽 −1, … , 𝐷1.  O 
+detalhe 1 (escala 1) contem informações da função que ocupa lugar no intervalo de tempo   21, 22 , que 
+são  movimentos  de  curto  prazo  que  podem  ser  conectados  a  movimentos  de  alta  freqüência.  Em  geral, 
+detalhes j contém informações do sinal que correspondem ao movimento ocupa lugar dentro do intervalo 
+ 2𝑗 , 2𝑗 +1 . Em tais circunstâncias, alta (baixa) detalhes ou escala contem informações sobre movimentos 
+de longo prazo (curto prazo), os quais são usualmente associados a mudanças de baixa freqüência (alta 
+freqüência). 
+
+De  acordo  com  Percival  e  Walden  (2000)  e  Gencay  et.  al  (2002),  a  análise  de  resolução  múltipla 
+pode ser realizada usando a Máxima Sobreposição da Transformada Wavelet Discreta (MSTWD) em vez 
+da  Transformada  Wavelet  Discreta  (TWD).  É  possível  destacar  algumas  vantagens  importantes  de  se 
+utilizar MSTWD, tais como: (i) o tamanho da amostra não está restrita para ser um múltiplo de 2𝑗 ; (ii) os 
+detalhes e termos de suavização são associados com um filtro de fase zero, o qual tem a característica de 
+preservar  as  propriedades  de  fazes  da  série  de  dados  que  está  sendo  analisada,  e  assim,  permite  o 
+alinhamento  entre  os  dados  originais  (sinal)  e  sua  analise  de  resolução  múltipla.  Uma  importante 
+implicação dessa associação com o filtro de fase zero é que, qualquer característica importante observada 
+nos  detalhes  ou  nos  termos  de  suavização  pode  ser  perfeitamente  compatível  com  a  série  de  tempo 
+original. (iii) dado que MSTWD consegue capturar um número maior de informações, é possível prover 
+maior  resolução  em  escalas  menores;  (iv)  por  fim,  a  MSTWD  não  é  afetada  pela  inclusão  de  novas 
+informações,  exceto  em  seus  contornos,  como  é  característica  comum  da  maior  parte  dos  filtros,  este 
+problema  é  superado  pelo  uso  de  processos  padrão  de  deslocamento  circular  como  estabelecido  em 
+Percival e Walden (2000) ou usando menor escala com em Baqaee (2010).  
+
+ 
+
+3 Construção de um indicador de núcleo de inflação baseado em wavelet 
+
+ 
+De acordo com Lahura e Veja (2011), a utilização das wavelet e da Análise de Resolução Múltipla 
+(ARM) em análises empíricas de série de tempo se fundamenta na escolha de três importantes aspectos: i) 
+uma função wavelet específica, a qual implica na escolha de uma família de wavelet e o comprimento da 
+wavelet; ii) uma transformada wavelet; iii) o nível J para a análise de resolução múltipla (ARM). 
+
+Como  observam  Percival  e  Walden  (2000)  e    Gençay  et  al.  (2003),  a  escolha  apropriada  de  uma 
+função  wavelet,  usualmente,  depende  da  natureza  da  série  de  tempo.  No  entanto,  a  escolha  de  uma 
+
+9 
+
+ 
+wavelet particular não é crucial nas situações onde é utilizada a Máxima Sobreposição da Transformada 
+Wavelet  Discreta  (MSTWD),  em  virtude  das  vantagens  que  ela  apresenta  em  relação  à  Transformada 
+Wavelet Discreta (TWD). 
+
+Para  cumprir  o  propósito  da  pesquisa,  foram  utilizados  12  tipos  de  wavelet  de  duas  famílias, 
+Daubechies  (db)  e  Symmlets  (sym),  com  o  nível  de  aproximação  de  J  =  3  para  a  ARM  baseada  no 
+MSTWD.  As  wavelets  específicas  que  são  utilizadas  nesse  artigo  são  as  seguintes:  db(4),  db(5),  db(6), 
+db(7),  db(8),  db(9),  db(10),  sym(4),  sym(5),  sym(6),  sym(7),  sym(8).  Em  tais  circunstâncias, 
+construiremos  uma  medida  de  núcleo  de  inflação  baseada  no  sistema  de  wavelet,  ao  filtrar  a  série  de 
+inflação global usando cada uma das funções wavelet especificadas. 
+
+Em particular, a escolha do nível de aproximação está relacionada ao período analisado da inflação 
+global, onde a medida do núcleo correspondente foi obtida através da subtração do detalhe 1 (D1), detalhe 
+2 (D2) e detalhe 3 (D3) da inflação global (Lahura e Vega, 2011). Com base na restrição do tamanho da 
+amostra,  a  pesquisa  identificou  duas  famílias  de  wavelet  para  análise  do  núcleo  da  inflação,  dotadas  da 
+sensibilidade  para  análise  dos  dados  disponíveis,  bem  como  avaliou  um  conjunto  de  medidas  que  não 
+analisam  os  detalhes  de  1  até  3.  O  principal  propósito  dessas  estimações  não  considerarem  os  detalhes 
+D1,  D2  e  D3  (correspondentes  aos  movimentos  entre  2  e  4  meses,  entre  4  e  8  meses,  e  entre  8  e  16 
+meses),  estão  relacionados  a  remoção  da  maior  parte  dos  componentes  transitórios  da  inflação  (que 
+determinam  a  volatilidade  de  curto  prazo),  o  que  constitui-se  em  uma  propriedade  desejável  de  uma 
+medida de núcleo de inflação que procura preservar em sua essência as características de longo prazo da 
+série,  ou  seja,  os  fatores  que  são  responsáveis  pela  persistência  da  inflação  ao  longo  do  tempo.  Esse 
+processo  pode  ser  repetido  usando  cada  uma  das  12  funções  wavelet  sugeridas,  tal  que  podemos  obter 
+medidas alternativas de núcleo de inflação. 
+
+Em conformidade com Baqaee (2010) e Dowd et. al (2010), para a derivação das medidas de núcleo 
+de  inflação  baseado  nas  wavelet  foi  utilizado  como  referência  para  taxa  de  inflação  global  o  Índice  de 
+Preço  ao  Consumidor  Amplo  (IPCA).  Todas  as  medidas  de  núcleo  oficialmente  utilizadas  pelo  Banco 
+Central do Brasil são calculadas a partir do IPCA que representa o índice de  inflação oficial adotado no 
+sistema  de  metas  de  inflação,  portanto,  servirão  de  padrão  de  referência  para  comparação  com  as 
+derivadas wavelet. 
+
+As  medidas  de  núcleo  da  inflação  oficialmente  utilizadas  pelo  Comitê  de  Política  Monetária,  que 
+utilizaremos como medidas de comparação com as derivadas wavelet são: o núcleo por exclusão (IPCA-
+EX2), o núcleo de dupla ponderação (IPCA-DP) e o núcleo de médias aparadas com suavização (IPCA-
+MS). 
+
+Para  a  construção  do  núcleo  por  exclusão  (IPCA-EX2)  são  eliminados  os  itens  que  apresentam 
+maiores  volatilidades  ao  longo  da  amostra,  ou  seja,  são  excluídos  os  itens  cuja  volatilidade  relativa  é 
+superior  a  dois  desvios-padrão  em  pelo  menos  dois  dos  três  sub-períodos  da  amostra.  O  núcleo  IPCA-
+EX2  exclui  12  dos  52  itens  que  compõe  o  IPCA,  sendo  que  dez  pertencem  ao  grupo  Alimentação  no 
+Domicílio e dois ao dos Preços Administrados por Contrato e Monitorados.  
+
+O núcleo de médias aparadas com suavização (IPCA-MS), por sua vez, elimina 20% dos itens que 
+apresentam  variações  extremas  e  recalcula  o  índice  de  inflação  utilizando  apenas  a  parte  central  da 
+distribuição. Como  alguns preços controlados apresentam variações elevadas mais  infreqüentes, poderia 
+haver uma eliminação sistemática destes itens, provocando uma subestimação do cálculo do núcleo. Para 
+evitar este problema, o BC suaviza essas variações em doze parcelas iguais. 
+
+Diferente  do  núcleo  por  exclusão  (IPCA-EX2)  e  do  núcleo  de  médias  aparadas  com  suavização 
+(IPCA-MS), que excluem os itens mais voláteis do índice global, o núcleo de dupla ponderação (IPCA-
+DP)  inclui  todos  os  itens,  porém  dá  um  peso  menor  para  aqueles  que  apresentam  maior  volatilidade. 
+Assim,  os  pesos  originais  de  cada  item  do  IPCA  são  ponderados  novamente  considerando-se  sua 
+respectiva volatilidade.  
+
+Na  Tabela  1  estão  representadas  as  estatísticas  descritivas  do  principal  indicador  de  inflação 
+utilizado  como  referência  (IPCA)  e  as  medidas  de  núcleo  dele  derivadas  utilizadas  oficialmente  pelo 
+Banco Central e as medidas propostas derivadas pelo método wavelet. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Tabela 1: Medida de Inflação e de Núcleo de Inflação 
+Medidas de Inflação 
+
+IPCA 
+
+IPCA-EX2 
+IPCA-MS 
+IPCA-DP 
+
+db(4) 
+db(5) 
+db(6) 
+db(7) 
+db(8) 
+db(9) 
+db(10) 
+Sym(4) 
+Sym (5) 
+Sym (6) 
+Sym (7) 
+Sym (8) 
+
+Unidade  Nº Obs.  Média 
+0,5321 
+0,5175 
+0,5163 
+0,5098 
+0,5274 
+0,5303 
+0,5299 
+0,5308 
+0,5318 
+0,5314 
+0,5316 
+0,5312 
+0,5299 
+0,5313 
+0,5304 
+0,5320 
+
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+% a.m 
+
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+233 
+
+Mínimo  Máximo  Desvio Padrão 
+-0,5100 
+-0,1700 
+-0,0700 
+-0,3500 
+-0,0792 
+0,1661 
+-0,0316 
+0,1107 
+-0,0238 
+0,0673 
+0,0155 
+0,1860 
+-0,0093 
+0,0428 
+0,0040 
+-0,0469 
+
+0,4034 
+0,3063 
+0,2378 
+0,2982 
+0,2357 
+0,2783 
+0,2431 
+0,2756 
+0,2526 
+0,2705 
+0,2565 
+0,2829 
+0,2597 
+0,2646 
+0,2609 
+0,2498 
+
+3,0200 
+1,7100 
+1,5100 
+1,9500 
+1,2645 
+1,8436 
+1,3164 
+1,8150 
+1,4488 
+1,7341 
+1,5622 
+1,9818 
+1,6682 
+1,7517 
+1,6543 
+1,3718 
+
+Fonte: Elaboradas pelo Autor utilizando os dados disponíveis no IPEA-DATA.  
+Nota: As estimativas para as wavelets foram feitas utilizando o software Matlab 7.8.0. 
+
+10 
+
+Normalidade 
+
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+
+Na  Tabela  2  são  apresentados  os  resultados  da  aplicação  dos  testes  Dickey  Fuller  Aumentado 
+(ADF) e Phillips-Perron test (PP) às séries dos núcleos e do IPCA, considerando a hipótese nula de que a 
+série observada apresenta raiz unitária (é não estacionária). 
+
+ 
+
+Tabela 2: Teste de Raiz Unitária 
+Medidas de Inflação 
+
+ADF 
+
+PP 
+
+IPCA 
+
+IPCA-EX2 
+IPCA-DP 
+IPCA-MS 
+
+db(4) 
+db(5) 
+db(6) 
+db(7) 
+db(8) 
+db(9) 
+db(10) 
+sym(4) 
+sym(5) 
+sym(6) 
+sym(7) 
+sym(8) 
+
+-7,1920*** 
+-6,8640*** 
+-6,5726*** 
+-5,3770*** 
+-4,1059*** 
+-4,5292*** 
+-3,4845*** 
+-3,6171*** 
+-3,5893*** 
+-3,5317*** 
+-3,5975*** 
+-5,6428*** 
+-4,3746*** 
+-3,8453*** 
+-3,4380** 
+-11,253*** 
+
+-7,1949*** 
+-6,6718*** 
+-6,5544*** 
+-5,2322*** 
+-3,3126*** 
+-3,6841*** 
+-3,4636*** 
+-3,4876*** 
+-3,4769*** 
+-3,5036*** 
+-3,4336** 
+-3,5589*** 
+-3,4284** 
+-3,2860** 
+-3,4009** 
+-3,0042** 
+
+1% level 
+-3,4585 
+-3,4585 
+-3,4585 
+-3,4585 
+-3,4587 
+-3,4587 
+-3,4588 
+-3,4588 
+-3,4591 
+-3,4591 
+-3,4588 
+-3,4588 
+-3,4588 
+-3,4588 
+-3,4588 
+-3,4586 
+
+5% level 
+-2,8738 
+-2,8738 
+-2,8738 
+-2,8738 
+-2,8739 
+-2,8739 
+-2,8740 
+-2,8740 
+-2,8741 
+-2,8741 
+-2,8740 
+-2,8740 
+-2,8740 
+-2,8740 
+-2,8740 
+-2,8739 
+
+10% level 
+
+-2,5734 
+-2,5734 
+-2,5734 
+-2,5734 
+-2,5734 
+-2,5734 
+-2,5735 
+-2,5735 
+-2,5735 
+-2,5735 
+-2,5735 
+-2,5735 
+-2,5735 
+-2,5735 
+-2,5735 
+-2,5734 
+
+  Prob. 
+0,0000 
+0,0000 
+0,0000 
+0,0000 
+0,0012 
+0,0002 
+0,0092 
+0,0061 
+0,0067 
+0,0080 
+0,0065 
+0,0000 
+0,0004 
+0,0029 
+0,0107 
+0,0000 
+
+Fonte: Elaborado pelo Autor 
+Nota: Augmented Dickey-Fuller test (ADF); Phillips-Perron test (PP) 
+*** e ** indicam que se rejeita a hipótese nula ao nível de significância de 1% e 5%, respectivamente. 
+
+ 
+As  estatísticas  rejeitam  a  hipótese  de  raiz  unitária,  indicando  que  todas  as  séries  são  classificadas 
+
+como estacionária por ambos os testes ao nível de significância de 5% e 1%. 
+
+A  Figura  1  descreve  o  comportamento  da  taxa  de  inflação  medida  pelo  IPCA  e  as  três  medidas 
+
+oficiais de núcleos de inflação dela derivadas, utilizadas pelo Banco Central. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+Figura 1: Núcleos Oficiais de Inflação e IPCA 
+
+Fonte: Elaboração pelo Autor a partir de dados do IPEA-DATA 
+
+11 
+
+ 
+
+As Figuras 2 e 3 descrevem a evolução do conjunto de medidas de núcleo de inflação derivadas das 
+
+distintas funções  wavelet. 
+ 
+Figura 2: Núcleo de Inflação - Aproximações por Wavelet Daubechies (db) 
+
+Fonte: Elaboração própria a partir de dados do IPEA-DATA 
+
+ 
+Figura 3: Núcleo de Inflação - Aproximações por Wavelet Symmlets (sym) 
+
+Fonte: Elaboração própria a partir de dados do IPEA-DATA 
+
+ 
+
+ 
+
+ 
+
+Tendo  selecionado  o  tipo  de  wavelet  apropriado  e  aplicando  o  algoritmo  à  série  original  (IPCA), 
+conseguimos decompor  o sinal original em  duas séries:  uma série de “aproximação”, que destaca a alta 
+escala, os componentes de baixa freqüência (ou padrão subjacente ou tendência) da série original; e, uma 
+série “detalhe”', que destaca a escala baixa, componentes de alta freqüência (ou ruído) da série original. 
+
+-0.40.00.40.81.21.62.02.42.89697989900010203040506070809101112131415IPCAIPCA-EX2IPCA-MSIPCA-DP%Mêses-0.8-0.40.00.40.81.21.62.02.42.83.29697989900010203040506070809101112131415IPCAdb(4)db(5)db(6)db(7)db(8)db(9)db(10)%Mêses-0.8-0.40.00.40.81.21.62.02.42.83.29697989900010203040506070809101112131415IPCAsym(4)sym(5)sym(6)sym(7)sym(8)%Mêses12 
+
+ 
+Podemos  então  tomar  a  série  aproximada  obtida  no  nível  1  e  filtrá-la  novamente:  isso  nos  dá  uma 
+aproximação  do  nível  2.  Podemos  repetir  o  processo  quantas  vezes  forem  desejadas:  ao  filtrar  a 
+aproximação  do  nível  2 obtemos  a  aproximação  de  nível  3,  e  assim  por diante.  Cada  vez  que  o  filtro  é 
+aplicado (ou aumenta-se o nível de aproximação) remove-se da série os componentes de alta freqüência, 
+preservando-se os componentes de baixa escala em nossa série de aproximação, assim conseguimos obter 
+uma medida "mais limpa" que representa o padrão subjacente de baixa freqüência ou tendência.  
+
+Assim,  é  possível  pensar  na  aplicação  de  wavelet  como  envolvendo  tanto  a  escolha  da  forma 
+wavelet  [Daubechies  (db)  e  Symmlets  (sym)]  e  uma  escolha  do  nível  de  aproximação  (nível  3).  Ao 
+aplicarmos  esse  método  de  forma  recursiva  para  a  série  de  inflação  original  IPCA  até  o  nível  3 
+conseguimos obter uma série aproximada a qual representa a medida de núcleo da inflação desejada. 
+
+Ao  se  comparar  o  comportamento  de  cada  medida  de  núcleo  com  o  do  próprio  IPCA,  percebe-se 
+que as séries no longo prazo se movem na mesma direção, no entanto, não é possível verificar a priori a 
+influência  de  uma  série  sobre  a  outra.  Essa  análise  dever  ser  feita  formalmente  com  a  aplicação  de 
+critérios mais rigorosos de avaliação, os quais serão abordados na seção que segue. 
+ 
+4 Critérios de avaliação das medidas de núcleo de inflação 
+ 
+
+A  literatura  sobre  núcleos  de  inflação  tem  apresentado  várias  definições  sobre  a  relevância  destas 
+medidas,  dentre  as  quais  ganham  destaque  a  de  corroborar  para  determinar  a  tendência  da  inflação,  e 
+apoiar a atividade de estimação e previsão da inflação de longo-prazo. Bryan et al. (1997) sugerem que o 
+núcleo  pode  ser  visto  como  uma  medida  que  desvenda  a  verdadeira  tendência  subjacente  da  inflação. 
+Eckstein (1981) define o núcleo como a inflação de longo-prazo estimada na ausência de choques e com a 
+demanda neutra, ou seja, no estado estacionário.  Quah e Vahey (1995),  por sua vez, consideram  que  as 
+medidas  de  núcleo  revelam  a  componente  da  inflação  que  está  embutida  nas  expectativas  de  inflação  e 
+que não exercerão nenhum impacto sobre o produto no longo prazo. 
+
+Levando em conta esses conceitos gerais, conclui-se que, em essência, uma boa medida de núcleo 
+de inflação corresponde  a desagregação do índice de preços cheio em dois componentes: um transitório 
+que  reflete  choques  exógenos  e  que  produz  seus  efeitos  no  curto  prazo  e,  um  persistente,  que  mostra  a 
+tendência do nível de preços no longo prazo. Desta maneira, espera-se que uma boa medida de núcleo de 
+inflação  seja  aquela  que  consiga  discriminar  com  eficiência  a  parte  persistente  e  de  longo  prazo  de  um 
+indicador de inflação. 
+
+Não existe um único critério que permita selecionar um indicador que melhor represente um núcleo 
+de  inflação.  A  performance  das  medidas  de  núcleo  pode  ser  avaliada  usando  alguns  critérios  que  a 
+literatura  tem  apontado  como  sendo  características  desejáveis  que  esses  indicadores  devem  apresentar. 
+Deste  modo,  cada  núcleo  deve  ser  avaliado  dentro  de  um  conjunto  de  critérios  para  determinar  em  que 
+contexto  a  medida  pode  ser  usada.  Smith  (2004),  Cogley  (2002),  Hansson  et.  al.  (2008)  destacam  os 
+critérios que são comumente utilizados para definir uma boa medida de núcleo de inflação, a saber: i) a 
+ausência de viés; ii) a capacidade de capturar a tendência inflacionária; iii) e ser um bom previsor da taxa 
+de inflação. Com alguns critérios definidos pela literatura econômica, o passo seguinte será o de submeter 
+os  núcleos  produzidos  pelas  distintas  metodologias,  a  um  conjunto  de  testes  para  determinar  se  estas 
+medidas derivadas do indicador de inflação (IPCA) estão, efetivamente, cumprindo o seu propósito. 
+
+ 
+
+4.1 Ausência de viés 
+
+ 
+O primeiro critério importante definido pela literatura, que uma medida de núcleo da inflação deve 
+atender, é ser não enviesado em relação à medida de inflação, ou seja, no longo prazo a média do núcleo 
+será igual à média da inflação: 
+
+ 
+
+ 
+
+Assumindo que as séries da inflação  𝜋𝑡 𝑡=1
+
+ são estacionária, o procedimento 
+utilizado para decidir se o núcleo satisfaz o critério de ausência de viés é aplicar um teste F para verificar 
+se a hipótese nula conjunta de que 𝛼 = 0 e 𝛽 =1 é atendida pela seguinte regressão: 
+
+ e do núcleo  𝜋𝑡
+
+∗ 𝑡=1
+
+∗  = 𝐸(𝜋𝑡)                                                                     (27) 
+𝐸 𝜋𝑡
+𝑇
+
+𝑇
+
+ 
+
+13 
+
+ 
+
+𝜋𝑡 = 𝛼 + 𝛽𝜋𝑡
+
+Onde: 𝜋𝑡  representa a inflação global no tempo t; 𝜋𝑡
+
+∗ + 𝜀𝑡                                                                 (28) 
+∗ representa a medida de núcleo de inflação no 
+tempo  t;  𝜀𝑡  representa  o  choque  aleatório  que  apresenta  média  zero,  variância  constante,  e  são 
+individualmente  serialmente  não  correlacionados,  isto  é,  𝜀𝑡 ~ 𝑖𝑖𝑑(0, 𝜎).  Se  a  hipótese  nula  não  for 
+rejeitada, isso sugere que a medida de núcleo de inflação é não enviesada, ou seja, significa que a média 
+do  núcleo  e  da  inflação  são  iguais  no  longo  prazo.  A  ausência  de  viés  garante  que  o  núcleo  não  irá 
+subestimar nem superestimar a inflação, refletindo seu verdadeiro padrão de comportamento. 
+
+A Tabela 3 apresenta uma síntese das principais estatísticas de teste para verificar a ausência de viés 
+
+entre a média da inflação e das medidas de núcleo. 
+
+ 
+
+TABELA 3 – Resultado dos testes para ausência de viés das medidas de núcleo de inflação 
+Medidas de Núcleo 
+
+Inclinação 
+
+Intercepto 
+
+F-Test 
+
+R2 
+
+Probabilidade 
+
+Razão de 
+Médias 
+
+Razão de 
+Variância 
+
+de Inflação 
+
+IPCA–EX2 
+
+IPCA-NDP 
+
+IPCA-MS 
+
+db(4) 
+
+db (5) 
+
+db (6) 
+
+db (7) 
+
+db(8) 
+
+db(9) 
+
+db(10) 
+
+sym(4) 
+
+sym(5) 
+
+sym(6) 
+
+sym(7) 
+
+sym(8) 
+
+(α) 
+
+-0,039758 
+(0,0283) 
+(0,1620) 
+-0,09612 
+(0,0216) 
+(0,2312) 
+-0,0848 
+(0,0450) 
+(0,0606) 
+-0,0136 
+(0,05187) 
+(0,7929) 
+-0,00009 
+(0,0411) 
+(0,9812) 
+-0,0076 
+(0,0503) 
+(0,8804) 
+-0,000039 
+(0,0420) 
+(0,9993) 
+-0,00184 
+(0,0481) 
+(0,9695) 
+-0,00008 
+(0,0432) 
+(0,9835) 
+-0,0032 
+(0,0469) 
+(0,9452) 
+-0,0008 
+(0,0401) 
+(0,9842) 
+-0,0079 
+(0,0451) 
+(0,8626) 
+-0,0021 
+(0,0447) 
+(0,9635) 
+-0,0061 
+(0,0453) 
+(0,8921) 
+-0,0023 
+(0,0489) 
+(0,9626) 
+
+(β) 
+
+1,1050 
+(0,0471) 
+(0,0000) 
+1,2323 
+(0,0367) 
+(0,0000) 
+1,1950 
+(0,0792) 
+(0,0000) 
+1,0345 
+(0,0897) 
+(0,0000) 
+1,0052 
+(0,0687) 
+(0,0000) 
+1,0184 
+(0,0862) 
+(0,0000) 
+1,00025 
+(0,0701) 
+(0,0000) 
+1,0040 
+(0,0817) 
+(0,0000) 
+1,0029 
+(0,0726) 
+(0,0000) 
+1,0071 
+(0,0795) 
+(0,0000) 
+1,0031 
+(0,0667) 
+(0,0000) 
+1,0191 
+(0,0772) 
+(0,0000) 
+1,0053 
+(0,0754) 
+(0,0000) 
+1,0147 
+0,0768) 
+(0,0000) 
+1,0045 
+(0,0832) 
+(0,0000) 
+
+0,0000 
+
+0,7038 
+
+0,973 
+
+0,576 
+
+0,0000 
+
+0,8296 
+
+0,958 
+
+0,546 
+
+0,0000 
+
+0,4962 
+
+0,970 
+
+0,347 
+
+0,0000 
+
+0,3653 
+
+0,991 
+
+0,341 
+
+0,0000 
+
+0,4809 
+
+0,997 
+
+0,476 
+
+0,0000 
+
+0,3764 
+
+0,996 
+
+0,363 
+
+0,0000 
+
+0,4690 
+
+0,998 
+
+0,467 
+
+0,0000 
+
+0,3952 
+
+ 
+
+0,999 
+
+0,392 
+
+0,0000 
+
+0,4522 
+
+0,999 
+
+0,450 
+
+0,0000 
+
+0,4099 
+
+0,999 
+
+ 
+
+0,404 
+
+0,0000 
+
+0,4946 
+
+0,998 
+
+0,492 
+
+0,0000 
+
+0,4302 
+
+0,996 
+
+0,414 
+
+0,0000 
+
+0,4347 
+
+0,999 
+
+0,430 
+
+0,0000 
+
+0,4306 
+
+0,997 
+
+0,418 
+
+0,0000 
+
+0,3869 
+
+1,000 
+
+0,383 
+
+Fonte: Elaboração pelo Autor 
+Notas: Os  valores entre parênteses representam, respectivamente, o desvio padrão e o p-value para a significância 
+dos parâmetros α e β. A razão de médias representa a razão entre a média do núcleo de inflação e a média do IPCA; 
+A razão de variância representa a razão entre a variância do núcleo e a variância do IPCA. 
+
+ 
+
+Como  é  possível  constatar  pela  análise  da  razão  de  médias,  a  maioria  das  medidas  de  núcleo 
+demonstra que suas médias estão muito próximas ou são idênticas à media da inflação medida pelo IPCA, 
+pois  apresentam  um  coeficiente  muito  próximo  ou  igual  à  unidade.  Chama  atenção  a  maior  exatidão 
+
+14 
+
+ 
+apresentada  pelas  medidas  de  núcleo  com  base  nas  wavelet,  quando  comparadas  às  demais  medidas  de 
+núcleo oficialmente utilizadas. 
+
+Com  relação  à  razão  de  variância,  observa-se  que  as  medidas  de  wavelet  encontram 
+sistematicamente  abaixo  das  demais  medidas  de  núcleo  oficialmente  utilizadas,  indicando  uma  menor 
+variabilidade e portanto um melhor grau de ajustamento. 
+
+A  tabela  3  também  reproduz  os  coeficientes  individuais  da  regressão  e  erro  padrão  que  são 
+utilizados  para  obter  a  estatística  de  teste  t  individual  e  de  teste  F  para  verificar  se  a  hipótese  nula 
+conjunta de que 𝛼 = 0 e 𝛽 =1 é atendida pelas distintas equações de regressão, que analisam os distintos 
+indicadores  de  núcleo  de  inflação.  Considerando  um  nível  de  significância  de  5%,  observa-se  que  os 
+indicadores  de  núcleo  oficiais  demonstram-se  altamente  viesados,  dado  que  o  parâmetro  𝛽  estimado  é 
+significativamente superior a unidade, sugerindo que a estimação da regressão para o IPCA-EX2, IPCA-
+MS e IPCA-DP tendem a subestimar o verdadeiro valor da inflação. Os coeficientes 𝛽′𝑠 das estimativas 
+baseadas  em  wavelet,  de  um  modo  geral,  atendem  a  hipótese  nula  conjunta  com  um  maior  grau  de 
+exatidão,  pois  se  encontram  estatisticamente  muito  próximos  à  unidade,  indicando  uma  melhor 
+performance para a estimativa da inflação dado que o viés é insignificante. 
+
+Iniciando com uma avaliação baseada na tendência, pode-se considerar que a uma medida adequada 
+de núcleo de inflação deve apresentar a mesma média da série original que a gerou, uma menor variância 
+e  uma  ausência  de  viés.  De  um  modo  geral,  as  medidas  de  núcleo  baseadas  em  wavelet  demonstraram 
+melhor desempenho em todos os quesitos quando comparados aos indicadores oficiais de núcleo. 
+
+ 
+
+4.2 Grau de ajustamento 
+
+ 
+Também  é  necessário  especificar  como  ocorre  a  dinâmica  de  ajustamento  entre  a  inflação  e  o 
+núcleo no longo prazo, pois se o ajuste ocorre por movimentos na inflação em direção ao núcleo, então 
+existe uma razão para se esperar que a inflação vá diminuir e se aproximar do núcleo quando esta estiver 
+acima do núcleo. Esta idéia é formalizada pelo modelo proposto por Mehra e Reilly (2009), como segue: 
+ 
+
+𝜋𝑡+ℎ − 𝜋𝑡 = 𝑎0 + 𝜆ℎ  𝜋𝑡 − 𝜋𝑡
+
+∗  +  
+
+𝑘
+𝑗 =1
+
+𝑎𝑗 𝜋𝑡−𝑗 + 𝑒1,𝑡+ℎ
+
+                                (29) 
+
+ 
+
+ 
+
+∗ − 𝜋𝑡
+𝜋𝑡+ℎ
+
+∗ = 𝑏0 + 𝜆ℎ
+
+∗  𝜋𝑡 − 𝜋𝑡
+
+∗  +  
+
+𝑘
+𝑗 =1
+
+𝑏𝑗 𝜋𝑡−𝑗
+
+∗ + 𝑒2,𝑡+ℎ
+
+                                (30) 
+
+∗
+
+Onde:  𝜋𝑡+ℎ   e  𝜋𝑡+ℎ
+
+  são,  respectivamente,  a  inflação  e  núcleo  h  períodos  à  frente;  𝑎𝑗   e  𝑏𝑗   são 
+parâmetros; k é o número de defasagens; e, 𝑒1,𝑡+ℎ  e  𝑒2,𝑡+ℎ  são distúrbios aleatórios com média zero. Os 
+∗  determinam, respectivamente, como acontece o ajustamento da inflação e do núcleo 
+coeficientes 𝜆ℎ  e 𝜆ℎ
+h períodos à frente, quando ocorre um desvio entre a inflação e o núcleo no período t. Assim, quando a 
+inflação  estiver  acima  do  núcleo,  espera-se  que  a  inflação  diminua  (𝜆ℎ < 0)  e  que  o  núcleo  não  seja 
+∗  = 0), pois  neste caso  a diferença  entre  os dois  é eliminada basicamente por movimentos na 
+afetado  (𝜆ℎ
+inflação em direção ao núcleo. 
+
+A  dinâmica  de  ajustamento  da  inflação  implica  que  o  ajuste  de  longo  prazo  ocorre  através  de 
+mudanças  na  inflação  e  não  no  núcleo,  ou  seja,  o  núcleo  serve  como  um  indicador  de  ajuste  para  a 
+inflação. 
+
+A Tabela 4 apresenta os coeficientes de ajustamento estimados a partir das equações (29) e (30). 
+Quando se considera as medidas de núcleo oficiais IPCA-EX2, observa-se que o resultado do teste t 
+mostra que o coeficiente de ajustamento da inflação 𝜆ℎ  é negativo e que o coeficiente de ajustamento do 
+∗  é estatisticamente igual a zero para h = 3 e h = 12.  Isto indica que, quando existe um desvio 
+núcleo 𝜆ℎ
+entre o IPCA e este núcleo, é o IPCA que se move em direção ao núcleo, e não o contrário.  
+
+Com relação ao IPCA-DP e o IPCA-MS, podemos observar que 𝜆ℎ  e 𝜆ℎ
+
+∗  são ambos negativos para 
+todos  os  horizontes  considerados,  e  grande  parte  deles  são  ambos  estatisticamente  significativos, 
+contrariando a hipótese original. Com isso, tanto o IPCA como o próprio núcleo diminuem quando ocorre 
+um desvio entre eles, sugerindo que nesses horizontes o núcleo não constitui um bom indicador de ajuste 
+para a inflação. O IPCA-EX2 apresenta o mesmo padrão de comportamento para o h = 6 e h = 9. 
+
+TABELA 4 – Resultado do teste t para os coeficientes de ajustamento da inflação e do núcleo 
+
+15 
+
+Núcleo 
+
+ 
+
+IPCA-EX2 
+
+IPCA-DP 
+
+IPCA-MS 
+
+Db4 
+
+Db5 
+
+Db6 
+
+Db7 
+
+Db8 
+
+Db9 
+
+Db10 
+
+Sym4 
+
+Sym5 
+
+Sym6 
+
+Sym7 
+
+Sym8 
+
+Estatísticas 
+
+ 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+Coeficiente 
+Erro Padrão 
+
+p-value 
+
+R2 
+
+h = 3 
+
+h = 6 
+
+h = 9 
+
+h = 12 
+
+𝝀𝒉 
+
+-0,7772 
+(0,1257) 
+(0,0000) 
+0,2890 
+
+-1,0389 
+(0,1594) 
+(0,0000) 
+0,3003 
+
+-0,7275 
+(0,0973) 
+(0,0000) 
+0,3337 
+
+-0,9847 
+(0,0737) 
+(0,0000) 
+0,5352 
+
+-1,0680 
+(0,0767) 
+(0,0000) 
+0,5526 
+
+-0,9752 
+(0,0744) 
+(0,0000) 
+0,5280 
+
+-1,0835 
+(0,0748) 
+(0,0000) 
+0,5688 
+
+-0,9655 
+(0,0754) 
+(0,0000) 
+0,5182 
+
+-1,0961 
+(0,0728) 
+(0,0000) 
+0,5850 
+
+-0,9619 
+(0,0764) 
+(0,0000) 
+0,5117 
+
+-1,0612 
+(0,0789) 
+(0,0000) 
+0,5389 
+
+-1,1169 
+(0,0712) 
+(0,0000) 
+0,6020 
+
+-0,9376 
+(0,0792) 
+(0,0000) 
+0,4869 
+
+-1,1178 
+(0,0707) 
+(0,0000) 
+0,6054 
+
+-0,9719 
+(0,0751) 
+(0,0000) 
+0,5224 
+
+∗  
+𝝀𝒉
+
+O,1159 
+(0,0879) 
+(0,1882) 
+0,1264 
+
+-0,1712 
+(0,1137) 
+(0,1335) 
+0,1790 
+
+-0,0402 
+(0,4010) 
+(0,3178) 
+0,1060 
+
+0,0021 
+(0,0243) 
+(0,9295) 
+0,2032 
+
+0,0264 
+(0,0364) 
+(0,4693) 
+0,2911 
+
+0,0281 
+(0,0249) 
+(0,2611) 
+0,2145 
+
+0,0202 
+(0,0332) 
+(0,5437) 
+0,3340 
+
+0,0064 
+(0,0242) 
+(0,7902) 
+0,2619 
+
+0,0320 
+(0,0322) 
+(0,3219) 
+0,3167 
+
+0,0463 
+(0,0287) 
+(0,1083) 
+0,2445 
+
+0,0165 
+(0,0388) 
+(0,6817) 
+0,2881 
+
+-0,0787 
+(0,0310) 
+(0,0117) 
+0,2672 
+
+0,0697 
+(0,0315) 
+(0,1276) 
+0,2579 
+
+-0,0674 
+(0,0303) 
+(0,2274) 
+0,2571 
+
+0,0257 
+(0,0263) 
+(0,3290) 
+0,1925 
+
+𝝀𝒉 
+
+-1,2141 
+(0,1278) 
+(0,0000) 
+0,4871 
+
+-1,4974 
+(0,1689) 
+(0,0000) 
+0,4674 
+
+-0,9837 
+(0,1027) 
+(0,0000) 
+0,4897 
+
+-1,1859 
+(0,7689) 
+(0,0000) 
+0,6515 
+
+-1,1358 
+(0,0893) 
+(0,0000) 
+0,5828 
+
+-1,1592 
+(0,0781) 
+(0,0000) 
+0,6375 
+
+-1,1657 
+(0,0867) 
+(0,0000) 
+0,6023 
+
+-1,1331 
+(0,0802) 
+(0,0000) 
+0,6199 
+
+-1,1860 
+(0,0839) 
+(0,0000) 
+0,6201 
+
+-1,1241 
+(0,0817) 
+(0,0000) 
+0,6104 
+
+-1,1263 
+(0,0917) 
+(0,0000) 
+0,5705 
+
+-1,2258 
+(0,0810) 
+(0,0000) 
+0,6445 
+
+-1,0971 
+(0,0853) 
+(0,0000) 
+0,5866 
+
+-1,2167 
+(0,0811) 
+(0,0000) 
+0,6415 
+
+-1,1594 
+(0,0786) 
+(0,0000) 
+0,6357 
+
+∗  
+𝝀𝒉
+
+-0,2482 
+(0,0962) 
+(0,0105) 
+0,2415 
+
+-0,6275 
+(0,1223) 
+(0,0000) 
+0,3269 
+
+-0,0835 
+(0,0461) 
+(0,0715) 
+0,2540 
+
+0,0126 
+(0,0387) 
+(0,7436) 
+0,3613 
+
+-0,0570 
+(0,0540) 
+(0,2923) 
+0,5016 
+
+0,0226 
+(0,0399) 
+(0,5716) 
+0,3708 
+
+-0,0359 
+(0,0428) 
+(0,4017) 
+0,4631 
+
+0,0122 
+(0,0399) 
+(0,7611) 
+0,4105 
+
+-0,0195 
+(0,0423) 
+(0,6457) 
+0,4382 
+
+0,0287 
+(0,0451) 
+(0,5243) 
+0,4202 
+
+-0,0466 
+(0,0566) 
+(0,4115) 
+0,5020 
+
+-0,0502 
+(0,0478) 
+(0,2944) 
+0,4394 
+
+0,0156 
+(0,0487) 
+(0,7490) 
+0,4414 
+
+-0,0603 
+(0,0471) 
+(0,2019) 
+0,4414 
+
+0,0167 
+(0,0421) 
+(0,6921) 
+0,3676 
+
+𝝀𝒉 
+
+-1,0588 
+(0,1312) 
+(0,0000) 
+0,3674 
+
+-1,4206 
+(0,1683) 
+(0,0000) 
+0,4260 
+
+-0,8940 
+(0,1041) 
+(0,0000) 
+0,3861 
+
+-0,8040 
+(0,0945) 
+(0,0000) 
+0,3832 
+
+-0,6386 
+(0,1078) 
+(0,0000) 
+0,2935 
+
+-0,7921 
+(0,0945) 
+(0,0000) 
+0,3786 
+
+-0,6369 
+(0,1067) 
+(0,0000) 
+0,2945 
+
+-0,7693 
+(0,0958) 
+(0,0000) 
+0,3660 
+
+-0,6568 
+(0,1049) 
+(0,0000) 
+0,3042 
+
+-0,7461 
+(0,0975) 
+(0,0000) 
+0,3525 
+
+-0,6355 
+(0,1089) 
+(0,0000) 
+0,2899 
+
+-0,6820 
+(0,1039) 
+(0,0000) 
+0,3144 
+
+-0,7357 
+(0,0994) 
+(0,0000) 
+0,3435 
+
+-0,6905 
+(0,1032) 
+(0,0000) 
+0,3186 
+
+-0,7857 
+(0,0952) 
+(0,0000) 
+0,3740 
+
+∗  
+𝝀𝒉
+
+-0,02873 
+(0,0998) 
+(0,0044) 
+0,2014 
+
+-0,5045 
+(0,1260) 
+(0,0001) 
+0,2715 
+
+-0,05993 
+(0,0479) 
+(0,2130) 
+0,2901 
+
+-0,0098 
+(0,0455) 
+(0,8296) 
+0,3423 
+
+0,0199 
+(0,06270 
+(0,7512) 
+0,5489 
+
+-0,0187 
+(0,0469) 
+(0,6902) 
+0,4452 
+
+-0,0351 
+(0,0496) 
+(0,4803) 
+0,5630 
+
+-0,0100 
+(0,0477) 
+(0,8339) 
+0,4864 
+
+-0,0319 
+(0,0486) 
+(0,5129) 
+0,5408 
+
+-0,0367 
+(0,0527) 
+(0,4872) 
+0,4890 
+
+-0,0149 
+(0,0657) 
+(0,8208) 
+0,5385 
+
+0,0530 
+(0,0552) 
+(0,3380) 
+0,4975 
+
+-0,0624 
+(0,0564) 
+(0,2692) 
+0,5125 
+
+0,0477 
+(0,0545) 
+(0,3826) 
+0,5128 
+
+-0,0213 
+(0,0493) 
+(0,6662) 
+0,4567 
+
+𝝀𝒉 
+
+-0,8147 
+(0,1303) 
+(0,0000) 
+0,3163 
+
+-0,9350 
+(0,1726) 
+(0,0000) 
+0,2894 
+
+-0,7276 
+(0,1023) 
+(0,0000) 
+0,3457 
+
+-0,5468 
+(0,0959) 
+(0,0000) 
+0,2982 
+
+-0,4697 
+(0,1058) 
+(0,0000) 
+0,2604 
+
+-0,5534 
+(0,0954) 
+(0,0000) 
+0,3014 
+
+-0,4275 
+(0,1056) 
+(0,0001) 
+0,2498 
+
+-0,5476 
+(0,0960) 
+(0,0000) 
+0,2984 
+
+-0,4116 
+(0,1046) 
+(0,0001) 
+0,2470 
+
+-0,5388 
+(0,0973) 
+(0,0000) 
+0,2931 
+
+-0,5101 
+(0,1062) 
+(0,0000) 
+0,2706 
+
+-0,4419 
+(0,1034) 
+(0,0000) 
+0,2558 
+
+-0,5604 
+(0,0983) 
+(0,0000) 
+0,2983 
+
+-0,4310 
+(0,1033) 
+(0,0000) 
+0,2531 
+
+-0,5360 
+(0,0962) 
+(0,0000) 
+0,2941 
+
+∗  
+𝝀𝒉
+
+0,0583 
+(0,0935) 
+(0,5338) 
+0,1927 
+
+-0,3060 
+(0,1267) 
+(0,0165) 
+0,2530 
+
+-0,0599 
+(0,0479) 
+(0,2130) 
+0,3409 
+
+-0,0214 
+(0,0482) 
+(0,6580) 
+0,4507 
+
+0,0820 
+(0,0687) 
+(0,2336) 
+0,4906 
+
+-0,0486 
+(0,0500) 
+(0,3320) 
+0,4560 
+
+0,0235 
+(0,0552) 
+(0,6703) 
+0,5887 
+
+-0,0392 
+(0,0516) 
+(0,4484) 
+0,4787 
+
+0,0206 
+(0,0535) 
+(0,7003) 
+0,5765 
+
+-0,0710 
+(0,0568) 
+(0,2128) 
+0,4593 
+
+0,0535 
+(0,0715) 
+(0,4553) 
+0,4736 
+
+0,1239 
+(0,0587) 
+(0,0360) 
+0,4764 
+
+-0,0694 
+(0,0610) 
+(0,2565) 
+0,4753 
+
+0,1213 
+(0,0585) 
+(0,2394) 
+0,4968 
+
+-0,0436 
+(0,0526) 
+(0,4332) 
+0,4611 
+
+Fonte: Elaborado pelo Autor 
+Nota: O número de defasagens k foi escolhido com base no critério de informação de Akaike (AIC) para o máximo de 6 defasagens. 
+
+ 
+
+ 
+
+Ao tomarmos em conta o desempenho apresentados pelas distintas medidas de núcleo derivados das 
+funções  wavelet  constatamos  que  rigorosamente  𝜆ℎ   é  negativo  e  estatisticamente  significativo,  e  que  o 
+∗   são  estatisticamente  igual  a  zero  para  todos  os  horizontes 
+coeficiente  de  ajustamento  do  núcleo  𝜆ℎ
+considerados,  convergindo  com  as  expectativas  levantadas  pelas  hipóteses  iniciais.  O  que  indica  que 
+
+16 
+
+ 
+qualquer  desvio  entre  o  IPCA  e  o  núcleo  é  corrigido  por  movimentos  no  IPCA  em  direção  ao  núcleo, 
+sendo o núcleo o padrão de referência para movimentos no indicador de inflação.  
+
+Percebe-se  que  a  direção  de  ajustamento  depende  da  medida  de  núcleo  e  do  horizonte  escolhido. 
+Em  todos  os  casos  o  coeficiente  de  ajustamento  da  inflação  𝜆ℎ   foi  negativo  e  estatisticamente 
+significativo, o que sinaliza que o IPCA é influenciado pelos núcleos em todos os horizontes de tempo, 
+entretanto, alguns núcleos também são influenciados pela inflação em determinados horizontes de tempo. 
+Basicamente,  este  padrão  de  comportamento  foi  identificado  nas  medidas  de  núcleo  oficiais  utilizados 
+pelo  Banco  Central,  o  que  é  indesejável  uma  vez  que  impossibilita  a  utilização  destas  medidas  como 
+indicadores  da  trajetória  de  longo  prazo  da  inflação,  tendo  em  vista  que  um  desvio  entre  a  inflação  e  o 
+núcleo pode ser corrigido tanto por movimento do núcleo como da inflação, o que não deixa claro qual é 
+o efeito do núcleo sobre a inflação. 
+
+De um modo geral, isso significa que as informações contidas no gap entre o indicador de inflação 
+(IPCA)  e  a  medidas  de  núcleo  de  inflação  baseada  em  funções  wavelet  dão  suporte  a  idéia  de  que  as 
+medidas  de  núcleo  baseadas  em  wavelet  se  comportam  melhor  que  as  medidas  de  núcleo  oficialmente 
+usadas pelo Banco Central sobre distintos horizontes de tempo, constituindo um melhor instrumento para 
+a orientação da política monetária. 
+
+ 
+
+4.3 Previsões para as taxas de inflação 
+ 
+
+Como  a  política  monetária  produz  seu  efeito  sobre  a  economia  com  defasagem,  o  Banco  Central 
+procura analisar a dinâmica de comportamento futuro da inflação antes de estabelecer qualquer medida de 
+política. Assim, se a previsão com uma medida de núcleo conseguir produzir resultados satisfatórios para 
+a  previsão  da  inflação  futura,  então  existe  evidências  de  que  esta  medida  deve  ser  usada  como  um 
+instrumento auxiliar na formulação da política monetária. 
+
+Assim,  utilizaremos  o  experimento  de  previsão  para  avaliar  a  capacidade  preditiva  das  distintas 
+medidas  de  núcleo  em  antecipar  o  IPCA  futuro.  A  expectativa  é  de  que  as  medidas  de  núcleo  mais 
+apropriadas apresentem um erro de previsão menor em sua tarefa de antecipar a inflação futura. 
+
+Então,  após  avaliar  a  consistência  das  distintas  medidas  de  núcleo  de  inflação,  resta  analisar  a 
+capacidade das medidas em prever a inflação futura. Com vistas a cumprir este propósito foi utilizado o 
+seguinte modelo: 
+
+ 
+
+𝜋𝑡 = 𝛼𝜋𝑡−1 + 𝛽𝜋𝑡−1
+
+∗ +  
+
+12
+𝑗 =1
+
+𝛾𝑗 𝐷𝑗 + 𝜀𝑡+ℎ
+
+                                              (31) 
+
+ 
+Onde,  𝜋𝑡   representa  o  IPCA  no  período  t;  𝜋𝑡−1  o  IPCA  no  período  t-1;  𝛽𝜋𝑡−1
+
+∗ medida  de  núcleo 
+
+defasado t-1; 𝐷𝑗  dummies sazonais; e, 𝜀𝑡+ℎ  são distúrbios aleatórios com média zero. 
+
+Para  avaliar  a  capacidade  preditiva  das  medidas  de  núcleo  será  considerado  um  experimento  de 
+previsão fora da amostra, ou seja, a amostra será dividida em dois períodos, o período de ajuste (1996.01-
+2013.05),  no  qual  os  dados  são  usados  para  identificar  e  estimar  o  modelo  de  previsão,  e  o  período  de 
+teste (2013.06-2015.05), cujos dados são utilizados para verificar a precisão das previsões do modelo.  
+
+Um modelo de regressão foi estimado para cada um dos núcleos de inflação considerados, e foram 
+analisadas  as  previsões  para  um  horizonte  de  24  meses  (2013.06-2015.05).  Na  Tabela  5  estão 
+representados  os  testes  estatísticos  de  consistência  do  modelo,  bem  como,  os  principais  critérios  de 
+consistência de previsões utilizados pela literatura para efetuar comparação do desempenho dos distintos 
+modelos de previsão. 
+
+Considerando  o  coeficiente  de  determinação  R2,  é  possível  perceber  que  os  modelos  de  previsão 
+baseados nos núcleos derivados das funções wavelet, de um modo geral, apresentam um melhor grau de 
+ajustamento, quando comparados com as medidas de núcleo oficiais utilizadas pelo Banco Central. 
+
+Com  relação  aos  critérios  de  consistência  para  a  previsão,  os  indicadores  da  Raiz  do  Erro 
+Quadrático  Médio  (REQM)  e  do  Erro  Absoluto  Médio  (EAM)  são  significativamente  menores  para  as 
+previsões  baseadas  nas  wavelet,  com  destaque  para  a  db(6),  db(9),  sym(5),  sym(6)  e  sym(8)  que 
+apresentam os menores erros entre a inflação original e a inflação estimada. 
+
+ 
+
+ 
+
+17 
+
+Tabela 5: Indicadores de Consistência para a Previsão de Inflação 
+
+Núcleo de Inflação 
+
+IPCA-DP 
+IPCA-EX2 
+IPCA-MS 
+
+db(4) 
+db(5) 
+db(6) 
+db(7) 
+db(8) 
+db(9) 
+db(10) 
+sym(4) 
+sym(5) 
+sym(6) 
+sym(7) 
+sym(8) 
+
+REQM 
+0,2693 
+0,2712 
+0,2531 
+0,2424 
+0,2434 
+0,2353 
+0,2376 
+0,2396 
+0,2327 
+0,2408 
+0,2412 
+0,2384 
+0,2411 
+0,2381 
+0,2145 
+
+EAM 
+0,2236 
+0,2262 
+0,2065 
+0,1940 
+0,1923 
+0,1801 
+0,1885 
+0,1835 
+0,1861 
+0,1835 
+0,1918 
+0,1951 
+0,1805 
+0,1923 
+0,1622 
+
+C.Theil 
+0,2075 
+0,2081 
+0,1978 
+0,1850 
+0,1868 
+0,1757 
+0,1814 
+0,1775 
+0,1765 
+0,1789 
+0,1837 
+0,1818 
+0,1794 
+0,1820 
+0,1581 
+
+P.Viés 
+0,0127 
+0,0120 
+0,0128 
+0,0061 
+0,0049 
+0,0003 
+0,0043 
+0,0038 
+0,0026 
+0,0069 
+0,0021 
+0,0071 
+0,0051 
+0,0080 
+0,0124 
+
+P.Var 
+0,0764 
+0,0549 
+0,0761 
+0,0803 
+0,1414 
+0,0473 
+0,1100 
+0,0418 
+0,0822 
+0,0808 
+0,1107 
+0,0733 
+0,0804 
+0,0866 
+0,0562 
+
+R2 
+
+0,4992 
+0,4983 
+0,5023 
+0,5672 
+0,6132 
+0,5688 
+0,6135 
+0,5726 
+0,6119 
+0,5974 
+0,6104 
+0,6076 
+0,6143 
+0,6045 
+0,5954 
+
+Fonte: Elaborado pelo Autor. 
+Nota:  Raiz  do  Erro  Quadrático  Médio  (REQM);  Erro  Absoluto  Médio  (EAM);  Coeficiente  de 
+Theil  (C.Theil);  Proporção  do  Viés  (P.Viés);  Proporção  da  Variância  (P.Var);  Grau  de 
+Ajustamento dos Modelos Estimados (R2). 
+ 
+
+O Coeficiente de Theil, a medida de Viés e a Proporção de Variância também indicam os menores 
+valores para os distintos critérios de previsão analisados para as medidas de núcleo com base nas funções 
+wavelet. Tais evidências reforçam a idéia de que as séries aproximadas com base em wavelet apresentam 
+previsões mais robustas e com maior precisão quando comparadas às séries de núcleo oficiais utilizadas 
+pelo  Banco  Central,  reforçando  os  resultados  analisados  anteriormente  que  sugerem  que  os  núcleos 
+wavelet demonstram melhor capacidade preditiva para a inflação no longo prazo.  
+
+Considerando  apenas  os  indicadores  para  as  medidas  de  núcleo  utilizadas  pelo  Banco  Central, 
+constata-se  que  os  apresentados  pelo  IPCA-MS  são  os  melhores  sob  todos  os  aspectos,  quando 
+comparado aos indicadores do IPCA-EX2 e IPCA-DP, indicando sua melhor capacidade preditiva dentre 
+os núcleos oficiais para previsões de longo prazo da inflação. 
+
+As  Figuras  4  e  5  apresentam  as  previsões  de  inflação  geradas  pelos  distintos  modelos  que 
+
+consideraram os distintos indicadores para medidas de núcleo de inflação. 
+ 
+
+Figura 4: Previsão da Inflação com Base nas Distintas Medidas de Núcleo 
+
+Fonte: Elaboração própria a partir de dados do IPEA-DATA 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+-0.40.00.40.81.21.62.02.42.89697989900010203040506070809101112131415IPCAIPCA-DPIPCA-EX2IPCA-MSdb(4)db(5)db(6)db(7)db(8)db(9)db(10)sym(4)sym(5)sym(6)sym(7)sym(8)%Meses 
+
+Figura 5: Previsão da Inflação com Base nas Distintas Medidas de Núcleo (2013.05-2015.05) 
+
+18 
+
+ 
+
+Fonte: Elaboração própria a partir de dados do IPEA-DATA 
+
+ 
+Verifica-se  que  as  distintas  previsões  de  núcleo  de  inflação,  de  um  modo  geral,  acompanham  a 
+tendência  do  IPCA,  porém  com  distintos  graus  de  ajustamento.  As  medidas  de  núcleo  com  base  nas 
+funções  wavelets  demonstram  uma  sintonia  mais  fina  com  a  tendência  do  IPCA,  pois  apresentaram  no 
+geral  menor viés com  relação ao erro de previsão. Dentre as medidas de núcleo oficiais,  utilizadas pelo 
+Banco Central, o IPCA-MS demonstrou uma melhor sintonia com o IPCA. 
+ 
+5 Conclusão: 
+ 
+
+Este artigo teve como propósito a utilização do método de wavelet para a estimação de uma medida 
+de núcleo de inflação para o Brasil. Considerando que a política monetária opera sob o regime de metas 
+de inflação, a identificação de um indicador que consiga separar o sinal do ruído, ou seja, identificar qual 
+a parte da inflação é persistente, e qual é meramente transitória é fundamental para estabelecer as regras 
+de política monetária e o sucesso do controle da inflação.  
+
+Na  prática,  os  bancos  centrais  realizam  esta  tarefa  utilizando  as  chamadas  “medidas  de  núcleo  de 
+inflação”. Uma medida adequada de núcleo tende a ser compatível com as duas funções básicas, ou seja, 
+trata-se de uma boa representação para a tendência de inflação, e um bom previsor para a inflação futura.  
+Tomando  em  conta  o  período  para  análise  1996.01  –  2015.05,  o  artigo  propôs-se  a  construir  uma 
+medida  alternativa  de  núcleo  de  inflação,  as  chamadas  “Medidas  de  Núcleo  de  Inflação  baseada  em 
+funções  Wavelet”  (MIW)  e  “Análise  de  Resolução  Múltipla”  (ARM).  Medidas  de  núcleo  foram 
+construídas  procurando  capturar  movimentos  de  longo  prazo  na  inflação,  ou  seja,  movimentos  que 
+ocorrem durante longo período de tempo e contem informação de baixa freqüência. 
+
+Não existe um único critério que permita selecionar um indicador que melhor represente um núcleo 
+de  inflação,  nesse  contexto,  o  desempenho  das  medidas  de  núcleo  de  inflação  foram  avaliadas  usando 
+alguns  critérios  que  a  literatura  tem  apontado  como  sendo  características  desejáveis  que  indicadores  de 
+núcleo  de  inflação  devem  apresentar,  e  que  são  comumente  utilizados  para  definir  uma  boa  medida  de 
+núcleo de inflação, a saber: i) a ausência de viés; ii) a capacidade de capturar a tendência inflacionária; iii) 
+e ser um bom previsor da taxa de inflação. 
+
+Comparações  com  os  núcleos  de  inflações  oficiais  utilizados  pelo  Banco  Central  e  medidas 
+baseadas em regressões procuram testar sua eficácia em seguir a tendência da inflação e sua capacidade 
+de prever a inflação futura.  
+
+Considerando o critério  ausência de viés, as medidas de núcleo baseadas em  wavelet destacam-se 
+por apresentar média equivalente ao indicador de inflação global, menor variância dentre as medidas de 
+núcleo, e os coeficientes 𝛽′𝑠 das estimativas baseadas em wavelet, de um modo geral, atendem a hipótese 
+nula  conjunta  com  um  maior  grau  de  exatidão,  pois  se  encontram  estatisticamente  muito  próximos  à 
+unidade,  indicando  uma  melhor  performance  para  a  estimativa  da  inflação,  caracterizando-se  pela 
+ausência de viés. 
+
+0.00.20.40.60.81.01.21.45678910111212345678910111212345131415IPCAIPCA-DPIPCA-EX2IPCA-MSdb(4)db(5)db(6)db(7)db(8)db(9)db(10)sym(4)sym(5)sym(6)sym(7)sym()8%Meses19 
+
+ 
+
+Com  relação  ao  grau  de  ajustamento,  ao  tomarmos  em  conta  o  desempenho  apresentados  pelas 
+distintas medidas de núcleo derivados das funções wavelets constatamos que o coeficiente de ajustamento 
+∗  
+da inflação 𝜆ℎ  é negativo e estatisticamente significativo, e que o coeficiente de ajustamento do núcleo 𝜆ℎ
+são estatisticamente igual a zero para todos os horizontes considerados, convergindo com as expectativas 
+levantadas  pelas  hipóteses  consideradas.  O  que  indica  que  qualquer  desvio  entre  o  IPCA  e  o  núcleo  é 
+corrigido  por  movimentos  no  IPCA  em  direção  ao  núcleo,  sendo  o  núcleo  o  padrão  de  referência  para 
+movimentos no indicador de inflação.  
+
+A  análise  dos  modelos  de  previsão,  que  levou  em  conta  os  principais  critérios  de  consistência  de 
+previsões  utilizados  pela  literatura  para  efetuar  comparação  do  desempenho  dos  distintos  modelos  de 
+previsão, sugerem que, sob todos os aspectos, as evidências reforçam a idéia de que as séries aproximadas 
+com  base  nas  funções  wavelet  apresentam  previsões  mais  robustas  e  com  maior  precisão  quando 
+comparadas às séries de núcleo oficiais utilizadas pelo Banco Central, indicando sua melhor capacidade 
+preditiva dentre os núcleos considerados para previsões de longo prazo da inflação. 
+
+De  um  modo  geral,  os  resultados  sugerem  que  as  medidas  baseadas  em  wavelet  para  o  Brasil 
+demonstram um melhor desempenho que a abordagem tradicional de núcleo de inflação, pois apresentam 
+uma performance superior em termos de análise de longo prazo e também podem auxiliar na melhora das 
+projeções  de  curto  prazo,  indicando  que  o  método  wavelet  constitui  um  instrumento  promissor  para 
+futuras  pesquisas  de  núcleo  de  inflação,  e  que  deve  ser  considerado  pelos  gestores  de  política  para 
+orientar e melhorar a eficiência na formulação da política monetária. 
+ 
+Referencias 
+ 
+Armas, A., L. Vallejos and M. Vega (2011), “Indicadores tendenciales de inflación y su relevancia como 
+
+variables indicativas de política monetaria", Revista de Estudios Económicos, 21, 27-56, BCRP. 
+
+Baqaee,  D.  Using  wavelets  to  measure  core  inflation:  The  case  of  New  Zealand.  The  North  American 
+
+Journal of Economics and Finance, 21(3):241–255, 2010. 
+
+BANCO CENTRAL DO BRASIL. Relatório de Inflação. Brasília, dez 2009. v. 11, n. 4. Disponível em: 
+
+<http://www.bcb.gov.br/htms/relinf/port/2009/12/ri200912P.pdf>. Acesso em: 17 out 2011. 
+
+______.  Relatório  de  inflação.  Technical  Report  v.  13,No  2-3,  Banco  Central  do  Brasil.  Comitê  de 
+
+Política Monetária, 09 2011. 
+
+Blanchard,  O.  and  Quah,  D.  (1989),  “The  Dynamic  Effects  of  Aggregate  Demand  and  Supply 
+
+Disturbances", American Economic Review, vol. 79(4), 655-73, September. 
+
+Blinder, A. S. Measuring short-run inflation for central bankers - commentary. Review, (May):157–160, 
+
+1997. 
+
+Bryan, M. F., and S. G. Cecchetti (1994) “Measuring core inflation”. Pp. 195-215 in N. Gregory Mankiw 
+
+(ed.) Monetary Policy. Chicago: Chicago University Press. 
+
+Bryan,  M.  F.,  S.  G.  Cecchetti,  and  R.  L.  Wiggins,  III  (1997)  “Efficient  inflation  estimation.”  NBER 
+
+Working Paper No. 6183. 
+
+Calderon,  A.  P.  (1964),  “Intermediate  Spaces  and  Interpolation,  the  Complex  Method",  Studia 
+
+Mathematica, 24, 113-90. 
+
+Cecchetti, S. G. (1997) “Measuring short-run inflation for central bankers.” Federal Reserve Bank of St. 
+
+Louis Review (May-June 1997): 143-155. 
+
+Cogley,  T.  A  simple  adaptive  measure  of  core  inflation.  Journal  of  Money,  Credit,  and  Banking, 
+
+34(1):94–113, February 2002. 
+
+Crowley, P. M. An intuitive guide to wavelets for economists. Aug 2005. 
+Crowley, P. M. A guide to wavelets for economists. Journal of Economic Surveys, 21(2):207–267, 2007. 
+Daubechies,  I.  Ten lectures on wavelets. Society for  Industrial  and Applied Mathematics, 1  edition,  jun 
+
+1992. 22 
+
+Diebold, F. and R. Mariano (1995), “Comparing Predictive Accuracy", Journal of Business and Economic 
+
+Statistics, 13(3), 253-263. 
+
+Dowd,  K.,  Cotter,  J.,  e  Loh,  L.  U.s.  core  inflation:  A  wavelet  analysis.  Macroeconomic  Dynamics, 
+
+15(04):513–536, june, 2010. 
+
+ 
+Eckstein, O. (1981) Core Inflation. Englewood-Cliffs, NJ: Prentice-Hall. 
+Gençay, R., Seuk, F., e Whitcher, B. Systematic risk and timescales. Quantitative Finance, 3(2):108–116, 
+
+20 
+
+2003. 
+
+Grossmann,  A.  and  Morlet,  J.  (1984),  “Decomposition  of  Hardy  Functions  into  Square  Integrable 
+
+Wavelets of Constant Shape", SIAM Journal of Mathematical Analysis, 15, 723-36. 
+
+Haar, A. (1910), “Zur Theorie der Orthogonalen Funktionensysteme", Mathematische Annalen, 69, 3371-
+
+71. 
+
+Hansson,  J., Johansson, J., e Palmqvist, S. Why  do we need measures of underlying inflation?  Sveriges 
+
+Riksbank Economic Review, 2:23–41, 2008. 
+
+Helder,  J.,  e  Jin,  H.  Long  memory  in  commodity  futures  volatility:  A  wavelet  perspective.  Journal  of 
+
+Futures Markets, 27(5), 2007. 
+
+Johansen, S. Estimation and hypothesis testing of cointegration vectors in Gaussian vector autoregressive 
+
+models. Econometrica, 59(6):1551–80, November 1991. 
+
+Johansen,  S.  Likelihood-based  inference  in  cointegrated  vector  autoregressive  models.  Econometric 
+
+Theory, 14(04):517–524, 1998. 
+
+Kaiser, Gerald (1994), “A friendly guide to wavelets", SBoston: Birkhauser, 1994, 300 p. 
+Lahura,  E.,  e  Vega,  M.  Evaluation  of  wavelet-based  core  inflation  measures:  Evidence  from  Peru. 
+Documentos de Trabajo  320, Departamento  de Economia  - Pontificia Universidad Catolica del  Peru, 
+2011. 
+
+Mallat,  S.  G.  Multiresolution  approximations  and  wavelet  orthonormal  bases  of  l(r).  American 
+
+Mathematical Society, 315(1), September 1989. 
+
+Mallat, S. G. (1998) \A Wavelet Tour of Signal Processing", San Diego: Academic Press. 
+Masset, P. Analysis of financial time-series using fourier and wavelet methods. SSRN eLibrary, 2008. 
+MEHRA, Y. P.; REILLY, D. Short-term headline-core inflation dynamics. Economic Quarterly, Federal 
+
+Reserve Bank of Richmond, v. 95, n. 3, p. pp. 289–313, Summer 2009. 
+
+Minella, A. Monetary policy and inflation in brazil (1975-2000): a var estimation. Working Papers Series 
+
+33, Central Bank of Brazil, Research Department, Nov 2001. 
+
+Pesaran,  M.  and  A.  Timmermann  (1992),  “A  Simple  Nonparametric  Test  of  Predictive  Performance", 
+
+Journal of Business and Economic Statistics, 10(4), 461-465. 
+
+Percival, D. B., e Walden, A. Wavelet Methods for Time Series Analysis (Cambridge Series in Statistical 
+
+and Probabilistic Mathematics). Cambridge University Press, feb 2000. 
+
+Quah,  D.  and  S.  Vahey  (1995),  “Measuring  Core  Inflation",  Economic  Journal,  105(432),  1130-1144, 
+
+September. 
+
+Ribba,  A.  (2003),  “Permanent-transitory  decompositions  and  traditional  measures  of  core  inflation", 
+
+Economics Letters, Elsevier, vol. 81(1), 109-116, October. 
+
+Schleicher, C. (2002), Schleicher, PC., “An Introduction to Wavelets for Economists", Bank of Canada: 
+
+Working Paper 2002-3. 32 p. 
+
+SILVA FILHO, T. N. T. d.; FIGUEIREDO, F. M. R. Has core inflation been doing a good job in brazil? 
+
+Revista Brasileira de Economia, v. 65, n. 2, p. 207–233, June 2011. 
+
+Sims, C. A., Stock, J. H., e Watson, M. W. Inference in linear time series models with some unit roots. 
+
+Econometrica, 58:113–144, January 1990. 
+
+Smith,  J.  (2004),  “Weighted  Median  Inflation:  Is  this  Core  Inflation?,  Journal  of  Money  Credit  and 
+
+Banking 36(2), 253-263. 
+
+Stock, J. H., e Watson, M. W. Forecasting output and inflation: The role of asset prices. NBER Working 
+
+Papers 8180, National Bureau of Economic Research, Inc, March 2001. 
+
+Woodford, M. Optimal interest-rate smoothing. Review of Economic Studies, 70(4): 861–886, 2003. ISSN 
+
+1467-937X. doi: 10.1111/1467-937X.00270. 
+
+Valdivia, L. y L. Vallejos (2000), “Inflación Subyacente en el Perú", Revista de Estudios Económicos, 6, 
+
+26-43, BCRP. 
+
+Ysusi, C. Analysis of the dynamics of mexican inflation using wavelets. Working Papers 2009-09, Banco 
+
+de México, 2009. 
+
+

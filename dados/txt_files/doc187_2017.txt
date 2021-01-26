@@ -1,0 +1,875 @@
+       The Impact of Zoning Ordinances on the Housing Market: Evidence for a
+                               Developing Country
+
+Ricardo Carvalho de Andrade Lima - PIMES/UFPE
+Raul da Mota Silveira Neto - PIMES/UFPE
+
+RESUMO:
+
+
+Com a recente urbanização e aumento da densidade demográfica em torno das grandes cidades brasileiras,
+o mercado imobiliário do país sofreu uma grande valorização. Além de fatores relacionados à demanda,
+mecanismos com potencial para limitar a oferta de casas também podem ter afetado o aumento de preços
+nesse mercado. O objetivo do presente trabalho é investigar o impacto das ordens de zoneamento (restrições
+de uso do solo) sobre a média do preço de alugueis e sobre o crescimento do estoque de casas. Através de
+uma análise entre cidades e utilizando algoritmos de matching, observou-se que o zoneamento gera um
+incremento que varia de 5,4% a 6,3% no preço médio de aluguéis, mas não afeta o crescimento de casas.
+Além disso, conduzimos análises de sensibilidade que sugerem que esse resultado não é simplesmente
+guiado por confounders não observáveis. Nossa evidência sugere que mesmo sendo uma política bem
+intencionada, o zoneamento tende a gerar custos sociais que precisam ser considerados.
+Palavras-chaves: Restrições de Uso do Solo, Zoneamento Urbano, Desenvolvimento Urbano, Brasil.
+
+ABSTRACT:
+Due to recent urbanization and the increased population density around major Brazilian cities, the real estate
+market in the country suffered a great appreciation. In addition to demand-related factors, mechanisms with
+potential to limit housing supply may have also affected the price increase in that market. The objective of
+this study is to investigate the impact of zoning orders (land use regulations) on the average rent prices and
+the real estate market growth in Brazil. Through an intercity analysis and using matching methods, it was
+observed that zoning generates an increment ranging from 5.4% to 6.3% in average rents, but does not
+affect the house growth. In addition, we conducted sensitivity analysis that suggests that this result is not
+simply driven by unobservable confounders. Our evidence suggests that even being a usually well-
+intentioned policy, zoning tends to generate social costs that need to be taken into account in the analysis
+of the real estate market in Brazil.
+Keywords: Land Use Restrictions, Urban Zoning, Urban Development, Brazil.
+Código JEL: R31, R52, L51.
+
+Área 10 – Economia Regional e Urbana
+1. Introduction
+
+         In recent decades, a sharp increase in population concentration took place in major Brazilian
+metropolitan areas, continuing the rapid urbanization process that has been occurring in Brazil over the last
+century. For example, the population density of the metropolitan region of Sao Paulo grew 12.7% between
+2000 and 2010. In new metropolitan areas such as Brasilia and Goiania, the population density increased
+by 23.7% and 22.7%, respectively (Brazilian Demographic Census 2010). Due to higher population density
+around cities and macroeconomic stability, which increased housing credit, the Brazilian real estate market
+underwent a price boom. According to the Fipe Zap index, which measures the selling price of properties
+and rentals in main Brazilian cities on a monthly basis, from 2010 to 2015, housing prices increased 223.5%
+in Sao Paulo, whereas rents increased at a rate of 100.8%. This variation was significantly higher than
+inflation in the same period, which reached 54.6% (measured by IPCA).
+         In addition to demand-related factors, supply-related factors such as the higher cost of real estate
+development and the restrictions in urban land use may have also a connection with this great appreciation
+of the Brazilian real estate market. One of the main ways to regulate and restrict urban land use in Brazil is
+through zoning ordinances. Zoning ordinances are instruments of urban planning and management which
+are usually established by local governments and can regulate both the type of use (establishing residential
+areas, commercial areas, industrial or mixed) and the intensity of use, to restrict the size, the weight of
+buildings or the flood-area ratio (McDonald and McMillen 2012). Note that, in addition to traditional
+zoning, there are other regulations that can be used to restrict urban land use, such as the minimum lot size
+requirements, rules governing septic systems, subdivision requirements, wetland regulations, green area
+requirements and others (Fischel, 2004; Glaeser and Ward, 2009).
+         In Brazil, local governments (municipalities) are in charge of the adoption and the management of
+land use controls. These instruments have gained greater relevance in the late 70s and thus became regulated
+by federal laws. For example, in 1979, a federal law that regulates urban land parceling (Federal Law
+6766/79) came into force. A key feature of this law is that it establishes a minimum lot of 125 square meters
+and, in addition, delegates to municipalities the autonomy to set their own guidelines for the allotment and
+the breakup of land. In 2001, the federal government created the “Estatuto da Cidade” (Federal Law
+10257/01), a law that established general urban guidelines and the obligation of master plans for a set of
+municipalities. In this context of federal regulation on urban planning instruments, a large increase in the
+number of municipalities that have their own zoning ordinance occurred: in 1978, only 64 municipalities
+had regulations for the urban land; in 2013, this number rose to 1,724 (Munic 2013). Despite the recent
+increase in the adoption of these regulations, little is known about their impact on the Brazilian housing
+market. In this study, we will take advantage of the variability of the law between the municipalities to
+assess their impact on the average rental prices and on the real estate market growth.
+         According to McDonald and McMillen (2012), the objective of the supporters of the law is to protect
+the residents' well-being from the adverse effects of industrialization, rapid and intense urbanization and
+high-impact buildings. Therefore, zoning would be useful to reduce the negative externalities that are
+associated with certain types of land use or degrees of use. However, by restricting the land use and limiting
+new developments, urban zoning ends up bringing changes to the land market and consequently may
+increase the prices of existing buildings and residences (Quigley 2007; McDonald and McMillen 2012).
+Thus, it creates a great incentive for homeowners to support, defend and claim for zoning laws (or other
+restriction instruments) with the aim of increasing the price of their houses, even in the absence of actual
+negative externalities (Quigley 2007; Fischel 2004).
+         A large number of empirical studies investigates the impact of zoning and land use restrictions on
+the housing and urban land market. Quigley and Rosenthal (2005), Quigley (2007) and McDonald and
+McMillen (2012) make a detailed review of these studies. Even with different empirical strategies and
+analyzing different metropolitan areas in the United States, these papers show a similar conclusion: the
+degree of land use restrictiveness is positively correlated with property price and negatively correlated with
+new real estate developments (Quigley and Raphael 2005; Ihlanfeldt 2007, Glaeser and Ward 2009; Zabel
+and Dalton 2011). Additionally, there is evidence that lot price is higher in more regulated areas (Kok,
+Monkkonen and Quigley 2014) and that cities with more strict regulation suffer from a greater amplitude
+in the house price cycle, with more intense booms and bursts (Huang and Tang 2012).
+        The major empirical challenge of those papers is to solve the potential endogeneity in the
+relationship between zoning and real estate prices. Typically, to overcome this problem, some studies add
+a wide range of control variables (Glaeser and Ward 2009 and Kok, Monkkonen and Quigley 2014), add
+fixed-effects (Zabel and Dalton 2011) or employ an instrumental variable approach (Ihlanfeldt 2007).
+However, not all omitted variables can be measured or are fixed in time, which weakens the first approach.
+Moreover, it is extremely difficult to find an instrument that satisfies the exclusion restriction. For example,
+Ihlanfeldt (2007) received criticism for using past demographic characteristics as an instrument to the
+current level of land use restrictiveness. It turns out that past demographics can be correlated with other
+current characteristics that affect property price, weakening the exclusion restriction (Glaeser and Ward
+2009). In addition to this unresolved empirical difficulty, another limitation of those studies is that they
+focus only on the US housing market. However, due to the recent urbanization process, the real estate
+market of developing economies can behave in a very divergent way (Alterman 2013), so that the
+conclusions of such papers cannot be easily extended to these countries.
+        This paper contributes by analyzing the Brazilian case, where, unlike the United States, the
+urbanization process only took off in the second half of the twentieth century. In addition, this study deals
+with endogeneity in a different way: rather than trying to solve the problem thoroughly, we will evaluate
+how robust is our evidence in the presence of endogeneity caused by omitted variables. In this sense,
+considering our goal of investigating the effect of zoning in average rent prices and in the real estate market
+growth, we employ a Propensity Score Matching (PSM) estimator and sensibility analysis proposed by
+Rosenbaum (2002) and by Ichino, Mealli and Nannicini (2008). Furthermore, another contribution of our
+study is to use a measure of rental prices, which is adjusted by the property’s characteristics. Our results
+reveal that municipalities that adopt zoning as an urban planning policy have an average rental price 5.4%
+to 6.26% higher than that of similar municipalities that do not adhere to the order. A sensitivity analysis
+based on Rosenbaum bounds indicates that for our evidence to be invalidated there must be an unobservable
+variable that increases the odds in zoning adoption by 90% and is strongly correlated with the rental price.
+Moreover, the sensitivity analysis proposed by Inchino et al. (2008) shows that even if there are important
+confounders, our result remains valid. Thus, the sensitivity tests point that our evidence is not driven by
+endogeneity. Additionally, we also found that the zoning law is not able to affect the real estate market
+growth, suggesting that higher rental prices are not simply a reflection of a lower housing supply.
+        The paper is organized as follows: in Section 2, we discuss the evidence of previous literature that
+assess the impact of land use restrictions in the perspective of developing economies. In Section 3, we
+present the institutional background and the origins of zoning in Brazilian municipalities. Section 4 details
+the empirical strategy. Section 5 describes the data, the covariates and the procedure for constructing a
+constant quality rental price; Section 6 presents the main results and robustness tests and, finally, Section 7
+presents the final considerations.
+
+2. Zoning in developing countries: empirical evidence
+        In developing and recently urbanized countries, policies that restrict land use or that control the
+intensity of use have consequences on the housing market that can differ substantially in relation to
+developed countries’ markets (Alterman 2013). Firstly, strict regulations with low enforcement power
+(which is common in developing countries) may generate a low level of compliance and therefore little
+influence in land and property prices. In addition, stricter regulations - by increasing the price of real estate
+development and reducing the supply elasticity of available lots - can cause an additional incentive to low-
+income households decide to enter in the informal housing market and, thus, there is an increase in slums
+formation and in the number of low quality settlements (Cavalcanti and Da Mata 2013). Furthermore, the
+motivations for the regulation can also be different. For example, in countries with lower income levels,
+the land-use restrictions can be used as a way to prevent strong densities, which could generate an overload
+in the poor urban infrastructure (Brueckner and Lall 2015).
+        In a study conducted for Argentina, Monkkonen and Ronconi (2013) detected that in municipalities
+with more stringent regulations, both the level of compliance and the price lots were smaller. Although the
+negative correlation between the restrictions in urban land use and prices is counterintuitive in the face of
+the US cities’ evidence, the authors argue that by stimulating the growth of low quality houses and slums,
+land-use restrictions cause negative externalities in the neighborhood and, therefore, the lots suffer
+devaluation. In a descriptive study for the Offinso South Municipality, in Ghana, Boamah (2013) shows
+that the land-use regulations have little practical effect, since most of the developers do not comply with
+the order. According to the author, this is a common situation in African cities and it happens because the
+planning laws have a low enforcement level, are poorly adapted to local conditions and are guided by public
+offices with high levels of corruption. Similar results were found by Arimah and Adeagbo (2000) for a
+Nigerian city.
+        Although the low applicability of planning laws is an important point in the debate about the effects
+of zoning in cities in developing countries, the consequences regarding housing affordability and slum
+formation have an even greater importance on the well-being of citizens. According to UN-Habitat (2003),
+about 30% of the world's urban population lives in slums, where, due to the poor condition of public
+infrastructure and low-quality housing, the quality of life of dwellers is very low. Some studies sought to
+verify the impact of the land-use restrictions on the growth of the informal housing market, considering the
+Brazilian case. In this sense, Biderman (2007) argues that the formal housing market is very connected to
+the informal ones. The author also shows evidence that there has been an increase in informality in Brazilian
+municipalities that have adopted zoning rules in the 1990s. More recently, Cavalcanti and Da Mata (2013),
+through a structural general equilibrium model, show that much of the 1980-2010 slum growth in Brazil is
+connected with rural-urban migration, with an increase in income levels and in the restrictiveness of land-
+use regulations.
+        Perceiving that land-use restrictions can increase house prices and, thus, worsen the welfare of poor
+households, some governments use inclusionary zoning as a way to generate affordable housing. However,
+despite being well intentioned, this policy does not always attain the desired effects. For example,
+investigating Brazilian cities, Lall, Wang, and Da Mata (2007) show that in municipalities that have adopted
+urban policies targeted at reducing the minimum lot size, there was an increase in the formal housing supply
+and an increase in population growth (via migration). Once the population growth was higher than the
+formal housing growth, the policy also caused an undesirable effect: an increase in slum formation. This
+evidence is in line with the work of Schuetz, Meltzer and Been (2011) showing that policies that aim to
+produce affordable houses through inclusionary zoning can also generate the opposite effect: higher prices
+and lower production rates.
+        At this point, it is necessary to recognize that as one of the main instruments for urban planning,
+land-use restrictions and zoning affect many other aspects of the cities’ dynamics, going far beyond the
+effects on the housing market. In a study for Indian cities, Brueckner and Sridhar (2012) found that
+municipalities with stricter building height limits have larger spatial sizes. The authors show that a unity
+increasing in the floor-are ratio (FAR) limit can generate a reduction of approximately 20% of the area of
+an average city, which generates a yearly savings in commuting costs of about 0.7% of the annual income
+of a typical household.
+        As can be seen by the above discussion, the majority of empirical studies focuses on assessing the
+impact of the urban land regulations on indirect outcomes, such as the informal housing market. However,
+for regulations to affect this type of market, it is first necessary to prove that regulations also affect the
+prices of the formal housing market. Without this, the previous evidence is not very credible. Regarding
+the Brazilian case, little is known about the consequences of zoning in relation to rental prices or property
+prices. As far as we know, the study of Duarte, Silveira-Neto and Sampaio (2015) for the city of Recife
+(the center of the fourth largest metropolitan urban area of Brazil) is the only exception. More specifically,
+the authors investigated the price effect of a law that restricts the height of the buildings in a particular area
+of the city. Through a Differences-in-Differences strategy, the authors showed that the new ordinance had
+caused an increase of about 6% in the price of properties located in the area in which the ordinance was
+implemented. However, since this paper analyzes a municipal policy made for a relatively small area, it
+lacks external validity. In order to generalize the effect of land-use restrictions in Brazil, it is necessary to
+investigate the problem in a broader perspective. This study aims to fill this gap.
+3. Zoning and Urban Planning in Brazil: Historical and Institutional Background.
+
+        Brazil is a country with relatively recent urbanization: in 1940, only 31.2% of the population lived
+in urban areas. That number grew throughout the century, rising to 84.3% in 2010 (Census 2010). This
+rapid urbanization process, linked to the industrialization of the country, brought a number of problems for
+the Brazilian cities. Not surprisingly, it becomes necessary to introduce some urban planning instruments.
+In Brazil, because of its federative character, the local governments (municipal level) are responsible for
+creating and establish their own planning laws. It was only at the end of the 1970s that the federal
+government has assumed a coordinating role in urban issues involving municipalities.
+        Initially, the first urban regulations used in the country consisted in building codes and limited
+ordinances. They were deployed in the cities of Rio de Janeiro and Sao Paulo in the late nineteenth century,
+and, in many cases, resembled zoning rules with a more restricted coverage area. These instruments were
+demanded by high-income population, who used it as a way to defend their properties’ value against the
+aggravation of the problems generated by industrialization (Borges 2007). For example, the posture codes
+of Sao Paulo, created in 1886, prohibited the construction of low-income and working houses in the city's
+commerce perimeter (Nery Júnior 2013). It was only in the 1930s that urban regulations started being
+disseminated to other Brazilian cities, such as Recife and Porto Alegre, but were still not comprehensive
+enough, and thus did not constitute a general rule of zoning.
+        In the mid-1970s, a spread of general zoning ordinances took place. A milestone is the introduction
+of the law 7805/72 in São Paulo city, which, among other things, covered the whole territory of the
+municipality and instituted exclusively residential areas and commerce corridors (Nery Júnior 2013). Figure
+1 shows the evolution in the number of municipalities that adopted their own zoning ordinance: in 1960,
+for example, only six cities had land use regulations.
+
+            Figure 1 - Evolution of the number of municipalities with zoning ordinances.
+
+
+
+
+                                      Source: The authors, based on MUNIC 2013 data.
+
+        In addition, it can be observed that, from the 198s on, there has been a great increase in the number
+of municipalities that have adopted zoning as an urban management instrument. Several interrelated factors
+can explain this growth. Firstly, it may be a natural consequence of the ongoing urbanization process in the
+country: in 1980, about 67.5% of the population already lived in urban areas. Moreover, in line with
+Gyourko, Saiz, and Summers (2008), the increase in wealth and education of Brazilian citizens can explain
+a greater awareness of the intensity and the use of the urban land. At that time, some institutional changes
+in the country were also associated with greater diffusion of zoning among municipalities. In 1979, the
+federal government took on a coordinating role of urban policy in cities. In this sense, the Federal law
+6799/79 came into force, establishing general rules and guidelines for the division of urban land. This law
+also established the minimum lot size of 125 square meters, delegating to municipalities the option to adopt
+stricter criteria. Furthermore, in 1988, a new federal constitution was created, which, because of its
+decentralized characteristics, favored the autonomy of the municipalities in formulating their own public
+policies and the management of fiscal resources.
+        Due to intense city growth and to rural-urban movements, there was a strong increase in housing
+demand without a counterpart of the supply, causing a rise in the housing deficit 1 and the formation of
+slums across the country. To alleviate this problem, and realizing that the urban land restrictions can cause
+higher housing prices, some municipalities have adopted a kind of inclusionary zoning: the Special Zones
+of Social Interest (ZEIS) 2. These are constituted of demarcated areas within the cities with more flexible
+and more specific rules regarding zoning. Other important institutional framework for the country's urban
+planning policy is the approval of the Federal Law 10257/01, known as “Estatuto da Cidade” which, among
+other things, emphasizes the social function of property, encourages participatory planning and enforces
+the adoption of a city master plan by a set of municipalities. This federal law may also have driven the
+strong adoption of zoning by the cities in the most recent period, from 2000 to 2013, where 1,013 new
+municipalities have adopted the order (figure 1).
+        Note that, although the zoning ordinances are present in 1,724 Brazilian municipalities (about 31%
+of the total), little is known about their impact on the formal housing market. In this work, we will take
+advantage of the variability of orders between the municipalities to verify the impact of land-use regulations
+on average rents and on the real estate market growth.
+
+4. Empirical Strategy
+4.1 Propensity Score Matching
+        The aim of this study is to investigate the effect of municipal zoning policies on average rent prices
+and on the real estate market growth. The great empirical challenge of this kind of analysis is to eliminate
+the possibility of endogeneity by reverse causality and by omitted variables. Although it is assumed that
+property prices can be explained by zoning ordinances, the reverse way is also possible: maybe zoning
+occurs just in areas that have more highly valued houses (Quigley, 2007). To reduce these concerns, we
+will apply a matching-based strategy in conjunction with a series of sensitivity analyses.
+        In this sense, our goal is to make a match between treated observations (municipalities that have
+implemented zoning ordinances) and the control observations3 (municipalities that have not adopted zoning
+ordinances) such that the control group can be considered a counterfactual - what would happen to the
+treatment group had they not adopted zoning. Consider 𝑍 a binary variable that describes zoning. Thus,
+𝑍 = 1 if the municipality has implemented the ordinance and 𝑍 = 0 otherwise. 𝑌0 and 𝑌1 describe the
+potential outcomes that vary according to the treatment (zoning order). In real life, only one of these
+outcomes can be actually observed for each municipality. However, the causal effect is defined as the
+difference between 𝑌1 and 𝑌0 . We are interested in obtaining an estimate of the average effect of the
+treatment on the treated (ATT), defined as follows:
+
+         𝐴𝑇𝑇 = 𝐸 (𝑌1 − 𝑌0 |𝑍 = 1)                                                                                                    (1)
+       Under a set of assumptions, various methods can be used to estimate the ATT. One of these is the
+Propensity Score Matching (PSM) developed by Rosenbaum and Rubin (1983). The propensity score is the
+probability of receiving the treatment (in our case, implementing a zoning ordinance) given the observed
+covariates (defined as the 𝑋 vector), i.e. 𝑃(𝑋) = 𝑃(𝑍 = 1|𝑋). The key identification assumption for the
+ATT is that 𝑌1 and 𝑌0 are independents of 𝑍 given 𝑃 (𝑋). In other words, 𝑌1 ,𝑌0 ⊥ 𝑍|𝑃(𝑋). This is known as
+Conditional Independence Assumption (CIA). Additionally, it is also necessary that, for each treated unit,
+a matched control unit with similar 𝑋 exists. This assumption is known as overlap condition, and can be
+
+1   According to calculations of the João Pinheiro Foundation (2010), the housing deficit in Brazil is of 6,490 million housing units.
+
+2920 municipalities adopt the ZEIS through specific legislation, while 1,556 municipalities include the ZEIS as a part of the city master plan
+(MUNIC, 2013).
+
+3   In Figure 1A of Appendix, we show the spatial distribution of municipalities by zoning adoption.
+written as: 0 < 𝑃 (𝑍 = 1|𝑋) < 1. Finally, assuming that the CIA and the overlap condition holds, the
+impact of zoning on the city's average rental price which implemented the ordinance is given by:
+
+    𝜏𝐴𝑇𝑇 = 𝐸 (𝑌1 − 𝑌0 |𝑍 = 1) = 𝐸[𝐸 (𝑌1 − 𝑌0 |𝑃 (𝑋), 𝑍 = 1)]
+                  = 𝐸 [𝐸 (𝑌1 |𝑃(𝑋), 𝑍 = 1) − 𝐸(𝑌0 |𝑃(𝑋), 𝑍 = 0)|𝑍 = 1 ]                                 (2)
+That is, under these assumptions, we can use the outcomes of matched control municipalities as a
+counterfactual for the estimation of ATT. A two-step procedure is employed to obtain an empirical
+counterpart of (2). Firstly, a probabilistic regression model is estimated to get the propensity scores, 𝑃(𝑋).
+Second, based on algorithms, we make a match between the treated and non-treated municipalities which
+have a similar propensity score. For robustness purposes, we will apply three types of matching algorithms
+commonly used in the empirical literature: the nearest neighbor, the radius matching and the kernel
+matching. Caliendo and Kopeinig (2008) describe these algorithms in detail and discuss the advantages and
+disadvantages (in terms of bias and efficiency) of each one.
+
+4.2 The plausibility of the CIA and sensitivity analysis
+        The CIA assumption implies that the adoption of zoning is completely explained by observable
+variables. That is, the matching procedure is constructed by using all covariates that generate differences
+in the distribution of treated and non-treated units, making the probability of treatment equal between the
+matched pairs, as if there had been a random assignment (Caliendo and Kopeinig, 2008). Thus, it is essential
+that the vector 𝑋 contain detailed information on the relevant characteristics of municipalities, which will
+be possible with the Brazilian Demographic Census and the Survey of Basic Municipal Information
+(MUNIC). We will describe the variables used to obtain the propensity score in the next subsection.
+        However, even with detailed information on the municipalities, there is a possibility that the CIA is
+not valid due to the existence of unobservable variables (confounders) that affect both the adoption of
+zoning and the outcome variable. The existence of confounders can make the ATT estimator biased and
+therefore hardly credible - this is the weakness of PSM strategies. Although the CIA is, by construction, a
+non-testable assumption and the absence of confounders is little convincing, we can - through a sensitivity
+analysis – either evaluate the strength that an omitted variable must have to invalidate our ATT estimate or
+simulate potential confounders. In this sense, we will use two different kinds of sensitivity analysis
+(Rosenbaum, 2002 and Inchino et al. 2008) to verify the robustness of the ATT when the Conditional
+Independence Assumption fails.
+        Firstly, we will apply the sensitivity analysis developed by Rosenbaum (2002), which provides an
+indication of the magnitude of the omitted variable bias that would be necessary to invalidate the
+associations initially observed by the estimated ATT. This method is based on the parameter Γ, which
+measures the difference in odds of receiving the treatment between observations with the same observable
+characteristics. Therefore, a random experiment ensures Γ = 1, and when that Γ grows, the experiment
+becomes more distant from randomization. For example, in an observational study, if Γ = 3, then one of
+the units has three times as likely to receive the treatment due to unobservable factors, since the treated and
+untreated units are identical regarding the observable variables. Thus, the basic procedure for Rosenbaum
+sensitivity analysis is to select a series of Γ values and, for each one, calculate a bound of significance level
+(p-values) for the ATT in the case of a endogenous treatment selection (Diprete and Gangl 2004).
+        In addition, we will also apply a sensitivity analysis proposed by Ichino et al. (2008). This strategy
+aims to verify the bias of the estimated ATT when the CIA fails in some specific and relevant way. First, it
+is necessary to establish values for the parameters that characterize the distribution of a specific
+confounding factor, denoted by 𝑈. It’s assumed that this variable is binary, independent and identically
+distributed. Thus, the distribution of 𝑈 is completely characterized by the choice of four parameters,
+denoted by 𝑝𝑖𝑗 :
+
+𝑝𝑖𝑗 ≡ Pr(𝑈 = 1|𝑍 = 𝑖, 𝐼(𝑌 > 𝑦̅) = 𝑗)                                                                 (3)
+Where 𝑖, 𝑗 ∈ {0,1}, 𝐼 is an indication function and 𝑦̅ is the mean of the outcome variable. Based on the
+parameters defined by (3), a value of 𝑈 is given for each treated and control observation in accordance to
+one of the four groups to which the observation belongs. The simulated 𝑈 is considered as a new observable
+covariate and is then included in the set of variables used for the matching process. Finally, the ATT is
+computed again with the inclusion of confounder 𝑈. Therefore, by modifying the parameters that
+characterize the distribution of 𝑈, we can evaluate the robustness of the ATT against different assumption
+related to the nature of confound factor (Nannicini, 2007).
+        We will follow the simulation exercises proposed by Ichino et al. (2008) and choose 𝑝𝑖𝑗 in order to
+make the confounder distribution similar to the empirical distribution of important covariates. Furthermore,
+the confounders will be simulated to be threatening to the baseline ATT: will have positive correlation with
+the treatment status variable (𝑍) and with the outcome of non-treated units.
+5. Variables and Data
+        This section describes the construction and choices of the variables that will be used to implement
+the empirical strategy discussed above. More specifically, in subsection 5.1, we discuss the database
+employed in the paper and the main motivations for the covariate choices. Moreover, in the subsection 5.2,
+we will argue over the importance and the procedure to discount the property attributes from the respective
+rental price, in order to get a cleaner outcome variable.
+
+5.1 Database and Covariates
+        As previously discussed, our empirical strategy will take advantage of the fact that some
+municipalities have adopted zoning ordinance while others do not. Information on urban policies that each
+city adopts are obtained from the survey of Basic Municipal Information (MUNIC), a database elaborated
+annually by the Brazilian Institute of Geography and Statistics (IBGE) to gather information on the
+dynamics, structure and functioning of local institutions. Thus, our treatment variable is dichotomous and
+takes the value of one if the municipality had a zoning law in 20044, and takes the value of zero otherwise.
+For robustness purposes, we also employ other treatment variable that measures the degree of rigidity of
+the minimum lot size endorsed by the municipality. It will take the value of one in the case of the local
+administration set a minimum lot size greater than 125 m² and zero otherwise.
+        Regarding the outcome variables, we will use two throughout the paper: the average rental prices
+(measured in 2010 and adjusted by the property quality) and the growth of formal houses in the 2000-2010
+period. We will follow the Caliendo and Kopeing (2008) recommendation, and add only covariates that
+simultaneously affect the outcomes and the zoning adoption. To ensure that these variables are not directly
+affected by the treatment, they will be fixed in time or measured before the treatment (year 2000). The
+outcomes and the control variables were obtained from the Brazilian Demographic Census of 2000 and
+2010. It is necessary to point out that since our outcome variable was measured only in 2010, it is impossible
+to build a panel database.
+        The choice of the control variables that will be used to proceed with the matching between the
+municipalities that adopt zoning and those that do not adopt was based on recent empirical literature (e.g.
+Ihlanfeldt 2007, Glaeser and Ward 2009; Zabel and Dalton 2011; Monkkonen and Ronconi 2013; Kok,
+Monkkonen and Quigley 2014). We split the covariates into five - not mutually exclusive - sets: I) Demand
+Factors: characteristics that drive the intense use of urban land, such as population density, population
+growth (1991-2000) and per capita income; II) Externalities Factors: activities that inflict damage to the
+natural and social environment of cities, causing greater pressure for the adoption of urban planning laws,
+which include urbanization and industrialization rate; III) Demographics: since the zoning orders are set by
+municipal legislators, local citizens have a strong influence on the conduction of urban policy. In this sense,
+we include the following variables: average years of schooling, the percentage of blacks, of working age,
+
+4
+  We opted to choose this particular year because the information available in the MUNIC 2004 is consistent with each consulted
+local zoning order. Information about zoning are also collected in MUNIC 1999, 2005 and 2009. However, for these surveys
+there is some degree of disagreement with the local zoning orders. Anyway, in section 6.3, we will evaluate the robustness of
+the results to changes in the treatment assigned in the 1999, 2005 and 2009 MUNIC.
+immigrants, voter’s turnout and percentage of homeowners; IV) Urban Infrastructure: as discussed in
+section 2, policies that restrict the urban land use can be simply a way to avoid high densities in places with
+poor urban infrastructure, thus we include the following variables in the control set: percentage of
+households with sewage, with electricity and pipe water; V) Environmental and Fixed Factors: urban
+planning can also be established in order to protect the natural and cultural heritage from the real estate
+development. Thereby, cities that have coastline, units of natural conservation or historical-cultural capital
+may be more likely to adopt zoning orders. Therefore, we will use the year the city was founded as a proxy
+for the historical-cultural capital, coastline and conservation area dummies, and finally, the distance to the
+nearest capital city. In addition to these sets of covariates, we will also include state-fixed effects in the
+propensity score estimation. The use of this broad set of variables that characterize the municipalities aims
+to make the distribution of treated and untreated municipalities as similar as possible. However, it is very
+likely that there are unobservables that affect the zoning assignment. Our argument in this study is that
+these variables are not important enough to invalidate our results. In the next section, we will discuss the
+main evidence of the work.
+
+5.2 Constructing constant quality rental prices
+
+        An important concern in our analysis is the possibility that zoning occurs in cities with better
+housing standards. In this case, a positive relationship between zoning and average rental price could reflect
+only a simple association between prices and their hedonic attributes. In this study, we will use the
+correction proposed by Quigley and Raphael (2005), which seeks to adjust the rental prices in relation to
+property characteristics. This strategy aims to eliminate the influence of residences attributes of their
+respective rental prices, in order to obtain an average rent that only reflects the city’s characteristics.
+        Therefore, the first step is to estimate a hedonic regression for each Brazilian municipality (5,507
+separate regressions), where the dependent variable is the rental price and the independent variables are the
+properties characteristics available in the Demographic Census of 2010: number of rooms, number
+bathrooms, number of other rooms and a dummy that takes the value of one if the house is made of bricks
+and zero, otherwise (Seabra and Azzoni 2015). The dwelling is the observation unit in this analysis. In
+Appendix, the Table A1 summarizes the mean of the estimated coefficients. As expected, all the hedonic
+characteristics affect the rental prices positively. The last step is to combine the estimated coefficients of
+each city with the average hedonic characteristics of Brazil, in order to estimate the average rental price
+with constant quality. This will be our main outcome variable.
+6. Results
+
+        In this section, we will present and discuss the results obtained by applying the methodology
+described above. First, we will evaluate the matching quality and estimate the ATT considering different
+algorithms (subsection 6.1); then, we will conduct sensitivity analyses (subsection 6.2); and, finally, present
+some extensions and robustness checks (subsection 6.3).
+
+6.1 Baseline Results
+
+         Table 1 shows the means of covariates by treatment status before and after the application of
+matching procedure. Initially, we can see that cities that adopt zoning order are substantially different from
+those that do not. For example, regulated cities have a higher per capita income, higher population density,
+are more urbanized, supply a better infrastructure, are closer to the state capital and also have more natural
+amenities. It is noted that the mean difference for all observable characteristics is large and statistically
+significant between the two types of cities. This shows that a simple mean difference of rental price between
+municipalities with and without zoning is useless for impact evaluation.
+         For this reason, is necessary to proceed with the matching between municipalities. The columns (5)
+and (6) of Table 1 show the covariates’ means after application of a nearest neighbor matching algorithm
+with replacement and imposing a common support. 35 treated municipalities (0.63% of the total group)
+were outside of the common support region and, therefore, were excluded. We can see that after the
+matching, the characteristics of both kinds of municipalities become very similar, so that there were no
+statistically significant differences5. This evidence suggests a good matching quality.
+
+Table 1 – Mean characteristics of cities that adopt zoning (treated) and that do not (control)
+          Variable Name                       All                Before Matching                              After Matching
+                                                         Treated Control Difference                 Treated     Control Difference
+Log Income (Per Capita)                     5.660         6.104      5.511     0.593**                6.086      6.070       0.015
+Log Population Density                      3.149         3.866      2.908     0.958**                3.777      3.732       0.045
+Population Growth (91-00)                   0.090         0.130      0.077     0.053**                0.128      0.116       0.012
+% Workers in Industrial Sector              0.156         0.213      0.137     0.077**                0.213      0.209       0.004
+Urbanization Rate                           0.589         0.715      0.546     0.169**                0.708      0.703       0.005
+% Immigrants                                0.362         0.436      0.338     0.098**                0.434      0.425       0.009
+% Homeowners                                0.769         0.752      0.774    -0.022**                0.752      0.756      -0.004
+% Working-Age population                    0.391         0.433      0.376     0.057**                0.432      0.433       0.000
+% Black Population                          0.058         0.047      0.062    -0.016**                0.047      0.048      -0.002
+% Households with Pipe Water                0.581         0.691      0.544     0.147**                0.685      0.692      -0.007
+% Households with Electricity               0.869         0.952      0.841     0.111**                0.951      0.954      -0.003
+% Households with Sewage                    0.228         0.302      0.204     0.099**                0.297      0.294       0.003
+Avg. Schooling of 25 years old              4.037         5.121      3.673     1.448**                5.057      5.053       0.004
+Turnout in Mun. Elections                   0.867         0.874      0.865     0.010**                0.875      0.877      -0.002
+Year of Mun. Foundation                     1961.8        1957.4    1963.3    -5.900**               1957.8      1959       -1.200
+Distance to the State Capital              253.183       233.520 259.860 -26.340**                  237.400    245.360      -7.960
+Coastal Municipality (1/0)                  0.049         0.088      0.036     0.053**                0.079      0.096      -0.017
+Conservational Area (1/0)                   0.127         0.264      0.081     0.183**                0.249      0.244       0.005
+Number of Observations                       5498          1386      4112         -                   1351       4112          -
+Note: For the described matching, we used the nearest neighbor propensity score with replacement and imposing common support area.
+*** p< 0.01, ** p < 0.05, *** p < 0.1.
+
+
+        Table 2 summarizes the results of the propensity score estimation. We used a logit probability model
+with state fixed-effects. Although the choice of a probabilistic model is not critical to the ATT estimation,
+when compared to the probit function, the logit function has more density mass in the bounds (Caliendo
+and Kopeing 2008). We note that most of the estimated coefficients take the expected signs based on what
+5
+  We also use 27 state dummies to build the matching sample of Table 1. The results have been omitted for space constraints, but reveal that
+the mean difference (with respect to these variables) is not statistically significant between the two kinds of municipalities.
+has been discussed above and are consistent with the descriptive statistics of Table 1. Cities with higher
+income and more educated individuals are more likely to adopt zoning as an urban planning law, which
+conforms to Gyourko, Saiz, and Summers (2008). Areas that have a greater demand for land use (measured
+by population density), are more urbanized, which have a higher manufacturing share, and, a precarious
+urban infrastructure also adopt zoning more easily. This last fact suggests that, Brazilian cities may be using
+the zoning law as a legal instrument to limit development in areas with poor infrastructure. Finally, the
+evidence in Table 2 also points a positive correlation between the use of zoning and the existence of natural
+amenities.
+
+                         Table 2 - Propensity Score Estimation: Determinants of Zoning
+     Dependent Variable: Zoning (1/0)                                              Coefficient                Std. Err.
+     Log Income (Per Capita)                                                        0.724***                   0.219
+     Log Population Density                                                         0.314***                   0.053
+     Population Growth (91-00)                                                        0.273                    0.213
+     % Workers in Industrial Sector                                                   0.589                    0.533
+     Urbanization Rate                                                               0.656*                    0.360
+     % Immigrants                                                                    -0.312                    0.462
+     % Homeowners                                                                    -0.805                    0.549
+     % Working-Age population                                                        -0.647                    1.044
+     % Black Population                                                               0.036                    1.197
+     % Households with Pipe Water                                                    -0.128                    0.299
+     % Households with Electricity                                                 -1.484***                   0.634
+     % Households with Sewage                                                        -0.351                    0.262
+     Avg. Schooling of 25 years old                                                 0.702***                   0.091
+     Voter Turnout in Mun. Elections                                               -2.778***                   0.844
+     Year of Mun. Foundation                                                         -0.001                    0.003
+     Distance to the State Capital                                                  0.001**                    0.000
+     Coastal Municipality (1/0)                                                     0.585***                   0.198
+     Conservational Area (1/0)                                                      0.568***                   0.114
+     Constant                                                                        -4.085                    5.397
+                            State Fixed-Effects                                                   Yes
+                                 Pseudo R²                                                        0.32
+                              Log Likelihood                                                     -2111
+Note: The dependent variable is an indicator for zoned municipalities. The estimation was carried out with a logit function. ***
+p< 0.01, ** p < 0.05, *** p < 0.1.
+
+         After obtaining the propensity scores, we will calculate the impact of zoning on the average rental
+prices and the real estate market growth using four different matching algorithms. Table 4 shows the
+estimated ATT and the corresponding measures of matching quality suggested by Rosenbaum and Rubin
+(1983). In this case, the pseudo R² is obtained by estimating the propensity score using only the matched
+sample. It can be seen that for any of the matching algorithms, we obtain low values of pseudo R² and mean
+standardized bias. For example, considering the nearest neighbor algorithm (column (1)), the mean
+standardized bias dropped by about 90.8%6. These results support those obtained in Table 1, demonstrating
+that, in fact, it is perfectly possible to build groups of reasonably similar municipalities.
+         The estimated ATTs vary from 0.054 to 0.062, indicating that cities that adopt zoning as urban
+planning policy have an average rent 5% higher compared to the non-adopters. This effect is substantial,
+since it corresponds to about 12.46% of the unconditional difference of average rental between the two
+kinds of municipalities. Based on our discussion of Section 2, this evidence shows that the zoning orders
+drawn up by Brazilian municipalities have some level of compliance. In addition, the positive impact of
+zoning on prices is also in line with the empirical literature that, when analyzing American cities, found
+
+
+6
+    The mean standardized bias before the matching is 32.4.
+positive associations between higher levels of land-use restrictiveness and real estate prices. (Quigley and
+Raphael 2005, Ihlandfeldt 2007, Zabel and Dalton 2011).
+
+    Table 3 – The Impact of Zoning on Average Rental Prices and on Real Estate Market Growth
+       Panel A: Average Rent Prices                     (1)                         (2)                    (3)        (4)
+                                                Nearest Neighbor           10 Nearest Neighbor           Radius     Kernel
+                       ATT                         0.05393**                   0.05848***              0.06013** 0.06268***
+                                                    (0.0212)                     (0.0191)               (0.0218)   (0.0201)
+                                                    [0.0164]                     [0.0110]               [0.0113]   [0.0098]
+            Bias After Matching                        3.1                          1.5                    1.8        1.6
+                 Pseudo R²                            0.015                        0.009                 0.008       0.008
+       Panel B: House Growth                            (1)                         (2)                    (3)        (4)
+                                                Nearest Neighbor           10 Nearest Neighbor           Radius     Kernel
+                       ATT                           -0.0094                      0.0071                 0.0012     0.0079
+                                                    (0.0393)                     (0.0280)               (0.0265)   (0.0255)
+                                                    [0.0356]                     [0.0297]               [0.0284]   [0.0253]
+             Bias After Matching                       3.7                          2.4                    2.7        2.6
+                  Pseudo R²                           0.019                        0.009                  0.01       0.008
+Note: Analytical and bootstrap standard errors (200 interactions) are reported in round and square brackets, respectively. The Radius matching
+uses a 0.01 caliper and the Kernel matching is constructed using an Epanechnikov function. *** p < 0.01, ** p < 0.05, *** p < 0.1. The average
+rent prices are corrected by their hedonic attributes (subsection 5.2).
+
+
+        The panel B of Table 3 shows that, regardless of the matching algorithm used, the zoning law does
+not affect real estate market growth. Therefore, we cannot associate the higher rental prices simply to a
+reduction in housing supply. There is a variety of mechanisms that can explain the causes of larger rental
+prices in regulated cities. For example, the need to comply with parameters and building codes can generate
+higher development costs (Quigley 2007), higher land prices (Kok, Monkkonen and Quigley 2014), or the
+land-use regulation can reduce housing supply elasticity, which favors large increases of prices in response
+to variations in demand. In addition, zoning can function as a kind of insurance against conflicting land
+uses, thus causing an appreciation of proprieties (Zhou, McMillen and McDonald 2008). While
+understanding the mechanisms that underlie the relationship between zoning and higher prices is important,
+the aggregated nature of our database does not allow inferences in this way.
+        Coming back to the ATT estimative on the average rental prices, how reliable are our estimates?
+The answer will depend on how the estimated ATTs change against failures in Common Independence
+Assumption (CIA). We believe that, even including important covariates to the propensity score estimation,
+there are unmeasurable variables that affect both the outcome variable and zoning adoption. For example,
+the degree of concern of municipal governments with issues related to urban planning is not measurable
+and is a potential confounding factor that can invalidate the CIA. In the next subsection, we will conduct
+different kinds of sensitivity analysis.
+
+6.2 Sensitivity Analyses
+
+        Firstly, we employ the Rosenbaum (2002) bounds approach to measure the sensitivity of the
+baseline specification when our key assumption (CIA) is relaxed. Thus, we use different values of Γ -which
+measures the difference in odds of receiving the treatment between observations with the same observable
+characteristics - to verify changes in inference due to the existence of unobservable confounders. Table 4
+shows the results for Γ ranging from 1 to 2 and the corresponding p-value bounds.
+        It can be seen that up to Γ = 1.8, the estimated ATT remains statistically significant at the usual
+level of 5%. This indicates that a city may have a chance to adopt zoning 80% higher than the others due
+to unobservable characteristics and yet, our initial evidence remains reliable. Only when Γ = 1.9, the ATT
+is no longer significant at the usual levels. Thus, for the higher rental prices to be associated with a
+unobservable variable instead of zoning order, it is necessary that this confound increase by 90% the odds
+of a municipality implement the zoning. Consequently, the results of Table 3 cannot be explained by a
+simple moderate omitted-variable bias.
+
+                                    Table 4 - Sensitivity Analysis I: Rosenbaum Bounds
+                                                             Average Rent Prices
+                           Γ                p-crit+          p-crit-          Γ                    p-crit+           p-crit-
+                          1.00              0.000            0.000          1.55                   0.000             0.000
+                          1.05              0.000            0.000          1.60                   0.000             0.000
+                          1.10              0.000            0.000          1.65                   0.001             0.000
+                          1.15              0.000            0.000          1.70                   0.004             0.000
+                          1.20              0.000            0.000          1.75                   0.014             0.000
+                          1.25              0.000            0.000          1.80                   0.039             0.000
+                          1.30              0.000            0.000          1.85                   0.088             0.000
+                          1.35              0.000            0.000          1.90                   0.170             0.000
+                          1.40              0.000            0.000          1.95                   0.285             0.000
+                          1.45              0.000            0.000          2.00                   0.426             0.000
+                          1.50              0.000            0.000
+Note: the parameter Γ measures the odds of receiving the treatment considering municipalities with the same observable characteristics. The
+method is built based on the nearest neighbor matching without replacement.
+
+
+        The results of the sensitivity analysis proposed by Inchino et al. (2008) can be seen in Table 5. We
+choose values of 𝑝𝑖𝑗 in order to simulate confounders with distributions analogous to those of the observed
+covariates and that have a positive correlation with treatment and outcome variables 7. This way, we
+simulated unobservables with a similar distribution of the following variables: per capita income,
+population density, urbanization rate, average schooling, conservation area and coastal municipality
+dummy. It is worth mentioning that the Inchino et al. (2008) procedure assumes that the distribution of
+simulated confounder is discrete8. Thus, to mimic the continuous covariates, we use the following criteria:
+the simulated binary variable will take the value of one if its value is above the mean (or median) of the
+distribution, and zero otherwise.
+
+                                 Table 5 - Sensitivity Analysis II: Simulated Confounders
+                                          p11          p10          p01          p00          Out. Eff.      Selec. Eff,       ATT     SE
+    Baseline                                  0            0            0            0             -              -            0.054*** 0.021
+    Neutral                                  0.5          0.5          0.5          0.5         1.019           1.006          0.062*** 0.008
+    Confound to Mimic
+    Income (Mean)                           0.94         0.44         0.76         0.16         17.598           3.713         0.044***    0.010
+    Income (Median)                         0.91         0.35         0.71         0.13         17.736           3.406         0.045***    0.009
+    Average Schooling (Mean)                0.92         0.43         0.71         0.14         15.146           4.044         0.044***    0.010
+    Average Schooling (Median)              0.92         0.42         0.69         0.13         15.338           4.075         0.043***    0.010
+    Density (Mean)                          0.71         0.49         0.45         0.45         0.993            2.327         0.062***    0.010
+    Density (Median)                         0.7         0.49         0.44         0.45         0.990            2.300         0.061***    0.010
+    Urbanization Rate (Mean)                0.77         0.46         0.59         0.32         3.111            2.193         0.055***    0.010
+    Urbanization Rate (Median)              0.76         0.45         0.58         0.31         3.120            2.190         0.054***    0.009
+    Coastal City (1/0)                      0.09         0.08         0.04         0.03         1.286            2.545         0.062***    0.008
+    Conservational Area (1/0)               0.29         0.11         0.12         0.05         2.945            2.993         0.058***    0.011
+Note: The method is based on nearest neighbor matching with 200 interactions. The outcome effect measures the impact of the unobserved
+variable on the untreated outcome, while the selection effect measures the impact of the unobserved variable on treatment assignment. *** p
+< 0.01, ** p < 0.05, *** p < 0.1.
+
+
+
+
+7   This would be an unobserved variable with potential to explain the positive impact of zoning on rental prices.
+
+8 Through   Monte Carlo simulations, the authors concluded that the assumption that the confounder assumes a discrete distribution when in fact
+it is continuous is not able to generate erroneous conclusions regarding the sensibility of the ATT. Moreover, Wang & Krieger (2006) show
+that binary variables are more threatening to causal inference than continuous ones.
+         From Table 5, it can be seen that when the CIA does not hold due to the existence of a specific
+unobservable confounder, the magnitude of the ATT changes but remains qualitatively important and
+statistically significant. For example, even if we are omitting an unobservable that is too important to the
+adoption of zoning such as per capita income or population density (Alterman 2013, Gyourko, Saiz and
+Summers 2008), our initial evidence remains valid. These results reinforce the conclusion reached by
+applying the Rosenbaum bounds, indicating that, in fact, the positive impact of zoning on the average rental
+price does not seem to be driven by some omitted variable.
+
+6.3 Robustness Checks
+
+        In addition to the sensitivity analysis described in the previous subsection, we also verified the
+robustness against changes in the definition of treatment and outcome variables. Firstly, it was considered
+a more specific measure of land-use restrictiveness: the minimum lot size. As discussed in Section 2, some
+municipalities determine a minimum lot size greater than the recommendation of Federal Law 6799/79,
+becoming more rigid. Thus, we modify the treatment variable to a dummy that takes the value o 1 in case
+the municipality set a minimum lot size higher than 125m² and 0 otherwise. To get a clearer impact of this
+regulatory instrument, we dropped the municipalities that already have some zoning ordinance. Thus, the
+number of municipalities fell to 4,121, where 956 (23.19%) set a minimum lot size higher than 125m². The
+results of this exercise can be seen in panel A of Table 6.
+
+Table 6 – The impact of Zoning: ATT using different treatment and outcome variables
+ Panel A: Higher Minimum Lot Size                        (1)                           (2)                       (3)                (4)
+                                                  Nearest Neighbor            10 Nearest Neighbor              Radius             Kernel
+                     ATT                             0.0381**                      0.0301***                0.0284***          0.0351***
+                                                      (0.0211)                      (0.0169)                  (0.0179)           (0.0173)
+                                                      [0.0177]                      [0.0113]                  [0.0107]           [0.0102]
+        Bias After Matching                              2.6                            1                        0.9                1.2
+             Pseudo R²                                  0.014                         0.002                     0.002              0.002
+Panel B: Average Rent Prices                             (1)                           (2)                       (3)                (4)
+                                                  Nearest Neighbor            10 Nearest Neighbor              Radius             Kernel
+                     ATT                            0.04607***                    0.05125***                0.05112***         0.05462***
+                                                      (0.0227)                      (0.0198)                  (0.0222)           (0.0205)
+                                                      [0.0165]                      [0.0111]                  [0.0105]           [0.0088]
+         Bias After Matching                              3                            2.3                       2.5                2.4
+               Pseudo R²                                0.013                         0.008                     0.008              0.008
+      Panel C: Median Rent Prices                        (1)                           (2)                       (3)                (4)
+                                                  Nearest Neighbor            10 Nearest Neighbor              Radius             Kernel
+                     ATT                              0.0295*                      0.0398***                0.0407***          0.0442***
+                                                      (0.0242)                      (0.0207)                  (0.0229)           (0.0212)
+                                                      [0.0173]                      [0.0107]                  [0.0096]           [0.0092]
+           Bias After Matching                            3                            2.3                       2.5                2.4
+                Pseudo R²                               0.013                         0.008                     0.008              0.008
+Note: In panel A, the treatment variable is modified to a dummy that takes the value of 1 if the municipality adopts a minimum lot size (MLS)
+greater than 125 square meters and 0 otherwise. In panels B and C, the outcome variable is modified to the average/median rent prices without
+the hedonic correction. Analytical and bootstrap standard errors (200 interactions) are reported in round and square brackets, respectively. The
+Radius matching uses a 0.01 caliper and the Kernel matching is constructed using an Epanechnikov function. *** p < 0.01, ** p < 0.05, *** p
+< 0.1.
+
+        The estimated ATT indicates that in municipalities that adopt stricter criteria regarding the minimum
+lot size, the average rental prices are around 2.84% to 3.51% higher when compared to those who do not.
+This result is in line with our previous discussion and reveals the robustness of the results to different
+treatment criteria. In panels B and C of Table 6, we change the outcome variable to the average and median9
+rental price without making any adjustments to the property characteristics. That is, the rental prices are not
+measured with constant quality. This robustness test is useful to demonstrate that the adjustment made in
+the outcome variable, before calculating the zoning impact, was not decisive to find an economically
+significantly result. In this case, the Figures of panels B and C indicate that there was a reduction in the
+magnitude of the estimated ATT. However, the results remain economically important, indicating
+robustness.
+        Finally, as argued in subsection 5.1, we chose to use the treatment assignment (zoning) based on the
+MUNIC survey of 2004. Data about zoning ordinances were also collected in MUNIC 1999, 2005 and
+2009. However, among these surveys, there are some divergences regarding the information about the
+municipality zoning adoption. The 2004 survey has a higher degree of compliance with local laws,
+inspected manually. For this reason, this survey was chosen to define the municipalities that have zoning
+ordinances. Anyway, to demonstrate that our result was not driven by this choice, we also estimate the ATT
+modifying the treatment criterion to that one’s defined on MUNIC 1999, 2005 and 2009. The results are
+displayed in table 2A of Appendix (Panels A, B and C). In panel D of Table 2A, the assignment is defined
+as follows: the municipality is treated (has zoning ordinances) if defined in at least one of MUNIC surveys.
+The result of table 3A shows that although there is a significant variation in the estimated ATTs, the results
+remain significant and economically relevant. That is, our conclusion is not sensitive to different MUNIC
+surveys.
+
+7. Conclusions
+
+        In recent decades, due to the increased autonomy of local governments, the rising of income and a
+greater federal concern with urban planning issues, there has been, in Brazil, the diffusion of the idea of the
+urban land-use regulations. In this context, the number of cities with zoning law has grown from 64 in 1978
+to 1,724 in 2013. Nevertheless, little is known about the impact of these local policies on the functioning
+of the Brazilian real estate market. Our study sought to contribute to this debate.
+        To reduce concerns about the endogeneity in the relationship between zoning and prices, we use a
+strategy based on the Propensity Score Matching (PSM). However, a necessary assumption is that the
+adoption of zoning is determined only by observable characteristics. This hypothesis, known as Conditional
+Independence Assumption (CIA), is little credible. Thus, through sensitivity analysis (Rosenbaum 2002,
+Inchino et al. 2008), we evaluate how our findings are robust to failures in the CIA. The results indicate
+that zoning generates an increase in the average rental price by 5.4% to 6.3%. Moreover, this evidence was
+robust to different matching algorithms, to the fails in CIA and, also, to changes in the definition of the
+outcome and treatment variables.
+        The fact that the cost of housing is higher in cities that restrict land use is consistent with previous
+studies showing that regulations favored the development of the informal housing market and slum
+formation (Biderman, 2007, Cavalcanti and Da Matta 2013). Facing a higher price in the formal housing
+market, low-income households tend to migrate to the informal ones. Consequently, there is a welfare loss,
+since this type of market is characterized by poor urban infrastructures. In this way, zoning ordinances can
+be generating social costs that are not negligible. In terms of public policy, it is necessary that programs
+aimed to finance affordable housing also consider the degree of land use restrictiveness in the
+municipalities. Areas with more intense zoning may have a wider coverage of these policies, in order to
+offset the adverse effects of land-use restrictions.
+
+
+
+
+9
+    Unlike the average rent, the median rent is less sensitive to extreme values.
+References
+Alterman, R. (2013). Planning Laws , Development Controls , and Social Equity : Lessons for Developing
+     Countries. World Bank Legal Review, 5, 1–32.
+Arimah, B. C., and Adeagbo, D. (2000). Compliance with urban development and planning regulations in
+    Ibadan , Nigeria. Habitat International, 24(3), 279–294.
+Biderman, C. (2007). Regulation and Informal Settlements in Brazil : A Quasi-Experiment Approach.
+    Lincoln Institute of Land Policy.
+Boamah, N. A. (2013). Land use controls and residential land values in the Offinso South municipality,
+    Ghana. Land Use Policy, 33, 111–117. doi:10.1016/j.landusepol.2012.12.016
+Borges, M. (2007). Zoneamento na Cidade do Rio de Janeiro: Gênese, Evolução e Aplicação. UFRJ.
+Brueckner, J. K., and Lall, S. (2015). Cities in Developing Countries: Fueled by Rural-Urban Migration,
+    Lacking in Tenure Security, and Short of Affordable Housing. Handbook of Regional and Urban
+    Economics, (5).
+Brueckner, J. K., and Sridhar, K. S. (2012). Measuring welfare gains from relaxation of land-use
+    restrictions: The case of India’s building-height limits. Regional Science and Urban Economics, 42(6),
+    1061–1067. doi:10.1016/j.regsciurbeco.2012.08.003
+Caliendo, M., and Kopeinig, S. (2008). Some Practical Guidance for the Implementation of Propensity
+     Score Matching. Journal of Economic Surveys, 22(1), 31–72.
+Cavalcanti, T., and Da Mata, D. (2013). On the Determinants of Slum Formation. Unpublished Manuscript,
+    Department of Economics, University of Cambridge.
+Diprete, T. A., and Gangl, M. (2004). Assessing Bias in the Estimation of Causal Effects: Rosenbaum
+    Bounds on Matching Estimators and Instrumental Variables Estimation With Imperfect Instruments.
+    Sociological Methodology, 34, 271–310.
+Duarte, G. B., Silveira-Neto, R., and Sampaio, B. (2015). Restrictions on Urban Land Use and Property
+    Values : Empirical evidence from Brazil.
+Fischel, W. (2004). An economic history of zoning and a cure for its exclusionary effects. Urban Studies,
+     41(2), 317–340. doi:10.1080/0042098032000165271
+Glaeser, E. L., and Ward, B. a. (2009). The causes and consequences of land use regulation: Evidence from
+    Greater Boston. Journal of Urban Economics, 65(3), 265–278. doi:10.1016/j.jue.2008.06.003
+Gyourko, J., Saiz, a., and Summers, a. (2008). A New Measure of the Local Regulatory Environment for
+    Housing Markets: The Wharton Residential Land Use Regulatory Index. Urban Studies, 45(3), 693–
+    729. doi:10.1177/0042098007087341
+Ichino, A., Mealli, F., and Nannicini, T. (2008). From Temporary Help Jobs to Permanent Employment :
+     What Can We Learn from Matching Estimators and their Sensitivity ? Journal of Applied
+     Econometrics, 23(3), 305–327.
+Ihlanfeldt, K. R. (2007). The effect of land use regulation on housing and land prices. Journal of Urban
+     Economics, 61(3), 420–435. doi:10.1016/j.jue.2006.09.003
+Kok, N., Monkkonen, P., and Quigley, J. M. (2014). Land use regulations and the value of land and housing:
+    An     intra-metropolitan   analysis.    Journal     of    Urban     Economics,       81,    136–148.
+    doi:10.1016/j.jue.2014.03.004
+Lall, S. V, Wang, H. G., and Da Mata, D. (2007). Do Urban Land Regulations Influence Slum Formation?
+      Evidence From Brazilian Cities. Proceedings of the 35th Brazilian Economics Meeting. No. 119.
+      ANPEC-Brazilian Association of Graduate Programs in Economics.
+McDonald, J. F., and McMillen, D. (2012). The Economics of Zoning. In N. Brooks, K. Donaghy, and G.-
+   J. Knaap (Eds.), The Oxford handbook of urban economics and planning (1st ed., p. 1006). Oxford
+    University Press.
+Monkkonen, P., and Ronconi, L. (2013). Land Use Regulations, Compliance and Land Markets in
+   Argentina. Urban Studies, 50(10), 1951–1969. doi:10.1177/0042098012471982
+Nannicini, T. (2007). Simulation-based sensitivity analysis for matching estimators. Stata Journal, 7(3),
+    334.
+Nery Júnior, J. (2013). Um Século de Política Para Poucos : O Zoneamento Paulistano 1886-1986. Anais:
+    Encontros Nacionais Da ANPUR 10.
+Quigley, J. M. (2007). Regulation and Property Values in the United States: The High Cost of Monopoly
+    (No. W06-004). .
+Quigley, J. M., and Raphael, S. (2005). Regulation and the high cost of housing in California. American
+    Economic Review, .(.), 323–328.
+Quigley, J. M., and Rosenthal, L. (2005). The effects of land regulation on the price of housing: What do
+    we know? What can we learn? Cityscape, 8(1), 69–110.
+Rosenbaum, P. R. (2002). Observational studies (Vol. 4). New York: Springer.
+Rosenbaum, P., and Rubin, D. (1983). The Central Role of the Propensity Score in Observational Studies
+    for Causal Effects. Biometrika, 70(1), 41–55.
+Schuetz, J., Meltzer, R., and Been, V. (2011). Silver Bullet or Trojan Horse? The Effects of Inclusionary
+    Zoning on Local Housing Markets in the United States. Urban Studies, 48(2), 297–329.
+    doi:10.1177/0042098009360683
+Seabra, D., and Azzoni, C. R. (2015). Custo de Vida Comparativo para os Distritos das 100 Maiores
+    Cidades Brasileiras. Temas de Economia Aplicada - FIPE, 12–24.
+Wang, L., and Krieger, A. M. (2006). Causal conclusions are most sensitive to unobserved binary
+   covariates. Statistics in Medicine, 25(13), 2257–2271. doi:10.1002/sim.2344
+Zabel, J., and Dalton, M. (2011). The impact of minimum lot size regulations on house prices in Eastern
+    Massachusetts.      Regional     Science     and   Urban       Economics,      41(6),     571–583.
+    doi:10.1016/j.regsciurbeco.2011.06.002
+Zhou, J., McMillen, D. P., and McDonald, J. F. (2008). Land Values and the 1957 Comprehensive
+    Amendment to the Chicago Zoning Ordinance. Urban Studies, 45(8), 1647–1661.
+    doi:10.1177/0042098008091495
+Appendix
+
+Figure 1A – Spatial Distribution of Municipalities by Zoning Adoption
+
+
+
+
+ Source: Survey of basic municipal information (MUNIC), 2004.
+
+
+
+
+Table 1A – Average Regression Coefficients of the Hedonic Models.
+                    Variable                                                Average Coefficient
+               Brick Dummy (1/0)                                                 74.4631
+               Number of Rooms                                                   30.9680
+              Number of Bathrooms                                                218.7929
+             Number of Other Rooms                                               30.0606
+                    Constant                                                    -128.0507
+Note: The figures reported in the table display the average coefficient for each variable. 5507 municipality-regressions were
+estimated, where the observation unit is the dwelling. The number of observations varies for each municipality.
+Table 2A – The impact of Zoning: ATT using different MUNIC surveys to establish the treatment
+assignment.
+      A. Zoning MUNIC 1999                              (1)                                (2)                         (3)        (4)
+                                                Nearest Neighbor                  10 Nearest Neighbor                Radius     Kernel
+                  ATT                               0.02053                           0.03610***                  0.03461*** 0.05200***
+                                                    (0.0236)                            (0.0203)                    (0.0215)   (0.0222)
+                                                    [0.0175]                            [0.0133]                    [0.0105]   [0.0112]
+             N Treated                                1186                                1186                        1186       1186
+            Off Support                                 34                                  34                          72        34
+        Bias After Matching                             3.6                                2.7                         2.4        2.8
+             Pseudo R²                                0.017                               0.008                       0.007      0.007
+      B. Zoning MUNIC 2005                              (1)                                (2)                         (3)        (4)
+                                                Nearest Neighbor                  10 Nearest Neighbor                Radius     Kernel
+                  ATT                               0.0481**                           0.0342***                   0.0399*** 0.0462***
+                                                    (0.0214)                            (0.0164)                    (0.0166)   (0.0169)
+                                                    [0.0191]                            [0.0106]                    [0.0096]   [0.0097]
+             N Treated                                1131                                1131                        1131       1131
+            Off Support                                  5                                  5                           26         5
+        Bias After Matching                             2.5                                1.9                         1.3        1.4
+             Pseudo R²                                0.010                               0.004                       0.002      0.003
+      C. Zoning MUNIC 2009                              (1)                                (2)                         (3)        (4)
+                                                Nearest Neighbor                  10 Nearest Neighbor                Radius     Kernel
+                  ATT                              0.0344***                           0.0395***                   0.0382*** 0.0428***
+                                                    (0.0201)                            (0.0161)                    (0.0158)   (0.0157)
+                                                    [0.0130]                            [0.0094]                    (0.0084)   [0.0080]
+              N Treated                               2111                                2111                        2111       2111
+             Off Support                                 3                                  3                           30         3
+         Bias After Matching                            3.2                                1.9                         1.7         2
+              Pseudo R²                               0.012                               0.004                       0.004      0.005
+           D. Zoning Sum                                (1)                                (2)                         (3)        (4)
+                                                Nearest Neighbor                  10 Nearest Neighbor                Radius     Kernel
+                  ATT                               0.0421**                           0.0637***                   0.0488*** 0.0706***
+                                                    (0.0225)                            (0.0195)                    (0.0218)   (0.0183)
+                                                    [0.0161]                            [0.0112]                    [0.0116]   [0.0094]
+              N Treated                               2611                                2611                        2611       2611
+             Off Support                               132                                 132                         132        132
+         Bias After Matching                           4.90                                3.1                         4.3         3
+              Pseudo R²                                0.02                               0.012                       0.017      0.01
+Note: Analytical and bootstrap standard errors (200 interactions) are reported in round and square brackets, respectively. The Radius matching
+uses a 0.01 caliper and the Kernel matching is constructed using an Epanechnikov function. *** p < 0.01, ** p < 0.05, *** p < 0.1. Average
+rent prices were corrected for their hedonic attributes (subsection 5.2).
+

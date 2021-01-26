@@ -1,0 +1,749 @@
+Estimando a aversão ao risco no mercado de seguros
+                  de automóveis
+Caio Matteucci de Andrade Lopes*                     Bruno César Auricchio Ledo†
+          FEARP-USP                                         FEARP-USP
+
+
+
+
+                                          Resumo
+
+     O objetivo deste trabalho é estimar a distribuição da aversão ao risco dos consu-
+     midores no mercado de seguros de automóveis. Para isso, será utilizado o modelo
+     proposto por Cohen e Einav (2007) que permite heterogeneidade não observada no
+     risco e na aversão ao risco. Os dados utilizados referem-se a região metropolitana
+     de São Paulo, sendo que a análise se restringiu à seguradora com maior partici-
+     pação neste mercado. A metodologia empregada será a amostragem de Gibbs que
+     possibilita o aumento dos dados das variáveis latentes risco e aversão ao risco. Os
+     resultados obtidos indicam que os coeficientes de aversão ao risco absoluto apresen-
+     tam média baixa e mediana ainda menor, o que caracteriza elevada dispersão dos
+     coeficientes.
+
+     Classificação JEL: D81, D82, C11
+     Palavras-chave: Aversão ao risco, mercado de seguros, inferência bayesiana
+
+
+                                         Abstract
+
+     This study aims to estimate the distribution of risk aversion from the car insurance
+     market. For this, the method proposed by Cohen e Einav (2007) model that allows
+     unobserved risk is used. The data refer to the metropolitan area of São Paulo with
+     an analysis restricted to only one insurer. The methodology will be the Gibbs sam-
+     pling which enables increased data risk of latent variables and risk aversion. The
+     results indicate a small mean level of absolute risk aversion and even lower median,
+     featuring high dispersion coefficients.
+
+     JEL classification: D81, D82, C11
+     Keywords: Risk preferences, insurance market, bayesian inference
+
+Classificação ANPEC: Área 8 - Microeconomia, Métodos Quantitativos e Finanças
+
+
+
+*
+    caio.matteucci.lopes@usp.br
+†
+    bruno@fearp.usp.br
+
+
+                                              1
+1 Introdução
+    As decisões sob incerteza estão presentes em diversas áreas da economia. Os agentes
+podem reagir de diferentes formas frente a situações de risco, pois possuem preferências
+heterogêneas em relação ao seu risco. Neste contexto, um estudo empírico, em determi-
+nado mercado, a fim de estimar tais preferências torna-se muito relevante. Um mercado
+de seguros em que os agentes procuram compartilhar seus riscos é o ponto de partida ideal
+para estudar a aversão ao risco dos mesmos. Este trabalho pretende estimar a aversão ao
+risco de uma população a partir de dados sobre o mercado de seguro de automóveis em
+São Paulo.
+    Existe, porém, no mercado de seguros fortes evidências acerca da presença de assime-
+tria de informação, ou seja, é provável que o segurado possua algum tipo de informação
+privada, não observável pelas seguradoras. Em relação à assimetria, pode-se dividi-la em
+dois contextos: antes da assinatura do contrato e durante a vigência do mesmo. O pri-
+meiro caso, conhecido como seleção adversa consiste na existência de informação privada
+por alguma das partes (contratante ou contratado) desde antes do acordo contratual. O
+segundo refere-se a possibilidade que os indivíduos têm de influenciar o comprimento do
+contrato a partir de suas ações durante a vigência do mesmo.
+    Segundo Chiappori e Salanié (2000), a diferença entre seleção adversa e risco moral é
+mais uma questão de interpretação que estrutura. Na presença de seleção adversa, a esco-
+lha de um contrato é determinada pelas preferências dos indivíduos (por exemplo, aversão
+ao risco), que podem estar relacionadas com o risco. Nesse caso, como os agentes tem
+maior conhecimento sobre suas preferências, eles tem mais conhecimento sobre seu risco,
+mesmo que de forma indireta. Já com risco moral, o indivíduo que escolheu um contrato
+com maior cobertura tem menos incentivo a prevenir-se contra acidente. Apesar de, em
+ambos os casos, existir a correlação entre a escolha da cobertura e o risco de acidente, a
+relação de causalidade é invertida. Portanto, diferentemente da seleção adversa, em caso
+de risco moral os agentes não escolhem determinada cobertura por causa do baixo risco,
+mas sim, o risco é baixo devido aos incentivos que o contrato escolhido proporciona.
+    O estudo citado acima mostrou que, muitas vezes, os modelos de assimetria de infor-
+mação no mercado de seguros não possuem sustentação empírica. Isto é, os dados não
+mostram correlação entre a escolha da cobertura e o risco de acidente. Com isso, a escolha
+de um modelo teórico que permita (ou não) assimetria de informação - seleção adversa
+e/ou risco moral - mostra-se pouco trivial. Frente a tais dificuldades metodológicas, inferir
+sobre a aversão ao risco a partir de dados do mercado de seguros pode ser, por um lado,
+atraente, já que a causa primária da existência das seguradora é a aversão ao risco, por
+outro, complexo, devido às possíveis assimetrias deste mercado.
+    Diante disso, o presente trabalho visa aplicar o modelo proposto por Cohen e Einav
+(2007), a fim de estimar a distribuição do coeficiente de aversão ao risco absoluto por
+meio do mercado de seguros de automóveis. A abordagem desenvolvida por esses auto-
+res consiste em um modelo estrutural com heterogeneidade não observada tanto no risco
+quanto na aversão ao risco, o que permite a presença de seleção adversa. Os autores
+utilizaram dados da principal seguradora de automóveis de Israel em sua análise. Similar-
+mente, utilizaremos dados da principal seguradora brasileira, que foram disponibilizados
+pela Superintendência de Seguros Privado (Susep), para obter os resultados desejados.
+    Em linhas gerais, os resultados obtidos neste estudo assemelham-se ao encontrados
+por Cohen e Einav (2007). A média da distribuição do coeficiente de aversão ao risco
+absoluto estimado é baixa e a mediana muito próxima de zero. Encontrou-se elevada
+heterogeneidade não observada na equação do risco e, principalmente, na aversão risco.
+Além disso, os resultados não sugerem correlação entre as duas equações
+    O texto está organizado em 7 seções, além desta primeira, introdutória. Na segunda
+seção, será apresentada uma revisão bibliográfica composta por duas partes. A primeira,
+refere-se à alguns trabalhos que modelaram mercados de seguros com assimetrias de in-
+formação, enquanto, a segunda, reúne os principais estudos que estimaram a aversão ao
+risco a partir de determinados mercados. A terceira seção traz os objetivos desta pesquisa,
+bem como sua relevância. A quarta, consiste na análise descritiva dos dados. Na seção 5,
+são desenvolvidos os modelos teórico e empírico. A sexta seção, apresenta os resultados.
+Por fim, a última seção discorre sobre os próximos passos para a conclusão do trabalho.
+
+
+2 Revisão Bibliográfica
+    A literatura sobre mercado de seguros procura modelar as assimetrias de informação
+de diferentes formas. O modelo de seleção adversa proposto por Landsberger e Meilijson
+(1999), permite, assim como o presente estudo, heterogeneidade no risco dos indivíduos.
+Os autores apresentaram uma abordagem unificada na qual os agentes podem diferir tanto
+em relação à utilidade quanto em relação ao risco. Mais próximo ao modelo deste trabalho,
+o estudo de Smart (2000) analisa o equilibrio de um mercado de seguros competitivo em
+que os segurados diferem tanto na aversão ao risco quanto na probabilidade de acidente.
+    Ainda no contexto de assimetria de informação, é impossível não citar o trabalho de
+Chiappori e Salanié (2000), em que os autores encontraram evidência empírica de um
+puzzle. O modelo de Rothschild e Stiglitz (1976) mostra que um mercado de seguros em
+equilíbrio é caracterizado pela correlação positiva entre risco e cobertura. Contudo, os
+autores não encontraram, por meio de um teste de dependência condicional, correlação
+entre estas variáveis.
+    Vale ressaltar o trabalho realizado por Chiappori et al. (2006). Os autores concluíram
+que a aversão ao risco afeta não só a escolha da cobertura, mas também os incentivos
+referentes às medidas de cautela durante a vigência. Os autores argumentam também
+que a aversão ao risco é intrínseca ao indivíduo e, portanto, não pode ser diretamente
+observada pelas seguradoras. Nesse sentido, o modelo de Cohen e Einav (2007) que será
+aplicado neste estudo se mostra muito interessante, pois, apesar de não permitir que o
+risco dependa diretamente da escolha da cobertura (risco moral), admite que a escolha do
+contrato é explicada pelo coeficiente de aversão ao risco. Sendo este último correlacionado
+com o risco. Com isso, os autores fazem uso deste arcabouço estrutural para estimar a
+distribuição de aversão ao risco.
+    Na literatura, muitas pesquisas evidenciam, e até estimam, a presença de aversão
+ao risco por meio da análise individual em diferentes situações. Smith e Walker (1993)
+utilizaram dados sobre leilão de primeiro preço para mostrar que os indivíduos não são
+neutros ao risco. Já Jullien e Salanié (2000) analisaram o caso de apostadores em pistas
+de corrida a fim de estimar as preferências sob incerteza. Saha (1997) e Chetty (2006)
+também estimaram a aversão ao risco dos agentes voltando-se para as decisões de produção
+das firmas e a oferta de trabalho respectivamente.
+3 Objetivos e Motivação
+   O objetivo central deste trabalho é estimar a distribuição do coeficiente de aversão
+ao risco absoluto a partir de dados sobre o mercado de seguros de automóveis em São
+Paulo. Para isso, utilizaremos um modelo estrutural com seleção adversa. Pretende-se
+analisar como o nível de aversão ao risco está relacionado às características observáveis
+dos segurados. Com isso, poderemos responder perguntas interessantes, como:
+   ∙ Em qual faixa etária o indivíduo é mais avesso ao risco?
+   ∙ Como o gênero influencia as diferenças de aversão ao risco?
+   ∙ Como a heterogeneidade não observada do risco e aversão ao risco se comportam?
+    Diante desse contexto, deve-se esclarecer qual a importância de estimar a aversão ao
+risco dos agentes. Diversos modelos econômicos procuram explicar as relações econômicas
+mas, para isso, é preciso definir, muitas vezes, as relações de preferências dos agentes. No
+caso do coeficiente de aversão ao risco estamos interessados em descobrir quais são as
+preferência dos indivíduos em ambientes de incerteza. Dado que a maioria das escolhas
+individuais são realizadas em um ambiente de incerteza, estimar o coeficiente de aversão
+ao risco é o passo inicial para interpretar, explicar e prever modelos econômicos.
+
+
+4 Dados
+    A base de dados usada neste trabalho foi disponibilizada pela Superintendência de
+Seguros Privados, Susep. Criada em 1966 como uma Autarquia vinculada ao Ministério
+da Fazenda, este orgão é responsável pelo controle e fiscalização dos mercados de seguro,
+previdência privada aberta, capitalização e resseguro.
+    Neste estudo, os dados são referentes ao período de 01 de janeiro à 31 de junho de 2011
+e estão de acordo com o regimento estabelecido na circular no . 360 de fevereiro de 2008.
+A base original possui diversas informações que não possuem finalidade para o propósito
+deste trabalho e, portanto, foram desconsideradas. Primeiramente, restringimos nossa
+análise a região metropolitana de São Paulo e a seguradora Porto Seguro. A primeira
+representa a região com o maior número de apólices de seguro de automóveis, enquanto
+a segunda é a seguradora com maior participação no mercado de seguro de automóveis.
+    Consideramos apenas os veículos de passeio - nacionais ou importados - cujos contra-
+tos possuíam cobertura compreensiva. Foi mantida na base apenas as apólices referentes
+à carros com motor 1.0 de pessoas físicas. Originalmente, a base apresenta três tipos
+de franquia: reduzida, normal e majorada. Em virtude da metodologia empregada neste
+trabalho, a franquia do tipo majorada, que representa menos de 1% da amostra, foi consi-
+derada como normal. Segundo, Cohen e Einav (2007), esta abordagem não causa nenhum
+tipo de viés, já que, de acordo com o modelo estrutural desenvolvido, o indivíduo que es-
+colheu a franquia majorada optaria pela franquia normal em detrimento à reduzida. Por
+fim, foram desconsideradas as apólices que sofreram endosso, ou seja, qualquer alteração
+durante sua vigência e as apólices coletivas.
+
+4.1 Características Individuais
+   Basicamente a base de dados pode ser divididas em três segmentos. Primeiramente,
+as covariadas, que representam as características dos segurados que são: gênero, faixa
+etária, importância segurada, ano e modelo do veículo. As variáveis referentes ao par
+prêmio-franquia estão atreladas, a princípio, a três tipos tipos de cobertura: reduzida,
+normal e majorada. Finalmente, em caso de sinistro, sabe-se o número de vezes que o
+seguro foi acionado por contrato.
+    A tabela 1 apresenta informações sobre as características dos segurados. Estas estão
+divididas em três grupos: demográficas, características do carro e endereço postal. As
+variáveis demográficas limitam-se à idade1 e gênero2 . Nessa amostra, a média de idade
+dos segurados é de 40 anos, em que a ligeira maioria é do sexo feminino. Dentre as
+características do carro, existem dois grandes grupos de dummies, que se referem ao
+modelo e ano do carro, e informações sobre a importância segurada do casco. As variáveis
+de faixa etária são representadas por dummies que identificam 6 coortes de idade. Além
+das variáveis já mencionadas, o modelo inclui dummies com os três primeiros dígitos do
+Código de Endereçamento Postal (CEP) de utilização do veículo. Esta variável visa captar
+os efeitos da região de circulação do veículo sobre o risco de acidente. Como existem, para
+este caso, 80 dummies, a tabela com a análise descritiva não será reportada.
+
+4.2 Prêmios e Franquias
+    Após conhecer o vetor de características individuais, 𝑥𝑖 , a seguradora oferece um
+menu com três opções de contrato. Dentre elas, a franquia normal, ou regular, é a mais
+escolhida entre os segurados e, relativamente, similar entre as seguradoras. A franquia
+reduzida corresponde à 50% da franquia normal, enquanto a franquia majorada equivale
+ao dobro da regular. Dessa forma, sabe-se o valor da franquia para os três tipos de
+contrato. O prêmio de cada franquia varia entre os indivíduos de acordo com uma função
+determinística, 𝑝𝑖𝑡 = 𝑓𝑡 (𝑥𝑖 ), em que t representa um período no tempo.
+    A fim de inferir sobre o prêmio de cada indivíduo para os três tipos de franquia, re-
+gredimos - via mínimos quadrados ordinários (MQO) - um modelo log-linear, em que a
+variável dependente é o logaritmo do prêmio pago para a cobertura do casco e as inde-
+pendentes são as características individuais, acompanhadas de dummies que representam
+a escolha da franquia. Dentre estas, a dummy omitida refere-se a escolha da franquia
+normal. Contudo, após a regressão, verificou-se que o coeficiente da variável que assume
+valor 1 no caso de franquia majorada foi positivo, sugerindo que, condicional as observá-
+veis, escolher a franquia majorada em detrimento à normal aumenta o prêmio a ser pago
+para cobertura do casco. Em virtude deste resultado, pode-se suspeitar da confiabilidade
+dos dados referentes às franquias majoradas. Uma vez que estas representam apenas
+0,44%3 dos dados e que a própria metodologia contribui para isso, focamos nossa análise
+nas franquias normal e reduzida, de modo que as franquias majoradas foram consideradas
+normais.
+    Realizando o procedimento descrito acima, observa-se que escolher a franquia regular
+em relação à reduzida diminui o prêmio em cerca de 4%. Com isso, pode-se calcular os
+valores do menu - prêmio e franquia - para ambos os cenários (franquia reduzida e nor-
+mal). A análise descritiva referente à estes dados podem ser observadas na tabela 2. Vale
+ressaltar que a variável Acionamento por semestre representa o número de vezes que o
+seguro foi acionado dividido pelo exposição do segurado. Isto é, se a apólice permaneceu
+ativa durante todo o período analisado (primeiro semestre de 2011), a exposição foi de
+1
+    na estimação só foram incluídas dummies de faixa etária
+2
+    A variável gênero assume valor 1 para homens e 0 para mulheres
+3
+    O valor de 0,44% refere-se a base de dados restrita ao interesse deste trabalho
+         Tabela 1 – Estatísticas Descritivas - Covariadas
+  Variable                     Mean         D.P.   Min.     Max.
+Demográficas:   Gênero          0,497         0,5   0         1
+                Idade          39,339      13,462   18        94
+                Idade 18-25     0,139       0,346   0          1
+                Idade 26-35     0,341       0,474   0          1
+                Idade 36-45     0,207       0,405   0          1
+                Idade 46-55      0,17       0,375    0         1
+                Idade 56-65     0,101       0,301   0          1
+                Idade >66       0,043       0,203   0          1
+Caracteristicas IS Casco      23411,576   6342,057 5573     40362
+do carro:       Modelo 1        0,117       0,322    0         1
+                Modelo 2        0,079        0,27   0          1
+                Modelo 3         0,02       0,142   0          1
+                Modelo 4        0,144       0,351    0         1
+                Modelo 5        0,285       0,452    0         1
+                Modelo 6        0,073        0,26   0          1
+                Modelo 7        0,099       0,299    0         1
+                Modelo 8        0,182       0,386    0         1
+                Ano 1             0          0,01   0          1
+                Ano 2             0         0,013   0          1
+                Ano 3           0,001       0,032    0         1
+                Ano 4           0,002       0,049    0         1
+                Ano 5           0,006       0,079    0         1
+                Ano 6           0,014       0,117    0         1
+                Ano 7           0,019       0,135    0         1
+                Ano 8           0,017        0,13   0         1
+                Ano 9           0,023        0,15   0         1
+                Ano 10          0,032       0,175   0          1
+                Ano 11          0,029       0,168   0          1
+                Ano 12          0,036       0,185   0          1
+                Ano 13          0,036       0,186   0          1
+                Ano 14          0,038       0,192   0          1
+                Ano 15          0,046       0,209   0          1
+                Ano 16          0,072       0,258   0          1
+                Ano 17          0,074       0,262   0          1
+                Ano 18          0,107       0,309   0          1
+                Ano 19          0,184       0,388   0          1
+                Ano 20           0,23       0,421    0         1
+                Ano 21          0,034        0,18    0         1
+Nota: 36443 observações
+Fonte: elaboração própria
+1. Da mesma maneira, se o contrato perdurou apenas um dia no semestre, a exposição
+foi de 1/1814 . A partir da avaliação desta variável, observa-se que a taxa semestral de
+acionamento do seguro, em relação a todos os indivíduos, foi de 0, 063. Contudo, quando
+focamos em apenas um tipo de franquia, os dados mostram que o acionamento por semes-
+tre foi um pouco maior para a franquia reduzida. Em média, os indivíduos que escolheram
+franquia reduzida tiveram taxas de acionamentos maiores (0,068) em relação aos que es-
+colheram franquia normal (0,063).
+
+
+          Tabela 2 – Estatísticas descritivas - Prêmio, Franquia e Acionamento
+            Variável                 Média            D.P.     Min. Max.           N
+          Franquia       Reduzida 872,332            108,07      1,5   3000      36443
+                         Normal     1744,665         216,14       3    6000      36443
+          Prêmio         Reduzido 1014,486          357,544    62,233 5909       36443
+                         Normal     977,919          344,69      60    5689      36443
+          Δ𝑝/Δ𝑑                      0,044             0,17     0,002 32,302     36443
+          Escolha        Reduzida     0,133            0,34       0      1       36443
+                         Normal       0,867            0,34       0      1       36443
+          Acionamento Ambos          0,037           0,196        0      2       36443
+                         Reduzida    0,048           0,219        0      2        4856
+                         Normal       0,036           0,192       0      2       31587
+          Acionamento Ambos          0,063            1,04        0    181       36443
+          por semestre Reduzida       0,068           0,417       0   13,923      4856
+                         Normal       0,062           1,106       0    181       31587
+          Fonte: elaboração própria
+
+
+
+5 Abordagem teórica
+    O modelo teórico desenvolvido por Cohen e Einav (2007) baseia-se na idéia do agente
+indiferente entre dois contratos. Estes correspondem a um par prêmio e franquia, de
+tal forma que (𝑝ℎ𝑖 , 𝑑ℎ𝑖 ) e (𝑝𝑙𝑖 , 𝑑𝑙𝑖 ) representam os contratos para o individuo 𝑖 de franquia
+normal e reduzida, respectivamente. Além disso, seja 𝑤𝑖 a riqueza do indivíduo 𝑖 e 𝑢𝑖 (𝑤)
+sua correspondente função utilidade do tipo vNM. O tempo de contrato é representado
+por 𝑡𝑖 . Assume-se que o seguro é acionado de acordo com uma distribuição de Poisson
+com uma taxa anual 𝜆𝑖 . Em outras palavras, 𝜆𝑖 é o risco inerente a cada indivíduo e,
+por hipótese, de conhecimento apenas do próprio indivíduo. Assume-se também que 𝜆𝑖
+independe da escolha da franquia, ou seja, não há risco moral. Por fim, a última hipótese
+estabelece que, em caso de acidente, a indenização paga deve ser maior que 𝑑ℎ𝑖 . No resto
+desta seção, o subscrito 𝑖 será omitido por conveniência.
+    Este modelo estabelece que tanto o prêmio como o risco são proporcionais ao tempo
+de contrato. Cohen e Einav (2007) explicam que esta abordagem possui três vantagens.
+A primeira é que ajuda a lidar com contratos cancelados, ou que possuem um período
+de tempo menor. A segunda, refere-se ao fato de permitir que a escolha da franquia seja
+independente das incertezas de longo prazo, possibilitando o foco nas preferências sobre o
+4
+    O valor 181 remete ao número de dias do primeiro semestre de 2011
+risco no curto prazo. A terceira e última vantagem resulta de uma conveniência analítica
+e computacional.
+    A utilidade esperada que o indivíduo obtém da escolha do contrato (𝑝, 𝑑) é dado por:
+
+                        𝑣(𝑝, 𝑑) ≡ (1 − 𝜆𝑡)𝑢(𝑤 − 𝑝𝑡) + (𝜆𝑡)𝑢(𝑤 − 𝑝𝑡 − 𝑑)                       (1)
+    Com isso, pode-se caracterizar o conjunto de parâmetros que torna o indivíduo indi-
+ferente entre os contratos com franquia normal e reduzida. Isso permite definir um limite
+inferior (superior) para o nível de aversão ao risco para os indivíduos que escolheram fran-
+quia reduzida (normal) para uma dado 𝜆. Aplicando o limite em relação a 𝑡 e utilizando
+a regra de 𝐿′ 𝐻𝑜𝑝𝑖𝑡𝑎𝑙, observa-se:
+
+                                        1
+                                        𝑡
+                                          (𝑢(𝑤 − 𝑝ℎ 𝑡)) − 𝑢(𝑤 − 𝑝𝑙 𝑡)
+      𝜆 = lim
+            𝑡→𝑜   ((𝑢(𝑤 − 𝑝ℎ 𝑡) −   𝑢(𝑤 − 𝑝ℎ 𝑡 − 𝑑)) − (𝑢(𝑤 − 𝑝ℎ 𝑡) −   𝑢(𝑤 − 𝑝𝑙 𝑡 − 𝑑ℎ )))
+                                                                                              (2)
+                    𝑙    ℎ    ′
+                (𝑝 − 𝑝 )𝑢 (𝑤)
+        =
+            𝑢(𝑤 − 𝑑𝑙 ) − 𝑢(𝑤 − 𝑑ℎ )
+   rearranjando
+
+                             (𝑝𝑙 − 𝑝ℎ )𝑢′ (𝑤) = 𝜆(𝑢(𝑤 − 𝑑𝑙 ) − 𝑢(𝑤 − 𝑑ℎ ))                    (3)
+    A expressão 3 possui uma simples interpretação: o lado direito representa o ganho
+esperado de utilidade por unidade de tempo de escolher a franquia baixa, enquanto o
+lado esquerdo equivale ao custo dessa escolha por unidade. Para que o indivíduo seja
+indiferente entre os dois contratos os ganhos esperados devem ser iguais aos custos. O
+coeficiente de aversão ao risco absoluto do indivíduo indiferente pode ser calculado a partir
+da hipótese de que a terceira derivada da utilidade vNM não é muito grande. Com isso,
+aplicando uma expansão de Taylor nos dois termos do lado direito da equação 3 obtêm-se,
+de maneira geral, 𝑢(𝑤 − 𝑑) ≈ 𝑢(𝑤) − 𝑑𝑢′ (𝑤) + (𝑑2 /2)𝑢′′ (𝑤), o que implica em:
+
+             𝑝𝑙 − 𝑝ℎ ′                        1
+                    𝑢 (𝑤) ≈ (𝑑ℎ − 𝑑𝑙 )𝑢′ (𝑤) − (𝑑ℎ − 𝑑𝑙 )(𝑑ℎ + 𝑑𝑙 )𝑢′′ (𝑤)              (4)
+                𝜆                             2
+   Renomeando as variáveis, Δ𝑑 ≡ 𝑑ℎ − 𝑑𝑙 > 0, Δ𝑝 ≡ 𝑝𝑙 − 𝑝ℎ > 0 e 𝑑¯ ≡ 21 (𝑑ℎ + 𝑑𝑙 ), temos:
+                                      Δ𝑝 ′                ¯ ′′ (𝑤)
+                                         𝑢 (𝑤) ≈ 𝑢′ (𝑤) − 𝑑𝑢                                  (5)
+                                     𝜆Δ𝑑
+   ou
+                                                          Δ𝑝
+                                            −𝑢′′ (𝑤)    −1
+                                                         𝜆Δ𝑑
+                                       𝑟≡            ≈                                      (6)
+                                             𝑢′ (𝑤)    𝑑¯
+   Em que 𝑟 é o coeficiente de aversão ao risco absoluto dada a riqueza 𝑤. Sendo assim,
+a equação 6 define o conjunto de indiferença que relaciona, a partir dos dados referentes
+a prêmio e franquia, as variáveis risco e coeficiente de aversão ao risco absoluto (𝑟* (𝜆), 𝜆).
+Ambas são específicas dos indivíduos, já que dependem da escolha da franquia, que varia
+entre os segurados. Desta forma, seja um individuo i, representado por um par (𝑟𝑖 , 𝜆𝑖 )
+a quem é oferecido um menu de contratos {(𝑝ℎ𝑖 , 𝑑ℎ𝑖 ), (𝑝𝑙𝑖 , 𝑑𝑙𝑖 )}, esta abordagem preconiza
+que o indivíduo escolherá o contrato de baixa franquia se, e somente se, seu coeficiente de
+aversão ao risco absoluto satisfaz 𝑟𝑖 > 𝑟𝑖* (𝜆).
+5.1 Modelo Econométrico
+    O objetivo é estimar distribuição conjunta entre risco e o coeficiente de aversão ao
+risco absoluto, (𝜆𝑖 , 𝑟𝑖 ), na população de segurados, condicional as variáveis observadas.
+Para isso, assume-se que (𝜆𝑖 , 𝑟𝑖 ) seguem uma distribuição lognormal bivariada, de modo
+que:
+
+                                           ln 𝜆𝑖 = 𝑥′𝑖 𝛽 + 𝜖𝑖                                  (7)
+
+                                           ln 𝑟𝑖 = 𝑥′𝑖 𝛾 + 𝜈𝑖                                  (8)
+   com
+                             (︃ )︃          (︃[︃ ]︃ [︃                         ]︃)︃
+                               𝜀𝑖    𝑖𝑖𝑑       0    𝜎𝜆2   𝜌𝜎𝜆 𝜎𝑟
+                                     ∼𝑁          ,                                             (9)
+                               𝜈𝑖              0   𝜌𝜎𝜆 𝜎𝑟  𝜎𝜆2
+   Sendo 𝑟 e 𝜆 variáveis latentes não observadas. Por isso, a fim de estimar a distribuição
+conjunta de tais variaveis, é necessário definir a relação destas com variáveis observa-
+das. Primeiramente, admite-se que o número de acionamentos do seguro realizado pelo
+indivíduo 𝑖 resulta de uma distribuição de Poisson, tal que:
+
+                              𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜𝑠𝑖 ∼ 𝑃 𝑜𝑖𝑠𝑠𝑜𝑛(𝜆𝑖 , 𝑡𝑖 )                              (10)
+    Em que 𝑡𝑖 é tempo de contrato do seguro. Já o coeficiente de aversão ao risco absoluto
+relaciona-se com a escolha da franquia - reduzida ou normal - por meio do modelo teórico,
+de modo que o indivíduo escolherá o contrato com maior cobertura, e portanto menor
+franquia, se seu coeficiente de aversão ao risco absoluto for maior que o limite estipulado
+pela abordagem teórica. Isto é:
+
+                                                          ⎛                           ⎞
+                                                                     Δ𝑝𝑖
+                                                                    𝜆𝑖 Δ𝑑𝑖
+                                                                               −1
+                      𝑃 𝑟(𝑐𝑜𝑏𝑒𝑟𝑡𝑢𝑟𝑎𝑖 = 1) = 𝑃 𝑟 ⎝𝑟𝑖 >                                 ⎠
+                                                                         𝑑¯𝑖
+                             ⎛                                  Δ𝑝𝑖
+                                                                                      ⎞       (11)
+                                                         𝑒𝑥𝑝(𝑥′𝑖 𝛽+𝜖𝑖 )Δ𝑑𝑖
+                                                                             −1
+                       = 𝑃 𝑟 ⎝𝑒𝑥𝑝(𝑥′𝑖 𝛾 + 𝜈𝑖 ) >                                      ⎠
+                                                                   𝑑¯𝑖
+
+
+    Da equação 11 percebe-se que se o indivíduo escolhe o contrato com maior cobertura
+- franquia reduzida - a partir das informações sobre prêmio, franquia e risco. Como há
+heterogeneidade não observada em 𝜆𝑖 , isto é 𝜀𝑖 ̸= 0, este modelo permite que fatores
+não observados pela seguradora expliquem o risco individual. Em outras palavras, esta
+abordagem admite seleção adversa. Caso contrário, a equação 11 se reduziria à um probit,
+                                                                               ^ 𝑖 ).
+já que o risco seria perfeitamente estimado por meio das variáveis observadas, 𝜆(𝑥
+    A função de verossimilhança do modelo descrito nesta seção é representada por:
+
+
+  𝐿(𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜𝑖 , 𝑐𝑜𝑏𝑒𝑟𝑡𝑢𝑟𝑎𝑖 |𝜃) = 𝑃 𝑟(𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜𝑖 , 𝑐𝑜𝑏𝑒𝑟𝑡𝑢𝑟𝑎𝑖 |𝜆𝑖 , 𝑟𝑖 )𝑃 𝑟(𝜆𝑖 , 𝑟𝑖 |𝜃)   (12)
+
+   Em que 𝜃 é vetor de parâmetros a ser estimado. Contudo, a estimação via máxima
+verossimilhança não é trivial. Devido à existência de heterogeneidade não observada no
+risco e, também, na aversão ao risco, a estimação torna-se um processo computacional-
+mente penoso, ja que é necessário realizar a integração em relação as duas dimensões. Em
+contrapartida, a amostragem de Gibbs, que utiliza método de Monte Carlo via Cadeias de
+Markov (MCMC), é muito atrativa para este caso. Cohen e Einav (2007) argumentam que
+esta metodologia é ideal para o nosso caso, pois permite o aumento dos dados da variáveis
+latentes (TANNER; WONG, 1987). Sendo assim, pode-se simular (𝜆𝑖 , 𝑟𝑖 ) e, em seguida,
+tratar tais simulações como parte dos dados. Além disso, a hipótese de log-normalidade
+implica que 𝐹 (𝑙𝑛(𝜆𝑖 |𝑟𝑖 ) e 𝐹 (𝑙𝑛(𝑟𝑖 )|𝜆𝑖 ) seguem uma distribuição normal, o que colabora
+para diminuição do esforço computacional.
+    A metodologia da amostragem de Gibbs está descrita no apêndice A. Sua intuição
+básica é regredir as equações 7 e 8 condicional à 𝜆𝑖 e 𝑟𝑖 para cada indivíduo. Para
+obter aleatoriamente observações sobre (𝜆𝑖 , 𝑟𝑖 ), realiza-se diversas iterações. Condicional
+à 𝜆𝑖 , a distribuição a posteriori de 𝑙𝑛(𝑟𝑖 ) segue uma distribuição normal truncada, em
+que o ponto de truncagem depende do menu oferecido ao segurado e sua direção (se
+a distribuição está acima ou abaixo do ponto de truncagem) a advém da escolha da
+franquia. Coletar uma amostra da distribuição a posteriori de 𝑙𝑛(𝜆𝑖 ) condicional à 𝑟𝑖
+é mais complicado, pois existem dois pontos de truncagem. O primeiro originário da
+seleção adversa (similar ao 𝑟𝑖 ) e o segundo devido à hipótese da equação 10 sobre a
+distribuição do número de acionamentos realizados que traz uma informação adicional
+sobre o distribuição a posteriori de 𝜆𝑖 . Para obter uma amostra sobre a distribuição
+desconhecida de 𝜆𝑖 utilizaremos o "sliced sample" (DAMLEN; WAKEFIELD; WALKER,
+1999).
+    Os resultados apresentados neste trabalho são fruto de 20000 iterações da amostragem
+de Gibbs. Como a estimativa da distribuição das variáveis latentes dependem de um chute
+inicial e converge após determinado número de iterações, as 2000 primeiras amostragens
+- referentes às 20000 - foram descartadas.
+
+
+6 Resultados
+    Os resultados do modelo estão representados pela tabela 3. Observando apenas as
+variáveis da equação do risco percebe-se que a probabilidade de acidente é menor para o
+sexo masculino. A importância segurada atua como uma proxy para o valor do carro, nesse
+sentido, quanto mais valioso o carro maior a possibilidade de acidente. As variáveis de
+modelo e ano do carro atuam como controles do modelo, na qual a maioria não apresenta
+significância estatística. Em relação a faixa etária, aparentemente motoristas entre 56 e
+65 têm um risco maior de acidente apesar da ausência de significância nos coeficientes das
+dummies das demais variáveis de faixa etária. As dummies relacionadas aos três primeiros
+dígitos do endereço postal explicam o risco, pois a região por onde o veículo circula
+interfere na probabilidade de acidente. Contudo, estas variáveis não foram utilizadas
+para explicar a equação de aversão ao risco. Esses resultados não foram reportados na
+tabela.
+    Quando o foco é a equação da aversão ao risco note-se que os coeficientes obtidos são
+praticamente nulos em termos estatísticos. É o que acontece com o coeficiente do gênero
+que, em um primeiro momento, sugere que as mulheres são mais avessas ao risco que
+os homens, porém não há significância estatística. Da mesma forma, é observado que o
+coeficiente de aversão ao risco aumenta com a idade, atingindo seu ápice na faixa etária de
+36 a 45 anos. O primeiro resultado corrobora com encontrado por Cohen e Einav (2007),
+enquanto o segundo vai de encontro ao obtido pelos autores. Ainda assim, vale lembrar
+que os estes encontraram significância estatística ao nível de 5% em ambos os casos.
+
+                                        Tabela 3 – Resultados
+ Variáveis                                ln 𝜆               ln 𝑟*              Distribuições adicionais
+ Demográficas:     Constante        -4,7604 (0,0324)*   -0,0491 (0,0994)   Matriz de variância e covariância
+                   Gênero           -0,1790 (0,0268)*   -0,0035 (0,0102)   𝜎𝜆                  1,31125 (0,02778)
+                   Idade 18-25            Omitida            Omitida       𝜎𝑟                  13449,4 (27400,6)
+                   Idade 26-35        0,0042 (0,0398)   0,0052 (0,0191)    𝜌                  -0,01088 (0,08660)
+                   Idade 36-45       -0,0466 (0,0460)    0,0067 (0,0261)      Estatísticas não Condicionais
+                   Idade 46-55       -0,0483 (0,0457)    0,0050 (0,0209)   Média 𝜆             0,02199(0,00036)*
+                   Idade 56-65        0,0190 (0,0527)   0,0021 (0,0181)    Mediana 𝜆          0,00881 (0,00027)*
+                   Idade > 66        -0,0089 (0,0665)    0,0038 (0,0266)   D,P, 𝜆           0,04848 (0,003040)*
+ Características   log (IS Casco)    0,6514 (0,2486)*    0,0139 (0,0696)   Média 𝑟            0,00158 (0,00044)*
+ do Carro:         Modelo 1              Omitida             Omitida       Mediana 𝑟     1,39.10−19 (2,04.10−18 )
+                   Modelo 2          -0,0788 (0,0808)    0,0108 (0,0257)   D,P, 𝑟               0,02747(0,00370)
+                   Modelo 3         0,3587 (0,1026)*    -0,0013 (0,0372)   Corr (𝑟, 𝜆)         0,00078 (0,00867)
+                   Modelo 4          0,0636 (0,0549)    -0,0009 (0,0152)
+                   Modelo 5          0,0286 (0,0549)     0,0055 (0,0187)
+                   Modelo 6          -0,0246 (0,0636)    0,0012 (0,0139)
+                   Modelo 7         -0,1389 (0,0554)*    0,0012 (0,0232)
+                   Modelo 8         0,1722 (0,0544)*     0,0061 (0,0187)
+                   Ano 1991              Omitida             Omitida
+                   Ano 1993          0,3273 (1,4512)     0,5415 (1,4981)
+                   Ano 1994          -0,1421 (1,1808)   0,7393 (1,8071)
+                   Ano 1995          -0,0954 (1,1548)   0,7681 (1,8068)
+                   Ano 1996          -0,0632 (1,1461)   0,8556 (1,9403)
+                   Ano 1997          -0,2623 (1,1425)   0,8364 (1,9016)
+                   Ano 1998          -0,2478 (1,1434)   0,8263 (1,8728)
+                   Ano 1999          -0,5965 (1,1514)   0,8478 (1,8916)
+                   Ano 2000          -0,4038 (1,1513)   0,8509 (1,9184)
+                   Ano 2001          -0,4774 (1,1544)   0,8435 (1,8839)
+                   Ano 2002          -0,7436 (1,1591)   0,8525 (1,9221)
+                   Ano 2003          -0,6788 (1,1612)   0,8321 (1,8883)
+                   Ano 2004          -0,7623 (1,1659)   0,8449 (1,8957)
+                   Ano 2005          -0,6701 (1,1711)   0,8409 (1,8852)
+                   Ano 2006          -0,8640 (1,1711)   0,8372 (1,8669)
+                   Ano 2007          -0,7487 (1,1765)   0,8494 (1,9011)
+                   Ano 2008          -0,6491 (1,1817)   0,8471 (1,8956)
+                   Ano 2009          -0,6653 (1,1809)   0,8530 (1,9111)
+                   Ano 2010          -0,8008 (1,1976)   0,8511 (1,9028)
+                   Ano 2011          -0,7647 (1,1974)   0,8462 (1,8904)
+                   Ano 2012          -0,7110 (1,1956)   0,8407 (1,8869)
+ Nota: 36443 observações
+ Fonte: elaboração própria
+ *Estimativas da equação da aversão ao risco foram multiplicadas por 10−6
+
+
+    A cada iteração da amostragem de Gibbs, computou-se a média e o desvio padrão das
+amostragens aleatórias de 𝜆𝑖 e 𝑟𝑖 , bem como a correlação entre estas variáveis. A tabela
+3 reporta as médias e os desvios-padrão das quantidades computadas a cada iteração da
+amostragem de Gibbs. Dessa forma, estas estimativas não são condicionais as característi-
+cas observáveis dos segurados, ou seja, não é possível obtê-las diretamente dos parâmetros.
+Observa-se que a média do coeficiente de aversão ao risco absoluto é de 0,0016 e a mediana
+muito próxima de zero. Além disso, observa-se uma elevada heterogeneidade de aversão
+ao risco (𝜎𝑟 ) - apesar de não significante estatisticamente - e do risco (𝜎𝜆 ). Contudo os
+resultados sugerem que a correlação entre o risco e a aversão ao risco é estatisticamente
+nula.
+
+
+7 Conclusão
+    O presente trabalho aplicou a metodologia proposta por Cohen e Einav (2007) a fim
+de estimar a distribuição de aversão ao risco absoluto a partir de dados sobre seguros de
+automóveis da região metropolitana de São Paulo. As informações básicas utilizadas para
+realização dessa abordagem são: escolha da cobertura, conjunto de contratos oferecidos
+pela seguradora (par prêmio e franquia) e número de acionamentos realizados pelo segu-
+rado. Além disso, utilizou-se características individuais dos segurados como covariadas
+na equação do risco e da aversão ao risco.
+    Os resultados obtidos sugerem que a média da aversão ao risco é baixa e a mediana
+muito próxima de zero, de tal forma que os coeficientes apresentam elevada dispersão. Tais
+estimativas são relativamente similares às obtidas por Cohen e Einav (2007), entretanto
+a ausência de correlação entre a equação do risco e da aversão ao risco é não somente
+contraintuitiva, mas também diferente dos resultados encontrados pelos autores. Observa-
+se, então, que ao controlarmos pelas características observadas, não existem evidências de
+fatores que relacionam o risco à aversão ao risco.
+    As estimativas sobre o coeficiente de aversão ao risco absoluto realizadas neste trabalho
+podem ajudar a compreender - e prever - outras escolhas no contexto de seguros, ainda que
+a extrapolação de tais resultados sujeita-se à duas interpretações distintas. Se por um lado,
+é possível argumentar que as escolhas individuais estão restritas a diferentes contextos e,
+por isso, dependem de diferentes parâmetros na função utilidade (RABIN; THALER,
+2001), por outro a teoria clássica sugere as decisões sobre o risco são tomadas a partir de
+uma única relação de preferência que acompanha cada indivíduo independentemente do
+contexto.
+                                      Referências
+
+
+CHETTY, R. A new method of estimating risk aversion. The American Economic Review,
+JSTOR, v. 96, n. 5, p. 1821–1834, 2006.
+
+CHIAPPORI, P.-A. et al. Asymmetric information in insurance: General testable impli-
+cations. The RAND Journal of Economics, Wiley Online Library, v. 37, n. 4, p. 783–798,
+2006.
+
+CHIAPPORI, P.-A.; SALANIÉ, B. Testing for asymmetric information in insurance mar-
+kets. Journal of political Economy, JSTOR, v. 108, n. 1, p. 56–78, 2000.
+
+COHEN, A.; EINAV, L. Estimating risk preferences from deductible choice. THE AME-
+RICAN ECONOMIC REVIEW, 2007.
+
+DAMLEN, P.; WAKEFIELD, J.; WALKER, S. Gibbs sampling for bayesian non-
+conjugate and hierarchical models by using auxiliary variables. Journal of the Royal Sta-
+tistical Society: Series B (Statistical Methodology), Wiley Online Library, v. 61, n. 2, p.
+331–344, 1999.
+
+GEMAN, S.; GEMAN, D. Stochastic relaxation, gibbs distributions, and the bayesian
+restoration of images. Pattern Analysis and Machine Intelligence, IEEE Transactions on,
+IEEE, n. 6, p. 721–741, 1984.
+
+JULLIEN, B.; SALANIÉ, B. Estimating preferences under risk: The case of racetrack
+bettors. Journal of Political Economy, JSTOR, v. 108, n. 3, p. 503–530, 2000.
+
+LANDSBERGER, M.; MEILIJSON, I. A general model of insurance under adverse selec-
+tion. Economic Theory, Springer, v. 14, n. 2, p. 331–352, 1999.
+
+RABIN, M.; THALER, R. H. Anomalies: risk aversion. Journal of Economic perspectives,
+JSTOR, p. 219–232, 2001.
+
+ROTHSCHILD, M.; STIGLITZ, J. Equilibrium in competitive insurance markets: An
+essay on the economics of imperfect information. Quarterly Journal of Economics, 1976.
+
+SAHA, A. Risk preference estimation in the nonlinear mean standard deviation approach.
+Economic Inquiry, Wiley Online Library, v. 35, n. 4, p. 770–782, 1997.
+
+SMART, M. Competitive insurance markets with two unobservables. International Eco-
+nomic Review, Wiley Online Library, v. 41, n. 1, p. 153–170, 2000.
+
+SMITH, V. L.; WALKER, J. M. Rewards, experience and decision costs in first price
+auctions. Economic Inquiry, Wiley Online Library, v. 31, n. 2, p. 237–244, 1993.
+
+TANNER, M. A.; WONG, W. H. The calculation of posterior distributions by data aug-
+mentation. Journal of the American statistical Association, Taylor & Francis, v. 82, n. 398,
+p. 528–540, 1987.
+8 Apêndice A: Descrição da Amostragem de Gibbs - Gibbs Sampler
+  (GS)
+    Seguindo o exposto no artigo de Cohen e Einav (2007), este apêndice irá demonstrar a
+amostragem de Gibbs, o qual foi utilizado na estimação do modelo proposto neste presente
+trabalho. Esse método foi proposto por Geman e Geman (1984) e tornou-se popular entre
+os estatísticos após 1990, o qual teve impacto significativo no desenvolvimento e aplicações
+práticas da Estatística Bayesiana.
+    Uma das principais vantagens do GS é poder permitir o aumento de dados de variáveis
+latentes. No presente contexto, esta abordagem permite o aumento dos dados sobre aver-
+são ao risco e ao risco de cada indivíduo, ou seja, {𝜆𝑖 , 𝑟𝑖 }𝑛𝑖=1 são tratados como parâmetros
+adicionais.
+    Portanto, o modelo pode ser escrito da seguinte maneira:
+                                                              ′
+                                            ln 𝜆𝑖 = 𝑥𝑖 𝛽 + 𝜀𝑖                                              (13)
+
+                                                            ′
+                                                ln 𝑟𝑖 = 𝑥𝑖 𝛾 + 𝜈𝑖                                          (14)
+
+                                                {︃
+                                                  1 𝑠𝑒 𝑟𝑖 > 𝑟𝑖* (𝜆𝑖 )
+                             𝑐ℎ𝑜𝑖𝑐𝑒𝑖 =                                                                     (15)
+                                                  0 𝑠𝑒 𝑟𝑖 < 𝑟𝑖* (𝜆𝑖 )
+
+                             𝐴𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜𝑠𝑖 ∼ 𝑃 𝑜𝑖𝑠𝑠𝑜𝑛(𝜆𝑖 , 𝑡𝑖 )                                            (16)
+                             (︃ )︃               (︃[︃ ]︃ [︃                         ]︃)︃
+                              𝜀𝑖     𝑖𝑖𝑑             0    𝜎𝜆2   𝜌𝜎𝜆 𝜎𝑟
+                                     ∼𝑁                ,                                                   (17)
+                              𝜈𝑖                     0   𝜌𝜎𝜆 𝜎𝑟  𝜎𝜆2
+
+                                                        ⎡⎡                      ⎤
+                                                          𝑥1
+                                                                      ⎤
+
+                                                        ⎢⎢ . ⎥
+                                                        ⎢⎢ ⎥                    ⎥
+                                                                           0 ⎥
+                                                                             ⎥
+                                                        ⎢⎢ ⎥
+                                                        ⎢⎣ . ⎦               ⎥
+           [︃ ]︃      [︃                   ]︃           ⎢                      ⎥           [︃ ]︃   [︃ ]︃
+          𝛽       𝜎𝜆2   𝜌𝜎𝜆 𝜎𝑟                          ⎢ 𝑥
+                                                        ⎢ 𝑛
+                                                                               ⎥         𝜆        𝜀
+       𝛿≡   ,Σ ≡               ,𝑋 ≡ ⎢                                     ⎡ ⎤⎥ , 𝑦     ≡   , 𝑢𝑖 ≡ 𝑖        (18)
+                                                                               ⎥
+          𝛾      𝜌𝜎𝜆 𝜎𝑟  𝜎𝑟2        ⎢
+                                    ⎢                                      𝑥1 ⎥          𝑟        𝑣𝑖
+                                                        ⎢                 ⎢ . ⎥⎥
+                                                                               ⎥
+                                                        ⎢         0       ⎢ ⎥⎥
+                                                                          ⎣ . ⎦⎦
+                                                        ⎢                 ⎢ ⎥⎥
+                                                        ⎣
+                                                                           𝑥𝑛
+
+   O conjunto de parâmetros que pretende-se estimar uma distribuição a posteriori é
+dado por 𝜃 = {𝛿, Σ, {𝑢𝑖 }𝑛𝑖=1 }. A distribuição a priori especifica que {𝛿, Σ} são indepen-
+dentes de {𝑢𝑖 }𝑛𝑖=1 ; e {𝛿, Σ} tem uma distribuição a priori convencional difusa. Adota-se
+a distribuição a priori hierárquica para {𝑢𝑖 }𝑛𝑖=1 :
+
+                                      {𝑢𝑖 }𝑛𝑖=1 | Σ ∼ 𝑁 (0, Σ)                                             (19)
+
+                                     Σ−1 ∼ 𝑊 𝑖𝑠ℎ𝑎𝑟𝑡2 (𝑎, 𝑄)                                                (20)
+       Então, condicional em todos os outros parâmetros, tem-se:
+                                                             ⎛                      (︃                             )︃−1 ⎞
+                                                                                                               ′
+                     Σ−1 | 𝛿, {𝑢𝑖 }𝑛𝑖=1 ∼ 𝑊 𝑖𝑠ℎ𝑎𝑟𝑡2 ⎝𝑎 + 𝑛 − 𝑘, 𝑄−1 +
+                                                                                                  ∑︁
+                                                                                                           𝑢𝑖 𝑢𝑖       ⎠    (21)
+                                                                                                       𝑖
+
+                                                         ′                    ′                    ′
+                               𝛿 | Σ, {𝑢𝑖 }𝑛𝑖=1 ∼ 𝑁 ((𝑋 𝑋)−1 (𝑋 𝑦), Σ−1 ⊗ (𝑋 𝑋)−1 )                                         (22)
+   Para Σ−1 também é usada uma distribuição a priori convencional difusa de tal forma
+que 𝑎 = 0 e 𝑄−1 = 0.
+   A GS é menos trivial nos casos que envolvem a amostragem da distribuição condicio-
+nal dos parâmetros aumentados, {𝑢𝑖 }𝑛𝑖=1 . Todos os indivíduo são independente entre si,
+de modo que, condicional aos outros parâmetros, não há dependência de dados aumen-
+tados dos demais indivíduos. Desta forma, precisa-se apenas descrever a probabilidade
+condicional de 𝑢𝑖 .
+                                                        ′                 ′
+   Note que, condicional em 𝛿, tem-se: 𝜀𝑖 = 𝑙𝑛𝜆𝑖 − 𝑥𝑖 e 𝑣𝑖 = 𝑙𝑛𝑟𝑖 − 𝑥𝑖 𝛽. Logo, pode-se
+apenas focar na distribuição a posterior de 𝜆𝑖 e 𝑟𝑖 . Essas distribuições a posterior são:
+
+
+                                          𝑃 𝑟(𝑟𝑖 | 𝛾, 𝛽, Σ, 𝜆𝑖 , 𝑑𝑎𝑡𝑎) ∝
+
+        ⎧ [︁                                       √︁                    ]︁
+                      ′                       ′
+        ⎨
+          𝜑 𝑙𝑛𝑟𝑖 , 𝑥𝑖 𝛾 + 𝜌 𝜎𝜎𝜆𝑟 (𝑙𝑛𝜆𝑖 − 𝑥𝑖 𝛽), 𝜎𝑟2 (1 − 𝜌2 )                     𝑠𝑒 𝑒𝑠𝑐𝑜𝑙ℎ𝑎𝑖 = 𝐼(𝑟𝑖 < 𝑟𝑖* (𝜆𝑖 ))
+                                                                                                                            (23)
+        ⎩                            0                                                        ̸ 𝐼(𝑟𝑖 < 𝑟𝑖* (𝜆𝑖 ))
+                                                                                  𝑠𝑒 𝑒𝑠𝑐𝑜𝑙ℎ𝑎𝑖 =
+       e
+
+
+                                          𝑃 𝑟(𝜆𝑖 | 𝛾, 𝛽, Σ, 𝜆𝑖 , 𝑑𝑎𝑡𝑎) ∝
+
+{︃                        [︁                                     √︁                      ]︁
+                                    ′                    ′
+     𝑝(𝜆𝑖 , 𝑎𝑐𝑖𝑜𝑛𝑎., 𝑡𝑖 )𝜑 𝑙𝑛𝜆𝑖 , 𝑥𝑖 𝛽 + 𝜌 𝜎𝜎𝜆𝑟 (𝑙𝑛𝑟𝑖 − 𝑥𝑖 𝛾),        𝜎𝜆2 (1 − 𝜌2 )           𝑠𝑒 𝑒𝑠𝑐𝑜𝑙ℎ𝑎𝑖 = 𝐼(𝑟𝑖 < 𝑟𝑖* (𝜆𝑖 ))
+                                                                                                                              (24)
+                                        0                                                                 ̸ 𝐼(𝑟𝑖 < 𝑟𝑖* (𝜆𝑖 ))
+                                                                                              𝑠𝑒 𝑒𝑠𝑐𝑜𝑙ℎ𝑎𝑖 =
+
+    Em que 𝑝(𝑥, 𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜, 𝑡) = 𝑥𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜 𝑒𝑥𝑝(−𝑥𝑡) é proporcional a probabilidade
+da função de densidade da distribuição de Poisson, 𝜑(𝑥, 𝜇, 𝜎) = 𝑒𝑥𝑝 [−(1/2)((𝑥 − 𝜇)/𝜎)2 ]
+é proporcional a função de densidade de probabilidade da normal e 𝐼(.) é uma função
+indicadora.
+    A distribuição a posterior para ln 𝑟𝑖 é uma normal truncada, para a qual usamos uma
+simples amostragem da "função de densidade acumulada invertida". A posterior para a
+ln 𝜆𝑖 é menos trivial, com isso será usada uma "sliced sampler"(TANNER; WONG, 1987).
+A ideia básica é reescrever:
+
+                                            𝑃 𝑟(𝜆𝑖 ) = 𝑏0 (𝜆𝑖 )𝑏1 (𝜆𝑖 )𝑏2 (𝜆𝑖 )                                             (25)
+       Em que:
+
+       𝑏0 (𝜆𝑖 ) é uma distribuição normal truncada;
+       𝑏1 (ln 𝜆𝑖 ) = 𝜆𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜
+                      𝑖
+                                 𝑖
+                                   = (exp(ln 𝜆𝑖 ))𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜𝑖 ;
+       𝑏2 (ln 𝜆𝑖 ) = 𝑒𝑥𝑝(−𝜆𝑖 𝑡𝑖 ) = exp(−𝑡𝑖 𝑒𝑥𝑝(ln 𝜆𝑖 )).
+   O aumento dos dados será realizado por meio de duas variáveis adicionais, 𝑢1𝑖 e 𝑢2𝑖 ,
+que são distribuídas uniformemente em [0, 𝑏1 (𝜆𝑖 )] e [0, 𝑏2 (𝜆𝑖 )], respectivamente. E a pro-
+babilidade será:
+
+
+𝑃 𝑟(𝜆𝑖 , 𝑢1𝑖 , 𝑢2𝑖 ) = 𝑏0 (𝜆𝑖 )𝑏1 (𝜆𝑖 )𝑏2 (𝜆𝑖 )[𝐼(0 ≤ 𝑢1𝑖 ≤ 𝑏1 (𝜆𝑖 )/𝑏1 (𝜆𝑖 ))][𝐼(0 ≤ 𝑢2𝑖 ≤ 𝑏2 (𝜆𝑖 )/𝑏2 (𝜆𝑖 ))]
+                                                                                                               (26)
+                     = 𝑏0 (𝜆𝑖 )𝐼(0 ≤ 𝑢1𝑖 ≤ 𝑏1 (𝜆𝑖 ))𝐼(0 ≤ 𝑢2𝑖 ≤ 𝑏2 (𝜆𝑖 ))
+
+    Ao passo que 𝑏1 (.) e 𝑏2 (.) são funções monotônicas condicionais em 𝑢1𝑖 e 𝑢2𝑖 , isso significa
+que 𝑏−1   1           1
+      1 (𝑢𝑖 ) = ((ln 𝑢𝑖 )/𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜𝑠𝑖 ) é o limite inferior de ln 𝜆𝑖 (para 𝑎𝑐𝑖𝑜𝑛𝑎𝑚𝑒𝑛𝑡𝑜𝑠𝑖 >
+0) e 𝑏−1  2               2
+      2 (𝑢𝑖 ) = ln(− ln 𝑢𝑖 ) − ln 𝑡𝑖 é o limite superior de ln 𝜆𝑖 . Então, a amostragem de 𝜆𝑖 de
+uma normal truncada ocorre após a modificação dos limites de acordo com 𝑢1𝑖 e 𝑢2𝑖 .
+

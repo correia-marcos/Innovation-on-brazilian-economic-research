@@ -1,0 +1,908 @@
+   Avaliando as medidas de núcleo da inflação no Brasil
+
+                                           Cristiano Santos∗
+                                            Ivan Castelar†
+
+                                         22 de julho de 2013
+
+
+
+                                                  Resumo
+
+      Este artigo faz uma avaliação compreensiva das medidas de núcleo utilizadas pelo Banco Cen-
+      tral do Brasil. A partir de modelos econométricos de séries temporais, três aspectos básicos das
+      medidas de núcleo são avaliados, a ausência de viés, a dinâmica de ajustamento e a capacidade
+      de prever a inflação no longo prazo. As medidas avaliadas são o núcleo por exclusão, o núcleo
+      por médias aparadas suavizadas e o núcleo por dupla ponderação. Os resultados mostram que
+      apenas o núcleo por médias aparadas suavizadas não possui viés, serve como indicador de
+      ajuste para a inflação e apresenta uma capacidade de previsão no longo prazo maior do que a
+      capacidade da própria inflação. Assim, das três medidas de núcleo avaliadas, apenas o núcleo
+      por médias aparadas suavizadas foi considerado relevante para compreender o comportamento
+      de longo prazo da inflação.
+
+      Palavras-chave: Núcleo da Inflação, Medidas, Avaliação, Previsão.
+
+
+                                                  Abstract
+
+      This paper makes a comprehensive assessment of the core measures used by the Central Bank
+      of Brazil. Three basic aspects of the core measures are evaluated, the absence of bias, the
+      dynamic adjustment and the ability to predict the long-term inflation. The measures evaluated
+      in this study are the core excluding, the smoothed trimmed mean core and core double weight.
+      The results show that only the smoothed trimmed core has no bias, serves as an adjustment
+      indicator for inflation and provides an ability to predict the long-term greater than the capacity
+      of the inflation itself. Considering the three core measures assessed, only the smoothed trim-
+      med mean core was considered relevant to understanding the behavior of long-term inflation.
+
+      keywords: Core Inflation, Measurements, Evaluation, Forecast.
+
+      JEL Classification: E31, C32.
+
+      Classificação Anpec: Área 3: Macroeconomia, Economia Monetária e Finanças
+
+
+  ∗
+     Programa de Pós-Graduação em Economia/CAEN da Universidade Federal do Ceará (UFC). E-mail: cristi-
+ano1br@gmail.com
+   †
+     Professor do Curso de Finanças da Universidade Federal do Ceará (UFC). E-mail: lume1250@yahoo.com.br
+
+
+                                                      1
+1       Introdução
+     As medidas de núcleo da inflação são utilizadas em diversos países1 como indicadores que
+auxiliam o Banco Central (BC) a atingir a meta inflacionária com uma menor variação da política
+monetária e, portanto, com uma menor variação no produto, consumo e emprego. No Brasil, o
+BC adotou um conjunto de medidas de núcleo que são usadas para orientar a política monetária e
+justificar as decisões tomadas para o público.
+    Com a ampla utilização do núcleo da inflação, trabalhos recentes têm investigado se as me-
+didas de núcleo são realmente úteis para as autoridades monetárias. Bermingham (2010) avalia
+diferentes medidas de núcleo para os Estados Unidos e conclui que elas não são melhores do que
+simples modelos de referência para indicar a tendência e prever a inflação no longo prazo. No
+caso do Brasil, o trabalho de Silva Filho e Figueiredo (2011)2 evidencia que as medidas de núcleo
+usadas pelo BC não ajudam a prever a inflação e recomendam que elas sejam usadas com cuidado.
+    Por outro lado, Marques, Neves e Sarmento (2003) mostram que nos Estados Unidos as me-
+didas de núcleo são úteis como indicadores de ajuste para a inflação no longo prazo e na análise
+do comportamento da inflação para a estabilidade de preços no futuro. Considerando dados do
+mesmo país, Smith (2004) mostra também que usar uma medida de núcleo para prever a inflação
+no longo prazo é melhor do que usar a própria série de inflação. Bihan e Sédillot (2000) chegam
+também a esta conclusão usando dados da França e outros modelos de previsão.
+    Para contribuir com esta literatura, este artigo avalia as medidas de núcleo da inflação usadas
+pelo BC do Brasil a partir de três aspectos básicos, a ausência de viés, o ajustamento e a capacidade
+de prever a inflação no longo prazo. Para isso, utiliza-se simples modelos de séries temporais para
+verificar a existência as relações estatísticas entre a inflação e as medidas de núcleo ao longo do
+tempo.
+    As principais contribuições deste artigo são basicamente duas. A primeira é a utilização de
+um algoritmo de previsão fora da amostra que fornece uma avaliação mais realista da capacidade
+preditiva dos núcleos e mais consistente em relação à escolha do número de previsões. A segunda
+são as evidências empíricas obtidas com os dados do Brasil a partir da aplicação dos critérios de
+avaliação, que servem para orientar a discussão teórica e a construção de novas medidas de núcleo.
+     Além desta introdução, este trabalho está organizado da seguinte forma: na seção 2 é apresen-
+tado o problema e as abordagens para mensurar o núcleo da inflação. A seção 3 faz uma revisão da
+literatura sobre as principais medidas de núcleo. Na seção 4 definem-se os critérios de avaliação
+e o algoritmo usado para testar a capacidade preditiva. Na seção 5 encontram-se os resultados da
+avaliação dos núcleos da inflação usados pelo BC do Brasil. E por fim, a seção 6 apresenta as
+conclusões.
+    1
+     Ver Wynne (2008) para uma revisão sobre a utilização do núcleo da inflação pelos Bancos Centrais dos principais
+países.
+   2
+     Este foi o primeiro trabalho que avaliou as medidas de núcleo usadas pelo BC e influenciou em 2009 a substituição
+de duas medidas de núcleo que vinham sendo usadas por outras duas que foram construídas neste mesmo trabalho.
+
+
+
+
+                                                          2
+2    O problema e as abordagens para mensurar o núcleo da in-
+     flação
+    Como uma medida de núcleo da inflação é derivada a partir de uma medida de inflação, é
+necessário compreender a relação entre estas medidas. Enquanto as medidas de inflação mensuram
+a variação no preço de bens e serviços entre dois períodos, as medidas de núcleo da inflação
+capturam apenas a parte da variação de preços que é “relevante” para as autoridades monetárias.
+    Desta forma, o problema de mensurar o núcleo consiste em definir a parte da inflação que é
+“relevante” e em propor um método adequado para estimar esta parte "relevante"da inflação obser-
+vada. Formalmente, a inflação πt observada no tempo t é igual ao núcleo πt∗ mais um componente
+ut = πt − πt∗ que representa a diferença entre a inflação e o núcleo:
+                                           πt = πt∗ + ut                                         (1)
+
+    A partir da identidade descrita pela equação (1), é necessário fazer alguma hipótese sobre o
+núcleo πt∗ para identificá-lo a partir da inflação observada πt . Conforme Roger (1998), há duas
+hipóteses que são geralmente usadas para estimar o núcleo da inflação: o núcleo como inflação
+persistente, e o núcleo como inflação generalizada.
+    A hipótese de núcleo como inflação generalizada propõe que a taxa de inflação é composta por
+um componente generalizado que afeta todos os preços da mesma forma e definido como o núcleo,
+e um componente idiossincrático, que afeta apenas o preço de um determinado produto alterando
+seu preço relativo. Desta maneira, a identidade (1) pode ser escrita como:
+                                                  X
+                                       πt = πtg +     αi ηi,t                                (2)
+                                                     i
+
+onde πt é a taxa de inflação, πtg é o componente generalizado considerado o núcleo, ηPi,t é o com-
+ponente idiossincrático e αi são os pesos de cada produto na cesta de produtos tal que i αi = 1.
+    Esta definição de núcleo se baseia na teoria quantitativa da moeda, segundo a qual a inflação no
+longo prazo não é afetada pelos preços relativos, mas somente por movimentos generalizados nos
+preços que é associado com a expansão monetária. Sendo assim, o BC deve considerar o núcleo
+da inflação como sendo o componente generalizado, pois é esta a parte da inflação sobre a qual a
+política monetária é efetiva.
+    Já a segunda hipótese usada para estimar o núcleo é baseada na distinção entre a inflação
+persistente, a qual pode ser entendida como uma tendência da inflação, e a inflação transitória, que
+representa os choques com um impacto temporário sobre os preços. Desta forma, a identidade em
+(1) pode ser expressa como:
+                                          πt = πtp + νt                                           (3)
+onde πt é a taxa de inflação, πtp é o componente permanente que representa o núcleo e νt é o
+componente transitório.
+     Como a política monetária tem um efeito defasado sobre os preços da economia, a distinção
+entre movimentos de preços persistentes e transitórios é importante, pois se o BC responde à um
+movimento temporário dos preços, pode-se ter uma variabilidade não desejada no crescimento
+do produto. Por outro lado, se o BC não responde a um aumento persistente dos preços logo no
+início, pode-se ter um aumento sustentado na inflação, o que requer um período mais prolongado
+com uma política monetária restritiva.
+
+                                                 3
+    Apesar da inflação persistente ser uma hipótese sem determinantes teóricos bem definidos,
+costuma-se relacionar o componente persistente como sendo as pressões da demanda agregada
+sobre a capacidade da economia, e o componente transitório como um resultado dos choques de
+oferta.
+
+
+
+3        Medidas de núcleo
+    Como não existe um consenso sobre a melhor medida para o núcleo da inflação, esta seção su-
+mariza as principais medidas proposta na literatura econômica. Para isto, as medidas são agrupadas
+de acordo com o método utilizado para a estimação. Observa-se que as medidas de corte trans-
+versal são as que capturam a inflação generalizada, enquanto que as medidas de séries temporais
+buscam capturar a inflação persistente.
+
+
+3.1        Medidas de Corte Transversal
+
+     As medidas de corte transversal do núcleo da inflação são obtidas a partir da aplicação de
+técnicas estatísticas sobre os dados da distribuição dos preços em cada período. Devido à sim-
+plicidade e facilidade na construção dessas medidas, elas são geralmente utilizadas pelos Bancos
+Centrais e disponibilizadas por órgãos estatísticos.
+    Os núcleos por exclusão são as medidas mais tradicionais de núcleo da inflação e são construí-
+das através da exclusão dos produtos de maior volatilidade que compõem o índice de preço, como
+alimentos e energia. Essas medidas se baseiam tanto na ideia de que os mercados destes bens
+são frequentemente atingidos por choques idiossincráticos quanto na ideia de que o movimento
+destes preços refletem choques temporários sobre a taxa de inflação.3 As principais críticas feitas
+às medidas por exclusão são a falta de um critério que oriente a escolha dos itens que devem ser
+excluídos, e a perda de informações relevantes com a exclusão dos mesmos.
+    O núcleo por médias aparadas, proposto por Bryan e Cecchetti (1994), é calculado eliminando-
+se determinada porcentagem das caudas da distribuição de corte transversal da variação de preços,
+ou seja, os itens que apresentam variações de preços extremas em determinado período são remo-
+vidos. Estas medidas se baseiam na definição de núcleo como inflação generalizada e procuram
+eliminar as variações extremas de preço como uma forma de estimar o componente comum. Roger
+(1998) aponta que os principais problemas das medidas de médias aparadas são que elas não fazem
+a distinção entre distúrbios persistentes e transitórios.
+    Os estudos aplicados para estimar o núcleo da inflação no Brasil através de medidas de corte
+transversal são encontrados em Picchetti e Toledo (2000) e Barros e Schechtman (2001), que pro-
+põem medidas de médias aparadas para estimar o núcleo da inflação.
+
+
+3.2        Medidas de Séries Temporais
+
+    As medidas de séries temporais utilizam modelos econométricos para construir medidas de
+núcleo que capturem o componente persistente da inflação através da eliminação dos choques
+temporários.
+    3
+        Ver Hogan, Johnson e Laflèche (2001) para uma discussão mais detalhada das medidas por exclusão.
+
+
+                                                          4
+    O trabalho de Quah e Vahey (1995) propõe uma medida de núcleo da inflação baseada na
+estimação de um vetor auto-regressivo estrutural (SVAR) com duas variáveis, a taxa de inflação e
+produto agregado. Eles definem o núcleo da inflação como o componente que no médio e longo
+prazo não tem impacto sobre o produto real e utilizam esta definição como restrição de longo prazo
+para identificar os componentes permanente e transitório na decomposição proposta por Blanchard
+e Quah (1989). Resumidamente, Quah e Vahey (1995) adotam implicitamente o conceito de núcleo
+como inflação persistente ao associá-lo com o componente permanente da inflação que é estimado
+a partir do SVAR.
+    Uma das limitações da metodologia empregada por Quah e Vahey (1995) é que ela supõe que
+existe apenas dois choques, um permanente e um transitório, que afetam a inflação e o produto.
+Com isso, Bagliano e Morana (2003) estendem o trabalho de Quah e Vahey (1995) de um modelo
+bivariado para um multivariado que inclui além das variáveis inflação e produto, outras variáveis
+que contribuem para pressões inflacionárias.
+     Para identificar o componente permanente nesta nova configuração, Bagliano e Morana (2003)
+utilizam o modelo de tendências comuns baseado em Stock e Watson (1988) e King et al. (1991),
+o qual permite, a partir da existência de uma relação de longo prazo, decompor as variáveis do
+modelo num componente não estacionário (choques permanentes) e um componente estacionário
+(choques transitórios). No entanto, esta metodologia exige que a inflação e as variáveis do modelo
+sejam não estacionárias e cointegradas.
+    As principais críticas às medidas calculadas com base em modelos econométricos de séries
+temporais é a grande dependência do tamanho da amostra e a escolha das variáveis usadas no
+modelo; de forma que uma medida de núcleo, calculada em determinado período, pode ser com-
+pletamente alterada com o acréscimo de novos dados ou novas variáveis.
+    Entre os estudos aplicados ao Brasil, Picchetti e Kanczuk (2001) calculam a medida proposta
+por Quah e Vahey (1995) e encontram que o núcleo estimado dessa maneira elimina os principais
+choques de oferta de curto prazo identificados pelo BC do Brasil. Trompieri Neto, Castelar e
+Linhares (2011) utilizam o modelo de tendências comuns para estimar o núcleo e mostram que
+essa medida não apresenta viés e comporta-se como um indicador antecedente da inflação.
+
+
+
+4    Critérios de Avaliação
+     Como as medidas de núcleo da inflação são obtidas por diferentes métodos, suas características
+podem também ser bastante diferentes. Assim, é necessário estabelecer critérios bem definidos
+para identificar as medidas de núcleo que possuem características realmente úteis à autoridade
+monetária e ao público em geral. Para isto, este trabalho adota critérios de avaliação com base em
+testes econométricos para verificar se existem relações estatísticas entre a medida de núcleo e a
+inflação que possam ser usadas para orientar a política monetária.
+    Os trabalhos de Freeman (1998), Marques, Neves e Sarmento (2003) e Ribba (2003) são as
+principais referências que iniciaram, de maneira rigorosa, a aplicação de testes econométricos
+de séries temporais para avaliar a relação de ajustamento entre medidas de núcleo e a inflação.
+Entretanto, estes trabalhos se limitam apenas ao caso em que a inflação e o núcleo são séries não
+estacionárias e cointegradas.
+    Mehra e Reilly (2009) seguem essa mesma abordagem, mas propõem também critérios para
+avaliar o ajustamento quando as séries do núcleo e da inflação são estacionárias, o que é de grande
+
+                                                5
+importância, já que a inflação pode ser considerada como estacionária ou não estacionária depen-
+dendo do país, do período e da frequência das observações da série.
+    Definem-se agora dois critérios que se referem às relações estatísticas de longo prazo verifica-
+das por meio de modelos econométricos para séries temporais estacionárias:
+(i) Ausência de viés
+     O primeira critério que uma medida de núcleo da inflação deve atender é ser não enviesada
+em relação à medida de inflação; ou seja, no longo prazo a média do núcleo será igual a média da
+inflação:
+                                         E(πt∗ ) = E(πt )                                    (4)
+
+     Assumindo que as séries da inflação {πt }Tt=1 e do núcleo {πt∗ }Tt=1 são estacionárias, o proce-
+dimento utilizado para decidir se o núcleo πt∗ satisfaz o critério de ausência de viés é aplicar um
+teste F para verificar se a hipótese nula conjunta α = 0 e β = 1 é atendida na seguinte regressão:
+
+                                                 πt = α + βπt∗ + εt                                 (5)
+
+    Se a hipótese nula não for rejeitada, então a medida de núcleo πt∗ é não enviesada, no sentido
+de que a média do núcleo e da inflação são iguais no longo prazo.
+
+
+(ii) Ajustamento
+    O segundo critério determina como ocorre a dinâmica de ajustamento entre a inflação e o
+núcleo no longo prazo. Essa propriedade é útil, pois se o ajuste ocorrer principalmente por movi-
+mentos na inflação em direção ao núcleo, então existe uma razão para se esperar que a inflação vá
+diminuir e se aproximar do núcleo quando esta estiver acima do núcleo. Para formalizar esta ideia,
+considere o modelo proposto por Mehra e Reilly (2009):
+                                                                           k
+                                                                           X
+                       πt+h − πt = a0 + λh (πt −               πt∗ )   +         aj πt−j + e1,t+h   (6)
+                                                                           j=1
+                                                                           k
+                                                                           X
+                        ∗
+                       πt+h   −   πt∗   = b0 +   λ∗h (πt   −   πt∗ )   +             ∗
+                                                                                 bj πt−j + e2,t+h   (7)
+                                                                           j=1
+
+              ∗
+onde πt+h e πt+h são, respectivamente, a inflação e núcleo h períodos à frente, aj e bj são parâme-
+tros, k é número de defasagens, e e1,t+h , e2,t+h são distúrbios aleatórios com média zero.
+     Os coeficentes λh e λ∗h nas regressões em (6) e (7) determinam, respectivamente, como acon-
+tece o ajustamento da inflação e do núcleo h períodos à frente, quando ocorre um desvio entre a
+inflação e o núcleo no período t. Desta forma, quando a inflação estiver acima do núcleo, espera-
+se que a inflação diminua (λh < 0) e que o núcleo não seja afetado (λ∗h = 0), pois neste caso a
+diferença entre os dois é eliminada basicamente por movimentos da inflação em direção ao núcleo.
+    De maneira geral, o critério (i) ausência de viés garante que o núcleo não subestima ou superes-
+tima a inflação, refletindo seu verdadeiro comportamento. Já o critério (ii) dinâmica de ajustamento
+implica que o ajuste de longo prazo ocorre através de mudanças na inflação e não no núcleo, ou
+seja, o núcleo serve como um indicador de ajuste para a inflação.
+
+
+
+                                                                6
+4.1   Previsão fora da amostra
+
+     Os critérios de avaliação vistos até agora se referem ao comportamento de longo prazo da
+inflação e do núcleo, mas não garantem que o núcleo seja capaz de ajudar a prever a inflação. Desta
+forma, este seção propõe um experimento de previsão fora da amostra para avaliar a capacidade
+preditiva das medidas de núcleo.
+    A previsão fora da amostra é um experimento que divide a amostra em dois períodos, o período
+de ajuste, no qual os dados são usados para identificar e estimar o modelo de previsão, e o período
+de teste, cujos dados são utilizados para verificar a precisão das previsões do modelo.
+    Neste trabalho, o procedimento para realizar as previsões fora da amostra é definido com o
+objetivo de simular a situação em que os agentes econômicos se encontram quando realizam suas
+previsões para a inflação, de maneira que as previsões obtidas sejam estruturalmente idênticas às
+previsões realizadas no mundo real.
+     Em qualquer procedimento de previsão fora da amostra, é necessário escolher o número de
+previsões k e o horizonte de previsão h. O número de previsões k é a quantidade de previsões
+realizadas fora da amostra e, portanto, influencia nos resultados dos testes usados para avaliar as
+previsões. Já o horizonte de previsão h depende do interesse do agente por uma previsão de curto
+ou longo prazo.
+    Escolhido o número de previsões k e o horizonte de previsão h, o procedimento para realizar
+o experimento de previsão fora da amostra é definido pelo seguinte algoritmo:
+
+   1. A amostra total de N observações é dividida em duas partes, período de ajuste, formado
+      pelas N − h − k + 1 primeiras observações, e período de teste, formado pelas h + k − 1
+      observações finais.
+
+   2. O modelo de previsão é especificado e estimado apenas com os dados do período de ajuste;
+
+   3. Uma previsão de h períodos à frente é realizada com o modelo especificado e estimado no
+      item 2;
+
+   4. A primeira observação do período de teste é adicionada ao período de ajuste, e o processo é
+      repetido a partir do item 2 de forma interativa. Esta interação é finalizada quando a observa-
+      ção N − h é adicionada ao período de ajuste.
+
+    A figura 1 ilustra como uma amostra de tamanho N é divida entre o período de ajuste e o
+período de teste. Na interação 1 as N − h − h + 1 primeiras observações formam o período de
+ajuste e o restante das observações o período de teste. Em cada interação subsequente é incluída
+uma nova observação no período de ajuste até que, na interação k, tem-se as N − h primeiras
+observações no período de ajuste e as h observações finais no período de teste.
+    O procedimento descrito pelo algoritmo acima simula a situação na qual os agentes possuem
+um número limitado de dados para ajustar um modelo e fazer uma previsão. Em cada interação esse
+processo é sistematicamente repetido aumentando-se o número de dados disponíveis e gerando
+mais previsões, obtendo-se no final, um conjunto de previsões fora da amostra.
+    Aplicando este algoritmo, é possível testar se uma série de núcleo gera previsões mais precisas
+do que as previsões geradas com a própria série da inflação, identificando, portanto, a série que
+prever melhor a inflação em determinado horizonte de tempo.
+
+                                                 7
+                               Figura 1: Processo de divisão da amostra
+ Interação 1
+                período de ajuste                                           período de teste
+
+
+   1                                         N-k-h+1 N-k-h+2                                               N
+ Interação 2
+                    período de ajuste                                              período de teste
+
+
+   1                                                      N-k-h+2 N-k-h+3                                  N
+
+
+
+ Interação k
+                                    período de ajuste                                           período de teste
+
+
+   1                                                                                      N-h   N-h+1      N
+
+
+Fonte: Elaboração própria.
+
+     Neste trabalho, o experimento de previsão fora da amostra é realizado para um horizonte de
+previsão de 3, 6, 9 e 12 meses à frente. Esses valores foram escolhidos por representarem as frações
+de um ano, que é o período no qual o BC deverá cumprir a meta de inflação. Por não haver um
+critério estabelecido sobre a escolha do número adequado de observações fora da amostra, utilizou-
+se três diferentes números, k = 24, 36 e 48. Com isso obtém-se resultados mais consistente em
+relação a escolha do número de previsões.
+     O modelo de previsão escolhido é o auto-regressivo e de média móvel, denominado ARMA(p,
+q), que descreve o comportamento de séries estacionárias da seguinte forma:
+                                                        p                 q
+                                                        X                 X
+                                X t = c + εt +                ϕi Xt−i +         θj εt−j                            (8)
+                                                        i=1               j=1
+
+onde Xt é uma série temporal, c é uma constante, ϕi e θj são parâmetros do modelo, p e q são os
+números de defasagens e εt é um ruído branco gaussiano.
+    O extenso trabalho de Ang, Bekaert e Wei (2007) mostram que para os Estados Unidos, o mo-
+delo ARMA apresenta uma previsão da inflação mais precisa do que modelos que incluem outras
+variáveis da atividade econômica, como regressões da Curva de Phillips e modelos da estrutura a
+termo da taxa de juros.
+    O modelo ARMA(p,q) descrito na equação (8) é estimado através do método da soma de qua-
+drados condicional (CSS) e os números de defasagens p e q são escolhidos de forma a minimizar
+o critério de informação de Akaike para amostras finitas (AICc) que é definido por Brockwell e
+Davis (1991) como:
+                       AICc = −2 ln(L) + 2(p + q + 1)n/(n − p − q − 2)                                             (9)
+onde L é o valor da função de verossimilhança do modelo estimado sob a hipótese de ruído branco
+gaussiano e n é o número de observações da série temporal.
+    Definido o modelo de previsão e a forma de identificação e estimação, o teste DM modificado
+baseado em Diebold e Mariano (1995) e Harvey, Leybourne e Newbold (1997) foi escolhido para
+
+                                                              8
+verificar se as previsões obtidas com as medidas de núcleo são estatisticamente diferentes das
+obtidas com a própria série da inflação. A estatística do teste DM que foi inicialmente proposta
+por Diebold e Mariano (1995) é a seguinte:
+                                                          d¯
+                                           S1 = q                                               (10)
+                                                         2π fˆd (0)
+                                                             T
+
+onde d¯ e fˆd (0) são,
+                    p respectivamente,
+                           p           a média e a função espectral avaliada em zero da série perda
+                       2       2
+diferencial dt = eit − ekt , que neste trabalho é escolhida como a diferença da raíz dos erros
+quadrados das previsões, e T é o tamanho da série dt .
+    A hipótese nula do teste DM é de que os dois modelos tem o mesmo desempenho de previsão,
+ou seja, a diferença média entre os erros de previsão dos modelos é zero, E(d) ¯ = 0. Diebold e
+Mariano (1995) mostram que sob a hipótese nula, a distribuição assintótica da estatística S1 é uma
+normal padrão.
+    Harvey, Leybourne e Newbold (1997) sugerem um teste DM modificado para abranger a situa-
+ção onde o horizonte de previsão é maior que um (h > 1), pois nestes casos os erros de previsão são
+autocorrelacionados de maneira que se comportam como um processo de média móvel de ordem
+h − 1. Eles propõem a seguinte correção:
+                                   r
+                                      T + 1 − 2h + T −1 h(h − 1)
+                             S1∗ =                                S1                           (11)
+                                                  T
+onde S1 é a estatística original descrita em (10).
+   Deve-se comparar a estatística S1∗ com os valores críticos da distribuição t de Student com
+(T − 1) graus de liberdade para melhorar a performance do teste DM modificado em pequenas
+amostras.
+
+
+5     Resultados
+    Nesta seção são apresentados os resultados da aplicação dos critérios de avaliação às princi-
+pais medidas de núcleo da inflação usadas pelo BC do Brasil. Primeiro descreve-se as medidas
+avaliadas e estabelece-se o período de análise, depois os resultados dos testes para cada critério de
+avaliação são discutidos.
+
+
+5.1    Descrição das medidas de núcleo da inflação do BC
+
+    As medidas de núcleo da inflação disponibilizadas pelo BC do Brasil e escolhidas neste traba-
+lho são o núcleo por exclusão (IPCA-EX2), o núcleo de dupla ponderação (IPCA-DP) e o núcleo
+de médias aparadas com suavização (IPCA-MS), divulgadas em Banco Central do Brasil (2009)
+como sendo as medidas oficiais de referência do Comitê de Política Monetária, a autoridade mo-
+netária do Brasil.
+    Todas as medidas de núcleo usadas pelo BC do Brasil são calculadas a partir do Índice de
+Preços ao Consumidor Amplo (IPCA) que é o índice de inflação oficial adotado no sistema de
+metas de inflação. A avaliação é realizada de janeiro de 1996 a dezembro de 2012 por este ser o
+período no qual as medidas de núcleo calculadas pelo BC são disponibilizadas.
+
+                                                     9
+    A construção do núcleo por exclusão (IPCA-EX2) consiste em excluir os itens que apresen-
+tam, de maneira consistente, maiores volatilidades ao longo da amostra. Mais precisamente, são
+excluídos os itens cuja volatilidade relativa é superior a dois desvios-padrão em pelo menos dois
+dos três subperíodos da amostra. Conforme Banco Central do Brasil (2009), o núcleo IPCA-EX2
+exclui 12 dos 52 itens que compõe o IPCA, sendo que dez pertencem ao grupo Alimentação no
+Domicílio e dois ao dos Preços Administrados por Contrato e Monitorados.
+     Já o núcleo de médias aparadas com suavização (IPCA-MS) elimina 20% dos itens que apre-
+sentam variações extremas e recalcula o índice de inflação utilizando apenas a parte central da
+distribuição. Como alguns preços controlados apresentam variações elevadas mais infrequentes,
+poderia haver uma eliminação sistemática destes itens, provocando uma subestimação do cálculo
+do núcleo. Para evitar este problema, o BC suaviza essas variações em doze parcelas iguais.
+    Diferente do núcleo por exclusão (IPCA-EX2) e do núcleo de médias aparadas com suavização
+(IPCA-MS), que excluem os itens mais voláteis ou os que apresentam preços com variações extre-
+mas, o núcleo de dupla ponderação (IPCA-DP) inclui todos os itens, mas dá um peso menor para
+aqueles que apresentam maior volatilidade. Assim, os pesos originais de cada item do IPCA são
+ponderados novamente considerando-se a respectiva volatilidade conforme mostra Banco Central
+do Brasil (2009).
+
+                             Figura 2: Núcleos da Inflação e IPCA.
+
+                                                                            IPCA
+          2.5
+
+
+
+
+                                                                            IPCA−EX
+          1.5
+          −0.5 0.5
+
+
+
+
+                                                                            IPCA
+          2.5
+
+
+
+
+                                                                            IPCA−MS
+          1.5
+          −0.5 0.5
+
+
+
+
+                                                                            IPCA
+          2.5
+
+
+
+
+                                                                            IPCA−DP
+          1.5
+          −0.5 0.5
+
+
+
+
+                              2000                2005               2010
+
+         Fonte: Elaboração própria a partir dos dados do BCB-Depec
+         Nota: O valor das séries é a variação % em 12 meses
+
+   A Figura 2 mostra a inflação medida pelo IPCA e os três núcleos da inflação calculados pelo
+BC. Ao se comparar o comportamento de cada núcleo com o do próprio IPCA, percebe-se que as
+
+                                                10
+séries no longo prazo se movem na mesma direção. No entanto, não é possível a partir da Figura 2
+verificar a influência de uma série sobre a outra. Esta análise é feita formalmente com a aplicação
+dos critérios de avaliação na próxima seção.
+
+
+5.2       Testes dos critérios de avaliação
+
+    Antes de aplicar os critérios de avaliação usados neste trabalho, é necessário identificar se as
+séries da inflação e do núcleo se comportam ou não de forma estacionária no período de análise.
+Para isto, utilizou-se dois testes complementares, o teste de Dickey Fuller Aumentado (ADF) pro-
+posto por Dickey e Fuller (1979) no qual a hipótese nula é a presença de raiz unitária; e o teste
+KPSS proposto por Kwiatkowski et al. (1992), onde a hipótese nula é que a série observada é
+estacionária.
+     Como estes testes possuem hipóteses nulas opostas, a utilização dos dois possibilita uma con-
+clusão mais acurada, uma vez que se pode distinguir entre séries com comportamento estacionário
+(os testes apontam estacionariedade), séries com comportamento não estacionário (os testes apon-
+tam não estacionariedade), e séries nas quais os dados não são suficientemente informativos para
+saber se a série é estacionária ou não (os testes apontam conclusões divergentes).
+
+                            Tabela 1: Procedimento dos testes de estacionariedade
+
+          Teste     Modelo Estimado                                             Hipótese            Estatística
+                                                                                Nula                de teste
+                    ∆yt = a0 + γyt−1 + a1 t + ki=1 βi ∆yt−i+1 + u1t
+                                             P
+          ADF                                                                   γ=0                 τct
+                    ∆yt = a0 + γyt−1 + ki=1 βi ∆yt−i+1 + u2t
+                                       P
+                                                                                γ=0                 τc
+                                    Pk
+                    ∆yt = γyt−1 + i=1 βi ∆yt−i+1 + u3t                          γ=0                 τnc
+          KPSS      yt = ξt + rt + εt                                           rt = r0             ητ
+                    yt = rt + εt                                                rt = r0             ηµ
+
+Fonte: Elaborado a partir de MacKinnon (1996) e Kwiatkowski et al. (1992).
+Nota: a defasagem k é escolhida com base no critério de informação de Akaike (AIC).
+
+    A Tabela 1 apresenta os procedimentos adotados para realizar os testes de estacionariedade.
+No teste ADF pode-se ter o caso da série ser estacionária em torno de uma tendência linear (τct ),
+em torno de um constante (τc ) ou em torno de zero (τnc ), já no teste KPSS, tem-se que a série pode
+ser estacionária em torno de uma tendência linear (ητ ) ou de uma constante (ηµ ). A escolha do
+tipo de estacionariedade testada e da respectiva estatística de teste se baseou na análise gráfica das
+séries por meio da Figura 2.
+    Esclarecido os procedimentos dos testes de estacionariedade, a Tabela 2 mostra o resultado
+da aplicação dos testes ADF e KPSS às séries dos núcleos e do IPCA. Os testes são aplicados
+em dois períodos diferentes para assegurar que o resultado não se modifica dentro deste intervalo
+da amostra4 . As estatísticas indicam que todas as séries são classificadas como estacionária por
+ambos os testes ao nível de significância de 5% e 1%, no período inicial e final.
+    Tendo verificado que o pressuposto de estacionariedade é adequado ao comportamento das
+séries em estudo, analisa-se agora se os critérios de avaliação são atendidos pelas medidas de
+núcleo da inflação utilizadas pelo BC. A Tabela 3 mostra o resultado do teste F para verificar a
+   4
+       Isto é importante pois a amostra é reduzida para realização das previsões fora da amostra.
+
+
+                                                            11
+                          Tabela 2: Resultados dos testes de estacionariedade
+
+       Série          Período inicial (1996-2008)    Período final (1996-2012)    Conclusão
+                           ADF            KPSS           ADF            KPSS
+          IPCA        τc = −5.63  ∗∗∗   ηµ = 0.15   τc = −3.45  ∗∗    ηµ = 0.18   Série estacionária
+       IPCA-EX2       τc = −3.81∗∗∗ ηµ = 0.13       τc = −4.34∗∗∗ ηµ = 0.11       Série estacionária
+        IPCA-MS       τc = −3.17∗∗ ηµ = 0.18        τc = −3.67∗∗∗ ηµ = 0.20       Série estacionária
+        IPCA-DP       τc = −4.67∗∗∗ ηµ = 0.15       τc = −5.48∗∗∗ ηµ = 0.12       Série estacionária
+
+Fonte: Elaboração própria.
+Notas: Os valores críticos dos testes ADF e KPSS são baseados nos trabalhos de MacKinnon (1996) e de
+Kwiatkowski et al. (1992), respectivamente;
+∗∗∗ e ∗∗ indicam que se rejeita a hipótese nula ao nível de significância de 1% e 5%, respectivamente.
+
+
+
+ausência de viés entre a média da inflação e do núcleo. Considerando um nível de significância de
+5%, tanto o núcleo IPCA-EX2 e IPCA-MS atenderam ao critério (i) de ausência de viés.
+     Já o núcleo IPCA-DP apresentou forte viés durante o período analisado, pois não atendeu ao
+critério (i) em nenhum nível de significância considerado. Verificando-se a estimação da regressão
+na Tabela 3 para o IPCA-DP, observa-se que o mesmo subestima a inflação, pois apresenta um β
+maior que 1 na regressão. Desta maneira, como o núcleo IPCA-DP sistematicamente subestima a
+inflação, deve ser usado com cuidado pelo BC.
+
+               Tabela 3: Resultado do teste F para ausência de viés da medidas de núcleo
+
+                        Núcleo       Parâmetros Estimados       Teste F (p-valor)
+                                        πt = α + βπt∗ + εt      H0 : α = 0 e β = 1
+                        IPCA-EX2     πt = 0.070 + 0.982πt∗            0.0121
+                        IPCA-MS      πt = −0.071 + 1.162πt∗           0.1302
+                        IPCA-DP      πt = −0.084 + 1.211πt∗           0.0000
+
+Fonte: elaboração própria.
+
+     A Tabela 4 apresenta os coeficientes de ajustamento estimados a partir das equações (6) e (7).
+Quando se considera o núcleo IPCA-MS, o resultado do teste t mostra que o coeficiente de ajusta-
+mento do inflação λh é negativo e que o coeficiente de ajustamento do núcleo λ∗h é estatisticamente
+igual a zero. Isto indica que quando existe um desvio entre o IPCA e este núcleo, é o IPCA que
+se move em direção ao núcleo, e não o contrário. Essa evidência é encontrada para um horizonte
+de 3, 6, 9 e 12 meses à frente, ou seja, um desvio entre a inflação e o núcleo hoje faz com que a
+inflação se ajuste até um ano depois.
+     No horizonte de 3 meses à frente, destaca-se que o núcleo IPCA-EX2 apresenta coeficiente de
+ajustamento da inflação λh negativo como esperado, mas um coeficiente de ajustamento do núcleo
+λ∗h positivo e estatisticamente significante. Isto indica que o núcleo IPCA-EX2 se ajusta ao IPCA
+no horizonte de 3 meses, evidenciando que este núcleo é influenciado pelo valor do IPCA no curto
+prazo.
+    Já o núcleo IPCA-DP apresentou um resultado diferente para o horizonte de 6 e 9 meses à
+frente. Nestes horizontes, o coeficiente de ajustamento da inflação λh foi negativo e significante
+como esperado, mas o coeficiente de ajustamento do núcleo λ∗h foi também negativo. Com isto,
+tanto o IPCA como o próprio núcleo IPCA-DP diminuem quando ocorre um desvio entre eles,
+
+                                                    12
+    Tabela 4: Resultados do teste t para os coeficientes de ajustamento da inflação e do núlceo
+
+   Núcleo              h=3                    h=6                   h=9                    h=12
+                   λh        λ∗h         λh         λ∗h         λh        λ∗h         λh         λ∗h
+   IPCA-EX2       -0.67      0.22       -0.82     0.08         -0.87     -0.05       -0.75      -0.03
+                 (0.000)   (0.001)     (0.000)   (0.317)      (0.000)   (0.558)     (0.000)    (0.622)
+   IPCA-MS        -0.86     -0.03       -1.01     -0.08        -1.02     -0.05       -0.84      -0.14
+                 (0.000)   (0.455)     (0.000)   (0.076)      (0.000)   (0.372)     (0.000)    (0.013)
+   IPCA-DP        -1.14     -0.16       -1.45     -0.61        -1.39     -0.50       -1.06      -0.33
+                 (0.000)   (0.199)     (0.000)   (0.000)      (0.000)   (0.000)     (0.000)   ( 0.015)
+
+Fonte: elaboração própria.
+Nota: os valores entre parênteses são o p-valor do teste t para a hipótese nula do coeficiente ser igual a
+zero. O número de defasagens k foi escolhido com base no critério de informação de Akaike (AIC) para o
+máximo de 6 defasagens.
+
+
+sugerindo que nestes horizontes o núcleo IPCA-DP não é um bom indicador de ajuste para a
+inflação.
+    A medida IPCA-MS foi a única que apresentou a direção de ajustamento esperada para todos
+os horizontes de tempo escolhido, ou seja, é o IPCA que se move em direção ao núcleo IPCA-
+MS. No trabalho de Gamber, Smith e Eftimoiu (2013) encontra-se resultado semelhante com a
+aplicação do mesmo modelo de ajustamento com dados dos Estados Unidos para o núcleo por
+médias aparadas.
+     Já para as medidas IPCA-EX2 e IPCA-DP, o ajuste pode ocorrer também através de movimen-
+tos do núcleo, dependendo do horizonte de tempo. Esta característica é indesejável pois impossibi-
+lita a utilização destas medidas como indicadores da trajetória de longo prazo da inflação, tendo em
+vista que uma diferença entre o núcleo e inflação hoje poderá ser corrigida tanto por movimentos
+do núcleo como da inflação, não sendo claro qual é o efeito do núcleo sobre a inflação.
+    A direção de ajustamento depende da medida de núcleo e do horizonte escolhido. Em todos
+os casos o coeficiente de ajustamento da inflação λh foi negativo e significativo, indicando que
+o IPCA é influenciado pelos núcleos em todos os horizontes de tempo, no entanto, alguns dos
+núcleos são também influenciados pela inflação em determinados horizontes de tempo.
+
+
+5.3    Capacidade Preditiva
+
+    Como a política monetária tem um efeito defasado sobre a economia, o BC analisa o compor-
+tamento futuro da inflação antes de estabelecer sua política. Assim, se a previsão com uma medida
+de núcleo é melhor do que a previsão com a própria inflação, então existe evidência de que esta
+medida deve ser usada como um instrumento auxiliar na formulação da política monetária.
+    O experimento de previsão fora da amostra descrito na seção 4.1 é utilizado agora para avaliar
+a capacidade preditiva das medidas de núcleo do BC em prever o IPCA futuro comparada com a
+capacidade preditiva do próprio IPCA. Assim, espera-se que as medidas de núcleo apresentem um
+erro de previsão menor que o erro do próprio IPCA.
+    Como a variação do IPCA em um mês específico não é de interesse do BC transforma-se as
+séries com variações mensais em variações em 12 meses antes de realizar as previsões e os testes
+
+
+                                                    13
+nesta subseção. A escolha da variação do IPCA em 12 meses se deve ao fato de ser este o intervalo
+de tempo usado no sistema de metas.
+     A Figura 3 apresenta as séries transformadas para variação em 12 meses. Aplicando-se os
+testes de estaticionariedade da Tabela 2 obtém-se que as séries transformadas são também estaci-
+onárias. O gráfico das séries sugere que todas as medidas de núcleo possuem um comportamento
+dinâmico aderente ao IPCA apesar de apresentarem informação divergente sobre quando o nível
+de inflação está acima ou abaixo do núcleo.
+
+              Figura 3: Variação percentual em 12 meses do IPCA e dos núcleos da inflação.
+
+
+                                                                                                         IPCA
+       20
+
+
+
+
+                                                                                                         IPCA−EX2
+                                                                                                         IPCA−MS
+                                                                                                         IPCA−DP
+       5 10
+
+
+
+
+                                2000                            2005                              2010
+
+Fonte: Elaboração própria a partir dos dados do BCB-Depec
+Nota: As séries representam a variação % em 12 meses calculada do seguinte modo:
+ (12)
+πt = tj=t−12 (100 + πj ) − 100
+        Q
+
+
+
+    A Tabela 5 apresenta os valores da raiz do erro quadrático médio (REQM)5 da previsão fora da
+amostra para horizontes selecionados (h = 3, 6, 9 e 12) e diferentes períodos de previsão fora da
+mostra (k =24, 36 e 48). Também é mostrado o resultado do teste DM modificado para identificar
+quando existe diferença estatisticamente significante entre a previsão dos núcleo e a previsão de
+referência que é obtida com o próprio IPCA.
+    Percebe-se que, dependendo do horizonte e período de previsão fora da amostra, as previsões
+do núcleo IPCA-EX2 apresentam um REQM maior ou menor quando comparado com o REQM
+das previsões usando o IPCA. Além disto, o teste DM modificado indica que as previsões com o
+IPCA ou com o IPCA-EX2 não são estatisticamente diferentes, evidenciando que este núcleo não
+possui a capacidade de prever a inflação.
+    Já as previsões utilizando os núcleos IPCA-MS e IPCA-DP apresentaram REQM menor do
+que das previsões usando o próprio IPCA, para qualquer horizonte e período de previsão fora da
+amostra. No entanto, quando se aplica o teste DM modificado para verificar se as previsões são
+diferentes, apenas as previsões 12 meses à frente usando o IPCA-MS apresentaram um erro de
+previsão significativamente menor do que os erros de previsão usando o IPCA.
+     Examinando o horizonte de 12 meses à frente, o REQM das previsões obtidas com o IPCA-
+MS foi, em média, 36 % menor do que o REQM de referência obtido com as previsões do IPCA,
+enquanto que para o núcleo IPCA-DP essa redução foi, em média, de apenas 8,7 % e não signifi-
+cativa segundo o teste DM modificado. Quando se considera o horizonte de 3 e 6 meses à frente,
+nenhuma medida de núcleo apresenta previsões estatisticamente diferentes das previsões do IPCA.
+                qP
+   5              T
+       REQM =       t=1 (yt   − ŷt )2 /T onde yt é a série observada e ŷt é a série prevista.
+
+
+                                                               14
+        Tabela 5: REQM da previsão fora da amostra para o IPCA com o modelo ARMA1
+
+                     Série utilizada                           Horizonte (meses)
+                     (período fora da amostra)          3       6     9        12
+                     (2011M1 - 2012M12, k = 24 )
+                     IPCA                               0.47   0.77   1.01     1.00
+                     IPCA-EX2                           0.56   0.96   1.18     1.35
+                     IPCA-MS                            0.24   0.42   0.58     0.61∗∗∗
+                     IPCA-DP                            0.34   0.66   0.91     0.96
+                     (2010M1 - 2012M12, k = 36)
+                     IPCA                               0.53   0.80   0.87     0.90
+                     IPCA-EX2                           0.50   0.89   1.05     1.18
+                     IPCA-MS                            0.24   0.39   0.49     0.53∗∗∗
+                     IPCA-DP                            0.34   0.63   0.79     0.84
+                     (2009M1 - 2012M12, k = 48)
+                     IPCA                               0.53   0.88   1.08     1.17
+                     IPCA-EX2                           0.48   0.83   0.97     1.11
+                     IPCA-MS                            0.24   0.43   0.65∗∗   0.83∗∗∗
+                     IPCA-DP                            0.35   0.68   0.89     0.99
+
+Fonte: elaboração própria.
+Notas: ∗∗∗ e ∗∗ indicam que as previsões são estatisticamente diferentes ao nível de significância de 1% e
+5%, respectivamente, segundo o teste DM modificado.
+1 A escolha das defasagens do modelo ARMA(p,q) é baseada no critério AICc, ver a seção 4.1 para detalhes;
+
+
+
+Para o horizonte de 9 meses, o resultado é semelhante, a diferença é que o IPCA-MS apresenta
+previsões estatisticamente significante no período de 48 meses fora da amostra.
+    O fato da capacidade preditiva do IPCA-MS não ser maior que a do IPCA para horizontes de
+3 e 6 meses corrobora o resultado encontrado por Silva Filho e Figueiredo (2011) de que o IPCA-
+MS não ajuda a prever a inflação no curto prazo. No entanto, quando se estende a análise para
+horizontes de tempo mais longo, como 12 meses, o IPCA-MS passar a ser um previsor melhor que
+o próprio IPCA.
+    Este resultado da previsão fora da amostra indica que o núcleo IPCA-MS possui capacidade
+preditiva maior que o IPCA para prever a inflação num horizonte de 12 meses à frente. Este fato
+corrobora a evidência encontrada por Bihan e Sédillot (2000) e Smith (2004) de que os núcleos
+de médias aparadas apresentam um desempenho superior que a própria inflação para previsões de
+longo prazo.
+
+
+
+6    Conclusão
+     Este artigo teve como propósito realizar uma avaliação compreensiva das medidas de núcleo
+utilizadas pelo BC do Brasil. A partir de modelos econométricos de séries temporais, três aspectos
+básicos das medidas de núcleo foram avaliados, a ausência de viés, a dinâmica de ajustamento e a
+capacidade de prever a inflação no longo prazo.
+    Das três medidas de núcleo avaliadas, apenas o núcleo por médias aparadas suavizadas apre-
+sentou desempenho satisfatório em todos os critérios avaliados. Através de testes empíricos,
+
+                                                   15
+mostrou-se que o núcleo de médias aparadas suavizadas não possui viés, serve de indicador de
+ajuste para a inflação e apresenta uma capacidade de previsão maior do que a capacidade da pró-
+pria inflação. Este resultado corrobora a evidência de que o uso de medidas de núcleo de médias
+aparadas gera previsões de longo prazo mais precisas do que as previsões que se obtém com a
+própria inflação.
+    Já as outras duas medidas, o núcleo por exclusão e o núcleo de dupla ponderação, ainda são
+deficientes em relação aos critérios avaliados, pois não indicaram a trajetória de ajustamento es-
+perada e não possuem a capacidade de prever a inflação no longo prazo. Além disto, o núcleo de
+dupla ponderação ainda subestimou a inflação no período analisado.
+    Assim, apenas o núcleo por médias aparadas suavizadas foi considerado um indicador re-
+levante do comportamento de longo prazo da inflação segundo os critérios estabelecidos; sendo,
+portanto, uma medida de interesse para o BC. No entanto, vale ressaltar que os resultados encontra-
+dos se restringem ao Brasil e ao recente período caracterizado pela estabilização da inflação após o
+Plano Real. Assim, uma extensão natural deste trabalho é aplicar a metodologia de avaliação para
+outros países ou outros períodos e verificar se os resultados permanecem robustos.
+
+
+
+
+                                                16
+Referências
+ANG, A.; BEKAERT, G.; WEI, M. Do macro variables, asset markets, or surveys forecast
+inflation better? Journal of Monetary Economics, v. 54, n. 4, p. 1163 – 1212, 2007.
+
+BAGLIANO, F. C.; MORANA, C. A common trends model of uk core inflation. Empirical
+Economics, v. 28, n. 1, p. 157–172, 2003.
+
+BANCO CENTRAL DO BRASIL. Relatório de Inflação. Brasília, dez 2009. v. 11, n. 4.
+Disponível em: <http://www.bcb.gov.br/htms/relinf/port/2009/12/ri200912P.pdf>. Acesso em:
+17 out 2011.
+
+BARROS, R. W. dos S.; SCHECHTMAN, J. Medidas de núcleo da inflação para a economia
+brasileira: Utilização das médias aparadas no ipc-di/fgv. In: Anais do XXIX Encontro Nacional de
+Economia. Niterói, Brasil: ANPEC, 2001.
+
+BIHAN, H. L.; SéDILLOT, F. Do core inflation measures help forecast inflation?: Out-of-sample
+evidence from french data. Economics Letters, v. 69, n. 3, p. 261 – 266, Dec 2000. ISSN
+0165-1765.
+
+BLANCHARD, O. J.; QUAH, D. The dynamic effects of aggregate demand and supply
+disturbances. The American Economic Review, American Economic Association, v. 79, n. 4, p.
+655–673, 1989.
+
+BROCKWELL, P.; DAVIS, R. Time Series: Theory and Methods. 2. ed. New York:
+Springer-Verlag, 1991. (Springer Series in Statistics).
+
+BRYAN, M. F.; CECCHETTI, S. G. Measuring core inflation. In: Monetary Policy. Chicago:
+University Of Chicago Press, 1994, (National Bureau of Economic Research Studies in Income
+and Wealth). p. 195–219.
+
+DICKEY, D. A.; FULLER, W. A. Distribution of the estimators for autoregressive time series with
+a unit root. Journal of the American Statistical Association, American Statistical Association,
+v. 74, n. 366, p. 427–431, Jun 1979.
+
+DIEBOLD, F. X.; MARIANO, R. S. Comparing predictive accuracy. Journal of Business &
+Economic Statistics, American Statistical Association, v. 13, n. 3, p. 134–144, Jul 1995.
+
+FREEMAN, D. G. Do core inflation measures help forecast inflation? Economics Letters, v. 58,
+n. 2, p. 143 – 147, 1998.
+
+GAMBER, E. N.; SMITH, J. K.; EFTIMOIU, R. The Dynamic Relationship between Core and
+Headline Inflation. Pennsylvania, fev 2013. (Working Paper).
+
+HARVEY, D.; LEYBOURNE, S.; NEWBOLD, P. Testing the equality of prediction mean squared
+errors. International Journal of Forecasting, v. 13, n. 2, p. 281 – 291, Jun 1997.
+
+HOGAN, S.; JOHNSON, M.; LAFLÈCHE, T. Core Inflation. Bank of Canada, 2001. (Technical
+Reports, 89).
+
+KING, R. G. et al. Stochastic trends and economic fluctuations. The American Economic Review,
+American Economic Association, v. 81, n. 4, p. 819–840, Sep 1991.
+
+
+                                              17
+KWIATKOWSKI, D. et al. Testing the null hypothesis of stationarity against the alternative of a
+unit root: How sure are we that economic time series have a unit root? Journal of Econometrics,
+v. 54, n. 1-3, p. 159 – 178, out-dez 1992.
+
+MACKINNON, J. G. Numerical distribution functions for unit root and cointegration tests.
+Journal of Applied Econometrics, John Wiley Sons, v. 11, n. 6, p. 601–618, Nov - Dez 1996.
+
+MARQUES, C. R.; NEVES, P. D.; SARMENTO, L. M. Evaluating core inflation indicators.
+Economic Modelling, v. 20, n. 4, p. 765 – 775, 2003.
+
+MEHRA, Y. P.; REILLY, D. Short-term headline-core inflation dynamics. Economic Quarterly,
+Federal Reserve Bank of Richmond, v. 95, n. 3, p. pp. 289–313, Summer 2009.
+
+PICCHETTI, P.; KANCZUK, F. An application of quah and vaheys svar methodology for
+estimating core inflation in brazil. In: Anais do XXIX Encontro Nacional de Economia. Salvador,
+Brasil: ANPEC, 2001.
+
+PICCHETTI, P.; TOLEDO, C. How much to trim?: A methodology for calculating core inflation,
+with an application for brazil. In: III Meeting of the Latin American and Caribbean Economic
+Association (LACEA). Rio de Janeiro, Brasil: ANPEC, 2000.
+
+QUAH, D.; VAHEY, S. P. Measuring core inflation. The Economic Journal, Blackwell Publishing
+for the Royal Economic Society, v. 105, n. 432, p. 1130–1144, Sep 1995.
+
+RIBBA, A. Permanent-transitory decompositions and traditional measures of core inflation.
+Economics Letters, v. 81, n. 1, p. 109 – 116, 2003.
+
+ROGER, S. Core inflation: concepts, uses and measurement. Reserve Bank of New Zealand,
+Wellington, 1998. (Discussion Paper Series, G98/9).
+
+SILVA FILHO, T. N. T. d.; FIGUEIREDO, F. M. R. Has core inflation been doing a good job in
+brazil? Revista Brasileira de Economia, v. 65, n. 2, p. 207–233, June 2011.
+
+SMITH, J. K. Weighted median inflation: Is this core inflation? Journal of Money, Credit and
+Banking, Ohio State University Press, v. 36, n. 2, p. pp. 253–263, Apr. 2004.
+
+STOCK, J. H.; WATSON, M. W. Testing for common trends. Journal of the American Statistical
+Association, American Statistical Association, v. 83, n. 404, p. 1097–1107, Dec 1988.
+
+TROMPIERI NETO, N.; CASTELAR, L. I. de M.; LINHARES, F. C. Núcleo da inflação: Uma
+aplicação do modelo de tendências comuns para o brasil. In: Anais do XXXIX Encontro Nacional
+de Economia. Foz do Iguaçu, Brasil: ANPEC, 2011.
+
+WYNNE, M. A. Core inflation: a review of some conceptual issues. Review, Federal Reserve
+Bank of St. Louis, v. 90, n. 3, mai/jun 2008.
+
+
+
+
+                                              18
+

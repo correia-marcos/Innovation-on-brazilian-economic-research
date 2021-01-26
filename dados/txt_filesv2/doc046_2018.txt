@@ -1,0 +1,1257 @@
+Selection of lags and univariate models to forecast industrial
+production in an Emerging country: is disagreggation useful?
+
+Diogo de Prince∗
+
+Emerson Fernandes Marçal†
+
+Abstract
+
+A point to address is if the use of disaggregated data helps in forecasting variables. Our point is whether
+the prediction of the disaggregated components of Brazilian industrial production improves the accuracy of the
+forecast of aggregate Brazilian industrial production. Our contribution is that we do not know articles that
+address the contribution of the disaggregated data of the weighted lag adaptative least absolute shrinkage and
+selection operator (WLadaLASSO) methodology or the exponential smoothing (selecting the most appropriate
+model). We estimate a rolling window of 100 xed observations and we evaluate the forecast from 1 to 12 months
+ahead for Brazilian industrial production, in which we estimate 61 rolling windows. Our results point to a better
+performance of the exponential smoothing model with disaggregated data for the forecast of 1 to 7 months ahead
+for Brazilian industrial production by mean square error (MSE). But WLadaLASSO disaggregated forecasts with
+more accuracy for 8 to 12 months ahead by MSE.
+
+Abstract
+
+Um ponto do trabalho é abordar se o uso de variáveis desagregadas auxilia na previsão de variáveis. Nosso
+ponto é se a previsão de componentes desagregados para a produção industrial brasileira melhora a acurácia da
+previsão para a produção industrial brasileira agregada. Nossa contribuição é que não conhecemos artigos que
+tratam do uso de dados desagregados com a metodologia weighted lag adaptative least absolute shrinkage and
+selection operator (WLadaLASSO) ou suavização exponencial (no qual seleciona-se o modelo mais apropriado).
+Nós estimamos uma janela móvel de 100 observações xas e nós avaliamos a previsão de 1 a 12 meses a frente,
+no qual nós estimamos 61 janelas móveis. Nosso resultado aponta para uma melhor performance do modelo de
+suavização exponencial com dados desagregados para prever de 1 a 7 meses a frente pelo erro quadrático médio
+(EQM). Mas o WLadaLASSO desagregado prevê com maior acurácia de 8 a 12 meses a frente pelo EQM.
+
+JEL Codes: C53, E27, C52
+
+Key Words: industrial production, forecasting, model selection.
+Palavras-chave: produção industrial, previsão, seleção de modelos.
+
+Área 4 - Macroeconomia, Economia Monetária e Finanças
+
+∗Assistante Professor at Federal University of Sao Paulo
+†Head of Center for Applied Macroeconomic Research at Sao Paulo School of Economics
+
+1
+
+Selection of lags and univariate models to forecast industrial production in an Emerging country:
+
+is disagreggation useful?
+
+Abstract
+
+A point to address is if the use of disaggregated data helps in forecasting variables. Our point is whether
+the prediction of the disaggregated components of Brazilian industrial production improves the accuracy of the
+forecast of aggregate Brazilian industrial production. Our contribution is that we do not know articles that
+address the contribution of the disaggregated data of the weighted lag adaptative least absolute shrinkage and
+selection operator (WLadaLASSO) methodology or the exponential smoothing (selecting the most appropriate
+model). We estimate a rolling window of 100 xed observations and we evaluate the forecast from 1 to 12 months
+ahead for Brazilian industrial production, in which we estimate 61 rolling windows. Our results point to a better
+performance of the exponential smoothing model with disaggregated data for the forecast of 1 to 7 months ahead
+for Brazilian industrial production by MSE. But WLadaLASSO disaggregated forecasts with more accuracy for
+8 to 12 months ahead by MSE.
+
+JEL Codes: C53, E27, C52
+
+Key Words: industrial production, forecasting, model selection.
+
+1
+
+Introduction
+
+Economic agents decide based on a global view of how the economy behaves at that moment. The general level
+of output, employment, interest rates, exchange rates and ination are examples of important economic indicators
+that help in the country's diagnosis. One of the most comprehensive and important macroeconomic indicators of
+the economy is the Gross Domestic Product (GDP), as it is a proxy for a country's economic performance.
+In
+the present work, the proxy used for GDP is industrial production, since the indicator of industrial production is
+monthly (higher frequency than GDP) and is released with a lag of about one month, which is therefore smaller
+than GDP (with a delay of more than two months). Therefore, the proposition and evaluation of econometric
+models of forecasting are relevant and bring benets to build better forecasts to enable more accurate expectations
+of economic agents.
+
+A point to address is if the use of disaggregated data helps in forecasting variables. Data disaggregation is an
+alternative to lead to more accurate forecasts. This alternative refers to the decomposition of the main variable into
+several subcomponents, which have dierent weights for the aggregate series. These subcomponents are estimated
+individually and then grouped to obtain a forecast of the aggregate series. This technique can increase the quality
+of the forecast because we model the subcomponents taking into account their individual characteristics. We use
+this alternative in the present work to understand if there are gains to predict the aggregate series if we estimate
+each subcomponent and we use the weight of this subcomponent.
+
+The accuracy of this alternative for forecasting has been discussed in some studies. The theoretical studies
+indicate that when the data generating process (DGP) is known, it is preferable to rst use the data disaggregated
+in multiple series to later aggregate them, than to directly predict the already aggregated series. However, the author
+acknowledges that in most cases DGP is unknown and therefore the use of aggregate series may be preferable due to
+variability of specication and estimation of the model. Some examples of contributions to the theoretical literature
+on aggregate or disaggregate forecasting are Lutkepohl (1984, 1987), Granger (1987), Pesaran, Pierse, and Kumar
+(1989), Garderen, Lee, and Pesaran (2000), and Giacomini and Granger (2004). As DGP is not known, then the
+question (if aggregating the disaggregated forecasts improves the accuracy of the aggregate forecast) becomes an
+empirical question.
+
+Our point is whether the prediction of the disaggregated components of Brazilian industrial production improves
+the accuracy of the forecast of aggregate Brazilian industrial production. Our contribution is that we do not know
+articles that address the contribution of the disaggregated data of the weighted lag adaptative least absolute
+shrinkage and selection operator (WLadaLASSO) methodology or the exponential smoothing (selecting the most
+appropriate model).
+In addition, there are few papers that analyze the contribution of disaggregated data to
+industrial production and we intend to ll this gap. From monthly data from 2002 to 2017, we select the best
+unviariate model, estimate a rolling window of 100 xed observations and we evaluate the forecast from 1 to 12
+months ahead for Brazilian industrial production, in which we estimate 61 rolling windows. We consider as naive
+models the rst order autoregressive model (AR(1)), AR(1) with time-varying parameters (TVP AR(1)), the Stock
+and Watson (2007) unobserved components with stochastic volatility (UC-SV), estimated based on Kroese and
+Chan (2014). We consider the following methods for selecting the best model: exponential smoothing based on
+
+2
+
+Hyndman et al (2002), Hyndman and Khandakar (2008) and Hyndman et al (2008), the least absolute shrinkage
+and selection operator (LASSO), adaptive LASSO (adaLASSO), and the WLadaLASSO. We use the LASSO and its
+variants to select the lags from an AR (15). We compare the prediction performance between the models based on
+the mean square error (MSE) and the Diebold and Mariano (1995) test. Our results point to a better performance
+of the exponential smoothing model with disaggregated data for the forecast of 1 to 7 months ahead for Brazilian
+industrial production by MSE. But WLadaLASSO disaggregated forecasts with more accuracy for 8 to 12 months
+ahead by MSE. To analyze whether there is a better statistical performance, we use the exponential model with
+disaggregated data a benchmark with the Diebold and Mariano (1995) test. We can consider that the disaggregated
+exponential smoothing model presents better statistical performance for prediction in relation to the naive models
+(AR(1), AR(1) with time-varying parameters, UC-SV) considered with aggregate or disaggregated data and the
+aggregate exponential smoothing model.
+
+The article structure contains six sections in addition to this introduction. The following is a brief review of
+the literature. Next, we address the methodology of the models considered in the paper. Section 4 presents the
+data used, the empirical forecasting strategy and the Diebold and Mariano (1995) test to compare the performance
+of the models. In section 5, we discuss the results of the study. Finally, we show the nal considerations of the
+research and the next steps.
+
+2 Literature Review
+
+The present section address some empirical articles that address the dierence in forecast accuracy between
+
+aggregating the disaggregated forecasts or modeling only the aggregate variable.
+
+Stock and Watson (1998) compare 49 univariate projection models to forecast industrial activity and ination
+in the United States from 215 monthly series from the years 1959 to 1996. One conclusion of the paper is the
+nding that the aggregation of forecasts exceeded the performance of separate forecasts. The authors also nd
+that gains from the use of forecast combinations are signicant enough to justify their use by a risk-averse analyst.
+The authors also point to the importance of performing the unit root test to reduce errors substantially in the
+estimates. Tobias and Zellner (1998) seek to determine the eects of aggregation and disaggregation to predict the
+average annual growth rate of 18 countries. In general, the disaggregation leads to more observations to estimate
+the parameters, besides the authors obtain better predictions for the aggregate variable (growth rate).
+
+Marcellino, Stock and Watson (2003) nd evidence that the individual estimation of ination in each euro area
+country and the subsequent aggregation of projections increases the accuracy of the nal result of the estimation,
+in relation to the option to predict this variable only in aggregate level. Hubrich (2005) obtains that aggregating
+forecasts by component of ination does not necessarily better predict year-on-year ination in the euro area one
+year ahead.. Espasa, Senra and Albacete (2002) have similar results indicating, however, that the disaggregation
+leads to better projections for periods longer than one month. Carlos and Marçal (2016) compare the prediction
+from models for aggregate ination and aggregating the forecasts for the groups and items of the Brazilian ination
+index. The authors obtain that there are gains in the accuracy of the forecast with disaggregated data.
+
+Barhoumi et al (2010) analyze the forecasting performance of the France GDP between alternative factor models.
+The point of the work is whether it is more appropriate to extract data factors with aggregates or disaggregated
+to predict. Rather than using 140 disaggregated series, Barhoumi et al (2010) show that the static approach of
+Stock and Watson (2002) with 20 aggregate series leads to better prediction results. The next section presents the
+methodology we use in this paper.
+
+3 Methodology
+
+We consider three naive estimators to compare our model forecasts: UC with stochastic volatility, autoregressive
+model and time-varying parameters autoregressive. Our point is select the lag variables that are relevant based on
+dierent univariate methodologies. We use LASSO and two variants (LASSO, ADALASSO and WLADALASSO)
+and exponential smoothing method with ETS.
+
+3.1 Time-varying parameters autoregressive of rst order
+
+In this section, we present the methodology we use to the autoregressive rst order model with time-varying
+parameters. This model serves as a naive predictive alternative and therefore we use only one lag. The methodology
+
+3
+
+where y = (y1, ..., yT )
+
+(cid:62)
+
+, ε = (ε1, ..., εT )
+
+with time-varying parameters seeks to contemplate the changes that can occur in the economy over time (Kapetanio
+et al, 2017). Consider the time-varying paramenter AR(1) model, where we can write the measurement equation as
+
+where εt ∼ N(cid:0)0, σ2(cid:1) for t = 1, ..., T , and y0 is an initial observation. We can write the autoregressive coecients
+
+yt = β0t + β1tyt−1 + εt
+
+(1)
+
+βt = (β0t, β1t)
+
+with the following transition equation
+
+(cid:62)
+
+where ut ∼ N (0, Ω) and the transition equation has the initial value β1 ∼ N (β0, Ω0).
+
+We will use Bayesian estimation following Kroese and Chan (2014) and for this we consider the equation (1)
+
+βt = βt−1 + ut
+
+(2)
+
+with matrix notation
+
+where x(cid:62)
+
+t = (1, yt−1). If we stack the observations over all times t, we have
+
+yt = x(cid:62)
+
+t βt + εt
+
+y = Xβ + ε
+
+:N(cid:0)0, σ2I(cid:1), and X =
+
+(cid:62)
+
+
+
+x(cid:62)
+t
+0
+...
+0
+
+t
+
+0
+x(cid:62)
+...
+0
+
+. . .
+0
+. . .
+0
+...
+...
+. . . x(cid:62)
+
+t
+
+(3)
+
+(4)
+
+. The
+
+(5)
+
+(cid:1)(cid:62)
+
+1 , ..., β(cid:62)
+
+, β =(cid:0)β(cid:62)
+ln f(cid:0)y|β, σ2(cid:1) = − T
+
+T
+
+logarithm of the joint density function of y (omitting the initial observation y0) is
+
+lnσ2 − 1
+
+2σ2 (y − Xβ)
+
+(cid:62)
+
+(y − Xβ) + const
+
+2
+
+where const is the constant term. Now we can stack the transition equation (2) over t. We consider β0 = 0 for
+simplication. We can write the transition equations in matrix form as
+
+where u:N (0, S), u = (u1, ..., uT )
+
+(cid:62)
+
+, H =
+
+
+
+Hβ = u
+
+I
+−I
+...
+0
+
+0
+I
+...
+0
+
+0
+. . .
+0
+. . .
+...
+...
+0 −I
+
+0
+0
+...
+I
+
+, and S =
+
+
+
+0
+
+0
+. . .
+Ω0
+0
+0 Ω . . .
+...
+...
+...
+. . . Ω
+0
+
+...
+0
+
+(6)
+
+.
+
+Given that |H| = 1 and |S| = |Ω0||Ω|T−1, the logarithm of the joint density function of β is given by
+
+ln f (β|Ω) = − T − 1
+
+ln|Ω| − 1
+2
+
+β(cid:62)H(cid:62)S−1Hβ + const
+
+2
+
+the vector of diagonal elements of Ω.
+
+(cid:1)(cid:62)
+We can reduce the number of parameters assuming that Ω is diagonal. So consider ω2 =(cid:0)ω2
+We can obtain the posterior density specifying the prior for σ2 and ω2. Assume an independent prior f(cid:0)σ2, ω2(cid:1) =
+f(cid:0)σ2(cid:1) f(cid:0)ω2(cid:1), where σ2 ∼ IG (ασ2 , λσ2) and ω2
+where f(cid:0)y|β, σ2(cid:1) and f(cid:0)β|ω2(cid:1) is given by (5) and (7) respectively. We can obtain posterior draws using Gibbs
+sampler. We draw from f(cid:0)β|y, σ2, ω2(cid:1) followed by a draw from f(cid:0)σ2, ω2|y, β(cid:1). As f(cid:0)β|y, σ2, ω2(cid:1) is a normal
+
+f(cid:0)β, σ2, ω2|y(cid:1) ∝ f(cid:0)y|β, σ2(cid:1) f(cid:0)β|ω2(cid:1) f(cid:0)σ2(cid:1) f(cid:0)ω2(cid:1)
+
+. We specify the constants ασ2, λσ2, αω2
+
+The posterior density function is given by
+
+i ∼ IG
+
+, and λω2
+
+1, ..., ω2
+p
+
+0, ω2
+
+(cid:16)
+
+(cid:17)
+
+, λω2
+
+αω2
+
+(8)
+
+(7)
+
+as
+
+.
+
+i
+
+i
+
+i
+
+i
+
+density, if we determine the mean vector and the precision matrix, we can apply the algorithm described below to
+obtain a draw from it eciently. Using (5) and (7), we write
+
+ln f(cid:0)β|y, σ2, ω2(cid:1) = ln f(cid:0)y|β, σ2(cid:1) + ln f(cid:0)β|ω2(cid:1) + const
+ln f(cid:0)β|y, σ2, ω2(cid:1) = − 1
+
+(cid:17)(cid:62)
+
+β − ˆβ
+
+β − ˆβ
+
++ const
+
+(cid:16)
+
+(cid:16)
+
+(cid:17)
+
+Kβ
+
+2
+
+4
+
+(9)
+
+(10)
+
+as
+
+(cid:18)
+(cid:32)
+
+(cid:62)(cid:19)
+(cid:33)
+
+β
+
+where Kβ = 1
+
+σ2 X(cid:62)X + H(cid:62)S−1H and ˆβ = K−1
+
+σ2 X(cid:62)(cid:1). This means that β|y, σ2, ω2 ∼ N
+(cid:0) 1
+the algorithm described soon we can draw f(cid:0)β|y, σ2, ω2(cid:1).
+generates N independent draws from N(cid:0)µ, Λ−1(cid:1) of dimensions n with the following steps:
+
+The algorithm obtains the multivariate normal vector generation using the precision matrix. The algorithm
+1. We obtain the lower Cholesky factorization Λ = DD(cid:62).
+2. We draw Z1, ..., Zn ∼ N (0, 1).
+3. We determine Y from Z = D(cid:62)Y .
+4. We obtain W = µ + Y .
+5. We repeat steps 2-4 independently N times.
+
+The next point is to be able to draw f(cid:0)σ2, ω2|y, β(cid:1). Given y and β, σ2 and ω2 are conditionally independent.
+From (8), we have f(cid:0)σ2|y, β(cid:1) ∝ f(cid:0)y|β, σ2(cid:1) f(cid:0)σ2(cid:1) and f(cid:0)ω2|y, β(cid:1) ∝ f(cid:0)β|ω2(cid:1) f(cid:0)ω2(cid:1). Both conditional densities are
+
+(cid:16) ˆβ, K−1
+
+β
+
+(cid:17)
+
+. Then with
+
+inverse-gamma densities, which shows that
+
+σ2|y, β ∼ IG
+
+ασ2 +
+
+T
+2
+
+, λσ2 +
+
+1
+2
+
+(y − Xβ) (y − Xβ)
+
+and
+
+i |y, β ∼ IG
+ω2
+
+T − 1
+
+2
+
+, λω2
+
+i
+
++
+
+αω2
+
+i
+
++
+
+(βit − βit−1)2
+
+T(cid:88)
+
+t=2
+
+1
+2
+
+(11)
+
+(12)
+
+= 0.52(cid:16)
+
+Following Kroese and Chan (2014), we set small values for the shape parameter of the inverse gamma distribution
+= 5, i = 0, 1. Also we set λσ2 = (ασ2 − 1),
+as the prior. Finally, we set the covariance matrix Ω0 to be
+
+so that the prior is more non-informative. That is, ασ2 = αω2
+λω2
+diagonal with diagonal elements equal to ve, in line with Kroese and Chan (2014).
+
+, and λω2
+
+− 1
+
+− 1
+
+αω2
+
+αω2
+
+0
+
+0
+
+1
+
+1
+
+i
+
+= 0.12(cid:16)
+
+(cid:17)
+
+(cid:17)
+
+3.2 UC with stochastic volatilty
+
+Stock and Watson (2007) include stochastic volatility in an unobserved component model. The authors show
+
+that UC-SV presents a great performance to forecast US ination. The UC-SV is dened as
+
+yt = βt + σ
+
+1
+2
+
+t vt
+
+βt = βt−1 + ω
+
+1
+2
+
+t et
+
+(13)
+
+(14)
+
+where lnσt is the log stochastic volatility, βt is the trend, lnσt = lnσt−1 + e1t, and lnωt = lnωt−1 + e2t, in which
+the variances of e1t and e2t are respectively g1 and g2. We estimate the model using Markov chain Monte Carlo
+(MCMC) algorithm with Gibbs sampling method following Barnett et al (2014).
+Our rst step is to establish the priors and starting values. We dene the prior for the initial value of the lnσt
+as lnσ0 ∼ N (µ0, 10) where µ0 is the variance of yt0 − βt0 and t0 refers to the training sample of 40 observations
+and βt0 is an initial estimate for the trend from the HodrickPrescott lter. In a similar way, lnω0 ∼ N (ω0, 10)
+where ω0 = ∆βt0. We use the priors for g1 and g2 from an inverse gamma, we set the prior scale parameter equal
+to 0.01 and 0.0001 respectively with one degree of freedom as Barnett et al (2014).
+
+So the next step is to simulate the posterior distributions. We draw σt and ωt conditional on the value for
+g1 and g2 with the Metropolis algorithm based on Jacquier et al (2004). We draw βt using the Carter and Kohn
+(2004) algorithm. We generate the sample for g1 and g2 from the inverse gamma distribution. We consider 10,000
+replications of the MCMC algorithm and we keep with the last 1,000 replications for inference.
+
+Below we detail how we calculate the marginal likelihood. We use a particle lter to calculate the log likelihood
+function for the UC-SV. We dene Ξ as all parameters of the model. Based on Chib (1995), we consider the log
+marginal likelihood as:
+
+(cid:16)ˆΞ
+(cid:17)
+
+where lnP (yt) is the log marginal likelihood that we want to calculate, lnF
+
+is the log prior density, and lnG
+
+lnP
+elements on the right hand side of (15) are evaluated at the posterior mean for the model parameters ˆΞ.
+
+is the log posterior density of the model parameters. The three
+
+(cid:16)ˆΞ
+(cid:17) − lnG
+
+(cid:17)
+
+(cid:16)ˆΞ|yt
+(cid:16)
+
+yt|ˆΞ
+
+(cid:17)
+
+(15)
+
+is the log likelihood function,
+
+lnP (yt) = lnF
+
+yt|ˆΞ,
+
++ lnP
+
+(cid:16)
+(cid:17)
+
+(cid:16)ˆΞ|yt
+
+(cid:17)
+
+5
+
+(cid:17)
+
+(cid:16)ˆΞ|yt
+
+(cid:17)
+
+(cid:16)ˆΞ|yt
+
+(cid:17)
+
+(cid:16)ˆΞ|yt
+
+We calculate the log likelihood function for this model using a particle lter following Barnett et al (2014). We
+evaluate the prior density easily. But to get the term lnG
+can be
+factorized into conditional and marginal densities of various parameter blocks and we use Gibbs and Metropolis
+algorithm to approximate these densities according to Chib (1995) and Chib and Jeliazkov (2001). The posterior
+density is dened as G
+= G (ˆg1, ˆg2) and we drop the dependence on yt to simplify the notation. The
+factorization of this density can be described by
+
+, we need an additional step. lnG
+
+where H (ˆg1|ˆg2) =(cid:82) H (ˆg1|ˆg2, Θ) H (Θ|ˆg2) dΘ and H (ˆg2) =(cid:82) H (ˆg2|Θ) H (Θ) dΘ, in which Θ = {βt, σt, ωt} is the
+
+state variables in the model. These two densities H (ˆg1|ˆg2) and H (ˆg2) can be obtained as a 'weighted average'
+across state variables. We can approximate H (ˆg1|ˆg2) and H (ˆg2) with additional Gibbs runs and we can integrate
+over the states. We consider 10,000 iterations in these additional Gibbs samplers and we remain with the last 3,000
+like Barnett et al (2014).
+
+G (ˆg1, ˆg2) = H (ˆg1|ˆg2) H (ˆg2)
+
+(16)
+
+3.3 Lasso-type penalties
+
+We present three lasso-type penalties in this subsection: LASSO, adaLASSO, and WLadaLASSO.
+
+3.3.1 Lasso
+
+Tibshirani (1996) proposes the LASSO method that is based on the following minimization problem
+
+yi − β0 − k(cid:88)
+
+j=1
+
+n(cid:88)
+
+i=1
+
+2
+
+k(cid:88)
+
+j=1
+
+|βj|
+
+ˆβLASSO = argminβ0,β1,...,βk
+
+βjxji
+
++ λ
+
+(17)
+
+where λ ≥ 0 is a tunning parameter and lasso requires a method to obtain a value for λ, that we explain soon.
+|βj| is the (cid:96)1 norm
+
+The rst term is the sum of square of residuals and the second term is a shrinkage penalty.
+
+k(cid:88)
+
+of a coecient vector β. The (cid:96)1 penalty forces some of the coecients estimates to be equal to zero when λ is
+suciently large. When λ = 0, LASSO estimates are equal to ordinary least squares estimates. So, lasso technique
+performs variable selection.
+
+Cross-validation is usually the method to obtain the λ value. With time series data, we use the Bayesian
+information criterion (BIC) to choose λ, following Konzen and Ziegelmman (2016). We consider a grid of λ values.
+
+j=1
+
+3.3.2 Adalasso
+
+Zou (2006) states that with LASSO we can obtain an inconsistent selection of variables that keep noisy variables
+for example for a given λ that leads to optimal estimation rate. Also the author shows that LASSO can lead to the
+right selection of variables with biased estimates for large coecients and this take to suboptimal prediction rates.
+So, Zou (2006) introduces the adaptive LASSO, which considers weights ωj that adjust the penalty to be dierent
+
+for each coecient. The adaptive LASSO seeks to minimize
+
+n(cid:88)
+
+yi − β0 − k(cid:88)
+
+βjxji
+
+k(cid:88)
+
++ λ
+
+ωj|βj|
+
+(18)
+
+i=1
+
+j=1
+
+j=1
+
+ˆβadaLASSO = argminβ0,β1,...,βk
+
+where ωj =| ˆβridge
+| −τ , τ > 0. The adaptive LASSO considers that large (small) coecients have small (large)
+weights - and small (large) penalties. The coecients estimated by ridge regression lead to get the weight ωj. Ridge
+regression shrinks the vector of coecients by penalizing the sum of the squares of the residuals:
+
+j
+
+n(cid:88)
+
+yi − β0 − k(cid:88)
+
+k(cid:88)
+
+ˆβridge = argminβ0,β1,...,βk
+
+βjxji
+
++ λ
+
+β2
+j
+
+(19)
+
+where the penalty is the (cid:96)2 norm of the β vector. Ridge regression is not a method of variable selection because
+this regression obtains non-zero estimates for all coecients.
+
+i=1
+
+j=1
+
+j=1
+
+6
+
+2
+
+2
+
+(cid:16)| ˆβridge
+
+| e−αl(cid:17)−τ
+
+3.3.3 WLadalasso
+
+In case we consider adalasso with time series data, each coecient associated with a lagged variable is penalized
+according to the size of the Ridge's estimate. As less distant lag variables should usually raise the time series
+forecast, the coecients of more lagged variables should be penalized according to the lag of the variable.
+
+Park and Sakaori (2013) propose some types of penalties for dierent lags. Konzen and Ziegelmann (2016)
+
+present the adalasso with weighted lags based on Park and Sakaori (2013). The wladalasso is given by
+
+ˆβwladaLASSO = argminβ0,β1,...,βk
+
+βjxji
+
++ λ
+
+j |βj|
+ωw
+
+(20)
+
+n(cid:88)
+
+yi − β0 − k(cid:88)
+
+2
+
+k(cid:88)
+
+i=1
+
+j=1
+
+j=1
+
+j
+
+j =
+
+is the weight, τ > 0, α ≥ and l is the order of the variable's lag. We set the
+where ωw
+parameter τ equal to one as Konzen and Ziegelmann (2016) for the adalasso and wladalasso. We consider a grid
+for α, where the set of possible values for α is [0, 0.5, 1, ..., 10]. We calculate the optimal λ among those possible for
+that model with the lowest BIC value for each value of α. We choose the α value from that model that produces
+the smallest BIC value among all possible α values, following Konzen and Ziegelmann (2016).
+
+3.4 Exponential smoothing
+
+The name exponential smoothing comes from the weights decreasing exponentially when the observation becomes
+older. We can represent the exponential smoothing methods as state space models (Ord et al, 1997, Hyndman et
+al, 2002, Hyndman et al, 2005). The exponential smoothing method is an algorithm which only produces point
+forecasts. The stochastic state space model associated to this method provides a framework which leads to the
+same point forecast but also estimates the prediction intervals for example (Hyndman et al, 2008).
+
+Economical series exhibit some features that can be worked on. We can break down the economic series into
+certain components, such as trend (T), cycle (C), seasonality (S), and irregular or error (E). The exponential
+smoothing method that we use consider the decomposition into these components. Only the cycle component is
+not decomposed separately so that we model along with the trend component, following Hyndman et al (2005),
+Hyndman and Khandakar (2008), and Hyndman et al (2008). Thus, we can combine the components of trend,
+seasonality and error additionally or multiplicatively for example.
+
+Hyndman et al (2002), Hyndman and Khandakar (2008) and Hyndman et al (2008) propose 15 dierent com-
+binations between trend and seasonality components. The trend component can present ve dierent possibilities:
+none, additive, additive damped, multiplicative, and multiplicative damped. The trend component is a combination
+between the level ((cid:96)) and growth (b) parameter. Consider Th the forecast trend over the next h periods, and φ is
+a damping parameter (0 < φ < 1). So if there is no trend component, Th = (cid:96). If the trend component is additive,
+
+Th = (cid:96) + bh. If the trend component is additive damped, Th = (cid:96) +(cid:0)φ + φ2 + ··· + φh(cid:1) b. If the trend component is
+
+multiplicative, Th = (cid:96)bh. If the trend component is multiplicative damped, Th = (cid:96)b(φ+φ2+···+φh). If growth rate at
+the end of the series is unlikely to continue, the damped trend seems to be a reasonable option.
+
+After we present the types of trend component, the next step is to detail the types of seasonal component.
+The seasonal component can be none, additive or multiplicative. Also the error component can be additive or
+multiplicative, but this distinction is not relevant to make point forecast (Hyndman et al, 2008).
+
+So, we consider the combination of ve types of trend component and three types of seasonal component which
+leads to a total of 15 types of exponential smoothing methods that we consider in this paper, following Hyndman
+and Khandakar (2008). We present these 15 possibilities in the Table 1, in which the rst entry refers to the trend
+component and the second to the seasonal component. Some of these exponential smoothing methods are known
+by other names. For example, cell N, N represents the simple exponential smoothing method, cell A, N refers to
+the Holt's linear method, and cell Ad, N is associated with the damped trend method. The cell A, A describes the
+additive Holt-Winter's method, the cell A, M refers to the multiplicative Holt-Winter's method.
+
+For example, consider the Holt's linear method (cell A, N) that can be described as
+
+(cid:96)t = αyt + (1 − α) ((cid:96)t−1 + bt−1)
+bt = β∗ ((cid:96)t − (cid:96)t−1) + (1 − β∗) bt−1
+
+7
+
+(21)
+
+(22)
+
+Table 1: The dierent combinations of exponential smoothing methods
+
+ˆyt+h|t = (cid:96)t + bth
+
+(23)
+
+where the rst equation (21) shows the model to the level of the series at time t (cid:96)t, the second equation (22)
+describes the growth rate (estimate the slope) of the series at time t bt. bt is given by a weighted average of the
+estimate of growth obtained by the dierence between successive levels and the previous growth bt−1. Finally, the
+equation (23) presents the prediction for the variable y h periods ahead using information available at time t. This
+equation describes that the forecast for the variable h periods ahead is given by the level in the current time (cid:96)t
+adding the growth bt for the h periods. α is the smoothing parameter for the level with 0 < α < 1, and β∗ is the
+smoothing parameter for the trend with 0 < β∗ < 1.
+
+Consider a model with the seasonality component, when seasonal variations are constant throughout the series,
+the additive method for the seasonal component is preferred. When seasonal variations change proportionally to
+the level of the series, the multiplicative method for the seasonal component is preferred. Consider for example the
+Holt-Winters method of additive trend with additive seasonal component (cell A, A), the equations of this method
+are given by
+
+(cid:96)t = α (yt − st−m) + (1 − α) ((cid:96)t−1 + bt−1)
+
+bt = β∗ ((cid:96)t − (cid:96)t−1) + (1 − β∗) bt−1
+
+st = γ (yt − (cid:96)t−1 − bt−1) + (1 − γ) st−m
+
+ˆyt+h|t = (cid:96)t + bth + st−m+h+
+
+m
+
+(24)
+
+(25)
+
+(26)
+
+(27)
+
+The equations (24), (25), (26), and (27) describe, respectively, the level (cid:96)t, the growth rate bt, the seasonality st,
+and the forecast h periods ahead of the series. m is the length of seasonality (e.g., number of months or quarters
+m = [(h − 1) mod m] + 1. The parameters of the Holt-Winters method
+in a year), is the seasonal component, and h+
+(α, β∗, γ) are restricted to lie between 0 and 1.
+
+Table 2 presents the equations for the level, growth, seasonality, and forecast of the series for h periods ahead
+for the 15 cases considered. Some values for exponential smoothing parameters lead to interesting specic cases.
+Some examples are: the level remains constant over time if α = 0, the slope is constant over time if β∗ = 0, and
+the seasonal behavior is the same over time if γ = 0. Finally, the methods A and M for the trend component are
+particular cases of Ad and Md with φ = 1.
+
+The next point is to discuss the state space models that underlie exponential smoothing methods. Each of the
+15 models considered consist of a measurement equation that describes the data, and state equations that represent
+how the unobserved components (level, trend, seasonal) modify over time. The measurement equation together
+with the state equations are known by state space models.
+
+Hyndman et al (2002) propose to dierentiate the behavior of the model with additive errors in relation to the
+multiplicative errors. If the estimated parameters are the same, the point forecast is not aected if the error is
+multiplicative or additive, only the prediction interval. When considering the behavior of the error, Hyndman et
+al (2002) have the triplet (E, T, S) that refers to the three components: error, trend, and seasonality. The model
+ET S(A, A, N ) means that the errors and the trend are additive and that there is no seasonality.
+
+8
+
+Table 2: The equations for the level, growth, seasonality, and forecast of the series for h periods ahead for the 15
+cases considered
+
+for example, we have ET S(A, A, N ). Assuming that error εt = yt − (cid:96)t−1 − bt−1 :N(cid:0)0, σ2(cid:1) and independently
+
+If we return to the Holt's linear method presented by the equations (21), (22), and (23) with additive errors
+
+distributed, we can write the error correction equations as
+
+yt = (cid:96)t−1 + bt−1 + εt
+
+(cid:96)t = (cid:96)t−1 + bt−1 + αεt
+
+(28)
+
+(29)
+
+(30)
+where β = αβ∗. Equation (28) refers to the measurement equation and equations (29) and (30) describe the state
+equations for the level and growth respectively. Similarly, all 15 exponential smoothing methods presented in the
+table 2 can be rewritten in the form of state space model with additive or multiplicative errors, see Hyndman et al
+(2008) for example.
+
+bt = bt−1 + βεt
+
+Basically, the estimation procedure is based on estimating the smoothing parameters α, β, γ, φ and the initial
+state variables (cid:96)0, b0, s0, s−1, ..., s−m+1 maximizing the likelihood function. The algorithm proposed by Hyndman
+et al. (2002) also determines which of the 15 ETS models is most appropriate by selecting the model based on the
+information criterion. The information criterion used to select the most appropriate model are Akaike information
+criterion (AIC), AIC corrected for small sample bias (AICc), and Bayesian information criterion (BIC), according
+to Hyndman et al (2008).
+
+4 Data and Empirical Strategy
+
+Our data is the Brazilian industrial production index at general level and your desagreggation by sectors.
+The data source is the Monthly Industrial Survey of Physical Production (PIM-PF) of the Brazilian Institute
+of Geography and Statistics (IBGE). We use monthly data from January 2002 to August 2017 without seasonal
+adjustment. We consider the rst dierence of data to have stationary series, with exception of the UC-SV and
+ETS models.
+
+The forecast is made for the general industry to analyze the use of aggregate data and from the industry sectors
+we aggregate to get the general industry forecast. Thus we use the disaggregated data for the extractive industry
+and the 25 sectors of the manufacturing industry. However, two sectors printing and reproduction of recordings;
+and maintenance, repair and installation of machines and equipment only present data from January 2012 and
+therefore we do not include these sectors in the estimates.1 Thus, our disaggregated sample includes the category
+
+1The two sectors have combined share of 2.3% of the index of industrial production.
+
+9
+
+of extractive industries and 23 sectors of the manufacturing industry. Next we detail the empirical strategy and
+how we compare the predictions obtained.
+
+4.1 Empirical Strategy and Forecast Comparison
+
+We consider the model with up to 15 lags of the dependent variable and the selection of variables is based on
+this set of covariates. Thus, we use a rolling window of 100 xed observations for each estimation for a forecast
+horizon of 1 to 12 months ahead. With this window size, we estimate with 61 samples for the general industry
+series as for each of the sectors. We estimate the forecast for each sector and we use the of each sector to obtain
+the forecast for the general industry from its components, thus obtaining the forecasts of the general industry from
+the disaggregated data. For such recomposition, we consider the forecast of each sector by its weight and then we
+sum to obtain the forecast from the disaggregated data. The forecast window for analysis ranges from September
+2011 to August 2017.
+
+We compare our forecasts with the estimates of three naive models. The rst is the autoregressive model of the
+rst order, the second is the time-varying parameters autoregressive model of the rst order, and the third is the UC
+with SV. We estimate all models with the data for the general industry (aggregate forecast) and the forecast for the
+general industry from the disaggregated data (disaggregated forecast). Thus, we have two naive predictions from
+the AR (1) model (aggregate and disaggregated), two naive predictions from the time varying AR(1) (aggregate
+and disaggregated), and two naive predictions from UC with SV (aggregate and disaggregated). The naive model
+serves as reference or benchmark for the other forecasts. The performance analysis for the prediction of the models
+will be through the mean square error (MSE) and from the test of Diebold and Mariano (1995) to determine if there
+is a model with more accurate prediction for the general industrial production of Brazil for the period considered.
+Next we present the test of Diebold and Mariano (1995).
+
+4.1.1 Diebold and Mariano test
+
+The MSE is the sum of the dierence squared between the actual value of the data and the estimated value,
+weighted by the number of terms. The test of Diebold and Mariano (1995) shows if there is any model with
+statistically more accurate prediction for the general industrial production of Brazil for the considered period.
+Consider a loss function g based on forecasting errors, in which we consider a quadratic loss function. Assuming
+two models (1 and 2), in which the forecasting errors ˆεt+h|t for h period ahead are given by ˆε1
+t+h|t
+and ˆε2
+t+h|t is the forecast from model 2 for h periods ahead for example. The test of
+Diebold and Mariano (1995) is based on the dierence between the forecasting error of the models.
+
+t+h|t = yt+h − ˆy2
+
+t+h|t = yt+h − ˆy1
+
+t+h|t, where ˆy2
+
+The null hypothesis of the test is that there is equality of forecasting performance between the two models,
+that is, the models have statistically equal deviations. On the other hand, the alternative hypothesis (one-sided
+test) denes that the model used as a reference leads to more accurate forecasts than the other. The Diebold and
+Mariano (1995) test is given by:
+
+(cid:80)T
+
+(cid:16)
+
+(cid:17) − g
+
+(cid:16)
+
+S =
+
+¯d(cid:114)(cid:16) (cid:91)Avar(cid:0) ¯d(cid:1)(cid:17)
+, and (cid:91)Avar(cid:0) ¯d(cid:1) is an estimate of the asymptotic variance (large
+
+(31)
+
+(cid:17)
+
+where ¯d = 1
+T0
+samples) of ¯d for the sample selected. Thus, the S statistic follows a Student t-distribution (Diebold, Mariano,
+1995). We consider the quadratic loss function for the test performed in the present work.
+
+dt, dt = g
+
+ˆε1
+t+h|t
+
+ˆε2
+t+h|t
+
+t=t0
+
+5 Results
+
+This section presents the prediction of 1 to 12 months ahead for the naive models (AR(1), AR(1) with time-
+varying parameters, UC with SV), besides the lag selection from the LASSO and its two variants (adaLASSO and
+WLadaLASSO), and exponential smoothing ETS to predict the general industry from aggregated and disaggregated
+data. We compare the results in two parts, from the MSE and the Diebold and Mariano (1995) test to obtain the
+model with the most accurate forecast.
+
+Table 3 presents the MSE of 1 to 12 months ahead for the dierent models. In general, we can analyze that
+the MSE is smaller for the disaggregated models in relation to the aggregates independent of the forecast horizon,
+
+10
+
+with the exception of AR (1) with time-varying parameters and UC with SV. The model with the lowest MSE
+for the prediction of one to seven months ahead is disaggregated ETS. Increasing the forecast time horizon mainly
+from one to three periods ahead does not greatly aect the MSE of the disaggregated ETS. The WLadaLASSO
+model for disaggregated data presented lower MSE for the time horizon of 8 to 12 months ahead. The dierence in
+MSE between the LASSO models and variants is small mainly using disaggregated data, in which the disaggregated
+WLadaLASSO performs better than the other LASSO methods disaggregated for the dierent forecast horizons.
+In line with Konzen and Ziegelmann (2016), the WLadaLASSO disaggregated model performed better than the
+LASSO and adaLASSO for disaggregated data. However, in the case of estimating the aggregate model, the LASSO
+model presents better prediction performance in relation to its variants. An interesting point would be to try to
+nd out why WLadaLASSO does not perform better than its variants for aggregate data or because there is this
+performance dierence between aggregated and disaggregated data. Since Konzen and Ziegelmann (2016) point out
+that WLadaLASSO would perform better when the sample is small and the greater the number of lags used but
+we are not varying these two points.
+
+Table 3: MSE results for forecasting from 1 to 12 months ahead for dierent models
+
+However, the MSE dierence does not allow to state if statistically the disaggregated ETS is higher in the
+accuracy of the forecast in relation to the others. Therefore, we analyze the results of the Diebold and Mariano
+(1995) test. In order to perform the test, we establish the disaggregated ETS as the benchmark model because it
+has lower MSE of 1 to 7 months ahead compared to the rest of the models, indicating predictive power gains. We
+compare the predictive errors of all models with those of the benchmark, having as null hypothesis the equality of
+predictive power. Under the null hypothesis, the disaggregated ETS predicts as well as the analyzed model. The
+alternative hypothesis indicates that the prediction of the disaggregated ETS is statistically better.
+
+Table 4 presents the Diebold and Mariano (1995) statistic and the associated p-value for each of the models
+in relation to the benchmark. From the results of the test of Diebold and Mariano (1995), we can consider
+that the disaggregated ETS presents better statistical performance for prediction in relation to the naive models
+(AR(1), AR(1) with time-varying parameters, UC with SV) considered with aggregate or disaggregated data and
+the aggregate ETS. However, the disaggregated ETS model does not present better accuracy in relation to the
+LASSO models and their variants, regardless of being aggregated or disaggregated.
+
+Conclusions
+
+The present work seeks to analyze two points about the prediction of industrial production for Brazil. The
+rst is to compare dierent univariate models for selection of lags like LASSO and two variants, in addition to
+the most suitable model for exponential smoothing. Among these models, which type of model best forecasts
+
+11
+
+Table 4: Diebold and Mariano (1995) test resultsfrom 1 to 12 months ahead for dierent models
+
+the industrial production in Brazil. The second point is to consider whether the disaggregated data contribute
+to predict the aggregate level of industrial production. Basically our result points to a better performance of
+models that use disaggregated data. The exponential smoothing model with disaggregated data in which we obtain
+the best specication performs better in the forecast from 1 to 7 months ahead. The WLadaLASSO model with
+disaggregated data oers better forecasting performance from 8 to 12 months ahead. However, the dierence in
+prediction performance between the LASSO and its variants (adaLASSO, WLadaLASSO) is small when we consider
+the disaggregated data.
+
+This is an ongoing research. The next steps are to contemplate two additional models for prediction, which
+is the selection between dierent models of neural networks of Crone and Kourentzes (2010) and Kourentzes et
+al (2014), and the dynamic model averaging/selection framework of Koop and Korobilis (2012) and Raftery et al
+(2010). Also we will compare the forecasts with model condence set of Hansen et al (2011).
+
+References
+
+Barhoumi, K., Darné, O., and Ferrara, L. (2010), Are disaggregate data useful for factor analysis in forecasting
+
+French GDP, Journal of Forecasting, 29, 132-144.
+
+Barnett, A., Mumtaz, H., and Theodoridis, K. (2014), Forecasting UK GDP growth and ination under struc-
+tural change. A comparison of models with time-varying parameters, International Journal of Forecasting, 30,
+129-143.
+
+Carlos, T., and Marçal, E. (2016), Forecasting Brazilian ination by its aggregate and disaggregated data: a
+
+test of predictive power by forecast horizon, Applied Economics, 48, 4846-4860.
+
+Carter, C., and Kohn, P. (2004), On Gibbs sampling for state space models, Biometrika, 81, 54153.
+Chib, S. (1995), Marginal likelihood from the Gibbs output, Journal of the American Statistical Association,
+
+90, 131321.
+
+Chib, S., and Jeliazkov, I. (2001), Marginal likelihood from the Metropolis-Hastings output, Journal of the
+
+American Statistical Association, 96, 27081.
+
+12
+
+Crone, S., and Kourentzes, N. (2010), Feature selection for time series prediction  a combined lter and
+
+wrapper approach for neural networks, Neurocmputing, 73, 1923-1936.
+
+Duarte, C., and Rua, A. (2007), Forecasting through a Bottom-up approach: how bottom is bottom?, Economic
+
+Modelling, 24, 941-953.
+
+Espasa, A., Senra, E., and Albacete, R. (2002), Forecasting ination in the European Monetary Union: a
+
+disaggregated approach by countries and by sectors, European Journal of Finance, 8, 402-421.
+
+Giacomini, R., and Granger, C. W. J. (2004), Aggregation of space-time processes, Journal of Econometrics,
+
+118, 7-26.
+
+Granger, C. W. J. (1987), Implications of aggregation with common factors, Econometric Theory, 3, 208-222.
+Hansen, P., Lunde, A., and Nason, J. (2011), The Model Condence Set, Econometrica, 79(2), 453-497.
+Hendry, D. F., and Hubrich, K. (2011), Combining disaggregate forecasts or combining disaggregate information
+
+to forecast an aggregate, Journal of Business and Economic Statistics, 29, 216-227.
+
+Hyndman, R., Koehler, A., Snyder, R., and Grose, S. (2002), A State Space Framework for Automatic Fore-
+
+casting Using Exponential Smoothing Methods, International Journal of Forecasting, 18, 439-454.
+
+Hyndman, R., Koehler, A., Ord, J., and Snyder, R. (2005), Prediction Intervals for Exponential Smoothing
+
+Using Two New Classes of State Space Models, Journal of Forecasting, 24, 17-37.
+
+Hyndman, R., and Khandakar, Y. (2008), Automatic Time Series Forecasting: the forecast package for R,
+
+Journal of Statistical Software, 27, 1-22.
+
+Hyndman, R., Koehler, A., Ord, J., and Snyder, R. (2008), Forecasting with exponential smoothing, Springer,
+
+Berlin.
+
+Hubrich, K. (2005), Forecasting euro area ination: Does aggregating forecasts by HICP component improve
+
+forecast accuracy?, International Journal of Forecasting, 21, 119-136.
+
+Jacquier, E, Polson, N, and Rossi, P (2004), Bayesian analysis of stochastic volatility models, Journal of
+
+Business and Economic Statistics, 12, 371418.
+
+Kapetanios, G., Marcellino, M., and Venditti, F. (2017), Large time-varying parameter VARs: a non-parametric
+
+approach, Bank of Italy working paper no. 1122.
+
+Koop, G., and Korobilis, D. (2012), Forecasting Ination Using Dynamic Model Averaging, International
+
+Economic Review, 53(3), 867886.
+
+Kourentzes, N., Barrow, D., and Crone, S. (2014), Neural network ensembles operators for time series forecast-
+
+ing, Expert Systems with Applications, 41, 4235-4244.
+
+Kroese, D., and Chan, J. (2014), Statistical Modeling and Computation, Springer, Berlin.
+Lütkepohl, H. (1984), Linear transformation of vector ARMA processes, Journal of Econometrics, 26, 283-293.
+Lütkepohl, H. (1987), Forecasting Aggregated Vector ARMA Processes, Springer-Verlag, Berlin.
+Marcellino, M., Stock, J. H., and Watson, M. W. (2003), Macroeconomic forecasting in the Euro area: Country
+
+specic versus area-wide information, European Economic Review, 47, 1-18.
+
+Ord, J., Koehler, A., and Snyder, R. (1997), Estimation and Prediction for a Class of Dynamic Nonlinear
+
+Statistical Models, Journal of the American Statistical Association, 92, 1621-1629.
+
+Raftery, A., Karny, M., and Ettler, P. (2010), Online Prediction Under Model Uncertainty via Dynamic Model
+
+Averaging: Application to a Cold Rolling Mill, Technometrics, 52(1), 5266.
+
+Stock, J., and Watson, M. (2007), Why has U.S. ination become harder to forecast?, Journal of Money,
+
+Credit and Banking, 39, 3-33.
+
+Tibshirani R. (1996), Regression shrinkage and selection via the lasso, Journal of the Royal Statistical Society,
+
+Series B, 58, 267288.
+
+Weber, E. and Zika, G. (2016), "Labour market forecasting in Germany:
+
+is disaggregation useful?", Applied
+
+Economics, 48, 2183-2198.
+
+13
+
+

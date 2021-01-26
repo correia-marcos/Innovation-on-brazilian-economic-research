@@ -1,0 +1,976 @@
+             Relações não lineares na curva de Phillips:
+                  uma abordagem semi-paramétrica
+
+                                       Tiago Santana Tristão1
+                                        Hudson da S. Torrent2
+
+                                                  July, 2013
+
+
+Abstract. One of the most important macroeconomic’s concerns is the comprehension about sort-run
+inflation dynamic. To understand how inflation relates to economic activity is crucial to decision-
+making in disinflation strategies, as well as in monetary policy paths. A question that arises is what
+does real form of relation inflation-output trade-off? Could one characterize it as a non-linear rela-
+tion? If does, what is the shape of this non-linear relation? To answer those questions, we estimate
+the inflation-output relation semi-parametrically using a local linear kernel estimator. The functional
+form achieved was approximated by a New-Keynesian Hybrid Phillips Curve, which one was estima-
+ted by GMM. This approach was applied to Brazil since 2000. We have found evidence that Brazilian
+inflation dynamic is better described adding a cubic term related to output gap, in other words, the
+Brazilian inflation is state-dependent.
+
+Keywords. Non-linear Phillips curve. Local Linear Kernel Estimator. Semi-parametric Estimator.
+Loss function.
+
+Resumo. Uma das principais preocupações da macroeconomia é a compreensão da dinâmica da
+inflação no curto prazo. Entender como a inflação se relaciona com a atividade econômica é decisivo
+para traçar estratégias de desinflação, assim como, de determinação da trajetória de polı́tica mo-
+netária. Uma questão que surge é qual a forma exata da relação inflação-produto. Ou seja, podemos
+caracterizar essa relação como não linear? Se sim, qual a forma dessa não linearidade? Para res-
+ponder a essas perguntas, estimou-se a relação inflação-produto de forma semi-paramétrica através
+de um local linear kernel estimator. O resultado da estimação gerou uma forma funcional a qual
+foi aproximada pela estimação, via GMM, de uma curva de Phillips Novo-Keynesiana Hı́brida. Essa
+abordagem foi aplicada para o Brasil a partir de 2000. As estimações sugeriram que a dinâmica da
+inflação brasileira é melhor descrita quando adiciona-se um termo cúbico relativo ao hiato do produto,
+ou seja, a inflação brasileira mostrou-se state-dependent.
+
+Palavras-chave. Não linearidades na curva de Phillips. Local Linear Kernel Estimator. Semi-
+parametric Estimator. Função perda.
+
+JEL Classifications. E31, E52, C14
+
+Área 4 - Macroeconomia, Economia Monetária e Finanças
+
+
+
+
+  1
+   Doutorando do Programa de pós-graduação do Departamento de Economia da PUC-Rio.
+  2
+   Departamento de Estatı́stica & PPGE, Universidade Federal do Rio Grande do Sul, Porto Alegre - Brasil, email:
+hudson.torrent@ufrgs.br.
+1         Introdução
+Os modelos Novo-Keynesianos tiveram um grande impacto na macroeconomia e na maneira com que
+macroeconomistas analisam polı́tica monetária. Esta modelagem substituiu o modelo IS-LM-OA na
+análise de polı́tica econômica e tem sido o foco de inúmeros trabalhos que buscam avaliar as prin-
+cipais questões da macroeconomia tais como o papel das expectativas, a persistência inflacionária,
+o nı́vel de rigidez de variáveis nominais ou reais, etc. O sucesso desta modelagem deve-se às suas
+principais caracterı́sticas, que podem ser resumidas como segue. Primeiro, podemos citar o pressu-
+posto de otimização: Utiliza-se um arcabouço microeconômico de indivı́duos maximizadores e firmas
+maximizadoras operando dentro de uma certa estrutura de mercado (concorrência imperfeita). As
+equações que formam o modelo são derivadas de microfundamentos, tornando-o assim, de certa forma,
+imune à crı́tica de Lucas. Em segundo lugar, esses modelos baseiam-se na existência de concorrência
+imperfeita: Pressupõe-se alguma forma de concorrência imperfeita. Na maioria dos casos, temos um
+mercado operando dentro de um sistema de concorrência monopolı́stica. Por último, os modelos
+apresentam rigidez nominal/real: A existência de competição imperfeita no mercado de bens ou no
+mercado de trabalho, ou em ambos, gera poder de monopólio para os produtores. Desta forma, os
+preços e o desemprego são mais altos e o produto é mais baixo do que seriam num mundo de com-
+petição perfeita. Uma vez que as firmas têm algum controle sobre seus preços, elas podem escolher
+as taxas de ajustamento dos preços. Isto permite que o grau ótimo de flexibilidade dos preços para as
+firmas seja uma questão estratégica, ou seja, endógena. Dessa forma, os modelos Novo-Keynesianos
+se voltam para a rigidez dos preços dos produtos e do salário monetário, assim como, fatores que
+provocam a rigidez do salário real ou dos preços relativos das firmas.
+    Ao longo dos anos, diversos novos elementos têm sido acrescentados ao arcabouço Novo-Keynesiano.
+Essas modificações foram feitas buscando tornar o modelo mais adequado a diversos fatos estilizados,
+ou seja, torná-lo mais realista frente a observações empı́ricas. Um exemplo disso, é a introdução
+da hipótese de que parte dos agentes não remarca preços de maneira ótima, mas ao invés, utilizam
+uma regra de bolso que toma a forma de um comportamento backward-looking. Esta modificação na
+estratégia de remarcação de preços por parte das firmas, leva à consagrada versão hı́brida de curva
+de Phillips Novo-Keynesiana, a qual é composta não só pelos habituais termos de inflação esperada
+e atividade econômica, mas também, por um termo da inflação defasada, representando a inércia
+inflacionária.
+    Inúmeros trabalhos buscam verificar o ajuste dessa modelagem aos dados1 através de estimações
+das equações do modelo Novo-Keynesiano. Tradicionalmente, estimativas assumem que a forma da
+relação produto-inflação é linear. Isto implica que a inclinação da curva e Phillips é constante e, por-
+tanto, independente do ciclo econômico. Porém, há um grande número de trabalhos que questionam a
+validade dessa suposta forma linear2 . Muitos modelos teóricos de price-setting behaviour argumentam
+que a inclinação da curva de Phillips é uma função das condições macroeconômicas. De fato, o uso
+dessa relação linear se baseia na forma funcional das equações do modelo, que são derivadas através
+de expansões de Taylor e log-linearizações. Essas expansões e log-linearizações são utilizadas para
+facilitar as estimações e transformar as soluções analı́ticas tratáveis do ponto de vista matemático.
+Porém, a linearidade implica que o custo da desinflação, em termos de produto, não varia com o
+estado da economia ou com a agressividade das polı́ticas de desinflação executadas pelas autoridades
+monetárias. Em contraste, uma curva de Phillips não linear permite que o custo em termos de pro-
+duto dependa dessas variáveis. Além disso, há divergências na literatura sobre a preponderância dos
+componentes backward e forward-looking da curva de Phillips. Alguns estudos, por exemplo, Lindé
+    1
+        Ver Galı́ e Gertler (1999), Linde (2005), Rudd e Whelan (2006) e Zhang et al. (2009).
+    2
+        Ver Lucas (1973), Laxton et al (1994), Debelle e Laxton (1997), Macklem (1997) e Stiglitz (1984, 1997).
+
+
+                                                             1
+(2005), apontam para um papel mais relevante do componente inercial, enquanto outros, como Galı́
+e Gertler (1999), encontram evidências de um papel preponderante do termo forward-looking. Há
+também divergências quanto ao papel do termo relativo ao excesso de demanda na curva de Phillips.
+Alguns estudos encontram um papel determinante do hiato do produto na determinação da inflação
+corrente dependendo da proxy utilizada. Outros estudos rejeitam a relevância do hiato do produto
+na dinâmica da inflação no curto prazo.
+    Uma das possı́veis causas de divergências entre os resultados empı́ricos dos modelos Novo-Keynesianos
+pode ser a hipótese de linearidade imposta na forma funcional das equações. Se existem não lineari-
+dades na relação inflação-produto, os métodos lineares geram coeficientes incorretamente estimados,
+dado que a forma funcional está sendo especificada incorretamente. Nesta dissertação, buscaremos
+analisar a relação entre a inflação e a atividade econômica, a fim de verificar se essa relação se expressa
+de forma não linear. Trabalharemos dentro do arcabouço Novo-Keynesiano, mais especificamente,
+utilizando uma curva de Phillips Novo-Keynesiana Hı́brida para descrever a dinâmica inflacionária
+brasileira. O modelo Novo-Keynesiano não fornece uma estrutura teórica definitiva sobre o formato
+de uma possı́vel não linearidade na curva de Phillips. Deste modo, utilizaremos aqui um instrumental
+econométrico não-paramétrico a fim de capturar a forma exata da relação inflação-produto. O uso
+da econometria não-paramétrica é vantajoso pois possibilita a estimação desta relação, sem que uma
+forma funcional especı́fica seja imposta. A ideia é utilizar um estimador não-paramétrico para que
+possamos visualizar a forma funcional e, com essa informação, propor um modelo paramétrico que
+descreva de forma satisfatória a relação entre inflação e atividade econômica.
+    A principal vantagem da abordagem apresentada aqui em relação a outros estudos que avaliam a
+não linearidade da curva de Phillips, é o instrumental econométrico utilizado. Testes paramétricos são
+sensı́veis à forma funcional estabelecida. Os testes de hipótese realizados sobre modelos estimados de
+forma paramétrica podem levar a rejeição ou não rejeição de uma forma funcional especı́fica definida
+no teste de hipótese. Porém, com um estimador semi-paramétrico, é possı́vel estimar a relação entre
+inflação e atividade econômica com restrições mais suaves sobre a forma funcional. Além desta
+introdução, o trabalho está organizado da seguinte forma. A seção 2 descreve o desenvolvimento
+teórico da curva de Phillips e os resultados apresentados por estudos recentes sobre não linearidade
+na curva de Phillips. A seção 3 apresenta os resultados das estimações feitas e faz uma análise
+dos resultados encontrados quanto ao formato da curva de Phillips. Por fim, são apresentadas as
+conclusões do trabalho.
+
+
+2     A curva de Phillips
+A curva de Phillips postula, em seu formato mais moderno, uma relação positiva entre a inflação
+corrente e uma medida de excesso de demanda. Contudo, os desenvolvimentos teóricos da curva
+de Phillips apareceram pioneiramente em Fischer (1926). Usando dados mensais para a economia
+americana no perı́odo de 1915 a 1925, o autor verificou uma forte correlação positiva entre emprego
+e o nı́vel de preços, e sugeriu que essa relação era causal. A partir de 1926 outras tentativas de
+expressar uma relação entre o nı́vel de preços e variáveis reais que descrevem o nı́vel de atividade
+econômica foram formuladas. Dentro desta literatura, Phillips (1958) estimou, utilizando dados do
+Reino Unido, uma regressão na qual a inflação salarial era descrita pela taxa de desemprego. Essa
+relação era negativa de forma que quanto menor a taxa de desemprego, maior era a inflação dos
+salários. Do artigo seminal de Phillips (1958) surgiu a expressão “curva de Phillips” para denominar
+a relação empı́rica encontrada entre inflação e desemprego.
+    Com o passar dos anos essa relação foi sendo refinada e três principais inovações formaram as
+
+
+                                                      2
+bases para a taxa natural de desemprego e para a hipótese aceleracionista da curva de Phillips, as
+quais foram: imposição de uma variável descrevendo o excesso de demanda; inclusão de um termo
+relativo às expectativas; e um mecanismo de aprendizado com os erros. A taxa natural e a hipótese
+aceleracionista são dois conceitos que alteraram a visão dos economistas e dos policymakers sobre
+a relação entre inflação e desemprego. De acordo com a hipótese aceleracionista, uma baixa taxa
+constante de desemprego seria alcançada a um custo cada vez maior da taxa de inflação e, por
+isso, há a impossibilidade de trade-off permanente. A hipótese da Non-Accelerating Inflation Rate
+of Unemployment (NAIRU), isto é, a taxa de desemprego consistente com uma taxa de inflação
+estável implica que: quando o desemprego está abaixo da NAIRU, há pressões para que a taxa de
+inflação suba; inversamente, quando o desemprego está acima da NAIRU, há pressões para a queda
+da inflação. O conceito da NAIRU, ou seja, taxa natural de desemprego, consolida a relação entre
+inflação e desemprego e é a base teórica por trás da hipótese aceleracionista.
+     Mais tarde a curva de Phillips incorporou expectativas racionais. De acordo com a hipótese de
+expectativas racionais, indivı́duos tenderão a levar em conta todas as variáveis disponı́veis que são
+pertinentes para o processo de formação da taxa de inflação e farão previsões embasadas nesse conjunto
+informacional. Isto implica que erros de previsão só podem ocorrer devido a choques inesperados na
+taxa de inflação. A abordagem de expectativas racionais tem radicais implicações polı́ticas. Quando
+incorporada à curva de Phillips, implica que variáveis nominais, como o nı́vel de preços, não podem
+influenciar variáveis reais como o produto e desemprego, mesmo no curto prazo. Portanto, a taxa de
+inflação influencia variáveis reais apenas quando ela não é antecipada.
+     Mais tarde Calvo (1983), utilizando um arcabouço microeconômico de indivı́duos maximizadores
+e firmas maximizadoras operando dentro de um sistema de concorrência monopolı́stica, impõe rigidez
+nominal na determinação dos preços. Assim, o autor propõe um modelo estrutural que leva a uma
+curva de Phillips com expectativas racionais que possibilita um trade-off de curto prazo devido à
+rigidez nominal a qual está submetida o processo de determinação de preços. As firmas possuem uma
+probabilidade de reajustar os preços, em um determinado perı́odo, de acordo com um processo de
+Poisson. Sendo assim, nem todas são capazes de reajustar seus preços a cada perı́odo e isso gera uma
+rigidez nominal que leva a um ajustamento gradual do nı́vel de preços, que por sua vez, possibilita
+um trade-off de curto prazo entre inflação e desemprego dentro de um ambiente de agentes que se
+comportam racionalmente.
+
+2.1    A curva de Phillips Novo-Keynesiana
+A curva de Phillips derivada do trabalho de Calvo (1983) é conhecida como Curva de Phillips Novo-
+Keynesiana (CPNK) e foi amplamente estimada e testada devido aos fundamentos microeconômicos
+que ela possui. No entanto há muitas crı́ticas à CPNK, sobre tudo no que diz respeito às suas ca-
+racterı́sticas microeconômicas. Ball (1994,1995) demonstra a possibilidade de crescimento econômico
+como consequência de polı́ticas desinflacionárias crı́veis dentro do arcabouço teórico da CPNK, fato
+que é altamente questionável empiricamente. Outra fonte de crı́ticas surge do que Blanchard e Galı́
+(2007) chamaram de “coincidência divina” da CPNK. Segundo os autores, do ponto de vista do bem-
+estar, o modelo Novo-Keynesiano, o qual tem o lado da oferta caracterizado por uma CPNK, implica
+que é desejável estabilizar inflação e excesso de demanda. Porém, a CPNK implica que essas duas
+metas não são conflitantes: estabilizar inflação também causa estabilização do produto. O excesso
+de demanda e o nı́vel de produto eficiente (first-best) é constante e invariante a choques no modelo
+Novo-Keynesiano. Esta caracterı́stica implica que estabilizar a inflação é equivalente a estabilizar
+o “welfare relevant output gap”, ou seja, o excesso de demanda que maximiza o bem-estar. Esta-
+bilizar a inflação poderia ser equivalente a estabilizar o excesso de demanda, mas não deveria ser
+
+                                                     3
+equivalente a estabilizar o “welfare relevant output gap”. Logo, esta polı́tica não seria desejável para
+uma autoridade que maximiza uma função objetivo e portanto, terı́amos um trade-off entre inflação
+e desemprego do ponto de vista de maximização do bem-estar.
+    Além disso, devido à ausência de termos defasados da inflação, a CPNK não apresenta inércia
+inflacionária. Galı́ e Gertler (1999) adicionam um termo de defasagem na especificação da CPNK,
+assim, a curva mantém suas especificações microeconômicas seguindo um modelo de precificação do
+tipo Calvo. A cada perı́odo apenas uma parte das firmas pode otimizar seus preços utilizando toda a
+informação disponı́vel; as demais utilizam uma simples regra de bolso baseada na trajetória passada
+do nı́vel de preços. Dessa forma, a curva de Phillips passou a ter uma especificação com um termo
+expectacional adaptativo e outro racional, definindo o que os autores denominam de Curva de Phillips
+Novo-Keynesiana Hı́brida (CPNKH).
+    A CPNKH é muito utilizada para análises de polı́tica econômica. Isso se deve a duas caracterı́sticas
+que ela apresenta; componente inercial e componente forward-looking. Fica claro que a CPNKH surge
+de um modelo estrutural onde famı́lias e firmas maximizam funções de escolhas intertemporais. Como
+as equações resultam da maximização de escolhas individuais na presença de expectativas forward-
+looking, as análises de polı́tica econômica não sofrem com a crı́tica de Lucas, ao contrário dos modelos
+estatı́sticos VECM e VAR . Por este motivo o New Keynesian Policy Model (NKPM) tornou-se uma
+ferramenta muito atrativa na análise de polı́tica monetária. Abaixo seguem as equações que compõem
+um NKPM estrutural de pequena escala, como demonstrado em Henry e Pagan (2004). O modelo
+envolve três equações,onde a equação (1) é uma curva de demanda agregada (representação da curva
+IS), a equação (2) é uma curva de oferta agregada (que corresponde a uma curva de Phillips) e a
+equação (3) é uma regra de polı́tica.
+
+
+                                  e             e
+                           yt = yt+1 − σ(rt − πt+1 ) + vt                                               (1)
+                                                     e                ∗
+                           πt = απ πt−1 + (1 − απ )πt+1 + αy (yt−1 − yt−1 ) + ξt                        (2)
+                                        e      ∗             ∗
+                           rt = r̄ + β(πt+1 − π ) + γ(yt − y )                                          (3)
+
+   Neste sistema, yt é o logaritmo do produto real e y ∗ é o produto potencial, rt é a taxa nominal de
+                                          e
+juros, πt é a taxa de inflaçãm em t e πt+1 é o termo f orwrad − looking. O termo vt representa um
+choque de demanda, enquanto ξt representa um choque de oferta.
+
+2.2    Estimação da curva de Phillips Novo-Keynesiana
+A curva de Phillips apresentada em (2) tem uma forma particular, em que a inflação corrente depende
+                                                                                 e
+de variáveis endógenas, pois, conforme discutido acima, tanto yt quanto πt+1       podem ser consideradas
+endógenas. Para o propósito da estimação, é necessário buscar um vator zt de variáveis instrumentais,
+devido à correlação entre as variáveis endógenas explicativas e o termo de erro. Portante, uma maneira
+de estimar a CPNKH seria pelo Método do Momentos Generalizados (GMM), onde a condição
+                                                                               
+                                                         e                 ∗
+                        Et πt − αpi πt−1 − (1 − αpi )πt+1 − αy (yt−1 − yt−1 )zt = 0                     (4)
+
+é satisfeita. O uso de GMM na estimação da CPNKH é bastante tradicional e pode ser encontrado em
+Galı́ e Gertler (1999) e Jondeau e Le Bihan (2005). Contudo, os instrumentos precisam satisfazer a três
+critérios. Primeiro, eles precisam ser em número suficiente. Segundo, eles precisam ser instrumentos
+válidos, ou seja, não correlacionados com o termo de erro. Terceiro, eles devem ser instrumentos
+
+
+                                                     4
+relevantes, isto é, correlacionados com as variáveis as quais eles servem de instrumento. Esta última
+condição pode se mostrar um grande problema para a estimação da CPNKH, conforme destacado
+em Stock, Wright e Yogo (2002). Se a variável instrumental possui baixa correlação com a variável a
+qual ela serve de instrumento então a teoria assintótica que descreve a performance do estimador de
+variáveis instrumentais evidencia uma grave falha. A razão disso é que sua distribuição assintótica
+é governada por uma função do tamanho da amostra e do coeficiente de correlação entre a variável
+instrumental e a variável a qual ela serve de instrumento. Consequentemente, uma grande amostra
+pode compensar um baixo coeficiente de correlação, e isto pode produzir uma grande discrepância
+entre resultados de pequenas amostras e o que é previsto pela teoria assintótica. Por este motivo,
+Lindé (2005) critica a utilização de GMM, argumentando que este estimador produz estimativas
+viesadas em pequenas amostras.
+    Lindé (2005) chega aos coeficientes estimados da CPNKH através da estimação das três equações
+do NKPM por Full Information Maximum Likelihood (FIML). A estimação por FIML também é
+utilizada nos trabalhos de Ireland (2001) e Kurmann (2004). Lindé (2005) apresenta alguns exercı́cios
+de Monte Carlo para demonstrar a superioridade do uso de FIML sobre GMM (quando a amostra é
+pequena e/ou os instrumentos são pobres) e conclui que é muito difı́cil obter estimativas confiáveis
+dos parâmetros de CPNKH usando single equation methods. Contudo, Galı́ et al (2005), discutem os
+resultados apresentados por Lindé (2005) e argumentam que a superioridade do FIML ocorre pois o
+autor assume que o econometrista possui o conhecimento do verdadeiro modelo da economia a priori,
+coisa que é bastante improvável de ser verdadeira na prática. Single equation methods são usados
+para evitar tomar uma forma especı́fica da estrutura da economia como um todo. Assim, quando
+há algum erro de especificação nas propriedades estocásticas das variáveis que dão a dinâmica dos
+sistemas de equações de (1)-(3), então as estimativas de FIML mostram viés de magnitude pelo menos
+tão grande quanto as simulações das estimativas por GMM.
+    Outro ponto de discórdia na estimação da CPNKH é sobre a variável que representa o excesso de
+demanda. Os dois principais concorrentes são o hiato do produto e os custos marginais . O argumento
+em favor do uso de uma medida de custo marginal é derivado da determinação de preços tipo Calvo.
+Vale notar que resultados diferentes têm sido encontrados em equações baseadas em custos marginais.
+Alguns exemplos são Bastini et al (2000) e Galı́ et al (2005). Além desses problemas descritos acima,
+há problemas relacionados à escolha de proxies que são incluı́das na estimação da CPNKH. Qual
+variável observável pode ser uma boa representação para o hiato ou para os custos marginais? O
+hiato, por exemplo, é composto pelo produto potencial, o qual é um componente não observável na
+curva de Phillips e isso traz problemas para a estimação, pois ela pode ser comprometida pela proxy
+que é utilizada para sua representação. O mesmo problema ocorre com a expectativa da inflação .
+    Até agora discutimos os desenvolvimentos teóricos e as dificuldade de estimação de uma curva
+de Phillips linear. A seguir será apresentada uma série de aspectos teóricos e empı́ricos que buscam
+tratar de não linearidades na curva.
+
+2.3    Não linearidade na curva de Phillips - teoria e evidências empı́ricas
+       na literatura
+De acordo com o exposto acima, tradicionalmente, estimativas assumem que a forma da relação
+produto-inflação é linear. Isto implica que a inclinação da curva e Phillips é constante e, portanto,
+independente do ciclo econômico. Porém, há um grande número de trabalhos que questionam a
+validade dessa suposta forma linear. Muitos modelos teóricos de price-setting behaviour argumentam
+que a inclinação da curva de Phillips é uma função das condições macroeconômicas. A linearidade
+implica que o custo da desinflação, em termos de produto, não varia com o estado da economia
+
+                                                    5
+ou com a agressividade das polı́ticas de desinflação executadas pelas autoridades monetárias. Em
+contraste, uma curva de Phillips não linear permite que o custo, em termos de produto, dependa
+dessas variáveis. É claro que essa não linearidade pode surgir tanto do componente expectacional
+quanto do componente de excesso de demanda da curva de Phillips. A literatura sobre esse assunto
+aborda essas duas possibilidades.
+    Conforme destaca Laxton et al (1994), a ampla aceitação da curva de Phillips aumentada pelas
+expectativas, associada à hipótese da taxa natural de desemprego, conduziram à conclusão de que
+não existe trade-off de longo prazo entre atividade econômica e inflação. Mas o que dizer quanto ao
+formato da ligação produto-inflação? O campo teórico propõe alguns fundamentos microeconômicos
+que servem de amparo a alternativas não lineares para a construção da curva de Phillips.
+    Em Lucas (1973), a não linearidade da curva de Phillips surge devido à volatilidade do nı́vel de
+preços. Essa abordagem é chamada de erro de percepção (“misperception”) ou modelo de extração de
+sinal (“signal extraction model”). Os agentes possuem informação imperfeita quanto às mudanças no
+nı́vel agregado de preços, sendo incapazes de distinguir os choques nos preços relativos dos choques
+nos preços agregados. É assumida uma relação inversa entre a volatilidade da inflação e a atribuição
+por parte dos agentes a mudanças nos preços relativos: quanto mais volátil for a inflação menor será
+a mudança no produto. Dessa forma, quanto mais a inflação for volátil maior é o custo da desinflação
+em termos de produto.
+    Macklem (1997) apoia-se na premissa da restrição da capacidade instalada para sugerir uma
+forma não linear para a curva de Phillips, é o chamado “modelo de restrição de capacidade” (“capacity
+constraint model”). No curto prazo as firmas têm dificuldades em expandir sua capacidade produtiva,
+de forma que um choque positivo na demanda agregada reflete muito mais no nı́vel de preços do que
+no produto. Quanto mais próxima a economia estiver de seu potencial, maior é o aumento da inflação
+dado um choque de demanda. Assim a curva de Phillips possui uma forma convexa em relação ao
+excesso de demanda. De uma maneira geral, grande parte da literatura sobre a relação não linear na
+curva de Phillips apoia a ideia de que ela deve ser convexa. Mesmo no trabalho empı́rico original de
+Phillips (1958), a curva parece não ser linear e sim convexa. Muitos autores postulam uma forma
+convexa para a curva de Phillips, entre as principais contribuições empı́ricas em favor da convexidade
+estão Laxton et al (1994), Clark et al (1996) e Debelle e Laxton (1997). Vale ressaltar que a principal
+diferença entre uma curva de Phillips linear e convexa é que, sob convexidade, o trade-off de curto
+prazo encarado pelos policymakers é state-dependent, ou seja, é uma função do estado da economia:
+um ponto percentual de redução na taxa de desemprego conduz a um menor aumento na inflação a
+altas taxas de desemprego do que a baixas taxas de desemprego.
+    Outro modelo que pode motivar um relacionamento assimétrico entre produto e inflação é o
+modelo de rigidez nominal dos salários (“downward nominal wage rigidity model”). Stiglitz (1986) e
+Fisher (1989) apresentam modelos teóricos os quais podem gerar esse tipo de rigidez. Nesses modelos,
+os trabalhadores são mais relutantes em aceitar uma diminuição no seu salário nominal do que uma
+diminuição de seu salário real devido à ilusão monetária e fatores institucionais e/ou comportamentais.
+O modelo de custos de ajustamento (“costly adjustment model”) ou custos de menu, como são mais
+conhecidos, implica uma relação entre produto e inflação que varia com o nı́vel de inflação. Segundo
+Ball, Mankiw e Romer (1988), na presença de custos de menu, nem todas as firmas mudarão seus
+preços em resposta a choques de demanda. Contudo, quanto maior o número de firmas que decidem
+mudar seus preços, mais sensı́vel será o nı́vel agregado de preços a choques de demanda. Os custos
+de ajustamento podem se dar também devido à duração dos contratos. O processo de negociação
+salarial entre firmas e trabalhadores é custoso. Portanto, pode ser uma estratégia ótima, dado um
+ambiente de baixa inflação, negociar contratos mais longos buscando baixar os custos que as firmas
+encaram. Sendo assim, quando ocorre um choque, a existência de contratos torna o ajustamento
+
+                                                     6
+difı́cil. Portanto, os preços vão se ajustando lentamente e a curva de Phillips é mais ı́ngreme para
+altas taxas de inflação. Como resultado, no modelo de custos de ajustamento, o impacto do hiato do
+produto é uma função da média do nı́vel de inflação.
+     Stiglitz (1984, 1997) considera a possibilidade de uma curva de Phillips côncava. Esta concavidade
+é consistente com a literatura de ajustamentos assimétricos de preços em mercados que funcionam
+sob concorrência monopolı́stica. Produtores podem baixar os preços para evitar serem expulsos do
+mercado por seus rivais, porém, são mais relutantes em aumentar seus preços mesmo num ambiente
+de aumento da inflação. Este tipo de comportamento é compatı́vel com firmas que operam em
+concorrência monopolı́stica e estão preocupadas com a manutenção e/ou expansão de suas respectivas
+parcelas de mercado.
+     A literatura sobre o assunto propõe diversos formatos para uma possı́vel relação não linear na
+curva de Phillips. Diferentes formatos desta não linearidade possuem diferentes implicações para
+custos de desinflação, dado que a inclinação de curvas côncavas ou convexas varia de acordo com
+o nı́vel de hiato de produto. Uma curva de Phillips côncava implica que o custo de desinflação
+aumenta com forte atividade econômica, pois quando aumenta a atividade econômica a inclinação
+da curva de Phillips torna-se mais plana. Em contraste, uma curva de Phillips convexa implica
+que o custo de desinflação cai à medida que aumenta a atividade econômica, pois, a inclinação da
+curva de Phillips torna-se mais ı́ngreme. É importante considerar que o modelo Novo-Keynesiano,
+conforme apresentado em (1)-(3), não fornece embasamento teórico para não linearidades na curva de
+Phillips. Conforme destaca Carvalho (2010), a derivação dos modelos Novo-Keynesianos é efetuada
+utilizando ferramentas algébricas como a log-linearização e aproximações de Taylor, resultando em
+relações lineares entre as variáveis . Essa ausência de relações não lineares nas equações finais desse
+tipo de modelo não impõe restrições a uma estratégia empı́rica que busque avaliar um possı́vel tipo
+de assimetria.
+     Evidências empı́ricas de não linearidade são encontradas em diversos trabalhos. A maioria dos
+trabalhos citados foca na estimação paramétrica da curva de Phillips. Debelle e Laxton (1997)
+encontram evidências de não linearidade da curva de Phillips para o Canadá, Reino unido e Estados
+Unidos. São utilizados dados trimestrais de 1959:Q3 a 1997:Q1 e uma forma convexa é atribuı́da
+à equação. É feita uma especificação hı́brida da curva de Phillips aumentada para expectativas e
+a estimação é feita via filtro de Kalman, de modo a permitir que a NAIRU varie no tempo. Os
+autores concluem que a curva de Phillips é não linear, com formato convexo, argumentando que esta
+especificação é capaz de ajustar melhor os dados para a inflação no perı́odo analisado.
+     Dupasquier e Ricketts (1998) focam na economia canadense e estimam diferentes modelos teóricos
+de curvas de Phillips não lineares (côncava, convexa e côncava-convexa). As especificações baseiam-
+se em uma curva de Phillips hı́brida, onde os modelos estimados são apresentados em formato de
+estado-espaço e estimados por Máxima Verossimilhança e as variáveis de estado não-observáveis são
+estimadas por filtro de Kalman. Os dados utilizados são de frequência trimestral e abrangem o
+perı́odo de 1964:01 a 1994:01. Os autores concluem que há relações não linearidades no ajustamento
+de preços dado os choques de demanda. Porém, não chegam a um resultado conclusivo quanto ao
+melhor modelo representativo.
+     Eliasson (2001) faz algumas crı́ticas aos trabalhos empı́ricos anteriores. A autora argumenta
+que as relações entre as variáveis eram introduzidas nas equações sem nenhum teste que comprove
+uma relação de não linearidade. É testada então a linearidade da curva de Phillips aumentada
+pelas expectativas contra uma hipótese alternativa de um modelo hı́brido da curva de Phillips com
+Transição Suave (STAR). A autora encontra evidências de não linearidade para Austrália e Suécia.
+É importante notar que a fonte de não linearidade não é a mesma para esses dois paı́ses: o nı́vel
+de inflação esperada foi a variável responsável pela transição entre regimes no caso da Suécia e a
+
+                                                       7
+variação na taxa de desemprego foi a responsável pela transição entre regimes no caso da Austrália.
+Portanto, apenas a economia australiana apresentaria um custo de desinflação que varia com o estado
+da economia. Apesar de ambos os paı́ses terem apresentados relações não lineares, os resultados disso
+em termos de polı́tica monetária serão bem distintos nos dois casos, dado as diferentes fontes de não
+linearidade. Além disso, a economia americana apresenta um parâmetro de inclinação estável durante
+o perı́odo analisado, o que evidencia uma forma linear para a curva de Phillips.
+     Fillardo (1998) utiliza um sistema de seis equações, derivado de Christiano et al (1994), para
+descrever a economia americana. A curva de Phillips utilizada é do tipo hı́brido, onde a trajetória
+da expectativa presente quanto à inflação futura é descrita por uma das equações do sistema, de
+forma que não são utilizados dados de pesquisa como proxies. Além disso, a não linearidade imposta
+é caracterizada por três tipos de regime: produto abaixo do potencial, produto estável ao nı́vel
+potencial e produto acima do potencial. Têm-se um sistema não linear de equações o qual é estimado
+por Nonlinear Least Squares (NLS). Apesar da não linearidade do sistema, o modelo em cada regime
+é linear nas variáveis explanatórias, portanto, são geradas funções impulso-resposta para cada regime
+de maneira similar a um VAR recursivo padrão. O autor conclui que a curva de Phillips para a
+economia americana não é inteiramente côncava nem convexa, mas sim uma combinação de ambas;
+sendo assim, o custo de desinflação dependerá do ponto onde a economia se encontra. Para o autor,
+existem regiões onde a curva de Phillips é côncava e outras nas quais ela é convexa: a convexidade
+surge quando o hiato do produto é estável e/ou positivo, enquanto que, a concavidade surge quando
+o hiato do produto é negativo.
+     Utilizando instrumental econométrico paramétrico e não-paramétrico, Buchman (2009), encontrou
+evidências de uma curva de Phillips com formato côncavo para um hiato do produto negativo e convexo
+para um hiato do produto positivo, o trabalho foca-se na área da zona do Euro compreendendo o
+perı́odo de janeiro de 2001 a junho de 2009. A curva paramétrica é estimada via GMM e Generalized
+Empirical Likelihood (GEL). É imposto um formato linear e os resultados são contrários aqueles
+encontrados em Galı́ e Gertler (1999) para a economia americana, ou seja, o coeficiente da inflação
+defasada é dominante em relação à inflação futura e o coeficiente do hiato do produto é de pequena
+magnitude. Sendo assim, o autor encontrou uma forte persistência na inflação. Depois o autor
+estima a curva de Phillips de forma não-paramétrica através de um Local Polynomial Regression,
+utilizando uma função kernel do tipo Epanechnikov. As derivadas em relação a expectativa futura e
+a inflação defasada ficaram muito próximas aos parâmetros estimados na forma linear paramétrica, o
+que evidencia uma relação linear entre expectativa de inflação e inflação corrente. Já a derivada em
+relação ao hiato do produto apresentou um formato côncavo para um hiato do produto negativo e
+convexo para um hiato do produto positivo. Este resultado evidenciou um formato não linear quanto à
+influência do excesso de demanda na inflação e um formato linear quanto a influência das expectativas
+de inflação na inflação presente. É preciso salientar que o resultado apresentado por Buchman (2009)
+é sensı́vel aos problemas de curse of dimensionality, de forma que um modelo semi-paramétrico é
+estimado. Esse modelo possui uma forma linear nas expectativas enquanto que nenhuma forma
+especı́fica é atribuı́da ao hiato do produto. Os resultados seguem em linha com os apresentados pelo
+modelo não-paramétrico. A diferença mais significante é que o modelo não-paramétrico apresenta
+intervalos de confiança muito mais amplos do que o modelo semi-paramétrico. Dessa forma o autor
+concentra suas atenções nos resultados apresentados pela estimação semi-paramétrica dado que as
+estimativas são mais confiáveis.
+     Nas últimas décadas, vários estudos tentaram estimar a curva de Phillips para o Brasil. Estes
+estudos não se focaram apenas nos testes de não linearidade da curva, ao contrário, abrangem um
+grande número de objetivos distintos. Estimou-se a curva de Phillips para fazer inferências sobre
+a polı́tica monetária, para fazer previsões, inferir sobre a composição dos termos forward-looking e
+
+                                                    8
+backward-looking, entre outros objetivos. Abaixo se encontra um resumo dos principais trabalhos,
+destacando apenas os seus resultados quanto à relação inflação-produto ou outras possı́veis fontes de
+não linearidade. Lima (2003) estima a NAIRU para o Brasil e testa a estabilidade dos coeficientes
+da curva de Phillips. Dois modelos diferentes são estimados: o primeiro com uma NAIRU que muda
+ao longo do tempo, e o segundo é um modelo com diferentes regimes markovianos para a NAIRU.
+O autor conclui que a inclinação da curva de Phillips para o Brasil é estável. Os modelos foram
+estimados com dados trimestrais para o perı́odo de 1982:01 a 2001:04. A proxy utilizada para a
+inflação foi o Índice Nacional de Preços ao Consumidor (INPC/IBGE), e para o desemprego foi
+utilizado a Pesquisa Mensal de Emprego (PME/IBGE). O autor alerta para as possı́veis quebras
+estruturais presentes neste perı́odo da economia brasileira. Assim sendo, ele estima um modelo
+time-varying parameter (TVP) com variância condicional descrita por um processo autoregressive
+conditional heteroscedasticity (ARCH), e outro modelo com Markov-switching regime (MSR). Como
+resultado, os testes não rejeitam a hipótese nula de estabilidade da curva de Phillips.
+    Fasolo e Portugal (2004) testam a relação entre inflação e emprego no Brasil utilizando um modelo
+que explicitamente baseia-se em quatro hipóteses: i) os agentes não possuem racionalidade perfeita;
+ii) a imperfeição na formação de expectativas pode ser determinante no componente inercial da
+inflação brasileira; iii) a inflação possui componente inercial autônomo; e iv) as relações não lineares
+entre inflação e desemprego fornecem melhores resultados para a economia nos últimos 12 anos.
+Os resultados dos testes econométricos apontam para a validade das quatro hipóteses descritas. A
+curva de Phillips é estimada através do filtro de Kalman, e a relação entre inflação e expectativas é
+verificada por intermédio de um modelo de mudança de regime. Os dados são de frequência mensal e
+abrangem o perı́odo de 1990:01 a 2002:08. As proxies utilizadas são: Índice de Preços ao Consumidor
+Amplo (IPCA/IBGE) para a inflação, para a variável desemprego é utilizado o Desemprego Aberto
+sazonalmente ajustado (IBGE), enquanto que para a expectativa presente quanto à inflação futura é
+utilizada a estrutura a termo da taxa de juros. O estudo conclui que existe não linearidade na curva
+de Phillips a qual se caracteriza por uma mudança de regime após o Plano Real.
+    Correa e Minella (2005) estudam os mecanismos de não linearidade na curva de phillips focando-se
+nos repasses cambias. Os autores utilizam um modelo Treshold Autoregressive (TAR) para modelar
+uma curva de Phillips hı́brida onde uma das variáveis utilizadas como limiar é o hiato do produto. São
+utilizados dados trimestrais de 1995:01-2004:04, onde o IPCA (preços livres) é a medida de inflação e
+o hiato do produto é calculado a partir da metodologia de uma função de produção. O modelo é esti-
+mado por Mı́nimos Quadrados em Dois Estágios (MQ2E) utilizando diversas variáveis instrumentais
+para o componente de expectativa. Os resultados mostram que a fonte de não linearidade é centrada
+na variável câmbio.
+    Tombini e Alves (2006) analisam possı́veis quebras estruturais nos parâmetros de uma curva de
+Phillips hı́brida. O foco do trabalho é apresentar uma metodologia alternativa para estimar uma
+medida de custo de desinflação e aplicá-la ao Brasil. O custo de desinflação é apresentado como
+o ganho de inflação que teria sido observado se os coeficientes da curva de Phillips não tivessem
+mudado. Como essa medida de desinflação depende da variação dos parâmetros da curva de Phillips,
+os autores, utilizando a abordagem do filtro de Kalman, estimam os time-varying parameters para
+uma curva de Phillips hı́brida. A especificação dessa curva é feita para uma economia aberta, ou seja,
+a taxa de câmbio entra na equação de Phillips para representar o pass-through cambial. O termo
+relativo à expectativa presente da inflação futura é instrumentalmente determinado no primeiro passo
+de uma estimação por MQ2E. Os dados têm frequência mensal compreendendo o perı́odo de 1996:01
+a 2006:01, e a variável dependente é o IPCA – preços livres (taxa não anualizada). Como resultado,
+os autores encontram uma relação positiva e crescente entre nı́vel de atividade e taxa de inflação até
+maio de 2002. A curva de Phillips torna-se mais plana a partir de junho de 2002. Já em 2004 a curva
+
+                                                       9
+de Phillips passa a ser praticamente linear. Embora os autores destaquem esse resultado, é preciso
+salientar que as estimativas apresentaram grandes desvios-padrão e o coeficiente do hiato do produto
+não mostrou-se estatisticamente significante a 5% de significância.
+    Carvalho (2010) investiga a possibilidade empı́rica da curva de Phillips, em sua especificação novo-
+keynesiana hı́brida, ser não linear. O autor faz uso de uma variação do modelo de Regressão com
+Transição Suave (STR), que permite a identificação de não linearidades de maneira mais flexı́vel,
+levando em conta a endogeneidade da série de expectativas de inflação. O modelo STR fornece uma
+maneira de testar a existência de não linearidades do que se chama “transição suave”, que pertence
+aos modelos não lineares de séries temporais conhecidos como state-dependent. O modelo utilizado
+é uma variação do modelo STR desenvolvida por Areosa et al (2010), que permite a estimação
+de parâmetros da equação não linear mesmo quando há regressores endógenos. Esta abordagem
+econométrica é utilizada, pois, leva em consideração o problema da endogeneidade das variáveis da
+CPNKH na equação a ser estimada, sem a necessidade da estimação de todo o sistema de equações do
+modelo novo-keynesiano. É testada a hipótese de não linearidade da curva de Phillips para 13 paı́ses.
+A periodicidade é mensal e os dados amostrais iniciam-se após a adoção do sistema de metas para a
+inflação de cada paı́s. O autor encontra evidências de não linearidade na CPNKH para um total de 9
+dos 13 paı́ses analisados. A variável de transição que capta com mais precisão a não linearidade é o
+distanciamento entre expectativas de inflação e sua meta. Além disso, para o caso do Brasil, o grau
+de aquecimento da demanda agregada não é a condição macroeconômica relevante a não linearidade.
+    Por fim, Areosa et al. (2010) testaram a hipótese de linearidade da curva de Phillips para o Brasil
+contra um modelo alternativo STR, encontrando evidências a favor da não linearidade. A relação
+não linear encontrada pelos autores estaria relacionada à volatilidade da variância cross-section das
+expectativas de inflação dos agentes de mercado e não propriamente no nı́vel de atividade econômica.
+A metodologia utilizada pelos autores permite testar a hipótese de linearidade do modelo antes da
+estimação da suposta equação não linear, caso ela se mostre relevante, dessa forma, pode-se evitar
+uma especificação sobreparametrizada da curva de Phillips.
+
+
+3     Estimação e discussão dos resultados
+Nesta seção são apresentados os resultados das estimações paramétricas, não-parameétricas e semi-
+paramétricas. As estimativas apresentadas foram baseadas em dados mensais, utilizando-se uma
+amostra compreendida no perı́odo 2002:04 - 2012:09. Quanto à medida de atividade econômica real,
+foi utilizado o hiato do produto calculado pela metodologia da decomposição Beveridge-Nelson. Essa
+abordagem foi utilizada na série do PIB acumulado nos últimos 12 meses, deflacionado pelo IGP-DI
+do mês.
+
+3.1    Estimação paramétrica
+Nesta seção são apresentados os resultados da estimação convencional paramétrica. A especificação
+a ser estimada da curva de Phillips é a seguinte:
+
+                                πt = φ1 πt−1 + φ2 E(πt+1 |It ) + φ3 xt + t .                         (5)
+
+    Estamos interessados em estimar os parâmetros φ1 , φ2 e φ3 . A estimação é feita por GMM com
+matriz ponderada HAC, da mesma forma que em Galı́ e Gertler (1999). A condição de ortogonalidade
+utilizada foi:
+                             E[(π̂t − φ1 π̂t−1 − φ2 π̂t+1 − φ3 x̂t )zt ] = 0.                     (6)
+
+                                                     10
+                                  Figura 1: Hiato do produto (t), inflação (t + k)
+
+
+                          0.6	  
+                          0.5	  
+                          0.4	  
+                          0.3	  
+                          0.2	  
+                          0.1	  
+                               0	  
+                         -­‐0.1	      -­‐8	   -­‐7	   -­‐6	   -­‐5	   -­‐4	   -­‐3	   -­‐2	   -­‐1	   0	     1	     2	     3	     4	     5	     6	     7	     8	  
+                         -­‐0.2	  
+                         -­‐0.3	  
+                         -­‐0.4	  
+
+
+
+
+    Os instrumentos utilizados foram cinco defasagens da inflação medida pelo IPCA e mais duas
+defasagens de medida do hiato do produto. Conforme enfatizado por Fuhrer e Moore (1995), a
+inflação deveria antecipar o hiato do produto no decorrer dos ciclos econômicos, no sentido de que
+um aumento na inflação corrente deveria sinalizar um subsequente aumento no hiato do produto. A
+Figura 1 apresenta a correlação cruzada entre o hiato do produto xt e a infalção.
+    O correlograma do hiato do produto, extraı́do pela decomposição Beveridge-Nelson, com a inflação
+apresenta um comportamento de acordo com o modelo teórico. Outras medidas de hiato foram
+consideradas; a rigor, foram derivados hiatos do produto seguindo todas as abordagens que foram
+apresentadas no capı́tulo 3 de Metodologia. Porém, todas as outras medidas de hiato se caracterizaram
+por apresentar correlação positiva com a inflação passada e negativa com a inflação futura. Ou seja,
+um comportamento que é contrário à intuição teórica. Os resultados da estimação encontram-se na
+Tabela 1.
+
+                    Tabela 1: CPNK - com termo linear para o                                                                                     hiato do produto
+                                  Estimativa Desvio-padrão                                                                                      p-valor
+                              φ1      0.4168        0.0021                                                                                        0.0000
+                              φ2      0.5229        0.0040                                                                                        0.0000
+                              φ3      0.0144        0.0007                                                                                        0.0000
+                                2
+                             R̄       0.6636
+
+    As estimativas apresentadas são consistentes com a teoria. Os resultados informam que: (i) o
+componente expectacional forward-looking é dominante em relação ao componente backward-looking,
+apresentando valor correspondente a 0.52; (ii) ambos componentes expectacionais são estatisticamente
+significativos; (iii) o impacto da atividade real, representado pelo hiato do produto, é estatisticamente
+significante e apresenta sinal positivo em concordância com a teoria. Areosa (2010), utilizando a
+mesma estratégia de estimação apresentada aqui, não encontrou significância estatı́stica para o coe-
+ficiente relativo ao hiato do produto. Além disso, o coeficiente estimado pelo autor apresentou sinal
+negativo, ou seja, contrário à teoria econômica. O autor encontrou uma estimativa de sinal positivo,
+mas ainda não significativa, apenas quando o hiato do produto é substituı́do por uma medida de custo
+marginal. De fato, a literatura sobre a estimação da curva de Phillips tem, em geral, demonstrado
+
+                                                                                                       11
+resultados semelhantes aos encontrados em Areosa (2010). É bastante clara uma tendência ao uso
+de uma medida de custo marginal, ao invés de hiato do produto, na estimação da curva de Phillips
+buscando evitar problemas associados à significância estatı́stica e adequação da estimativa ao modelo
+teórico. Contudo, os resultados apresentados na Tabela 1 diferem do padrão encontrado na literatura.
+O coeficiente relativo ao hiato do produto apresenta sinal positivo e é estatisticamente significativo.
+Em primeiro lugar, o que deve ser ressaltado é que a medida de hiato do produto utilizada neste
+trabalho não é mesma utilizada por Areosa (2010). O autor obteve o hiato do produto do resı́duo de
+uma regressão do PIB sobre 11 variáveis dicotômicas sazonais e uma tendência linear. Essa mesma
+medida de hiato foi utilizada neste trabalho e, de fato, apresentou os mesmos problemas encontrados
+em Areosa (2010). A literatura, em geral, obtêm o hiato do produto através da utilização de um filtro
+Hodrick-Prescott. Nós estimamos o modelo da eq. (5) acima utilizando essa mesma medida de hiato
+e rendeu um coeficiente de sinal positivo, porém sem significância estatı́stica. O que os resultados
+apresentados na Tabela 1 mostram é que o problema de utilizar as medidas de hiato do produto pelo
+filtro Hodrick-Prescott, ou pelo método de regressão linear com variáveis dicotômicas, é que essas
+medidas apresentam correlação negativa com a inflação defasada e positiva com a inflação futura,
+padrão que é exatamente o contrário do comportamento previsto pela teoria. O hiato do produto,
+que foi utilizado neste trabalho, foi obtido de uma decomposição Beveridge e Nelson de acordo com
+a especificação apresentada em Araújo et al (2004). Essa medida de hiato apresenta um padrão de
+correlação com a inflação que vai de acordo com a teoria econômica . Dessa forma, fica claro que os
+problemas encontrados na estimação da curva de Phillips, quando uma medida de hiato é utilizada
+para refletir a atividade econômica, estão associados ao formato da correlação cruzada entre a medida
+de atividade econômica e a inflação, e não ao uso de uma medida de hiato em si, conforme destaca
+parte da literatura. Medidas de hiato do produto que apresentam uma correlação com a inflação
+semelhante à figura 1 tenderão a apresentar coeficientes estatisticamente significantes na equação de
+Phillips. Há diversas metodologias para a derivação do hiato do produto, as quais geram, em alguns
+casos, séries muito diferentes entre si. Concluı́mos que a utilização da variável hiato não é inferior, no
+sentido estatı́stico, ao uso de uma variável que representa o custo marginal. Desde que sua correlação
+com a inflação respeite a relação teórica entre essas duas variáveis.
+
+3.2     Estimação semi-paramétrica
+O modelo agora será tratado dentro de uma abordagem semi-paramétrica. Essa abordagem explora
+a situação na qual o comportamento da variável dependente pode ser escrito como uma função linear
+de algumas variáveis e uma função que possui uma forma funcional desconhecida. Nós iremos assumir
+que a curva de Phillips é linear nas expectativas, tanto no termo forward-looking quanto no backward-
+looking, mas nenhum tipo de relação especı́fica será imposto ao componente da atividade econômica.
+Dessa forma, o modelo é especificado como:
+
+                                 πt = φ1 πt−1 + φ2 E(πt+1 |It ) + f (xt ) + 2t                             (7)
+
+Com isso, menos restrições são impostas na relação entre as variáveis. É assumido que existe uma
+função f , a qual descreve o impacto da atividade econômica na inflação corrente, porém nenhuma
+forma funcional é imposta. O objetivo é revelar a estrutura de f através da estimação da expectativa
+                                        e
+condicional da inflação E(πt |πt−1 , πt+1 , xt ) com auxı́lio da metodologia kernel. Note que no modelo
+paramétrico as derivadas parciais da média condicional de πt são todas constantes por hipótese.
+Em um modelo não-paramétrico, as derivadas relativas às variáveis explanatórias são permitidas
+variar mais livremente em seu domı́nio. Para estimar o modelo paramétrico utilizamos a condição de
+
+
+                                                      12
+momento da eq. (6), de forma que tratamos a endogeneidade presente na formação da expectativa
+presente quanto à inflação futura, através do uso de variáveis instrumentais. Isso não será utilizado
+para estimar a eq. (7). Ao invés de nos valermos de uma condição de ortogonalidade para tratar
+a endogeneidade, será utilizada uma medida de expectativa de inflação. Sem utilizar as condições
+de momento, a opção é utilizar a informação dos bem conhecidos surveys. A ideia é incorporar
+uma medida de expectativa baseada em uma survey ao invés de presumir racionalidade em um
+componente expectacional que é não observável. A proxy utilizada será a expectativa da inflação da
+pesquisa FOCUS do Banco Central do Brasil. O modelo estimado passa a ser:
+                                                       f ocus
+                                   πt = φ1 πt−1 + φ2 π̂t+1    + f (xt ) + 3t                              (8)
+        f ocus
+onde, π̂t+1    é a mediana das expectativas dos agentes quanto à inflação do próximo mês, formada
+pelo conjunto de informação disponı́vel até a data de divulgação do IPCA-15. As outras variáveis
+são as mesmas utilizadas na estimação paramétrica.
+    A bandwidth escolhida foi h∗ = 3hotima , onde hotima é a bandwidth determinada via método plug-
+in. Quanto maior é a bandwith, menor é a variância, porém, maior é o viés do estimador. Preferiu-
+se diminuir a variância para que possamos visualizar um formato mais bem definido das funções
+estimadas. Os passos para a obtenção de fˆ podem ser sumarizados como se segue. Em um primeiro
+momento foi estimada uma regressão, em que a inflação presente foi estabelecida como variável
+dependente e a inflação defasada e expectativa da inflação como variáveis explicativas, obtendo-
+se seus resı́duos, denotados por û1t . Em um segundo momento, foi estimada uma segunda regressão
+onde o hiato do produto foi estabelecido como variável dependente e a inflação defasada e expectativa
+da inflação como variáveis explicativas, obtendo-se seus resı́duos, denotados por û2t . Por último foi
+realizada uma regressão não-paramétrica, em que û1t é variável dependente e û2t é variável regressora,
+da seguinte forma:
+                                      T                            2           
+                                     X                                   û2t − x
+                             min         û1t − m̂0 − m̂1 (û2t − x) K                                      (9)
+                            m̂0 ,m̂1
+                                     t=1
+                                                                            h∗
+
+onde m̂0 = fˆ(xt ) e x é um ponto escolhido no intervalo em que xt toma valores. K é a função kernel
+Gaussiana (densidade da v.a. Normal Padrão). A ideia por trás desse procedimento é simples: a
+primeira regressão busca “limpar” a inflação presente dos efeitos referentes ao componente inercial e
+expectacional, já a segunda regressão busca “limpar” o hiato do produto dos efeitos relativos aos dois
+componentes. Os resı́duos dessas regressões correspondem à inflação e ao hiato, livres das influências
+dos componentes inercial e expectacional. As estimativas da média condicional devem mostrar a
+relação entre a inflação e o hiato do produto excluı́do os efeitos relativos às outras variáveis expostas
+na curva de Phillips. O resultado da estimação pode ser visto na Figura 2.
+    Pela análise visual da Figura 2, podemos notar que os efeitos do hiato do produto na inflação
+não se comportam linearmente. A curva estimada é côncava quando o hiato do produto é menor
+que zero e convexa para valores positivos do hiato do produto. Isso sugere que a derivada de f com
+relação a xt possui formato de U . Embora pareça haver uma forma quadrática no comportamento da
+derivada, é difı́cil avaliar se a inflação responde de forma simétrica a desvios positivos e negativos do
+hiato do produto. Essa dificuldade surge do fato de que há poucos dados amostrais concentrados nas
+regiões extremas. É possı́vel notar que valores extremos positivos do hiato estão associados a uma
+derivada de maior magnitude, porém a escassez de dados nos intervalos extremos dificulta uma melhor
+investigação desta caracterı́stica. Como um resultado geral das estimações não-paramétricas, podemos
+afirmar que o impacto do produto efetivo sobre a inflação depende do nı́vel de atividade econômica. O
+trade-off entre produto-inflação é não linear para valores extremos do hiato do produto. A estimação
+
+                                                      13
+                            Figura 2: Hiato do produto (t), inflação (t + k)
+
+
+
+
+do modelo semi-paramétrico nos fornece informações suficientes para que possamos modelar de forma
+paramétrica a não linearidade apresentada pelo hiato do produto. Com o formato dado pela Figura
+2 é possı́vel realizar uma aproximação paramétrica para que possamos ajustar um melhor modelo
+para a dinâmica inflacionária. Nesse caso, propomos especificar um formato cúbico para o hiato do
+produto, como na equação (10).
+
+                            πt = φ1 πt−1 + φ2 E(πt+1 |It ) + φ3 xt + φ4 x3t + 4t                     (10)
+
+A estimação da eq. (10) foi realizada por GMM com matriz ponderadora HAC, utilizando a condição
+de momento estabelecida na eq. (11).
+
+                             E[(πt − φ1 πt−1 − φ2 πt+1 − φ3 xt − φ4 x3t )zt ] = 0                     (11)
+
+
+                     Tabela 2: CPNK com termo cúbico para o          hiato do produto
+                                  Estimativa Desvio-padrão            p-valor
+                              φ1      0.3556         0.0060            0.0000
+                              φ2      0.4487         0.0064            0.0000
+                              φ3      0.0270         0.0012            0.0000
+                              φ4      0.0029         0.0003            0.0000
+                              R̄2     0.6852
+
+   Como podemos observar na Tabela 2, o parâmetro relativo ao termo cúbico do hiato do produto
+apresenta sinal compatı́vel com a teoria econômica e é estatisticamente significativo. Portanto, parece
+que a relação não linear entre a inflação e a atividade econômica pode ser modelada pela inclusão de
+
+                                                     14
+um termo cúbico do hiato do produto na curva de Phillips. O parâmetro relativo à expectativa de
+inflação apresentou uma estimativa menor do que a anteriormente estimada para a curva de Phillips
+(paramétrico linear), assim como o parâmetro relativo à inflação defasada. Porém, a estimação mostra
+que o termo expectacional é dominante em relação ao termo da inflação defasada, padrão apresentado
+em ambas as estimações. Comparando com o modelo linear, o acréscimo de um termo cúbico para
+o hiato do produto melhora o ajuste do modelo. O coeficiente de determinação ajustado passa de
+0.663 no primeiro caso, para 0.685 no segundo caso. A inclusão do termo cúbico permite ao modelo
+capturar melhor a não linearidade existente entre a inflação e a alta atividade econômica, a qual é
+representada aqui por grandes desvios do produto efetivo do seu potencial. Dessa forma, o processo
+da dinâmica inflacionária brasileira pode ser considerado um processo state-dependent, em relação à
+atividade econômica. Isso significa dizer que a taxa de sacrifı́cio é state-dependent e não constante,
+como os modelos lineares levam a crer. O impacto do produto na inflação claramente aumenta em
+tempos de alta atividade econômica, fato que não podia ser visualizado quando impomos a suposição
+de linearidade no modelo. Diferentes formatos de curva de Phillips evidenciam diferentes custos de
+desinflação. Dessa forma, uma curva de Phillips conforme estimada para o caso linear apresenta uma
+resposta constante da inflação a mudanças no produto. Já o formato cúbico da curva de Phillips,
+possibilita que a inflação reaja de forma distinta a mudanças no produto de acordo com o nı́vel de
+atividade econômica. É interessante considerarmos o resultado dos modelos a um incremento marginal
+no hiato do produto a diferentes nı́veis de atividade econômica. Um aumento no hiato do produto
+implica um aumento na inflação na ordem de 0.0143% para qualquer nı́vel de atividade econômica.
+Para o modelo cúbico, a resposta da inflação à mudanças no hiato varia com o nı́vel de atividade,
+um aumento no hiato do produto implica um aumento na inflação de 0.0621%, quando o produto
+efetivo encontra-se 2% abaixo ou acima do potencial e quando a economia encontra-se no seu nı́vel
+potencial, um aumento no hiato do produto implica um aumento na inflação de 0.0269%.
+
+
+4     Conclusão
+Neste trabalho, investigamos a presença de relações não lineares entre a inflação e a atividade
+econômica dentro do arcabouço teórico da curva de Phillips Novo-Keynesiana Hı́brida. As análises
+basearam-se em estimadores semi-paramétricos, os quais auxiliaram a identificação de uma forma
+funcional mais adequada para a curva de Phillips. Depois de identificado o formato da relação
+inflação-produto, foi estimada uma curva de Phillips, através do uso de GMM, buscando descre-
+ver satisfatoriamente a forma funcional encontrada de forma semi-paramétrica. Os resultados deste
+trabalho sugerem que a inflação e a atividade econômica relacionam-se de forma não linear. Essa
+não-linearidade torna-se mais importante para valores extremos do hiato do produto. Ou seja, quando
+o produto efetivo encontra-se em torno de 2% abaixo ou acima do produto potencial. Mais especifi-
+camente, o impacto do hiato do produto sobre a inflação depende do nı́vel de atividade econômica.
+Quando o produto efetivo está próximo do produto potencial, o hiato do produto tem impacto po-
+sitivo e aproximadamente linear na taxa de inflação. Por outro lado, quando o produto efetivo não
+está próximo do produto potencial, o hiato do produto impacta a inflação de forma positiva e cúbica.
+Sendo assim, a curva de Phillips, para o caso brasileiro, pode ser bem aproximada por um termo
+linear mais um termo cúbico referente ao hiato do produto. Rejeitamos o formato linear da curva de
+Phillips, pois, o modelo com um termo linear mais um cúbico para o hiato do produto mostrou-se
+mais significativo. Em outras palavras, a curva de Phillips não-linear gera respostas da inflação a
+mudanças na atividade econômica mais próximas das evidências empı́ricas. Concluı́mos então que
+a dinâmica inflacionária brasileira é caracterizada por um processo state-dependent, sendo assim, os
+
+
+                                                    15
+custos de desinflação, em termos de produto, dependem do nı́vel de atividade econômica: há um
+custo maior quando o produto efetivo encontra-se no nı́vel do produto potencial. Outra maneira de
+interpretar esses resultados é notar que, quando a economia está muito aquecida, com o produto
+efetivo muito acima do potencial, pequenos desvios positivos do hiato do produto causam grandes
+aumentos na inflação.
+    Outra contribuição deste trabalho se refere ao uso do hiato do produto como proxy para atividade
+econômica. A literatura sobre a curva de Phillips tem, em geral, encontrado um coeficiente não
+significativo, ou mesmo de sinal negativo, quando o hiato do produto é utilizado como medida de
+atividade econômica. Este resultado é encontrado em Areosa (2010). É bastante clara uma tendência
+ao uso de uma medida de custo marginal, ao invés de hiato do produto, na estimação da curva de
+Phillips buscando evitar problemas associados à significância estatı́stica e adequação da estimativa ao
+modelo teórico. Porém, neste trabalho foram testados hiatos do produto estimados a partir de várias
+metodologias diferentes – filtro Hodrick-Prescott, decomposição de componentes não-observáveis,
+decomposição por Beveridge-Nelson, regressão linear e filtro Hodrick-Prescott restrito a uma função
+de produção. Concluı́mos que os problemas de significância encontrados na estimação da curva de
+Phillips, quando uma medida de hiato é utilizada para refletir a atividade econômica, estão associados
+ao formato da correlação cruzada entre a medida de atividade econômica e inflação, e não ao uso de
+uma medida de hiato em si, conforme destaca parte da literatura. Conforme enfatizado por Fuhrer
+e Moore (1995), a inflação deveria antecipar o hiato do produto no decorrer dos ciclos econômicos,
+no sentido que um aumento na inflação corrente deveria sinalizar um subsequente aumento no hiato
+do produto. Medidas de hiato do produto que apresentam este comportamento geram coeficientes de
+sinal positivo e são, de um modo geral, estatisticamente significantes.
+
+
+Referências
+ARAÚJO, C. H. V.; AREOSA, M. B. M.; GUILLÉN, O. T. C. Estimating potential output gap for
+Brazil. Anais do XXXII Encontro Nacional de Economia – ANPEC – n. 041, 2004.
+AREOSA, M. Combining Hodrick-Prescott filtering with a production function approach to estimate
+output gap. Banco Central do Brasil – Working Paper Series 172, 2008.
+AREOSA, W. Dinâmica da inflação no Brasil: O caso de uma pequena economia aberta. Dissertação
+(Mestrado). Programa de Pós-Graduação em Economia, Pontifı́cia Universidade Católica do Rio de
+Janeiro, Rio de Janeiro, 2010.
+AREOSA, W.; MCALEER, M.; MEDEIROS, M. Moment-based estimation of smooth transition
+regression models with endogenous variable. Textos para Discussão, PUC-Rio, n. 571, 2010.
+BALL, L. Credible disinflation with staggered price setting. American Economic Review, vol. 84, p.
+282-289, 1994.
+BALL, L. Disinflation with imperfect credibility. Journal of Monetary economics, n 35, p. 5-23, 1995.
+BALL, C. Efficient rules for monetary policy. NBER Working Paper, n. 5952, 1997.
+BALL, L.; MANKIW, G. Asymmetric price adjustment and economic fluctuations. Economic Jour-
+nal, n. 104, p. 247-261, 1994.
+BALL, L.; MANKIW, G.; ROMER, D. The New-Keynesian economics and the output-inflation
+trade-off. Brookings Papers on economic Activity (1), p. 1-65, 1988.
+BASTINI, N.; JACKSON, B.; NICKELL, S. Inflation dynamics and the labor share in the UK,
+External MPC Unit Discussion Paper – Bank of England , n. 2, 2000.
+BEAN, C. The new UK monetary arrangements. Economic Journal, v. 108, p. 1795-1809, 1998.
+BEVERIDGE, S.; NELSON, C. R. A New approach to decomposition of economic time series into
+
+
+                                                    16
+permanent and transitory components with particular attention to measurement of ´business cycle´.
+Journal of Monetary Economics, v. 7, p. 151-174, 1981.
+BINDER, M.; PESARAN, M. H. Multivariate rational expectations models: A review and some new
+results. Handbook of applied econometrics, Volume Macroeconomics, p. 139-187, Oxford: Blackwell,
+1995.
+BOONE, L. Comparing semi-structural methods to estimate unobserved variables: the HPMV and
+Kalman filters approaches. OECD Economics Department Working Papers, n. 240, 2000.
+BLANCHARD, O., GALÍ, J. Real wage rigidities and the New-Keynesian model. Journal of Money,
+Credit, and Banking, supplement to vol. 39, p. 45-65, 2007.
+BUCHMANN, M. Nonparametric hybrid Phillips curves Based on Subjective Expectations: Estimates
+for the Euro Area. European Central Bank, Working Paper Series 1119, 2009.
+CALVO, G. Staggered prices in a utility-maximizing framework. Journal of Monetary Economics, n
+12, p. 883-398, 1983.
+CARROL, R. J.; FAN, J.; GIJBELS, I.; WAND, M. P. Generalized partially linear single-index
+models. Journal of the American Statistical Association, n. 438, p. 477-489, 1997.
+CARVALHO, P. V. C. A curva de Phillips Novo-Keynesiana é Não-Linear? Evidências de paı́ses com
+metas de inflação. Dissertação (Mestrado). Programa de Pós-Graduação em Economia, Pontifı́cia
+Universidade Católica do Rio de Janeiro, Rio de Janeiro, 2010.
+CHRISTIANO, L. J.; EICHENBAUM, M. S.; EVANS, C. L. The effects of monetary Policy shocks:
+Some evidence from the flow of funds. National Bureau of Economic Research Working Paper, n.
+4699, 1994.
+CLARIDA R.; GALÍ, J.; GERTLER, M. Monetary policy rules in practice: Some international
+evidence. European Economic Review, n. 42, p. 1033-1067, 1998.
+CLARIDA R.; GALÍ, J.; GERTLER, M. Monetary policy rules and macroeconomic stability: Evi-
+dence and some theory. Quarterly Journal of Economics, n. 115, p. 147-180, 2000.
+CLARK, P.; LAXTON, D.; ROSE, D. Asymmetry in the US output inflation nexus. IMF Staff
+Papers, n. 43, p. 216-251, 1996.
+CORREA, A. S.; MINELLA, A. Mecanismos não-lineares de repasse cambial: Um modelo de curva
+de Phillips com threshold para o Brasil. Anais do XXXIII Encontro Nacional de Economia, n.33,
+2005.
+DEBELLE, G.; LAXTON, D. Is the Phillips curve really a curve? Some evidence for Canada, the
+United Kingdom, and the United States. Staff Papers – International monetary Fund, v. 44, n. 2,
+p. 249-282, 1997.
+DOBRINSKAYA, V. Asymmetric price rigidity and the optimal interest rate defense of the exchange
+rate: Some evidence for the US. Journal of Policy Modeling, v. 30, n. 5, 2008.
+DOBRINSKAYA, V. The implications of asymmetric price rigidity for the monetary policy in an
+open economy. Higher School of Economics Working Papers, v.9, 2009.
+DOLADO, J. J; MARÍA-DOLORES, R.; NAVEIRA, M. Are monetary-policy reaction functions
+asymmetric? The role of nonlinearity in the Phillips curve. European Economic Review, v. 49, n. 2,
+p. 485-503, 2005.
+DUPASQUIER, C.; RICKETTS, N. Non-linearity in the output-inflation relationship: Some empiri-
+cal results for Canada. Bank of Canada - Working paper, v. 98-14, 1998.
+ELIASSON, A. Is the short-run Phillips curve nonlinear? Empirical evidence for Australia, Sweden
+and the United States. Sveriges Riskbank - Working Paper Series, v. 124, 2001.
+FAN, J.; HÄRDLE, W.; MAMMEN, E. Direct estimation of low-dimensional components in additive
+models. The Annals of Statistics, v. 26, n.3, p. 943-971, 1998.
+
+
+                                                17
+FASOLO, A. M.; PORTUGAL, M. S.. Imperfect rationality and inflationary inertia: a new estimation
+of the Phillips curve for Brazil. Estudos Econômicos, v. 34(4), out-dez, p. 725-776, 2004.
+FILARDO, A. J. New evidence on the output cost of fighting inflation. Economic Review, third
+quarter, p.33-61, 1998.
+FISHER, I. A statistical relation between unemployment and price changes. International Labour
+Review 13, 1926.
+FISHER, T. C. G. Efficiency wages: A literature survey. Bank of Canada Working Paper, n.85-5,
+1989.
+FRIEDMAN, M. The role of monetary policy. American Economic Review, v. 58, p. 1-17, 1968.
+FUHRER, J. C.; MOORE, G. R. Inflation persistence. Quarterly Journal of Economics, 440, 1995.
+GALÍ, J.; GERTLER, M.. Inflation dynamics: A structural econometric analysis. Journal of Mone-
+tary Economics, 44, p. 195-222, 1999.
+GALÍ, J.; GERTLER, M.; LÓPEZ-SALIDO, D. J. Robustness of the estimates of the hybrid New-
+Keynesian Phillips curve. Banco de Espanã Working Papers, n. 0520, 2005.
+HARDLE, W., MULLER, M., SPERLICH, S., e Werwatz, A. Nonparametric and semiparametric
+models. Springer, 1st Edition, 2004.
+HARVEY, A. C. Trends and cycles in macroeconomic time series. Journal of Business and Economic
+Statistics, vol. 3, p. 216-227, 1985.
+Harvey, A. Forecasting, structural time series models and Kalman filter. Cambridge, U.K.: Cambridge
+Univ. Press, 1989.
+HENRY, S.; PAGAN, A.. The econometrics of the New Keynesian policy model: Introduction.
+Oxford Bulletin of Economics and Statistics, n. 66, p. 581-607, 2004.
+HOROWITZ, J. L.; MAMMEN, E. Nonparametric estimation of an additive model with a link
+function. The Annals of Statistics, v. 32, n. 6, p. 2412-2443, 2004.
+IRELAND, P. N. Sticky Price models of the business cycle: Specification and stability. Journal of
+Monetary Economics, v. 47, n. 1, p. 3-18, 2001.
+JONDEAU, E.; LE BIHAN, H. Testing for the New Keynesian Phillips curve. Additional internati-
+onal evidence. economic modeling, v. 22, n. 3, p. 521-550, 2005.
+KURMANN, A. Maximum likelihood estimation of dynamic stochastic theories with an application
+to the New Keynesian pricing. CIRPEE, n. 0421, 2004.
+LAXTON, D.; MEREDITH, G.; ROSE, D. Asymmetric effects of economic activity of inflation:
+Evidence and policy implications. IMF Working Paper, n. 94/139, 1994.
+LAXTON, D.; ROSE, D.; TAMBAKIS, D. The U.S. Phillips curve: The case for asymmetry. Journal
+of Economic Dynamics and Control, n. 23, p. 1459-1485, 1999.
+LI, Q. e RACINE, J. S. Nonparametric econometrics: Theory and practice. Princeton University
+Press, 2007.
+LIMA, E. C. R.. Unemployment and the rate of inflation in Brazil. Revista Brasileira de Economia,
+v.57(4), out - dez., p. 899-930, 2003.
+LINDÉ, J. Estimating New-Keynesian Phillips curves: A full information maximum likelihood ap-
+proach. Journal of Monetary Economics, v. 52, n. 6, p. 1135-1149, 2005.
+LUCAS, R. J. Some international evidence on output-inflation trade-offs. American Economic Re-
+view, v. 63, n. 3, p. 326-34, 1973.
+MACHADO, V. G. ; PORTUGAL, M. S. . Measuring inflation persistence in Brazil using a structural
+times series model. In: 2012 Annual Meeting of the Latin American and Caribbean Economic
+Association, 2012, Lima, Peru. Papers and Proceedings of LACEA 2012. Lima, Peru: LACEA, 2012.
+MACKLEM, T. Capacity constraints, price adjustment, and monetary policy. Bank of Canada
+Review, v. Spring, p.39-56, 1997.
+
+                                                18
+MISHKIN, F.; POSEN, A. Inflation targeting: Lessons from four countries. Federal Reserve Bank of
+New York Economic Policy Review, n. 3, p.89-110, 1997.
+NADARAYA, A. E. On non-parametric estimates of density functions and regression curves. Theory
+of Probability and Its Applications, vol. 10, n. 01, 1965.
+NEWEY, W. K.; WEST, K. D. A simple, positive semi-definite, heteroskedasticity and autocorrela-
+tion consistent covariance matrix. Econométrica, n. 55(3), p. 703-708, 1987.
+ORPHANIDES, A; WIELAND, V. W. Inflation zone targeting. European Economic Review, n. 91,
+p. 226-231, 2000.
+PAGAN, A.; ULLAH, A. Nonparametric econometrics. Cambridge University Press, 1999.
+PHELPS, E. Money-Wage dynamics and labor market equilibrium. Journal of Political Economy,
+v.76, p. 678-711, 1968.
+PHILLIPS, A. W. The Relationship between unemployment and the rate of change of money wages
+in the United Kingdom 1861-1957. Economica, v. 25 (100), p.283-299, 1958.
+RAVN, M.; UHLIG, H . On adjusting the HP-filter for the frequency of observations. Tilburg
+University, Center for Economic Research – C.E.P.R Discussion Paper 2858, 1997.
+ROMER, D. Advanced macroeconomics. McGraw-Hill, 4th edition, 2011.
+SCHALING, E. The nonlinear Phillips curve and inflation forecast targeting: Symmetric versus
+asymmetric monetary policy rules. Journal of Monetary, Credit and Banking, vol. 36, n. 3, p.
+361-386, 2004.
+SCOTT, D. W. Multivariate density estimation: Theory, practice, and visualization. Wiley, New
+York, 1992.
+SILVERMAN. B. W. Density estimation for statistics and data analysis. Chapman and Hall, London,
+1986.
+STIGLITZ, J. E. Price rigidities and market structure. American Economic Review, n. 74, p. 350-
+355, 1984.
+STIGLITZ, J. E. Theories of wage rigidity. Keynes´ Economic Legacy: Contemporary Economic
+Theories, edited by Butkiewicz, L. J.; Koford, J. K.; Miller, B. J. – New York: Praeger, p. 153-222,
+1986.
+STIGLITZ, J. E. Reflection on the natural rate hypothesis. Journal of Economic Perspectives, v. 11,
+n. 1, p.3-10, 1997.
+STOCK, J.; WHIGHT, J.; YOGO, M. GMM, weak instruments and weak identification. Journal of
+Business and Economic Statistics, n. 20, p. 518-530, 2002.
+SVENSSON, L. O. Inflation forecast targeting: Implementing and monitoring inflation targets. Eu-
+ropean Economic Review, n. 41, 111-1146, 1997.
+SVENSSON, L. O. Open-economy inflation targeting. Journal of International Economics, v.50, p.
+155-183, 2000.
+TAMBAKIS, D. N. Monetary policy with a convex Phillips curve and asymmetric loss. International
+Monetary Fund - Working Paper, n. 21, 1998.
+TAYLOR, J. B. Discretion versus policy rules in practice. Carnegie-Rochester Conference n Public
+Policy, n. 39, p. 195-214, 1993.
+TOMBINI, A. A.; ALVES, S. A. L.; The recent Brazilian disinflation process and costs. Banco
+Central do Brasil, Working Paper Series, n. 109, p. 1-26, 2006
+WAND, M. P; JONES, M. C. Comparison of smoothing parameterizations in bivariate kernel density
+estimation. Journal of American Statistical Association, n. 88, p. 520-528, 1993.
+WATSON, G. S. Smooth regression analysis. Sankhya – The Indian Journal of Statistics, Series A,
+n. 26, p. 359-372, 1964.
+
+
+                                                19
+

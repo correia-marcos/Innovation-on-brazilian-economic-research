@@ -1,0 +1,727 @@
+                   TECHNOLOGICAL UNEMPLOYMENT IN BRAZIL:
+                       effects of automation on job market occupations
+
+                                                                          Willian Boschetti Adamczyk1
+                                                                          Marco Túlio Aniceto França2
+                                                                                   Adelar Fochezatto3
+Resumo:
+O desemprego tecnológico é visto como a perda de empregos que uma sociedade sofre devido à
+substituição de trabalhadores por máquinas ou algoritmos. Esses componentes de capital podem estar
+evoluindo rapidamente como um substituto para o trabalho humano ao invés de ser complementar ao
+aumento da produtividade. O presente estudo emprega técnicas de aprendizado de máquina em uma
+combinação de PCA com análise de aglomerados com três diferentes classificadores, o modelo de
+Probabilidade Linear (MPL), modelo de Regressão Logística e a Análise de Discriminante Linear
+(ADL) a fim de investigar padrões de habilidades e correlações das ocupações, ranqueando-as de
+acordo com suas probabilidades de automação, baseado em Frey e Osborne (2017). Encontra-se que as
+ocupações com tarefas intensivas em destreza manual sem a necessidade de habilidade de
+originalidade, belas artes, persuasão ou negociação possuem o mais alto risco de automação. Por outro
+lado, tarefas que requerem altos níveis de inteligência social e criativa são vistas com menor chance de
+substituição pelas máquinas.
+Palavras-chave: Desemprego tecnológico; Automação; Aprendizado de máquina; Mercado de
+trabalho.
+
+
+Abstract:
+Technological unemployment is seen as the loss of jobs a society endures due to replacement of
+workers by machines or algorithms. This component of capital can be evolving more rapidly as
+substitute for human labor than a complementarity to raise productivity. The study borrows techniques
+from machine learning applying a combination of PCA with cluster analysis and three different
+classifiers, the Linear Probability Model (LPM), Logistic Regression Model and the Linear
+Discriminant Analysis (LDA) to investigate patterns of abilities correlations and ranking occupations
+accordingly to its automation probabilities, in line with Frey and Osborne (2017). It finds that
+occupations intensive in finger and manual dexterity tasks without the need for originality, fine arts,
+persuasion or negotiation abilities have the highest risk of automation. On the other hand, tasks that
+require high levels of social and creative intelligence are seen as less likely to be substituted by
+machines.
+Keywords: Technological unemployment; Automation; Machine learning; Job market.
+JEL: J24 - Human Capital • Skills • Occupational Choice • Labor Productivity
+Área temática: Área 9 - Economia Industrial e da Tecnologia
+
+
+1
+  Doutorando em Economia no Programa de Pós-Graduação em Economia da Pontifícia Universidade Católica
+do Rio Grande do Sul – PPGE/PUCRS e Professor na FATENP. E-mail: willianadamczyk@yahoo.com.br;
+2
+  Doutor em Economia pela Universidade Federal do Paraná (UFPR). Professor no Programa de Pós-Graduação
+em Economia – PPGE/PUCRS. E-mail: marco.franca@pucrs.br;
+3
+  Doutor em Economia e Professor no Programa de Pós-Graduação em Economia – PPGE/PUCRS. Pesquisador
+no Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq. E-mail: adelar@pucrs.br;
+1. Introduction
+         For centuries, workers, labor parties and unions have disputed on the impact of new
+technologies over employment. Back in 1811, the luddites initiated a movement to destroy
+machines that they feared could replace workers leaving every family unassisted in an epoch
+of precarious conditions. In their eyes, technology worked as a perfect substitute for human
+labor.
+         As the industrial revolution matured, fear dissipated with the creation of new
+occupations, and capital became complementary to labor. Its role was to increase worker’s
+productivity with new tools and techniques that made goods cheaper leading to two centuries
+of increasing productivity and lowering prices of goods and capital. The standards of living
+increased significantly since the 1800 and the 2000’s (ACEMOGLU, 2002).
+         The widespread of internet, communication technologies and high quality education
+since the 1980’s lead to the development of techniques known as Artificial Intelligence (AI).
+For long, AI has been a concept (and a fear) that started to materialize with the possibilities of
+applying statistical and computation techniques that evolved into the field of machine learning
+and deep learning. AI was seen as a very distant concept when every single action a machine
+does needed to be coded by a human. Even the simplest actions programmed into a robot, like
+walking, required years of developing and human coding. But machine learning techniques
+recently changed this scenario, providing the possibility to teach machines by “training” them
+on large data sets of data, images, speech and movement.
+         Since, the need to code every single action was dismissed and machines could learn by
+themselves by analyzing data, in ways much more accurately and faster than human workers
+could do. This revolution has the potential to affect directly the labor market. Robots are
+increasing in quality and can replace a considerable number of workers tasks in production
+(Industry 4.0), accounting and finance (algorithms), transportation (self-driving cars and
+trucks), assisting other people (Siri, Google Assistant).
+         The accelerating development of new technologies brings back the concern from the
+1800: capital and technology could be evolving more rapidly as substitutes for human labor
+than a complementarity to raise productivity. Therefore, technological unemployment
+represents the loss of jobs due to machine substitution that outruns the pace of new uses for
+displaced labor (FREY and OSBORNE, 2017).
+         In this context, the study investigates Brazilian job market transformations to answer
+which jobs are under the risk of automation and its effects over technological unemployment.
+                                                                                                2
+Therefore, capital can be seen as complementary, augmenting worker’s productivity, or
+substitute, by replacing workers with machines. The impact of automation is to increase labor-
+capital substitutability rather than its complementarities. Both effects are possible, but we
+focus on the occupations that can be replaced by new technologies. By analyzing the Brazilian
+Code of Occupations (CBO) classification, we seek to identify the relationship between
+automation probabilities with specific tasks and skills characteristics of each occupation.
+       The investigation allows the discussion on the most prominent occupations of the next
+decades and which of them societies should prepare to assist, retrain and focus to lower the
+transition costs for these workers. The insights may have social implications for education,
+polarization of jobs, wage and inequality in the labor markets, regional disparities and
+unemployment. This work does not consider offshoring effects - that is, the relocation of a
+business process from one country to another that can eliminate or create jobs elsewhere.
+       The next section shows the literature related to technological unemployment. The third
+section brings and exploratory analysis while section four shows the ranking of occupations
+accordingly to its probabilities of automation.
+
+2. Literature Review
+       The literature on technological unemployment offers evidences that introduction of
+new information technologies (IT) have opened possibilities to automate routine tasks
+executed by workers, raising the risk to be dismissed as they are substituted by machines or
+computers, with the advantage of being easy scalable and with high potential of costs
+reduction and efficiency gains. (FREY and OSBORNE, 2017; WEF, 2015; AUTOR, 2015).
+       Acemoglu and Autor (2011) defines a task as a unit of work activity that produces an
+output, like goods or services. A skill is a worker’s endowment of capabilities for performing
+various tasks. Therefore, workers apply their skill endowments to tasks in exchange for
+wages, producing the output.
+       Santens (2016) suggests that work can be classified into routine and nonroutine, or
+cognitive and manual. Routine work is the same activities day in and day out, has standard
+procedure or tasks that are repetitive. On the other hand, nonroutine work varies in context
+and execution periodically. Routine tasks can be correlated to tasks that requires mostly
+manual work, while nonroutine work requires mostly thinking (cognitive).
+       The impact of technological changes is stronger over routine tasks, since rules can be
+written for work that does not change, and that work can be better handled by machines.
+
+                                                                                              3
+Jaimovich and Siu (2012) stresses the decline in manufacturing jobs and the disappearance of
+routine tasks based on jobs as of the causes of high unemployment rates measured in the
+economy of United States.
+       Technological unemployment affects routine tasks that can be substituted by rules
+reproduced as algorithms. Otherwise, occupations intensive in manual tasks that are not
+subject to substitution by algorithms can experience a higher demand, since it can lack
+routines or be so specific that cannot be coded into machines. This tasks typically require
+higher levels of flexibility or physical adaptation, even in occupations of low qualification and
+salary (AUTOR, et al., 2003; GOOS and MANNING, 2007; AUTOR and DORN, 2013).
+       Makridakis (2017) considers that the uniqueness of the artificial intelligence (AI)
+technologies is the potential to supplement, substitute and amplify practically all tasks that are
+currently performed by humans, with significant impacts over worker’s productivity but at the
+same time increasing the probability of technological unemployment.
+       Rutkin (2013) considers that the technological takeover will happen in stages. At first,
+computers start replacing people in vulnerable fields like transportation/logistics, production
+labor, and administrative support, following the positions in services, sales, and construction.
+Nonetheless, this should not be seen as a limit to the extent that technological unemployment
+can affect societies. The rate of replacement can slow down due to bottlenecks in harder-to-
+automate fields.
+       Once a “technological plateau” is reached, it can be overcome by subsequent waves of
+computerization. A second wave of computerization dependents on the development of
+general artificial intelligence. This second wave could put jobs in management, science and
+engineering, and the arts at risk (RUTKIN, 2013).
+       Stewart et al. (2015) stresses that there may be a transitional period of increased
+unemployment until new opportunities are created by emerging needs. A difficulty would be
+to know which would be the net effect of AI improvements over society. It is exactly routine
+work that once formed the basis of the American middle class. Such jobs are increasingly
+unavailable, leaving only two kinds of jobs with polarized outlooks: jobs that require little
+thought, so people are paid little to do them, and jobs that require so much thought,
+employing people very well paid (AUTOR and DORN, 2013; RUTKIN, 2013).
+       The polarization of US labor markets arises as a social problem beyond the rise in
+inequality. This polarization is characterized by the growth in high income cognitive jobs and
+growth in low income manual occupations, while the middle of the distribution is deflated
+                                                                                                4
+(GOOS et al., 2009). This implies a raise in income inequality and a distortion in labor
+markets, since the people with intermediary education moves toward jobs that pays less and
+do not employs the worker’s full capacity. These distortions imply losses in efficiency and
+raises questions of over qualification of workers.
+          Frey and Osborne (2017) build upon literatures of technological unemployment
+(AUTOR et al., 2003; GOOS and MANNING, 2007; AUTOR and DORN, 2013) and
+technological innovation future impacts (BRYNJOLFSSON and MCAFEE, 2014) to estimate
+the probabilities of disappearance of jobs in United States, based on the O*NET skills
+database.
+          The authors estimate the probability of computerization for 702 detailed occupations,
+using a Gaussian process classifier, and examine the impacts of future computerization on US
+labor market outcomes. Intrinsic characteristics of the tasks are used to classify the jobs with
+high or low risk of automation, considering the required finger dexterity, manual dexterity,
+work in cramped work spaces, awkward positions; required originality, abilities in fine arts;
+social perceptiveness; skills in negotiation; persuasion; and assisting and caring for other
+people.
+          The turning point in their study is that they are not only looking behind or diagnosing
+what is set. Machine learning techniques are applied in an effort to foresee jobs most likely to
+disappear. They find that about 47 percent of total US employment is at risk. Evidence is
+provided that wages and educational attainment exhibit a strong negative relationship with an
+occupation probability of computerization.
+          A problem in the studies that try to estimate which jobs are most likely to disappear is
+that they do not account jobs that are likely to appear. There are some complementarity and
+substitution effects between jobs that are not accounted by the researchers. New jobs can arise
+from three sources:
+                new technologies require a new set of skills and tasks;
+                transformation in jobs tasks;
+                complementarities with growing jobs.
+
+          Considering the possibility of creation of new jobs, we cannot ascertain the net effect
+on total employment, or the time that unemployment would take to dissipate as workers
+migrate between tasks, developing new sets of skills necessary for the new jobs.
+
+
+
+                                                                                                5
+       Computerization impacts countries in different pace. The trend in computerization is
+widespread between all countries as the price of automation technologies decreases
+significantly year after year. The great leap of this wave of automation is based on algorithms,
+which have a low cost of reproducibility in other countries, with a number of this technologies
+being free or open source. Therefore, we can extend the analysis of United States to Brazil’s
+labor market, because it's a question of time until different markets are affected.
+
+3. Exploratory Analysis
+       The strategy is to use the intrinsic characteristics of each occupation described in
+O*NET and seen as probable of being automated by other studies, and transpose these
+characteristics to Brazilian Code of Occupations (CBO). Frey and Osborne (2017) considers
+nine variables that acts as automation bottlenecks.
+       These variables are seen as Perception and manipulation tasks (Finger dexterity,
+Manual dexterity, Cramped Spaces), Creative intelligence tasks (Originality, Fine Arts), and
+Social intelligence tasks (Negotiation, Persuasion, Social Perceptiveness, Assisting and
+Caring for others). The probability of an occupation being automated can be described as a
+function of these task characteristics.
+       Perception and manipulation tasks includes tasks that relate to an unstructured work
+environment, dealing with objects, tools or in positions not easily foreseeable. It makes jobs
+less susceptible to computerization. In line with Frey and Osborne (2017), robots are still
+unable to match the depth and breadth of human perception, so these difficulties have
+ramifications for manipulation tasks, and, as handling irregular objects, or planning out the
+sequence of actions required to move an object from one place to another.
+       Creativity, by definition, is about generating novelty and value. Values are highly
+variable across societies and context, so it follows that many arguments about creativity are
+rooted in disagreements about value. Thus, even if a machine could identify and encode
+human creative values, there would still be disagreement about whether the computer
+appeared to be creative. In the next few years, there appears to be no feasible solution to this
+problem, so it seems unlikely that occupations requiring a high degree of creative intelligence
+tasks can be automated in the near future.
+       Social intelligence tasks are seen as intensively dependent on human interaction,
+involving negotiation, persuasion and care for others. Machines can reproduce some aspects
+of human social interaction, but the real-time interpretation of natural human emotions is a
+
+                                                                                              6
+challenging problem, and the ability to respond intelligently to such inputs is even more
+difficult. The complete descriptions of occupation characteristics in O*NET database can be
+seen in the attachments, Table A1.
+         The variables express occupations bottlenecks of automation selected and classified in
+high, medium or low level of importance of the particular ability for each occupation. The
+O*NET database considers 967 different occupations for the US job market. Based on this
+frequencies, the occupations are transposed to the Brazilian Code of Occupations (CBO),
+grouping the occupations in Brazil and attributing the same levels of importance of each
+variable in US. We used a sample with 195 occupations grouped in categories (Subgroups
+CBO). After importing the corresponding characteristics of each occupation from O*NET
+database, we get 161 occupations.
+         In this context, there are considerable differences between countries labor markets.
+United States (US) has a higher productivity and is more capital intensive then Brazil.
+Therefore, the tasks composition of each occupation can vary and not have an exact match, a
+limitation that imposes a need to further improvements in these area.
+         The characteristics were transformed into dummies, attributing values 0, 1 or 2
+according to each tercile occupied inside the characteristics distribution. For example, Finger
+Dexterity ranges from 0 (Singers) to 5,5 (Jewelers). So, we have low Finger Dexterity below
+1,83 (Security Guards), medium Finger Dexterity between 1,83 and 3,66 (Wood Model
+Makers) and high Finger Dexterity above 3,66 (Anesthesiologists). As in Frey and Osborne
+(2017), the values used are marked as the Level value, except Cramped Work Space,
+Awkward Positions that uses the Context value.
+
+Table 1. Frequencies of worker characteristics
+
+                                                                       Social                          Assisting
+             Finger       Manual      Origina-   Negotia-   Persua-                           Camped
+ Level                                                                Percepti-   Fine Arts              and
+           Dexterity      Dexterity     lity       tion      sion                             Spaces
+                                                                       veness                           Caring
+
+ High         22             1          21         57         77         31          4          53        11
+Medium        124           103         125        95         82        126          12         93        93
+  Low         15             57         15          9         2          4          145         15        57
+Source: by the authors.
+
+
+         Table 1 shows the distribution of worker characteristics classified into high, medium
+or low level or requirement for the specific occupation. We can see that the majority of
+Occupations seen as high level of Finger Dexterity includes Jewelers, Craft Artists, Musical
+                                                                                                               7
+Instrument Repairers and Tuners, Gem and Diamond Workers, Cabinet Makers and
+Carpenters, Electrical and Electronic Equipment Assemblers. These workers need the “ability
+to make precisely coordinated movements of the fingers of one or both hands to grasp,
+manipulate, or assemble very small objects” (O*NET, 2019). On the other side, amongst the
+lower Finger Dexterity we have Professors, Social Scientists, Managers and Supervisors of
+Production and Sales, Magistrates and Auditors.
+       Manual dexterity is seen as “the ability to quickly move your hand, your hand together
+with your arm, or your two hands to grasp, manipulate, or assemble objects” (O*NET, 2019).
+The top is held by Jewelers, while Biologists, Physicists, Mathematicians, Researchers and
+Market Research Analysts and Specialists sits on the bottom of Manual dexterity
+requirements.
+       Originality is described as “the ability to come up with unusual or clever ideas about a
+given topic or situation, or to develop creative ways to solve a problem” (O*NET, 2019). The
+most intensive occupations in originality is Physicists, Mathematicians, Engineers and
+Architects, Technical designers, Social Scientists and Professors. The least original is Shoe
+and Leather workers, Production Packers and Packagers, Maids and Housekeeping Cleaners,
+Bookkeeping, Accounting, and Auditing Clerks.
+       Negotiation is described as the ability to bring “others together and trying to reconcile
+differences” (O*NET, 2019). The top occupations are Lawyers, Judges, and Magistrates,
+Police Patrol Officers, Religious activities members, Engineers and Architects. With the least
+negotiation abilities, we can cite Timing Device Assemblers and Adjusters, Production
+Packers and Packagers, Textile Workers and Biological Technicians.
+       Persuasion is the ability in “persuading others to change their minds or behavior”
+(O*NET, 2019). Lawyers, Religious activities members, Door-To-Door Sales Workers, News
+and Street Vendors lead in persuasion. On the other hand, we have Production Packers and
+Packagers, Textile Workers, Siderurgy and Construction workers and Food Cooking Machine
+Operators.
+       Social Perceptiveness requires “being aware of others’ reactions and understanding
+why they react as they do” (O*NET, 2019). The top occupations are Healthcare Social
+Workers, Physicians and Healthcare workers in general. The least Social Perceptiveness is
+required from Production Packers and Packagers, Textile Workers, Electro-Mechanical
+Technicians and Industrial Truck and Tractor Operators.
+
+
+                                                                                              8
+           Fine arts abilities are the “knowledge of theory and techniques required to compose,
+produce, and perform works of music, dance, visual arts, drama, and sculpture” (O*NET,
+2019). Technical and Exhibit Designers, Professionals of Shows and Arts, Graphic designers,
+Urban and Rural Craft Artists and Sound and Projection Engineering Technicians are the
+most versed in the Fine arts. On the other side, Logging Preparation workers, Electrical,
+Electronic and Timing Device Assemblers, Food Cooking Machine Operators and Tenders,
+Structural Iron and Steel Workers, Bookkeeping, Accounting, and Auditing Clerks, Medical
+and Clinical Laboratory Technicians rates low in this ability.
+           Assisting and caring for others includes the ability to provide “personal assistance,
+medical attention, emotional support, or other personal care to others such as coworkers,
+customers, or patients” (O*NET, 2019). Healthcare workers in general, Fire Fighting and
+Prevention Officials, Police Officers are those with the highest need of Assisting and caring
+for others. Otherwise, Popular Artists and Models, Information Technology Professionals,
+Glass Blowers, Molders, Benders, and Finishers and Craft Artists requires low levels of this
+ability.
+           The ability of working in Cramped work spaces, or awkward positions answers to the
+question of “how often does this job require working in cramped work spaces that requires
+getting into awkward positions?” (O*NET, 2019). The most frequent are Insulation of Metal
+Surface Workers, Farm Equipment Mechanics and Service Technicians, Farm Equipment
+Mechanics and Service Technicians, Mineral Extraction Workers, Industrial Machinery
+Mechanics, Energy Generation and Distribution Operators, Telecommunications Line
+Installers and Repairers. The occupations that hardly work in these conditions are
+Researchers, Hairdressers, Hair Stylists, and Cosmetologists, Security Guards, Door-To-Door
+Sales Workers, News and Street Vendors, and Related Workers and Social Scientists.
+
+Table 2. Correlations of CBO Jobs Characteristics
+
+
+
+
+Source: by the authors.
+
+
+
+                                                                                              9
+       Table 2 shows how characteristics interact with each other. The correlations express
+how much these characteristics are complementary or substitutes amongst the occupations. It
+can be seen that occupations that require high Finger Dexterity, usually require a considerable
+level of Manual Dexterity (0.46) and the ability to work in Cramped Spaces or Awkward
+Positions (0.31). Occupations with high Finger Dexterity requires low Assisting and Caring
+for Others (-0.33), Social Perceptiveness (-0.30) and Negotiation (-0.28) abilities. These
+occupations are intensive in Perception and manipulation tasks, such as Carpenters, Electro-
+Mechanical, Industrial, Avionics and Farm Equipment Technicians and Jewelers.
+       Originality, a characteristic positively correlated with Negotiation (0.51), Persuasion
+(0.49) and Fine Arts (0.44). On the other hand, is negatively correlated with Manual Dexterity
+(-0.35) and the ability to work in Cramped Spaces or Awkward Positions (-0.20). These
+occupations can be seen as intensive in Creative intelligence tasks, and includes Craft and
+Rural Artists, Graphic Designers, Architects and Modelers, Elementary School Teachers.
+       Negotiation and Persuasion are closely related (0.75), as Social Perceptiveness (0.55)
+and Originality (0.51). Assisting and Caring for others is also positively correlated (0.35). In
+general, Negotiation is negatively correlated with Manual Dexterity (-0.43) and Finger
+Dexterity (-0.28) tasks. This group includes the occupations intensive in Social intelligence
+tasks such as Directors and Managers, Lawyers, Reporters and Correspondents, Social
+Scientists, Firefighters and Police officers, Criminal Investigators, Physicians and Healthcare
+Workers.
+       A cluster analysis is conducted in order to explore patterns in the data and group
+occupations by similarity. If each characteristic were seen as a dimension, the graphic would
+need a nine dimensions clustering. To avoid this and make the visualization possible, we
+apply a Principal Components Analysis (PCA) reducing its dimensionality down to two. The
+combination of PCA with cluster analysis is a common practice in data analysis and machine
+learning algorithms (EREMENKO and PONTEVES, 2018). The Figure 1 shows three
+clusters of occupations.
+       The three clusters show the groupings of Social intelligence tasks (cluster number 1),
+Creative intelligence tasks (2), Perception and manipulation tasks (3). The PC1 axis weights
+for more Originality and Fine Arts skills, while the PC2 component weights for more
+Persuasion and Negotiation skills.
+
+
+
+
+                                                                                             10
+       Figure 1. Clusters of Characteristics of Occupations in Brazil
+
+
+
+
+       Source: by the authors.
+
+       From now on, we can start to speculate that occupations sitting in group 3 will be
+more likely to have higher automation probabilities than groups 1 and 2 since they are less
+intensive in tasks that require Social and Creativity intelligence abilities. The occupations
+more intensive in Finger and Manual Dexterity without components of persuasion or
+originality can suffer the most from the automation waves. This will be explored in the next
+section.
+
+4. Automation Rankings
+
+       Following the procedures of Frey and Osborne (2017), we manually attribute
+automation probabilities weights to the jobs considered as the most probable of being
+impacted by automation. To attribute manually the certainty of which jobs will or will not be
+automated in the future is a grey area. In order to achieve a reasonable criterion to label
+occupations, the authors worked with a group of machine learning researchers, asking “Can
+the tasks of this job be sufficiently specified, conditional on the availability of big data, to be
+performed by state of the art computer-controlled equipment” (FREY and OSBORNE, 2017).
+       Labels were assigned only to the occupations about which the authors were most
+confident all tasks considered automatable. This reflects the possibility of task simplification,
+possibly allowing some currently non-automatable tasks to be automated.
+
+
+                                                                                                11
+       The training data was labelled as either ‘0’ (not computerisable) or ‘1’
+(computerisable), respectively, getting 24 of the 161 occupations, 15% of the total number.
+Only occupations that matched exactly the name of the occupations taken as computerisable
+or not by Frey and Osborne were labelled. The authors labelled 70 of 702, 10% of the total.
+       Therefore, we train three different classifiers in order to predict the weights of the
+other CBO occupations, making inference to the whole database of occupations. The model
+used to classify occupations by their relative probabilities of automation can be seen as:
+
+
+
+
+which P is the Probability of Automation, FD the Finger Dexterity, MD the Manual
+Dexterity, CA the Cramped Work Space or Awkward Positions, OR the Originality, FA the
+Fine Arts, SP the Social Perceptiveness, NG the Negotiation, PS the Persuasion, AC the
+Assisting and Caring for Others.
+       The three different classifiers considered includes a Linear Probability Model (LPM),
+a Logistic Regression Model (Logit) and the Linear Discriminant Analysis (LDA). The
+probabilities were standardized between 0 and 1. As did Frey and Osborne (2017), we call the
+occupations with a probability higher or equal than 0.7 as high risk occupations, between 0.3
+and 0.7 as the medium risk, and below or equal to 0.3 as the low risk of automation.
+       The differences between the techniques are subtle but the positions in the rankings can
+vary with the model chosen. The Logit model shows 46 occupations with a high risk, 109
+with medium risk, and 6 with low risk of automation. The mean is 0.59. with a standard
+deviation of 0.16. The LPC model shows 18 occupations with a high risk, 131 with medium
+risk, and 12 with low risk. The mean is 0.55 with a standard deviation of 0.16. The LDA
+shows a mean of 0.55 with a standard deviation of 0.5. Since its classification is binary, it
+shows 89 as high risk, and the other 72 as low risk of automation. The correlation between
+Logit and LPC ranking is of 0.90, while the Logit and LDA correlation is of 0.86. This shows
+a consistency between the results of the models.
+       The Table 3 shows the Top 10 occupation with higher probability of automation
+ordered accordingly to the results of the Logit model. The columns LPC and LDA brings the
+results for that occupation using alternative models.
+
+
+
+
+                                                                                              12
+Table 3. Top 10 occupations with higher automation probability - ranked by Logit model.
+  Rank    Title                                                                 Logit     LPC    LDA
+    1     EMBALADORES E ALIMENTADORES DE PRODUÇÃO                                 1        1      1
+          TRABALHADORES ARTESANAIS DAS ATIVIDADES
+    2     TÊXTEIS, DO VESTUÁRIO E DAS ARTES GRÁFICAS                              1        1      1
+          PROFISSIONAIS EM NAVEGAÇÃO AÉREA, MARÍTIMA E
+    3     FLUVIAL                                                                0,87     0,71    1
+          AUXILIARES DE SERVIÇOS DE BIBLIOTECA,
+    4     DOCUMENTAÇÃO E CORREIOS                                                0,87     0,82    1
+          ESCRITURÁRIOS EM GERAL, AGENTES, ASSISTENTES E
+    5     AUXILIARES ADMINISTRATIVOS                                             0,87     0,82    1
+          SECRETÁRIOS DE EXPEDIENTE E OPERADORES DE
+    6     MÁQUINAS DE ESCRITÓRIOS                                                0,87     0,82    1
+    7     TÉCNICOS DE SERVIÇOS CULTURAIS                                         0,87     0,82    1
+    8     TRABALHADORES DE INFORMAÇÕES AO PÚBLICO                                0,87     0,82    1
+    9     TÉCNICOS DA CIÊNCIA DA SAÚDE ANIMAL                                    0,84     0,62    1
+          TRABALHADORES DOS SERVIÇOS DE TRANSPORTE E
+   10     TURISMO                                                                0,84     0,83    1
+Source: by the authors.
+
+         The probabilities analysis confirms a suspect raised by the cluster analysis. The group
+intensive in manual tasks, aka Perception and manipulation tasks with low needs of social and
+creative intelligence are the most prone to automation. Production Packers and Textile
+Workers were shown as the least intensive in Originality, Fine Arts, Social Perceptiveness,
+Negotiation and Persuasion.
+         Helpers and Secretaries can have its jobs replaced by personal assistants like Siri or
+Google assistant. This tools already offer voice recognition and can answer and execute
+simple tasks. In a recent presentation of Google Assistant, the company demonstrated how the
+tool was used to automatically dial to a saloon and schedule the service without the human
+interference, just talking with a (human) attendant.
+         Law firms are already using technologies that can write documents and clauses that
+needs only to be revised and signed by the Lawyer of Judge in charge. This kind of
+technology displaces documentation and juridical technicians allocated to this tasks. Powerful
+algorithms of search and organization of files can dismiss the need of people to execute this
+administrative and routine functions.
+         The occupations with higher automation probability have in common the routine non
+cognitive tasks, and these are the easiest to be replaced by machines. As the algorithms and
+
+                                                                                                       13
+technologies evolve, lowering its costs and becoming widespread in the markets, these
+occupations will probably see a significant drop in the demand by the firms, forcing these
+workers to accept lower wages or to acquire new skills to occupy another occupation.
+         Table 4 shows the Top 10 occupation with lowest probability of automation ordered
+accordingly to the results of the Logit model. The columns LPC and LDA brings the results
+for that occupation using alternative models. The complete listing of occupations estimated
+probabilities can be request to the corresponding author.
+
+Table 4. Top 10 occupations with lower automation probability - ranked by Logit model.
+  Rank    Title                                                                 Logit    MPL    LDA
+    1     JOALHEIROS E OURIVES                                                    0       0      0
+    2     PROFISSIONAIS DE ESPETÁCULOS E DAS ARTES                               0,21    0,22    0
+    3     DESENHISTAS TÉCNICOS E MODELISTAS                                      0,24    0,17    0
+          SUPERVISORES DE VENDAS E DE PRESTAÇÃO DE
+    4     SERVIÇOS                                                               0,24    0,23    0
+    5     SUPERVISORES DE ATENDIMENTO AO PÚBLICO                                 0,24    0,23    0
+    6     TRABALHADORES DA PRODUÇÃO GRÁFICA                                      0,27    0,26    0
+    7     PROFESSORES DO ENSINO MÉDIO                                            0,30    0,28    0
+    8     SUPERVISORES NA EXPLORAÇÃO FLORESTAL E PESCA                           0,31    0,27    0
+          SUPERVISORES EM SERVIÇOS DE REPARAÇÃO E
+    9     MANUTENÇÃO MECÂNICA                                                    0,31    0,27    0
+          SUPERVISORES DE MANUTENÇÃO ELETROELETRÔNICA E
+   10     ELETROMECÂNICA                                                         0,31    0,27    0
+Source: by the authors.
+
+         Jewelers ranks as the least probable occupation to be automated because it has high
+scores in Finger and Manual dexterity, Originality, Negotiation and Persuasion. The CBO
+classification shows that Jewelers executes tasks of team coordination and administration,
+high standard quality control and inspection of the products, negotiation with suppliers and
+customers. These are all tasks that require a combination of social, creative intelligence and
+perception, posing a great challenge to automation.
+         Professionals of Shows and Arts is defined by its originality and fine arts
+requirements. This profession ranks as the second less probable to be automated since
+machines greatest challenge is to reproduce human creativity, originality and humor, so this
+profession may not be automated anytime soon.
+
+
+
+                                                                                                      14
+       In general, the other occupations with low probabilities of automation are intensive in
+human negotiation and persuasion. They are all intensive in human contact and managing,
+like the Supervisors of different industries. Ground work can be replaced by machines, but
+there always be a need to someone to make strategic decisions of innovation, production and
+organization.
+
+5. Final Considerations
+
+       Borrowing techniques from machine learning to study automation, the study applied a
+combination of PCA with cluster analysis and three different classifiers, the Linear
+Probability Model (LPM), Logistic Regression Model (Logit) and the Linear Discriminant
+Analysis (LDA) in order to investigate patterns in occupations data and rank occupations
+accordingly to its automation probabilities.
+       The occupations with higher automation probability have in common the routine non-
+cognitive tasks, and these are the easiest to be replaced by machines. As the algorithms and
+technologies evolve, lowering its costs and becoming widespread in the markets, these
+occupations will probably see a significant drop in the demand by the firms, forcing these
+workers to accept lower wages or to acquire new skills for occupations.
+       The occupations with low probabilities of automation are intensive in human
+negotiation and persuasion. They are all intensive in human contact and managing, like the
+Supervisors of different industries. Ground work can be replaced by machines, but there
+always be a need to someone to make strategic decisions of innovation, production and
+organization.
+       The present study has some limitations. Firstly, it is assumed that the skills of
+occupations in the United States matches perfectly skills of occupations in Brazil. This
+assumption is necessary to transpose the O*NET weights to the CBO database. Secondly, the
+occupations manually labelled as certain of automation were too few (24) and adapted from
+the Frey and Osborne (2017). The criteria for considering an occupation it is not completely
+clear and needs to be improved.
+       Future developments aims at resolving some of these limitations includes considering
+a more detailed classification and description of occupations, using a more disaggregate level
+of CBO, with 2267 groups. By analyzing the tasks of each occupation described in the CBO
+lowest level of aggregation (167.027) we can better approximate the weights of skills required
+to each profession, reconstructing a similar O*NET database for Brazil.
+                                                                                           15
+       The investigation of the most prominent occupations of the next decades can reveal
+which of occupations societies should prepare to assist, retrain and focus to lower the
+transition costs for this workers. These insights may have social implications for education,
+polarization of jobs, wage and inequality in the labor markets, regional disparities and
+unemployment.
+
+References
+ACEMOGLU, Daron. Technical change, inequality, and the labor market. Journal of
+Economic Literature. 40(1), 7–72, 2002.
+
+ACEMOGLU, D., & AUTOR, D. Skills, tasks and technologies: Implications for
+employment and earnings. In Handbook of labor economics (Vol. 4, pp. 1043-1171).
+Elsevier. 2011.
+
+AUTOR, David H.; DORN, David. The Growth of Low-Skill Service Jobs and the
+Polarization of the US Labor Market. American Economic Review 103(5): 1553–97. 2013.
+
+AUTOR, David. Why Are There Still So Many Jobs? The History and Future of Workplace
+Automation. Journal of Economic Perspectives—Volume 29, Number 3. 3-30. 2015.
+
+BRANDES, Phillip; WATTENHOFER, Roger. Opening the Frey Osborne Black Box: which
+tasks of a job are susceptible to computerization? [Working paper]
+
+BRYNJOLFSSON, Erik; McAFEE, Andrew. The second machine age: Work, progress,
+and prosperity in a time of brilliant technologies. WW Norton & Company. 2014.
+
+EREMENKO, Kirill; PONTEVES, Hadelin de. Machine Learning A-Z™: Hands-On Python
+& R In Data Science. Udemy. 2018.
+
+FONSECA, Tiago; LIMA, Francisco; PEREIRA, Sonia. Job polarization, technological
+change and routinization: evidence for Portugal. Labour Economics, vol. 51, p. 317-339.
+2018.
+
+FREY, C. B., & OSBORNE, M. The future of employment. How susceptible are jobs to
+computerization. Technological Forecasting and Social Change, vol. 114, issue C, 254-280.
+2017.
+
+GOOS, Maarten; MANNING, Alan. Lousy and Lovely Jobs: The Rising Polarization of
+Work in Britain. Review of Economics and Statistics 89(1): 118–33. 2007.
+
+GOOS, Maarten, MANNING, Alan; SALOMONS, Anna. Explaining Job Polarization:
+Routine‑Biased Technological Change and Offshoring. American Economic Review,
+104(8): 2509–26. 2014.
+
+                                                                                          16
+JAIMOVICH, N.; SIU, H. E. Job polarization and jobless recoveries. Technical Report,
+NBER Working Paper No. 18334. National Bureau of Economic Research. 2012.
+
+KATZ, Lawrence F.; MARGO, Robert A. Technical Change and the Relative Demand for
+Skilled Labor: The United States in Historical Perspective. In: Human Capital in History,
+15-57. University of Chicago Press. 2014.
+
+MAHDAWI, Arwa. What jobs will still be around in 20 years? Read this to prepare your
+future. The Guardian. 2017.
+
+MAKRIDAKIS, Spyros. Forecasting the Impact of Artificial Intelligence (AI) Foresight. The
+International Journal of Applied Forecasting, 47, 7-13. 2017.
+
+NORDHAUS, William D. Two Centuries of Productivity Growth in Computing. Journal of
+Economic History 67(1): 17–22. 2007.
+
+O*NET. Content Model Reference. O*NET Resource Center. 2019. [Available online:
+https://www.onetcenter.org/content.html]
+
+RUTKIN, Aviva. Report Suggests Nearly Half of U.S. Jobs Are Vulnerable to
+Computerization. MIT Technology Review. 2013.
+
+SANTENS, Scott. Everything You Think You Know About the History and Future of Jobs Is
+Likely Wrong. Huffington Post. 2015.
+
+SANTENS, Scott. Deep Learning Is Going to Teach Us All the Lesson of Our Lives: Jobs
+Are for Machines. Medium. 2016.
+
+STEWART, I., DEBAPRATIM, D.; COLE, A. Deloitte. Technology and people: the great
+job-creating machine. 2015.
+
+WORLD ECONOMIC FORUM. Matching Skills and Labour Market Needs: Building Social
+Partnerships for Better Skills and Better Jobs. 2015.
+
+WORLD ECONOMIC FORUM. The Future of Jobs: Employment, Skills and Workforce
+Strategy for the Fourth Industrial Revolution. 2016.
+
+
+
+
+                                                                                            17
+Attachments:
+
+
+Table A1. Description of occupation characteristics in O*NET database
+     Worker
+                               Code                                      Description
+   Characteristic
+                                               The ability to come up with unusual or clever ideas about a
+                             1.A.1.b.2
+     Originality                               given topic or situation, or to develop creative ways to solve a
+                                               problem.
+                                               The ability to quickly move your hand, your hand together with
+                              1.A.2.a.2
+  Manual Dexterity                             your arm, or your two hands to grasp, manipulate, or assemble
+                                               objects.
+                                               The ability to make precisely coordinated movements of the
+                              1.A.2.a.3
+  Finger Dexterity                             fingers of one or both hands to grasp, manipulate, or assemble
+                                               very small objects.
+
+   Cramped Work
+                             4.C.2.b.1.e       How often does this job require working in cramped work
+  Space, Awkward
+                                               spaces that requires getting into awkward positions?
+      Positions
+
+                                               Knowledge of the theory and techniques required to compose,
+                               2.C.7.c
+      Fine Arts                                produce, and perform works of music, dance, visual arts,
+                                               drama, and sculpture.
+                               2.B.1.a         Being aware of others' reactions and understanding why they
+Social Perceptiveness
+                                               react as they do.
+                               2.B.1.c
+     Persuasion                                Persuading others to change their minds or behavior.
+
+                                               Providing personal assistance, medical attention, emotional
+Assisting and Caring          4.A.4.a.5
+                                               support, or other personal care to others such as coworkers,
+     for Others
+                                               customers, or patients.
+
+                              2.B.1.d
+    Negotiation                                Bringing others together and trying to reconcile differences.
+
+Source: by the authors, based on the O*NET (2019) Content Model Reference.
+
+
+
+
+                                                                                                               18
+Table A2. Manually attributed automation weights based on O*NET database.
+  Weight                                                Title
+     0         ADVOGADOS DO PODER JUDICIÁRIO E DA SEGURANÇA PÚBLICA
+     0         ADVOGADOS, PROCURADORES, TABELIÃES E AFINS
+     0         ATLETAS, DESPORTISTAS E AFINS
+     0         CIENTISTAS SOCIAIS, PSICÓLOGOS E AFINS
+     0         DIRETORES E GERENTES EM EMPRESA DE SERVIÇOS DE SAÚDE, DE
+               EDUCAÇÃO, OU DE SERVIÇOS CULTURAIS, SOCIAIS OU PESSOAIS
+     0         DIRETORES GERAIS
+     0         DIRIGENTES E ADMINISTRADORES DE ORGANIZAÇÃO DE INTERESSE PÚBLICO
+     0         ENGENHEIROS, ARQUITETOS E AFINS
+     0         FÍSICOS, QUÍMICOS E AFINS
+     0         MEMBROS DE CULTOS RELIGIOSOS E AFINS
+     0         MEMBROS SUPERIORES DO PODER LEGISLATIVO, EXECUTIVO E JUDICIÁRIO
+     0         PROFESSORES DE NÍVEL MÉDIO NA EDUCAÇÃO INFANTIL, NO ENSINO
+               FUNDAMENTAL E NO PROFISSIONALIZANTE
+     0         PROFESSORES DE NÍVEL SUPERIOR NA EDUCAÇÃO INFANTIL E NO ENSINO
+               FUNDAMENTAL
+     0         PROFISSIONAIS DA MEDICINA
+     0         PROFISSIONAIS DA MEDICINA, SAÚDE E AFINS
+     0         TRABALHADORES DOS SERVIÇOS DOMÉSTICOS EM GERAL
+     0         TRABALHADORES NOS SERVIÇOS                DE     EMBELEZAMENTO         E   CUIDADOS
+               PESSOAIS
+     1         AUDITORES FISCAIS PÚBLICOS
+     1         CAIXAS, BILHETEIROS E AFINS
+     1         CONDUTORES DE VEÍCULOS E OPERADORES                          DE   EQUIPAMENTOS   DE
+               ELEVAÇÃO E DE MOVIMENTAÇÃO DE CARGAS
+     1         ESCRITURÁRIOS CONTÁBEIS E DE FINANÇAS
+     1         MONTADORES E INSTALADORES DE EQUIPAMENTOS ELETROELETRÔNICOS
+               EM GERAL
+     1         PROFISSIONAIS DE RELAÇÕES PÚBLICAS, PUBLICIDADE, MARKETING E
+               COMERCIALIZAÇÃO
+     1         TÉCNICOS EM CONSTRUÇÃO CIVIL, DE EDIFICAÇÕES E OBRAS DE
+               INFRAESTRUTURA
+Source: by the authors.
+
+
+
+
+                                                                                                     19
+

@@ -1,0 +1,1564 @@
+On some properties of a new asymmetric-based tobit model
+
+Mário F. Desousa1, Helton Saulo2, Víctor Leiva3, Paulo Scalco1
+
+1Faculty of Management, Accounting and Economics, Universidade Federal de Goiás, Brazil
+
+2Institute of Mathematics and Statistics, Universidade Federal de Goiás, Brazil
+
+3Faculty of Engineering and Sciences, Universidad Adolfo Ibáñez, Chile
+
+Abstract
+
+A strong assumption of the standard tobit model is that its errors follow a normal
+distribution. However, not all applications are well modeled by this distribution.
+Some efforts have relaxed the normality assumption by considering more ﬂexible
+distributions such as t and log-alpha-power. Nevertheless, presence of asymmetry
+cannot be described by these ﬂexible distributions. To overcome this problem, we
+propose a tobit model with errors following a Birnbaum-Saunders distribution. We
+discuss some of its properties including maximum likelihood estimators, residuals
+and global and local inﬂuence diagnostic tools. As part of a further extension
+of this paper, we leave the following issues. The implementation of Monte Carlo
+simulations to evaluate the performance of both the maximum likelihood estimators
+and residuals, and the application to real data.
+
+Keywords Birnbaum-Saunders distribution; Diagnostics; Maximum Likelihood
+Estimation; Tobit models.
+
+Resumo
+
+Um forte pressuposto dos modelos tobit é que os erros seguem uma distri-
+buição normal, mas nem todas as aplicações são modeladas da melhor forma
+com essa distribuição. Esforços no sentido de relaxar a hipótese de normalidade
+consideram distribuições mais ﬂexíveis como a t e a log-alpha-power, contudo
+essas não modelam assimetria. De modo a resolver o problema, propomos um
+modelo tobit basedo na distribuição Birnbaum-Saunders e discutimos algumas de
+suas propriedades, incluindo estimadores de máxima verossimilhança, resíduos
+e ferramentas de diagnóstico de inﬂuência global e local. Como parte de uma ex-
+tensão natural desse artigo, deixamos os seguintes problemas. A implementação
+de simulações de Monte Carlo para avaliar o desempenho dos estimadores de
+máxima verossimilhança e dos resíduos, e a aplicação a dados reais.
+
+Keywords Distribuição Birnbaum-Saunders; Diagnósticos; Máxima verossimi-
+lhança; Modelos tobit.
+
+JEL Codes: C13,C24,C52
+
+Área ANPEC: Microeconomia, Métodos Quantitativos e Finanças
+
+1
+
+1 Introduction
+
+The tobit model was proposed by Tobin (1958) for limited dependent (responses)
+variables and named tobit by Goldberger (1964), because of its similarity with the pro-
+bit model. According to Amemiya (1984), Tobin (1958) was motivated to develop his
+model by a case-study where he needed to study the relationship between house-
+hold expenditure on a durable good and household incomes. The common regression
+approach with ordinary least squares could not be used because there were many
+observations where the expenditure was zero, which obviously destroyed the assump-
+tion of linearity. To solve the problem, Tobin (1958) proposed a model that could ﬁt
+the data appropriately formulating a regression model whose response was limited (or
+censored) to a preﬁxed limiting value.
+
+Tobit models have been used extensively to describe censored data in economet-
+rics. The censoring occurs when the response of the regression model is not directly
+observable but its independent variables. Although tobit models were born in eco-
+nomics, they have been applied in biology and engineering as well. The biology re-
+search relies most in analyzing the survival time of a patient (Leiva et al., 2007); the
+engineers use it to model time to failure of various types of materials or machines
+(Villegas et al., 2011); whereas the sociologists employ it to describe the duration of
+marriage, residing in a particular region or unemployment, as well the time between
+births, but the tobit models have also been used to describe inheritance, ratio of un-
+employed hours to employed hours and expected age of retirement (Amemiya, 1984).
+Tobit models could also be used in environmental sciences, where censored data also
+are present (Thorarinsdottir and Gneiting, 2010; Helsel, 2011).
+
+As mentioned, tobit models have a strong normality assumption. Proposals of tobit
+models that relax the assumption of normality are of great importance in empirical
+economics, because most of the data available in the real-world cannot be modeled
+optimally with a normal distribution. Barros et al. (2010) noticed that the asymmetry
+of the data and its kurtosis can be, and usually are, different from the expected for a
+normal distribution, so that more ﬂexible models are needed.
+
+The Birnbaum-Saunders (BS) distribution has been widely studied. It is positively
+skewed, has a failure rate with upside-down bathtub shape, and a close relation with
+the normal model; see the seminal paper by Birnbaum and Saunders (1969) and the
+books by Johnson et al. (1995, pp. 651-663) and Leiva (2016). The BS distribution was
+derived in terms of shape and scale parameters, but the latter is also its median. Thus,
+the BS distribution can be seen as an analogue to the normal model, but in an asym-
+metrical setting, where the median can be a better measure of central tendency than
+the mean. The BS distribution has been applied to biological, economic, engineering
+and environmental data, which have been conducted by international, transdisciplinary
+groups of researchers. Some of its recent applications are attributed to Qu and Xie
+(2011), Ferreira et al. (2012), Li et al. (2012), Saulo et al. (2013), Leiva et al. (2014,
+2015a,b), Garcia-Papani et al. (2016) and Marchant et al. (2016a,b).
+
+The main objective of this paper is propose a tobit-BS model by relaxing the as-
+sumption of normality and supposing that its errors follow a BS distribution, which ac-
+cording to the best of our knowledge, it is a topic that has not been studied before. The
+secondary objectives of this paper are: (i) to develop inference for the tobit-BS model
+
+2
+
+based on the maximum likelihood (ML) method; (ii) to derive residuals and global and
+local inﬂuence tools for model checking and diagnostics. As part of a future extension,
+we leave the implementation of Monte Carlo simulations and an application to real
+data.
+
+The paper presents, along with this introduction, ﬁve sections. Section 2 provides
+a background of classic tobit models and of the BS and log-BS distributions. Section
+3 formulates the tobit-BS model along with inference and estimation based on the
+ML method. Section 4 derives diagnostics for the proposed model including residuals
+analysis and local inﬂuence tools. Finally, Section 5 discusses some conclusions and
+future works.
+
+2 Background
+
+2.1 The tobit model
+
+Let Y = (Y1, . . . , Ym, Ym+1, . . . , Yn)⊤ be a sample of size n, that is, independent
+(IND) random variables but not independent identically distributed (IID) necessarily.
+Assume that this sample includes m censored data to the left and n − m observed
+(complete or uncensored) data. Thus, such censoring scheme can be visualized un-
+der a regression setting with a censored response Y ∗, which is a (unobserved) latent
+variable. Hence, the m censored data (unobserved)correspond to the values of Y ∗
+less than or equal to a threshold point y0 (censoring to the left), so that all of these
+data take the value y0. The other n − m data (observed) are related to values of Y ∗
+greater than y0, which can be described by a linear regression structure of the type
+x⊤
+i β. All this modeling environment may be formulated by the normal tobit model with
+censored response to the left as
+
+Yi =(yo,
+
+x⊤
+
+i β + εi,
+
+if Y ∗
+if Y ∗
+
+i ≤ y0,
+i > y0,
+
+i = 1, . . . , m;
+i = m + 1, . . . , n;
+
+(1)
+
+IID∼ N(0, σ2) is the model error term, β is a vector of regression coefﬁcients
+where εi
+corresponding to unknown parameters to be estimated, and xi is a vector containing
+the values of explanatory variables (covariates). Observe that y0 given in (1) is a
+preﬁxed limiting value that does the response of the regression model deﬁned in (1) to
+be limited (or censored), as mentioned by Tobin (1958).
+
+Note the similarity between the normal probit model and the normal tobit model
+In the normal probit model, the response is an latent (unobserved)
+
+deﬁned in (1).
+variable described by
+
+Y ∗
+i = x⊤
+
+i β + εi,
+
+i = 1, . . . , n,
+
+(2)
+
+where xi, β and εi are deﬁned analogously as in (1). As it is not possible to observe
+the latent variable Y ∗
+
+i , the indicator variable
+
+Yi =(0,
+
+1,
+
+Y ∗
+i ≤ y0,
+Y ∗
+i > y0,
+
+i = 1, . . . , m;
+i = m + 1, . . . , n;
+
+(3)
+
+3
+
+is deﬁned, However, instead of using x⊤β, from (2) and (3), the expected response is
+formulated as
+
+E[Y |x] = P(Y = 1) = P(Y ∗ > y0) = P(x⊤β + ε > y0) = 1 − Φ(y0 − x⊤β),
+
+(4)
+
+where Φ is the cumulative distribution function (CDF) of the standard normal distribu-
+tion. Note that other CDFs might be assumed for Φ in (4), so expanding the covering
+of the probit model.
+
+Probit and tobit models are the same for the latent variable (Y ∗), but models for the
+observed response (Y ) are different. In the tobit model, we know the value of Y ∗ when
+Y ∗ > y0, whereas in the probit model we just know that Y ∗ > y0, but we do not know
+its value. Thus, there is more information in the tobit model than in the probit model.
+Also, the estimates of β in the tobit model are more efﬁcient than in the probit model.
+Moreover, for the censored cases of the probit model, it is not possible to estimate the
+variance of Y ∗. However, in the tobit model, this variance can be estimated from the
+data. For more details, see Scott (1997, p. 199).
+
+2.2 The Birnbaum-Saunders distribution
+
+If a random variable T follows a BS distribution with shape parameter α and scale
+parameter σ, we use the notation T ∼ BS(α, σ). This distribution can be deﬁned by its
+CDF given by
+
+t > 0, α > 0, σ > 0.
+
+(5)
+
+Then, the probability density function (PDF) of T obtained from (5) is expressed as
+
+1
+
+FT (t; α, σ) = Φ(cid:18) 1
+2α(cid:18)p1/σt +qσ/t
+exp(cid:18)−
+
+exp(α−2)
+2α√2πσ
+
+α(cid:16)pt/σ −pσ/t(cid:17)(cid:19) ,
+2(cid:19) φ(cid:18) 1
+
+3
+
+α(cid:16)pt/σ −pσ/t(cid:17)(cid:19) ,
+t(cid:19)(cid:19) t− 3
+
+2 (t + σ) ,
+
+σ
+
+1
+
+2α2(cid:18) t
+
+σ
+
++
+
+fT (t; α, σ) =
+
+t > 0, α > 0, σ > 0,
+
+where φ is the standard normal PDF. Thus, the PDF in (6) can be rewritten as
+
+fT (t; α, σ) =
+
+t > 0, α > 0, σ > 0.
+
+(6)
+
+(7)
+
+Note that the results provided in (5) and (6) may be obtained from the transformation
+theorem of random variables by using
+
+T = σ(cid:18)αZ/2 +q(αZ/2)2 + 1(cid:19)2
+
+,
+
+(8)
+
+where Z ∼ N(0, 1). Also from (8), it may be veriﬁed that a continuous random vari-
+able T has a BS distribution with parameters α > 0 and σ > 0, if and only if Z =
+
+(1/α)(cid:0)pT /σ−pσ/T(cid:1) ∼ N(0, 1). Some properties of the BS distribution are presented
+
+as follows. If T ∼ BS(α, σ), then: (i) E(T ) = σ(1 + α2/2) and Var(T ) = (ασ)2(1 + 5α2/4);
+(ii) for b > 0, bT ∼ BS(α, bσ), which means that the BS distribution is closed under
+
+4
+
+scalar multiplication (proportionality); (iii) 1/T ∼ BS(α, 1/σ), implying that the BS distri-
+bution is closed under reciprocation; (iv) the median of the distribution of T is σ, which
+can be directly obtained when q = 0.5 from its quantile function given by
+
+t(q; α, σ) = F −1
+
+,
+
+0 < q < 1,
+
+T (q; α, σ) = σαz(q)
+
+2
+
++s(cid:18)αz(q)
+2 (cid:19)2
+
+2
+
++ 1
+
+where z(q) is the standard normal quantile function; and (v) the BS distribution is
+positively skewed as α increases and approximately symmetrical around σ as α goes
+to zero; see Figure 1(left). Properties of proportionality and reciprocation given above
+in (ii) and (iii) are easily veriﬁed by using once again the mentioned transformation
+theorem.
+
+The survival function (SF) and hazard rate (HR) of T ∼ BS(α, σ) are given respec-
+
+tively by
+
+1
+
+ST (t; α, σ) = Φ −
+α r t
+t!! ,
+σ −r σ
+α(cid:16)q t
+φ(cid:16) 1
+t(cid:17)(cid:17) t−3/2(t+σ)
+σ −p σ
+α(cid:16)q t
+Φ(cid:16)− 1
+t(cid:17)(cid:17)
+σ −p σ
+
+hT (t; α, σ) =
+
+2ασ1/2
+
+,
+
+t > 0.
+
+2.3 The log-Birnbaum-Saunders distribution
+
+When modeling data with the BS distribution, its logarithmic version (log-BS) is
+needed. A random variable Y has a log-BS distribution with shape (α > 0) and
+location (µ ∈ R) parameter, which is denoted by log-BS(α, µ), if and only if Z =
+(2/α)sinh((Y − µ)/2) ∼ N(0, 1). Then, the CDF of Y is given by
+
+Consequently, from (9), the PDF of Y is obtained as
+
+α
+
+FY (y; α, µ) = Φ(cid:18) 2
+cosh(cid:18)y − µ
+
+sinh(cid:18)y − µ
+2 (cid:19) exp(cid:18)−
+
+2 (cid:19)(cid:19) ,
+sinh2(cid:18) y − µ
+
+α√2π
+
+2
+α2
+
+1
+
+2 (cid:19)(cid:19) ,
+
+fY (y; α, µ) =
+
+y ∈ R, µ ∈ R, α > 0.
+
+(9)
+
+y ∈ R, µ ∈ R, α > 0,
+(10)
+
+whereas that the logarithm of the PDF given in (10) is expressed as
+
+log(2π)
+
++log(cid:18) 2
+
+cosh(cid:18)y − µ
+
+2 (cid:19)(cid:19)−
+
+2
+α2
+
+sinh2(cid:18) y − µ
+2 (cid:19) ,
+
+2
+
+log(fY (y; α, µ)) = − log(2)−
+
+y ∈ R.
+(11)
+Some properties of the log-BS distribution are presented as follows. If Y ∼ log-BS(α, µ),
+then: (i) T = exp(Y ) ∼ BS(α, σ), which means that the log-BS PDF given in (10) can
+be obtained from the standard normal PDF as in (9) or from the BS PDF deﬁned in
+(7); (ii) E (Y ) = µ; (iii) there is no closed form for the variance of Y , but based upon
+
+α
+
+5
+
+an asymptotic approximation for the moment generating function of the log-BS distri-
+bution, it follows that, if α → 0, then Var(T ) = α2 − α4/4, whereas that, if α → ∞, then
+Var(T ) = 4(log2(√2α) + 2−2 log(√2α)); (iv) if X = ±Y + d, then X ∼ log-BS(α,±µ + d);
+and (v) the log-BS distribution is symmetric around µ, unimodal for α ≤ 2 and bimodal
+for α > 2; see Figure 1(right).
+
+)
+t
+(
+f
+
+5
+
+.
+
+1
+
+0
+
+.
+
+1
+
+5
+
+.
+
+0
+
+0
+
+.
+
+0
+
+ = 0.5
+ = 1.0
+ = 2.0
+ = 4.0
+
+)
+y
+(
+f
+
+8
+
+.
+
+0
+
+.
+
+6
+0
+
+4
+0
+
+.
+
+2
+
+.
+
+0
+
+0
+
+.
+
+0
+
+ = 0.5
+ = 1.0
+ = 2.0
+ = 4.0
+
+0
+
+1
+
+2
+
+t
+
+3
+
+4
+
+−6
+
+−4
+
+−2
+
+2
+
+4
+
+6
+
+0
+
+y
+
+Figure 1: PDF of (left) BS(α, 1) and (right) log-BS(α, 0) distributions for the indicated
+value of α.
+
+3 The tobit-BS model
+
+3.1 Formulation
+
+Consider the BS regression model
+
+Ti = exp(x⊤
+
+i β)δi,
+
+i = 1, . . . , n,
+
+(12)
+
+originally proposed by (Rieck and Nedelman, 1991), where Ti is the response, xi and
+β are analogously deﬁned as in (2), and δi ∼ BS(α, 1) is the model error. By applying
+logarithm in (12), we obtain
+
+Yi = x⊤
+
+i β + εi,
+
+i = 1, . . . , n,
+
+(13)
+
+where Yi = log(Ti) is the log-response i, xi and β are similar to (1), and εi = log(δi) ∼
+log-BS(α, 0) is the error term of the model. Then, based on (1) and (13), we propose a
+tobit-BS model as
+
+Yi =(y0,
+
+x⊤
+
+i β + εi,
+
+if Y ∗
+if Y ∗
+
+i ≤ y0,
+i > y0,
+
+i = 1, . . . , m,
+i = m + 1, . . . , n,
+
+(14)
+
+where Y ∗
+
+i = log(T ∗
+
+i ), and β, xi and εi are given in (13).
+
+6
+
+a
+a
+a
+a
+a
+a
+a
+a
+3.2 Estimation
+
+We estimate the parameters of the tobit-BS model deﬁned in (14) with the ML
+method, in which case the log-likelihood function for θ = (α, β⊤)⊤ obtained from (11)
+takes the form
+
+l(θ) = −(n−m) log(2)−(n−m)
+
+where
+
+i2 = 2
+ζ c
+
+α sinh(cid:16) y0−x⊤
+
+2
+
+i β
+
+(cid:17) ,
+
+(log Φ(ζ c
+
+i2))+
+
+log(2π)
+
+2
+
++
+
+mXi=1
+α cosh(cid:16) yi−x⊤
+
+2
+
+i β
+
+(cid:17) ,
+
+ζi1 = 2
+
+nXi=m+1(cid:0)log(ζi1) − ζ 2
+i2/2(cid:1) , (15)
+α sinh(cid:16) yi−x⊤
+(cid:17) .
+
+(16)
+
+i β
+
+2
+
+ζi2 = 2
+
+To obtain the ML estimators, it is necessary to maximize the log-likelihood given in
+(15). The score vector ˙ℓ = ∂ℓ(θ)/∂θ = ( ˙ℓα, ˙ℓ⊤
+β )⊤, containing the ﬁrst partial derivatives
+of (15), where
+
+˙ℓα =(− λ(ζ c
+
+ζ 2
+i2
+
+i2)ζ c
+i2
+α
+
+˙ℓβ =(− xij cosh(δ)λ(ζ c
+
+α
+xij sinh(2δi)
+
+α2
+
+i2)
+
+,
+
+,
+
+−1
+α ,
+
+i = 1, . . . , m;
+
+i = m + 1, . . . , n;
+
+i = 1, . . . , m;
+i = m + 1, . . . , n;
+(17)
+where δi = y0 − x⊤
+i β/2, if i = m + 1, . . . , n,
+i2). The ML estimator of θ is obtained equating (17) to zero.
+and λ(ζ c
+However, the system of equations deﬁned by these two equations does not have an
+analytic solution. Leiva et al. (2007) suggested the use of the Broyden-Fletcher-
+Goldfarb-Shanno algorithm, using as a starting values for the numerical procedure
+
+i β/2, if i = 1, . . . , m, and δi = yi − x⊤
+
+− xij tanh(δi)
+
+i2) = φ(ζ c
+
+i2)/Φ(ζ c
+
+,
+
+2
+
+bα2 = 4(sinh((yi − x⊤
+
+i bβ)/2))2/(n − m) and bβ = (X ⊤X)−1X ⊤y, where X is a matrix
+
+composed by the rows xi. Recall that the log-BS distribution can be bimodal if α > 2.
+It implicates that the log-likelihood function has more than one maximum value. How-
+ever, Rieck and Nedelman (1991) and Leiva (2016) argued that α > 2 is unusual in
+practice, which means that the maximum point is often unique.
+
+3.3 Inference
+
+Assuming that the regularity conditions deﬁned in Cox and Hinkley (1974) are sat-
+
+isﬁed, the ML estimatorsbα and bβ are consistent and follow a multivariate normal joint
+
+asymptotic distribution. This distribution has an asymptotic mean vector with elements
+α and β and have an asymptotic covariance matrix equal to J (θ)−1, which can be
+approximated by the expected Fisher information matrix. Therefore, as n → ∞, we
+have that
+(18)
+where J (θ) = limn→∞(1/n)I(θ), with I(θ) being the expected Fisher information ma-
+trix. In addition, d→ means convergence in distribution to and 0p+1 is a p × 1 vector of
+zeros. Note thatbI(θ)−1 is a consistent estimator of the asymptotic variance-covariance
+matrix of bθ, J (θ)−1 say. In practice, one may approximate the expected Fisher infor-
+
+d→ Np+1(cid:0)0p+1,J (θ)−1(cid:1) ,
+
+mation matrix by its observed version (Efron and Hinkley, 1978), whereas the elements
+
+√n(bθ − θ)
+
+7
+
+of the diagonal of the inverse of the observed information matrix can be used to ap-
+proximate the corresponding standard errors (SEs). The observed Fisher information
+matrix is obtained from the Hessian matrix, which contains the second partial deriva-
+tives of (15) and given by
+
+¨ℓ =(cid:18) tr(G)
+
+X ⊤k X ⊤V X (cid:19) ,
+
+k⊤X
+
+(19)
+
+where V = diag{v1(θ), v2(θ), v3(θ), . . . , vn(θ)}, k = (k1(θ), k2(θ), k3(θ), . . . , kn(θ))⊤
+and G = diag{g1(θ), g2(θ), g3(θ), . . . , gn(θ)}, with
+
+1
+
+2α
+
+i2)
+
+vi(θ) = ( sinh(δi)λ(ζ c
+ki(θ) = (− 1
+gi(θ) = (− ζ c
+
+i1ζ c
+− ζ c
+4 (sech(δi))2) − 1
+i2)2ζ c
+2α λ(ζ c
+− 2
+α3 sinh(2δi),
+i2)2λ(ζ c
+α2 (((ζ c
+α2 − 3ζi2
+α2 ,
+
+i2)(ζ c
+
+i2
+
+1
+
+i2 cosh(δi)λ(ζ c
+
+i2)
+
+2α
+
+α2 cosh(2δi),
+i1 + λ(ζ c
+
+α2
+
+i2) cosh(δi)
+
+− cosh2(δi)λ2(ζ c
+
+α2
+
+i2)
+
+,
+
+i = 1, . . . , m;
+i = m + 1, . . . , n;
+
+(20)
+
+− ζ c
+
+i2
+
+α2 λ2(ζ c
+
+i2) cosh(δi),
+
+i = 1, . . . , m;
+i = m + 1, . . . , n;
+
+(21)
+
+i2) + ζ c
+
+i2λ2(ζ c
+
+i2)) − 2λ(ζ c
+
+i2)),
+
+i = 1, . . . , m;
+i = m + 1, . . . , n.
+
+(22)
+
+and ζi1, ζi2 and ζ c
+i β)/2), for
+i = 1, . . . , m. Asymptotic inference for the tobit-BS model parameters can be made by
+using the results given in (18) and (19).
+
+i2 presented in (16), whereas ζ c
+
+i1 = (2/α) cosh((y0 − x⊤
+
+4 Diagnostic analysis
+
+4.1 Residual analysis
+
+The objective of the residual analysis is to assess if the errors hold the distribu-
+tional, heteroscedasticity and autocorrelation assumptions, as well the presence of
+atypical data.
+In classic regression models, Pearson and studentized residuals are
+often used. However, in tobit models, in general, even under normality, these type of
+residuals are inadequate Barros et al. (2010). For the tobit-BS model, we propose a
+deviance component (DC) and martingale-type (MT) residuals. These residuals are
+often used in generalized linear models and survival analysis, respectively.
+In general, the DC residual is deﬁned as (McCullagh and Nelder, 1989)
+
+rDC
+
+i = sign(2δi)q2(ℓi(bθs) − ℓi(bθ)),
+
+i = 1, . . . , n,
+
+of θ for the saturated model (a model with n parameters), θ is the ML estimate of the
+
+where ℓi(θ) represents the log-likelihood function for the case i, bθs is the ML estimate
+model of interest, and bµi is the expected value of Yi, E(Yi) say. Davison and Gigli
+
+(1989) speciﬁed the DC residual for censored data as
+
+i = 1, . . . , n
+
+(23)
+
+rDC
+
+i = sign(2δi)q−2 log(bSY (yi; θ)),
+
+8
+
+rDC
+
+i = 1, . . . , m;
+
+The MT residual in deﬁned as
+
+sign(x) = {−1, 0, 1}, for x < 0, x = 0 and x > 0, respectively. For the tobit-BS model
+and from (23), the DC residual using is described as
+
+where bSY is the corresponding SF of the model and the sign function is deﬁned as
+i =
+sign(2bδi)q−2 log (Φ(− 2
+bα sinh(bδi))),
+sign(2bδi)q2 log (cosh(bδi)) + 2
+i )p−2(rM
+i = ηi + log (bSY (yi)),
+
+with bSY being the ML estimate for the SF of Y (Klein and Moeschberger, 1997; Ortega
+
+et al., 2003). For the tobit-BS model and from (26), the martingale residual takes the
+form
+
+α2 (sinh(bδi))2,
+
+is the martingale residual given by
+
+i + ηi log(ηi − rM
+
+i = m + 1, . . . , n.
+
+rMT
+i = sign(rM
+
+i = 1, . . . , n,
+
+i = 1, . . . , n,
+
+where rM
+i
+
+i )),
+
+(24)
+
+(25)
+
+(26)
+
+rM
+
+i = ηi + log(Φ( 2
+rM
+
+i = 1, . . . , n,
+
+(27)
+
+where ηi = 0 indicates that the case i is censored, whereas ηi = 1 indicates that the
+case i is uncensored. Barros et al. (2010) noted that the MT residual does not repre-
+sent the deviance component of the tobit model, instead it merely is a transformation of
+the martingale residual that produces symmetrically distributed residuals around zero.
+For more details, the interested reader can see Therneau et al. (1990), Leiva et al.
+(2007) and Barros et al. (2010).
+
+bα sinh(bδi))),
+
+4.2 Global inﬂuence
+
+A global inﬂuence method commonly used in statistical modeling is the Cook dis-
+tance, which allows us to assess the effect of each case on the estimated parameters.
+The methodology proposed by Cook (1977) and Cook and Weisberg (1982) suggests
+the deletion of each observation and the evaluation of the log-likelihood function with-
+out the case i. The generalized Cook distance (GCD) for a standard tobit model was
+given by Barros et al. (2010) and it takes the form
+
+GCDi(θ) =
+
+1
+
+p + 1
+
+(bθ −bθ(i)) ¨ℓ−1(bθ −bθ(i)),
+
+i = 1, . . . , n,
+
+(28)
+
+where p is the number of model coefﬁcients and bθi is the ML estimate of θ without the
+case i. In order to facilitate the calculations, a ﬁrst order approximation bθ −bθi ≈ ¨ℓ−1
+
+is used in (28) and it becomes
+
+˙ℓ(i)
+
+(i)
+
+GCDi(θ) =
+
+( ˙ℓ⊤
+(i)
+
+¨ℓ−1
+(i) (− ¨ℓ) ¨ℓ−1
+
+(i)
+
+˙ℓ(i)),
+
+i = 1, . . . , n,
+
+(29)
+
+p + 1
+
+1
+
+where ˙ℓ(i) and ¨ℓ(i) are the score vector and the Hessian matrix from the tobit-BS model
+deﬁned in (17) and (19), respectively. Without the use of the approximation described
+
+9
+
+in (29), we must calculate the GCD eliminating each case. However, with this approx-
+imation, we need to calculate the GCD just once. Usually, the diagnostics analysis
+relies on the vector β of coefﬁcients. Then, in that case, (28) becomes
+
+GCDi(β) =
+
+1
+p
+
+(bβ − bβ(i)) ¨ℓ−1(bβ − bβ(i)),
+
+i = 1, . . . , n.
+
+(30)
+
+To determine whether the case i is potentially inﬂuential on β, we use the same bench-
+mark used by Zhu and Zhang (2004) and Barros et al. (2010), which is 2/n. If the value
+of the GCD for the case i is greater than 2/n, the case i is potentially inﬂuential on the
+estimated vector of parameters.
+
+4.3 Local Inﬂuence
+
+One way to assess the effect produced by one case on the ML estimates is the
+deletion of each of them from the data set and then evaluate if it exercises inﬂuence
+on the estimates or not. This approach is known as global inﬂuence. However, the
+local inﬂuence method relies on a geometric differentiation, taking the curvature of
+the plane of the log-likelihood function. This method does not require any deletion.
+Often the differential comparison is made before and after a perturbation. There are
+many ways to conduct a local inﬂuence analysis. We use case-weight, response and
+covariate perturbation schemes.
+Recalling that θ = (α, β⊤)
+
+is the vector of parameter, let ℓ(θ|ω) be the log-
+likelihood function of the model deﬁned in (14) perturbed by ω, where ω is a subset of
+Ω ∈ Rn. One way to evaluate the inﬂuence of a perturbation over the estimates of θ is
+to use the likelihood displacement (LD), which is given by
+
+⊤
+
+(31)
+
+LD(ω) = 2(ℓ(bθ) − ℓ(bθω)),
+
+where bθω is the ML estimate of θ based on ℓ(θ|ω). To detect what case exercises
+
+inﬂuence on LD(ω) deﬁned in (31), we use the normal curvature in the direction of
+the vector l, with ||l|| = 1. The normal curvature given by Barros et al. (2010) can be
+expressed as
+(32)
+where ∆ is a matrix of perturbations and ¨ℓ is the Hessian matrix given in (19). The
+matrix ∆ has elements
+
+Cl(θ) = 2|l⊤∆⊤ ¨ℓ−1∆l|,
+
+∂2ℓ(θ|ω)/∂θj∂ωi,
+
+j = 1, . . . , p + 1, i = 1, . . . , n,
+
+and must be evaluated at θ = bθ and ω = ω0, where ω0 is a non-perturbation vector.
+
+To determine what case are inﬂuential under small perturbations, Barros et al. (2010)
+proposed an index plot based on the eigenvector of lmax, which can be constructed by
+using the maximum eigenvalue of
+
+B(θ) = |∆⊤ ¨ℓ−1∆|,
+
+(33)
+
+evaluated at θ = bθ. On the one hand, if the interest relies just on the vector of param-
+
+eter β, (32) becomes
+
+(34)
+
+Cl(θ) = 2|l⊤∆⊤( ¨ℓ−1 − B1)∆l|.
+
+10
+
+Note that (34) removes α from the analysis. Thus, the inﬂuence detection is only made
+on β, where B1 under a tobit-BS model takes the form
+
+On the other hand, if the interest is just on α, (32) becomes
+
+where B2 for the tobit-BS model is given by
+
+0
+
+B1 =(cid:18) tr(G)−1 0
+0 (cid:19) .
+Cl(θ) = 2(cid:12)(cid:12)(cid:12)l⊤∆⊤( ¨ℓ−1 − B2)∆l(cid:12)(cid:12)(cid:12) ,
+0 (X ⊤V X)−1 (cid:19) ,
+B2 =(cid:18) 0
+
+0
+
+with tr(G) and (X ⊤V X)−1 being obtained from the Hessian matrix of the tobit-BS
+model given in (19).
+
+The maximum normal curvature vector, denoted by lmax, is an important direction
+
+to assess the local inﬂuence on bθ, however it is not the only one. The vector li = ein
+
+denotes the direction of the case i, where ein is the canonical basis of Rn. It assumes
+zero for every case except the case i, which assumes the value one. The normal
+curvature of each observation is given by Ci(θ) = 2|bii|, where bii represents the ith
+element of the matrix deﬁned in (33) for each observation. A observation is potentially
+
+inﬂuential on θ if Ci(bθ) > 2C(bθ), where C(bθ) is the mean of the Ci‘s for i = 1, . . . , n;
+
+see Lesaffre and Verbeke (1998). Below we present three perturbation schemes and
+each of their corresponding perturbation matrix ∆
+
+Case-weight Perturbation The case-weight perturbation scheme allows us to eval-
+uate the cases that, under different weights, affect the ML estimates of θ. Suppose
+=1 ωiℓi, with ℓi given in (15) and
+ωi ∈ [0, 1] is a perturbation vector. Considering the partial derivative with respect to
+ω⊤, we obtain
+
+that the log-likelihood function is given by ℓ(θ|ω) =Pn
+
+∂ℓ(θ|ω)
+∂ω⊤ =
+
+mXi=1
+
+ℓi(θ)e⊤
+in,
+
+with e⊤
+
+in denoting a n × 1 vector.
+
+After evaluating θ at bθ we obtain a perturbation matrix
+
+where hi is given by
+
+∆ =
+
+hie⊤
+in,
+
+nXi=1
+hi =  ∂ℓi(θ)
+∂β .!
+
+∂ℓi(θ)
+
+∂α
+
+11
+
+(35)
+
+(36)
+
+(37)
+
+(38)
+
+From the log-likelihood function deﬁned in (15) we obtain a explicit expression for hi,
+which is
+
+i2)ζ c
+i2
+α
+
+˙ℓαi(θ|ω) = ai =(− λ(ζ c
+˙ℓβi(θ|ω) = bi =(− λ(ζ c
+
+1
+
+− 1
+α (1 + ζ 2
+i2)
+
+i2)ζ c
+i1
+2
+
+2(cid:16)ζi1ζi2 − ζi2
+ζi1(cid:17)
+
+i = 1, . . . , m,
+i = m + 1, . . . , n,
+
+i = 1, . . . , m,
+
+i = m + 1, . . . , n.
+
+The case-weight perturbation matrix given by ∆ in (38) can be decomposed in ∆α =
+(a1, . . . , an) and ∆β = X ⊤ diag{b1, . . . , bn}.
+
+Response perturbation There are different scenarios that one can consider for the
+response perturbation. We consider here a response perturbation scheme with an
+additive perturbation, which is deﬁned by
+
+Yiω = Yi + ωiSY , i = m + 1, . . . , n,
+
+where SY is a scale component that can be the standard deviation of the response. Let
+us consider that the log-likelihood function of the tobit-BS model is given by ℓ(θ|ω) =
+
+i=1 ℓi(θ|ω), with
+
+Pn
+ℓi(θ) =(Pm
+
+i=1(log Φ(ζ c
+
+i2ω1)),
+
+− log(2) − log(2π)
+
+2 +Pn
+
+i=m+1(cid:0)log(ζi1ω1) − 1
+
+2(ζ 2
+
+i2ω1)(cid:1) ,
+
+i = 1, . . . , m;
+i = m + 1, . . . , n;
+
+(39)
+
+where ζi1ω1, ζi2ω1, ζ c
+i2ω1 are as deﬁned in (16) after changing Y for Yiω. The process of
+obtaining the perturbation matrix in this scheme is composed by two steps, ﬁrst the
+derivative of (39) with respect to ω⊤ is taken, i.e.,
+
+∂ℓi(θ|ωi)
+
+∂ω⊤ =(0⊤
+
+n ,
+SY
+
+2 (cid:16) ζi2ω1
+ζi1ω1(cid:17) − ζi2ω1ζi1ω1,
+
+i = 1, . . . , m,
+
+i = m + 1, . . . , n.
+
+(40)
+
+Then, the partial derivative of (40) with respect to θ is computed and evaluated at
+
+θ = bθ, to obtain the response perturbation matrix ∆ with elements
+(sech (δi))2(cid:19) .
+
+∆α = (c1, . . . , cm), ∆β = X ⊤ diag{d1, . . . , dm},
+
+di = SY(cid:18) 1
+
+α2 cosh(2δi) −
+
+SY ζi1ζi2
+
+where
+
+ci =
+
+1
+4
+
+α
+
+,
+
+Note that the response perturbation scheme, in a tobit model, makes sense only for
+the non-censored part of the data. This occurs because the censored part of the data
+is either unobservable or below the threshold y0, otherwise, the case i receives the
+same value y0. Then, there is no perturbation in this part of the data.
+
+12
+
+Covariate Perturbation As in the response scheme there are several ways to insert
+covariate perturbation. Here, we insert an additive perturbation that takes the form
+
+xitω = xit + sX ωi,
+
+i = 1, . . . , n,
+
+i2)
+
+(41)
+
+i1λ(ζ c
+
+2(ζ 2
+
+i2) sinh (2δi)
+
+i = 1, . . . , m;
+i = m + 1, . . . , n.
+
+In order to obtain the perturbation matrix of (41) we take the derivative with respect to
+
+where SX can be the standard deviation of the correspond covariate of the model. Con-
+i=1 ℓi(θ|ω)
+
+i=1(log Φ(ζ c
+
+from (15), we obtain
+
+2 +Pn
+
+i2ω2))
+− log(2) − log(2π)
+
+i2ω2)(cid:1)
+2 (cid:17)(cid:17) ,
+i2(cid:17)
+
+i=m+1(cid:0)log(ζi1ω2) − 1
+i2(cid:16) 2λ(ζ c
+
+sidering the log-likelihood function for the tobit-BS model to be ℓ(θ|ω) =Pn
+ℓi(θ|ω) =(Pm
+θ and then with respect to ω, and then we evaluate at θ = bθ to obtain
+α (cid:16) ζ c
+∆α = (− Sxβt
+2 − ζ c
+− 2
+α3 Sxβt sinh(2δi),
+(cid:16) λ(ζ c
+− Sxβtxij
+− Sxζ c
+,
+Sxβtxij(cid:0) 1
+4 (sech (δi))2 − 1
+(cid:16) λ(ζ c
+− Sxβtxij
+− Sxxij
+i2)) ,
+(cosh(2δi)λ(ζ c
+Sxβtxij(cid:0) 1
+4 (sech (δi))2 − 1
++Sx(cid:0) 1
+
+∆β = 
+
+
+α2 cosh(2δi)(cid:1)
+2 tanh (δi)(cid:1) ,
+
+α2 cosh(2δi)(cid:1) ,
+
+i2(cid:17) − Sxζ c
+
+α2 sinh(2δi) − 1
+
+i2) − λ(ζ c
+
+i2) − λ(ζ c
+
+i = 1, . . . , m;
+
+i2)2λ2(ζ c
+
+i2)2λ2(ζ c
+
+where ∆β is a matrix p × n with elements ∆βij and j 6= t, for j = t, ∆βij becomes
+
+i = 1, . . . , m;
+i = m + 1, . . . , n,
+
+i = m + 1, . . . , n
+
+i = 1, . . . , m;
+
+i1)2ζ c
+i2
+i2)
+
+i1)2ζ c
+i2
+i2)
+
++ λ2ζ c
+
+4
+i2λ(ζ c
+
+i2λ(ζ c
+2
+
+i2)(ζ c
+Φ(ζ c
+
+i2)(ζ c
+Φ(ζ c
+
+∆β =
+
++ (ζ c
+
++ (ζ c
+
+i2)ζ c
+
+i2)ζ c
+
+i2)
+
+i2)
+
+α2
+
+α
+
+i2
+
+2
+
+4
+
+i = m + 1, . . . , n.
+
+5 Concluding remarks
+
+It is widely known that the normal distribution does not model perfectly a consid-
+erable part of real data sets.
+In this paper, we have proposed an extension of the
+standard tobit model, the tobit-BS model, by assuming a Birnbaum-Saunders distribu-
+tion. We have discussed maximum likelihood estimation of the model parameters. We
+have also provided global and local inﬂuence tools for the tobit-BS model. In special,
+as a global inﬂuence tool we have derived the generalized Cook distance, and for local
+inﬂuence procedures we have derived the normal curvatures under different pertur-
+bation schemes. Research regarding the implementation of Monte Carlo simulations
+and the application to real data is currently in progress and we hope to report some
+ﬁndings in a future paper.
+
+References
+
+Amemiya, T. (1984). Tobit models: A survey. Journal of Econometrics, 24:3–61.
+
+13
+
+Barros, M., Galea, M., Gonzalez, M., and Leiva, V. (2010). Inﬂuence diagnostics in the Tobit
+
+censored response model. Statistical Methods and Applications, 19:379–397.
+
+Birnbaum, Z. W. and Saunders, S. C. (1969). A new family of life distributions. Journal of
+
+Applied Probability, 6:319–327.
+
+Cook, R. D. (1977). Detection of inﬂuential observation in linear regression. Technometrics,
+
+19:15–18.
+
+Cook, R. D. and Weisberg, S. (1982). Residuals and Inﬂuence in Regression. Chapman and
+
+Hall, London, UK.
+
+Cox, D. and Hinkley, D. (1974). Theoretical Statistics. Chapman and Hall, London, UK.
+
+Davison, A. and Gigli, A. (1989). Deviance residuals and normal scores plots. Biometrika,
+
+76:211–221.
+
+Efron, B. and Hinkley, D. (1978). Assessing the accuracy of the maximum likelihood estimator:
+
+Observed vs. expected Fisher information. Biometrika, 65:457–487.
+
+Ferreira, M., Gomes, M. I., and Leiva, V. (2012). On an extreme value version of the Birnbaum-
+
+Saunders distribution. REVSTAT Statistical Journal, 10:181–210.
+
+Garcia-Papani, F., Uribe-Opazo, M., Leiva, V., and Aykroyd, R. (2016). Birnbaum-Saunders
+spatial modelling and diagnostics applied to agricultural engineering data. Stochastic Envi-
+ronmental Research and Risk Assessment, pages in press available at http://dx.doi.
+org/10.1007/s00477--015--1204--4.
+
+Goldberger, A. (1964). Econometric Theory. Wiley, New York, US.
+
+Helsel, D. R. (2011). Statistics for Censored Environmental Data Using Minitab and R. Wiley,
+
+New York, US.
+
+Johnson, N., Kotz, S., and Balakrishnan, N. (1995). Continuous Univariate Distributions, vol-
+
+ume 2. Wiley, New York, US.
+
+Klein, J. and Moeschberger, M. (1997). Survival Analysis: Techniques for Censored and Trun-
+
+cated Data. Springer, New York, US.
+
+Leiva, V. (2016). The Birnbaum-Saunders Distribution. Academic Press, New York, US.
+
+Leiva, V., Barros, M., Paula, G., and Galea, M. (2007). Inﬂuence diagnostics in log-Birnbaum-
+Saunders regression models with censored data. Computational Statistics and Data Analy-
+sis, 51:5694–5707.
+
+Leiva, V., Marchant, C., Ruggeri, F., and Saulo, H. (2015a). A criterion for environmental
+assessment using Birnbaum-Saunders attribute control charts. Environmetrics, 26:463–
+476.
+
+Leiva, V., Rojas, E., Galea, M., and Sanhueza, A. (2014). Diagnostics in Birnbaum-Saunders
+accelerated life models with an application to fatigue data. Applied Stochastic Models in
+Business and Industry, 30:115–131.
+
+14
+
+Leiva, V., Tejo, M., Guiraud, P., Schmachtenberg, O., Orio, P., and Marmolejo, F. (2015b). Mod-
+eling neural activity with cumulative damage distributions. Biological Cybernetics, 109:421–
+433.
+
+Lesaffre, E. and Verbeke, G. (1998). Local inﬂuence in linear mixed models. Biometrics,
+
+54:570–582.
+
+Li, A., Chen, Z., and Xie, F. (2012). Diagnostic analysis for heterogeneous log-Birnbaum-
+
+Saunders regression models. Statistical and Probability Letters, 89:1690–1698.
+
+Marchant, C., Leiva, V., and Cysneiros, F. (2016a). A multivariate log-linear model for
+Birnbaum-Saunders distributions. IEEE Transactions on Reliability, page in press available
+at http://dx.doi.org/10.1109/TR.2015.2499964.
+
+Marchant, C., Leiva, V., Cysneiros, F., and Vivanco, J. (2016b). Diagnostics in multivariate
+generalized Birnbaum-Saunders regression models. Journal of Applied Statistics, page in
+press available at http://dx.doi.org/10.1080/02664763.2016.1148671.
+
+McCullagh, P. and Nelder, J. (1989). Generalized Linear Models. Chapman and Hall, London,
+
+UK.
+
+Ortega, E., Bolfarine, H., and Paula, G. (2003).
+
+Inﬂuence diagnostics in generalized log-
+
+gamma regression models. Computational Statistics and Data Analysis, 42:165–186.
+
+Qu, H. and Xie, F. (2011). Diagnostics analysis for log-Birnbaum-Saunders regression models
+
+with censored data. Statistica Neerlandica, 65:1–21.
+
+Rieck, J. and Nedelman, J. (1991). A log-linear model for the Birnbaum-Saunders distribution.
+
+Technometrics, 3:51–60.
+
+Saulo, H., Leiva, V., Ziegelmann, F. A., and Marchant, C. (2013). A nonparametric method for
+estimating asymmetric densities based on skewed Birnbaum-Saunders distributions applied
+to environmental data. Stochastic Environmental Research and Risk Assessment, 27:1479–
+1491.
+
+Scott, J. (1997). Regression Models of Categorical and Limited Dependent Variables. Sage,
+
+California, US.
+
+Therneau, T., Grambsch, P., and Fleming, T. (1990). Martingale-based residuals for survival
+
+models. Biometrika, 77:147–160.
+
+Thorarinsdottir, T. L. and Gneiting, T. (2010). Probabilistic forecasts of wind speed: Ensemble
+model output statistics by using heteroscedastic censored regression. Journal of the Royal
+Statistical Society A, 173:371–388.
+
+Tobin, J. (1958). Estimation of relationships for limited dependent variables. Econometrica,
+
+26:24–36.
+
+Villegas, C., Paula, G., and Leiva, V. (2011). Birnbaum-Saunders mixed models for censored
+
+reliability data analysis. IEEE Transactions on Reliability, 60:748–758.
+
+Zhu, H. and Zhang, H. (2004). A diagnostic procedure based on local inﬂuence. Biometrika,
+
+91:579–589.
+
+15
+
+

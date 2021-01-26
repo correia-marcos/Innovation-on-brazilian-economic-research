@@ -1,0 +1,1468 @@
+Previsão fora da amostra da taxa de câmbio com
+
+sentimento das notícias
+
+Lucas-Matheus Souza de Araújo Lima ∗ †
+
+Edilean Kleber da Silva Bejarano Aragón ‡ †
+
+Resumo
+
+Este trabalho tem como objetivo estudar a previsibilidade fora da amostra e um passo à
+frente das variações da taxa de câmbio nominal com sentimento das notícias, utilizando
+notícias ﬁnanceiras do The New York Times e do The Wall Street Journal na construção
+desses sentimentos para o período de janeiro de 1980 a maio de 2017. Foi observado que os
+sentimentos das notícias ﬁnanceiras possuem poder preditivo sobre a variação de todas as
+taxas de câmbio analisadas. Já em relação a regra de Taylor convencional foi identiﬁcada
+igualdade de performance para 9 das 10, enquanto sua versão ampliada com sentimentos
+das notícias obteve pelo menos uma performance superior, considerando seus respectivos
+dicionários, para 6 dos 10 pares de países, todos esses resultados a 5% de signiﬁcância.
+Palavras-chave: Taxa de câmbio; predição; sentimento das notícias; regra de Taylor.
+
+Abstract
+
+This paper aims to study the out-of-sample predictability of nominal exchange rate variations
+with news sentiment, we use ﬁnancial news from The New York Times and The Wall Street
+Journal to construct these sentiments for the period from january 1980 to may 2017. We
+observed that the ﬁnancial news sentiment have predictive power over the out-of-sample
+variation of all analyzed exchange rates, about the conventional Taylor rule was identiﬁed
+equality of performance for 9 of the 10, while its expanded version with news sentiments
+got at least one superior performance for 6 of the 10 pairs of countries, considering its
+dictionaries, all those results at 5 % signiﬁcance.
+Keywords: Exchange rate; forecast; news sentiment; Taylor rule.
+
+Área 4 - Macroeconomia, Economia Monetária e Finanças
+
+Classiﬁcação JEL: C52, F31, F37.
+∗Mestrando em Economia, Universidade Federal da Paraíba (PPGE/UFPB).
+†Laboratório de Inteligência Artiﬁcial e Macroeconomia Computacional (LABIMEC).
+‡Professor, Universidade Federal da Paraíba (UFPB).
+
+1
+
+1 Introdução
+
+Explicar as variações da taxa de câmbio utilizando os fundamentos macroeconômicos
+foi um desaﬁo que permaneceu por anos em aberto. Desde os trabalhos seminais de Meese e
+Rogoﬀ (1983a) e Meese e Rogoﬀ (1983b) a tentativa de obter resultados superiores ao passeio
+aleatório acabaram por culminar no trabalho de Molodtsova e Papell (2009), onde foi obtido
+êxito na predição da variação da taxa de câmbio com os fundamentos macroeconômicos e a
+partir dele a literatura tomou um caminho para desenvolver sua fronteira.
+
+Como exposto por Carriero, Kapetanios e Marcellino (2009), obter performances
+superiores ao do passeio aleatório sem constante no multi-horizonte, partindo dos fundamentos
+macroeconômicos, foi uma tarefa sem êxito na literatura até então, sendo que quando o interesse
+é em horizontes curtos essa diﬁculdade é intensiﬁcada.
+
+Molodtsova e Papell (2009), utilizando uma regra de Taylor, obtiveram performances
+estatisticamente superiores ao passeio aleatório sem constante na predição um passo à frente
+da taxa de câmbio, sendo observada previsibilidade no curto prazo para 11 das 12 taxas de
+câmbio testadas. Outros fundamentos macroeconômicos foram utilizados, gerando os modelos
+convencionais da politica monetária, da paridade do poder de compra e da taxa de juros, mas
+a regra de Taylor demonstrou superioridade em relação aos demais modelos. Na sequência,
+Nikolsko-Rzhevskyy e Prodan (2012) conseguiram êxito em obter performances superiores no
+multi-horizonte em relação ao passeio aleatório utilizando os fundamentos macroeconômicos.
+A especiﬁcação do modelo de predição é um ponto de suma importância na literatura.
+No trabalho de Molodtsova e Papell (2009) são testadas 16 especiﬁcações para a regra de Taylor,
+onde a taxa de câmbio real foi desconsiderada na especiﬁcação que gerou melhores performances.
+Já Morales-Arias e Moura (2013) incluíram preditores oriundos do retorno/volatilidade dos
+ativos e de índices cíclicos e de conﬁança, foi observado que combinações de previsões a partir
+de informações mais amplas melhoram a precisão da previsão em relação aos preditores isolados
+e acabam por minimizar a incerteza ex-ante. Ainda nessa linha do estudo das especiﬁcações,
+Wang, Morley e Ordóñez (2016) observaram que o preço dos ativos é importante na modelagem
+com base nos fundamentos macroeconômicos, sendo observado superioridade nas performances
+em relação ao dos modelos convencionais e do passeio aleatório.
+
+Considerando uma abordagem linear, a literatura vem indicando a regra de Taylor como
+um dos ou o melhor fundamento macroeconômico para predição da variação da taxa de câmbio.
+Dessa forma, partindo da esfera dessa literatura que investiga especiﬁcações alternativas para a
+regra de Taylor na modelagem, um dos objetivos desse trabalho visa a estudar novas especiﬁcações
+para o mesmo na predição da variação da taxa de câmbio, mas considerando informações contidas
+nas notícias ﬁnanceiras.
+
+Paralelo a essas abordagens ditas convencionais, uma outra passou a estudar as informações
+ou os efeitos informacionais de textos sobre o comportamento da taxa de câmbio, isso com base
+numa literatura mais abrangente de análise textual que considera diversas fontes de dados, como
+notícias, atas ou relatórios. Dentro dessa linha na literatura de previsão da taxa de câmbio, um
+dos primeiros trabalhos a utilizar tal fonte de dados foi o Galati e Ho (2003), que investigaram a
+inﬂuência de notícias macroeconômicas na zona do euro e nos Estados Unidos sobre taxa câmbio
+entre o dólar e o euro, isso para os primeiros anos da União Monetária Europeia e considerando
+a origem e a classiﬁcação positiva ou negativa das notícias, assim foi observado que as notícias
+inﬂuenciavam as variações, mas de forma assimétrica.
+
+2
+
+Estudando a relação entre os fundamentos macroeconômicos e a taxa de câmbio, Ehrmann
+e Fratzscher (2005) identiﬁcaram que notícias macroeconômicas (especiﬁcamente de anúncios)
+têm forte efeito sobre a variação da taxa de câmbio diário entre o dólar e o euro, isso para o
+período de 1993 a 2003. Na mesma linha, Feuerriegel, Wolﬀ e Neumann (2016) utilizaram
+um modelo de overshooting de Dornbush para analisar as variações da taxa de câmbio, sendo
+uma versão convencional e outra ampliada com sentimento das notícias com o intuito de captar
+novas informações, os autores observaram que a variável de sentimento das notícias tem poder
+explicativo sobre a predição da taxa de câmbio.
+
+Abrindo uma parêntese sobre o uso de sentimento das notícias, que é uma das abordagens
+na análise de texto e a que foi utilizada neste trabalho, podemos citar Garcia (2013) que com o foco
+nos períodos de recessão identiﬁcou que, para estes, as notícias têm poder sobre a previsibilidade
+do retorno das ações. Temos também o trabalho do Shapiro, Sudhof e Wilson (2018), que
+utilizando sentimentos das notícias observaram que as variáveis construídas melhoraram as
+previsões, além de que um choque positivo de sentimento se comporta de forma consistente com
+um choque de demanda agregada, sendo estes exemplos consistentes do uso de sentimento das
+notícias como preditores de variáveis econômicas.
+
+Investigando especiﬁcamente os efeitos das notícias macroeconômicas de manchetes dos
+jornais sobre as taxas de câmbio, Caporale, Spagnolo e Spagnolo (2017) identiﬁcaram um efeito
+transbordamento e assimétrico para os países do BRICS, já Caporale, Spagnolo e Spagnolo
+(2018) observaram um transbordamento de volatilidade entre as notícias e as taxas de câmbio
+para um grupo especíﬁco de países. Estes últimos sendo trabalhos que trazem mais evidências
+sobre a relação entre as notícias e as variações da taxa de câmbio.
+
+Tendo como base a literatura de previsão com fundamentos macroeconômicos, Bulut
+(2018) buscou investigar como dados oriundos do Google Trends podem auxiliar nas predições
+da taxa de câmbio. Com dados de 2004 a 2014, e cobrindo 10 países da OCDE e a zona do euro,
+o autor observou que as predições sobre a direção das variações da taxa de câmbio com base no
+Google Trends tem boa performance, já para os retornos mensais foi identiﬁcada para uma das
+especiﬁcações testadas performance superior ao passeio aleatório em 5 das 11 taxas de câmbio,
+resultado esse não sendo pior do que o observado pelo modelo com base na paridade do poder de
+compra, que com base nos fundamentos macroeconômicos foi o modelo que gerou melhores
+resultados. Vale destacar que não foi utilizado a regra de Taylor neste trabalho.
+
+Unindo o ramo da literatura que estuda novas especiﬁcações para a modelagem na
+predição da taxa de câmbio com a que estuda as informações ou os efeitos informacionais das
+notícias, sendo a parte de análise textual, este trabalho busca investigar se os sentimentos das
+notícias têm poder preditivo sobre as variações da taxa de câmbio, e se sua integração à regra de
+Taylor na forma de uma especiﬁcação alternativa melhora os resultados em relação ao passeio
+aleatório e a uma regra de Taylor convencional, sendo estes os objetivos gerais do trabalho.
+
+A estrutura do trabalho está dividida em 4 seções: a primeira é esta introdução que capta
+a motivação e referencial teórico; seguida da seção 2 que detalha tanto a construção das variáveis
+como a abordagem metodológica utilizada; e por ﬁm, temos as seções 3 e 4 onde são demostrados
+os resultados observados e as conclusões do trabalho.
+
+3
+
+2 Metodologia
+2.1 Dados
+
+As variáveis macroeconômicas utilizadas foram construídas com base nos dados obtidos
+no International Financial Statistic (IFS) do FMI e na OECD1. Seguindo Molodtsova e Papell
+(2009), a taxa de inﬂação é uma taxa anual com base nas diferenças dos últimos 12 meses do
+índice de preços ao consumidor (CPI), já o hiato do produto na forma percentual foi construído
+por meio do ﬁltro HP2 utilizando a produção industrial com ajuste sazonal como proxy para o
+produto.
+
+Devido à natureza das variáveis de sentimento geradas foi utilizada a taxa de câmbio
+média do período em detrimento do ﬁm do período, considerando que o sentimento construído
+é com base nas notícias do respectivo mês, ou seja, o sentimento é relativo ao período em sua
+totalidade.
+
+A base de dados textual tem como fonte o Factiva, construído com base na busca de
+termos ﬁnanceiros especíﬁcos independente do caderno da revista para o The New York Times
+e The Wall Street Journal, sendo que para o primeiro destes seu uso é recorrente na literatura,
+podendo ser observado nos trabalhos de Engelberg, Reed e Ringgenberg (2012), Garcia (2013)
+ou Shapiro, Sudhof e Wilson (2018), e em Liu e McConnell (2013) temos o uso de ambos os
+jornais.
+
+O banco de dados é mensal e cobre o período de janeiro de 1980 a maio de 2017,
+abrangendo os Estados Unidos, Reino Unido, Japão, Suécia, Coreia do Sul, Canada, Dinamarca,
+Noruega, Brasil, México e Rússia. Devido a dados faltantes para alguns países, o tamanho
+máximo da amostra varia entre pares de países analisados, o intervalo será indicado nos seus
+respectivos resultados.
+
+2.2 Sentimento das notícias
+
+Seguindo Feuerriegel, Wolﬀ e Neumann (2016), para construção dos sentimentos das
+notícias são utilizados 3 dicionários diferentes que foram amplamente utilizados na literatura, o
+General Inquirer (GI), Henry’s Financial dictionary (HE) e Loughran-McDonald dictionary
+(LM), sendo os dois últimos com base em suas versões nos trabalhos Henry (2008) e Loughran
+e McDonald (2011), respectivamente. No trabalho de referência, o dicionário base é o HE,
+utilizando o GI e o LM como robustez, além da questão de possível robustez, utilizar os 3 pode
+gerar a possibilidade de obter diferentes insights em relação aos sentimentos gerados por cada
+dicionário, considerando que seus propósitos são diferentes.
+
+O General Inquirer (GI) é um dicionário desenvolvido por Stone, Dunphy e Smith (1966)
+que é de propósito geral para a língua inglesa, sendo amplamente utilizado na literatura que
+comporta o uso de dicionário e lista de palavras, como nos trabalhos de Tetlock (2007), Tetlock,
+Saar-Tsechansky e Macskassy (2008), Engelberg, Reed e Ringgenberg (2012) e Feuerriegel,
+Wolﬀ e Neumann (2016), mas segundo Kearney e Liu (2014) existem algumas ressalvas sobre
+ele, se for considerado o contexto ﬁnanceiro, por exemplo, algumas palavras possuem erros
+1 A informação mais detalhada sobre as fontes dessas variáveis pode ser observada no apêndice A.
+2 Hodrick e Prescott (1997), foi utilizado lambda de 14400, como feito por Molodtsova e Papell (2009).
+
+4
+
+de classiﬁcação, como "liability"e "tax"que são consideradas negativas no GI mas dentro do
+contexto ﬁnanceiro não são.
+
+O Henry’s Financial dictionary (HE) é um dicionário estritamente ﬁnanceiro, feito para
+este contexto especíﬁco, exemplos de sua utilização são nos trabalhos de Henry (2006), Henry
+(2008), Henry e Leone (2009), Price et al. (2012) e Feuerriegel, Wolﬀ e Neumann (2016). Já o
+Loughran-McDonald dictionary (LM) foi desenvolvido para suprir os erros de classiﬁcação no
+contexto ﬁnanceiro observados no GI. Além de incorporar termos ﬁnanceiros, expandiu as listas
+de palavras e possibilitou uma gama maior de classiﬁcação/dicionário de palavras, como seu
+dicionário de incerteza, alguns dos trabalhos que o utilizaram foram Ferris, Hao e Liao (2012),
+Garcia (2013), Loughran e McDonald (2013), Ferguson et al. (2015) e Feuerriegel, Wolﬀ e
+Neumann (2016).
+
+Sobre o uso de dicionários com diferentes propósitos, Henry e Leone (2015) argumentam
+que para dados textuais com linguagem especializada é indicado o uso de dicionário de
+domínio especíﬁco em detrimento dos de propósito geral, devido a alguns fatores como erros de
+classiﬁcação, já citados anteriormente. Uma resposta a esse uso cruzado seria captar informações
+com baixo poder preditivo. Os dados textuais utilizados são de notícias ﬁnanceiras, mas não
+necessariamente a linguagem utilizada é estritamente especializada, dado que o público receptor
+dessas notícias é amplo e diversiﬁcado, o dicionário mais indicado seria o LM, que mesmo
+sendo de propósito especíﬁco ele também capta informação de propósito geral. A natureza das
+informações textuais utilizadas, porém, não veta o uso dos demais dicionários, como o GI que é
+de propósito geral.
+
+A limpeza aplicada aos textos foi basicamente a fornecida pelo pacote utilizado3, que é
+uma limpeza simples, lidando com coisas como a remoção de stop words por exemplo. Após
+essa limpeza, é aplicada uma regra utilizando as listas de palavras do dicionário por período para
+gerar os sentimentos. As métricas utilizadas são simples: para sentimentos positivos, negativos
+e de incerteza, a regra é dada pela frequência relativa da palavra, métrica conhecida como
+term-frequency (tf); para o sentimento geral, a regra é dada por:
+
+Sentimentot =
+
+Positivast − Negativast
+
+Totalt
+
+Dadas as regras utilizadas neste trabalho para gerar sentimentos, uma limpeza simples
+acaba por inﬂar o total de palavras que é usado como denominador em todas as regras, acabando
+por reduzir numericamente todos os sentimentos gerados, mas o comportamento da série é
+conservado.
+
+Uma métrica bastante utilizada na literatura de análise textual é a frequência relativa da
+palavra ponderada pelo inverso da frequência do documento, conhecido como term frequency -
+inverse document frequency (tf-idf), sugerida por Loughran e McDonald (2011), essa métrica
+penaliza tanto palavras raras como palavras comuns, além de ter outras funcionalidades, como
+por exemplo identiﬁcar documentos de interesse. Como discutido por Henry e Leone (2015),
+quando o exercício requer apenas análise de conteúdo, os dados textuais de interesse já foram
+selecionados e a análise não passa pelo poder preditivo da palavra, a ponderação igual pode ser
+usada em detrimento da ponderação pelo idf, já que nesse contexto os resultados são parelhos,
+3 SentimentAnalyis.
+
+5
+
+além de exigir menor poder computacional para execução e facilitar a replicação, justiﬁcando o
+uso da métrica empregada.
+
+As séries de sentimentos gerais e negativas por dicionário podem ser observadas no
+apêndice B. A Tabela 1 a seguir indica o número de palavras por classiﬁcação e dicionário, como
+pode ser observado na mesma, para o dicionário LM o número de palavras negativas é 6.1 vezes
+maior que o número de palavras positivas, característica essa que não é observada nos outros
+dicionários e que facilita o sentimento geral ser negativo.
+
+Tabela 1 – Palavras por classiﬁcação e dicionário
+
+Positiva Negativa
+
+Incerteza
+
+General Inquirer
+
+Henry’s Financial dictionary
+
+Loughran-McDonald dictionary
+
+1316
+
+1746
+
+53
+
+145
+
+44
+
+885
+
+-
+
+-
+
+129
+
+Fonte: Elaboração própria.
+
+2.3 Modelo de predição
+2.3.1 Regra de Taylor
+
+De acordo com Taylor (1993), o banco central segue uma regra de política monetária que
+
+pode ser expressa como:
+
+t = πt + φ(πt − π
+i∗
+
+∗) + γ yt + r∗
+
+(1)
+
+t é a taxa de juros de curto prazo, πt a inﬂação corrente, π∗ a meta de inﬂação, yt o hiato
+
+onde i∗
+do produto e r∗ é a taxa de juros de equilíbrio, respectivamente.
+
+Seguindo os passos indicados por Molodtsova e Papell (2009) para construir a equação
+da diferença da taxa de juros, a partir da equação (1), sendo λ = (1 + φ) e µ = r∗ − φπ∗, a regra
+de política monetária pode ser expressa por:
+
+i∗
+t = µ + λπt + γ yt
+
+(2)
+
+para µ é suposto que r∗ e π∗ são constantes no tempo, que é uma forte suposição, dado que já
+foram trazidas evidências de que a meta de inﬂação para os Estados Unidos varia no tempo,
+segundo Cogley, Primiceri e Sargent (2010), e para o λ > 1 indica que a taxa de juros sobe
+quando a inﬂação sobe, satisfazendo as condições da regra de Taylor.
+
+6
+
+Considerando que a taxa de juros observável se ajusta parcialmente em relação à meta4,
+
+temos:
+
+it = (1 − ρ)i∗
+
+t + ρit−1
+
++ υt
+
+com a equação da diferença da taxa de juros5 sendo expressa como:
+
+it − ˜it = α0 + α1πt + α2yt + α3it−1 − (α4 + α5 ˜πt + α6 ˜yt + α7˜it−1) + ζt
+
+(3)
+
+(4)
+
+Partindo da paridade de juros a descoberta (UIP) e supondo que seu coeﬁciente linear e
+angular são respectivamente 0 e −1, podemos expressar a equação de predição da variação da
+taxa de câmbio sendo:
+
+EtSt+1 − St = ω0 − ω1πt + ω2 ˜πt − ω3yt + ω4 ˜yt − ω5it−1
+
++ ω6˜it−1
+
++ ψt
+
+(5)
+
+sendo St o logaritmo da taxa de câmbio nominal do dólar americano em termos da moeda
+estrangeira.
+
+No trabalho de Molodtsova e Papell (2009) foram considerados 4 parâmetros de especiﬁ-
+cação para os modelos, podendo ser heterogêneo/homogêneo, simétrico/assimétrico, com/sem
+suavização e com/sem constante. Para este trabalho são considerados 3 desses possíveis parâme-
+tros gerando 8 especiﬁcações como base, não considerando a especiﬁcação com/sem constante,
+devido à natureza da equação.
+
+Modelo heterogêneo indica que para o par de países os coeﬁcientes dos termos (como
+inﬂação) da regra de Taylor são diferentes, enquanto o homogêneo indica que são iguais,
+dessa forma trabalhando com a diferença dos termos. A simetria e assimetria correspondem,
+respectivamente, à ausência e presença da taxa real de câmbio na equação. Dessa forma, podemos
+expressar um modelo homogêneo, simétrico e sem suavização como sendo:
+
+∆St+1 = ω − ω1(πt − ˜πt) − ω2(yt − ˜yt) + ψt
+
+(6)
+
+2.3.2 Sentimento das notícias
+
+Seguindo de forma similar Bulut (2018), uma equação para testar a possibilidade de os
+sentimentos das notícias terem poder preditivo sobre as variações da taxa de câmbio pode ser
+expressa como:
+
+∆St+1 = ω0 +
+
+ωiSentit + ψt
+
+(7)
+
+onde Sentit é o termo correspondente à variável de sentimento das notícias, justiﬁcando o uso do
+4 Molodtsova e Papell (2009) utilizaram como base Clarida, Galı e Gertler (1998).
+5 O tilde indica país estrangeiro.
+
+i=1
+
+7
+
+N
+
+somatório devido à possibilidade de mais de uma variável de sentimento na equação, com N
+sendo o total de variáveis de sentimento utilizadas na equação.
+
+Para cada equação é considerado apenas 1 dicionário, ou seja, sem cruzamento de
+sentimentos de diferentes dicionários com a mesma classiﬁcação, e como o sentimento geral é
+uma combinação do positivo com o negativo, são utilizados apenas 2 sentimentos por modelo.
+
+2.3.3 Regra de Taylor ampliada com sentimento
+
+Dada a equação de predição da taxa de câmbio (5) podemos incorporar um termo para
+captar novas informações, ampliando o modelo da regra de Taylor, seguindo de forma próxima
+ao feito por Feuerriegel, Wolﬀ e Neumann (2016) para o overshooting do Dornbush, a variável
+Sentit é integrada a equação, como podemos usar mais de um sentimento por equação, a nova
+equação de predição da variação da taxa de câmbio nominal pode ser expressa como:
+
+∆St+1 = ω0 − ω1πt + ω2 ˜πt − ω3yt + ω4 ˜yt − K
+
+ωiSentit + ψt
+
+(8)
+
+onde K é o total de variáveis do modelo, sendo esta uma das especiﬁcações para a versão ampliada
+da regra de Taylor, considerando as especiﬁcações trazidas por Molodtsova e Papell (2009) que
+já foram indicadas.
+
+i=5
+
+2.4 Método de estimação
+
+Seguindo Molodtsova e Papell (2009), para obter a predição fora da amostra de um passo
+à frente dos modelos é empregado o método de Mínimos Quadrados Ordinários (MQO) com
+janela móvel, e com base em Clark e West (2006) é utilizado uma janela de 120 observações
+para treinar o modelo. Como uma forma de robustez, também será estimado por MQO recursivo
+utilizando 120 observações como amostra de treino inicial.
+
+2.5 Testes de performance
+
+Para comparar as performances fora da amostra em relação ao do passeio aleatório
+sem constante e aos nested models, foi utilizado o teste de Clark e West (CW) com correção,
+com base nos trabalhos Clark e West (2006) e Clark e West (2007). Já para comparações entre
+non-nested models, o teste de Diebold e Mariano (DM), baseado em Diebold e Mariano (1995),
+foi empregado.
+
+Para o teste CW, a hipótese nula é que o modelo base e o modelo alternativo têm
+performances estaticamente iguais, com a hipótese alternativa que o modelo alternativo tem
+performance superior ao modelo base. Para o teste DM, a hipótese alternativa pode ser especiﬁcada,
+podendo indicar performance diferente, inferior ou superior do modelo base em relação ao modelo
+alternativo. Quando a hipótese nula é rejeitada inicialmente indicando que as performances são
+diferentes, as outras especiﬁcações são testadas.
+
+8
+
+3 Resultados
+
+A especiﬁcação da regra de Taylor utilizada como base para as estimações das ver-
+sões convencionais e ampliadas da regra foi a homogênea, simétrica e sem suavização, que
+pode ser observada na equação (6), que foi a que gerou melhores resultados numa estimação
+prévia das 8 especiﬁcações já indicadas em relação ao passeio aleatório 6, sendo os modelos
+heterogêneos/homogêneos, simétricos/assimétricos e com/sem suavização 7.
+
+As tabelas 2 e 3 contêm os resultados das comparações entre performances fora da
+amostra e um passo à frente dos modelos só com sentimentos das notícias em relação ao do
+passeio aleatório sem constante. Dessa forma, podemos observar que todas as variáveis de
+sentimento das notícias construídas por dicionário conseguiram performances superiores ao
+passeio aleatório sem constante, isso a 5% de signiﬁcância e para ambos os métodos de estimação,
+se for observado a signiﬁcância a 1% dos resultados, temos superioridade para 8 das 10 taxas de
+câmbio. Tais resultados são mais expressivos dos que os observados por Bulut (2018).
+
+Pode ser argumentado que os resultados observados são devido a correlação entre as
+variáveis de sentimento e das taxas de câmbio. Como uma forma de visualizar parcialmente
+isso, as tabelas 4 e 5 apresentam os coeﬁcientes de correlação entre essas variáveis. Se forem
+observados os valores absolutos dos coeﬁcientes, todas as variáveis de sentimento possuem
+correlação baixa ou muito baixa para todos os países, exceto Brasil e Rússia, onde algumas
+correlações moderadas foram identiﬁcadas.
+
+Os resultados das comparações de performance fora da amostra e um passo à frente dos
+modelos só com sentimentos das notícias e com a regra de Taylor ampliada contra uma regra de
+Taylor convencional podem ser observados nas tabelas 6 e 7. Em relação à primeira parte das
+comparações, a hipótese de igualdade de performance entre os modelos só com sentimentos das
+notícias e a regra de Taylor convencional não foram rejeitadas para 9 dos 10 países, só sendo
+identiﬁcada diferença para a Noruega com os sentimentos do GI, que posteriormente foi indicado
+como superior, isso em relação à performance da regra de Taylor convencional, resultados esses
+a 5% de signiﬁcância.
+
+Sobre as comparações entre os modelos da regra de Taylor ampliada em relação à regra
+convencional8, considerando 5% de signiﬁcância, foi identiﬁcada pelo menos uma especiﬁcação
+da regra de Taylor ampliada com performance fora da amostra estatisticamente superior à versão
+convencional da regra em 6 dos 10 países, sendo esses outros 4 o Japão, Brasil, México e Rússia.
+Já para pelo menos 2 especiﬁcações sendo superiores, temos 3 dos 10 países, que seriam Reino
+Unido, Coreia do Sul e Dinamarca.
+
+Observando por país e mantendo os 5% de signiﬁcância, podemos destacar os resultados
+do Reino Unido e da Dinamarca, onde foi observada superioridade fora da amostra com um passo
+à frente para 3 das 4 especiﬁcações do modelo ampliado, relaxando para 10% temos a Suécia e a
+Coreia do Sul incluídas nesse grupo. Outro resultado é que mesmo a 10% nenhuma especiﬁcação
+do modelo ampliado superou a versão convencional para o Brasil, México e Rússia.
+
+6 Resultado esse diferente do observado por Molodtsova e Papell (2009), que indicava como sendo a melhor
+
+especiﬁcação a heterogênea, simétrica com suavização, que corresponde a equação (5).
+
+7 Entrar em contato com os autores para disponibilização desses resultados.
+8 Vale ressaltar que estes também foram estimados por método recursivo, seus resultados gerais se mantiveram.
+
+9
+
+Tabela 2 – Resultados das predições com sentimento das notícias contra o passeio aleatório - Parte 1
+
+Reino Unido
+
+Japão
+
+Suécia
+
+1
+0
+
+Coreia do Sul
+
+Canada
+
+Método
+
+(Sent + Neg)GI
+
+(Sent + Neg)HE
+
+(Sent + Neg)LM (Sent + Inc)LM
+
+Modelos
+
+Rol
+Rec
+
+Rol
+Rec
+
+Rol
+Rec
+
+Rol
+Rec
+
+Rol
+Rec
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0287∗∗
+0.0298∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0340∗∗
+0.0310∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0340∗∗
+0.0320∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0368∗∗
+0.0325∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+Nota: A tabela reporta os p-valores do teste CW da comparação da performance um passo à frente das predições em
+relação ao passeio aleatório sem constante, acompanhados por ∗,∗∗ e ∗∗∗, que sinalizam sua signiﬁcância ou não a
+10%, 5% e 1%, respectivamente. Na coluna de método, "Rec"indica método recursivo e "Rol"indica janela móvel.
+Para os países analisados na tabela, foi usado amostra completa para todos, possuindo 449 observações de janeiro de
+1980 a maio de 2017.
+
+Tabela 3 – Resultados das predições com sentimento das notícias contra o passeio aleatório - Parte 2
+
+Método
+
+(Sent + Neg)GI
+
+(Sent + Neg)HE
+
+(Sent + Neg)LM (Sent + Inc)LM
+
+Modelos
+
+Dinamarca
+
+Noruega
+
+Brasil
+
+México
+
+Rússia
+
+Rol
+Rec
+
+Rol
+Rec
+
+Rol
+Rec
+
+Rol
+Rec
+
+Rol
+Rec
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0001∗∗∗
+0.0000∗∗∗
+
+0.0176∗∗
+0.0152∗∗
+
+0.0005∗∗∗
+0.0006∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0002∗∗∗
+0.0001∗∗∗
+
+0.0159∗∗
+0.0146∗∗
+
+0.0006∗∗∗
+0.0006∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0002∗∗∗
+0.0001∗∗∗
+
+0.0181∗∗
+0.0192∗∗
+
+0.0006∗∗∗
+0.0005∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0000∗∗∗
+0.0000∗∗∗
+
+0.0002∗∗∗
+0.0002∗∗∗
+
+0.0178∗∗
+0.0164∗∗
+
+0.0004∗∗∗
+0.0006∗∗∗
+
+Nota: A tabela reporta os p-valores do teste CW da comparação da performance um passo à frente das predições
+em relação ao passeio aleatório sem constante, acompanhados por ∗,∗∗ e ∗∗∗, que sinalizam sua signiﬁcância
+ou não a 10%, 5% e 1%, respectivamente. Na coluna de método, "Rec"indica método recursivo e "Rol"indica
+janela móvel. Para os países analisados na tabela, Brasil possui 221 observações, de janeiro de 1999 a maio de
+2019, Rússia com 268 observações, indo de setembro de 1993 a maio de 2019, os demais países usaram amostra
+completa, possuindo 449 observações de janeiro de 1980 a maio de 2017.
+
+1
+1
+
+Tabela 4 – Correlações - Parte 1
+
+Reino
+Unido
+
+SentGI
+
+-0.0857
+
+NegGI
+
+0.1114
+
+PosGI
+
+0.0147
+
+SentHE
+
+-0.0178
+
+Japão
+
+0.0812
+
+0.0263
+
+0.1193
+
+0.1230
+
+NegHE
+
+0.0634
+
+-0.1010
+
+PosHE
+
+0.0187
+
+SentLM -0.1223
+
+0.0921
+
+0.0930
+
+NegLM 0.1178
+
+-0.0490
+
+PosLM -0.0486
+
+IncLM
+
+0.0359
+
+0.1194
+
+0.0207
+
+∆St+1
+Suécia
+
+-0.0547
+
+0.1096
+
+0.0482
+
+0.0824
+
+-0.0322
+
+0.0850
+
+-0.0847
+
+0.0961
+
+-0.0041
+
+0.0152
+
+Coreia
+do Sul
+
+-0.1461
+
+0.0916
+
+-0.0741
+
+-0.0129
+
+0.0433
+
+0.0118
+
+-0.1749
+
+0.1809
+
+-0.0442
+
+-0.0059
+
+Canada
+
+-0.1112
+
+0.0811
+
+-0.0450
+
+0.0135
+
+0.0074
+
+0.0223
+
+-0.1007
+
+0.0904
+
+-0.0535
+
+-0.0390
+
+Nota: A tabela reporta os coeﬁcientes de correlação de Pearson entre cada variável de
+sentimento com a variável da variação da taxa de câmbio por país. Para todos os países da
+tabela a amostra completa, 449 observações de janeiro de 1980 a maio de 2017.
+
+12
+
+Tabela 5 – Correlações - Parte 2
+
+Dinamarca
+
+Noruega
+
+-0.0208
+
+-0.0653
+
+SentGI
+
+NegGI
+
+PosGI
+
+SentHE
+
+0.0667
+
+0.0436
+
+0.1558
+
+NegHE
+
+-0.0795
+
+PosHE
+
+0.1485
+
+SentLM
+
+-0.0151
+
+NegLM
+
+PosLM
+
+IncLM
+
+0.0405
+
+0.0466
+
+0.0127
+
+0.1240
+
+0.0506
+
+0.1013
+
+-0.0255
+
+0.1138
+
+-0.0489
+
+0.0757
+
+0.0387
+
+0.0569
+
+∆St+1
+Brasil
+
+0.0677
+
+-0.3358
+
+-0.2706
+
+-0.4434
+
+0.1512
+
+-0.4770
+
+-0.0482
+
+-0.2107
+
+-0.4854
+
+-0.4454
+
+México
+
+0.0916
+
+-0.0426
+
+0.0616
+
+-0.0734
+
+0.1194
+
+-0.0160
+
+-0.1454
+
+0.1610
+
+-0.0153
+
+-0.0141
+
+Rússia
+
+0.0474
+
+-0.172
+
+-0.1041
+
+-0.5468
+
+0.5497
+
+-0.1552
+
+-0.1184
+
+0.1093
+
+0.0209
+
+-0.1498
+
+Nota: A tabela reporta os coeﬁcientes de correlação de Pearson entre cada variável de sentimento
+com a variável da taxa de câmbio por país. Para Dinamarca, Noruega e México a amostra é
+completa, 449 observações de janeiro de 1980 a maio de 2017, já para o Brasil e Rússia, são
+221 e 268 observações, de janeiro de 1999 a maio de 2019 e setembro de 1993 a maio de 2019,
+respectivamente.
+
+13
+
+Tabela 6 – Resultados das predições com sentimento das notícias e regra de Taylor ampliada - Parte 1
+
+Modelo
+
+(Sent + Neg)GI
+
+(Sent + Neg)HE
+
+(Sent + Neg)LM
+
+(Sent + Inc)LM
+
+Variáveis de sentimento
+
+Reino Unido
+
+Japão
+
+Suécia
+
+1
+4
+
+Coreia do Sul
+
+Canada
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+0.3216
+0.0252∗∗
+
+0.8102
+0.1604
+
+0.8122
+0.0231∗∗
+
+0.4902
+0.0422∗∗
+
+0.5601
+0.0495∗∗
+
+0.4863
+0.2099
+
+0.9263
+0.0661∗
+
+0.4808
+0.1274
+
+0.8335
+0.1110
+
+0.4402
+0.7863
+
+0.6064
+0.0469∗∗
+
+0.8072
+0.0544∗
+
+0.6089
+0.0577∗
+
+0.8297
+0.0548∗
+
+0.9301
+0.1655
+
+0.5709
+0.0252∗∗
+
+0.5466
+0.3030
+
+0.6965
+0.0961∗
+
+0.9799
+0.0088∗∗∗
+
+0.8552
+0.2727
+
+Nota: A tabela reporta os p-valores dos testes realizados das predições uma passo à frente utilizando janela móvel. Para as linhas
+identiﬁcadas com "S"na coluna modelo, foi aplicado o teste DM comparando a performance do modelo só com sentimento contra a
+regra de Taylor convencional, a hipótese nula é de igualdade entre as performances e a hipótese alternativa inicialmente é especiﬁcada
+diferença, quando indicado que as performances são diferentes as hipóteses alternativas de superioridade e inferioridade são testadas
+e reportadas com a indicação se o modelo com só com sentimento é superior("mais") ou inferior("menos") em performance em
+relação à regra de Taylor convencional. Já para as linhas identiﬁcadas com "T.R.A."na coluna modelo, foi aplicado o teste CW para
+comparar a performance do modelo da regra de Taylor ampliada em relação ao convencional, onde a hipótese nula é de igualdade
+enquanto a hipótese alternativa é de superioridade da performance da regra de Taylor ampliada. Para o Reino Unido, Coreia do Sul e
+Canada a amostra é completa (449 observações) iniciando em janeiro de 1980, devido a dados faltantes, o Japão e Suécia inciam,
+respectivamente, em agosto de 1985 e dezembro de 1996, com todas as amostras indo até maio de 2017.
+
+Tabela 7 – Resultados das predições com sentimento das notícias e regra de Taylor ampliada - Parte 2
+
+Método
+
+(Sent + Neg)GI
+
+(Sent + Neg)HE
+
+(Sent + Neg)LM
+
+(Sent + Inc)LM
+
+Variáveis de sentimento
+
+Dinamarca
+
+Noruega
+
+Brasil
+
+México
+
+Rússia
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+S
+
+T.R.A.
+
+1
+5
+
+0.3108
+0.0015∗∗∗
+
+0.0110∗∗
+
+0.0055∗∗∗(mais)
+
+0.0103∗∗
+
+0.2689
+0.6918
+
+0.514
+0.0069∗∗∗
+
+0.6127
+
+0.5976
+
+0.6503
+0.9434
+
+0.0618∗
+
+0.0309∗∗(menos)
+
+0.4052
+
+0.0516∗
+
+0.0258∗∗(menos)
+
+0.7293
+
+0.4332
+0.5432
+
+0.5949
+0.3829
+
+0.7425
+0.0105∗∗
+
+0.2383
+
+0.2215
+
+0.7686
+0.8977
+
+0.1480
+
+0.4074
+
+0.5843
+0.1678
+
+0.5121
+0.0511∗
+
+0.1832
+
+0.5776
+
+0.6197
+0.9696
+
+0.1813
+
+0.2845
+
+0.1836
+0.4273
+
+Nota: A tabela reporta os p-valores dos testes realizados das predições uma passo à frente utilizando janela móvel. Para as linhas
+identiﬁcadas com "S"na coluna modelo, foi aplicado o teste DM comparando a performance do modelo só com sentimento contra a
+regra de Taylor convencional, a hipótese nula é de igualdade entre as performances e a hipótese alternativa inicialmente é especiﬁcada
+diferença, quando indicado que as performances são diferentes as hipóteses alternativas de superioridade e inferioridade são testadas
+e reportadas com a indicação se o modelo com só com sentimento é superior("mais") ou inferior("menos") em performance em
+relação à regra de Taylor convencional. Já para as linhas identiﬁcadas com "T.R.A."na coluna modelo, foi aplicado o teste CW
+para comparar a performance do modelo da regra de Taylor ampliada em relação ao convencional, onde a hipótese nula é de
+igualdade enquanto a hipótese alternativa é de superioridade da performance da regra de Taylor ampliada. Para a Noruega e México
+a amostra é completa (449 observações) iniciando em janeiro de 1980, devido a dados faltantes, a Dinamarca, Brasil e Rússia inciam,
+respectivamente, em fevereiro de 1987, janeiro de 1999 e fevereiro de 1997, com todas as amostras indo até maio de 2017.
+
+4 Conclusões
+
+Com base nos resultados demonstrados na seção anterior podemos tirar algumas con-
+clusões gerais para o curto prazo, dado que os resultados observados são de estimações um
+passo à frente. A primeira é que encontramos evidências de que os sentimentos das notícias
+ﬁnanceiras, mesmo construídos por diferentes dicionários, têm poder preditivo fora da amostra
+sobre a variação da taxa de câmbio para todos os países analisados. A segunda é que os modelos
+só com sentimentos das notícias têm performances estatisticamente iguais à regra de Taylor
+convencional para 9 dos 10 países. E, por último, é que algumas especiﬁcações da regra ampliada
+com sentimentos das notícias produziram performances superiores na predição fora da amostra
+da variação da taxa de câmbio, isso em relação à performance gerada pela versão convencional
+da regra de Taylor, conclusões estas assegurando 5% de signiﬁcância.
+
+Referências
+
+BULUT, L. Google trends and the forecasting performance of exchange rate models. Journal of
+Forecasting, Wiley Online Library, v. 37, n. 3, p. 303–315, 2018.
+CAPORALE, G. M.; SPAGNOLO, F.; SPAGNOLO, N. Macro news and exchange rates in the
+brics. Finance Research Letters, Elsevier, v. 21, p. 140–143, 2017.
+CAPORALE, G. M.; SPAGNOLO, F.; SPAGNOLO, N. Exchange rates and macro news in
+emerging markets. Research in International Business and Finance, Elsevier, v. 46, p. 516–527,
+2018.
+
+CARRIERO, A.; KAPETANIOS, G.; MARCELLINO, M. Forecasting exchange rates with a
+large bayesian var. International Journal of Forecasting, Elsevier, v. 25, n. 2, p. 400–417, 2009.
+CLARIDA, R.; GALI, J.; GERTLER, M. Monetary policy rules in practice: some international
+evidence. european economic review, Elsevier, v. 42, n. 6, p. 1033–1067, 1998.
+CLARK, T. E.; WEST, K. D. Using out-of-sample mean squared prediction errors to test the
+martingale diﬀerence hypothesis. Journal of econometrics, Elsevier, v. 135, n. 1-2, p. 155–186,
+2006.
+
+CLARK, T. E.; WEST, K. D. Approximately normal tests for equal predictive accuracy in nested
+models. Journal of econometrics, Elsevier, v. 138, n. 1, p. 291–311, 2007.
+COGLEY, T.; PRIMICERI, G. E.; SARGENT, T. J. Inﬂation-gap persistence in the us. American
+Economic Journal: Macroeconomics, v. 2, n. 1, p. 43–69, 2010.
+DIEBOLD, F. X.; MARIANO, R. S. Comparing predictive accuracy. Journal of Business &
+economic statistics, Taylor & Francis, v. 13, n. 3, p. 253–263, 1995.
+EHRMANN, M.; FRATZSCHER, M. Exchange rates and fundamentals: new evidence from
+real-time data. Journal of International Money and Finance, Elsevier, v. 24, n. 2, p. 317–341,
+2005.
+
+16
+
+ENGELBERG, J. E.; REED, A. V.; RINGGENBERG, M. C. How are shorts informed?: Short
+sellers, news, and information processing. Journal of Financial Economics, Elsevier, v. 105, n. 2,
+p. 260–278, 2012.
+FERGUSON, N. J. et al. Media content and stock returns: The predictive power of press.
+Multinational Finance Journal, v. 19, n. 1, p. 1–31, 2015.
+FERRIS, S. P.; HAO, Q.; LIAO, M.-Y. The eﬀect of issuer conservatism on ipo pricing and
+performance. Review of Finance, Oxford University Press, v. 17, n. 3, p. 993–1027, 2012.
+FEUERRIEGEL, S.; WOLFF, G.; NEUMANN, D. News sentiment and overshooting of
+exchange rates. Applied Economics, Taylor & Francis, v. 48, n. 44, p. 4238–4250, 2016.
+GALATI, G.; HO, C. Macroeconomic news and the euro/dollar exchange rate. Economic notes,
+Wiley Online Library, v. 32, n. 3, p. 371–398, 2003.
+GARCIA, D. Sentiment during recessions. The Journal of Finance, Wiley Online Library, v. 68,
+n. 3, p. 1267–1300, 2013.
+HENRY, E. Market reaction to verbal components of earnings press releases: Event study using a
+predictive algorithm. Journal of Emerging Technologies in Accounting, v. 3, n. 1, p. 1–19, 2006.
+HENRY, E. Are investors inﬂuenced by how earnings press releases are written? The Journal of
+Business Communication (1973), SAGE Publications Sage CA: Los Angeles, CA, v. 45, n. 4, p.
+363–407, 2008.
+HENRY, E.; LEONE, A. J. Measuring qualitative information in capital markets research.
+Available at SSRN 1470807, 2009.
+HENRY, E.; LEONE, A. J. Measuring qualitative information in capital markets research:
+Comparison of alternative methodologies to measure disclosure tone. The Accounting Review,
+American Accounting Association, v. 91, n. 1, p. 153–178, 2015.
+HODRICK, R. J.; PRESCOTT, E. C. Postwar us business cycles: an empirical investigation.
+Journal of Money, credit, and Banking, JSTOR, p. 1–16, 1997.
+KEARNEY, C.; LIU, S. Textual sentiment in ﬁnance: A survey of methods and models.
+International Review of Financial Analysis, Elsevier, v. 33, p. 171–185, 2014.
+LIU, B.; MCCONNELL, J. J. The role of the media in corporate governance: Do the media
+inﬂuence managers’ capital allocation decisions? Journal of Financial Economics, Elsevier,
+v. 110, n. 1, p. 1–17, 2013.
+LOUGHRAN, T.; MCDONALD, B. When is a liability not a liability? textual analysis,
+dictionaries, and 10-ks. The Journal of Finance, Wiley Online Library, v. 66, n. 1, p. 35–65,
+2011.
+LOUGHRAN, T.; MCDONALD, B. Ipo ﬁrst-day returns, oﬀer price revisions, volatility, and
+form s-1 language. Journal of Financial Economics, Elsevier, v. 109, n. 2, p. 307–326, 2013.
+MEESE, R.; ROGOFF, K. The out-of-sample failure of empirical exchange rate models:
+sampling error or misspeciﬁcation? In: Exchange rates and international macroeconomics. [S.l.]:
+University of Chicago Press, 1983. p. 67–112.
+
+17
+
+MEESE, R. A.; ROGOFF, K. Empirical exchange rate models of the seventies: Do they ﬁt out of
+sample? Journal of international economics, Elsevier, v. 14, n. 1-2, p. 3–24, 1983.
+MOLODTSOVA, T.; PAPELL, D. H. Out-of-sample exchange rate predictability with taylor rule
+fundamentals. Journal of international economics, Elsevier, v. 77, n. 2, p. 167–180, 2009.
+MORALES-ARIAS, L.; MOURA, G. V. Adaptive forecasting of exchange rates with panel data.
+International Journal of Forecasting, Elsevier, v. 29, n. 3, p. 493–509, 2013.
+NIKOLSKO-RZHEVSKYY, A.; PRODAN, R. Markov switching and exchange rate predictability.
+International Journal of Forecasting, Elsevier, v. 28, n. 2, p. 353–365, 2012.
+PRICE, S. M. et al. Earnings conference calls and stock returns: The incremental informativeness
+of textual tone. Journal of Banking & Finance, Elsevier, v. 36, n. 4, p. 992–1011, 2012.
+SHAPIRO, A. H.; SUDHOF, M.; WILSON, D. Measuring news sentiment. In: FEDERAL
+RESERVE BANK OF SAN FRANCISCO. [S.l.], 2018.
+
+STONE, P. J.; DUNPHY, D. C.; SMITH, M. S. The general inquirer: A computer approach to
+content analysis. MIT press, 1966.
+TAYLOR, J. B. Discretion versus policy rules in practice. In: ELSEVIER. Carnegie-Rochester
+conference series on public policy. [S.l.], 1993. v. 39, p. 195–214.
+TETLOCK, P. C. Giving content to investor sentiment: The role of media in the stock market.
+The Journal of ﬁnance, Wiley Online Library, v. 62, n. 3, p. 1139–1168, 2007.
+TETLOCK, P. C.; SAAR-TSECHANSKY, M.; MACSKASSY, S. More than words: Quantifying
+language to measure ﬁrms’ fundamentals. The Journal of Finance, Wiley Online Library, v. 63,
+n. 3, p. 1437–1467, 2008.
+
+WANG, R.; MORLEY, B.; ORDÓÑEZ, J. The taylor rule, wealth eﬀects and the exchange rate.
+Review of International Economics, Wiley Online Library, v. 24, n. 2, p. 282–301, 2016.
+
+18
+
+APÊNDICE A – Fontes dos dados
+
+Tabela 8 – Fontes dos dados
+
+Fonte
+
+Codigo
+
+Taxa de câmbio nominal - Todos os países
+
+IFS
+
+ENDA_XDC_USD_RATE
+
+Taxa de juros de curto prazo - Estados Unidos
+Taxa de juros de curto prazo - Reino Unido
+Taxa de juros de curto prazo - Japão
+Taxa de juros de curto prazo - Suécia
+Taxa de juros de curto prazo - Coreia do Sul
+Taxa de juros de curto prazo - Canada
+Taxa de juros de curto prazo - Dinamarca
+Taxa de juros de curto prazo - Noruega
+Taxa de juros de curto prazo - Brasil
+Taxa de juros de curto prazo - México
+Taxa de juros de curto prazo - Rússia
+
+Produção industrial com ajuste sazonal - Estados Unidos
+Produção industrial com ajuste sazonal - Reino Unido
+Produção industrial com ajuste sazonal - Japão
+Produção industrial com ajuste sazonal - Suécia
+Produção industrial com ajuste sazonal - Coreia do Sul
+Produção industrial com ajuste sazonal - Canada
+Produção industrial com ajuste sazonal - Dinamarca
+Produção industrial com ajuste sazonal - Noruega
+Produção industrial com ajuste sazonal - Brasil
+Produção industrial com ajuste sazonal - México
+Produção industrial com ajuste sazonal - Rússia
+
+Índice de preços ao consumidor - Todos os países
+
+Taxa real de câmbio - Todos os países, exceto a
+Coreia do Sul devido a ausência de dados.
+
+Notícias ﬁnanceiras
+(The New York Times e The wall Street Journal)
+
+IFS
+IFS
+IFS
+IFS
+IFS
+OCDE
+OCDE
+OCDE
+IFS
+IFS
+OCDE
+
+IFS
+IFS
+IFS
+IFS
+IFS
+OCDE
+OCDE
+OCDE
+IFS
+IFS
+OCDE
+
+IFS
+
+IFS
+
+Factiva
+
+FIMM_PA
+FIMM_PA
+FIMM_PA
+FIMM_PA
+FIMM_PA
+
+FIMM_PA
+FIMM_PA
+
+AIP_SA_IX
+AIP_SA_IX
+AIP_SA_IX
+AIP_SA_IX
+AIP_SA_IX
+
+AIP_SA_IX
+AIP_SA_IX
+
+PCPI_IX
+
+EREER_IX
+
+19
+
+APÊNDICE B – Séries de sentimento das notícias
+
+Figura 1 – Sentimentos gerais por dicionários
+
+Figura 2 – Sentimentos negativos por dicionários
+
+Agradecimentos
+
+Agradecemos aos professores Luiz Lima, Lucas Godeiro, Cássio Besarria e a diversos
+membros do PPGE/UFPB pelas contribuições pertinentes para o desenvolvimento deste trabalho.
+O presente trabalho foi realizado com apoio da Coordenação de Aperfeiçoamento de
+
+Pessoal de Nível Superior – Brasil (CAPES) – Código de Financiamento 001.
+
+20
+
+1984198919941999200420092014DATE0.060.040.020.000.020.040.060.08SentimentGISentimentHESentimentLM1984198919941999200420092014DATE0.020.040.060.080.100.12NegativityGINegativityHENegativityLM

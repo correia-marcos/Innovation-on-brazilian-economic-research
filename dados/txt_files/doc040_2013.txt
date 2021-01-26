@@ -1,0 +1,851 @@
+     REAVALIANDO A RELAÇÃO ENTRE INDEPENDÊNCIA DO BANCO
+    CENTRAL E CUSTOS DE DESINFLAÇÃO: UMA ANÁLISE DE VIÉS DE
+                           SELEÇÃO
+
+                               Danilo Passos ∗                 Pedro Garcia Duarte †
+
+
+                                                      RESUMO
+    A literatura empírica que busca investigar os efeitos da independência do banco central sobre os custos
+de desinflação encontra, quase que em sua totalidade, uma relação positiva entre estas duas variáveis, indi-
+cando que episódios desinflacionários mais custosos estão relacionados a países com bancos centrais mais
+independentes, contrariando a teoria novo clássica, que atribui um prêmio para a credibilidade da política
+monetária em termos de custos de desinflação. No entanto, a maioria desses trabalhos limita-se à utiliza-
+ção da metodologia de Mínimos Quadrados Ordinários, método incapaz de controlar para a existência de
+algum tipo de endogeneidade ou viés de seleção na relação de interesse. Assim, o presente trabalho busca
+complementar a literatura existente empregando os métodos baseados em propensity score, metodologia
+econométrica capaz de controlar para a possível existência de viés de seleção na relação entre independên-
+cia do banco central e custos de desinflação. Os resultados obtidos indicam que, quando as metodologias
+que lidam com a existência de viés de seleção são utilizadas, encontra-se um efeito insignificante do grau
+de independência do banco central sobre os custos de desinflação. Portanto, os resultados aqui encontra-
+dos sugerem que um país pode conceder maior independência a seu banco central, de modo a priorizar o
+controle da inflação, sem trazer custos significativos adicionais à sua atividade econômica.
+    Palavras Chave: independência do banco central, custos de desinflação, política monetária
+                                                     ABSTRACT
+    The majority of the empirical literature about the effects of central bank independence on disinflation
+costs found a positive relationship between these variables, meaning that more costly disinflationary episo-
+des are related to countries with more independent central banks. This result contradicts the new classical
+theory, which states that there is a credibility premium in terms of disinflation costs for monetary policy.
+However, the dominant econometric method used for most of these works is Ordinary Least Squares, a
+technique incapable of controlling for the existence of endogeneity or selection bias. In that sense, the
+present work aims to contribute to the existing literature by aplying models based on propensity score,
+an econometric method capable of dealing with the possible existence of selection bias in the relationship
+between central bank independence and disinflation costs. The results obtained indicate that, when the
+propensity score is used, a statistically insignificant effect of the central bank independence on disinflation
+costs is found. Therefore, these results suggest that a country is capable of granting more independence
+to its central bank, in order to reduce inflation, without facing additional costs in terms of its economic
+activity.
+    Keywords: central bank independence, disinflation costs, monetary policy
+
+   Área ANPEC: 4 - Macroeconomia, Economia Monetária e Finanças
+
+   Classificação JEL: E02, E52, E58
+  ∗ Mestre   em Teoria Econômica, Departamento de Economia, Universidade de São Paulo (danilopassos@usp.br)
+  † Professor, Departamento de Economia, Universidade de São Paulo (pgduarte@usp.br)
+
+
+                                                           1
+1     Introdução
+    A literatura sobre independência do banco central, tanto teórica quanto empírica, é bastante extensa e
+passou a ganhar relevância expressiva durante as décadas de 1970 e 1980, quando a maioria das princi-
+pais economias industriais passou por momentos de inflação alta e sustentada 1 . A partir deste período, a
+independência do banco central como ferramenta para conduzir a inflação a patamares mais baixos e ga-
+rantir crescimento econômico no longo-prazo passou a ser frequentemente discutida entre acadêmicos e
+formuladores de política econômica 2 . Argumenta-se que um banco central mais independente e, portanto,
+menos suscetível a pressões do governo para praticar uma política monetária mais expansionista, seria ca-
+paz de: reduzir o patamar inflacionário de seu país, pois conseguiria se comprometer com maior facilidade
+à estabilidade de preços; promover maior crescimento, ao reduzir a inflação e tornar a política monetária
+mais previsível, diminuindo assim o prêmio de risco da taxa de juros; diminuir os custos de desinflação,
+pois maior independência aumentaria a credibilidade do banco central, fazendo com que as expectativas de
+inflação dos agentes convergissem mais rapidamente para a meta pretendida pelo banco, reduzindo assim
+os custos associados ao processo desinflacionário 3 .
+    Os trabalhos que buscaram investigar se esses benefícios poderiam ser observados empiricamente cons-
+tataram que um maior grau de independência diminui tanto o nível quanto a variabilidade da inflação e que
+não existe nenhuma correlação significante entre independência do banco central e variáveis ligadas à ativi-
+dade econômica de um país, indicando então que bancos centrais mais autônomos seriam capazes de levar
+a economia para um equilíbrio de menor inflação sem contrapartidas negativas em relação ao crescimento
+econômico 4 .
+    Quanto aos custos de desinflação, no entanto, os resultados encontrados pela maior parte da literatura
+empírica contradizem esta visão, apontando justamente para o efeito oposto ao esperado: bancos centrais
+mais independentes estão associados a maiores custos de desinflação. Como explicação para tal resultado,
+algumas idéias foram sugeridas: maior independência do banco central, ao reduzir a inflação e torná-la
+menos volátil, induziria os agentes a formarem suas expectativas de forma mais adaptativa, o que faria as
+expectativas de inflação reagirem mais vagarosamente diante de um plano de desinflação anunciado pelo
+banco central independente, o que por sua vez levaria a maiores custos de desinflação. Outra possível
+explicação está relacionada ao fato de que a estabilidade inflacionária proporcionada por um banco central
+mais independente permitiria uma extensão dos prazos para reajustes de contratos indexados. Essa maior
+inércia nominal torna mais fortes os efeitos reais sobre a economia de uma desinflação não antecipada,
+agravando assim os custos de desinflação 5 .
+    A maioria dos trabalhos que analisa empiricamente a relação entre independência do banco central e
+custos de desinflação possui, contudo, uma importante limitação. Países distintos podem possuir diferentes
+níveis de aversão à inflação e isso afetaria não só a escolha do grau de independência dos respectivos
+bancos centrais, mas também o nível inicial de inflação a partir do qual um país estaria disposto a iniciar um
+processo desinflacionário, o que por sua vez impacta na magnitude dos custos de desinflação, caracterizando
+assim um caso de viés de seleção. Logo, os resultados obtidos pela maioria dos trabalhos empíricos sobre o
+tema podem estar viesados, pois os mesmos restringem-se a estimações pelo método de Mínimos Quadrados
+Ordinários (MQO), que não controlam para a existência de algum tipo de endogeneidade ou viés de seleção
+entre as variáveis de interesse.
+    O presente trabalho visa então complementar a literatura referente à relação entre independência do
+banco central e custos de desinflação fazendo uso de uma metodologia econométrica capaz de controlar
+    1 Walsh (2008).
+    2 Mishkin (2006) apresenta a evolução histórica do debate teórico sobre a condução da política monetária desde a década de
+1960, incluindo as discussões relacionadas à independência do banco central.
+   3 Eijffinger e Haan (1996) descrevem os resultados obtidos por diversos estudos que objetivam entender os determinantes da
+
+independência do banco central e o impacto da mesma sobre algumas variáveis macroeconômicas.
+   4 Ver Cukierman (1992) e Alesina e Summers (1993).
+   5 Maiores detalhes sobre as explicações que justificariam uma relação positiva entre independência do banco central e custos
+
+de desinflação encontram-se na próxima seção.
+
+
+                                                              2
+para um possível viés de seleção na relação de interesse. Para tentar expurgar esse potencial viés, o grau de
+independência do banco central é interpretado como um tratamento e são utilizados os métodos de avalia-
+ção de políticas baseados em propensity score, dentre eles, o propensity score generalizado, desenvolvido
+por Hirano e Imbens (2004), empregado quando a variável de tratamento é contínua, como é o caso da
+independência.
+    O trabalho divide-se então da seguinte forma: na segunda seção é apresentada uma revisão da literatura
+sobre independência do banco central e sua relação com os custos de desinflação; a seção 3 traz um maior
+detalhamento da metodologia econométrica aplicada neste trabalho e discute um possível mecanismo que
+causaria o viés de seleção na relação de interesse; na seção 4 são descritos os dados e variáveis utilizados
+no trabalho; os principais resultados encontrados estão expostos na seção 5 e, por fim, a seção final traz as
+conclusões obtidas.
+
+
+2     Revisão da Literatura
+2.1    Medidas de independência do banco central
+    Para verificar a validade empírica de todos os supostos benefícios atribuídos à instituição de um banco
+central independente, diversos autores se dedicaram a mensurar o grau de independência do banco central
+para um conjunto de países. Medir a independência, no entanto, não é uma tarefa fácil. A independência
+de fato depende não somente do que é prescrito em lei, mas também de diversos outros fatores, como
+acordos informais entre o banco e o governo, a qualidade do departamento de pesquisa do banco central
+e o perfil dos profissionais que exercem papéis chave no banco e em outros órgãos de política econômica,
+como o Tesouro. Devido à dificuldade de quantificar todos esses aspectos de maneira objetiva, a maioria
+dos esforços existentes para quantificar a independência focou nos seus aspectos legais.
+    Dentre os diversos trabalhos que calcularam índices para a independência do banco central, um dos
+mais utilizados é o elaborado por Cukierman (1992). O trabalho de Cukierman é mais amplo do que outros
+realizados previamente, pois calcula o índice de independência para um conjunto maior de países e também
+porque propõe medidas alternativas àquelas baseadas apenas na independência legal. O índice é calculado
+para 72 países, incluindo 23 nações desenvolvidas e 49 em desenvolvimento, para o período 1950-1989.
+        O índice de independência legal computado por Cukierman foi construído da seguinte maneira: em
+primeiro lugar, escolheu-se um número limitado de características legais relativamente precisas subjacentes
+aos bancos centrais; depois disso, para cada uma dessas características um determinado número é atribuído
+a cada banco central. Estas características podem ser divididas em quatro categorias:
+
+    1. Chief Executive Officer (CEO) - Variáveis que dizem respeito à contratação, demissão e período
+       de mandato do presidente ou executivo-chefe da instituição. São considerados mais independentes
+       aqueles bancos centrais em que o período de mandato do presidente é mais longo e/ou nos quais o
+       Executivo possui pouca autoridade legal para apontar ou demitir o presidente.
+    2. Policy Formulation (PF) - Variáveis relacionadas à autoridade do banco central para tomar a decisão
+       final em casos de conflito de interesse com o governo. Bancos centrais com maior autoridade para
+       formular a política monetária e para resistir a pressões do governo em casos de interesses conflitantes
+       são apontados como mais independentes.
+    3. Final Objectives (OBJ) - Variáveis que dizem respeito aos objetivos finais do banco central, que
+       estão descritos na sua missão. Um banco central cuja única meta é a estabilidade de preços é consi-
+       derado mais independente do que aqueles que possuem outros objetivos além do controle da inflação
+       (ou que sequer ambicionam estabilizá-la).
+    4. Limitations on lending (LL) - Variáveis relacionadas às restrições legais impostas ao banco cen-
+       tral em relação a empréstimos para o setor público, tais como limitações no volume e maturidade
+       dos empréstimos e extensão dos mesmos ao setor privado. As limitações são mais fortes quando:
+       determina-se um nível máximo de empréstimo para ser concedido (ao invés de uma porcentagem
+
+                                                      3
+       dos gastos do governo, por exemplo); são cobradas taxas mais próximas às vigentes no mercado;
+       os empréstimos possuem maturidades mais curtas; é menor o círculo de instituições autorizadas a
+       emprestar do banco central; é menor o poder do Executivo para decidir para quem e quanto o banco
+       central pode emprestar; e quando há leis que proíbem a aquisição de títulos do governo no mercado
+       primário pelo banco central. Quanto mais rígidas forem as limitações, mais independente é o banco
+       central.
+
+    Os quatro aspectos apresentados acima são representados por dezesseis variáveis, quantificadas através
+de uma escala entre 0 e 1, do menor para o maior nível possível de independência. Todas as variáveis
+analisadas e seus respectivos valores podem ser encontrados em Cukierman (1992). Como nem todas as
+leis dos diferentes países contêm todas as informações sobre todas as variáveis, muitas observações incom-
+pletas surgem. Para amenizar esse problema, Cukierman agregou, calculando uma média aritmética 6 , as
+dezesseis variáveis em oito e atribuiu a cada uma destas pesos diferentes para a composição do índice de in-
+dependência. Os pesos de cada variável foram eleitos de maneira arbitrária pelo autor, que buscou dar mais
+importância na composição do índice para os aspectos que julgava mais relevantes para a independência do
+banco central 7 . A tabela abaixo resume a agregação mencionada:
+
+              Tabela 1: Pesos utilizados na construção do índice de Independência Legal do BC
+
+                Variável Legal                                                                          Peso
+                ceo (contratação, demissão e período de mandato do presidente do BC)                    0,20
+                pf (resolução de conflitos entre governo e banco central)                               0,15
+                obj (objetivos finais do banco central)                                                 0,15
+                lla (limitações nos empréstimos - adiantamentos ao governo)                             0,15
+                lls (limitações nos empréstimos - securitização)                                        0,10
+                lls (limitações nos empréstimos - quem as decide?)                                      0,10
+                lwidth (limitações nos empréstimos - extensão)                                          0,05
+                lm (limitações nos empréstimos - outros aspectos)                                       0,10
+                                                                                                        1,00
+
+        Outros autores também se empenharam na construção de índices de independência do banco central,
+como Grilli et al. (1991), que também será utilizado nas estimações deste trabalho. No trabalho de Grilli
+et al. (1991), foram analisados 18 países da OCDE no período entre 1950 e 1989. O índice construído
+pelos autores reflete tanto a independência política quanto a independência econômica. A independência
+política é definida como a habilidade do banco central de selecionar os objetivos de sua política sem sofrer
+a interferência do governo. Esta medida é baseada em fatores tais como se o presidente do banco e os
+membros do comitê executivo são designados pelo governo, se membros do governo fazem parte do comitê
+executivo do banco central, se as decisões de política monetária requerem a aprovação do governo e se a
+estabilidade de preços é o objetivo explícito na legislação do banco central. Já a independência econômica
+se refere à habilidade de utilizar os instrumentos de política monetária sem restrições. A restrição mais
+comum imposta ao banco central é a extensão na qual o mesmo é obrigado a financiar o déficit do governo.
+Assim, a independência econômica se refere à facilidade do governo financiar seus déficits via crédito do
+banco central.
+    Os índices aqui mencionados foram amplamente utilizados pela literatura empírica que buscou avaliar
+os efeitos da independência do banco central sobre os custos de desinflação, cujos principais resultados são
+resumidos a seguir.
+   6 Com  exceção da variável de policy formulation, para a qual maior peso foi dado à questão ligada a resoluções de conflitos
+entre o banco central e o governo.
+   7 Nas estimações do presente trabalho, além do índice original de Cukierman (1992), serão utilizados índices baseados na
+
+reponderação dos componentes do indicador de Cukierman, na tentativa de comprovar a robustez dos resultados.
+
+
+                                                              4
+2.2     A relação entre independência do banco central e custos de desinflação
+    Dentre os diversos trabalhos presentes na literatura sobre as possíveis consequências econômicas da
+independência do banco central 8 , parte destes, como veremos a seguir, concentrou-se em verificar a rela-
+ção da independência com os custos de desinflação, que correspondem ao trade-off de curto-prazo entre
+desemprego e inflação, representado na curva de Phillips. Esta relação é particularmente importante no
+campo da Economia Política, pois indica qual seria a melhor opção para um governo que necessita levar
+sua economia para patamares mais baixos de inflação, mas que deseja fazer isso da maneira menos custosa
+possível em termos de produto e emprego, com a finalidade de não gerar grandes insatisfações populares e,
+dessa forma, não prejudicar suas chances de se manter no poder em futuras eleições.
+    Assim, para fazer uma análise mais precisa dos custos inerentes à redução da inflação, torna-se neces-
+sária uma medida que pudesse representá-los de maneira apropriada. A forma mais comum na literatura
+de mensurar esses custos se dá através do cálculo da taxa de sacrifício, a razão entre a perda percentual do
+produto decorrente da desinflação e a amplitude desta. Genericamente, podemos definir:
+                                                                            Y −Y ∗
+                                                                 ∑τ t ∗
+                                           taxa de sacrifício = − t=0 Y                                                    (1)
+                                                                  π0 − πτ
+em que:
+
+    • t = 0 e t = τ são os instantes de início e final, respectivamente, da desinflação;
+    • Yt é o produto no instante t e Y ∗ é o produto potencial da economia;
+    • π0 e πτ são as taxas de inflação nos instantes t = 0 e t = τ, respectivamente.
+
+     Muitos autores se propuseram a calcular essa taxa para um conjunto de países que passaram por mo-
+mentos de desinflação, utilizando metodologias variadas 9 . Os métodos mais utilizados são aqueles deno-
+minados ad hoc, nos quais fica a cargo do autor tanto estabelecer as regras para identificar os períodos de
+início e fim da desinflação como também para calcular o produto potencial. Com estas regras em mãos, os
+autores identificam nos dados os períodos de desinflação de cada país e aplicam a fórmula citada anterior-
+mente, chegando assim à taxa de sacrifício. A maioria dos trabalhos segue a metodologia de Ball (1994)
+que consiste em definir um“pico"como um ponto no tempo no qual a média móvel de nove períodos da
+inflação é maior do que nos quatro períodos anteriores e posteriores e um “vale"como um ponto no qual
+esta média é inferior aos últimos quatro trimestres, anteriores e posteriores. Os episódios de desinflação
+seriam aqueles nos quais a diferença da taxa de inflação entre um “pico"e um “vale"fosse superior a 2%,
+sendo que foram descartados processos nos quais a inflação inicial estivesse acima de 20%. Para o cômputo
+do produto potencial, Ball (1994) parte da hipótese de que o produto efetivo é igual ao potencial no início
+do período de desinflação e que o produto efetivo retorna ao seu nível potencial quatro trimestres após o fim
+do processo desinflacionário; entre estes dois pontos, o produto potencial cresce (ou decresce) de maneira
+log-linear.
+     O fato de desinflações causarem perdas de produto é, para a maioria dos autores, uma regra com poucas
+exceções. A explicação novo clássica para isso está fortemente atrelada à questão da credibilidade. Sargent
+(1983) argumenta que um banco central com alta credibilidade é capaz de desinflacionar a economia sem
+grandes custos simplesmente anunciando ao público um plano de redução da inflação que seja convincente,
+facilmente compreensível e de improvável descumprimento. Sargent critica então os planos graduais de
+contenção da inflação, pois estes dariam margem à especulação sobre desvios no futuro da política monetá-
+ria restritiva, o que diminuiria a credibilidade da autoridade monetária, impondo maiores custos ao processo
+desinflacionário.
+   8 Cukierman   (1992), Grilli et al. (1991) e Alesina e Summers (1993) buscaram verificar as relações entre independência do
+banco central e o nível e a variabilidade da inflação. Os trabalhos de Grilli et al. (1991) e Alesina e Summers (1993) também
+analisaram a relação entre a independência e variáveis relacionadas ao crescimento econômico.
+   9 Ball (1994), Zhang (2005) e Hofstetter (2008) empregaram métodos ad hoc para calcular a taxa de sacrifício. Já Cecchetti e
+
+Rich (1999) estimam a taxa de sacrifício utilizando uma metodologia de VAR estrutural.
+
+
+                                                              5
+    Em contrapartida, Fischer (1984) e Taylor (1983) apresentam uma opinião diferente de Sargent (1983).
+Ambos enfatizaram a importância da presença de rigidez nominal, ou seja, o fato de que muitos preços
+e salários são estabelecidos em termos nominais e não se reajustam rapidamente quando há mudanças na
+política monetária. Fischer argumentava que, ainda que o banco central possuísse alta credibilidade, uma
+política desinflacionária levada a cabo muito rapidamente levaria a um desemprego mais alto. Mesmo que
+a autoridade monetária consiga convencer trabalhadores e firmas que será capaz de cumprir a política de-
+sinflacionária proposta, os contratos salariais refletirão expectativas de inflação que vigoravam antes do
+estabelecimento desta política e, assim, a inflação corrente já seria composta pelos acordos de salário vi-
+gentes, não podendo ser reduzida de maneira instantânea e sem custos. Taylor destacou o fato de que os
+contratos salariais não são todos estabelecidos no mesmo instante, mas sim escalonados. Se os trabalhado-
+res se preocupam sempre com os salários relativos, desejarão salários não muito diferentes dos existentes
+nos contratos vigentes e, devido a essa estrutura, uma política monetária restritiva implementada de forma
+rápida não levaria a uma queda igualmente veloz da inflação. Ao invés disso, esta política reduziria os
+saldos monetários reais, desencadeando assim uma recessão e um aumento no desemprego. Estes auto-
+res recomendam então que as desinflações sejam executadas de maneira lenta e gradual, a fim de que os
+trabalhadores tenham tempo suficiente para incorporar as mudanças da política em seus contratos salariais.
+    Dessa forma, partindo da hipótese que bancos centrais mais independentes promovem desinflações com
+maior credibilidade e mais rapidamente, as conclusões de Sargent e de Fischer/Taylor implicam em visões
+diferentes sobre a relação entre independência do banco central e custos de desinflação. Para Sargent, mais
+independência (ou seja, mais credibilidade) reduz a taxa de sacrifício, enquanto para Fischer e Taylor, mais
+independência (ou seja, desinflações mais rápidas) pode aumentar a taxa de sacrifício.
+    Motivados por esse debate teórico, muitos autores se dedicaram a verificar empiricamente quais os
+efeitos de uma maior independência do banco central sobre os custos de desinflação medidos pela taxa de
+sacrifício. Um conjunto de importantes artigos empíricos sobre esta relação são resumidos na Tabela 2.
+
+Tabela 2: Artigos empíricos que verificam a relação entre independência do banco central e taxa de sacrifí-
+cio
+
+                  Artigo            Relação         Qtde.      Período         Metodologia
+                                   Encontrada       Países
+              Gärtner (1997)        Positiva e        9      1960- 1988            MQO
+                                   Significante
+              Fischer (1996)        Positiva e        9      1960- 1988            MQO
+                                   Significante
+              Jordan (1997)         Positiva e        19     1960- 1992            MQO
+                                   Significante
+             Baltensperger e       Negativa e         19     1970- 1996       Painel - Efeitos
+             Kugler (2000)         Significante                              Aleatórios (FGLS)
+              Daniels et al.        Positiva e        19     1960- 1990            MQO
+                 (2005)            Significante
+             Katayama et al.        Positiva e        18     1960- 1998            MQO
+                 (2011)            Significante
+
+    É possível notar, pela tabela, que a maioria dos artigos encontra uma relação positiva entre as variáveis
+de interesse: países com bancos centrais mais independentes apresentam maiores taxas de sacrifício, ou
+seja, uma relação positiva entre as variáveis, contrariando a visão de Sargent de que haveria um prêmio
+para credibilidade em termos de custos de desinflação. Em todos os artigos analisados, os resultados são
+robustos à especificação econométrica empregada e a trocas do índice de independência utilizado.
+    Devido à robustez dos resultados obtidos pela literatura, os autores passaram então a buscar razões que
+pudessem explicar a relação positiva entre independência e custos de desinflação. Fischer (1996) afirma
+
+                                                     6
+que isso ocorre pois bancos centrais mais independentes deparam-se com Curvas de Phillips mais planas, o
+que intensifica o trade-off entre inflação e atividade. No entanto, os resultados de Gärtner (1997) indicam
+que essa talvez não seja uma explicação razoável, pois variáveis tais como flexibilidade do mercado de tra-
+balho e grau de abertura econômica, que influenciam a inclinação da Curva de Phillips, não se mostraram
+significantes na determinação da taxa de sacrifício. Gärtner (1997) aponta como possível explicação para
+os resultados obtidos um fenômeno que o mesmo denomina como formação endógena de expectativas de
+inflação: quanto mais variável a taxa de inflação, mais as pessoas estão preparadas para substituir expec-
+tativas adaptativas por processos mais racionais de formação de expectativas, que levam em conta outras
+variáveis além da própria inflação. Um banco central mais independente, ao estabilizar a inflação, acaba
+por incentivar os agentes a formar expectativas adaptativamente e, assim, os mesmos não ajustam instan-
+taneamente suas expectativas para baixo diante de um plano de desinflação anunciado pelo banco central
+independente, incorrendo assim em maiores taxas de sacrifício.
+    Baltensperger e Kugler (2000), por sua vez, argumentam que a relação entre independência do banco
+central e taxa de sacrifício poderia refletir custos marginais crescentes de desinflação, pois quanto mais
+independentes os bancos centrais, mais inclinados os mesmos estarão a iniciar desinflações ainda que o
+nível de inflação da economia não esteja tão alto. Como a inflação inicial está negativamente relacionada
+com a magnitude da taxa de sacrifício 10 , isso fará com que bancos centrais mais independentes incorram em
+maiores custos de desinflação. O trabalho de Baltensperger e Kugler (2000) é um dos poucos que encontra
+resultados diferentes do restante da literatura sobre o tema. Os autores criticam os trabalhos anteriores, pois
+os mesmos interpretam qualquer episódio desinflacionário como uma mudança permanentes no patamar
+de inflação. Se nenhuma diferenciação é feita entre a natureza da desinflação, isso implicaria no fato
+de que os bancos centrais agem da mesma forma independentemente de as mudanças na inflação serem
+permanentes ou temporárias, o que não seria razoável. Os autores controlam então para os períodos em que
+as séries de inflação do países analisados apresentaram quebras estruturais e constatam que, controlando
+para essas datas, os efeitos encontrados da independência do banco central sobre a taxa de sacrifício passam
+a apresentar sinal negativo.
+    Ao realizar uma análise breve da Tabela 2 é possível notar que estes artigos, que pouco diferem da
+maioria dos artigos empíricos sobre o tema, utilizam como metodologia econométrica somente regressões
+lineares através de Mínimos Quadrados Ordinários (MQO) 11 . Assim, caso exista algum tipo de endoge-
+neidade ou viés de seleção na relação que se deseja estimar, os resultados obtidos via MQO poderão estar
+viesados. O problema de viés de seleção ocorre quando as razões pelas quais um indivíduo participa de um
+determinado tratamento são correlacionadas com os resultados do mesmo, ou seja, quando o tratamento não
+é exógeno. Assim, ao assumir que o grau de independência do banco central corresponde a um tratamento,
+a não ser que o mesmo seja distribuído de maneira aleatória entre os países (o que não parece plausível), as
+estimativas de MQO serão potencialmente viesadas. Em outras palavras, se existem variáveis que exercem
+influência tanto sobre a decisão do grau de independência quanto sobre a taxa de sacrifício, esta relação
+pode estar sujeita ao viés de seleção e, por isso, deve ser estimada por um método alternativo ao MQO.
+    O presente trabalho sugere que se os países possuem diferentes níveis de aversão à inflação e a mesma
+influencia tanto a escolha do grau de independência dos bancos centrais, quanto o nível inicial de inflação
+a partir do qual um país estaria disposto a começar uma desinflação (o que por sua vez afeta a magnitude
+dos custos de desinflação), então haverá viés de seleção na relação estimada entre independência e taxa
+de sacrifício. Devido a isso, busca-se então estimar a relação entre independência e custos de desinflação
+através dos métodos de seleção em observáveis baseados em propensity score, mais especificamente o
+propensity score generalizado, utilizado quando o tratamento assume valores contínuos, como é o caso
+da independência do banco central. A seção seguinte apresentará com maior detalhamento a metodologia
+econométrica empregada e o possível mecanismo que induziria o viés de seleção entre as variáveis de
+interesse.
+
+  10 Ver   Ball (1994).
+  11 Com    exceção do artigo de Baltensperger e Kugler (2000).
+
+
+                                                                  7
+3          Metodologia Empírica
+    A principal hipótese subjacente ao presente trabalho aponta para uma possível existência de viés de
+seleção na relação entre o grau de independência dos bancos centrais e a taxa de sacrifício de seus países.
+Assim, torna-se necessária a utilização de métodos econométricos que sejam capazes de expurgar esse
+viés. Para tal, o grau de independência de cada país será interpretado como um tratamento e modelos
+de seleção em observáveis baseados em propensity score serão utilizados para estimar o impacto desse
+tratamento sobre os custos de desinflação dos países da amostra. As subseções seguintes trazem então um
+maior detalhamento as metodologias que lidam com tal problema e do possível mecanismo que induziria
+a presença de viés de seleção na relação estimada entre a independência do banco central e os custos de
+desinflação.
+
+
+3.1        Viés de seleção e os métodos de seleção em observáveis baseados em propensity
+           score
+     A problemática do viés de seleção tem papel de destaque nos estudos de microeconometria aplicada
+que buscam avaliar qual o efeito causal de uma política sobre alguma variável de interesse. Tal conceito
+pode ser mais facilmente explicado tomando como ponto de partida a questão analisada pelo trabalho de
+Hirano e Imbens (2004), que buscou avaliar o impacto de vencer na loteria sobre a oferta de trabalho dos
+ganhadores. Nesse caso, a variável de tratamento (vencer na loteria) é distribuída aleatoriamente entre
+todos os indivíduos que apostam na loteria, ou seja, indivíduos mais avessos a trabalhar não têm maiores
+nem menores chances de ganhar na loteria do que aqueles mais inclinados a trabalhar, que utilizariam o
+prêmio para começar um negócio, por exemplo. Logo, nesse caso, a variável de tratamento é ortogonal ao
+resultado de interesse, situação que a literatura denomina hipótese de ignorabilidade. Satisfazer a hipótese
+de ignorabilidade é particularmente importante pois, sempre que a mesma é válida, a diferença de médias
+da variável de resultado entre os grupos de tratados e não tratados será uma estimativa não viesada para o
+efeito causal do tratamento. Logo, voltando ao exemplo, como o tratamento é distribuído aleatoriamente
+entre os indivíduos, a hipótese de ignorabilidade é satisfeita e, assim, ao se comparar a oferta de trabalho
+média dos indivíduos que venceram na loteria e daqueles que não venceram, um estimador não viesado para
+o efeito do tratamento é obtido.
+     Encaixando a questão que o presente trabalho deseja analisar no arcabouço da inferência causal, a
+independência do banco central será interpretada como a variável de tratamento e os custos de desinflação
+(medidos pela taxa de sacrifício) como a variável de resultado. O cenário ideal seria aquele em que o grau
+de independência do banco central fosse aleatoriamente distribuído entre todos os países da amostra, o que
+certamente não ocorre. Diversas variáveis são levadas em conta na determinação do nível de independência
+do banco central, como o histórico de inflação e crescimento econômico e o grau de aversão que o país
+tem em relação à inflação, por exemplo. Como a variável de tratamento não é aleatorizada entre os países,
+uma simples diferença de médias da taxa de sacrifício entre tratados e não tratados torna-se um estimador
+viesado do efeito causal da independência do banco central, sendo esse viés denominado “viés de seleção”
+12 .
+
+     Para entender o surgimento do viés de seleção, supondo inicialmente, por simplificação, que a indepen-
+dência do banco central é uma variável binária, define-se uma variável latente Y = (Y0 ,Y1 ), que expressa
+os potenciais valores que pode assumir a variável de resultado (neste caso, a taxa de sacrifício), em que 1
+indica resultado para os tratados e 0 para os não tratados. Define-se também uma variável binária Ti que
+assume valor 1 para os países cujo banco central é independente (grupo de tratamento) e 0 para os que não
+    12 Éimportante mencionar que, como pode ser visto em Angrist e Pischke (2008), na estimação por Mínimos Quadrados
+Ordinários de uma regressão linear simples entre a variável de resultado e a de tratamento, o parâmetro estimado para a variável
+de tratamento é equivalente a uma diferença de médias entre tratados e controles. Logo, em uma situação em que a variável de
+tratamento não é aleatorizada, as estimativas obtidas através de MQO, metodologia utilizada pela maioria da literatura empírica
+sobre o tema aqui estudado, também estarão viesadas.
+
+
+                                                               8
+possuem independência (grupo de controle). Para o pesquisador, no entanto, encontram-se disponíveis so-
+mente Y1 para os tratados e Y0 para os controles e, portanto, o Y0 dos tratados caso eles não fossem tratados
+é desconhecido, configurando um caso de missing data. Devido a isso, a diferença entre as médias de Y dos
+tratados e não tratados (∆) torna-se um estimador viesado do impacto do tratamento, como pode se verificar
+abaixo:
+
+                      ∆ = E[Y1i |Ti = 1] − E[Y0i |Ti = 0]
+                        = {E[Y1i |Ti = 1] − E[Y0i |Ti = 1]} + {E[Y0i |Ti = 1] − E[Y0i |Ti = 0]}                           (2)
+                          |               {z              } |                 {z              }
+                                            AT T                              Viés de Seleção
+
+
+
+
+    Na expressão acima, é possível perceber que a simples diferença de médias pode ser decomposta em
+dois termos: o efeito médio do tratamento sobre os tratados (ATT - average treatment on the treated) e
+um componente de viés de seleção. Para tentar resolver esse problema de viés diante de situações em que
+não foram realizados experimentos aleatórios, desenvolveram-se os métodos de seleção em observáveis,
+que buscam reproduzir um experimento ex post, condicionando em um conjunto de variáveis observáveis.
+Assim, a idéia geral por trás desses métodos é fazer com que, após controlar para um conjunto de variáveis
+observáveis, a variável de tratamento passe a ser ortogonal à variável de resultado, ou seja, a hipótese de
+ignorabilidade mencionada anteriormente seja válida.
+    Dentre os métodos de seleção em observáveis, os mais utilizados são aqueles baseados em propensity
+score, que resumem todas as características observáveis dos indivíduos, presentes em um vetor X, em
+uma única dimensão, representada pelo propensity score: p(X) = P(Ti = 1 | X). O propensity score pode
+ser calculado através de algum método paramétrico, como o Logit ou o Probit, ou não paramétrico. A
+metodologia baseada em propensity score utilizada com maior frequencia na literatura é o Propensity Score
+Matching, que busca parear membros do grupo de tratamento com os pertencentes ao grupo de controle
+que possuam propensity scores semelhantes 13 . Para cada pareamento é computada a diferença na variável
+de resultado Y que se deseja analisar e o efeito médio do tratamento é então dado pelo valor médio dessas
+diferenças.
+    As metodologias apresentadas até este ponto, contudo, objetivam estimar os efeitos de um tratamento
+binário ou categórico. No entanto, muitas vezes o tratamento de interesse assume valores em um conjunto
+contínuo, como no presente trabalho, já que o grau de independência do banco central é representado por
+um índice que assume valores no intervalo [0, 1]. Nesse contexto, torna-se interessante então a estimação de
+uma função de resposta à dose, que indicaria o impacto da independência do banco central sobre a taxa de
+sacrifício para cada grau de independência no contínuo entre 0 e 1. Hirano e Imbens (2004) desenvolveram
+uma extensão dos métodos de propensity score para os casos de tratamento contínuo, o Propensity Score
+Generalizado (ou GPS), elaborando uma hipótese de ignorabilidade análoga à dos métodos de seleção em
+observáveis, atráves da qual, condicional a um conjunto de covariadas, o viés de seleção é eliminado.
+
+
+3.2    O propensity score com tratamentos contínuos
+    Considere uma amostra aleatória de países, indexados por i, tal que i = 1, ..., N. Seja T o conjunto com
+todos os possíveis valores que o tratamento pode assumir e t ∈ T a dosagem da variável de tratamento (neste
+caso, o grau de independência do banco central). Para cada i existe um conjunto de valores potenciais Yi (t),
+que expressam a taxa de sacrifício do país i diante do grau de independência do banco central t. Para cada
+país i são observados um conjunto de covariadas Xi , a dosagem recebida do tratamento, Ti ∈ [0; 1], e a taxa
+de sacrifício correspondente a esse tratamento Yi = Yi (Ti ).
+  13 Existem diversas maneiras de realizar os pareamentos.A mais convencional, que será utilizada neste trabalho, é denominada
+nearest neighbor e consiste em parear um indivíduo do grupo de tratamento com o indivíduo do grupo de controle cujo propensity
+score seja o mais próximo do seu.
+
+
+                                                              9
+    Definindo a função de resposta à dose média como µ(t) = E[Yi (t)], o foco de interesse é estimar o efeito
+sobre a taxa de sacrifício médio de um incremento marginal (ε > 0) na independência do banco central, em
+relação a um nível inicial t de independência. Logo, o efeito de interesse é dado por:
+
+                           θ (t) = µ(t + ε) − µ(t) = E[Yi (t + ε)] − E[Yi (t)]; com t,t + ε ∈ T .                           (3)
+    A hipótese chave para a metodologia proposta por Hirano e Imbens (2004) é uma generalização para
+tratamentos contínuos da hipótese de ignorabilidade, dada por 14 :
+
+                                                  Y (t) ⊥ T | X, para todo t∈T.                                             (4)
+    Esta hipótese garante que, ao condicionar em um conjunto de covariadas X, qualquer possível dosagem
+do tratamento é ortogonal à variável de resultado e, dessa forma, é removido qualquer viés na comparação
+entre dois grupos com diferentes dosagens de tratamento.
+    Seguindo a metodologia de Hirano e Imbens (2004), o próximo passo consiste em definir o propensity
+score generalizado, ou GPS. Seja r(t, x) a densidade condicional do tratamento, dadas as covariadas:
+
+                                                        r(t, x) = fT |X (t | x)                                             (5)
+Então o GPS é R = r(T, X).
+    Hirano e Imbens (2004) provam então que, a hipótese de ignorabilidade também é satisfeita condicionando-
+se somente no GPS, ao invés de todo o vetor X. Ou seja, para cada t, tem-se:
+
+                                            fT {t | r(t, X),Y (t)} = fT {t | r(t, X)}15 .                                   (6)
+    Hirano e Imbens (2004) propõem então uma estratégia em dois estágios para estimar µ(t). No primeiro
+estágio estima-se a distribuição da variável de tratamento Ti , condicional às covariadas. Para tal, assume-se
+que a independência do banco central (o tratamento) segue uma distribuição normal, dadas as covariadas:
+                                                  g(Ti ) | Xi ∼ N{β0 + β10 Xi , σ 2 }                                       (7)
+em que g(Ti ) é uma transformação da variável de tratamento (pode ser a função identidade) e β0 ,β1 e σ 2
+são estimados por máxima verossimilhança. Ao assumir a normalidade, o GPS pode ser calculado como:
+                                       1             1
+                               R̂i = p       exp{−       (g(Ti ) − β0 − β10 Xi )2 }                     (8)
+                                          ˆ2       2  ˆ2
+                                      2π σ           σ
+     Na segunda etapa da estimação, a esperança condicional da variável de resultado Yi , dados Ti e o GPS
+(Ri ), é estimada através de uma função flexível desses dois argumentos, através de aproximações polino-
+miais de ordem menor ou igual a três, por convenção. Assim, o modelo mais complexo a ser considerado
+seria o seguinte:
+
+
+                     β (Ti , Ri ) =E(Yi | Ti , Ri )
+                                    = α0 + α1 Ti + α2 Ti2 + α3 Ti3 + α4 Ri + α5 R2i + +α6 R3i + α7 Ti .Ri                   (9)
+em que o conjunto de parâmetros α = (α0 , ..., α7 ) pode ser estimado por Mínimos Quadrados Ordinários.
+   Com os parâmetros α̂ estimados, torna-se possível estimar a taxa de sacrifício média, dado o grau t de
+independência do banco central:
+     µ̂(t) =E[Ŷ (t)]
+                    1 N
+                =     ∑ {αˆ0 + αˆ1ti + αˆ2ti2 + αˆ3ti3 + αˆ4r̂(t, Xi) + αˆ5r̂(t, Xi)2 + αˆ6r̂(t, Xi)3 + αˆ5tir̂(t, Xi)}.
+                    N i=1
+                                                                                                                           (10)
+
+  14 Para  simplificar a notação, o subscrito i será suprimido no que se segue.
+  15 A   prova do teorema se encontra em Hirano e Imbens (2004).
+
+
+                                                                  10
+    Pode-se calcular então µ̂(t) para todos os níveis de tratamento t. Dessa forma, o efeito estimado de um
+incremento marginal ε na independência do banco central será dado por:
+
+                                          θ̂ (t) = µ̂(t + ε) − µ̂(t)                                  (11)
+   Assim, os dois produtos finais da metodologia de propensity score generalizado são:
+   • A função resposta à dose, expressa por µ̂(t) para cada t ∈ T ;
+   • A função efeito do tratamento θ̂ (t), que indica o efeito causal de incrementos marginais na variável
+     de tratamento.
+    É importante ressaltar que, entre o primeiro e o segundo estágio da estimação das funções de resposta
+à dose e efeito do tratamento, é necessária a verificação de duas propriedades: a de normalidade e a de ba-
+lanceamento. A propriedade de normalidade da distribuição condicional do tratamento é verificada através
+de testes de qualidade do ajuste (goodness-of-fit): Kolmogorov-Smirnov, Shapiro-Francia, Shapiro-Wilk ou
+algum teste de assimetria e curtose. Caso a hipótese de normalidade seja rejeitada, tornam-se necessárias
+transformações g(.) na variável de tratamento que tornem a hipótese válida.
+    A propriedade de balanceamento é importante, pois quando satisfeita, garante que os grupos tratamento
+e de controle são semelhantes em relação às covariadas utilizadas no cômputo do propensity score. Para
+verificar se a propriedade é válida, primeiramente a amostra é dividida em K grupos, de acordo com a
+distribuição da variável de tratamento. Dentro de cada grupo, utiliza-se o valor mediano da variável de
+tratamento para avaliar o GPS através da expressão (9) para todas as observações da amostra. Depois, em
+um segundo passo, divide-se cada um dos K grupos em M blocos, baseados na distribução do GPS avaliado
+na mediana. Para cada grupo k ∈ K, dentro de cada um dos m ∈ M blocos é calculada a diferença de médias
+de todas as covariadas entre as observações do bloco que pertencem a k e as que não pertencem. Depois,
+para cada covariada calcula-se uma média das M diferenças e realiza-se um teste de médias, para verificar
+se a média das covariadas em um grupo k é diferente da dos outros grupos pertencentes a K. Caso a hipótese
+nula não seja rejeitada, conclui-se que as médias das covariadas são estatisticamente iguais e, portanto, a
+propriedade de balanceamento é satisfeita para o grupo k. Esse procedimento deverá ser repetido para todos
+os k ∈ K e para todas as covariadas do GPS.
+    Apresentados o problema de viés de seleção e as metodologias mais adequadas para lidar com o mesmo,
+a subseção seguinte detalha qual seria então um possível mecanismo que justificaria a presença de viés de
+seleção na relação entre independência do banco central e custos de desinflação.
+
+3.3   Viés de seleção na relação entre independência do banco central e custos de
+      desinflação
+    A ocorrência de viés de seleção se dá sempre que a variável de tratamento está, de alguma forma,
+correlacionada com a variável de resultado. Na tentativa de descrever um possível mecanismo que induziria
+o viés de seleção entre o grau de independência do banco central e os custos de desinflação, o presente
+trabalho se baseia em três hipóteses:
+
+   1. Um maior grau de independência do banco central sinaliza uma maior aversão à inflação em um
+      determinado país;
+   2. Um maior grau de independência do banco central está relacionado a desinflações iniciadas a partir
+      de patamares mais baixos de inflação;
+   3. É mais custoso para um país que tem uma inflação inicial menor desinflacionar um mesmo montante
+      do que outro país com inflaçao inicial maior.
+
+   A primeira hipótese constitui um ponto bastante controverso na literatura sobre o tema. Para muitos
+autores, os conceitos de independência do banco central e aversão à inflação são intimamente relacionados.
+Rogoff (1985), desenvolve um modelo teórico cujo resultado final sugere que a sociedade maximiza seu
+
+                                                     11
+bem-estar quando indica um banco central independente, conhecido por atribuir maior peso à estabilização
+da inflação (em relação à estabilização do emprego) do que o incorporado na função de perda social. No en-
+tanto, diversos autores atentam para os problemas de se fazer uma associação tão direta entre independência
+do banco central e aversão à inflação, principalmente devido à forma como a independência é comumente
+mensurada. Como exposto na seção 2, os principais índices de independência do banco central se con-
+centram nos aspectos legais da independência, que em muitos casos não coincidem com as ações de fato
+da política monetária. Assim, possuir um banco central independente não necessariamente implicaria em
+uma política monetária ativa, que prioriza a estabilização da inflação 16 . De qualquer forma, os índices de
+independência do banco central utilizados com maior frequência nos trabalhos empíricos sobre o tema aqui
+considerado atribuem um maior valor para legislações nas quais a estabilidade de preços é o único objetivo
+a ser perseguido pela autoridade monetária. Assim, ainda que possam existir desvios entre a independência
+legal e a vigente de fato, o cômputo dos índices de independência permite que bancos centrais mais com-
+prometidos com o controle da inflação possuam, tudo mais constante, um maior grau de independência do
+banco central.
+    Se a primeira hipótese é válida, a segunda hipótese, sugerida por Baltensperger e Kugler (2000), parece
+bastante razoável e indicaria que países mais avessos à inflação, e que expressam essa aversão através de
+um banco central mais independente, serão mais inclinados a iniciar desinflações a partir de níveis menores
+de inflação. Na tentativa de encontrar embasamento empírico para esta segunda hipótese, fazendo uso da
+amostra de Ball (1994), estimou-se uma regressão simples que relaciona a inflação inicial do período de
+desinflação ao grau de independência do banco central, controlando para os efeitos fixos de cada país 17 .
+Os resultados encontram-se na Figura 1.
+    Nota-se que uma relação negativa e significante entre a independência e a inflação inicial do período
+de desinflação é obtida. Portanto, conclui-se que a evidência empírica aqui encontrada é compatível com a
+segunda hipótese proposta.
+
+     Figura 1: Relação entre Inflação Inicial e Independência do Banco Central - Amostra Ball (1994)
+
+
+
+
+    Finalmente, a terceira hipótese tem origem nos modelos novo-keynesianos, que lidam com a existência
+de rigidez nominal. Uma inflação inicial mais alta poderia incentivar renegociações de contrato mais fre-
+quentes, reduzindo a rigidez nominal da economia, o que aumentaria a velocidade das desinflações, fazendo
+com que as taxas de sacrifício subjacentes fossem mais baixas. Diversos trabalhos encontram no mínimo
+evidências fracas de que essa hipótese se sustenta empiricamente, dentre eles Zhang (2005) e Hofstetter
+(2008). É possível observar, através de uma regressão linear simples, que evidências, ainda que fracas, tam-
+bém são encontradas na amostra de Ball (1994), frequentemente empregada pela literatura empírica sobre
+o tema e utilizada nas estimações deste trabalho.
+    Ao juntar as três hipóteses, torna-se possível construir um argumento que indicaria a existência de viés
+de seleção na relação entre independência do banco central e custos de desinflação. Países mais avessos à
+  16 Para   uma discussão mais detalhada sobre o tema, ver Hayo e Hefeker (2002).
+  17 Incluindo  na regressão uma variável dummy para cada país da amostra.
+
+
+                                                              12
+                  Figura 2: Relação entre Inflação Inicial e Taxa de Sacrifício - Amostra Ball (1994)
+
+
+
+
+inflação e que expressam tal aversão através de um banco central mais independente tendem a promover
+desinflações a partir de níveis iniciais mais baixos de inflação, acarretando assim em custos de desinflação
+maiores. Através desse mecanismo, a variável de resultado (taxa de sacrifício) acaba sendo correlacionada
+com o tratamento em questão (a independência do banco central), gerando assim a existência de viés de
+seleção na relação de interesse. Em outras palavras, dois países em uma situação inicial idêntica podem
+acabar tendo custos de desinflação bastante diferentes, devido à divergência no grau de aversão dos mesmos
+à inflação, o que interfere no processo de auto-seleção do nível de independência do banco central destes,
+que por sua vez afetará os custos de desinflação, dado que uma maior independência levaria a desinflações
+a partir de níveis mais baixos de inflação. Nesse contexto, para estimar os efeitos da independência do
+banco central sobre os custos de desinflação, torna-se então mais adequada a utilização da metodologia de
+Propensity Score Generalizado, que visa eliminar o viés de seleção para os casos de tratamentos contínuos.
+
+
+4       Descrição dos Dados
+    Como o principal objetivo deste trabalho é complementar uma literatura empírica já existente, é neces-
+sário que os resultados aqui obtidos sejam comparáveis com os de outros artigos sobre o tema. Logo, para
+as estimações realizadas foram utilizados os mesmos dados que basearam os artigos contidos na Tabela 2
+da revisão de literatura.
+    Assim como na maioria da literatura, as taxas de sacrifício calculadas por Ball (1994), cuja metodologia
+foi apresentada na seção 2.2, foram usadas como medida de custo de desinflação. Ball identificou 28
+episódios desinflacionários para 9 países diferentes 18 no período entre 1960 e 1988. Já para a independência
+do banco central, empregou-se o índice de independência legal computado por Cukierman (1992) e descrito
+na seção 2.1. Na tentativa de verificar a robustez dos resultados obtidos, usaram-se também outras cinco
+medidas alternativas de independência. Quatro destas medidas foram calculadas, reponderando os quatro
+componentes que constituem o índice de Cukierman. Para as reponderações, retirou-se 10% do peso de
+uma das categorias do índice e redistribuiu-se tal porcentagem entre as outras três, proporcionalmente ao
+peso das mesmas no índice original. Além dos quatro índices reponderados, utilizou-se também o indicador
+de independência do banco central computado por Grilli et al. (1991), que também foi apresentado na seção
+2.1.
+    Para a estimação do propensity score generalizado, foram consideradas as seguintes variáveis:
+
+     • Inflação inicial;
+     • Média da inflação nos cinco anos anteriores à desinflação;
+     • Média da variação do PIB nos cinco anos anteriores à desinflação.
+    18 São   eles: Alemanha, Austrália, Canadá, Estados Unidos, França, Itália, Japão, Reino Unido e Suíça
+
+
+                                                                 13
+    Como já argumentado na seção 3.3, a inflação no início do período de desinflação é uma variável bas-
+tante importante para o possível mecanismo que induziria o viés de seleção entre as variáveis de interesse.
+Além disso, a inflação e o crescimento do PIB são variáveis recorrentemente presentes na função de perda
+do banco central 19 e, sendo assim, ao menos em teoria, são relevantes para a determinação do grau de
+independência dos mesmos 20 .
+    A Tabela 3 resume todas as variáveis utilizadas, detalhando suas fontes, descrições e principais estatís-
+ticas descritivas.
+
+
+                        Tabela 3: Descrição e estatísticas descritivas das variáveis presentes na amostra
+
+                                                                                                                      Desv.
+             Variável         Descrição                                      Fonte                  Obs.      Média           Min.    Max.
+                                                                                                                      Pad.
+             tsball           Taxa de sacrifício                             Ball (1994)            28        1,44    0,93    -0,01   3,56
+
+                              Índice de Independência Legal do Banco
+             cbi_cukierman                                                   Cukierman (1992)       28        0,36    0,17    0,18    0,69
+                              Central (IBC)
+             cbi_rep1         IBC - 1a reponderação                          Cukierman (1992)*      28        0,34    0,19    0,13    0,70
+             cbi_rep2         IBC -   2a   reponderação                      Cukierman (1992)*      28        0,38    0,17    0,18    0,70
+             cbi_rep3         IBC -   3a   reponderação                      Cukierman (1992)*      28        0,38    0,17    0,20    0,71
+             cbi_rep4         IBC - 4a reponderação                          Cukierman (1992)*      28        0,37    0,16    0,20    0,71
+             cbi_gmt          IBC                                            Grilli et al. (1991)   28        0,56    0,20    0,33    0,87
+                              Taxa de inflação no trimestre inicial do pe-
+             inf0                                                            Ball (1994)                      9,72    4,79    2,29    19,70
+                              ríodo de desinflação
+                              Média do crescimento do PIB nos 5 anos         FMI - World Eco-
+             gdp5ypre                                                                               28        0,09    0,11    0,01    0,45
+                              anteriores ao período de desinflação           nomic Outlook*
+                              Média da inflação dos 5 anos anteriores ao     FMI - World Eco-
+             cpi5ypre                                                                               28        0,08    0,05    0,03    0,24
+                              período de desinflação                         nomic Outlook*
+                                                     *Variáveis elaboradas a partir de dados dessas fontes.
+
+
+
+
+    É possível notar que, apesar das diferentes ponderações, todas as medidas de independência do banco
+central baseadas em Cukierman (1992) são bastante semelhantes entre si e apresentam estatísticas descri-
+tivas muito parecidas. O índice de Grilli et al. (1991) apresenta média e desvio padrão mais altos, mas,
+ainda assim, possui alta correlação (0,88) com o índice de Cukierman. Os resultados obtidos com os dados
+e variáveis aqui detalhados encontram-se a seguir.
+
+
+
+
+5       Resultados
+    Nesta seção, uma maior ênfase será dada aos produtos finais da metodologia de propensity score ge-
+neralizado: as funções de resposta à dose e de efeito do tratamento 21 . Para todos os modelos estimados
+e apresentados aqui, as propriedades de normalidade do tratamento e balanceamento das covariadas foram
+satisfeitas a um nível de significância de 5%. Fazendo-se uso do índice de independência de Cukierman
+(1992), os resultados obtidos encontram-se na Figura 5.
+
+    19 Ver Rogoff (1985).
+    20 Outras variáveis também foram avaliadas (velocidade de desinflação, variância da inflação e do crescimento do PIB e vola-
+tilidade da formação bruta de capital fixo), mas estas não produziram os modelos com melhor especificação (maior significância
+conjunta).
+    21 Os resultados das outras etapas da estimação encontram-se disponíveis com os autores, caso haja interesse.
+
+
+
+                                                                              14
+                      Figura 3: Funções de Resposta à Dose e Efeito do Tratamento
+
+
+
+
+    A função de efeito do tratamento obtida indica que, ao longo de todo o domínio da independência do
+banco central, um incremento marginal no grau de independência tem efeito nulo sobre a taxa de sacrifício.
+Para níveis mais elevados de independência do banco central, a função de efeito do tratamento chega a
+apontar para um efeito marginal negativo da independência, o que iria de encontro com o argumento novo-
+clássico do prêmio de credibilidade, mas os desvios-padrão são muito altos devido ao baixo número de
+observações nesses extremos da distribuição do tratamento, o que leva a concluir que, também para níveis
+mais altos de independência, o efeito marginal desta sobre os custos de desinflação é estatisticamente nulo.
+    A fim de verificar se os resultados são robustos à medida de independência do banco central adotada,
+como já mencionado na seção 4, o mesmo modelo foi estimado para outras cinco medidas de independência
+do banco central: quatro reponderações do índice de Cukierman (1992) e o indicador computado por Grilli
+et al. (1991). Na Figura 4 encontram-se as funções de resposta à dose e de efeito do tratamento obtidas.
+
+
+
+
+                                                    15
+Figura 4: Exercícios de Robustez - Funções de Resposta à Dose e Efeito do Tratamento
+
+
+
+
+                                        16
+    Nota-se que, para todas as reponderações do índice de Cukierman (1992), os formatos das funções de
+resposta à dose e de efeito do tratamento são muito parecidos com o inicialmente obtido e levam à mesma
+conclusão: o efeito da independência do banco central sobre a taxa de sacrifício é insignificante para todos
+os valores do domínio do tratamento. Para o índice de Grilli et al. (1991), a função de efeito do tratamento
+possui um formato diferente, no qual níveis de independência maiores acarretariam em maiores custos
+de desinflação, mas novamente os desvios-padrão são muito altos e, portanto, comprova-se mais uma vez
+que o efeito do tratamento é estatisticamente insignificante. Logo, em qualquer destes casos obtemos que
+incrementos marginais na independência do banco central não acarretam em maiores perdas de produto.
+
+
+6    Considerações Finais
+    O presente trabalho buscou trazer novas contribuições à literatura que avalia a relação entre independên-
+cia do banco central e custos de desinflação. Os trabalhos que analisaram os efeitos de maior independência
+sobre os custos de desinflação, medidos através da taxa de sacrifício, constataram que episódios desinflaci-
+onários mais custosos estavam associados a países com maior independência do banco central, contrariando
+a teoria novo clássica de que haveria um prêmio para a credibilidade da política monetária em termos de
+custo de desinflação. A maioria destes trabalhos, todavia, limitou-se a uma metodologia baseada em regres-
+sões lineares estimadas via Mínimos Quadrados Ordinários, método incapaz de controlar para a existência
+de algum tipo de endogeneidade ou viés de seleção na relação de interesse. A ocorrência de viés de seleção
+é possível dado que os países possuem diferentes graus de aversão à inflação e isso afeta tanto a escolha do
+grau de independência de seus bancos centrais quanto o nível de inflação a partir do qual o banco central
+teria disposição para iniciar uma desinflação, o que por sua vez impacta no tamanho dos custos de desin-
+flação. Sendo assim, tentou-se complementar o que já foi realizado até o momento na literatura, utilizando
+os métodos baseados em propensity score, que são capazes de lidar com a possível existência de viés de
+seleção na relação de interesse.
+    Os resultados obtidos divergem do restante dos artigos empíricos sobre o tema. Aplicando à amostra
+frequentemente empregada na literatura metodologias que buscam expurgar o viés de seleção do efeito
+estimado, conclui-se que o impacto da independência do banco central sobre os custos de desinflação é
+insignificante. Este resultado contraria o restante dos trabalhos empíricos sobre o tema, que encontram uma
+relação positiva e significante entre as duas variáveis. Logo, se é válido o mecanismo de viés de seleção
+aqui sugerido, os resultados obtidos indicam que o efeito da independência do banco central é anulado ao
+se controlar para o fato de que diferentes países possuem níveis distintos de aversão à inflação e, devido a
+isso, países semelhantes podem ter taxas de sacrifício diferentes, pois bancos centrais mais independentes,
+normalmente relacionados a economias mais sensíveis à inflação, iniciam processos desinflacionários a
+partir de taxas iniciais de inflação mais baixas. Portanto, os resultados aqui encontrados sugerem que um
+país é capaz de conceder maior independência a seu banco central, para que o mesmo priorize o controle da
+inflação, sem trazer quaisquer custos adicionais à sua atividade econômica.
+
+
+Referências
+ALESINA, A.; SUMMERS, L. Central bank independence and macroeconomic performance: some
+comparative evidence. Journal of Money, Credit and Banking, v. 25, n. 2, p. 151–162, 1993.
+
+ANGRIST, J.; PISCHKE, J. Mostly harmless econometrics: An empiricist’s companion. Princeton, NJ:
+Princeton University Press, 2008.
+
+BALL, L. What determines the sacrifice ratio? In: Monetary Policy. Cambridge, MA: National Bureau of
+Economic Research, 1994.
+BALTENSPERGER, E.; KUGLER, P. Central bank independence and sacrifice ratios: some further
+considerations. Open economies review, v. 11, n. 2, p. 111–125, 2000.
+
+                                                     17
+CECCHETTI, S.; RICH, R. Structural estimates of the us sacrifice ratio. FRB of New York Staff Report,
+n. 71, p. 1–33, 1999.
+CUKIERMAN, A. Central bank strategy, credibility, and independence: Theory and evidence. Cambridge,
+MA: The MIT Press, 1992.
+DANIELS, J.; NOURZAD, F.; VANHOOSE, D. Openness, central bank independence, and the sacrifice
+ratio. Journal of Money, Credit and Banking, v. 37, n. 2, p. 371–379, 2005.
+EIJFFINGER, S.; HAAN, J. de. The political economy of central-bank independence. Princeton Studies in
+International Economics, v. 19, 1996.
+FISCHER, A. Central bank independence and sacrifice ratios. Open economies review, v. 7, n. 1, p. 5–18,
+1996.
+FISCHER, S. Contracts, credibility, and disinflation. NBER Working Papers, v. 1339, p. 1–30, 1984.
+GRILLI, V.; MASCIANDARO, D.; TABELLINI, G. Political and monetary institutions and public
+financial policies in the industrial countries. Economic Policy, v. 6, n. 13, p. 342–392, 1991.
+GäRTNER, M. Central bank independence and the sacrifice ratio: The dark side of the force. Swiss Journal
+of Economics and Statistics (SJES), v. 133, n. III, p. 513–538, 1997.
+HAYO, B.; HEFEKER, C. Reconsidering central bank independence. European Journal of Political
+Economy, v. 18, n. 4, p. 653–674, 2002.
+HIRANO, K.; IMBENS, G. The propensity score with continuous treatments. Applied Bayesian Modeling
+and Causal Inference from Incomplete-Data Perspectives, p. 73–84, 2004.
+HOFSTETTER, M. Disinflations in latin america and the caribbean: A free lunch? Journal of
+Macroeconomics, v. 30, n. 1, p. 327–345, 2008.
+JORDAN, T. Disinflation costs, accelerating inflation gains, and central bank independence. Review of
+World Economics, v. 133, n. 1, p. 1–21, 1997.
+KATAYAMA, H.; PONOMAREVA, N.; SHARMA, M. Central bank independence, political regimes, and
+the sacrifice ratio: A replication study of Caporale and Caporale (2008). Journal of Money, Credit and
+Banking, v. 43, n. 5, p. 1035–1042, 2011.
+MISHKIN, F. Monetary policy strategy: How did we get here? NBER Working Papers, n. 12515, 2006.
+Disponível em: <http://www.nber.org/papers/w12515>.
+ROGOFF, K. The optimal degree of commitment to an intermediate monetary target. The Quarterly
+Journal of Economics, v. 100, n. 4, p. 1169–1189, 1985.
+SARGENT, T. Stopping moderate inflations: The methods of Poincare and Thatcher. In: DORNBUSCH,
+R.; SIMONSEN, M. (Ed.). Inflation, debt and indexation. Cambridge, MA: MIT Press, 1983. p. 54–96.
+TAYLOR, J. Union wage settlements during a disinflation. The American Economic Review, v. 73, n. 5, p.
+981–993, 1983.
+WALSH, C. Central bank independence. New Palgrave Dictionary, 2008. Disponível em: <http://econ.
+ucsc. edu/˜ walshc>.
+ZHANG, L. Sacrifice ratios with long-lived effects. International Finance, v. 8, n. 2, p. 231–262, 2005.
+
+
+
+
+                                                    18
+

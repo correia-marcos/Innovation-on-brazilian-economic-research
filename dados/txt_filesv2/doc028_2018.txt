@@ -1,0 +1,2321 @@
+Ciclos de crescimento no Brasil: uma abordagem usando
+
+An´alise do Espectro Singular
+
+Fernando Cruz∗
+Hudson Torrent†
+Danilo Matsuoka ‡
+
+Resumo
+
+O presente trabalho estuda os ciclos de neg´ocios no Brasil em sua interpretac¸˜ao de hiato do produto,
+conhecida na literatura como ciclos de crescimento ou ciclos de desvios. Para isto, a An´alise do Espectro
+Singular (SSA) ´e empregada, seguindo o procedimento de agrupamento proposto por de Carvalho & Rua
+(2017). Os efeitos de variac¸ ˜oes na janela s˜ao estudados empiricamente e os resultados s˜ao comparados
+com os obtidos por outros ﬁltros utilizados na literatura. A an´alise ´e conduzida com ˆenfase em trˆes
+aspectos: a) caracter´ısticas gerais dos ciclos, b) an´alise dos turning points e c) performance em tempo
+real. Os resultados indicam que a SSA, al´em de resultar em ciclos consistentes com outros m´etodos
+tradicionais, apresenta performance superior em tempo real. Os resultados s˜ao, contudo, sens´ıveis `a
+escolha da janela.
+Palavras-chave: Ciclos de crescimento, An´alise do Espectro Singular, Hiato do Produto
+Classiﬁcac¸ ˜ao JEL: E32, R1
+´Area 4: Macroeconomia, Economia Monet´aria e Financ¸as
+
+Abstract
+
+We study the Brazilian business cycles in the form of output gap known as growth cycles or deviation cy-
+cles using Singular Spectrum Analysis (SSA). Grouping is conducted following the procedure proposed
+by de Carvalho & Rua (2017). We empirically study the effects of window variations and compare the
+results with those from other ﬁlters. We emphasize three aspects of the cycles: a) general characteristics,
+b) turning points and c) real time performance. Results show that SSA not only produce cycles that
+are consistent with other traditional methods but have superior real time performance. However, those
+results are sensitive to the selection of the window length.
+Key-words: Growth Cycles, Singular Spectrum Analysis, Output Gap
+
+1 Introduc¸ ˜ao
+
+Pesquisas sobre as ﬂutuac¸ ˜oes econˆomicas no Brasil receberam uma importante contribuic¸˜ao a partir da
+criac¸˜ao do Comitˆe de Datac¸˜ao dos Ciclos Econˆomicos (CODACE-IBRE/FGV). Inspirado no Business Cy-
+cle Dating Comitee do NBER e em outras instituic¸ ˜oes, o CODACE divulga uma cronologia do ciclo de
+neg´ocios brasileiro, apontando as datas de in´ıcio e ﬁm dos per´ıodos recessivos e de expans˜ao econˆomica no
+pa´ıs desde o primeiro trimestre de 1980.
+
+∗Doutorando em Economia Aplicada (PPGE/UFRGS) e Pesquisador da Fundac¸˜ao de Economia e Estat´ıstica (FEE)
+†Departamento de Economia - UFRGS.
+‡Doutorando em Economia Aplicada (PPGE/UFRGS)
+
+1
+
+Existem duas caracter´ısticas principais no procedimento de datac¸˜ao dos ciclos pelo CODACE. A pri-
+meira ´e o fato de as decis˜oes sobre o timing dos pontos de virada dos ciclos serem tomadas com base
+n˜ao apenas no comportamento do PIB trimestral, mas de uma gama de outras estat´ısticas econˆomicas, de
+diferentes frequˆencias. Este modus operandi do CODACE est´a de acordo com a vis˜ao de que os ciclos
+de neg´ocios representam co-movimentos entre diferentes atividades e setores da economia (Burns & Mit-
+chell (1946),Lucas (1977)). A segunda, e mais singular caracter´ıstica, ´e que o CODACE utiliza o conceito
+cl´assico dos ciclos de neg´ocios como referˆencia para caracterizac¸˜ao das fases c´ıclicas. Em outras pala-
+vras, s˜ao os movimentos no n´ıvel de atividade – produc¸˜ao, emprego, vendas, etc. – que importam para a
+caracterizac¸˜ao dos per´ıodos c´ıclicos e determinac¸˜ao dos pontos de virada.
+
+Embora as atenc¸ ˜oes para o ciclo cl´assico sejam importantes devido aos custos, em termos de bem-
+estar econˆomico e social gerados durante as recess˜oes e depress˜oes econˆomicas, per´ıodos de acelerac¸˜ao
+e desaquecimento, ainda que com taxas de crescimento positivas do produto, tamb´em se alternam, nem
+sempre mediados por quedas no n´ıvel de atividade. Estes “ciclos de crescimento” ou “ciclos de desvios”
+(Mintz 1969) tamb´em s˜ao alvo de monitoramento ao redor do mundo, por instituic¸ ˜oes como OCDE, atrav´es
+de seu Sistema de Indicadores Antecedentes. A cronologia das acelerac¸ ˜oes e desacelerac¸ ˜oes da atividade
+econˆomica em uma gama de pa´ıses membros e n˜ao membros, incluindo o Brasil.
+
+Estes ciclos de crescimento, contudo, por n˜ao serem observados diretamente, necessitam ser estimados.
+A variedade de m´etodos dispon´ıveis para a execuc¸˜ao de tal tarefa, contudo, pode gerar resultados bastante
+diversos. Desde a ampla revis˜ao dos m´etodos de separac¸˜ao de tendˆencia e ciclo realizada por Canova (1998),
+novas t´ecnicas foram propostas, dentre as quais, a An´alise de Espectro Singular (do inglˆes, Singular Spec-
+trum Analysis, doravante, SSA).1 A SSA ´e uma metodologia n˜ao-param´etrica que n˜ao exige a elaborac¸˜ao de
+um modelo estat´ıstico a prior para an´alise e previs˜ao de s´eries de tempo. A t´ecnica, j´a altamente difundida
+em ´areas como climatologia, meteorologia e geof´ısica, recentemente tem ganhado espac¸o em aplicac¸ ˜oes na
+Economia, em particular em pesquisas sobre ciclos econˆomicos. (Gonzalez et al. (2015),Groth et al. (2015),
+Sella & Marchionatti (2012), de Carvalho et al. (2012), de Carvalho & Rua (2017), Dumas et al. (2011)).
+
+Uma das vantagens atribu´ıdas ao m´etodo ´e seu car´ater de adaptac¸˜ao aos dados. Conforme Hassani &
+Thomakos (2010), como n˜ao ´e necess´ario estimar nenhum coeﬁciente, a SSA lida melhor com quebras
+estruturais. Esta ´e uma caracter´ıstica importante para o estudo de s´eries econˆomicas brasileiras, permeadas
+por quebras estruturais, sobretudo nas d´ecadas de 1980 e 1990, originadas em diversos choques externos e
+internos, tais como crises cambiais, ﬁnanceiras, de d´ıvida, ou mesmo os planos de estabilizac¸˜ao monet´aria
+anteriores ao Plano Real.
+
+Apesar de as caracter´ısticas acima ilustrarem a ﬂexibilidade da SSA para an´alise de s´eries de tempo, as
+estimativas obtidas dependem fundamentalmente da escolha de dois parˆametros: a escolha do tamanho da
+janela e o agrupamento das autotriplas. Em um trabalho recente, de Carvalho & Rua (2017) prop˜oem um
+m´etodo para a escolha dos agrupamentos voltado para estudos de ciclos de neg´ocios. A escolha da janela
+neste contexto, contudo, ainda permanece um procedimento ad hoc. Investigar as consequˆencias de dife-
+rentes escolhas de janelas ´e, portanto, fundamental para avaliar a performance da SSA enquanto m´etodo de
+estimac¸˜ao dos ciclos econˆomicos.
+
+Tendo em vista o exposto, o presente trabalho apresenta duas principais contribuic¸ ˜oes `a literatura de
+ciclos de neg´ocios no Brasil, em especial no que tange `a sua interpretac¸˜ao em termos de hiato do produto,
+i.e., os ciclos de crescimento. Em primeiro lugar, a t´ecnica b´asica de SSA univariado (Single-Channel SSA)
+´e empregada, seguindo o procedimento de de Carvalho & Rua (2017), para isolar o componente c´ıclico
+relacionado `a frequˆencia do ciclo de neg´ocios. A sensibilidade dos ciclos resultantes ´e explorada para di-
+ferentes tamanhos de janela. At´e onde conhecemos, esta ´e a primeira aplicac¸˜ao sistem´atica de SSA para
+
+1Para uma revis˜ao de alguns destes m´etodos, ver (Alexandrov et al. 2012).
+
+2
+
+an´alise hist´orica dos ciclos de crescimento no Brasil no per´ıodo 1980-2017. 2
+
+Em segundo lugar, a robustez dos ”fatos estilizados”dos ciclos de crescimento do Brasil pela SSA ´e
+checada comparando seus resultados com os de outros m´etodos de remoc¸˜ao da tendˆencia estabelecidos na
+literatura. Os picos e vales das s´eries ﬁltradas s˜ao tamb´em contrastados `a cronologia do CODACE, de modo
+a se estudar as relac¸ ˜oes entre os ciclos de neg´ocios e os ciclos de crescimento. Por ﬁm, uma vez que os
+diferentes m´etodos conferem algum grau de incerteza ao hiato do produto diante da incorporac¸˜ao de novas
+informac¸ ˜oes na ponta das s´eries (Orphanides & Norden (2002)), a consistˆencia das estimativas dos ciclos
+com diferentes conjuntos informacionais ´e avaliada em um exerc´ıcio em tempo real.
+
+Com estes exerc´ıcios, ´e poss´ıvel responder a uma gama de perguntas fundamentalmente emp´ıricas, por
+exemplo, ”A SSA ´e apropriada para analisar os ciclos brasileiros?”, ”Quais as propriedades dos ciclos gera-
+dos?”, ”Esses ciclos s˜ao sens´ıveis `a janela escolhida?”, ”Como estes ciclos se comparam a outros ﬁltros?”,
+”Como esses ciclos se comportam com relac¸˜ao ao benchmark do CODACE?”e ﬁnalmente, ”A SSA supera a
+performance de outros ﬁltros em tempo real para o PIB brasileiro?”. De modo a responder a tais perguntas,
+o trabalho est´a dividido em cinco sec¸ ˜oes, incluindo esta introduc¸˜ao. A segunda sec¸˜ao apresenta uma breve
+discuss˜ao sobre os ciclos de crescimento, enquanto a terceira sumariza a metodologia da SSA empregada.
+A quarta sec¸˜ao, contendo a an´alise dos resultados emp´ıricos, est´a dividida em trˆes subsec¸ ˜oes. Cada uma
+explora, respectivamente: i) as caracter´ısticas dos ciclos extra´ıdos com diferentes m´etodos de ﬁltragem, ii)
+a an´alise de seus turning points e sua comparac¸˜ao com as datac¸ ˜oes dos ciclos cl´assicos estabelecida pelo
+CODACE e por ﬁm, iii) sua performance em tempo real. Na ´ultima sec¸˜ao s˜ao expostas as conclus˜oes do
+artigo.
+
+2 Ciclos de crescimento
+
+Os ciclos de crescimento se relacionam com os ciclos cl´assicos, por´em, diferem dos mesmos em alguns
+aspectos. Em primeiro lugar, os ciclos de crescimento s˜ao deﬁnidos como ﬂutuac¸ ˜oes de curto prazo da s´erie
+de referˆencia em relac¸˜ao a sua tendˆencia de longo prazo. De fato, ´e este o conceito de ciclo comumente
+utilizado na literatura macroeconˆomica moderna para estudar as ﬂutuac¸ ˜oes econˆomicas, como evidenciado
+na literatura de ciclos reais de neg´ocios e modelos dinˆamico-estoc´asticos de equil´ıbrio geral (DSGE) ((Lu-
+cas 1977), (Kydland & Prescott 1982), (Long Jr & Plosser 1983), (Hirose & Naganuma 2010)). Portanto,
+exerc´ıcios de avaliac¸˜ao de pol´ıticas de estabilizac¸˜ao e previs˜ao do produto baseadas em simulac¸ ˜oes com
+estes modelos tem por base o ciclo de crescimento e n˜ao o ciclo de neg´ocios cl´assico.
+
+Ademais, neste conceito, os ciclos s˜ao mais frequentes e sim´etricos que os ciclos cl´assicos. Tipica-
+mente, as fases de expans˜ao inicial e intermedi´aria no ciclo cl´assico coincidem com momentos acima da
+tendˆencia de longo prazo no ciclo de crescimento, enquanto o timing do ﬁnal das expans˜oes econˆomicas e
+da fase de contrac¸˜ao cl´assica correspondem `a fase de crescimento abaixo da tendˆencia ((Zarnowitz 1992)).
+Assim, os downturns nos ciclos de crescimento ocorrem tipicamente antes do que no ciclo de neg´ocios
+cl´assico.
+
+Moore (1983) destaca trˆes outras caracter´ısticas dos ciclos de crescimento: 1) os indicadores antece-
+dentes do NBER s˜ao sens´ıveis a reduc¸ ˜oes no ritmo de atividade, sejam elas de car´ater recessivo ou n˜ao,
+de modo que estes indicadores antevˆeem melhor os ciclos de crescimento do que os ciclos de neg´ocios. 2)
+estes indicadores antecedentes apresentam caracter´ısticas similares para diferentes pa´ıses com respeito aos
+
+2Gonzalez et al. (2015) utilizam SSA univariado no PIB trimestral brasileiro entre 1996 e 2013 para ﬁns de ilustrac¸˜ao da
+t´ecnica em seu estudo cross-country do ciclo de neg´ocios e do ciclo ﬁnanceiro. A ˆenfase do estudo, contudo, recai sobre este
+´ultimo.
+
+3
+
+ciclos de crescimento. 3) Por ﬁm, h´a uma relac¸˜ao pr´oxima entre esta interpretac¸˜ao do ciclo econˆomico e a
+taxa de inﬂac¸˜ao. De fato, a deﬁnic¸˜ao de ciclo de crescimento corresponde essencialmente `a mesma do hiato
+do produto, qual seja, a de ﬂutuac¸ ˜oes c´ıclicas em torno de uma tendˆencia de longo prazo.
+
+As diferenc¸as conceituais na deﬁnic¸˜ao de ciclo empregada se traduzem tamb´em em diferenc¸as na sua
+forma de mensurac¸˜ao. Enquanto no ciclo cl´assico per´ıodos de queda absoluta do n´ıvel de atividade, ca-
+racterizados como recess˜oes, podem ser estudados nos indicadores dessazonalizados sem a necessidade de
+estimac¸˜ao – e remoc¸˜ao - de sua tendˆencia de longo prazo, o mesmo n˜ao pode ser realizado na abordagem
+dos ciclos de crescimento. Isto imp˜oe um grau de arbitrariedade maior na estimac¸˜ao dos ciclos de cresci-
+mento, uma vez que os turning points, a volatilidade, a correlac¸˜ao dos componentes c´ıclicos de diferentes
+indicadores econˆomicos e outros “fatos estilizados” dos ciclos podem ser sens´ıveis ao m´etodo empregado
+de remoc¸˜ao da tendˆencia (Canova (1994), Canova (1998), Canova (1999), Burnside (1998)).
+
+No caso do Brasil, diferenc¸as nos fatos estilizados dos ciclos econˆomicos tamb´em j´a foram notadas entre
+m´etodos variados. Teles et al. (2005), por exemplo, estudam as propriedades dos ciclos econˆomicos em um
+conjunto de s´eries macroeconˆomicas brasileiras e mostram, quantitativa e qualitativamente, que estes ”fa-
+tos”variam de maneira signiﬁcativa entre distintos ﬁltros. Em outro exerc´ıcio, Oliveira & Portugal (2013)
+comparam a estimac¸˜ao estrutural do hiato do produto com a de ﬁltros tradicionais da literatura utilizando
+dados do PIB trimestral no per´ıodo 2002-2011 e mostram que os resultados s˜ao em geral, diversos, tanto
+em termos visuais quanto com relac¸˜ao a seu poder preditivo sobre a inﬂac¸˜ao.
+
+´E poss´ıvel notar tamb´em esforc¸os na literatura em busca de m´etodos mais adequados para a extrac¸˜ao
+do componente c´ıclico em s´eries econˆomicas brasileiras, e.g., reduzindo a parcela de ru´ıdo remanescente
+ap´os a extrac¸˜ao da tendˆencia. (Dias & Dias 2010), por exemplo, utilizam um procedimento recursivo a
+partir de um modelo ARIMA que permite quebras estruturais nos componentes de tendˆencia e intercepto.
+Os ciclos s˜ao estimados como a soma da m´edia e do desvio-padr˜ao de cada uma das linhas da matriz de
+res´ıduos obtida com as regress˜oes. Mais recentemente, (Lopes et al. 2017) combinam uma colec¸˜ao de com-
+ponentes c´ıclicos extra´ıdos por ﬁltro HP com diferentes valores do parˆametro de suavizac¸˜ao para formar
+um componente c´ıclico, que teria maior sincronia com os pontos de virada identiﬁcados pelo CODACE.
+Outro destaque ´e (Chauvet 2002). Em uma abordagem distinta das demais, Chauvet estuda os ciclos de
+crescimento nos dados anuais do PIB brasileiro entre 1900 e 2000 utilizando um modelo univariado de
+mudanc¸a markoviana de regime com dois estados. A interpretac¸˜ao de ciclos de crescimento decorre do
+sinal estimado para a m´edia dos dois regimes, ambas positivas.
+
+Com intuito de investigar a adequac¸˜ao de novos m´etodos - em especial a An´alise do Espectro Singualar
+- para a extrac¸˜ao do componente c´ıclico da s´erie de PIB trimestral do Brasil, as pr´oximas sec¸ ˜oes apresentam
+brevemente a estrat´egia de identiﬁcac¸˜ao utilizada a partir da SSA e seus resultados.
+
+3 Estrutura b´asica da An´alise do Espectro Singular
+
+O m´etodo SSA em sua forma mais b´asica possui dois est´agios - decomposic¸˜ao e reconstruc¸˜ao - cada um
+dos quais, por sua vez, segue dois passos. Estes s˜ao a) incorporac¸˜ao (embedding) e obtenc¸˜ao da matriz de
+trajet´oria, b) Decomposic¸˜ao do Valor Singular (Singular Value Decomposition, doravante SVD), c) Agrupa-
+mento (Grouping) e d) obtenc¸˜ao da m´edia diagonal (Diagonal Averaging), onde a e b pertencem ao primeiro
+est´agio e c e d ao segundo.
+
+1. Decomposic¸˜ao
+
+• Incorporac¸˜ao e Matriz de Trajet´oria
+
+4
+
+Seja YN = (y1, . . . , yN ) uma realizac¸˜ao de um processo estoc´astico de tamanho N, {Yt}t∈Z.
+Seja L uma janela, tal que 2 ≤ L ≤ N e seja K = N − L + 1. A incorporac¸˜ao ou embbeding ´e
+um mapeamento da s´erie unidimensional Yt nas s´eries multidimensionais X1, X2, . . . , XK, com
+vetores Xi, chamados vetores defasados ou L-defasados, da seguinte forma:
+
+Xi = [yi, yi+1, yi+2, . . . , yi+L−1]T
+
+(1)
+
+para i = 1, 2, . . . , K, onde T simboliza a transposta do vetor. Colecionamos ent˜ao estes vetores
+numa matriz X, chamada Matriz de Trajet´oria,
+
+X = [X1, . . . , XK] = (xi,j)L,K
+
+i,j=1 =
+
+(2)
+
+y1
+
+y2
+y3
+...
+
+y3
+y2
+y4
+...
+...
+yL yL+1 yL+2
+
+. . .
+. . .
+...
+. . .
+
+yK
+yK+1
+...
+yN
+
+
+
+Uma caracter´ıstica especial desta matriz ´e que todos os elementos da diagonal i+j = constante
+s˜ao iguais, isto ´e, a matriz X ´e uma Matriz de Hankel.
+
+• Decomposic¸˜ao do Valor Singular (SVD)
+
+Seja S = XX T . Seja λ1, λ2, . . . , λL os autovalores de S, dispostos em ordem decrescente, tal
+que 0 ≤ λL ≤ λL−1, . . . ,≤ λ2, λ1. Seja d = posto(S) = max(i, tal queλi > 0) (isto ´e, λi
+√
+n˜ao-nulo) e U1, U2, . . . , UL o sistema ortonormal de autovetores de S correspondente a esses
+λi, a SVD da trajet´oria da matriz X pode ser escrita
+autovalores. Considerando Vi = X T Ui/
+como:
+
+√
+onde Xi =
+´e chamada de eigentriple da SVD.Assim, X pode ser reescrito como:
+
+λiUiV T
+
+i e as matrizes Xi s˜ao elementares, de posto 1, portanto. A trinca (λi, Ui, Vi)
+
+X = X1 + X2 + . . . + Xd
+
+(cid:112)
+
+(cid:112)
+
+(cid:112)
+
+X =
+
+λ1UiV T
+
+1 +
+
+λ2UiV T
+
+2 + . . . +
+
+λdUiV T
+d
+
+(3)
+
+(4)
+
+2. Reconstruc¸˜ao
+
+• Agrupamento
+
+Primeiramente, parte-se o conjunto de ´ındices {1, 2, . . . , d} em m conjuntos disjuntos I1, I2, . . . , Im.
+Seja I = {ii, . . . , ip}. Seja a matrix resultante XI correspondente ao grupo I, tal que XI =
+Xi1, Xi2, . . . , Xip.Estas matrizes s˜ao computadas para cada um dos conjuntos, I = I1, I2, . . . , Im.O
+procedimento de escolha dos conjuntos I1, I2, . . . , Im ´e chamado eigentriple grouping.
+
+3. M´edia Diagonal
+
+O ´ultimo passo ´e transformar cada matriz de (3) em uma nova s´erie de tamanho N. Seja ˜X uma
+matriz L × K com elementos yi,j 1 ≤ i ≤ L, 1 ≤ j ≤ K. Seja L∗ = min(L, K), K∗ = max(L, K)
+e N = L + K − 1. Seja
+
+y∗
+i,j =
+
+se L < K,
+caso contr´ario .
+
+(5)
+
+(cid:40)
+
+yi,j
+yj,i
+
+5
+
+A m´edia diagonal transfere a matriz ˜X para as s´eries g0, g1, . . . , gN−1 pela seguinte f´ormula:
+
+ 1
+(cid:80)k+1
+L∗(cid:80)L∗
+(cid:80)N−K∗+1
+
+m=1 y∗
+m,k−m+2
+m=1 y∗
+m,k−m+2
+m=k−K∗+2 y∗
+
+k+1
+1
+
+N−k
+
+1
+
+gk =
+
+m,k−m+2
+
+para 0 ≤ k < L∗ − 1,
+para L∗ − 1 < k ≤ K∗,
+para K∗ ≤< k < N.
+
+(6)
+
+A express˜ao acima corresponde `a m´edia dos elementos da matriz sobre as diagonais i + j = k + 2.
+Para k = 0, g0 = y11, para k = 1, g1 = (y12 + y21/2), etc.
+
+O procedimento aplicado a uma matriz resultante XIk produz s´eries ˜F (k) = ˜f (k)
+que a s´erie inicial f0, . . . , fN−1 ´e decomposta na soma de m s´eries:
+
+0
+
+, . . . , ˜f (k)
+
+N−1, de forma
+
+m(cid:88)
+
+fn =
+
+˜f k
+n
+
+(7)
+
+k=1
+
+3.1 Parˆametros da SSA e identiﬁcac¸ ˜ao dos ciclos
+A identiﬁcac¸˜ao dos componentes de interesse na an´alise, i.e., tendˆencia, ciclo e ru´ıdo3 atrav´es da SSA exige
+tanto a especiﬁcac¸˜ao adequada do tamanho da janela, L, na fase de decomposic¸˜ao, quanto a identiﬁcac¸˜ao
+correta dos grupos para a reconstruc¸˜ao da s´erie, de forma a garantir a separabilidade das s´eries (Golyandina
+et al. 2001), (Golyandina 2010). Neste processo, a deﬁnic¸˜ao dos componentes de interesse tamb´em pode
+auxiliar na escolha destes parˆametros.
+
+Na fase de decomposic¸˜ao, a escolha da janela L, referente ao n´umero de linhas da matriz de trajet´oria,
+envolve algum grau de subjetividade, devendo ser grande o suﬁciente para captar a dinˆamica das s´eries,
+e.g. L ∼ N/2 (Golyandina et al. 2001) mas limitada o bastante para permitir um n´umero alto de repetic¸ ˜oes
+da caracter´ıstica da s´erie que se deseja estudar. Ademais, a janela deve ser um m´ultiplo do componente
+peri´odico de interesse (Hassani 2007) - por exemplo, sazonalidade ou, no nosso caso, ciclo econˆomico. A
+escolha deve se relacionar aos objetivos da an´alise (Golyandina (2010)).4
+
+Por sua vez, a fase de agrupamento das autotriplas ap´os a decomposic¸˜ao do valor singular tamb´em
+n˜ao ´e trivial e em geral depende do objetivo do estudo. (Golyandina et al. 2001) sugerem uma s´erie de
+diagn´osticos visuais para identiﬁcac¸˜ao e agrupamento de componentes oscilat´orios baseados no conceito
+de separabilidade. Por exemplo, a visualizac¸˜ao do autoespectro, isto ´e, dos valores singulares em ordem
+decrescente, pode ajudar a identiﬁcar componentes harmˆonicos. Valores singulares iguais formam degraus
+no autoespectro e cada par de autotripla relacionado a esses degraus formam uma base para potenciais com-
+ponentes harmˆonicos no sinal.
+
+Outra forma de diagn´ostico s˜ao os gr´aﬁcos de autovetores correspondentes aos valores singulares no
+autoespectro. A forma de cada autovetor reﬂete a dinˆamica da s´erie de tempo associada a cada autotripla,
+sendo portanto ´uteis na identiﬁcac¸˜ao de tendˆencias e harmˆonicos. Pares de autovetores associados com
+componentes harmˆonicos oscilam na mesma frequˆencia na quadratura de fase.
+
+Al´em disso, diagramas dos sucessivos autovetores pareados associados a oscialac¸ ˜oes harmˆonicas puras,
+como senos e cossenos, resultam em formas poligonais exatas. O n´umero de v´ertices dos pol´ıgonos indica
+
+3Como a s´erie analisada ´e ajustada sazonalmente, assume-se que o componente sazonal foi totalmente removido.
+4(Golyandina & Korobeynikov 2014) ressaltam que na hip´otese de existˆencia de uma estrutura complexa na s´erie sob an´alise,
+a chamada SSA sequencial pode ser recomend´avel. Esta consiste em dois est´agios: extrac¸˜ao de tendˆencia com uma janela
+pequena e posterior detecc¸˜ao e extrac¸˜ao dos res´ıduos com L ∼ N/2
+
+6
+
+o per´ıodo de oscilac¸˜ao associado. Assim, um hex´agono formado pelos pares de autovetores representa um
+ciclo de seis per´ıodos, por exemplo.5
+
+No contexto de identiﬁcac¸˜ao do componente de ciclo de neg´ocios, contudo, formas sinoidais exatas s˜ao
+raras. A estrat´egia de identiﬁcac¸˜ao adotada na maior parte dos trabalhos na ´area se concentra em elimi-
+nar apropriadamente a tendˆencia da s´erie, interpretando o res´ıduo como ciclo (Sella & Marchionatti 2012),
+(Groth et al. 2015). Contudo, uma estrat´egia interessante, que permite focar diretamente na identiﬁcac¸˜ao do
+componente c´ıclico, ´e sugerida em (de Carvalho et al. 2012) e posteriormente formalizada em (de Carvalho
+& Rua 2017).
+
+A id´eia central ´e, dada uma janela escolhida na fase de decomposic¸˜ao, agrupar as autotriplas associadas a
+oscilac¸ ˜oes na frequˆencia dos ciclos de neg´ocios; no caso de dados trimestrais, entre 6 e 32 trimestres. de Car-
+valho et al. (2012) sugerem acessar a periodicidade atrav´es de uma inspec¸˜ao visual da representac¸˜ao em s´erie
+de tempo de cada uma das autotriplas reconstru´ıdas. Buscando formalizar este procedimento, de Carvalho
+& Rua (2017) prop˜oem um pseudo-algoritmo baseado na estimac¸˜ao dos periodogramas, identiﬁcac¸˜ao de seu
+pico e avaliac¸˜ao de sua signiﬁcˆancia estat´ıstica baseado na estat´ıstica-g de Fisher. Se signiﬁcativo o com-
+ponente ´e retido para fazer parte do agrupamento e reconstruc¸˜ao do componente c´ıclico. O pseudo-c´odigo
+´e formado por seis passos:
+
+Dado o conjunto de autotriplas existentes, parte-se de um conjunto vazio de autotriplas selecionadas.
+Deseja-se selecionar aquelas que atendem aos crit´erios descritos anteriormente. Para isso, o algoritmo ´e
+dividido em seis passos.
+
+• Passo 1 - Obtem-se o periodograma da autotripla Xi, denotado por P (ω), e calcula-se a frequˆencia
+
+associada ao seu pico. Isto ´e,
+
+(8)
+• Passo 2 - Se ω ∈ Ω, sendo Ω ⊂ (o, π) o conjunto de frequˆencias de interesse, ir para o passo 3, caso
+
+ω∗
+i = argmaxω∈ω1,...,ωj Pi(ω)
+
+contr´ario, voltar ao passo 1, incrementando i em uma unidade.
+
+• Passo 3 - Computa-se a estat´ıstica g associada `a autotripla i salvando o resultado em gi.
+• Passo 4 - Computa-se o p-valor correspondente no passo anterior salvando o resultado no vetor pi.
+• Passo 5 - Se pi calculado anteriormente ´e signiﬁcativo a um n´ıvel predeterminado, α, ou seja, pi <
+α, retem-se a autotripla reconstru´ıda juntamente com as selecionadas anteriormente, caso contr´ario,
+descarta-se a autotripla sob avaliac¸˜ao.
+
+• Passo 6 - Se i = L, Sg = Si e o algoritmo ´e terminado. Caso contr´ario incrementa-se i e retorna-se
+
+ao passo 1.
+
+Inspec¸ ˜ao visual e estat´ısticas descritivas
+
+4 Resultados emp´ıricos
+4.1
+Para construc¸˜ao da s´erie hist´orica do PIB trimestral entre 1980.I e 2017.III as s´eries hist´oricas do PIB com
+ajuste sazonal dipon´ıveis no site do IPEAData (1980.I a 2014.II) e do IBGE (2002.I a 2017.III) foram
+encadeadas, retropolando-se esta ´ultima para tr´as utilizando-se as variac¸ ˜oes da primeira. Em seguida, o
+logaritmo neperiano foi aplicado.
+
+5Outras discuss˜oes e ilustrac¸ ˜oes das diversas escolhas envolvendo a SSA, bem como exemplos de aplicac¸ ˜oes computacionais
+
+podem ser obtidos em Huffaker et al. (2017)
+
+7
+
+Conforme discutido anteriormente, a estrat´egia adotada por (de Carvalho & Rua 2017), apesar de for-
+necer um m´etodo para agrupamento dos componentes principais em aplicac¸ ˜oes da SSA voltadas `a an´alise
+dos ciclos de neg´ocios, ainda deixa a escolha do tamanho da janela L como um procedimento ad hoc. Os
+autores justiﬁcam o tamanho de janela de 32 trimestres baseados no cut-off superior comumente utilizado
+na literatura para expurgar ciclos n˜ao relacionados `a frequˆencia dos ciclos de neg´ocios, isto ´e, maiores do
+que 8 anos. No entanto, diversos outros valores podem ser encontrados na literatura.
+
+De modo a visualizar o efeito de diferentes escolhas de janela na decomposic¸˜ao do PIB brasileiro, a
+Figura 1 apresenta as s´eries de tempo reconstru´ıdas com os autovetores obtidos no passo de decomposic¸˜ao
+do valor singular - os componentes principais - para diferentes janelas encontradas na literatura aplicada a
+ﬂutuac¸ ˜oes econˆomicas: L = 20 ((Gonzalez et al. 2015)), L = 24 ((Groth et al. 2015)), L = 30 ((Sella &
+Marchionatti 2012)), L = 32 ((de Carvalho et al. 2012),(de Carvalho & Rua 2017)), L = 40 ((Dumas et al.
+2011)). Nota-se que a maior parte destas janelas tamb´em obedece ao crit´erio sugerido por Golyandina et al.
+(2001), uma vez que os dados s˜ao trimestrais e as janelas s˜ao em sua maioria m´ultiplas de quatro.
+
+Figure 1: 12 primeiros componentes principais
+
+Fonte: Elaborac¸˜ao pr´opria.
+
+Como pode ser observado, o primeiro componente principal responde pela maior parte da variˆancia dos
+dados, caracterizando a tendˆencia crescente do PIB ao longo do tempo, com poucas oscilac¸ ˜oes, havendo
+poucas diferenc¸as not´aveis entre as distintas janelas. A partir do segundo componente principal, a simples
+inspec¸˜ao visual j´a permite identiﬁcar discrepˆancias causadas por mudanc¸as nas janelas. Estas diferenc¸as se
+mostram mais n´ıtidas, sobretudo, nas pontas das s´eries, justamente onde h´a maior necessidade de acur´acia
+
+8
+
+1980200042044046048050052019802000-10-50519802000-4-20246819802000-4-202419802000-1.00.01.019802000-1.5-0.50.519802000-1.0-0.50.00.519802000-0.50.00.519802000-0.50.00.519802000-0.6-0.20.20.619802000-0.50.00.51.019802000-0.40.00.20.40.6L=20L=24L=30L=32L=40quanto `a a magnitude do hiato do produto e ao timing de virada dos ciclos.
+
+Figure 2: S´eries reconstru´ıdas
+
+Fonte: Elaborac¸˜ao pr´opria.
+
+De modo a tornar a an´alise mais minuciosa, podemos expandir a grade de janelas estudadas. A ﬁgura
+2 mostra as s´erie de tempo do PIB reconstru´ıda para todas as janelas entre 7 e 45 trimestres, utilizando
+para agrupamento o pseudo-algoritmo de (de Carvalho & Rua 2017). Note que essa grade abrange todas as
+janelas utilizadas na literatura anteriormente citadas. O primeiro fato a se observar,novamente, ´e a grande
+variabilidade das estimativas de ciclo nas pontas das s´eries em relac¸˜ao ao centro da amostra. O hiato do
+produto, se interpretado desta forma, varia, por exemplo entre +2,35% e +8,62% no primeiro trimestre de
+1980 e entre -8,34% e +0,9% no terceiro trimestre de 2017. Ademais, ´e importante notar que n˜ao parece
+haver uma relac¸˜ao direta entre o limite inferior ou superior dos ciclos estimados e o tamanho da janela. Em
+diversos per´ıodos, outras janelas apresentam valores do ciclo estimado maiores (menores) do que as janelas
+m´ınima e m´axima analisadas.
+
+De forma a sumarizar as propriedades dos ciclos obtidos com as diferentes janelas, computamos diver-
+sas estat´ısticas descritivas, tais como m´edia, desvio padr˜ao, coeﬁciente de autocorrelac¸˜ao, coeﬁciente de
+assimetria e de curtose. Como forma de comparac¸˜ao, computamos as mesmas estat´ısticas para uma s´erie
+de outros ﬁltros utilizados na literatura. Os ﬁltros considerados foram: Tendˆencia Linear (LT), Tendˆencia
+Quadr´atica (QT), Primeira Diferenc¸a (FD), Filtro Hodrick-Prescott (HP), Filtro Christiano-Fitzgerald (CF),
+M´etodo dos Componentes N˜ao-Observ´aveis (UC) e Filtro de Regress˜ao de Hamilton (HRF). A tabela 1
+exp˜oe os resultados.
+
+9
+
+1980199020002010-10-505L = 7Demais janelasL = 45Table 1: Estat´ısticas Descritivas
+
+M´ınimo M´aximo M´edia Desvio-Padr˜ao Autocorrelac¸˜ao Assimetria Curtose
+-0.57
+-0.21
+-0.27
+-0.10
+0.05
+0.38
+0.73
+0.65
+0.91
+1.14
+1.00
+1.10
+1.16
+-0.19
+-0.25
+-0.20
+-0.13
+-0.13
+-0.12
+-0.15
+-0.24
+-0.22
+-0.26
+-0.37
+-0.36
+-0.31
+-0.42
+-0.40
+-0.32
+-0.19
+-0.06
+0.03
+0.11
+-0.10
+-0.08
+-0.03
+-0.07
+-0.02
+0.06
+-1.11
+-0.58
+1.96
+0.05
+-0.27
+-1.49
+-0.28
+
+-1.74
+-2.73
+-3.29
+-3.97
+-4.63
+-5.39
+-6.18
+-6.82
+-7.47
+-8.12
+-8.53
+-9.05
+-9.55
+-3.23
+-3.50
+-3.80
+-4.07
+-4.26
+-4.51
+-4.66
+-4.67
+-4.88
+-5.06
+-5.04
+-5.30
+-5.50
+-5.31
+-5.40
+-5.65
+-6.09
+-6.69
+-7.13
+-7.32
+-4.09
+-4.27
+-4.61
+-4.95
+-4.91
+-5.17
+-9.02
+-11.91
+-4.70
+-5.78
+-3.94
+-0.16
+-13.31
+
+1.67
+3.10
+2.74
+3.82
+3.47
+3.27
+3.45
+3.85
+3.91
+4.12
+4.64
+4.69
+4.90
+3.05
+2.96
+2.96
+2.95
+3.28
+3.31
+3.35
+3.36
+3.61
+3.64
+3.63
+3.76
+3.99
+3.79
+3.74
+3.86
+3.90
+3.94
+3.93
+4.16
+3.28
+3.48
+3.50
+3.62
+3.63
+3.65
+8.99
+8.74
+7.10
+5.43
+4.29
+0.16
+11.00
+
+-0.05
+-0.08
+-0.11
+-0.16
+-0.20
+-0.24
+-0.28
+-0.32
+-0.36
+-0.40
+-0.44
+-0.47
+-0.50
+-0.08
+-0.10
+-0.12
+-0.14
+-0.16
+-0.18
+-0.20
+-0.22
+-0.23
+-0.24
+-0.26
+-0.27
+-0.28
+-0.29
+-0.31
+-0.32
+-0.34
+-0.36
+-0.38
+-0.40
+-0.23
+-0.24
+-0.25
+-0.25
+-0.26
+-0.27
+-0.30
+-0.11
+0.59
+-0.08
+-0.12
+-0.00
+-0.00
+
+-0.04
+0.06
+-0.17
+-0.17
+-0.43
+-0.63
+-0.80
+-0.79
+-0.91
+-0.99
+-0.94
+-0.99
+-1.02
+-0.03
+-0.11
+-0.16
+-0.22
+-0.18
+-0.20
+-0.20
+-0.21
+-0.20
+-0.22
+-0.23
+-0.25
+-0.25
+-0.30
+-0.34
+-0.39
+-0.46
+-0.52
+-0.58
+-0.63
+-0.29
+-0.31
+-0.37
+-0.34
+-0.41
+-0.44
+0.32
+-0.13
+-0.10
+0.01
+0.18
+0.05
+-0.38
+
+0.88
+0.83
+0.89
+0.86
+0.91
+0.94
+0.96
+0.95
+0.96
+0.98
+0.97
+0.98
+0.99
+0.82
+0.84
+0.86
+0.87
+0.87
+0.88
+0.89
+0.90
+0.90
+0.91
+0.92
+0.92
+0.91
+0.93
+0.94
+0.95
+0.95
+0.95
+0.96
+0.97
+0.90
+0.90
+0.91
+0.90
+0.92
+0.92
+0.95
+0.95
+0.09
+0.76
+0.86
+0.92
+0.83
+
+0.80
+1.19
+1.29
+1.60
+1.74
+1.89
+2.03
+2.29
+2.43
+2.57
+2.78
+2.91
+3.03
+1.30
+1.33
+1.37
+1.41
+1.53
+1.58
+1.62
+1.66
+1.75
+1.81
+1.86
+1.95
+2.05
+2.07
+2.15
+2.25
+2.35
+2.44
+2.54
+2.64
+1.58
+1.66
+1.72
+1.76
+1.81
+1.85
+4.94
+4.86
+1.75
+2.37
+1.64
+0.11
+5.29
+
+L=7
+L=8
+L=9
+L=10
+L=11
+L=12
+L=13
+L=14
+L=15
+L=16
+L=17
+L=18
+L=19
+L=20
+L=21
+L=22
+L=23
+L=24
+L=25
+L=26
+L=27
+L=28
+L=29
+L=30
+L=31
+L=32
+L=33
+L=34
+L=35
+L=36
+L=37
+L=38
+L=39
+L=40
+L=41
+L=42
+L=43
+L=44
+L=45
+LT
+QT
+FD
+HP
+CF
+UC
+HRF
+
+10
+
+Os resultados s˜ao bastante diversos. Os valores m´ınimos oscilam entre -13,31 (HRF) e -0,16 (UC), en-
+quanto os m´aximos est˜ao entre 0,16 (UC) e 11,00 (HRF). Dentre as diferentes estimativas utilizando a SSA,
+os valores m´ınimos variam entre -9,55 (L=19) e -1,74 (L=7), e os m´aximos entre 1,67 e 4,9 para as mesmas
+janelas, respectivamente. As m´edias de todos os ﬁltros s˜ao pr´oximas de zero, enquanto o desvio-padr˜ao
+varia entre 0,11 (UC) e 5,29 (HRF). ´E importante observar tamb´em que existe uma alta autocorrelac¸˜ao de
+ordem 1 para todos os ﬁltros estimados, exceto para o ﬁltro de primeira diferenc¸a (FD). Ademais, a maior
+parte dos ﬁltros mostra-se levemente assim´etrica `a esquerda, com excess˜ao dos ﬁltros LT, HP, CF e UC. Por
+ﬁm, h´a grande heterogeneidade nos valores das estat´ısticas de curtose, mesmo dentre as SSA, onde alguns
+ﬁltros sugerem distribuic¸ ˜oes leptoc´urticas, com excesso de valores extremos e outras sugerem distribuic¸ ˜oes
+platic´urticas. Utilizando-se um teste de Jarque-Bera para checagem da hip´otese de normalidade dos dados,
+ao n´ıvel de 10%, os ´unicos ﬁltros para os quais a hip´otese de normalidade dos dados n˜ao ´e rejeitada s˜ao:
+LT, FD, UC e os SSA com janelas L=11 e L=19, inclusive, e L=35, L=36, L=37, L=38, L=39 e L=45.
+
+´E interessante computar tamb´em os coeﬁcientes de correlac¸˜ao de Pearson entre os ciclos de cada uma
+das janelas e outros ﬁltros utilizados na literatura (2). Percebemos que a maior correlac¸˜ao existente se d´a
+entre as janelas 21 e 22 e o ﬁltro CF, com coeﬁciente de 0,95, enquanto a menor correlac¸˜ao ocorre entre as
+janelas 16 e 19, com o m´etodo UC, com coeﬁciente de 0,13. Outro fato not´avel ´e que o pr´oprio o padr˜ao
+de correlac¸˜ao apresenta ”ondas”ou ”degraus”. Por exemplo, conforme a janela aumenta, a correlac¸˜ao da
+SSA com os m´etodos de tendˆencia linear e quadr´atica aumenta entre as janelas 7 e 19, cai bruscamente
+na janela 20 e volta a subir novamente at´e a janela 39, quando novamente cai e reinicia seu crescimento.
+Padr˜ao similar, por´em inverso, ´e encontrado no ﬁltro CF. A correlac¸˜ao decresce inicialmente, sobe um
+”degrau”nas janelas 20 e 39 e volta a cair. No m´etodo UC este padr˜ao se mostra presente tamb´em, com
+alguns repiques de crescimento, por exemplo entre as janelas 20 a 23. A partir da janela 40, contudo, a
+correlac¸˜ao se estabililiza entre 0,15 e 0,17. J´a os m´etodos FD e HP apresentam coeﬁcientes de correlac¸˜ao
+com comportamento c´ıclico, onde os ciclos no coeﬁciente de correlac¸˜ao s˜ao mais curtos no primeiro m´etodo
+do que no segundo. Por ﬁm, o ﬁltro HRF apresenta padr˜ao semelhante ao dos ﬁltros LT e QT, por´em a
+correlac¸˜ao se estabiliza entre 0,55 e 0,56 ap´os a janela 39.
+
+11
+
+Table 2: Correlac¸˜ao
+
+LT QT
+
+L= 7
+L= 8
+L= 9
+L= 10
+L= 11
+L= 12
+L= 13
+L= 14
+L= 15
+L= 16
+L= 17
+L= 18
+L= 19
+L= 20
+L= 21
+L= 22
+L= 23
+L= 24
+L= 25
+L= 26
+L= 27
+L= 28
+L= 29
+L= 30
+L= 31
+L= 32
+L= 33
+L= 34
+L= 35
+L= 36
+L= 37
+L= 38
+L= 39
+L= 40
+L= 41
+L= 42
+L= 43
+L= 44
+L= 45
+
+0.66
+0.64
+0.68
+0.69
+0.72
+0.74
+0.75
+0.75
+0.76
+0.76
+0.77
+0.77
+0.77
+0.49
+0.52
+0.54
+0.57
+0.59
+0.60
+0.62
+0.64
+0.66
+0.67
+0.69
+0.71
+0.72
+0.73
+0.75
+0.76
+0.76
+0.77
+0.77
+0.78
+0.61
+0.63
+0.64
+0.64
+0.65
+0.67
+
+FD
+0.72 0.16
+0.69 0.21
+0.75 0.18
+0.77 0.21
+0.80 0.19
+0.83 0.17
+0.84 0.17
+0.85 0.19
+0.86 0.17
+0.87 0.17
+0.88 0.18
+0.88 0.17
+0.88 0.17
+0.53 0.19
+0.56 0.18
+0.60 0.16
+0.62 0.16
+0.65 0.16
+0.67 0.14
+0.69 0.14
+0.71 0.13
+0.73 0.14
+0.74 0.13
+0.77 0.13
+0.79 0.14
+0.80 0.15
+0.82 0.14
+0.83 0.14
+0.85 0.15
+0.85 0.15
+0.86 0.15
+0.87 0.15
+0.88 0.16
+0.70 0.17
+0.71 0.17
+0.72 0.16
+0.73 0.16
+0.74 0.15
+0.75 0.14
+
+HP
+0.82
+0.84
+0.84
+0.85
+0.83
+0.81
+0.79
+0.81
+0.79
+0.77
+0.78
+0.76
+0.75
+0.82
+0.84
+0.85
+0.86
+0.88
+0.88
+0.88
+0.88
+0.90
+0.89
+0.89
+0.89
+0.89
+0.87
+0.86
+0.86
+0.85
+0.83
+0.82
+0.81
+0.74
+0.75
+0.74
+0.76
+0.76
+0.76
+
+CF UC HRF
+0.55
+0.88 0.22
+0.55
+0.89 0.19
+0.88 0.20
+0.60
+0.61
+0.86 0.18
+0.63
+0.84 0.18
+0.81 0.17
+0.65
+0.66
+0.77 0.16
+0.65
+0.78 0.14
+0.65
+0.75 0.14
+0.72 0.13
+0.65
+0.66
+0.72 0.13
+0.66
+0.70 0.13
+0.68 0.13
+0.66
+0.50
+0.94 0.17
+0.52
+0.95 0.18
+0.54
+0.95 0.19
+0.94 0.19
+0.55
+0.56
+0.94 0.18
+0.56
+0.93 0.17
+0.92 0.17
+0.57
+0.58
+0.90 0.16
+0.58
+0.90 0.16
+0.59
+0.89 0.15
+0.87 0.15
+0.60
+0.60
+0.86 0.15
+0.62
+0.85 0.15
+0.83 0.15
+0.62
+0.63
+0.81 0.15
+0.63
+0.80 0.14
+0.78 0.14
+0.64
+0.65
+0.76 0.14
+0.64
+0.75 0.14
+0.65
+0.73 0.14
+0.87 0.15
+0.56
+0.56
+0.86 0.17
+0.56
+0.86 0.17
+0.86 0.16
+0.56
+0.55
+0.85 0.17
+0.83 0.16
+0.56
+
+4.1.1 An´alise dos turning points
+
+Utilizando como benchmark a cronologia dos ciclos do CODACE, o timing c´ıclico obtido com os diferentes
+ﬁltros ´e avaliado, computando-se diversas estat´ısticas, tais como n´umero de turning points, percentual de
+alarmes falsos, percentual de sinais perdidos, n´umero de vezes em que o pico ou o vale corresponde exa-
+tamente `a data do benchmark, m´edia e desvio padr˜ao da distˆancia, em trimestres, entre a data do ponto de
+virada no componente c´ıclico e aquela do benchmark. Seguindo (Canova 1999), considera-se um sinal emi-
+
+12
+
+tido - um pico ou um vale - como falso, caso n˜ao exista um sinal correspondente na cronologia do CODACE
+em um intervalo de at´e ±3 trimestres ao redor da data do sinal emitido pelo ﬁltro. J´a um sinal perdido ´e
+computado caso n˜ao haja nenhum turning point emitido pelo ﬁltro em um intervalo de at´e ±3 trimestres
+ao redor da data sinalizada pelo CODACE. Os pontos de virada s˜ao computados aplicando-se o algoritmo
+Bry-Boschan trimestral (Harding & Pagan 2002) aos componentes c´ıclicos obtidos atrav´es dos diferentes
+ﬁltros. Apesar de o algoritmo ser tradicionalmente aplicado `as s´eries em n´ıvel, o conjunto de regras permite
+identiﬁcar pontos de m´ınimos e m´aximos locais associados a turning points nos ciclos de crescimento (ver,
+por exemplo, (Pagan 1997), para o caso de pa´ıses desenvolvidos e (Campelo Jr et al. 2013) para o caso do
+Brasil).
+
+No que tange a caracter´ısticas dos turning points, existe pouca variabilidade na maior parte das es-
+tat´ısticas computadas para as diferentes janelas da SSA. Enquanto o n´umero de picos encontrados varia
+entre 12 e 13, o n´umero de vales gravita entre 13 e 14. A diferenc¸a ocorre porque o primeiro pico n˜ao
+foi captado pelo algoritmo Bry-Boschan por estar situado no in´ıcio da amostra, havendo, portanto mais
+vales do que picos. O CODACE, contudo, aponta a existˆencia de apenas 9 picos e 9 vales no ciclo cl´assico
+brasileiro at´e o momento. Conforme discutido na sec¸˜ao 2, o fato de haver mais pontos de virada em nossas
+estimativas deve ser visto como uma caracter´ıstica dos ciclos de crescimento. No que tange aos demais
+m´etodos, o n´umero de picos varia entre 7 (QT) e 14 (FD) e de vales entre 7 (QT) e 13 (FD e CF). Ademais,
+os ´unicos ﬁltros que apresentaram o mesmo n´umero de picos e vales foram QT, UC e HRF.
+
+Com relac¸˜ao ao percentual de alarmes falsos, 27 das 39 janelas testadas apontam que de 12 picos encon-
+trados, 4 n˜ao possuem correpondˆencia com algum pico do CODACE. Os percentuais variam entre 30, 77%
+(L=10) e 41, 67% (L=17). J´a os percentuais de alarmes falsos nos vales apresentam maior variabilidade, n˜ao
+havendo uma frequˆencia t˜ao alta para um mesmo valor. Os valores variam entre 35, 71% (L=10) e 64, 29%
+(L=33 e L=34). Em comparac¸˜ao com os demais ﬁltros testados, a amplitude de valores de percentuais falsos
+obtidos pelas diferentes janelas da SSA ´e menor do que a amplitude obtida com os demais ﬁltros, tanto para
+os picos como para os vales. Os valores variam entre 12, 50% (LT) e 55, 60% (UC) no caso dos picos e
+entre 28, 57% (QT) e 88, 89% (UC) nos vales.
+
+Enquanto a ocorrˆencia de sinais falsos pode indicar apenas o surgimento de per´ıodos de desacelerac¸˜ao
+na atividade sem que necessariamente isto se transforme em queda na atividade econˆomica, a existˆencia de
+sinais perdidos pode indicar a falha de um m´etodo em alertar ou conﬁrmar a ocorrˆencia de uma recess˜ao.
+Para todas as janelas testadas, contudo, o percentual de sinais perdidos ´e menor do que o de sinais falsos,
+tanto para os picos quanto para os vales. No caso dos picos, 38 das 39 janelas testadas apontam um percen-
+tual de sinais perdidos de 11, 11%, isto ´e, dos 9 picos datados pelo CODACE, apenas um - o de 1980.IV -
+n˜ao foi captado. A ´unica excec¸˜ao ´e a janela L=17, em que o pico de 1997.IV tamb´em foi tido como perdido,
+uma vez que o sinal surge em 1996.IV, logo com antecedˆencia maior do que 3 trimestres. Considerando-se
+os demais m´etodos, a SSA, juntamente com o ﬁltro CF obtiveram o menor percentual de sinais perdidos. O
+maior percentual de sinais perdidos (55, 56%), por outro lado, ocorre com o m´etodo UC.
+
+Por ﬁm, para aqueles pontos de virada identiﬁcados com uma diferenc¸a de at´e 3 trimestres computamos
+tamb´em a m´edia e o desvio padr˜ao da diferenc¸a em trimestres entre a data do turning point nos ciclos de
+crescimento - de cada um dos ﬁltros - e as datas dos turning points do CODACE. Os resultados mostram
+que, em m´edia, os ciclos de crescimento antecipam os picos dos ciclos de neg´ocios. Por outro lado, seus
+vales ocorrem, em m´edia, menos de um trimestre ap´os as datas do CODACE. Como os dados s˜ao trimestrais,
+pode-se dizer, portanto, que os vales s˜ao coincidentes. Este resultado est´a em conformidade com os registros
+da literatura, conforme discutido na sec¸˜ao 2.
+
+13
+
+Table 3: An´alise dos Pontos de Virada - Picos
+
+Metodo Numero Perc Alarme Falso Perc Missings Num Acertos Media do Sinal DP Sinal
+1.41
+1.58
+1.41
+0.89
+1.30
+1.19
+1.19
+1.46
+1.31
+1.20
+1.15
+1.41
+1.39
+1.41
+1.46
+1.60
+1.46
+1.46
+1.25
+1.39
+1.39
+1.25
+1.20
+1.25
+1.25
+1.25
+1.25
+1.25
+1.20
+1.25
+1.25
+1.31
+1.20
+1.25
+1.25
+1.28
+1.25
+1.25
+1.20
+1.07
+0.55
+2.42
+0.53
+1.41
+1.73
+0.63
+
+1 L= 7
+2 L= 8
+3 L= 9
+4 L= 10
+5 L= 11
+6 L= 12
+7 L= 13
+8 L= 14
+9 L= 15
+10 L= 16
+11 L= 17
+12 L= 18
+13 L= 19
+14 L= 20
+15 L= 21
+16 L= 22
+17 L= 23
+18 L= 24
+19 L= 25
+20 L= 26
+21 L= 27
+22 L= 28
+23 L= 29
+24 L= 30
+25 L= 31
+26 L= 32
+27 L= 33
+28 L= 34
+29 L= 35
+30 L= 36
+31 L= 37
+32 L= 38
+33 L= 39
+34 L= 40
+35 L= 41
+36 L= 42
+37 L= 43
+38 L= 44
+39 L= 45
+40 LT
+41 QT
+42 FD
+43 HP
+44 CF
+45 UC
+46 HRF
+
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+22.22
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+11.11
+22.22
+33.33
+33.33
+22.22
+11.11
+55.56
+33.33
+
+33.33
+33.33
+33.33
+30.77
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+41.67
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+38.46
+38.46
+33.33
+38.46
+33.33
+38.46
+33.33
+38.46
+38.46
+38.46
+38.46
+38.46
+33.33
+12.50
+14.29
+42.86
+22.22
+33.33
+55.56
+40.00
+
+-0.50
+-0.25
+-0.50
+-0.75
+-0.38
+-0.62
+-0.62
+-0.88
+-1.00
+-1.00
+-1.00
+-1.38
+-1.25
+-0.38
+-0.88
+-1.00
+-1.12
+-0.88
+-1.12
+-1.25
+-1.25
+-1.12
+-1.00
+-1.12
+-1.12
+-1.12
+-1.12
+-1.12
+-1.00
+-1.12
+-1.12
+-1.00
+-1.00
+-1.12
+-1.12
+-1.25
+-1.12
+-1.12
+-1.00
+-0.86
+-0.50
+-1.33
+-0.43
+-0.50
+-1.50
+0.00
+
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+2.00
+1.00
+1.00
+1.00
+1.00
+2.00
+1.00
+1.00
+2.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+2.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+3.00
+3.00
+1.00
+4.00
+1.00
+0.00
+4.00
+
+12
+12
+12
+13
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+13
+13
+12
+13
+12
+13
+12
+13
+13
+13
+13
+13
+12
+8
+7
+14
+9
+12
+9
+10
+
+14
+
+Table 4: An´alise dos Pontos de Virada - Vales
+
+Metodo Numero Perc Alarme Falso Perc Missings Num Acertos Media do Sinal DP Sinal
+0.97
+0.78
+1.12
+0.50
+0.78
+0.78
+0.97
+0.78
+0.78
+0.97
+0.78
+0.78
+0.78
+1.59
+1.33
+1.33
+1.33
+1.33
+1.33
+1.33
+1.41
+1.33
+1.41
+1.20
+1.22
+1.22
+1.30
+1.30
+1.22
+1.05
+1.05
+0.97
+0.97
+1.33
+0.71
+0.71
+1.00
+0.93
+0.71
+1.19
+1.25
+0.58
+1.19
+1.33
+2.81
+1.63
+
+1 L= 7
+2 L= 8
+3 L= 9
+4 L= 10
+5 L= 11
+6 L= 12
+7 L= 13
+8 L= 14
+9 L= 15
+10 L= 16
+11 L= 17
+12 L= 18
+13 L= 19
+14 L= 20
+15 L= 21
+16 L= 22
+17 L= 23
+18 L= 24
+19 L= 25
+20 L= 26
+21 L= 27
+22 L= 28
+23 L= 29
+24 L= 30
+25 L= 31
+26 L= 32
+27 L= 33
+28 L= 34
+29 L= 35
+30 L= 36
+31 L= 37
+32 L= 38
+33 L= 39
+34 L= 40
+35 L= 41
+36 L= 42
+37 L= 43
+38 L= 44
+39 L= 45
+40 LT
+41 QT
+42 FD
+43 HP
+44 CF
+45 UC
+46 HRF
+
+22.22
+22.22
+22.22
+0.00
+22.22
+22.22
+22.22
+22.22
+22.22
+22.22
+22.22
+22.22
+22.22
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+33.33
+44.44
+33.33
+44.44
+33.33
+33.33
+33.33
+44.44
+44.44
+33.33
+33.33
+33.33
+22.22
+22.22
+33.33
+22.22
+22.22
+22.22
+22.22
+22.22
+33.33
+44.44
+55.56
+33.33
+33.33
+88.89
+55.56
+
+46.15
+46.15
+46.15
+35.71
+46.15
+46.15
+46.15
+46.15
+46.15
+46.15
+46.15
+46.15
+46.15
+53.85
+53.85
+53.85
+53.85
+53.85
+53.85
+53.85
+61.54
+53.85
+61.54
+53.85
+53.85
+53.85
+64.29
+64.29
+53.85
+57.14
+53.85
+50.00
+46.15
+57.14
+50.00
+50.00
+50.00
+50.00
+46.15
+33.33
+28.57
+69.23
+40.00
+53.85
+88.89
+60.00
+
+0.78
+0.89
+0.67
+0.67
+0.89
+0.89
+0.78
+0.89
+0.89
+0.78
+0.89
+0.89
+0.89
+0.44
+0.56
+0.56
+0.56
+0.56
+0.56
+0.56
+0.67
+0.56
+0.67
+0.78
+0.67
+0.67
+0.78
+0.78
+0.67
+0.89
+0.89
+0.78
+0.78
+0.56
+1.00
+1.00
+1.00
+1.11
+0.75
+0.62
+0.71
+-0.50
+0.62
+0.44
+-0.50
+-0.33
+
+2.00
+3.00
+1.00
+3.00
+3.00
+3.00
+2.00
+3.00
+3.00
+2.00
+3.00
+3.00
+3.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+2.00
+2.00
+2.00
+2.00
+2.00
+2.00
+2.00
+2.00
+2.00
+1.00
+2.00
+2.00
+3.00
+2.00
+3.00
+6.00
+5.00
+2.00
+6.00
+2.00
+0.00
+3.00
+
+13
+13
+13
+14
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+13
+14
+14
+13
+14
+13
+14
+13
+14
+14
+14
+14
+14
+13
+9
+7
+13
+10
+13
+9
+10
+
+15
+
+4.1.2 Performance em tempo real
+
+Na sec¸˜ao anterior foi analisada a sensibilidade dos ciclos de crescimento a diferentes m´etodos de estimac¸˜ao,
+com ˆenfase na escolha do tamanho de janela da SSA, utilizando-se o conjunto de informac¸˜ao completo at´e
+o ﬁm da amostra. Estimativas dos ciclos, contudo, est˜ao sujeitas a incerteza em tempo real, advindas
+n˜ao apenas da atualizac¸˜ao dos valores divulgados pelos ´org˜aos de informac¸ ˜oes estat´ısticas mas tamb´em
+devido ao recˆomputo das estimativas dos ciclos com a inclus˜ao de observac¸ ˜oes adicionais (Orphanides &
+Norden 2002). Acessar o grau de conﬁabilidade nas estimativas dos ciclos em tempo real, portanto, ´e de
+particular importˆancia para policy makers preocupados com o timing das pol´ıticas monet´aria e ﬁscal, bem
+como de empresas e fam´ılias em suas decis˜oes de consumo e investimento. Neste trabalho, o foco ´e voltado
+para a sensibilidade das estimativas em relac¸˜ao ao m´etodo/janela utilizada. Em face disso, nesta sec¸˜ao s˜ao
+conduzidos alguns exerc´ıcios em tempo real onde a ´unica fonte de alterac¸˜ao nos dados prov´em do recˆomputo
+das estimativas de ciclo com a inclus˜ao de observac¸ ˜oes adicionais e n˜ao da divulgac¸˜ao de revis˜oes nos dados
+pelo IBGE. Seguindo a nomenclatura de (Orphanides & Norden 2002), este ´e um exerc´ıcio em quase-tempo
+real.
+
+O exerc´ıcio ´e conduzido sobre os 20% ﬁnais da amostra (2010.II a 2017.III): a cada novo trimestre o
+hiato do produto ´e recomputado e a ´ultima observac¸˜ao ´e salva. A s´erie formada por estas observac¸ ˜oes salvas
+´e chamada de s´erie de estimativas em tempo real. A mesma ´e contrastada com a s´erie de estimativa ﬁnais,
+que consiste nos 20% ﬁnais da s´erie de hiato obtido utilizando-se o conjunto de informac¸ ˜oes at´e 2017.III.
+As diferenc¸as podem ser visualizadas na Figura 3 para os m´etodos LT,QT,FD,HP,CF,UC e SSA com janelas
+selecionadas.
+
+Figure 3: Estimativas Finais e em Tempo Real - 2010.II a 2017.III
+
+Fonte: Elaborac¸˜ao pr´opria.
+
+Adicionalmente, trˆes estat´ısticas de conﬁabilidade das estimativas em quase tempo real s˜ao reportadas
+na tabela 5: o coeﬁciente de correlac¸˜ao entre as estimativas ﬁnal e em tempo real, a raz˜ao ru´ıdo-sinal - com-
+putada como a divis˜ao entre duas outras estat´ısticas: o desvio padr˜ao da distˆancia vertical entre a estimativa
+ﬁnal e a estimativa em tempo real e o desvio padr˜ao da estimativa ﬁnal - e o grau de concordˆancia, isto ´e, o
+percentual do tempo em que as estimativas ﬁnal e em tempo real apresentam o mesmo sinal.
+
+16
+
+-5052010201220142016Tendência Linear (LT)-10-5052010201220142016Tendência Quadrática (QT)-5.0-2.50.02.52010201220142016Filtro Hodrick-Prescott (HP)-2-10122010201220142016Filtro Christiano-Fitzgerald (CF)-3-2-10122010201220142016Componentes Não-Observáveis (UC)-10-505102010201220142016Filtro de Regressão de Hamilton (HRF)-4-202010201220142016SSA, L=7-5.0-2.50.02010201220142016SSA, L=26-9-6-302010201220142016SSA, L=31-8-402010201220142016SSA, L=37-8-402010201220142016SSA, L=39-7.5-5.0-2.50.02.52010201220142016SSA, L=45FinalTempo RealTable 5: Estat´ısticas de Conﬁabilidade
+
+Correlacao Razao Ruido Sinal Concordancia
+0.53
+0.73
+0.67
+0.67
+0.77
+0.67
+0.60
+0.57
+0.60
+0.63
+0.57
+0.57
+0.63
+0.63
+0.63
+0.70
+0.67
+0.70
+0.77
+0.77
+0.67
+0.57
+0.67
+0.70
+0.83
+0.57
+0.53
+0.60
+0.63
+0.63
+0.70
+0.63
+0.53
+0.57
+0.67
+0.63
+0.50
+0.43
+0.50
+1.00
+0.77
+1.00
+0.57
+0.67
+0.73
+0.60
+
+0.64
+0.79
+0.74
+0.63
+0.84
+0.88
+0.90
+0.91
+0.92
+0.93
+0.93
+0.93
+0.94
+0.76
+0.77
+0.74
+0.69
+0.74
+0.70
+0.69
+0.71
+0.73
+0.80
+0.82
+0.84
+0.89
+0.90
+0.92
+0.93
+0.94
+0.96
+0.96
+0.96
+0.86
+0.87
+0.88
+0.80
+0.83
+0.88
+0.99
+0.97
+1.00
+0.53
+0.53
+0.88
+0.99
+
+1.53
+1.30
+1.11
+1.04
+0.81
+0.67
+0.56
+0.50
+0.44
+0.40
+0.39
+0.39
+0.36
+3.77
+3.00
+2.42
+1.44
+1.49
+1.62
+1.70
+1.51
+1.37
+1.19
+1.13
+1.18
+0.83
+0.71
+0.63
+0.59
+0.51
+0.43
+0.38
+0.35
+1.25
+0.94
+0.61
+0.74
+0.72
+0.62
+0.17
+0.26
+0.00
+1.04
+1.00
+0.48
+0.20
+
+SSA 7
+SSA 8
+SSA 9
+SSA 10
+SSA 11
+SSA 12
+SSA 13
+SSA 14
+SSA 15
+SSA 16
+SSA 17
+SSA 18
+SSA 19
+SSA 20
+SSA 21
+SSA 22
+SSA 23
+SSA 24
+SSA 25
+SSA 26
+SSA 27
+SSA 28
+SSA 29
+SSA 30
+SSA 31
+SSA 32
+SSA 33
+SSA 34
+SSA 35
+SSA 36
+SSA 37
+SSA 38
+SSA 39
+SSA 40
+SSA 41
+SSA 42
+SSA 43
+SSA 44
+SSA 45
+LT
+QT
+FD
+HP
+CF
+UC
+HRF
+
+17
+
+O coeﬁciente de correlac¸˜ao mais alto corresponde ao m´etodo FD (1, 00), seguido pelos m´etodos LT e
+HRF (0, 99) e QT (0, 97). Estes resultados s˜ao esperados, uma vez que a adic¸˜ao de uma nova observac¸˜ao
+- excetuando-se o caso de outliers - n˜ao altera o valor da primeira diferenc¸a das observac¸ ˜oes passadas e
+pouco altera a soma do quadrado dos res´ıduos nas regress˜oes lineares, n˜ao movimentando, portanto, a reta
+de regress˜ao. No caso da SSA, as janelas que apresentam maior correlac¸˜ao entre as s´eries ﬁnal e em tempo
+real s˜ao L = 37, L = 38 e L = 39, todas com coeﬁciente de 0, 96. Nota-se ainda que para qualquer uma
+das janelas consideradas, a correlac¸˜ao ´e maior do que no caso dos tradicionais ﬁltros HP e CF, os quais
+apresentam a menor correlac¸˜ao entre os m´etodos apresentados (0, 53).
+
+A raz˜ao ru´ıdo-sinal permite captar os efeitos de revis˜oes persistentes para cima ou para baixo nas
+reestimac¸ ˜oes dos ciclos. Quanto menor esta estat´ıstica, maior a consistˆencia entre as estimativas ﬁnal e
+em tempo real. Assim, pelos mesmos motivos, novamente os ﬁltros lineares FD, LT, HRF e QT apresenta-
+ram as menores raz˜oes ru´ıdo-sinal. No entanto, 22 das 39 estimativas com SSA superaram, por este crit´erio,
+os ﬁltros CF e HP, cujas raz˜oes eram 1,00 e 1,04, respectivamente. Os menores valores obtidos com a SSA
+foram para as janelas L = 19 (0,36), L = 38 (0,38) e L = 39 (0,35).
+
+Finalmente, o grau de concordˆancia indica se a informac¸˜ao acerca do sobreaquecimento ou subaque-
+cimento da economia - isto ´e, se o produto efetivo ´e maior ou menor que o potencial - ´e consistente entre
+as estimativas ﬁnal e em tempo real. Os ﬁltros FD e LT apresentaram concordˆancia em 100% do tempo.
+J´a os ﬁltros CF e HP tiveram as piores performances em tempo real, com grau de concordˆancia de 0,67 e
+0,57, respectivamente. Por outro lado, a janela L = 31 obteve a segunda melhor performance dentre todos
+os ﬁltros considerados, com coeﬁciente de concordˆancia de 0,83. J´a empatados em terceiro lugar est˜ao as
+janelas L = 11,L = 25, L = 26 e o ﬁltro QT, todos com coeﬁciente de 0,77.
+
+5 Conclus˜ao
+
+Flutuac¸ ˜oes c´ıclicas s˜ao caracter´ısticas da maior parte das s´eries de tempo macroeconˆomicas. Estes movi-
+mentos de curto prazo que ocorrem nos principais indicadores das economias de mercado s˜ao conhecidos
+como ciclos de neg´ocios. Neste trabalho, em complementac¸˜ao `a abordagem dos ciclos cl´assicos utilizada
+pelo CODACE-IBRE/FGV, prop˜oe-se estudar as ﬂutuac¸ ˜oes do PIB trimestral do Brasil em torno de sua
+tendˆencia de longo prazo, conhecidas como ciclos de crescimento, no per´ıodo entre 1980 e 2017. Para
+tanto, a An´alise do Espectro Singular (SSA) ´e empregada, utilizando-se o procedimento de agrupamento de
+de Carvalho & Rua (2017).
+
+Ao explorar diversas caracter´ısticas dos ciclos obtidos com diferentes tamanhos de janela e contrast´a-las
+a outros ﬁltros utilizados na literatura, pode-se constatar que: i) os ciclos gerados pelo m´etodo da SSA s˜ao,
+em geral, sens´ıveis `a escolha do tamanho da janela, ii) dos ﬁltros tradicionais, a SSA apresenta resultados
+em maior conformidade com o ﬁltro CF, caracter´ıstica tamb´em encontrada por de Carvalho et al. (2012),
+levando-se em considerac¸˜ao tanto os momentos estimados para os ciclos, quanto ao timing dos turning
+points e, por ﬁm, iii) utilizando como crit´erio a correlac¸˜ao, raz˜ao ru´ıdo-sinal e a concordˆancia entre as
+s´eries ﬁnal e em tempo real, e levando-se em considerac¸˜ao os benef´ıcios e limitac¸ ˜oes de cada um dos
+m´etodos, ´e poss´ıvel argumentar que a SSA, para algumas janelas, apresenta performance em tempo real
+superior `a dos principais ﬁltros da literatura.
+
+Referˆencias
+
+Alexandrov, T., Bianconcini, S., Dagum, E. B., Maass, P. & McElroy, T. S. (2012), ‘A review of some
+
+modern approaches to the problem of trend extraction’, Econometric Reviews 31(6), 593–624.
+
+18
+
+Burns, A. F. & Mitchell, W. C. (1946), ‘Measuring business cycles’, Nber Books .
+
+Burnside, C. (1998), ‘Detrending and business cycle facts: A comment’, Journal of Monetary Economics
+
+41(3), 513–532.
+
+Campelo Jr, A., Sima-Friedman, J., Lima, S., Ozyildirim, A. & Picchetti, P. (2013), ‘Tracking business
+
+cycles in brazil with composite indexes of coincident and leading economic indicators’.
+
+Canova, F. (1994), ‘Detrending and turning points’, European Economic Review 38(3-4), 614–623.
+
+Canova, F. (1998), ‘Detrending and business cycle facts’, Journal of monetary economics 41(3), 475–512.
+
+Canova, F. (1999), ‘Does detrending matter for the determination of the reference cycle and the selection of
+
+turning points?’, The Economic Journal 109(452), 126–150.
+
+Chauvet, M. (2002), ‘The brazilian business and growth cycles’, Revista Brasileira de Economia 56(1), 75–
+
+106.
+
+de Carvalho, M., Rodrigues, P. C. & Rua, A. (2012), ‘Tracking the us business cycle with a singular spec-
+
+trum analysis’, Economics Letters 114(1), 32–35.
+
+de Carvalho, M. & Rua, A. (2017), ‘Real-time nowcasting the us output gap: Singular spectrum analysis at
+
+work’, International Journal of Forecasting 33(1), 185–198.
+
+Dias, M. H. A. & Dias, J. (2010), ‘Measuring the cyclical component of a time series: a new proposed
+
+methodology’, Brazilian Review of Econometrics 30(1), 91–122.
+
+Dumas, P., Ghil, M., Groth, A. & Hallegatte, S. (2011), ‘Dynamic coupling of the climate and macroeco-
+
+nomic systems’, Math. Social Sci .
+
+Golyandina, N. (2010), ‘On the choice of parameters in singular spectrum analysis and related subspace-
+
+based methods’, Statistics and its Interface 3, 259–279.
+
+Golyandina, N. & Korobeynikov, A. (2014), ‘Basic singular spectrum analysis and forecasting with r’,
+
+Computational Statistics & Data Analysis 71, 934–954.
+
+Golyandina, N., Nekrutkin, V. & Zhigljavsky, A. A. (2001), Analysis of time series structure: SSA and
+
+related techniques, Chapman and Hall/CRC.
+
+Gonzalez, R. B., Lima, J., Marinho, L. et al. (2015), Business and ﬁnancial cycles: an estimation of cycles’
+
+length focusing on macroprudential policy, Technical report.
+
+Groth, A., Ghil, M., Hallegatte, S. & Dumas, P. (2015), ‘The role of oscillatory modes in us business
+
+cycles’, OECD Journal. Journal of Business Cycle Measurement and Analysis 2015(1), 63.
+
+Harding, D. & Pagan, A. (2002), ‘Dissecting the cycle: a methodological investigation’, Journal of mone-
+
+tary economics 49(2), 365–381.
+
+Hassani, H. (2007), ‘Singular spectrum analysis: methodology and comparison’, Journal of Data Science
+
+5(2), 239–257.
+
+Hassani, H. & Thomakos, D. (2010), ‘A review on singular spectrum analysis for economic and ﬁnancial
+
+time series’, Statistics and its Interface 3(3), 377–397.
+
+Hirose, Y. & Naganuma, S. (2010), ‘Structural estimation of the output gap: A bayesian dsge approach’,
+
+Economic Inquiry 48(4), 864–879.
+
+19
+
+Huffaker, R., Bittelli, M. & Rosa, R. (2017), Nonlinear Time Series Analysis with R, Oxford University
+
+Press.
+
+Kydland, F. E. & Prescott, E. C. (1982), ‘Time to build and aggregate ﬂuctuations’, Econometrica: Journal
+
+of the Econometric Society pp. 1345–1370.
+
+Long Jr, J. B. & Plosser, C. I. (1983), ‘Real business cycles’, Journal of political Economy 91(1), 39–69.
+
+Lopes, L. S., Chauvet, M. & de Lima, J. E. (2017), ‘Trend-cycle decomposition of the brazilian gdp: New
+
+facts for the period between 1947 and 2012’, Encontro Nacional de Economia .
+
+Lucas, R. E. (1977), Understanding business cycles, in ‘Carnegie-Rochester conference series on public
+
+policy’, Vol. 5, Elsevier, pp. 7–29.
+
+Mintz, I. (1969), Dating postwar business cycles: Methods and their application to western germany, 1950–
+
+67, in ‘Dating Postwar Business Cycles: Methods and Their Germany, 1950–67’, NBER, pp. 55–111.
+
+Moore, G. H. (1983), Growth cycles: A new-old concept, in ‘Business Cycles, Inﬂation, and Forecasting,
+
+2nd edition’, Ballinger, pp. 61–64.
+
+Oliveira, L. P. & Portugal, M. S. (2013), ‘Structural estimation of output gap: The case of brazil’.
+
+Orphanides, A. & Norden, S. v. (2002), ‘The unreliability of output-gap estimates in real time’, Review of
+
+economics and statistics 84(4), 569–583.
+
+Pagan, A. (1997), ‘Towards an understanding of some business cycle characteristics’, Australian Economic
+
+Review 30(1), 1–15.
+
+Sella, L. & Marchionatti, R. (2012), ‘On the cyclical variability of economic growth in italy, 1881–1913: a
+
+critical note’, Cliometrica 6(3), 307–328.
+
+Teles, V., Springer, P., Gomes, M., Paes, N. & Cavalcanti, A. (2005), ‘Ciclos econˆomicos e m´etodos de
+
+ﬁltragem:“fatos estilizados” para o caso brasileiro’, Revista EconomiA 6, 291–328.
+
+Zarnowitz, V. (1992), Macroeconomics and business cycles: an overview, in ‘Business Cycles: Theory,
+
+History, Indicators, and Forecasting’, University of Chicago Press, pp. 1–19.
+
+20
+
+

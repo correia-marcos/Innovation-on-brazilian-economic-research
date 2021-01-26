@@ -1,0 +1,2054 @@
+O risco visto a posteriori e o risco imputado a priori nos contratos
+
+de um banco de desenvolvimento
+
+Denise Benetti Ramirez
+
+Francis Carlo Petterini
+
+Banco Regional de Desenvolvimento do Extremo Sul
+
+Universidade Federal de Santa Catarina
+
+denise.ramirez@brde.com.br
+
+f.petterini@ufsc.br
+
+Resumo
+
+O artigo trata de dois assuntos raramente interseccionados na literatura: risco de inadimplên-
+cia e bancos de desenvolvimento. Como a gestão de risco é fundamental para a maximização de
+lucro em bancos comerciais, há muitas análises deste tipo. Mas possivelmente porque os bancos
+de desenvolvimento têm papel indireto no sistema ﬁnanceiro, são escassos os trabalhos com esta
+especiﬁcidade. Porém, uma gestão displicente de risco em tais bancos pode comprometer o ﬁnan-
+ciamento estratégico de regiões e setores inteiros. Neste sentido, a pesquisa obteve acesso inédito
+aos microdados dos contratos de um banco de desenvolvimento brasileiro. Com técnicas de aná-
+lise de sobrevivência para estudar os riscos de inadimplência e tempos de revelação entre perﬁs
+de mutuários, contrastaram-se as classiﬁcações de risco imputadas a priori. Observaram-se indi-
+cativos de distorções nas classiﬁcações de alguns perﬁs empresarias, e um consequente dilema:
+para corrigir isto seriam necessários contratos mais exíguos, contrários ao propósito do banco.
+
+Palavras-chave: risco de inadimplência; banco de desenvolvimento; análise de sobrevivência.
+
+Abstract
+
+The article deals with two subjects rarely intersecting in the literature: risk of default and de-
+velopment banks. As risk management is critical to maximizing proﬁt in commercial banks, there
+are many analyzes of this type. But perhaps because the development banks have indirect role in
+the ﬁnancial system, there are few studies with this speciﬁcity. But a careless risk management in
+such banks may compromise the strategic ﬁnancing of entire regions and sectors. In this sense,
+the research obtained unprecedented access to microdata of contracts of a Brazilian development
+bank. With survival analysis techniques to study the risks of default among borrowers proﬁles, the
+study contrasts the risk ratings attributed a priori. It is observed indications of distortions in the
+ratings of some entrepreneurial proﬁles, and a consequent dilemma: to correct this the institution
+would take more exiguous contracts, contrary to the purpose of the bank.
+
+Keywords: risk of default; development banks; survival analysis.
+
+JEL: D81, G24, G32.
+
+Área 8 - Microeconomia, Métodos Quantitativos e Finanças.
+
+1
+
+1 Introdução
+
+Um banco de desenvolvimento é uma instituição que ﬁnancia projetos e setores considerados
+estratégicos ao melhoramento socioeconômico de uma região, normalmente com juros inferiores e
+prazos superiores aos de mercado1. Este tipo de banco costuma se sustentar inicialmente com fundos
+públicos, e posteriormente com os resultados de suas operações. Embora não seja uma regra, é
+incomum a captação de depósitos à vista. Mesmo assim, ou mesmo sendo apenas repassador de
+recursos para outros bancos, um banco de desenvolvimento pode ser fonte de risco sistêmico se uma
+acentuada inadimplência de seus mutuários implicar em endividamento público, na medida em que é
+entrelaçado com o governo2. Além disto, uma gestão de risco inadequada também pode acarretar em
+problemas no ﬁnanciamento de setores inteiros, desencadeando efeitos aos empreendimentos que se
+localizam à montante e à jusante das cadeias de negócio porventura apoiadas.3
+
+Todavia, embora exista uma gama de literatura de análise de risco de inadimplência bancária4, há
+pouca literatura concernente à análise em bancos de desenvolvimento – que, devido ao seu propósito
+de existência, tendem a aceitar riscos maiores que os outros bancos5. Acredita-se que estes estudos
+são relativamente escassos em parte pela implicação indireta que tais instituições exercem no sistema
+ﬁnanceiro, e em parte pelo acesso restrito à suas bases de dados.
+
+Nesse sentido, a pesquisa aqui relatada obteve acesso inédito aos microdados da carteira de crédito
+de um banco de desenvolvimento que atua nos três estados da Região Sul do Brasil, compreendendo
+7.461 contratos observados, sendo 6,4% inadimplentes. Por questões de conﬁdencialidade de infor-
+mações, a instituição solicitou que seu nome não fosse explicitamente citado, e disponibilizou apenas
+um recorde dos dados6. Não obstante, mesmo com esta restrição, o banco forneceu os escores de
+classiﬁcações de risco a priori imputados no processo de contratação dos empréstimos, permitindo
+um estudo comparativo com o comportamento revelado a posteriori pelos mutuários.
+
+Na perspectiva administrativa, a motivação em se fazer comparações do tipo “antes e depois”
+são de pelo menos três naturezas. Primeiro, para se tentar reduzir os problemas de seleção adversa,
+na medida em que se identiﬁcam perﬁs de mutuários que mais frequentemente omitem informação
+sobre a capacidade de honrar os contratos. Segundo, para se ajustar o sistema de escores de forma
+selecionar mais adequadamente os parâmetros dos contratos. Terceiro, para identiﬁcar como condi-
+ções macroeconômicas adversas podem afetar a adimplência, e assim ajustar mais adequadamente os
+provisionamentos ﬁnanceiros.
+
+Para se fazer essas comparações, é comum se modelar o comportamento dos mutuários a partir de
+um conjunto de suas características observáveis, dos parâmetros do contratos e das condições macro-
+econômicas. O que normalmente é feito com o uso de modelos multinomiais, de cadeias de Markov
+ou de redes neurais, contrastando as expectâncias condicionadas das probabilidades de inadimplência
+com os sistemas de classiﬁcação de risco utilizados pelo banco. Assim, é possível identiﬁcar e corrigir
+possíveis distorções.
+
+Narain (1992) se tornou uma referência ao observar que boa parte desses exercícios eram feitos
+a partir de informações de contratos em andamento – que é o caso na pesquisa aqui relatada, como
+será detalhado adiante. Desta forma, se observam mutuários que já se revelaram inadimplentes e mu-
+tuários que ainda não se revelaram inadimplentes. Assim, como não se sabe se de fato estes últimos
+se revelarão ou não inadimplentes até o ﬁm dos contratos, a abordagem estatística mais adequada
+
+1Ver McKinnon (1973), Bruck (1998), Panizza et al (2004) e ONU (2005) para diferentes deﬁnições de “banco de
+
+desenvolvimento”.
+
+2Ver Diamond e Rajan (2005) para uma discussão abrangente, e Oliveira et al (1989) para uma análise de caso.
+3Ver Cáceres (1994) ou Townsend e Yaron (2001) para exemplos nesse sentido.
+4Ver Thomas et al (2004) para uma abrangente revisão da literatura.
+5Aqui está se tratando do “risco de inadimplência”, também denominado de “risco de crédito” – uma discussão abran-
+
+gente sobre estes conceitos pode ser vista em Righi e Caretta (2014).
+
+6Hand e Henley (1997) indicam este tipo de restrição é frequentemente relatada na literatura internacional.
+
+2
+
+para estudos desta natureza seria a “análise de sobrevivência” da adimplência, desde que houvesse o
+registro adequado das datas das faturas em aberto.
+
+A análise de sobrevivência é um conjunto de técnicas que vem sendo aprimoradas desde o Século
+XIX, que inicialmente foram utilizadas em estudos médicos sobre a mortalidade humana. Posterior-
+mente foram adaptadas para estudos de engenharia sobre a resistência de materiais, e de economia
+sobre a duração do desemprego – entre outras áreas. Além de ser um procedimento relativamente
+simples de ser operacionalizado, a análise tem a vantagem de ser mais coerente com o possível pro-
+cesso gerador dos dados, cujo tempo de revelação (da inadimplência, da morte da pessoa, da quebra
+do material, da saída do desemprego etc.) é latente e cuja observação é limitada da perspectiva do
+pesquisador.
+
+Além dessa introdução, o artigo possui mais seis seções. A Seção 2 apresenta uma breve revisão
+de literatura sobre análise de risco de inadimplência bancária, especiﬁcamente a que usa análise de
+sobrevivência da adimplência. A Seção 3 discute os conceitos fundamentais desta técnica. A Seção
+4 descreve a base de dados. A Seção 5 apresenta e discute os resultados estimados para o risco de
+inadimplência e a tábua de sobrevivência da adimplência por perﬁl de cliente, contrastando-os com o
+sistema de classiﬁcação de risco do banco. Conclusões são apresentadas em sequência.
+
+2 A literatura de análise de sobrevivência da adimplência
+
+Hand e Henley (1997), Thomas (2000) e Thomas et al (2004) registram uma série de técnicas
+para identiﬁcar padrões de risco de inadimplência de mutuários, cuja motivação é subsidiar os vários
+conceitos de classiﬁcação de risco (credit scorings) que vêm sendo discutidos e aprimorados desde a
+década de 19607. Neste sentido, se tornaram populares os modelos de variável dependente binária ou
+multinomial (para estudar a presença na situação inadimplente) e as análises de cadeias de Markov e
+de redes neurais (para estudar a probabilidade de mudança de adimplente para inadimplente). Uma
+vez que o pesquisador tem acesso à base de microdados de uma carteira de crédito, contendo caracte-
+rísticas especíﬁcas do mutuário e do contrato, como por exemplo a indicação se o cliente se tornou ou
+não inadimplente, em que parcela do contrato houve incorrência de saldo vencido, ou qualquer outra
+forma de categorização, é possível estimar probabilidades condicionadas dele revelar um determinado
+tipo de comportamento. Assim, o pesquisador pode produzir uma tabela de risco de inadimplência
+para diferentes perﬁs de clientes, com o propósito de contribuir para uma melhor administração dos
+contratos.
+
+Narain (1992) observou que a maioria das bases de dados analisadas tratavam de contratos em an-
+damento, onde o mutuário já havia revelado a inadimplência através de um ou mais saldos vencidos,
+ou não havia revelado até certo momento. Sendo que este último caso se desdobra em outros dois: o
+cliente estaria por revelar, ou nunca revelaria uma quebra de contrato. Por conta disto, modelos bi-
+nários (e.g., Probit ou Logit) poderiam tratar inadimplência vis-à-vis adimplência momentaneamente
+observada, assim como modelos multinomiais poderiam modelar diferentes tipos de inadimplência
+(e.g., de 30 ou 90 dias) vis-à-vis adimplência momentaneamente observada. Mas ambos tratavam
+de forma limitada a adimplência de contratos em andamento, e os estes problemas de deﬁnição de
+“estado” se estenderiam para as análises de cadeias de Markov e de redes neurais.
+
+Narain (1992) então propôs a modelagem concomitante da probabilidade de inadimplência e do
+tempo de incorrência de saldo vencido com técnicas de análise de sobrevivência bem estabelecidas na
+
+7O propósito desta seção é essencialmente documentar a análise de risco de inadimplência bancária estudada através
+de modelos de sobrevivência. Para o leitor interessado em maiores especiﬁcidades relacionadas aos bancos de desenvolvi-
+mento, recomenda-se: Castro (2011), que trata do gerenciamento de risco e intersecções com outros temas na perspectivas
+da teoria econômica do desenvolvimento; Panizza et al (2004), que trata do papel destas instituições e dos níveis de risco
+que podem ser considerados aceitáveis para elas; e, Viganò (1993), que trata das adaptações de sistemas de classiﬁcação
+de riscos nos contratos destas instituições.
+
+3
+
+literatura estatística. Neste caso, se o pesquisador consegue observar a data de falha dos pagamentos
+contratuais, é possível tratar o tempo de adimplência de forma mais adequada, considerando-o como
+uma variável latente com limite superior móvel – deﬁnido pelo tamanho do contrato. Além disso,
+como detalhado em Thomas et al (2001), a vantagem prática dessa abordagem, à guisa de ferramenta
+administrativa para a classiﬁcação de riscos, é que ela é uma técnica relativamente simples de se
+aplicar para balizar contratos para diferentes perﬁs de clientes – em termos de valor emprestado,
+horizonte de pagamento, taxa de juros etc.
+
+Banasik et al (1999), Stepanova e Thomas (2002), Baesens et al (2005), Andreeva (2006) e Bo-
+nini e Caivano (2013) deram continuidade a proposta de Narain (1992) em pelo menos dois sentidos.
+Primeiro, desenvolvendo observações teóricas sobre o uso da técnica, principalmente porque na aná-
+lise de sobrevivência stricto sensu existem duas situações (vivo ou morto), e é apenas um questão de
+tempo para ocorrer uma transição. Mas no contexto da análise do risco de inadimplência existem cen-
+suras na observação da transição, i.e., apenas uma parte dos mutuários irá mudar de adimplente para
+inadimplente até o ﬁnal dos contratos ou até o momento em que são observados. Além disso, podem
+existir várias situações, i.e., o cliente pode: se tornar e continuar inadimplente, se tornar inadimplente
+e quitar o saldo vencido, nunca ter se revelado inadimplente etc.
+
+Em um segundo sentido, Banasik et al (1999) compararam a capacidade de previsão de risco dos
+modelos de análise de sobrevivência em relação as outras técnicas comumente empregadas. Para
+tanto, eles modelaram mais de 15 mil contratos de um banco inglês (3% inadimplentes, pelo critério
+adotado), registrando que a análise tende a gerar resultados preditivos pelo menos tão bons quanto
+as outras metodologias. Andreeva (2006) repetiu o exercício com cerca de 76 mil observações de
+contratos de bancos da Alemanha, Bélgica e Holanda (de 4 a 6% inadimplentes, dependendo do
+critério), chegando a conclusões semelhantes.
+
+Outras análises de risco usando modelos de sobrevivência da adimplência foram feitas por Rosz-
+bach (2004) (com dados da Suécia), Glennon e Nigro (2005) (Estados Unidos), Allen e Rose (2006)
+(Nova Zelândia), Bellotti e Crook (2009) (Inglaterra) e Bhimania et al (2010) (Portugal). Embora
+nenhuma destas aplicações tenha utilizado dados de uma carteira de crédito de bancos de desenvol-
+vimento, cujos contratos são, em média, mais longos e, possivelmente, mais arriscados que os dos
+outros bancos.
+
+No Brasil, o único trabalho publicado encontrado nessa linha foi Bressan et al (2004), usando a
+técnica para modelar 107 empréstimos (14% inadimplentes, segundo o critério de saldo vencido por
+mais de 30 dias) junto ao Sistema de Cooperativas de Crédito do Brasil (Sicoob), para pessoas jurídi-
+cas, em Minas Gerais, entre 1998 e 2001. A conclusão de destaque foi que, dentre os fatores possíveis
+de serem avaliados ex-ante a tomada de crédito, um maior percentual de despesas com pessoal sobre
+o faturamento é fator determinante tanto para o aumento da probabilidade de inadimplência quanto
+para a redução do tempo de revelação.
+
+3 Metodologia
+
+Esta seção apresentará a conﬁguração metodológica que se mostrou mais adequada para a base de
+dados ora analisada – diferentes conﬁgurações podem ser consultadas no trabalhos citados na seção
+anterior. Desta forma, uma vez que o crédito foi concedido, a duração da adimplência é conside-
+∗. No instante t, a probabilidade do mutuário
+rada uma variável aleatória contínua não negativa T
+∗ ≤ t) = F(t), onde F(·) é uma função de distribuição acumulada. Logo, a
+estar inadimplente é P (T
+probabilidade de sobrevivência da adimplência é S(t) = 1− F(t), e consequentemente f (t) = −S
+(t),
+onde f (·) é a densidade de probabilidade. Analogamente, o risco instantâneo de inadimplência é
+
+(cid:48)
+
+4
+
+∗ ≤ t + ξ | T
+
+∗
+
+> t)/ξ = −S
+
+(cid:48)
+
+(t)/S(t). Ou seja, as funções de risco e sobrevivên-
+
+h(t) = limξ→0 P (t < T
+cia são inversamente proporcionais em um ponto ﬁxo de f (·).8
+Com essas deﬁnições, a modelagem começa com alguma conjectura acerca do processo gerador
+do tempo de adimplência, através da suposição de uma forma funcional para f (·) ou h(·). Ao se
+modelar f (·), costumam ser usadas as distribuições Weibull e Gompertz. A primeira tende a se ajus-
+tar melhor aos dados quando é mais frequente observar a inadimplência nas primeiras parcelas dos
+contratos, e no caso contrário a segunda tende a se ajustar melhor – detalhes em Andreeva (2006).
+
+terminado por γi = exp((cid:80)K
+
+A Tabela 1 apresenta as funções densidade, sobrevivência e risco para essas duas distribuições.
+Considerando n mutuários indexados por i = 1, ..., n, o risco condicionado é fundamentalmente de-
+k=1 βkxik), onde βk é um parâmetro e xik ∈ Xi é uma covariada de um
+conjunto contendo características do cliente (e.g., setor de atividade), do contrato (e.g., taxa de juros)
+ou da situação macroeconômica (e.g., desemprego). Se ocorre βk > 0, k (cid:44) 0, signiﬁca que aumentos
+em xik aumentam o risco de inadimplência. Complementarmente, β0 é o parâmetro que regula a
+relação do risco com o tempo – e.g., no caso da Weibull, se β0 = 1 a probabilidade de sobrevivência
+diminui com o tempo, embora o risco dependa exclusivamente do perﬁl representado por Xi. Ambas
+as distribuições geram análises denominadas de “risco relativo”, já que para todo perﬁl i (cid:44) j, a razão
+de risco é γi
+γj
+
+, que independe do tempo – detalhes em Cameron e Trivedi (2005).
+
+Tabela 1: Funções das distribuições Weibull e Gompertz.
+
+Função
+
+Weibull
+
+(cid:17)
+
+Gompertz
+
+(cid:16)
+β0t − γi
+(cid:16)− γi
+β0
+[exp(β0t)− 1]
+
+γi exp
+
+γiβ0tβ0−1 exp(−γitβ0)
+
+Densidade, f (t | β, Xi):
+Sobrevivência, S(t | β, Xi):
+Risco, h(t | β, Xi):
+β0 > 0; γi = exp((cid:80)K
+k=1 βkxik); no caso da Weibull, se β0 = 1 ela é a Exponencial, se β0 > 1
+o risco é acelerativo e se β0 < 1 risco é não acelerativo; a Gompertz é risco acelerativo ∀β0.
+
+[exp(β0t)− 1]
+(cid:17)
+
+exp(−γitβ0)
+γiβ0tβ0−1
+
+γi exp(β0t)
+
+exp
+
+β0
+
+Para a estimação do vetor de parâmetros β, primeiro deve-se notar que a duração da adimplência
+é uma variável latente. Isto é, ela é observável apenas no caso do cliente indicar saldo vencido de
+alguma fatura, e poderá ainda ser observada caso o contrato não tenha ﬁndado. Assim, se o sistema
+do banco registra a data de início do contrato, di, e os dias de atraso de pagamento, Ai, em um
+determinado dia D da coleta dos dados, o pesquisador pode computar a seguinte variável – cujo
+menor valor é zero, e o limite superior é móvel:
+
+D − di − Ai
+
+D − di
+30
+,
+30
+
+Ti =
+
+∗
+i ,
+
+:= T
+
+se Ai > 0
+se Ai = 0
+
+(1)
+
+8limξ→0
+
+P (t < T
+
+∗ ≤ t + ξ | T
+
+∗
+
+> t)
+
+ξ
+
+= limξ→0
+
+P (t < T
+
+∗ ≤ t + ξ)
+ξ
+
+1
+∗
+
+> t)
+
+P (T
+
+= limξ→0
+
+F(t + ξ)− F(t)
+
+ξ
+
+1
+
+1− F(t)
+
+=
+
+f (t)
+S(t)
+
+.
+
+5
+
+A equação (1) deﬁne uma fração de tempo de 30 dias que indica o ponto de revelação da ina-
+dimplência caso ocorra saldo vencido, ou o ponto onde se encontra o contrato do mutuário ainda
+adimplente. Por exemplo, suponha um contrato assinado em 1º de outubro de 2013, se a data de
+= 18,7. Se há saldo vencido
+coleta das informações foi 15 de abril 2015, então Ti =
+∗
+i =
+
+desde 1º de outubro de 2014, então Ai = 196, logo T
+= 12,2. Neste caso a adim-
+plência falhou 12,2 meses após a assinatura do contrato que perdura a 18,7 meses. Por consequência,
+sendo I(·) uma dummy de censura de observação da inadimplência, a densidade de probabilidade
+condicionada de Ti será:
+
+D − di
+561
+561− 196
+30
+30
+
+30
+
+=
+
+f (Ti | β, Xi),
+
+˜f (Ti | β, Xi) =
+
+1− F(Ti | β, Xi) := S(Ti | β, Xi),
+
+= [f (Ti | β, Xi)]1−I(Ai=0)[S(Ti | β, Xi)]I(Ai=0)
+
+se Ai > 0
+se Ai = 0
+
+(2)
+
+será:
+
+Logo, na hipótese de Ti ser independente e identicamente distribuída, a função de log-verosimilhança
+
+n(cid:88)
+
+(cid:104)
+
+(cid:105)
+[1− I(Ai = 0)]ln f (Ti | β, Xi) + I(Ai = 0)ln S(Ti | β, Xi)
+
+i=1
+
+ln L(β) =
+
+(3)
+Caso o pesquisador deﬁna uma forma funcional para h(·) ao invés de f (·), a mais comum é hi(t) =
+˜h(t)γi, denominada de “abordagem semi-paramétrica de Cox”. Fazendo uma comparação com os
+casos das distribuições Weibull e Gompertz, as funções de risco seriam semelhantes na abordagem de
+Cox se ˜h(t) = β0tβ0−1 e ˜h(t) = exp(β0t), respectivamente.
+∗
+3, e a deﬁ-
+Para ilustração, considere apenas três observações não censuradas tais que T
+nição do conjunto dos clientes sob o risco de indadimplência a partir do ponto t, Ct = {todo mutuário j :
+≥ t}. No caso, CT1 = {1,2,3}, CT2 = {2,3} e CT3 = {3}. Assim, as probabilidades dos mu-
+∗
+T
+1 = T1 | CT1) =
+∗
+j
+tuários se tornarem inadimplentes dados os pontos de mudança observados são: P (T
+2 = T2 | CT2) (cid:39)
+∗
+h2(T
+P (T
+∗
+∗
+∗
+;
+1 = T1 ou T
+P (T
+2) + h3(T
+h2(T
+2)
+3 = T3 | CT3) = 1. Substituindo hi(t), ocorre que o termo ˜h(t) opera no numerador e no de-
+γi(cid:80)
+∗
+e, P (T
+9. Estendendo este
+nominador das probabilidades, que podem então ser reescritas como
+
+∗
+1 = T1)
+∗
+1 = T2 ou T
+
+∗
+1)
+∗
+1) + h3(T
+
+h1(T
+∗
+1) + h2(T
+
+∗
+1 = T3)
+
+∗
+2 < T
+
+∗
+1 < T
+
+; P (T
+
+h1(T
+
+∗
+1)
+
+∗
+2)
+
+(cid:39)
+
+j∈CTi
+
+γj
+
+resultado para considerar as observações censuradas, com alguma álgebra [detalhada em Cameron e
+Trivedi (2005), p. 592 em diante] chega-se a seguinte a função de log-verosimilhança-parcial:10
+
+n(cid:88)
+[1− I(Ai = 0)]
+
+(cid:104) K(cid:88)
+
+i=1
+
+k=1
+
+βkxik − ln
+
+(cid:18)(cid:88)
+
+j∈CTi
+
+(cid:16) K(cid:88)
+
+k=1
+
+(cid:17)(cid:19)(cid:105)
+
+ln ˜L(β) =
+
+exp
+
+βkxjk
+
+(4)
+
+9Note que(cid:80)K
+
+k=1 βkxjk não pode ter um termo constante nesta abordagem, pois, assim como ˜h(t), tal termo operaria
+no numerador e no denominador das probabilidades e seria redundante. Além disso, pelo fato de ˜h(t) não ser modelado
+diretamente, a aborgagem de Cox costuma ser denominada de semi-paramétrica.
+
+10A literatura consultada costuma apresentar os resultados estimados para o vetor β modelando uma distribuição de
+probabilidade e o método de Cox. Todavia, como explicado em Thomas e Reyes (2014), frequentemente o pesquisador
+precisa restringir o número de variáveis em Xi nesta última abordagem, caso contrário pode não veriﬁcar a convergência
+na otimização da equação (4).
+
+6
+
+Ao estimar a parametrização de risco, γi, independentemente da abordagem usada, o pesquisador
+pode categorizar perﬁs de mutuários usando o vetor Xi e computar as funções de risco e sobrevivência
+para eles. Além disto, é comum os bancos usarem credit scorings com informações tomadas ex-ante
+(número de garantias dadas pelo mutuário, setor de atividade, faturamento etc.) para tipiﬁcar os cli-
+entes com letras como “AA”, “A+”, “B−” etc., sendo estas letras fundamentais para a sistematização
+do montante emprestado, dos prazos de pagamento, da taxas de juros etc. (Thomas et al, 2004). As-
+sim, como será detalhado adiante, é possível contrastar γ com as classiﬁcações pré-estabelecidas pelo
+banco, de forma a veriﬁcar sua adequação a posteriori ou identiﬁcar possibilidades de aprimoramento
+– além de construir tábuas de expectativa de sobrevivência da adimplência usando S(·).
+
+4 Base de dados e estatísticas descritivas
+
+A base de dados foi construída a partir da carteira de crédito de um banco de desenvolvimento
+que atua nos três estados da Região Sul do Brasil, tabulando-se os contratos iniciados entre outubro
+de 2013 e março de 2015, assinados por empresas ou por agropecuaristas como pessoas físicas, tendo
+obrigações de pagamentos de qualquer natureza mesmo estando em prazo de carência, totalizando
+7.461 observações. Devido a política de conﬁdencialidade de informações do banco, seu nome não
+pode ser explicitamente citado, e só foi autorizada a apresentação de um recorte restrito das caracte-
+rísticas dos contratos.
+
+Em 15 de abril de 2015, data da coleta dos dados, 88 mutuários (1,2% do total observado) apre-
+sentavam saldo vencido há mais de 30 dias. Segundo os relatórios do Banco Central do Brasil (BCB)
+que tratam da inadimplência bancária no período em tela (BCB, 2015a,b), dentre os bancos públi-
+cos, sendo ou não de desenvolvimento, os atrasos acima de 30 dias ocorreram em cerca de 1,5% dos
+empréstimos – o que indica que o nível de inadimplência da instituição aqui analisada estava pró-
+ximo da média. Complementarmente, 391 mutuários apresentavam saldo vencido em até 30 dias,
+totalizando 479 contratos com pagamentos atrasados (6,4% do total observado). A Figura 1 apresenta
+∗ em frações de 30 dias arredondadas para o número inteiro positivo mais pró-
+o histograma de T
+ximo, sobrepondo ilustrativamente as estimativas não condicionadas e não censuradas das densidades
+Weibull e Gompertz.
+
+65
+
+61
+
+39
+
+36
+
+20
+
+16
+
+20
+
+14
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+62
+
+f (·) Weibull com γ = 0,034 e β0 = 1,552
+f (·) Gompertz com γ = 0,064 e β0 = 0,101
+
+33
+
+19
+
+16
+
+11
+
+8
+
+20
+
+16
+
+15
+
+10 11 12 13 14 15 16 17 18
+
+7
+
+9
+
+Figura 1: Histograma do tempo de duração da adimplência em frações de 30 dias
+
+arredondadas para o número inteiro positivo mais próximo, e estimativa das densidades
+
+Weibull e Gompertz sobre T
+
+∗.
+
+7
+
+Dividindo os mutuários entre inadimplentes e adimplentes, a Tabela 2 apresenta o mínimo, a
+média, o máximo e o desvio padrão para: T , conforme a equação (1); o tamanho do contrato, dado
+pela diferença de dias entre as datas de término e assinatura, dividindo por 30; o saldo vincendo
+em 15 de abril de 2015; e, a taxa de juros ao ano. Ali, em consonância com a Figura 1, note que
+∗ foi de 7,86 meses e o
+a adimplência mais rapidamente falhada foi em 0,23 mês11, a média de T
+máximo foi de 18,23 meses. Quanto aos clientes adimplentes, observe que o contrato mais próximo
+da data de coleta dos dados havia sido assinado a dois meses, e a maior duração de adimplência
+observada era de 18,70 meses.
+
+Tabela 2: Estatísticas descritivas das características dos contratos observados.
+
+Situação
+
+Inadimplentes:
+479 observações
+
+Variável
+∗ (duração da adimplência)
+T
+Tamanho do contrato (meses)
+Saldo vincendo (R$ 1.000)
+Taxa de Juros (% ao ano)
+T
+Tamanho do contrato
+
+Adimplentes:
+6.982 observações Saldo vincendo
+
+Taxa de Juros
+
+Mínimo Média Máximo
+18,23
+244,07
+
+7,86
+134,52
+2.504,67
+
+Desvio
+5,15
+38,26
+
+46.296,00
+
+4.356,60
+
+14,90
+18,70
+244,43
+
+19.630,60
+
+14,30
+
+2,29
+4,20
+28,728
+783,54
+2,98
+
+4,97
+13,69
+101,74
+203,44
+4,17
+
+0,23
+36,80
+5,20
+1,00
+2,03
+11,13
+1,11
+1,00
+
+Ainda na Tabela 2, note que o mínimo e a média de tamanho dos contratos inadimplentes era de
+36,80 e 134,52 meses, e o mínimo e a média dos adimplentes era de 11,13 e 101,74 meses, respecti-
+vamente. O saldo vincendo médio dos contratos inadimplentes era próximo de R$ 2,5 milhões, e dos
+contratos adimplentes era próximo de R$ 203 mil. Além disso, as taxas de juros médias dos contratos
+inadimplentes e adimplentes eram em torno de 5 e 4% ao ano, respectivamente. Em conjunto, isto
+indica que a inadimplência neste banco está relacionada aos contratos que, em média, são mais longos
+e de maior monta e taxa de juros.
+
+Pela questão da conﬁdencialidade comentada anteriormente, a pesquisa não obteve acesso aos
+valores emprestados, mas apenas aos saldos vincendo e vencido. De toda forma, considerando que os
+saldos vincendos de todos os contratos observados somavam R$ 2,62 bilhões, e que os saldos vencidos
+dos 479 contratos inadimplentes somavam R$ 1,1 milhão, o nível de inadimplência dado pela razão
+destas magnitudes era de 0,05%. Segundo BCB (2015a,b), dentre os bancos públicos brasileiros,
+a razão entre os saldos vencidos e emprestados para o setor produtivo estava próxima de 1%. Isto
+pode corroborar com a indicação de que o nível de inadimplência da instituição aqui analisada estava
+abaixo da média nacional.
+
+A Tabela 3 mostra o número de contratos e o saldo vincendo total por mutuários inadimplentes e
+adimplentes, subdividindo-os, dentro de cada estado, por empresas e agropecuaristas segundo o porte
+classiﬁcado pelo próprio banco. Pela classiﬁcação, empresas pequenas têm faturamento anual menor
+que R$ 16 milhões, empresas médias têm faturamento entre este ponto e R$ 90 milhões, e empresas
+grandes têm faturamento acima deste último ponto. Quanto aos agropecuaristas, se o faturamento
+anual é acima [abaixo] de R$ 110 mil o cliente é considerado pequeno [grande].
+
+11Trata-se de um contrato assinado em março de 2015, onde o mutuário deveria ter feito um pagamento obrigatório em
+
+abril, e até o dia 15 não havia feito.
+
+8
+
+Tabela 3: Número de contratos e total do saldo vincendo total por situação dos mutuários.
+
+Estado Perﬁl
+
+Número de contratos
+
+Inadimplentes Adimplentes
+
+Saldo vincendo (R$ milhões)
+Inadimplentes Adimplentes
+
+Empresa Pequena
+Empresa Média
+Empresa Grande
+Agropecuarista Pequeno
+Agropecuarista Grande
+Empresa Pequena
+Empresa Média
+Empresa Grande
+Agropecuarista Pequeno
+Agropecuarista Grande
+Empresa Pequena
+Empresa Média
+Empresa Grande
+Agropecuarista Pequeno
+Agropecuarista Grande
+
+RS
+
+SC
+
+PR
+
+Total
+
+23
+20
+27
+22
+127
+21
+18
+33
+
+25
+38
+11
+53
+
+61
+479
+
+264
+103
+54
+780
+733
+547
+171
+66
+968
+905
+228
+79
+98
+711
+1.275
+6.982
+
+24,7
+49,4
+190,5
+15,6
+103,4
+46,3
+44,1
+226,3
+
+48,4
+32,3
+39,4
+317,2
+
+62,1
+
+1.199,7
+
+116,5
+84,0
+122,3
+33,5
+180,3
+120,6
+117,0
+111,6
+18,8
+102,7
+129,3
+79,3
+51,2
+16,7
+136,7
+1.420,4
+
+Nas colunas que tratam do número de contratos, note que o perﬁl mais frequente entre os ina-
+dimplentes é o do grande agropecuarista gaúcho, com 127 mutuários, representando 26,5% dos 479
+clientes com saldo vencido. Em seguida, o outro perﬁl mais frequente é o do grande agropecua-
+rista paranaense, com 61 inadimplentes – estes dois perﬁs representam quase 40% dos contratos com
+saldo vencido. Por outro lado, ao comparar o número de inadimplentes com o total de contratos do
+mesmo perﬁl de cliente, observa-se que 1/3 das empresas grandes são inadimplentes – sendo 27 em
+81 (=27+54) no Rio Grande do Sul, 33 em 99 (=33+66) em Santa Catarina, e 53 em 151 (=53+98) no
+Paraná.
+
+Além disso, nas colunas que tratam do total de saldo vincendo, note que o perﬁl mais relevante
+entre os inadimplentes é a grande empresa paranaense, com R$ 317,2 milhões a vencer, represen-
+tando 26,4% do montante vincendo de quase R$ 1,2 bilhão. Em seguida estão as grandes empresas
+catarinenses e gaúchas, de forma que o perﬁl “grande empresa” representa cerca de 2/3 do montante
+do saldo vincendo dos contratos inadimplentes. Em suma, os números indicam que o perﬁl que mais
+incorre em inadimplência é o grande produtor agropecuarista, mas o perﬁl de maior risco em termos
+de monta seria o das grandes empresas.
+
+O banco ora analisado usa um sistema próprio de credit scorings baseado na documentação apre-
+sentada pelo cliente na abertura do processo de solicitação de empréstimo. Com base nestas in-
+formações, a priori o mutuário é classiﬁcado com os símbolos AA, A, B, C, ..., H, em que AA e H
+representam as expectativas de menor e maior risco, respectivamente. A Tabela 4 mostra o número de
+inadimplentes e adimplentes em 15 de abril de 2015 contrastando seus escores de risco a priori, bem
+como algumas relações de proporção.
+
+9
+
+Tabela 4: Escores a priori (credit scorings) e número de mutuários inadimplentes e adimplentes.
+
+Escore a priori
+AA
+A
+B
+de C até H
+Total
+
+Inadimplentes (i)
+
+(i)/(Total)% Adimplentes (a)
+
+(i)/(i+a)%
+
+180
+264
+23
+12
+479
+
+37,6
+55,1
+4,8
+2,5
+100,0
+
+1.322
+5.486
+156
+18
+
+6.982
+
+12,0
+4,6
+12,8
+40,0
+6,4
+
+Note que 92,7% dos mutuários inadimplentes foram classiﬁcados como baixo risco (AA ou A)
+na data de concessão do crédito – dos que foram classiﬁcados como AA, 12,0% se revelaram ina-
+dimplentes a posteriori. Estas proporções de discordância entre a expectativa inicial e o que de fato
+aconteceu podem ter duas origens: uma margem de erro natural do sistema em identiﬁcar a priori
+um mutuário que se revelará um mau pagador, sem ter uma justiﬁcativa razoável; ou, a ocorrência de
+problemas ﬁnanceiros a posteriori de um cliente que a priori seria um bom pagador.
+
+Para tentar vislumbrar justiﬁcativas nos erros de classiﬁcação de risco, é relevante se analisar indi-
+cadores de conjuntura econômica. Neste sentido, foi possível computar quatro variáveis do contexto
+consideradas potencialmente importantes para explicar a inadimplência – ver Lima et al (2011). A
+primeira é a taxa de câmbio real do Real com o Dólar americano, calculada com as séries históricas do
+BCB, e registrada na data de assinatura do contrato e na data de incorrência de saldo vencido ou em
+15 de abril de 2015, caso não ocorra atraso de pagamentos. Esta variável é potencialmente relevante
+porque ao mesmo tempo em que os preços dos insumos agropecuários são sensíveis ao câmbio, boa
+parte destes mutuários (e das das empresas também) vendem para o exterior. Então, a priori não é
+possível saber o efeito líquido de mudanças no câmbio sobre o risco de inadimplência.
+
+A segunda variável de conjuntura é o nível de emprego formal no estado do mutuário, veriﬁcado
+no Cadastro Geral de Empregados e Desempregados (CAGED) no mês de assinatura do contrato e no
+mês de incorrência de saldo vencido ou em abril de 2015, caso não ocorra atraso de pagamentos. A
+terceira variável é o consumo de energia elétrica no estado do mutuário, veriﬁcado nas companhias
+de energia e computado como no caso anterior. Em conjunto, estas duas variáveis podem indicar se
+o contexto econômico melhorou ou não para o cliente, i.e., se há mais emprego e maior consumo de
+energia, isto indicaria que a economia como um todo estaria melhor desde a contratação do emprés-
+timo.
+
+A quarta variável é a expectativa de inﬂação veriﬁcada no relatório Focus do BCB entre a semana
+de assinatura do contrato e a semana de incorrência de saldo vencido ou a segunda semana de abril
+de 2015, caso não ocorra atraso de pagamentos. A ideia é que se a expectativa de inﬂação se mantém
+estável, isso favorece a contratação racional de crédito e reduz o risco de inadimplência.
+
+Dessa forma, a Tabela 5 apresenta a variação média e o desvio padrão dos indicadores de con-
+juntura econômica entre a assinatura do contrato e a observação da inadimplência, ou abril de 2015
+no caso dos mutuários adimplentes. Note que entre os mutuários inadimplentes a variação média
+percebida no câmbio real foi de 0,42%, e entre os adimplentes foi de 0,48%. Quanto aos níveis de
+emprego e de consumo de energia, os dois grupos perceberam um melhora próxima de 1,5% na média
+do primeiro, e uma certa estabilidade no segundo. Por ﬁm, ambos os grupos também perceberam uma
+leve redução de expectativa inﬂacionária, perto de 0,3 pontos percentuais na média.
+
+10
+
+Tabela 5: Variação dos indicadores de conjuntura econômica entre a assinatura do contrato e a
+
+observação da inadimplência, ou abril de 2015 no caso dos mutuários adimplentes.
+
+Indicador
+
+Inadimplentes
+Média Desvio Média Desvio
+
+Adimplentes
+
+Taxa de câmbio real (%)
+Emprego formal no estado (%)
+Consumo de energia no estado (%)
+Expectativa de inﬂação (pontos percentuais)
+
+0,42
+1,51
+0,03
+-0,29
+
+0,21
+0,49
+0,04
+0,19
+
+0,48
+1,57
+0,03
+-0,27
+
+0,14
+0,35
+0,05
+0,18
+
+5 Resultados estimados
+
+Weibull e Gompertz e a abordagem de Cox. Os valores devem ser lidos na forma γ = exp((cid:80)K
+
+A Tabela 6 mostra os resultados estimados para o vetor de parâmetros β usando as distribuições
+k=1 βkxk),
+tal que βk positivo, k (cid:44) 0, signiﬁca que um aumento na covariada xk aumenta o risco de inadimplência
+– vide Tabela 1. Como as duas primeiras covariadas apresentadas na tabela são computadas em loga-
+ritmo natural (para o tamanho do contrato e o saldo vincendo) os valores podem ser interpretados em
+termos de elasticidades em relação a γ. Analogamente, como as demais covariadas são computadas
+como taxa, variações ou dummies, os valores podem ser lidos em termos de semi-elasticidades em
+relação a γ.
+
+Assim, note que as primeiras três covariadas apresentadas na Tabela 6 dizem respeito aos termos
+dos contratos, sendo que há indicativos estatisticamente signiﬁcativos de que, ceteris paribus, maiores
+saldos vincendos estão relacionados com maiores riscos de inadimplência, e menores taxas de juros
+estão relacionadas com maiores riscos de inadimplência. O primeiro resultado é natural, na medida
+que quando o mutuário se depara com uma diﬁculdade de pagamento de um valor maior, é mais
+difícil deste ser coberto. Quanto ao segundo resultado, se por um lado o raciocínio anterior pode ser
+estendido para a taxa de juros, uma vez que ela aumenta o valor das prestações, por outro lado menores
+taxas de juros estão relacionadas aos contratos de menor monta para os segmentos apoiados pelo
+banco ora analisado – possivelmente mais arriscados. Portanto, o valor negativo e estatisticamente
+signiﬁcativo para a taxa de juros reﬂete um efeito líquido entre estes dois fatos. Além disso, cabe
+observar que o tamanho do contrato não se mostrou estatisticamente signiﬁcativo no modelo.
+
+Já as quatro covariadas da sequência tratam de mudanças de conjuntura entre a assinatura do
+contrato e o momento de inadimplência ou de censura da observação. Os resultados indicam que
+quando o Dólar ﬁca mais caro se reduz o risco de inadimplência – como boa parte dos agropecuaristas
+e empresas apoiadas pelo banco atuam no comércio exterior, comprando insumos e vendendo seus
+produtos, isto indica um efeito líquido médio favorável aos mutuários com a depreciação do Real.
+Os resultados também indicam que melhoras no nível de emprego formal e no consumo de energia,
+que reﬂetem uma melhora da economia local, reduzem o risco de inadimplência. Por ﬁm, neste bloco
+de covariadas conjunturais, os valores estimados apontam que aumentos da expectativa de inﬂação
+tendem a aumentar o risco de inadimplência – possivelmente devido a uma distorção causada no
+planejamento do cliente, como foi posto antes.
+
+Para a interpretação dos resultados estimados para os parâmetros da dummies, note primeiramente
+que o perﬁl de referência é o grande agropecuarista gaúcho. Assim, para contratos equivalentes em ta-
+manho, saldo vincendo e taxa de juros, e sob as mesmas condições conjunturais, os valores estimados
+para os mutuários catarinense e paranaense indicam que grandes agropecuaristas destes estados estão
+menos propensos a inadimplência que os gaúchos. Para interpretar os valores das demais dummies
+
+11
+
+é preciso fazer composições – por exemplo, uma pequena empresa catariense, ceteris paribus, possui
+menor risco de inadimplência que um grande agropecuarista gaúcho porque, com as estimativas da
+Weibull, veriﬁca-se -0,443-0,709+0,362 = -0,790, que é a soma dos valores dos parâmetros quando
+as dummies representam o perﬁl em tela.
+
+Tabela 6: Resultados estimados para o vetor de parâmetros β segundo o tipo de abordagem.
+
+Covariada
+ln do tamanho do contrato
+
+ln do saldo vincendo
+
+taxa de juros
+
+Weibull
+0,272
+(0,213)
+0,902***
+(0,045)
+
+-0,068***
+
+(0,024)
+
+Gompertz
+
+0,255
+(0,205)
+0,877***
+(0,046)
+-0,046**
+(0,024)
+
+Cox
+0,488
+(0,400)
+0,926***
+(0,040)
+
+-0,107***
+
+(0,024)
+
+variação do câmbio real
+
+-0,101***
+
+-0,067***
+
+-0,109***
+
+variação do emprego formal
+
+-0,107***
+
+-0,065***
+
+-0,125***
+
+(0,051)
+
+(0,049)
+
+(0,049)
+
+variação no consumo de energia
+
+-0,038***
+
+(0,010)
+
+variação na expectativa de inﬂação
+
+(0,009)
+0,053***
+(0,005)
+
+(0,009)
+-0,015*
+(0,009)
+0,040***
+(0,005)
+
+(0,010)
+
+-0,039***
+
+(0,012)
+0,045***
+(0,004)
+
+dummy mutuário catarinense
+
+-0,443***
+
+-0,429***
+
+-0,509***
+
+dummy mutuário paranaense
+
+(0,123)
+-0,286**
+(0,120)
+
+(0,118)
+-0,275**
+(0,116)
+
+(0,126)
+-0,284**
+(0,118)
+
+dummy empresa
+
+-0,709***
+
+-0,696***
+
+-0,726***
+
+dummy empresa pequena
+
+dummy empresa média
+
+(0,195)
+0,362**
+(0,183)
+-0,036
+(0,216)
+
+(0,193)
+0,334*
+(0,183)
+-0,011
+(0,208)
+
+dummy agropecuarista pequeno
+
+-0,589***
+
+-0,642***
+
+constante
+
+β0
+
+ln da máxima-verossimilhança
+
+(0,224)
+
+(0,223)
+
+-9,010***
+
+-8,315***
+
+(0,969)
+2,349***
+(0,042)
+-1.101,03
+
+(0,951)
+0,133***
+(0,010)
+-1.195,24
+
+(0,159)
+0,399**
+(0,166)
+-0,051
+(0,182)
+-0,475**
+(0,234)
+
+-3.021,31
+
+Desvio padrão robusto entre parênteses; *** p<0,.01, ** p<0,05, * p<0,1.
+
+12
+
+Nas três abordagens utilizadas a função de risco tem a forma h(t) = ˜h(t)γ, onde γ reﬂete a para-
+metrização do efeito relativo das covariadas. Além disso, as dummies permitem uma clara avaliação
+de γ estimado entre os perﬁs de mutuários. Assim, a Tabela 7 expõe suas média e desvio padrão por
+perﬁl, ordenados do maior para o menor risco de inadimplência – para apresentação os valores foram
+multiplicados por mil.
+
+Tabela 7: Média e desvio padrão (entre parênteses) de γ × 1.000 estimado por perﬁl e
+
+metodologia de estimação – perﬁs ordenados do maior para o menor risco de inadimplência.
+
+Perﬁl
+Grande empresa do PR
+
+Grande empresa do RS
+
+Média empresa do PR
+
+Grande agropecuarista do RS
+
+Pequeno agropecuarista do RS
+
+Grande agropecuarista do PR
+
+Grande empresa de SC
+
+Pequena empresa de SC
+
+Pequena empresa do PR
+
+Pequena empresa do RS
+
+Média empresa do RS
+
+Grande agropecuarista de SC
+
+Média empresa de SC
+
+Pequeno agropecuarista de SC
+
+Pequeno agropecuarista do PR
+
+Total
+
+Cox
+
+3.855,80
+(44.498,68)
+3.821,99
+(35.793,07)
+3.475,19
+(25.191,45)
+
+433,28
+(9.227,06)
+431,03
+(7.532,7)
+169,92
+(5.115,05)
+
+85,49
+
+(1.028,82)
+
+81,72
+(745,53)
+79,60
+
+(1.399,98)
+
+44,18
+(471,4)
+26,63
+(129,3)
+9,02
+
+(177,38)
+
+6,29
+(17,04)
+0,13
+(0,85)
+0,11
+(0,21)
+302,19
+(9.112,27)
+
+Weibull Gompertz
+198,62
+(2.212,65)
+187,13
+(1.325,07)
+171,51
+(1.579,1)
+23,38
+(372,59)
+18,18
+(382,83)
+
+158,74
+(1.074,46)
+151,95
+(917,11)
+93,31
+(742,76)
+22,78
+(201,86)
+
+(167,05)
+
+8,73
+
+8,43
+
+(130,98)
+
+8,37
+(35,57)
+8,24
+(89,98)
+8,20
+(72,69)
+7,83
+(85,55)
+7,34
+(42,87)
+5,71
+(30,2)
+4,95
+(11,7)
+0,14
+(0,58)
+0,13
+(0,22)
+12,52
+(226,73)
+
+9,06
+
+(260,74)
+
+6,50
+(56,16)
+6,14
+
+(102,08)
+
+5,39
+(52,69)
+4,44
+(42,11)
+3,12
+(14,52)
+0,88
+(15,86)
+0,83
+(2,29)
+0,02
+(0,12)
+0,01
+(0,02)
+15,49
+(439,72)
+
+13
+
+Observe que embora a cardinalidade da média de γ estimado mude entre as metodologias, a
+ordem de risco entre os perﬁs não muda. Note também que a dispersão do risco em cada perﬁl,
+checado pela comparação da razão de dispersão (desvio padrão por média), pode mudar bastante –
+e.g., no caso dos valores da Weibull, para o perﬁl “Grande empresa do PR” a razão é de 11,1, e para
+o peﬁl “Pequeno agropecuarista do RS” a razão é de 21,1. Isto ilustra que dentro da classiﬁcação dos
+perﬁs ora mostrados, ainda existiriam outros sub-perﬁs com substanciais diferenças de risco. De toda
+forma, para a análise que será descrita em sequência, é imprescindível que o pesquisador eleja um
+conjunto de tipos de mutuários para focar. Além disso, como a abordagem que melhor se ajustou aos
+dados, pelo critério de máxima verossimilhança, foi a Weibull (vide Tabela 6), doravante também se
+focará nestes resultados.
+
+A Tabela 8 apresenta a média de γ estimado e o número de observações por perﬁl entre os credit
+scorings da data de assinatura do contrato – desta forma, é possível contrastar os níveis de risco
+estimados a posteriori e a priori. Se o sistema de credit scorings mede bem o risco a priori, é de se
+esperar que valores de γ estimado entre os mutuários classiﬁcados como AA ou A estejam abaixo da
+média. Assim, na última linha da tabela, note que estes mutuários apresentaram a média de γ menor
+que média geral, e os 179 classiﬁcados com escore B apresentaram um γ médio de 205,18 (número
+37 vezes maior que a média geral de 15,49)12. Em conjunto, isto sugere um bom funcionamento do
+sistema de classiﬁcação de risco utilizado pelo banco.
+
+Entretanto, algumas observações podem ser feitas para os perﬁs que apresentaram γ acima da
+média – separados pela linha pontilhada na Tabela 8. Note que o perﬁl de mutuário com maior risco
+médio de inadimplência a posteriori é o da “Grande empresa do PR”. Em 151 casos com este perﬁl,
+116 foram classiﬁcados como A e de fato demonstraram baixo risco (com γ médio de 1,29), mas 24
+casos foram classiﬁcados como AA e demonstraram alto risco (com γ médio de 112,60). De forma
+análoga, há uma distorção de análises para os perﬁs “Grande empresa do RS” e “Média empresa do
+PR”, onde cerca de metade dos mutuários de cada perﬁl foram classiﬁcados como A, e revelaram
+altos níveis de risco a posteriori (359,45 e 264,51, respectivamente).
+
+No âmbito de ferramenta administrativa, isso sugere que a equipe de gerenciamento de risco do
+banco deveria estudar, e porventura ajustar, a classiﬁcação de risco nesses três perﬁs. Ademais, ao
+consultar a base de dados, veriﬁcou-se que este subconjunto de clientes em dissonância de classiﬁ-
+cação de risco representam 122 mutuários (apenas 1,6% dos contratos observados), mas somam R$
+547,1 milhões em saldos vincendos (cerca de 21% do total na carteira de crédito observada). O que
+ilustra como a metodologia da “análise de sobrevivência” da adimplência pode ser útil como ferra-
+menta administrativa para as instituições ﬁnanceiras, à guisa de contrastar e identiﬁcar pontualmente
+onde seu sistema de credit scorings pode estar falhando, e assim promover potenciais correções.
+
+Ainda na Tabela 8, observe que os outros três perﬁs com γ acima da média são de agropecuaristas.
+Todavia, note que os contrastes entre os níveis de risco medidos a priori e a posteriori nestes perﬁs
+estão mais bem sintonizados que nos três discutidos anteriormente. Por exemplo, no perﬁl “Grande
+agropecuarista do RS”, com 860 observações (11,5% do total da carteira analisada), os 500 mutuários
+de escore AA apresentaram um γ médio de 1,12, os 345 de escore A apresentaram 29,46 e os 15 de
+escore B apresentaram 625,51 – seguindo a lógica AA < A < B em nível de risco. Neste sub-conjunto
+de agropecuaristas, o perﬁl que destoa é o do Paraná, com γ = 55,21 na média, mas ainda assim é
+um valor menor que um terço da média dos três perﬁs mais arriscados – o que reforça o raciocínio
+anterior, de que o foco de ajustes na análise de risco deste banco deve ser as empresas de maior porte
+no Paraná e no Rio Grande do Sul.
+
+12Apenas 30 mutuários (0,4% dos observados) foram classiﬁcados com escores C ou menores, o que torna esse seg-
+
+mento menos representativo para a análise.
+
+14
+
+Tabela 8: Média de γ × 1.000 estimado com a distribuição Weibull e número de observações
+[entre colchetes] por perﬁl, entre os credit scorings da data de assinatura do contrato – perﬁs
+ordenados do maior para o menor risco de inadimplência condicionado estimado a posteriori.
+
+Perﬁl
+Grande empresa do PR
+
+Grande empresa do RS
+
+Média empresa do PR
+
+Grande agropecuarista do RS
+
+Pequeno agropecuarista do RS
+
+Grande agropecuarista do PR
+
+Grande empresa de SC
+
+Pequena empresa de SC
+
+Pequena empresa do PR
+
+Pequena empresa do RS
+
+Média empresa do RS
+
+Grande agropecuarista de SC
+
+Média empresa de SC
+
+Pequeno agropecuarista de SC
+
+Pequeno agropecuarista do PR
+
+Total
+
+AA
+
+112,60
+
+[24]
+10,90
+[36]
+11,96
+[30]
+1,12
+[500]
+0,60
+[17]
+55,21
+[200]
+
+12,49
+[48]
+0,94
+[139]
+9,09
+[131]
+1,04
+[158]
+6,88
+[49]
+9,46
+[72]
+0,91
+[81]
+0,02
+[6]
+0,07
+[11]
+12,14
+[1.502]
+
+[41]
+
+264,51
+
+[57]
+29,46
+[345]
+18,63
+[782]
+0,97
+[1.089]
+
+0,90
+[48]
+7,95
+[410]
+1,21
+[113]
+8,76
+[126]
+0,70
+[59]
+0,12
+[848]
+1,19
+[68]
+0,02
+[958]
+0,01
+[690]
+10,53
+[5.750]
+
+15
+
+B
+
+credit scorings
+A
+1,29
+[116]
+359,45
+
+5.426,57
+
+[5]
+0,63
+[3]
+0,03
+[2]
+
+de C até H Total
+198,62
+[151]
+187,13
+
+1,05
+[6]
+25,98
+[1]
+0,16
+[1]
+
+[81]
+
+171,51
+
+[90]
+23,38
+[860]
+18,18
+[802]
+9,06
+[1.336]
+
+6,50
+[99]
+6,14
+[568]
+5,39
+[266]
+4,44
+[287]
+3,12
+[123]
+0,88
+[930]
+0,83
+[189]
+0,02
+[968]
+0,01
+[711]
+15,49
+[7.461]
+
+625,51
+
+[15]
+0,02
+[3]
+0,03
+[42]
+
+4,98
+[19]
+5,63
+[18]
+3,88
+[2]
+0,21
+[14]
+0,07
+[6]
+0,04
+[38]
+0,01
+[2]
+0,01
+[10]
+
+0,39
+[5]
+
+0,19
+[3]
+
+1,10
+[4]
+0,23
+[1]
+3,26
+[1]
+10,13
+[4]
+0,31
+[2]
+0,11
+[2]
+
+205,18
+[179]
+
+2,81
+[30]
+
+Complementando a análise, a Tabela 9 apresenta as probabilidades de sobrevivência da adimplên-
+cia por perﬁl e meses de contrato. Em linha com o observado até aqui, note as empresas de maior porte
+no Paraná e no Rio Grande do Sul apresentam uma chance entre 39,96 e 45,29% de estarem adim-
+plentes no sexto mês de contrato, que se reduzem praticamente a zero depois de 36 meses. No outro
+extremo, os resultados indicam que é bastante improvável que pequenos agropecuaristas catarinenses
+e paranaenses se tornem inadimplentes no decurso de seus contratos.
+
+Tabela 9: Estimativas das probabilidades de sobrevivência da adimplência por perﬁl e meses de
+
+contrato.
+
+6
+
+Perﬁl
+39,96
+Grande empresa do PR
+42,13
+Grande empresa do RS
+45,29
+Média empresa do PR
+Grande agropecuarista do RS
+89,76
+Pequeno agropecuarista do RS 91,95
+95,90
+Grande agropecuarista do PR
+97,04
+Grande empresa de SC
+Pequena empresa de SC
+97,20
+97,54
+Pequena empresa do PR
+97,97
+Pequena empresa de RS
+Média empresa do RS
+98,57
+99,59
+Grande agropecuarista de SC
+Média empresa do SC
+99,62
+Pequeno agropecuarista de SC 99,99
+Pequeno agropecuarista do PR 99,99
+Média
+93,10
+
+12
+
+19,05
+20,97
+23,89
+82,27
+85,92
+92,72
+94,72
+95,00
+95,60
+96,36
+97,43
+99,27
+99,31
+99,98
+99,99
+87,87
+
+Mês
+
+24
+4,99
+5,94
+7,52
+70,27
+76,01
+87,22
+90,66
+91,15
+92,19
+93,52
+95,40
+98,68
+98,76
+99,97
+99,98
+79,16
+
+36
+1,44
+1,85
+2,58
+60,73
+67,85
+82,42
+87,05
+87,72
+89,14
+90,96
+93,56
+98,14
+98,24
+99,96
+99,98
+71,86
+
+72
+0,05
+0,07
+0,13
+40,59
+49,61
+70,51
+77,83
+78,92
+81,23
+84,26
+88,66
+96,66
+96,85
+99,92
+99,96
+55,03
+
+144
+0,01
+0,01
+0,02
+19,60
+28,16
+53,18
+63,57
+65,18
+68,68
+73,38
+80,46
+94,05
+94,38
+99,86
+99,93
+33,97
+
+Assim, se por um lado os clientes de grande porte (grandes empresas e grandes agropecuaristas)
+representam pouco menos de 1/3 dos clientes desse banco de desenvolvimento, por outro, esse con-
+junto de clientes apresentam uma alta probabilidade de ocorrência de inadimplência, associada ao
+fato de que o seu impacto ﬁnanceiro, conforme mencionado, é muito superior dos demais perﬁs de
+clientes, atingindo cerca do 80% do saldo vincendo entre os inadimplentes – Tabela 4. Por isso, o
+uso das estatísticas descritivas e das estimativas de risco em conjunto podem oferecer mais subsídios
+em pelo menos três direções: uma atribuição de escores de risco mais ﬁdedigna, sobretudo a partir da
+incorporação de variáveis do ambiente econômico; a partir disto, um melhor gerenciamento de risco
+e da carteira de crédito; e por último, um provisionamento de perdas de crédito tanto mais ajustado.
+
+6 Conclusões
+
+A contribuição que esse trabalho pretende deixar repousa sobre o ineditismo do estudo do risco
+de crédito em um banco de desenvolvimento, a partir de seus microdados e através de uma técnica
+
+16
+
+relativamente recente na literatura bancária para o diagnóstico ora proposto. O banco de desenvolvi-
+mento em questão é o principal ﬁnanciador de créditos de longo-prazo da Região Sul e um dos mais
+importantes em âmbito nacional. Muito embora instituições como essa não contribuam diretamente
+para o risco bancário sistêmico, a imprudência de sua atuação pode implicar em risco ﬁscal e crise de
+crédito afetando cadeias e setores por completo.
+
+Consoante a este fato, o aprimoramento das ferramentas de gerenciamento de risco é uma premissa
+da atuação de instituições creditícias, sobretudo aquelas que emprestam recursos para projetos de
+longa maturação e portanto, maior risco. Nesse sentido, a ferramenta utilizada nesse trabalho – análise
+de sobrevivência – pode contribuir incorporando duas informações: a probabilidade de falha e o tempo
+que leva para as falhas se revelarem.
+
+Nesse sentido, o uso da técnica seguiu os mesmos preceitos do estudo pioneiro de Narain (1992).
+Dentre as características que contribuíram para o aumento do risco de falha e redução do tempo de
+adimplência estão: o saldo vincendo, que quanto maior, mais chances de risco representa, o que tam-
+bém está ligado à duração do contrato, que geralmente é maior quanto maior o montante emprestado.
+A variação positiva das expectativas de inﬂação aumenta o risco de falha e está associada aos con-
+tratos de maior duração e valor, isso signiﬁca que seu aumento afeta o horizonte de planejamento do
+grande tomador de crédito incidindo sobre esses clientes mais do que sobre contratos que não duram
+mais do que 12 meses, por exemplo.
+
+Por último a dummy para empresa de pequeno porte indicou um risco maior ceteris paribus às de
+outros portes, fato que pode estar relacionado não só à menor capacidade ﬁnanceira dessas empresas,
+como também à constante dependência de créditos para capital de giro, cujos encargos são maiores e
+não chegam a representar aumento de produtividade para essas empresas.
+
+Contribuindo para o retardamento do tempo de adimplência e portanto, redução do risco estão as
+seguintes características: taxa de juros do contrato, variação positiva do câmbio real, variação positiva
+do emprego formal; variação positiva do consumo de energia; ser um cliente de SC; ser um cliente do
+PR; ser uma Pessoa Jurídica; ou um pequeno agropecuarista.
+
+Dessas características vale destaque o sinal negativo da taxa de juros do contrato. Conforme
+mencionado, além do resultado líquido entre seu efeito sobre o valor das prestações e sobre o fato
+de que contratos menores contam com taxas menores, soma-se a ideia de que taxas de juros mais
+altas podem inibir um comportamento supostamente propenso à exposição ﬁnanceira dos clientes,
+favorecendo com isso a adimplência dos contratos ﬁrmados. As variáveis do ambiente econômico
+comportaram-se como previsto e de acordo com outros estudos observados na revisão da literatura,
+isto é, em geral, um câmbio mais desvalorizado, bem como um aumento da atividade econômica e do
+emprego favorecem a economia das regiões atendidas por esse banco de desenvolvimento, reduzindo
+assim, a probabilidade de inadimplência.
+
+Quando confrontados os resultados das estimativas de risco com a classiﬁcação de risco a priori
+que esse banco de desenvolvimento faz desses clientes, nota-se que em 55% dos casos avaliados a
+priori como AA, A ou B, apresentaram um valor médio de γ estimado abaixo da média, o que signiﬁca
+que a classiﬁcação a priori está coerente com a classiﬁcação a partir da análise de sobrevivência, a
+posteriori. Já a classiﬁcação A a priori para as grandes empresas do RS e médias empresas do PR e
+AA para as grandes empresas do PR, não foram aderentes ao nível de risco superior à média desses
+clientes, o que sugere que a classiﬁcação de risco desses três perﬁs pelo banco poderia sofrer ajustes,
+na medida em que o montante do saldo vincendo por eles representado soma cerca de 21% da carteira
+de crédito observada. Outros perﬁs que também tiveram divergências entre a análise a posteriori e a
+análise a priori foram os grandes e pequenos agropecuaristas do RS, a priori classiﬁcados como A,
+mas com risco γ superior à média e os grandes agropecuaristas do PR classiﬁcados com AA e com
+risco γ igualmente superior à média.
+
+Outra maneira de demonstrar o risco desses clientes é através de suas estimativas de probabilidade
+de sobrevivência ao longo dos meses de contrato. Nota-se que as grandes empresas do PR e do RS
+apresentam não mais que 45% de chances de seguirem adimplentes após 6 meses do início de seus
+
+17
+
+contratos e essas chances se aproximam de zero a partir de 36 meses de contrato. Já os pequenos
+agropecuaristas do PR e de SC apresentam probabilidades de sobrevivência até o ﬁnal do contrato de
+quase 100%.
+
+Sobre os clientes que apresentaram maior risco, quais sejam as grandes empresas do PR e do RS
+e os grandes agropecuaristas do RS e PR concorrem características comuns às condições contratuais.
+Como o banco de desenvolvimento em questão estabelece contratos de crédito bancário com garantias
+reais por parte de seus tomadores, signiﬁca dizer que somente tomadores possuidores de bens a serem
+dados em garantia podem se tornar clientes desse banco. Dessa maneira, grandes empreendimentos e
+empresários, em geral, possuem mais condições de deixar como garantias outros bens que não aqueles
+que sirvam para seus negócios ou mesmo residência pessoal, o que lhes confere alguma margem de
+manobra em situações de diﬁculdade junto a esse banco. Em vista de que as taxas de juros praticadas
+por esse banco serem em geral inferiores às do mercado de crédito, pode levá-los a um comportamento
+mais displicente junto a esse banco do que a outros bancos com encargos maiores e que não detêm
+garantias reais.
+
+Os pequenos empresários e agropecuaristas, por outro lado, normalmente usam seus bens pessoais
+ou que sediam seus negócios como garantia de seus contratos, o que lhes imprime uma pressão maior
+para sua manutenção em estado de adimplência. Além disso, há pelo menos 3 anos esse banco de
+desenvolvimento vem estabelecendo convênios operacionais com cooperativas de crédito, que atuam
+repassando recursos em geral inferiores a R$ 300 mil. Essas cooperativas atuam em diversos municí-
+pios da região, por isso estão mais próximas dos tomadores de crédito de pequeno porte e por meio
+da intermediação ﬁnanceira com recursos conveniados desse banco, elas auferem um pequeno spread
+e em troca atuam como avalistas ou garantidores dos contratos de crédito de pequena monta em caso
+de inadimplência por parte do titular do crédito.
+
+Como forma de aprimorar a análise de risco praticada pelo banco de desenvolvimento em questão,
+sugere-se a aplicação da metodologia ora utilizada, a análise de sobrevivência, incorporando sobre-
+tudo informações do ambiente econômico e do porte do cliente, que conforme mencionado, auxiliam
+na revelação dos perﬁs de risco. No que diz respeito à evolução dessa metodologia em estudos de
+crédito em bancos de desenvolvimento, sugere-se testar uma base de dados que abranja um percen-
+tual de inadimplentes maior expandindo-se o intervalo de tempo da análise a ﬁm de conﬁrmar se os
+perﬁs de risco e parâmetros ora encontrados se mantêm. E ainda, a inclusão de variáveis contábeis
+e ﬁnanceiras dos clientes, como no estudo de Bressan et al (2004), assim como características das
+linhas de crédito ﬁnanciadas e variáveis do ambiente econômico especíﬁcas das regiões atendidas por
+esse banco.
+
+Referências
+
+Andreeva, G. (2006). “European Generic Scoring Models Using Survival Analysis”. The Journal of
+
+the Operational Research Society, 57(10):1180-1187.
+
+Allen, L. N.; Rose, L. C. (2006). “Financial Survival Analysis of Defaulted Debtors”. The Journal of
+
+the Operational Research Society, 57(6):630-636.
+
+Banasik, J.; Crook, J.; Thomas, L. (1999). “Not if but When will Borrowers Default”. The Journal of
+
+the Operational Research Society, 50(12):1185-1190.
+
+Baesens, B.; Van Gestel, T.; Stepanova, M.; Van den Poel, D.; Vanthienen, J. (2005). “Neural Network
+Survival Analysis for Personal Loan Data”. The Journal of the Operational Research Society,
+56(9):1089-1098.
+
+BCB, Banco Central do Brasil (2015a). “Relatório de Economia Bancária e Crédito de 2014”,
+
+https://www.bcb.gov.br/pec/depep/spread/rebc_2014.pdf.
+
+18
+
+BCB, Banco Central do Brasil (2015b). “Relatório de Estabilidade Financeira de Março de 2015”,
+
+http://www.bcb.gov.br/htms/estabilidade/2015_03/refP.pdf.
+
+Bellotti, T.; Crook, J. (2009). “Credit Scoring with Macroeconomic Variables Using Survival Analy-
+
+sis”. The Journal of the Operational Research Society, 60(12):1699-1707.
+
+Bhimania, Alnoor; Gulamhussenb, Mohamed Azzim; Lopes, Samuel da Rocha (2010). “Accoun-
+ting and non-accounting determinants of default: An analysis of privately-held ﬁrms”. Journal of
+Accounting and Public Policy, 29(6):517–532.
+
+Bonini, S.; Caivano, G. (2013). “The survival analysis approach in Basel II credit risk management:
+
+modeling danger rates in the loss given default parameter”. Journal of Credit Risk, 9(1):101-118.
+
+Bressan, Valéria Gama Fully; Braga, Marcelo José; Bressan, Aureliano Angel (2004). “Análise do
+risco de insolvência pelo modelo de Cox: uma aplicação prática”. Revista de Administração de
+Empresas, 44:83-96.
+
+Bruck, Nicholas (1998). “Role of Development Banks in the Twenty-First Century”. Journal of Emer-
+
+ging Markets, 3:39-68.
+
+Cáceres, Luis René (1994). “Strategic planning in development banks”. Savings and Development,
+
+18(2):155-167.
+
+Cameron, A. Colin; Trivedi, Pravin K. (2005). “Microeconometrics: methods and applications”. Cam-
+
+bridge University Press, 2005.
+
+Castro, Lavinia Barros de (2011). “Gestão de riscos e regulação em bancos de desenvolvimento”.
+
+Revista do BNDES, 36:89-134.
+
+Diamond, Douglas W.; Rajan, Raghuram G. (2005). “Liquidity Shortages and Banking Crises”. The
+
+Journal of Finance, 60(2):615–647.
+
+Glennon, Dennis; Nigro, Peter (2005). “Measuring the Default Risk of Small Business Loans: A
+
+Survival Analysis Approach”. Journal of Money, Credit and Banking, 37(5):923-947.
+
+Hand, D. J.; Henley, W. E. (1997). “Statistical Classiﬁcation Methods in Consumer Credit Scoring:
+
+A Review”. Journal of the Royal Statistical Society, 160(3):523-541.
+
+Lima, Jorge Cláudio; Costa, Ricardo Cunha; Guimarães, André Luiz (2011). “Uma aplicação da
+abordagem da análise conjunta de inadimplência em ﬁnanciamentos”. Revista do BNDES, 36:135-
+175.
+
+McKinnon, Ronald I (1973). “Money and capital in economic development”. Brookings Institution
+
+Press.
+
+Narain, B. (1992). “Survival analysis and the credit granting decision: Credit Scoring and Credit
+Control”. In: Thomas, L. C.; Crook, J. N.; Edelman, D. B. (eds). Credit Scoring and Credit Control,
+pp 109-121, Oxford University Press.
+
+Oliveira, Argus R. G.; Martini, Delson L.; Silva, Paulo R. F. (1989). “O desenvolvimento em crise: a
+
+liquidação do BRDE”. Ensaios FEE, 10(1):3-11.
+
+ONU, Organização da Nações Unidas (2005). “Rethinking the Role of National Development Banks”.
+Department of Economic and Social Affairs, http://www.un.org/esa/ffd/msc/ndb/
+NDBs-DOCUMENT-REV-E-020606.pdf.
+
+Panizza, Ugo; Levy-Yeyati, Eduardo; Micco, Alejandro (2004). “Should the Government be in the
+Banking Business? The Role of State-Owned and Development Banks”. Working Paper 1.014,
+Inter-American Development Bank, Research Department.
+
+Righi, Marcelo Brutti; Paulo Sérgio, Caretta (2014). “Teoria de Medidas de Risco: Uma Revisão
+
+Abrangente”. Revista Brasileira de Finanças, 12(3):411–464.
+
+Roszbach, Kasper (2004). “Bank Lending Policy, Credit Scoring, and the Survival of Loans”. The
+
+Review of Economics and Statistics, 86(4):946-958.
+
+Stepanova, Maria; Thomas, Lyn (2002). “Survival Analysis Methods for Personal Loan Data”. Ope-
+
+rations Research, 50(2):277-289.
+
+19
+
+Thomas, L. C. (2000). “A survey of credit and behavioural scoring: forecasting ﬁnancial risk of
+
+lending to consumers”. International Journal of Forecasting, 16:149–172.
+
+Thomas, L. C.; Ho, J.; Scherer, W. T. (2001). “Time will tell: behavioural scoring and the dynamics
+
+of consumer credit assessment”. Journal of Management Mathematics, 12:89-103.
+
+Thomas, L. C.; Edelman, David B.; Crook, Jonathan N. (2004). “Readings in credit scoring: founda-
+
+tions, developments, and aims”. Oxford University Press.
+
+Thomas, L.; Reyes, E. (2014). “Survival Estimation for Cox Regression Models with Time-Varying
+
+Coeﬁcients Using SAS and R”. Journal of Statistical Software, 61, Code Snippet 1.
+
+Townsend, Robert M.; Yaron, Jacob (2001). “The credit risk-contingency system of an Asian deve-
+
+lopment bank”. Economic Perspectives, Federal Reserve Bank of Chicago, 25(3):31-48.
+
+Viganò, Laura (1993). “A credit scoring model for development banks: an African case study”. Sa-
+
+vings and Development, 17(4):441-482.
+
+20
+
+

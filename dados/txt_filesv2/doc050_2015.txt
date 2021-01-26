@@ -1,0 +1,1560 @@
+Seleção de Carteiras com Retornos Serialmente Correlacionados: uma 
+
+Aplicação de Modelos Autoregressivos 
+
+ 
+ 
+
+Área 8: Microeconomia, Métodos Quantitativos e Finanças 
+
+ 
+ 
+
+Wallace Patrick Santos de Farias Souza 
+
+Doutorando em Economia Aplicada 
+
+Programa de Pós Graduação em Economia Universidade Federal do Rio Grande do Sul 
+
+– PPGE/UFRGS 
+
+E-mail: wpsfarias@gmail.com 
+
+ 
+ 
+
+Ana Cláudia Annegues 
+
+Doutoranda em Economia Aplicada 
+
+Programa de Pós Graduação em Economia Universidade Federal do Rio Grande do Sul 
+
+– PPGE/UFRGS 
+
+E-mail: annegues.ana@gmail.com 
+
+ 
+ 
+
+João Frois Caldeira 
+
+Doutor em Economia pela UFRGS 
+
+Professor do Programa de Pós Graduação em Economia Universidade Federal do Rio 
+
+Grande do Sul – PPGE/UFRGS 
+E-mail: joao.caldeira@ufrgs.br 
+
+ 
+ 
+
+Lucas Lúcio Godeiro 
+
+Doutorando em Economia Aplicada 
+
+Programa de Pós Graduação em Economia Universidade Federal da Paraíba – 
+
+PPGE/UFPB 
+
+Professor Assistente da Universidade Federal Rural do Semi-Árido - UFERSA 
+
+E-mail: lucasgodeiro@ufersa.edu.br 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Seleção de Carteiras com Retornos Serialmente Correlacionados: uma 
+
+Aplicação de Modelos Autoregressivos 
+
+ 
+ 
+Resumo:  O  objetivo  do  presente  artigo  consiste  em  analisar  os  possíveis  ganhos  de  uma  carteira  de 
+investimentos onde os pesos das ações são definidos de acordo com a previsão dos seus retornos futuros, 
+condicionada ao desempenho passado dos retornos. A metodologia para tal baseou-se na estimação de um 
+modelo  de  Vetores  Autoregressivos  (VAR)  para  descrever  a  dependência  serial  dos  retornos  das  ações. 
+Dado  o  grande  número  de  parâmetros  do  VAR  tradicional,  aplicou-se  também  a  abordagem  bayesiana 
+(BVAR),  contornando  os  problemas  de  dimensionalidade  e  fornecendo  estimadores  mais  estáveis. 
+Aplicou-se  também  um  modelo  autoregressivo  não  paramétrico  (NAR),  a  fim  de  verificar  relações  não 
+lineares  entre  os  retornos.  Em  seguida,  procedeu-se  a  aplicação  da  estratégia  de  Média-Variância  para 
+seleção de  carteiras ótimas  com  uma matriz de  covariância dos retornos  definida pelos  estimadores  dos 
+modelos  autorregressivos.  Os  resultados  mostraram  que,  em  comparação  com  portfólios  conhecidos  da 
+literatura,  os  portfólios  montados  com  base  nos  modelos  autoregressivos  apresentaram  desempenho 
+inferior aos portfólios das estratégias tradicionais.   
+ 
+Palavras-Chave: Seleção de Carteiras; Dependência Serial; Vetores Autoregressivos 
+Classificação JEL: G11, G17, G19 
+ 
+ 
+Abstract: The aim of this paper is to analyze the potential gains from an investment portfolio where the 
+weights  of  stocks  are  defined  according  to  the  prediction  of  their  future  returns  conditional  on  past 
+performance  of  returns.  The  methodology  for  this  estimation  was  based  on  a  model  of  the  Vector 
+Autoregressive (VAR) for describing the serial  dependence of stock returns.  Given the large number of 
+parameters  of  the  traditional  VAR,  we  also  applied  a  Bayesian  approach  (BVAR),  bypassing  the 
+problems of dimensionality and providing more stable estimates. We applied the Mean-Variance strategy 
+for  selection  of  optimal  portfolios  with  a  covariance  matrix  of  returns  defined  by  the  estimators  of 
+autoregressive  models.  Results  showed  that  compared  with  known  literature  portfolios,  the  portfolios 
+assembled  based  on  autoregressive  models  had  a  performance  lower  than  the  portfolios  of  traditional 
+strategies. 
+ 
+ 
+Keywords: Portfolios Selection; Serial Dependence; Vector Autoregression 
+JEL Classification: G11,G17,G19 
+ 
+ 
+ 
+ 
+1 Introdução 
+ 
+
+Os  modelos  de  otimização  de  carteiras  têm  sido  desenvolvidos  e  muito  difundidos  ao  longo  das 
+últimas  décadas,  dada  a  sua  aplicabilidade  em  processos  de  alocação  e  gestão  de  carteiras  de 
+investimentos.  Proposta inicialmente por Markowitz (1952), em seu artigo seminal “Portfolio Selection”, 
+essa  abordagem  transformou  o  processo  de  alocação  de  ativos  em  um  processo  de  otimização,  dando 
+
+origem  ao que é  conhecido  atualmente como  Teoria Moderna do Portfólio e análise média-variância de 
+carteiras de investimento.  
+
+Markowitz  (1952)  tentou  responder  como  um  investidor  aloca  seus  fundos  entre  possíveis 
+escolhas de investimentos, sugerindo que investidores preferem elevar sua riqueza e minimizar os riscos 
+associados  a  qualquer  ganho  potencial.  A  ideia  é  a  de  que  investidores  deveriam  considerar  o  trade-off 
+fundamental entre retorno esperado e risco ao determinar qual a melhor alocação de suas carteiras. Dessa 
+forma  escolheriam  a  carteira  com  a  menor  variância  entre  um  infinito  número  de  carteiras  que 
+proporcionasse um mesmo nível de retorno determinado ou, de forma equivalente, para um determinado 
+nível de aversão ao risco, deveriam escolher a carteira que maximizasse o retorno esperado. O retorno da 
+carteira  é  caracterizado  pelo  retorno  esperado  e  o  risco  é  estimado  pela  matriz  de  covariância,  sendo 
+chamado segundo Markowitz (1952) de critério de média-variância. 
+
+A  estimação  é  feita  através  de  um  problema  de  otimização  que  define  os  pesos  apropriados  da 
+carteira de modo a maximizar o retorno para um dado nível de risco, ou minimizar a variância para um 
+dado nível de retorno. É ainda possível maximizar uma função objetivo, sendo esta o retorno esperado da 
+carteira menos um múltiplo da variância da carteira (parâmetro de aversão ao risco). Quando o parâmetro 
+de aversão ao risco do indivíduo é infinito, tem-se a abordagem de mínima e variância, correspondendo 
+ao caso onde a preocupação em minimizar o risco é o principal objetivo.  
+
+Entretanto,  como  destacado  por  Kritzman  (2011)  a  abordagem  de  seleção  de  carteiras  de 
+Markowitz apresenta varias deficiências, sendo uma delas a elevada sensibilidade à incerteza quanto aos 
+valores  de  entrada  da  estimação.  Esta  sensibilidade  indica  que  pequenas  alterações  na  média  ou  na 
+variância dos retornos dos ativos podem causar grandes mudanças na carteira, seja na média, no risco ou 
+na composição dos pesos. Além disso, erros de estimação podem causar flutuações significativas ao longo 
+do tempo e fraco desempenho fora da amostra. Esses problemas de sensibilidade e erros de estimação tem 
+sido tratados por uma vasta literatura empírica, como, por exemplo, Best e Grauer (1991a), Best e Grauer 
+(1991b), Garlappi et al (2007), Chopra e Ziemba (1993), entre outros. 
+
+Dado o grande número de ativos disponíveis para a seleção da carteira atualmente, o problema da 
+sensibilidade  torna-se  ainda  mais  relevante,  sendo  conhecido  como  a  “maldição  da  dimensionalidade”. 
+Em  outras  palavras,  é  necessário  obter  estimativas  de  retornos  e  covariância  de  um  número  cada  vez 
+maior  de  ativos.  Para  contornar  o  problema,  Fan  et  al  (2012),  argumentam  a  existência  de  duas 
+abordagens  a  seguir:  a  primeira  consiste  em  alterar  o  estimador  da  matriz  de  covariância,  em  vez  do 
+amostral, seguindo a linha de minimizar o risco para um dado retorno. A segunda abordagem seria alterar 
+o método de seleção da  carteira,  em  consonância com  a ideia de maximizar o retorno  a um  dado risco, 
+abordagem que será utilizada no presente estudo.     
+
+No entanto, na prática é difícil de obter estimações precisas sobre os retornos dos ativos e sobre a 
+matriz de covariâncias desses retornos. Como os erros de estimação nas médias são muito maiores do que 
+os  erros  de  estimação  nas  covariâncias,  a  estabilidade  na  composição  da  carteira  de  mínima-variância 
+costuma  ser  maior  em  relação  à  carteira  de  média-variância.  Inúmeras  soluções  têm  sido  propostas  na 
+literatura para atenuar o erro de estimação nas médias e/ou nas covariâncias. DeMiguel, Garlappi e Uppal 
+(2009),  por  exemplo,  encontram  que  a  estimação  de  carteiras  usando  retornos  esperados1  tem  um  mau 
+desempenho fora da amostra em comparação com carteiras que ignoram esses retornos como estratégia de 
+composição.  Por  essa  razão,  existe  uma  gama  muito  maior  de  trabalhos  focando  na  estimação  das 
+covariâncias, impondo a minimização do risco da carteira sem levar em consideração o retorno esperado.2  
+
+                                                           
+1 Os autores encontraram que carteiras baseadas no retorno esperado têm um índice de Sharpe menor e um turnover maior. 
+2 Para trabalhos sobre seleção de carteiras baseados na estimativa da matriz de covariâncias ver Ledoit & Wolf (2003, 2004), 
+DeMiguel e Nogales (2009), entre outros. 
+
+Na  tentativa  de  encontrar  resultados  mais  precisos,  Jagannathan  &  Ma  (2003)  propuseram  a 
+introdução  de  uma  restrição  de  venda  a  descoberto  em  carteiras  de  mínima-variância  como  forma  de 
+induzir a estabilidade  dos pesos.  Jorion  (1986) propôs um  estimador mais robusto ao erro de  estimação 
+para as médias, enquanto Ledoit & Wolf (2003, 2004) propuseram um estimador robusto de encolhimento 
+para  a  estimação  da  matriz  de  covariância.  Na  mesma  linha  da  estimação  de  matrizes  de  covariância, 
+outras abordagens são os Modelos GARCH, que tem o objetivo de modelar a variância condicional dos 
+retornos  dos  ativos,  e  os  modelos  de  fatores  que  permitem  a  previsão  dos  retornos  de  cada  ativo  com 
+menos  estimações  utilizando  poucas  variáveis.  Os  modelos  GARCH  são  amplamente  utilizados  nessa 
+abordagem,  como  o  estudo  de  Engle  e  Sheppard  (2008),  enquanto  que  uma  aplicação  empírica  sobre 
+modelos de fatores podem ser vistos em Fan et al (2008). 
+
+Por outro lado, existem vários métodos de otimização de carteiras, tal como como DeMiguel et al 
+(2009b) que compara métodos alternativos de otimização com a carteira diversificada de modo ingênuo, 
+i.e,  igualmente  ponderada.  Em  tal  carteira,  é  atribuído  pesos  iguais  a  1/N  a  cada  ativo,  e  os  autores 
+concluem  que  esta  estratégia  é  difícil  de  ser  superada  pelas  demais.  Outra  mudança  encontrada  em 
+aplicações  de  DeMiguel  et  al  (2009a)  e  Caldeira  et  al  (2013)    é  a  utilização  da  otimização  de  mínima 
+variância, em detrimento da média-variância.   
+
+Além  disso,  há  muitas  evidências  empíricas  de  que  os  retornos  dos  ativos  são  serialmente 
+correlacionados e por isso o foco do presente estudo será na análise e estimação desses retornos, deixando 
+a  estratégia  estimação  da  matriz  de  covariância  e  minimização  de  risco  em  segundo  plano.  Lo  e 
+Mackinlay  (1990),  por  exemplo,  estimam  as  matrizes  de  correlação  cruzadas  entre  os  retornos  de  uma 
+amostra do CRSP3 e verificam que os retornos das grandes empresas conduzem os retornos das pequenas 
+empresas.  Em  outras  palavras,  os  autores  mostram  que  o  retorno  das  grandes  empresas  tem  uma 
+influência maior no retorno das pequenas do que o inverso, evidenciando uma relação lead-lag com base 
+no tamanho da firma. Jegadeesh e Titman (1993) encontrar momentum no retorno dos ativos, i.e., ativos 
+com  alto  (baixo)  retorno  nos  últimos  12  meses  tendem  a  ter  alto  (alto)  retorno  para  os  seis  meses 
+subsequentes.  
+
+Diante  disso,  o  objetivo  desse  artigo  é  explorar  a  relação  de  dependência  entre  os  retornos 
+individuais, montando as carteiras de ativos com base neste critério, e verificar seu desempenho, dentro e 
+fora  da  amostra.  Para  isso,  serão  utilizados  três  modelos  autoregressivos.  O  primeiro  será  o  Modelo  de 
+Vetores-Autoregressivos  (VAR),  para  capturar  a  dependência  linear  dos  retornos  de  uma  carteira  de 
+arbitragem (com custo zero). Em seguida o mesmo procedimento será feito através da versão bayesiana 
+do  modelo  autoregressivo,  BVAR,  dado  o  problema  de  dimensionalidade  contido  no  VAR  tradicional, 
+que  pode  comprometer  a  estabilidade  dos  parâmetros  estimados.  Finalmente,  a  fim  de  capturar  a 
+ocorrência  de  relações  não  lineares  entre  os  retornos,  será  estimado  um  modelo  autoregressivo  não 
+paramétrico  (NAR)  4.    O  desempenho  dessas  carteiras  será  avaliado  comparando  as  estratégias  VAR, 
+BVAR e NAR com benchmarks tradicionais da literatura, tal como a média-variância, mínima-variância e 
+a carteira ingênua igualmente ponderada (1/N).  Para encontrar o peso ótimo da carteira são utilizadas as 
+previsões condicionais dos retornos esperados dos ativos individuais. 
+
+Dessa forma, o retorno  de uma ação em  um  período  t  depende do retorno de todas as ações nos 
+períodos  anteriores,  incluindo  o  valor  defasado  da  própria  ação,  capturando  qualquer  relação  existente 
+entre os ativos. Existe uma grande variedade de explicações para as correlações entre os retornos, que vão 
+desde  os  retornos  esperados  baseados  no  tempo,  Conrad  e  Kaul  (1988),  à  heterogeneidade  entre 
+investidores, tal como em Hong e Stein (1999).  
+
+                                                           
+3 Center for Research in Security Prices da Universidade de Chicago. 
+4 Nonparametric autoregressive model. 
+
+Para o desempenho fora da amostra, as diferentes técnicas de alocação de carteiras são baseadas 
+nas seguintes medidas: retorno médio, desvio-padrão, Índice de Sharpe (IS), turnover  e custo breakeven 
+das  carteiras  otimizadas  e  o  retorno  acumulado  em  excesso  ao  CDI,  considerando-se  as  diferentes 
+frequências  de  rebalanceamento  a  janela  temporal  dos  retornos.  Também  será  realizada  uma  avaliação 
+econômica baseada numa função quadrática seguindo Fleming (2001), como forma de comparar os ganho 
+de desempenho dos modelos autoregressivos adotados. 
+
+O restante do artigo possui a seguinte estrutura, além desta introdução. A próxima seção traz uma 
+explanação  das  técnicas  de  otimização  de  carteiras  utilizadas  e  a  terceira  seção  apresenta  as  diferentes 
+modelagens  de  vetores  autoregressivos  adotadas.  Na  seção  4  é  apresentada  a  base  de  dados  e  a 
+metodologia empregada na avaliação de desempenho fora da amostra. A seção 5 apresenta os resultados 
+obtidos e por fim, na seção 6 têm-se as conclusões do artigo. 
+
+ 
+
+2 Métodos de Otimização de Carteiras de Investimentos 
+ 
+
+Nesta seção, procurou-se fazer uma breve explanação das principais estratégias de composição de 
+carteiras ótimas presentes na literatura. Primeiramente é apresentada  a abordagem de Markowitz (1952) 
+com  o  modelo  de  média-variância,  que  busca  a  carteira  ótima  ao  longo  da  fronteira  eficiente  que 
+minimiza  o  risco  para  um  dado  retorno.  Em  seguida  é  apresentado  o  modelo  de  mínima-variância, 
+podendo  ser  considerado  um  caso  particular  de  média-variância  quando  a  aversão  ao  risco  do  agente  é 
+infinita. Ainda são apresentados o portfólio igualmente ponderado (ingênuo) com pesos iguais para todos 
+os ativos e a estratégia contrarian que assume que um ativo que apresenta um alto retorno em um período 
+recebe  um  peso  negativo,  pois  espera-se  que  o  seu  retorno  seja  baixo  no  próximo  período.  Também  é 
+considerado  o  momentum  dos  ativos,  que  ao  oposto  do  caso  anterior,  espera-se  que  ativos  com  altos 
+retornos em períodos anteriores apresentarão alto retorno nos próximos períodos. 
+ 
+2.1 Carteira de Média-Variância 
+
+A abordagem de Média-Variância desenvolvida por Markowitz (1952) considera que o investidor 
+tem  suas  preferências  representadas  por  uma  função  a  qual  relaciona  o  retorno  esperado  e  a  variância 
+(risco)  da  carteira  de  investimentos.  Assim,  o  portfólio  ótimo  é  definido  como  aquele  que  minimiza  o 
+risco a um dado retorno esperado, ou de forma análoga, para um determinado nível de aversão ao risco, o 
+portfólio ótimo oferece o máximo retorno.  
+Em termos formais, considere um investidor interessado em alocar sua riqueza entre N fundos de 
+ 
+investimento. Para isso, ele deve escolher que pesos  wi deve dar para cada fundo i de modo  a obter um 
+determinado retorno minimizando o risco da carteira. O vetor de pesos ótimo é dado por W = (w1,...,wN). 
+
+O  portfólio  é  totalmente  investido,  isto  é, 
+
+,  sem  venda  a  descoberto,  ou  seja,  não  se  admite 
+
+pesos negativos na carteira (
+
+).  
+
+ 
+
+Seja 
+
+o retorno aleatório dos fundos de investimento, o retorno da carteira entre t e t+I é dado 
+
+por 
+
+.  Admita  que 
+
+,  com 
+
+  e 
+
+  a 
+
+média  e  a  covariância,  respectivamente.  O  retorno  do  portfólio 
+
+  segue  uma  normal  com 
+
+média 
+
+ e variância 
+
+. 
+
+O investidor, portanto, se defronta com o seguinte problema de minimização restrita: 
+
+ 
+ 
+
+1NiiIw0iwtIR,,,'NptIititIiIRwRwR~(,)tttRN,,{,...,}tItNt,{}tijt,'ptttRwR,'ptttw2',pttttww                                        
+
+                                 (1) 
+
+   
+
+Onde 
+
+é  o  vetor  de  pesos  do  portfólio, 
+
+  é  a  média  amostral  dos  retornos  do  portfólio, 
+
+  a  variância  amostral  dos  retornos;  γ  representa  o  grau  relativo  de  aversão  ao  risco  e 
+
+é  a 
+
+restrição de venda a descoberto. A restrição 
+
+  indica que a soma dos pesos deve ser igual  a um  (
+
+ é um vetor N-dimensional de uns). Para cada grau de aversão ao risco γ, existe um portfólio ótimo 
+
+de investimentos.  
+
+2.2 Carteira de Mínima-Variância 
+
+ 
+
+O  portfólio  de  Mínima-Variância  consiste  em  um  caso  específico  da  estratégia  de  Média-
+), de modo que sua atenção se 
+
+Variância, onde o grau de aversão ao risco do investidor é infinito (
+
+volta completamente à minimização do risco associado à carteira: 
+
+                           
+
+                            (2) 
+
+Como 
+
+, a segunda parte da função objetivo do portfólio de Média-Variância 
+
+ tende a 
+
+zero, ou seja, a estratégia não leva em consideração o retorno esperado. Nos últimos anos, a literatura tem 
+voltado  sua  atenção  à  estratégia  de  Mínima  Variância,  em  razão  das  dificuldades  atreladas  à  utilização 
+dos retornos. Segundo Merton (1980), é mais difícil obter estimativas precisas da média dos retornos em 
+comparação com a sua variância. Outras evidências empíricas corroboram esta posição, dentre as quais se 
+podem citar Jagannathan e Ma (2003) e DeMiguel, Garlappi e Uppal (2009), que mostram que a carteira 
+de  variância  mínima  tem  desempenho  superior  a  carteiras  que  contam  com  estimativas  de  retornos 
+esperados. 
+ 
+2.3 Carteira Igualmente Ponderada ou 1/N 
+
+O portfólio Igualmente Ponderado define a carteira de investimentos ótima atribuindo pesos iguais 
+
+aos  N  fundos  de  investimento  com 
+
+.  Algumas  evidências  empíricas  mostram  que  carteiras 
+
+montadas  segundo  esta  estratégia  apresentaram  performance  superior  a  carteiras  formadas  a  partir  das 
+estratégias de Média-Variância e Mínima Variância, como DeMiguel, Garlappi  e Uppal (2009).  
+
+2.4 Carteira Contrária 
+
+ 
+
+Esta estratégia de seleção de carteiras consiste em atribuir os menores pesos aos ativos com bom 
+histórico  de  desempenho.  Formalmente,  considere  o  seguinte  portfólio  de  arbitragem  contrária  presente 
+no  estudo  de  Lo  e  MacKinlay  (1990).  O  objetivo  dos  autores  foi  testar  se  os  lucros  advindos  dessa 
+estratégia ocorriam unicamente em razão de overreaction no mercado: 
+
+          
+
+ 
+ 
+
+            
+
+,1min'[]..'11,...,,ptIwiwwERsalwwiNNwR,[]ptIER'wwiw'1lwNlRmin'..'11,...,,wiwwsalwwiN,1[]ptIER1/iwNOnde          é  o  vetor  com  elementos  iguais  a  um  e              
+igualmente ponderado em t. O peso da ação dentro do portfólio é igual ao negativo do excesso de retorno 
+da  ação  com  relação  ao  retorno  da  carteira  igualmente  ponderada.  Ou  seja,  se  a  ação  obtém  um  alto 
+retorno em t, a estratégia de composição contrária lhe atribuirá um peso negativo no tempo t+1.  
+ 
+será dado por: 
+ 
+
+Segundo Lo e MacKinlay (1990), o retorno esperado do ativo no portfólio de arbitragem contrária 
+
+  consiste  no  retorno  do  portfólio 
+
+ 
+
+ 
+
+Onde:    
+
+ 
+
+                   , 
+
+     
+
+                       
+
+                
+
+                  
+
+   
+
+           
+ 
+ 
+
+ 
+           
+ 
+   
+
+ 
+   é o retorno médio da i-ésima ação,    é o retorno médio da carteira igualmente ponderada e “tr” é o 
+traço da matriz. 
+ 
+3 Modelos de Vetores Autoregressivos (Dependência Serial dos Retornos) 
+
+ 
+Esta  seção  apresenta  os  modelos  de  Vetores  Autoreressivos  aplicados  no  presente  estudo  para 
+explorar  a  relação  entre  os  retornos.  É  introduzida  a  modelagem  da  correlação  dos  retornos  através  do 
+VAR, tanto pela abordagem tradicional quanto pela abordagem bayesiana (BVAR), bem como o modelo 
+autoregressivo não paramétrico NAR.  Por fim, mostramos um portfólio de média-variância considerando 
+a dependência serial dos retornos, cujo desempenho será comparado com os portfólios tradicionais. 
+
+Alguns trabalhos presentes na literatura já utilizaram os modelos Autoregressivos no contexto de 
+alocação  de  ativos,  dentre  os  quais  é  possível  destacar,  Campbell  e  Viceira  (1999,  2002)  e  Campbell, 
+Chan e Viceira (2003).  O primeiro analisa a alocação da riqueza de um investidor entre diferentes tipos 
+de ativos com base na  maximização de uma função utilidade. Os autores assumem  a existência de dois 
+grupos de ativos, um livre de risco com retorno constante, e um ativo de risco, cujo retorno é modelado 
+por um modelo AR(1). Já Campbell, Chan e Viceira (2003) introduzem um VAR em tempo contínuo para 
+modelar  os  retornos  dos  ativos  de  risco.  Balduzzi  e  Lynch  (1999)  procuram  medir  a  perda  de  utilidade 
+para o investidor que ignora os seguintes fatores em sua decisão de investimento: a natureza de múltiplos 
+períodos característico do seu problema de escolha, a previsibilidade dos retornos dos ativos e os custos 
+de transação.     
+
+Em comum, estes trabalhos têm por objetivo estudar como o investidor aloca dinamicamente sua 
+riqueza ao longo do tempo, e empregam os modelos autoregressivos para capturar a capacidade de certas 
+variáveis em explicar a previsão dos retornos dos ativos. O presente estudo, por outro lado, procura trazer 
+os modelos autoregressivos para o centro da análise, utilizando esta abordagem como uma estratégia para 
+composição de carteiras. 
+
+Conforme já argumentado, existem evidências empíricas da ocorrência de dependência serial entre 
+os retornos das ações. Diante disso, seria possível prever o desempenho futuro destes ativos com base no 
+seu  histórico  de  retornos  e  assim  compor  o  portfólio  de  investimentos  com  as  ações  de  melhor 
+desempenho. A dependência dos retornos é modelada pelo VAR, além da sua versão bayesiana, o BVAR, 
+e uma versão não paramétrica, o NAR. 
+
+ 
+
+3.1 Modelos VAR e BVAR de Dependência Serial dos Retornos  
+
+A  abordagem  de  Vetores  Autoregressivos  tem  início  a  partir  do  trabalho  de  Sims  (1980)  e 
+consistem em desenvolver modelos dinâmicos com o mínimo de restrições, nos quais todas as variáveis 
+econômicas  são  tratadas  como  endógenas.  Cada  variável  depende  dela  mesma  defasada  e  das  demais 
+variáveis  do  modelo  e  seus  valores  passados,  de  modo  que  o  modelo  consegue  identificar  tanto  a 
+dependência dos retornos no tempo, quanto dos retornos de diferentes tipos ações.  
+
+Tal  qual  De  Miguel,  Nogales  e  Uppal  (2014),  para  capturar  a  correlação  serial  entre  os  retornos 
+
+das ações, o seguinte modelo VAR é estimado: 
+
+ 
+
+                                              
+
+                                    (3) 
+
+ 
+
+Onde 
+
+ representa o retorno da ação no tempo  t, a é o vetor de interceptos,  B consiste na matriz de 
+
+coeficientes  angulares  e 
+
+  o  vetor  de  erros,  que  são  i.i.d  com  distribuição  normal  multivariada,  de 
+
+média zero e matriz de covariâncias 
+
+ definida positiva.   
+
+O  modelo  assume  que  o  retorno  esperado  em  t+1,  condicionado  ao  retorno  em  t,  depende 
+ 
+linearmente do retorno corrente para qualquer uma das ações. A dependência linear é caracterizada pela 
+matriz  B,  cujos  elementos  Bi,j  representam  os  efeitos  marginais  de  rj,t  em  ri,t+1,  condicional  a  rt.  Desse 
+modo, a utilização do VAR torna possível capturar qualquer relação linear entre os retornos das ações em 
+períodos consecutivos, como a relação momentum ou a relação lead-lag.  
+ 
+No  entanto,  a  estimação  de  um  VAR  gera  alguns  problemas  do  ponto  de  vista  econométrico.  O 
+principal deles consiste na sobreparametrização do modelo, em razão do elevado número de parâmetros a 
+serem  estimados,  o  que  gera  inconvenientes  com  os  graus  de  liberdade.  Além  disso,  a  estrutura  de 
+autocorrelação que caracteriza as séries comumente incluídas no VAR tende a gerar multicolinearidade e 
+overfitting (Jaramillo, 2009). Assim, a estimação via Mínimos Quadrados Ordinários (MQO) compromete 
+a  estabilidade  dos  estimadores.  Para  contornar  esses  problemas,  De  Miguel,  Nogales  e  Uppal  (2013) 
+utilizam  ridge regression, proposto por Hoerl and Kennard (1970), desenhado para fornecer parâmetros 
+mais estáveis, inclusive em modelos que demandam um grande número de parâmetros.  
+ 
+Outra maneira de lidar com tais dificuldades consiste em inserir restrições probabilísticas sobre os 
+parâmetros  do  modelo,  conferindo  uma  abordagem  Bayesiana  ao  VAR  (BVAR).  Este  método, 
+inicialmente  proposto  pelos  trabalhos  de  Litterman  (1984,  1986),  Doan  et  al  (1984)  e  Todd  (1988), 
+consegue  fornecer  previsões  com  um  grau  maior  de  precisão,  e  as  restrições  impostas  aos  parâmetros 
+reduzem  os  problemas  de  dimensionalidade  contidos  no  VAR  tradicional.  Além  disso,  no  BVAR  a 
+hipótese de normalidade dos resíduos não é necessária, de modo que é possível fazer inferências a priori 
+sobre a distribuição dos resíduos da regressão.  
+ 
+Para compreender as características do VAR bayesiano se faz necessária uma breve incursão nos 
+conceitos referentes  à Estatística Bayesiana.  Esta  abordagem parte da  ideia de probabilidade  como uma 
+“crença” do pesquisador acerca da ocorrência de um evento incerto, dadas as informações disponíveis e 
+algumas  suposições  aceitáveis  (Hauer,  2007).  As  probabilidades  a  priori  associadas  ao  evento  se 
+atualizam  conforme  os  dados  vão  sendo  obtidos,  resultando  em  probabilidades  a  posteriori.  Assim, 
+diferentemente da estatística clássica, a abordagem bayesiana permite maior interferência do pesquisador, 
+conferindo  uma  interpretação  subjetiva  à  probabilidade,  a  qual  será  baseada  na  sua  avaliação  pessoal 
+frente às informações disponíveis.  
+
+11tttraBrtr1tNxNAlguns elementos do Teorema de Bayes ajudam a visualizar formalmente estes conceitos. Seja  y 
+ 
+um  vetor  de  dados  e  θ  um  vetor  que  contém  os  parâmetros  do  modelo.  Segundo  a  regra  de  Bayes, 
+teríamos: 
+ 
+
+                                          
+
+                               (4) 
+
+ 
+A  expressão  acima  pode  ser  interpretada  como  a  probabilidade  de  ocorrência  de  θ,  dado  o  conjunto  de 
+dados,  onde  o  parâmetro  não  é  mais  tratado  como  constante  e  passa  a  ser  considerado  uma  variável 
+aleatória. Como estamos interessados em θ, a expressão pode ser reduzida para: 
+ 
+
+                                          
+
+                                 (5) 
+
+ 
+
+O  termo 
+
+  é  conhecido  como  a  função  de  densidade  posteriori,  enquanto  que  a  função  de 
+
+densidade  dados  os  parâmetros  do  modelo, 
+
+,  consiste  na  função  de  verossimilhança.  A 
+
+ 
+
+representa  a  probabilidade  a  priori,  uma  vez  que  não  depende  da  observação  dos  dados.    Portanto,  o 
+processo  de  inferência  sob  a  abordagem  bayesiana  resulta  da  combinação  de  informações  inerentes  aos 
+dados  com  suposições  sobre  suas  características,  permitindo  a  inserção  de  conjecturas  do  pesquisador 
+através da função a priori.  
+O  presente  artigo  aplica  o  modelo  BVAR  com  informação  a  priori  de  Minnesota5,  uma 
+ 
+especificação desenvolvida por Doan, Litterman e Sims (1984), um dos primeiros esforços metodológicos 
+a incorporar a abordagem bayesiana a experimentos de previsão. A priori de Minnesota se baseia na ideia 
+de que cada série pode ser descrita por um passeio aleatório em torno de um componente determinístico 
+desconhecido.  Em  outras  palavras,  os  parâmetros  das  variáveis  autodefasadas  têm  média  igual  a  1  e  os 
+parâmetros  das  demais  variáveis  possuem  média  0.  Isso  indica  a  crença  de  que  variáveis  autodefasadas 
+são variáveis explicativas importantes. As variâncias das distribuições são definidas segundo uma forma 
+funcional  que  descreve  a  relação  entre  a  variância  e  um  conjunto  de  parâmetros  denominado 
+hiperparâmetros. 
+ 
+
+                                      
+
+                                  (6) 
+
+ 
+
+Onde 
+
+  consiste no retorno da ação  n no tempo  t.  Se os dados sugerem  que existem  efeitos fortes  de 
+
+outras autodefasagens além da primeira e de defasagens de outras variáveis no modelo isso se refletirá nas 
+estimativas  dos  parâmetros  (Kenny,  Meyler  e  Quinn,  1998).  Para  evitar  um  número  excessivo  de 
+hiperparâmetros, assume-se que a variância aumenta com a ordem de defasagem.   
+ 
+ 
+
+Inicialmente supõe-se que os coeficientes seguem a distribuição: 
+
+                                            
+
+                                       (7) 
+
+ 
+
+com 
+
+sendo a priori de Minnesota, onde na primeira equação do sistema tem-se que 
+
+ e 
+
+  é  a  matriz  de  covariâncias  inicial,  que  depende  dos  hiperparâmetros  π.  Os  parâmetros  do 
+
+                                                           
+5 Sobre outras especificações de distribuições a priori, ver Hauer (2007), Jaramillo (2008) e Barráez, Bolívar e Cartaya (2008).  
+
+(|)()(|)()pyppypy(|)(|)()pypyp(|)py(|)py()p,,1,ntnntntrr,ntr00~(,)N(01...0)'0()Fmodelo  se  atualizam  de  acordo  com  um  processo  autoregressivo  cuja  forma  funcional  é  definida  pelos 
+hiperparâmetros. 
+ 
+3.2 Modelo Autoregressivo Não Paramétrico (NAR) 
+
+  
+
+O  modelo  VAR  tradicional  assume  que  a  relação  entre  os  retornos  das  ações  no  tempo  é  linear. 
+Entretanto, existe a possibilidade de haver padrões de não linearidade entre os retornos que a abordagem 
+linear  claramente  não  consegue  captar.  Para  avaliar  isso,  também  foi  considerado  um  modelo 
+Autoregressivo Não Paramétrico (NAR) para modelar a dependência serial ente os retornos. Os modelos 
+não  paramétricos  fazem  frente  à  incerteza  de  como  se  dá  a  relação  entre  variáveis  explicadas  e 
+explicativas,  pois  não  necessitam  de  suposições  acerca  da  forma  funcional  das  relações  a  serem 
+estimadas, bem como acerca da distribuição dos erros.  
+ 
+Os  portfólios  de  média  variância  consistem  nos  portfólios  de  um  investidor  que  acredita  que  os 
+retornos  das  ações  seguem  um  modelo  autoregressivo  não  paramétrico.  O  problema  de  otimização  é 
+resolvido após substituir a média e  a matriz de  covariância dos retornos  pelos  seus estimadores obtidos 
+através do modelo NAR.  
+ 
+Como  já  explicitado,  os  modelos  autoregressivos  serão  utilizados  para  previsão  dos  retornos 
+futuros  das  ações  com  base  no  seu  histórico  de  retornos.  Na  subseção  seguinte  serão  apresentados  os 
+procedimentos de otimização de carteiras pelo método de Média Variância, considerando a dependência 
+serial dos retornos.    
+
+ 
+
+3.3 Portfólio de Média-Variância dos modelos Autoregressivos 
+
+O presente artigo explora a dependência dos retornos das ações utilizando um portfólio de Média-
+Variância  baseado  nos  modelos  VAR,  BVAR  e  NAR.  Segundo  os  autores,  este  portfólio  se  apresenta 
+como ótimo para o investidor preocupado apenas com o retorno futuro (investidor míope), o qual acredita 
+que os retornos dependem uns dos outros segundo cada modelo autoregressivo.  
+
+O  problema  de  otimização  restrita  é  o  mesmo  do  portfólio  de  Média  Variância  tradicional 
+mostrado  em  (1)  substituindo  a  média  e  a  matriz  de  covariância  dos  retornos  pelos  seus  estimadores 
+condicionais  obtidos  a  partir  dos  modelos.  Este  portfólio  é  montado  com  base  na  média  dos  retornos 
+futuros condicional aos retornos correntes: 
+
+ 
+
+                                        
+
+                                      (8) 
+
+ 
+
+Onde B é a matriz dos estimadores. A matriz de covariância dos retornos assume a forma 
+ 
+
+                 
+
+                  (9) 
+
+ 
+
+ 
+Para  garantir  a  estabilidade  dos  estimadores,  lançamos  mão  do  instrumental  bayesiano  para 
+contornar  os  problemas  de  dimensionalidade  produzidos  pelo  grande  número  de  parâmetros  do  VAR,  e 
+estimamos  um  NAR  para  possíveis  padrões  de  não  linearidade,  conforme  já  exposto  anteriormente.  As 
+carteiras selecionadas pela presente estratégia serão comparadas com os portfólios usualmente presentes 
+na literatura de seleção de carteiras com base em alguns indicadores, como o índice de Sharpe. 
+
+4 Dados e Avaliação Empírica 
+ 
+
+ 
+
+vtaBr1111()()tViiiiitTraBrraBrT4.1 Dados 
+
+A base de dados empregada na construção dos fatores consiste de observações diárias dos preços 
+de fechamento de ações que fizeram parte do Índice Ibovespa durante o período analisado, de 01/01/2004 
+até  20/03/2015.  Foram  excluídas  aquelas  que  não  apresentavam  cotações  diárias  para  o  período  dos  12 
+meses anteriores ou posteriores de formação das carteiras.  
+
+Dessa  forma,  as  estimações  foram  realizadas  com  as  32  ações  sobreviventes  da  composição  do 
+IBOVESPA de março de 2015, sendo estas negociadas durante todo o período. Para o preenchimento dos 
+dados  faltantes  foi  utilizado  um  modelo  de  nível  local  e  a  partir  dos  preços  de  fechamento  diário  foi 
+calculado  o  retorno  composto  de  cada  ação.  A  Tabela  1  abaixo  apresenta  a  estatística  descritiva  dos 
+dados, com a média, os valores mínimo e máximo e o desvio padrão dos retornos dos ativos. 
+
+Observa-se que o  ativo  CCRO3 obteve o maior  retorno médio para o período, com  um  valor de 
+0.0941%. O mesmo apresentou um retorno mínimo e máximo de -12.90% e 17,93%, respectivamente, e 
+um  desvio  padrão  de  2.20%.  Assim,  constata-se  que  apesar  da  CCRO  ter  apresentado  o  maior  retorno 
+médio,  a  mesma  foi  uma  das  menos  arriscadas,  contrariando  um  pouco  a  relação  positiva  entre  risco  e 
+retorno. Cabe destacar que a ação que apresentou o desvio padrão (risco) mais elevado foram os papéis da 
+OI (OIBR4) com um desvio padrão diário de 3%. Com relação ao retorno máximo, a Tractebel (TBLE3) 
+atingiu  a  maior  alta  diária,  chegando  a  subir  30%  em  um  dia.  Por  outro  lado,  o  retorno  mínimo  foi 
+verificado nas ações da TIM (TIMP3), que caíram 25.74% num único pregão.  
+
+ 
+
+Tabela 1: Estatística Descritiva 
+
+Ativo 
+ABEV3 
+BBAS3 
+BBDC3 
+BBDC4 
+BRAP4 
+BRKM5 
+CCRO3 
+CMIG4 
+CPLE6 
+CRUZ3 
+CSNA3 
+ELET3 
+ELET6 
+EMBR3 
+GGBR4 
+GOAU4 
+ITSA4 
+ITUB4 
+LAME4 
+LIGT3 
+OIBR4 
+PCAR4 
+PETR3 
+PETR4 
+SBSP3 
+SUZB5 
+
+Max 
+
+DP 
+
+Média  Min 
+0,0878% 
+0,0622% 
+0,0785% 
+0,0738% 
+0,0306% 
+-0,0056% 
+0,0941% 
+0,0575% 
+0,0461% 
+0,0724% 
+0,0254% 
+-0,0253% 
+-0,0053% 
+0,0191% 
+0,0287% 
+0,0326% 
+0,0727% 
+0,0619% 
+0,0782% 
+-0,0011% 
+-0,0745% 
+0,0382% 
+0,0064% 
+0,0135% 
+0,0511% 
+0,0215% 
+
+-19,4156%  14,8181%  1,6954% 
+-16,6832%  18,8256%  2,5183% 
+-10,1003%  15,4641%  2,0631% 
+-12,2123%  19,9889%  2,1090% 
+-21,0833%  14,0528%  2,4716% 
+-22,0420%  19,2583%  2,5923% 
+-12,9057%  17,9314%  2,2082% 
+-21,9578%  10,9434%  2,1821% 
+-18,2258%  15,5564%  2,2093% 
+-10,4557%  12,4076%  2,0157% 
+-18,7713%  19,6276%  2,7814% 
+-16,3180%  15,5241%  2,7076% 
+-16,7603%  21,1553%  2,5592% 
+-13,2506%  11,0785%  2,1937% 
+-16,1351%  16,8867%  2,5353% 
+-15,9603%  17,6704%  2,5411% 
+-12,2788%  22,4319%  2,1792% 
+-12,9425%  21,0039%  2,2066% 
+-17,3953%  24,7200%  2,4788% 
+-21,5328%  17,3769%  2,5420% 
+-18,2322%  20,9546%  3,0013% 
+-9,0108%  14,1696%  1,9703% 
+-14,9114%  14,1134%  2,4714% 
+-14,8035%  14,3870%  2,3992% 
+-16,1522%  15,5740%  2,3623% 
+-13,0496%  14,5270%  2,3082% 
+
+TBLE3 
+TIMP3 
+USIM5 
+VALE3 
+VALE5 
+VIVT4 
+
+0,0732% 
+0,0513% 
+0,0005% 
+0,0256% 
+0,0268% 
+0,0442% 
+
+-12,5398%  30,6083%  2,2455% 
+-25,7412%  26,1930%  2,9109% 
+-15,9676%  16,6281%  2,9387% 
+-20,5516%  13,5558%  2,3482% 
+-16,4432%  12,5657%  2,2266% 
+-8,3502%  8,7655%  1,7674% 
+
+ 
+
+     Fonte: Elaboração dos autores 
+
+ 
+ 
+
+4.2 Medidas de Avaliação de desempenho 
+
+Seguindo De Miguel, Nogales e Uppal (2013), os critérios de avaliação que serão utilizados para 
+comparar o desempenho das estratégias tradicionais com a estratégia dos modelos autoregressivos são: o 
+retorno médio  das carteiras, a variância e o  Índice de Sharpe (SR). Tais medidas são calculadas  através 
+das seguintes fórmulas: 
+
+ 
+
+                                       
+   
+ 
+
+                                
+
+   
+
+ 
+
+ 
+
+   
+   
+
+  
+
+     
+
+   
+   
+
+     
+            
+
+                                                             (10) 
+
+                                                   (11) 
+
+                                  
+
+                                                                                          (12) 
+
+     
+   
+   
+
+Onde   
+
+      é o retorno fora da amostra das carteiras.  
+O Índice de Sharpe indica o trade-off existente entre a média e a variância dos retornos e mostra a 
+
+quantidade média de retornos que a série obtém para cada unidade de variância.  
+
+                         
+
+ 
+
+4.3 Avaliação Econômica 
+
+Conforme já explanado anteriormente, além da análise de desempenho baseada em medidas como 
+o  Índice  de  Sharpe,  a  estratégia  empírica  do  artigo  engloba  também  uma  avaliação  econômica  das 
+carteiras  montadas  pelas  estratégias  VAR,  BVAR  e  NAR.  Nos  moldes  de  Naiber  e  Caldeira  (2015), 
+utiliza-se uma função de utilidade quadrática para mensurar o valor dos ganhos do portfólio proposto pelo 
+presente estudo em comparação com os portfólios tradicionais da literatura.  
+Sendo      e      os retornos obtidos para duas diferentes estratégias, a avaliação econômica de 
+ 
+trocar  uma  estratégia  pela  outra  é  feita  calculando-se  o  valor  da  constante     que  satisfaz  a  seguinte 
+igualdade: 
+ 
+
+                                          
+
+ 
+   
+
+           
+
+ 
+   
+
+      
+
+    
+
+                                   (13) 
+
+ 
+Essa  constante  representará  o  sacrifício  em  termos  de  retorno  ao  qual  o  investidor  está  disposto  em 
+incorrer a cada período t para obter o ganho de desempenho associado à troca do primeiro para o segundo 
+portfólio.  
+ 
+A  função  de  utilidade  quadrática  pode  ser  vista  como  uma  aproximação  de  segunda  ordem  da 
+verdadeira  utilidade  do  investidor.  Sendo  assim,  a  utilidade  realizada  do  investidor  em  t+1  pode  ser 
+escrita como: 
+ 
+
+                                                               
+
+ 
+   
+ 
+
+ 
+
+      
+
+                              (14) 
+
+ 
+
+Onde      é a riqueza do investidor em t+1, a é o seu índice de aversão absoluta ao risco e            
+      é o retorno bruto em t+1 da carteira que foi selecionada em t. Seja o índice de aversão relativa ao 
+  
+risco dado pela expressão: 
+ 
+
+                                                           
+
+   
+
+       
+
+                                                       (15)                     
+
+ 
+Para facilitar a comparação das carteiras,     é mantido constante, implicando que o índice de aversão ao 
+risco  terá  um  valor  fixo  γ  em  cada  período.  Com  a  aversão  ao  risco  constante,  é  possível  utilizar  uma 
+utilidade  média  para  estimar  consistentemente  a  utilidade  realizada  do  investidor  gerada  por  um  dado 
+nível de riqueza inicial: 
+ 
+
+                                        
+
+ 
+   
+
+ 
+
+      
+
+ 
+
+      
+
+ 
+
+                                               (16) 
+
+ 
+Assim, estima-se o valor econômico da troca de uma estratégia para outra igualando as utilidades médias 
+fornecidas por duas carteiras alternativas. A igualdade é o ponto no qual o investidor é indiferente entre as 
+carteiras, de modo que   pode ser interpretado como a taxa a qual o investidor está disposto a trocar de 
+estratégia. Tomando por base a expressão em      , calcula-se o valor da taxa que satisfaz a equação: 
+ 
+
+ 
+
+ 
+   
+
+           
+
+ 
+
+      
+
+ 
+
+      
+
+     
+
+ 
+   
+
+               
+
+ 
+
+      
+
+              
+
+       (17) 
+
+ 
+Primeiramente, define-se    
+
+ 
+
+ 
+
+      
+
+. Substituindo na expressão acima, temos: 
+
+                                  
+
+ 
+   
+
+ 
+
+                                     
+
+ 
+   
+
+           (18) 
+
+ 
+ 
+Definindo                  
+ 
+
+ 
+   
+
+ e distribuindo o somatório pelos elementos do lado direito: 
+
+               
+
+ 
+   
+
+       
+
+  
+         
+
+ 
+   
+
+     
+
+   
+
+ 
+
+ 
+   
+
+              
+
+ 
+   
+
+               (19) 
+
+ 
+Defina  
+
+ 
+   
+
+         
+
+e  
+
+ 
+   
+
+   
+
+      
+
+ e obtenha: 
+
+ 
+
+                                                                                           (20) 
+
+ 
+Reorganiza-se os termos de modo a formar uma equação do segundo grau tendo   como variável: 
+ 
+
+                                       
+
+       
+
+             
+
+                 
+
+ 
+A solução da equação será dada por: 
+
+                                                       
+
+ 
+
+          
+
+  
+
+                                                (21) 
+
+Tal qual em Naibert e Caldeira (2005), calculamos   para os valores de       e         
+ 
+5 Resultados Estimados 
+
+ 
+Aqui serão apresentados os resultados da aplicação das estratégias empíricas descritas nas seções 
+acima.  O  artigo  tem  como  objetivo  estimar  os  retornos  das  carteiras  ótimas  segundo  as  estratégias 
+presentes  na  literatura  e  a  estratégia  que  explora  a  dependência  serial  dos  retornos  das  ações.  Dada  a 
+dependência  serial  dos  retornos,  as  quais  podem  ser  não  lineares,  foi  utilizada  uma  defasagem  para  os 
+modelos VAR e NAR, para controlar a equação da média dos ativos.  
+
+A partir do VAR e BVAR, foram estimados os modelos e realizada a previsão dentro da amostra. 
+A  partir  da  previsão,  o  retorno  médio  e  a  matriz  de  variância-covariância  foram  estimados  para  os 
+modelos de fronteira eficiente descritos na seção 2, e escolhida a carteira de média-variância para análise 
+e comparações dos resultados.  
+
+ 
+A  tabela  2  contém  os  valores  das  medidas  de  desempenho  descritas  na  seção  4  para  as  carteiras 
+montadas segundo as estratégias de Markowitz, o portfólio Igualmente Ponderado, a Carteira Contrária e 
+a  estratégia  considerando  a  dependência  entre  os  retornos  modelada  pelo  VAR  tradicional,  sua  versão 
+Bayesiana,  o  BVAR,  e  sua  versão  não  paramétrica,  o  NAR.  Os  modelos  BVAR  e  VAR  apresentaram 
+resultados  semelhantes  entre  si,  mas  com  retornos  inferiores  às  carteiras  do  NAR  e  de  Markowitz.  No 
+entanto, ressalta-se que o BVAR e VAR conseguem gerar uma carteira com menor risco, denotando uma 
+ferramenta a ser considerada na gestão de portfólio, principalmente se o investidor é avesso ao risco e tem 
+como função objetivo a sua minimização, deixando o retorno esperado em segundo plano. Ao aumentar a 
+ordem de defasagem no modelo, o desempenho em termo de retorno pouco se altera e o risco da carteira 
+se eleva fortemente.  
+
+Ao  considerar  o  valor  do  índice  de  Sharpe,  assim  como  no  retorno  esperado,  os  portfólios 
+tradicionais e o NAR apresentaram um desempenho visivelmente superior. Um elevado índice de Sharpe, 
+indica  um  retorno  esperado  elevado  relativamente  ao  risco  incorrido  pela  carteira,  de  modo  que  os 
+portfólios  dos  modelos  autoregressivos  apresentaram  valores  muito  baixos  para  essa  relação.  Este 
+panorama  é  facilmente  verificado  analisando  o  Coeficiente  de  Variação  das  carteiras,  que  consiste  no 
+inverso do Índice de Sharpe. Tanto o VAR quanto o BVAR apresentaram CV elevados, mostrando que, 
+embora apresentem baixo risco, o baixo retorno associado não tornaria a carteira vantajosa ao investidor. 
+
+Foram feitas também simulações de carteiras a partir dos retornos obtidos pela previsão um passo 
+a frente (fora da amostra). Verifica-se que as carteiras com previsão gerada fora da amostra dos modelos 
+autoregressivos  não  apresentaram  desempenho  superior  às  carteiras  montadas  com  base  nas  estratégias 
+tradicionais.  Os  portfólios  do  VAR  e  do  BVAR  não  apresentaram  grandes  diferenças  nos  critérios  de 
+avaliação.  
+A tabelas 3 apresenta a taxa máxima que um investidor com utilidade quadrática e coeficiente de aversão 
+ao  risco  constante  γ  =  1  e    γ=  10,  respectivamente,  estaria  disposto  a  pagar  para  mudar  da  estratégia 
+tradicional de Markowitz para a estratégia de seleção baseada nos modelos autoregressivos. O investidor 
+está disposto a pagar uma taxa para adotar a política de investimento alternativa. Esse resultado fica ainda 
+mais evidente quando eleva-se o coeficiente de aversão ao risco.  
+ 
+
+ 
+  . 
+
+ 
+ 
+ 
+Tabela  2:  Desempenho  dentro  e  fora  da  amostra  (retorno  médio,  desvio  padrão  dos  retornos,  Índice  de  Sharpe,  Coeficiente  de  variação,  Retorno  médio 
+anualizado).  1/N  indica  a  carteira  ingênua  igualmente  ponderada  e  a  contrarian  indica  a  carteira  ponderada  com  os  menores  pesos  para  os  ativos  que 
+apresentaram maiores retornos nos períodos anteriores. 
+
+Markowitz  
+
+NAR 
+
+BVAR 
+
+VAR 
+
+VAR(fora amostra)  BVAR(fora da amostra)  1/N 
+
+NAR10 
+
+VAR(h=2) 
+
+Média 
+DP 
+Sharpe Ratio 
+CV 
+Média Anual 
+DP Anual 
+
+1,1800%  0,8501%  0,1401%  0,1403% 
+0,0587%  0,0614%  0,0484%  0,0486% 
+1,86 
+0,35 
+2,23% 
+0,77% 
+
+13,03 
+0,07 
+13,49% 
+0,98% 
+
+19,25 
+0,05 
+18,73% 
+0,93% 
+
+1,87 
+0,35 
+2,22% 
+0,77% 
+
+0,1403% 
+0,2941% 
+0,31 
+2,10 
+2,23% 
+4,67% 
+
+0,1401%  0,0363% 
+0,2936%  1,5600% 
+-0,01 
+42,96 
+0,58% 
+24,76% 
+
+0,31 
+2,10 
+2,22% 
+4,66% 
+
+0,8305% 
+0,3012% 
+2,59 
+0,36 
+13,18% 
+4,78% 
+
+0,14% 
+0,11% 
+0,86 
+0,76 
+2,23% 
+1,68% 
+
+BVAR(h=2) 
+
+Contrarian 
+0,0000 
+0,14% 
+0,10%  0,0001191 
+-4,25 
+-11,16 
+-0,02% 
+0,19% 
+
+0,87 
+0,74 
+2,22% 
+1,65% 
+
+A  Figura  1  mostra  a  evolução  dos  pesos  das  ações  nas  carteiras  considerando  a  estratégia  de 
+dependência serial pelo VAR. São apresentados tanto o rebalanceamento mensal quanto diário. É possível 
+notar a grande instabilidade derivada do intenso rebalanceamento das ações dentro dos portfólios ocorrida 
+nos últimos anos.   
+ 
+Figura  1:  Pesos  dos  ativos  na  carteira  variando  no  tempo  para  o  Modelo  de  Vetores  Autoregressivos 
+(VAR) tradicional com rebalanceamento diário e mensal 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+Tabela  3:  O  valor  econômico  da  previsão.  Esta  tabela  apresenta  a  taxa  anualizada 
+
+,  em  pontos  base, 
+
+que um investidor com utilidade quadrática e coeficiente de aversão ao risco constante estaria disposto a 
+pagar para mudar da estratégia benchmark. A estratégia benchmark foi a carteira de mínima variância. Foi 
+utilizado um parâmetro de aversão ao risco 
+
+ e 
+
+. 
+
+ 
+gamma=1 
+gamma=10 
+
+Markowitz 
+959,66 
+2788,73 
+
+VAR 
+
+BVAR 
+
+NAR 
+695,48  688,90  861,82 
+2283,46  2273,83  2504,69 
+
+Esse resultado para o mercado brasileiro contrapõe as evidências encontradas pelo estudo de De Miguel, 
+Nogales  e  Uppal  (2013),  no  qual  os  portfólios  com  base  nos  modelos  autoregressivos  apresentaram 
+performance  superior  em  todos  os  critérios  de  avaliação.  O  que  pode  explicar,  então,  o  fato  de  a 
+
+110dependência serial não ter poder de explicação sobre a formação de carteiras ótimas no caso brasileiro? 
+Uma  explicação  possível  para  este  fenômeno  seria  a  alta  volatilidade  do  mercado  brasileiro, 
+comparativamente  ao  mercado  internacional,  o  que  dificultaria  uma  previsão  do  comportamento  dos 
+retornos com base simplesmente nos seus históricos.  
+A  Figura  1  apresenta  a  correlação  condicional  entre  o  mercado  de  ações  brasileiro  e  o  mercado 
+ 
+americano,  bem  como  as  volatilidades  de  cada  mercado.  A  correlação  foi  estimada  através  de  um 
+MGARCH-GJR  (1),  cujos  resultados  estão  nas  Tabelas  6,  7  e  8.  Verifica-se  que  a  assimetria  foi 
+significante  para  a  série  do  S&P  500,  indicando  um  maior  peso  dos  retornos  negativos  na  equação  da 
+variância. No entanto, o mercado brasileiro apresenta uma maior dependência em  relação à volatilidade 
+passada.  A  correlação  entre  o  mercado  brasileiro  e  o  americano  foi  de  0,65.  A  matriz  de  correlação 
+passada tem um beta de 0,85, mostrando uma significante dependência temporal, ou seja, uma correlação 
+maior entre os mercados em t-1, indicando que em t também haverá uma alta correlação.  
+
+Tabela 6: Resultados da estimação – S&P 500 
+
+ 
+
+Cst(V) x 104 
+
+ 
+
+ARCH(Alpha1) 
+GARCH(Beta1) 
+GJR(Gamma1) 
+
+t-value 
+1,320 
+
+t-prob 
+Coefficient  Std,Error 
+0,967734 
+0,1892 
+0,73313 
+-0,058095  0,091807  -0,6328  0,5280 
+0,79601 
+0,12372  6,4340  0,0000 
+0,15199  2,3880  0,0184 
+0,362873 
+
+Fonte: Elaboração dos autores com base nas estimações. 
+
+ 
+ 
+ 
+ 
+
+Tabela 7: Resultados da estimação - Ibovespa 
+
+ 
+
+ 
+ 
+
+Coefficient  Std,Error 
+0,001061  0,0006126 
+
+ 
+
+Cst(V) 
+ARCH(Alpha1)  0,024392 
+GARCH(Beta1)  0,644858 
+GJR(Gamma1) 
+0,160458 
+
+0,12492 
+0,22203 
+0,2021 
+
+t-prob 
+t-value 
+1,731 
+0,0858 
+0,1953  0,8455 
+2,9040  0,0043 
+0,7940  0,4287 
+
+Fonte: Elaboração dos autores com base nas estimações. 
+ 
+ 
+
+Tabela 8: Resultados do MGARCH 
+
+Coefficient 
+0,657277 
+0,027182 
+0,853992 
+
+Std,Error 
+0,051303 
+0,039561 
+0,29355 
+
+t-value 
+12,810 
+0,6871 
+2,9090 
+
+t-prob 
+0,0000 
+0,4933 
+0,0043 
+
+ 
+
+ρ21 
+α 
+β 
+
+Fonte: Elaboração dos autores com base nas estimações. 
+
+ 
+
+A  análise  da  correlação  condicional  confirma  o  descolamento  recente  dos  mercados  de  ações 
+
+brasileiro e americano, refletindo uma piora no cenário macroeconômico brasileiro nos últimos anos.  
+ 
+
+Figura 1: Correlação condicional entre o Ibovespa e o S&P500 e as variâncias condicionais de cada 
+
+ 
+
+mercado.  
+
+Fonte: Elaboração dos autores com base nas estimações. 
+As correlações condicionais foram estimadas com as séries mensais entre janeiro/2004 e fev/2015. 
+
+ 
+
+ 
+ 
+ 
+5 Considerações Finais 
+ 
+
+O  presente  estudo  procurou  investigar  o  desempenho  de  portfólios  baseados  no  uso  de  modelos 
+autoregressivos que exploram a dependência serial entre os retornos das ações presente na literatura. Para 
+modelar  a  correlação  serial  utilizou-se  um  VAR,  assumindo  uma  forma  funcional  linear.  Aplicou-se 
+também  uma abordagem bayesiana do modelo VAR tradicional,  o BVAR, para contornar os problemas 
+de dimensionalidade que afetam a estabilidade dos parâmetros. Tendo em vista a possibilidade de haver 
+relações não lineares entre os retornos, utilizamos um modelo autoregressivo não paramétrico (NAR), o 
+qual  não  necessita  de  suposições  acerca  de  formas  funcionais  e  da  distribuição  dos  componentes 
+aleatórios.  A  pesquisa  foi  realizada  com  as  32  ações  sobreviventes  da  composição  do  IBOVESPA  de 
+Março de 2015 em um período que vai de 01/01/2004 até 20/03/2015. Para preencher os dados  faltantes 
+foi utilizado um modelo de nível local, obtendo, assim, a amostra completa para todo período.  
+Os resultados  dentro da  amostra  apontaram  que  a seleção de carteiras com  base na estratégia de 
+ 
+média-variância  tradicionalmente  presente  da  literatura  apresentou  melhor  desempenho  em  termos  de 
+retorno,  embora  a  estratégia  via  NAR  tenha  mostrado  performance  semelhante.  Os  modelos  VAR  e 
+BVAR  conseguiram  montar  carteiras  com  menor  risco,  o  que  denota  uma  importante  ferramenta  na 
+gestão de portfólio, sobretudo para investidores avessos  ao risco. Analisando a relação risco retorno, os 
+métodos tradicionais ainda se sobressaem, com índice de Sharpe e coeficiente de variação favoráveis. O 
+mesmo resultado foi encontrado considerando previsões um passo à frente.   
+ 
+Uma das hipóteses que poderia explicar a baixa performance de carteiras baseadas na dependência 
+serial  dos  retornos  seria  a  volatilidade  do  mercado  de  ações  brasileiro,  que  reflete  a  piora  no  cenário 
+macroeconômico brasileiro nos últimos anos. Dado que os  retornos apresentam grandes mudanças entre 
+
+os períodos, isso dificulta a previsão dos retornos com base no seu histórico, afetando de forma adversa o 
+desempenho dos portfólios dos modelos autoregressivos. 
+
+ 
+ 
+
+6 Referências 
+ 
+Barráez,  D.,  Bolívar,  W.  E.  N.  D.  Y.  e  Cartaya,  V.  (2008).  Un  modelo  macroeconómico  BVAR  de 
+predicción  para  la  economía  venezolana.Documento  presentado  en  la  XIII  Reunión  de  la  Red  de 
+Investigadores de Bancos Centrales del Continente Americano, 1-28. 
+ 
+Conrad, J. e Kaul, G. (1988). Time-Variation in Expected Returns. Journal of Business, 61, 409-425. 
+ 
+Demiguel,  V.,  Garlappi,  L.  e  Uppal,  R.  (2009).  Optimal  versus  naive  diversification:  how  inefficient  is 
+the 1/N portfolio strategy? Review of Financial Studies, 22(5), 1915-1953. 
+ 
+DeMiguel,  V.,  Nogales,  F.  J.,  e  Uppal,  R.  (2014).  Stock  return  serial  dependence  and  out-of-sample 
+portfolio performance. Review of Financial Studies, hhu002. 
+ 
+Doan,  T.  Litterman,  R.  Sims,  C.  (1984).  .Forecasting  and  Conditional  Projection  using  Realistic  Prior 
+Distributions. NBER Working Paper Series, Working Paper 1202, September. 
+ 
+Hauer,  M.  (2007).  Os  modelos  VAR  e  VEC  espaciais:  uma  abordagem  bayesiana.  Disponível  em  < 
+http://hdl.handle.net/10183/12585>. Acesso em 12 out. 2014. 
+ 
+Hoerl,  A.  E.  e  R.  W.  Kennard.  (1970).  Ridge  Regression:  Applications  to  Nonorthogonal  Problems. 
+Technometrics, 12, 69-82. 
+ 
+Hong,  H.,  e  Stein,  J.  C.  (1999).  A  United  Theory  of  Underreaction,  Momentum  Trading,  and 
+Overreaction in Asset Markets. Journal of Finance, 54, 2143-84. 
+ 
+Jagannathan, R. e  Ma, T. (2003). Risk reduction in large portfolios: why imposing the wrong constraints 
+helps. Journal of Finance, 58(4), 1651-1684. 
+ 
+Jaramillo,  P.  (2009).  Estimación  de  VAR  bayesianos  para  la  economía  chilena. Revista  de  análisis 
+económico, 24(1), 101-126. 
+ 
+Kenny,  G.,  Meyler,  A.,  &  Quinn,  T.  (1998).  Bayesian  VAR  Models  for  Forecasting  Irish  Inflation. 
+Disponível em <http://mpra.ub.uni-muenchen.de/11360/1/MPRA_paper_11360.pdf>. Acesso em 02 nov. 
+2014.  
+ 
+Ledoit,  O.  &  Wolf,  M.  (2004).  Honey,  I  Shrunk  the  Sample  Covariance  Matrix.  Journal  of  Portfolio 
+Management, 30(4):110-119. 
+ 
+Ledoit, O., e Wolf, M. (2003).  Improved Estimation of the Covariance Matrix of Stock Returns with an 
+Application to Portfolio Selection. Journal of Empirical Finance, 10, 603-621. 
+ 
+Litterman, R. (1984). Specifying vector autoregressions for macroeconomic forecasting.  Staff Report 92, 
+Federal Reserve Bank of Minneapolis. 
+ 
+Litterman,  R.  (1986).  Forecasting  with  Bayesian  Vector  Autoregressions-Five  Years  of  Experience. 
+Journal  of  Business  &  Economic  Statistics.  American  Statistical  Association,  vol.  4(1),  pages  25-38, 
+January. 
+
+ 
+Lo, A.,e MacKinlay, A. C. (1990). When Are Contrarian Prots Due to Stock Market Overreaction?. The 
+Review of Financial Studies, 3, 175-205. 
+ 
+Markowitz, H. (1952). Portfolio selection. Journal of Finance, 7, 77-91. 
+
+Merton, R. C. (1980). On Estimating the Expected Return on the Market: An Exploratory Investigation. 
+Journal of Financial Economics, 8, 323—361. 
+ 
+Todd, R. (1988) .Implementing Bayesian Vector Autoregressions.Federal Reserve Bank of Minneapolos, 
+Research Department, Working Paper 384, September. 
+ 
+Tse,  Y.  K.  e  Tsui,  A.  K.  C.  (2002).  A  Multivariate  Generalized  Autoregressive  Conditional 
+Heteroscedasticity Model with Time-Varying Correlations. Journal of Business & Economic Statistics, v. 
+20, n. 3, p. 351-36.  
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+

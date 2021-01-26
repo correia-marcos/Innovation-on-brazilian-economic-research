@@ -1,0 +1,592 @@
+    HOME CARE E GASTOS HOSPITALARES: Uma análise utilizando um desenho de
+                         Regressão Descontínua
+
+                                                                            Fábio Nishimura1
+                                                                             Aniela Carrara2
+                                                                   Carlos Eduardo de Freitas3
+
+RESUMO
+
+Consultas, exames e internações por vezes ineficazes e desnecessárias são fragmentos de um
+gasto supérfluo que onera o orçamento e impossibilita futuras políticas públicas sociais. Diante
+desta situação, o governo federal, cria em 2011, o programa “Melhor em Casa” como uma ação
+focada no atendimento domiciliar. O objetivo do trabalho é verificar se o programa consegue
+reduzir gastos com as internações hospitalares. Utilizamos como estratégia empírica um
+desenho de Regressão Descontinua para obtemos estimadores não viesados. Ainda, foram
+realizados testes de repostas heterogêneas e testes de robustez. Finalmente, verificamos que o
+“Melhor em Casa” reduz os custos das internações hospitalares.
+
+Palavras-Chave: Avaliação de Programas e Projetos de Saúde, Gastos em Saúde, Assistência
+Domiciliar, Melhor em Casa, Regressão Descontinua.
+
+
+ABSTRACT
+
+Ineffective and unnecessary consultations, examinations and hospitalizations are fragments of
+a superfluous expense that burden the budget and make future social public policies impossible.
+Faced with this situation, the federal government, in 2011, creates the "Better at Home" program
+as an action focused on home care. The objective of the study is to verify if the program
+manages to reduce hospitalization costs. We use as an empirical strategy the Regression
+Discontinuity Design drawing where we obtain unbiased estimators. In addition, tests of
+heterogeneous responses and robustness tests were performed. Finally, we find that the "Best
+at Home" reduces the costs of hospital admissions.
+
+
+Keywords: Evaluation of Health Programs and Projects, Health Expenditures, Home Care,
+Best at Home, Regression Discontinuity.
+
+
+
+
+ÁREA 12: Economia Social e Demografia Econômica
+
+JEL Classification: I00; J18; I18.
+
+
+1
+  Professor do curso de Ciências Econômicas da Universidade Federal de Mato Grosso – e- mail:
+f_nobuo@yahoo.com.br
+2
+  Professora do curso de Ciências Econômicas da Universidade Federal de Mato Grosso – e- mail:
+anielacarrara@gmail.com
+3
+  Professor do curso de Ciências Econômicas da Universidade Federal de Mato Grosso – e- mail:
+cefreitas@ufmt.br
+   1. INTRODUÇÃO
+
+        A maximização dos resultados das políticas sociais do governo, não são apenas meras
+atividades de impacto político-eleitoreiro, mas, desempenham um papel primordial e intrínseco
+em atingir estabilidade, adaptabilidade, coerência, coordenação, efetividade, interesse do bem-
+estar em geral e principalmente eficiência em sua gestão para toda a população (DIAS e
+MATOS, 2012).
+        A política social na área da saúde, elaborada e executada pelo governo federal, não foge
+dos esforços em manter essas características. Uma forma de manter a gestão eficiente é a
+utilização dos recursos públicos de acordo com as necessidades da sociedade, de forma a prover
+o seu bem-estar. Porém, deve-se manter um controle exímio de suas ações e de suas contas, na
+qual deve pôr em prática toda sua eficiência, a todo momento, principalmente quando se trata
+de gastos com a vida humana (ZURITA et al., 2016) (SOUZA E PEIXOTO, 2017).
+        O atendimento hospitalar é uma forma de política social, na área da saúde, de suma
+importância para a manutenção da vida, e é uma forma obrigatória de se restabelecer os
+princípios constitucionais com a população brasileira. O atendimento hospitalar deve ser
+encarado de forma suficientemente eficaz, para não ocasionar o colapso do sistema,
+principalmente em um momento onde os recursos orçamentários estão cada vez mais escassos.
+        Porém, atualmente, não verificamos esse empenho na gestão da saúde, o que se observa
+de fato são casos de má administração, má condições tanto técnicas como estruturais e que
+condenam a eficiência dos serviços hospitalares. Como consequência dessa delinquente gestão,
+ocorrem custos irrecuperáveis tanto economicamente, quanto ligados a vida humana muito bem
+observados por Castro et el. (2005), O’Dwyer et al. (2009), Bittencourt e Hortale (2009),
+Farrero et al. (2001), Amaral et al. (2001) e Silva et al. (2014).
+        Segundo Sorensen et al. (2016) um dos grandes problemas existentes no atendimento
+hospitalar é o custo dos serviços prestados na unidade de saúde, pois, por estarem relacionados
+diretamente aos procedimentos executados, geram níveis de desperdícios exorbitantes. Estes
+desperdícios chegam a cifra de R$ 3,6 bilhões de reais por ano em consultas, com internações
+e exames desnecessários. A forma complexa da composição dos custos hospitalares, facilitam
+o desperdício, e geram toda a ineficiência em âmbito do serviço público, retornando o prejuízo
+para toda a sociedade.
+        Diante disto, para conter esses problemas referentes as internações hospitalares e reduzir
+os custos desnecessários para a população, o governo federal, em 2011, cria o programa
+“Melhor em Casa” (daqui em diante, MemC). O programa está voltado na articulação sobre a
+Atenção Domiciliar (AD), ou seja, o paciente que foi atendido na unidade de saúde, e está apto
+a concluir sua recuperação no conforto de seu lar e junto a seus entes queridos, poderá ser
+transferido, e assim, faz com que se reduzam os custos com internação, mas acima de tudo,
+diminua a mortalidade dentro dos hospitais.
+        Diante disto, nosso objetivo é verificar se o programa MemC consegue reduzir os gastos
+com internações hospitalares, e além disso, demonstrar-se como uma boa opção para o governo
+otimizar suas ações e aumentar sua eficiência.
+        Para tal análise, utilizamos dados de internações fornecidos pelo DATASUS e
+informações do Ministério de Saúde sobre o programa. Como estratégia empírica para a análise
+de dados quase-experimentais, aplicamos o método de Regressão Descontínua. Esse método
+permite estimarmos resultados cuidando para problemas de endogeneidade, que são comuns a
+modelos estatísticos. Ainda, utilizamos teste de repostas heterogêneas e testes de robustez para
+verificar se nossos estimadores são precisos e podermos confiar nos resultados.
+        Ao final poderemos confirmar ou refutar nossa hipótese em relação aos resultados, onde
+a ideia de eficiência do programa só acontecerá, caso ocorra a redução dos gastos com as
+internações hospitalares, de forma a trazer uma política auxiliar de gestão eficiente ao governo
+federal e que busque proporcionar um maior bem-estar a população.
+
+   2. O PROGRAMA “MELHOR EM CASA”
+
+         O acesso a saúde pública universal e de qualidade sempre foi o desejo de toda sociedade,
+porém a oferta real disponível apresenta grandes dificuldades em entregar tais princípios
+estabelecidos. Para tentar corrigir esses entraves, os gestores públicos elaboram e executam
+ações e programas que atinjam a maior parte a sociedade e desta forma dar mais acesso a rede
+de saúde.
+         Assim, o Governo Federal, em 24 de agosto de 2011, através da portaria 2.029, cria o
+programa “Melhor em Casa” (MemC), com o intuito de melhorar e ampliar a assistência no
+Sistema Único de Saúde (SUS) a pacientes com agravos de saúde, que possam receber
+atendimento humanizado, em casa, e perto da família. (Ministério da Saúde, 2011)
+         A ideia principal do programa é a atenção domiciliar, e segundo o Ministério da Saúde
+(2011), consiste numa modalidade de atenção à saúde substitutiva ou complementar às já
+existentes, caracterizada por um conjunto de ações de promoção à saúde, prevenção e
+tratamento de doenças e reabilitação prestadas em domicílio, com garantia de continuidade de
+cuidados e integrada às redes de atenção à saúde.
+         A grande vantagem deste programa, é que os cuidados recebidos no seio do próprio lar,
+junto à afetividade de seus familiares, provocam uma recuperação do enfermo mais positiva e
+efetiva se comparada com uma internação ocorrida somente em ambiente hospitalar. Isso ocorre
+devido a humanização no atendimento da equipe de saúde específica para atenção domiciliar e
+principalmente pelo afeto familiar que recebe, pois estará junto de seus entes queridos a todo
+momento. Segundo Feuerwerker & Merhy (2008), a casa possibilita um novo “espaço de
+cuidado” que “pode remeter a uma identificação e proximidade do cuidador para além da função
+técnica e da instituição hospitalar”.
+         Assim, o ambiente domiciliar e as relações familiares aí instituídas, que diferem da
+relação estabelecida entre equipe de saúde e paciente, tendem a humanizar o cuidado, (re)
+colocando o usuário no lugar mais de sujeito do processo e menos de objeto de intervenção.
+(MINISTÉRIO DA SAÚDE, 2011)
+         A outra frente do programa busca reduzir o tempo de internação do paciente nos
+hospitais, o que promove uma melhor utilização dos leitos hospitalares. (MINISTÉRIO DA
+SAÚDE, 2011)
+         O Melhor em Casa representa um avanço para a gestão de todo o sistema público de
+saúde, já que ajudará a desocupar os leitos hospitalares, proporcionando um melhor atendi-
+mento e regulação dos serviços de urgência dos hospitais. Estima-se que com a implantação da
+Atenção Domiciliar obtém-se economia de até 80% nos custos de um paciente, quando com-
+parado ao custo desse mesmo paciente internado em um hospital. (MINISTÉRIO DA SAÚDE,
+2011)
+         A Atenção Domiciliar deve seguir as seguintes diretrizes segundo Ministério da Saúde
+(2011):
+I - ser estruturado na perspectiva das redes de atenção à saúde, tendo a atenção básica como
+ordenadora do cuidado e da ação territorial;
+II - articular com os outros níveis da atenção à saúde, com serviços de retaguarda e incorporado
+ao sistema de regulação;
+III - ser estruturado de acordo com os princípios de ampliação do acesso, acolhimento,
+equidade, humanização e integralidade da assistência;
+IV - estar inserido nas linhas de cuidado por meio de práticas clínicas cuidadoras baseadas nas
+necessidades do usuário, reduzindo a fragmentação da assistência;
+V - adotar modelo de atenção centrado no trabalho de equipes multiprofissionais e
+interdisciplinares; e
+VI - estimular a participação ativa dos profissionais de saúde envolvidos, do usuário, da família
+e do cuidador.
+        Como critério de implantação a população municipal deve ser igual ou superior a 20.000
+(vinte mil) habitantes, com base na população mais recente estimada pela Fundação Instituto
+Brasileiro de Geografia e Estatística (IBGE), ter hospital de referência no município ou região
+a qual integra e cobertura de Serviço de Atendimento Móvel de Urgência (SAMU 192 ou
+similar, de acordo com porte populacional). (MINISTÉRIO DA SAÚDE, 2011)
+        Segundo o Ministério da Saúde (2011) a Atenção Domiciliar (AD), no âmbito do SUS,
+deverá ser organizada em três modalidades, definidas a partir da caracterização do paciente
+cuidado e do tipo de atenção e procedimentos utilizados para realizar o cuidado dos mesmos:
+AD1: destina-se aos usuários que possuam problemas de saúde controlados/compensados e com
+dificuldade ou impossibilidade física de locomoção até uma unidade de saúde, que necessitam
+de cuidados com menor frequência e menor necessidade de recursos de saúde. A prestação da
+assistência na modalidade AD1 é de responsabilidade das equipes de atenção básica, incluindo
+equipes de Saúde da Família e Núcleos de Apoio à Saúde da Família, por meio de visitas
+regulares em domicílio, no mínimo, uma vez por mês.
+AD2: destina-se aos usuários que possuam problemas de saúde e dificuldade ou impossibilidade
+física de locomoção até uma unidade de saúde e que necessitem de maior frequência de cuidado,
+recursos de saúde e acompanhamento contínuos, podendo ser oriundos de diferentes serviços
+da rede de atenção. A prestação de assistência à saúde na modalidade AD2 é de
+responsabilidade da Equipe Multiprofissional de Atenção Domiciliar (EMAD) e da Equipe
+Multiprofissional de Apoio (EMAP), ambas designadas para esta finalidade.
+AD3: A modalidade AD3 destina-se aos usuários que possuam problemas de saúde e
+dificuldade ou impossibilidade física de locomoção até uma unidade de saúde, com necessidade
+de maior frequência de cuidado, recursos de saúde, acompanhamento contínuo e uso de
+equipamentos, podendo ser oriundos de diferentes serviços da rede de atenção à saúde. A
+prestação de assistência à saúde na modalidade AD2 é de responsabilidade da Equipe
+Multiprofissional de Atenção Domiciliar (EMAD) e da Equipe Multiprofissional de Apoio
+(EMAP), ambas designadas para esta finalidade.
+        Resumindo, o programa “Melhor em Casa” busca reduzir o tempo de internação nos
+hospitais, o que melhora a disponibilidade de leitos para outros casos de maior gravidade, mas
+principalmente, faz com que a recuperação do enfermo seja realizada junto a seus entes
+queridos, agilizando sua melhora de saúde.
+        Na próxima seção, demonstram-se os métodos utilizados para verificar o efeito do
+MemC sobre os custos com as internações hospitalares.
+
+   3. MÉTODOS
+
+   3.1 Fonte de Dados
+
+       A variável dependente, Despesas ou Gastos com Internações Hospitalares, foram
+coletadas no Departamento de Informática do Sistema Único de Saúde, órgão do Ministério da
+Saúde, através do conjunto de microdados do Sistema de Internações Hospitalares do SUS
+(SIH/SUS) para o período de 2010 a 2013, totalizando 3.609.384 observações nos quatro anos
+de análise.
+       Dentro do ano de 2011, para municípios onde existe o programa, ocorre um gasto médio
+com internação no montante de R$38,67 por paciente/dia e em 2013, esse valor passa a ser de
+R$42,78 por paciente/dia, o que demonstra um aumento de 10,6% em quatro anos. Para os
+municípios que não recebem o programa, temos uma média de gastos da ordem de R$30,83 por
+paciente/dia em 2011 e de R$33,51 paciente/dia em 2013, ocorrendo um aumento de 8,7% em
+quatro anos. Isso aponta que exista algum tipo de incentivo para que o programa seja implantado
+em lugares onde o gasto com internação seja maior.
+        Para analisar o efeito do Programa “Melhor em Casa” (MemC), foram coletados dados
+através do DATASUS - Departamento de Informática do Sistema Único de Saúde e do CNES
+- Cadastro Nacional de Estabelecimentos de Saúde, ambos são órgãos do Ministério da Saúde.
+Como forma de identificar os municípios com o MemC, utiliza-se uma dummy, onde os
+municípios que receberam o programa, são denominados de tratados (e recebem o valor 1) e
+para os municípios que não receberam o MemC são denominados de controles (e recebem o
+valor 0).
+        Através do conjunto de dados levantados no DATASUS e CNES, observamos que em
+2011, o programa contemplou 23 dos 5.570 municípios brasileiros existentes. Já em 2012, esse
+número saltou para 90 municípios e em 2013 a quantidade de municípios contemplados passa
+a ser de 184. Isso evidencia um salto de 0,41% de cobertura do programa em 2011 para 3,3%
+em 2013.
+        As covariáveis ou variáveis de controle utilizadas foram a idade e os gastos ocorridos
+com pacientes na Unidade de Terapia Intensiva (UTI). A Idade foi utilizada para controlar para
+possíveis desigualdades etárias existentes nos dados, e ela foi coletada junto ao banco de dados
+do DATASUS no período de 2010 a 2013.
+        A variável Valores Gastos com UTI é composta das despesas individuais das pessoas
+internadas em situações graves, promovendo um controle em relação a essa situação e não
+promovendo viés em nossos resultados devido a este fato. Esta variável foi retirada do
+Departamento de Informática do Sistema Único da Saúde (DATASUS), através das
+informações geradas pela Produção Hospitalar (SIH/SUS).
+        É importante frisar que estas variáveis de controle são utilizadas para dar maior precisão
+aos valores estimados seguindo Imbens e Lemieux (2008), porém não devem interferir ou
+provocar qualquer viés nos resultados encontrados do modelo.
+
+    3.2 Estratégia Empírica: Desenho de Regressão Descontínua
+
+        O trabalho objetiva analisar o efeito da Atenção Domiciliar sobre o valor gasto com as
+internações hospitalares, que neste caso utilizaremos o programa “Melhor em Casa” (MemC).
+Assim, como estratégia empírica, utilizamos o desenho de Regressão Descontínua (RD)4, que
+tem como marco teórico o trabalho de Thistlewaite e Campbell (1960). Nós usamos essa
+estratégia empírica por possuirmos um ponto de salto de probabilidade em que chamamos de
+ponto de corte (cutoff) e que faz parte dos critérios a adesão do município ao programa. Esse
+cutoff é exatamente em municípios com mais de 20.000 habitantes.
+        Segundo Rocha e Belluzzo (2010) o pressuposto de descontinuidade formaliza a ideia
+de que indivíduos um pouco acima e abaixo do cutoff precisam ser "comparáveis", exigindo
+que eles tenham uma média similar dos resultados possíveis, ao receber e quando não recebem
+tratamento. Assim, estimamos a seguinte equação:
+
+𝑌𝑖𝑝 = 𝛽0 + 𝛽1 𝑀𝑒𝑚𝐶𝑖𝑝 + 𝛽2 𝑇𝑖𝑝 + 𝜀𝑖𝑝                                               (01)
+
+      Onde 𝑌𝑖𝑝 é variável de interesse do modelo, no indivíduo i para o ano p; MemC é o
+programa Melhor em Casa que leva valor igual a 1 caso o município do indivíduo recebe o
+
+4
+ Nosso trabalho segue a mesma estratégia de Regressão Descontínua adotada por Angrist e Pischke
+(2008), Fujiwara (2015), Smith (2016) e Toro et al. (2015).
+programa e 0, caso contrário, no município do indivíduo i para o ano p. O 𝑇𝑖𝑝 é o valor que
+indica se o município está acima ou abaixo do cutoff citado anteriormente, no município i para
+o ano p e por fim 𝜀𝑖𝑝 é um termo de erro.
+        Para realizar tais regressões locais é necessário que seja introduzida uma janela
+(Bandwidth) ótima que determinará o tamanho da distância do ponto de corte ao nível de
+observações da amostra. Para tal, utilizamos a metodologia de Calonico; Cattaneo e Farrel
+(2016).
+
+   3.3 Respostas Heterogêneas e Testes de Robustez
+
+        Para certificarmos que nossos estimadores estão estatisticamente protegidos, aplicamos
+dois grupos de testes denominados, respostas heterogêneas e testes de robustez.
+        O primeiro teste de respostas heterogêneas, serão estimadas levando em consideração
+agrupamentos específicos para confirmar o resultado principal de nosso trabalho, onde haverá
+uma amostra composta de grávidas em situação de risco, uma amostra com idosos, uma outra
+amostra de municípios com quantidade de equipamentos hospitalares abaixo da média nacional
+e por fim com uma amostra de pessoas internadas de forma eletiva.
+        Para o teste de robustez, analisaremos o efeito do programa antes de seu início, neste
+caso em 2010. Em outro caso, criaremos cutoffs falsos do programa sendo de 10.000 e 50.000
+habitantes, e por último testaremos, como variável dependente as covariáveis do modelo. Em
+todas as situações testadas, somente haverá robustez estatística de nossos estimadores, caso
+nenhum resultado apresentar significância.
+
+
+   4. ANÁLISE DOS RESULTADOS
+
+        Para garantir os resultados estatísticos, inicialmente verificamos se ocorre uma
+descontinuidade no ponto de corte, ou seja, no ponto de 20.000 habitantes. O resultado deste
+teste inicial é apresentado pela Figura 01, onde observamos que existe uma descontinuidade, e
+ela demonstra uma redução no valor gasto com as internações hospitalares.
+
+
+
+
+Figura 01 – Descontinuidade do Programa no Cutoff.
+Fonte: Elaboração dos Autores através dos dados coletados. 2017
+       Garantida nossa descontinuidade, fator básico para que possamos calcular nossos
+estimadores, verifica-se na Tabela 01, que os resultados em todas as regressões realizadas,
+apontaram estimadores negativos e significantes estatisticamente, sendo que as reduções nos
+valores gastos com as internações hospitalares chegaram a 4,7% (p>0,01). Ainda, o efeito
+redutor mantem-se nos anos subsequentes, atingindo uma redução nos valores gastos de até
+10,2% (p>0,01).
+
+
+Tabela 1 – Efeito do programa “Melhor em Casa” sobre os Gastos com Internações
+hospitalares
+                          (1)             (2)            (3)          (4)            (5)            (6)
+                          -
+  𝑀𝑒𝑚𝐶𝑡                              -0,047***         -0,007      -0,035*         -0,034*        -0,007
+                      0,044***
+                       (0,016)         (0,016)        (0,005)       (0,020)        (0,020)        (0,007)
+
+  𝑀𝑒𝑚𝐶𝑡+1             -0,048**       -0,058***            -       -0,044**        -0,055**            -
+                       (0,019)         (0,021)                     (0,023)         (0,024)
+                          -                                           -
+  𝑀𝑒𝑚𝐶𝑡+2                            -0,102***            -                      -0,096***            -
+                      0,101***                                    0,098***
+                       (0,018)         (0,019)                     (0,019)         (0,020)
+
+  Especificação         Linear         Linear          Linear       Quad           Quad           Quad
+  Bandwidth            msetwo        msecomb2         msetwo       msetwo        msecomb2        msetwo
+  Controles              Sim            Sim             Sim          Sim            Sim            Sim
+  N. Obs.              182.350        182.350         182.350      182.350        182.350        182.350
+Nota: Var. Dependente: log do valor de internação. Todas as especificações usam Kernel Triangular. O MemC
+(Melhor em Casa) estima a descontinuidade de municípios logo acima de 20.000 habitantes. MSETWO – two
+different MSE-optima l bandwidth selectors e MSECOMB2 referem-se aos seletores de bandwidth ótimo de
+Calonico; Cattaneo e Farrel (2016). As colunas 3 e 6 refere-se a um teste placebo de um ano antes do início do
+MemC. Erro-Padrão robusto em parênteses. *** p<0.01, ** p<0.05 e * p<0.1.
+
+
+
+        Desta forma, podemos verificar que o programa MemC consegue reduzir os valores com
+as internações hospitalares, tanto no ano de início, como também em anos subsequentes.
+        Para certificarmos estatisticamente nossos resultados, a Tabela 02 e a Tabela 03,
+retornam algumas repostas heterogêneas, apontando qual foi o efeito do programa sobre os
+gastos hospitalares, relativos a situações distintas, sendo: gastos com grávidas em situação de
+risco, com um grupo de pacientes idosos, com municípios possuindo equipamentos hospitalares
+abaixo da média nacional e por último com um grupo de pessoas internadas de forma eletiva.
+        Os estimadores apresentados no Painel A, da Tabela 02, concluíram que o programa
+reduziu os valores gastos com as internações, no horizonte de até três anos após seu início,
+relativas ao grupo de mulheres com gravidez de risco, chegando a uma economia de até 9,3%
+(p>0,01). No painel B, relativos ao grupo de pessoas idosas, também obtivemos uma redução
+de até 9,6% (p>0,01) dentro do período de três anos. O programa mostra desta forma, que a
+redução nos valores gastos com internações atinge grupos de risco e com maior vulnerabilidade
+nas internações.
+Tabela 02 – Efeito do programa “Melhor em Casa” sobre os Gastos com Internações
+hospitalares – Gravidez de Risco e Idosos
+                                  (1)                (2)               (3)               (4)
+    Painel A: Efeito sobre Gestantes de Risco
+
+    𝑀𝑒𝑚𝐶𝑡                      -0,037**          -0,040***         -0,041***         -0,042***
+                                (0,016)            (0,016)           (0,017)           (0,017)
+
+    𝑀𝑒𝑚𝐶𝑡+1                    -0,048**          -0,059***          -0,045**          -0,055**
+                                (0,021)            (0,021)           (0,023)           (0,024)
+    𝑀𝑒𝑚𝐶𝑡+2                   -0,092***          -0,090***         -0,093***         -0,092***
+                                (0,018)            (0,019)           (0,019)           (0,020)
+
+    N. Obs.                 166.295               166.295           166.295            166.295
+    Painel B: Efeito sobre Idosos
+
+
+    𝑀𝑒𝑚𝐶𝑡                      -0,067**          -0,067***          -0,073**          -0,074**
+                                (0,031)           (0,015)            (0,037)           (0,037)
+
+    𝑀𝑒𝑚𝐶𝑡+1                    -0,073**           -0,064*          -0,085***           -0,062*
+                                (0,033)           (0,036)            (0,034)           (0,036)
+    𝑀𝑒𝑚𝐶𝑡+2                   -0,096***          -0,111***          -0,086**           -0,079*
+                                (0,035)            (0,040)           (0,040)           (0,043)
+
+
+    Especificação              Linear            Linear              Quad              Quad
+    Bandwidth                  msetwo           msecomb2            msetwo           msecomb2
+    Controles                   Sim               Sim                Sim               Sim
+    N. Obs.
+Nota: Var. Dependente: log do valor de internação. Todas as especificações usam Kernel Triangular. O MemC
+(Melhor em Casa) estima a descontinuidade de municípios logo acima de 20.000 habitantes. MSETWO – two
+different MSE-optima l bandwidth selectors e MSECOMB2 referem-se aos seletores de bandwidth ótimo de
+Calonico; Cattaneo e Farrel (2016). Erro-Padrão robusto em parênteses. *** p<0.01, ** p<0.05 e * p<0.1
+
+
+
+        No Painel A, da Tabela 03, verifica-se que nos primeiros três anos a redução dos valores
+gastos com as internações hospitalares podem chegar entre 4,4% a 11,7% (ambas com p>0,01),
+mesmo considerando um município que tenha poucos recursos de equipamentos, o que de certa
+forma agrava a situação do atendimento, o programa consegue promover uma economia em
+suas despesas com internação hospitalar. No Painel B da mesma tabela, observa-se que a
+redução ocorre entre 6,7% (p>0,10) a 17,9% (p>0,01), o que indica uma economia nos valores
+gastos com internação no grupo de municípios com número de equipamentos abaixo da média
+nacional.
+Tabela 03 – Efeito do programa “Melhor em Casa” sobre os Gastos com Internações
+hospitalares – Municípios com menos equipamentos hospitalares e Internações Eletivas
+                                  (1)                (2)               (3)               (4)
+    Painel A: Efeito sobre Municípios com menos equipamentos hospitalares
+
+
+    𝑀𝑒𝑚𝐶𝑡                     -0,049***          -0,055***          -0,046**           0,044**
+                                (0,016)            (0,016)           (0,020)           (0,020)
+
+    𝑀𝑒𝑚𝐶𝑡+1                    -0,048**          -0,057***          -0,044*           -0,055**
+                                (0,021)            (0,021)          (0,023)            (0,024)
+    𝑀𝑒𝑚𝐶𝑡+2                   -0,110***          0,117***          -0,106***         -0,101***
+                                (0,018)           (0,020)            (0,019)           (0,019)
+
+    N. Obs.                 182.350          182.350                182.350            182.350
+    Painel B: Efeito sobre Internações Eletivas
+
+
+    𝑀𝑒𝑚𝐶𝑡                     -0,085***          -0,071**          -0,161***         -0,134***
+                                (0,032)           (0,030)            (0,041)           (0,041)
+
+    𝑀𝑒𝑚𝐶𝑡+1                    -0,067*            -0,068*           -0,075*            -0,085*
+                               (0,038)            (0,038)           (0,040)            (0,044)
+    𝑀𝑒𝑚𝐶𝑡+2                   -0,125***          -0,122***         -0,171***         -0,179***
+                                (0,042)            (0,046)           (0,047)           (0,047)
+
+
+    Especificação              Linear            Linear              Quad              Quad
+    Bandwidth                  msetwo           msecomb2            msetwo           msecomb2
+    Controles                   Sim               Sim                Sim               Sim
+    N. Obs.                    46.916            46.916             46.916            46.916
+Nota: Var. Dependente: log do valor de internação. Todas as especificações usam Kernel Triangular. O MemC
+(Melhor em Casa) estima a descontinuidade de municípios logo acima de 20.000 habitantes. MSETWO – two
+different MSE-optima l bandwidth selectors e MSECOMB2 referem-se aos seletores de bandwidth ótimo de
+Calonico; Cattaneo e Farrel (2016). Erro-Padrão robusto em parênteses. *** p<0.01, ** p<0.05 e * p<0.1.
+
+        Para garantir estatisticamente a afirmação de nossa hipótese, através dos resultados de
+nossos estimadores, além das respostas heterogêneas, aplicamos testes de robustez, onde
+inicialmente na Tabela 01, precisamente nas colunas 3 e 6, fazemos o teste de um ano antes do
+início do programa. Como resultado observamos que não há significância estatística e com isso
+não se verifica indícios de que ocorra algum efeito de aumento ou redução, por parte de qualquer
+fator externo, nos gastos com internações, o que reforça a ideia de que o MemC é o principal
+fator para a redução destes gastos.
+        Na tabela 04, continuamos nossos testes de robustez. No Painel A e B, verifica-se que
+quando criamos um falso cutoff de nosso modelo de ordem de 10.000 habitantes e de 50.000
+habitantes, os resultados estimados não possuem significância estatística, o que era esperado,
+pois certifica que os efeitos acontecem apenas no critério de corte determinado pelo programa
+que é de 20.000 habitantes.
+Tabela 04 – Testes de Robustez do modelo especificado
+                                  (1)                (2)               (3)               (4)
+    Painel A: Alteração para cutoff para 10.000 habitantes
+
+
+    𝑀𝑒𝑚𝐶𝑡                       -0,020             -0,029            -0,005             -0,031
+                                (0,015)           (0,020)            (0,017)           (0,021)
+
+    𝑀𝑒𝑚𝐶𝑡+1                      0,009             -0,016             0,033             -0,006
+                                (0,041)           (0,055)            (0,041)           (0,068)
+    𝑀𝑒𝑚𝐶𝑡+2                      0,026             0,052              0,046             -0,048
+                                (0,035)           (0,037)            (0,039)           (0,053)
+
+    N. Obs.                215.393          215.393        215.393                     215.393
+    Painel B: Alteração para cutoff para 50.000 habitantes
+
+
+    𝑀𝑒𝑚𝐶𝑡                        0,012             0,002              0,033             0,028
+                                (0,020)           (0,017)            (0,021)           (0,019)
+
+    𝑀𝑒𝑚𝐶𝑡+1                    -0,0002             -0,018             0,038             0,005
+                               (0,033)            (0,061)            (0,035)           (0,094)
+    𝑀𝑒𝑚𝐶𝑡+2                      0,029             0,025              0,041             0,033
+                                (0,022)           (0,022)            (0,026)           (0,024)
+
+    N. Obs.                 400.834               400.834           400.834            400.834
+    Painel C: Teste sobre as Covariáveis
+
+
+    Idade                        -0,013            0,357              -0,051            3,482
+                                (1,842)           (1,698)            (2,423)           (2,460)
+
+    Dias de Internação na
+    UTI
+                                 0,090             0,092              0,096             0,102
+                                (0,056)           (0,054)            (0,075)           (0,072)
+
+    Especificação              Linear            Linear              Quad              Quad
+    Bandwidth                  msetwo           msecomb2            msetwo           msecomb2
+    Controles                   Sim               Sim                Sim               Sim
+    N. Obs.
+Nota: Var. Dependente: log do valor de internação. Todas as especificações usam Kernel Triangular. O MemC
+(Melhor em Casa) estima a descontinuidade de municípios logo acima de 20.000 habitantes. MSETWO – two
+different MSE-optima l bandwidth selectors e MSECOMB2 referem-se aos seletores de bandwidth ótimo de
+Calonico; Cattaneo e Farrel (2016). Erro-Padrão robusto em parênteses. *** p<0.01, ** p<0.05 e * p<0.1
+
+      Finalizando no Painel C, da Tabela 04, testamos nossas variáveis de controle do modelo,
+e como resultado também não obtivemos significância estatística em nenhum estimador, o que
+estabelece que o único fator a promover efeitos na redução dos valores com gastos sobre as
+internações advém do MemC.
+       Após verificar todos os resultados estimados, podemos concluir que o programa aponta
+para uma redução dos valores gastos com internações hospitalares.
+
+
+   5. CONSIDERAÇÕES FINAIS
+
+        O presente estudo analisou o efeito do programa “Melhor em Casa” sobre os gastos com
+internações hospitalares. O programa propõe a prestação de serviço por parte de equipes
+compostas de diversos profissionais da área de saúde para promover a recuperação do enfermo
+no conforto de seus lares (Home Care).
+        Além de promover uma recuperação em ambiente mais saudável para o paciente,
+também promove a desocupação de leitos e assim, de possíveis gastos com o enfermo que fica
+internado no hospital.
+        Desta forma, o resultado econômico com a redução de gastos relativo as internações,
+resulta em uma maior eficiência na gestão dos recursos orçamentários públicos, salvando
+também a saúde das contas públicas.
+        Após cuidados metodológicos, que garantem que os resultados estimados do trabalho
+não possuem viés estatístico, verificamos que o efeito do programa MemC, consegue ser efetivo
+em relação a redução dos gastos com internações hospitalares, onde reduziu cerca de 4,7% em
+2011, 5,8% em 2012 e 10,2% em 2013 relativo as despesas com internação hospitalar.
+        Outro ponto importante, que confirma a economia realizada pelo programa, foi verificar
+que mesmo, quando testado para grupos que necessitam de cuidados especiais, como mulheres
+com gravidez de risco e pessoas com idade mais avançada, o MemC reduz o valor gasto com
+as internações deles.
+        Ainda, a estrutura precária existente nos hospitais brasileiros, não foram empecilhos
+para a redução das despesas com internação ocasionada pelo programa. Nos municípios onde
+existem o programa, observamos que, enquanto os pacientes esperam pelos testes, podem
+aguardar no conforto de seus lares, pois há suporte da equipe do MemC, desafogando os leitos
+e reduzindo as despesas diárias com as com as internações.
+        Temos também, uma redução nos gastos com internações eletivas. Esse tipo de
+internação não exige urgência e na maioria das vezes, a recuperação do enfermo pode ser
+concluída em seu domicílio, por isso, existe grande efeito sobre o valor gasto nas internações
+hospitalares com pessoas que se enquadram nesta categoria.
+        Visto isto, apontamos que manter o programa é uma forma altamente eficaz de melhorar
+a gestão de recursos públicos. É uma política pública que visa o bem comum e com o objetivo
+principal de melhorar a vida do paciente enfermo e que deve ser até melhor explorada e
+expandida.
+
+
+REFERÊNCIAS
+
+
+ANGRIST, Joshua D.; PISCHKE, Jörn-Steffen. Mostly harmless econometrics: An
+empiricist’s companion. Princeton university press, 2008.
+
+AMARAL, NN do et al. Assistência domiciliar à saúde (Home Health Care): sua história e sua
+relevância para o sistema de saúde atual. Revista Neurociencias, v. 9, n. 3, p. 111-17, 2001.
+BITTENCOURT, Roberto José; HORTALE, Virginia Alonso. Interventions to solve
+overcrowding in hospital emergency services: a systematic review. Cadernos de saúde
+pública, v. 25, n. 7, p. 1439-1454, 2009.
+
+BRASIL, Ministério da Saúde. Manual Instrutivo do Melhor em Casa. Ministério da Saúde.
+Disponível em http://189.28.128.100/dab/docs/geral/cartilhamelhoremc asa.pdf, 2011.
+
+CALONICO, Sebastian et al. Regression Discontinuity Designs Using Covariates. Working
+paper, University of Michigan, 2016.
+
+CASTRO, Mônica Silva Monteiro; TRAVASSOS, Cláudia; CARVALHO, Marilia Sá. Efeito
+da oferta de serviços de saúde no uso de internações hospitalares no Brasil. Revista de Saúde
+Pública, v. 39, n. 2, p. 277-284, 2005.
+
+DA ROCHA, Vanderson Amadeu; BELLUZZO, Walter. Avaliação do Programa de
+descentralização de Gastos Públicos no Sistema Municipal de Ensino Fundamental de São
+Paulo. In: Anais do XXXVIII Encontro Nacional de Economia [Proceedings of the 38th
+Brazilian Economics Meeting]. ANPEC-Associação Nacional dos Centros de Pós graduação
+em Economia [Brazilian Association of Graduate Programs in Economics], 2010.
+
+DIAS, Reinaldo; MATOS, Fernanda. Políticas públicas: princípios, propósitos e
+processos. São Paulo: Atlas, p. 1-15, 2012.
+
+FARRERO, Eva et al. Impact of a hospital-based home-care program on the management of
+COPD patients receiving long-term oxygen therapy. CHEST Journal, v. 119, n. 2, p. 364-369,
+2001.
+
+FEUERWERKER, Laura; MERHY, Emerson Elias. A contribuição da atenção domiciliar para
+a configuração de redes substitutivas de saúde: desinstitucionalização e transformação de
+práticas. Revista Panamericana de Salud Pública, v. 24, n. 3, p. 180-188, 2008.
+
+FUJIWARA, Thomas. Voting technology, political responsiveness, and infant health: evidence
+from Brazil. Econometrica. Volume 83, Issue 2 Pages iv, 423833. 2015.
+
+O’DWYER, Gisele Oliveira; DE OLIVEIRA, Sergio Pacheco; DE SETA, Marismary Horsth.
+Avaliação dos serviços hospitalares de emergência do programa QualiSUS. Revista Ciência
+Saúde Coletiva, v. 14, n. 5, 2009.
+
+SILVA, Kênia Lara et al. Desafios da atenção domiciliar sob a perspectiva da redução de
+custos/racionalização de gastos. Revista de enfermagem UFPE on line ISSN: 1981-8963, v.
+8, n. 6, p. 1561-1567, 2014.
+
+SMITH, Austin C. Spring forward at your own risk: Daylight saving time and fatal vehicle
+crashes. American Economic Journal: Applied Economics, v. 8, n. 2, p. 65-91, 2016.
+
+SOERENSEN, Andrea Alves; MENDES, Isabel Amélia Costa; HAYASHIDA, Miyeko.
+Atendimento domiciliar: análise de um serviço privado. Northeast Network Nursing Journal,
+v. 5, n. 2, 2016.
+SOUZA, Dayane Kelle de; PEIXOTO, Sérgio Viana. Estudo descritivo da evolução dos gastos
+com internações hospitalares por condições sensíveis à atenção primária no Brasil, 2000-
+2013. Epidemiologia e Serviços de Saúde, v. 26, n. 2, p. 285-294, 2017.
+
+THISTLETHWAITE, Donald L.; CAMPBELL, Donald T. Regression Discontinuity Analysis:
+An alternative to the ex post facto experiment. Journal of Educational Psychology, v. 51, n.
+6, p. 309, 1960.
+
+TORO, Weily; TIGRE, Robson; SAMPAIO, Breno. Daylight Saving Time and incidence of
+myocardial infarction: Evidence from a regression discontinuity design. Economics Letters, v.
+136, p. 1-4, 2015.
+
+ZURITA, Robsmeire Calvo Melo et al. Evolution of hospital spending with drug-related
+psychiatric hospital admissions. Revista Gaúcha de Enfermagem, v. 37, n. 3, 2016.
+

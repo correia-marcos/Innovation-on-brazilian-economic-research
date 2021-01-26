@@ -1,0 +1,1282 @@
+           If bad money drives out good money:
+         deunionisation and productivity slowdown
+       M. C. Pereira∗1,2 , G. Dosi†2 , R. Freeman‡3 , A. Roventini§2,4 , and M. E.
+                                       Virgillito¶5,2
+
+                                          1
+                                         University of Campinas
+                                      2
+                                       Scuola Superiore Sant’Anna
+                                    3
+                                      Harvard University and NBER
+                                           4
+                                             OFCE, Sciences Po
+                                 5
+                                   Universita’ Cattolica del Sacro Cuore
+
+
+
+                                                Abstract
+           We develop an agent-based model able to account for the macroeconomic conse-
+       quences of an endogenous process of de-unionisation resulting from a competition mech-
+       anism between two types of firms, namely unionised and non-unionised. Whenever
+       non-unionised firms prevail, the average productivity growth declines, the productivity
+       standard deviation and the market concentration increase, in a “winner-takes-it-all” sce-
+       nario, cost competition induces a deflationary spiral, and product quality is reduced. By
+       means of a shift and share decomposition, we track the within, between, cross, entry and
+       exit components of productivity growth and the ensuing wage-productivity nexus.
+           Keywords: Deunionization, productivity slow-down, agent-based model
+           Desenvolvemos um modelo agent-based capaz de analizar as consequências macroe-
+       conômicas de um processo endógeno de dessindicalização resultante de um mecanismo
+       de concorrência entre dois tipos de firmas, sindicalizadas ou não. Sempre que as em-
+       presas não sindicalizadas prevalecem, o crescimento médio da produtividade declina,
+       o desvio padrão da produtividade e a concentração do mercado aumentam, em um
+       cenário “o ganhador fica com tudo”, a competição de custos induz uma espiral defla-
+       cionária e a qualidade do produto é reduzida. Por meio de uma decomposição do tipo
+       shift-and-share, rastreamos os componentes do crescimento da produtividade e o nexo
+       salário-produtividade resultante.
+           Palavras-chave: Dessindicalização, desaceleração produtividade, modelo agent-based
+           Área ANPEC: Crescimento, Desenvolvimento Econômico e Instituições (6)
+           JEL codes: C63, E02, E24
+   ∗
+      Corresponding author: Institute of Economics, University of Campinas, Campinas - SP (Brazil), 13083-970.
+E-mail address: mcper<at>unicamp.br
+    †
+      Institute of Economics, Scuola Superiore Sant’Anna, Piazza Martiri della Liberta’ 33, I-56127, Pisa (Italy).
+E-mail address: gdosi<at>santannapisa.it
+    ‡
+      Harvard University and NBER, Cambridge (MA), US
+    §
+      Institute of Economics, Scuola Superiore Sant’Anna, Piazza Martiri della Liberta’ 33, I-56127, Pisa (Italy),
+and OFCE, Sciences Po, Nice France. E-mail address: andrea.roventini<at>santannapisa.it
+    ¶
+      Institute of Economic Policy, Universita’ Cattolica del Sacro Cuore, Via Pietro Necchi 5, I-20123, Milan
+(Italy). E-mail addressmariaenrica.virgillito<at>unicatt.it
+
+
+                                                        1
+1    Introduction
+A new emerging malaise of capitalist organizations is currently affecting many mature
+economies, namely productivity slowdown. Since the First Industrial Revolution produc-
+tivity has been the engine pumping wage and output growth and ensuring better standard
+of leaving. Currently, the dynamics of productivity does exhibit alarming trends. Syverson
+(2017) documents that US productivity growth more than halved between 1995 and 2015,
+moving from 2.8% in (1995-2004) to 1.3% (2005 – 2015). A similar pattern characterizes 29
+out of 30 countries analysed in the same study, with an average decline of 1.2 percentage
+points and 0.9 p.p. of standard deviation.
+    Less new are the patterns affecting wage dynamics: stagnant real wage growth and the
+surge in wage inequality. Already since the late Eighties, scholars have been studying the in-
+creasing patterns of wage dispersion (Freeman, 1984; Lee, 1999). More recent is the acknowl-
+edgement of a declining labour share in developed countries (Hutchinson and Persyn, 2012;
+Karabarbounis and Neiman, 2013). If the Golden Age of capitalism was characterized by a
+proportional wage/productivity growth, and a constant wage share, since the eighties the
+wage-productivity nexus has weakened its relationships, with a declining pass-through of
+productivity growth on wage growth. The decoupling of wage-productivity growth is there-
+fore the result of two concurrent factors: declining labour share and increasing divergence
+between median and average income (Schwellnus et al., 2017).
+    Moving from macro to micro, a growing stream of literature digs inside into the dynam-
+ics of firm/establishment level wage dispersion. In particular, looking at the main drivers of
+wage inequality, since the contribution by Dunne et al. (2004), it appears that the between-
+establishment component of the overall wage inequality has been the main driver of the
+growth of wages dispersion, while the within one, contributed more moderately to the in-
+crease in the latter. Recent findings by Barth et al. (2016), linking the Census Bureau’s Lon-
+gitudinal Business Data Base (LBD) and the Longitudinal Employer-Household Dynamics
+data (LEHD) show that the inter-establishment wage dispersion does contribute roughly
+twice with respect to the intra-establishment one. In fact, paraphrasing the article by Barth
+et al. (2016), it is exactly where you work that has been strongly impacting on the increase
+in wages and earnings dispersion in the US. In a similar vein Berlingieri et al. (2017) have
+recently documented a surge in both wage and productivity dispersions across 16 OECD
+countries from the mid-1990s to 2012, especially in the service sectors and concerning the
+bottom-part of the distributions (50-10 percentiles).
+    Which are the causes at the root of the latter empirical patterns? Among the main possi-
+ble mechanisms, ranging from demand to supply side ones, the explanation we are going to
+explore in this work is the link between the wage structure and firms market performance,
+in terms of productivity growth: if low-productive firms are also low-wage firms they might
+in tune remain alive leveraging on their cost structure. In this respect, alternative wage set-
+ting schemes act as a selection/non selection mechanism cleansing or not the market. This
+selection process, going from wage, to productivity to survival/exit is tightly linked to the
+changing nature of labour market organization, which in the last decades has seen, together
+with many fundamental changes, a dramatic decline in the unionization rate.
+    How much of the emerging pattern of average productivity slowdown and increasing
+productivity dispersion can be accounted by the process of deunionization of firms? This
+paper is meant to address the latter question by means of a simulated economy populated
+by a set of heterogeneous interacting agents, according to the modelling practice going
+
+                                              2
+under the heading of Agent-Based Models (ABMs). ABMs are large-scale, computational
+models which allow the simulation of artificial economies wherein ensembles of heteroge-
+neous agents interact on the ground of simple behavioural rules. Aggregate-level outcomes
+are the emergent properties from the interactions of such boundedly rational agents. Un-
+likely DSGE models driven by the search of closed-form solutions derived from linearisa-
+tion around equilibrium conditions, ABMs are open-ended systems where the notion of
+coordination substitutes the one of equilibrium. Moreover such models may display path-
+dependency along each simulation history, as well as between alternative simulations. Short
+of any derivation from some principle of rationality, ABMs ought to be primarily judged on
+their ability to reproduce as emergent properties sets of stylised facts, i.e. empirically observed
+statistical regularities. The use of agent-based models has become the standard practice in
+many disciplines dealing with complex phenomena, wherein the micro and the macro lev-
+els are not isomorphic. More recently, these models have also been adopted in economics.
+Indeed, the features of ABMs are particularly suited to the analysis of economic phenomena
+characterised by (i) disequilibrium processes and (ii) persistent heterogeneity. Therefore we
+model the process of deunionziation following a bottom-down perspective, according to the
+spurt model first investigated in (Freeman, 1997). Unionised and non-unionised firms do
+compete in the product market arena in terms of their relative efficiency, affected by prices,
+quality and quantity (excess, unfilled demand) variables. The model produces two possi-
+ble statistical equilibrium patterns: a stable case of unsuccessful invasion by non-unionised
+firms, and a stable case of invasion by non-unionised firms.
+    Whenever non-unionised firms prevail the average productivity growth declines, pro-
+ductivity standard deviation and market concentration increase, mimicking a “winners-
+take-all” scenario, cost-competition induces a deflationary spiral, and also product quality
+is reduced. By means of a shift and share decomposition, we track the within, between, cross,
+entry and exit components of productivity growth and the ensuing wage-productivity nexus.
+
+
+2    At the source of weak selection
+Microeconometric firm level studies have been devoting attention to the patterns of firm
+level idiosyncratic learning, in terms of productivity growth, and of market selection, focus-
+ing on the reallocation dynamics between incumbent firms and at the entry/exit patterns
+(Foster et al., 2001). Results from this stream of literature emphasize the phenomenon of
+job reallocation as a signal of the cleansing occurring in the market, with workers moving
+from low-productivity to high-productivity firms (Davis et al., 1998). However, recent find-
+ings provide contrasting evidence: Dosi et al. (2015) using a sample of US listed, big firms
+(COMPUSTAT) show that also in the US economy, considered to be quite prone to the pur-
+ported reallocation dynamics, according to which less efficient firms lose market shares in
+favour of the more efficient ones, the main driver of productivity growth is a within (in-
+side the firm) process of accumulation of learning, while the selection process appears to
+be quite weak. In line, Foster et al. (2016) find that the pace of reallocation in terms of job
+creation/job destruction rates and the ensuing cleansing effect in the Great Recession was
+lower than those recorded in previous crisis periods. Additionally, the evidence on the re-
+lationship between relative efficiency and firm growth does not provide a strong link on
+the co-variations between the two latter variables: in a way, improvements in productivity
+do not directly translate into firms market-performance, in terms of sales growth (Bottazzi
+
+                                                3
+et al., 2010). These findings suggest (i) the existence of ample heterogeneity in firm level pro-
+ductivity dynamics, (ii) a weak productivity-growth nexus, (iii) the absence of any converge
+process in the productivity dynamics across firms. A tale of double divergence seems to
+emerge: not only firms do present persistent heterogeneity in their performance variables –
+including productivity - , but there is also no sign of convergence in wages. On the contrary,
+divergence seems to prevail and grow.
+    Currently investigated causes of this divergence are the impact of easy access to credit
+and entry slowdown. A recent OECD study (McGowan et al., 2017), recalling the idea of
+zombie firms, analyses how, over the last decade (2003-2013), the share of zombie firms -
+defined as those firms in such financial troubles that are unable to meet their interest pay-
+ments, but are still alive - have been steadily increasing. Keeping alive, those firms might
+hamper productivity growth. This latter evidence is again in line with some slow-down of
+the selection/reallocation process, which is lacking to produce the expected cleansing ef-
+fect, especially during recessionary phases. Related, the declining business dynamism, with
+a slowdown of entry and a constant exit rate, is the further signal of the reduction in the
+selection process (Decker et al., 2016).
+    However, less attention has been devoted to the link between labour market organiza-
+tion and the ensuing productivity and technological conditions. Given the emerging tale of
+double divergence, it is naturally to investigate to what extent the increasing wage disper-
+sion has allowed low productivity firms to remain alive. Some empirical evidence points in
+favour of the latter mechanism. Barth et al. (2014) when looking at the Scandinavian model
+do find evidence that more compressed wage structures, like those in Norway, Sweden and
+Denmark, are able to fuel more creative destruction in the market, reducing the dispersion
+in productivity. Similarly, Hibbs Jr and Locking (2000) find that lower within-plant wage
+dispersion exerts a positive effect on productivity, with a shift of capital and labour from
+low-productivity to high-productivity firms. If less unequal between-plant wage level might
+foster selection, the process of deunionization, which has largely invested many advanced
+economies, is one of the major force pushing in the opposite direction. In this respect, the
+increasing wage dispersion between firms induced by deunionization (Freeman, 1984), has
+been an implicit buffer which indirectly helped low productivity firms to survive.
+    Granted the deunionization-productivity slowdown link we intend to explore, an in-
+herent problem relies on how to model the process of deunionization. Freeman (1997),
+documenting the patterns of unionization in many advanced economies, proposes the
+metaphor of the spurt: unionization was a phase transition occurred after that some thresh-
+olds/tipping points have been reached, resulting as a bottom-up emergent property of the
+system; clearly, the probability that the spurt occurs positively depends on the existence of
+already unionised workers/firms. On the contrary many labour historians and economists
+see unionism as the result of some top down act, as the Wagner Act in US, the Blum govern-
+ment in France, the PC 1003 in Canada. However, the exogenous shock interpretation leaves
+reduced scope to interpret the spurt dynamics of union rise and decline and it predicts a
+stable unionization rate over time, which is clearly not revealed by the data.
+    Interpreting unionization as a bottom up process allows also to model the process of de-
+unionization. Bryson et al. (2017) argue that the process of union decline, more than due to
+abandonment rate from previously unionised workers is due to the “never-member" effects,
+which see new cohorts of worker never adhere to union organizations. Those firms experi-
+encing the “never-member" effects result into being non unionised ones, therefore moving
+
+
+                                               4
+                                                       Production
+                                 Queue
+                                                       good firms
+
+
+
+              Workers           Government             Machines              Bank
+
+
+
+                                                      Consumption
+                                 Queue
+                                                       good firms
+
+
+                                                   Heterogeneous
+                                                 consumption goods
+
+
+    Figure 1: The model structure. Boxes in bold style represent heterogeneous agents populations.
+
+
+from worker-level to firm-level unionisation/deunionization process.
+   Our ABM, presenting an inherent non-linear strucure allows, in line with the model in
+Freeman (1997), to identify two convergence states (statistical equilibrium) of the system,
+namely a zero union density and a high (complete) union density. After accounting for the
+process of rising and fall of unionism, we shall study the ensuing technological regimes
+emerging in the two states in order to explore the deunionization/productivity slowdown
+nexus.
+
+
+3     The model
+We build a general disequilibrium, stock-and-flow consistent agent-based model, populated
+by heterogeneous firms and workers, who behave according to bounded-rational rules.
+More specifically, we extend the existing Keynes Meets Schumpeter (K+S) model (Dosi et al.,
+2010), including decentralized interactions among firms and workers in both the product
+and the labour markets (Dosi et al., 2017, 2016), to introduce an endogenous process of work-
+ers’ skills accumulation and variable number of firms.
+    The two-sector economy is composed of three populations of heterogeneous agents, Ft1
+capital-good firms (denoted by the subscript i), Ft2 consumption-good firms (denoted by
+the subscript j), LS consumers/workers (denoted by the subscript `), plus a bank and the
+Government. The basic structure of the model is depicted in Figure 1. Capital-good firms
+invest in R&D and produce heterogeneous machine-tools whose productivity stochastically
+evolves over time. Consumption-good firms combine machines bought from capital-good
+firms and labour in order to produce an homogeneous product for consumers. There is
+a minimal financial system represented by a single bank that provides credit to firms to
+finance production and investment plans. Total credit is allocated to each firm according
+to their own credit demand, which is constrained by their past sales, according to a loan to
+value ratio rule. Credit supply is conversely completely elastic and unconstrained, adapting
+
+
+                                                  5
+to credit demand. Workers submit job applications to a subset of the firms. Firms hire
+according to their individual adaptive demand expectations. The government levies taxes
+on firms, pays unemployment benefits and set minimum wages, according to the policy
+setting, absorbing excess profits and losses from the bank and keeping a relatively balanced
+budget in the long run.
+    In the following, we first summarize the functioning of the capital- and the consumption-
+good sectors of our economy, with a focus on the entry process, and then present the labour
+market dynamics, detailing the skills accumulation and deterioration mechanisms. Finally,
+we describe the two alternative policy regime settings (and variations thereof) under which
+the model has been explored.
+
+
+3.1   The capital- and consumption-good sectors
+The capital-good industry is the locus where innovation is endogenously generated in the
+model. Capital-good firms develop new machine-embodied techniques or imitate the ones
+of their competitors in order to produce and sell more productive and cheaper machinery.
+On demand, they supply machine-tools to consumption-good firms, producing with labour
+as the only input. Firms have access to bank loans to cover liquidity problems up to a limit.
+The capital-good market is characterized by imperfect information and Schumpeterian com-
+petition driven by technological innovation. Machine-tool firms signal the price and produc-
+tivity of their machines to their current customers as well to a subset of potential new ones,
+and invest a fraction of past revenues in R&D aimed at searching for new machines or copy
+existing ones. Prices are set using a fixed mark-up over (labour) costs of production.
+    Consumption-good firms produce a quality-differentiated single good employing capital
+(composed by different “vintages” of machine-tools) and labour under constant returns to
+scale. Desired production is determined according to adaptive (myopic) demand expecta-
+tions. Given the actual inventories, if the current capital stock is not sufficient to produce the
+desired output, firms order new machines to expand their installed capacity, paying in ad-
+vance – drawing on their retained past profits or, up to some limit, on bank loans. Moreover,
+they replace old machines according to a payback-period rule. As new machines embed
+state-of-the-art technologies, the labour productivity of consumption-good firms increases
+over time according to the mix of vintages of machines in their capital stocks. Consumption-
+good firms choose in every period their capital-good supplier comparing the price and the
+productivity of the machines they are aware of. Firms then fix their prices applying a vari-
+able mark-up rule on their production costs, trying to balance profit margins and market
+shares. More specifically, firms increase their mark-up and price whenever their market
+share is expanding and vice versa. Imperfect information is also the normal state of the
+consumption-good market so consumers do not instantaneously switch to the most com-
+petitive producer. Market shares evolve according to a (quasi) replicator dynamics: more
+competitive firms expand, while firms with relatively lower competitiveness levels shrink,
+or exit the market.
+    The process of entry-exit is entirely endogenous in both sectors. Firms leave the market
+whenever their market shares get close to zero or their net assets turn negative (bankruptcy).
+Conversely, the number of entrants stochastically depends on the number of incumbents and
+on the prevailing financial conditions. When the sectoral liquidity-to-debt ratio is shrinking
+new firms find it easier to enter, and vice versa.
+
+
+                                                6
+3.2   The labour market and skills dynamics
+The labour market in the model implements a fully-decentralized search and hiring process
+between workers and firms. The aggregate supply of labour LS is fixed and all workers are
+available to be hired in any period. When unemployed, workers submit a certain number of
+job applications to firms. Employed workers may apply or not for better positions, according
+to the institutional set up. Larger firms have a proportionally higher probability of receiving
+job applications, which are organized in separated, firm-specific application queues. The
+labour market is characterized by imperfect information as firms only observe workers skills
+and wage requests and workers are aware only of the wage offers they may receive.
+     Firms decide about their individual labour demand based on the received orders (capital-
+good sector), the expected demand (consumption-good sector), and the expected labour
+productivity levels. Considering the number and the productivity of the already employed
+workers, firms decide whether to (i) hire new workers, (ii) fire part of the existing ones, or
+(iii) keep the existing labour force. Each hiring firm defines a unique wage offer for the
+applicant workers, based on its internal conditions and the received applications. Workers
+select the best offer they get from the firms to which they submitted applications, if any.
+If already employed, depending on the institutional regime, they might quit the current
+job if a better wage offer is received. There are no further rounds of bargaining between
+workers and firms in the same period. Thus, firms have no guarantee of fulfilling all the
+open positions, and no market clearing is ever guaranteed. Moreover, there are no firing or
+hiring transaction costs.
+
+
+3.3   Competition between unionised and non-unionised firms
+We employ the model described above to study a process of evolutionary competition be-
+tween two types of firms, which we call unionised and non unionised. The distinctive features
+of the two types of firms are telegraphically sketched in Table 1.
+    In unionised firms, whose market share are denoted as f2U , wages are insensitive to the
+labour market conditions and indexed to the productivity gains of the firms. There is a
+sort of covenant between firms and workers concerning “long term” employment: firms fire
+only when their profits become negative, while workers are loyal to employers and do not
+seek for alternative jobs. When hiring/firing, firms aim to keep the more skilled workers.
+Labour market institutions contemplate a minimum wage fully indexed to aggregated econ-
+omy productivity and unemployment benefits financed by taxes on profits. Conversely, in
+non-unionised firms, whose market share are denoted as f2NU , flexible wages respond to un-
+employment and decentralised market dynamics, and are set by means of an asymmetric
+bargaining process where firms have the last say. Employed workers search for better paid
+jobs with some positive probability and firms freely adjust (fire) their excess workforce ac-
+cording to their planned production. Hiring/firing workers by firms are based on a balance
+between skills and wages, using a simple payback comparison rule. Non unionised firms
+operate under different labour institutions: minimum wage is only partially indexed to pro-
+ductivity and unemployment benefits – and the associated taxes on profits – are relatively
+lower.
+    We simulate an artificial economy where at the beginning only unionised firms exist.
+After 100 periods non unionised firms start to enter into the market according to an evo-
+lutionary competition process. For the following 100 time steps, defined by the parameter
+
+
+                                              7
+ent2trdChg , non unionised firms enter with a fixed proportion with respect to unionised ones,
+namely 50%, defined by the parameter ent2HldP er . This time window serves as a buffer in
+order to let the new entrant firms growing and populating the market. After the critical
+threshold is met, there exists a given probability for a new born firm of being non unionised,
+being this probability the realization of a random draw from a uniform distribution bounded
+                                     2
+from below by a minimum floor fmin      and from above by the share of existing types of non-
+                   2,N U
+unionised firms ft−1 :
+
+                                         fbNU        2      NU
+                                           2 ,t = U[fmin , f2,t−1 ]                         (1)
+    where fbNU                                                              NU
+              2 ,t is the share of new entrant firms of type NU, while 1 − fb2 ,t is the share
+
+of existing firms of type U. Firms compete in the product market according to their relative
+competitiveness. In particular, Consumption-good prices are set applying a variable markup
+µj,t on average unit costs:
+                                        pj,t = (1 + µj,t )cj,t .                           (2)
+Mark-up changes are regulated by the evolution of firm market shares (fj,t ):
+                                                              
+                                               fj,t−1 − fj,t−2
+                           µj,t = µj,t−1 1 + υ                                              (3)
+                                                    fj,t−2
+
+with υ ∈ (0, 1). Firm market shares evolve according to a replicator dynamics:
+                                                   
+                                         Ej,t − Ēt          1 X
+                     fj,t = fj,t−1 1 + χ             , Ēt = 2   Ej,t fj,t−1 ,              (4)
+                                             Ēt            Ft j
+
+where the firms relative competitiveness Ej,t is defined based on the individual normalized
+                                 0
+prices p0j,t , unfilled demands lj,t                        0
+                                     and product qualities qj,t :
+                                                      0
+                             Ej,t = −ω1 p0j,t−1 − ω2 lj,t−1       0
+                                                            − ω3 qj,t−1 ,                   (5)
+
+being (ω1 , ω2 , ω3 ) ∈ R2 + parameters. Unfilled demand lj,t is the difference between the
+demand Dj,t the firm gets and its production Qj,t plus inventories Nj,t , if positive:
+
+                               lj,t = max [Dj,t − (Qj,t + Nj,t ), 0] .                      (6)
+
+Product quality is defined as the average of the log skills s`,t of the firm’s workers:
+                                            1        X
+                                qj,t =                          log [s`,t−1 ] .             (7)
+                                         Lj,t−1
+                                                  `∈{Lj,t−1 }
+
+
+   The skill level s`,t > 0 of each worker ` evolves over time as a multiplicative process:
+                 
+                 (1 + τT )s`,t−1 if employed in t − 1
+          s`,t =        1                                                                   (8)
+                           s`,t−1   if unemployed and not under training in t − 1,
+                    1 + τU
+where τT ≥ 0 is a parameter governing the learning rate while the worker is employed,
+and τU ≥ 0 is the corresponding parameter accounting for the skills deterioration when a
+worker is unemployed. As a consequence, when worker ` is employed her abilities improve
+over time, as she becomes more experienced in her task or acquire new skills. Conversely,
+unemployed workers lose skills. When a worker is hired, she immediately acquires the
+
+                                                     8
+minimum level of skills already present in the firm (the incumbent worker with the lowest
+skills), if above her present level. Workers have a fixed working life: after a fixed number
+of periods Tr , workers retire and are replaced by younger ones,1 whose skills are set to the
+current minimum level of employed workers.
+    Workers’ skills define their individual (potential) productivity A`,t :
+
+                                             s`,t τ                  1 X
+                                    A`,t =       A ,        s̄t =        s`,t ,                                (9)
+                                              s̄t i                 LS `
+
+where s̄t is the average worker skills level, Aτi is the “standard” productivity of the vintage of
+the machinery which the worker operates, and LS , the (fixed) total labour supply. Thus, the
+ratio s`,t /s̄t , the worker normalized skills, represents her ability to produce more (if s`,t > s̄t )
+or less than the “standard” associated with a given machine technology.2
+
+                                                                U NIONISED          N ON U NIONISED
+          Wage sensitivity to unemployment                       low (rigid)          high (flexible)
+          Labour firing restrictions                          under losses only           none
+          Workers hiring priority                               higher skills        lower payback
+          Workers firing priority                               lower skills         higher payback
+          Unemployment benefits                                        yes            yes (reduced)
+          Minimum wage productivity indexation                         full              partial
+
+                          Table 1: Main characteristics of the two types of firms
+
+    In order to better characterize contemporary labour markets we have also introduced
+a profit-sharing mechanism, according to which firms performing better than the average
+ones, distribute bonuses to their workers. If distributed, bonuses are equal for all workers
+inside the firms, and they are distributed proportionally to firms net profits. Only those
+firms whose profit rate is higher than the average one distribute bonuses:
+
+                                                                      Πj,t  Π2
+                                  Bj,t = ψ6 Πj,t (1 − tr) if               > t2                               (10)
+                                                                      Kj,t  Kt
+
+3.4    Timeline of events
+In each simulation time step, firms and workers behavioural rules are applied according to
+the following timeline:
+
+   1. Machines ordered in the previous period (if any) are delivered;
+   2. Capital-good firms perform R&D and signal their machines to consumption-good
+      firms;
+   3. Consumption-good firms decide on how much to produce, invest and hire/fire;
+   1
+     At the start of each simulation, initial workers ages are randomly draw in the integer range [1, Tr ] and all
+start from the same skills level.
+   2
+     Note that, in this specification, the firm-level effective productivity Aj,t is a truly emergent property, re-
+sulting together from the technical innovation dynamics (the introduction of new vintages Aτi ), the worker
+skills evolution and the effective demand, which guides firms when deciding the capital stock dynamics and
+the employed machine mix.
+
+
+                                                        9
+    4. To fulfil production and investment plans, firms allocate cash-flows and (if needed)
+       borrow from bank;
+    5. Firms send/receive machine-tool orders for the next period (if applicable);
+    6. Workers (employed and unemployed) update their own skills;
+    7. Firms open job queues and job-seekers send applications to them (“queue”);
+    8. Wages are set (indexation or bargaining) and job vacancies are partly or totally filled;
+    9. Government collects taxes and pays unemployment subsidies;
+ 10. Consumption-good market opens and the market shares of firms evolve according to
+     competitiveness;
+ 11. Firms in both sectors compute their profits, pay wages, distribute bonuses and repay
+     debt;
+ 12. Exit takes place, firms with near-zero market share or negative net assets are eschewed
+     from the market;
+ 13. Prospective entrants decide to enter according to the markets conditions;
+ 14. Aggregate variables are computed and the cycle restarts.
+
+
+4     Deunionization and productivity slowdown
+Let us now focus on the process of deunionization. The model produces two endogenous
+statistical equilibria in terms of market shares, or equivalently convergent states. In Figure
+???? the stable statistical equilibrium of Invasion is presented: as shown by the light grey
+area, representing the maximum and the minimum realizations, there are cases in which the
+occurrence of complete invasion by non-unionised firms does not happen. The latter is the
+result of the stochastic competition between the two types of firms as defined in Table 1 and
+the sign of the path-dependency entailed by the model structure.
+
+              Scenarios                     C ONDITIONS ON NU FIRMS
+              Invasion           L OWER / HIGHER PAYBACK ( WAGE / SKILLS RATIO )
+                                        WORKERS ARE HIRED / FIRED FIRST
+              No Invasion    L OWER / HIGHER WAGE WORKERS ARE HIRED / FIRED FIRST
+
+    Table 2: Model conditions for the equilibrium of unsuccessful invasion (No Invasion scenario).
+
+    What are the conditions under which the process of invasion is not successful? Given
+that the baseline configuration of non-unionised firms, as presented in Table 1, produces the
+Invasion scenario, where unionised firms are expelled from the marker, we intend to under-
+stand under what conditions the survival of unionised firms occurs. The modification to the
+baseline configuration is presented in Table 2. The case of unsuccessfully invasion depends
+on non-unionised firms becoming more cost-sensitive changing their hiring/firing order
+scheme: under the new conditions they simply perform cost-minimization and hire/fire
+lower/higher wage workers first. Differently from the baseline configuration presented in
+Table 1, if non-unionised firms do not use a payback rule, evaluating the cost of labour rel-
+ative to worker skills, they end up loosing competitive advantage, offering too much lower
+
+                                                 10
+quality products in the market. Note in fact that under Equation 5, the product quality af-
+fects firm competitiveness, and quality, under Equation 7 depends on the average workers’
+skills at the firm level.
+    What type of wage patterns do emerge in the two scenarios and to what extent the preva-
+lence of one of the two types of firm produces a less/more equal wage distributions? Figure
+2(a) presents the pooled wage distribution of firm-level wages. As expected, the distribu-
+tion of wages is extremely more concentrated and less dispersed in the No Invasion case,
+wherein the majority of the firms are unionised ones. Not only in terms of remuneration
+but also in terms of wage growth (see Figure 2(b)) the No Invasion scenario presents the
+most compressed wage growth patterns, with a range of variation between [−0.05, 0.05].
+The range of wage growth variation more than double in the Invasion scenario, explaining
+the more skewed distribution in wage level.
+    Figure 2(c) presents the time evolution of productivity in the two scenarios, by firm type,
+separately accounting for the role of unionised and non unionised firms. Figure 2(c) does
+not simply account for the absolute level of productivity dynamics by firm type but it is
+also affected by the dynamic evolution of each type of firm in the market. Starting from the
+Invasion scenario, non-unionised firms, that are the fraction largely populating the market,
+present a higher level of productivity which decouples from the one of unionised firms be-
+fore t = 300. The lower productivity level of the latter firms is however largely due to the
+reduced numerous of unionised firms. Although largely invaded, the few unionised firms
+remaining alive in the market, maintain a positive productivity level, and keep surviving.
+The opposite patterns instead occur in the No Invasion scenario: in this case non-unionised
+firms completely disappear from the market. A first side note is that, comparing in both
+scenarios failing unionised vs non unionised firms, the former are more productive and re-
+silient to the process of invasion.
+    In Figure 2(d) it is shown the dynamics of productivity standard deviation. Looking
+at the Invasion case, after the process of invasion occurred, unionised firms do present a
+much lower between firm productivity differential. The latter evidence is also revealed by
+the increasing standard deviation spurring after non unionised firms start populating the
+market, at t = 100, in both scenarios: in general the variation of productivity across firms
+is always higher between non unionised firms (dotted line), as expected from the empirical
+evidence.
+    Figure 3(a) presents the average productivity growth in the two scenarios comparing the
+average value of the latter variable across 50MC runs in each of the two respective scenarios.
+The invasion of non unionised firms entails a reduction of the average productivity growth
+of 0.17%, signalling that the process of deunionization in our model causes a productivity
+slowdown. Not only non unionised firms have in average a lower productivity, they also
+produce products of lower quality (Figure 3(b)): the latter mechanism is due to the different
+organization of labour market occurring in the two types of firms: in fact, in non unionised
+firms, characterized by external flexibility, workers are in average less skilled. The lower
+degree of workers competence maps into lower quality products, according to Equation 7.
+
+
+
+
+                                              11
+                                                                               Figure 2: Wage and productivity dynamics I - Distributional and time series analysis
+
+                                                            (a) Pooled wage distribution
+                                                        Pooled average wages distribution ( all experiments )                                                                                                                           Pooled
+                                                                                                                                                                                                                                    (b)Pooled      wage
+                                                                                                                                                                                                                                              average      growth
+                                                                                                                                                                                                                                                      wage growth      rate distribution
+                                                                                                                                                                                                                                                                  distribution ( all experiments )
+                        10.00
+
+
+
+
+                                    Invasion                                                                                                                                                                   Invasion
+                                    No Invasion                                                                                                                                                                No Invasion
+
+
+
+
+                                                                                                                                                                                                    20.0
+                                    Normal fits                                                                                                                                                                Laplace fits
+                        5.00
+
+
+
+
+                                                                                                                                                                                                    10.0
+                        2.00
+
+
+
+
+                                                                                                                                                                                                    5.0
+                        1.00
+     Binned density
+
+
+
+
+                                                                                                                                                           Binned density
+
+                                                                                                                                                                                                    2.0
+                        0.50
+
+
+
+
+                                                                                                                                                                                                    1.0
+                                                                                                                                                                                                    0.5
+                        0.20
+
+
+
+
+                                                                                                                                                                                                    0.2
+                        0.10
+
+
+
+
+                                                                                                                                                                                                    0.1
+                        0.05
+12
+
+
+
+
+                                     −0.4                   −0.2                               0.0                               0.2                                                                                   −0.10                   −0.05                       0.00                         0.05          0.10
+
+                                                                        log(normalized average real wage)                                                                                                                                              Normalized average real wage growth rate
+                                                                          ( Consumption−goods sector )                                                                                                                                                     ( Consumption−goods sector )
+
+                                                           Productivity bydynamics
+                                                    (c) Productivity                      by firm type
+                                                                          firm type ( all experiments )                                                                                                                        (d) Productivity      standard
+                                                                                                                                                                                                                                    Productivity standard           deviation
+                                                                                                                                                                                                                                                          deviation by firm type ( allby  firm type
+                                                                                                                                                                                                                                                                                       experiments )
+                        10
+
+
+
+
+                                      Invasion                                                                                         Pre−change firms                                                          Invasion                                                                                            Pre−change firms
+                                      No Invasion                                                                                      Post−change firms                                                         No Invasion                                                                                         Post−change firms
+
+
+
+
+                                                                                                                                                                                                    0.5
+                        8
+
+
+
+
+                                                                                                                                                                                                    0.4
+                                                                                                                                                           Standard deviation of log productivity
+                        6
+
+
+
+
+                                                                                                                                                                                                    0.3
+     Log productivity
+
+                        4
+
+
+
+
+                                                                                                                                                                                                    0.2
+                                                                                                                                                                                                    0.1
+                        2
+
+
+
+
+                                                                                                                                                                                                    0.0
+                        0
+
+
+
+
+                                0                     100                               200                                300                       400                                                   0                             100                               200                                 300                 400
+
+                                                                                         Time                                                                                                                                                                               Time
+                                                       ( vertical dotted line: regime change / sector 2 only / MC runs = 100 )                                                                                                            ( vertical dotted line: regime change / sector 2 only / MC runs = 100 )
+                                                                                       Figure 3: Market competition performance comparison between unionised and non-unionised firms
+
+                                                                                            productivity
+                                                                                (a) AverageProductivity growth growth                                                                                                                                                            (b) Product  quality
+                                                                                                                                                                                                                                                                                         Quality
+
+
+
+
+                                                                                                                                                                                                                                     1.8
+                                                 0.020
+
+
+
+
+                                                                                                                                                                                Weighted average product quality in sector 2
+     Average productivity growth rate
+
+
+
+
+                                                                                                                                                                                                                                     1.7
+                                                 0.015
+
+
+
+
+                                                                                                                                                                                                                                     1.6
+                                                 0.010
+
+
+
+
+                                                                                                                                                                                                                                     1.5
+                                                 0.005
+13
+
+
+
+
+                                                                            Invasion                                                           No Invasion                                                                                                     Invasion                                                           No Invasion
+
+
+                                                          ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 100 / period = 301 − 500 )                                                                ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 100 / period = 301 − 500 )
+
+                                                                          (c) Variation of price   consumer product
+                                                                                              Inflation                                                                                                                                                                           concentration
+                                                                                                                                                                                                                                                                       (d) MarketMarket concentration - HHI
+
+
+                                                                                                                                                                                                                                                                   ●
+
+
+
+
+                                                                                                                                                                                                                                     0.025
+                                                                                                                                                                                                                                                                   ●
+
+                                                                                                                                                                                                                                                                   ●
+
+                                                                                                                                                                                                                                                                   ●
+                                                 0.002
+
+
+
+
+                                                                                                                                                                                Stadardized Herfindahl−Hirschman index in sector 2
+     Consumer prices index average growth rate
+
+
+
+
+                                                                                                                                                                                                                                     0.020
+                                                 0.000
+
+
+
+
+                                                                                                                                                                                                                                     0.015
+                                                                                                                                                                                                                                                                                                                                        ●
+                                                                                                                                                                                                                                                                                                                                        ●
+
+
+                                                                                                                                                                                                                                                                                                                                        ●
+
+
+                                                                                                                                                                                                                                                                                                                                        ●
+                                                 −0.002
+
+
+
+
+                                                                                                                                                                                                                                     0.010
+
+
+
+
+                                                                                                                                                                                                                                                                   ●
+                                                 −0.004
+
+
+
+
+                                                                                                                                                                                                                                     0.005
+
+
+
+
+                                                                            Invasion                                                           No Invasion                                                                                                     Invasion                                                           No Invasion
+
+
+                                                          ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 100 / period = 301 − 500 )                                                                ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 100 / period = 301 − 500 )
+                                                                                                                                   Figure 4: Market concentration and income distribution dynamics
+
+                                                                                               (a) Market
+                                                                                                Market         concentration
+                                                                                                       concentration ( all experiments )                                                                                                                                      (b) Bonus    share
+                                                                                                                                                                                                                                                                                   Bonus share       over GDP
+                                                                                                                                                                                                                                                                                               ( all experiments )
+                                               0.04
+
+
+
+
+                                                                                                                                                                                                                               0.025
+                                                           Invasion                                                                                                                                                                        Invasion
+                                                           No Invasion                                                                                                                                                                     No Invasion
+     Standardized Herfindahl−Hirschman index
+
+                                               0.03
+
+
+
+
+                                                                                                                                                                                                                               0.020
+                                                                                                                                                                                             Total real bonuses on GDP
+                                               0.02
+
+
+
+
+                                                                                                                                                                                                                               0.015
+                                               0.01
+
+
+
+
+                                                                                                                                                                                                                               0.010
+                                               0.00
+14
+
+
+
+
+                                                       0                              100                               200                                300                         400                                             0                              100                               200                                 300                        400
+
+                                                                                                                         Time                                                                                                                                                                              Time
+                                                                                       ( vertical dotted line: regime change / Sector 2 only / MC runs = 100 )                                                                                                                 ( vertical dotted line: regime change / MC runs = 100 )
+
+                                                                                                 (c) Bonus  toto wage
+                                                                                                        Bonus            ratio
+                                                                                                                 wage ratio                                                                                                                                                 (d) Wage standard    deviation
+                                                                                                                                                                                                                                                                                       Wages spread
+
+
+                                                                                                                                                                                                                                                                       ●
+
+
+
+
+                                                                                                                                                                                                                               0.30
+                                               0.026
+
+
+
+
+                                                                                                                                                            ●
+
+
+                                                                                                                                                            ●
+
+
+
+
+                                                                                                                                                                                                                               0.25
+                                               0.024
+     Average bonuses over wages in sector 2
+
+
+
+
+                                                                                                                                                            ●
+                                                                                                                                                            ●
+
+
+
+                                                                                                                                                                                             Standard deviation of log wages
+                                                                                                                                                            ●
+                                               0.022
+
+
+
+
+                                                                                                                                                                                                                               0.20
+
+                                                                                                                                                                                                                                                                                                                                             ●
+                                               0.020
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                             ●
+                                                                                                                                                                                                                               0.15
+                                               0.018
+
+
+
+
+                                                                                       ●
+                                                                                       ●
+                                               0.016
+
+
+
+
+                                                                                                                                                                                                                               0.10
+
+
+
+
+                                                                                       ●
+                                               0.014
+
+
+
+
+                                                                                       ●
+
+
+
+
+                                                                                   Invasion                                                            No Invasion                                                                                                 Invasion                                                              No Invasion
+
+
+                                                                 ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 100 / period = 301 − 500 )                                                             ( bar: median / box: 2nd−3rd quartile / whiskers: max−min / points: outliers / MC runs = 100 / period = 301 − 500 )
+    Note that, in the Invasion scenario, non unionised firms prevail, independently of their
+product quality. This is so because the latter firms leverage on the lower labour costs
+due to wage and numerical flexibility, imposing lower prices and and taking advantage
+on unionised ones. As a result the long-run price consumer index presents a deflationary
+spiral, and is much lower than the case of unionised firms (Figure 3(c)). The type of mar-
+ket structure that emerges in the two cases is rather different: in fact, the degree of market
+concentration is much higher in the invasion case, with fewer firms appropriating a higher
+fraction of the market, as the performance comparison of the HH index shows in Figure 3(d).
+The latter finding is consistent with an average sales growth dynamics more heterogeneous
+in the invasion case, with few firms experiencing gains and the rest experiencing losses.
+    The temporal dynamics of the HH index is presented in Figure 4(a): note that the degree
+of market concentration increases in both scenarios as non-unionised firms start to enter
+into the market. Once the process of competition between the two types is over, the index
+stabilizes in both scenarios, with a considerably higher level in the Invasion case. Which
+are the implication of the two different industrial structures? They are reflected, among
+other variables, in the different fraction of bonuses distributed to workers. In fact, in the
+Invasion scenario the bonus share over GDP is much higher, entailed by the higher distance
+characterizing the total profits of the top performing firms and the average ones (Figure
+4(b)). A higher share of bonuses and lower wages, results into a higher bonus-to-wage ratio
+(Figure 4(c)), which in turn is reflected into a more skew wage distribution, as shown by the
+higher wage standard deviation in the Invasion scenario ( Figure 4(d)). Table 3 presents a
+summary of our performance comparison.
+
+                                               Baseline[1]   Ratio[2] p-val[2]
+                             GDP growth        0.01              1.17    0.00
+                     Productivity growth       0.01              1.16    0.00
+                                  Quality      1.52              1.13    0.00
+                                 Inflation     -0.00            -0.01    0.00
+                    Market concentration       0.02              0.41    0.00
+                 Wages standard deviation      0.22              0.49    0.00
+                      Bonus to wage ratio      0.02              0.82    0.00
+
+Table 3: Summary statistics of the performance comparison. Experiments: [1] Invasion, [2] No Inva-
+sion ( numbers in brackets indicate the experiment number / H0: no difference with baseline / MC
+runs = 100 / period = 301 - 500 )
+
+
+
+
+5    Shift-and-share decomposition
+After this inspection, we now move to better account for the process of productivity growth
+and reallocation across firms. We therefore perform a productivity decomposition on the
+simulated data, according to Foster et al. (2001). The decomposition reads as in Equation
+11 below, where fj,t and πj,t define employment shares and labour productivity of sector
+                        P
+2 only, and log πt−1 =     j fj,t−1 log πj,t−1 . The first term in this decomposition represents
+a within plant component based on plant-level changes, weighted by initial shares in the
+industry. The second term represents a between-plant component that reflects changing
+
+
+                                               15
+shares, weighted by the deviation of initial plant productivity from the initial industry in-
+dex. The third term represents a cross (i.e., covariance-type) term. The last two terms repre-
+sent the contribution of entering and exiting plants, respectively. In this decomposition, the
+between-plant term and the entry and exit terms involve deviations of plant-level produc-
+tivity from the initial industry index. For a continuing plant, this implies that an increase in
+its share contributes positively to the between-plant component only if the plant has higher
+productivity than average initial productivity for the industry. Similarly, an exiting plant
+contributes positively only if the plant exhibits productivity lower than the initial average,
+and an entering plant contributes positively only if the plant has higher productivity than
+the initial average.
+
+                           W IT HIN                        BET W EEN                        CROSS
+                  z
+                  X            }|        { zX             }|              { zX     }|        {
+    ∆ log πt2 =           fj,t−1 ∆ log πj,t + ∆fj,t (log πj,t−1 − log πt−1 ) + ∆ log πj,t ∆fj,t +
+                      j                       j                                     j
+                  |                                              {z                                 }
+                                                      IN CU M BEN T S
+                                                                                                        (11)
+                                EN T RY                                EXIT
+                  z
+                  X                 }|             { X  z             }|               {
+                          fj,t (log πj,t − log πt−1 ) −   fj,t−1 (log πj,t−1 − log πt−1 )
+                      j                                j
+
+    Table 4 splits the overall productivity growth documented into the five components of
+the FHK decomposition. The decomposition exercise allows in fact to compare the sign and
+the intensity of the above components. Figure 5(a) presents the results for all types of firms
+during the transient period (t = 270 − 300) of coexistence and then separately analyses the
+process of reallocation for unionised (Figure 5(b)) and non unionised firms (Figure 5(c)).
+Note that the analysis of the transient phase allows us to understand productivity realloca-
+tion when both type of firms do coexist.
+    Interesting properties do emerge from this analysis. (1) In line with the empirical ev-
+idence, the within component does always account for the higher fraction of productivity
+growth, signalling that the process of productivity growth is mostly explained by the accu-
+mulation of internal firms capabilities. (2) The between component is lower and positive in
+both regime, the cross effect is negative, and higher in the No Invasion case. (3) The cross
+effect becomes positive when using market instead of employment shares: the latter find-
+ing is due to the fact that market sales move in the same direction of productivity growth,
+while in case of employment shares, more productive firms reduce their employment de-
+mand. (4) The entry-exit components play a more negligible roles in the long-run, while they
+are rather important in the short-run. (5) In both scenarios, the exit of unionised firms reduces
+productivity growth to a higher degree than the exit of non unionised firms. (6) During the
+entire simulation period the No Invasion scenario exhibits always a higher degree of the
+all components, irrespectively of the type of reallocation used, in line with the slowdown
+of productivity induced by the invasion of non-unionised firms. (7) The selection process,
+including all components of the decomposition but the within one, is much higher in the
+No Invasion scenario, signalling that in the latter case competition favour more productive
+firms.
+    The latter battery of analysis we undertake shows the degree of correlation between pro-
+ductivity and wage. In particular, following Bagger et al. (2014) we regress wage level on
+productivity levels across firms. The latter regression allows to capture the degree according
+
+                                                            16
+                            Figure 5: FHK decomposition of productivity growth - Transient phase
+
+                                                                      (a) All firms
+                                                    FHK decomposition of productivity growth ( all firms )
+
+
+                                                                                                                                 Within
+                                                                                                                                 Between
+                                                                                                                                 Cross
+                                                                                                                                 Entry
+
+
+
+
+                            10
+                                                                                                                                 Exit
+
+Labor productivity growth
+
+                            5
+                            0
+                            −5
+                            −10
+
+
+
+
+                                             Invasion                                                              No Invasion
+
+                                                 ( Share = labor / MC runs = 20 / Window = 8 periods / Period = 271−300 )
+                                                                       ( Consumption−goods sector )
+
+
+
+                                                               (b) Unionised firms
+                                              FHK decomposition of productivity growth ( pre−change firms )
+
+
+                                                                                                                                 Within
+                                                                                                                                 Between
+                                                                                                                                 Cross
+                            4
+
+
+
+
+                                                                                                                                 Entry
+                                                                                                                                 Exit
+                            2
+Labor productivity growth
+
+                            0
+                            −2
+                            −4
+
+
+
+
+                                             Invasion                                                              No Invasion
+
+                                                 ( Share = labor / MC runs = 20 / Window = 8 periods / Period = 271−300 )
+                                                                       ( Consumption−goods sector )
+
+
+
+                                                          (c) Non Unionised firms
+                                             FHK decomposition of productivity growth ( post−change firms )
+
+
+                                                                                                                                 Within
+                                                                                                                                 Between
+                                                                                                                                 Cross
+                                                                                                                                 Entry
+                            10
+
+
+
+
+                                                                                                                                 Exit
+Labor productivity growth
+
+                            5
+                            0
+                            −5
+
+
+
+
+                                             Invasion                                                              No Invasion
+
+                                                 ( Share = labor / MC runs = 20 / Window = 8 periods / Period = 271−300 )
+                                                                       ( Consumption−goods sector )
+
+
+
+                                                                               17
+Table 4: Productivity growth decomposition - Sample size = 934019 firms / Window = 8 periods /
+MC runs = 20 / Period = 301 - 500
+
+              INVASION        Total Within Between Cross Entry Exit Error
+                  Overall     23.00  17.54     7.66 -5.36 -0.76 2.09  2.71
+                     (s.e.)   1.15    1.35     0.65  0.67  0.36 0.60  0.39
+          Unionised firms     -1.73   0.14    -0.14 -0.05  0.38 -1.96 0.03
+                     (s.e.)   0.21    0.03     0.17  0.03  0.09 0.23  0.01
+      Non Unionised firms     24.73  17.40     7.80 -5.30 -1.14 4.05  2.83
+                     (s.e.)   1.21    1.34     0.66  0.68  0.30 0.45  0.42
+          NO INVASION         Total Within Between Cross Entry Exit Error
+                  Overall     25.94  20.40     8.05 -7.85  1.26 0.13  4.17
+                     (s.e.)   0.61    1.07     0.27  0.78  1.07 1.34  0.59
+         Unionised firms      30.89  20.37    10.17 -7.82 -0.59 4.12  4.89
+                     (s.e.)   1.06    1.09     0.57  0.80  0.43 0.74  0.86
+      Non unionised firms     -4.95   0.03    -2.12 -0.03  1.84 -3.98 0.03
+                     (s.e.)   0.88    0.07     0.58  0.03  0.68 0.74  0.03
+
+
+to which high-productive firms are also high-wage firms and conversely, the extent to which
+low-productive firms are also low-wage firms. Results are presented in Table 5 which shows
+a parametric estimation for 20 MC realizations. The No Invasion scenario is characterised by
+a lower productivity-wage correlation, signalling that the wage-productivity nexus is more
+flat and equal across firms: a more compressed wage structure implies that wages are less
+sensitive to productivity variations, in both direction. Conversely, in the Invasion case, the
+wage structure is much more linked to the productivity dynamics: productivity gains are
+appropriated by those workers employed in more productive firms, conversely workers
+employed in less performing firms, enjoy relatively less productivity gains.
+
+Table 5: Monte Carlo regressions summary - Sample size = 10393 firms / MC runs = 20 / Cross-
+section = 300 - 304 by 4
+
+                              Scenario     Invasion   No Invasion
+                              Intercept        1.77          4.49
+                              (s.e.)           0.31          0.21
+                              Beta             0.63          0.14
+                              (s.e.)           0.06          0.04
+                              Std. error       0.05          0.01
+                              (s.e.)           0.00          0.00
+                              p-value          0.00          0.08
+                              (s.e.)           0.00          0.06
+                              R2               0.36          0.24
+                              (s.e.)           0.03          0.05
+                              Firms          296.80        313.05
+                              (s.e.)           8.92         10.50
+
+
+
+
+                                              18
+6    Conclusions
+This paper presents an ABM which endogenously accounts for the process of deunioniza-
+tion. The process of deunionziation occurs following a bottom-down perspective, according
+to the spurt model first investigated in (Freeman, 1997). Unionised and non-unionised firms
+do compete in the product market arena in terms of their relative efficiency, affected by
+prices, quality and (excess) quantity variables. The model produces two possible statistical
+equilibrium patterns: a stable case of unsuccessful invasion by non-unionised firms, and a
+stable case of stable invasion by non-unionised firms.
+    The results from our analysis provide support in favour of the efficient dynamics fos-
+tered by a “Social market economy”, populated by unionised firms, wherein the process
+of innovation, and therefore productivity growth is triggered by the accumulation of firms
+level capabilities, workers skills, incremental innovation and an egalitarian wage structure.
+Under these conditions, the process of firms competition in the product market features a
+positive selection dynamics, with high-productivity firms prevailing upon low-productivity
+ones. At the opposite end of the spectrum, a “Free market economy”, populated by non-
+unionised firms ensuing a more dispersed wage structure, results into a slowdown of market
+selection, with low-productivity firms remaining in the market, therefore reducing average
+productivity and increasing its standard deviation. In this latter case, the exit dynamics neg-
+atively contributes to the average growth of productivity, such as the negatively contributes
+the cross effect, capturing the covariation between market share and productivity. .
+
+
+Acknowledgements
+We gratefully acknowledge the support by the European Union’s Horizon 2020 research and
+innovation programme under grant agreement No. 649186 - ISIGrowth, and by Fundação
+de Amparo à Pesquisa do Estado de São Paulo (FAPESP), process No. 2015/24341-7.
+
+
+
+References
+Bagger, J., B. J. Christensen, and D. T. Mortensen (2014). Wage and labor productivity disper-
+  sion: The roles of total factor productivity, labor quality, capital intensity, and rent sharing.
+  In 2014 Meeting Papers.
+Barth, E., A. Bryson, J. C. Davis, and R. Freeman (2016). It’s where you work: Increases in the
+  dispersion of earnings across establishments and individuals in the united states. Journal
+  of Labor Economics 34(S2), S67–S97.
+Barth, E., K. O. Moene, and F. Willumsen (2014). The scandinavian model—an interpretation.
+  Journal of Public Economics 117, 60–72.
+Berlingieri, G., P. Blanchenay, and C. Criscuolo (2017). Great divergences: The growing
+  dispersion of wages and productivity in oecd countries.
+Bottazzi, G., G. Dosi, N. Jacoby, A. Secchi, and F. Tamagni (2010). Corporate performances
+  and market selection: some comparative evidence. Industrial and Corporate Change 19(6),
+  1953–1996.
+
+
+
+
+                                                19
+Bryson, A., R. Freeman, R. Gomez, and P. Willman (2017). The twin track model of employee
+  voice: An anglo-american perspective on union decline and the rise of alternative forms
+  of voice.
+Davis, S. J., J. C. Haltiwanger, S. Schuh, et al. (1998). Job creation and destruction. MIT Press
+  Books 1.
+Decker, R. A., J. Haltiwanger, R. S. Jarmin, and J. Miranda (2016). Declining business dy-
+  namism: What we know and the way forward. American Economic Review 106(5), 203–07.
+Dosi, G., G. Fagiolo, and A. Roventini (2010). Schumpeter meeting Keynes: A policy-friendly
+  model of endogenous growth and business cycles. Journal of Economic Dynamics and Con-
+  trol 34(9), 1748–1767.
+Dosi, G., D. Moschella, E. Pugliese, and F. Tamagni (2015, Oct). Productivity, market selec-
+  tion, and corporate growth: comparative evidence across us and europe. Small Business
+  Economics 45(3), 643–672.
+Dosi, G., M. C. Pereira, A. Roventini, and M. E. Virgillito (2016). The Effects of Labour
+  Market Reforms upon Unemployment and Income Inequalities: an Agent Based Model.
+  Socio-economic Review (2016/27).
+Dosi, G., M. C. Pereira, A. Roventini, and M. E. Virgillito (2017). When more Flexibility Yields
+  more Fragility: the Microfoundations of Keynesian Aggregate Unemployment. Journal of
+  Economic Dynamics and Control.
+Dunne, T., L. Foster, J. Haltiwanger, and K. R. Troske (2004). Wage and productivity dis-
+  persion in united states manufacturing: The role of computer investment. Journal of Labor
+  Economics 22(2), 397–429.
+Foster, L., C. Grim, and J. Haltiwanger (2016). Reallocation in the great recession: cleansing
+  or not? Journal of Labor Economics 34(S1), S293–S331.
+Foster, L., J. C. Haltiwanger, and C. J. Krizan (2001). Aggregate productivity growth: Lessons
+  from microeconomic evidence. In New developments in productivity analysis, pp. 303–372.
+  University of Chicago Press.
+Freeman, R. B. (1984). Longitudinal analyses of the effects of trade unions. Journal of labor
+  Economics 2(1), 1–26.
+Freeman, R. B. (1997). Spurts in union growth: Defining moments and social processes.
+  Technical report, National Bureau of Economic Research.
+Hibbs Jr, D. A. and H. Locking (2000). Wage dispersion and productive efficiency: Evidence
+  for Sweden. Journal of Labor Economics 18(4), 755–782.
+Hutchinson, J. and D. Persyn (2012, Apr). Globalisation, concentration and footloose firms:
+  in search of the main cause of the declining labour share. Review of World Economics 148(1),
+  17–43.
+Karabarbounis, L. and B. Neiman (2013). The global decline of the labor share. The Quarterly
+  Journal of Economics 129(1), 61–103.
+Lee, D. S. (1999). Wage inequality in the united states during the 1980s: Rising dispersion or
+  falling minimum wage? The Quarterly Journal of Economics 114(3), 977–1023.
+McGowan, M. A., D. Andrews, and V. Millot (2017). Insolvency regimes, zombie firms and
+  capital reallocation.
+Schwellnus, C., A. Kappeler, and P.-A. Pionnier (2017). Decoupling of wages from produc-
+  tivity.
+Syverson, C. (2017, May). Challenges to mismeasurement explanations for the us produc-
+  tivity slowdown. Journal of Economic Perspectives 31(2), 165–86.
+
+
+                                               20
+

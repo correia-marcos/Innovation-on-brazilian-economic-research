@@ -1,0 +1,1427 @@
+ 
+
+ 
+
+1 
+
+Carteiras de baixa volatilidade podem apresentar retornos elevados ? Uma análise no mercado de 
+
+ações brasileiro 
+
+ 
+Jorge Augusto Dias Samsonescu* 
+Igor Alexandre Clemente de Morais** 
+Guilherme Ribeiro de Macêdo*** 
+
+ 
+Resumo:  Este  artigo  analisa  o  desempenho  fora  da  amostra  de  carteiras  de  mínima  variância  e  baixa 
+volatilidade no mercado de ações brasileiro entre 2003 e 2013, comparativamente ao índice IBOVESPA e 
+a uma carteira igualmente ponderada. As carteiras de mínima variância foram  otimizadas com  restrição 
+de posições vendidas e limite de peso para os ativos. A matriz de covariância foi estimada pelo método 
+amostral e método de encolhimento proposto por Ledoit e Wolf (2003). A carteira de baixa volatilidade 
+foi estruturada de forma similar ao método do índice S&P 500 Low Volatility. O período utilizado para o 
+rebalanceamento  das  carteiras  foi  quadrimestral  e  os  ativos  elegíveis  para  as  carteiras  foram  os 
+componentes  do  IBOVESPA  em  cada  quadrimestre  analisado.  A  comparação  das  carteiras  foi  feita 
+através  dos  indicadores  de  retorno,  desvio  padrão  e  índice  de  Sharpe  anualizados,  MVaR  e  maximum 
+drawdown.  Os  resultados  apontam  para  a  importância  na  escolha  do  limite  de  pesos  para  os  ativos  das 
+carteiras de mínima variância. As carteiras de menor risco obtiveram os melhores resultados em todos os 
+indicadores testados. 
+Palavras-chave:  Carteira  de  mínima  variância.  Baixa  volatilidade.  Otimização  de  carteiras.  Matriz  de 
+covariância. Avaliação de desempenho. 
+ 
+Abstract:  This  study  analyzes  the  out-of-sample  performance  of  minimum-variance  and  low  volatility 
+portfolios in the Brazilian stock market from 2003 to 2013, when compared to IBOVESPA index and an 
+equally  weighted  portfolio.  The  minimum  variance  portfolios  have  been  optimized  with  short  selling 
+restriction and weight limits for the assets. The covariance matrix was estimated by sample method and 
+shrinkage  method  proposed  by  Ledoit  &  Wolf  (2003).  The  low  volatility  portfolio  was  structured  in  a 
+similar  way  to  the  S&P  500  Low  Volatility  index  method.  The  portfolios  rebalancing  period  were 
+quarterly and the eligible assets for the portfolios were IBOVESPA components in each analyzed period. 
+The  portfolios  performance  was  evaluated  through  indicators  such  return,  standard  deviation,  Sharpe 
+ratio,  maximum  drawdown  and  MVAR  indicators.  The  results  point  to  the  importance  in  choosing  the 
+weight  limits  for  the  assets  of  minimum-variance  portfolios.  Lower  risk  portfolios  delivered  the  best 
+results in all tested indicators. 
+Keywords:  Minimum-variance  portfolio.  Low  volatility.  Portfolio  optimization.  Covariance  matrix. 
+Performance measurement. 
+ 
+Área 8: Microeconomia, Métodos Quantitativos e Finanças 
+Classificação JEL: C46, G11, G14, G32 
+ 
+1 INTRODUÇÃO 
+
+Um  dos  maiores  axiomas  da  teoria  financeira  sugere  que  os  investidores  devem  aceitar  maior 
+risco para obter melhores rentabilidades. Desde o trabalho pioneiro de Markowitz (1952), o conceito da 
+fronteira eficiente vem sendo discutido, quando se estabeleceu os padrões para o que é conhecida como a 
+Moderna  Teoria  dos  Portfólios.  O  autor  introduziu  o  conceito  de  média  variância  e  diversificação  de 
+portfólio através da construção de carteiras eficientes com minimização de risco. As carteiras eficientes 
+
+                                            
+*   Mestre em Economia/Unisinos. 
+**   Professor do PPGE/Unisinos. 
+***  Professor do PPGE/UFRGS 
+
+ 
+
+ 
+
+2 
+
+são  combinações  de  ativos  com  o  menor  nível  de  risco  esperado  para  determinado  nível  de  retorno 
+esperado, ou o maior retorno para dado nível de risco. 
+
+Estendendo  o  trabalho  de  Markowitz,  Sharpe  (1964)  criou  o  modelo  Capital  Asset  Price  Model 
+(CAPM). O modelo pressupõe que o retorno esperado de uma ação é linearmente proporcional ao risco 
+de  mercado  (β).  Para  implementar  estas  estratégias,  há  a  necessidade  de  estimar  tanto  o  risco  como  o 
+retorno  esperado.  Entretanto,  conforme  Clarke,  De  Silva  e  Thorley  (2006)  salientam,  estimar  estes 
+retornos é um dos principais problemas enfrentados na prática. 
+
+Porém,  contrariando  estas  bases  teóricas  do  modelo  CAPM,  Haugen  e  Heins  (1975)  constatam 
+que  ações  de  baixa  volatilidade  produzem  retornos  maiores  que  seus  pares  mais  arriscados.  Na  mesma 
+linha, Fama e French (1992) documentam que a relação entre o retorno das ações no mercado americano 
+e o β de mercado foi neutra entre 1963 e 1990. As evidências destes importantes autores impulsionaram 
+os estudos sobre carteiras de mínima variância, as quais  não dependem  da estimação de retornos  e têm 
+menor risco que as carteiras de média variância baseadas nas abordagens de Markowitz e Sharpe. Com 
+isso, surgiram indícios de que as ações e carteiras com menor risco tendem a apresentar maiores retornos, 
+o  que  foi  chamado  de  “efeito  volatilidade”,  podendo  ser  destacado  os  estudos  de  Black  (1993), 
+Falkenstein (1994) e Haugen e Baker (1991). 
+
+O  objetivo  deste  artigo  é  analisar  o  desempenho  das  carteiras  de  mínima  variância  e  baixa 
+volatilidade no mercado de ações brasileiro1. Para tanto, utiliza-se abordagem semelhante aos estudos de 
+Thomé Neto, Leal e Almeida (2011) e Rubesam e Beltrame (2013), porém com importantes diferenças. 
+Primeiramente, este estudo é feito com rebalanceamentos quadrimestrais das carteiras, diferente daqueles 
+autores que testam períodos diários, semanais, mensais e até trimestrais. Esta opção é tomada seguindo o 
+padrão do índice IBOVESPA (IBOV), buscando promover uma comparação mais justa com o índice, que 
+é  utilizado  como  benchmark,  não  permitindo  que  a  composição  das  carteiras  seja  alterada  enquanto  a 
+composição  do  IBOV  não  for  alterada.  Outra  importante  diferença  neste  estudo  é  a  construção  de  uma 
+carteira  de  baixa  volatilidade  alternativa  às  conhecidas  carteiras  de  mínima  variância.  Esta  carteira  de 
+baixa  volatilidade  tem  metodologia  de  formação  que  se  assemelha  aos  índices  S&P  Low  Volatility  da 
+empresa  S&P  Dow  Jones  Indices,  e  ao  método  utilizado  por  Blitz  e  Van  Vliet  (2007).  Este  método  é 
+inédito em estudos realizados no Brasil e, acredita-se que, apesar da simplicidade da carteira, esta seja a 
+maior contribuição deste estudo. 
+
+Além da carteira de baixa volatilidade, são construídas carteiras de mínima variância, otimizadas 
+utilizando  a  matriz  de  covariância  amostral  e  a  matriz  de  covariância  pelo  método  de  encolhimento 
+proposto por Ledoit e Wolf (2003). Ademais, buscou-se contemplar no estudo, a imposição de restrição 
+de peso aos ativos das carteiras de mínima variância, por ser um tema muito discutido depois do artigo 
+apresentado por Jagannathan e Ma (2003). 
+
+Para  tanto,  na  seção  seguinte  realiza-se  uma  revisão  dos  principais  estudos  sobre  carteiras  de 
+mínima variância, tanto no Brasil quanto no resto do mundo. Na terceira seção, descrevem-se os dados e 
+software  utilizados  no  estudo,  bem  como  as  diferentes  abordagens  para  estimação  da  matriz  de 
+covariância.  Além  disso,  apresenta-se  o  processo  de  otimização  das  carteiras  de  mínima  variância  e  os 
+métodos para construção e análise da performance das carteiras. A quarta seção apresenta os resultados e 
+a  comparação  do  desempenho  das  carteiras.  Por  fim,  na  última  seção  manifestam-se  as  considerações 
+finais do estudo. 
+
+ 
+
+2 REVISÃO DE LITERATURA 
+
+O trabalho pioneiro de Markowitz (1952) estabelece aos investidores um conceito fundamental de 
+trade-off  entre  risco  e  retorno  esperados.  Desde  então,  este  conceito  é  debatido  pelos  estudiosos  da 
+volatilidade em séries financeiras, com aplicações nos mercados de opções, análise de risco e formação 
+
+                                            
+1 A denominação “mínima variância” foi utilizada para definir as duas carteiras construídas e otimizadas para atingir a menor 
+variância  possível,  enquanto  a  denominação  “baixa  volatilidade”  foi  utilizada  para  descrever  a  carteira  de  baixo  risco 
+construída com base no índice S&P500 Low Volatility. 
+
+ 
+
+ 
+
+3 
+
+de  carteiras.  Neste  último  caso,  pode-se  destacar  os  estudos  sobre  carteiras  de  mínima  variância,  que 
+buscam  estabelecer  portfólios  com  a  menor  variância  possível,  independente  da  estimativa  de  retornos 
+dos componentes da carteira. 
+
+Entre esses estudos, Haugen e Baker (1991) analisam dados dos Estados Unidos para mostrar que 
+a  carteira  de  mercado  não  é  um  investimento  eficiente,  e  a  comparam  com  uma  carteira  de  baixa 
+volatilidade. O estudo compreende os anos de 1972 a 1989 e as mil maiores ações do mercado americano 
+pelo  critério  de  capitalização  de  mercado.  Os  autores  impõem  algumas  restrições  a  fim  de  buscar  a 
+diversificação,  como  uma  restrição  de  peso  máximo  por  ativo  e  por  setor.  Os  resultados  do  estudo 
+mostram  que  a  carteira  de  mínima  variância  apresenta  menor  risco  e  retornos  superiores  à  carteira  de 
+mercado.  Outro  fato  notável,  encontrado  também  por  estes  autores  e,  posteriormente,  por  Ang  et  al. 
+(2006), é que as carteiras de mínima variância apresentam menor volatilidade conforme o esperado, mas 
+sem comprometer o retorno realizado, que na média é maior que a carteira de mercado. 
+
+De  forma  semelhante,  Clarke,  De  Silva  e  Thorley  (2006)  propõem  a  construção  de  carteiras  de 
+mínima variância para  ações dos  Estados Unidos, porém  com  dados de janeiro de 1968 a dezembro de 
+2005, com restrição a posições vendidas. O estudo é similar ao de Haugen e Baker (1991), mas abrange 
+um maior período e utiliza técnicas mais avançadas de estruturação da matriz de covariância. Neste caso, 
+a  matriz  de  covariância  é  estimada  inicialmente  pelo  processo  amostral.  Para  contornar  problemas  de 
+estimação,  reestrutura-se  a  matriz  de  covariância  utilizando  um  processo  de  componente  principal 
+sugerido  por  Connor  e  Korajczyk  (1988),  e  alternativamente  o  processo  de  encolhimento  proposto  por 
+Ledoit  e  Wolf  (2003).  O  estudo  conclui  que  os  processos  de  otimização  de  carteira  funcionam  bem,  a 
+volatilidade é persistente e de certa forma previsível. 
+
+Um  estudo  comparativo  ainda  mais  completo  é  desenvolvido  por  DeMiguel,  Garlappi  e  Uppal 
+(2009),  no  qual  analisam  quatorze  diferentes  abordagens  de  otimização  de  alocação  de  ativos  e 
+compararam a uma simples abordagem de pesos iguais para os ativos. Os autores constatam que nenhuma 
+das  quatorze  abordagens  entrega  um  índice  de  Sharpe  maior  que  a  ingênua  estratégia  de  pesos  iguais. 
+Muito  se  atribui  a  este  resultado  o  fato  de  que  as  técnicas  de  otimização  são  sensíveis  aos  erros  de 
+estimação. 
+
+Além  destes  trabalhos,  outros  importantes  autores  apresentam  trabalhos  relevantes  na  área.  É  o 
+caso  de  Jagannathan  e  Ma  (2003),  que  analisam  portfólios  de  mínima  variância.  De  acordo  com  os 
+autores, normalmente são restringidas as posições vendidas nas carteiras e utilizados limites máximos no 
+peso  de  cada  ativo  no  portfólio.  Eles  concluem  que  ao  impor  estas  restrições,  não  permitindo  posições 
+vendidas e limitando o peso dos ativos, as carteiras são beneficiadas. 
+
+Com  um  estudo  mais  recente,  Blitz,  Pang  e  Van  Vliet  (2013)  pesquisam  a  relação  entre  risco  e 
+retorno nos mercados de ações emergentes e encontram que essa relação é neutra ou até mesmo negativa, 
+contrariando as teorias tradicionais como o CAPM, que prevê uma relação positiva entre risco e retorno. 
+Isto reafirma os importantes estudos de Black, Jensen e Scholes (1972), Blitz e Van Vliet (2007), Fama e 
+MacBeth (1973) e Haugen e Heins (1975). 
+
+No Brasil, estudos semelhantes são desenvolvidos. Thomé Neto, Leal e Almeida (2011) verificam 
+se  uma  carteira  de  mínima  variância  global  produz  resultados  superiores  ao  IBOV  e  Fundos  de 
+Investimentos  em  Ações.  O  período  analisado  vai  de  janeiro  de  1998  a  dezembro  de  2008.  As  ações 
+utilizadas  são  as  que  compõem  o  IBOV  no  período  da  análise.  Não  permite-se  posições  vendidas  nas 
+carteiras  formadas  e  os  autores  testam  diferentes  restrições  de  pesos  para  os  ativos.  A  matriz  de 
+covariância é estimada pela forma clássica (amostral) e também pelo método sugerido por Leal e Mendes 
+(2005)  através  de  um  estimador  Minimum  Covariance  Determinant  (MCD)  de  Rousseeuw  (1984).  Os 
+autores  concluem  que  a  carteira  de  mínima  variância  global  apresenta  resultados  médios  superiores  e 
+desvio-padrão inferior ao IBOV. Apesar disto, os autores constatam que uma carteira mais simples com 
+ponderação  igual  entre  os  ativos  obtém  retornos  similares  à  carteira  de  mínima  variância  estudada.  O 
+trabalho  indica  também  que  a  imposição  de  limites  no  peso  e  na  quantidade  dos  ativos  apresenta 
+vantagens para a alocação dos ativos na carteira. 
+
+ 
+
+ 
+
+4 
+
+Outro  estudo  desenvolvido  por  Santos  e  Tessari  (2012)  verifica  o  desempenho  de  estratégias  de 
+otimização  por  média  variância  e  mínima  variância,  comparados  ao  IBOV  e  uma  carteira  igualmente 
+ponderada. O estudo compreende o período de março de 2009 a novembro de 2011, utilizando 45 ativos 
+que faziam parte do IBOV tanto no inicio quanto no final do período analisado. A matriz de covariância é 
+estimada através de cinco diferentes abordagens: matriz amostral,  matriz  RiskMetrics e pelo  método de 
+encolhimento através de três estimadores propostos por Ledoit e Wolf (2003, 2004a, 2004b). Os autores 
+concluem  que  as  carteiras  otimizadas  por  média  variância  e  mínima  variância  apresentam  desempenho 
+superior  aos  benchmarks  propostos,  independente  da  forma  como  a  matriz  de  covariância  tenha  sido 
+estimada. Este trabalho de Santos e Tessari (2012) difere em alguns aspectos do estudo de Thomé Neto, 
+Leal  e  Almeida  (2011),  o  que  pode  explicar  a  divergência  nos  resultados  obtidos.  De  acordo  com  os 
+autores, uma das diferenças deste estudo é a não imposição de restrição de pesos para os ativos, tornando 
+a  carteira  mais  flexível.  O  estudo  compreende  um  período  diferente  e,  além  disso,  são  utilizadas  mais 
+alternativas  de  estimadores  para  a  matriz  de  covariância.  Por  fim,  o  algoritmo  utilizado  para  resolver  o 
+problema de otimização é diferente da ferramenta aplicada pelos outros autores. 
+
+Seguindo a mesma linha de pesquisa, Rubesam e Beltrame (2013) realizam um estudo de carteiras 
+de  variância  mínima  (CVM)  de  ações  na  bolsa  brasileira.  O  trabalho  é  semelhante  ao  de  Thomé  Neto, 
+Leal  e  Almeida  (2011)  e  de  Santos  e  Tessari  (2012),  porém  os  autores  fazem  os  testes  com  uma 
+quantidade maior de ações do que os estudos anteriores. O período do estudo é de junho de 1998 a junho 
+de 2011, utilizando inicialmente todas as ações negociadas na janela de tempo estudada e que atenderam 
+alguns critérios dos autores. 
+
+A  matriz  de  covariância  utilizada  nas  CVM  é  estimada  pelos  autores  através  de  diferentes 
+métodos.  O  mais  simples  é  através  da  matriz  de  covariância  amostral.  Testa-se  ainda,  outros  três 
+diferentes modelos para estimar a matriz de covariância. Um deles é através do processo de encolhimento 
+semelhante ao usado por Santos e Tessari (2012). O outro método utilizado é a ponderação exponencial 
+ou  EWMA  (Exponentially-Weighted  Moving  Average).  Este  método  pondera  exponencialmente  dando 
+maior peso para os dados mais recentes. Para isso, o método incorpora um parâmetro de decaimento das 
+ponderações,  e  este  parâmetro  é  meramente  arbitrário.  Por  fim,  é  utilizado  o  método  DCC-GARCH 
+multivariado. 
+
+Além  das  CVM,  os  autores  constroem  uma  carteira  que  maximiza  a  razão  de  Sharpe  (CRS). 
+Teoricamente,  esta  carteira  produz  o  melhor  retorno  ajustado  à  volatilidade.  Também  elabora-se  uma 
+carteira  que  maximiza  a  média  geométrica  dos  retornos  (CMG).  (Ver,  por  exemplo,  CHRISTENSEN, 
+2005).  Por  fim,  os  autores  criam  uma  simples  carteira  igualmente  ponderada  (CIP).  Para  todas  essas 
+abordagens,  é  utilizada  uma  restrição  de  posição  vendida  que  depois  é  liberada,  permitindo  carteiras 
+130/30. Além desta, é testada uma restrição para o peso máximo de cada ativo nas carteiras. 
+
+Os  resultados  são  comparados  ao  IBOV  e  aos  outros  benchmarks  de  otimização  (CRS,  CMG  e 
+CIP), e indicam  que o desempenho das CVM é melhor e estatisticamente significante. O estudo  aponta 
+que  os  métodos  mais  simples  de  estimação  da  matriz  de  covariância  produzem  os  melhores  resultados. 
+Outra  constatação  é  que  as  carteiras  que  utilizam  as  médias  históricas  de  retorno  no  processo  de 
+otimização produzem resultados ruins fora da amostra. 
+
+Além  desses  estudos  que  investigam  a  construção  de  carteiras  de  mínima  variância,  muitas 
+pesquisas são desenvolvidas para analisar o comportamento da volatilidade em séries financeiras. Alguns 
+autores modelam a volatilidade de índices de ações no Brasil, e destacam-se Da Silva e Da Silva (2013), 
+Jubert  et  al.  (2009),  Medeiros  (2012),  e  Mól,  Dos  Santos  Felipe  e  Júnior  (2014),  onde  todos  verificam 
+características de assimetria e persistência da volatilidade. 
+
+Por  fim,  esta  seção  busca  descrever  os  principais  estudos  sobre  carteiras  de  mínima  variância, 
+identificando  em  linhas  gerais,  que  as  carteiras  de  menor  risco  tendem  a  ser  uma  boa  opção  de 
+investimento. Na próxima seção apresentam-se os dados e metodologia utilizados no trabalho. 
+
+ 
+
+ 
+
+ 
+
+5 
+
+3 METODOLOGIA E DADOS 
+
+Utilizou-se neste artigo dados de retorno diário do IBOV e das ações que compuseram o índice no 
+período de janeiro de 2003 até dezembro de 2013. A composição de cada quadrimestre da carteira teórica 
+do  IBOV  foi  obtida  através  do  sistema  de  recuperação  de  informações  da  BM&FBovespa.  As 
+informações sobre retorno do IBOV e dos ativos foram obtidas na base da Economática. As informações 
+referentes a mudanças de códigos, fusões, aquisições e cancelamento de ativos listados foram coletadas 
+através  do  sistema  de  notícias  Bloomberg.  Além  disso,  foram  utilizados  os  dados  de  retorno  do  CDI2 
+diário  para  o  cálculo  do  índice  de  Sharpe  das  carteiras.  Os  ativos  lançados  na  bolsa  e  que  entraram  no 
+IBOV  antes  de  um  ano  de  negociações  não  foram  utilizados  para  o  cálculo  da  matriz  de  covariância  e 
+tampouco  para  a  formação  da  carteira  de  baixa  volatilidade,  por  não  haver  dados  suficientes  para  a 
+estimação. Assim que estes ativos completaram um ano de existência (e se mantiveram no IBOV), foram 
+disponibilizados para utilização nas carteiras. 
+
+Todas os cálculos necessários para a formação das carteiras foram realizados no software livre R 
+(TEAM,  2014),  através  do  ambiente  integrado  de  desenvolvimento  RStudio.  (RSTUDIO,  2014).  No 
+ambiente do software, além das funções disponíveis no pacote base, foram utilizados diferentes pacotes 
+para  os  cálculos  e  estimações.  O  pacote  xts  (RYAN;  ULRICH,  2014)  foi  necessário  para  a  formatação 
+dos dados para o estilo “série de tempo”. Para estimar a matriz de covariância pelos métodos utilizados, 
+foi usado o pacote tawny (ROWE, 2014), e a otimização quadrática das carteiras de mínima variância foi 
+feita através do pacote quadprog (TURLACH; WEINGESSEL, 2013). Todas as estatísticas das carteiras 
+construídas,  bem  como  os  gráficos  gerados,  foram  possíveis  através  do  pacote  PerformanceAnalytics 
+(PETERSON; CARL, 2014). 
+
+Desta forma, foram  construídas quatro diferentes carteiras  quadrimestrais: (i) carteira com pesos 
+igualmente ponderados; (ii) carteira de mínima variância através da matriz de correlação pelo método de 
+encolhimento  (CMVL)  com  restrição  de  pesos  de  8%  para  os  ativos;  (iii)  carteira  de  mínima  variância 
+através  da  matriz  de  correlação  amostral  (CMVA)  com  restrição  de  pesos  de  6%  para  os  ativos;  (iv) 
+carteira de baixa volatilidade calculada com 17% de ativos menos voláteis do total da carteira IBOV. 
+
+Para a estimação da matriz de covariância, tanto pelo método de encolhimento como pelo método 
+amostral, foi utilizado um processo semelhante ao que Clarke, De Silva e Thorley (2006) realizaram para 
+dados diários, através de janelas móveis. No início de cada quadrimestre, iniciando em janeiro de 2003, a 
+matriz de covariância dos ativos que compõem o IBOV no início do mesmo período (janeiro de 2003) foi 
+estimada pelos dois métodos, através do histórico de retorno diário dos últimos doze meses, de janeiro de 
+2002 a dezembro de 2002. Com esta matriz, foi feita a otimização dos pesos dos ativos para compor as 
+carteiras de mínima variância. O mesmo processo de janelas móveis foi realizado para a carteira de baixa 
+volatilidade,  porem  sem  a  necessidade  de  estimação  da  matriz  de  covariância.  As  carteiras  foram 
+mantidas sem qualquer alteração por todo o quadrimestre. 
+
+No  momento  seguinte,  o  processo  foi  realizado  para  o  próximo  quadrimestre  que  se  iniciou  em 
+maio  de  2003,  utilizando  para  a  estimação  das  matrizes  e  carteiras  o  histórico  de  retorno  das  ações  no 
+período de maio de 2002 a abril de 2003. A cada quadrimestre o processo se repetiu, movendo a janela 
+um quadrimestre à frente. Desta forma, as carteiras são estimadas para trinta e três quadrimestres fora da 
+amostra  (11  anos),  e  posteriormente  comparadas  ao  IBOV,  que  serve  como  benchmark.  A  carteira  CIP 
+não  passou  por  nenhum  processo  de  otimização  ou  análise  de  retornos  históricos  e  foi  calculada 
+atribuindo-se o mesmo peso para todos ativos que compuseram o IBOV no quadrimestre analisado. 
+ 
+3.1 Otimização por mínima variância 
+
+A  otimização  de  carteiras  é  um  tema  bastante  abordado  desde  os  trabalhos  de  Markowitz 
+(1952,1959). Nestes estudos o autor definiu o modelo de média variância para a seleção de portfólios, que 
+posteriormente  passou  a  ser  considerada  a  base  para  a  Moderna  Teoria  do  Portfólio.  Estes  estudos 
+
+                                            
+2 O certificado de depósito interbancário (CDI) é utilizado como ativo livre de risco. 
+
+ 
+
+ 
+
+6 
+
+levantaram um contraponto à ideia que perdurava na época, que consistia em concentrar os investimentos 
+em  ativos  que  apresentavam  os  maiores  retornos  esperados.  O  autor  demonstrou  que  uma  carteira 
+diversificada  poderia  entregar  retornos  superiores  ao  de  uma  carteira  concentrada.  Uma  das  bases  do 
+modelo  é  que  o  investidor  maximiza  a  utilidade  em  função  do  risco  e  retorno  esperados.  Isso  significa 
+dizer  que  o  investidor  é  avesso  ao  risco,  e  o  grau  de  aversão,  define  o  prêmio  de  risco  esperado. 
+Markowitz  definiu  como  medida  de  risco  a  variância  dos  retornos  dos  ativos.  Então,  quanto  maior  a 
+variância e quanto mais avesso ao risco é o investidor, maior deve ser o retorno esperado. Para o autor, o 
+retorno esperado é uma variável aleatória com distribuição normal. 
+
+ Assim, a otimização de carteira por média variância sugerida por Markowitz passa pela solução 
+
+do seguinte problema 
+
+       
+
+   
+
+ 
+
+ 
+ 
+
+                                                                       
+
+    
+
+    
+ 
+
+onde          são  os  vetores  de  pesos  dos  ativos  na  carteira,         é  a  média  amostral  dos  excessos  de 
+retornos da carteira,       é a variância amostral dos retornos da carteira e   é o parâmetro de aversão ao 
+risco. A restrição     
+      garante que a soma dos pesos atinja 100%, significando investimento total da 
+carteira.  Um  requisito  adicional  normalmente  utilizado  é  a  impossibilidade  de  posições  vendidas  e  um 
+limite máximo   de peso para as ações, o que acrescenta a seguinte restrição ao problema de otimização 
+
+                   
+
+Um dos problemas que podem surgir na abordagem de média variância é a ocorrência de erros na 
+estimação dos retornos dos ativos. Sabe-se que a estimação de retornos tem um grau de dificuldade maior 
+que  a  estimação  da  covariância  dos  ativos  (ver,  por  exemplo,  MERTON,  1980)  e  pequenos  erros  na 
+estimação dos retornos podem causar grande impacto nos pesos dos ativos na carteira de média variância. 
+Entretanto, a carteira de mínima variância tem a propriedade de ser construída independente de qualquer 
+estimação  de  retorno  dos  ativos.  O  objetivo  das  carteiras  de  média  variância  é  minimizar  o  risco  para 
+dado retorno, enquanto a carteira de mínima variância tem a função de minimizar o risco independente do 
+retorno esperado. (CLARKE; DE SILVA; THORLEY, 2006). 
+
+Apesar  desta  abordagem  não  seguir  a  função  utilidade  do  investidor  compreendida  na  teoria  de 
+Markowitz, pode ser considerada como um caso especial da Equação 1, com um coeficiente de aversão 
+ao  risco  infinito  e  prêmio  de  risco  zero.  Neste  caso,  é  ignorado  o  retorno  esperado,  e  compreende-se  o 
+problema de otimização como 
+
+                                                                              
+
+   
+
+ 
+
+               
+
+    
+
+ 
+
+                   
+
+Conforme comentado anteriormente, não há necessidade de estimar os retornos dos ativos, assim 
+o  foco  passa  à  estimação  da  matriz  de  covariância  e  à  otimização  dos  pesos  dos  ativos  para  formar  a 
+carteira de mínima variância. 
+ 
+3.1.1 Métodos de estimação da matriz de covariância 
+
+Com  o  objetivo  de  construir  a  carteira  de  mínima  variância,  a  matriz  de  covariância  deve  ser 
+estimada  utilizando  as  informações  disponíveis  no  período  anterior.  Existem  inúmeros  métodos  de 
+estimação  da  matriz  de  covariância  e,  neste  estudo,  são  utilizados  o  método  de  matriz  amostral  e  o 
+método  de  encolhimento  proposto  por  Ledoit  e  Wolf  (2003).  A  utilização  da  matriz  amostral  é  muito 
+criticada no meio acadêmico, por sofrer alguns problemas, por exemplo, quando a quantidade de ativos é 
+maior  que  o  período  amostral.  (Ver,  por  exemplo,  DEMIGUEL  et  al.,  2009;  CLARKE;  DE  SILVA; 
+THORLEY,  2006;  LEDOIT;  WOLF,  2004b).  Como,  em  média,  este  trabalho  utiliza  62  ativos,  não 
+
+ 
+
+ 
+
+7 
+
+passando de 73 ativos e o período por amostra é em média 250 dias, não espera-se este problema comum 
+citado pelos autores. 
+
+Enquanto  existem  técnicas  mais  sofisticadas  de  estimação  da  matriz  de  covariância  como,  por 
+exemplo,  a  modelagem  GARCH,  decidiu-se  utilizar  o  histórico  da  amostra  de  dados  para  que  as 
+principais  conclusões  sejam  de  fácil  replicação.  Outro  motivo  para  a  não  utilização  de  modelagem 
+GARCH aparece na periodicidade das carteiras: a composição não muda durante um quadrimestre ou em 
+média, aproximadamente 82 dias. Isso significaria estimar a volatilidade pelos modelos GARCH para 82 
+períodos  para  frente,  o  que  poderia  gerar  muitos  erros  na  estimação;  ou  alternativamente  calcular  a 
+volatilidade somente para o primeiro dia da carteira, o que tornaria a carteira muito próxima dos outros 
+métodos utilizados no trabalho. 
+ 
+3.1.1.1 Matriz de covariância amostral 
+
+Apesar do método de estimação amostral ser pouco usado, pois impõe pouca estrutura à matriz de 
+covariância, selecionou-se este método pela facilidade computacional e para efeito de comparação com o 
+método  de  encolhimento.  Se  a  quantidade  de  ativos     assume  o  mesmo  tamanho  da  série  histórica  de 
+retornos   ,  o  número  total  de  parâmetros  para  se  estimar  é  muito  grande.  Quando        ,  a  matriz  de 
+covariância amostral passa a ser singular (não inversível).3 
+
+Assumindo     como  uma  matriz       ,  e  que  os  retornos  dos  ativos  são  independentes  e 
+
+identicamente distribuídos (i.i.d.), a matriz de covariância amostral é definida por 
+
+     
+
+          
+
+                                                                     
+
+ 
+ 
+
+ 
+ 
+
+onde     são  vetores  de  “uns”  e     é  a  matriz  de  identidade.  A  Equação  3  mostra  porque  a  matriz  de 
+covariância amostral não é inversível quando      4. Chamamos de     as entradas de  . 
+
+Este  problema  na  estimação  ofusca  algumas  -  supostas  -  boas  propriedades  da  matriz  de 
+covariância amostral,  como  a máxima verossimilhança sobre  condições de normalidade da distribuição. 
+Isso significa dizer que é muito provável que os parâmetros estimados sejam semelhantes aos dados que 
+serviram  como  base.  Isto  pode ser um  problema se a amostra não for muito grande, levando a erros de 
+estimação devido à pequena quantidade de dados avaliada, ou seja, se    não for maior que  . No caso 
+específico  deste  estudo,  todos  os  períodos  analisados  apresentam        ,  então  espera-se  que  a  matriz 
+amostral não reflita tantos erros na estimação. 
+ 
+3.1.1.2 Matriz de covariância pelo método de encolhimento 
+
+Os  possíveis  problemas  resultantes  da  matriz  amostral  podem  ser  amenizados  impondo  alguma 
+estrutura ao estimador. Para isso, Ledoit e Wolf (2003) propõem a utilização da média ponderada entre a 
+matriz de covariância amostral e a matriz de covariância gerada pelo conhecido modelo de único fator de 
+Sharpe (1963). Este modelo de único fator é dado pelo retorno   dos ativos   no período   
+
+                                                                                            
+onde  se  considera  não  correlacionados  o  retorno  de  mercado       e  os  resíduos     .  Assume-se 
+também  que  a  variância  dos  ativos  é  constante.  Logo,                  .  Desta  forma,  a  matriz  de 
+covariância subjacente ao modelo é dada por 
+
+                                                                                
+   é a variância dos retornos de mercado     ,   é o vetor de inclinações   da regressão e    é a 
+onde    
+matriz diagonal das variâncias dos resíduos     . Denota-se     as entradas de  . Sendo assim,  Ledoit e 
+
+         
+
+                                            
+3 Os pesos ótimos para os ativos da carteira dependem da matriz de covariância amostral invertida. 
+4 O ordenamento de   é no máximo igual ao ordenamento da matriz          , que é      . Desta forma, quando 
+                o  ordenamento  da  matriz  fica  deficitário,  não  sendo  possível,  por  exemplo,  estimar  a  matriz  de 
+covariância irrestrita. 
+
+ 
+
+ 
+
+8 
+
+Wolf (2003) expõem que a matriz de covariância dos retornos das ações     gerada pelo modelo de único 
+fator de Sharpe (1963), rodando uma regressão dos retornos das ações, é dada por 
+
+                                                                               
+   é a variância amostral dos retornos de mercado    ,   é o vetor de inclinações   da regressão e 
+
+onde    
+  é a matriz diagonal das variâncias residuais amostrais. Caracteriza-se     as entradas de  . 
+
+         
+
+Alguns autores que abordaram a covariância documentaram problemas opostos: Jobson e Korkie 
+(1980)  verificaram  que  a  performance  da  matriz  de  covariância  amostral  é  ruim;  por  outro  lado, 
+Rosenberg (1974) discutiu a importância da matriz de covariância estimada além do fator de mercado, ou 
+modelo de único fator, por exemplo. Com isso, Ledoit e Wolf (2003)  concluem que um modelo que se 
+situe  entre  matriz  de  covariância  amostral  e  a  matriz  gerada  pelo  modelo  de  único  fator  é  o  mais 
+adequado. 
+
+Assim,  o  estimador  de  encolhimento  da  matriz  de  covariância  dos  retornos  das  ações  sugerido 
+pelos autores é a média ponderada entre a matriz de covariância amostral e a matriz de covariância gerada 
+pelo modelo de único fator 
+
+    
+
+ 
+ 
+
+ 
+ 
+
+          
+
+                                                                    
+
+O parâmetro   mede a intensidade de encolhimento para a amostra   e precisa ser estimado, pois 
+
+depende de variáveis não observáveis. O cálculo de   é dado por 
+
+   
+
+       
+
+ 
+
+                                                                          
+
+onde     é  a  soma  das  variâncias  assintóticas  de       ,     é  a  soma  das  covariâncias  assintóticas  de 
+              . Por fim,   é a medida do erro de especificação do modelo de único fator, definido pela 
+soma de               
+ 
+3.2 Carteira de baixa volatilidade 
+
+As carteiras de mínima  variância exigem  a utilização de  softwares estatísticos para  a estimação, 
+tornando  a  implementação  pouco  prática  para  pequenos  investidores.  Para  contornar  este  problema, 
+propõe-se a construção de uma carteira de baixa volatilidade (CBV) baseada na metodologia aplicada nos 
+índices S&P Low Volatility, da empresa S&P Dow Jones Indices, que se auto afirma ser “a maior fonte 
+mundial de conceitos baseados em índices, dados e pesquisa”. Os índices de baixa volatilidade da  S&P 
+medem  o  desempenho  das  ações  menos  voláteis  do  índice  benchmark.  Este  método  se  assemelha  ao 
+desenvolvido por Blitz e Van Vliet (2007), com algumas alterações no tamanho da amostra, quantidade e 
+ponderação dos ativos. 
+
+A volatilidade é definida como sendo o desvio padrão anualizado dos retornos das ações do IBOV 
+nos últimos doze meses anteriores ao rebalanceamento da carteira. Após isso, os ativos são classificados 
+por ordem decrescente baseado no inverso da volatilidade. Assim, os ativos com menor volatilidade são 
+os  melhores  classificados  e,  portanto,  integram  a  carteira  de  baixa  volatilidade.  Nos  índices  S&P  Low 
+Volatility  é  utilizada  uma  quantidade  fixa  destes  ativos  menos  voláteis,  pois  os  índices  base  são 
+constituídos  também  por  uma  quantidade  fixa.  No  caso  brasileiro,  o  IBOV  apresenta  poucos  ativos  se 
+comparado,  por  exemplo,  ao  índice  americano,  e  varia  a  cada  rebalanceamento,  não  tendo  uma 
+quantidade fixa. 
+
+Devido a esta particularidade do IBOV, realizou-se um ajuste na quantidade de ativos que foram 
+selecionados  para  a  CBV,  utilizando  um  percentual  fixo  (17%)  do  total  de  ações  a  cada  período 
+analisado. A ponderação dos pesos da carteira CBV foi realizada a cada quadrimestre da seguinte forma 
+
+    
+
+ 
+
+       
+ 
+ 
+   
+
+       
+
+ 
+
+                                                                       
+
+ 
+
+ 
+
+9 
+
+onde    é o peso de cada ativo e         é o desvio padrão anualizado dos ativos. 
+ 
+3.3 Carteira igualmente ponderada 
+
+Na grande maioria dos trabalhos sobre carteiras de mínima variância (DEMIGUEL; GARLAPPI; 
+UPPAL, 2009, KRITZMAN; PAGE; TURKINGTON, 2010, THOMÉ NETO; LEAL; ALMEIDA, 2011, 
+SANTOS;  TESSARI,  2012,  RUBESAM;  BELTRAME,  2013,  entre  outros)  é  utilizada  a  carteira 
+igualmente ponderada pela sua facilidade de construção e para servir como um benchmark alternativo aos 
+índices de mercado. Em algumas pesquisas, esta carteira apresentou desempenho superior ao mercado e 
+até mesmo às carteiras otimizadas. 
+
+Neste estudo, a CIP foi constituída com base nos ativos do IBOV do quadrimestre analisado. Os 
+
+pesos da CIP, para   ações, são dados por 
+
+           
+
+ 
+ 
+
+                                                                      
+
+ 
+3.4 Medidas de avaliação de desempenho das carteiras 
+
+A  análise  das  carteiras  construídas  foi  feita  através  de  indicadores  amplamente  utilizados  no 
+mercado financeiro e nos estudos da área. Para este propósito, utilizou-se medidas de retorno dos ativos, 
+volatilidade, índice de Sharpe, Value at Risk (VaR) e maximum drawdown. Os indicadores de retorno e 
+índice  de  Sharpe  são  considerados  melhores  quando  maior  for  seu  valor,  enquanto  a  medida  de 
+volatilidade é considerada melhor quanto menor for o valor. As medidas de VaR e maximum drawdown 
+geram valores negativos, então quanto menor o valor em módulo, melhor. 
+ 
+3.4.1 Retorno das carteiras 
+
+Ao  comparar  as  carteiras  por  um  longo  período,  é  mais  prático  utilizar  valores  padronizados  na 
+análise.  O  retorno  anualizado  é  o  indicador  mais  utilizado  pelos  praticantes  do  mercado,  e  também 
+amplamente usado no meio acadêmico. O retorno composto anualizado é calculado da seguinte forma 
+
+ 
+
+ 
+
+ 
+  
+
+                
+
+ 
+
+                                                           
+
+   
+
+onde    é o retorno da carteira no período    e   é o  número de períodos   em  um  ano. O retorno     é 
+dado por 
+
+ 
+
+                                                                                
+
+ 
+
+   
+
+sendo    o retorno do ativo   no período  . 
+ 
+3.4.2 Volatilidade 
+
+Para a análise do risco foi utilizada a medida de desvio padrão anualizado 
+
+     
+
+ 
+ 
+
+ 
+           
+   
+
+                                                          
+
+                                                                                
+onde      é  o  retorno  da  carteira  no  período   ,      é  o  retorno  médio  da  carteira  no  período  e          é  o 
+desvio padrão anualizado. 
+
+ 
+
+ 
+
+ 
+3.4.3 Índice de Sharpe 
+
+10 
+
+Naturalmente, assume-se que os investidores são avessos  ao risco. Dado dois  ativos ou carteiras 
+com o mesmo retorno, o investidor irá preferir o de menor risco. Porém, quando as carteiras apresentam 
+diferentes valores de retorno e risco, não é possível fazer esta comparação de maneira direta.  Para isso, o 
+Nobel  William  Sharpe  desenvolveu  uma  ferramenta  para  resolver  este  problema.  O  índice  de  Sharpe 
+calcula  a  relação  entre  risco  e  retorno,  através  do  excesso  de  retorno  em  relação  ao  desvio  padrão  da 
+carteira, determinando assim a recompensa (retorno) por unidade de risco (desvio padrão) que a carteira 
+foi exposta. O cálculo do índice é expresso por 
+
+      
+
+          
+
+  
+
+                                                                 
+
+                                                                                 
+onde    é o retorno da carteira no período  ,     é o retorno do ativo livre de risco no período   e    é o 
+desvio  padrão da  carteira no período   . Na  análise deste trabalho,  assume-se que                   e 
+        é o índice de Sharpe anualizado. 
+ 
+3.4.4 Modified Value at Risk 
+
+O  VaR  estima  a  pior  perda  potencial  da  carteira  em  situações  normais  de  mercado,  em  um 
+determinado horizonte temporal,  a um determinado nível de confiança estatística. Devido à característica 
+das carteiras (assimetria  e curtose) sugerir uma distribuição não-normal,  foi  utilizado o cálculo do VaR 
+modificado (MVaR) que foi proposto por Zangari (1996), que leva em conta estes valores de assimetria e 
+curtose de distribuições não-normais. A modificação foi feita utilizando a expansão de Cornish e Fisher 
+(1938) e é calculada por 
+
+                                                              
+ é a porção         da distribuição, estabelecida pela expansão de Cornish-Fisher. Este quantil 
+
+                  
+
+  
+onde   
+pode ser calculado usando a seguinte fórmula 
+   
+
+         
+
+   
+
+          
+
+ 
+
+    
+
+ 
+           
+
+         
+  
+
+                           
+onde    é a porção         da distribuição normal,     é a assimetria no período   e    é a medida de 
+curtose no período  . 
+ 
+3.4.5 Maximum Drawdown 
+
+  
+
+  
+
+ 
+
+ 
+
+ 
+
+O  maximum  drawdown  computa  a  perda  máxima  percentual,  partindo  de  um  ponto  máximo  da 
+série até o ponto mínimo, antes que seja atingido um novo máximo. O estimador do indicador passa por 
+todos os períodos da amostra e calcula o retorno composto   para cada período. O maximum drawdown 
+será o menor valor destes retornos compostos, calculado por 
+
+            
+       
+
+     
+       
+
+                                                             
+
+Esta  seção  expôs  os  dados  utilizados  no  estudo,  os  métodos  para  estimação  da  matriz  de 
+covariância dos ativos, assim como as variadas métricas utilizadas para a avaliação da performance das 
+carteiras formadas. A partir deste momento, ao referir-se sobre indicadores de retorno, risco e índice de 
+Sharpe, assume-se a utilização na forma anualizada. A próxima seção apresenta a análise dos resultados. 
+
+ 
+
+4 RESULTADOS 
+
+A análise dos resultados foi feita comparando os indicadores de retorno, desvio padrão e índice de 
+Sharpe, além de métricas de perda como o MVaR e  maximum drawdown. A análise (Tabela 1) indicou 
+superioridade dos  retornos das carteiras de mínima variância estimadas  pelo  método de encolhimento e 
+amostral (CMVL e CMVA) e baixa volatilidade (CBV), se comparadas ao IBOV e à CIP. A carteira de 
+
+ 
+
+ 
+
+11 
+
+melhor  resultado  foi  a  CBV,  obtendo  retorno  de  23,72%,  aproximadamente  57%  maior  que  o  IBOV, 
+enquanto  as  carteiras  CMVL  e  CMVA  performaram  23,53%  e  21,99%,  respectivamente.  O  retorno  do 
+IBOV foi de 15,10% enquanto a CIP obteve retorno de 20,18%. 
+
+A  observação  do  risco  das  carteiras  CMVL  e  CMVA  mostrou  um  desvio  padrão  de  19,75%  e 
+20,58% respectivamente, aproximadamente 30% menores se comparados ao IBOV e à CIP, com 28,67% 
+e 26,58% de risco. Este resultado era esperado, uma vez que as carteiras são otimizadas para apresentar o 
+menor  risco  possível.  A  carteira  CBV  auferiu  desvio  padrão  de  19,93%,  apenas  0,9%  superior  que  a 
+CMVL e 3,1% inferior a CMVA, apesar de não passar pelo processo de otimização por mínima variância. 
+Esse  resultado  demonstrou  ser  possível  formar  carteiras  (CBV)  com  métodos  mais  simples  e  obter 
+performance consistente, com menor risco e com facilidade de implementação. 
+
+ 
+
+Tabela 1 - Resumo dos resultados 
+
+INDICADOR 
+
+Retorno anualizado 
+
+Desvio padrão anualizado 
+
+IBOV 
+15,10% 
+28,67% 
+
+CIP 
+
+20,18% 
+26,58% 
+
+CMVL 
+23,53% 
+19,75% 
+
+CMVA 
+21,99% 
+20,58% 
+
+CBV 
+
+23,72% 
+19,93% 
+
+IS anualizado 
+
+0,06 
+
+0,23 
+
+0,46 
+
+0,38 
+
+0,47 
+
+Fonte: Elaborado pelos autores no software R 
+
+ 
+Considerando a análise da razão de Sharpe, ficou ainda mais evidente a superioridade das carteiras 
+de menor risco. As carteiras de mínima variância CMVL e CMVA apresentaram índice de Sharpe de 0,46 
+e 0,38 respectivamente, e a carteira de baixa volatilidade CBV conquistou um índice de Sharpe de 0,47. 
+O IBOV gerou índice de Sharpe de 0,06 e a CIP de 0,23. Para fins comparativos, o índice de Sharpe da 
+CBV foi quase oito vezes superior ao indicador do IBOV e o dobro do numero apresentado pela CIP. O 
+resumo das informações de retorno, desvio padrão e índice de Sharpe anualizado foram apresentados na 
+Tabela 1. 
+
+Além disso, as carteiras formadas apresentaram alta correlação com o IBOV, compreensível pelo 
+fato  de  serem  calculadas  através  dos  ativos  que  compõem  o  índice  de  mercado  (Tabela  2).  A  CIP 
+naturalmente apresentou  a maior correlação, de 0,97, pois foi composta pelos mesmos ativos do IBOV, 
+somente  com  diferente  ponderação.  As  carteiras  de  mínima  variância  CMVL  e  CMVA  manifestaram 
+correlações  de  0,85  e  0,87  respectivamente,  enquanto  que  a  carteira  de  baixa  volatilidade  CBV  teve 
+correlação de 0,82. 
+
+ 
+
+ESTATÍSTICAS 
+
+Beta (β) 
+
+Correlação 
+
+p-valor (correlação) 
+
+CIP 
+
+Tabela 2 – Estatísticas das carteiras vs. IBOV 
+CMVA 
+0,62670 
+0,87310 
+0,00000 
+
+CMVL 
+0,58390 
+0,84790 
+0,00000 
+
+0,90160 
+0,97260 
+0,00000 
+
+CBV 
+
+0,57030 
+0,82050 
+0,00000 
+
+Fonte: Elaborado pelos autores no software R 
+
+ 
+Apesar  da  alta  correlação  das  carteiras  com  o  IBOV,  o  β  das  carteiras  de  menor  risco  foi  baixo 
+(Tabela 2), sugerindo um movimento em menor magnitude do que o IBOV. A CIP apresentou β de 0,90, 
+porém as carteiras CMVL, CMVA e CBV revelaram β de 0,58, 0,63 e 0,57, respectivamente. Como pode 
+ser  verificado  no  Gráfico  1,  as  carteiras  se  moveram  na  mesma  direção  do  IBOV  na  maior  parte  do 
+tempo, porém em menor grandeza (com exceção ao período de 2011) devido ao baixo valor do β. 
+
+Verificando os dados de risco, retorno e β das carteiras, constata-se que os resultados não seguem 
+a tradicional abordagem do modelo Capital Asset Pricing Model (CAPM), onde o retorno esperado dos 
+ativos é proporcional ao seu β ou desvio  padrão, pois  as carteiras  com  menor β e menor desvio  padrão 
+geraram  um  retorno  superior  ao  índice  de  mercado.  Essas  constatações  corroboram  os  estudos  sobre  a 
+
+ 
+
+ 
+
+12 
+
+relação  entre  risco  e  retorno.  (Ver,  por  exemplo,  BLACK;  JENSEN;  SCHOLES,  1972;  FAMA; 
+MACBETH, 1973; HAUGEN; HEINS, 1975; BLITZ; PANG; VAN VLIET, 2013). 
+
+Ademais,  a  carteira  formada  através  da  matriz  de  covariância  estimada  pelo  método  de 
+encolhimento (CMVL) apresentou resultados ligeiramente melhores que a carteira criada através matriz 
+de  covariância  amostral  (CMVA).  Esta  superioridade  corrobora  estudos  de  estimação  das  matrizes  de 
+covariância (JOBSON; KORKIE, 1980, LEDOIT; WOLF, 2003, 2004a, 2004b) que explicitam a melhora 
+que o método de encolhimento da matriz provoca na otimização de carteiras. Ledoit e Wolf (2004a) vão 
+além e afirmam não haver mais razões para utilizar a matriz amostral. 
+
+ 
+
+Gráfico 1 - Comparativo de rentabilidade acumulada 
+
+Fonte: Elaborado pelos autores no software R 
+
+ 
+
+ 
+
+Pressupõe-se  que  a  afirmação  de  Ledoit  e  Wolf  (2004a)  é  válida  e,  com  base  nos  resultados 
+iniciais, a partir deste momento a análise foi feita com a carteira formada através da matriz de covariância 
+encolhida  (CMVL)5.  Já  a  carteira  igualmente  ponderada  (CIP),  muitas  vezes  sugerida  como  uma 
+alternativa  de  investimento  simples,  apresentou  resultados  gerais  inferiores  às  carteiras  de  menor  risco, 
+contrariando o estudo de DeMiguel, Garlappi e Uppal (2009) amplamente discutido e analisado no meio 
+acadêmico.  O  estudo  destes  autores  sugere  que  a  estratégia  da  carteira  CIP  supera  qualquer  estratégia 
+baseada  em  otimização  por  mínima  variância,  o  que  não  foi  verificado  para  nosso  mercado  no  período 
+analisado.  Apesar  disto,  a  CIP  teve  resultado  superior  ao  IBOV,  seguindo  de  perto  os  movimentos  do 
+índice de mercado devido à alta correlação e β, com 8 dos 11 anos de melhor retorno que o IBOV, porém 
+apenas 3 dos 11 anos de resultados melhores que a CBV, por exemplo. 
+
+ 
+
+Tabela 3 - MVaR diário e maximum drawdown 
+
+INDICADOR 
+
+MVaR 
+
+Maximum drawdown 
+
+IBOV 
+-2,64% 
+-59,96% 
+
+CIP 
+
+-2,39% 
+-52,46% 
+
+CMVL 
+-1,72% 
+-36,00% 
+
+CMVA 
+-1,78% 
+-43,43% 
+
+CBV 
+-1,77% 
+-30,41% 
+
+Fonte: Elaborado pelos autores no software R 
+
+                                            
+5 A carteira CMVA foi mantida nas tabelas e nos gráficos. 
+
+2003-01-022004-07-012006-01-022007-07-022009-01-022010-07-012012-01-022013-07-01Período0246810IBOVCIPCMVLCMVACBVCDIRetorno (decimal)Gráfico 1 - Comparativo de rentabilidade acumulada 
+
+ 
+
+13 
+
+A análise do desvio padrão e índice de Sharpe permitiu comparar as carteiras em termos de risco e 
+rentabilidade,  porém  não  são  suficientes  para  estimar  o  risco  absoluto  de  perda  da  carteira.  Portanto, 
+considerou-se na análise outros indicadores utilizados no mercado financeiro, focados em estimar o risco 
+inerente  dos  portfólios,  buscando  confirmar  o  menor  risco  das  carteiras  de  mínima  variância  e  baixa 
+volatilidade. Um destes indicadores é o Value-at-Risk (VaR). A CMVL, por exemplo, apresentou MVaR 
+de  -1,72%,  aproximadamente  34%  inferior  ao  reportado  pelo  IBOV  (-2,64%).  Os  dados  estão 
+sumarizados na Tabela 3. 
+
+ 
+
+Gráfico 2 - Maximum drawdown 
+
+Fonte: Elaborado pelos autores no software R 
+
+ 
+
+ 
+
+Além  do  MVaR,  foi  utilizado  o  indicador  maximum  drawdown  para  medir  a  perda  máxima  das 
+carteiras  estimadas.  Novamente,  a  carteira  de  mínima  variância  e  a  carteira  de  baixa  volatilidade 
+apresentaram  resultados  melhores  que  o  IBOV  (Tabela  3).  A  maior  perda  registrada  pelas  carteiras 
+CMVL  e  CBV  foi  de  36%  e  30,41%,  respectivamente.  O  IBOV  apresentou  uma  perda  máxima  de 
+59,96% do topo até o ponto mínimo, representando aproximadamente o dobro da maior perda da CBV. A 
+CIP  teve  a  maior  perda  de  52,46%.  Essas  perdas  ocorreram  no  período  da  crise  de  2008,  mais 
+precisamente a partir do pico no dia 06 de maio de 2008 (21 de maio de 2008 para o IBOV e 02 de junho 
+de  2008  para  a  CIP)  chegando  ao  fundo  no  dia  27  de  outubro  de  2008,  como  pode  ser  visualizado  no 
+Gráfico 2. 
+
+Além do mais, ao analisar as estatísticas descritivas das séries na Tabela 4, é possível notar uma 
+característica  desejável  em  todas  as  carteiras,  que  é  a  skewness  (assimetria)  positiva.  No  caso  da 
+assimetria positiva, a cauda do lado direito (positivo) da distribuição dos retornos é mais longa, ou tem 
+maior  peso.  Isso  indica  que  a  carteira  apresenta  mais  resultados  extremos  positivos  do  que  resultados 
+extremos negativos. A preferência dos investidores é por uma carteira com assimetria positiva, apesar de 
+ser  uma  característica  difícil  de  ser  encontrada  no  mercado  financeiro  (KRAUS;  LITZENBERGER, 
+1976). 
+
+ 
+
+Tabela 4 - Estatísticas descritivas 
+
+ESTATÍSTICAS 
+
+Observações 
+
+IBOV 
+2724 
+
+CIP 
+2724 
+
+CMVL 
+2724 
+
+CMVA 
+
+2724 
+
+CBV 
+2724 
+
+2003-01-022004-07-012006-01-022007-07-022009-01-022010-07-012012-01-022013-07-01Período-0.6-0.5-0.4-0.3-0.2-0.10.0IBOVCIPCMVLCMVACBVRetorno (decimal)IBOV 
+
+ 
+
+14 
+
+Retorno mínimo 
+Retorno médio 
+Retorno máximo 
+
+Variância 
+
+Desvio padrão 
+
+Assimetria 
+
+Curtose 
+
+-11,39% 
+0,11% 
+14,66% 
+0,030% 
+1,81% 
+0,11 
+5,56 
+
+-10,66% 
+0,11% 
+14,27% 
+0,030% 
+1,67% 
+0,16 
+6,01 
+
+-7,49% 
+0,09% 
+12,34% 
+0,020% 
+1,24% 
+0,18 
+6,60 
+
+-7,87% 
+0,08% 
+12,64% 
+0,020% 
+1,30% 
+0,19 
+7,40 
+
+-6,68% 
+0,09% 
+12,27% 
+0,020% 
+1,26% 
+0,18 
+5,45 
+
+Fonte: Elaborado pelos autores no software R 
+
+ 
+
+Outro fato a ser considerado é o pior retorno apresentado pelas carteiras em um único dia (Tabela 
+4).  O  IBOV  registrou  um  dia  de  retorno  negativo  de  11,39%,  queda  52%  maior  que  a  CMVL  e  70% 
+maior  que  a  CBV,  enquanto  estas  carteiras  apresentaram,  em  seus  piores  dias,  retornos  negativos  de 
+7,49%  e  6,68%,  respectivamente.  A  CIP  teve  no  pior  dia,  retorno  de  -10,66%.  Por  outro  lado,  o  IBOV 
+entregou  o  maior  retorno  positivo  em  um  dia,  com  14,66%,  em  torno  de  20%  melhor  que  as  carteiras 
+CMVL  e  CBV,  que  obtiveram  retorno  diário  máximo  de  12,34%  e  12,27%  na  ordem,  enquanto  a  CIP 
+teve no melhor dia retorno de 14,27% (Tabela 4). Estas diferenças apareceram em decorrência da maior 
+volatilidade  do  índice  IBOVESPA  e  CIP  em  comparação  às  carteiras  de  mínima  variância  e  baixa 
+volatilidade,  confirmando  um  fato  estilizado  já  bastante  discutido  em  estudos  acadêmicos  que  trata  da 
+assimetria  da  volatilidade.  Isso  significa  dizer  que  informações  negativas  no  mercado  tem  um  impacto 
+maior na volatilidade do que informações positivas, fazendo com que o resultado negativo seja maior que 
+o  resultado  positivo  em  termos  absolutos  (BLACK,  1976;  DA  SILVA;  DA  SILVA,  2013;  MÓL,  DOS 
+SANTOS FELIPE; JÚNIOR, 2014). 
+
+4.1 Análise por períodos 
+
+ 
+
+A análise da amostra por anos das carteiras CMVL e CBV apresentou retorno superior ao IBOV 
+em 7 dos 11 anos analisados. Conforme comentando anteriormente, a CIP foi melhor que o IBOV em 8 
+dos 11 anos. Além disto, foi observada a superioridade dos retornos das carteiras sobre o IBOV na maior 
+parte  do  tempo,  confirmada  pela  consistência  do  índice  de  Sharpe.  As  carteiras  CMVL  e  CBV 
+apresentaram  índice  de  Sharpe  superior  em  7  de  11  e  em  9  de  11  anos, respectivamente,  ficando  ainda 
+mais evidente a eficiência das carteiras de mínima variância e baixa volatilidade na alocação do risco. A 
+CIP teve índice de Sharpe melhor que o IBOV em 9 dos 11 anos do estudo. 
+
+O ano de 2009 foi um dos períodos em que o  IBOV e a CIP superaram com grande margem as 
+carteiras  de  menor  risco  e  apresentaram  retorno  excepcional  de  85,36%  e  81,12%,  enquanto  CMVL  e 
+CBV  entregaram  33,66%  e  25,31%,  na  ordem.  Esse  resultado  do  IBOV  foi  muito  forte,  a  ponto  de 
+apresentar  um  índice  de  Sharpe  melhor  que  das  carteiras  de  mínima  variância  e  baixa  volatilidade, 
+mesmo com praticamente o dobro de desvio padrão se comparado ao risco das carteiras de menor risco. 
+Este período foi marcado pela rápida recuperação do mercado após a crise de 2008, fazendo com que os 
+ativos apresentassem muita volatilidade. Neste caso, os ativos que elevaram o patamar do índice ficaram 
+de fora das carteiras de menor risco, fazendo com que o retorno destas fosse inferior ao mercado. 
+
+Da mesma forma, ao investigarmos os dados pelo período de rebalanceamento das carteiras, que 
+ocorre  a  cada  quadrimestre,  a  CBV  continuou  apresentando  retornos  superiores  na  maior  parte  dos 
+períodos  (20  dos  33  quadrimestres  da  amostra)  e  melhor  índice  de  Sharpe  em  18  dos  33  períodos.  A 
+carteira  CMVL  obteve  retorno  superior  ao  IBOV  em  18  quadrimestres,  porém  o  índice  de  Sharpe  foi 
+melhor em somente 16 quadrimestres. A CIP teve melhor retorno que o IBOV em 23 dos 33 períodos e 
+índice  de  Sharpe  superior  em  24  quadrimestres.  Em  um  primeiro  momento  da  análise,  a  CIP  teve  o 
+melhor desempenho por quadrimestre na comparação com o IBOV, porém o retorno da CBV foi superior 
+ao da CIP em 20 períodos e o índice de Sharpe foi melhor em 18 dos 33 quadrimestres. A CIP de fato foi 
+superior ao IBOV na análise por quadrimestres, tendo mais períodos de ganho sobre o índice de mercado 
+do  que  as  carteiras  de  menor  risco,  devido  a  maior  correlação  com  IBOV  e  maior  β,  se  comparado  a 
+
+ 
+
+ 
+
+15 
+
+CMVL e CBV. Portanto, quando o IBOV estava em um período de alta, a CIP também estava, além de 
+ter apresentado maiores  ganhos na maior parte do tempo. De outra forma, como  o β e a correlação das 
+carteiras CMVL e CBV com o IBOV apresentou um valor menor, em alguns momentos o movimento não 
+seguiu a mesma direção e magnitude da CIP. 
+
+A diferença mais expressiva em favor da alta volatilidade do IBOV ocorreu em 2009, no auge da 
+recuperação da crise do ano anterior (Gráfico 3). No primeiro quadrimestre de 2009, o retorno do IBOV 
+foi de 104,92% e o desvio padrão de 39,77%, o mais alto em um único quadrimestre com o mercado em 
+ascensão.  Neste  mesmo  período,  CIP,  CMVL  e  CBV  obtiveram  retorno  (desvio  padrão)  de  81,38% 
+(31,42%), 47,60% (20,04%) e 43,03% (19,51%), respectivamente. 
+
+ 
+
+Gráfico 3 - Comparativo da rentabilidade acumulada em 2009Q1 e 2009Q2 
+
+Fonte: Elaborado pelos autores no software R 
+
+ 
+
+ 
+No segundo quadrimestre de 2009 o IBOV teve um retorno de 70,45%, enquanto CMVL e CBV 
+apresentaram  10,95%  e  -1,17%,  respectivamente.  A  CIP  teve  um  retorno  maior  que  o  IBOV  neste 
+período,  com  79,20%.  Novamente,  o  desvio  padrão  de  24,98%  do  IBOV  neste  período  foi 
+aproximadamente  o  dobro  do  risco  das  carteiras  de  menor  volatilidade,  porém  o  retorno  explosivo  fez 
+com que o índice de Sharpe fosse superior. 
+
+ 
+
+Gráfico 4 - Comparativo da rentabilidade acumulada em 2008Q3 
+
+jan 02fev 02mar 02abr 01mai 04jun 01jul 01ago 03ago 31Período0.00.10.20.30.40.5IBOVCIPCMVLCMVACBVRetorno (decimal)2009Q1Q2 
+
+ 
+
+16 
+
+Fonte: Elaborado pelos autores no Software R 
+
+ 
+
+ 
+
+Assim, a alta volatilidade beneficiou o IBOV nos períodos de alta, mas o penalizou fortemente em 
+períodos  de  queda.  O  terceiro  quadrimestre  de  2008,  apresentado  no  Gráfico  4,  demonstra  este  efeito 
+quando  o  mercado  está  em  baixa.  Neste  período  o  IBOV  teve  a  maior  queda  registrada  na  amostra  do 
+estudo.  Com  um  retorno  (desvio  padrão)  de  -69,33%  (78,73%),  o  IBOV  perdeu  em  termos  absolutos 
+aproximadamente 1/3 do valor de mercado neste único quadrimestre e este número não foi maior graças 
+ao período de outubro a dezembro, onde se iniciou a recuperação da crise. As carteiras CIP, CMVL CBV 
+também  apresentaram  retorno  negativo  de  58,17%,  36,45  e  25,66%,  respectivamente.  A  perda  de  valor 
+absoluto  da  CBV,  por  exemplo,  foi  de  apenas  9,41%,  apesar  de  também  ter  recuperado  boa  parte  das 
+perdas  do  período  a  partir  de  outubro.  Além  de  uma  perda  muito  menor  que  o  IBOV,  as  carteiras  de 
+menor risco apresentaram desvio padrão menor, perto de 2/3 do risco da carteira de mercado. 
+
+Portanto, o IBOV é fortemente impulsionado pela grande volatilidade nos períodos de alta, como 
+a recuperação da crise em 2009, porém é muito prejudicado pela alta volatilidade nos períodos de baixa 
+do mercado, como a crise ocorrida em 2008. O grande incremento na volatilidade do IBOV no período da 
+crise é mais um sinal de que a assimetria da volatilidade é verificada no mercado de ações brasileiro. 
+
+ 
+
+4.2 Restrições de pesos e quantidade de ativos 
+
+No  período  analisado,  o  IBOV  e  a  CIP  apresentaram  em  média  62  ativos  na  carteira,  variando 
+entre 53 e 73. A CMVL teve em média 19 ativos, com a composição variando entre 15 e 24. A CMVA 
+foi formada em média por 22 ativos, tendo uma variação entre 18 e 26, enquanto a CBV teve em média 
+11  ações,  variando  entre  10  e  13,  representado  a  carteira  menos  diversificada  entre  as  analisadas.  As 
+carteiras CIP e CBV podem ser facilmente formadas sem a utilização de softwares estatísticos, pois não 
+passaram pelo processo de otimização da carteira, podendo ser utilizada uma simples planilha eletrônica. 
+Já as carteiras CMVL e CMVA passaram pelo processo de minimização da variância global, necessitando 
+de  software  especifico  para  sua  implementação.  Além  disso,  a  quantidade  de  ativos  da  CBV  foi  muito 
+menor que nas demais carteiras, podendo reduzir o custo de implementação da estratégia e facilitando a 
+utilização por investidores individuais. 
+
+Os resultados das carteiras otimizadas CMVL e CMVA foram obtidos restringindo os pesos dos 
+ativos em 8% e 6%, respectivamente. A carteira de baixa volatilidade CBV foi calculada utilizando 18% 
+dos ativos de menor desvio padrão anualizado, dentre os componentes do IBOV. Um detalhe importante 
+
+set 01set 15set 29out 13out 27nov 10nov 24dez 08dez 22Período-0.4-0.3-0.2-0.10.0IBOVCIPCMVLCMVACBVRetorno (decimal)2008Q3 
+
+ 
+
+17 
+
+a  destacar  é  o  fato  de  que  a  imposição  de  uma  restrição  que  assuma  menores  pesos  para  os  ativos  das 
+carteiras otimizadas CMVL e CMVA mostrou ser benéfica. 
+
+Foram testados limites de pesos variando de 5% a 20%, 30% e 50% por ativo e foi observado que 
+quanto menor é este limite, maior é o retorno e o desvio padrão da carteira, com exceção da CMVL a 5% 
+e  6%,  onde  o  retorno  diminui  em  comparação  a  restrição  de  7%.  Neste  caso,  analisar  isoladamente  os 
+dados  de  retorno  e  desvio  padrão  não  é  o  suficiente  para  compreender  qual  a  melhor  restrição  para  a 
+carteira, pois o risco e o retorno aumentam à medida que se impõe uma restrição mais rígida. Porém, ao 
+analisar a razão de Sharpe, nota-se que o maior retorno verificado compensa o ligeiro aumento do risco, 
+resultando em um maior índice de Sharpe. Como as carteiras com limite de peso de 8% (CMVL) e 6% 
+(CMVA) foram as que apresentaram o melhor resultado ajustado ao risco, estas foram utilizadas para o 
+estudo comparativo. 
+
+Estas  considerações  sobre  o  limite  de  pesos  da  carteira  vão  ao  encontro  do  trabalho  de  Thomé 
+Neto,  Leal  e  Almeida  (2011),  mas  divergem  do  trabalho  apresentado  por  Rubesam  e  Beltrame  (2013), 
+onde os autores utilizaram uma restrição de 15% para os pesos dos ativos e reportaram que a utilização de 
+uma  restrição  de  10%  piorou  ligeiramente  o  índice  de  Sharpe  da  carteira.  Ao  utilizar  uma  restrição  de 
+30%,  os  autores  citam  um  índice  de  Sharpe  maior  que  no  caso  da  restrição  de  15%,  porém  não 
+consideram  relevantes  estas  diferenças.  Então,  Rubesam  e  Beltrame  (2013,  p.26)  concluem  que  “[...]  a 
+alocação  máxima  não  é um  fator  crucial  para  o  desempenho  [...]”.  Estas  variações  do  índice  de  Sharpe 
+seguem  movimento  contrário  ao  verificado  neste  trabalho,  onde,  quanto  menor  é  o  percentual  que  os 
+ativos  podem  assumir  na  carteira,  maior  é  o  índice  de  Sharpe  apresentado.  Assumir  um  limite  de  30% 
+para  o  peso  dos  ativos,  como  testado  no  estudo  de  Rubesam  e  Beltrame  (2013),  fez  com  que  CMVL  e 
+CMVA apresentassem retorno 1/3 pior do que com a restrição de 8% e 6%, respectivamente, permitindo 
+se presumir que a alocação máxima é sim um fator muito importante para o desempenho das carteiras de 
+mínima variância, conforme já apontou Jagannathan e Ma (2003). 
+
+Vale  ressaltar  que  Rubesam  e  Beltrame  (2013)  utilizam  um  universo  de  ativos  muito  maior, 
+considerando elegíveis todos os ativos listados em bolsa, enquanto neste estudo são utilizados somente os 
+ativos que compuseram o IBOV no período da carteira analisada. Esta diferença de quantidade de ativos 
+disponíveis  para  a  formação  da  carteira  poderia  explicar  a  diferença  no  resultado.  O  IBOV  tem  uma 
+quantidade limitada de ações e estas, tem quantidade e volume de negociação muito maior que os ativos 
+que  não  compõem  o  índice,  possibilitando  que  as  ações  apresentem  maior  volatilidade  do  que  as ações 
+fora  do  índice.  No  presente  estudo,  restringir  o  peso  máximo  dos  ativos  para  baixo,  de  forma  a 
+diversificar  e  diluir  o  risco  pode  fazer  com  que  a  carteira  apresente  possivelmente  um  maior  índice  de 
+Sharpe. 
+
+A carteira CBV foi formada através de um percentual do total de ações que compuseram o IBOV. 
+As  ações  foram  classificadas  por  ordem  crescente  de  desvio  padrão  e,  após  isto,  foi  feita  a  seleção  do 
+percentual de ações menos voláteis e ponderação dos pesos. Esse percentual foi testado variando de 10% 
+a 20%, 30% e 50% das  ações de menor risco.  Neste caso, não houve uma definição muito  clara  para a 
+relação  entre  percentual  de  ativos  e  retorno  da  carteira.  Por  outro  lado,  o  comportamento  do  desvio 
+padrão sugeriu uma tendência crescente à medida que aumenta a quantidade de ativos nesta carteira.  O 
+melhor  retorno  por  unidade  de  risco  foi  obtido  com  a  carteira  configurada  com  18%  dos  ativos  menos 
+voláteis do IBOV, portanto esta carteira foi utilizada na análise comparativa. 
+
+ 
+
+5 CONSIDERAÇÕES FINAIS 
+
+Este estudo mostrou que as carteiras formadas por estratégias de baixa volatilidade apresentaram 
+performance  média  superior  ao  índice  de  mercado,  tanto  em  termos  de  retorno  absoluto,  quanto  em 
+termos  de  retorno  por  unidade  de  risco  medido  pelo  índice  de  Sharpe.  Além  disso,  as  carteiras 
+apresentaram  indicadores  de  risco  relativamente  menores,  baixo  β,  desempenho  superior  em  períodos 
+com mercado em baixa e inferior em períodos de alta expressiva. Os resultados foram consistentes com 
+os  alcançados  recentemente  por  Rubesam  e  Beltrame  (2013)  no  Brasil,  além  de  corroborar  o  trabalho 
+
+ 
+
+ 
+
+18 
+
+pioneiro de Haugen e Heins (1975) e tantos outros que foram realizados nas últimas décadas, revisados 
+neste estudo. 
+
+Além  disso,  analisando  o  período  específico  da  crise  de  2008,  verificou-se  um  comportamento 
+“anti-bolha”  nas  carteiras  de  menor  risco.  Os  eventos  que  precederam  a  crise  geraram  grande  stress  no 
+mercado, fazendo com que a volatilidade dos principais ativos da bolsa (blue chips) se elevasse. Os ativos 
+mais voláteis não satisfizeram os critérios de seleção das carteiras de menor risco. Logo, no momento da 
+ruptura  da  bolha  essas  carteiras  estavam  compostas  pelas  ações  menos  voláteis,  tendo  uma  queda  de 
+menor magnitude. 
+
+Portanto, os portfólios calculados com base no risco e que não dependem da estimação de retorno 
+esperado, como as carteiras de mínima variância e baixa volatilidade, são promissores para investidores 
+que buscam minimizar os riscos globais sem comprometer o retorno. Isso porque as carteiras de menor 
+risco  apresentaram,  em  média,  um  terço  a  menos  de  risco  do  que  a  carteira  de  mercado  e  retorno 
+aproximadamente 50% superior. 
+
+Apesar  de  não  ser  o  objetivo  deste  trabalho,  ficou  clara  a  melhora  na  estimação  da  matriz  de 
+covariância quando utilizado o método de encolhimento da matriz amostral proposto por Ledoit e Wolf 
+(2003),  corroborando  os  estudos  destes  autores.  Complementarmente,  a  determinação  dos  pesos  dos 
+ativos nas carteiras de mínima variância foi um aspecto importante verificado neste trabalho. Enquanto o 
+estudo  mais  recente  de  Rubesam  e  Beltrame  (2013)  não  considera  a  determinação  de  pesos  um  fator 
+crucial, o presente estudo verificou grande importância para os pesos dos ativos a ponto de determinar se 
+desempenho da carteira seria superior ou inferior ao mercado e à carteira igualmente ponderada. 
+
+Logo,  um  estudo  específico  sobre  a  ponderação  de  pesos  nas  carteiras  de  mínima  variância 
+poderia trazer respostas  para  esta diferença constatada entre este e  aquele trabalho.  Esta diferença pode 
+ser  atribuída  ao  maior  universo  de  ativos  elegíveis  no  estudo  daqueles  autores,  mas  esta  é  uma 
+consideração que deve ser apurada. 
+
+Da  mesma  forma,  uma  análise  aprofundada  do  “efeito  volatilidade”  seria  interessante  para 
+compreender  qual  o  motivo  deste  comportamento  que  leva  as  ações  de  menor  risco  a  apresentar  maior 
+retorno. Além disso, se fosse verificada a composição do índice S&P 500 Low Volatility, utilizado como 
+modelo para a carteira de baixa volatilidade neste trabalho, seria perceptível a diminuição da exposição 
+do índice ao setor bancário, onde foi originada a crise de 2008. Portanto, o poder preditivo de crises das 
+carteiras de baixa volatilidade mostra-se um bom tema para estudos futuros. 
+
+Por fim, foi possível  notar que as estratégias de menor risco recaem  sobre carteiras com  poucos 
+ativos,  sendo  facilmente  replicáveis  por  investidores  individuais.  A  carteira  de  baixa  volatilidade  foi 
+construída  através  de  um  método  muito  simples,  porém  ainda  não  havia  sido  explorada  nos  estudos 
+realizados no Brasil e surpreendeu ao apresentar os melhores resultados. 
+
+ 
+
+REFERÊNCIAS 
+
+ANG, Andrew et al. The cross‐section of volatility and expected returns. The Journal of Finance, v. 61, 
+n. 1, p. 259-299, 2006. 
+BLACK, Fischer. Beta and return: announcements of the ‘death of beta’ seem premature. Journal of 
+Portfolio Management, p. 11-18, 1993. 
+BLACK, Fischer; JENSEN, Michael C.; SCHOLES, Myron S. The capital asset pricing model: Some 
+empirical tests. 1972. 
+BLITZ, David C.; VAN VLIET, Pim. The volatility effect: Lower risk without lower return. ERIM 
+Report Series Research in Management, 2007. 
+BUFFETT, Mary; CLARK, David. O Tao de Warren Buffett. Rio de Janeiro: Sextante, 2007. 
+CHRISTENSEN, Morten Mosegaard. On the history of the Growth Optimal Portfolio.Preprint, 
+University of Southern Denmark, v. 389, 2005. 
+CLARKE, Roger G.; DE SILVA, Harindra; THORLEY, Steven. Minimum-variance portfolios in the US 
+equity market. The journal of portfolio management, v. 33, n. 1, p. 10-24, 2006. 
+
+ 
+
+ 
+
+19 
+
+CONNOR, Gregory; KORAJCZYK, Robert A. Risk and return in an equilibrium APT: Application of a 
+new test methodology. Journal of Financial Economics, v. 21, n. 2, p. 255-289, 1988. 
+CORNISH, Edmund A.; FISHER, Ronald A. Moments and cumulants in the specification of 
+distributions. Revue de l'Institut international de Statistique, p. 307-320, 1938. 
+DEMIGUEL, Victor et al. A generalized approach to portfolio optimization: Improving performance by 
+constraining portfolio norms. Management Science, v. 55, n. 5, p. 798-812, 2009.  
+FALKENSTEIN, Eric G. Mutual funds, idiosyncratic variance, and asset returns. 1994. 129 f. Tese 
+(Doutorado.em Filosofia). – Programa de Pós-Graduação em Filosofia, Área de Economia, Northwestern 
+University, Evanston, 1994. 
+FAMA, Eugene F.; FRENCH, Kenneth R. The cross‐section of expected stock returns.The Journal of 
+Finance, v. 47, n. 2, p. 427-465, 1992. 
+HAUGEN, Robert A.; BAKER, Nardin L. The efficient market inefficiency of capitalization-weighted 
+stock portfolios. The Journal of Portfolio Management, v. 17, n. 3, p. 35-40, 1991. 
+JAGANNATHAN, Ravi; MA, Tongshu. Risk reduction in large portfolios: Why imposing the wrong 
+constraints helps. The Journal of Finance, v. 58, n. 4, p. 1651-1684, 2003. 
+JOBSON, J. David; KORKIE, Bob. Estimation for Markowitz efficient portfolios. Journal of the 
+American Statistical Association, v. 75, n. 371, p. 544-554, 1980. 
+JUBERT, Roberto Wagner et al. Um estudo do padrão de volatilidade dos principais índices financeiros 
+do Bovespa: uma aplicação de modelos ARCH. Contabilidade, Gestão e Governança, v. 11, n. 1-2, 
+2009. 
+KAHNEMAN, Daniel; TVERSKY, Amos. Prospect theory: An analysis of decision under risk. 
+Econometrica: Journal of the Econometric Society, p. 263-291, 1979. 
+KRAUS, Alan; LITZENBERGER, Robert H. Skewness preference and the valuation of risk assets*. The 
+Journal of Finance, v. 31, n. 4, p. 1085-1100, 1976. 
+KRITZMAN, Mark; PAGE, Sébastien; TURKINGTON, David. In defense of optimization: the fallacy of 
+1/N. Financial Analysts Journal, p. 31-39, 2010. 
+LEDOIT, Olivier; WOLF, Michael. A well-conditioned estimator for large-dimensional covariance 
+matrices. Journal of multivariate analysis, v. 88, n. 2, p. 365-411, 2004b. 
+MARKOWITZ, Harry. Portfolio selection*. The journal of finance, v. 7, n. 1, p. 77-91, 1952. 
+MERTON, Robert C. On estimating the expected return on the market: An exploratory investigation. 
+Journal of Financial Economics, v. 8, n. 4, p. 323-361, 1980. 
+PETERSON, Brian G.; CARL, Peter. Carl. PerformanceAnalytics: Econometric tools for performance 
+and risk analysis. R package version 1.4.3541, 2014. Disponível em: <http://CRAN.R-
+project.org/package=PerformanceAnalytics2014>. Acesso em: 15 set. 2014. 
+ROSENBERG, Barr. Extra-market components of covariance in security returns. Journal of Financial 
+and Quantitative Analysis, v. 9, n. 02, p. 263-274, 1974. 
+ROUSSEEUW, Peter J. Least median of squares regression. Journal of the American statistical 
+association, v. 79, n. 388, p. 871-880, 1984. 
+ROWE, Brian Lee Yung. tawny: Provides various portfolio optimization strategies including random 
+matrix theory and shrinkage estimators. R package version 2.1.2, 2014. Disponível em: <http://CRAN.R-
+project.org/package=tawny>. Acesso em: 15 set. 2014. 
+RUBESAM, Alexandre; BELTRAME, André Lomonaco. Carteiras de Variância Mínima no Brasil. 
+Revista Brasileira de Finanças, v. 11, n. 1, p. 81-118, 2013. 
+RYAN, Jeffrey A.; ULRICH, Joshua M. xts: eXtensible Time Series. R package version 0.9-7, 2014. 
+Disponível em: <http://CRAN.R-project.org/package=xts>. Acesso em: 15 set. 2014. 
+SHARPE, William F. Capital asset prices: A theory of market equilibrium under conditions of risk*. The 
+journal of finance, v. 19, n. 3, p. 425-442, 1964. 
+THOMÉ NETO, César; LEAL, Ricardo Pereira Câmara; ALMEIDA, Vinício de Souza. Um índice de 
+mínima variância de ações brasileiras. Economia Aplicada, v. 15, n. 4, p. 535-557, 2011. 
+
+ 
+
+ 
+
+20 
+
+TURLACH, Berwin A; WEINGESSEL, Andreas. quadprog: Functions to solve Quadratic Programming 
+Problems. R package version 1.5-5, 2013. Disponível em: <http://CRAN.R-
+project.org/package=quadprog>. Acesso em: 15 set. 2014. 
+ZANGARI, Peter. An improved methodology for measuring VaR. RiskMetrics Monitor, v. 2, n. 1, p. 7-
+25, 1996. 
+ 
+
+

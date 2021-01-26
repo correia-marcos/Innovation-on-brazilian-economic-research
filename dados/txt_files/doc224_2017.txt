@@ -1,0 +1,844 @@
+      Impacts of Grade Configuration on Brazilian Student
+                          Outcomes
+                             Marcos Vinicio Wink Junior (FEE)
+                       Luis Henrique Zanandréa Paese (FEE e UFRGS)
+
+
+
+
+                                                      Resumo
+
+     Este artigo avalia o impacto das configurações de séries das escolas públicas sobre os resultados escolares
+dos alunos. A partir dos dados do SAEB 2015, nós analisamos o desempenho dos estudantes de 5º ano do Ensino
+Fundamental de escolas de anos iniciais comparado ao despenho dos alunos de mesma série em escolas de anos iniciais
+e finais. A estratégia de identificação empregada foi a de Propensity Score Matching. Os resultados encontrados
+apontam que o primeiro grupo apresenta melhores desempenhos em testes padronizados de proficiência em língua
+portuguesa e matemática. Além disso, há evidências de que tenham maiores taxas de aprovação e menores taxas
+de abandono. Os efeitos estimados são robustos a identificações alternativas e testes de qualidade do matching. Há
+indícios que práticas pedagógicas alternativas e políticas de gestão escolar para professores podem ser mecanismos
+que explicam os resultados.
+Palavras-chave: configuração das séries, especialização escolar, escolas públicas.
+
+
+                                                     Abstract
+
+    In this paper we evaluate the impact of grade span configuration on student outcomes. Using a Brazilian dataset
+that contains student achievement information and socioeconomic questionnaires, we analyzed 5th -grade students
+performances of elementary schools (1st to the 5th grade), compared to students of elementary-middle schools (6th
+to the 9th grade). To do so, we used Propensity Score Matching methodologies to control possible biases. We
+find that elementary schools have better results in Portuguese language and mathematics standardized score tests,
+higher passing rates and lower dropout rates than elementary-middle schools. We also ran tests and alternative
+specifications that indicate the robustness of our estimates. We found evidence that alternative pedagogical practices
+and school management policies for teachers may explain the findings.
+Key-words: grade configuration, school specialization, public schools.
+JEL classification: H52, I21, I28.
+Área 12 - Economia Social e Demografia Econômica
+
+
+
+
+                                                          1
+1       Introduction
+Over the last decades, Brazil has been facing a profound change in its demographic structure.
+While the number of elderly people is increasing, the number of children has been falling due
+to the reduction in fertility rate. Although this change in the age pyramid is a macroeconomic
+challenge in the short term, it can provide opportunities to enhance per student expenditure in
+terms of education to the younger population. Figure (1) shows the reduction in enrollment in
+elementary and middle school in the last 10 years. It is important to note that the attendance
+rate did not decrease during this period.
+    Bearing in mind Brazilian demographic phenomenon, the question regarding what to do with
+schools that have few students enrolled arises. The first and simplest answer to this question would
+be to close these schools and relocate their students. The second possibility would be to change
+the school grade span configuration by separating the elementary school (1st to the 5th grade)
+from the middle school (6th to the 9th grade). The latter proposal has been considered in Brazil
+during the last years.1 This issue became even more debated in Brazil with the publication of
+Decree No. 61672, November 30, 2015, by the Government of the State of São Paulo. The decree
+authorized the process of grade span configuration for state public schools. This proposal, however,
+was revoked in May 2016 (Decree No. 61962) due to both the absence of studies measuring the
+possible impacts of this policy on Brazilian students and public pressure.
+    The main supporting argument is that the school reorganization would be beneficial by pro-
+viding more specific pedagogical plans, increasing the specialization of principals and teachers.
+It is also expected that these schools have students with more homogeneous characteristics. The
+empirical evidence is that heterogeneous classes negatively affect student’s individual achievements
+(Hanushek et al. (2003); Hattie (2002)).
+    A similar process occurred in the United States in the mid-20th century. Nowadays most
+students switch from elementary school to middle school before entering high school. The effects
+of this transition have been widely studied empirically and evidence shows that switching schools
+negatively affects school outcomes. Looking thoroughly to academic achievement, studies have
+shown that this transition negatively affects mathematics and reading scores (Byrnes e Ruby
+(2007); Offenberg (2001); Rockoff e Lockwood (2010)). The literature also shows that school
+change affects non-academic outcomes (Schwerdt e West (2013); Weiss e Bearman (2007)). The
+most discussed mechanism for these findings is the transition period when students are adolescents
+and several behavioral changes are simultaneously happening. The long-term effects, however,
+are not considered by this literature. The potential benefits of the grade span configuration on
+academic achievement may not be immediate. Dove et al. (2010) investigate the effects of this
+policy on school achievement measured by the Arkansas Benchmark Examination for sixth-grade
+students. The study reveals that there are positive effects on math proficiency tests after the
+second year of transition. There is no evidence of effects on the achievement in literacy.
+    There are two factors common to these studies, however. The first is that they analyze only the
+case of American schools. The second is that they evaluate students after the transition to middle
+school. We did not find studies that seek to investigate, before transition, the possible positive
+    According to the Scholar Census of 2015, elementary schools represent 40% of the total number of schools in
+    1
+
+Brazil.
+
+
+                                                      2
+effects for early students of elementary school specialization.
+    In the present study, we use the largest education dataset in Brazil to measure the effect of grade
+span configuration on 5th grade students enrolled in Brazilian Public School System. We focus our
+analysis on four different outcomes: achievement in math and reading, passing and dropout rates.
+We find that achievements are significantly higher as well as passing rate for elementary schools
+compared to elementary-middle schools. We also find that the dropout rate is smaller for the
+elementary schools. In order to estimate the causal effects we employ the strategy of Propensity
+Score Matching to compare outcomes from 5th grade students enrolled in elementary schools and
+elementary-middle schools. We also run regressions to analyze possible channels through which
+school specialization may improve school outcomes of 5th grade students. Principals of these
+schools seem to diversify pedagogical practices and conduct management that benefits teachers.
+We believe that the findings of this study generate significant impacts for future public policy
+proposals. This paper also shed some light on the ongoing debate in São Paulo despite further
+studies are needed.
+    The paper proceeds as follows. In the next section we describe our data. Section 3 explains
+the methodology used. Section 4 describes our main findings. In the section 5 we present some
+tests to check the robustness of the results and section 6 concludes.
+
+ Figure 1: Total Enrollment of Students in Elementary and Middle School in Brazil, 2007-2016
+                                                             18
+                      Enrollment of students (in millions)
+                                                             16
+                                                             14
+                                                             12
+
+
+
+
+                                                                  2007   2008   2009   2010   2011 2012   2013   2014   2015   2016
+                                                                                                 Year
+
+                                                                                   Elementary School         Middle School
+
+
+Source: Scholar Census, Inep
+
+
+
+2     The dataset
+For the purpose of this study, we had to classify which schools qualified for treatment or control
+groups, to do that we used data from the National Institute for Educational Studies and Research
+(INEP), which is related to the Brazilian Ministry of Education (MEC). In order to define which
+
+                                                                                               3
+schools were qualified for the treatment or control groups we gathered from the 2013 and 2015
+Scholar Census waves, the number of students enrolled in each grade of each Brazilian school.
+With this data, we could split our treatment and control groups.
+    With this data, to classify which group is which, there’s some need to understand how the
+Brazilian educational system works. First of all, home-schooling is not allowed, therefore this
+analysis of the Census data captured every student present from the 1st to the 9th grade. Accord-
+ing to the UNESCO’s International Standard Classification of Education (ISCED), Brazilian’s
+Fundamental School (also known as elementary-middle school) is divided into elementary school2 ,
+from the 1st to the 5th grade, and middle school3 , that gathers students from the 6th to the 9th
+grade. Our definition of treatment and control groups was based in schools that were only ele-
+mentary schools (treatment group), against schools that were elementary-middle schools (control
+group).
+    Having designed the control and treatment groups, we imported, from the same source, the
+2013 and 2015 waves of SAEB (Basic Education Assessment System), a biennial survey applied
+to every student enrolled in public schools, known as Prova Brasil, and in the form of samples for
+students enrolled in private schools, known as Anresc. This evaluation gives us an idea about the
+achievement of the students in the 5th and 9th grade. For this study, we analyzed only data from
+public schools with students that were completing the elementary school, therefore, 5th graders.
+    All the variables used to gather the results came from this two datasets (SAEB and Scholar
+Census), except for the variable that defines the per capita GDP, which was extracted from the
+Brazilian Institute of Geography and Statistics (IBGE, in Portuguese).
+
+
+3         Methodology
+We can define Y1i as the outcome of school i if it is treated (elementary school) and Y0i as the
+outcome of that school if it is not exposed to the treatment (elementary-middle school). The
+average treatment effect (ATE) for a particular school i can be written as:
+
+                                                    E[Y1i − Y0i ]                               (1)
+However, as it is impossible to assign the same school to both conditions, an alternative form of
+evaluation is the average treatment effect on treated (ATT). Let Z (Z∈{0, 1}) be an indicator
+variable denoting the treatment received (Z = 1 is when the school is treated and Z = 0 when it
+is not). Thus, we denote ATT:
+
+                                                 E[Y1i − Y0i |Zi = 1]                           (2)
+    The ATT is the mean effect of treatment for those schools which actually are only elementary
+school. For policy purposes, the ATT is of interest rather than the the ATE (Heckman et al.
+(1997)). The problem arises because we can observe only Y1i |Zi = 1 or Y0i |Z = 0. The coun-
+terfactual Y0i |Zi = 1 is not observed and E[Y0i |Zi = 1] − E[Y0i |Zi = 0] probably be different of
+    2
+        Also known as K-5 schools in the US.
+    3
+        Also known as K 6-9 schools in the US.
+
+
+                                                          4
+zero in non-experimental studies because the covariates that determine the treatment decision also
+determine the outcomes of interest. Therefore, differences between control and treatment groups
+remain even in the absence of treatment which is known as self-selection bias. For our purpose, for
+example, richer municipalities may be more likely to maintain different schools for different school
+stages and these kind of municipalities have more resources to invest in education.
+    In response to that, we must rely on some identifying assumptions to solve this selection
+problem. Rosenbaum e Rubin (1983) defined the following assumptions to ensure that a treatment
+assignment be strongly ignorable:
+
+                                 U nconf oundness (Y1i ; Y0i ) ⊥ Zi |Xi                                  (3)
+
+                                   Overlap 0 < P r(Zi = 1)|Xi < 1                                        (4)
+    The first assumption says that in a set of observable covariates X which determine the treatment
+assignment, potential outcomes are independent of treatment status. The second condition ensure
+that the probability of being both participant and non-participant is bounded away from zero and
+one. When both unconfoundness and overlap are hold, then the following also holds:
+
+                         U nconf oundness given P S        (Y1i ; Y0i ) ⊥ Zi |P (Xi ),                   (5)
+where the propensity score P (Xi ) is the probability of treatment given the school characteristics
+X. If the conditions for the strongly ignorable treatment assignment are hold we can use the
+Propensity Score Matching (PSM) estimator for the ATT as follows:
+
+                   AT TP SM = Ep(x)|z=1 {E[Y1 |Z = 1, P (X)] − E[Y0 |Z = 0, P (X)]}                      (6)
+that is, the PSM estimator is the difference between the mean outcome for elementary schools and
+the mean outcome for elementary-middle schools, weighted by the propensity score distribution.
+For this analysis, we use a logit model to estimate the probability of each school to be only primary
+school given X.
+    In the present study we use four different school outcomes as dependent variable: 5th grade
+students’ average proficiency in Portuguese language and mathematics, average passing rate in
+elementary school and average dropout rate in elementary school. To select the covariates of
+the PSM we follow the procedure proposed by Imbens (2015) that allows, in addition to linear
+terms, second-order terms using an interactive process. All the first-order variables included in the
+estimation are shown in the table (4) that also shows the test of difference between treated and
+control groups4 . The variables that represent characteristics of schools were extracted from the
+socioeconomic questionnaire of the Prova Brasil while the municipal variable (Per capita GDP)
+was taken from IBGE.
+    To verify the robustness of the results, in addition to the PSM estimation with the data from
+2015, we conducted the same estimation with data from 2013 and an alternative methodology
+  4
+    The procedure implemented using the methodology proposed by Imbens (2015) removed only one of the covari-
+ates from our estimation, the principals average income.
+
+
+
+                                                     5
+combining PSM with difference-in-difference between those years. We also ran tests to check the
+quality of matching.
+
+
+4       Results
+In this section, we present the results obtained by the PSM methodology defined in section
+(3). Table (8) in the appendix shows the comparative statistics between elementary schools and
+elementary-middle schools. The descriptive statistics show that, even without any sorts of controls,
+the elementary school has higher outcomes with better student characteristics.
+    In table (1) we present the PSM estimates. The main methodology used to verify the outcomes
+is based on Kernel matching5 . Following the approach used in Felício et al. (2012) we also consider
+alternatives PSM methodologies to check the results consistency.
+
+                  Table 1: PSM estimates of the ATT for different outcomes, Brazil, 2015
+                                                  Score of                            Average           Average
+                                                                     Score of
+                                               5th-graders on                      passing rate in   dropout rate in
+                                                                  5th-graders on
+                                                Portuguese                          elementary         elementary
+                                                                         Math
+                                                 Language                              school            school
+                                                     (1)                  (2)            (3)               (4)
+
+                   Epanechnikov Kernel            4.25***             5.09***         2.46***           -0.52***
+                   (bandwidth=0.06)                (0.55)                (0.56)        (0.19)            (0.05)
+
+                   Nearest Neighbor               3.19***             3.57**          1.30***           -0.15***
+                   without replacement             (0.25)                (0.27)        (0.09)            (0.03)
+
+                   Nearest Neighbor with           3.09*              4.01**          2.31***            -0.36**
+                   replacement                     (1.62)                (1.67)        (0.60)            (0.17)
+
+                   Nearest 10 Neighbors           3.19***             3.78***         2.16***           -0.42***
+                   with replacement                (0.84)                (0.85)        (0.30)            (0.08)
+
+                                                  4.58***             5.46***         2.50***           -0.50***
+                   Caliper 0.1
+                                                   (0.45)                (0.46)        (0.16)            (0.04)
+                                                    3.31              3.97***         2.19***           -0.43***
+                   Caliper 0.01
+                                                    0.85                 (0.87)        (0.30)            (0.08)
+                                                  3.38***             3.96***         2.30***           -0.42***
+                   Caliper 0.001
+                                                   (0.60)                (0.61)        (0.21)            (0.06)
+                                                  2.96***             3.41***         2.09***           -0.39***
+                   Caliper 0.0001
+                                                    (0.44)             (0.46)          (0.16)            (0.04)
+(a) *** significant at 1%; ** significant at 5%; * significant at 10%.
+(b) Standard errors in parentheses.
+(c) 29963 observations
+
+    Following Abadie e Imbens (2006), the standard errors of this estimates were not calculated by bootstrapping,
+    5
+
+because this values wouldn’t be valid while using Nearest Neighbor Matching.
+
+
+
+
+                                                                     6
+    Analyzing the four different outcomes, we can verify that the differences between the treatment
+and control groups, in our main methodology, are all statistically significant at 1%. The first column
+show that the mean score on Portuguese Language is 4.25 points higher among students enrolled in
+elementary schools compared to those who are enrolled in elementary-middle schools. The results
+are similar for alternative methodologies (estimates range from 2.96 to 4.58). Higher achievements
+among the treated group can also be verified in mathematics exams. Elementary schools students
+had their math average score increased in 5.09 points. Considering the alternative methodologies,
+these estimates range from 3.41 to 5.46. As seen, 5th grade primary schools students perform better
+in Portuguese language and in mathematics in average than those in elementary-middle school.
+The dimension of these differences are on order of 0.21-0.22 standard deviations.
+    As can be seen in the column 3, treatment group students have better chances to go to 6th
+grade. These results demonstrate that the elementary school had a positive and significant impact
+on the average passing rate of 5th graders of 2.46 percentage points (estimates range from 1.3 to
+2.5). The size of the effect is considerably greater than found in achievements in Portuguese and
+mathematics, around 0.35 standard deviations.
+    The last column of the table (1) presents the ATT of dropout rate comparison (after matching)
+between 5th grade students who are enrolled in elementary schools and those who are enrolled in
+elementary-middle schools. The PSM estimates indicate that participating in the treated group
+reduces the dropout rate in 0.52 percentage points (estimates range from 0.15 to 0.52). The size
+of these difference are on order of 0.25 standard deviations.
+    Therefore, 5th grade students enrolled in elementary schools compared (after matching) to those
+from elementary-middle schools present better school outcomes.The results maintain the same
+direction and significance for different specifications of the models.
+
+Mechanisms
+This subsection investigates possible variables that could be the channels that explain the best
+outcomes for students in the 5st year of elementary schools compared to elementary-middle schools.
+For example, the grade span configuration can lead to the generation of alternative pedagogical
+practices focused on the specific needs of students. If this is a mechanism, the principals of these
+schools would tend to propose policies aimed at school learning, increase of approval rates and
+reduction of dropout. Another channel that can explain at least part of the findings is school
+management. Smaller schools may provide principals with more expertise in conducting school
+management.
+    The first group of channels tested were those related to pedagogical practices. They are dummy
+variables assuming value 1 when the school offers specific policies for: achievement reinforcement,
+approval enhancement, dropout reduction and extracurricular activities. The second group of
+channels, related to school management, is also formed by dummy variables when the school has:
+at least 90% of teachers with tenure, teacher training programs, school board meetings at least
+quarterly. These variables are present in the SAEB database and are answered by school principals.
+These tests are performed using the same PSM regressions presented in table (1),only replacing
+the dependent variables (school outcomes) by the dummy variables of the existence of alternative
+pedagogical practices. The results of the channel tests are shown in the tables (2) and (3).
+
+                                                  7
+    The results presented in table (2) suggest that elementary schools are more likely to carry
+out alternative pedagogical policies. This result is not robust only for achievement reinforcement
+policy. Holding the identification hypothesis of the PSM, we can say that primary schools are more
+likely, by 11 percentage points, to offer approval enhancement policies. Likewise, they are more
+likely to offer dropout reduction policies (25 percentage points) and extracurricular activity (5
+percentage points). The findings for these three mechanisms are similar for different specifications.
+Regarding the test of the group of channels related to school management, shown in table (3),
+the results also indicate that specialized schools tend to have benefits for teachers. There is no
+evidence, however, that these schools are more likely to have board meetings more often. The
+results indicate that elementary schools are more likely (10 percentage points) to have at least
+90% of their teachers with tenure and more likely (5 percentage points) to offer training programs
+to their teachers. These findings suggest that both mechanisms (pedagogical practices and school
+management policies for teachers) may be acting to explain the impacts of grade span configuration
+in the school outcomes of 5st grade students.
+
+
+               Table 2: PSM estimates of the ATT for the first channel group, Brazil, 2015
+                                                Scholar
+                                                                         Approval   Dropout
+                                              achievement                                       Extracurricular
+                                                                    enhancement     reduction
+                                             reinforcement                                      activity policy
+                                                                          policy     policy
+                                                 policy
+
+                                                   (1)                     (2)         (1)            (7)
+
+               Epanechnikov Kernel                0.01                   0.11***    0.25***        0.05***
+               (bandwidth=0.06)                  (0.01)                   (0.01)     (0.01)         (0.01)
+               Nearest Neighbor                 0.03***                  0.13***    0.28***        0.04***
+               without replacement               (0.01)                   (0.01)     (0.01)         (0.01)
+               Nearest Neighbor with              -0.01                   0.07**    0.28***         0.06*
+               replacement                       (0.02)                   (0.04)     (0.04)         (0.03)
+               Nearest 10 Neighbors               0.00                   0.11***    0.24***        0.06***
+               with replacement                  (0.01)                   (0.02)     (0.02)         (0.02)
+                                                 0.01*                   0.11***    0.25***        0.05***
+               Caliper 0.1
+                                                 (0.01)                   (0.01)     (0.01)         (0.01)
+                                                  0.00                   0.11***    0.23***        0.06***
+               Caliper 0.01
+                                                 (0.01)                   (0.02)      0.02          (0.02)
+                                                  0.00                   0.11***    0.25***        0.05***
+               Caliper 0.001
+                                                 (0.01)                   (0.01)     (0.01)         (0.01)
+                                                 0.01*                   0.11***    0.26***        0.04***
+               Caliper 0.0001
+                                                 (0.01)                   (0.01)     (0.01)         (0.01)
+(a) *** significant at 1%; ** significant at 5%; * significant at 10%.
+(b) Standard errors in parentheses.
+(c) 29963 observations
+
+
+
+
+                                                                    8
+             Table 3: PSM estimates of the ATT for the second channel group, Brazil, 2015
+                                                At least 90% of          Teacher training   School board meeting
+                                             teachers with tenure           programs          at least quarterly
+
+                                                      (1)                      (2)                   (3)
+
+                 Epanechnikov Kernel                0.10***                  0.05***                -0.02
+                 (bandwidth=0.06)                    (0.01)                   (0.01)               (0.01)
+
+                 Nearest Neighbor                   0.15***                  0.04***                -0.05
+                 without replacement                 (0.01)                   (0.01)               (0.01)
+
+                 Nearest Neighbor with              0.13***                   0.06*                 -0.05
+                 replacement                         (0.03)                   (0.03)               (0.03)
+
+                 Nearest 10 Neighbors               0.09***                  0.06***                -0.03
+                 with replacement                    (0.02)                   (0.02)               (0.02)
+
+                                                    0.11***                  0.05***                -0.02
+                 Caliper 0.1
+                                                     (0.01)                   (0.01)               (0.01)
+                                                    0.09***                  0.06***                -0.04
+                 Caliper 0.01
+                                                     (0.02)                   (0.02)               (0.02)
+                                                    0.09***                  0.05***                -0.02
+                 Caliper 0.001
+                                                     (0.01)                   (0.01)               (0.01)
+                                                    0.09***                  0.04***                -0.02
+                 Caliper 0.0001
+                                                      (0.01)                  (0.01)               (0.01)
+(a) *** significant at 1%; ** significant at 5%; * significant at 10%.
+(b) Standard errors in parentheses.
+(c) 29963 observations
+
+
+
+
+5       Testing
+Matching Quality
+For the purpose of checking the quality of PSM, we ran tests to verify if the covariates used in
+the matching process were properly balanced between treatment and control groups. The tests
+ran were complementary, to show how the PSM created groups practically equal to each other.
+The first test, proposed by Rosenbaum e Rubin (1985),consist of a t test to check the differences
+between the averages of each covariate of treatment and control groups. The results shown in table
+(4) are based in Kernel PSM, which was chosen as the main methodology of this paper.
+
+
+
+
+                                                                    9
+                                         Table 4: Variable Analysis
+                                                                            t-statistic after
+                                                        Treated   Control
+                                                                               balancing
+                      Dummy representing the location    0.913     0.914         0.646
+                      of the school
+
+                      Dummy representing the             0.864     0.862         0.563
+                      administration of the school
+
+                      Dummy representing the choice      0.482     0.465         0.001
+                      of the principal
+
+                      Percentage of principals with a    0.828     0.807           0
+                      postgraduate degree
+
+                      Percentage of teachers with a      0.045     0.052           0
+                      postgraduate degree
+
+                      Mean years of experience of the    4.574     4.794           0
+                      principals
+
+                      Mean years of experience of the    13.979   14.125         0.006
+                      teachers
+
+                      Mean of teachers income            2,151     2,135         0.148
+
+                      Dummy of Socioeconomic Level 1     0.003     0.003         0.951
+
+                      Dummy of Socioeconomic Level 2     0.042     0.042         0.819
+
+                      Dummy of Socioeconomic Level 4     0.284     0.281         0.586
+
+                      Dummy of Socioeconomic Level 5     0.383     0.386         0.672
+
+                      Dummy of Socioeconomic Level 6     0.112     0.112         0.897
+
+                      Dummy of Socioeconomic Level 7     0.001     0.001         0.177
+
+                      Percapita GDP                      25,908   26,497         0.009
+
+
+
+    The first two columns of table (4) show the mean value of each covariate for treated and control
+groups, respectively. The third column, shows the t statistic of the differences between the groups
+after matching. The t-statistic, shown in the third column, shows that all the p-values for this
+differences are higher than 10%, indicating that the matching was adequately balanced, this means
+that the difference of the covariates between the treatment and control groups are not statistically
+significant at the 10% threshold.
+    To support the theory that the matching was properly balanced, we also consider Kernel
+density functions before and after matching to show the overlap of these distributions. Figure 2
+show density functions that overlap almost perfectly after matching, indicating a precise balance
+of the PSM.
+
+
+
+
+                                                        10
+                  Figure 2: Kernel density functions before and after matching
+
+
+
+
+Sensitivity Analysis of the Results to Unobserved Heterogeneity
+Even though many controls are used to assure the quality of the PSM, if both control and treatment
+groups differ on unobserved variables that may affect treatment, or outcome, there is a possibility
+of the existence of a “hidden bias”. This problem, with non-experimental data, cannot be solved
+since there is no way to measure the effect of this bias against the outcome variables. In order to
+check the existence of hidden biases, we used the implemented solution suggested by Rosenbaum
+(2002) that determines how much an unmeasured variable influences the treatment assignment or
+the outcome.
+    This issue with non-experimental analysis can also be found in Aakvik (2001), Caliendo et al.
+(2005) and Caliendo et al. (2008). This implementation can be overall explained as the partic-
+ipation probability of the individual i with the observed characteristics xi . If the equation that
+describes this probability includes all the important variables, and there is no hidden bias, we can
+conclude that γ will be zero and the participation in the treatment will only be determined by
+the explicit covariates. Following Aakvik (2001) and Caliendo et al. (2008), for the significance of
+effects, we gradually increased the eγ until the inference about the treatment effect changed. With
+this we can analyze the strength that unmeasured covariates would require to change the intuition
+about the treatment effect.
+    The results shown in table (5) check if the individuals have the same probability of receiving
+treatment, and this happens when eγ = 1 , therefore γ = 0 . If, the critical value for eγ = 2,
+individuals who appear to be similar may differ in their probability of receiving the treatment by
+a factor of 2. In other words, eγ is a measure of the degree that the propensity is free of hidden
+bias. This values doesn’t represent that the model contain unobserved bias, it simply verifies that
+in case of the existence of hidden biases, the confidence interval, until the inference was changed,
+is contained in this values. The results allow us to conclude that even large amounts of unobserved
+heterogeneity would not alter the inference about the ATT shown in the table (1).
+
+
+
+
+                                                11
+        Table 5: Sensitivity Analysis for Unobserved Heterogeneity - Critical value for eγ
+                                        Score of                          Average           Average
+                                                         Score of
+                                     5th-graders on                    passing rate in   dropout rate in
+                                                      5th-graders on
+                                      Portuguese                        elementary         elementary
+                                                          Math
+                                       Language                            school            school
+                                          (1)               (2)              (3)               (4)
+             Epanechnikov Kernel
+                                       1.4 - 1.45       1.35 - 1.4       2.3 - 2.35            >3
+             (bandwidth=0.06)
+             Nearest Neighbor
+                                       1.05 - 1.1       1.05 - 1.1       1.1 - 1.15            1
+             without replacement
+             Nearest Neighbor with
+                                       1.1 - 1.15       1.15 - 1.2       1.45 - 1.5            >3
+             replacement
+             Nearest 10 Neighbors
+                                       1.2 - 1.25       1.15 - 1.2        2 - 2.05             >3
+             with replacement
+             Caliper 0.1               1.45 - 1.5       1.4 - 1.45       2.35 - 2.4            >3
+             Caliper 0.01              1.25 - 1.3       1.2 - 1.25       2.1 - 2.15            >3
+             Caliper 0.001             1.2 - 1.25       1.2 - 1.25        2 - 2.05             >3
+             Caliper 0.0001            1.05 - 1.1       1.05 - 1.1       1.45 - 1.5            >3
+
+
+
+Alternative Identification Strategies
+In order to check the robustness of the findings, we also ran PSM for the previous year of SAEB,
+2013. As seen in table (6), we can conclude that the results can be seen throughout the years and
+do not qualify as a singular occurrence.
+
+
+
+
+                                                       12
+                  Table 6: PSM estimates of the ATT for different outcomes, Brazil, 2013
+                                                  Score of                            Average           Average
+                                                                     Score of
+                                               5th-graders on                      passing rate in   dropout rate in
+                                                                  5th-graders on
+                                                Portuguese                          elementary         elementary
+                                                                       Math
+                                                 Language                              school            school
+                                                     (1)                 (2)             (4)               (3)
+                   Epanechnikov Kernel            6.47***             7.45***         2.63***           -0.57***
+                   (bandwidth=0.06)                (0.64)             (0.72)           (0.19)            (0.06)
+
+                   Nearest Neighbor               3.58***             4.42***         1.00***           -0.18***
+                   without replacement             (0.31)             (0.35)           (0.09)            (0.03)
+
+                   Nearest Neighbor with           3.95**             5.31***         2.14***            -0.42**
+                   replacement                     (1.66)             (1.88)           (0.53)            (0.17)
+
+                   Nearest 10 Neighbors           5.47***             6.51***         2.60***           -0.51***
+                   with replacement                (0.99)             (1.12)           (0.31)            (0.10)
+
+                                                  6.64***             7.69***         2.58***           -0.56***
+                   Caliper 0.1
+                                                   (0.52)             (0.60)           (0.16)            (0.05)
+                                                  4.83***             5.75***         2.43***           -0.48***
+                   Caliper 0.01
+                                                   (1.18)             (1.33)           (0.35)            (0.11)
+                                                  4.76***             5.59***         2.34***           -0.44***
+                   Caliper 0.001
+                                                   (0.83)             (0.94)           (0.25)            (0.08)
+                                                  4.79***             5.48***         2.15***           -0.41***
+                   Caliper 0.0001
+                                                    (0.53)             (0.60)          (0.17)            (0.05)
+(a) *** significant at 1%; ** significant at 5%; * significant at 10%.
+(b) Standard errors in parentheses.
+(c) 29922 observations
+
+
+    Another estimation strategy used to check if the results are consistent is the PSM with
+difference-in-differences between 2013 and 2015. Our treated group are schools that have be-
+come elementary schools between 2013 and 2015. The control group are schools that remained
+elementary-middle schools between the two periods. Although not so strong the results shown in
+table (7) are similar to those found in tables (1) and (6). Note that in this specification the sample
+size is reduced. This is because the matching is done only with schools that have changed the grade
+configuration. Another factor that may explain the reduction of the magnitude of the coefficient is
+that the effects may be lower in the short term. Changing pedagogical and management practices
+may take some time.
+
+
+
+
+                                                                    13
+              Table 7: Diff-in-diff estimates of the ATT for different outcomes, Brazil, 2013
+                                                  Score of                            Average           Average
+                                                                     Score of
+                                               5th-graders on                      passing rate in   dropout rate in
+                                                                  5th-graders on
+                                                Portuguese                          elementary         elementary
+                                                                       Math
+                                                 Language                              school            school
+                                                     (1)                 (2)             (4)               (3)
+                   Epanechnikov Kernel             2.73**             3.46***         2.28***           -0.67***
+                   (bandwidth=0.06)                (1.09)             (1.30)           (0.43)            (0.22)
+
+                   Nearest Neighbor                 0.82                 0.57         2.34***            -0.66**
+                   without replacement             (1.59)             (1.94)           (0.65)            (0.28)
+
+                   Nearest Neighbor with            -6.93             -6.80*           1.63**             -0.59
+                   replacement                     (4.27)             (3.79)           (1.63)            (0.62)
+
+                   Nearest 10 Neighbors             2.23               3.63*           1.42**             -0.23
+                   with replacement                (1.75)             (2.09)           (0.70)            (0.27)
+
+                                                  2.88***             3.76***         2.22***           -0.67***
+                   Caliper 0.1
+                                                   (1.10)             (1.29)           (0.43)            (0.22)
+                                                   1.82*               2.17*          2.14***           -0.68***
+                   Caliper 0.01
+                                                   (1.09)             (1.30)           (0.44)            (0.22)
+                                                    1.39                 1.50         2.03***           -0.65***
+                   Caliper 0.001
+                                                   (1.09)             (1.30)           (0.44)            (0.22)
+                                                    1.40                 1.53         2.03***           0.66***
+                   Caliper 0.0001
+                                                    (1.09)             (1.30)          (0.44)            (0.22)
+(a) *** significant at 1%; ** significant at 5%; * significant at 10%.
+(b) Standard errors in parentheses.
+(c) 367 observations
+
+
+
+
+6       Conclusion
+The main purpose of this paper was to analyze, given the demographic transition that Brazil is
+going through, the alternative courses of action given the excess supply in the Brazilian school
+system. As seen in other countries, this demographic change creates an opportunity to reformu-
+late the educational system. This could be done by closing schools and relocating students, or
+by specializing schools, splitting the elementary-middle school configuration into elementary and
+middle schools, in separate sites. This phenomenon was already studied in the United States
+(Byrnes e Ruby (2007)). Their comparison was among students that passed through a school
+change in their lives, and how it affected the proficiency outcomes. Even though their results show
+that this school transition affects negatively the performance of students in standardized tests,
+their focus was to observe this effect in older students, entering high-school. Our objective was
+to analyze if this school division, into elementary and middle school, could positively affect the
+performance of 5th -grade students in Brazil. Our analysis is based on a dataset from the Brazilian
+
+
+                                                                    14
+Ministry of Education, which provide information on both standardized test results of students
+and socioeconomic information of students, teachers and principals.
+    We estimated the effects of grade span configuration on different outcomes, using the Propensity
+Score Matching strategy. There are four preliminary findings. First, treated group of school
+students presented results on standardized tests of Portuguese 0.21 standard deviations higher
+than those achieved by the control group. Second, students from these schools also present higher
+achievement in math (0.22 standard deviations). Third, we estimate that the average passing rate
+is 2.46 percentage points higher in elementary schools compared to elementary-middle schools.
+This result represents a positive impact of 0.35 standard deviations. Fourth, there is evidence
+that these schools are also successful in reducing the dropout rate by 0.52 percentage points (0.25
+standard deviations). We find evidence that suggests that both alternative pedagogical practices
+and school management policies for teachers are important mechanisms of the effects of school
+specialization on student outcomes.
+    The results presented in this study are statistically significant and robust to different method-
+ological specifications. Therefore, we believe there is evidence that a change in grade span con-
+figuration that specializes schools can improve the school outcomes of 5th grade students. These
+findings have interesting implications for the implementation of public policies. A reorganization
+of the school structure is favorable in an environment of reduction of enrollments and maintenance
+of the schools supply.
+    Finally, this study has the limitation of analyzing only the achievements of 5th grade students.
+Other studies may contribute to the literature evaluating possible effects for students who switch
+schools with the change in grade span configuration.
+
+
+References
+Aakvik, A. Bounding a matching estimator: the case of a norwegian training program. Oxford
+ bulletin of economics and statistics, 63(1):115–143, 2001.
+
+Abadie, A., e Imbens, G. W. Large sample properties of matching estimators for average
+ treatment effects. Econometrica, 74(1):235–267, 2006.
+
+Byrnes, V., e Ruby, A. Comparing achievement between k–8 and middle schools: A large-scale
+ empirical study. American Journal of Education, 114(1):101–135, 2007.
+
+Caliendo, M., Hujer, R., e Thomsen, S. L. Individual employment effects of job creation
+ schemes in germany with respect to sectoral heterogeneity. 2005.
+
+Caliendo, M., Hujer, R., e Thomsen, S. L. The employment effects of job-creation schemes
+ in germany: a microeconometric evaluation. In Modelling and evaluating treatment effects in
+ econometrics, pages 381–428. Emerald Group Publishing Limited, 2008.
+
+Dove, M. J., Pearson, L. C., e Hooper, H. Relationship between grade span configuration
+ and academic achievement. Journal of Advanced Academics, 21(2):272–298, 2010.
+
+
+                                                 15
+Felício, F. d., Terra, R., e Zoghbi, A. C. The effects of early childhood education on literacy
+ scores using data from a new brazilian assessment tool. Estudos Econômicos (São Paulo), 42
+ (1):97–128, 2012.
+
+Hanushek, E. A., Kain, J. F., Markman, J. M., e Rivkin, S. G. Does peer ability affect
+ student achievement? Journal of applied econometrics, 18(5):527–544, 2003.
+
+Hattie, J. A. Classroom composition and peer effects. International Journal of Educational
+ Research, 37(5):449–481, 2002.
+
+Heckman, J. J., Ichimura, H., e Todd, P. E. Matching as an econometric evaluation
+ estimator: Evidence from evaluating a job training programme. The review of economic studies,
+ 64(4):605–654, 1997.
+
+Imbens, G. W. Matching methods in practice: Three examples. Journal of Human Resources,
+  50(2):373–419, 2015.
+
+Offenberg, R. M. The efficacy of philadelphia’s k-to-8 schools compared to middle grades
+ schools. Middle School Journal, 32(4):23–29, 2001.
+
+Rockoff, J. E., e Lockwood, B. B. Stuck in the middle: Impacts of grade configuration in
+ public schools. Journal of public economics, 94(11):1051–1061, 2010.
+
+Rosenbaum, P. R. Observational studies. In Observational Studies, pages 1–17. Springer, 2002.
+
+Rosenbaum, P. R., e Rubin, D. B. The central role of the propensity score in observational
+ studies for causal effects. Biometrika, pages 41–55, 1983.
+
+Rosenbaum, P. R., e Rubin, D. B. Constructing a control group using multivariate matched
+ sampling methods that incorporate the propensity score. The American Statistician, 39(1):
+ 33–38, 1985.
+
+Schwerdt, G., e West, M. R. The impact of alternative grade configurations on student
+  outcomes through middle and high school. Journal of Public Economics, 97:308–326, 2013.
+
+Weiss, C. C., e Bearman, P. S. Fresh starts: Reinvestigating the effects of the transition to
+ high school on student outcomes. American Journal of Education, 113(3):395–421, 2007.
+
+
+
+Appendix
+
+
+
+
+                                              16
+                                                                  Table 8: Descriptive Statistics
+                                                         Elementary Schools                                                          Elementary-middle Schools
+
+
+                               Obs        Mean Score        Mean Score                                         Obs       Mean Score        Mean Score
+                                         on Portuguese          on            Passing Rate   Dropout rate               on Portuguese          on           Passing Rate   Dropout rate
+                             (% within     Language         Mathematics                                     (% within     Language         Mathematics
+                                                                               (std.Dev)      (std.Dev)                                                      (std.Dev)      (std.Dev)
+                             category)     (std.Dev)         (std.Dev)                                      category)     (std.Dev)          (std.Dev)
+
+
+                              16317         210.35             223.45            93.07           0.90         13979        205.60             217.88             91.55         1.16
+     All Schools
+                              (53.86)       (20.10)           (22.49)            (6.78)         (2.03)       (46.14)       (21.94)            (22.28)            (7.71)       (2.14)
+
+                               2214         217.54             230.78            95.85           0.63         4033         214.36             226.12             94.29         0.66
+     State Schools
+                              (7.31)        (17.74)           (20.51)            (5.44)         (1.67)       (13.31)       (17.13)            (17.85)            (6.98)       (1.87)
+
+                              14103         209.22             222.30            92.63           0.95         9946         202.05             214.55             90.44         1.36
+     City Schools
+                              (46.55)       (20.21)           (22.58)            (6.87)         (2.08)       (32.83)       (22.68)            (23.01)            (7.71)       (2.20)
+
+                              14876         211.93             224.94            93.38           0.87         11051        210.33             222.11             92.26         1.03
+     Urban Schools
+                              (49.10)       (19.19)           (21.84)            (6.56)         (2.03)       (36.48)       (19.15)            (20.15)            (7.30)       (1.99)
+
+                               1441         194.00             207.99            89.90           1.26         2928         187.75             201.94             88.88         1.65
+     Country Schools
+                              (4.76)        (21.88)           (23.36)            (8.15)         (2.05)        (9.66)       (22.63)            (22.69)            (8.57)       (2.54)
+
+                                61          172.68             188.78            85.12           2.03          202         163.81             180.51             84.23         2.39
+     Socioeconomic Level 1
+                              (0.20)        (21.26)           (21.24)           (10.13)         (2.35)        (0.67)       (14.20)            (11.60)            (10.21)      (2.95)
+
+                               691          182.13             196.49            87.13           2.26         1304         181.87             197.00             88.02         2.02
+     Socioeconomic Level 2
+                              (2.28)        (18.23)           (20.17)            (8.84)         (2.97)        (4.30)       (23.56)            (24.64)            (9.02)       (2.73)
+
+
+
+
+17
+                               2852         190.33             202.36            88.92           1.90         2905         190.12             203.16             88.69         2.11
+     Socioeconomic Level 3
+                              (9.41)        (16.12)           (17.28)            (7.94)         (2.63)        (9.59)       (18.71)            (19.79)            (8.44)       (2.82)
+
+                               4629         204.89             216.52            92.20           1.11         3072         203.51             214.74             91.16         1.28
+     Socioeconomic Level 4
+                              (15.28)       (14.23)           (16.79)            (6.67)         (2.05)       (10.14)       (14.37)            (15.76)            (7.87)       (2.22)
+
+                               6240         219.70             233.67            95.14           0.37         4701         215.37             227.09             93.38         0.56
+     Socioeconomic Level 5
+                              (20.60)       (11.65)           (15.00)            (4.91)         (1.51)       (15.52)       (12.14)            (13.68)            (6.25)       (1.15)
+
+                               1831         235.07             249.99            97.16           0.10         1767         230.36             242.11             95.39         0.20
+     Socioeconomic Level 6
+                              (6.04)        (10.52)           (13.92)            (2.92)         (0.36)        (5.83)       (11.93)            (13.92)            (3.99)       (0.57)
+
+                                13          251.09             266.78            98.45           0.00          28          244.70             257.92             98.51         0.04
+     Socioeconomic Level 7
+                              (0.04)        (10.00)           (14.44)            (1.55)         (0.00)        (0.09)       (8.83)             (14.20)            (1.54)       (0.19)
+
+                               1814         195.75             206.38            90.53           1.57         1398         186.73             198.70             86.84         2.47
+     North
+                              (5.99)        (17.86)           (18.69)            (7.05)         (2.13)        (4.61)       (20.02)            (18.33)            (8.61)       (2.91)
+
+                               4486         192.86             204.05            88.57           1.99         4218         189.84             202.87             88.23         2.08
+     Northeast
+                              (14.81)       (16.82)           (16.97)            (7.75)         (2.79)       (13.92)       (20.81)            (21.53)            (8.38)       (2.82)
+
+                               6522         221.41             236.09            96.02           0.33         4078         218.00             230.47             94.84         0.56
+     Southeast
+                              (21.53)       (13.47)           (16.07)            (4.86)         (1.43)       (13.46)       (14.03)            (15.58)            (6.07)       (1.16)
+
+                               2396         221.94             237.86            94.93           0.14         3208         217.58             229.66             93.01         0.34
+     South
+                              (7.91)        (13.78)           (16.46)            (4.24)         (0.38)       (10.59)       (14.63)            (15.18)            (5.74)       (0.73)
+
+                               1099         214.86             224.34            94.09           0.46         1077         209.16             218.90             93.90         0.54
+     Central-West
+                              (3.63)        (13.62)           (14.80)            (4.86)         (0.84)        (3.55)       (13.95)            (14.51)            (6.14)       (1.03)
+

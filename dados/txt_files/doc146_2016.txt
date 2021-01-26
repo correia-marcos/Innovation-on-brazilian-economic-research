@@ -1,0 +1,999 @@
+         Uma investigação sobre a sincronia entre os movimentos do coeficiente de penetração de
+              importações, do consumo e do investimento no Brasil no período 1997-2015
+
+                                                                                                 Clarissa Black1
+Área 9 – Economia Industrial e da Tecnologia
+
+Resumo
+Nos anos 1990 e 2000, o aumento do coeficiente de penetração de importações (CPI) no Brasil está
+relacionado, em muitos estudos, à desindustrialização e à doença holandesa, enquanto a queda desse
+coeficiente em 2015 seria uma evidência de um suposto movimento de substituição de importações. Por
+outro lado, a hipótese adotada neste trabalho é alternativa ao considerar a possibilidade das variações do
+CPI estarem relacionadas, principalmente, à dinâmica do PIB, tomando como base as características
+estruturais do arranjo produtivo brasileiro, especialmente as lacunas presentes na produção doméstica de
+bens intermediários e de capital. Assim, considera-se que o CPI apresenta um padrão pró-cíclico. Diante
+disso, este artigo tem como objetivo estudar as características dinâmicas e os movimentos conjuntos do
+CPI da indústria de transformação, do investimento e do consumo no Brasil no intervalo 1997-2015. Para
+atender a esse propósito, este trabalho decompõe as séries do CPI, do investimento e do consumo em
+componentes não observáveis, como o nível, a inclinação e o ciclo através do filtro de Kalman em um
+modelo multivariado do tipo Seemingly Unrelated Time Series Equations (SUTSE). Nesse modelo, a
+análise da matriz de covariância dos erros dos estados permite inferir a cerca da correlação entre as
+variáveis. As principais conclusões deste estudo sinalizam para uma elevada relação na inclinação do
+CPI, do investimento e do consumo. No teste de componentes comuns, foi encontrada uma inclinação
+comum às três séries, o que significa que suas primeiras diferenças são cointegradas. Quanto ao ciclo, a
+relação mais relevante ocorre entre o CPI e o investimento. Dessa forma, aumentos ou reduções na
+parcela das importações no consumo aparente, medida pelo CPI, não são condições suficientes para
+comprovar, respectivamente, movimentos de desindustrialização e de substituição de importações.
+
+Palavras-Chave: coeficiente de penetração de importações, modelos em espaço de estado.
+
+Abstract
+In 1990 and 2000, the import penetration ratio (IPR) increased in Brazil and this is related, in many
+studies, to the deindustrialization and the Dutch disease, while the drop in this ratio in 2015 would be
+evidence of an import substitution movement. On the other hand, the hypothesis adopted in this work
+consider that the variations in the IPR are mainly related to the dynamics of GDP, based on the structural
+characteristics of the Brazilian productive arrangement, especially the gaps present in the domestic
+production of intermediate goods and capital. Thus, it is considered that IPR presents a pro-cyclical
+pattern. Thus, this article aims to study the dynamic characteristics and joint movements of the IPR in the
+manufacturing industry, investment and consumption in Brazil in the period 1997-2015. To fulfill this
+purpose, this paper decomposes the IPR, investment and consumption in unobservable components, such
+as level, slope and cycle through the Kalman filter in a Seemingly Unrelated Time Series Equations
+(SUTSE) multivariate model. The analysis of the error covariance matrix of the state estimate allows us to
+infer about the correlation between the variables. The main findings of this study show a high correlation
+between the CPI, investment and consumption slope. In the test of common components, a common slope
+was found, which means that the first differences of the series are cointegrated. About the cycle, the most
+important relationship is between the CPI and investment. Thus, increases or decreases in the share of
+imports in apparent consumption, measured by the CPI, are not sufficient conditions to prove,
+respectively, a deindustrialization movement and import substitutions.
+
+Key-words: import penetration ratio, state space models.
+JEL: F10, L60.
+
+1
+    Doutoranda em Economia na Universidade Federal do Rio Grande do Sul e Pesquisadora da FEE.
+                                                                                                              1
+1.      Introdução
+        Desde a abertura comercial no Brasil nos anos 1990, o aumento da participação das importações
+no consumo aparente, a qual é mensurada pelo coeficiente de penetração de importações (CPI)2, tem
+causado preocupação para muitos economistas e associações industriais. O CPI, que estava na casa dos
+10%3 na segunda década dos anos 1990, mais do que dobrou ao longo dos anos 2000. Isso motivou
+diversos estudos, os quais buscavam encontrar as razões para a elevação das importações, e,
+consequentemente, prescrever as medidas necessárias para contê-las.
+        Para alguns, a razão estaria na baixa produtividade da indústria (BONELLI; PINHEIRO, 2012;
+FALEIROS; SILVA; NAKAGUMA, 2016) alicerçada pela má qualidade da infraestrutura, pelo elevado
+custo do trabalho e pelo baixo nível educacional, por exemplo. Para outros, o principal motivo seria a
+valorização cambial, como consequência da doença holandesa (BRESSER-PEREIRA, 2009). Assim, o
+aumento da participação das importações no consumo aparente seria uma evidência da
+desindustrialização no Brasil (CANO, 2012; MARCONI; BARBI, 2010).
+        Em contrapartida, a redução do CPI em 2015 tem sido apontada como evidência para um suposto
+movimento de substituição de importações (SI) no Brasil (COSTA; BARBOSA, 2015; IEDI 2016a, IEDI
+2016b). Porém, a queda do CPI no contexto da crise internacional de 2008-2009 adiciona incertezas à
+hipotética relação entre queda no CPI e movimentos de SI. Da mesma forma, há razões para duvidar que
+o aumento do CPI, necessariamente, seja um reflexo da desindustrialização do Brasil. Nesse sentido,
+Levy e Serra (2002) sugerem precaução na interpretação das variações do CPI, haja vista seu caráter pró-
+cíclico, em meio ao debate sobre SI que também ocorreu no final dos anos 1990 e início dos anos 2000 no
+Brasil (FRANCO; BAUMANN, 2005; FLIEGESPAN, 2005).
+        Diante disso e ao tomar como base as características estruturais do arranjo produtivo brasileiro,
+especialmente as lacunas presentes na produção doméstica de bens intermediários e de capital, considera-
+se a possibilidade das variações do CPI estarem relacionadas, principalmente, à dinâmica do PIB, ou seja,
+adota-se a hipótese de um padrão pró-cíclico para o CPI. Frente a isso, o objetivo principal deste artigo é
+verificar a ocorrência de movimentos conjuntos do CPI da indústria de transformação com a formação
+bruta de capital fixo e o consumo das famílias no Brasil.
+        Para isso, este artigo dispõe de mais seis seções além desta introdução. Na seção dois são
+apresentadas algumas características da estrutura produtiva brasileira. A terceira seção discute os modelos
+estruturais de séries de tempo – o modelo univariado e o modelo multivariado do tipo Seemingly
+Unrelated Time Series Equations (SUTSE) - os quais decompõem as séries em componentes não
+observáveis, como o nível, a inclinação e o ciclo através do filtro de Kalman. A quarta seção apresenta o
+método de construção do CPI, enquanto a quinta parte descreve a fonte para os dados que compõem a
+amostra selecionada. A seção seis apresenta e discute os resultados empíricos, enquanto a sétima e oitava
+seção reportam as considerações finais e as referências bibliográficas consultadas, respectivamente.
+
+2.      Características estruturais da produção industrial brasileira
+        O arranjo produtivo brasileiro é caracterizado por uma série de lacunas, as quais refletem seus
+problemas estruturais e, como consequência, sua dependência em relação às importações, especialmente
+aquelas de maior conteúdo tecnológico. Nesse sentido, ao observar a estrutura da produção industrial é
+plausível reconhecer a presença de deficiências de oferta em importantes setores estratégicos. Conforme
+Santos et al (2015), essas lacunas estariam presentes, principalmente, na produção de bens intermediários,
+o que se reflete em uma elevada parcela desse grupo de produtos nas importações totais.
+        Segundo os autores, os principais bens intermediários importados pelo Brasil são partes e peças
+para veículos; componentes eletrônicos; compostos químicos não petroquímicos ou carboquímicos;
+resinas, elastômeros e fibras artificiais e sintéticas; e adubos, fertilizantes e corretivos do solo. Vale
+ressaltar que, os primeiros estão incorporados nas cadeias globais de valor (SANTOS ET AL, 2015; DE
+NEGRI, 2010), as quais tendem a diminuir a elasticidade câmbio-comércio (IMF, 2015), enquanto os
+
+
+2                                                         i
+        i i                      i
+                                                      i       -
+3
+    Detalhes sobre o cálculo desse indicador são apresentados na seção quatro.
+                                                                                                         2
+demais apresentam históricas e marcadas carências na oferta doméstica (SANTOS ET AL, 2015;
+BASTOS; COSTA, 2011).
+        Assim, variações nas importações desses bens parecem estar relacionadas, primordialmente, à
+dinâmica da produção industrial. Por outro lado, a possibilidade de substituição dessas importações por
+produção local exigiria decisões estratégicas de mudança estrutural e de aprimoramento tecnológico, mais
+do que variações de curto prazo na taxa de câmbio. Esse retrato da produção doméstica de bens
+intermediários se reflete em uma baixa elasticidade-câmbio das importações e, consequentemente, em
+uma elevada elasticidade-renda, tanto das importações de bens intermediários quanto das importações
+totais (SANTOS ET AL, 2015).
+        Isso porque os bens intermediários têm uma elevada participação das importações totais de bens,
+na casa dos 57,1%, conforme dados da Funcex (2016). Ao considerar também os bens de capital, os quais
+também têm elevada parcela de componentes importados, essa participação atinge 72,2%, tomando como
+base o ano de 2015.
+        Nesse sentido, o estudo de Fevereiro (2016), ao separar as importações de intermediários entre os
+diferentes componentes da demanda, conclui que a formação bruta de capital fixo tem o maior conteúdo
+importado (0,217), seguido pelas exportações (0,136), consumo das famílias (0,113) e gastos do governo
+(0,04), conforme cálculos do autor para o ano de 2015, a preços do ano anterior.
+        Por sua vez, ao calcular o quanto das importações totais de bens finais e de intermediários é
+atribuído a cada componente da demanda, o consumo das famílias aparece em primeiro lugar como
+principal destino das importações, em média 48,1% das importações totais no intervalo 2000-2015. Ou
+seja, quase metade de tudo o que é importado, seja de bens finais importados, seja de bens intermediários
+utilizados na produção doméstica, tem como principal fonte de demanda o consumo das famílias. Na
+sequência segue a formação bruta de capital fixo (31,1%) e as exportações (15,2%) (FEVEREIRO, 2016).
+        Diante do elevado conteúdo importado do investimento, das lacunas presentes principalmente na
+produção doméstica de bens intermediários e do fato das importações totais ter como principal destino o
+consumo das famílias, este estudo procurou relacionar o CPI da indústria de transformação brasileira à
+formação bruta de capital fixo e ao consumo das famílias, no que tange aos seus componentes não
+observáveis, quais sejam, o nível, a inclinação e o ciclo. Isso é possível em modelos estruturais de séries
+de tempo, os quais são colocados em formato de espaço de estado para a aplicação do filtro de Kalman.
+Esse é o assunto da próxima seção.
+
+3.      Modelo estrutural de séries de tempo
+        Nessa seção teórica e metodológica, incialmente são discutidos os modelos univariados e na
+sequência segue o modelo multivariado SUTSE e de componentes comuns. A quarta parte introduz os
+efeitos de intervenção nos modelos, enquanto a quinta subseção discute o filtro de Kalman e os
+algoritmos de suavização.
+
+3.1     Modelo univariado
+        Conforme Harvey (1989), a construção de um modelo estrutural é baseada no pressuposto de que
+uma série de tempo pode ser decomposta em elementos não observáveis, tais como a tendência (nível
+mais inclinação), o ciclo, a sazonalidade e o componente irregular. Desta forma, ao mesmo tempo em que
+essa modelagem resgata a ideia intuitiva presente nos modelos ad hoc de Holt (1957) e Winters (1960),
+ele preserva a base estatística presente nos modelos Arima de Box e Jenkins (1976). Vale lembrar ainda,
+que esse tipo de modelo permite que os coeficientes variem no tempo (e não apenas as variáveis), de
+modo a deixá-lo ainda mais realista.
+        Dada a premissa de que as séries de tempo, em geral, crescem ao mesmo tempo em que flutuam,
+optou-se pelo modelo de tendência linear local com adição do componente cíclico (trend plus cycle),
+dentre os diferentes modelos estruturais propostos por Harvey (1989).
+        É importante observar que, o fato das séries tratadas nessa pesquisa estarem sazonalmente
+ajustadas dispensa a adição de um componente sazonal no modelo. Optou-se pela remoção prévia da
+sazonalidade, haja vista a possibilidade de complicações computacionais dadas pela simultaneidade de
+dois componentes com variação periódica no modelo.
+                                                                                                         3
+        As equações que fazem parte do modelo univariado de ciclo mais tendência são:
+
+                                                                                               ,      t = 1, ..., T    (1)
+                                                                                                                       (2)
+                                                                                                                       (3)
+                                                                                                                       (4)
+                                                                                                                       (5)
+
+        Na primeira equação,       é a tendência,      é o componente cíclico enquanto        é o componente
+irregular. Na segunda equação a tendência é formada por um nível            , uma inclinação       e o erro .
+A equação (3) coloca a inclinação         como função de um termo auto-regressivo e de um distúrbio .
+Cumpre notar que , ,              são normais, independentes (não auto-correlacionados serialmente) e
+identicamente distribuídos (com variância homocedástica).
+        Quando       e     são diferentes de zero, o nível e a inclinação se tornam estocásticos. Nakstad
+(2006) observa que, do ponto de vista prático, o modelo de tendência estocástica costuma apresentar um
+bom ajuste, no entanto, dada a flexibilidade do nível em se ajustar aos dados, sobra pouco espaço para o
+movimento cíclico explicar as variações no modelo. Relacionado a isto estão as dificuldades quanto à
+previsibilidade desse tipo de modelo. Desta forma, pode-se estabelecer uma espécie de trade-off entre
+ajuste versus previsibilidade, implicada na definição de modelos de tendência (nível e inclinação)
+estocástica ou de nível determinístico e inclinação estocástica.
+        Por outro lado, quando            e         4, o nível se torna determinístico, enquanto a inclinação
+
+permanece estocástica. Segundo Carvalho e Harvey (2005), a imposição da primeira restrição torna o
+modelo mais parcimonioso e facilita a separação entre as flutuações cíclicas de curto prazo, da tendência
+de longo prazo. O modelo com essas características é chamado de modelo de tendência suavizada com
+ciclo, e pode ser reescrito da seguinte forma:               .
+        Por sua vez, quanto ao componente cíclico,          aparece por construção e os termos        e    são
+distúrbios ruído branco, mutuamente independentes, com média zero e variância comum                     . Cabe
+ressaltar que , , , e não apresentam correlação entre si.
+        Já o componente        tem período igual a             e frequência     em radianos, com a seguinte
+restrição:             . Ao relaxar essa restrição, ou seja, quando           ou , as duas últimas expressões
+do modelo acima podem ser reduzidas a um processo autorregressivo de primeira ordem5.
+        Quando               ,   é estacionário, com média zero, variância                         e função de
+autocorrelação                     , para               haja vista a condição para o vetor inicial          ,o
+qual tem média igual a zero e matriz de covariância igual a              . Por outro lado, quando           , a
+amplitude do ciclo se torna maior, ao mesmo tempo em que há ausência de restrições para a dinâmica do
+ciclo.
+
+3.2     Modelo multivariado SUTSE
+        O modelo apresentado de (1) a (5) pode ser facilmente estendido para o contexto multivariado, o
+que o torna um instrumental ainda mais interessante. Um sistema SUTSE é formado por N séries de
+tempo e, para cada série é estimado um modelo univariado. A relação contemporânea entre essas
+variáveis é verificada nos elementos dispostos fora da diagonal principal das matrizes de covariâncias dos
+erros, especialmente os elementos dispostos acima da diagonal principal. Harvey (1989) ressalta que a
+possibilidade de correlação entre as diferentes séries não implica necessariamente causalidade, mas sim,
+que o componente não observável das N variáveis é influenciado pelas mesmas circunstâncias.
+        Nesse modelo, a variável é um vetor N x 1, para o caso de N séries de tempo. O mesmo é válido
+para , , , ,                    :
+4
+ Na situação inversa, na qual      e        , o modelo se transforma em um passeio aleatório com drift.
+5
+ Isso porque o seno de é igual um, o cosseno de é igual à zero, o seno de zero é igual a zero e o cosseno de zero é igual a
+um.
+                                                                                                                         4
+                                                                                         , t = 1, ..., T.         (6)
+                                                                                                                  (7)
+                                                                                                                  (8)
+                                      [   ]   [ (                     )     ][       ]       [      ]            (9)6
+                                                    (      )      ,              (       )                       (10)
+
+           ,         e     são matrizes de covariância N x N positivas e semi-definidas, para garantir a
+condição de invertibilidade. Na diagonal principal dessas matrizes estão as variâncias, na parte triangular
+superior estão as correlações contemporâneas entre os distúrbios das N séries de tempo, enquanto a parte
+triangular inferior reporta as covariâncias7.
+        Assim como no modelo univariado, , , ,           e não são correlacionados entre si e o modelo
+de tendência suavizada é obtido quando            e        (CARVALHO; HARVEY, 2005; HARVEY,
+1989). A equação (9) compõe o chamado modelo de ciclo similar (HARVEY; KOOPMAN, 1997). Vale
+ressaltar que o fator de amortecimento e a frequência      são iguais para todas as N séries de tempo, o
+que faz com que os seus ciclos estejam centralizados no mesmo período e tenham a mesma duração.
+
+3.3.    Modelo multivariado de componentes comuns
+        O modelo de componentes similares difere do modelo de componentes comuns. Conforme
+Moauro e Savio (2005), fatores comuns podem ser obtidos no nível, na inclinação no ciclo, na
+sazonalidade ou no componente irregular, por meio da imposição de uma restrição de ausência de posto
+completo nas respectivas matrizes de covariâncias           , para h = , , , . Para isso, torna-se
+funcional a decomposição da matriz             em             , na qual      é a matriz de autovetores de
+̂ triangular inferior com o número um na diagonal principal, enquanto               representa uma matriz
+diagonal de autovalores de ̂ . Dessa forma, em um modelo com r restrições comuns em cada
+componente h, há redução da dimensão da matriz          para (N – r), enquanto    passa a ter dimensão (N x
+(N - r)).
+        Na situação          e          por vezes citada, a ausência de posto completo na matriz    implica
+em tendência comum, a partir da qual se conclui que as séries são cointegradas, nos termos propostos por
+Engle e Granger (1987). Por outro lado, no modelo de tendência suavizada com ciclo, caracterizado por
+          e        a presença de inclinação comum tem o significado de que as primeiras diferenças das
+séries cointegram, ou seja, as séries são cointegradas de ordem (2,1) (HARVEY, 2006).
+
+3.4     Intervenção
+        Os modelos (1) e (6) podem ser estendidos para considerar a possibilidade de mudanças
+estruturais nas séries, na forma de uma mudança permanente no nível da série, na inclinação ou ainda a
+     ibili            “i    l ”, no qual a série muda bruscamente no instante da intervenção, mas retorna
+rapidamente ao seu estado anterior (COMMANDEUR; KOOPMAN, 2007).
+        No caso univariado, acrescenta-se no modelo (1) o componente         , no qual    é uma variável
+dummy que assume valor zero ou um:
+
+                                                                                     ,           t = 1, ..., T   (11)
+
+       Segundo Durbin e Koopman (2012), o coeficiente invariante no tempo pode ser incluído no
+vetor de estados, configurando seu respectivo erro para igualar a zero dentro do vetor de erros dos
+estados. No contexto multivariado, Harvey e Koopman (1997) incluem o termo      no modelo (6):
+
+6
+    é o produto de Kronecker.
+7
+  Um caso especial, segundo Harvey (1989) é o chamado modelo homogêneo, no qual as matrizes de covariância são
+proporcionais. Essa restrição implica que as séries têm a mesma função de autocorrelação no modelo estacionário.
+                                                                                                                   5
+                                                                                           , t = 1, ..., T.       (12)
+
+        No qual   é um vetor de intervenções. Observa-se que alguns elementos da matriz de
+coeficientes podem ser igualados a zero, de modo a excluir algumas variáveis dos efeitos das
+intervenções.
+
+3.5     Filtro de Kalman e suavização
+        O método para estimação dos parâmetros e dos chamados hiperparâmetros (variâncias do termo
+irregular e dos erros do vetor de estados) é a aplicação do filtro de Kalman, um algoritmo recursivo e, ao
+mesmo tempo, “ i l”, l                     lg i      “         ” com os próprios erros (CUTHBERTSON;
+HALL; TAYLOR, 1992). O filtro é aplicado em dois passos, através de equações de previsão e de
+atualização, com base em todas as observações passadas e presentes.
+        Para isso, o modelo precisa ser colocado no formato de espaço de estado, o qual é composto pela
+equação de medida, ou equação observada (13) e pela equação de transição (14), também chamada de
+equação de sistema ou ainda equação dos estados:
+
+                                                                                                                  (13)
+                                                                                                                  (14)
+
+        Na qual     é um vetor observado n x 1, enquanto       é um vetor não observado m x 1. Assume-se
+que os termos de erro      e    não são autocorrelacionados serialmente e são independentes entre si, em
+qualquer ponto do tempo. O vetor irregular        tem dimensão n x 1, e corresponde a um distúrbio para
+cada série em e sua matriz de variância é        , uma matriz n x n.
+        O vetor de estados       contém os componentes não observáveis do modelo e os efeitos fixos
+desconhecidos. A matriz       n x m, por sua vez, faz a ligação do vetor de estados com o vetor observado,
+enquanto a matriz      de ordem m x m é denominada matriz de transição. Já o vetor        r x 1 contém os
+distúrbios do vetor de estados, o qual tem média zero e matriz de covariância dada por     de dimensão r x
+r . Geralmente, r = m e     é uma matriz identidade (COMMANDEUR; KOOPMAN, 2007).
+        O filtro de Kalman aplicado em um modelo8 colocado em formato de espaço de estados é formado
+pelo seguinte conjunto de equações:
+
+                                                                                                                  (15)
+                                                                                                                  (16)
+                                                              ⌈                 ⌉                                 (17)
+                                                                                                                  (18)
+
+         As equações (15) e (16) são as equações de previsão, as quais fazem parte do primeiro passo do
+      9
+filtro , sendo       o vetor de estados e        a matriz diagonal de variância do erro de estimação do
+estado           , ambos previstos em t com base na informação até t - 1. Por sua vez, (17) e (18)
+compõem o segundo passo do filtro, qual seja, a fase de atualização. Nesse caso,             e      são
+estimados com base nas informações passadas e presentes.
+         Na equação (18), o termo desconhecido até então é , o qual mensura a variância do erro de
+previsão um passo a frente, que é dado por:
+
+                                                                                                                  (19)
+
+8
+  Modelos Arima e modelos de regressão, dentre outros, também podem ser colocados em formato de espaço de estado e
+estimados pelo filtro de Kalman.
+9
+  Uma questão relevante é quanto ao método de inicialização do filtro. Quando não há qualquer informação sobre o estado
+inicial, sugere-se uma inicialização difusa. Para mais detalhes, ver Durbin e Koopman (2012).
+                                                                                                                     6
+       Por sua vez, o erro de previsão um passo a frente é dado por:
+
+                                                                                                           (20)
+
+        Em (17),     é        i     “g h ”      K l               v l é          i lài l ê i
+de previsão em t - 1 no estado estimado no instante t. Portanto, quanto maior for , maior é o impacto do
+erro de previsão, dado pelo termo entre colchetes em (17), no próximo estado filtrado.
+        Conforme Commandeur e Koopman (2007), outra forma de interpretar            tem base no equilíbrio
+de dois tipos de incerteza. Quando a incerteza do estado com base nas observações passadas é grande
+(pequeno) em relação à incerteza quanto à nova observação , então           tende a um (zero), de forma a
+permitir que a nova observação      tenha grande (pequena) influência no próximo estado. Por outro lado,
+na situação na qual há um equilíbrio entre as duas citadas incertezas, o valor atribuído à      é 0,5. Isso
+porque     é calculado como a razão entre a variância do erro de estimação do estado filtrada e a variância
+do erro de previsão um passo à frente, ou seja,             .
+        É importante ressaltar que o erro de previsão e sua variância         também são importantes na
+maximização da função de verossimilhança nos modelos em espaço de estados, para encontrar as
+estimativas dos hiperparâmetros:
+
+                                                                              ∑                            (21)
+
+        Desta forma, a maximização da verossimilhança ocorre quando há minimização dos erros de
+previsão     e de suas variâncias . O objetivo é encontrar os parâmetros que ponderem as observações
+passadas de modo a encontrar a melhor previsão possível para a observação atual.
+        O resultado final, após a fase de previsão e de atualização é a série filtrada, a qual é utilizada caso
+o objetivo do estudo seja realizar previsão. Por outro lado, quando o intuito é analisar as características
+dinâmicas da série, sugere-se utilizar série suavizada ̂            a qual é obtida através da aplicação dos
+ lg i              viz            é i il         , “       i            á ”,         úl i      i    iv T até a
+primeira, ou seja, de t = T, T - 1, T - 2, ..., 1. Assim, ao utilizar toda a informação disponível, a inferência
+se torna mais precisa. As equações de alisamento podem ser resumidas em:
+
+                                                                         )                                 (22)
+                                                                                                           (23)
+
+       Nas quais,                     para t = T-1, T-2, T-3, ..., 1. Por vezes, a obtenção de estimativas
+   viz     é         i     “             i l”.
+       Por fim, o software utilizado para a estimação do modelo estrutural de componentes não
+observáveis através do filtro de Kalman é o Stamp, formulado por Koopman et al (2000). Antes de
+apresentar e discutir os resultados empíricos encontrados, a próxima seção demonstra a metodologia para
+o cálculo do CPI brasileiro, e a seção seguinte descreve as informações da amostra selecionada.
+
+4.      Cálculo do coeficiente de penetração de importações (CPI) para a indústria de
+transformação no Brasil
+        O CPI tem o objetivo de mensurar a participação das importações na produção industrial somada
+às importações descontado o valor das exportações. O seu resultado, portanto, é o percentual das
+importações sobre o consumo aparente, e representa um indicador do coeficiente importado pelo lado da
+oferta. Em termos matemáticos, o CPI do setor industrial k no trimestre j do ano t é dado pela seguinte
+expressão:
+
+
+
+                                                                                                              7
+                                                                                                        (24)
+
+
+        A Funcex (2016) calcula esse indicador trimestral a preços constantes de 2007 e de forma
+acumulada em quatro trimestres, desde o primeiro trimestre de 2007 atualizado até o terceiro trimestre de
+2015, até o momento, para a indústria geral, extrativa, de transformação e para os setores conforme
+Classificação Nacional por Atividade Econômica - CNAE.
+        Como a amostra baseada nesses dados teria um tamanho muito reduzido, optou-se por construir
+um indicador para o período de 1997 a 2015, baseado na mesma metodologia da Funcex, conforme
+publicado em Confederação Nacional da Indústria - CNI (2014), com algumas pequenas modificações,
+sendo a principal delas, a apresentação do índice trimestral não acumulado em quatro trimestres. De
+acordo com a metodologia da Funcex (2016), procurou-se eliminar a influência das variações dos preços
+no CPI, ao considerar os valores das importações, da produção industrial e das exportações a preços
+constantes de 2007.
+        Para isso, calculou-se o valor das importações/exportações em reais a preços constantes de 2007
+da seguinte forma:
+
+                                            (        )
+                                                                ̅
+                                                                                                       (25)
+
+       Na qual,        representa o valor das importações/exportações para a indústria k (neste estudo k é o
+agregado da indústria de transformação) no trimestre j do ano t, em reais e a preços constantes de 2007;
+                  é o valor das importações/exportações para a indústria k no ano de 2007. Para isso,
+efetuou-se a soma dos valores importados dos setores classificados conforme CNAE, desde o grupo de
+produtos alimentícios até o grupo de produtos não classificados, conforme dados da Funcex (2016).
+                é a taxa de câmbio R$/US$ média de venda do ano de 2007;
+             é interpretado como o índice de volume das importações/exportações no trimestre j do ano t
+para a indústria de transformação. Como não se encontrou na base de dados da Funcex o índice de
+volume das importações/exportações de modo agregado para a indústria de transformação, foi realizado o
+seguinte cálculo:
+
+                                            ∑    ∑
+                                                                                                       (26)
+
+        Nessa expressão, o segundo somatório se refere à soma do índice de volume importado/exportado
+do setor i no mês m do ano t dada por        , ponderada pela participação do valor importado/exportado do
+setor i no valor total das importações/exportações da indústria de transformação (exclusive o grupo de
+produtos não classificados) representado por         , para o mês m do ano t.
+        Para encontrar o índice          trimestral, calculou-se a média simples entre os três meses que
+compõem cada trimestre, representado na fórmula (26) pelo primeiro somatório e divisão por três.
+        Voltando à expressão (25), o último termo no denominador, ̅                , é dado pela soma dos
+índices calculados conforme (26) para os quatro trimestres de 2007 e efetuada a média simples entre eles.
+        Por sua vez, o valor da produção industrial trimestral a preços constantes de 2007, para o setor k,
+no trimestre j do ano t, foi calculado da seguinte forma:
+
+
+                                                         ̅̅̅̅
+                                                                                                       (27)
+
+      No qual,             é o valor da produção da indústria de transformação para o ano de 2007,
+conforme IBGE/PIA;
+            é o índice do volume da produção industrial trimestral conforme IBGE/SCT;
+
+                                                                                                          8
+        ̅̅̅̅        é a média simples entre os quatro trimestres de 2007 do índice de volume da produção
+industrial trimestral;
+        Após calcular os valores a preços constantes de 2007 das importações, exportações e produção
+industrial conforme (25) e (27), é possível calcular a expressão (24) livre da influência das variações de
+preços no CPI.
+        O gráfico abaixo apresenta o CPI calculado para a indústria de transformação no Brasil, desde o
+primeiro trimestre de 1997 até o último de 2015, assim como o índice divulgado pela Funcex (2016), a
+partir de 2007 até o penúltimo trimestre de 2015. É possível verificar que a discrepância entre as séries é
+pequena, mas mesmo assim ela pode ser justificada, pois a Funcex (2016) calcula o índice de modo
+acumulado em quatro trimestres, o que fica evidenciado ao verificar que o CPI é mais suavizado em
+comparação com o índice calculado neste estudo, o qual considera o índice não acumulado.
+
+ Gráfico 1 – CPI da produção da indústria de transformação no Brasil – 1º trimestre de 1997 ao 4º
+                                       trimestre de 2015
+
+
+
+
+                   Fonte: Cálculos da autora e gráfico gerado no Stamp. Fonte dos dados brutos: Funcex (2016),
+                          Ipeadata (2016), IBGE/PIA (2016), IBGE/PIM-PF (2016), IBGE/SCT (2016).
+
+       Após a apresentação do modelo e do cálculo do CPI brasileiro, seguem no próximo item
+informações com relação aos dados que fazem parte da amostra selecionada neste estudo.
+
+5.     Descrição dos dados
+       A amostra é composta por dados trimestrais, desde o primeiro de 1997 até o quarto trimestre de
+2015, o que perfaz um total de 76 observações para cada variável. Para o cálculo do CPI foram utilizados
+os seguintes dados:
+       a) Valor da produção da indústria de transformação, conforme Tabela 1848 da Pesquisa Industrial
+       Anual Empresa, cuja fonte é IBGE/PIA (2016);
+       b) Índice de base fixa sem ajuste sazonal da produção física da indústria de transformação,
+       disponível na Tabela 3653, conforme IBGE/PIM-PF (2016);
+       c) Valor das exportações e importações brasileiras conforme classificação CNAE,
+       disponibilizado pela Funcex (2016);
+       d) Índice de quantum importado e exportado conforme classificação CNAE, calculado pela
+       Funcex (2016);
+       e) Taxa de câmbio R$/US$ - comercial – venda - média, cuja fonte primária é Banco Central do
+       Brasil, mas a fonte secundária consultada foi o Ipeadata (2016).
+       Os demais dados selecionados foram as séries encadeadas do volume trimestral do consumo das
+famílias e da formação bruta de capital fixo, as quais têm como fonte o IBGE/SCT (2016). Antes da
+estimação dos parâmetros do modelo, assunto da próxima seção, foi aplicado o logaritmo neperiano em
+todas as variáveis e realizada a remoção do componente sazonal através do método X-12 Arima10.
+
+6.         Apresentação e análise dos resultados empíricos
+
+
+
+10
+     Uma apresentação didática do método X-12 Arima pode ser encontrada em Central of Bureau of Statistics – Israel (2016).
+                                                                                                                              9
+        O resultado da estimação dos modelos discutidos previamente na seção 3 é o assunto desta seção,
+a qual reporta, primeiramente, as estimativas para os modelos univariados e, na sequência, seguem os
+resultados para o modelo multivariado SUTSE.
+
+6.1     Modelos univariados
+        O resultado da estimação do modelo univariado de tendência suavizada com ciclo e intervenções
+automáticas para o CPI brasileiro pode ser verificado na tabela abaixo. Destaca-se que o valor encontrado
+ao maximizar a verossimilhança foi 212,52 ao utilizar o método de otimização de Broyden-Fletcher-
+Goldfarb-Shannon (BFGS)11 de escore exato, a convergência foi considerada forte e houve convergência
+para o estado estacionário12.
+        A partir dos resultados retratados na tabela abaixo, pode-se verificar que a variância dos erros do
+nível estimado é igual à zero, pois o modelo de tendência suavizada com ciclo considera que o nível é
+determinístico. Para os demais componentes, a variância dos erros é diferente zero, haja vista seu caráter
+estocástico. A razão entre a variância dos erros de cada componente e a variância do termo irregular está
+reportada na coluna q-ratio, e quanto maior for essa razão, mais estocástico é considerado o componente.
+
+      Tabela 1 – Estimação do modelo de tendência suavizada com ciclo e intervenção para o CPI
+                                                           Coeficientes    Variâncias dos erros         q-ratio
+                                     Nível                  3,252390*           0,000000               0,000000
+                                  Inclinação                -0,010790           0,000024               0,037190
+         Componentes
+                                     Ciclo                   0,03708*           0,000650               0,992800
+                                   Irregular                                    0,000655               1,000000
+                          Quebra de nível em 2002 (4)         -0,178490*
+                              Variância do Ciclo                0,002760
+                              Período (em anos)                 2,823700
+               Ciclo
+                                 F q ê i λ                      0,556290
+                           F                i     ρ              0.87428
+                                                              Estatísticas         p-valores
+                                                                0,175110
+                                                                0,966990
+                                  Critério de Akaike           -5,798700
+           Diagnóstico
+                                Q(12,7) de Box-Ljung           13,431000           0,144000
+                                         H(24)                  0,923270                             F (24, 24)0,025 ~ 2,27
+                               Teste Bowman-Shenton             1,556500           0,459200
+                             Teste de falha de previsão         9,082300           0,335400
+                              Máxima verossimilhança          212,519000
+            Estimação               Convergência                   forte
+                                 Estado estacionário          encontrado
+Nota 1: *Estatisticamente significativo a 1% de significância. Nota 2: q-ratio mede a razão entre a variância do erro em relação
+à variância do erro do termo irregular. Nota 3:       é “           ii     ”    H v y           i      l               q
+resíduos do modelo estrutural em comparação com o quadrado dos resíduos de um modelo simples. Espera-se que o valor seja
+maior do que zero. Nota 4: O teste Q(p,q) de Box-Ljung tem como hipótese nula (Ho) a ausência de autocorrelação nos
+resíduos até o lag p e tem distribuição . Nota 5: H(h) é o teste com a hipótese nula de homocedasticidade e o teste segue
+distribuição F(h,h). Nota 6: O teste de Bowman-Shenton tem como Ho a normalidade dos resíduos e distribuição . Nota 7: O
+teste de falha de previsão testa a Ho de que o valor previsto é igual ao valor observado e tem distribuição . Para isso o Stamp
+
+
+11
+ Uma explicação do método pode ser consultada na seção 7.3.2 de Durbin e Koopman (2012).
+12
+ Segundo Harvey (1989) o filtro de Kalman converge para o estado estacionário quando a matriz de covariância dos erros
+       e   são invariantes no tempo. Conforme Commandeur e Koopman (2007) em modelos invariantes no tempo (com as
+matrizes ,         ,   ,     e     independentes do tempo, portanto escritas sem o subscrito t), a variância do erro de
+previsão   e a variância do erro do estado filtrado  apresentam convergência para um valor constante. Portanto, o ganho de
+Kalman, o qual é calculado como a razão entre       e    , também converge para uma constante, o que representa ganhos
+computacionais relevantes.
+                                                                                                                             10
+utiliza a amostra até T-8 para estimação do modelo e realiza previsão fora da amostra e compara com as últimas oito
+observações.
+
+         A tabela acima também exibe as características do ciclo estimado, especialmente sua duração
+média de quase três anos, a frequência igual a 0,56 e fator de amortecimento (damping fator) igual a 0,87.
+Vale ressaltar que quanto mais próximo de um estiver esse fator, maior será a amplitude dos ciclos.
+        Quanto ao ajuste do modelo, o valor alto de       pode ser considerado um bom resultado. O valor
+de       maior do que zero, significa que o modelo estrutural estimado é melhor do que um modelo
+simples. O       é uma espécie de     modificado por Harvey, o qual é calculado ao subtrair do valor um, a
+razão entre a soma do quadrado dos resíduos do modelo estrutural e a soma dos quadrados dos resíduos
+             l “i gê ”.
+        Por sua vez, alguns testes para verificar a adequabilidade do modelo são: o teste Q(p,q) de Box-
+Ljung, o teste H(h) e o teste de Bowman-Shenton, os quais testam, a hipótese nula de independência,
+homocedasticidade e normalidade com relação aos resíduos e têm distribuição , F(h,h) e                   ,
+respectivamente. Vale ressaltar que esses testes de diagnóstico se aplicam nos erros de previsão um passo
+à frente padronizados13, conforme abaixo:
+                                                                   t = 1, ... , n                     (36)
+                                                                   √
+        Outra ferramenta importante é o teste de falha de previsão, o qual estima o modelo utilizando a
+amostra até T – 8, e separa as últimas oito observações para comparar com a previsão fora da amostra. O
+teste tem distribuição     e a hipótese nula é a de que o valor previsto é igual ao valor observado.
+                    v ii           b l ,       l    i      “     ”    q           i         .A g i,
+próximo gráfico exibe as estimativas suavizadas dos componentes não observados do modelo:
+
+     Gráfico 2 – Componentes do modelo de tendência suavizada com ciclo e intervenção para o CPI
+
+
+
+
+Fonte dos dados brutos: Funcex (2016), Ipeadata (2016), IBGE/PIA (2016), IBGE/PIM-PF (2016), IBGE/SCT (2016). Nota 1:
+Estimativas geradas pelo software Stamp. Nota 2: dados em logaritmo natural e ajustados sazonalmente através do método X-
+12 Arima. Nota 3: No gráfico acima e à esquerda está reportado o nível estimado, no gráfico acima e à direita está a inclinação.
+A junção desses dois gráficos resulta na tendência. O gráfico abaixo e à esquerda apresenta o componente cíclico, enquanto no
+gráfico abaixo e à direita está o componente irregular.
+
+       A partir dos Gráficos 1 e 2, é interessante notar o aumento do CPI no início da série, o que
+coincide com o período de maior abertura comercial, com posterior redução do CPI no final dos anos
+1990. Franco e Baumann (2005) sugerem que teria ocorrido uma SI no Brasil entre o ano de 1995 e 2000.
+Por outro lado, por hipótese, esse movimento de queda no CPI poderia estar relacionado ao efeito-
+contágio das crises asiática (1997) e russa (1998) nas contas externas brasileiras, com consequente
+redução na capacidade de importar da economia.
+
+
+13
+   Por sua vez, os chamados resíduos auxiliares são os resíduos suavizados padronizados e são úteis para detectar quebras
+estruturais e outliers. Para mais detalhes ver seção 2.12.2 do livro de Durbin e Koopman (2012).
+                                                                                                                             11
+        De 2001 até meados de 2003, o CPI novamente se reduziu e, alguns trabalhos, tais como o de
+Fligenspan (2005), procuraram verificar a possibilidade de SI no Brasil. Para o período de 1998 a 2003 o
+autor conclui que teria ocorrido esse processo em alguns setores, contudo, com a ausência de um caráter
+estrutural.
+        De 2003 a 2014, o CPI apresenta crescimento, e esse aumento da participação das importações no
+consumo aparente tem reforçado as teses de desindustrialização no Brasil (CANO, 2012; MARCONI;
+BARBI, 2010). Mais para o final da série, a partir de 2015, ocorre uma reversão nessa trajetória. A
+redução do CPI em 2015 estaria associada, conforme IEDI (2016a, 2016b) e Costa e Barbosa (2015), a
+um processo de SI, como efeito positivo da desvalorização cambial sobre a produção industrial, a despeito
+de nenhum setor industrial, conforme classificação CNAE 2.0, retratar variação positiva em 2015,
+segundo dados do IBGE-PIM/PF (2016). Ademais, cabe ressaltar a existência inúmeras flutuações no
+CPI, a mais notável no quadro da crise financeira e econômica internacional de 2008/2009, inclusive mais
+pronunciada do que a de 2015.
+        Com base na Tabela 1 e Gráfico 2 é possível verificar uma mudança permanente no nível do CPI a
+partir do quarto trimestre de 2002. Quanto à inclinação, o gráfico acima e à direita no Gráfico 2 apresenta
+um decréscimo no crescimento do CPI até meados de 2002, seguido por um forte crescimento até 2005.
+Depois a taxa de crescimento se reduz, mas permanece positiva até 2013, com posterior retorno ao campo
+negativo. Por hipótese, dois fatores combinados poderiam explicar esse forte aumento da tendência (nível
+e inclinação) do CPI dos últimos anos, quais sejam, o expressivo crescimento da renda doméstica e do
+investimento, somada à inexistência de medidas para conter o coeficiente de importações da economia.
+        Cabe ressaltar que, relacionado a esses fatos está o boom de preços de commodities, especialmente
+no período de crescimento desses preços, entre 2003 e 2011, e a concomitante fase favorável do ponto de
+vista da liquidez internacional. Esse contexto permitiu um crescimento econômico mais robusto, sem
+qualquer preocupação com restrições no balanço de pagamentos que poderiam derivar de um aumento do
+seu coeficiente de importado. Por fim, no que se refere às variações cíclicas do CPI, presume-se que um
+melhor entendimento de sua dinâmica pode ser encontrado nos resultados do modelo multivariado e no
+resgate das características estruturais do arranjo produtivo brasileiro, discutidas na seção dois.
+        Por sua vez, a performance da formação bruta de capital fixo no Brasil no intervalo de 1997 a
+2015, pode ser vista no gráfico a seguir, com destaque para os dois movimentos de retração mais
+relevantes, quais sejam, no período da crise de 2008/2009 e, de forma mais intensa, no período mais
+recente:
+
+                   Gráfico 3 – Formação bruta de capital fixo no Brasil – 1997-2015
+
+
+
+
+               Fonte dos dados brutos: IBGE/SCT (2016). Nota 1: Gráfico gerado pelo software Stamp.
+              Nota 2: dados em logaritmo natural e ajustados sazonalmente através do método X-12 Arima.
+
+        Os resultados da estimação do modelo de tendência suavizada com ciclo e intervenção estão
+reportados na tabela abaixo, enquanto os componentes não observáveis podem ser vistos no Gráfico 4, a
+seguir:
+
+
+
+
+                                                                                                          12
+Tabela 2 – Parâmetros estimados no modelo de tendência suavizada com ciclo e intervenção para a
+                                formação bruta de capital fixo
+                                                           Coeficientes    Variâncias dos erros         (q-ratio)
+                                    Nível                   5,14319*            0,000000               0,000000
+                                  Inclinação                                    0,000496
+                                                            -0,04185*                             2.521.000.000.000
+       Componentes                  Ciclo                   0,03266*            0,000283
+                                                                                                  14.400.000.000.000
+                                  Irregular                                     0,000000               1,000000
+                              Outlier 2008 (3)               0,05764*
+                         Quebra de nível em 2009 (1)        -0,11970*
+                             Variância do Ciclo              0,000990
+                             Período (em anos)               2,537750
+          Ciclo
+                                F q ê i λ                    0,618970
+                          F                i     ρ           0,844480
+                                                           Estatísticas         p-valores
+                                                               0.4667
+                                                              0.98861
+                             Critério de Akaike             -7,137700
+       Diagnóstico
+                           Q (12,7) de Box-Ljung            11,867000          0,256600
+                                    H (24)                   1,186700                           F (24, 24)0,025 ~ 2,27
+                          Teste Bowman-Shenton               0,971580          0,615200
+                         Teste de falha de previsão         15,553800          0,049200
+                         Máxima verossimilhança            258,453000
+       Estimação               Convergência                     forte
+                            Estado estácionário            encontrado
+                  Nota 1: *Estatisticamente significativo a 1% de significância. Ver notas da Tabela 1.
+
+    Gráfico 4 – Componentes do modelo de tendência suavizada com ciclo e intervenção para a
+                                formação bruta de capital fixo
+
+
+
+
+              Fonte dos dados brutos: IBGE/SCT (2016). Nota 1: Estimativas geradas pelo software Stamp.
+              Nota 2: dados em logaritmo natural e ajustados sazonalmente através do método X-12 Arima.
+
+        O modelo estimado encontrou um outlier no terceiro trimestre de 2008, no período de crise
+financeira internacional, e uma quebra de nível a partir do primeiro trimestre de 2009. Dessa forma, pode
+se verificar que a houve uma reversão brusca na tendência do investimento, tanto no seu nível, quanto na
+inclinação, o que pode ser considerado um efeito permanente da crise financeira internacional de
+2008/2009 no investimento no Brasil.
+
+
+                                                                                                                         13
+       Por fim, segue o gráfico com relação ao consumo das famílias (Gráfico 5), tabela com o modelo
+de tendência suavizada com ciclo e intervenções (Tabela 3) e gráfico com as estimativas suavizadas dos
+componentes não observados do modelo (Gráfico 6):
+
+                         Gráfico 5 – Consumo das famílias no Brasil – 1997 a 2015
+
+
+
+
+                 Fonte dos dados brutos: IBGE/SCT (2016). Nota 1: Gráfico gerado pelo software Stamp.
+                Nota 2: dados em logaritmo natural e ajustados sazonalmente através do método X-12 Arima.
+
+Tabela 3 – Parâmetros estimados no modelo de tendência suavizada com ciclo e intervenção para o
+                                    consumo das famílias
+                                                     Coeficientes     Variâncias dos erros             q-ratio
+                               Nível                  5,21503*             0,000000                   0,000000
+
+                            Inclinação                 -0,01462*           0,000012               305.500.000.000
+
+                              Ciclo                     0,00384            0,000026               659.800.000.000
+                            Irregular                                      0,000000                  1,000000
+                    Quebra de nível 2001 (3)            -0,03585*
+ Componentes       Quebra de nível em 2008 (4)          -0,03142*
+                       Variância do Ciclo               0,000040
+                       Período (em anos)                1,792560
+                          F q ê i λ                     0,876290
+     Ciclo          F                i     ρ            0,586050
+                                                      Estatísticas         p-valores
+                                                        0,448160
+                                                        0,998100
+                       Critério de Akaike              -9,287700
+                     Q (12,7) de Box-Ljung             11,621000           0,235600
+                              H (24)                    1,189700                               F (24, 24)0,025 ~ 2,27
+                     Teste Bowman-Shenton               2,530200           0,282200
+  Diagnóstico       Teste de falha de previsão         16,826100           0,032000
+                     Máxima verossimilhança           336,610000
+                          Convergência                    forte
+  Estimação            Estado estácionário            encontrado
+                    Nota 1: *Estatisticamente significativo a 1% de significância. Ver notas da Tabela 2.
+
+
+
+
+                                                                                                                        14
+        Gráfico 6 – Componentes do modelo de tendência suavizada com ciclo e intervenção para o
+                                       consumo das famílias
+
+
+
+
+Fonte dos dados brutos: IBGE/SCT (2016). Nota 1: Estimativas geradas pelo software Stamp. Nota 2: dados em logaritmo
+natural e ajustados sazonalmente através do método X-12 Arima.
+
+       Foram identificadas duas quebras de nível no modelo para o consumo, uma no terceiro trimestre
+de 2001 e outra no quarto trimestre de 2008. Conforme gráfico acima e à direita, há uma reversão na taxa
+de crescimento do consumo das famílias no Brasil desde o período posterior à crise financeira de
+2008/2009. O crescimento passa a ser negativo a partir de 2014, em meio à dinâmica menos favorável do
+ponto de vista da renda doméstica, do emprego e do quadro de elevado endividamento das famílias.
+
+6.2     Modelos multivariados
+        Na estimação do modelo de tendência suavizada com ciclo e intervenção do vetor formado pelo
+CPI da indústria de transformação, formação bruta de capital fixo e consumo das famílias na forma
+SUTSE, o valor da verossimilhança encontrado foi 828,215, o qual supera a soma das verossimilhanças
+dos modelos individuais no valor de 807,57914. Assim como nos modelos univariados, a convergência foi
+considerada forte e o estado estacionário foi alcançado, após 77 iterações com o uso do algoritmo BFGS
+de escore exato.
+        As intervenções foram selecionadas manualmente, com base nos resultados dos modelos
+univariados, a citar: outlier no terceiro trimestre de 2008 e primeiro de 2009 para a formação bruta de
+capital fixo; outlier no quarto trimestre de 2004 e quebra de nível no terceiro trimestre de 2001 e quarto
+de 2008 para o consumo das famílias; uma quebra de nível no segundo trimestre de 1997 e um outlier no
+quarto de 2002 para o CPI.
+        Nos modelos SUTSE e conforme seção 3.2, algumas características do ciclo se tornam comuns às
+séries, quais sejam, o período, a frequência e o fator de amortecimento. Nas estimações realizadas, seus
+resultados foram: 2,54, 0,62 e 0,80, respectivamente.
+        De particular interesse são as matrizes de covariância dos resíduos da inclinação ̂ , do ciclo ̂ e
+do componente irregular ̂ , as quais são retratadas a seguir. Os elementos das linhas e colunas se referem
+à seguinte sequência de variáveis: formação bruta de capital fixo, consumo das famílias e CPI da indústria
+de transformação. Na diagonal principal estão as variâncias, na parte inferior da matriz estão as
+covariâncias e acima da diagonal principal estão as correlações:
+
+                                     ̂    [                                  ]
+
+
+
+
+14
+     212,519 + 258,450 + 336,610.
+                                                                                                                 15
+                                     ̂    [                                       ]
+
+
+
+                                      ̂    [                                      ]
+
+
+        Com relação à primeira matriz, verifica-se que a inclinação do CPI apresenta uma considerável
+correlação com a formação bruta de capital fixo, e idêntico resultado é encontrado ao comparar com a
+inclinação do consumo das famílias, no valor de 0,84. Esse resultado é coerente com a correlação perfeita
+entre a inclinação do investimento e do consumo (elemento da primeira linha e segunda coluna).
+        No que tange à matriz de covariâncias dos resíduos do componente cíclico, destaca-se a correlação
+nada desprezível entre o CPI e a formação bruta de capital fixo, na ordem de 0,72. A última matriz exibe
+as correlações entre os resíduos do termo irregular, as quais são bem inferiores quando comparadas às
+correlações presentes nas matrizes de covariâncias dos resíduos da inclinação e do ciclo. Isso significa
+que a maior parte do movimento similar entre as variáveis é explicada pelo modelo. As inclinações e
+ciclos similares são exibidos nos Gráficos 7 e 8 abaixo:
+
+Gráfico 7 - Inclinações similares do CPI da indústria de transformação, do consumo das famílias e
+                                 da formação bruta de capital fixo
+
+
+
+
+Fonte dos dados brutos: Funcex (2016), Ipeadata (2016), IBGE/PIA (2016), IBGE/PIM-PF (2016), IBGE/SCT (2016). Nota 1:
+Estimativas geradas pelo software Stamp. Nota 2: dados em logaritmo natural e ajustados sazonalmente através do método X-
+12 Arima.
+
+
+
+  Gráfico 8 - Ciclos similares do CPI da indústria de transformação, do consumo das famílias e da
+                                   formação bruta de capital fixo
+
+
+
+
+Fonte dos dados brutos: Funcex (2016), Ipeadata (2016), IBGE/PIA (2016), IBGE/PIM-PF (2016),IBGE/SCT (2016). Nota 1:
+Estimativas geradas pelo software Stamp. Nota 2: dados em logaritmo natural e ajustados sazonalmente através do método X-
+12 Arima.
+                                                                                                                      16
+        No que concerne à análise sobre a inclinação, o CPI apresenta igual relação tanto com o consumo
+quanto com o investimento conforme comentário anterior. Ao impor uma restrição de ausência de posto
+completo na matriz ̂ , foi verificada a existência de uma inclinação comum às séries. Isso significa que
+as primeiras diferenças de cada uma das três séries cointegram, nos termos propostos por Engle e Granger
+(1987), ou seja, é possível inferir uma relação de longo prazo entre as variáveis. Essa afirmativa vai ao
+encontro das características estruturais do arranjo produtivo brasileiro, as quais foram discutidas na seção
+dois, especialmente no que concerne às lacunas presentes na produção de bens intermediários e de capital,
+assim como o importante papel do consumo das famílias como destino final das importações de bens
+finais e intermediários.
+        Já a dinâmica cíclica do CPI se aproxima mais da formação bruta de capital fixo. Um fato que vai
+ao encontro desse resultado é o elevado conteúdo importado do investimento no Brasil, conforme estudo
+de Fevereiro (2016). Harvey (1989) ressalta que na correlação entre as variáveis e na presença de
+componentes similares, não está implicada a ideia de causalidade. Frente a isso, aplicou-se o teste de
+causalidade de Granger, o qual mensura a causalidade em termos de precedência temporal. Quando é
+determinado um lag, o teste rejeita tanto a hipótese nula de que o componente cíclico da formação bruta
+de capital fixo não Granger-causa variações cíclicas no CPI da indústria de transformação, como a
+hipótese de que o ciclo do CPI não Granger-causa15 o ciclo da formação bruta de capital fixo, a 1% de
+significância (Estatística F calculada no valor de 19,3003 e de 12,5098, respectivamente). Já ao adotar
+dois lags, é possível rejeitar apenas a primeira hipótese citada, a 10% de significância (Estatística F foi
+calculada no valor de 2,40364 e de 0,69929, respectivamente).
+
+7.      Considerações finais
+        A investigação da dinâmica conjunta do coeficiente de penetração de importações (CPI) da
+indústria de transformação, do consumo das famílias e da formação bruta de capital fixo no Brasil permite
+tecer algumas considerações.
+        Ao decompor as séries em componentes não observáveis, como o nível, a inclinação e o ciclo, e ao
+analisá-las no contexto de modelos multivariados SUTSE, identificou-se uma elevada correlação na
+inclinação das três séries. Quanto ao ciclo, a correlação mais relevante foi estimada entre a formação
+bruta de capital fixo e o CPI. Como isso não necessariamente significa que há uma relação causal entre as
+variáveis, aplicou-se o teste de causalidade de Granger, e o resultado encontrado sinaliza que há
+precedência temporal dos ciclos no investimento em direção aos ciclos do CPI, quando se adotam dois
+lags, enquanto a causalidade é bidirecional na presença de um lag.
+        No que se refere à possibilidade de componentes comuns, foi possível identificar uma inclinação
+comum às três séries, o que significa que há uma combinação linear entre as primeiras diferenças das
+séries que é estacionária. Isso sinaliza para a existência de um equilíbrio de longo prazo entre o consumo
+das famílias, a formação bruta de capital fixo e o CPI da indústria de transformação no Brasil.
+        Esse resultado é corroborado pelas características estruturais do arranjo produtivo no Brasil,
+notadamente, o elevado conteúdo importado do investimento, as lacunas presentes principalmente na
+produção doméstica de bens intermediários e o fato das importações totais ter como principal destino o
+consumo das famílias. Assim, as variações do CPI parecem estar fortemente relacionadas ao dinamismo
+da economia, representado neste estudo pela performance do investimento e do consumo no Brasil.
+
+8.      Referências Bibliográficas
+
+BANCO CENTRAL DO BRASIL. Série histórica do balanço de pagamentos - 6ª edição do manual de
+balanço de pagamentos e posição de investimento internacional (BPM6). 2016. Disponível em: <
+http://www.bcb.gov.br/?SERIEBALPAG>. Acesso em: 22 maio/2016.
+
+
+15
+  Vale ressaltar que, o teste de causalidade de Granger deve ser interpretado como um teste de causalidade em termos de
+precedência temporal, ou seja, testa se o conhecimento da variável x no momento t melhora a previsão da variável y em t + 1.
+                                                                                                                         17
+BASTOS, V. D.; COSTA, L. M. Déficit comercial, exportações e perspectivas da indústria
+química brasileira. BNDES Setorial, Rio de Janeiro, n. 33, p. 163-206, 2011. Disponível em:
+<http://www.bndespar.gov.br/SiteBNDES/export/sites/default/bndes_pt/Galerias/Arquivos/conhecimento
+/bnset/set3305.pdf>. Acesso em 15 jun./2016.
+
+BONELLI, R.; PINHEIRO, A. C. Competitividade e desempenho industrial: além do câmbio. Texto
+para discussão. Fundação Getúlio Vargas, Rio de Janeiro, nov./2012. Disponível em: <http://biblioteca
+digital.fgv.br/dspace/bitstream/handle/10438/11678/Competitividade%20e%20Desempenho%20Industria
+l.pdf?sequence=1 >. Acesso em 20 jul./2016.
+
+BOX, G. E. P.; JENKINS, G. M. Time series analysis: forecasting and control. San Francisco: Holden-
+Day, 1976.
+
+BRESSER-PEREIRA, L. C. A tendência à sobreapreciação da taxa de câmbio. Econômica, Rio de
+Janeiro, v. 11, n. 1, p. 7-30, jun. 2009.
+
+CARVALHO, V. M.; HARVEY, A. C. Growth, cycles and convergence in US regional time series.
+International Journal of Forecasting, v. 21, n. 4, p. 667-686, oct.-dec./2005.
+
+CANO, W. A desindustrialização no Brasil. Economia e Sociedade, Campinas, v. 12, n. especial, p. 831-
+851, dez./2012.
+
+CENTRAL OF BUREAU OF STATISTICS – ISRAEL. Seasonal Adjustment. Disponível em:
+<http://www.cbs.gov.il/www/publications/tseries/seasonal11/intro.pdf>. Acesso em 16 fev. 2016.
+COMMANDEUR, J. J. F.; KOOPMAN, S. J. An introduction to state space time series analysis. New
+York: Oxford Press, 2007.
+
+CONFEDERAÇÃO NACIONAL DA INDÚSTRIA - CNI. Coeficientes de abertura comercial. Versão
+3.0. Disponível em:< http://arquivos.portaldaindustria.com.br/app/cni_estatistica_2/2015/12/03/14/
+CoeficienteDeAberturaComercial_Metodologia_Versao_3_0.pdf>. Acesso em 25 maio/2016.
+
+CUTHBERTSON, K., HALL, S. G. e TAYLOR, M. P. Applied Econometric Techniques. Londres:
+Harvester Wheatsheaf, 1992.
+
+DE NEGRI, J. A. A cadeia global de valor da indústria automobilística no Brasil. In: PROCHNIK, V.
+(Coord.). La inserción de América Latina en las cadenas globales de valor. Montevideo: Red
+Mercosur de Investigaciones Econômicas, 2010
+
+DURBIN, J. KOOPMAN, S. J. Time series analysis by state space models. 2ª edição. Oxford: Oxford
+University Pree, 2012.
+
+ENGLE, R. F.; GRANGER, C. W. J. Co-integration and error correction: representation, estimation, and
+testing, Econometrica, v. 55, n. 2, p. 251-276, mar./1987.
+
+FALEIROS, J. P. M.; SILVA, J. C. D. da; NAKAGUMA, M. Y. Evaluating the effect of exchange rate
+and labor productivity on import penetration of Brazilian manufacturing sectors. EconomiA, n. 17, p. 3-
+44, april/2016.
+
+FEVEREIRO, J. B. Nota técnica – decomposição da taxa de crescimento do PIB pelo lado da demanda:
+uma metodologia alternativa. Carta de Conjuntura IPEA, abr./2016.
+
+
+                                                                                                      18
+FLIEGESPAN, F. B. Houve um processo de substituição de importações na indústria brasileira no
+período pós-desvalorização cambial? Economia e Sociedade, Campinas, v. 14, n. 1 (24), p. 109-129,
+jan./jun. 2005.
+
+FRANCO, A. M. de P.; BAUMANN, R. A substituição de importações no Brasil entre 1995 e 2000.
+Revista de Economia Política, v. 25, n. 3 (99), pp. 190-208, julho-setembro/2005.
+
+FUNDAÇÃO CENTRO DE ESTUDOS DO COMÉRCIO EXTERIOR – FUNCEX. Indicadores do
+comércio externo. 2016. Disponível em <www.funcex.org.br>. Acesso em: 21 maio/2016.
+
+HARVEY, A. C. Forecasting, structural time series models and the Kalman filter. Cambridge:
+Cambridge University Press, 1989.
+
+______ Chapter 7 Forecasting with Unobserved Components Time Series Models. Prepared for
+Handbook of Economic Forecasting. 2006. Disponível em: <https://www.researchgate.net/profile
+/Andrew_Harvey5/publication/222670734_Chapter_7_Forecasting_with_Unobserved_Components_Tim
+e_Series_Models/links/00b49538aec779334b000000.pdf/download?version=vtp>. Acesso em 26
+maio/2016.
+
+HARVEY, A.C.; KOOPMAN, S.J. Multivariate Structural Time Series Models. in: Beij, C. et al eds.,
+System Dynamics in Economic and Financial Models. United Kingdom: John Wiley and Sons, 1997.
+HOLT, C. C. Forecasting seasonals and trends by exponentially weighted moving averages, 1957.
+
+INTERNATIONAL MONETARY FUND – IMF. Adjusting to lower commodity prices. World
+Economic Outlook, Washington, oct./2015. Disponível em:< http://www.imf.org/external/oap/pdf/
+111615.pdf >. Acesso em 23 out./2015.
+
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA - PESQUISA INDUSTRIAL
+MENSAL - PRODUÇÃO FÍSICA - IBGE/PIM-PF. Banco Sidra. 2016. Disponível em: <
+http://www.sidra.ibge.gov.br/>. Acesso em: 22 maio/2016.
+
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA – PESQUISA INDUSTRIAL ANUAL
+EMPRESA - IBGE/PIA. Banco Sidra. 2016. Disponível em: < http://www.sidra.ibge.gov.br/>. Acesso
+em: 22 maio/2016.
+
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA – SISTEMA DE CONTAS
+NACIONAIS TRIMESTRAIS - IBGE/SCT. 2016. Série encadeada do índice trimestral. Disponível
+em: < http://ibge.gov.br/home/estatistica/indicadores/pib/defaulttabelas.shtm>. Acesso em: 22 maio/2016.
+
+INSTITUTO DE ESTUDOS PARA O DESENVOLVIMENTO INDUSTRIAL – IEDI. O recurso ao
+câmbio. Carta IEDI nº 732. 2016a. Disponível em:
+< http://www.iedi.org.br/cartas/carta_iedi_n_732.html>. Acesso em 23 maio/2016.
+
+________. Dez pontos sobre a indústria e a economia brasileira em 2015. Carta IEDI nº 724. 2016b.
+Disponível em: < http://www.iedi.org.br/cartas/carta_iedi_n_724.html>. Acesso em 23 maio/2016.
+
+IPEADATA. Ipeadata. Disponível em: < http://www.ipeadata.gov.br/ >. Acesso em 23 maio/2016.
+
+KOOPMAN, S. J. et al. STAMP 6.0 Structural Time Series Analyser, Modeller and Predictor.
+London: Timberlake Consultants Ltda, 2000.
+
+
+                                                                                                     19
+LEVY, P. M.; SERRA, M. I. F. Nota técnica coeficientes de importação e exportação da indústria
+2002. Disponível em: <http://www.google.com.br/url?url=http://www.ipeadata.gov.br/
+doc/Coeficientes%2520de%2520Importa%25C3%25A7%25C3%25A3o%2520e%2520Exporta%25C3%
+25A7%25C3%25A3o%2520na%2520Industria.pdf&rct=j&frm=1&q=&esrc=s&sa=U&ved=0ahUKEwjZ
+z_zRqZHMAhXLIZAKHXnNDkIQFggaMAE&usg=AFQjCNEBWzhdWopvivtemwekCUI8tzSBgg>.
+Acesso em: 15 abr. 2016.
+
+MARCONI, N.; BARBI, F. Taxa de câmbio e composição setorial da produção: sintomas de
+desindustrialização da economia brasileira. Texto para discussão. Escola de Economia de São Paulo da
+Fundação Getúlio Vargas, n. 255, set./2010.
+
+MOAURO, F.; SAVIO, G. Temporal disaggregation using multivariate structural time series models.
+Econometrics Journal, v. 8, p. 214-234, 2005. Disponível em:<http://www.oecd.org/std/21781478.pdf>.
+Acesso em 26 maio/2016.
+
+NAKSTAD, Y. S. Structural Time Series Models: theory and application. GDP time series in USA,
+Euro-area, GBR, Sweden and Japan. 62 f. Master Thesis of Environmental and Development
+Economics. Department of Economics, University of Oslo, Oslo, 2006.
+
+SANTOS, C. H. M. dos et al. Por que a elasticidade-câmbio das importações é baixa no Brasil?
+Evidências a partir das desagregações das importações por categorias de uso. Texto para Discussão
+IPEA, Rio de Janeiro, n. 2046, mar./2015.
+
+WINTERS, P. R. Forecasting sales by exponentially weighted moving averages. Management Science,
+n. 6, p. 324-342, 1960.
+
+
+
+
+                                                                                                    20
+

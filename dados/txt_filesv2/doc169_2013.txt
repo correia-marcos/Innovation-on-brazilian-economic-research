@@ -1,0 +1,3314 @@
+DELTA HEDGE COM CUSTOS DE TRANSAÇÃO:  
+
+UMA ANÁLISE COMPARATIVA APLICADA AO MERCADO BRASILEIRO 
+
+ 
+
+Naio Ino (EESP/FGV)  
+
+Afonso de Campos Pinto (EESP/FGV) 
+
+ 
+ 
+
+Resumo: Dentre as premissas do modelo de Black-Scholes, amplamente utilizado para o apreçamento de 
+opções,  assume-se  que  é  possível  realizar  a  replicação  do  payoff  da  opção  através  do  rebalanceamento 
+contínuo de uma carteira contendo o ativo objeto e o ativo livre de risco, ao longo da vida da opção. Não 
+somente  o  rebalanceamento  em  tempo  contínuo  não  é  possível,  como  mesmo  que  o  fosse,  em  um 
+mercado  com  custos  de  transação,  rebalanceamentos  da  estratégia  replicante  com  intervalos  de  tempo 
+muito baixos teriam o payoff da estratégia replicante comprometido pelos altos custos totais de transação 
+envolvidos. Este trabalho  procura comparar metodologias de  delta-hedge, tomando como  base uma  call 
+européia vendida em um mercado com custos de transação. Para comparar as diferentes estratégias, este 
+estudo é dividido em duas partes: na primeira, serão escolhidas três ações do mercado brasileiro, e usando 
+simulações de Monte Carlo para cada ação, avaliamos diferentes modelos de delta-hedge a partir do erro 
+de replicação do portfólio global e dentro de um  contexto de média × variância, considerando-se custos 
+de transação.  Em um  segundo momento,  para o  mesmo grupo de ações,  testamos  os resultados práticos 
+dos modelos, usando dados de mercado. Os resultados encontrados indicam que os modelos do tipo move-
+based apresentam desempenho superior aos do tipo time-based. 
+
+Palavras-Chave: Delta-Hedge, Opções, Custos de transação, Monte Carlo, Erro de replicação. 
+
+ 
+
+Abstract:  Among  the  assumptions  of  the  Black-Scholes  model,  widely  used  for  option  pricing,  it  is 
+possible  to  perform  the  replication  of  the  option  payoff  through  continuous  rebalancing  of  a  portfólio  
+containing the underlying asset and the risk-free asset, along the life of the option. Not only rebalancing 
+in  continuous  time  is  not  possible  in  practice  but,  even  if  it  were,  in  a  market  with  transaction  costs, 
+replicating the  rebalance strategy with very low time intervals  would have the payoff of the replicating 
+strategy  compromised  by  the  high  total  transaction  costs  involved.  This  paper  seeks  to  compare  delta-
+hedge  methodologies,  based  on  a  short  European  call  in  a  market  with  transaction  costs.  In  order  to 
+compare the different strategies, this study is divided into two parts: in the first part, three stocks of the 
+Brazilian market will be chosen, and using Monte Carlo simulations for each stock, we evaluate different 
+delta-hedging  models  based  on  the  replication  error  in  a  mean  ×  variance  context,  considering 
+transaction costs. In the second part, for the same group of shares, we tested the practical results of the 
+models using market data. The results indicate that move-based models have superior performance than 
+time-based models. 
+
+Key Words: Delta-Hedge, Options, Transaction Costs, Monte Carlo, Replication Error. 
+
+ 
+
+JEL: C02, C63 
+
+Área Anpec: Área 8 - Microeconomia, Métodos Quantitativos e Finanças 
+
+ 
+
+ 
+
+ 
+
+1.  Introdução 
+
+O  uso  de  opções  financeiras  tem  se  difundido  nas  últimas  décadas  como  uma  importante  alternativa  de 
+investimento.  Neste  sentido,  o  entendimento  do  conceito  de  delta-hedge,  quando  se  relaxam  algumas 
+hipóteses  do  modelo  de Black  e  Scholes  (1973)  é  algo  que  deve  ser  dominado  por  market  makers,  risk 
+managers,  e  investidores  interessados  em  operar  volatilidade,  como  uma  forma  de  se  mitigar  riscos 
+indesejáveis  de  uma  determinada  operação,  ou  poder  realizar  o  melhor  apreçamento  destes  derivativos. 
+Diversos trabalhos teóricos foram desenvolvidos nas últimas décadas, com o mesmo objetivo: avaliar os 
+efeitos  de  se  relaxar  a  hipótese  de  ausência  de  custos  de  transação.  Cada  um  desses  modelos, 
+apresentando  vantagens  e  desvantagens.  Todavia,  a  pergunta  que  permanece  é:  dentre  os  diversos 
+modelos disponíveis na literatura hoje, algum deles é mais eficiente do que os demais em se tratando de 
+delta-hedge em um mercado onde os custos de transação não são nulos e qual a melhor forma de avaliá-
+los?  Além  disso,  este  modelo  teórico,  aplicado  a  um  conjunto  de  opções  no  mercado  local,  produziria 
+resultados  satisfatórios,  tomando-se  como  critério  de  avaliação  o  erro  de  replicação?  O  objetivo  deste 
+trabalho  é  avaliar  diferentes  modelos  utilizados  para  se  fazer  o  delta-hedge  de  uma  call  européia  plain 
+vanilla, quando consideramos os custos de transação envolvidos. O estudo não tem a pretensão de avaliar 
+todos  os  modelos  disponíveis,  mas  sim  focar  nas  metodologias  mais  utilizadas  pelo  mercado.  Para  se 
+poder  chegar  a  uma  conclusão,  modelamos  o  comportamento  dos  preços  de  um  grupo  de  ações  do 
+mercado  brasileiro,  usando  o  modelo  de  volatilidade  estocástica  de  Heston  e,  através  de  simulações  de 
+Monte  Carlo,  avaliamos  o  erro  de  replicação  dentro  de  um  critério  de  risco  ×  retorno,  variando-se  os 
+parâmetros de cada um dos modelos. O objetivo deste passo é verificar a existência de um modelo que se 
+prove superior, para cada uma das ações escolhidas, ou para todo o grupo, e encontrar os parâmetros que 
+tornam a comparação entre os diferentes modelos, equivalente. Com base na escolha do melhor parâmetro 
+para  cada  modelo  e  ação,  simulamos  o  resultado  das  estratégias  de  delta-hedge  de  cada  modelo, 
+utilizando preços de mercado para um grupo de ações negociadas no mercado brasileiro. 
+
+Este  trabalho  está  dividido  em  seis  seções,  incluindo  esta  introdução.  Na  seção  2,  apresentamos  uma 
+revisão bibliográfica sobre os trabalhos já realizados sobre a comparação de diferentes modelos de delta-
+hedge  considerando-se  os  custos  de  transação.  Na  seção  3,  demonstramos  o  trade-off  existente  ao  se 
+aplicar o conceito de delta-hedge em um mercado com custos de transação. Também definimos o que será 
+considerado  custo  de  transação  neste  estudo,  e  conceituamos  os  modelos  de  delta-hedge  a  serem 
+analisados. A divisão do estudo, e as metodologias a serem adotadas, incluindo os parâmetros, intervalos 
+de  tempo,  e  ativos  a  serem  testados,  se  encontram  na  seção  4.  Na  seção  seguinte  apresentamos  os 
+resultados obtidos, tanto os  teóricos, quantos os  práticos. Finalmente, na  seção 6  encerramos  o trabalho 
+com as conclusões obtidas e sugestões para pesquisas futuras. 
+
+ 
+
+2. Referências Bibliográficas 
+
+Ao  longo  das  últimas  décadas,  diversos  trabalhos  teóricos  foram  dedicados  ao  estudo  de  modelos 
+que  fossem  capazes  de  incorporar  custos  de  transação  para  o  apreçamento  e  delta-hedge  de  opções. 
+Porém, pouco foi feito no que se refere à comparação empírica entre os modelos. Mohamed (1994) foi um 
+dos pioneiros neste campo, onde separou o erro de delta-hedge em 2 componentes: o erro de replicação e 
+os  custos  de  transação.  Rebalanceamentos  frequentes  da  estratégia  replicante  reduzem  o  erro  de 
+replicação  mas,  em  compensação,  aumentam  os  custos  de  transação.  Para  avaliar  o  trade-off  entre  os 
+diferentes  parâmetros  e  modelos,  simulações  de  Monte  Carlo  foram  usadas,  assumindo-se  uma  posição 
+short  em  uma  call  e  custos  de  transação  proporcionais  ao  valor  financeiro  das  operações  de 
+rebalanceamento. Martellini e Priaulet (2002) optaram por testar 5 modelos de delta-hedge para mercados 
+com  custos de transação, dividindo-os em  2 tipos de estratégia:  time-based e move-based.  Zakamouline 
+(2008), também parte do princípio da “fronteira eficiente” gerada através de simulações de Monte Carlo, 
+testando,  além  dos  modelos  citados  acima,  os  modelos  de  Whalley  e  Wilmott  (1997),  e  Leland  (1985), 
+assim como o próprio modelo de Black e Scholes (1973). A abordagem de avaliar os resultados dentro de 
+um contexto de média × variância é mantida. Todavia, ao invés de tratar de forma separada as variáveis 
+erro  de  hedge  e  custos  de  transação,  Zakamouline  (2008)  avalia  o  resultado  conjunto  destas  duas 
+componentes,  que  contribuem  concomitantemente  para  o  erro  de  replicação.  O  autor,  além  de  estudar 
+
+estes  modelos  para  uma  call  at-the-money  vendida,  também  avalia  o  uso  de  estratégias  com  opções 
+exóticas,  concluindo  que  os  resultados  podem  variar  de  acordo  com  as  características  da  opção.  Neste 
+trabalho,  estabelecemos  uma  relação  entre  os  parâmetros  dos  diferentes  modelos  e  os  aplicamos  a 
+algumas  situações  reais  com  o  objetivo  de  avaliar  os  resultados  práticos  destes  modelos.  Clewlow  e 
+Hodges (1997) também se baseiam no princípio da maximização da utilidade esperada, em mercados com 
+custos de transação para desenvolver um modelo  otimizado para delta-hedge, assumindo que o custo de 
+transação  pode  ser  representado  tanto  por  um  custo  fixo  quanto  por  um  custo  proporcional  ao  valor 
+transacionado.  Para  resolver  o  problema  de  otimização  da  maximização  da  utilidade  esperada 
+computacionalmente,  constrói-se  uma  árvore  binomial  representando  os  possíveis  estados  da  função 
+utilidade, entre o momento inicial e o vencimento, e resolve-se essa árvore, de trás para frente, usando-se 
+os métodos de Newton Raphson e Bissecção com o objetivo de se chegar aos parâmetros que irão definir 
+os  limites  da  região  de  “não-transação.”  Para  incorporar  a  questão  dos  custos  fixos,  o  modelo  trabalha 
+com dois limites para a região de venda e dois limites para a região de compra. Para mostrar a eficiência 
+do  modelo,  utiliza-se  novamente  simulações  de  Monte  Carlo  e  uma  abordagem  de  média  ×  variância, 
+comparando-se os resultados do modelo proposto com os obtidos utilizando-se Black e Scholes (1973) e 
+Leland  (1985),  e  concluindo-se  que  esta  abordagem  obtém  resultados  melhores  que  os  antecessores, 
+quando  incorporam-se  custos  de  transação  fixos  e  variáveis.  Hoggard,  Whalley  e  Wilmott  (1994) 
+estenderam o modelo de Leland (1985), eliminando uma de suas principais limitações  o sinal do gamma 
+deveria ser constante ao longo da vida da opção  portanto, adaptando o modelo de Leland (1985) para 
+ser aplicado a um portfólio de opções. Uma das desvantagens é que o modelo deixa de ter uma solução 
+fechada, necessitando ser resolvido computacionalmente. Aguirre (2012) aplicou o modelo de Hoggard, 
+Whalley e Wilmott (1994) para o mercado brasileiro, tomando como base opções sobre a ação do Banco 
+Itaú  PN  (ITUB4),  e  testando  diferentes  frequências  de  rebalanceamento  com  base  em  simulações  de 
+Monte  Carlo  com  volatilidade  estocástica.  O  autor  concluiu  que  a  frequência  ótima  para  os 
+rebalanceamentos era de 27 minutos e que os resultados obtidos com a aplicação do modelo de Hoggard, 
+Whalley e Wilmott (1994) eram superiores aos obtidos com base na aplicação de Black e Scholes (1973) 
+apenas. 
+
+Este  trabalho  explora  a  aplicação  destes  modelos  de  delta-hedge  ao  mercado  brasileiro  de  opções 
+sobre  ações  e  está  dividido  em  duas  partes.  Na  primeira,  escolhemos  um  grupo  de  ações  do  mercado 
+brasileiro e usamos simulações de Monte Carlo que busquem refletir o comportamento dos preços destas 
+ações,  e  avaliamos  o  comportamento  de  cada  modelo  de  delta-hedge  no  mesmo  arcabouço  de  risco  e 
+retorno  utilizado  por  Zakamouline  (2008),  buscando  uma  relação  entre  os  parâmetros  dos  diferentes 
+modelos que nos permita uma comparação equivalente. Na segunda parte, nos aprofundamos nos modelos 
+usando  preços  reais  de  mercado  para  avaliar  os  resultados  das  estratégias,  e  as  comparamos  com  os 
+resultados teóricos. 
+
+ 
+
+3. Arcabouço Teórico 
+
+Os  impactos  dos  custos  de  transação  e  dos  rebalanceamentos  em  tempo  discreto  ficam  claros  ao  se 
+imaginar  o  apreçamento  de  uma  call  européia,  por  exemplo,  usando  uma  simulação  de  Monte  Carlo, 
+assumindo-se  inicialmente  que  todas  as  premissas  do  modelo  de  Black  e  Scholes  (1973)  são  válidas, 
+exceto  a  de  que  o  rebalanceamento  pode  ser  realizado  continuamente.  Ao  se  escolher  intervalos  de 
+rebalanceamento  muito  grandes  e  se  examinar  a  distribuição  de  probabilidades  dos  resultados  da 
+estratégia replicante desta opção, trazidos a valor presente, veremos uma distribuição achatada, com uma 
+dispersão significativa ao redor de uma média, onde essa média é igual ao resultado obtido pela fórmula 
+fechada de Black e Scholes (1973). Ao se diminuir o intervalo de rebalanceamentos, iremos perceber que 
+a média deverá se manter, mas a dispersão ao redor desta média tenderá a diminuir, na medida em que os 
+intervalos ficam cada vez menores. Na medida em que aproximamos o modelo ainda mais da realidade e 
+incluímos custos de transação, temos que, ao diminuirmos o intervalo de rebalanceamentos, diminuímos a 
+dispersão dos resultados, ou seja, diminuímos os riscos da operação, mas ao mesmo tempo, deslocamos a 
+média da distribuição para a esquerda, o que de certa forma é indesejado. Esse exemplo serve exatamente 
+para  ilustrar  que  o  erro  de  replicação  (ER)  de  uma  opção  pode  ser  dado  pela  diferença  entre  o  erro  de 
+
+hedge  (EH),  que  é  o  erro  incorrido  ao  não  se  rebalancear  a  cada  intervalo  infinitesimal  de  tempo,  ou  a 
+cada variação mínima do preço do  ativo objeto,  menos os custos de transação totais (CT) incorridos ao 
+longo  da  vida  da  opção:                Ao  se  tentar  reduzir  o  erro  de  hedge,  aproximando-o  do  zero, 
+através da diminuição do intervalo entre os rebalanceamentos, aumentamos os custos de transação total, e 
+consequentemente,  pioramos  o  erro  de  replicação.  Portanto,  as  estratégias  de  rebalanceamento  para  o 
+delta-hedge  devem  sempre  levar  em  conta  o  trade-off  entre  maior  precisão  do  delta-hedge  e  o  risco  de 
+não se atingir o resultado esperado. Dado que em condições normais de mercado, o rebalanceamento de 
+uma estratégia de  delta-hedge  não pode ser  feito nem  continuamente e muito menos sem  a  ausência de 
+impactos  de  custos  de  transação,  a  estratégia  replicante  por  delta-hedge  não  pode  ser  considerada  uma 
+estratégia  livre  de  risco.  Portanto,  o  investidor  interessado  em  realizar  delta-hedge  deve  assumir  algum 
+grau de risco ao tentar replicar o payoff de uma opção ou de um portfólio de opções. O nível de risco que 
+o investidor está disposto a aceitar deve ser refletido nos parâmetros de cada modelo de delta-hedge que 
+veremos a seguir. Ao se comparar os diferentes modelos de delta-hedge, devemos levar em conta o trade-
+off  de  cada  um  dos  modelos,  e  seus  respectivos  parâmetros.  Uma  das  formas  mais  comumente  aceitas 
+para  se  comparar  as  diferentes  estratégias  de  delta-hedge  é  compará-las  empiricamente,  dentro  de  uma 
+análise  de  risco  ×  retorno.  Portanto,  utilizamos  uma  abordagem  idêntica  à  utilizada  por  Zakamouline 
+(2008), mas incorporando um  modelo  de volatilidade estocástica, que será detalhado mais adiante neste 
+trabalho. Dentro desta adaptação, para cada ativo, teremos uma simulação de Monte Carlo que irá refletir 
+a evolução de dados de mercado. Nestas simulações aplicaremos os modelos de delta-hedge, detalhados a 
+seguir, variando-se os parâmetros, tais como a frequência de rebalanceamento, mantendo todos os demais 
+parâmetros constantes, de forma a obter diversos pares de média e desvio padrão do erro de replicação. 
+Esses pares de resultados, colocados em um gráfico, irão formar o que pode ser interpretado como  uma 
+fronteira  eficiente,  análoga  ao  modelo  desenvolvido  por  Markowitz  (1952),  representando  o  risco  e 
+retorno  de  cada  estratégia.  Partindo  do  princípio  de  que  o  investidor  interessado  no  delta-hedge  é  um 
+investidor  racional,  o  mesmo  deverá  sempre  preferir  a  estratégia  com  o  maior  retorno,  dado  um  certo 
+nível de risco.  
+
+3.1. Custos de Transação 
+
+Na  maioria  dos  modelos  teóricos  assume-se  o  mercado  como  sendo  livre  de  custos  de  transação  e  o 
+estoque  sendo  considerado  infinitamente  divisível,  o  que  significa  que  um  investidor  pode  comprar  ou 
+vender qualquer número de ações de um estoque. Nos mercados reais, no entanto, os negócios são feitos 
+em incrementos discretos, por exemplo, que podem variar desde uma única unidade para incrementos de 
+100  (lote-padrão)  ou  mais  unidades.  Os  custos  de  transação  no  mercado  de  capitais  consistem  de  três 
+componentes principais: (i) metade do tamanho do bid-ask spread, (ii) corretagem e emolumentos, e (iii) 
+os custos indiretos de impacto no mercado1. Além disso, há impostos, custos de oportunidade, etc. Se o 
+investidor vender ações que ele não possua, ele também irá incorrer em custos de aluguel da ação. Todos 
+os  investidores  enfrentam  os  mesmos  bid-ask  spreads  e  custos  de  impacto  no  mercado  para  um  dado 
+volume  ou  momento  do  mercado.  Em  contraste,  a  corretagem  negociada  depende,  por  exemplo,  do 
+volume anual de negociação. Para modelar custos de transação realistas, geralmente é feita uma distinção 
+entre duas classes de investidores: grandes e pequenos. Grandes investidores geralmente enfrentam custos 
+de corretagem mais favoráveis e, muitas vezes, fazem acordos com corretoras para executar suas ordens 
+com  um  rebate  da  taxa  de  corretagem  considerável,  independente  do  volume  de  uma  ordem  específica. 
+Assim,  as  comissões  pagas  por  grandes  investidores  para  a  negociação  de  uma  determinada  ação  são 
+proporcionais ao valor financeiro negociado. Em  contrapartida, o impacto de mercado marginal tende a 
+aumentar, a medida que o volume de ações negociadas aumenta. Em contraste, os pequenos investidores 
+são  definidos  como  aqueles  que  operam  pequenos  volumes  através  de  corretoras  de  varejo.  Para  estes 
+investidores, há uma taxa mínima de corretagem, ou um custo fixo associado, por exemplo, independente 
+do volume. Os custos indiretos  de impacto  no mercado podem  se tornar  um  problema se um  investidor 
+coloca uma ordem de compra ou venda de uma quantidade de ações que é grande em relação ao volume 
+
+                                                           
+1 Impacto no Mercado: está associado ao conceito de liquidez, e pode ser definido como o quanto se movem as cotações contra 
+a posição de um comprador ou vendedor, para este conseguir efetuar uma compra ou venda de determinada dimensão. 
+
+médio diário negociado no mercado. Custos de impacto de mercado são menos significativos com ações 
+líquidas, e podem ser considerados como a soma de dois componentes: impactos temporários e impactos 
+permanentes  nos  preços  das  ações  negociadas  e  estão  associados  ao  desequilíbrio  causado  ao  se  inserir 
+uma  nova  ordem  de  compra  ou  venda  na  fila  de  ordens,  sendo  que  os  impactos  temporários  irão  se 
+dissipar em um curto espaço de tempo, e os permanentes não. Neste trabalho, os custos de transação são 
+dados pela corretagem cobrada pela bolsa, descontado um rebate de 85%, o que resulta em um custo de 
+corretagem  de  0,075%  do  valor  financeiro  negociado,  acrescido  da  metade  do  valor  do  bid-ask  spread. 
+Segundo  Araújo,  Barbedo  e  Vicente  (2011),  o  bid-ask  spread  médio  na  bolsa  brasileira  é  0,10%,  para 
+uma  amostra  de  52  ações  negociadas.  Portanto,  o  valor  a  ser  considerado  será  metade  disso,  e  será 
+somado ao custo de corretagem para compor o valor total do custo de transação proporcional, resultando 
+em um custo total estimado em 0,125%, proporcional ao valor financeiro transacionado. 
+ 
+3.2. Modelos de Delta-Hedge 
+
+Os  modelos  de  delta-hedge  a  serem  testados  neste  trabalho  foram  escolhidos  com  base  em  estudos 
+anteriores, e pela possibilidade de possuírem maior aplicação prática, ao dispensar, por exemplo, o uso de 
+métodos numéricos  que, por serem lentos, muitas vezes acabam inviabilizando a aplicação prática. Para 
+maior  entendimento,  os  modelos  aqui  apresentados  podem  ser  divididos  em  dois  grupos  distintos:  (i) 
+modelos  do  tipo  time-based,  onde  o  principal  parâmetro  que  diferencia  o  modelo  dos  demais  é 
+determinado  pelo 
+tempo  entre  os  rebalanceamentos  fixos  e  pré-determinados, 
+independentemente dos demais parâmetros, (ii) modelos do tipo move-based, onde o instante do momento 
+do  rebalanceamento  não  é  mais  pré-determinado  e  fixo,  mas  sim  é  uma  função  de  “gatilhos”.  De  certa 
+forma, esses modelos talvez sejam muito mais intuitivos que os do tipo  time-based, pois em um cenário 
+onde o preço do ativo se altera muito pouco, não deveria haver necessidade de um rebalanceamento. Por 
+outro  lado,  a  aplicação  prática  deste  tipo  de  modelo  requer  monitoramento  contínuo  das  variáveis  de 
+controle. A seguir, detalhamos  os quatro modelos a serem  avaliados neste trabalho,  a saber: (i)  Black e 
+Scholes (BS), (ii) Leland (LEL), (iii) Banda de Tolerância (BTP), e (iv) Whalley e Wilmott (WW). 
+
+intervalo  de 
+
+ 
+
+3.2.1. Black-Scholes 
+
+O  modelo  de  Black  e  Scholes  (1973)  foi  desenvolvido  com  base  em  premissas  importantes,  tais 
+como a normalidade da distribuição de probabilidades dos log-retornos dos preços do ativo em questão, a 
+ausência de custos de transação, e a possibilidade de replicação contínua do pay-off da opção ao longo do 
+tempo.  É  um  modelo  com  ampla  aplicação,  tanto  prática  quanto  teórica,  pois  pode  ser  considerado  um 
+modelo robusto por produzir bons resultados, mesmo com o relaxamento destas premissas. Nesta parte do 
+trabalho, apresentamos rapidamente o conceito de delta-hedge, que é parte do modelo de Black e Scholes. 
+Assumindo-se que o comportamento do ativo segue um passeio aleatório dado pela dinâmica abaixo:  
+
+ 
+
+ 
+
+                      
+
+      
+
+e  que  uma  call  européia  de  valor           pode  ser  modelado  pela  seguinte  equação  diferencial  parcial, 
+derivada do Lema de Itô:  
+
+ 
+
+    
+
+  
+  
+
+    
+
+  
+  
+
+    
+
+ 
+ 
+
+        
+
+             
+
+      
+
+A partir da construção de um portfólio  livre de risco, pelo princípio da não arbitragem, chega-se a forma 
+final da EDP de Black e Scholes (1973): 
+
+ 
+
+ 
+
+  
+  
+
+ 
+
+ 
+ 
+
+        
+
+        
+
+  
+  
+
+          
+
+      
+
+3.2.2. Leland 
+
+Leland (1985) foi pioneiro ao modificar a estratégia de rebalanceamentos proposta no modelo de Black e 
+Scholes,  adotando  o  rebalanceamento  em  intervalos  regulares  fixos  e  propondo  uma  modificação  que 
+permite  a  replicação  de  uma  única  opção  com  volume  finito  de  custos  de  transação,  não  importando  o 
+quão  pequeno  seja  o  intervalo  de  rebalanceamento.  A  estratégia  replicante  é  ajustada  usando  uma 
+volatilidade modificada. Uma evolução do modelo de Leland (1985) foi o modelo de Hoggard, Whalley e 
+Wilmott (1994) que observaram que a abordagem de Leland é igualmente aplicável ao delta-hedge de um 
+portfólio de opções. O autor chega à seguinte EDP para a solução do valor da opção/portfólio  de opções 
+de valor         : 
+
+ 
+
+onde: 
+
+ 
+
+  
+  
+
+    
+
+  
+  
+
+ 
+
+ 
+ 
+
+                  
+
+   
+     
+
+   
+              
+
+   
+
+ 
+ 
+
+ 
+
+ 
+   
+
+     
+
+      
+
+      
+
+sendo   o parâmetro que representa os custos de transação, e    o intervalo entre os rebalanceamentos. Se 
+compararmos a EDP (3.4) acima, com a desenvolvida por Black Scholes, podemos definir   
+
+   como: 
+
+ 
+
+                  
+
+  
+
+   
+    
+
+ 
+ 
+
+ 
+
+ 
+   
+
+    
+
+      
+
+Ou seja, o modelo de Leland (1985) pode ser simplificado de forma a ser interpretado como um ajuste na 
+volatilidade de Black e Scholes (1973), indicado por    , que depende, dentre outros parâmetros, do sinal 
+do  gama  da  opção.  No  caso  deste  estudo,  por  se  tratar  de  uma  opção  de  compra  vendida,  o  gama  será 
+negativo, e a volatilidade modificada será tão maior quanto forem os custos de transação e a frequência de 
+rebalanceamentos. 
+
+3.2.3. Banda de Tolerância para o Preço do ativo objeto 
+
+O  modelo  de  Banda  de  Tolerância  para  o  Preço  (BTP)  foi  sugerido  inicialmente  por  Henrotte  (1993)  e 
+pode  ser  considerado  um  dos  modelos  mais  intuitivos,  pois  o  “gatilho”  que  define  o  momento  dos 
+rebalanceamentos é baseado em uma variação percentual do preço do ativo objeto, em módulo, maior que 
+um  determinado  parâmetro  de  controle  h.  Caso  esta  condição  seja  violada,  deve-se  efetuar  o 
+rebalanceamento  para  o  delta  de  Black  e  Scholes  (1973).  Assim,  os  instantes  de  rebalanceamento, 
+               , são dados por:  
+
+ 
+
+                                       
+
+            
+
+    
+
+                                 
+
+      
+
+onde        é  o  preço  do  ativo  no  momento  inicial,  caso           e  o  preço  no  último  instante  de 
+rebalanceamento, h é a tolerância percentual de variação do preço do ativo, e que será tão menor quanto 
+menor for a aversão a risco do investidor, e T o instante de vencimento da vida da opção. 
+
+3.2.4. Whalley e Wilmott 
+
+O  trabalho  de  Hodges  e  Neuberger  (1989)  foi  pioneiro  em  desenvolver  uma  nova  abordagem  para  o 
+apreçamento de opções que levasse em consideração a aversão a risco do investidor através da sua função 
+utilidade. Eles foram seguidos por Davis, Panas e Zariphopoulou (1993) que usaram uma abordagem de 
+
+otimização  estocástica  e  mostraram  que  o  preço  da  opção  pode  ser  encontrada  usando-se  o  conceito  de 
+solução  de  viscosidade,  através  de  métodos  numéricos.  A  ideia  chave  se  baseia  na  indiferença  do 
+investidor  em  tolerar  risco,  ou  seja,  em  quantificar  o  montante  financeiro  que  faz  com  que  o investidor 
+interessado no delta-hedge seja indiferente, em termos de sua função utilidade, a operar ou não a opção. 
+O investidor está interessado no delta-hedge, com o objetivo de maximizar sua utilidade ao final de um 
+horizonte  de  tempo  [t,  T].  O  investidor  possui      unidades  monetárias  no  ativo  livre  de  risco,  e     
+quantidades de ações no momento t. A função que define a expectativa de maximização de utilidade do 
+investidor, em opções é dada por: 
+
+ 
+
+                                          
+
+      
+
+onde  U(z)  é  a  função  Utilidade2  do  investidor.  De  forma  análoga,  caso  o  investidor  decidisse  vender  a 
+opção, teríamos: 
+
+ 
+
+                                                      
+
+      
+
+portanto,  o  preço  da  opção  p,  deve  ser  o  valor  financeiro  que  torna  o  investidor  indiferente  a  vender  a 
+opção, dado sua função utilidade, e payoff da opção: 
+
+ 
+
+                                           
+
+       
+
+normalmente, a função escolhida para representar a utilidade do investidor é da forma: 
+
+ 
+
+                                    
+
+       
+
+onde   é a medida do índice de aversão a risco do investidor, que no caso é constante. A escolha deste 
+tipo  de  função,  exponencial  negativa,  apresenta  duas  propriedades  desejáveis:  (i)  a  estratégia  do 
+investidor independe do tamanho da posição investida no ativo livre de risco; (ii) o poder computacional 
+necessário para se resolver este problema é sensivelmente menor ao se adotar o índice de aversão a risco 
+como  uma  constante.  Os  resultados  computacionais  mostram  que  se  o  índice  de  aversão  a  risco  do 
+investidor for muito baixo, o investidor acabará optando por uma estratégia de hedge estática, ou seja, irá 
+comprar   ações no instante inicial t, e as manterá até o vencimento da opção, em T. Quando o índice de 
+aversão  a  risco  do  investidor  é  moderado,  a  solução  numérica  mostra  que  o     deverá  necessariamente 
+permanecer  entre  um  limite  superior      e  um  limite  inferior    ,  tal  que                 .  Apesar  de  uma 
+sólida  fundamentação  econômica,  esta  abordagem  encontra  um  limitação  prática  por  não  possuir  uma 
+solução fechada  e, portanto,  precisar ser  calculada numericamente. Como alternativa prática, Whalley e 
+Wilmott  (1997),  se  utilizaram  de  uma  análise  assintótica  para  se  chegar  a  uma  solução  fechada  para  o 
+problema proposto por Hodges e Neuberger (1989). Em uma análise assintótica, um ou mais parâmetros 
+do  problema  assumem  valores  grandes  ou  pequenos.  No  caso,  Whalley  e  Wilmott  (1997)  partiram  da 
+premissa de que os custos de transação são pequenos e reduziram o problema à solução fechada abaixo: 
+
+ 
+
+   
+
+  
+  
+
+       
+
+  
+  
+
+   
+
+ 
+ 
+
+ 
+
+            
+
+ 
+
+ 
+ 
+ 
+
+   
+
+       
+
+onde        é o delta de Black e Scholes (1973), r é a taxa livre de risco, T o prazo para o vencimento da 
+   
+    , e por 
+opção,   representa os custos de transação, S o preço do ativo,   é o gama de Black e Scholes (
+fim,   representa o índice de aversão a risco do investidor. Essa solução, apesar de ter sido desenvolvida 
+para uma call européia vendida, pode ser aplicada para situações mais complexas, tal como um portfólio 
+de opções. É fácil também perceber que a largura da banda da fronteira não é constante, mas sim depende 
+                                                           
+2  A  função  Utilidade  é  comumente  utilizada  por  economistas  para  traçar  a  curva  de  indiferença  do  investidor,  e  que  por 
+exemplo,  representa  as  diferentes  combinações  de  risco  e  retorno  que  tornam  o  investidor  indiferente  na  tomada  de  uma 
+decisão de investimento. 
+
+de  uma  série  de  parâmetros.  Quando  os  custos  de  transação  tendem  a  zero,       ,  os  limites  da  banda 
+colapsam, e o que resta é o próprio   de Black-Scholes. Na medida em que o índice de aversão a risco   
+aumenta, a banda tende a se estreitar, como forma de diminuir o risco de delta-hedge do portfólio. Além 
+disso,  a  largura  da  banda  depende  do  gama  da  opção,  dado  que  para  gamas  altos,  os  rebalanceamentos 
+serão  menos  frequentes.  Zakamouline  (2008)  mostrou  que  a  estratégia  proposta  por  Whalley  e  Wilmott 
+(1997) é mais eficiente do que a estratégia baseada em uma banda de tolerância fixa ao redor do delta da 
+opção, pois ao não considerar por exemplo o gamma da opção, a estratégia baseada em uma tolerância H 
+constante,  pode  realizar  rebalanceamentos  desnecessários  para  mudanças  maiores  que  H  no  preço  da 
+ação. Nas simulações de Monte Carlo aqui apresentadas, consideramos que as dinâmicas dos ativos-base 
+seguem  o  modelo  de  Heston,  o  qual  considera  que  a  volatilidade  também  é  um  passeio  aleatório  com 
+reversão à média. 
+
+3.3. Modelo de Heston 
+
+O  modelo  de  Heston  (1993)  foi  escolhido  por  ser  amplamente  utilizado  para  modelagem  de  ativos 
+financeiros, e por melhor refletir o comportamento dos preços de ativos financeiros, ao incorporar em seu 
+modelo, a volatilidade estocástica, e parte das seguintes equações: 
+
+ 
+
+ 
+
+ 
+
+                      
+
+    
+
+                           
+
+             
+
+   
+
+    
+
+                 
+
+       
+
+       
+
+       
+
+      
+
+  são processos de Wiener correlacionados pelo parâmetro  . 
+onde    é o preço,    é a variância,   
+O processo da variância reverte à média de longo-prazo  , com uma velocidade de reversão  . E por fim, 
+   representa  a  volatilidade  da  volatilidade.  A  aplicação  deste  modelo  permite  violar  a  hipótese  de 
+normalidade  dos  log-retornos  dos  ativos  financeiros,  permitindo  que  o  modelo  reflita  melhor  o 
+comportamento  real  das  séries  de  preços.  Por  exemplo,  o  parâmetro   ,  se  for  menor  que  zero,  caso 
+comum  entre  ativos  de  renda  variável,  nos  diz  que  caso  os  retornos  aumentem,  a  volatilidade  deverá 
+diminuir,  afetando  a  assimetria  da  distribuição.  O  parâmetro     por  sua  vez,  irá  afetar  a  curtose  da 
+distribuição. O caso particular é quando      , e neste caso, a volatilidade será determinística e constante 
+no tempo. E o parâmetro   está associado com a velocidade com que a volatilidade reverte à média, e seu 
+valor  irá  refletir  no  agrupamento  de  volatilidade.  Para  calibrar  corretamente  os  parâmetros,  de  forma  a 
+que  estes  reflitam  dados  reais  de  mercado  para  cada  um  dos  ativos  selecionados,  utilizamos  a  fórmula 
+fechada para uma call européia do modelo de Heston: 
+
+ 
+
+onde: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+                                               
+
+       
+
+                 
+
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+      
+ 
+
+                          
+
+  
+
+      
+
+  
+
+       
+
+               
+
+                                                             
+
+                      
+
+ 
+                            
+
+        
+
+     
+
+     
+
+       
+
+       
+
+       
+
+ 
+
+ 
+
+ 
+
+ 
+
+               
+
+             
+
+  
+
+       
+ 
+             
+
+     
+
+             
+             
+
+    
+
+                  
+
+ 
+
+                     
+
+       
+
+       
+
+       
+
+    
+
+ 
+
+ 
+
+              
+
+ 
+
+ 
+
+                                                    , 
+
+ 
+
+onde   representa o preço de mercado do risco de volatilidade. Em uma abordagem neutra ao risco, seu 
+valor pode ser assumido como zero. 
+
+4. Metodologia 
+
+Este  trabalho  está  dividido  em  duas  partes.  Na  primeira,  utilizamos  simulações  de  Monte  Carlo, 
+assumindo  que  a  volatilidade  do  ativo-base  é  estocástica,  para  replicar  o  comportamento  esperado  do 
+preço  de  cada  um  dos  três  ativos  de  mercados  escolhidos,  a  saber:  Cyrela  ON  (CYRE3),  OGX  ON 
+(OGXP3), Petrobras PN (PETR4). De maneira idêntica à utilizada por Zakamouline (2008), construimos 
+a fronteira eficiente do erro de replicação para cada um dos quatro modelos escolhidos (BS, LEL, BTP, 
+WW), assumindo-se uma estratégia replicante para uma  call européia vendida. Para observar o impacto 
+da  moneyness  da  opção  em  cada  simulação,  são  escolhidos  três  strikes  diferentes  para  cada  ação.  Na 
+segunda parte, para as mesmas três ações, e respectivas opções, já mencionadas, avaliamos os resultados 
+práticos  ao  se  aplicar  os  quatro  modelos,  utilizando  os  preços  de  mercado  entre  21  de  agosto  e  15  de 
+outubro  de  2012.  Para  cada  modelo,  escolhemos  o  parâmetro  que  compatibiliza  o  risco  da  estratégia, 
+como será detalhado a seguir. 
+
+4.1. Simulações de Monte Carlo 
+
+Assim como feito por Zakamouline (2008), geramos simulações de Monte Carlo para a evolução do preço 
+de cada ativo considerado neste estudo. Para cada um destes ativos, os resultados dos diferentes modelos 
+de  delta-hedge  são  testados  para  opções  com  três  diferentes  níveis  de  moneyness.  Como  feito  por 
+Zakamouline (2008), utilizamos  o modelo de volatilidade estocástica de  Heston,  detalhado no item  3.3. 
+Desta forma, é possível incorporar os efeitos da não normalidade dos log-retornos dos respectivos ativos 
+nas  simulações.  Quanto  à  calibração  dos  parâmetros  do  modelo  de  Heston,  foi  implementada  a  sua 
+fórmula fechada para o apreçamento de uma opção européia em Matlab, e utilizada a função lsqnonlin do 
+próprio  Matlab,  para  minimizar  a  soma  dos  erros  quadráticos  entre  os  preços  de  mercado,  e  aqueles 
+obtidos  pela  expressão  do  modelo.  Ou  seja,  através  da  solução  da  expressão  abaixo  os  parâmetros  são 
+estimados. 
+
+ 
+
+   
+
+ 
+
+          
+
+ 
+
+ 
+    
+   
+
+              
+
+          
+
+ 
+
+   
+
+      
+
+           é  preço  da  opção  com  strike      e 
+onde     é  o  vetor  de  parâmetros  do  modelo  de  Heston,    
+          são os preços de mercado da 
+vencimento    calculada pelo modelo usando os parâmetros  , e   
+mesma opção. Desta forma, uma importante vantagem é que o comportamento do preço do ativo dentro 
+das simulações irá refletir as expectativas dos agentes de mercado para cada ativo. Os dados de mercado 
+são carregados com base nas informações de mercado disponíveis em 21 de Agosto de 2012, que é a data 
+inicial  a  ser  considerada  na  segunda  parte  desta  análise.  Para  cada  realização  do  preço  do  ativo, 
+simulamos o comportamento da estratégia replicante, a cada passo de tempo, comprando ou vendendo o 
+ativo, sempre que sugerido pelo modelo, considerando-se uma taxa de custo de transação   estimada em 
+0,125%  do  valor  financeiro  de  cada  operação.  A  conta  caixa  é  remunerada  pela  taxa  de  juros  livre  de 
+
+risco, estimada em 7% a.a. e a volatilidade implícita a ser usada nos rebalanceamentos de cada opção é 
+feita  a  partir  de  dados  de  mercado.  Para  cada  um  dos  quatro  modelos  a  serem  testados,  temos  uma 
+variável de controle que representa a tolerância a risco do investidor. No caso dos modelos BS e LEL, a 
+variável é o intervalo de tempo entre os rebalanceamentos, para o modelo BTP, temos a variação máxima 
+percentual  h,  e  para  o  modelo  WW,  o  índice  de  aversão  a  risco   .  Para  cada  simulação  e  par  modelo-
+variável  escolhido,  temos  desvio  padrão  e  valor  médio  do  erro  de  replicação.  Se  executarmos  diversas 
+vezes  a  mesma  simulação,  com  o  mesmo  modelo,  mas  variando-se  a  variável  de  controle,  obtemos 
+diversos pares de resultados de desvio padrão e média de erro de replicação. Por exemplo, para o modelo 
+BS, se usarmos intervalos entre rebalanceamentos muito pequenos, espera-se um desvio padrão do erro de 
+replicação  baixo  e  uma  média  baixa.  O  conjunto  de  resultados  obtidos,  variando-se  o  parâmetro  de 
+controle,  para  a  mesma  simulação  e  modelo,  se  colocado  num  plano  cartesiano,  onde  a  abscissa 
+representa  o  desvio  padrão  do  erro  de  replicação  (risco)  e  a  ordenada  representa  a  média  do  erro  de 
+replicação (retorno), obtemos uma figura que pode ser interpretada como a fronteira eficiente do modelo, 
+para aquela simulação. Repetindo-se o processo para cada um dos 4 modelos, obtemos quatro diferentes 
+fronteiras eficientes, uma para cada modelo, como mostrado no Gráfico 1 abaixo. 
+
+Para  os  modelos  BS  e  LEL,  os  intervalos  de  rebalanceamento  começam  em  ¼  de  dia,  e  vão 
+aumentando em passos de ¼ de dia até 3 dias e ¾ de dia, totalizando 15 possíveis valores. Para o modelo 
+BTP, os valores possíveis de h são: 0,10%; 0,50%; 1,00%; 1,50%; 2,00%; 2,50%; 3,00%; 4,00%; 6,00%; 
+7,00%; totalizando 10 possíveis valores. Para o modelo WW, os possíveis valores de   são: 0,1; 0,5; 1; 2; 
+3;  4;  10;  20;  100;  1000.  Tanto  o  modelo  BTP  quanto  o  modelo  WW,  por  fazerem  parte  da  família  de 
+modelos  do  tipo  move-based,  exigem  monitoramento  constante  dos  seus  respectivos  parâmetros.  Por 
+questões práticas, adotamos o menor intervalo de rebalanceamentos dos modelos time-based, que é ¼ de 
+dia, como o intervalo para verificação se os “gatilhos” de cada modelo são atingidos. 
+
+ 
+
+ 
+
+0,15 
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+0,2 
+
+0,25 
+
+0,3 
+
+0,35 
+
+0,4 
+
+-0,15 
+
+0,45 
+
+-0,16 
+
+-0,17 
+
+-0,18 
+
+-0,19 
+
+-0,2 
+
+-0,21 
+
+-0,22 
+
+-0,23 
+
+BS 
+LEL 
+WW 
+BTP 
+
+ 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 1 - Fronteiras eficientes para os modelos BS, LEL, BTP, WW para CYRE3 
+
+4.2. Aplicação Prática 
+
+Com base nesta abordagem, e assumindo-se um investidor racional, que para um dado nível de risco, irá 
+preferir  o  modelo  com  o  melhor  resultado3,  é  possível  partir  para  a  segunda  etapa  deste  estudo,  que 
+consiste em tentar estabelecer uma relação entre os parâmetros dos modelos do tipo time-based e os dos 
+modelos do tipo move-based, testando o desempenho de cada um dos modelos utilizando-se preços reais 
+de mercado. Para isso, escolhemos uma frequência de rebalanceamento para o modelo BS, e com base na 
+fronteira eficiente para cada uma das opções consideradas, fixamos o que seria o nível de risco, ou seja, o 
+desvio padrão do erro de replicação aceitável para o investidor interessado no delta-hedge. A partir deste 
+nível  de  risco,  estimamos  qual  o  valor  do  índice de  aversão  a  risco  do  modelo  WW  que  gera  o  mesmo 
+nível de risco do modelo BS para o intervalo de rebalanceamento escolhido. O mesmo raciocínio se aplica 
+para o modelo BTP, estimando o valor de h. É comum, como boa prática de gestão de risco, que o delta-
+                                                           
+3 Por melhor resultado, entende-se o  modelo que  melhor irá replicar o  payoff da opção, considerando-se por exemplo, que a 
+estratégia é short vega, e que a volatilidade histórica pode ser diferente da volatilidade implícita ao longo da vida da opção. 
+
+hedge seja realizado sempre durante períodos em que não existam negociações do ativo-objeto. Portanto, 
+é razoável  assumir que o rebalanceamento seja feito diariamente, ao final de cada pregão, por exemplo. 
+Com  base  nessa  premissa,  estimamos  uma  equivalência  entre  os  parâmetros  dos  dois  modelos  do  tipo 
+move-based e aplicamos estes parâmetros em simulações, usando dados reais de mercado. 
+
+5. Resultados 
+
+Apresentamos,  para  cada  uma  das  ações  selecionadas,  os  resultados  obtidos,  começando  pela  definição 
+dos  strikes  considerados,  e  os  parâmetros  estimados  para  os  respectivos  modelos  de  Heston  que  serão 
+usados nas simulações de Monte Carlo. Em seguida, construímos as fronteiras eficientes para cada uma 
+das opções e discutimos os resultados.  
+
+5.1. CYRELA ON 
+
+Para testar  a sensibilidade dos modelos em  relação à  moneyness das opções, foram  escolhidos 3  strikes 
+diferentes,  para  o  mesmo  vencimento  (15  de  outubro  de  2012):                                 .  O 
+preço inicial adotado foi 17,35 e o comportamento do preço da ação no período de 21 de agosto a 15 de 
+outubro  de  2012  A  escolha  deste  período  se  deve  ao  fato  de  que  representa  a  janela  de  entre  os  dois 
+vencimentos de opções mais recentes em relação à produção deste trabalho. Utilizando dados de mercado, 
+disponíveis  em  21  de  Agosto  de  2012,  e  com  base  no  processo  de  minimização  não  linear  dos  erros 
+quadráticos  entre  a  diferença  dos  preços  de  mercado  e  a  fórmula  fechada  para  o  apreçamento  de  uma 
+opção do modelo de Heston, estimamos os seguintes parâmetros: 
+
+Parâmetro 
+Valor 
+
+  
+5.7 
+
+  
+
+0.37 
+
+  
+1.0 
+
+  
+
+-0.7 
+
+Tabela 1 – Parâmetros de Heston para CYRE3 
+
+Com base nestes parâmetros executamos 5000 simulações de Monte Carlo para cada uma das três opções, 
+e para cada um dos quatro modelos. Seguem os resultados abaixo: 
+
+ 
+
+0,15 
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+0,2 
+
+0,25 
+
+0,3 
+
+0,35 
+
+-0,06 
+
+0,4 
+
+-0,07 
+
+0,45 
+
+-0,08 
+
+-0,09 
+
+-0,1 
+
+-0,11 
+
+-0,12 
+
+-0,13 
+
+-0,14 
+
+-0,15 
+
+ 
+
+BS 
+LEL 
+WW 
+BTP 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 2 - CYRE3 - Fronteiras eficientes para           
+
+Observa-se que o modelo WW apresenta resultados de erro de replicação melhores  do que qualquer dos 
+outros  3  modelos,  para  o  mesmo  nível  de  risco  chegando  a  apresentar  um  erro  de  replicação  até  20% 
+melhor  em  relação  ao  modelo  BS,  por  exemplo.  Para  intervalos  de  rebalanceamentos  intradiários,  o 
+modelo BS apresentou resultados marginalmente melhores que o modelo LEL. Abaixo são apresentados 
+os  resultados  gerados  a  partir  das  mesmas  simulações,  mas  para  a  opção  de  strike    .  Novamente, 
+observamos  que  o  modelo  WW  apresenta  resultados  superiores  aos  seus  pares,  dentro  do  contexto  de 
+média  ×  variância,  e  o  modelo  LEL,  neste  caso,  sendo  marginalmente  superior  ao  modelo  BS  para 
+qualquer escolha de intervalo de rebalanceamento. 
+
+0,25 
+
+0,3 
+
+0,35 
+
+0,4 
+
+ 
+
+0,2 
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+BS 
+LEL 
+WW 
+BTP 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 3 – CYRE3 - Fronteiras eficientes para           
+
+-0,1 
+
+-0,11 
+
+0,45 
+
+-0,12 
+
+-0,13 
+
+-0,14 
+
+-0,15 
+
+-0,16 
+
+-0,17 
+
+-0,18 
+
+-0,19 
+
+-0,2 
+
+ 
+
+A  seguir  são  apresentados  os  resultados  gerados  a  partir  das  mesmas  simulações,  mas  para  a  opção  de 
+strike   . 
+
+ 
+
+0,15 
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+0,2 
+
+0,25 
+
+0,3 
+
+0,35 
+
+0,4 
+
+-0,15 
+
+0,45 
+
+-0,16 
+
+-0,17 
+
+-0,18 
+
+-0,19 
+
+-0,2 
+
+-0,21 
+
+-0,22 
+
+-0,23 
+
+BS 
+LEL 
+WW 
+BTP 
+
+ 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 4 – CYRE3 - Fronteiras eficientes para           
+
+Neste caso observamos um ganho cada vez maior do modelo LEL em relação ao modelo BS na medida 
+em  que  se  diminui  o  intervalo  entre  os  rebalanceamentos.  De  forma  geral,  para  as  três  situações 
+apresentadas,  obtivemos  resultados  muito  próximos  daqueles  obtidos  por  Zakamouline  (2008),  onde  o 
+modelo WW parece oferecer os melhores resultados. Em seguida, temos o modelo BTP e, em um patamar 
+inferior,  os  modelos  do  tipo  time-based.  Para  os  casos      e    ,  temos  que  o  modelo  LEL  oferece  os 
+melhores ao longo de toda a fronteira em relação ao modelo BS. Também chama a atenção o fato de que, 
+quando  a  tolerância  a  risco  do  investidor  é  muito  pequena  (intervalos  entre  rebalanceamentos  muito 
+pequenos ou, por exemplo, um valor de h muito baixo) existe pouca ou nenhuma diferença nos resultados 
+obtidos pelos modelos LEL, BS e BTP. Com base nas fronteiras eficientes obtidas, tentamos estimar qual 
+índice de aversão a risco  , e qual limite de variação de preço h, que produzem o mesmo desvio padrão no 
+erro de replicação (risco) que aquele estimado pelo modelo BS com rebalanceamento diário. Neste caso 
+temos que: 
+
+  
+
+  
+
+h 
+
+   
+
+2 
+
+   
+
+1 
+
+   
+
+1 
+
+3.00% 
+
+4.00% 
+
+4.00% 
+
+Tabela 2 – Equivalência de parâmetros para CYRE3 
+
+Mesmo  variando-se  a  moneyness  das  opções,  é  possível  perceber  que  os  parâmetros    e  h  se  alteram 
+muito  pouco.  Estes  valores  são  utilizados  nos  modelos  de  delta-hedge,  assumindo  a  trajetória  real  do 
+
+preço no período escolhido. Para observar o comportamento da estratégia replicante, avaliamos, instante a 
+instante, o resultado da estratégia replicante ao longo da vida de cada opção. Para    temos: 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+R
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 1,20  
+
+ 1,00  
+
+ 0,80  
+
+ 0,60  
+
+ 0,40  
+
+ 0,20  
+
+ -    
+
+ 
+
+1
+
+ 
+
+9
+
+ 
+
+7
+1
+
+ 
+
+5
+2
+
+ 
+
+3
+3
+
+ 
+
+1
+4
+
+ 
+
+9
+4
+
+ 
+
+7
+5
+
+ 
+
+5
+6
+
+ 
+
+3
+7
+
+ 
+
+1
+8
+
+ 
+
+9
+8
+
+ 
+
+7
+9
+
+ 
+
+5
+0
+1
+
+ 
+
+3
+1
+1
+
+ 
+
+1
+2
+1
+
+ 
+
+9
+2
+1
+
+ 
+
+7
+3
+1
+
+ 
+
+5
+4
+1
+
+Passos de tempo (1/4 de dia) 
+
+Gráfico 5 – CYRE3 – Erro de replicação para           
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+Os resultados de cada estratégia se mantém muito próximos ao longo da vida da opção, se diferenciando 
+nos momentos finais, onde o modelo BTP produziu o melhor resultado. Para   , temos: 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 1,40  
+ 1,20  
+ 1,00  
+ 0,80  
+ 0,60  
+ 0,40  
+ 0,20  
+ -    
+
+ 
+
+1
+
+ 
+
+0
+1
+
+ 
+
+9
+1
+
+ 
+
+8
+2
+
+ 
+
+7
+3
+
+ 
+
+6
+4
+
+ 
+
+5
+5
+
+ 
+
+4
+6
+
+ 
+
+3
+7
+
+ 
+
+2
+8
+
+ 
+
+1
+9
+
+ 
+
+0
+0
+1
+
+ 
+
+9
+0
+1
+
+ 
+
+8
+1
+1
+
+ 
+
+7
+2
+1
+
+ 
+
+6
+3
+1
+
+ 
+
+5
+4
+1
+
+Passos de tempo (1/4 de dia) 
+
+Gráfico 6 – CYRE3 – Erro de replicação para           
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+Novamente, temos que os resultados caminham de forma muito parecida, se diferenciando no final. Neste 
+caso, temos que a ordem do melhor modelo para o pior é exatamente a mesma encontrada nas simulações 
+de Monte Carlo. Aplicando-se os modelos para   : 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+R
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 1,40  
+
+ 1,20  
+
+ 1,00  
+
+ 0,80  
+
+ 0,60  
+
+ 0,40  
+
+ 0,20  
+
+ -    
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+ 
+
+1
+
+ 
+
+0
+1
+
+ 
+
+9
+1
+
+ 
+
+8
+2
+
+ 
+
+7
+3
+
+ 
+
+6
+4
+
+ 
+
+5
+5
+
+ 
+
+4
+6
+
+ 
+
+3
+7
+
+ 
+
+2
+8
+
+ 
+
+1
+9
+
+ 
+
+0
+0
+1
+
+ 
+
+9
+0
+1
+
+ 
+
+8
+1
+1
+
+ 
+
+7
+2
+1
+
+ 
+
+6
+3
+1
+
+ 
+
+5
+4
+1
+
+Passos de tempo (1/4 de dia) 
+
+Gráfico 7 – CYRE3 – Erro de replicação para           
+
+Conforme o Gráfico 7, também temos a mesma sequência de resultados encontrados no modelo de Monte 
+Carlo  para    .  Nas  três  situações  analisadas,  os  modelos  do  tipo  move-based  mostram  resultados 
+
+melhores  do  que  os  do  tipo  time-based,  sendo  que,  para      e    ,  o  modelo  WW  apresenta  resultados 
+superiores,  e  para      o  modelo  BTP  apresenta  resultados  superiores.  Para  os  três  strikes  analisados, 
+chama  a  atenção  o  fato  de  que  os  quatro  modelos  analisados  apresentam  maior  diferenciação  nos 
+resultados ao se aproximar do final da vida de cada opção. 
+
+5.2. OGX ON 
+
+Repetimos  os  mesmo  passos  descritos  no  item  anterior,  agora  para  a  ação  OGXP3,  e  usando      
+                 , e partindo de um preço inicial de 6,74, conforme demonstra o Gráfico 8 abaixo: 
+
+8 
+
+7 
+
+6 
+
+5 
+
+4 
+
+Preço 
+
+K1 
+
+K2 
+
+K3 
+
+Data 
+
+Gráfico 8 - Histórico do preço da OGXP3 
+
+Novamente, utilizando o Matlab, estimamos os parâmetros para o modelo de Heston: 
+
+Parâmetro 
+Valor 
+
+  
+99 
+
+  
+
+0.30 
+
+  
+
+0.99 
+
+  
+
+0.37 
+
+Tabela 3 – Parâmetros de Heston para OGPX3 
+
+Com base nas simulações de Monte Carlo, obtemos, para   : 
+
+0 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+0,05 
+
+0,1 
+
+0,15 
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+BS 
+LEL 
+WW 
+BTP 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 9 – OGXP3 - Fronteiras eficientes para        
+
+-0,08 
+
+-0,085 
+
+-0,09 
+
+-0,095 
+
+-0,1 
+
+-0,105 
+
+-0,11 
+
+ 
+
+0,2 
+
+ 
+
+Novamente,  temos  o  modelo  WW  apresentando  os  melhores  resultados,  dentre  os  quatro  modelos 
+analisados. Repetindo-se o processo para    temos: 
+
+0 
+
+0,02 
+
+0,04 
+
+0,06 
+
+0,08 
+
+0,1 
+
+0,12 
+
+0,14 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+BS 
+LEL 
+WW 
+BTP 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 10 – OGXP3 - Fronteiras eficientes para        
+
+-0,06 
+
+0,16 
+
+0,18 
+
+-0,065 
+
+-0,07 
+
+-0,075 
+
+-0,08 
+
+-0,085 
+
+-0,09 
+
+-0,095 
+
+-0,1 
+
+ 
+
+Neste  caso  também,  resultados  idênticos  aos  obtidos  para    .  Já  para  o  caso      os  resultados  seguem 
+abaixo: 
+
+0 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+0,02 
+
+0,04 
+
+0,06 
+
+0,08 
+
+0,1 
+
+-0,03 
+
+-0,035 
+
+-0,04 
+
+-0,045 
+
+-0,05 
+
+ 
+
+BS 
+LEL 
+WW 
+BTP 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 11 – OGXP3 - Fronteiras eficientes para        
+
+Para    também, poucas mudanças em relação aos resultados anteriores, onde não apenas os modelos do 
+tipo move-based continuam a dominar os modelos do tipo time-based, como a ordem dos quatro modelos 
+pouco se altera. O modelo LEL se mostrou superior ao BS para as 3 situações apresentadas, e novamente 
+pudemos  perceber  que  para  um  investidor  com  baixa  tolerância  a  risco,  a  escolha  dos  modelos  de  BS, 
+LEL e BTP parece produzir resultados idênticos nas três situações apresentadas. Estimando   e h temos 
+que: 
+
+  
+
+   
+
+ h 
+
+   
+
+3 
+
+   
+
+4 
+
+   
+
+5 
+
+4,00% 
+
+4,00% 
+
+4.00% 
+
+Tabela 4 – Equivalência de parâmetros para OGPX3 
+
+Observando-se  o  comportamento  da  estratégia  replicante,  para    ,  para  o  mesmo  intervalo  de  tempo, 
+temos  que  o  modelo  WW  produz  resultado  marginalmente  superior  aos  modelos  LEL  e  BS.  O  modelo 
+BTP produz o pior resultado dentre as 4 estratégias, descolando-se dos demais no final da vida da opção. 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+R
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 0,50  
+
+ 0,40  
+
+ 0,30  
+
+ 0,20  
+
+ 0,10  
+
+ -    
+
+-0,10  
+
+ 
+
+1
+
+ 
+
+0
+1
+
+ 
+
+9
+1
+
+ 
+
+8
+2
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+7
+3
+
+3
+7
+
+4
+6
+
+5
+5
+
+6
+4
+
+8
+1
+1
+Passos de tempo (1/4 de dia) 
+
+0
+0
+1
+
+9
+0
+1
+
+2
+8
+
+1
+9
+
+ 
+
+7
+2
+1
+
+ 
+
+6
+3
+1
+
+ 
+
+5
+4
+1
+
+Mudando o strike para    temos: 
+
+Gráfico 12 – OGXP3 – Erro de replicação para        
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 0,60  
+
+ 0,50  
+
+ 0,40  
+
+ 0,30  
+
+ 0,20  
+
+ 0,10  
+
+ -    
+
+ 
+
+1
+
+ 
+
+1
+1
+
+ 
+
+1
+2
+
+ 
+
+1
+3
+
+ 
+
+1
+4
+
+ 
+
+1
+5
+
+ 
+
+1
+6
+
+ 
+
+1
+7
+
+ 
+
+1
+8
+
+ 
+
+1
+9
+
+ 
+
+1
+0
+1
+
+ 
+
+1
+1
+1
+
+ 
+
+1
+2
+1
+
+ 
+
+1
+3
+1
+
+ 
+
+1
+4
+1
+
+ 
+
+1
+5
+1
+
+Passos de tempo (1/4 de dia) 
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+Gráfico 13 – OGXP3 – Erro de replicação para        
+
+Para   , temos, de certa forma, uma inversão do resultado, onde o modelo BTP, que era o pior resultado 
+considerando-se   , agora passa a ser o melhor, sendo que o limite h para    e    é de 4% para ambos os 
+casos, e portanto mostrando que o fator moneyness foi relevante na escolha do modelo. Por fim, para     
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+R
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 0,20  
+
+ 0,15  
+
+ 0,10  
+
+ 0,05  
+
+ -    
+
+-0,05  
+
+ 
+
+1
+
+ 
+
+2
+1
+
+ 
+
+3
+2
+
+ 
+
+4
+3
+
+ 
+
+5
+4
+
+ 
+
+6
+5
+
+ 
+
+7
+6
+
+ 
+
+8
+7
+
+ 
+
+9
+8
+
+ 
+
+0
+0
+1
+
+ 
+
+1
+1
+1
+
+ 
+
+2
+2
+1
+
+ 
+
+3
+3
+1
+
+ 
+
+4
+4
+1
+
+Passos de tempo (1/4 de dia) 
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+Gráfico 14 – OGXP3 – Erro de replicação para        
+
+Para   , temos, o modelo WW com um resultado superior aos demais, resultado este que foi persistente 
+durante  praticamente  toda  a  vida  da  opção.  Chama  a  atenção  também  o  forte  descolamento  do  modelo 
+BTP próximo à metade da vida da opção. Dada a sua simplicidade, este pode ser considerado o modelo 
+que  apresenta  menor  sensibilidade  à  proximidade  do  vencimento  da  opção.  Novamente  o  modelo  WW 
+apresentou bons resultados em 2 das 3 situações, sendo que na situação em que foi o segundo melhor, o 
+modelo baseado em BTP apresentou o melhor resultado.  
+
+5.3. PETROBRAS PN 
+
+Para  a  ação PETR4, usamos  os seguintes  strikes:                          , e partimos de um  preço 
+inicial de 21,47: 
+
+ 24,00  
+ 22,00  
+ 20,00  
+ 18,00  
+
+Data 
+
+Gráfico 15 - Histórico do preço da PETR4 
+
+Os parâmetros de Heston são dados por: 
+
+Parâmetro 
+Valor 
+
+  
+19 
+
+  
+
+0.09 
+
+  
+
+0.84 
+
+  
+
+-0.95 
+
+Tabela 5 – Parâmetros de Heston para PETR4 
+
+Com base nas simulações de Monte Carlo, obtemos para   : 
+
+Preço 
+
+K1 
+
+K2 
+
+K3 
+
+ 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+0,1 
+0,09 
+0,08 
+0,07 
+0,06 
+0,05 
+0,04 
+0,03 
+0,02 
+0,01 
+0 
+
+BS 
+LEL 
+WW 
+BTP 
+
+0 
+
+0,05 
+
+0,1 
+
+0,15 
+
+0,2 
+
+0,25 
+
+0,3 
+
+0,35 
+
+0,4 
+
+ 
+
+Gráfico 16 – PETR4 - Fronteiras eficientes para         
+
+No Gráfico 16, chama a atenção o fato do modelo BS apresentar resultados superiores ao do modelo LEL 
+para praticamente toda a fronteira. Aplicando a mesma simulação e assumindo o strike   , temos: 
+
+0 
+
+ 
+
+0,05 
+
+0,1 
+
+0,15 
+
+0,2 
+
+0,25 
+
+0,3 
+
+0,35 
+
+0,4 
+
+0 
+
+ 
+
+ 
+
+ 
+
+e
+d
+o
+r
+r
+e
+o
+d
+o
+ã
+r
+d
+a
+p
+o
+i
+v
+s
+e
+D
+
+ 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+p
+e
+r
+
+BS 
+LEL 
+WW 
+BTP 
+
+Desvio padrão do erro de replicação 
+
+Gráfico 17 – PETR4 - Fronteiras eficientes para         
+
+-0,02 
+
+-0,04 
+
+-0,06 
+
+-0,08 
+
+-0,1 
+
+-0,12 
+
+ 
+
+No Gráfico 17, temos resultados idênticos aos obtidos para os outros ativos, e     Para    temos: 
+
+0 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+e
+o
+d
+a
+d
+é
+M
+
+i
+
+ 
+
+ 
+
+0,05 
+
+0,1 
+
+0,15 
+
+0,2 
+
+0,25 
+
+Desvio padrão do erro de replicação 
+
+0 
+
+0,3 
+
+0,35 
+
+-0,02 
+
+-0,04 
+
+-0,06 
+
+-0,08 
+
+-0,1 
+
+-0,12 
+
+-0,14 
+
+-0,16 
+
+BS 
+LEL 
+WW 
+BTP 
+
+ 
+
+Gráfico 18 – PETR4 - Fronteiras eficientes para         
+
+Neste  caso    ,  o  modelo  LEL  parece  se  destacar  para  investidores  com  baixa  tolerância  a  risco,  sendo 
+superior inclusive ao modelo WW. De forma geral, o modelo LEL parece se destacar sobre o modelo BS 
+para  opções  in-the-money,  especialmente  para  intervalos  intradiários  de  rebalanceamento.  O  inverso 
+parece  ocorrer  para  opções  out  of-th-money,  onde  o  modelo  BS  produziu  resultados  melhores  para  dois 
+dos três casos analisados. Com base nos resultados acima, estimamos   e h como: 
+
+  
+
+   
+
+ h 
+
+   
+
+10 
+
+   
+
+3 
+
+   
+
+3 
+
+3,00% 
+
+2,50% 
+
+5.00% 
+
+Tabela 6 – Equivalência de parâmetros para PETR4 
+
+Chama a atenção que para   , temos um valor de   muito diferente do estimado para os demais strikes. 
+Além disso, chama a atenção ainda o valor de h, encontrado para   , que difere dos valores encontrados 
+para      e    ,  o  que  pode  indicar  que  os  parâmetros  de  aversão  a  risco  para  os  modelos  do  tipo  move-
+based,  não  são  indiferentes  a  moneyness  das  opções.  Observando-se  o  comportamento  da  estratégia 
+replicante,  para      temos  que  o  modelo  WW  apresentou  o  pior  resultado  dentre  os  quatro  modelos 
+avaliados. Um dos fatores que contribuiu para a pior performance deste modelo foi o fato de que o preço 
+da ação se manteve próximo ao strike quando a opção estava próxima ao vencimento. Nesta condição o 
+gama da opção está próximo ao seu máximo, e consequentemente, a banda de tolerância calculada pelo 
+modelo WW pode se tornar muito larga, impedindo o rebalanceamento ótimo da estratégia. 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+R
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 0,80  
+
+ 0,60  
+
+ 0,40  
+
+ 0,20  
+
+ -    
+
+ 
+
+1
+
+ 
+
+9
+
+ 
+
+7
+1
+
+ 
+
+5
+2
+
+ 
+
+3
+3
+
+ 
+
+1
+4
+
+ 
+
+9
+4
+
+ 
+
+7
+5
+
+ 
+
+5
+6
+
+ 
+
+3
+7
+
+ 
+
+1
+8
+
+ 
+
+9
+8
+
+ 
+
+7
+9
+
+ 
+
+5
+0
+1
+
+ 
+
+3
+1
+1
+
+ 
+
+1
+2
+1
+
+ 
+
+9
+2
+1
+
+ 
+
+7
+3
+1
+
+ 
+
+5
+4
+1
+
+Passos de tempo (1/4 de dia) 
+
+Gráfico 19 – PETR4 – Erro de replicação para         
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+Para    temos: 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+p
+e
+r
+ 
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 1,20  
+ 1,00  
+ 0,80  
+ 0,60  
+ 0,40  
+ 0,20  
+ -    
+
+ 
+
+1
+
+ 
+
+9
+
+ 
+
+7
+1
+
+ 
+
+5
+2
+
+ 
+
+3
+3
+
+ 
+
+1
+4
+
+ 
+
+9
+4
+
+ 
+
+7
+5
+
+ 
+
+5
+6
+
+ 
+
+3
+7
+
+ 
+
+1
+8
+
+ 
+
+9
+8
+
+ 
+
+7
+9
+
+ 
+
+5
+0
+1
+
+ 
+
+3
+1
+1
+
+ 
+
+1
+2
+1
+
+ 
+
+9
+2
+1
+
+ 
+
+7
+3
+1
+
+ 
+
+5
+4
+1
+
+Passos de tempo (1/4 de dia) 
+
+Gráfico 20 – PETR4 – Erro de replicação para         
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+Neste  caso,  o  modelo  LEL  apresentou  os  melhores  resultados,  e  os  demais  modelos  apresentaram 
+resultados  muito  próximos  uns  dos  outros.  Assumindo-se      temos:  Neste  caso,  onde  a  opção  estava 
+deep-in-the-money, o modelo WW mostrou o melhor resultado no vencimento da opção. Observamos que 
+dentre  todos  os  nove  casos  analisados,  utilizando  preços  de  mercado,  o  modelo  WW  apresentou  os 
+melhores  resultados  para  as  situações  onde  as  opções  estavam  in-the-money  ou  deep-in-the-money, 
+indicando que a estratégia poderia ser mais apropriada para este tipo de situação. 
+
+ 
+
+o
+ã
+ç
+a
+c
+i
+l
+
+ 
+
+p
+e
+R
+e
+d
+o
+r
+r
+E
+
+ 
+
+ 1,00  
+
+ 0,80  
+
+ 0,60  
+
+ 0,40  
+
+ 0,20  
+
+ -    
+
+ 
+
+1
+
+ 
+
+9
+
+ 
+
+7
+1
+
+ 
+
+5
+2
+
+ 
+
+3
+3
+
+ 
+
+1
+4
+
+ 
+
+9
+4
+
+ 
+
+7
+5
+
+ 
+
+5
+6
+
+ 
+
+3
+7
+
+ 
+
+1
+8
+
+ 
+
+9
+8
+
+ 
+
+7
+9
+
+ 
+
+5
+0
+1
+
+ 
+
+3
+1
+1
+
+ 
+
+1
+2
+1
+
+ 
+
+9
+2
+1
+
+ 
+
+7
+3
+1
+
+ 
+
+5
+4
+1
+
+Passos de tempo (1/4 de dia) 
+
+Gráfico 21 – PETR4 – Erro de replicação para         
+
+BS 
+
+LEL 
+
+WW 
+
+BTP 
+
+ 
+
+6. Conclusões 
+
+O  objetivo  do  trabalho  foi  explorar  o  resultado  de  diferentes  modelos  de  delta-hedge,  levando-se  em 
+conta os custos de transação, e tentar compará-los em diferentes contextos. Na primeira parte da análise, 
+utilizamos simulações de Monte Carlo, buscando modelar o comportamento de cada ativo a ser testado, 
+de forma a refletir as expectativas dos agentes de mercado, e relaxar a hipótese de normalidade dos log-
+retornos  dos  ativos.  Nesta  etapa,  em  todos  os  casos  analisados,  as  fronteiras  eficientes  resultantes 
+mostraram o modelo WW como o que oferece o melhor trade-off entre risco e retorno dentre os modelos 
+analisados, sempre seguido pelo modelo BTP. Esses resultados, de certa forma, já eram esperados, dados 
+os  resultados  de  estudos  anteriores,  mas  reforçam  que  as  abordagens  do  tipo  move-based,  apesar  da 
+necessidade  de  monitoramento  constante,  tendem  a  ser  mais  eficientes,  dado  que  buscam  minimizar  os 
+custos  de  transação  totais  ao  longo  da  vida  da  opção,  evitando  desbalanceamentos  desnecessários.  Um 
+dos  principais  desafios  da  aplicação  prática  dos  modelos  do  tipo  move-based,  é  a  definição  dos 
+parâmetros     e  h  e  que  definem  a  tolerância  a  risco  do  investidor.  A  segunda  parte  deste  trabalho 
+procurou  contribuir  justamente  com  esta  discussão,  procurando  estender  os  resultados  teóricos  obtidos 
+com as simulações de Monte Carlo para uma aplicação prática, avaliando o comportamento de cada um 
+dos quatro modelos em situações reais de mercado. Ao se estabelecer uma relação entre os parâmetros   e 
+h,  dos  modelos  WW  e  BTP  respectivamente,  foi  possível  observar  que  os  mesmos  podem  variar  de 
+acordo com as características do ativo, como a volatilidade, e com as características da opção, o que pode 
+se traduzir em um impeditivo para uma adoção mais ampla de modelos do tipo move-based. Nesta parte 
+do estudo, foi possível observar situações onde a aplicação do modelo WW pode não ser o modelo mais 
+
+indicado quando o preço do ativo estiver muito próximo do strike da opção e a opção estiver próxima ao 
+vencimento, pelo fato de que, nesta situação, o gama da opção estará próximo do seu máximo, o que pode 
+fazer  com  que  a  banda  de  tolerância  do  modelo  WW  seja  muito  elevada,  e  impeça  o  rebalanceamento 
+ótimo da estratégia.  
+
+O  tema  estudado  neste  trabalho  apresenta  amplas  possibilidades,  e  é  de  extrema  relevância  para 
+profissionais do mercado financeiro que atuam com contratos de derivativos e gestão de riscos. Dentre as 
+possibilidades  para  desenvolvimento  futuro,  destacam-se  as  seguintes  possibilidades:  incorporar  mais 
+modelos  de  rebalanceamento  na  análise,  buscar  alternativas  na  estimação  dos  parâmetros  a  serem 
+utilizados para as estratégias do tipo move-based, comparar diferentes modelos para portfólios de opções, 
+aplicações  para  derivativos  de  commodities  e  renda-fixa,  testar  a  estabilidade  da  equivalência  de 
+parâmetros entre os diferentes modelos, e otimização dos parâmetros dos modelos WW e BTP. 
+ 
+
+BIBLIOGRAFIA 
+
+ 
+AGUIRRE,  G.  K.  P.  (2012).  “Modelos  dinâmicos  de  hedging:  um  estudo  sobre  a  volatilidade”,  Dissertação  de 
+
+Mestrado Profissional em Economia (Linha de Finanças) – EESP FGV. 
+
+AVELLANEDA,  M.  and  PARAS,  A.  (1994).  “Optimal  Hedging  Portfólio  s  for  Derivative  Securities  in  the 
+
+Presence of Large Transaction Costs”, Applied Mathematical Finance, 1, 165–193. 
+
+BLACK,  F.  and  SCHOLES,  M.  (1973).  “The  Pricing  of  Options  and  Corporate  Liabilities”,  Journal  of  Political 
+
+Economy, 81 (3), 637–654. 
+
+CLEWLOW,  L.  and  HODGES,  S.  (1997).  “Optimal  Delta-Hedging  under  Transaction  Costs”,  Journal  of 
+
+Economic Dynamics and Control, 21, 1353–1376. 
+
+CONSTANTINIDES,  G.M.,  and  T.  ZARIPHOPOULOU.  “Bounds  on  Prices  of  Contingent  Claims  in  an 
+Intertemporal  Economy  with  Proportional  Transaction  Costs  and  General  Preferences.”  Finance  and 
+Stochastics, 3 (1999), pp. 345-369. 
+
+DAVIS, M. H. A., PANAS, V. G., and ZARIPHOPOULOU T. (1993). “European Option Pricing with Transaction 
+
+costs”, Journal of Control and Optimization, Vol 31, 470-493. 
+
+HENROTTE, P. (1993). “Transaction Costs and Duplication Strategies,” Working Paper, Stanford University and 
+
+HEC. 
+
+HESTON,  S.,  “A  Closed-Form  Solution  for  Options  With  Stochastic  Volatility  with  applications  to  bond  and 
+
+currency options”, Rev. Financ. Stud (1993) 6, 327-343 
+
+HODGES,  S.  D.  and  NEUBERGER,  A.  (1989).  “Optimal  Replication  of  Contingent  Claims  under  Transaction 
+
+Costs”, Review of Futures Markets, 8, 222–239. 
+
+HOGGARD,  T.,  WHALLEY,  A.  E.,  and  WILMOTT,  P.  (1994). “Hedging  Option  Portfólio  s in  the  Presence  of 
+
+Transaction Costs”, Advances in Futures and Options Research, 7, 21–35. 
+
+ITÔ, Kiyoshi (1944). “Stochastic Integral”. Proc. Imperial Acad. 20, 519-524 
+LELAND, H. (1985). “Option Pricing and Replication with Transaction Costs”, Journal of Finance, 5, 1283–1301. 
+MARKOWITZ, H. (1952), “Portfólio  Selection”, Journal of Finance, Vol 7, No.1, 77-91  
+MARTELLINI,  L.  and  PRIAULET,  P.  (2002).  “Competing  Methods  for  Option  Hedging  in  the  Presence  of 
+
+Transaction Costs”, Journal of Derivatives, 9 (3), 26–38. 
+
+MOHAMED,  B.  (1994).  “Simulations  of  Transaction  Costs  and  Optimal  Rehedging”,  Applied  Mathematical 
+
+Finance, 1, 49–63. 
+
+WHALLEY, A. E. and WILMOTT, P. (1997). “An Asymptotic Analysis of an Optimal Hedging Model for Option 
+
+Pricing with Transaction Costs”, Mathematical Finance, 7 (3), 307–324. 
+
+WILMOTT, P.; AHAMED,R. “Which free lunch would you like today sir?: Delta hedging, volatility arbitrage and 
+
+optimal portfólio s” ,artigo,2005. 
+
+WILMOTT, P., “Paul Wilmott on quantitative finance”, 2nd. Ed, John Wiley & Sons, 2006 
+ZAKAMOULINE, V., “The best hedging strategy in the Presence of Transaction Costs”,  International Journal of 
+
+Theoretical and Applied Finance, 12, 833 - 2008 
+
+
