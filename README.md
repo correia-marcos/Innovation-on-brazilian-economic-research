@@ -72,4 +72,4 @@ Briefly, we did the following:
 **Important:** some of this libraries need to be downloaded (pip install or
 conda install).
 
-**Important²:** those libraries cited as (cloned), in a perfect world, would be a submodule of the project. Do to the lack of knowlegde by the time this project was written, we just cloned. In future projects, this problem is gonna be solved, but it will be a normal folder in this one.
+**Important²:** those libraries cited as (cloned), would be a submodule of the project in a perfect world. Do to the lack of knowlegde by the time this project was written, we just cloned. In future projects, such a problem won't happen, but it will be a normal folder in this one.
