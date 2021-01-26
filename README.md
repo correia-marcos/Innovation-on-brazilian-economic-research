@@ -33,12 +33,12 @@ Briefly, we did the following:
 * Part 1 - Scraping of htmls and important information (area of submission, coautors and universities)
 * Part 2 - Download of files
 * Part 3 - Convertion of files (pdf to txt; doc and docx to txt)
-* Part 4 - pré-processing
+* Part 4 - Pré-processing
 * Part 4 - Stopwords (en, pt)
-* Part 5 - stemming / Lemmatizing
+* Part 5 - Stemming / Lemmatizing
 * Part 5 - Topic Modelling: tf-idf
-* Part 5 - latent dirichlet allocation (LDA)
-* Part 5 - ressonance/novelty/transience calculations (formula based on Kullback-leiber divergence)
+* Part 5 - Latent dirichlet allocation (LDA)
+* Part 5 - Ressonance/novelty/transience calculations (formula based on Kullback-leiber divergence)
 
 
 ## Script requirements
@@ -72,4 +72,4 @@ Briefly, we did the following:
 **Important:** some of this libraries need to be downloaded (pip install or
 conda install).
 
-**Important²:** those libraries cited as (cloned), in a perfect world, would be a submodule of the project. Do to the lack of knowlegde by the time this project was written, we just cloneded. In future projects, this problem is gonna be solved, but it will be a normal folder in this one.
+**Important²:** those libraries cited as (cloned), in a perfect world, would be a submodule of the project. Do to the lack of knowlegde by the time this project was written, we just cloned. In future projects, this problem is gonna be solved, but it will be a normal folder in this one.
