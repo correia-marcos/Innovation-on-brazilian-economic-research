@@ -22,7 +22,7 @@ but this quantity is to little for Topic Modelling applications.
 of the articles and the institutions where they work. This was made 'by hands'
 googling the papers. 
 
-Três papers could not be downloaded do to problems in the [ANPEC website](https://en.anpec.org.br/previous-editions.php): 
+Three papers could not be downloaded do to problems in the [ANPEC website](https://en.anpec.org.br/previous-editions.php): 
 doc201_2015 - Is tracking beneficial? Study of tracking using peer effects  (2016); 
 doc235_2015 - THE INS AND OUTS OF UNEMPLOYMENT IN A DUAL LABOR MARKET;
 doc128_2013 - EFEITOS DO INVESTIMENTO EM CAPITAL INTANGÍVEL E PATENTES NO VALOR DAS EMPRESAS BRASILEIRAS
