@@ -23,6 +23,7 @@ of the articles and the institutions where they work. This was made 'by hands'
 googling the papers. 
 
 Two papers could not be downloaded, buy the program, do to problems in the [ANPEC website](https://en.anpec.org.br/previous-editions.php): 
+
 doc235_2016 - TRABALHO FORMAL-INFORMAL FEMININO NO BRASIL: UMA DECOMPOSIÇÃO DOS DIFERENCIAIS DE RENDIMENTOS (2000-2010);
 doc128_2013 - EFEITOS DO INVESTIMENTO EM CAPITAL INTANGÍVEL E PATENTES NO VALOR DAS EMPRESAS BRASILEIRAS
 
