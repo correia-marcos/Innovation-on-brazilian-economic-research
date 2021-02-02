@@ -22,10 +22,13 @@ but this quantity is to little for Topic Modelling applications.
 of the articles and the institutions where they work. This was made 'by hands'
 googling the papers. 
 
-Três papers could not be downloaded do to problems in the [ANPEC website](https://en.anpec.org.br/previous-editions.php): 
-doc201_2015 - Is tracking beneficial? Study of tracking using peer effects  (2016); 
-doc235_2015 - THE INS AND OUTS OF UNEMPLOYMENT IN A DUAL LABOR MARKET;
+Two papers could not be downloaded, buy the program, do to problems in the [ANPEC website](https://en.anpec.org.br/previous-editions.php): 
+
+doc235_2016 - TRABALHO FORMAL-INFORMAL FEMININO NO BRASIL: UMA DECOMPOSIÇÃO DOS DIFERENCIAIS DE RENDIMENTOS (2000-2010);
 doc128_2013 - EFEITOS DO INVESTIMENTO EM CAPITAL INTANGÍVEL E PATENTES NO VALOR DAS EMPRESAS BRASILEIRAS
+
+They were, also, downloaded by googling the title of the paper (on other sites).
+
 
 ## Summary
 
@@ -72,4 +75,4 @@ Briefly, we did the following:
 **Important:** some of this libraries need to be downloaded (pip install or
 conda install).
 
-**Important²:** those libraries cited as (cloned), in a perfect world, would be a submodule of the project. Do to the lack of knowlegde by the time this project was written, we just cloned. In future projects, this problem is gonna be solved, but it will be a normal folder in this one.
+**Important²:** those libraries cited as (cloned), would be a submodule of the project in a perfect world. Do to the lack of knowlegde by the time this project was written, we just cloned. In future projects, such a problem won't happen, but it will be a normal folder in this one.
