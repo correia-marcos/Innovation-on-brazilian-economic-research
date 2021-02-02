@@ -37,7 +37,9 @@ round n times with n ~ ∞ (law of large numbers).
 import os
 import pandas as pd
 import logging
-os.chdir('C:\\Users\\Usuário\\Projects\\monografia\\5-lda')
+
+root = os.path.abspath(os.curdir)
+os.chdir(f'{root}/5-lda')
 from NTRexample_FRevNCA import calculate_novelty_transience_resonance as cntr
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',
@@ -51,10 +53,15 @@ def mysplit3(s) -> str:
     return head + tail
 
 
-local = r'C:\Users\Usuário\Projects\monografia\dados\data_final'
-corpus = pd.read_pickle(f'{local}/corpus_cleaned2.pkl')
-data = pd.read_pickle(f'{local}/data_final_v2.pkl')
+os.chdir(f'{root}')
+local = r'\dados\data_final/results'
+corpus_en = pd.read_pickle(f'{root}/{local}/corpus_cleaned4_en.pkl')
+corpus_pt = pd.read_pickle(f'{root}/{local}/corpus_cleaned4_pt.pkl')
 
+corpus = pd.concat([corpus_en, corpus_pt]).sort_index()
+
+data = pd.read_pickle(f'{root}/{local}/data_final_v2.pkl')
+data2 = pd.read_pickle(f'{root}/{local}/data_final.pkl')
 data.code_area = data['code_area'].astype(str).apply(lambda x: mysplit3(x))
 
 df = pd.concat([corpus, data], axis=1, sort=False)
@@ -72,16 +79,16 @@ df = df.drop('autores_universi.', 1)
 # docs_topic_pt = pd.read_pickle(f'{local}/docs_topic_pt(30).pkl')
 
 
-docs_topic_en = pd.read_pickle(f'{local}/docs_topic_en(30)v2.pkl')
-docs_topic_pt = pd.read_pickle(f'{local}/docs_topic_pt(30)v2.pkl')
+docs_topic_en = pd.read_pickle(f'{root}/{local}/docs_topic_en(30)v3.pkl')
+docs_topic_pt = pd.read_pickle(f'{root}/{local}/docs_topic_pt(30)v3.pkl')
 
 
 groups = df.groupby(['linguagem', 'code_area', 'ano'])
 groups.groups
 dfs = dict(tuple(groups))
 
-dfs.pop(('es', 'i06', '2014'))
-dfs.pop(('es', 'i02', '2014'))
+# dfs.pop(('es', 'i06', '2014'))
+# dfs.pop(('es', 'i02', '2014'))
 
 
 def get_KLD_random_ano():
@@ -761,14 +768,12 @@ def rodar_KLD_random_nvezes(n, tipo='area'):
     return df_median
 
 
-# Change the "local" variable below
-local = 'C:\\Users\\Usuário\\Projects\\monografia\\dados\\data_final'
 # base1 = rodar_KLD_random_nvezes(40, 'area')
 # base1.to_pickle(f'{local}/data_KLD.pkl')
 # base2 = rodar_KLD_random_nvezes(50, 'ano')
 # base2.to_pickle(f'{local}/data_KLDv2.pkl')
-NTR_df = rodar_KLD_random_nvezes(50, 'area')
-NTR_df.to_pickle(f'{local}/data_KLDv3.pkl')
+NTR_df = rodar_KLD_random_nvezes(100, 'area')
+NTR_df.to_pickle(f'{root}/{local}/data_KLDv4(30_gensim).pkl')
 
 # =============================================================================
 # Parte final
@@ -781,13 +786,13 @@ df.loc[:, 'ano'] = df.ano.map(lambda x: x[1])
 df = df.drop('docs', 1)
 
 mean_std_geral = NTR_df.agg(['mean', 'std'])
-mean_std_geral.to_excel(f'{local}/NTR_mean_std_geral.xlsx')
+mean_std_geral.to_excel(f'{root}/{local}/NTR_mean_std_geral_v2gensim.xlsx')
 
 NTR_df['área'] = df.code_area
 NTR_df_grouped = NTR_df.groupby(NTR_df.área)
 NTR_df_mean_std = NTR_df_grouped.agg(['mean', 'std'])
-NTR_df_mean_std.to_pickle(f'{local}/NTR_média+std_area.pkl')
-NTR_df_mean_std.to_excel(f'{local}/NTR_média+std_area.xlsx',
+NTR_df_mean_std.to_pickle(f'{root}/{local}/NTR_média+std_areav2(gensim).pkl')
+NTR_df_mean_std.to_excel(f'{root}/{local}/NTR_média+std_areav2(gensim).xlsx',
                          encoding='utf-8')
 
 NTR_df['título'] = df['tí­tulo']
@@ -795,6 +800,7 @@ NTR_df['Nome_Área'] = df['Área']
 NTR_df['autores'] = df['autores_universi.']
 extremos = NTR_df.nsmallest(5, 'novelties')
 extremos = extremos.append(NTR_df.nlargest(5, 'novelties'))
-extremos.to_excel(f'{local}/maiores_menores_NTR.xlsx', encoding='utf-8')
+extremos.to_excel(f'{root}/{local}/maiores_menores_NTR_v2(gensim).xlsx',
+                  encoding='utf-8')
 
 # NTR_df_mean_std = pd.read_csv(f'{local}/NTR_média+std_area.csv')

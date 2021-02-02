@@ -12,6 +12,8 @@ import os
 
 %matplotlib inline
 
+root = os.path.abspath(os.curdir)
+
 mpl.rcParams['axes.labelsize'] = 10
 mpl.rcParams['axes.titlesize'] = 11
 mpl.rcParams['xtick.labelsize'] = 9
@@ -23,8 +25,8 @@ mpl.rcParams['legend.fontsize'] = 'small'
 mpl.rcParams['font.family'] = 'serif'
 
 
-local = 'C:\\Users\\Usuário\\Projects\\monografia\\dados\\data_final'
-NTR_df = pd.read_pickle(f'{local}\\data_KLDv3.pkl')
+local = r'dados/data_final'
+NTR_df = pd.read_pickle(f'{root}/{local}/data_KLDv4(30_gensim).pkl')
 
 NTR_df.columns = ['Novelty', 'Transience', 'Resonance']
 
@@ -42,8 +44,9 @@ def inchtocent(inches):
     return 2.54*inches
 
 
-figsize = (centtoinch(15), 2.8)
+figsize = (centtoinch(15), 3)
 fig = plt.figure(figsize=figsize)
+plt.tight_layout()
 
 
 def plot_quants_2Dhist(quants, NTR_df, ax, xbins, ybins, make_cbar=True,
@@ -97,14 +100,14 @@ def plot_quants_2Dhist(quants, NTR_df, ax, xbins, ybins, make_cbar=True,
 
 
 # fig.add_axes([0.1, 0.19, 0.4, 0.72])
-ax = fig.add_axes([0.28, 0.42, 0.44, 0.792])
+ax = fig.add_axes([0.308, 0.462, 0.484, 0.8712])
 
-cbaxes = fig.add_axes([0.55, 0.53, 0.02, 0.2])
+cbaxes = fig.add_axes([0.705, 0.51, 0.022, 0.22])
 
 quants = ['Novelty', 'Transience']
 
-xbins = np.linspace(0, 5, 50)
-ybins = np.linspace(0, 5, 50)
+xbins = np.linspace(0, 16, 50)
+ybins = np.linspace(0, 16, 50)
 
 H, cbar = plot_quants_2Dhist(quants, NTR_df, ax, xbins, ybins,
                              make_cbar=True, cbar_axis=cbaxes,
@@ -116,7 +119,7 @@ cbar.ax.yaxis.set_ticks_position('left')
 cbar.ax.tick_params(labelsize=7)
 
 # Identity (x=y) line
-ax.plot([0, 4], [0, 4], 'k--', linewidth=1.5)
+ax.plot([0, 17], [0, 17], 'k--', linewidth=1.5)
 
 ax.legend([mpl.lines.Line2D([0], [0], color='k', linewidth=1.5,
                             linestyle='--')],
@@ -138,29 +141,30 @@ ax.yaxis.set_ticks_position('left')
 ax.xaxis.set_ticks_position('bottom')
 
 # Limit spine range
-ax.spines['left'].set_bounds(0, 4)
-ax.set_yticks([0, 1, 2, 3, 4])
-ax.spines['bottom'].set_bounds(0, 4)
-ax.set_xticks([0, 1, 2, 3, 4])
+ax.spines['left'].set_bounds(0, 17)
+ax.set_yticks([1, 5, 10, 15])
+ax.spines['bottom'].set_bounds(0, 17)
+ax.set_xticks([1, 5, 10, 15])
 
-ax.set_ylim(0, 5)
-ax.set_xlim(0, 5)
+ax.set_ylim(0, 17)
+ax.set_xlim(0, 17)
 
 
 # =============================================================================
-# Outro plot
+# Another plot
 # =============================================================================
 
 # Plot Reson v. Novelty
 # ([0.2, 0.29, 0.44, 0.792])
-ax = fig.add_axes([0.8, 0.45, 0.44, 0.792])
+# ([0.88, 0.495, 0.484, 0.8712])
+ax = fig.add_axes([0.88, 0.462, 0.484, 0.8712])
 
-cbaxes = fig.add_axes([1.2, 0.53, 0.02, 0.2])
+cbaxes = fig.add_axes([1.32, 0.51, 0.022, 0.22])
 
 quants = ['Novelty', 'Resonance']
 
-xbins = np.linspace(0, 6, 40)
-ybins = np.linspace(-2, 2, 40)
+xbins = np.linspace(0, 16, 55)
+ybins = np.linspace(-4, 4, 55)
 
 H, cbar = plot_quants_2Dhist(quants, NTR_df, ax, xbins, ybins,
                              make_cbar=True, cbar_axis=cbaxes,
@@ -173,8 +177,8 @@ cbar.ax.tick_params(labelsize=7)
 
 ax.axhline(color='k', linewidth=1.5, linestyle=':')
 
-ax.set_xlim(-1, 6)
-ax.set_ylim(-1, 1.5)
+ax.set_xlim(-1, 16)
+ax.set_ylim(-2, 2.5)
 
 # Hide the right and top spines.
 ax.spines['right'].set_visible(False)
@@ -184,16 +188,15 @@ ax.yaxis.set_ticks_position('left')
 ax.xaxis.set_ticks_position('bottom')
 
 # Limit spine range
-ax.spines['left'].set_bounds(-1, 1)
-ax.set_yticks([-1, 0, 1])
-ax.spines['bottom'].set_bounds(0, 6)
-ax.set_xticks([0, 2, 4, 6])
+ax.spines['left'].set_bounds(-5, 5)
+ax.set_yticks([-5, 0, 5])
+ax.spines['bottom'].set_bounds(0, 16)
+ax.set_xticks([1, 5, 10, 15])
 
 ax.set_ylabel(r'Ressonância $\mathcal{R}}$')
 ax.set_xlabel(r'Novidade $\mathcal{N}$')
 
-_ = ax.set_title('Ressonância v. Novidade')
-plt.plot()
 
-os.chdir('C:\\Users\\Usuário\\Projects\\monografia\\dados')
-fig.savefig('teste.png', dpi=120)
+_ = ax.set_title('Ressonância v. Novidade')
+
+fig.savefig(f'{root}/dados/teste.png')

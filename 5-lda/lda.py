@@ -13,17 +13,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from gensim import matutils, corpora
 from gensim.models import LdaMulticore, CoherenceModel
 from nltk import word_tokenize
-# é necessário ir para esse diretório para ler o módulo artifici_lda
+# is necessary to go to this directory!
 os.chdir('C:/Users/Usuário/Projects/monografia/preprocessing/')
-from artifici_lda.logic.stemmer import Stemmer
+artifici_lda.logic.stemmer import Stemmer
 
+root = os.path.abspath(os.curdir)
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',
                     level=logging.INFO)
 
-local = r'C:\Users\Usuário\Projects\monografia\dados\data_final'
-corpus = pd.read_pickle(f'{local}/corpus_cleaned3.pkl')
+local = r'/dados/data_final'
+corpus = pd.read_pickle(f'{root}/{local}/corpus_cleaned3.pkl')
 
-data = pd.read_pickle(f'{local}/data_final_v2.pkl')
+data = pd.read_pickle(f'{root}{local}/data_final_v2.pkl')
 
 df = pd.concat([corpus, data], axis=1, sort=False)
 df = df[df.texts.notna()]
