@@ -1,0 +1,1295 @@
+Dinâmica e Transição da Incerteza no Brasil: uma
+
+investigação de autorregressão quantílica
+Michel Souza*
+Sidney Caetano‡
+
+Udilmar Zabot†
+
+Resumo
+
+Recentemente, o número de estudos sobre incerteza na economia têm aumentando, em parte
+devido às novas técnicas que permitem a construção de proxies adequadas para a incerteza,
+fundamentalmente não observável, com destaque à técnica de web-scrapping que permite a
+extrair informações online e atualizadas, e que tem sido frequentemente utilizada na construção
+desses indicadores. Neste contexto, a partir de dois indicadores de incerteza, investiga-se a
+dinâmica e transição da incerteza no Brasil usando representações autoregressivas quantílicas.
+Os resultados revelam uma dinâmica assimétrica ao longo de diferentes quantis condicionais,
+corroborados pela análise de dispersão, amplitude e densidades. Ainda, sugere-se existência de
+baixa probabilidade, ou até mesmo nula, de migrar-se de um estado de alta incerteza para níveis
+baixos e vice-versa.
+Palavras-chaves: Incerteza; Regressão Quantílica; Assimetria.
+Classificação JEL: C22; E00.
+
+Abstract
+
+Recently, the number of studies about economic uncertainty has been increasing, in part due
+to the new techniques that allow the construction of appropriate proxies for the fundamentally
+unobservable uncertainty, specially the web-scrapping technique that allow to extract updated
+online information, and which has been frequently used in the construction of these indicators.
+Based on two of this uncertainty indicators, we investigate the dynamics and transition of uncer-
+tainty in Brazil using quantitative autoregressive representations. The results reveal asymmetric
+dynamic along different conditional quantiles, corroborated by the analysis of dispersion, am-
+plitude and densities. Furthermore, it is suggested that there is a low or even null probability
+of migration from a high uncertainty condition to a low level and vice versa.
+Key-words: Uncertainty; Quantile Regression; Asymmetry.
+JEL Classification: C22; E00.
+
+Área 4 - Macroeconomia, Economia Monetária e Finanças
+
+Gerais - Cedeplar-UFMG.E-mail:mcsouza@cedeplar.ufmg.br
+
+*Doutorando em Economia, Centro de Desenvolvimento e Planejamento Regional, Universidade Federal de Minas
+†Departamento de Economia, Universidade do Estado de Mato Grosso-FACISA/UNEMAT. E-mail:
+‡Departamento de Economia, Universidade Federal de Juiz de Fora - UFJF. Bolsista de Produtividade em Pesquisa
+do CNPq. E-mail: sidney.caetano@ufjf.edu.br. Os autores gostariam de deixar agradecimentos ao CNPq, CAPES e
+FAPEMIG pelo suporte financeiro.
+
+udi.zabot@unemat-net.br
+
+1
+
+1 Introdução
+
+A análise dos efeitos da incerteza sobre a economia real tem recebido destaque na literatura
+econômica recente. Conforme ressaltam Denis e Kannan (2013), embora os efeitos da incerteza na
+atividade econômica já tenham sido destacados [ver Bernanke (1983), Romer (1990), Dixit e Pindyck
+(1994)], os eventos recentes que afetaram a economia mundial induziram maior interesse sobre esta
+questão. No que se seguiu ao trabalho de Bloom (2009), em particular, os efeitos da incerteza sobre
+as flutuações macroeconômicas têm sido um tema recorrente nas discussões acadêmicas, entre os
+formuladores de política econômica e no âmbito do mercado financeiro.
+
+Incerteza pode ser entendida como uma situação na qual, para um dado conjunto de ações, as
+possibilidades de que determinados resultados ocorram é desconhecida, ou seja, diversos cenários são
+possíveis à partir da situação inicial, embora não seja possível estimar as probabilidades de que cada
+um ocorra. No caso em que estas probabilidades são conhecidas, trata-se tão somente de risco.
+
+Haddow e Hare (2013) destacam que choques na incerteza afetam a atividade econômica tanto
+pelo lado da demanda, via decisões de consumo e investimento, quanto pelo lado da oferta, com
+efeitos sobre a produtividade ou provisão de crédito. De acordo com Bernanke (1983), choques de
+incertezas têm efeitos significativos sobre a tomada de decisões dos agentes econômicos quando há
+algum grau de irreversibilidade associado a esta decisão. Ainda, Bloom et al. (2013) sugerem que
+o grau de incerteza econômica está, aparentemente, relacionado à profundidade de recessões e à
+capacidade de recuperação subsequente.
+
+Segundo Aastveit et al. (2013), esta hipótese levantada por Bloom et al. (2013) implica uma
+menor resposta às ações de política econômica em períodos de elevada incerteza, e oferece maiores
+desafios aos formuladores de política. Em um comunicado recente, por exemplo, o Banco Central
+do Brasil destacou a preocupação com o nível de incerteza na economia brasileira, ao ressaltar
+que "[A] manutenção, por tempo prolongado, de níveis de incerteza elevados sobre a evolução do
+processo de reformas e ajustes na economia pode ter impacto negativo sobre a atividade econômica"1.
+O comunicado ainda deixa claro que as projeções condicionais do Copom para aquele momento
+envolviam maior grau de incerteza.
+
+Nota-se, portanto, que embora seja crescente a preocupação com os efeitos da incerteza sobre a
+economia real, ainda é carente de estudos que analisam a dinâmica e transição de nível da incerteza.
+Por outro lado, já existem diferentes proxies utilizadas para representar a incerteza, que variam de al-
+gum indicador do mercado financeiro à volatilidade das expectativas para alguma variável econômica,
+e que, naturalmente, podem estar sujeitas à um conjunto limitado de informações.
+
+Para a economia brasileira, em particular, ainda é bastante restrito o número de trabalhos que
+se dedicam a investigar as características e os efeitos da incerteza econômica. Costa Filho (2014), por
+exemplo, indica que choques positivos na incerteza produzem efeitos negativos e rápidos na economia.
+Contudo, após as eleições presidenciais de 2014, a série de incerteza cresceu significamente em 2015
+e 2016. Assim, o cenário e os fatos recentes induzem questionamentos a respeito da persistência
+da incerteza de forma a verificar se a mudança de estado da economia brasileira seria lento. Outra
+questão interessante e carente de investigação refere-se à possibilidade da persistência de choques não
+serem simétricos. Ou seja, choques de diferentes sinais e magnitudes podem ter impactos diferentes
+sobre a incerteza.
+
+Diante disso, o presente trabalho busca contribuir analisando a dinâmica da incerteza no Brasil
+por meio de modelos autorregressivos quantílicos (modelos QAR) proposto por Koenker e Xiao (2004)
+com o intuito de investigar a presença de assimetrias e persistência em diferentes quantis da série de
+incerteza. A grande vantagem desta abordagem é não depender de uma única medida de tendência
+1 Notas da 207a Reunião do Comitê de Política Monetária (Copom) do Banco Central do Brasil - 30 e 31 de Maio
+
+de 2017
+
+2
+
+central; permitindo, assim, uma análise de toda a distribuição condicional da incerteza. Inicialmente,
+por meio de testes de raiz unitária quantílico, investiga-se as características particulares de duas
+proxies de incerteza referente à economia brasileira, a saber: i) Índice Economic Policy Uncertainty
+(EPU) proposto por Baker et al. (2015) para o Brasil; e ii) Indicador de Incerteza da Economia
+Brasil (IIE-Br) da Fundação Getúlio Vargas. Propõe-se a investigar se choques de sinais e magnitudes
+diferentes têm efeitos assimétricos na dinâmica da incerteza brasileira.
+
+Portanto, a assimetria na incerteza é diagnosticada de uma perspectiva de respostas a choques,
+pois este teste de raiz unitária permite detectar diferenças na persistência de choques. Em seguida,
+utiliza-se da densidade condicional de forma a discutir sobre a dispersão em diferentes momentos e
+as probabilidades de transição quantílicas que podem fornecer informações interessantes quanto às
+oscilações da incerteza no Brasil tanto em períodos de tensão quanto de calmaria.
+
+Os resultados apresentados visualmente, posteriormente corroborados pelos testes estatísticos,
+indicam uma dinâmica de incerteza com comportamento assimétrico nos diferentes quantis condicio-
+nais, isto é, seu comportamento depende da localização da incerteza na sua distribuição condicional.
+Esta importante característica da incerteza no Brasil não foi observada em estudos anteriores.
+
+Além da presente introdução, o trabalho está estruturado da seguinte maneira: a Seção 2 elabora
+uma revisão da literatura recente sobre os efeitos da incerteza na economia; a Seção 3 apresenta os
+dois indicadores de incerteza considerados, bem como os aspectos metodológicos e os resultados
+empíricos; e a Seção 4 mostra as considerações finais.
+
+2 Referencial Teórico e Empírico
+
+É crescente a literatura que procura avaliar os efeitos da incerteza sobre as condições macro-
+econômicas. Conforme destacam Popp e Zhang (2016), um aumento inesperado na incerteza tem
+efeito adverso sobre a economia real, principalmente durante períodos de recessão. Assim, vários es-
+tudos buscaram estimar estes efeitos sobre a atividade econômica, sobre a demanda agregada, sobre
+o mercado financeiro ou, ainda, sobre a política econômica.
+
+Bredin e Fountas (2007) apresentam resultados que indicam uma relação negativa entre a
+incerteza macroeconômica e o crescimento do produto. Denis e Kannan (2013) encontram evidências
+de impacto negativo de choques de incerteza sobre a produção industrial do Reino Unico, com efeitos
+semelhantes aos observados na economia americana.
+
+Em relação aos efeitos da incerteza sobre a demanda agregada, Ejarque (2009) sugere que, no
+contexto da Grande Depressão, um aumento na incerteza provocou um aumento nos gastos com bens
+duráveis e uma redução no investimento em capital físico. O autor argumenta que essa substituição
+ocorre dado que os bens duráveis são menos irreversíveis do que o investimento, e elevam a utilidade
+dos agentes.
+
+Choudhry (2003) investiga os efeitos da incerteza medida pela volatilidade do mercado de
+ações americano sobre o consumo, e seus resultados indicam efeitos significativos, embora pequenos.
+Ademais, os efeitos são negativos sobre o consumo de bens duráveis e positivos sobre consumo de
+não dúráveis. Por sua vez, Menegatti (2006) avalia os efeitos da incerteza sobre o consumo para os
+países da OCDE, considerando uma medida de incerteza baseada na variabilidade do crescimento do
+produto, e encontra evidências de que um alto grau de incerteza reduz o consumo.
+
+Raunig e Scharler (2011) estimam os efeitos da incerteza, medida pela volatilidade do mercado
+de ações, sobre as taxas de crescimento do consumo durável, consumo não durável e investimento
+privado para a economia americana, e seus resultados sugerem que a incerteza exerce efeito signifi-
+cativo e negativo sobre ambos os componentes da demanda agregada, mas o efeito é maior sobre o
+investimento e relativamente menor sobre o consumo não durável.
+
+3
+
+Gilchrist et al. (2014) consideram um modelo de equilíbrio geral no qual firmas heterogêneas
+se deparam com incerteza, irreversibilidade dos investimentos e fricções financeiras. Os autores cons-
+troem uma medida para a incerteza considerando dados de alta frequência do mercado de ações, que
+refletem mudanças exógenas na incerteza, e encontram evidências de que flutuações nesta última
+tem efeitos significativos sobre o investimento, e que este impacto ocorre através de mudanças nos
+spreads de crédito.
+
+Em relação aos efeitos sobre os mercados financeiros, Bordo et al. (2016) apresentam resultados
+que indicam que a incerteza impacta negativamente o mercado de crédito e está associada ao baixo
+crescimento real da oferta de crédito bancário nos Estados Unidos nas últimas décadas. Ainda, os
+autores destacam que essa relação contribui para a demora na recuperação da atividade econômica
+em períodos seguintes à recessões.
+
+Liu e Zhang (2015) e Arouri et al. (2016), com base no índice proposto por Baker et al. (2015),
+apresentam evidências de efeitos negativos da incerteza de política econômica sobre a volatilidade e
+sobre o retorno do mercado de ações americano. Dakhlaoui e Aloui (2016), por sua vez, observaram
+que a incerteza na política econômica americana influencia a volatilidade nos mercados de ações dos
+países do bloco BRIC, principalmente em períodos de instabilidade econômica global.
+
+Bernal et al. (2016) avaliam o impacto da incerteza de política econômica sobre o spillover de
+risco na zona do Euro, e evidenciam que a incerteza cria um ambiente favorável à trasmissão de riscos
+oriundos de desequilíbrios fiscais sobre o mercado de títulos em toda a região.
+
+Ainda em relação ao mercado financeiro, Bekiros et al. (2016) procuraram incorporar a incerteza
+em modelos de previsão de retorno de ativos e, a partir de regressão quantílica, conseguiram melhora
+significativa na previsilibidade destes modelos. Os autores observaram que o índice de incerteza de
+política econômica contém informações fora da amostra significativas em torno da parte inferior para
+a mediana da distribuição do equity premium, embora não quando o comportamento de mercado é
+claramente otimista.
+
+Por fim, alguns estudos avaliaram os efeitos da incerteza sobre a condução e eficácia de política
+econômica. Considerando diferentes medidas de incerteza, Aastveit et al. (2013) demonstram que os
+choques de política monetária têm efeitos relativamente menores sobre a atividade econômica quando
+o nível de incerteza é elevado. Por sua vez, Istrefi e Piloiu (2015) sugerem que as expectativas de
+inflação são sensíveis à choques de incerteza, e as de longo prazo, aumentam em resposta à estes
+choques. Ainda, Beckmann e Czudaj (2017) demonstram que as expectativas sobre a taxa de câmbio
+são afetadas não apenas pelos anuncios das autoridades monetária e fiscal, mas também pelo grau
+de incerteza relacionada à posição futura da política econômica, o que indica, segundo os autores,
+que os efeitos da incerteza não são incluídos eficientemente nas expectativas de mercado.
+
+Para a economia brasileira, em particular, a literatura é bastante restrita. Pereira (2001) con-
+sidera um modelo de custos de ajustamento para analisar a relação entre incerteza e investimento
+para a economia brasileira. Como medida de incerteza, o autor considera a média das variâncias
+condicionais das séries de taxa de juros, taxa real de câmbio e preço de bens de capital, ambas
+estimadas a partir de um modelo 𝐺𝐴𝑅𝐶𝐻(1, 1). Os resultados estimados para o período entre o
+primeiro trimestre de 1980 e o quarto trimestre de 1998, indicam que o investimento é negativamente
+afetado pela incerteza no longo prazo. Silva Filho (2007), por sua vez, avaliou a relação entre incer-
+teza inflacionária e investimento para a economia brasileira no período entre 1974 e 2002, e encontrou
+fortes evidências de que a incerteza inflacionária tem afetado negativamente o investimento no país,
+no curto e no longo prazo.
+
+Em um estudo mais recente, Costa Filho (2014) avalia a relação entre incerteza e atividade
+econômica considerando três medidas de incerteza distintas, a saber, a variabilidade das expectativas
+de crescimento econômico, a variabilidade do mercado brasileiro de ações e um índice construído
+
+4
+
+com base na frequência da palavra ’incerteza’ em alguns jornais. O autor estima efeitos negativos da
+incerteza sobre a produção industrial, sobre a confiança do consumidor, sobre as vendas no varejo e
+sobre o índice de atividade econômica do Banco Central (IBC-BR), e ainda, encontra evidências de
+que a incerteza eleva o desemprego.
+
+De forma a contribuir com a literatura brasileira, a próxima seção busca investigar a dinâmica
+
+e transição da incerteza na Brasil.
+
+3 Dinâmica, Transição e Persistência da Incerteza
+
+Conforme supracitado, os trabalhos apresentam diferentes proxies para a variável incerteza, por
+exemplo, utilizando alguma medida de volatilidade do mercado de ações, a variância das expectativas
+para alguma variável (crescimento, inflação, câmbio, etc.) ou algum indicador relacionado ao mercado
+financeiro. Contudo, recentemente, inúmeros estudos têm considerado como variável de incerteza, o
+indicador proposto por Baker et al. (2015), que consiste em uma medida mais ampla de incerteza
+relacionada à condução de política econômica.
+
+O Índice Economic Policy Uncertainty (EPU) proposto por Baker et al. (2015) é baseado em três
+componentes distintos. O primeiro destes componentes quantifica a frequência e o volume de artigos
+dos principais jornais que discutem as questões de incerteza na política econômica. Um segundo
+componente reflete o número de disposições no código tributário federal previstas para expirar nos
+próximos anos. E um terceiro componente considera as diferenças entre as previsões dos analistas
+econômicos como proxy para a incerteza de mercado.
+
+Os autores construiram esse índice de incerteza para vários países. Para o Brasil foram consi-
+derados arquivos apenas do jornal Folha de São Paulo para gerar uma série de incerteza desde 1991,
+conforme pode-se ver na Figura 1a. Em cada mês, contou-se o número de artigos que continham
+os termos ’incerto’ ou ’incerteza’, ’econômico’ ou ’economia’, e um ou mais dos seguintes termos:
+regulação, déficit, orçamento, imposto, banco central, alvorada, planalto, congresso, senado, câmara
+dos deputados, legislação, lei, tarifa. Para obter o índice de incerteza, estimou-se o número relativo
+destes artigos dentre os artigos do jornal para o mesmo mês, e por fim, a série foi padronizada para
+uma média 100.
+
+O Instituto Brasileiro de Economia (IBRE) da Fundação Getúlio Vargas também calcula e
+divulga o Indicador de Incerteza da Economia Brasil (IIE-Br), que considera o número de notícias
+sobre incerteza, a divergência nas expectativas e a volatilidade do mercado de ações. Especificamente,
+esse indicador é formado por três componentes distintos. O primeiro é o IIE-Br Mídia, baseado na
+frequência de artigos dos principais jornais do país que continham o termo ’economia’ associado
+à pelo menos um dos termos ’incerteza’, ’instabilidade’ e ’crise’. O segundo é o IIE-Br Expectativa,
+baseado nas informações das séries de expectativas de mercado geradas pelo Banco Central do Brasil,
+e considera o coeficiente de variação das previsões 12 meses à frente para a inflação (medida pela
+variação percentual do Índice de Preços ao Consumidor Amplo-IPCA) e para a taxa de câmbio. O
+terceiro componente é o IIE-Br Mercado, baseado no mercado de ações e que considera a volatilidade
+da série de preços de fechamento diários do Ibovespa. Estas três medidas, em conjunto, minimizam
+os impactos que cada fator isoladamente pode ter no indicador final. Assim, o Indicador de Incerteza
+da Economia Brasil é calculado de acordo com a seguinte ponderação:
+
+𝐼𝐼𝐸𝐵𝑟𝑡 = 0, 7(𝐼𝐼𝐸𝐵𝑟𝑀í𝑑𝑖𝑎
+
+𝑡
+
+) + 0, 2(𝐼𝐼𝐸𝐵𝑟𝐸𝑥𝑝𝑒𝑐𝑡𝑎𝑡𝑖𝑣𝑎
+
+𝑡
+
+) + 0, 1(𝐼𝐼𝐸𝐵𝑟𝑀 𝑒𝑟𝑐𝑎𝑑𝑜
+
+𝑡
+
+).
+
+(1)
+
+O indicador final é padronizado, tal que possui média 100 e desvio padrão 10 dentro da janela
+de referência. A série histórica do IIE-Br teve início em janeiro de 2000, conforme pode-se ver na
+
+5
+
+Figura 1 – Índices de Incertezas e Datação dos Ciclos Econômicos no Brasil
+
+a) EPU/Baker et al. (2015) (amostra 1991:01 - 2017:03)
+
+b) IIE-Br/FGV (amostra 2000:01 - 2017:06)
+
+Figura 1b, e a coleta do Indicador de Incerteza da Economia é realizada do dia 26 do mês anterior
+ao de referencia ao dia 25 do mês de referência. As duas séries séries de incerteza apresentam uma
+correlação linear de 0,68. Portanto, torna-se importante investigar a robustez dos resultados visuais.
+Entretanto, antes de apresentar a análise estatística, destaca-se, de forma breve, uma discussão da
+metodologia adotada nos exercícios empíricos.
+
+3.1 Regressão Quantílica e Função Densidade
+
+Seja um quantil 𝜏 o valor 𝑞 tal que 100𝜏% dos valores amostrais são inferiores a ele, de forma
+que 0 < 𝜏 < 1. A definição mais rigorosa, pode ser enunciada utilizando-se a distribuição acumulada
+de uma variável aleatória 𝑋, em que 𝐹(𝑥) = 𝑃(𝑋 ≤ 𝑥). Dessa forma, ao utilizar a função inversa
+da distribuição acumulada acima no ponto 𝜏 tem-se que o quantil de ordem 𝜏 da variável aleatória
+𝑋 é 𝐹 −1(𝜏) = 𝑖𝑛𝑓{𝑥 : 𝐹(𝑥) ≥ 𝜏}. Ou seja, a função distribuição acumulada inversa gera o valor do
+quantil para a probabilidade escolhida a partir do ínfimo dentre os que tem somatório probabilístico
+maior ou igual ao do quantil.
+
+O método de Regressão Quantílica (QR) foi inicialmente introduzido por Koenker e Bassett
+(1978). Permitindo, assim, estimar a relação entre um conjunto de variáveis explicativas, 𝑥, e o quan-
+til, 𝜏, de interesse da variável dependente 𝑦. Tal método difere do modelo de Mínimos Quadrados
+Ordinários (MQO/OLS) que atuam somente sobre a média da distribuição da variável resposta. Tal
+abordagem tornou-se uma técnica útil, pois os efeitos de uma variável explicativa podem depender
+diretamente do tamanho da resposta, isto é, da localização de determinada observação 𝑦𝑡 na dis-
+tribuição. A conclusão deste fato é que os modelos (QR) são capazes de incorporar uma possível
+heterocedasticidade, pois permitem verificar se o parâmetro de resposta das variáveis explicativas
+mudam de forma significante (estatisticamente) para pontos diferentes da distribuição da variável
+dependente.
+
+Considere um vetor de variáveis resposta contínuas 𝑦𝑡 e outro vetor da mesma variável defasada
+
+6
+
+0200400600(cid:9)1991(cid:9)M(cid:9)1(cid:9)(cid:9)1991(cid:9)M(cid:9)6(cid:9)(cid:9)(cid:9)1992(cid:9)M(cid:9)1(cid:9)(cid:9)(cid:9)(cid:9)1992(cid:9)M(cid:9)6(cid:9)(cid:9)1993(cid:9)M(cid:9)1(cid:9)(cid:9)1993(cid:9)M(cid:9)6(cid:9)(cid:9)1994(cid:9)M(cid:9)1(cid:9)(cid:9)1994(cid:9)M(cid:9)6(cid:9)(cid:9)1995(cid:9)M(cid:9)1(cid:9)(cid:9)1995(cid:9)M(cid:9)6(cid:9)(cid:9)1996(cid:9)M(cid:9)1(cid:9)(cid:9)1996(cid:9)M(cid:9)6(cid:9)(cid:9)1997(cid:9)M(cid:9)1(cid:9)(cid:9)1997(cid:9)M(cid:9)6(cid:9)(cid:9)1998(cid:9)M(cid:9)1(cid:9)(cid:9)1998(cid:9)M(cid:9)6(cid:9)(cid:9)1999(cid:9)M(cid:9)1(cid:9)(cid:9)1999(cid:9)M(cid:9)6(cid:9)(cid:9)2000(cid:9)M(cid:9)1(cid:9)(cid:9)2000(cid:9)M(cid:9)6(cid:9)(cid:9)2001(cid:9)M(cid:9)1(cid:9)(cid:9)2001(cid:9)M(cid:9)6(cid:9)(cid:9)2002(cid:9)M(cid:9)1(cid:9)(cid:9)2002(cid:9)M(cid:9)6(cid:9)(cid:9)2003(cid:9)M(cid:9)1(cid:9)(cid:9)2003(cid:9)M(cid:9)6(cid:9)(cid:9)2004(cid:9)M(cid:9)1(cid:9)(cid:9)2004(cid:9)M(cid:9)6(cid:9)(cid:9)2005(cid:9)M(cid:9)1(cid:9)(cid:9)2005(cid:9)M(cid:9)6(cid:9)(cid:9)2006(cid:9)M(cid:9)1(cid:9)(cid:9)2006(cid:9)M(cid:9)6(cid:9)(cid:9)2007(cid:9)M(cid:9)1(cid:9)(cid:9)2007(cid:9)M(cid:9)6(cid:9)(cid:9)2008(cid:9)M(cid:9)1(cid:9)(cid:9)2008(cid:9)M(cid:9)6(cid:9)(cid:9)2009(cid:9)M(cid:9)1(cid:9)(cid:9)2009(cid:9)M(cid:9)6(cid:9)(cid:9)2010(cid:9)M(cid:9)1(cid:9)(cid:9)2010(cid:9)M(cid:9)6(cid:9)(cid:9)2011(cid:9)M(cid:9)1(cid:9)(cid:9)2011(cid:9)M(cid:9)6(cid:9)(cid:9)2012(cid:9)M(cid:9)1(cid:9)(cid:9)2012(cid:9)M(cid:9)6(cid:9)(cid:9)2013(cid:9)M(cid:9)1(cid:9)(cid:9)2013(cid:9)M(cid:9)6(cid:9)(cid:9)2014(cid:9)M(cid:9)1(cid:9)(cid:9)2014(cid:9)M(cid:9)6(cid:9)(cid:9)2015(cid:9)M(cid:9)1(cid:9)(cid:9)2015(cid:9)M(cid:9)6(cid:9)(cid:9)2016(cid:9)M(cid:9)1(cid:9)(cid:9)2016(cid:9)M(cid:9)6(cid:9)(cid:9)2017(cid:9)M(cid:9)1(cid:9)MesesIncerteza80100120140(cid:9)2000(cid:9)M(cid:9)1(cid:9)(cid:9)(cid:9)(cid:9)(cid:9)(cid:9)(cid:9)2000(cid:9)M(cid:9)6(cid:9)(cid:9)2001(cid:9)M(cid:9)1(cid:9)(cid:9)2001(cid:9)M(cid:9)6(cid:9)(cid:9)2002(cid:9)M(cid:9)1(cid:9)(cid:9)(cid:9)2002(cid:9)M(cid:9)6(cid:9)(cid:9)2003(cid:9)M(cid:9)1(cid:9)(cid:9)2003(cid:9)M(cid:9)6(cid:9)(cid:9)2004(cid:9)M(cid:9)1(cid:9)(cid:9)2004(cid:9)M(cid:9)6(cid:9)(cid:9)2005(cid:9)M(cid:9)1(cid:9)(cid:9)2005(cid:9)M(cid:9)6(cid:9)(cid:9)2006(cid:9)M(cid:9)1(cid:9)(cid:9)2006(cid:9)M(cid:9)6(cid:9)(cid:9)2007(cid:9)M(cid:9)1(cid:9)(cid:9)2007(cid:9)M(cid:9)6(cid:9)(cid:9)2008(cid:9)M(cid:9)1(cid:9)(cid:9)2008(cid:9)M(cid:9)6(cid:9)(cid:9)2009(cid:9)M(cid:9)1(cid:9)(cid:9)2009(cid:9)M(cid:9)6(cid:9)(cid:9)2010(cid:9)M(cid:9)1(cid:9)(cid:9)2010(cid:9)M(cid:9)6(cid:9)(cid:9)2011(cid:9)M(cid:9)1(cid:9)(cid:9)2011(cid:9)M(cid:9)6(cid:9)(cid:9)2012(cid:9)M(cid:9)1(cid:9)(cid:9)2012(cid:9)M(cid:9)6(cid:9)(cid:9)2013(cid:9)M(cid:9)1(cid:9)(cid:9)2013(cid:9)M(cid:9)6(cid:9)(cid:9)2014(cid:9)M(cid:9)1(cid:9)(cid:9)2014(cid:9)M(cid:9)6(cid:9)(cid:9)2015(cid:9)M(cid:9)1(cid:9)(cid:9)2015(cid:9)M(cid:9)6(cid:9)(cid:9)2016(cid:9)M(cid:9)1(cid:9)(cid:9)2016(cid:9)M(cid:9)6(cid:9)(cid:9)2017(cid:9)M(cid:9)1(cid:9)(cid:9)2017M6(cid:9)MesesIncerteza FGV(2)
+
+(3)
+
+(4)
+
+𝑥 = (1, 𝑦𝑡−1, 𝑦𝑡−2, ..., 𝑦𝑡−𝑝). Um modelo padrão de regressão linear é dado por 𝐸(𝑦|𝑥) = 𝑥
+𝛽, sendo
+𝛽 um vetor de 𝑝 + 1 parâmetros incluindo o intercepto. Já um modelo de autorregressão quantílica,
+𝑄𝐴𝑅(𝑝), pode ser compreendido como 𝑄𝑦(𝜏|𝑥) = 𝑥
+𝛽(𝜏), onde 𝛽(𝜏) é uma matriz de 𝑝+1 parâmetros
+por 𝜏 quantis. O quantil 𝜏 é fixo entre 0 e 1 e os parâmetros de regressão, por conseguinte, dependem
+de 𝜏 e representam os efeitos das variáveis dentro de 𝑥 sobre o 𝜏 quantil da distribuição de 𝑦. As
+estimativas de 𝛽(𝜏) são obtidas por meio da solução de:
+
+′
+
+′
+
+min∀𝛽∈𝑅
+Sendo 𝜌𝜏 uma função linear de perda:
+
+𝑡∑︁
+
+𝑖=1
+
+𝜌𝜏(𝑦 − 𝑥
+
+′
+
+𝛽(𝜏))
+
+{︃
+
+𝜏 𝑢, 𝑢 ≥ 0
+(𝜏 − 1)𝑢, 𝑢 < 0
+
+𝜌𝜏(𝑢) =
+
+Substituindo, tem-se que:
+
+⎡⎢⎣𝜏
+
+𝑡∑︁
+
+𝑖:𝑦≥𝑥
+
+′
+
+𝛽(𝜏)
+
+|𝑦 − 𝑥
+
+′
+
+𝛽(𝜏)| + (1 − 𝜏)
+
+𝑡∑︁
+
+′
+𝑖:𝑦<𝑥
+
+𝛽(𝜏)
+
+|𝑦 − 𝑥
+
+′
+
+⎤⎥⎦
+
+𝛽(𝜏)|
+
+𝑄(𝛽(𝜏)) = 𝑚𝑖𝑛
+
+A função não-diferenciável da expressão 4 requer métodos de programação linear para a sua
+
+minimização, sendo possível apresentá-lo por:
+
+𝜏 𝑈 + (1 − 𝜏)𝑉
+
+min
+𝛽(𝜏)∈𝑅
+
+s.a. 𝑌 = 𝛽(𝜏)𝑋 + 𝑈 − 𝑉
+
+(5)
+
+Onde o vetor de erros 𝑢 é dividido nos vetores 𝑈 e 𝑉 , com elementos que contêm, respectivamente,
+as partes positivas e negativas dos resíduos.
+
+Algumas abordagens são comumente utilizadas na resolução: como o método Simplex para
+amostras com tamanho moderado ou o método de Pontos Interiores para bancos de dados maiores,
+ambos garantem uma solução por meio de um número finito de iterações. A construção dos intervalos
+de confiança acontece por meio das estimativas de erros padrão bootstrap que são mais utilizados em
+relação aos erros padrão analíticos, mesmo nos casos em que os erros residuais são assintoticamente
+distribuídos de acordo com uma normal. A metodologia bootstrap é, em geral, preferível pois não faz
+nenhuma suposição sobre a distribuição da variável resposta, sendo capaz de generalizar os resultados
+(QAR) e estimar os intervalos em qualquer caso de distribuição residual. Em relação ao teste de raiz
+unitária, considerando a transformação de um processo autorregressivo baseado no teste Aumented
+Dickey Fuller, tem-se o seguinte modelo com drift e tendência:
+
+𝑄𝜏(𝑦𝑡|𝑦𝑡−1, ..., 𝑦𝑡−𝑞) = 𝛼(𝜏)𝑦𝑡−1 + 𝜇(𝜏) + 𝛾(𝜏)𝑡 +
+
+𝜑𝑖(𝜏)Δ𝑦𝑡−𝑖 + 𝜖𝑡
+
+(6)
+
+Basicamente, pode-se estimar a equação 6 em diferentes quantis 𝜏 ∈ (0, 1), obtendo um conjunto
+de coeficientes de persistência de 𝑦𝑡, tratados como 𝛼(𝜏). Isso permite testar a hipótese nula 𝛼(𝜏) = 1
+em diferentes pontos da distribuição. Os resultados possibilitam verificar se os choques na série
+de incerteza têm magnitudes diferentes, bem como são persistentes ou transitórios. Por exemplo,
+
+7
+
+𝑞−1∑︁
+
+𝑖=1
+
+𝛼(𝜏) = 1 implica na presença de raiz unitária e choques de efeitos permanentes. A rejeição da
+hipótese nula, 𝛼(𝜏) < 1, mostra tendência estacionária e choques de efeitos temporários.
+
+Além de permitir efeitos assimétricos de choques na variável de interesse, uma vantagem im-
+portante dos testes de raiz unitária quantílicos em relação aos testes padrão é que a abordagem QAR
+têm maior poder conforme Koenker e Xiao (2004), através da inclusão de covariáveis quantílicas em
+todas as defasagens.
+
+Por fim, para testar a hipótese de 𝛼(𝜏) = 1 utiliza-se o teste t-stat proposto por Koenker e
+
+Xiao(2004):
+
+𝑡𝑛(𝜏) = 𝑓 ̂︂(𝐹 −1(𝜏))
+
+√︁
+
+𝜏(1 − 𝜏)
+
+(𝑌 ′
+
+−1𝑀𝑍𝑌−1) 1
+
+2 (^𝛼(𝜏) − 1)
+
+(7)
+
+Onde 𝑓(𝑢) e 𝐹(𝑢) são as funções de probabilidade e densidade cumulativa de 𝜖𝑡. 𝑌−1 é o vetor
+defasado da variável de interesse e 𝑀𝑍 é a matriz de projeção no espaço ortogonal para 𝑍 =
+(1, 𝑡, Δ𝑦𝑡−1, Δ𝑦𝑡−2, ..., Δ𝑦𝑡−𝑞+1). Por fim, utiliza-se os resultados obtidos por Koenker e Xiao (2004) e
+Galvao (2009) para encontrar os valores críticos de 𝑡𝑛(𝜏) e estimar 𝑓(𝐹 −1(𝜏)) seguindo a regra dada
+pelos mesmos autores.
+
+No presente trabalho, considera-se o nível de significância de 5% para os valores críticos. A
+regra de rejeição segue o padrão, se a estatística 𝑡𝑛 é numericamente menor que o valor crítico, então
+rejeita-se a hipótese nula de 𝛼(𝜏) = 1.
+
+No que diz respeito à função de densidade, o parâmetro autoregressivo ^𝛼(𝜏) é estimado para
+os quantis de interesse de acordo com a resolução de um problema de programação linear, conforme
+mostram Koenker e Bassett (1978). Assim, dado o vetor ^𝛼(𝜏), a função quantílica de 𝑦𝑡, condicionada
+aos valores passados da variável, pode ser definida como:
+
+enquanto a densidade condicional de 𝑦𝑡 pode ser estimada pela razão:
+
+^𝑄𝑦𝑡(𝜏𝑖|𝑥) = ^𝛼(𝜏)𝑥𝑇
+𝑡 ,
+
+^𝑓𝑦𝑡(𝜏|𝑥𝑡) =
+
+(𝜏𝑖 − 𝜏𝑖−1)
+
+^𝑄𝑦𝑡(𝜏𝑖|𝑥𝑡) − ^𝑄𝑦𝑡(𝜏𝑖−1|𝑥𝑡).
+
+3.2 Resultados Empíricos
+
+(8)
+
+(9)
+
+Os resultados empíricos apresentados nesta subseção utilizam duas amostras que representam
+a inceteza presente na economia brasileira, a saber: i) Índice Economic Policy Uncertainty (EPU)
+proposto por Baker et al. (2015) com amostra referente ao período de 19991:01 a 2017:03; e ii)
+Indicador de Incerteza da Economia Brasil (IIE-Br) cuja amostra refere-se ao período 2000:01 a
+2017:06. O tamanho do lag usado no teste de raiz unitária foi baseado no critério de seleção MAIC
+sugerido por Ng e Perron (2001).
+
+As Figuras 2 e 3 mostram as estimativas da Autoregressão Quantílica (QAR), para os quantis
+𝜏 = {0.05, 0.10, 0.15, ...0.90, 0.95}, para ambas as medidas de incerteza, índice EPU e IIE-Br/FGV,
+respectivamente. A região cinza mostra o intervalo de confiança bootstrap para as estimativas pontuais
+quantílicas e a linha horizontal tracejada representa a estimativa a partir de uma regressão OLS
+padrão (na média) com intervalos a 95% de confiança dados pelas linhas pontilhadas.
+
+Nota-se nas Figuras 2 e 3 que os coeficientes do processo aparentam comportamento crescente
+ao longo dos quantis, com valores pontuais que oscilam de 0,5 até aproximadamente 1,2 na medida
+do índice EPU e de 0,75 até 1,00 na segunda proxy IIE-Br/FGV, ou seja, comportamentos bem
+
+8
+
+Figura 2 – Teste de Raiz Unitária Quantílico (Índice EPU)
+
+Figura 3 – Teste de Raiz Unitária Quantílico (IIE-Br/FGV)
+
+assimétricos nas estimativas do coeficiente autorregressivo, onde os quantis condicionais mais baixos
+apresentam valores menores indicando tendência de reversão à média. Já para os quantis condicionais
+mais altos os valores estimados alcançam e até mesmo superam a unidade, proporcionando indícios
+de comportamento não-estacionário, explosivo inclusive. Todos os intervalos de confiança construídos
+não contém o valor zero, o que corrobora para significância estatística destes parâmetros. Contudo,
+o valor um está presente nos quantis superiores a partir de 75%, o que indica a possível presença
+de raiz unitária nestes pontos da distribuição e, portanto, inovações apresentam persistência. Além
+disso, os pontos extremos da distribuição (tanto superiores quanto inferiores) aparentam fugir do
+intervalo de confiança baseado na estimação média (OLS). Ainda, as constantes estimadas estão
+majoritariamente acima de zero, enquanto a tendência mostra que quase todas estimativas incluem
+zero nos intervalos de confiança construídos, sobre toda a distribuição condicional, o que está em
+linha com a não rejeição da hipótese de raiz unitária para maior parte dos quantis.
+
+A maioria dos valores estimados é inferior à unidade, sugerindo estacionariedade global da
+incerteza. De modo geral, observa-se que a incerteza no Brasil tende a apresentar maior grau de
+persistência nos quantis condicionais superiores. Portanto, os resultados apresentados visualmente
+nas Figuras 2 e 3 indicam que a dinâmica da incerteza brasileira apresenta comportamento assimétrico
+nos diferentes quantis condicionais, ou seja, seu comportamento depende da localização da incerteza
+na distribuição condicional.
+
+Estes resultados mostram importantes características da dinâmica da incerteza no Brasil ainda
+não revelada em exercícios empíricos anteiores, pois choques que tendem a aumentar a incerteza,
+por exemplo, como a recessão de 2008/2009, geraria maior incerteza permanentemente. No entanto,
+a presença de estimativas de parâmetros nas outras partes da distribuição condicional da incerteza
+inferiores à unidade indicam efeitos apenas transitórios.
+
+De forma a verificar estatisticamente as evidências observadas, aplica-se o teste de raiz unitária
+quantílico cuja hipótese nula é 𝐻0 : 𝛼(𝜏) = 1. Todavia, antes aplica-se o teste de raiz unitária ADF
+
+9
+
+0.050.250.500.750.9500.511.5Persistence0.050.250.500.750.95−40−20020406080ConstantQuantiles0.050.250.500.750.95−0.2−0.100.10.20.30.40.50.6Trend0.050.250.500.750.950.40.60.811.21.4Persistence0.050.250.500.750.95−40−200204060ConstantQuantiles0.050.250.500.750.95−0.1−0.0500.050.1Trendconvencional às séries de incerteza. O lag utilizado no teste para ajuste do modelo de regressão ADF
+é selecionado por meio de minimização do Akaike Information Criterion (AIC), conforme fez Maia e
+Cribari-Neto (2006), uma vez que Agiakloglou e Newbold (1996) recomendam sua utilização em testes
+de raiz unitária ADF. Os modelos de regressão ADF foram ajustados podendo chegar a 15 lags e 14
+lags para as séries EPU e IIE-Br/FGV, respectivamente. Seleciona-se q=13 e q=1 para as respectivas
+regressões ADF. No índice EPU não foi possível rejeitar a hipótese nula de raiz unitária nem mesmo
+ao nível de 10% de significância2. Já para o IIE-Br/FGV, o teste rejeita a hipótese de presença de
+raiz unitária ao nível de 5% de significância3. O teste DF-GLS corrobora os resultados anteriores
+ao não rejeitar a hipótese nula para o índice EPU e ao rejeitar a mesma ao nível de significância
+de 5% para o IIE-Br/FGV4. Alguma quebra estrutural pode ter influenciado os resultados. Neste
+caso, aplica-se o teste de raiz unitária Zivot-Andrews que rejeita a hipótese nula ao nível de 1% de
+significância nas três alternativas de quebra estrutural testadas5 para o índice EPU. Enquanto que
+para a série IIE-Br/FGV rejeita a presença de raiz unitária com quebra estrutural em dois casos,
+exceto para o caso de quebra em ambos, constante e tendência, que apenas rejeita a hipótese nula
+ao nível de 11% de significância6.
+
+Estes resultados podem gerar dúvidas quanto à dinâmica de incerteza no Brasil ser ou não
+um processo raiz unitária. Diante disso, busca-se investigar a dinâmica da incerteza no Brasil ao
+longo de sua distribuição condicional, aplicando a partir de agora testes de raiz unitária baseados
+em representações QAR para as duas proxies, índice EPU e IIE-Br/FGV. A Tabela 1 apresenta
+as estimativas pontuais, as estatísticas t e os valores críticos. Pode-se verificar a não rejeição da
+hipótese nula, nos quantis superiores a 35% na primeira proxy de incerteza (índice EPU) e nos quantis
+superiores a 55% na segunda amostra de incerteza (IIE-Br/FGV). Estes resultados corroboram os
+apresentados nas Figuras 2 e 3, ou seja, existem evidências de que, para as duas proxies analisadas,
+há assimetria no padrão de persistência. De modo geral, nos dois casos, ^𝛼(𝜏) é acrescido quando
+passa dos quantis mais baixos para os quantis mais altos. Esta característica é mais evidente no
+índice EPU. Note que não são poucos os quantis que apresentaram coeficiente estimado próximo da
+unidade. Assim, o teste permitiu verificar estatisticamente a possibilidade de um comportamento
+localmente estacionário e localmente explosivo.
+
+Estes resultados e considerações sugerem que a dinâmica de incerteza no Brasil não apresenta
+um comportamento uniforme ao longo dos diferentes quantis condicionais do processo. De forma
+a reforçar os resultados, na próxima subseção, obtém-se outras estimativas a partir das funções
+densidades.
+
+3.3 Funções Densidade e Probabilidade de Transição
+
+Nesta subseção trabalha-se as estimativas de funções densidade e probabilidade de transição
+das proxies de incerteza. Entretanto, antes de caminhar nessa direção é preciso selecionar os modelos
+para estas finalidades. Opta-se pelos modelos autorregressivos tradicionais AR(p) com p podendo
+tomar valor máximo igual a 8 lags. Os valores ótimos de p para cada variável resposta de incerteza
+foi selecionado através da minimização do Schwarz information criterion (SC). Para o índice EPU foi
+2 Estatística t de 0.23 com p-valor de 0.99. Valores críticos: nível de 1% de -3.99; nível de 5% de -3.42; e nível de
+
+10% de -3.13
+
+10% de -3.14
+
+3 Estatística t de -3.57 com p-valor de 0.035. Valores críticos: nível de 1% de -4.00; nível de 5% de -3.43; e nível de
+
+4 EPU: Estatística t de -0.75, com os seguintes valores críticos: nível de 1% de -3.47; nível de 5% de -2.91; e nível de
+10% de -2.60; IIE-Br/FGV: Estatística t de -3.24, com os seguintes valores críticos: nível de 1% de -3.46; nível de
+5% de -2.93; e nível de 10% de -2.64
+
+5 EPU - Teste com quebra estrutural: i) constante: estatística t de -4.76, p-valor de 0.01; ii) tendência: estatística t
+
+de -6.90, p-valor de 0.00; constante e tendência: estatística t de -7.24, p-valor de 0.01.
+IIE-Br/FGV - Teste com quebra estrutural: i) constante: estatística t de -4.65, p-valor de 0.00; ii) tendência:
+estatística t de -4.58, p-valor de 0.01; constante e tendência: estatística t de -4.68, p-valor de 0.11.
+
+6
+
+10
+
+Tabela 1 – Indicadores de incerteza - teste de raiz unitária quantílico
+
+EPU: 1991:01 - 2017:03
+
+t-statistic Valor Crítico
+
+Quantil
+
+0,05
+0,10
+0,15
+0,20
+0,25
+0,30
+0,35
+0,40
+0,45
+0,50
+0,55
+0,60
+0,65
+0,70
+0,75
+0,80
+0,85
+0,90
+0,95
+
+𝛼(𝜏)
+0,566*
+0,543*
+0,491*
+0,513*
+0,553*
+0,587*
+0,718*
+0,776
+0,815
+0,828
+0,830
+0,827
+0,874
+0,904
+0,994
+0,999
+1,093
+1,223
+1,219
+
+-5,841
+-5,344
+-6,180
+-5,744
+-5,602
+-4,813
+-3,536
+-2,614
+-2,262
+-1,756
+-1,717
+-1,668
+-1,182
+-0,759
+-0,042
+-0,006
+0,494
+1,136
+1,638
+
+-2,310
+-2,310
+-2,310
+-2,324
+-2,569
+-2,564
+-2,691
+-2,815
+-3,012
+-2,935
+-2,972
+-3,018
+-3,125
+-3,101
+-3,101
+-3,161
+-2,984
+-2,911
+-2,383
+
+IIE-Br/FGV: 2000:01 - 2017:06
+𝛼(𝜏)
+t-statistic Valor Crítico
+0,797*
+0,781*
+0,752*
+0,762*
+0,748*
+0,772*
+0,755*
+0,785*
+0,809*
+0,830*
+0,840
+0,856
+0,940
+0,962
+0,983
+1,038
+0,966
+1,005
+1,060
+
+-2,310
+-2,310
+-2,761
+-2,736
+-2,886
+-2,707
+-2,949
+-2,729
+-2,851
+-2,923
+-2,949
+-3,038
+-2,856
+-3,066
+-3,038
+-3,011
+-2,871
+-3,276
+-3,151
+
+-4,397
+-4,833
+-5,523
+-4,724
+-4,841
+-4,030
+-4,268
+-3,638
+-3,174
+-3,152
+-2,771
+-2,475
+-0,907
+-0,492
+-0,210
+0,338
+-0,267
+0,022
+0,257
+
+Nota: Estimativas pontuais, estatísticas t e valores críticos para o nível de 5% de significância.
+Se a estatística t for menor que o valor critico rejeita-se a hipótese nula de 𝛼(𝜏) = 1 a 5%.
+
+selecionado o modelo AR(3), enquanto para a série IIE-Br/FGV foi selecionado o modelo AR(1). To-
+das as autocorrelações residuais encontraram-se dentro do intervalo assintótico de 95% de confiança,
+sugerindo que os modelos foram suficiente para filtrar a correlação serial em ambos os casos.
+
+A captura da assimetria presente nas funções densidade estimadas é realizada por meio de duas
+
+etapas:
+
+∙ Analisa-se a dispersão das distribuições, utilizando a amplitude condicional ^𝑅( ^𝜋𝑡|𝑄𝑥(𝜏)) (dife-
+rença entre o maior e o menor valor da distribuição condicional) e o desvio padrão condicional
+^𝜎( ^𝜋𝑡|𝑄𝑥(𝜏)); e
+
+∙ Calcula-se as probabilidades de transição quantílica da série de incerteza e verifica sua dispo-
+
+sição.
+
+Como estima-se a densidade condicional aos quantis de 𝑦𝑡−1, pode-se calcular as probabilidades
+de transição para os demais intervalos quantílicos no período 𝑡. Basicamente, verifica-se se a densi-
+dade condicional ao quantil 𝜏𝑘 contem os valores dos demais intervalos quantílicos de interesse. Este
+cálculo permite analisar com maior profundidade a persistência das distribuições e a possibilidade de
+transição em casos de choques. Os resultados já encontrados sinalizam uma considerável assimetria
+em ambas as proxies de incerteza brasileira.
+
+Conforme seção 2, a literatura sugere que a partir de aumentos na incerteza, empresas e consu-
+midores postergam suas decisões, o que reduz a atividade econômica. Já quando a incerteza diminui,
+a atividade econômica se recupera devido a execução das decisões planejadas dos agentes econômicos.
+
+11
+
+Contudo, os resultados aqui obtidos sugerem que a incerteza apresenta comportamento assi-
+métrico e localmente persistente. Esta característica desempenha papel fundamental na análise das
+políticas públicas, já que as ações governamentais baseadas em valores médios podem levar a resulta-
+dos divergentes dos esperados e recuperações mais lentas do que podem ser esperados. Por exemplo,
+conforme Aastveit et al. (2013), choques de política monetária têm efeitos relativamente menores
+sobre a atividade econômica quando o nível de incerteza é elevado.
+
+3.3.1 Índice EPU – Modelo AR(3)
+
+A partir do modelo AR(3) selecionado, estima-se as funções densidade condicionais utilizando
+os valores quantílicos da incerteza em 𝑡−1 e fixando os demais lags na mediana. Observe que quando
+seleciona-se quantis específicos em 𝑡 − 1 pode-se analisar a assimetria da distribuição condicional ao
+longo desses valores, mas também inferir sobre a probabilidade da incerteza se deslocar no próximo
+período, compreendendo melhor sua persistência em situações distintas.
+
+Ainda, a intuição de fixar os lags anteriores na mediana pode ser interpretado como a economia
+em uma situação de incerteza padrão em 𝑡 − 3 e 𝑡 − 2, mas que ao ser impactada por uma inovação
+em 𝑡 − 1 resulta nas probabilidades previstas para o estado em 𝑡.
+
+Inicialmente, na Tabela 2, analisa-se a dispersão das distribuições em termos de desvio padrão
+condicional e amplitude condicional. Os resultados mostram que a dispersão e a amplitude são
+diferentes para períodos de baixa e alta incertezas. Além disso, o desvio padrão e a amplitude parecem
+dobrar do quantil 10% até o 90%.
+
+Tabela 2 – Modelo AR(3) - dispersão e amplitude
+
+𝑄𝑦𝑡−1(𝜏)
+47.90𝜏=0.10
+63.36𝜏=0.20
+78.31𝜏=0.30
+89.67𝜏=0.40
+103.99𝜏=0.50
+118.91𝜏=0.60
+135.19𝜏=0.70
+154.30𝜏=0.80
+200.47𝜏=0.90
+
+^𝜎( ^𝑦𝑡|𝑄𝑦𝑡−1(𝜏))
+
+^𝑅( ^𝑦𝑡|𝑄𝑦𝑡−1(𝜏))
+
+32.96
+36.01
+39.03
+41.30
+44.18
+47.26
+50.54
+54.52
+64.07
+
+198.87
+208.90
+218.66
+226.18
+235.55
+245.52
+256.26
+272.82
+312.46
+
+Buscando respostas mais robustas, na Tabela 3, investiga-se em termos preditivos as possibi-
+lidades de mudanças quantílicas da incerteza7. Pode-se observar que a probabilidade da incerteza
+se mover do quantil 10% para o intervalo entre (90%-100%) é nula. O mesmo ocorre no sentido
+oposto, a probabilidade de que a incerteza se mova do quantil 90% para o intervalo entre (0%-10%),
+repentinamente, é nula.
+
+Portanto, os resultados sugerem que na economia brasileira choques na incerteza não geram
+deslocamentos de estados extremos, isto é, de um estado de baixa incerteza para o estado de alta
+incerteza e vice-versa.
+
+Porém, pode-se notar que quando a incerteza se encontra acima da mediana em 𝑡 − 1, a pro-
+babilidade deste estado continuar nesta faixa superior (ou a soma dos intervalos de 50% até 100%)
+7 Note que os elementos de cada linha somam 1, pois divide-se as distribuições condicionais em termos quantílicos
+
+12
+
+é sempre maior que 50%. Além disso, quando a incerteza está no quantil 10%, a probabilidade deste
+estado permanecer neste valor no período seguinte é inferior a probabilidade de que no quantil 90%
+a incerteza continue nessa faixa no período seguinte.
+
+Logo, esses cálculos reforçam os resultados assimétricos do teste de raiz unitária quantílico,
+
+quanto a persistência da incerteza nos quantis superiores.
+
+Tabela 3 – Modelo AR(3) - transição
+
+𝑄𝑦𝑡−1(𝜏)𝑃(0/10) 𝑃(10/20)𝑃(20/30)𝑃(30/40) 𝑃(40/50)𝑃(50/60)𝑃(60/70) 𝑃(70/80) 𝑃(80/90)𝑃(90/100)
+𝜏 = 0.10 0,158
+𝜏 = 0.20 0,114
+𝜏 = 0.30 0,082
+𝜏 = 0.40 0,064
+𝜏 = 0.50 0,046
+𝜏 = 0.60
+0,03
+𝜏 = 0.70 0,017
+𝜏 = 0.80 0,007
+𝜏 = 0.90 0,000
+
+0,187
+0,165
+0,155
+0,146
+0,132
+0,114
+0,097
+0,078
+0,0465
+
+0,051
+0,068
+0,081
+0,09
+0,102
+0,112
+0,121
+0,126
+0,117
+
+0,182
+0,159
+0,132
+0,112
+0,091
+0,073
+0,058
+0,044
+0,015
+
+0,160
+0,147
+0,124
+0,115
+0,109
+0,102
+0,092
+0,079
+0,053
+
+0,114
+0,146
+0,159
+0,153
+0,141
+0,131
+0,123
+0,113
+0,082
+
+0,077
+0,094
+0,113
+0,127
+0,137
+0,139
+0,134
+0,126
+0,103
+
+0,000
+0,004
+0,015
+0,026
+0,042
+0,061
+0,087
+0,126
+0,235
+
+0,035
+0,049
+0,066
+0,077
+0,088
+0,099
+0,107
+0,115
+0,134
+
+0,034
+0,053
+0,07
+0,086
+0,109
+0,135
+0,159
+0,181
+0,210
+
+Por fim, as Figuras 4 e 5 reforçam toda a análise de desvios, amplitudes e probabilidades condi-
+cionais. Sugere que a distribuição condicional da incerteza vai se deslocando para direita, tornando-se
+cada vez mais assimétrica positiva, engrossando a cauda direita e concentrando à esquerda.
+
+Ainda, conforme a Figura 5, a sobreposição mostra que as distribuições se tornam cada vez
+mais achatadas e com grande amplitude, logo o crescimento da própria incerteza faz com que a
+variabilidade para os valores no período seguinte sejam significativos e a frequência de valores baixos
+diminua.
+
+Figura 4 – Modelo AR(3) - densidades
+
+13
+
+0.0000.0050.010050100150200Incerteza(t−1)=0.10Densidade0.00000.00250.00500.00750.0100050100150200Incerteza(t−1)=0.20Densidade0.0000.0030.0060.00950100150200Incerteza(t−1)=0.30Densidade0.00000.00250.00500.00750.010050100150200250Incerteza(t−1)=0.40Densidade0.00000.00250.00500.00750.0100100200Incerteza(t−1)=0.50Densidade0.00000.00250.00500.0075100200Incerteza(t−1)=0.60Densidade0.00000.00250.00500.0075100200300Incerteza(t−1)=0.70Densidade0.0000.0020.0040.0060.008100200300Incerteza(t−1)=0.80Densidade0.0000.0020.0040.006100200300Incerteza(t−1)=0.90DensidadeFigura 5 – Modelo AR(3) - densidades sobrepostas
+
+3.3.2 IIE-Br/FGV – Modelo AR(1)
+
+Como simples critério de comparação e robustez de resultados, repete-se os exercícios para a
+outra proxy de incerteza (IIE-Br/FGV) cujo modelo selecionado foi AR(1). A Tabela 4 também
+mostra que a dispersão e a amplitude são diferentes para períodos de baixa incerteza e períodos de
+grande incerteza, corroborando a presença de assimetria.
+
+Contudo, nesta série de incerteza o desvio padrão aumenta, enquanto a amplitude diminui
+significativamente. Tais resultados apontam indícios de persistência nos momentos de fortes níveis
+de incerteza.
+
+Tabela 4 – Modelo AR(1) - dispersão e amplitude
+
+𝑄𝑦𝑡−1(𝜏)
+47.90𝜏=0.10
+63.36𝜏=0.20
+78.31𝜏=0.30
+89.67𝜏=0.40
+103.99𝜏=0.50
+118.91𝜏=0.60
+135.19𝜏=0.70
+154.30𝜏=0.80
+200.47𝜏=0.90
+
+^𝜎( ^𝑦𝑡|𝑄𝑦𝑡−1(𝜏))
+
+^𝑅( ^𝑦𝑡|𝑄𝑦𝑡−1(𝜏))
+
+33.73
+38.15
+42.45
+45.72
+49.87
+54.19
+58.93
+64.50
+77.98
+
+174.04
+189.92
+212.86
+230.28
+252.24
+275.13
+300.10
+329.42
+400.23
+
+Já na Tabela 5 investiga-se em termos preditivos as possibilidades de mudanças quantílicas de
+nível de incerteza. Pode-se observar que a probabilidade da incerteza se mover do quantil 90% para
+o intervalo entre (0%-10%) é nula.
+
+Contudo, a probabilidade que a incerteza se desloque do quantil 10% para o intervalo entre
+(90%-100%) é existente, de aproximadamente 1%. Ou seja, segundo a proxy IIE-Br/FGV aparente-
+
+14
+
+0.0000.0050.0100100200300IncertezaDensidademente na economia brasileira choques positivos na incerteza podem deslocar, mesmo a uma baixa
+probabilidade, de um extremo ao outro. Ainda, observa-se que quando a incerteza se encontra acima
+da mediana em 𝑡 − 1, a probabilidade desta situação continuar nesta faixa é ainda maior, sempre
+superior a 70%, corroborando também os resultados assimétricos e de persistência superior do teste
+de raiz unitária.
+
+Por fim, as Figuras 6 e 7 também reforçam toda a análise de desvios, amplitudes e probabilidades
+condicionais para a proxy IIE-Br/FGV. A distribuição condicional da incerteza vai se deslocando para
+direita, engrossando cada vez mais a cauda direita.
+
+Entretanto, neste caso, a sobreposição mostra que as distribuições se tornam cada vez mais
+concentradas e achatadas o que está de acordo com as evidências de persistência em choques positivos.
+
+Tabela 5 – Modelo AR(1) - transição
+
+𝑄𝑦𝑡−1(𝜏)𝑃(0/10) 𝑃(10/20)𝑃(20/30)𝑃(30/40) 𝑃(40/50)𝑃(50/60)𝑃(60/70) 𝑃(70/80) 𝑃(80/90)𝑃(90/100)
+𝜏 = 0.10 0,372
+𝜏 = 0.20 0,173
+𝜏 = 0.30 0,063
+𝜏 = 0.40 0,031
+𝜏 = 0.50 0,000
+𝜏 = 0.60 0,000
+𝜏 = 0.70 0,000
+𝜏 = 0.80 0,000
+𝜏 = 0.90 0,000
+
+0,273
+0,238
+0,144
+0,105
+0,051
+0,008
+0,000
+0,000
+0,000
+
+0,185
+0,252
+0,240
+0,201
+0,127
+0,055
+0,003
+0,000
+0,000
+
+0,036
+0,105
+0,124
+0,126
+0,101
+0,058
+0,012
+0,000
+0,000
+
+0,050
+0,097
+0,190
+0,204
+0,208
+0,165
+0,047
+0,000
+0,000
+
+0,040
+0,058
+0,111
+0,168
+0,219
+0,224
+0,142
+0,010
+0,000
+
+0,020
+0,047
+0,083
+0,104
+0,190
+0,311
+0,340
+0,092
+0,007
+
+0,010
+0,010
+0,010
+0,010
+0,010
+0,011
+0,016
+0,090
+0,377
+
+0,005
+0,011
+0,027
+0,042
+0,080
+0,146
+0,369
+0,486
+0,201
+
+0,005
+0,004
+0,005
+0,006
+0,009
+0,018
+0,067
+0,320
+0,413
+
+Figura 6 – Modelo AR(1) - densidades
+
+15
+
+0.0000.0250.0500.0750.10080100120Incerteza(t−1)=0.10Densidade0.0000.0250.0500.0758090100110120130Incerteza(t−1)=0.20Densidade0.000.020.040.060.0890100110120130Incerteza(t−1)=0.30Densidade0.000.020.040.060.0890100110120130Incerteza(t−1)=0.40Densidade0.000.020.040.0690100110120130Incerteza(t−1)=0.50Densidade0.000.020.040.0690100110120130Incerteza(t−1)=0.60Densidade0.000.020.040.06100110120130Incerteza(t−1)=0.70Densidade0.000.020.04100110120130140Incerteza(t−1)=0.80Densidade0.000.010.020.030.040.05110120130140Incerteza(t−1)=0.90DensidadeFigura 7 – Modelo AR(1) - densidades sobrepostas
+
+4 Considerações finais
+
+O número de estudos sobre incerteza na economia têm aumentando, em parte devido às novas
+técnicas que permitem a construção de proxies adequadas para a incerteza, fundamentalmente não
+observável, com destaque à técnica de web-scrapping que permite a extrair informações online e
+atualizadas, e que tem sido frequentemente utilizada na construção desses indicadores.
+
+Neste contexto, o presente estudo investigou a presença de efeitos assimétricos de choques na
+dinâmica da incerteza usando autoregressão quantílica no teste de raiz unitária, o que permite efeitos
+heterogêneos de choques de sinais e magnitudes diferentes. Para os dois indicadores de incerteza
+considerados para a economia brasileira, foi possível observar um comportamento assimétrico nas
+estimativas do coeficiente autoregressivo, onde que, para quantis condicionais mais baixos, ocorre uma
+tendência de reversão para a média, enquanto que, para quantis condicionais mais altos, observa-se
+um comportamento não estacionário, por vezes, explosivo.
+
+Portanto, choques que tendem a elevar o nível de incerteza, por exemplo, como a recessão
+de 2008/2009, podem ter efeitos permanentes na economia. Por outro lado, nas outras partes da
+distribuição condicional da incerteza, os resultados indicam que os choques apresentam efeitos tran-
+sitórios. Resultados corroborados pela análise de dispersão, amplitude e densidades. Desse modo, os
+resultados empíricos demonstram uma importante característica da dinâmica da incerteza no Brasil,
+ainda não explorada.
+
+Em termos econômicos, em níveis altos de incerteza, um choque adverso e significativo tende
+a dificultar ainda mais ações políticas de recuperação econômica. Por exemplo, choques de política
+monetária podem ter efeitos relativamente menores sobre a atividade econômica quando o nível de
+incerteza é elevado, conforme observado por Aastveit et al. (2013).
+
+16
+
+0.0000.0250.0500.0750.10080100120140IncertezaDensidadeReferências
+
+AASTVEIT, K. A.; NATVIK, G. J.; SOLA, S. Economic uncertainty and the effectiveness of mone-
+tary policy. Norges Bank Working Paper Series, n. 17, 2013.
+AGIAKLOGLOU, C.; NEWBOLD, P. The balance between size and power in dickey-fuller tests with
+data-dependent rules for the choice of truncation lag. Economics Letters, v. 52, n. 3, p. 229–234, 1996.
+AROURI, M.; ESTAY, C.; RAULT C. ROUBAUD, D. Economic policy uncertainty and stock mar-
+kets: Long-run evidence from the us. Finance Research Letters, v. 18, p. 136–141, 2016.
+BAKER, S. R.; BLOOM, N.; DAVIS, S. J. Measuring economic policy uncertainty. NBER Working
+Paper Series, n. 21633, 2015.
+BECKMANN, J.; CZUDAJ, R. Exchange rate expectations and economic policy uncertainty. Euro-
+pean Journal of Political Economy, v. 47, p. 148–162, 2017.
+BEKIROS, S.; GUPTA, R.; MAJUMDAR, A. Incorporating economic policy uncertainty in us equity
+premium models: A nonlinear predictability analysis. Finance Research Letters, n. 18, p. 291–296,
+2016.
+BERNAL, O.; GNABO, J.; GUILMIN, G. Economic policy uncertainty and risk spillovers in the
+eurozone. Journal of International Money and Finance, n. 65, p. 24–45, 2016.
+BERNANKE, B. S. Irreversibility, uncertainty, and cyclical investment. The Quarterly Journal of
+Economics, v. 98, n. 1, p. 85–106, 1983.
+BLOOM, N. The impact of uncertainty shocks. Econometrica, v. 77, n. 3, p. 623–685, 2009.
+BLOOM, N.; KOSE, M. A.; TERRONES, M. E. Held back by uncertainty. Finance and Development,
+p. 38–41, 2013.
+BORDO, M. D.; DUCA, J. V.; KOCH, C. Economic policy uncertainty and the credit channel:
+Agregate and bank level u.s. evidence over serveal decades. Journal of Financial Stability, v. 26, p.
+90–106, 2016.
+BREDIN, D.; FOUNTAS, S. Is macroeconomic uncertainty bad for macroeconomic performance?
+evidence from five asian countries. Centre for Financial Markets Working Paper Series, n. 04, 2007.
+CHOUDHRY, T. Stock market volatility and the us consumer expenditure. Journal of Macroecono-
+mics, v. 25, p. 367–385, 2003.
+DAKHLAOUI, I.; ALOUI, C. The interactive relationship between the u.s. economic policy uncer-
+tainty and bric stock markets. International Economics, v. 146, p. 141–157, 2016.
+DENIS, S.; KANNAN, P. The impact of uncertainty shocks on the uk economy. IMF Working Paper,
+n. 66, 2013.
+DIXIT, A. K.; PINDYCK, R. S. Investment under Uncertainty. [S.l.]: Princeton University Press,
+1994.
+EJARQUE, J. Uncertainty, irreversibility, durable consumption and the great depression. Economica,
+v. 76, n. 303, p. 574–587, 2009.
+
+17
+
+FILHO, A. E. d. C. Incerteza e atividade econômica no brasil. Economia Aplicada, n. 18, p. 421–453,
+2014.
+FILHO, T. N. T. S. Is the investment-uncertainty link really elusive? the harmful effects of inflation
+uncertainty in brazil. Banco Central do Brasil, Working Paper Series, n. 157, 2007.
+GALVAO, A. F. Unit root quantile autoregression testing using covariates. Journal of Econometrics,
+v. 152, n. 2, p. 165–178, 2009.
+GILCHRIST, S.; SIM, J. W.; ZAKRAJSEK, E. Uncertainty, financial frictions, and investment dy-
+namics. NBER Working Paper Series, n. 20038, 2014.
+HADDOW, A.; HARE, C. Macroeconomic uncertainty: what is it, how can we measure it and why
+does it matter? Quarterly Bulletin, n. Q2, p. 100–109, 2013.
+ISTREFI, K.; PILOIU, A. Economic policy uncertainty and inflation expectations. Banque de France
+Working Paper, n. 511, 2015.
+KOENKER, R.; XIAO, Z. Unit root quantile autoregression inference. Journal of the American
+Statistical Association, v. 99, p. 775–787, 2004.
+KOENKER, R. W.; BASSETT, G. Regression quantiles. Econometrica, v. 46, n. 1, p. 33–50, 1978.
+LIU, L.; ZHANG, T. Economic policy uncertainty and stock market volatility. Finance Research
+Letters, v. 15, p. 99–105, 2015.
+MAIA, A. L. S.; CRIBARI-NETO, F. Dinâmica inflacionária brasileira: resultados de auto-regressão
+quantílica. Revista Brasileira de Economia, 2006.
+MENEGATTI, M. Uncertainty and consumption: New evidence in ocde countries. Università di
+Parma Working Paper Series, n. 8, 2006.
+NG, S.; PERRON, P. Lag length selection and the construction of unit root tests with good size and
+power. Econometrica, v. 69, n. 6, p. 1519–1554, 2001.
+PEREIRA, R. M. Investment and uncertainty in a quadratic adjustment cost model: Evidence from
+brazil. Revista Brasileira de Economia, v. 55, n. 2, p. 283–311, 2001.
+POPP, A.; ZHANG, F. The macroeconomics effects of uncertainty shocks: The role of the financial
+chanel. Journal of Economic Dynamics and Control, v. 69, p. 319–349, 2016.
+RAUNIG, B.; SCHARLER, J. Stock market volatility, consumption and investment: An evaluation
+of the uncertainty hypothesis using post-war u.s. data. Austrian Central Bank Working Paper Series,
+n. 168, 2011.
+ROMER, C. D. The great crash and the onset of the great depression. The Quarterly Journal of
+Economics, v. 105, n. 3, p. 597–624, 1990.
+
+18
+
+

@@ -1,0 +1,2049 @@
+ANÁLISE DO IMPACTO DA IMPLANTAÇÃO DAS COTAS NA NOTA ENADE 20081 
+
+Joaquim Israel Ribas Pereira2 
+Maurício Vaz Lobo Bittencourt3 
+Walcir Soares da Silva Junior4 
+ 
+
+RESUMO 
+
+Esse  trabalho  contribui  para  o  debate  a  respeito  do  impacto  das  cotas  (sociais  e  raciais)  no  sistema  de 
+ensino superior brasileiro, apresentando as estimativas do seu impacto sobre as notas nos conhecimentos 
+específicos da prova ENADE – Exame Nacional de Desempenho dos Estudantes. Utilizamos o ENADE 
+2008 como fonte principal dos dados, o que forneceu 59 cursos e mais de 74 mil alunos. Para a discussão 
+teórica apresentamos o Modelo de Reserva de Vagas de Su (2005) e o Modelo de Decisão de Esforço de 
+Bishop (2006); os modelos incluem fatores como grau de seleção do curso, salários futuros, qualidade dos 
+pares como fatores que afetam o grau de esforço e acumulação de capital humano. Utilizamos o estimador 
+diferença-em-diferenças  (DD)  conjugando  ao  método  Propensity  Score  Matching  (PSM),  com  o  intuito 
+de  controlar  características  não  observáveis  relacionadas  com  o  desempenho  e  algum  viés  de  seleção 
+relacionado ao grupo tratado (cotistas). Os resultados mostram que a implantação das cotas impactou de 
+forma  negativa  e  significante  nos  cursos  de  Pedagogia,  História  e  Física,  e  impactou  positiva  e 
+significantemente somente no curso de Agronomia.  
+
+Palavras  Chave:  Cotas  sociais  e  raciais,  Exame  Nacional  de  Desempenho  de  Estudantes  (ENADE), 
+Diferença-em-diferença, Propensity Score Matching. 
+
+ 
+
+ABSTRACT 
+
+This paper intends to contribute to the debate about the impact of quotas (social and racial) in Brazilian 
+higher  education  system,  estimating its  impact  on  the  students  grades  –  measured  by  an  specific  test  - 
+ENADE  –  National  Survey  of  Student  Performance. We  use  ENADE  2008  as  the  main  source  of  data, 
+which  provided  59  courses  and  more  than  74  thousand  students.  Within  the  theoretical  discussion  we 
+present  the Su’s  Model  Job  Reservation  (2005)  and  Bishop’s  Model  Effort  Decision   (2006);  these 
+models include factors such as the degree course selection, future wages, quality of the peers as factors 
+that affects the degree of effort and the human capital accumulation. We use the estimator difference-in-
+differences (DD) method combining with the Propensity Score Matching (PSM), which the main goal is 
+to  control  unobservable  characteristics  that  are  related  to  the  performance  and  some  selection  biases 
+related  to  the  treated.  The  results  show  that  the  implementation  of  quotas  impacted  negatively  and 
+significant courses in Pedagogy, History and Physical, and positively impacted and significant only in the 
+course of Agronomy.  
+
+Keywords: social and racial quotas, Exame Nacional de Desempenho de Estudantes (ENADE), 
+Difference-in-difference, propensity score matching. 
+
+Classificação JEL: I24, I25, I28 
+
+Área 6 - Crescimento, Desenvolvimento Econômico e Instituições 
+
+                                                           
+1 Este artigo é uma síntese da dissertação Análise Do Impacto Da Implantação Das Cotas Na Nota Enade 2008, apresentada 
+para obtenção do título de mestre no Programa de Pós-Graduação em Desenvolvimento Econômico da Universidade Federal 
+do Paraná, em março de 2013. 
+2 Aluno de doutorado do Programa de Pós Graduação em Desenvolvimento Econômico, UFPR. 
+3 Professor do Programa de Pós  Graduação em Desenvolvimento Econômico, UFPR. 
+4 Aluno de doutorado do Programa de Pós Graduação em Desenvolvimento Econômico, UFPR. 
+
+ 
+
+ 
+1. INTRODUÇÃO 
+ 
+
+As  questões  educacionais  têm  tomado  dimensão  cada  vez  maior  na  análise  econômica,  sendo 
+recorrente o tema da educação como propulsora do crescimento e redutora da desigualdade. Esse efeito é 
+discutido e confirmado por diversos pesquisadores, que mostram que a educação promove o crescimento, 
+a  incorporação  de  tecnologias,  a  geração  de  externalidades  positivas  e  aumento  dos  ganhos  salariais 
+(LANGE E TOPEL; ACEMOGLU E ANGRIST, 2000)  Por  consequência,  a  educação  é  considerada, 
+principalmente pelos governos, como uma ferramenta de política social. No âmbito dessas políticas, uma 
+das mais conhecidas é o sistema de cotas, que consiste em reservar um determinado número de vagas no 
+ensino superior para negros, índios e pessoas de baixa renda. No Brasil o sistema passou por uma recente 
+mudança,  na  qual  foi  aprovado  o  projeto  que  estabelece  que  50%  das  vagas  em  universidades  federais 
+serão destinadas para o sistema de cotas5. 
+
+O  tema  ganha  importância  ainda  maior,  pois  a  literatura  fornece  opiniões  antagônicas.  Por  um 
+lado, existe a defesa desse sistema como reparação histórica e de justiça social (BITTAR E ALMEIDA, 
+2006;  MOEHLECKE, 2002;  GUARNIERI E MELO SILVA, 2007). Além  disso, existem trabalhos  que 
+mostram que os alunos beneficiados obtiveram sucesso nas universidades e mercado de trabalho (BOK E 
+BOWEN, 1998; BERTRAND, HANNA E MULLAINTHAN, 2008).  
+
+Por  outro  lado,  existem  os  economistas  que  condenam  essa  política  por  diversas  razões. 
+Primeiramente porque, segundo os autores, a política não reduz a desigualdade, visto que diversos alunos 
+que  desejam  essas  vagas  não  têm  os  pré-requisitos  necessários.  Dessa  forma,  essa  política  beneficia 
+somente uma minoria que atinge o ensino superior. E posteriormente à implantação das cotas, aqueles que 
+obtiveram  uma  vaga  no  ensino  superior  não  seriam  capazes  de  compensar  o  gap  existente  na  formação 
+escolar, gerando uma perda qualitativa de capital humano na universidade (SOWELL, 2004; D’SOUZA, 
+1991).  
+
+O presente trabalho utiliza a base de dados do ENADE 2008, sendo uma amostra nacionalmente 
+representativa de alunos e universidades. A amostra fornece as notas obtidas no exame dos universitários 
+ingressantes  e  concluintes  da  graduação.  Fornece  também  um  amplo  questionário  sócioeconômico  e 
+características  da  faculdade  respondidas  pelo  aluno,  que  incluem  as  condições  da  instituição,  avaliação 
+dos docentes e contribuições do curso.  
+
+A primeira metodologia a ser utilizada será o estimador Diferença-em-Diferenças (DD), que tem 
+por  objetivo  contornar  o  problema  de  endogeneidade  quando  se  fazem  comparações  entre  indivíduos 
+heterogêneos.  Dessa  forma,  é  possível  separar  os  resultados  em  dois  tempos,  iniciantes  e  concluintes,  e 
+em  dois  grupos,  controle  e  tratamento  (cotistas).  Conforme  considerações  dos  pesquisadores  Buckley  e 
+Shang  (2003),  o  modelo  contorna  o  problema  da  influência  de  variáveis  não  observáveis  constantes  no 
+tempo, além de ser um método flexível, que permite a inclusão de covariáveis. 
+
+Para  lidar  com  a  hipótese  de  seleção  por  características  observáveis  para  o  tratamento  –  de  que 
+existe  um  determinado  conjunto  X  de  observáveis  que  determinam  a  probabilidade  de  receber  o 
+tratamento  –  será  utilizado  juntamente  com  o  estimador  DD,  a  metodologia  do  Propensity  Score 
+Matching  (PSM),  que  tem  por  objetivo  parear  os  alunos  pela  probabilidade  de  receber  o  tratamento, 
+eliminando assim o problema de viés de seleção e permitindo a comparação das notas entre eles. 
+
+Este artigo está dividido em seis seções a contar com esta introdução. A segunda seção apresenta 
+uma breve revisão de literatura sobre o tema de cotas no Brasil e no mundo. A terceira seção apresenta 
+dois  modelos  que  justificam  as  variáveis  escolhidas  nas  estimativas.  Na  quarta  seção,  encontra-se  uma 
+breve apresentação das metodologias utilizadas. Na seção cinco, são apresentadas as descritivas da base 
+de dados e os resultados obtidos. Na sexta seção são apresentadas as principais conclusões deste trabalho. 
+
+ 
+
+ 
+2. O DISCUTÍVEL PAPEL DAS COTAS SOCIAIS E RACIAIS 
+ 
+
+                                                           
+5 Lei nº 12.711, de 29 de Agosto de 2012.  
+
+ 
+
+ 
+
+No Brasil e no mundo,  diversos trabalhos apresentam evidências um tanto contraditórias sobre a 
+implantação  de  cotas  socias  e  raciais  no  âmbito  educacional.  Neste  capítulo  serão  revisados  alguns 
+trabalhos realizados, nacionalmente e internacionalmente, evidenciando as lacunas ainda existentes neste 
+campo quanto às metodologias utilizadas. 
+ 
+2.1 A IMPLANTAÇÃO DE COTAS NO BRASIL 
+
+ 
+A  respeito  da  literatura  nacional,  fica  evidente  até  o  momento  a  presença  diminuta  de  análises 
+empíricas  dos  efeitos  das  cotas  no  sistema  de  ensino.  Existem  diversos  trabalhos  acadêmicos,  mas  que 
+ficam no âmbito da discussão histórica, filosófica e pedagógica da implantação das cotas.   
+
+Nesse  caso,  foram  procurados  estudos  que  vão  além  de  discutir  a  validade  das  cotas  como  ação 
+afirmativa.  Considerando  somente  os  trabalhos  que  incluem  análises  estatísticas,  pode-se  citar,  dentre 
+eles, o trabalho de Durham (2005), que conclui que iniciativas públicas ao ensino básico e médio são mais 
+eficientes que o estabelecimento de cota no ensino superior. 
+
+O trabalho de Lordêlo (2004) traçou o perfil do aluno de Administração da Universidade Federal 
+da  Bahia  (UFBA)  e  estabeleceu  relações  entre  o  seu  desempenho  universitário  e  as  demais  variáveis, 
+dentre  elas,  a  raça,  renda  e  ensino  médio  público.  Os  resultados  demonstraram  que  para  o  rendimento 
+universitário  o  ensino  médio  em  escola  pública  não  é  significante,  mas  para  raça  -  negativamente 
+relacionada - e renda - positivamente relacionada - o resultado foi significante. O autor ainda demonstra 
+que  a  presença  de  negros  e  pobres  no  curso  de  Administração  é  pequena,  e  que  este  grupo  tende  a  se 
+concentrar nos cursos de baixa concorrência e de baixo prestígio social. 
+
+Os pesquisadores Maia, Pinheiro e Pinheiro (2009) analisaram a heterogeneidade do desempenho 
+do  ingresso  à  conclusão  dos  alunos  da  Universidade  de  Campinas  (Unicamp).  Foram  considerados  os 
+alunos  ingressantes  nos  anos  de  1997  a  2000,  e  45  cursos.  Na  metodologia  foi  utilizada  uma  variável 
+denominada  "ganho  relativo",  que  consistiu  na  diferença  da  colocação  do  aluno,  dentro  de  sua  turma, 
+fornecido  pelo  coeficiente  de  rendimento  acadêmico  e  a  colocação  do  aluno  em  relação  à  nota  final  do 
+vestibular.  Os  resultados  mostraram  que  alunos  oriundos  de  escolas  públicas  apresentam  um  ganho 
+relativo,  indicando  que  esses  alunos  mostraram  uma  melhor  evolução  relativamente  aos  de  escolas 
+privadas já no primeiro ano. 
+
+Da Costa e Paez (2010) estudaram quais características dos candidatos têm relação com o sucesso 
+no  vestibular.  A  metodologia  utilizada  foi  regressão  logística  bayesiana,  utilizando  como  variável 
+resposta a  aprovação ou  não no vestibular. Observaram  que  as variáveis  relacionadas com  o sistema de 
+cotas, raça e aluno oriundo da rede pública, diminuem em aproximadamente 90% a chances de aprovação 
+se  não  houvesse  o  sistema  de  cotas.  Indicando  que  o  sistema  de  cotas  diminui  as  diferenças  na 
+probabilidade de aprovação entre os grupos. 
+ 
+2.2 O QUE A LITERATURA INTERNACIONAL DIZ SOBRE O SISTEMA DE COTAS 
+ 
+
+ 
+
+No  cenário  internacional,  entre  os  livros  que  mais  se  destacam  sobre  o  tema,  está  o  dos  autores 
+Bok e Bowen (1998), que analisaram, entre as décadas de 1970 e início de 1990, o efeito de admitir no 
+ensino  superior  usando  o  critério  da  raça.  A  base  de  dados  é  sobre  mais  de  80  mil  graduados,  e  28 
+faculdades e universidades. De maneira geral, as conclusões foram positivas, apontando que as faculdades 
+mais  exigentes  obtiveram  sucesso  em  formar  alunos  pertencentes  a  grupos  minoritários.  A  análise  é 
+estendida  para  o  mercado  de  trabalho,  mostrando  que  os  mesmos  alunos  atingiram  bons  postos  de 
+trabalho. 
+
+Carnevale  e  Jeff  Strohl  (2010)  encontraram  que  os  alunos  altamente  desfavorecidos  (com  baixa 
+renda,  negros,  pais  com  baixa  escolaridade,  escola  pública,  e  assim  por  diante)  marcam  em  média  748 
+pontos  a  menos  no  teste  SAT6  do  que  os  alunos  altamente  favorecidos  (ricos,  brancos,  pais  altamente 
+
+                                                           
+6 O SAT (Scholastic Aptitude Test ou Scholastic Assessment Test) é um exame educacional padronizado nos Estados 
+Unidos aplicado aos estudantes do 2º grau, que serve de critério para admissão nas universidades norte-americanas  
+
+ 
+
+ 
+educados, escola particular); destes 748 pontos de diferença, 56 pontos se devem  à cor da pele e 399 à 
+condição socioeconômica, os demais pontos decorrem de outros fatores.   
+
+Dentre  os  trabalhos  que  utilizaram  o  instrumental  econométrico  para  estudar  as  politicas 
+afirmativas, inclui-se o trabalho de Holzer e Neumark (2000) que analisou a relação com o mercado de 
+trabalho,  revisando  o  papel  das  externalidades,  imperfeições  e  informação.  As  principais  conclusões 
+foram:  ainda  persiste  a  discriminação  contra  as  minorias  no  mercado  de  trabalho,  apesar  de  não  existir 
+relação  significante  entre  o  beneficiário  da  ação  afirmativa  e  desempenho  negativo  no  mercado  de 
+trabalho.   
+
+Outro artigo é a análise feita por Bertrand, Hanna e Mullainthan (2008) das politicas afirmativas 
+na Índia, examinando a eficácia e os custos dessa ação para as faculdades de engenharia. Os beneficiários 
+da  política  são  os  grupos  conhecidos  como  "de  castas  inferiores".  O  artigo  conclui  que  a  ação  acarreta 
+vários  fatores  considerados  positivos,  como  o  caráter  redistributivo,  os  maiores  retornos  para  as  castas 
+inferiores e baixa rejeição das castas superiores.  
+
+Jencks  e  Phillips  (1998)  discutem  os  resultados  em  testes  de  inteligência  e  conhecimento,  que 
+mostram que existe diferença intelectual entre brancos e negros. Apesar de a diferença ter caído durante o 
+século XX, ainda é persistente, mesmo em famílias similares que diferem somente na raça. As evidências 
+mostram  que essa defasagem  é significativamente reduzida quando se misturam  as populações,  ou seja, 
+crianças  negras  aprendem  mais  quando  estão  em  escolas  com  maior  diversidade,  e  não  em  escolas 
+predominantemente negras. O mesmo é válido quando a variável é o professor, a mistura de professores é 
+mais benéfica do que quando existem somente professores negros. 
+ 
+ 
+3. MODELOS ECONÔMICOS EDUCACIONAIS 
+ 
+
+ 
+A discussão aqui  é se existe uma perda educacional pela implantação de uma política afirmativa 
+do tipo reservas de vagas na universidade. A hipótese para as cotas seria a seguinte: considerando que os 
+piores alunos - antes da implantação das cotas - foram substituídos, devido a reserva de vagas, por alunos 
+cotistas; essa substituição levou a um aumento da diferença entre os melhores e os piores alunos, ou seja, 
+se a política afirmativa impactou negativamente 
+ 
+Su (2005), e posteriormente o modelo de decisão de esforço de Bishop (2006). 
+ 
+3.2 O MODELO DE RESERVA DE VAGAS NA UNIVERSIDADE 
+ 
+ 
+Su  (2005)  desenvolveu  vários  modelos  sobre  as  diferentes  formas  de  admissão  na  educação 
+superior, dentre elas, a forma de admissão por reserva de vagas na universidade. Geralmente a reserva de 
+vagas é destinada para pessoas ou grupos considerados em desvantagem, nesse caso, negros e pessoas de 
+baixa renda são os principais integrantes desse grupo.  
+
+Para discutir os efeitos das cotas, primeiramente será apresentado o modelo de reserva de vagas de 
+
+O  modelo  fornece  um  bom  ponto  de  partida  para  o  entendimento  da  eficiência  da  política  de 
+Cotas, pois são considerados dentro do modelo o grau de competição por uma vaga no ensino superior, o 
+capital humano antes de entrar na universidade, a restrição de vagas do ensino superior e a consequência 
+sobre a desigualdade de capital humano.  
+
+Sobre  a  restrição  de  vagas  no  ensino  superior,  sabendo  que  a  oportunidade  de  entrar  no  ensino 
+superior  é  Σ,  Su  (2005)  considera  que  apenas  uma  fração  da  população  consegue  obter  uma  vaga  no 
+ensino superior. Isto será a condição de restrição: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+0<Σ<1  
+ 
+Sabe-se  que  existem  dois  grupos,  Su  (2005)  define  como  grupos  Branco  e  Negro,  e  que  os 
+indivíduos  são  homogêneos  dentro  dos  grupos.  Não  existe  diferença  fundamental  entre  os  grupos, 
+entretanto, devido aos fatores históricos, o grupo Negro não desenvolveu as mesmas oportunidades que o 
+grupo  Branco.  Como  resultado,  o  grupo  Negro  tem  menos  capital  humano  acumulado  que  o  grupo 
+Branco, representado como: 
+
+(1)  
+
+ 
+
+ 
+
+ 
+
+𝐵 ,  
+
+𝑁 < 𝐻−1
+
+ 
+𝐻−1
+ 
+Onde o sobrescrito denota os grupos, e o subscrito -1 denota a geração anterior.    
+O tamanho da população foi normalizado para 1, e o tamanho de cada grupo é λ, para os Negros, e 
+
+(2) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+1-λ, para os Brancos. 
+
+As oportunidades para cada grupo são definidas como ΣN, para os negros, e ΣB, para os brancos. E 
+num sistema sem uma política de cotas, as oportunidades para o grupo em desvantagem será zero, ou seja, 
+ΣN=0. E as oportunidades serão concentradas para o grupo Branco, ΣB= Σ/1- λ. 
+
+Entretanto,  com  um  sistema  de  cotas  e  satisfazendo  a  condição  de  restrição,  as  oportunidades 
+
+serão: 
+
+ 
+Σ𝑁 > 0 
+Σ𝐵 =   Σ− 𝜆Σ𝐵
+A primeira proposição de Su (2005) para esse modelo é que com o aumento da oportunidade para 
+
+(3) 
+
+(4) 
+
+1− 𝜆
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+o grupo Negro, isto conduzirá a aumento do esforço e acúmulo de capital desses estudantes.  
+
+O aumento da probabilidade de entrar no ensino superior induz a competição intragrupos por essas 
+vagas,  produzindo  um  maior  empenho  no  ensino  médio  e  básico,  por  fim  um  melhor  desempenho  nos 
+exames. Podemos conjugar o benefício da educação ao fato da escassez de oportunidade como fontes para 
+competição. 
+
+Fato importante no modelo é a nota de corte para a admissão no ensino superior, sem uma política 
+
+de cotas, a nota é dada por: 
+
+ 
+𝑠̂ =   𝐻𝐵,1 +   𝜀̂ =   𝐻𝐵,1 + 𝐺−1(1 − Σ
+1−𝜆
+ 
+Onde 𝐻𝐵,1 é o capital acumulado do indivíduo do grupo Branco no ensino básico e médio. Sendo 
+que  no  equilíbrio  o  efeito  de  𝐻𝐵,1  é  nulo.  ε  é  uma  variável  aleatória  independente  e  igualmente 
+distribuída. O efeito da política vai depender do grau de competição intragrupos, o que pode ser medido 
+pela densidade de probabilidade da nota de corte g(ε̂).  
+
+(5) 
+
+)  
+
+ 
+
+ 
+
+Quando a implantação de uma política de reserva de vagas diminui o grau de competição dentre o 
+
+grupo  Branco,  ou  seja,  g(𝐺−1(1 − Σ−λΣ𝐵
+diminuição do capital humano obtido para todos do grupo Branco. 
+
+))  <  g(𝐺−1(1 − Σ
+1−𝜆
+
+1−𝜆
+
+)),  isto  causa  uma  diminuição  do  esforço  e 
+
+Quando  a  implantação  da  política  aumenta  o  grau  de  competição,  ou  seja,  g(𝐺−1(1 − Σ−λΣ𝐵
+
+))  > 
+
+1−𝜆
+
+)), isso acarreta aumento do esforço e aumenta o capital humano acumulado para todos do 
+
+g(𝐺−1(1 − Σ
+1−𝜆
+grupo Branco.  
+
+O  importante  do  modelo  de  Su  (2005)  é  entender  o  papel  da  competição  intragrupos  na 
+
+determinação do impacto da política de reserva de vagas no capital humano.  
+
+Considerando que g(ε) é uma função onde: 
+ 
+g’(ε) > 0, 
+g”(ε) < 0, 
+ 
+existe um  valor 𝜀̃ ∈ [𝜀, 𝜀], tal que g(𝜀̃) é o maior valor possível, logo, g(ε) é crescente para ε  ∈
+
+(6)  
+(7) 
+
+     
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+[𝜀, 𝜀̃ ] e decrescente para ε ∈ [𝜀̃, 𝜀]. 
+
+Se a capacidade do ensino superior é muito limitada, ou seja,  𝐺−1(1 − Σ
+1−𝜆
+
+) > 𝜀̃, a introdução da 
+política  afirmativa  irá  diminuir  excessivamente  as  oportunidades  para  o  grupo  Branco,  acarretando 
+desistência e diminuição do esforço.  
+
+ 
+
+ 
+
+Nesse caso, existe a possibilidade no modelo de Su (2005) de, caso ocorra diminuição do esforço 
+do grupo Branco pela diminuição das oportunidades, ser compensado pela expansão do ensino superior, 
+(↑ Σ). 
+
+E se a capacidade do ensino superior não é tão limitada, ou seja, 𝐺−1(1 − Σ
+1−𝜆
+
+) < 𝜀̃, a introdução 
+da política afirmativa adicionará pressão sobre a competição, aumentando o esforço do grupo Branco para 
+manter as oportunidades.  
+
+Para entender os resultados futuros, devemos lembrar principalmente a primeira proposição de Su 
+(2005), que com o aumento da oportunidade para o grupo Negro, isto conduzirá a aumento do esforço e 
+acúmulo  de  capital  desses  estudantes,  mas  variações  nas  oportunidades  do  grupo  Branco  podem 
+desincentivar o esforço desse grupo.   
+
+ 
+
+ 
+
+ 
+
+ 
+
+(8) 
+
+𝐿 = 𝐴𝐸𝛼(𝐸𝑚)𝜌(𝐼𝑋𝑚)𝛽 
+
+As  decisões  de  esforço  do  estudante  na  escola  podem  ser  representadas  por  três  equações:  a 
+
+O  capital  humano  acumulado,  adaptado  para  o  final  do  ensino  superior,  pode  ser  representado 
+
+3.3 O MODELO DE DECISÃO DE ESFORÇO DO ESTUDANTE  
+ 
+ 
+Sabendo  o  papel  da  educação  no  aumento  da  produtividade  e  ganhos  futuros,  isso  certamente 
+estimula milhares de pessoas na busca por formação e treinamento, e melhores escolas e universidades. O 
+modelo de Bishop (2006) se propõe a explicar o papel dos incentivos enfrentados pelos estudantes, e sua 
+relação com o comportamento e com os resultados. 
+ 
+função de aprendizagem, os ganhos da aprendizagem e a função de custo do esforço. 
+ 
+3.3.1 A função de aprendizagem 
+ 
+ 
+como: 
+ 
+ 
+onde α + ρ + β < 1; 
+𝐸 é o esforço individual do estudante, um indicador do tempo e energia que o indivíduo i despendeu para 
+o aprendizado; 
+𝐸𝑚 esforço médio de todos os estudantes da universidade 𝑚; 
+𝑋𝑚 despesas com insumos escolares e políticas que promovam desempenho acadêmico na universidade 
+𝑚, não inclui o todas as despesas por aluno; 
+𝐼  parâmetro  de  eficiência  exógena  para  os  insumos  da  universidade  que  fomentam  a  realização 
+acadêmica; 
+α elasticidade do capital humano do estudante i (L) com respeito ao seu esforço;  
+β elasticidade do capital humano do estudante i (L) com respeito ao 𝐼𝑋𝑚; 
+ρ  elasticidade  do  capital  humano  do  estudante  i  (L)  com  respeito  a  todos  os  demais  estudantes  da 
+universidade. 
+ 
+As principais implicações do modelo são: a) a qualidade da universidade e o esforço do estudante 
+interagem positivamente, exemplo, aumentar  a qualidade do professor aumenta o esforço do estudante7; 
+b) o esforço de um estudante influencia no mesmo sentido o esforço dos demais colegas; c) se o esforço 
+de todos os alunos aumenta em 20% (𝐸 + 𝐸𝑚) e a qualidade também (𝑋𝑚), o aumento do capital humano 
+(L) é menos de 20%. (BISHOP, 2006) 
+ 
+3.3.2 Os ganhos da aprendizagem 
+ 
+ 
+Para entender melhor esta parte do modelo deve-se considerar seus pressupostos. Primeiramente, o 
+modelo assume que as pessoas mais jovens têm taxas de preferência temporal maiores, ou seja, preferem 
+
+ 
+
+                                                           
+7 Não ficou  claro no artigo, mas acreditamos que  existe uma  relação entre  esforço  e como a  universidade  é avaliada  pelo 
+mercado, isto é, se a avaliação da universidade pelo mercado melhora, se o esforço também aumenta.  
+
+ 
+
+ 
+mais  o  presente  que  o  futuro.  Logo,  para  compensar  o  custo  de  estudar,  que  podemos  considerar  como 
+investimento,  o  retorno,  tanto  por  valores  materiais  e  não  materiais,  deve  ter  um  valor  presente  líquido 
+positivo. 
+
+Logo, o valor presente descontado dos futuros pagamentos é altamente influenciado pelo sinal de 
+
+L (capital humano), que estão acessíveis para o aluno logo após a universidade. 
+Além  disso,  a  produtividade  é  uma  variável  dependente  do  capital  humano  (L),  um  fator  não 
+ 
+facilmente observável  pelos  empregadores. Para  Bishop (2006) existem  quatro principais fatores que os 
+empregadores e universidades usam para predizer o grau de capital humano individual (L):  
+ 
+
+(1) Background familiar (A); 
+(2) Resultados  na  faculdade  comparados  com  a  média,  ou  a  diferença  do  rendimento  acadêmico 
+
+comparada com a média (𝐿 −   𝐿𝑚); 
+
+(3) Uma dummy de aprovação ou reprovação nos exames; 
+(4) Um vetor das pontuações obtidas em outros exames e certificações. 
+
+ 
+
+O  valor  presente  das  recompensas  intrínsecas  e  extrínsecas  do  conhecimento  (material  e  não 
+
+material), 𝛱, é: 
+
+ 
+
+𝛱 = (𝑗 + 𝑤)𝐿 + 𝛩(𝐿 − 𝐿𝑚) +  𝜎𝐴                               (9) 
+ 
+onde, j é o valor presente dos benefícios intrínsecos não materiais recebidos pelo estudante i; 
+𝑤 - o impacto dos níveis absolutos do conhecimento descontado do valor presente de todas as taxas pagas 
+no ciclo de vida; considera os salários futuros recebidos pelos anos de estudo e qualidade da universidade; 
+𝐿 − 𝐿𝑚  - diferença de conhecimento entre um estudante  i relativamente à média do estudante; pode ser 
+mensurado por exames feitos na universidade; 
+𝛩 – impacto da diferença de conhecimento; 
+𝜎 – impacto do background familiar (𝐴) 
+ 
+
+ 
+Os alunos irão escolher o esforço comparando os benefícios  esperados com os custos esperados. 
+
+Considerando o esforço do estudante i, o benefício (B) será: 
+ 
+𝐵 = (𝑗 + 𝑤)𝐿 −  𝛩(𝐿 − 𝐿𝑚)                                     (10) 
+
+O impacto do background familiar (𝜎) foi considerado nulo pelo pesquisador, pois, numa prova, 
+
+como o exame Enade, o impacto do background familiar não afetará o incentivo de estudar. 
+
+Considerando o capital humano de um estudante representativo como 𝐿𝑚 = 𝐴𝑚(𝐸𝑚)𝛼+𝜌(𝐼𝑋𝑚)𝛽. 
+
+Logo: 
+
+ 
+B = (𝑗 + 𝑤 + 𝛩)[𝐴𝐸𝛼(𝐸𝑚)𝜌(𝐼𝑋𝑚)𝛽] −  𝛩[𝐴𝑚(𝐸𝑚)𝛼+𝜌(𝐼𝑋𝑚)𝛽]      (11) 
+ 
+
+Considerando que estudar gera custos – energia física, custo de oportunidade, diminuição do lazer – 
+
+é considerado como uma função crescente no tempo. Logo o custo (C) é definido como: 
+
+ 
+𝐶 = 𝐶0𝐸𝜇                                                    (12) 
+ 
+
+onde, 𝜇 > 1, ou seja, os custos marginais aumentam conforme o esforço aumenta. 
+
+ 
+
+3.3.3 Determinando o esforço do estudante 
+ 
+
+A  determinação  do  esforço  do  estudante  é  obtido  por  meio  do  benefício  líquido  do  esforço  do 
+estudante, B-C, e obtendo o máximo pela diferenciação com respeito ao 𝐸, assumindo ainda que 𝑋𝑚 e 𝐸𝑚 
+são fixos. 
+
+ 
+
+   (13) 
+
+ 
+𝑀𝑎𝑥 (𝐵 − 𝐶) =   (𝑗 + 𝑤 + 𝛩)[𝐴𝐸𝛼(𝐸𝑚)𝜌(𝐼𝑋𝑚)𝛽] −   𝐶0𝐸𝜇  
+ 
+Derivando (x) com respeito ao 𝐸 para cada estudante: 
+ 
+𝜕(𝐵−𝐶)
+
+= 𝛼(𝑗 + 𝑤 +  𝛩)[𝐴𝐸𝛼−1(𝐸𝑚)𝜌(𝐼𝑋𝑚)𝛽] −  𝜇𝐶0𝐸𝜇−1 = 0         (14) 
+
+ 
+
+𝜕𝐸
+
+ 
+𝐸 = {[
+
+𝛼
+𝜇𝐶0
+
+][ (𝑗 + 𝑤 + 𝛩)[𝐴𝑚(𝐸𝑚)𝜌(𝐼𝑋𝑚)𝛽]}1/(𝜇−𝑎)                   (15) 
+
+ 
+Aplicando o logaritmo natural em ambos os lados da equação. 
+ 
+ln 𝐸 = (
+
+1
+
+) [𝑙𝑛𝛼 − 𝑙𝑛𝜇𝐶0  + ln(𝑗 + 𝑤 + 𝜃) + 𝑙𝑛𝐴 + 𝜌𝑙𝑛𝐸𝑚 + 𝛽ln ( 𝐼𝑋𝑚)]    (16) 
+
+𝜇−𝛼
+
+ 
+As implicações desse modelo são diversas, mas dentre elas, as principais para esse estudo são: 
+
+  Aumentar a qualidade dos  pares(↑ 𝐸𝑚), ou seja, estudar com  melhores alunos na mesma 
+
+universidade e classe, induz a um maior esforço. 
+
+  Aumentar  a  recompensa  pelo  estudo(↑ 𝑤 +  𝜃),  isto  é,  aumentar  os  salários  futuros  e  os 
+
+ganhos para os melhores alunos incentiva os alunos a um maior esforço. 
+ 
+
+De certa forma, esse modelo insere o papel do mercado de trabalho sobre o esforço, e será um fato 
+interessante  para  o  entendimento  dos  resultados.  Um  curso  com  bom  mercado  de  trabalho,  ou  com 
+melhores perspectivas de emprego induzirá os indivíduos a adquirirem uma melhor formação.  
+
+De  forma  implícita,  tanto  o  modelo  de  Bishop  (2006)  com  o  modelo  de  Su  (2005),  convergem 
+para o fato que um grupo de pessoas excluídas, que não entrariam num curso superior sem a reserva de 
+vagas, são induzidas a um maior esforço.  
+
+Uma das respostas esperadas nesse estudo é se o esforço foi suficiente para compensar a diferença 
+na formação do estudante. Como a metodologia, explicada na seção 4, considerados fatores observáveis e 
+não observáveis  constantes no tempo, o valor do  impacto  estará relacionado pelas considerações desses 
+modelos, como esforço, grau de seleção dos alunos, salários futuros, prestígio e qualidade dos pares.  
+ 
+4. APRESENTAÇÃO DA METODOLOGIA UTILIZADA NO TRABALHO 
+
+ 
+Neste capítulo apresenta-se as metodologias utilizadas no trabalho, a saber, o estimador diferença-
+
+em-diferenças (DD) e o matching com escore de propensão. 
+
+Conforme  explicação  de  Heckman,  Ichimura  e  Todd  (1997),  o  ideal  seria  conhecer  a  diferença 
+entre  a  nota  obtida  pelos  alunos  que  são  cotistas  e  a  nota  dos  mesmos,  caso  eles  não  participassem  da 
+política. Pode-se escrever essa diferença como: 
+
+ 
+D = E[Y1|T =1] – E[Y0|T=1] 
+ 
+Sendo  T  =  1  quando  o  aluno  faz  parte  do  tratamento,  ou  seja,  é  cotista.  O  inverso,  T  =  0, 
+corresponde ao fato do aluno não ser parte do grupo tratamento. Y1 é o resultado potencial caso o aluno 
+seja do grupo tratado, Y0 é o resultado potencial caso o curso (aluno) não esteja no grupo tratado. 
+
+(17) 
+
+ 
+
+ 
+
+ 
+
+Porém, a diferença na equação (17) não é passível de observação, e sim somente: 
+ 
+F = E[Y1|T=1] – E[Y0|T=0]  
+ 
+Ou  seja,  a  diferença  entre  o  resultado  potencial  caso  o  curso  (aluno)  seja  do  grupo  tratado  e  faz 
+parte do grupo tratamento e o resultado potencial caso o curso (aluno) não seja do grupo tratado e não faz 
+parte do grupo tratado.  
+
+             
+
+(18) 
+
+ 
+
+ 
+
+ 
+
+ 
+A diferença entre o resultado de (17) e (18) nos dá o viés de seleção: 
+ 
+A = D – F = - E[Y0|T=1] + E[Y0|T=0] 
+ 
+Esse viés surge quando o grupo de comparação é inadequado, isto é, no caso em que os alunos do 
+grupo  de  tratamento  são  muito  diferentes  do  grupo  de  controle.  A  possibilidade  de  viés  de  seleção  é 
+grande,  pois  a  própria  condição  de  cotista  é  resultado  de  uma  autoseleção.   O  aluno  cotista  escolhe 
+incluir-se no grupo promovido pela política afirmativa em questão. Por outro lado, o processo de seleção 
+ocorre sob o arbítrio do administrador, uma vez que os indivíduos são selecionados para tratamento com 
+base em critérios específicos - como renda, aluno de escola pública, bem como por meio da forma como o 
+curso optou pela implantação das cotas. 
+
+(19) 
+
+ 
+
+ 
+
+A estimativa do F (equação 18) pode ser entendida como o valor do impacto acrescentado do viés. 
+Nesse  caso,  o  viés  pode  ser  tanto  positivo  quanto  negativo,  se  positivo,  o  resultado  do  F  será  sobre-
+estimado, se negativo, o valor F ou impacto será subestimado. A origem do viés está relacionada tanto por 
+fatores observáveis como não observáveis. A vantagem do estimador DD pode ajudar a contornar o viés 
+causado pelas variáveis não observáveis. 
+
+Para  amenizar  o  problema  do  contrafactual,  reforçando  a  hipótese  da  tendência  paralela,  serão 
+adicionadas  variáveis  relacionadas  com  as  características  socioeconômicas  dos  alunos.  A  descrição  das 
+variáveis incluídas no modelo será descrita na seção 4.2. 
+
+ 
+
+4.1 AVALIANDO O IMPACTO PELO ESTIMADOR DE DIFERENÇA-EM-DIFERENÇAS (DD) 
+ 
+O  estimador  diferenças-em-diferenças  é  uma  forma  de  estimar  uma  intervenção  específica  ou 
+ 
+tratamento,  sendo  uma  das  técnicas  de  avaliação  de  impacto  de  políticas  públicas  e  uma  ferramenta 
+econométrica  bem  estabelecida.  De  forma  geral,  o  método  é  a  comparação  da  diferença  de  resultados 
+antes e após da intervenção para o grupo afetado com a diferença, e antes e após para o grupo não afetado 
+(LECHNER, 2011). 
+Quando o indivíduo é participante da política ele é classificado como tratamento e, caso contrário, 
+ 
+é definido como  controle. Dessa forma,  escolhemos  uma variável  de interesse  Y (como  anos de  estudo, 
+renda, ou como neste trabalho, nota na prova Enade), sendo que cada indivíduo poderia apresentar dois 
+resultados possíveis, Y1, se recebe o tratamento, ou Y0, se não recebe.  
+ 
+A popularidade do estimador vem de sua simplicidade, bem como a característica de contornar o 
+problema  de  endogeneidade  quando  se  fazem  comparações  entre  indivíduos  heterogêneos.  O  estimador 
+ainda  pode  ser  estendido  para  dados  em  painel  quando  a  unidade  de  análise  está  disponível  em  dois 
+períodos (BERTRAND, DUFLO E MULLAINATHAN, 2002). 
+Como ressalta Lechner (2011) um importante aspecto do estimador DD, presente em muitos dos 
+ 
+trabalhos,  é  que  nem  sempre  se  requer  um  forte  aparato  computacional  para  calcular  as  estimativas 
+básicas.  Apesar  de  isso  ser  um  fato  interessante  para  uma  metodologia,  também  é  responsável  por 
+algumas fraquezas do  estimador. Uma  dessas características é  a necessidade de um  forte pressuposto,  a 
+hipótese de tendência paralela, ou seja, os fatores não observáveis devem seguir a mesma tendência para 
+o grupo de tratamento e controle.  
+
+A  explicação  e  implicação  desse  pressuposto  serão  expostas  a  seguir  juntamente  com  a  forma 
+
+detalhada do estimador. 
+
+ 
+
+4.1.1 Detalhando a aplicação do estimador Diferença-em-Diferenças (DD) 
+
+ 
+Para  inferir  o  impacto  quantitativo  da  implantação  das  cotas  nas  notas  médias  do  Enade, 
+precisamos de um grupo controle (alunos não cotistas) que substitua o contrafactual, e que seja parecido 
+com o grupo de tratamento (alunos cotistas). Desta forma, o grupo controle é o grupo que não foi exposto 
+ao tratamento em nenhum dos períodos, e o grupo tratamento foi exposto nos dois períodos. (IMBENS E 
+WOOLDRIDGE, 2007). 
+
+ 
+
+ 
+
+A  base  de  dados  está  dividida  em  dois  períodos,  representada  pela  dummy  t,  onde  o  valor  1 
+representa se o aluno é concluinte e 0 se iniciante. Infelizmente, não é possível seguir o aluno na base de 
+dados, o que impossibilita uma análise de dados em painel.   
+A equação dessa metodologia segue a seguinte forma: 
+ 
+Yi = α + βCi + γti + δ(Tiᵒti) + εi 
+ 
+
+                
+
+(20) 
+
+ 
+
+onde i= 1,..., N e N é o numero de alunos e Yi é a nota obtida pelo aluno i no exame; 
+t é uma variável dummy, a qual assume o valor 0 se estiver no primeiro período e 1 se a observação está 
+no segundo período de tempo; 
+C é a dummy para o grupo tratamento; 
+α, β, γ, δ são os parâmetros não conhecidos a serem estimados; 
+ε erro aleatório não observado. 
+
+Os coeficientes a serem estimados podem ser interpretados como: 
+
+α = será o intercepto comum para todas as observações; 
+β = efeito específico do grupo de tratamento (contabiliza a diferenças entre os grupos); 
+γ = tendência temporal comum aos dois grupos; 
+δ = efeito médio do tratamento (parâmetro de interesse da regressão, a qual fornecerá o impacto médio da 
+politica afirmativa); 
+
+Os  resultados  esperados  por  grupo  e  tempo  são  representados  na  tabela  1.  Essa  forma 
+
+esquematizada também ajuda a entender o modelo: 
+
+ 
+
+TABELA 1 - RESULTADOS DE INTERESSE POR GRUPO E TEMPO 
+
+  
+
+Grupo Controle 
+
+(Não Cotistas) 
+
+Grupo Tratamento 
+
+(Cotista t0, t1) 
+
+Diferença 
+
+Resultado   Resultado 
+
+  
+
+(t0) 
+
+(t1) 
+
+Diferença 
+
+α                        α + γ 
+
+γ 
+
+α + β 
+
+α + β + γ + 
+δ 
+
+γ + δ 
+
+β 
+
+β + δ 
+
+δ 
+
+Fonte: BUCKLEY, JACK & SHANG, 2003 
+ 
+
+Desse  modo,  a  diferença  antes  e  após  a  implantação  da  política  afirmativa  para  o  grupo  de 
+tratamento  é  subtraída  da  diferença  antes  e  após  a  política  para  o  grupo  de  controle.  As  diferenças 
+representam em que medida o grupo de tratamento e o de controle se alteraram, respectivamente. O ideal 
+é que o grupo de controle não sofra impacto pelo evento, somente a alteração pelo tempo, seguindo uma 
+tendência  paralela  ao  grupo  de  tratamento.  Portanto,  respeitando  a  hipótese  da  tendência  paralela 
+(GERTLER ET AL., 2011).  
+
+A  hipótese  da  tendência  paralela  implica  que  o  termo  de  erro  não  é  correlacionado  com  outras 
+variáveis na equação: {cov(εi, Ti)=0; cov(εi, ti)=0; cov(ε,Tiᵒti)=0}.  Este e mais os pressupostos que: (a) o 
+modelo  de  regressão  foi  corretamente  especificado;  (b)  os  erros  aleatórios  têm  média  zero;  permitem 
+deduzir  que  o  estimador  dif-in-dif  seja  não  viesado,  E[𝛿̂]=δ,  ou  seja,  que  estima  efetivamente  o 
+parâmetro de interesse (LECHNER, 2011). 
+
+Entretanto, não existe uma maneira de demonstrar que os resultados dos grupos seriam paralelos 
+na ausência da política. Isto é, não podemos observar o que teria acontecido com o grupo de tratamento 
+na  ausência  do  efeito  da  política,  essa  questão  é  conhecida  como  problema  do  contrafactual  não 
+observado. 
+
+ 
+
+4.2 INCLUSÃO DAS VARIÁVEIS DE CONTROLE 
+
+ 
+
+ 
+
+Para  refinar  o  efeito  da  política,  e  fortalecer  a  hipótese  de  trajetória  paralela,  devemos  incluir  o 
+efeito  de  todas  as  outras  variáveis  que  podem  causar  mudanças  na  variável  estudada,  isso  será  feito 
+inserindo variáveis de controle.  
+
+ 
+
+A tabela 2 apresenta as variáveis utilizadas nas regressões. 
+
+  
+TABELA 2 - VARIÁVEIS UTILIZADAS NO EXERCÍCIO ECONOMÉTRICO. 
+Estado civil do aluno 
+
+Se já trabalhou 
+
+Número de irmãos 
+
+Número de filhos 
+
+Qual raça se considera 
+
+Com quem mora atualmente 
+
+Faixa de renda da família 
+
+Se recebe bolsa 
+
+Grau de escolaridade do pai 
+
+Grau de escolaridade da mãe 
+
+Que tipo de escola cursou o ensino médio 
+
+Qual tipo de curso de ensino médio concluiu 
+
+Quantos membros da família moram juntos 
+
+Qual nível de conhecimento de língua inglesa 
+
+Forma de sustento do aluno 
+
+Quantos livros leu no ano 
+
+Qual nível de conhecimento de língua espanhola 
+
+Frequência que lê jornal 
+
+Frequência que utiliza a biblioteca da instituição 
+
+Quantas horas por semana dedicam aos estudos  
+
+Se tem acesso à internet 
+
+Qual a principal atividade cultural 
+
+Frequência que utiliza o computador 
+
+Como considera a situação física da instituição 
+
+Se participa de algum projeto de iniciação cientifica  
+
+Se considera o espaço condizente com o número de alunos 
+
+Como considera o acesso as salas de informática  
+Fonte: Elaboração própria  
+ 
+
+  
+
+O  questionário  socioeconômico  do  Enade  contempla  115  perguntas,  entretanto,  selecionamos 
+somente essas 27. As demais foram desconsideradas por diversos motivos, algumas se referem somente 
+aos cursos de licenciatura, outras demandam um conhecimento maior sobre as atividades da faculdade, o 
+que provavelmente prejudica as respostas dos alunos iniciantes.   
+
+Diversas  respostas  foram  consideradas  como  não  crucias  para  o  nosso  estudo,  dentre  elas,  as 
+perguntas  sobre  o  papel  da  instituição  e  a  sociedade,  contribuição  da  instituição  para  a  comunidade,  a 
+atuação ética, perspectiva profissional.  
+
+Para  o  matching  ou  pareamento  criamos  as  variáveis  dummies  para  medir  a  probabilidade  de  o 
+indivíduo  ser  participante  do  grupo  tratamento,  ou  seja,  ser  cotista.  As  variáveis  foram  utilizadas  na 
+estimação do probit, que será apresentado mais à frente. 
+
+ 
+
+TABELA 3 - DESCRIÇÃO DAS VARIÁVEIS UTILIZADAS NA REGRESSÃO DO PROBIT. 
+Variável 
+
+Descrição 
+
+baixarenda 
+
+Assume valor 1 se o aluno é baixa renda (até 3 salários) e  0 caso contrário 
+
+senegro 
+
+Assume valor 1 se o aluno é negro e 0 caso contrário 
+
+Assume valor 1 se o aluno cursou todo o ensino médio em escola pública e 0 caso contrário 
+
+sepública 
+Fonte: Elaboração própria  
+ 
+4.4 O MÉTODO DE PROPENSITY SCORE MATCHING (PSM) 
+ 
+
+Conforme  explicado,  o  problema  do  contrafactual  não  observado  gera  o  viés  de  seleção, 
+resultando em uma estimação incorreta do impacto do tratamento. Segundo Heckman et al. (1998), o viés 
+pode  ser  decomposto  em  três  componentes:  a)  ausência  de  suporte  comum,  isto  é,  os  dados  do  grupo 
+tratamento e controle podem não ter grau razoável de sobreposição; b) viés proveniente dos observáveis, 
+que é gerado por diferenças nas características observáveis entre os grupos; c) viés de seleção, quando as 
+variáveis influenciam o resultado e o recebimento do tratamento. 
+
+ Como  a  hipótese  aqui  é  a  de  seleção  por  observáveis,  tanto  por  autoseleção  (pois  o  aluno 
+participar  do  tratamento  é  realizado  de  forma  voluntária)  como  por  seleção  do  administrador  (a  IES 
+decide  os  critérios  para  o  aluno  ser  considerado  cotista),  o  objetivo  do  matching,  ou  pareamento,  será 
+
+ 
+
+ 
+encontrar  um  grupo  de  comparação  ideal  ao  grupo  de  tratamento,  minimizando  o  problema  do  viés  de 
+seleção8. (HECKMAN et al., 1998) 
+
+O  problema,  nesse  método,  é  a  definição  de  “similares”.  Existem  diversas  características  pelos 
+quais os alunos podem ser comparados, e não é fácil definir por quais; com o agravante de quanto mais 
+características consideradas mais complicado fica de realizar o pareamento (RAVALLION, 2005). 
+
+O Propensity Score Matching (PSM), técnica desenvolvida por Rosenbaum e Rubin (1983), ajuda 
+a  aumentar  o  número  de  variáveis  utilizadas  para  o  pareamento.  O  método  compara  os  tratados  com  o 
+grupo  de  controle  por  meio  da  semelhança  na  probabilidade  de  receber  o  tratamento,  esperando  que  o 
+ajuste nas diferenças entre os grupos nessas variáveis amenize o problema do viés de seleção. 
+
+As hipóteses dos autores que garantem a eliminação do viés são: 
+
+1.  Y0,  Y1  ⊥  T  |  X,  isto  é,  a  hipótese  de  independência  dos  resultados  potenciais  em  relação  ao 
+tratamento  nas  características  observáveis.  Essa  hipótese  implica  que  uma  vez  controlados  por 
+uma  série  de  características  observáveis,  dois  alunos  devem  possuir  a  mesma  probabilidade  de 
+serem cotistas.  
+
+2.  Hipótese implícita do suporte comum, 0 < Pr(T=1|X) = P(x) < 1, para cada aluno tratado, há outro 
+indivíduo corresponde com um vetor x similar. Essa hipótese implica a necessidade de, para cada 
+valor de x exista casos de indivíduos nos grupos tratamento e controle. 
+
+3.  Y0,  Y1  ⊥  T  |  p(X).  Se  o  resultado  é  independente  da  participação,  dado  X  (hipótese  1),  então  o 
+resultado  é  também  independente  da  probabilidade  de  participação,  dado  p(x).  Esta  terceira 
+hipótese implica que um grupo pareado é homogêneo no escore de probabilidade, como também 
+na distribuição de X.  
+ 
+A  estratégia  de  identificação,  sob  a  hipótese  de  presença  de  viés  seleção  em  características 
+observáveis para o tratamento, foi aplicar o propensity score matching para o pareamento dos alunos para 
+reduzir o erro da estimação do impacto. Temos a possibilidade de combinar como o estimador DD para 
+controlar o viés sob características não observáveis constantes no tempo.  
+
+Estimadas  as  probabilidades  (propensity  scores)  com  um  modelo  probit,  as  variáveis  que 
+determinaram  os  escores  foam  apresentadas  na  TABELA  3.  Ao  realizar  a  estimativa  do  impacto  pelo 
+estimador  DD,  é  possível  considerar  que  os  alunos  já  foram  pareados  pelo  PSM,  ou  seja,  a  regressão  é 
+ponderada  pelo  peso  resultante  do  pareamento.  Os  pesos  foram  alocados  de  forma  inversamente 
+proporcional à distância entre os escores de propensão dos grupos de tratamento e controle.  
+ 
+5.  AVALIAÇÃO  DO  IMPACTO  DA  IMPLANTAÇÃO  DAS  COTAS  SOBRE  A  NOTA  DA 
+PROVA ENADE 2008 
+ 
+ 
+5.1 BASE DE DADOS E PRINCIPAIS ESTATÍSTICAS DESCRITIVAS – ENADE 2008 
+ 
+
+ 
+
+Os  dados  utilizados  nesta  pesquisa  provêm  do  Exame  Nacional  de  Desempenho  de  Estudantes 
+(ENADE).  Aplicado  a  primeira  vez  em  2004,  o  exame  é  responsabilidade  do  Instituto  Nacional  de 
+Estudos  e  Pesquisas  Educacionais  Anísio  Teixeira  (INEP),  autarquia  vinculada  ao  Ministério  da 
+Educação. 
+
+Os  potenciais  participantes  do  ENADE  são  os  estudantes  do  primeiro  ano  (ingressantes)  e  do 
+último ano (concluintes) do ensino superior. O INEP define como ingressantes os que adentraram na IES 
+no  mesmo  ano  da  prova,  e  os  concluintes  aqueles  que  tiverem  um  mínimo  de  80%  da  carga  horária  do 
+curso completa. 
+     
+A justificativa para utilização dos dados do exame Enade é devido ao fato de ser a única pesquisa 
+nacional que mede os conhecimentos adquiridos numa IES, e adicionalmente, fornecendo as informações 
+ao  nível  do 
+informações  relativas  as  características 
+
+indivíduo.  O  Inep  fornece,  além  disso, 
+
+                                                           
+8 Existe a possibilidade que o uso do matching aumente o problema de viés de seleção, conforme indica Heckman et al (1998, 
+pg. 5) 
+
+ 
+
+ 
+socioeconômicas  a  partir  da  aplicação  de  um  questionário  com  perguntas  sobre  escolaridade  dos  pais, 
+renda,  frequência  dos  estudos,  cultura  e  percepção  individual  sobre  as  características  da  universidade. 
+Além disso, inclui um questionário destinado ao coordenador de cada curso, que inclui perguntas sobre a 
+qualidade  da  biblioteca,  o  plano  pedagógico  e  se  o  curso  oferece  cursos  de  nivelamento,  seminários, 
+congressos, atividades de extensão e monitoria.   
+ 
+O  exame  é  aplicado  anualmente  com  variações  das  áreas  avaliadas  a  cada  ano,  sendo  a 
+periodicidade máxima de aplicação em cada área trienal. Entretanto, dos sete anos fornecidos pelo INEP, 
+o  ano  de  2008  foi  escolhido  como  a  fonte  principal  dos  dados.  Dois  motivos  justificam  essa  escolha, 
+primeiro, a base de 2008 é a primeira que contempla a identificação do aluno como cotista, segundo, é a 
+base  de  dados  mais  ampla  dos  sete  anos  de  exame,  com  60  cursos,  contra  22  em  2009  (sendo  que  13 
+cursos já constam em 2008), e 19 em 2010 (sendo que 17 cursos constam em 2008).  
+ 
+Apesar  do  número  de  observações  do  exame  Enade  2008  ser  considerado  grande,  825.235 
+observações,  o  exame  carece  pelo  elevado  grau  de  desistência.  Dessas  mais  de  800  mil  observações, 
+513.265 não responderam ao questionário sócio econômico, fundamental para o nosso estudo; dos alunos 
+restantes, 106.602 não responderam a prova de conhecimentos de forma efetiva.  
+ 
+somente os alunos de universidades federais, estaduais e municipais, restando 74.080 observações.     
+ 
+A  prova  Enade  é  dividida  em  prova  de  conhecimentos  gerais  e  prova  de  conhecimentos 
+específicos.  Esse  trabalho  considera  somente  a  nota  obtida  nos  conhecimentos  específicos,  já  que  ela 
+corresponde  por  75%  da  prova  e  foram  aplicadas  as  mesmas  questões  para  os  alunos  iniciantes  e 
+concluintes, podendo então, serem comparadas as diferenças de conhecimento desses alunos.  
+ 
+ 
+5.2 RESULTADOS DO MODELO PROBIT: EVIDÊNCIAS INICIAIS 
+ 
+Com base na explicado no final da seção 4.5, o primeiro passo para o cálculo do propensity score 
+ 
+é estimar o modelo probit que visa mensurar a probabilidade do aluno ser integrante do grupo tratamento. 
+É de praxe que para obter resultados do PSM são necessárias várias tentativas visando uma especificação 
+que  satisfaça  a  hipótese  do  equilíbrio  (Balancing  Hypothesis)  entre  as  variáveis  incluídas  no  modelo; 
+entretanto,  esta  dificuldade  foi  reduzida,  pois  reduzimos  o  calculo  do  probit  somente  às  características 
+relacionadas com o processo de seleção do cotista.  
+
+Como o sistema de reserva de vagas se refere ao sistema público de ensino superior, selecionamos 
+
+Essa  especificação  também  se  justifica  por  outro  motivo,  quanto  maior  o  número  de  variáveis 
+incluídas, melhor será o pareamento, isto é, mais similares serão os indivíduos dos grupos de controle e 
+tratamento; entretanto, isso também acarreta um problema para o calculo da regressão - já que os grupos 
+já  mostravam  antes  do  pareamento  uma  distribuição  similar  das  notas  –  e  quando  inclui-se  mais  a 
+similaridade  pelo  pareamento,  o  problema  de  omissão  por  colinearidade  do  coeficiente  da  variável 
+desejada torna-se corriqueiro. 
+
+A tabela 4 apresenta os resultados estimados do propensity score 
+
+ 
+TABELA 4 - MODELO PROBIT 
+Variáveis 
+
+Coeficiente  Erro Padrão 
+
+z 
+
+P>|z| 
+
+Intervalo de confiança de 95% 
+
+baixarenda 
+
+0,3556 
+
+senegro 
+
+0,2195 
+
+sepública 
+
+0,4925 
+
+0,01047 
+
+0,01382 
+
+0,01284 
+
+33,85 
+
+0,000  0,334 
+
+15,88 
+
+0,000  0,1924 
+
+38,36 
+
+0,000  0,4674 
+
+0,375 
+
+0,2466 
+
+0,5177 
+
+_cons 
+
+-1,4561 
+
+0,01135 
+
+-128,2  0,000 
+
+-1,4783 
+
+-1,4338 
+
+Fonte: Elaboração própria com base nos dados Enade 
+ 
+
+Todas as variáveis de controle foram significantes a 1%, e tiveram sinais conforme esperado. Se o 
+aluno for de baixa renda (até três salários mínimos de renda mensal familiar), ser negro e se cursou todo o 
+ensino médio em escola pública, maior será probabilidade de o aluno ingressar na IES como aluno cotista. 
+
+ 
+
+ 
+ 
+Na  seção  seguinte  serão  apresentados  e  analisados  os  impactos  das  cotas  sob  a  nota  da  prova 
+Enade,  onde  um  dos  estimadores  é  a  conjugação  do  método  do  escore  de  propensão  com  o  método 
+diferença em diferenças.  
+ 
+5.3 ANÁLISE DO IMPACTO DAS COTAS SOBRE A NOTA NA PROVA ENADE 2008 
+
+ 
+O  resultados  das  estimativas  de  impacto  sobre  o  desempenho  dos  estudantes  de  IES  públicas  na 
+nota  do  componente  específico  da  Prova  Enade  são  apresentados  detalhadamente  no  âpendice  desse 
+trabalho. Além disso, foram inseridas outras características relacionadas com o nível socioeconômico do 
+aluno, sobre presença na biblioteca, uso da internet e questões culturais. 
+
+Para  cada  curso  foi  demonstrado  o  resultado  baseado  em  tres  estimadores:  Diferença-em-
+Diferenças  (DD),  Diferenças-em-diferenças  com  a  inclusão  das  covariáveis  (DDC)  e  Diferença-em-
+diferenças após matching com a inclusão das covariáveis (DDMC). 
+Como  explicado  na  seção  4,  as  técnicas  propostas  (estimador  DD  e  os  demais)  podem  ser 
+ 
+utilizados para captar o impacto da implantação das cotas na nota média do Enade, interpretada como um 
+choque  exógeno.  Sabendo  disso  e  observando  os  resultados,  percebemos  que  estes  tiveram  sinais 
+contrários,  sendo  25  positivos  e  25  negativos  para  o  estimador  DD;  para  o  estimador  DDC  foram  23 
+positivos  e  20  negativos.  Curiosamente,  os  resultados  tiveram  uma  distribuição  similar  de  sinais, 
+impedindo  uma  conclusão  satisfatória  quando  consideramos  o  total  da  amostra,  e  justificando  a  análise 
+separada por cursos.  
+ 
+Quando  consideramos  somente  os  resultados  estatisticamente  significantes,    os  resultados 
+negativos se sobressaíram, pois pelo estimador DD ficaram cinco negativos e dois positivos, para o DDC 
+quatro negativos e um positivo. 
+
+Para melhor mensurar o impacto incluímos a tabela 5, que fornece o impacto (DD, DDC, DDMC), 
+a  nota  média,  desvio  padrão  e  número  de  observações  somente  dos  cursos  que  obtiveram  resultados 
+significantes.  
+
+ 
+
+TABELA 5 – CURSO, IMPACTO, NOTA MÉDIA, DESVIO PADRÃO E NÚMERO DE OBSERVAÇÕES 
+
+Curso 
+
+DD 
+
+DDC 
+
+DDMC 
+
+Medicina veterinária 
+
+13,04** 
+
+5,45 
+
+3,57 
+
+Matemática 
+
+Letras 
+
+Física 
+
+Agronomia 
+
+Pedagogia 
+
+Historia 
+
+Geografia 
+
+-2,21 
+
+-2,48 
+
+-3,21*** 
+
+-2,73* 
+
+-1,41*** 
+
+-1,2 
+
+-6,42* 
+
+-6,54* 
+
+-6,19* 
+
+9,46** 
+
+8,56*** 
+
+9,15** 
+
+Nota 
+Média 
+
+26,83 
+
+Desvio 
+Padrão 
+
+23,65 
+
+36,34 
+
+18,57 
+
+34,98 
+
+37,08 
+
+18,11 
+
+17,52 
+
+37,62 
+
+15,7 
+
+N 
+
+506 
+
+3606 
+
+15201 
+
+1231 
+
+398 
+
+-2,04* 
+
+-1,99* 
+
+-2,00* 
+
+36,41 
+
+17,73 
+
+13482 
+
+-5,03* 
+
+-4,06** 
+
+-4,18** 
+
+-2,66** 
+
+-2,13 
+
+-1,91 
+
+33,58 
+
+15,86 
+
+36,27 
+
+17,14 
+
+2226 
+
+4015 
+
+40 
+
+57,05 
+
+16,61 
+
+35,71 
+
+61,65 
+
+51,47** 
+
+Tecn. Em gestão de produção. 
+Nota: *significante a 2%, ** significante a 5%, *** significante a 10%. 
+Fonte: Elaboração própria com base nos dados Enade 2008. 
+ 
+ 
+O impacto sobre o curso de Letras foi negativo e significante para o estimador DD e DDC, sendo 
+que  o  impacto  pelo  estimador  DD  foi  de  -2,73,  comparando  com  a  nota  média  do  curso  o  valor 
+corresponde  a  7,80.  Quando  inserimos  as  variáveis  de  controle  (Tabela  2)  o  valor  cai  para  -1,41,  que 
+corresponde  a  4,03%  da  nota  média.  Pelo  escore  padronizado  o  valor  -2,73  (DD)  corresponde  a  uma 
+perda de 5,96% para um aluno que esteja na mediana da distribuição, e o valor -1,41 (DDC) uma perda de 
+3,18%. Entretanto, quando observa-se a estimativa por pareamento, ou seja, quando comparado com seus 
+pares, o valor continua negativo mas perde significância estatística, nesse caso pode-se considerar que nas 
+
+ 
+
+ 
+estimativas  anteriores  variáveis  observáveis  não  incluídas  na  regressão  influenciavam  no  resultado 
+negativo 
+ 
+O impacto  sobre o curso de Física  foi negativo e significante nas três  estimativas. Os valores se 
+alteraram  de maneira diminuta, ficando respectivamente em  -6,42, -6,54 e  -6,19.  Se compararmos esse 
+efeito  com  a  nota  média  do  curso,  o  impacto  corresponde  por  volta  de  17%.  Pelo  escore  padronizado 
+esses  valores  correspondem  por  volta  de  uma  perda  de  14%  para  o  aluno  que  esteja  na  mediana  da 
+distribuição, magnitude relativamente alta para o curso de Física. 
+ 
+O  curso  de  Pedagogia  também  apresentou  estimativas  negativas  e  significantes  nos  três 
+estimativas, se alterando muito pouco entre elas, respectivamente foram -2,04, -1,99 e -2,00. Comparando 
+esses  efeitos  com  a  nota  média  do  curso,  o  impacto  corresponde  por  volta  de  5,40%.  Pelo  escore 
+padronizado  esses  valores  correspondem  por  volta  de  uma  perda  de  4,30%  para  o  aluno  que  esteja  na 
+mediana da distribuição.  
+ 
+No  curso  de  História  as  três  estimativas  foram  negativas  e  significantes,  também  se  alterando 
+muito  pouco entre  elas,  respectivamente foram,  -5,03,  -4,06 e    -4,18. Comparado com  a nota média, os 
+impactos  correspondem  respectivamente  por,  14,97%,  12,09%  e  12,44%.  Representando  uma  perda  de 
+12,55%, 9,87% e 10,25%, respectivamente, para o aluno que esteja na mediana da distribuição.  
+ 
+Para  o  curso  de  Geografia,  somente  a  estimativa  pelo  DD  mostrou  resultado  significante,  de  -
+2,66% ou 7,33% da nota média.  O impacto representa uma perda de 5,9% para um aluno que esteja na 
+mediana.  Entretanto  quando  incluímos  as  observáveis  e  o  pareamento  os  impactos  não  mostraram 
+resultados significantes. 
+
+Dentre os resultados positivos, o impacto no curso de medicina veterinária teve um valor positivo 
+e significante para o estimador DD, sendo de 13,04. Comparado com a nota média esse valor corresponde 
+a 48,60%, valor bem acima do esperado, e quando consideramos o desvio-padrão, o impacto representa 
+um  ganho  de  49,9%  para  o  aluno  que  esteja  na  mediana  da  distribuição.  Uma  interpretação  direta  do 
+resultado nos dirá, que o aluno cotista esta entre os melhores do curso.  
+
+À primeira vista, este valor positivo estimado pelo DD contradiz a hipótese levantada por Sowell 
+(2004) que prediz que a entrada de alunos menos preparados por uma política afirmativa tem um impacto 
+negativo.  Por  outro  lado,  apesar  dos  resultados  de  medicina  veterinária  para  o  estimador  DDC  ser 
+positivo, não é significativo, mostrando que quando incluímos as variáveis observáveis o resultado não se 
+repete.  
+ 
+O  curso  de  Tecnologia  em  Gestão  da  Produção  tem  a  situação  similar  ao  curso  de  medicina 
+veterinário, obtendo o maior valor de impacto entre os cursos analisados. O impacto obteve significância 
+somente para o estimador DD, e não para os demais. O valor foi de 51,47, que corresponde por 144% da 
+nota média. 
+ 
+Acreditamos que a justificativa para resultados positivos, significantes e altos comparativamente a 
+nota média, tanto para o curso de medicina veterinária como  tecnologia em  gestão da produção, seria  a 
+distribuição das notas entre os alunos nos exames.  
+ 
+concentração de notas em certo intervalo de notas. 
+ 
+TABELA 6 - DISTRIBUIÇÃO DAS NOTAS POR INTERVALO E FREQUÊNCIA RELATIVA NOS INTERVALOS, 
+CURSO DE MEDICINA VETERINÁRIA. 
+
+Podemos  visualizar  pela  tabela  6  que  para  os  dois  cursos,  os  alunos  cotistas  tiveram  uma 
+
+Nota em intervalo 
+
+0-9,99 
+10-19,99 
+20-29,99 
+30-39,99 
+40-49,99 
+50-59,99 
+60-69,99 
+70-70,99 
+
+Grupo 
+
+D=0 
+Controle 
+
+117 
+27 
+40 
+72 
+69 
+41 
+23 
+15 
+
+Freq 
+Relativa  por 
+intervalo(%) 
+64,64 
+90 
+85,11 
+92,31 
+90,79 
+83,67 
+88,46 
+93,75 
+
+D=1 
+Tratamento 
+
+64 
+3 
+7 
+6 
+7 
+8 
+3 
+1 
+
+Total 
+
+Freq 
+Relativa  ao 
+intervalo(%) 
+35,36 
+10 
+14,89 
+7,69 
+9,21 
+16,33 
+11,54 
+6,25 
+
+(n) 
+
+181 
+30 
+47 
+78 
+76 
+49 
+26 
+16 
+
+ 
+
+0 
+80- 
+99 
+Total 
+Fonte: Elaboração própria com base nos dados do Enade 
+ 
+
+100 
+80,43 
+
+3 
+407 
+
+0 
+19,57 
+
+3 
+506 
+
+ 
+
+Observando pela tabela 6, a frequência dos cotistas dentro do intervalo 30-39,99 é 7,69% e 9,21% 
+no  intervalo  de  40-49,99,  subindo  para  16,33%  no  intervalo  50-59,99  e  11,54%  no  intervalo  60-69,99. 
+Como  a  distribuição  dos  cotistas  aumentou  nos  intervalos  das  maiores  notas,  isso  provavelmente 
+acarretou o valor positivo do impacto.  
+ 
+TABELA 7 - DISTRIBUIÇÃO DAS NOTAS POR INTERVALO E FREQUÊNCIA RELATIVA NOS INTERVALOS, 
+CURSO DE TECNOLOGIA EM GESTÃO DA PRODUÇÃO 
+
+Grupo 
+
+Total 
+
+Nota em intervalo 
+
+D=0 
+Controle 
+
+Freq  Relativa  ao 
+intervalo(%) 
+
+D=1 
+Tratamento 
+
+Freq  Relativa  ao 
+intervalo(%) 
+
+(n) 
+
+0-9,99 
+10-19,99 
+20-29,99 
+30-39,99 
+40-49,99 
+50-59,99 
+60-69,99 
+70-  
+Total 
+Fonte: Elaboração própria com base nos dados Enade 2008 
+
+100 
+100 
+100 
+81,82 
+50 
+80 
+100 
+0 
+82,5 
+
+3 
+4 
+8 
+9 
+3 
+4 
+2 
+0 
+33 
+
+0 
+0 
+0 
+2 
+3 
+1 
+0 
+1 
+7 
+
+0 
+0 
+0 
+18,18 
+50 
+20 
+0 
+100 
+17,5 
+
+3 
+4 
+8 
+11 
+6 
+5 
+2 
+1 
+40 
+
+ 
+
+No  caso  do  curso  de  tecnologia  em  gestão  da  produção,  podemos  ver  que  as  notas  dos  cotistas 
+distribuíram-se de forma assimétrica, os cotistas ficaram concentrados nas notas acima de 30. Outro fato 
+que  justifica  o  alto  valor  do  impacto  é  o  número  pequeno  de  observações,  logo  o  peso  de  cada  nota  é 
+maior na regressão.   
+Por  fim,  o  único  curso  de  apresentou  valores  positivos  e  significantes  nas  três  estimativas  foi  o 
+ 
+curso  de  agronomia,  os  resultados  foram  9,46(DD),  8,56(DDC)  e  9,15  (DDMC),  representando, 
+respectivamente,  25,5%,  22,75%  e  24,32%  da  nota  média.  Nesse  caso,  os  resultados  foram  altamente  a 
+favor do grupo tratamento.   
+ 
+contrapõem os resultados anteriores.  
+ 
+TABELA 8 - DISTRIBUIÇÃO DAS NOTAS POR INTERVALO E FREQUÊNCIA RELATIVA NOS INTERVALOS, 
+CURSO DE AGRONOMIA. 
+
+Este  último  resultado  requer  uma  avaliação  mais  atenta  sobre  a  adoção  da  política,  pois 
+
+D=1 
+Tratamento 
+
+Nota em intervalo 
+
+Grupo 
+
+D=0 
+Controle 
+
+0-9,99 
+10-19,99 
+20-29,99 
+30-39,99 
+40-49,99 
+50-59,99 
+60-69,99 
+70-70,99 
+Total 
+Fonte: Elaboração própria com base nos dados Enade 2008. 
+
+12 
+33 
+77 
+79 
+74 
+51 
+20 
+10 
+356 
+
+1 
+5 
+8 
+10 
+9 
+6 
+3 
+0 
+42 
+
+Freq. 
+Relativa  ao 
+intervalo(%) 
+92,31 
+86,84 
+90,59 
+88,76 
+89,16 
+89,47 
+86,96 
+100 
+89,45 
+
+Total 
+
+Freq. 
+Relativa  ao 
+intervalo(%) 
+7,69 
+13,16 
+9,41 
+11,24 
+10,84 
+10,53 
+13,04 
+0 
+10,55 
+
+(n) 
+
+13 
+38 
+85 
+89 
+83 
+57 
+23 
+10 
+398 
+
+ 
+A distribuição dos resultados mostrada na tabela acima parece não explicar o motivo do resultado 
+positivo  e  significante  nas  três  estimativas,  pois  mostra  uma  distribuição  mais  constante  entre  os 
+intervalos das notas.    
+
+ 
+
+Na  tabela  9  é  possível  observar  as  notas  médias  dos  quatro  cursos  com  resultados  significativos 
+nas  três  estimativas.  Cada  curso  esta  dividido  em  quatro  grupos:  Iniciante  cotista  e  não  cotista,  e 
+concluinte cotista e não cotista. Abaixo da nota é fornecido o desvio padrão. O objetivo é mostrar a média 
+de cada grupo nos dois tempos. 
+
+ 
+
+TABELA 9 – NOTA MÉDIA E DESVIO PADRÃO DOS CURSOS DIVIDIDA ENTRE GRUPOS TRATAMENTO E 
+CONTROLE. 
+
+ 
+
+  
+
+Agronomia 
+
+Física 
+
+Pedagogia 
+
+História 
+
+Grupo 
+
+D=0 Controle  D=1 Tratamento 
+
+T=0 Iniciante 
+
+33,44 (14,19) 
+
+27,04 (11,74) 
+
+T=1 Concluinte 
+
+43,52 (16,03) 
+
+46,58 (11,80) 
+
+T=0 Iniciante 
+
+31,98 (15,15) 
+
+36,27 (16,15) 
+
+T=1 Concluinte 
+
+43,05 (14,89) 
+
+40,91 (19,09) 
+
+T=0 Iniciante 
+
+31,98 (16,72) 
+
+34,20 (16,68) 
+
+T=1 Concluinte 
+
+39,56 (18,22) 
+
+39,75 (17,06) 
+
+T=0 Iniciante 
+
+29,34 (14,06) 
+
+29,00 (13,18) 
+
+T=1 Concluinte 
+
+38,72 (16,47) 
+
+33,62 (16,05) 
+
+ 
+o
+p
+p
+m
+e
+T
+ 
+o
+p
+p
+m
+e
+T
+ 
+o
+p
+p
+m
+e
+T
+ 
+o
+p
+p
+m
+e
+T
+
+Fonte: Elaboração própria com base nos dados Enade 2008 
+ 
+
+Nota-se que o curso de  agronomia se diferenciou, pois  dentre esses cursos foi no qual  os alunos 
+cotistas  tiveram  a  maior  diferença  entre  os  tempos.  A  diferença  de  um  aluno  cotista  concluinte  de  um 
+cotista  iniciante  foi,  na  média,  de  72%.  Comparativamente  nenhum  dos  outros  cursos  na  TABELA  9 
+apresentou a mesma variação de desempenho do grupo cotista. 
+
+Como  conjugamos  o  método  de  diferenças  em  diferenças  ao  pareamento,  esperamos  que  as 
+características observáveis e não observáveis constantes no tempo não afetem os resultados dos impactos, 
+resta explicar os resultados pelas características não observáveis que mudaram com o tempo.  
+
+ O referencial teórico provavelmente fornece algumas dessas características não observáveis. Uma 
+delas,  como  explicado  no  modelo  de  Su  (2005),  é  o  grau  de  dificuldade  do  processo  seletivo  como 
+determinante do esforço. Quanto  menor o grau de seleção menor é o grau de esforço. O menor grau de 
+esforço  não  seria  suficiente  para  compensar  a  diferença  de  background  educacional  entre  o  grupo 
+tratamento e controle.  
+
+Podemos  levantar  a  seguinte  hipótese,  geralmente  os  cursos  de  Física,  Pedagogia  e  História 
+apresentam uma tendência de realizarem processos seletivos de menor concorrência, que além de permitir 
+que alunos com uma formação escolar mais fraca adentrassem no curso, permitiram a entrada de alunos 
+com um grau menor de esforço.  
+
+Supomos  também  que  outros  fatores  que  influenciam  o  esforço  foram  os  determinantes  desse 
+resultado.  O  modelo  de  Bishop  (2006)  inclui  o  papel  dos  salários  futuros  e  qualidade  dos  pares  como 
+determinantes do esforço.  
+
+Supondo  que  o  mercado  de  trabalho    de  Agronomia  é  melhor  que  o  de  Física,  Pedagogia  e 
+História,  isso  influenciará  positivamente  o  grau  de  esforço  dos  alunos  cotistas.  Ainda  se  os  alunos  não 
+cotistas  tiverem  uma  boa  formação,  de  acordo  com  o  modelo  de  Bishop  (2006),  isso  influenciará 
+positivamente o esforço dos alunos cotistas.  
+
+No  caso  de  Agronomia,  parece  que  os  incentivos  para  o  esforço  compensaram  uma  formação 
+
+escolar pior dos alunos cotistas, a ponto do impacto mostrar um resultado positivo.    
+
+ 
+
+6. CONCLUSÃO  
+ 
+
+Primeiramente  foi  utilizada  a  metodologia  de  diferenças  em  diferenças,  conjugada  ainda  com  o 
+método de pareamento (propensity score matching), e mostramos que a implantação das cotas impactou 
+de forma negativa e significante na nota Enade 2008 nos cursos de Pedagogia, História e Física.  
+
+ 
+
+ 
+
+ 
+
+Por fim, esperamos que esse trabalho incremente as análises empíricas das políticas sociais sobre a 
+
+Os modelos consideram  que fatores como esforço, grau de seleção dos alunos, salários futuros e 
+
+De  certa  forma  esses  resultados  confirmam  as  críticas  de  Sowell  (2004)  e  D’Souza(1991),  que 
+afirmam  que  a  entrada  de  piores  alunos  acarretaria  uma  perda  de  capital  humano  na  universidade. 
+Acreditamos  que  além  de  um  background  educacional  pior,  o  modelo  de  Su  (2005)  e  Bishop  (2006) 
+ajudam a explicar os resultados.  
+ 
+qualidade dos colegas explicam o acumulo de capital humano.  
+ 
+Diferentemente  dos  casos  anteriores,  no  curso  de  Agronomia  a  implantação  das  cotas  impactou 
+positivamente  e  de  forma  significante  nas  três  estimativas.  Parece  que  na  média  os  estudantes  cotistas 
+mostraram uma melhor evolução nas notas comparativamente ao grupo controle. 
+ 
+Partindo do pressuposto que existia uma diferença dos alunos cotistas e não cotistas no início da 
+faculdade,  o  esforço  –  variável  dependente  do  grau  de  seleção,  salários  futuros  e  qualidade  dos  pares  – 
+dos alunos cotistas  durante a graduação foi suficiente para compensar o  background educacional pior e 
+ainda impactar positivamente na nota. 
+  
+De  forma  geral,  podemos  afirmar  que  o  trabalho  foi  prejudicado  por  alguns  fatores. 
+Primeiramente, pela ausência de mecanismos de enforcement na prova Enade, problema que deveria ser 
+melhorado pelo governo, pois o nível de desistência da prova é elevado, sendo que em diversos cursos o 
+numero  de  observações  era  baixíssima  (Apêndice  1).  Outro  problema  foi  a  burocracia  do  INEP  no 
+fornecimento  de  algumas  bases  de  dados,  o  que  impediu  observações  mais  detalhadas  e  com  maior 
+número de observações. 
+Entretanto,  mesmo  diante  das  limitações  apontadas,  este  trabalho  apresenta-se  como  uma 
+ 
+contribuição  acerca  do  impacto  das  cotas  no  sistema  de  ensino  superior,  indo  além  das  análises  de 
+somente um curso ou uma universidade.  
+ 
+educação. 
+ 
+7. REFERÊNCIAS BIBLIOGRÁFICAS 
+  
+ACEMOGLU,  D.;  ANGRIST,  J.  How  Large  are  Human-Capital  Externalities?  Evidence  from 
+Compulsory-Schooling Laws. Nber Macroeconomics, Massachusetts, v. 15, n. , p.9-74, jan, 2001. 
+ 
+BERTRAND,  M.;  DUFLO,  E.;  MULLAINATHAN,  S.;  (2002).  How  much  should  we  trust 
+em: 
+paper 
+differences-in-differences 
+<http://www.nber.org/papers/w8841>, acesso em: Acesso 30 set 2012   
+ 
+BERTRAND, M.; HANNA, R.; MULLAINATHAN, S. Affirmative Action in Education: Evidence From 
+Engineering College Admissions in India. NBER Working Paper. No. 13926 April, 2008.  
+ 
+BISHOP,  John.  Drinking  from  the  Fountain  of  Knowledge:  Student  Incentive  to  Study  and  Learn: 
+Externalities,  Information  Problems  and  Peer  Pressure.  Handbook  Of  The  Economics  Of  Education, 
+Cornell University, v. 2,  p.909-944, 2006. 
+ 
+BITTAR,  M.;  ALMEIDA,  C.  E.  M.  De.  Mitos  E  Controvérsias  Sobre  A  Política  De  Cotas  Para 
+Negros Na Educação Superior. Educar, Curitiba, n.28, p.141-159, Editora UFPR, 2006. 
+ 
+BOWEN, W. G.; BOK, D. The Shape of the River. Princeton, NJ: Princeton University Press, 1998., 
+ 
+BUCKLEY,  J.;  SHANG,  Y.  Estimating  policy  and  program  effects  with  observational  data:  the 
+“differences-in-differences”  estimator.  Practical  Assessment,  Research  &  Evaluation,  8(24).  2003. 
+Disponível em: http://PAREonline.net/getvn.asp?v=8&n=24, Acesso 8 set 2012  
+ 
+CARNEVALE, A. P.; STROHL, J. How Increasing College Acess Is Increasing Inequality, And What To 
+Do About It. Cap. 3. Rewarding Strivers. 2010. 
+ 
+D’SOUZA, D. Illiberal Education. New York: Free Press, 1991. 
+ 
+
+estimates?  Nber  working 
+
+8841.  Disponível 
+
+nº 
+
+ 
+
+2008. Disponível 
+
+em:  <http://portal.inep.gov.br/basica-levantamentos-
+
+ 
+DA COSTA, L. C. C. ; PAEZ, M. S. Análise Bayesiana do Sistema de Cotas da UFBA. In: 19 Simpósio 
+Brasileiro  de  Probabilidade  e  Estatística,  2010,  São  Pedro.  Anais  do  19  Simpósio  Brasileiro  de 
+Probabilidade e Estatística, 2010. 
+ 
+GERTLER, P. J. et al. Impact Evaluation in Practice. Washington Dc: The World Bank, 2011.  266 p. 
+Disponível em: <http://www.worldbank.org/pdt>. Acesso em: 01 nov. 2012. 
+ 
+HECKMAN, J. J.; ICHIMURA, H.; TODD, P. Matching as an econometric evaluation estimator. Review 
+of Economic Studies, v.64, p.605-654, 1997. 
+ 
+HECKMAN, J.; ICHIMURA, H.; SMITH, J.; TODD, P. Characterizing selection bias using experimental 
+data, Econometrica, 66(5), 1017-1098, 1998. 
+ 
+HOLZER,  H.;  NEUMARK,  D.  Assessing  Affirmative  Action.  Journal  of  Economic  Literature,  n.38: 
+483-568, 2000 
+ 
+IMBENS,  G.  M.;  WOOLDRIDGE,  J.  M..  Recent  Developments  in  the  Econometrics  of  Program 
+Evaluation. Nber:  Working  Paper,  Cambridge,  v.  47,  n.  14251,  p.5-86,  ago.  2007.  Disponível  em: 
+<http://www.nber.org/papers/w14251.pdf?new_window=1>. Acesso em: 05 dez. 2012. 
+ 
+INEP. Base  de  Dados 
+microdados>. Acesso em: 01 fev. 2009. 
+ 
+JENCKS,  C.;  PHILLIPS,  M.. The  black-White  test  score  gap: an  introduction.  Washington  Dc: 
+R.r.donnelly, 530 p. 1998. 
+ 
+LANGE,  F.;  TOPEL,  R.  “The  Social  Value  of  Education  and  Human  Capital,”  In:  Hanushek,  Eric  e 
+Welch,  Finis  (eds).  Handbook  of  the  Economics  of  Education,  North-Holland,  volume  1:  459-509, 
+2006. 
+ 
+LECHNER,  M.  The  estimation  of  Causal  Effects  by  Difference-in-Difference  Methods.  Foundations 
+-  224.  2011.  Disponível  em: 
+and  Trends 
+http://ideas.repec.org/p/usg/dp2010/2010-28.html 
+ 
+LORDÊLO,  J.  A.  C.  Perfil,  Desempenho  Escolar,  Exclusão  e  Inclusão  no  Curso  de  Administração  Da 
+UFBA: locus para a ação afirmativa?. Diálogos Possíveis (FSBA), Salvador, v. 2, p. 199-217, 2004. 
+ 
+MAIA,  R.  P.;  PINHEIRO,  H.  P.;  PINHEIRO,  A.  HETEROGENEIDADE  DO  DESEMPENHO  DE 
+ALUNOS DA UNICAMP, DO INGRESSO À CONCLUSÃO. Cadernos de Pesquisa, Campinas, v. 39, 
+n.  137,  p.645-660,  maio  2009.  Disponível  em:  <http://www.scielo.br/pdf/cp/v39n137/v39n137a15.pdf>. 
+Acesso em: 05 jan. 2013. 
+ 
+MOEHLECKE, S. Ação Afirmativa: História E Debates No Brasil. USP, Cadernos de Pesquisa, n.117, 
+p.197-217, novembro, 2002 
+ 
+RAVALLION,  M.  Evaluating  Anti-Poverty  Programs.  In:  EVENSON,  Robert  E.;  SCHULTZ,  T.  Paul. 
+Handbook  of  Development  Economics.  Amsterdam:  World  Bank,  p.  2-79.  2005.  Disponível  em: 
+<http://siteresources.worldbank.org/INTISPMA/Resources/383704-
+1130267506458/Evaluating_Antipoverty_Programs.pdf>. Acesso em: 28 nov. 2012. 
+ 
+ROSENBAUM, P.R.; RUBIN, D. B. The Central Role of the Propensity Score in Observational Studies 
+for 
+Disponível 
+em:http://faculty.smu.edu/Millimet/classes/eco7377/papers/rosenbaum%20rubin%2083a.pdf, acesso em: 
+  
+SOWELL,  T.  Affirmative  Action  Around  the  World:  An  Empirical  Study.  Yale  University  Press. 
+New Haven & London, 2004. 
+ 
+
+in  Econometrics.  Vol.4,  No.3 
+
+(2011)  165 
+
+Biometrika, 
+
+Effects. 
+
+Causal 
+
+41-55, 
+
+1983. 
+
+v.70, 
+
+n.1, 
+
+p. 
+
+ 
+SU,  X. Education  Hierarchy,  Within-Group  Competition  and  Affirmative  Action. Working  Paper. 
+2005. Disponível em: <http://old.cba.ua.edu/~xsu/Edth3.pdf>. Acesso em: 01 fev. 2013. 
+ 
+ 
+
+ 
+
+APÊNDICES 
+
+APÊNDICE 1. RESULTADOS DAS ESTIMATIVAS DE IMPACTO DAS COTAS NO 
+DESEMPENHO DA PROVA ENADE. 
+
+Nota: *significante a 2%, ** significante a 5%, *** significante a 10%. Valores não fornecidos é porque não tinham número de 
+observações suficientes. 
+Fonte: Elaboração própria  
+
+ 
+
+CursoDDDDCDDMCCursoDDDDCDDMCAdministração0,430,28-0,24Computação0,890,16-1,11Direito7,194,555,06Musica2,131,73,74Medicina veterinária13,04**5,453,57Zootecnia-4,45-4,21-8,49Odontologia1,23-2,41-2,1Terapia ocupacional---Matemática-2,21-2,48-3,21***Ciências sociais0,71,651,01Comunicação social-13,89-17,53-15,11Biomedicina---Letras-2,73*-1,41***-1,2Engenharia (grupo i)2,232,722,03Medicina-17,05--Engenharia (grupo ii)-2,18-1,47-1,29Ciências econômicas6,344,112,74Engenharia (grupo iii)1,71,092,27Física-6,42*-6,54*-6,19*Engenharia (grupo iv)-5,9-2,8-0,65Química2,121,81,99Engenharia (grupo v)14,14--Biologia -0,47-0,47-0,34Engenharia (grupo vi)0,681,21-1,64Agronomia9,46**8,56***9,15**Engenharia (grupo vii 0,390,54-0,54Psicologia-1,170,19-2,14Engenharia (grupo viii)1,962,161,37Farmácia-4,88-4,5-1,76Arquivologia---Pedagogia-2,04*-1,99*-2,00*Biblioteconomia-3,84--Arquitetura e urbanismo-7,26-6,63-4,72Secretariado executivo---Ciências contábeis10,449,678,35Tecn. Em radiologia---Enfermagem0,811,32,67Tecn. Em agroindústria ---Historia-5,03*-4,06**-4,18**Tecn. Em alimentos3,725,865,93Design-14,95--Tecn. Em analise e desenvolvimento5,063,884,92Fonoaudiologia---Tecn. Em automação industrial7,717,28,28Nutrição4,27,3815,74Tecn. Em construção de edifici-6,22-10,56-9,51Turismo-19,5--Tecn. Em fabricação mecânica-5,74-3,51-3,3Geografia-2,66**-2,13-1,91Tecn. Em gestão de produção.51,47**57,0561,65Filosofia-0,8-57,1251,37Tecn. Em manutenção industrial---Educação física-2,29-1,45-2,48Tecn. Em processos químicos ---Fisioterapia27,43--Tecn. Em redes de computadores-2,06-1,38-1,47Serviço social-1,14-0,7-0,36Tecn. Em saneamento ambiental3,833,813,37Teatro-14,07--

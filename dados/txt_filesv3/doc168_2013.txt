@@ -1,0 +1,2425 @@
+1 
+
+MODELO DE VOLATILIDADE ESTOCÁSTICA COM SALTOS  
+
+APLICADO A COMMODITIES AGRÍCOLAS 
+
+ 
+
+Roberto Andreotti Bodra (EESP/FGV) 
+
+Afonso de Campos Pinto (EESP/FGV) 
+
+Resumo:  Mensalmente  são  publicados  relatórios  pelo  Departamento  de  Agricultura  dos 
+Estados  Unidos  (USDA)  onde  são  divulgados  dados  de  condições  das  safras,  oferta  e 
+demanda globais, nível dos estoques, que servem como referência para todos os participantes 
+do  mercado  de  commodities  agrícolas.  Esse  mercado  apresenta  uma  volatilidade  acentuada 
+no  período  de  divulgação  dos  relatórios.  Um modelo de  volatilidade estocástica  com  saltos  é 
+utilizado para a dinâmica de preços de milho e de soja. O modelo escolhido foi o de Oztukel e 
+Wilmott  (1998),  que  é  um  modelo  de  volatilidade  estocástica  empírica,  incrementado  com 
+saltos  determinísticos.  Empiricamente  foi  demonstrado  que  um  modelo  de  volatilidade 
+estocástica  pode  ser  bem  ajustado  ao  mercado  de  commodities,  e  o  processo  de  jump-
+diffusion pode representar bem os  saltos que o mercado apresenta durante a divulgação dos 
+relatórios.  As  opções  de  commodities  agrícolas  que  são  negociadas  em  bolsa  são  do  tipo 
+americanas, então alguns métodos  disponíveis poderiam ser utilizados para precificar opções 
+seguindo  a  dinâmica do  modelo  proposto. Dado  que  o modelo  escolhido  é  um modelo  multi-
+fatores, então o método apropriado para a precificação é o proposto por Longstaff e Schwartz 
+(2001) chamado de Monte Carlo por mínimos quadrados (LSM). As opções precificadas pelo 
+modelo são utilizadas em uma estratégia de hedge de uma posição física de milho e de soja, e 
+a  eficiência  dessa  estratégia  é  comparada  com  estratégias  utilizando-se  instrumentos 
+disponíveis no mercado. 
+
+Palavras-chave: Produtos agrícolas, Processo estocástico, Economia agrícola, Bolsa de 
+mercadorias, Mercados de opções 
+
+Abstract: The United States Department of Agriculture publishes every month reports with data 
+on crop conditions, global supply and demand and inventory levels which serve as a reference 
+for  all  participants  in  the  agricultural  commodities  market.  This  market  has  a  sharp  volatility 
+during  the  release  of  these  reports.  A  stochastic  volatility  model  with  jumps  is  used  to  the 
+dynamics of prices of corn and soybean. There is not an ideal model for this purpose, each one 
+presenting  its  advantages  and  disadvantages.  The  chosen  model  was  the  one  from  Oztukel 
+and  Wilmott  (1998)  which  is  an  empirical  stochastic  volatility  model,  incremented  with 
+deterministic  jumps.  It  has  been  show  empirically  that  commodities  market  can  be  well  fitted 
+under  stochastic  volatility  models  and  the  jump-diffusion  process  can  properly  represent  the 
+jumps  that  the  market  faces  during  the  release  of  the  reports.  As  the  type  of  agricultural 
+commodities  options  that  are  traded  in  the  exchange  are  American,  then  some  available 
+methods  could  be  used  to  price  options  under  the  proposed  model  dynamics.  Given  that  the 
+chosen model is multifactor, then the appropriate method for it is the one proposed by Longstaff 
+and Schwartz (2001) called least squares Monte Carlo (LSM). Options priced by the model are 
+then used in a strategy to hedge a physical position of corn and soybean, and the efficiency of 
+this strategy is compared against strategies with instruments available in the market. 
+ 
+Keywords:  agricultural  products,  stochastic  processes,  agribusiness,  mercantile  exchange, 
+options markets 
+ 
+JEL: C02, C63 
+
+Área Anpec: Área 8 - Microeconomia, Métodos Quantitativos e Finanças 
+ 
+ 
+
+2 
+
+1. 
+
+Introdução 
+
+ 
+A  coleta,  análise  e  publicação  de  relatórios  sobre  informações  do  mercado  de 
+commodities agrícolas pelo Departamento de Agricultura dos Estados Unidos (USDA na sigla 
+em  inglês)  é  feita  há  150  anos  e  tem  um  papel  fundamental  para  esse  mercado.  Dados 
+precisos sobre a situação e a perspectiva para as commodities agrícolas melhoram a eficiência 
+da cadeia de produção e comercialização, ajudando todos os participantes do mercado como 
+agricultores,  agroindústrias  e  governos,  a  tomarem  decisões  mais  informadas.  Os  relatórios, 
+que  disponibilizam  dados  sobre  as  condições  das  safras,  previsões  de  oferta  e  demanda 
+globais, comércio e estoques, reduzem as disparidades de informações entre os participantes 
+do  mercado.  São  divulgados  antes  da  abertura  dos  principais  mercados  de  derivativos, 
+geralmente  entre  os  dias  8  e  12  de  cada  mês,  sendo  considerado  uma  referência  por  sua 
+abrangência  e  objetividade.  Dado  que  o  mercado  cria  expectativas  em  torno  da  divulgação 
+desses  relatórios,  os  preços  negociados  das  commodities  agrícolas  são  impactados  pela 
+confirmação  ou  não  confirmação  dessas  expectativas.  A  partir  disso,  e  sabendo-se  a  data 
+exata em que os relatórios irão impactar o mercado, é natural pensar em incorporar esse efeito 
+à  um  modelo  de  precificação  de  contratos  negociados  sobre  essas  commodities.  Contratos 
+futuros  e  de  opções  sobre  commodities  agrícolas  têm  apresentado  um  crescimento 
+significativo  no  volume  negociado  nos  últimos  anos  devido  à  demanda  global  crescente1  e  a 
+ampliação  da  disponibilidade  de  negociação  eletrônica  para  esses  produtos2.  O  objetivo 
+principal  deste  trabalho  é  propor  um  modelo  para  a  precificação  de  opções  americanas  que 
+seja  capaz  de  incorporar  saltos  determinísticos,  que  representem  o  efeito  dos  saltos  nos 
+preços  das  commodities  causados  pela  divulgação  dos  relatórios,  bem  como  incorporar  uma 
+volatilidade estocástica. As opções são utilizadas posteriormente em uma estratégia de hedge 
+para uma posição teórica de milho físico, e outra de soja física, tanto para o mercado brasileiro 
+quanto  para  o  mercado  norte-americano.  A  eficiência  da  estratégia  é  comparada  com  a  de 
+outras estratégias utilizando-se instrumentos atualmente disponíveis no mercado. 
+
+ O trabalho é dividido de tal forma que inicialmente faz-se uma revisão sobre a literatura 
+publicada sobre o mercado de  commodities agrícolas e os efeitos nos seus preços causados 
+pela  divulgação  dos  relatórios.  Revisa-se  também  a  literatura  sobre  modelos  de  volatilidade 
+estocástica,  modelos  de  saltos  e  precificação  de  opções  americanas.  Depois  discute-se  os 
+conceitos  teóricos  empregados  na  utilização  do  modelo  proposto,  bem  como  explica-se  o 
+funcionamento  do  método  utilizado  para  a  precificação  de  opções  seguindo  a  dinâmica  do 
+modelo. Por fim o trabalho apresenta a estrutura proposta para a simulação da estratégia de 
+hedge utilizando-se opções precificadas pelo modelo, a estimação dos parâmetros necessários 
+e a comparação entre os resultados das estratégias de hedge. 
+
+ 
+
+2.  Revisão Bibliográfica 
+
+ 
+O impacto dos relatórios do USDA na volatilidade implícita dos mercados de milho e de 
+soja foi estudado por Isengildina-Massa et al. (2008) no período de 1985 a 2002.  Concluíram 
+que se os relatórios sanam as incertezas do mercado, a volatilidade implícita do mercado deve 
+diminuir imediatamente após a divulgação dos mesmos. Mckenzie e Singh (2011) analisaram a 
+eficiência do hedge contra possíveis perdas decorrentes de grandes variações nos preços de 
+commodities  após  a  divulgação  dos  relatórios  do  USDA.  O  estudo  mostra  que  de  uma 
+perspectiva  de  gestão  de  risco  é  extremamente  importante  o  hedge  para  esses  eventos. 
+Posições de soja e milho não  protegidas podem levar a grandes perdas comparando-se dias 
+
+                                                           
+1  Dados  do  USDA  mostram  que  nos  últimos  quinze  anos  o  consumo  doméstico  global  de  milho  aumentou  48%  e  o  de  soja 
+64%. 
+2 Segundo dados do CME Group, a negociação eletrônica de futuros e opções representou 76% do total de negociações dos 
+contratos negociados na bolsa de Chicago no terceiro trimestre de 2012, tanto para milho quanto para soja. 
+
+3 
+
+com  eventos  e  não  eventos.  A  eficiência  do  hedge  é  estatisticamente  maior  em  dias  de 
+eventos.  
+
+Os modelos de volatilidade estocástica são utilizados para a precificação de derivativos, 
+em  especial  opções.  Esses  modelos  contornam  uma  das  deficiências  do  modelo  de  Black  e 
+Scholes  (1973),  que  assume  que  a  volatilidade  do  ativo  é  constante  ao  longo  do  tempo, 
+tratando-a o como um processo aleatório, dirigido por variáveis como o nível do preço do ativo, 
+a  tendência  da  volatilidade  de  reverter  à  uma  média  de  longo  prazo  e  a  variância  da  própria 
+volatilidade, entre outras. Jackel (2004) cita diversos modelos de volatilidade estocástica, mas 
+talvez o mais utilizado seja o modelo de Heston (1993), no qual a aleatoriedade da variância 
+do  processo  varia  conforme  a  raiz  quadrada  da  variância  do  ativo.  A  abordagem  tradicional 
+para a volatilidade estocástica, que é a de se obter um modelo tratável e então calibrar seus 
+parâmetros,  é  contrastada  por  Oztukel  e  Wilmott  (1998)  que  examinam  dados  reais  do 
+mercado para modelar o comportamento da volatilidade. O modelo estocástico é construído de 
+tal forma que o  drift, a variância, a média de longo prazo e a dispersão da volatilidade sejam 
+compatíveis com dados históricos. A partir disso pode-se, por exemplo, determinar a evolução 
+da volatilidade a partir do valor atual conhecido para a distribuição de longo prazo. Examinam 
+dados  empíricos  de  volatilidade  para  achar  o  melhor  modelo  com  funções  independentes  do 
+tempo que descrevam o drift e a volatilidade da volatilidade. Dessa maneira, a volatilidade da 
+volatilidade é obtida examinando-se as variações diárias da volatilidade, afinal a aleatoriedade 
+da volatilidade é observada no curto prazo.  Já para o drift, olham em um horizonte de tempo 
+mais  longo  e  estimam  uma  distribuição  de  estado  estacionário  para  a  volatilidade:  o  drift  só 
+causa  algum  efeito  em  horizontes  mais  longos.  A  equação  estocástica  diferencial  do  modelo 
+pode ser usada de diversas maneiras, sendo uma delas em um modelo de dois fatores para a 
+precificação de opções, o qual será aplicado aqui neste trabalho. Outra alternativa ao modelo 
+de  Black  e  Scholes  (1973)  é  o  modelo  de  jump-diffusion,  que  permite  grandes  variações  no 
+preço  do  ativo  em  intervalos  de  tempo  curtos.  Em  um  processo  puro  de  jump,  cada  preço  é 
+quase igual ao preço anterior, mas ocasionalmente existe uma probabilidade pequena, maior 
+que  zero,  de  que  o  preço  será  significantemente  diferente  ao  anterior.  Muitos  trabalhos 
+disponíveis  neste  campo  modelam  o  salto  como  uma  ocorrência  aleatória.  Podemos  citar  o 
+artigo de Merton (1976) que estende o modelo de Black e Scholes (1973) com um processo de 
+Poisson  para  capturar  as  variações  de  preço  anormais,  onde  a  distribuição  assumida  para  o 
+tamanho  dos  saltos  é  gaussiana.  Kou  (2002)  estende  o  modelo  de  Merton  adotando  uma 
+distribuição exponencial dupla para os saltos. Em ambos os modelos uma  distribuição para a 
+frequência  dos  saltos é  assumida,  ou  seja,  o  exato momento da ocorrência dos  saltos não é 
+conhecido.  Cont  et  al  (2005)  consideram  o  problema  de  hedge  para  um  derivativo  em  um 
+mercado  onde  os  preços  dos  ativos  têm  saltos,  fazendo  a  negociação  do  ativo  base  e  de 
+opções. Uma expressão geral para a estratégia de hedge que minimiza a variância do erro de 
+hedge é proposta. A fórmula é então aplicada para calcular o hedge ratio de opções europeias 
+em  vários  modelos  com  saltos,  levando  para  expressões  que  são  facilmente  calculadas.  Já 
+Tankov  e  Voltchkova  (2009)  mostram  que  os  modelos  de  jump-diffusion  são  ferramentas 
+essenciais  e  fáceis  de  aplicar  para  a  precificação  e  gestão  de  risco  de  opções,  já  que 
+produzem uma descrição adequada do movimento dos preços dos ativos-base e dos riscos do 
+mercado.  Introduzem  vários  modelos  de  saltos  e  discutem  métodos  de  transformada  de 
+Fourier para a precificação de opções europeias e equações integro-diferenciais para opções 
+com  barreira  e  americanas.  Alguns  artigos  modelam  os  saltos  para  eventos  conhecidos, 
+principalmente  para  o  mercado  de  ações.  Abraham  e  Taylor  (1997)  discutem  as  diferenças 
+entre  eventos  programados  e  não  programados  e  o  seu  impacto  nos  preços.  Propõem  um 
+modelo  de  jump-diffusion  com  um  termo  adicional  para  o  evento  programado  para  levar  em 
+conta  ambos  os  tipos  de  eventos.  Concluem  que  esse  modelo  de  eventos  se  mostra  útil 
+principalmente no caso de opções com vencimento curto e fora do dinheiro. O efeito de saltos 
+na  presença  de  eventos  também  foi  estudado  por  Dubinsky  e  Johannes  (2006),  onde 
+desenvolvem dois modelos para modelar o comportamento dos preços de ações em períodos 
+
+4 
+
+de  divulgação  de  resultados,  um  com  volatilidade  difusiva  constante  e  outro  com  volatilidade 
+estocástica,  ambos  com  saltos  determinísticos.  A  importância  de  se  incorporar  dentro  de  um 
+modelo  de  precificação  de  opções  ambos  os  componentes  da  volatilidade  estocástica  e  de 
+jump-diffusion é demonstrada pelos resultados empíricos obtidos por Sepp (2003). Ele aplica a 
+transformada  de  Fourier  para  precificar  opções  usando  diversos  modelos:  jump-diffusion, 
+difusão com volatilidade estocástica, jump-diffusion com volatilidade estocástica, jump-diffusion 
+com volatilidade estocástica e intensidade do jump. Os resultados obtidos utilizando opções da 
+DAX  mostram  que  para  se  conseguir  um  bom  ajuste  para  o  mercado  de  opções  básicas 
+(vanilla), tanto a volatilidade estocástica quanto os saltos devem ser considerados. 
+
+A  primeira  abordagem  para  se  desenvolver  um  método  para  precificar  opções 
+americanas  sob  processos  de  volatilidade  estocástica  com  saltos  foi  feita  por  Bates  (1996). 
+Utilizando dados do mercado de opções de câmbio do marco alemão, o modelo é calibrado e 
+sua  consistência  testada  com  dados  do  mercado  futuro  e  das  volatilidades  implícitas  das 
+opções.  Hilliard  e  Reis  (1999)  usam  dados  dos  mercados  futuro  e  de  opções  de  soja  para 
+testar  opções  fora  da  amostra  e  fazer  uma  comparação  entre  o  modelo  de  difusão  de  Black 
+(1976) e o modelo de volatilidade estocástica com jump-diffusion de Bates (1996). O resultado 
+mostra que o modelo de Bates (1996) tem um desempenho consideravelmente melhor do que 
+o  de  Black  (1976),  pois  pode  explicar  o  viés  que  ocorre  ao  se  precificar  as  opções  de  soja 
+usando o modelo de Black (1976). Ambos os parâmetros de tamanho e frequência do salto são 
+consistentemente positivos. Ignorar a estrutura a termo da volatilidade e os efeitos dos saltos 
+podem levar a erros graves na precificação de opções, conforme demonstram Koekebakker e 
+Lien  (2004).  Os  autores  desenvolvem  um  modelo  para  precificação  de  opções  incorporando 
+aspectos da dinâmica do mercado futuro de commodities. Estendem o modelo de Bates (1996) 
+incluindo  efeitos  sazonais  e  de  diferentes  vencimentos  na  especificação  da  volatilidade, 
+calibrando  o  modelo  com  dados  de  11  anos  de  opções  de  trigo  usando  mínimos  quadrados 
+não-lineares.  Longstaff  e  Schwartz  (2001)  apresentam  um  método  de  simulação  de  Monte 
+Carlo para precificar opções americanas sob o argumento de que técnicas de diferenças finitas 
+ou  binomiais  tornam-se  impraticáveis  para  modelos  de  múltiplos  fatores,  como  os  de 
+volatilidade  estocástica  e  jump-diffusion.  Esse  método,  também  conhecido  como  LSM  (Least 
+Squares  Monte  Carlo,  ou  Monte  Carlo  por  mínimos  quadrados),  combina  a  simulação  das 
+trajetórias  do  ativo,  desde  o  início  até  seu  vencimento,  com  o  valor  presente  dos  fluxos  de 
+caixa  de  cada  trajetória,  comparando-se  o  benefício  de  se  exercer  ou  não  a  opção  em 
+determinado  instante.  Buscando  explorar  os  impactos  decorrentes  das  divulgações  dos 
+relatórios do USDA, esta dissertação alia ambos os conceitos de volatilidade estocástica e de 
+jump-diffusion  para  precificar  opções  de  milho  e  de  soja  nos  mercados  brasileiro  e  norte-
+americano.  Dado  que  a  divulgação  do  relatório  é  um  evento  conhecido,  são  incorporados 
+saltos  determinísticos  ao  modelo  de  volatilidade  estocástica  de  Oztukel  e  Wilmott  (1998). 
+Como  as  opções  negociadas  no  mercado  são  americanas,  o  método  aqui  utilizado  é  o  de 
+Longstaff e Schwartz (2001). 
+
+ 
+
+3. Conceitos Teóricos 
+ 
+
+Antes  de  discorrer  sobre  o  modelo  proposto,  é  interessante  expor  alguns  conceitos 
+teóricos utilizados. Esta seção discute a análise empírica da volatilidade e a incorporação de 
+saltos  determinísticos,  já  que  ambos  servirão  de  parâmetros  para  o  modelo  em  si.  Discute 
+também o método de Monte Carlo por mínimos quadrados que servirá para a precificação das 
+opções americanas de commodities agrícolas. 
+
+3.1. 
+
+ Saltos 
+
+A  derivação  de  Black  e  Scholes  (1973)  supõe  que  um  dado  ativo  de  preço   ,  em   , 
+
+segue um processo estocástico do tipo: 
+
+5 
+
+ 
+
+                        
+
+(1) 
+
+onde   é o drift instantâneo (determinístico) dos retornos dos preços do ativo,   a volatilidade 
+do ativo e     um processo de Wiener. Em processos desse tipo, onde a trajetória do ativo é 
+contínua  como  em  um  modelo  de  difusão,  o  preço  se  comporta  como  um  Movimento 
+Browniano  e  a  probabilidade  de  que  esse  preço  se  mova  por  grandes  quantidades  em  um 
+período curto de tempo é pequena. Entretanto, observa-se frequentemente no mercado que a 
+trajetória dos preços é descontínua, devido à presença de saltos nos preços. Alguns modelos 
+foram  desenvolvidos  para  tratar  esse  aspecto  e  são  conhecidos  como  modelos  de  jump-
+diffusion, sendo o modelo de Merton (1976) o mais conhecido. É uma extensão ao Movimento 
+Browniano do modelo de Black e Scholes (parte da difusão), adicionando a parte do salto que 
+é  dirigida  por  um  processo  de  Poisson  com  frequência  especificada  por  uma  intensidade   . 
+Como  os  relatórios  do  USDA  são  divulgados  em  datas  conhecidas,  precisamos  modelar  a 
+dinâmica do preço do ativo com a ocorrência de eventos em períodos determinísticos, portanto 
+o modelo de Merton (1976) não nos serviria dado que a frequência dos saltos nesse modelo é 
+aleatória.  Sejam                    as  datas  conhecidas  de  divulgação  dos  relatórios  do  USDA. 
+Introduzindo  a  dinâmica  de  um  salto  determinístico  ao  movimento  browniano  descrito  na 
+equação (1), temos: 
+
+ 
+
+                                      
+
+(2) 
+
+sendo           uma função indicadora igual a 1 se   coincidir com a data do evento   , e igual 
+a 0 caso contrário, onde                . A magnitude do salto observado na data     é dada por 
+  . Assumimos que a distribuição das magnitudes    será estimada a partir de dados históricos 
+de  saltos  observados  em  datas  prévias,  onde      é  a  média  desta  distribuição  e      o  desvio-
+padrão  da  distribuição  A  fim  de  se  facilitar  o  somatório  dos  retornos  ao  longo  do  tempo,  o 
+processo  é  descrito  em  função  do  logaritmo  do  preço  do  ativo.  Conforme  demonstrado  em 
+Linnell (2012) e no Anexo I, temos: 
+
+ 
+
+                 
+
+  
+ 
+
+                     
+
+   
+
+ 
+
+ 
+
+(3) 
+
+com    sendo obtido a partir da relação                  e   a quantidade de vezes em que os 
+saltos ocorrem, ou para a aplicação deste trabalho, quantos relatórios serão divulgados até o 
+vencimento do derivativo. 
+
+3.2. 
+
+ Volatilidade Estocástica 
+
+Conforme observa-se no mercado, a volatilidade não se comporta como a assumida no 
+modelo de Black e Scholes (1973): ela não é constante ao longo do prazo do derivativo e nem 
+mesmo diretamente  observável.  O  modelo não  consegue explicar  algumas  características  do 
+mercado  como  diferentes  volatilidades  implícitas  para  diferentes  vencimentos  e  diferentes 
+preços  de  exercício.  Assumir  que  a  volatilidade  segue  um  processo  estocástico  ao  invés  de 
+modelá-la como uma constante torna a precificação do derivativo mais precisa. Um modelo de 
+volatilidade  estocástica  requer  então  que,  além  da  suposição  utilizada  para  o  preço  do ativo, 
+assumamos que a dinâmica da volatilidade satisfaça: 
+
+ 
+
+                                    
+
+(4) 
+
+A  escolha  das  funções              e              é  fundamental  para  a  evolução  da  volatilidade,  e 
+assim para a precificação de derivativos. Uma das maneiras mais comuns de se fazer isso é 
+escolher     e     de  tal  forma  que  o  modelo  precifique  corretamente  opções  negociadas  no 
+
+6 
+
+mercado.  Esse  método  geralmente  funciona  para  modelos  que  são  tratáveis  e  apresentam 
+soluções fechadas para opções básicas (as do tipo vanilla). O termo     representa um outro 
+processo de Wiener e tem correlação   com    , o termo de aleatoriedade do preço do ativo. 
+O modelo introduzido por Heston (1993) talvez seja o modelo de volatilidade estocástica mais 
+popular. Apresenta a seguinte equação diferencial estocástica (EDE) para a variância  : 
+
+ 
+
+                            
+
+(5) 
+
+sendo     a  velocidade  com  que  a  variância  reverte  à  sua  média  de  longo  prazo   ,  e     a 
+volatilidade da volatilidade. A aleatoriedade do processo da variância é correlacionada com a 
+aleatoriedade do processo do preço por  . Bastando a calibragem dos parâmetros do modelo 
+com as opções negociadas no mercado, este modelo se torna popular pois apresenta soluções 
+fechadas para a precificação de opções europeias. No entanto, como esta dissertação trata de 
+opções  de  commodities  agrícolas  do  tipo  americana,  devemos  proceder  com  outro  modelo, 
+conforme detalhado a seguir. 
+
+3.3. 
+
+ Análise empírica da volatilidade 
+
+O modelo de volatilidade estocástica empírica apresentado em Oztukel e Wilmott (1998) 
+ajusta  as  funções  do  drift  e  da  variância  para  dados  históricos.  A  volatilidade  é  modelada 
+isoladamente,  assumindo  que  ela  não  depende  do  nível  do  preço  do  ativo  e  do  tempo.  O 
+processo estocástico da volatilidade é dado por: 
+
+ 
+
+                       
+
+(6) 
+
+onde  o  drift        e  a  volatilidade        são  ambas  funções  da  volatilidade   .  O  processo  é 
+similar  ao  apresentado  na  equação  (4)  mas  a  principal  suposição  aqui  é  que  os  termos  são 
+independentes do preço do ativo e do tempo. A vantagem disso é a de tornar o modelo muito 
+mais  simples,  e  também  de  reduzir  o  escopo  contra  possíveis  erros  de  modelagem.  Para  se 
+estimar a volatilidade da volatilidade, assume-se que a função de volatilidade      é da forma: 
+
+ 
+
+            
+
+(7) 
+
+onde    e     são  constantes  a  serem  determinadas.  A  suposição  para  que  essa função  tenha 
+essa  forma  simplificada  serve  para  reduzir  o  problema  para  que  se  tenha  que  encontrar 
+apenas dois parâmetros. Das equações (6) e (7) tem-se que o quadrado da variação diária da 
+volatilidade é dado por: 
+
+ 
+
+                     
+
+(8) 
+
+com     sendo  uma  variável  aleatória  Normal  padronizada.  Da  série  histórica  da  volatilidade 
+pode-se  facilmente  calcular  a  série  de    ,  e  então  a  série  de       .  Usando  a  esperança,  o 
+logaritmo natural de (8) fica: 
+
+ 
+
+                           
+
+(9) 
+
+onde                e        .  Então  se  a  forma  assumida  em  (7)  for  verdadeira,  podemos 
+esperar que um gráfico de              contra       resulte em uma linha reta com inclinação 
+igual a   e intercepto com o eixo  das ordenadas igual a  . Para se ajustar a reta aos dados, 
+separa-se    em  vários  blocos  e  calcula-se  a média  de         para  cada    em  seu  respectivo 
+bloco. Isso nos dá uma estimativa da dependência de          em  . O ajuste da reta é feito 
+por uma regressão de mínimos quadrados. Portanto, temos um modelo onde a volatilidade da 
+
+7 
+
+volatilidade  é  consistente  com  os  dados  empíricos.  Substituindo-se  a  equação  (7)  em  (6) 
+temos: 
+
+ 
+
+                       
+
+(10) 
+
+Falta ainda encontrar o  drift da volatilidade     . Para isso determina-se a função densidade 
+de probabilidade do estado estacionário de   e a partir dela deduz-se a função drift. A equação 
+que  governa  a  função  densidade  de  probabilidade  de     é  a  equação  de  Fokker-Planck  (ou 
+equação a termo de Kolmogorov): 
+
+ 
+
+  
+
+  
+
+   
+
+ 
+
+ 
+
+ 
+
+  
+                 
+
+ 
+
+  
+
+         
+
+(11) 
+
+onde         é a função densidade de probabilidade de   e aqui as variáveis   e   denotam as 
+variáveis  a  termo.  Supondo  que  a  distribuição  do  estado  estacionário  de   ,    ,  de  alguma 
+forma é conhecida, deve então satisfazer: 
+
+ 
+
+ 
+
+  
+
+             
+
+ 
+
+ 
+
+ 
+
+  
+               
+
+(12) 
+
+o  que  é  simplesmente  uma  versão  de  estado  estacionário  da  equação  de  Fokker-Planck. 
+Integrando essa equação temos: 
+
+ 
+
+        
+
+ 
+
+   
+
+ 
+
+ 
+
+  
+
+             
+
+ 
+  
+
+ 
+
+(13) 
+
+A constante da integração é zero, o que pode ser observado examinando-se o comportamento 
+de   para valores grandes e pequenos de  . Para acharmos o termo do drift basta agora que 
+tenhamos    .  Assumindo  que  todos  os  parâmetros  são  independentes  do  tempo,  podemos 
+determinar  então  a  função  densidade  de  probabilidade  do  estado  estacionário  usando  a 
+propriedade  ergódica  de  uma  trajetória  aleatória.  Isso  significa  que  a  distribuição  da 
+volatilidade  obtida  a  partir  de  uma  única  e  longa  trajetória  será  a  mesma  obtida  a  partir  do 
+último  dado  de  várias  trajetórias  separadas.  Encontra-se      plotando  a  frequência  da 
+distribuição  de     pelos  blocos  de   ,  ou  seja,  quantas  observações  pertencem  a  cada  bloco. 
+Assumindo que    tem uma distribuição lognormal: 
+
+ 
+
+      
+
+ 
+
+     
+
+ 
+
+  
+
+ 
+         
+
+ 
+  
+
+ 
+  
+
+ 
+
+(14) 
+
+onde           representa  a  média  da  distribuição  de          e     descreve  a  dispersão  da 
+distribuição em torno da média. Obtemos então o drift da volatilidade: 
+
+ 
+
+                     
+
+ 
+
+ 
+
+ 
+
+ 
+
+          
+
+ 
+  
+
+   
+
+Das equações (10) e (15) temos a equação final do modelo: 
+
+ 
+
+                 
+
+ 
+
+ 
+
+ 
+
+ 
+
+          
+
+ 
+  
+
+                 
+
+(15) 
+
+(16) 
+
+que  pode  ser  utilizada  em  um  modelo  de  dois  fatores  (preço  do  ativo  e  volatilidade)  para  a 
+precificação  de  opções.  O  único  problema  é  que  estimamos  a  partir  dos  dados  o  drift  real  e 
+não o drift livre de risco, mas, conforme aponta Wilmott (2006), a questão se isso é realmente 
+necessário é discutível. 
+
+3.4. 
+
+ Modelo proposto 
+
+Combinando as duas dinâmicas, a do preço com saltos determinísticos dada por (2), e a 
+da volatilidade estocástica dada por (16), temos o modelo de dois fatores que foi utilizado nesta 
+dissertação para a precificação das opções: 
+
+                                      
+
+8 
+
+                 
+
+ 
+
+ 
+ 
+ 
+          
+  
+ 
+               
+
+                 
+
+ 
+
+ou  seja,  os  incrementos  aleatórios       e       apresentam  correlação   .  A  estimação  desse 
+parâmetro  será  discutida  no  próxima  seção.  Como  mencionado  no  item  3.1,  o  processo  de 
+evolução do preço do ativo é, na prática, descrito em função do seu logaritmo  (vide equação 
+(3)).  O  método  para  se  precificar  opções  americanas  utilizando  esse  modelo  é  explicado  a 
+seguir. 
+
+3.5. 
+
+ Simulação de Monte Carlo para opções americanas 
+
+Como  o  intuito  desta  dissertação  é  utilizar  o  modelo  proposto  para  precificar  opções 
+americanas de commodities agrícolas, devemos trabalhar com um método que comporte tanto 
+as  simulações  estocásticas  dos  fatores  quanto  a  possibilidade  do  exercício  antecipado  da 
+opção.  O  método  proposto  por  Longstaff  e  Schwartz  (2001)  combina  a  simulação  das 
+trajetórias do preço do ativo, desde a data inicial até o vencimento, com o valor presente dos 
+fluxos  de  caixa  ao  longo  das  trajetórias,  utilizando  uma  simples  regressão  dos  preços  para 
+avaliar  a  cada  passo  o  benefício  de  se  exercer  a  opção  naquele  momento.  No  que  segue, 
+implementamos um exemplo numérico para explicar o método em questão. Considere uma put 
+americana com preço de exercício K = 100, cujo ativo-base tem volatilidade σ = 20% e preço 
+inicial S0 = 100. A taxa livre de risco é r = 5%. O primeiro passo do método consiste em simular 
+N realizações para a trajetória do ativo-base desde o início até o vencimento, utilizando passos 
+com  tamanho δt.  A  Figura  1  mostra  um  exemplo  de  dez  simulações  para  o  preço  teórico  de 
+uma commodity com três passos desde o início até o vencimento: 
+
+ 
+
+ 
+
+o
+ç
+e
+r
+P
+
+150 
+
+100 
+
+50 
+
+0 
+
+0 
+
+1 
+
+2 
+
+3 
+
+Tempo 
+
+ 
+
+Figura 1 – Exemplo de dez trajetórias para o preço de um ativo teórico 
+
+ Os  preços  em  cada  um  dos  três  passos,  ou  estados  do  tempo,  para  as  dez  diferentes 
+simulações  são mostrados na Tabela 1. Por exemplo, o preço simulado do ativo na trajetória 
+de número 4, durante o estado de tempo 1, é igual a 90,28: 
+
+Tempo\Sim 
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+10 
+
+0 
+1 
+2 
+3 
+
+100,00  100,00  100,00  100,00  100,00  100,00  100,00  100,00  100,00  100,00 
+91,25 
+110,47  102,65  106,62 
+94,47 
+114,91  100,31 
+95,34 
+124,37  107,61  105,88 
+99,71 
+
+87,02 
+99,74  116,06  104,54 
+71,05  110,62  118,56  106,47 
+67,03  106,11  140,52  108,67 
+
+93,43 
+90,66 
+82,35 
+
+90,28 
+90,18 
+92,47 
+
+Tabela 1 - Preço do ativo em cada passo para as dez diferentes simulações 
+
+9 
+
+A  seguir  calcula-se  o  payoff  no  vencimento  para  cada  uma  das  trajetórias.  No  caso  da  put 
+temos que o payoff é dado por              , conforme demonstrado na Tabela 2: 
+
+Simulação 
+
+Payoff 
+
+1 
+- 
+
+2 
+- 
+
+3 
+- 
+
+4 
+
+5 
+
+7,53 
+
+32,97 
+
+6 
+- 
+
+7 
+- 
+
+8 
+- 
+
+9 
+
+17,65 
+
+10 
+0,29 
+
+Tabela 2 - Valor do payoff no vencimento 
+
+Neste  caso  temos  quatro  trajetórias  que  fazem  com  que  a opção  termine  dentro  do  dinheiro. 
+Para calcular o preço de uma opção europeia bastaria trazer a valor presente a média de todos 
+os dez  payoffs. O cálculo acima demonstra o exercício da opção apenas para o vencimento, 
+mas  essa  opção  poderia  ter  sido  exercida  anteriormente,  já  que  estamos  falando  de  uma 
+opção  americana.  Retrocedemos  então  para  o  estado  do  tempo  2  e  avaliamos  novamente  o 
+benefício do exercício, apenas para as opções que estejam dentro do dinheiro no estado atual: 
+no  estado  2,  as  trajetórias  de  número  3,  4,  5,  9  e  10  apresentam  valores  do  ativo-base  que 
+fazem com que a opção esteja dentro do dinheiro. Essa técnica aumenta consideravelmente a 
+eficiência do algoritmo e reduz o tempo computacional gasto. Usando a notação de Longstaff e 
+Schwartz,   é o preço do ativo no estado 2 e   o valor presente no estado 2 do fluxo de caixa 
+a  receber  no  vencimento  se  a  opção  não  for  exercida  no  estado  atual.  Como  indicado  na 
+Tabela 3,          para a trajetória 4 significa o fluxo de caixa a receber no vencimento (igual 
+a     ) descontado a valor presente pela taxa livre de risco para o período 2. 
+
+t = 2 
+
+Y 
+X 
+
+1 
+
+ 
+ 
+
+2 
+
+ 
+ 
+
+3 
+- 
+
+95,34 
+
+4 
+
+7,16 
+90,18 
+
+5 
+
+31,37 
+71,05 
+
+6 
+
+ 
+ 
+
+7 
+
+ 
+ 
+
+8 
+
+ 
+ 
+
+9 
+
+16,79 
+90,66 
+
+10 
+0,28 
+94,47 
+
+Tabela 3 - Preço do ativo (X) e valor presente do fluxo de caixa (Y) no estado 2 
+
+Os  autores  propõem  uma  regressão  de     em  uma  constante,     e    ,  a  fim  de  se  estimar  o 
+fluxo de caixa esperado do não exercício da opção, condicional ao preço do ativo no estado 2. 
+Temos  para  o  exemplo,                                             Utilizando  essa  função 
+condicional, obtemos o fluxo de caixa esperado se a opção não for exercida no estado atual. 
+No caso da trajetória 4, se a opção não fosse exercida no estado de tempo 2, o fluxo de caixa 
+esperado para o vencimento seria de  11,88 (que é o resultado da expressão acima para    = 
+90,18).  Podemos  então  comparar  o  valor  de  se  exercer  a  opção  imediatamente  ou  mantê-la 
+até o próximo estado de tempo. Conforme demonstrado na Tabela 4, nas trajetórias de número 
+três e dez, o melhor seria exercê-las agora (estado do tempo 2): 
+
+t = 2 
+
+exercício 
+não exerc. 
+
+1 
+
+ 
+ 
+
+2 
+
+ 
+ 
+
+3 
+
+4,66 
+
+- 
+
+4 
+
+9,82 
+11,88 
+
+5 
+
+28,95 
+31,18 
+
+6 
+
+ 
+ 
+
+7 
+
+ 
+ 
+
+8 
+
+ 
+ 
+
+9 
+
+9,34 
+10,81 
+
+10 
+5,53 
+1,40 
+
+Tabela 4 - Comparação do exercício ou não exercício da opção em determinado estado de tempo 
+
+O  próximo  passo  consiste  em  construir  uma  matriz  de  fluxos  de  caixa,  que  representa  a 
+situação  ótima  de  exercício  (assumindo  que  não  exercemos  em  nenhum  momento  antes  do 
+estado atual).  A Tabela 5  abaixo  nos mostra que, no caso das trajetórias  três  e dez, como  a 
+opção teria sido exercida no estado 2, o seu fluxo de caixa no vencimento é zero. 
+
+Tempo\Sim 
+
+1 
+2 
+3 
+
+1 
+
+ 
+- 
+- 
+
+2 
+
+ 
+- 
+- 
+
+3 
+
+ 
+
+4,66 
+
+- 
+
+4 
+
+ 
+- 
+
+5 
+
+ 
+- 
+
+7,53 
+
+32,97 
+
+6 
+
+ 
+- 
+- 
+
+7 
+
+ 
+- 
+- 
+
+8 
+
+ 
+- 
+- 
+
+9 
+
+ 
+- 
+
+17,65 
+
+10 
+
+ 
+
+5,53 
+
+- 
+
+Tabela 5 - Matriz de fluxos de caixa considerando exercício antecipado no estado 2 
+
+10 
+
+Esse processo é repetido até o primeiro estado de tempo até completar a matriz de fluxos de 
+caixa. A matriz completa é mostrada na Tabela 6 abaixo: 
+
+Tempo\Sim 
+
+1 
+2 
+3 
+
+1 
+- 
+- 
+- 
+
+2 
+- 
+- 
+- 
+
+3 
+- 
+
+4,66 
+
+- 
+
+4 
+
+5 
+
+6 
+
+9,72 
+
+12,98 
+
+0,26 
+
+- 
+- 
+
+- 
+- 
+
+- 
+- 
+
+7 
+- 
+- 
+- 
+
+8 
+- 
+- 
+- 
+
+9 
+
+6,57 
+
+- 
+- 
+
+10 
+8,75 
+
+- 
+- 
+
+Tabela 6 - Matriz de fluxos de caixa completa 
+
+O preço da opção americana será então a média de todos os fluxos de caixa descontados à 
+valor  presente,  sendo  o  do  exemplo  igual  a      .  A  partir  desse  método,  podemos  então 
+precificar opções americanas em um modelo de dois fatores conforme o proposto no item 3.4: 
+um  modelo  que  efetua  a  simulação  da  trajetória  do  preço  do  ativo  incluindo  saltos 
+determinísticos  bem  como  a  simulação  da  trajetória  da  volatilidade  do  ativo.  Para  cada  uma 
+das  commodities estudadas, milho e soja,  trabalhamos com a dinâmica exposta acima, cujos 
+parâmetros foram estimados conforme explicado no próxima seção. 
+ 
+4. Aplicação 
+
+ 
+Aqui  é  discutido  o  funcionamento  dos  mercados  físicos  de  milho  e  de  soja  e  como  as 
+séries  históricas  de  preços  foram  construídas  para  utilização  nas  simulações.  A  partir  do 
+entendimento dos períodos de safra das commodities, definimos como são divididos os ciclos 
+que  foram  simulados.  Esses  ciclos  são  divididos  em  períodos  de  estimação  e  períodos  de 
+simulação,  ambos  também  tratados  nesta  seção.  A  partir  dos  parâmetros  estimados, 
+precificamos  as  opções  americanas  de  commodities  usando  o  modelo  proposto  nesta 
+dissertação.  Prosseguimos  então  com  a  simulação  de  uma  estratégia  de  hedge  com  opções 
+(futuro  sintético)  precificadas  pelo  modelo  e  comparamos  sua  eficiência  com  estratégias  de 
+mercado. 
+
+4.1. 
+
+ Características dos mercados de milho e soja 
+
+A  Tabela  7  mostra  o  percentual  dos  cinco  maiores  produtores  e  exportadores  globais 
+para  os  mercados  de  milho  e  de  soja.    Ambos  os  mercados  apresentam  um  calendário  de 
+safra anual, também mostrado na tabela. Dessa forma, os futuros na bolsa de Chicago (CME) 
+são  negociados  com  os  seguintes  vencimentos:  Milho  (Dezembro  -  Março  -  Maio  -  Julho  - 
+Setembro)  e  Soja  (Novembro  -  Janeiro  -  Março  -  Maio  -  Julho  -  Agosto  -  Setembro).  Dentre 
+esses contratos negociados no mercado, os que têm maior liquidez são geralmente os que têm 
+o vencimento mais próximo, os contratos chamados de  nearby. Isso até a data do first notice 
+(aproximadamente  15  dias  antes  do  vencimento)  quando  os  participantes  do  mercado 
+começam a rolar a posição para o vencimento seguinte. 
+
+MILHO 
+
+Produção  Exportação  Calendário 
+
+SOJA 
+
+Produção  Exportação  Calendário 
+
+EUA 
+China 
+Brasil 
+Argentina 
+Ucrânia 
+
+33% 
+24% 
+8% 
+3% 
+3% 
+
+33% 
+0% 
+
+18% 
+
+20% 
+14% 
+
+Set-Ago 
+Out-Set 
+Mar-Fev 
+Mar-Fev 
+Out-Set 
+
+Brasil 
+EUA 
+Argentina 
+China 
+India 
+
+31% 
+29% 
+21% 
+5% 
+4% 
+
+39% 
+36% 
+12% 
+0% 
+0% 
+
+Out-Set 
+Set-Ago 
+Out-Set 
+Out-Set 
+Out-Set 
+
+Tabela 7 - Produção e exportação globais estimadas para a safra 2012-2013 (Fonte: Bloomberg) 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+Para  a  construção  da  série  histórica  de  preços  dos  contratos  futuros,  adotou-se  a  regra  de 
+rolagem do contrato nearby relativo à data do first notice, ou seja, o preço refere-se ao contrato 
+
+11 
+
+futuro com o vencimento mais próximo e a partir da data do first notice desse contrato, passa a 
+valer o preço do contrato com o próximo vencimento. De forma similar, para a negociação de 
+opções, a maior liquidez geralmente se dá nos contratos onde o ativo-base é o contrato futuro 
+nearby, com a diferença que o vencimento das séries de opções ocorre na última sexta-feira 
+antes  da  data  do  first  notice  do  contrato  futuro  (geralmente  entre  os  dias  20  e  25  do  mês 
+anterior  ao  vencimento).  As  opções  podem  ser  exercidas  a  qualquer  momento  antes  de  seu 
+vencimento, ou seja, são americanas. Como referência para o preço spot do milho (commodity 
+física)  no  mercado  brasileiro,  podemos  utilizar  o  indicador  do  CEPEA  (Centro  de  Estudos 
+Avançados  em  Economia  Aplicada  da  ESALQ/USP)  região  Campinas,  cotado  em  R$/60kg 
+(ticker  Bloomberg:  BAINCORN  Index).  Para  o  mercado  norte-americano  temos  como 
+referência  o  indicador  do  USDA  para  a  região  de  Louisiana,  cotado  em  US$/bushel  (ticker 
+Bloomberg: CORNLA2Y Index). Já para o preço spot da soja no mercado brasileiro, usamos o 
+indicador  do  CEPEA  região  Paranaguá,  cotado  em  R$/60kg  (ticker  Bloomberg:  BASMSBPA 
+Index). No mercado norte-americano temos o indicador do USDA região Louisiana, cotado em 
+US$/bushel (ticker Bloomberg: SOYBLA1Y Index). As Figuras 2 e 3 abaixo mostram as séries 
+históricas  de  preço  dos  contratos  futuros  e  do  mercado  spot  (tanto  Brasil  quanto  EUA)  para 
+ambas as commodities. 
+ 
+
+Preço Milho (¢/bu) 
+
+1.000 
+
+800 
+
+600 
+
+400 
+
+200 
+
+2.000 
+1.800 
+1.600 
+1.400 
+1.200 
+1.000 
+800 
+600 
+
+FUTURO 
+
+CEPEA 
+
+USDA 
+
+Figura 2 – Preço do milho em centavos de dólar por bushel (Fonte: Bloomberg, CEPEA) 
+
+Preço Soja (¢/bu) 
+
+FUTURO 
+
+CEPEA 
+
+USDA 
+
+ 
+
+ 
+
+Figura 3 – Preço da soja em centavos de dólar por bushel (Fonte: Bloomberg, CEPEA) 
+
+  
+
+4.2.  Ciclos: estimação e simulação 
+
+Dados  os  calendários  anuais  de  safra  e  os  vencimentos  negociados  na  bolsa,  os 
+períodos estudados foram determinados como indo de Setembro a Agosto. Um total de quatro 
+
+períodos foi simulado para o modelo: Setembro 2008 a Agosto 2009, Setembro 2009 a Agosto 
+2010, Setembro 2010 a Agosto 2011 e Setembro 2011 a Agosto 2012. Para a realização das 
+simulações  é  necessário  a  estimação  dos  parâmetros  do  modelo,  mais  especificamente  os 
+parâmetros  do  salto e da volatilidade estocástica. Definiu-se como período de estimação dos 
+parâmetros  um  intervalo  de  cinco  anos  anteriores  ao  início  do  período  de  cada  simulação. 
+Dessa forma criamos um ciclo que compreende um período de cinco anos para estimação dos 
+parâmetros  seguido  por  um  período  de  um  ano  para  simulação  do  modelo.  O  esquema  dos 
+ciclos é demonstrado na Figura 4 abaixo: 
+
+ 
+
+12 
+
+Figura 4 – Ciclos: Estimação dos Parâmetros e Simulação 
+
+ 
+
+4.3. 
+
+ Estimação dos parâmetros 
+
+Iniciamos a estimação com a parte dos saltos. Os parâmetros necessários são a média    e o 
+desvio-padrão      dos  saltos  conforme  a  dinâmica  da  equação  (2).  Inicialmente  criamos  uma 
+série apenas com os retornos dos preços relativos às datas de divulgação dos relatórios: 
+
+ 
+
+           
+
+   
+     
+
+  
+
+(17) 
+
+onde     é o preço de fechamento do ativo na data de divulgação   do relatório e       o preço 
+de  fechamento  na  data  anterior,       (data  de  não  divulgação).  Ajustamos  a  curva  de 
+distribuição  para  cada  período  analisado3,  onde  cada  período  compreende  cinco  anos  de 
+dados  (conforme  explicado  na  seção  anterior).  Para  cada  período  individual,  como  também 
+para  o  conjunto  inteiro  dos  quatro  períodos,  o  melhor  ajuste  disponível  foi  o  de  uma  curva 
+Normal4. As figuras apresentadas no Anexo II mostram os resultados da ferramenta para cada 
+período:  a  função  densidade  de  probabilidade  (PDF  na  sigla  em  inglês)  e  a  função  de 
+distribuição cumulativa (CDF na sigla em inglês). Ainda com o auxílio do MATLAB extraímos a 
+média  e  o  desvio-padrão  para  cada  período  e  com  isso  temos  os  parâmetros  do  salto 
+necessários para se rodar o modelo. Os parâmetros extraídos são apresentados na Tabela 8: 
+
+MILHO 
+PERÍODO 1 
+PERÍODO 2 
+PERÍODO 3 
+PERÍODO 4 
+
+μ J 
+0,0032 
+0,0021 
+0,0054 
+0,0055 
+
+σ J 
+
+2,75% 
+3,14% 
+3,43% 
+3,44% 
+
+ 
+ 
+ 
+ 
+ 
+
+SOJA 
+
+PERÍODO 1 
+PERÍODO 2 
+PERÍODO 3 
+PERÍODO 4 
+
+μ J 
+0,0014 
+0,0016 
+0,0029 
+0,0054 
+
+σ J 
+
+2,47% 
+2,58% 
+2,52% 
+2,63% 
+
+                                                           
+3 Com o auxílio de ferramenta estatística disponível no software MATLAB (dfittool). 
+4 Foram testadas as distribuições Exponencial, Logística, Log-Normal, Normal e Univariada com Escala t. 
+
+Tabela 8 - Parâmetros estimados dos saltos 
+
+SimulaçãoSet08-Ago09SimulaçãoSet09-Ago10SimulaçãoSet10-Ago11SimulaçãoSet11-Ago12CICLO 1CICLO 2CICLO 3CICLO 4Set06-Ago11Set05-Ago10Set04-Ago09Set03-Ago08Estimação dos parâmetrosEstimação dos parâmetrosEstimação dos parâmetrosEstimação dos parâmetrosJá os parâmetros da dinâmica da volatilidade estocástica,            , são obtidos pelo modelo 
+de Oztuk e Wilmott conforme detalhado na seção anterior. Usando ainda o mesmo intervalo de 
+cinco anos para cada período, os parâmetros foram estimados e os resultados são mostrados 
+na Tabela 9 abaixo: 
+
+13 
+
+MILHO 
+PERÍODO 1 
+PERÍODO 2 
+PERÍODO 3 
+PERÍODO 4 
+
+ 
+
+SOJA 
+
+PERÍODO 1 
+PERÍODO 2 
+PERÍODO 3 
+PERÍODO 4 
+
+φ 
+0,4297 
+0,1956 
+0,2734 
+0,2261 
+
+φ 
+0,2621 
+0,6872 
+0,6092 
+0,5672 
+
+ 
+
+γ 
+1,3181 
+1,0605 
+1,1984 
+1,1245 
+
+γ 
+1,1680 
+1,4875 
+1,4390 
+1,3948 
+
+ 
+
+σ b 
+0,0785 
+0,0866 
+0,0912 
+0,0984 
+
+σ b 
+0,0753 
+0,0776 
+0,0742 
+0,0753 
+
+ 
+
+g 
+0,2453 
+0,3081 
+0,2797 
+0,2354 
+
+g 
+0,3297 
+0,3290 
+0,3382 
+0,3428 
+
+ 
+
+Tabela 9 - Parâmetros estimados da volatilidade estocástica 
+
+O último parâmetro necessário para se rodar o modelo é a correlação   entre os incrementos 
+aleatórios das equações estocásticas do preço e da volatilidade. Essa correlação foi estimada 
+como  a  correlação  linear  entre  o  log-retorno  dos  preços  do  ativo  e  a  volatilidade  do  ativo, 
+sendo esta última calculada pelo método de médias móveis exponencialmente ponderadas, ou 
+EWMA, com grau de decaimento exponencial de     . A Tabela 10 mostra os valores obtidos. 
+Interessante notar a baixa correlação, próxima à zero, obtida entre os incrementos     e     
+para ambas as commodities e em todos os períodos estimados. 
+ 
+
+MILHO 
+PERÍODO 1 
+PERÍODO 2 
+PERÍODO 3 
+PERÍODO 4 
+
+ρ 
+0,0186 
+-0,0348 
+-0,0272 
+-0,0332 
+
+ 
+ 
+ 
+ 
+ 
+
+SOJA 
+
+PERÍODO 1 
+PERÍODO 2 
+PERÍODO 3 
+PERÍODO 4 
+
+ρ 
+-0,1329 
+-0,0939 
+-0,0756 
+-0,0809 
+
+Tabela 10 - Parâmetros estimados da correlação entre o preço e a volatilidade do ativo 
+
+4.4.  Precificação das opções 
+
+Para  calcular  o  preço  de  uma  opção  usando  o  modelo  proposto,  devemos  primeiro 
+simular a volatilidade do ativo. A trajetória da volatilidade é simulada para cada dia desde o dia 
+em  que  se  quer  precificar  a  opção  até  o  seu  vencimento.  Seja              .  O  incremento 
+aleatório   , conforme sugerido por Press et al (2007), pode ser obtido por: 
+
+ 
+
+          
+
+  
+   
+
+      
+
+(18) 
+
+onde    são variáveis aleatórias independentes, retiradas de uma distribuição uniforme de zero 
+a um. Essa distribuição tem média zero, desvio-padrão igual a um e terceiro momento igual à 
+zero, sendo uma boa aproximação à distribuição Normal. Usando esse incremento aleatório na 
+equação final do modelo de Oztuk e Wilmott, e com os parâmetros já estimados, conseguimos 
+simular a trajetória da volatilidade ao longo do tempo. A Figura 5 mostra um exemplo de cinco 
+simulações diferentes para o comportamento da volatilidade com           ,        dias: 
+ 
+
+Volatilidade Estocástica 
+
+14 
+
+50% 
+
+40% 
+
+30% 
+
+20% 
+
+10% 
+
+0% 
+
+ 
+)
+.
+a
+.
+a
+%
+
+(
+ 
+e
+d
+a
+d
+
+i
+l
+i
+t
+a
+o
+V
+
+l
+
+0 
+
+3 
+
+8 
+
+11 
+
+16 
+
+21 
+
+24 
+
+29 
+
+32 
+
+37 
+
+42 
+
+Tempo (dias) 
+
+ 
+
+Figura 5 – Exemplo de simulação para a volatilidade ao longo do tempo 
+
+O  próximo  passo  consiste  em  simular  a  trajetória  do  preço  do  ativo  a  partir  da  volatilidade 
+calculada no passo anterior. Dado que temos uma correlação   entre o preço e a volatilidade 
+do ativo, previamente estimada conforme explicado na seção anterior, obtemos o incremento 
+aleatório    para o preço: 
+
+ 
+
+                              
+
+  
+   
+
+       
+
+(19) 
+
+onde              .  A  partir  desse  incremento  aleatório  e  da  trajetória  da  volatilidade, 
+incluímos os saltos determinísticos conforme a equação (3) para obtermos a trajetória do ativo 
+ao  longo  do  tempo.  Para  isso  verificamos  se  cada  dia  da  trajetória  simulada  coincide  com 
+alguma  data  de  divulgação  dos  relatórios  do  USDA.  Caso  positivo,  um  salto  aleatório  (com 
+distribuição  com  parâmetros  estimados  anteriormente)  é  considerado  para  a  simulação  do 
+preço.  De  posse  da  “trajetória  final”  do  ativo,  que  considera  tanto  a  volatilidade  estocástica 
+quanto os saltos determinísticos, podemos então fazer a precificação da opção americana pelo 
+método de Longstaff-Schwartz.  
+
+4.5. 
+
+ Simulação 
+
+Aptos  a  precificar  as  opções  utilizando  o  modelo  proposto,  podemos  agora  analisar 
+algumas  estratégias  de  hedge  para  verificar  sua  performance.Consideremos  o  problema  de 
+uma  empresa  que  precisa  comprar  determinado  volume  de  uma  commodity  física.  Contra 
+possíveis  movimentos  adversos  do  mercado  ao  longo  do  ano-safra,  o  ideal  é  que  essa 
+empresa  faça  o  hedge  dessa  posição  através  de  instrumentos  derivativos  disponíveis  no 
+mercado.  O  objetivo  das  simulações  será  comparar  a  eficiência  desse  hedge  utilizando-se 
+diferentes estratégias. Um total de três estratégias de hedge foram analisadas: 
+
+a)  Venda de futuro 
+b)  Venda de futuro sintético usando opções disponíveis no mercado 
+c)  Venda de futuro sintético usando opções precificadas pelo modelo 
+
+O futuro sintético consiste na venda de uma call e na compra de uma put, ambas com mesmo 
+preço de exercício e data de vencimento, a fim  de se garantir o preço  forward do ativo-base. 
+Os instrumentos testados foram os futuros e opções negociados na CME (Chicago Mercantile 
+Exchange)  por  apresentarem  excelente  liquidez5.  As  simulações  foram  feitas  com  uma 
+quantidade  teórica  fixada  de  400  contratos  (o  equivalente  a  aproximadamente  50.000 
+toneladas) para cada commodity. O hedge foi estudado tanto para o mercado físico brasileiro 
+quanto  para  o  mercado  físico  norte-americano.  Todas  as  simulações  foram  feitas  usando-se 
+
+                                                           
+5  De  acordo  com  documento  divulgado  pela  própria bolsa,  o  volume médio  diário negociado  no  ano  de  2011  foi de  313.511 
+contratos  futuros  de  milho,  179.142  contratos  futuros  de  soja,  112.591  contratos  de  opções  de  milho  e  52.389  contratos  de 
+opções de soja. 
+
+15 
+
+preços  em  dólar  norte-americano  (os  preços  físicos  para  o  mercado  brasileiro  podem  ser 
+obtidos  diretamente  nesta  moeda  a  partir  do  próprio  site  da  ESALQ-CEPEA).  No  caso  do 
+futuro  sintético,  as  opções  foram  escolhidas  de  tal  forma  que,  no  início  de  cada  período  de 
+simulação e durante cada rolagem, elas estivessem no dinheiro, ou seja, o preço de exercício 
+delas era próximo ao preço do ativo-base. A rolagem das opções se deu nas respectivas datas 
+de vencimento. A frequência escolhida para rebalanceamento da estratégia foi semanal, a fim 
+de se diminuir custos de transação para o caso prático. 
+
+4.6. 
+
+ Resultados 
+
+Para  se  constatar  a  eficiência  das  estratégias  em  cada  período,  duas  medidas 
+diferentes foram adotadas. A primeira é o desvio-padrão (DP) da exposição financeira diária. A 
+exposição financeira compreende  a exposição decorrente da posição física mais  a exposição 
+decorrente  da  posição  de  hedge.  O  ideal  é  que  essa  exposição  financeira  seja  a  mínima 
+possível,  significando  que  a  estratégia  de  hedge  replica  bem  a  posição  física.  A  segunda 
+medida  adotada  é  a  eficiência  do  hedge  (EH).  Conforme  proposto  por  McKenzie  e  Singh 
+(2011),  uma  forma  de  se  medir  essa  eficiência  se  dá  através  da  redução  percentual  na 
+variância da posição com hedge relativa à posição sem hedge: 
+
+ 
+
+          
+
+    
+    
+
+ 
+
+(20) 
+
+onde      é a variância da exposição financeira da posição com hedge e      a variância da 
+exposição  financeira  da  posição  física  (ou  sem  hedge)  durante  o  período  considerado.  A 
+Tabela 11 a seguir mostra os resultados para o milho físico negociado no mercado brasileiro, 
+para  cada  período  bem  como  para  o  período  total  (quatro  períodos  em  sequência).  A 
+interpretação  dos  resultados  acima  se  dá  da  seguinte  forma:  para  a  posição  teórica  de  400 
+contratos físicos, o desvio-padrão da exposição financeira dessa posição para o período 1 é de 
+US$1.202.000,  isto  é,  se  a  empresa  tivesse  comprado  essa  posição  e  a  tivesse  mantido 
+durante o período sem fazer hedge  algum, sua exposição financeira apresentaria um desvio-
+padrão acima de um milhão de dólares. Já no caso do hedge usando futuro sintético (opções) 
+com o delta do modelo, o desvio-padrão dessa exposição seria reduzido para US$337.000. A 
+eficiência  do  hedge  para  esse  período  usando  as  opções  precificadas  pelo  modelo  foi  de 
+92,2%. 
+
+MILHO BRASIL 
+
+PERÍODO 1 
+
+ 
+
+PERÍODO 2 
+
+ 
+
+PERÍODO 3 
+
+ 
+
+PERÍODO 4 
+
+ 
+
+TOTAL 
+
+ 
+
+ 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+Sem Hedge 
+
+Hedge com 
+
+Futuros 
+
+Hedge com 
+
+Opções 
+
+(mercado) 
+
+Hedge com Opções 
+
+(modelo) 
+
+$1.202 
+
+- 
+
+$569 
+
+- 
+
+$1.601 
+
+- 
+
+$1.806 
+
+- 
+
+$2.959 
+
+- 
+
+$306 
+
+93,5% 
+
+$245 
+
+81,4% 
+
+$575 
+
+87,1% 
+
+$389 
+
+95,4% 
+
+$398 
+
+98,2% 
+
+$309 
+
+93,4% 
+
+$256 
+
+79,8% 
+
+$691 
+
+81,4% 
+
+$469 
+
+93,2% 
+
+$463 
+
+97,5% 
+
+$337 
+
+92,2% 
+
+$255 
+
+80,0% 
+
+$591 
+
+86,4% 
+
+$404 
+
+95,0% 
+
+$415 
+
+98,0% 
+
+Tabela 11 - Resultados da simulação para Milho Brasil (desvio-padrão em milhares de US$) 
+
+Para  os  quatro  períodos  em  sequência  foi  de  98,0%.  Olhando-se  para  todos  os  períodos 
+simulados  em  sequência  (TOTAL),  observamos  que  a  melhor  estratégia  de  hedge  é  a  com 
+
+futuros,  seguida  pela  estratégia  do  modelo  proposto.  Uma  das  razões  para  se  optar  pela 
+estratégia  com  as  opções  em  detrimento  da  estratégia  com  futuros  é  o  fluxo  de  caixa 
+necessário para se tomar tal posição no mercado, já que no caso de se montar uma estratégia 
+de  futuro  sintético,  onde  vende-se  uma  call  e  compra-se  uma  put,  o  custo  seria  próximo  a 
+zero.Através  da  Figura  6  abaixo,  conseguimos  visualizar  a  variabilidade  do  resultado  da 
+posição sem hedge contra o resultado da posição com hedge via opções do modelo: 
+
+16 
+
+Resultado acumulado - Milho Brasil 
+
+ 
+
+ $6.000  
+
+ $4.000  
+
+ $2.000  
+
+ $-    
+
+ $-2.000  
+
+ $-4.000  
+
+ $-6.000  
+
+Sem Hedge 
+
+Hedge com Opções (modelo) 
+
+ 
+
+Figura 6 – Milho Brasil: Resultado diário acumulado (valores em milhares de US$) 
+
+Claramente  se  observa  a  importância  do  hedge,  que  elimina  os  resultados  indesejados  dos 
+movimentos  adversos  do  mercado.  Note  que  o  objetivo  aqui  é  ter  o  resultado  acumulado  o 
+mais  próximo  de  zero,  já  que  estamos  tentando  estabelecer  uma  posição  protegida  contra 
+movimentos  indesejados.  O  mesmo  foi  observado  para  o  mercado  brasileiro  da  soja:  a 
+estratégia com opções usando o delta do modelo foi superior a estratégia com opções usando 
+o delta do mercado analisando-se os quatro períodos em sequência. A eficiência do hedge do 
+modelo foi de 97,5%, conforme observamos na Tabela 12: 
+
+SOJA BRASIL 
+
+PERÍODO 1 
+
+ 
+
+PERÍODO 2 
+
+ 
+
+PERÍODO 3 
+
+ 
+
+PERÍODO 4 
+
+ 
+
+TOTAL 
+
+ 
+
+ 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+DP 
+
+EH 
+
+Sem Hedge 
+
+Hedge com 
+
+Futuros 
+
+Hedge com 
+
+Hedge com 
+
+Opções 
+
+(mercado) 
+
+Opções 
+(modelo) 
+
+$2.665 
+
+- 
+
+$1.707 
+
+- 
+
+$1.516 
+
+- 
+
+$4.236 
+
+- 
+
+$4.270 
+
+- 
+
+$514 
+
+96,3% 
+
+$544 
+
+89,9% 
+
+$402 
+
+93,0% 
+
+$672 
+
+97,5% 
+
+$542 
+
+98,4% 
+
+$963 
+
+86,9% 
+
+$911 
+
+71,5% 
+
+$628 
+
+82,8% 
+
+$766 
+
+96,7% 
+
+$827 
+
+96,3% 
+
+$689 
+
+93,3% 
+
+$655 
+
+85,3% 
+
+$512 
+
+88,6% 
+
+$801 
+
+96,4% 
+
+$674 
+
+97,5% 
+
+Tabela 12 - Resultados da simulação para Soja Brasil (desvio-padrão em milhares de US$) 
+
+A Figura 7 a seguir mostra o resultado diário acumulado da estratégia com opções do modelo 
+para o mercado brasileiro de soja, comparado com a estratégia sem hedge algum: 
+
+Resultado acumulado - Soja Brasil 
+
+ $15.000  
+
+ $10.000  
+
+ $5.000  
+
+ $-    
+
+ $-5.000  
+
+ $-10.000  
+
+ $-15.000  
+
+Sem Hedge 
+
+Hedge com Opções (modelo) 
+
+Figura 7 – Soja Brasil: Resultado diário acumulado (valores em milhares de US$) 
+
+17 
+
+ 
+
+Resultados  semelhantes  aos  observados  para  o  mercado  brasileiro  foram  obtidos  para  o 
+mercado norte-americano, tanto para milho quanto para soja. No caso do milho, os dados são 
+apresentados  na  Tabela  13  abaixo.  Novamente  a  estratégia  com  opções  usando  o  delta  do 
+modelo foi superior  à estratégia com o delta de mercado, ficando a eficiência bem próxima a 
+da  estratégia  com futuros.  Como  era  esperado,  a  eficiência  do  hedge  para  o  mercado  norte-
+americano  é  superior  ao  do  mercado  brasileiro,  já  que  estamos  utilizando  instrumentos 
+negociados na bolsa americana. A eficiência nesse caso foi de 99,6%. 
+ 
+
+MILHO EUA 
+
+PERÍODO 1 
+
+ 
+
+PERÍODO 2 
+
+ 
+
+PERÍODO 3 
+
+ 
+
+PERÍODO 4 
+
+ 
+
+TOTAL 
+
+ 
+
+ 
+
+DP 
+EH 
+DP 
+EH 
+DP 
+EH 
+DP 
+EH 
+DP 
+EH 
+
+Sem Hedge 
+
+Hedge com 
+
+Futuros 
+
+Hedge com 
+
+Hedge com 
+
+Opções 
+
+(mercado) 
+
+Opções 
+(modelo) 
+
+$1.233 
+
+- 
+
+$422 
+
+- 
+
+$1.969 
+
+- 
+
+$1.293 
+
+- 
+
+$3.138 
+
+- 
+
+$107 
+99,2% 
+$97 
+94,7% 
+$211 
+98,9% 
+$180 
+98,1% 
+$157 
+99,8% 
+
+$132 
+98,9% 
+$134 
+89,9% 
+$355 
+96,7% 
+$468 
+86,9% 
+$309 
+99,0% 
+
+$162 
+98,3% 
+$118 
+92,2% 
+$259 
+98,3% 
+$256 
+96,1% 
+$208 
+99,6% 
+
+Tabela 13 - Resultados da simulação para Milho EUA (desvio-padrão em milhares de US$) 
+
+A  Figura  8  mostra  o  resultado  acumulado  da  estratégia  para  o  milho  negociado  no  mercado 
+norte-americano: 
+
+ 
+
+Resultado acumulado - Milho EUA 
+
+18 
+
+ $6.000  
+
+ $4.000  
+
+ $2.000  
+
+ $-    
+
+ $-2.000  
+
+ $-4.000  
+
+ $-6.000  
+
+Sem Hedge 
+
+Hedge com Opções (modelo) 
+
+ 
+
+Figura 8 – Milho EUA: Resultado diário acumulado (valores em milhares de US$) 
+
+No  caso  da  soja  para  o  mercado  norte-americano,  resultados  semelhantes  foram 
+observados:  a  estratégia  com  opções  usando  delta  do  modelo  teve  desempenho  superior  à 
+estratégia  com  opções  usando  delta  do  mercado,  e  novamente  como  esperado,  a  estratégia 
+também  teve  uma  eficiência  de  hedge  maior  quando  comparada  com  o  mercado  físico 
+brasileiro. Os resultados são apresentados na Tabela 14 a seguir. 
+ 
+
+SOJA EUA 
+
+PERÍODO 1 
+
+ 
+
+PERÍODO 2 
+
+ 
+
+PERÍODO 3 
+
+ 
+
+PERÍODO 4 
+
+ 
+
+TOTAL 
+
+ 
+
+ 
+
+DP 
+EH 
+DP 
+EH 
+DP 
+EH 
+DP 
+EH 
+DP 
+EH 
+
+Sem Hedge 
+
+Hedge com 
+
+Futuros 
+
+Hedge com 
+
+Hedge com 
+
+Opções 
+
+(mercado) 
+
+Opções 
+(modelo) 
+
+$2.640 
+
+- 
+
+$964 
+
+- 
+
+$2.271 
+
+- 
+
+$3.561 
+
+- 
+
+$4.179 
+
+- 
+
+$327 
+98,5% 
+$258 
+92,9% 
+$235 
+98,9% 
+$252 
+99,5% 
+$272 
+99,6% 
+
+$832 
+90,1% 
+$737 
+41,6% 
+$501 
+95,1% 
+$415 
+98,6% 
+$644 
+97,6% 
+
+$507 
+96,3% 
+$364 
+85,8% 
+$316 
+98,1% 
+$444 
+98,4% 
+$414 
+99,0% 
+
+Tabela 14 - Resultados da simulação para Soja EUA (desvio-padrão em milhares de US$) 
+
+A  Figura  9  mostra  o  resultado  acumulado  da  estratégia  para  a  soja  negociada  no  mercado 
+norte-americano. Constata-se mais uma vez a importância do hedge. 
+
+ 
+
+Resultado acumulado - Soja EUA 
+
+19 
+
+ $15.000  
+
+ $10.000  
+
+ $5.000  
+
+ $-    
+
+ $-5.000  
+
+ $-10.000  
+
+ $-15.000  
+
+Sem Hedge 
+
+Hedge com Opções (modelo) 
+
+ 
+
+Figura 9 – Soja EUA: Resultado diário acumulado (valores em milhares de US$) 
+
+5. Conclusão 
+
+ 
+O  objetivo  desta  dissertação  foi  propor  um  modelo  que  pudesse  precificar  opções 
+americanas  de  commodities,  incorporando  na  dinâmica  do  ativo  ambos  os  efeitos  da 
+volatilidade estocástica e dos saltos determinísticos nos preços decorrentes da divulgação dos 
+relatórios  do  USDA.  As  opções  precificadas  pelo  modelo  foram  utilizadas  em  uma  estratégia 
+de hedge para uma posição teórica de milho físico, e outra de soja física, tanto para o mercado 
+brasileiro quanto para o mercado norte-americano. Os resultados mostram que a incorporação 
+da volatilidade estocástica e dos saltos determinísticos melhoram o desempenho em relação à 
+uma  estratégia  com  opções  que  siga  o  modelo  praticado  pelo  mercado,  para  ambas  as 
+commodities  e  em  ambas  as  localidades.  O  modelo  proposto  também  pode  servir  como 
+alternativa  à  utilização  de  contratos  futuros  para  o  hedge  da  posição  física.  A  eficiência  da 
+estratégia  com  o  modelo  proposto  é  próxima  à  eficiência  da  estratégia  com  futuros,  tendo  a 
+vantagem de o custo para se montar tal posição com opções ser menor. Outra vantagem que 
+podemos  citar  é  o  fluxo  de  caixa  necessário  para  ajustes  diários  dos  contratos  futuros,  algo 
+que se torna desnecessário com a utilização das opções. Outro resultado encontrado é que a 
+eficiência da estratégia é maior para o mercado norte-americano, em comparação ao mercado 
+brasileiro. Esse resultado era esperado pois utilizamos para o estudo instrumentos negociados 
+na bolsa americana. Apesar do Brasil ser um dos maiores produtores e exportadores de milho 
+e de soja do mundo, o volume de instrumentos derivativos sobre essas commodities negociado 
+na  bolsa  local  representa  aproximadamente  0,1%  do  volume  negociado  na  CME.  O 
+desenvolvimento do mercado de derivativos local poderia ser benéfico para o cenário agrícola 
+brasileiro. 
+
+Como sugestão de extensões deste trabalho, podemos citar o estudo de estratégias de 
+hedge  com  a  dinâmica  do  modelo  proposto,  envolvendo  opções  de  commodities  com 
+vencimento semanal, criadas no ano passado pela CME. O volume negociado dessas opções 
+vem  aumentando  significativamente.  Por  apresentarem  um  vencimento  mais  curto,  o  prêmio 
+negociado  por  elas  é  menor  e  portanto  o  custo  do  hedge  seria  menor.  Uma  extensão  ao 
+trabalho seria o estudo da frequência do rebalanceamento da estratégia. Ao invés de se utilizar 
+um  período  semanal  fixo  para  tal  fim,  como  foi  o  caso  deste  trabalho,  poderiam  ser  feitos 
+estudos sobre outras frequências ou até mesmo o hedge por bandas de delta.  
+ 
+ 
+ 
+ 
+ 
+
+20 
+
+Bibliografia 
+
+ABRAHAM, A.; TAYLOR, W. An Event Option Pricing Model with Scheduled and Unscheduled 
+Announcement  Effects.  Review of  Quantitative  Finance  and  Accounting,  v.  8,  p.  151-162, 
+1997. 
+
+ADJEMIAN, M. Emergence and Impact of USDA’s WASDE Report, Amber Waves, v. 10, 2012. 
+BATES,  D.  Jumps  and  Stochastic  Volatility:  Exchange  Rate  Processes  Implicit  in  Deutsche 
+
+Mark Options, The Review of Financial Studies, v.9, p. 69-107, 1996. 
+
+BLACK,  F.  The  pricing  of  commodity  contracts,  Journal  of  Financial  Economics,  v.  3,  p.  167-
+
+179, 1976. 
+
+BLACK,  F.;  SCHOLES  M.  The  pricing  of  options  and  corporate  liabilities,  Journal  of  Political 
+
+Economy, v. 81, p. 637-654, 1973. 
+
+CME Group. Annual Leading Products Guide 2011, disponível em www.cmegroup.com 
+CONT,  R.;  TANKOV,  P.;  VOLTCHKOVA,  E.  Hedging  with  Options  in  Models  with  Jumps, 
+
+Proceedings of the 2005 Abel Symposium in Honor of Kiyosi Itô, p. 197-218, 2005. 
+
+DUBINSKY,  A.;  JOHANNES,  M.  Earnings  announcements  and  equity  options,  Columbia 
+
+University, 2006. 
+
+HESTON, S. A Closed-Form Solution for Options with Stochastic Volatility with Applications to 
+
+Bond and Currency Options, Review of Financial Studies, v. 6, p. 327-343, 1993. 
+
+HILLIARD,  J.;  REIS,  J.  Jump  Processes  in  Commodity  Futures  Prices  and  Options  Pricing, 
+
+American Journal of Agricultural Economics, v. 81, p. 273-286, 1999. 
+
+GATHERAL,  J.  The  Volatility  Surface  A  Pratictioner’s  Guide,  John  Wiley  and  Sons,  208  p., 
+
+2006. 
+
+ISENGILDINA-MASSA, O.; IRWIN, S.; GOOD, D.; GOMEZ, J. The Impact of WASDE Reports 
+on Implied Volatility in Corn and Soybean Markets, Agribusiness, vol. 24, p. 473-490, 2008. 
+JACKEL,  P.  Stochastic  volatility  models:  Past,  Present  and  Future,  The  Best  of  Wilmott  I: 
+
+Incorporating the Quantitative Finance Review, 2004. 
+
+KOEKEBAKKER,  S.;  LIEN,  G.  Volatility  and  Price  Jumps  in  Agricultural  Futures  Prices  – 
+Evidence from Wheat Options, American Journal of Agricultural Economics, v. 86, p. 1018-
+1031, 2004. 
+
+KOU, S. A jump diffusion model for option pricing, Management Science, v. 48, p. 1086-1101, 
+
+2002. 
+
+LINNELL, G. Option Pricing with Events at Deterministic Times, Working paper, 2012. 
+LONGSTAFF,  F.;  SCHWARTZ,  E.  Valuing  American  Options  by  Simulation:  A  Simple  Least-
+
+Squares Approach, The Review of Financial Studies, v. 14, p. 113-147, 2001. 
+
+MCKENZIE, A.; SINGH, N. Hedging Effectiveness around U.S. Department of Agriculture Crop 
+
+Reports, Journal of Agricultural and Applied Economics, v. 43, p. 77-94, 2011. 
+
+MERTON,  R.  Option  pricing  when  underlying  stock  returns  are  discontinuous,  Journal  of 
+
+Financial Economics, v. 3, p. 125-144, 1976. 
+
+OZTUKEL,  A.;  WILMOTT,  P.  Uncertain  Parameters,  an  Empirical  Stochastic  Volatility  Model 
+and  Confidence  Limits,  International  Journal  of  Theoretical  and  Applied  Finance,  v.  1,  p. 
+175-189, 1998. 
+
+PRESS, W.; TEUKOLSKY, S.; VETTERLING, W.; FLANNERY, B. Numerical Recipes: The Art 
+
+of Scientific Computing, Third Edition, Cambridge University Press, 1256 p., 2007. 
+
+SEPP,  A.  Fourier  Transform  for  Option  Pricing  under  Affine  Jump-Diffusions:  an  Overview, 
+
+SSRN eLibrary, 2003. 
+
+TANKOV,  P.;  VOLTCHKOVA,  E.  Jump-diffusion  Models:  a  Practitioner’s  Guide,  Banque  et 
+
+Marchés, v. 99, 2009. 
+
+WILMOTT,  P.  Paul  Wilmott  on  Quantitative  Finance,  Second  Edition,  John  Wiley  and  Sons, 
+
+1500 p., 2006. 
+
+

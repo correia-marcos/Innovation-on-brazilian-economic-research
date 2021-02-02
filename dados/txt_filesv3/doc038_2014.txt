@@ -1,0 +1,1486 @@
+ 
+ 
+ 
+
+OTIMIZAÇÃO DE REGRAS DE POLÍTICA MONETÁRIA E MODELOS DSGE12 
+
+Gibran Moniz Matni3 
+Sidney Martins Caetano4 
+Wilson Luiz Rotatori Corrêa5 
+
+ 
+ 
+ 
+ 
+Resumo 
+Este  trabalho  tem  por  objetivo  apresentar  um  método  prático  para  encontrar,  usando  modelos 
+DSGE,  a  resposta  ótima  dos  coeficientes  da  regra  de  política  monetária,  dentre  uma  classe  de 
+políticas à lá Taylor, que minimiza uma função perda. A função perda é composta pelas variâncias 
+da  inflação,  do  gap  do  produto  e  da  variação  da  taxa  nominal  de  juros.  Para  colocar  o  método 
+apresentado  em  prática  o  seguinte  procedimento  é  realizado:  São  otimizadas  as  regras  de  política 
+monetária de Levin, Wieland e Williams (1999, 2003) e de Smets e Wouters (2007) considerando o 
+ambiente econômico do modelo SAMBA (2008) e, então, as funções impulso-resposta do produto e 
+da  inflação  a  9  distintos  choques  abarcados  por  esse  modelo  são  comparadas  tanto  sob  a  regra 
+original do modelo quanto sob as regras ótimas sugeridas.  Analisando as respostas da inflação e do 
+produto  aos  impulsos  dos  9  distintos  choques  econômicos  exógenos  observou-se  uma  suavização 
+das respostas do produto e da inflação quando adotadas as regras ótimas.  
+Palavras-Chave: Modelos DSGE, Política Monetária Ótima. 
+ 
+ 
+ 
+Abstract 
+This paper aims to show an approach to find the optimal monetary policy rules within a class  à lá 
+Taylor  by  using  DSGE  models.  The  optimal  coefficients  are  found  in  order  to  minimize  a  loss 
+function that includes the unconditional variances of the inflation, the output gap and the change of 
+the  nominal  interest  rate.  This  approach  is  employed  in  an  exercise  that  optimizes  two  monetary 
+policy rules for the SAMBA model (2008). These optimal rules are then compared to the original 
+rule of the model by analysing the generated impulse response functions of the output and inflation 
+for  9  different  shocks.  It  seems  that  the  optimal  rules  smooths  the  path  of  the  inflation  and  the 
+output in face of exogenous shocks.  
+Keywords: DSGE models; Optimal Monetary Policy Rules. 
+ 
+JEL Classification: E37, E52, E58, E61. 
+ 
+ 
+ 
+
+ANPEC: Área 4 – Macroeconomia, Economia Monetária e Finanças. 
+
+ 
+ 
+ 
+
+                                                           
+1 O autor agradece a ajuda pontual e indispensável de Volker Wieland no processo de elaboração do código do 
+MatLab que encontra os parâmetros da regra de política monetária que minimiza a função perda proposta. 
+2 O autor agradece a Maik Wolters que gentilmente compartilhou algumas de suas preciosas ideias. 
+3 Mestrando do Programa de Pós-Graduação em Economia Aplicada (PPGEA) – UFJF. 
+4 Professor do Programa de Pós-Graduação em Economia Aplicada (PPGEA) – UFJF. 
+5Professor do Programa de Pós-Graduação em Economia Aplicada (PPGEA) – UFJF. 
+
+ 
+
+“To criticize or reject a model because it is an abstraction is foolish: all models are necessarily 
+
+abstractions. A model environment must be selected based on the question being addressed” 
+
+Kydland e Prescott (1996) 
+
+ 
+1. INTRODUÇÃO  
+
+Antes  do 
+
+trabalho  de  Kydland  e  Prescott  (1982)  o  modus  operandi  pelo  qual 
+macroeconomistas  conduziam  suas  pesquisas  empíricas  tinha  como  foco  ou  caracterizações 
+puramente  estatísticas  ou  modelos  de  sistema  de  equações  que  ignoravam  tanto  considerações 
+acerca  da  existência  de  um  equilíbrio  geral  como  considerações  sobre  o  comportamento  forward-
+looking dos tomadores de decisão. Após notórias críticas6 com relação a esse approach ocorreu, a 
+partir de meados da década de 80, a transição para um novo paradigma que objetivou incorporar a 
+disciplina teórica sobre  as caracterizações de formas reduzida estabelecidas. Essa incorporação de 
+disciplina teórica tomou  a forma de “cross-equation restrictions”(DEJONG, 2011)  sob as quais  o 
+comportamento  estocástico  de  um  conjunto  de  variáveis  exógenas,  somado  ao  comportamento 
+forward-looking  por  parte  dos  tomadores  de  decisão,  provocam  implicações  nos  comportamentos 
+estocásticos das variáveis endógenas determinadas pelos tomadores de decisão7. Desde então cresce 
+a  utilização  de  uma  classe  de  modelos  que  se  tornaram  conhecidos  como  modelos  Dynamic 
+Stochastic General Equilibrium (DSGE). 
+
+Em  um  artigo  seminal  “Time  to  Build  and  Aggregate  Fluctuations”,  Kydland  e  Prescott 
+(1982)  propõem  uma  teoria  de  business  cycle  fluctuations  bem  diversa  da  tradição  keynesiana. 
+Neste  os  autores  integraram  a  análise  de  crescimento  de  longo  prazo  com  as  flutuações 
+macroeconômicas  de  curto  prazo.  De  acordo  com  a  Royal  Swedish  Academy  of  Sciences  (2004), 
+Kydland  e  Prescott  demonstraram  que  muitas  características  dos  business  cycles,  tais  como 
+comovimentos  de  variáveis  macroeconômicas  centrais  e  suas  relativas  variabilidades,  podem  ser 
+geradas por um modelo baseado em choques tecnológicos8. 
+
+No  ano  de  2004,  o  Banco  Central  da  Suécia  concedeu  ao  norueguês  Finn  Kydland  e  ao 
+norte-americano Edward Prescott o 54º e o 55º Prêmio Sveriges Riksbank de Ciências Econômicas 
+em  Memória  de  Alfred  Nobel  pela  “Contribution  to  Dynamic  Macroeconomics:  The  Time 
+Consistency  of  Economic  Policy  and  the  Driving  Forces  Behind  Business  Cycles”.  Segundo  a 
+Royal  Swedish  Academy  of  Sciences  (2004),  “Kydland  and  Prescott’s  work  has  transformed 
+academic  research  in  economics,  as  well  as  the  practice  of  macroeconomic  analysis  and 
+policymaking”. 
+
+Para  Gali  (2008),  sob  um  ponto  de  vista  metodológico,  os  modelos  RBC  estabeleceram 
+firmemente a utilização dos modelos Dynamics Stochastic General Equilibrium (DSGE) como uma 
+ferramenta  central  de  análise  macroeconômica,  assim  como  realçaram  a  importância  dos  aspectos 
+quantitativos  na  modelagem  -  refletida  no  papel  central  dado  para  a  calibração,  estimação, 
+simulação e avaliação dos modelos. Basicamente, o método de modelagem dos DSGE consiste nas 
+descrições do ambiente econômico no qual o agente representativo consome, oferta trabalho e toma 
+decisões de produção; e  dos processos  predeterminados que descrevem, por exemplo, o progresso 
+tecnológico e a evolução do estoque de capital. Em seguida, examina-se a otimizaçãoempreendida 
+pelos  consumidores/produtores  representativos  para  determinar  as  alocações  de  equilíbrio  do 
+consumo e do investimento. 
+
+O  framework  do  modelo  básico  Novo  Keynesiano  possui  duas  características  que  o 
+distingue dos modelos RBC: i) Assume-se que cada firma produz um bem diferenciado para o qual 
+estabelecem o seu preço, isto é, as firmas são price setters; e ii) Assume-se que existem restrições 
+
+                                                           
+6 Ver Lucas (1976), Sims (1972) e Hansen e Sargent (1980).  
+7 Não obstante, a imposição de tais restrições é indireta e especificações de forma-reduzida (agora microfundamentadas 
+pelas restrições impostas) continuam a servir como o ponto focal das pesquisas empíricas.  
+8  Na  literatura,  choques  tecnológicos  são  choques  de  oferta,  sendo  esta  uma  denominação  mais  abrangente  do  que 
+aquela. 
+
+nos mecanismos  de  ajustamento dos preços refletidas na suposição de que apenas uma fração das 
+firmas pode restabelecer seus preços em um dado período9. 
+
+De  acordo  com  Sims  (2003),  o  modelo  DSGE  apresentado  em  Smets  e  Wouters  (2003)  - 
+modelo  caracterizado  como  Novo  Keynesiano–  representa  um  avanço  substancial,  sugerindo  a 
+possibilidade de que modelos DSGE, combinados com métodos de inferência Bayesiana, podem em 
+pouco  tempo  se  tornar  o  framework  padrão  para  modelagem  de  políticas  macroeconômicas.  Para 
+Smets  e  Wouters  (2007),  “A  new  generation  of  small-scale  monetary  business  cycle  models  with 
+sticky  prices  and  wages  (the  New  Keynesian  or  New  Neoclassical  Synthesis  (NNS)  models)  has 
+become  popular  in  monetary  policy  analysis”.  Segundo  Galí  (2008),  “that  model  [the  Basic  New 
+Keynesian Model]  has become in recent  years  the workhorse for  the analysis of monetary policy, 
+fluctuations,  and  welfare”.    De  acordo  com  Walsh  (2010),  muitos  bancos  centrais  construíram  e 
+estimaram modelos DSGE (teoricamente fundamentados no modelo Novo Keynesiano) para análise 
+de  políticas  econômicas10.  Aindas  egundo  Gouvea  et  al.  (2011),  “in  recent  years,  many  central 
+bankers  have  put  a  great  effort  on  developing  applied  DSGE  models  (...)  they  are  becoming  an 
+important policy tool for central banks around the world”11. 
+
+Entretanto,  a  falha  por  parte  dos  macroeconomistas  em  prever  a  crise  financeira 
+internacional  de  2008  gerou  críticas  aos  modelos  DSGE  então  utilizados  para  estudar  e  prever  os 
+ciclos econômicos, bem como para guiar a política monetária. Todavia, há de se considerar que os 
+ambientes econômicos então modelados à época não consideravam o sistema financeiro, ignorando 
+assim todos os players desse sistema e suas relações com as famílias e com as firmas. Dessa forma, 
+é  de  se  esperar  que  uma  crise  originada  no  sistema  financeiro,  que  gere  efeitos  reais,  não  seria 
+adequadamente  prevista.  Desde  então,  novos  modelos  foram  desenvolvidos  e  diversas  formas  de 
+incorporar o sistema financeiro e seus agentes maximizadores vem sendo elaboradas. 
+
+Em  2010,  o  presidente  do  Banco  Central  Europeu  Jean-Claude  Trichet  expressou  a 
+necessidade de  ferramentas de auxílio  para tomada de decisões de política econômica da seguinte 
+maneira12:“We  need  macroeconomic  and  financial  models  to  discipline  and  structure  our 
+judgemental analysis.”. Neste sentido, o presente trabalho se propõe a utilizar o método de Taylor e 
+Wieland  (2011)  para  encontrar,  dentre  uma  classe  de  políticas  monetárias  lineares  à  lá  Taylor,  a 
+regra  ótima,  por  meio  dos  coeficientes  da  regra  de  política  monetária,  que  minimiza  uma  função 
+perda composta pelas variâncias da inflação, do  gap do produto  e da variação da taxa nominal  de 
+juros. Para colocar em prática o método apresentado, são otimizadas as regras de política monetária 
+de  Levin,  Wieland  e  Williams  (1999,  2003)  e  de  Smets  e  Wouters  (2007)  dentro  do  ambiente 
+econômico  proposto  no  modelo  SAMBA  (2008)  do  Banco  Central  do  Brasil.  Acrescentam-se  à 
+análise as funções impulso-resposta que descrevem o comportamento da inflação e do produto sob 
+as regras propostas otimizadas e sob a regra original do SAMBA a 9 diferentes choques exógenos 
+na economia.  
+
+O  presente  trabalho  divide-se  em  três  seções,  além  da  presente  introdução.  A  seção  2 
+descreve a metodologia para solução dos modelos e apresenta a técnica de minimização utilizada; a 
+seção  3  apresenta  de  forma  breve  o  modelo  SAMBA  (2008)  e  as  regras  propostas  otimizadas 
+considerando  este  modelo;  a  seção  4  mostra  os  resultados  obtidos  pelas  funções  impulso-resposta 
+                                                           
+9  O  mecanismo  de  ajustamento  de  preços  predominante  na  literatura  que  abarca  os  modelos  DSGE  é  o  mecanismo 
+elaborado  por  Calvo  (1983):  Cada  firma  restabelece  o  seu  preço  com  probabilidade  (1-θ)  em  qualquer  período  dado, 
+independente do tempo transcorrido desde o último ajustamento. Desse modo, em cada período uma quantidade (1- θ) 
+de produtores restabelece seus preços, enquanto uma fração θ mantém seus preços sem reajustá-los. Como resultado, a 
+duração média dos preços passa a ser          . Nesse contexto, θ passa a ser um índice natural de rigidez dos preços 
+(ver Galí [2008]).  
+10Walsh  (2010)  cita  como  exemplos  os  modelos  desenvolvidos  por  Adolfsonet  al.  (2007)  para  a  Suécia  e  o 
+desenvolvido por Gouveaet al. (2008) para o Brasil.  
+11Gouveaet  al.  (2011)  cita  alguns  modelos  DSGE  desenvolvidos  pelos  bancos  centrais  do  Canada  (ToTEM),  Chile 
+(MAS), Colombia (PATACON), England (BEQM), Euro Area (NAWM), New Zeland (KITT), Norway (NEMO), Peru 
+(MEGA-D), andSweden (RAMSES).  
+12  Trecho 
+non-standard 
+measuresandfinancetheory"  de  Jean-Claude  Trichet,  então  Presidente  do  European  Central  Bank,  na  ocasião  da  ECB 
+Central Banking Conference Frankfurt, 18 November 2010.  
+
+"Reflectionsonthenatureofmonetarypolicy 
+
+intitulado 
+
+discurso 
+
+retirado 
+
+um 
+
+de 
+
+do  produto  e  da  inflação,  sob  as  regras  otimizadas  e  a  regra  original  do  modelo,  a  9  choques 
+exógenos; e a seção 5 finaliza com as conclusões.  
+ 
+2. FORMA CANÔNICA DOS MODELOS DSGE 
+
+O ambiente econômico considerado13 – os choques, as leis de movimento das variáveis reais 
+e nominais, a estrutura competitiva, e as equações características que refletem a busca de objetivos 
+explícitos  propositados  pelos  tomadores  de  decisão  –  e  as  condições  de  primeira  ordem  a  este 
+associadas,  de  qualquer  modelo  DSGE,  podem  ser  convertidos  em  um  sistema  não-linear  de 
+primeira ordem de equações em diferença expectacionais. Segundo Favero (2001), tais sistemas de 
+equações  em  diferenças  estocásticas14  descrevem  completamente  as  alocações  de  equilíbrio  da 
+economia modelada. Genericamente, sistemas podem ser representados da seguinte forma: 
+
+                         (1)15 
+
+Onde      é  um  vetor         que  contém  o  conjunto  de  todas  as  variáveis  associadas  a  um  modelo 
+particular. O vetor    é composto por variáveis estacionárias16, seu n-ésimo componente é dado por 
+   .  Os componentes de    pertencem a uma das três classificações: variáveis de controle, variáveis 
+de estado exógenas e variáveis de estado endógenas. 
+
+Variáveis  de  controle  são  denotadas  por  um  vetor        ,    ,  e  representam  as  escolhas 
+ótimas    dos  tomadores  de  decisão  tomando-se  como  dados  os  valores  das  variáveis  de  estado 
+“herdados” pelo período t. Variáveis de estado exógenas evoluem no tempo independentemente das 
+escolhas dos tomadores  de decisão,  enquanto  que a evolução das variáveis  de estado endógenas é 
+influenciada  por  suas  escolhas.  Coletivamente,  as  variáveis  de  estado  são  denotadas  por  um  vetor 
+      ,   . Sendo assim,            .  
+O  argumento  0  é  um  vetor         de  zeros,      é  um  vetor         de  choques  estruturais,  e 
+ 
+        é  a  expectativa  de        formada    pelos  tomadores  de  decisão  condicional  à  informação 
+disponível até (inclusive) o período  : 
+
+               |                          |   . 
+
+Adicionalmente  ao  condicionamento  à   ,  tipicamente  é  assumido  que  as  expectativas  são 
+formadas com  base em  todas as informações do ambiente econômico concernentes aos tomadores 
+de  decisão  (incluindo  o  vetor      ,  µ,  que  denota  a  coleção  de  parâmetros  associados  com  o 
+modelo)17.  
+Reescrevendo  as  variáveis  previstas  como  a  composição  das  realizações  ex  post  e  dos  erros  de 
+previsão, se introduz erros expectacionais no sistema, que se torna: 
+
+Onde    é um vetor      de erros expectacionais associados com as condições de optimalidade 
+
+intertemporal. Os erros expectacionais surgem a partir da realização de choques estruturais; isto é, 
+
+ (                   )       
+
+O steady-state determinístico do modelo é expresso por  ̅, definido no contexto de (1) como 
+
+          . 
+
+satisfazendo 
+
+   ̅   ̅          
+
+                                                           
+13  Segundo  Uhlig  (1999),  a  especificação  do  environmentpode  ser  explicitada  por:  i)  Preferências;  ii)  Tecnologia;  iii) 
+Dotações; e iv) informação (qual informação é considerada no processo de decisão/otimização.  
+14 Apesar de as expectativas serem racionais, a presença de choques estocásticos (aos quais somente a distribuição de 
+probabilidade  é  conhecida)  na  composição  das  variáveis  exógenas  caracteriza  o  sistema  de  equações  em  diferenças 
+expectacionais como um sistema estocástico.  
+15    Os  modelos  podem  incluir  expectativas  e  lagsde  ordem  superior  a  um.  As  ordens  das  equações  acima  foram 
+estabelecidas  em  uma  unidade  tão  somente  por  conveniência  notacional.  Sistemas  de  ordem  mais  elevada  podem  ser 
+escritos como um sistema de primeira ordem ao aumentar o vetor    apropriadamente.  
+16 Entre outras coisas, estacionariedade implica que a expectativa incondicional do nível de    não depende do tempo, e, 
+então, os seus elementos individuais     não apresentam tendência durante o crescimento de longo prazo.    
+17 Para um tratamento sobre como os tomadores de decisão agem sob a incerteza inerente ao ambiente,  ver Hansen e 
+Sargent (2008). 
+
+O vetor   , por sua vez, denota a coleção de variáveis do modelo definidas como log-desvios 
+dos  seus  valores  de  steady-state.  Então,  por  exemplo,  para  um  modelo  composto  por  produto,  , 
+investimento,  , e horas de trabalho,  ,    é dado por 
+
+     [ ̃  ̃  ̃ ]  
+Ainda mais, as variáveis do vetor    são estacionárias18. 
+ 
+2.1. Solução do modelo 
+
+A  partir  do  detalhamento  do  ambiente  econômico  procede-se  para  a  representação  do 
+modelo como um sistema não-linear de equações em diferença expectacionais. Para tanto, devem-se 
+combinar as leis de movimento das variáveis de estado e as equações que representam as restrições 
+intratemporais,  com  as  escolhas  das  condições  de  primeira  ordem  das  variáveis  de  controle.  A 
+representação genérica de um modelo DSGE como um sistema não-linear de equações em diferença 
+expectacionais é dado por (1), conforme: 
+
+                         
+
+A  solução  para  o  modelo  genérico  estrutural  não-linearcomo  definido  na  equação  (1)  é 
+obtida resolvendo as expectativas das realizações futuras das variáveis condicionando à informação 
+disponível19. A solução que se busca está sob a forma: 
+           
+
+                 
+
+A  policy  function       ,  que  representa  a  especificação  ótima  das  variáveis  de  controle 
+
+como uma função das variáveis de estado, é obtida a partir da solução de: 
+
+ (    ) = 0 
+
+Onde  F(.)  é  um  operador  definido  sobre  espaços  função.  Não  é  possível,  em  geral,  obter       
+analiticamente; então, conta-se com métodos numéricos de aproximação, obtendo-se  ̂   20. 
+
+Como o modelo (1) é não-linear não há uma closed-form solution. Uma aproximação pode 
+ser  obtida  (i)  definindo  o  steady-state21como  aquele  em  que  as  variáveis  estacionárias  do  modelo 
+são  constantes;  (ii)  log-linearizando  as  condições  de  equilíbrio  ao  redor  do  steady-state22  e  (iii) 
+aplicando  métodos  de  solução  para  resolver  o  sistema  log-linearizado  das  equações  em  diferença 
+estocásticas.  
+
+Os  steady-states  das  variáveis  podem  ser  computados  analiticamente  a  partir  do  sistema. 
+Eles são obtidos tornando-se    como seu valor de steady-state  ̅. No steady-state as variáveis não 
+crescem no tempo e possuem uma taxa de crescimento comum, deixando o modelo consistente com 
+o  requerimento  de  crescimento  equilibrado  e,  conforme  especificado,  todas  as  variáveis  são 
+interpretadas  como  sendo  medidas  em  termos  de  desvios  de  uma  tendência  comum.  Em  seguida, 
+tomam-se  aproximações  log-lineares  das  variáveis  ao  redor  de  seus  valores  de  steady-state.  As 
+
+                                                           
+18    Entre  outras  coisas,  estacionariedade  implica  que  a  expectativa  condicional  do  nível  do  processo  aleatório  não 
+depende do tempo. Logo, as variáveis consideradas não apresentam tendência durante o crescimento de longo prazo. As 
+séries  coletadas  por  Gouvea  et  al.  (2008)  tiveram  suas  tendências  removidas  pelo  filtro  HP  antes  do  processo  de 
+estimação Bayesiana do conjunto dos parâmetros estimados do modelo SAMBA (2008) – a ser abrangido mais à frente 
+neste trabalho.    
+19  O  modelo  utilizado  neste  trabalho  considera  que  as  expectativas  são  formadas  de  forma  racional.  Isto  é,  todas  as 
+informações  concernentes  aos  agentes  são  consideradas  no  processo  de  tomada  de  decisão.  Entretanto,  somente  a 
+distribuição  de  probabilidade  da  ocorrência  de  choques  futuros  é  conhecida,  por  isso  os  modelos  são  considerados 
+estocásticos. Nos  modelos log-linearizados  na vizinhança  do  steady-state a percepção do agente para com o ambiente 
+estocástico é análogo a uma situação de Equivalente Certeza.  Nesse contexto, o comportamento ótimo de um agente é 
+especificar uma decisão, uma regra de feedback, para o futuro. O agente especifica uma ação ótima contingente a cada 
+possível realização de cada possível choque.  
+20 Usualmente, na literatura, e aqui, usam-se métodos de Programação Dinâmica.  
+21  O  Steady-State  corresponde  à  média  incondicional  do  sistema.  Durante  a  trajetória  de  crescimento  equilibrado  do 
+steady-stateas variáveis não evoluem de t para t+1 e os choques não ocorrem. A linearização ao redor do steady-state é 
+uma  condição  necessária  para  a  unicidade  de  um  equilíbrio  estável.  As  variáveis  log-linearizadas  ao  redor do  steady-
+state representam os log-desvios de seus valores de steady-state. 
+22 Neste trabalho  fora utilizado o  modelo SAMBA (2008) log-linearizado ao redor do  steady-state disponibilizado no 
+artigo original pelos seus respectivos autores. 
+
+aproximações  log-lineares  do  modelo  descrevem  o  comportamento  das  variáveis  estacionárias 
+quando estas estão flutuando ao redor da vizinhança dos seus valores de steady-state em resposta a 
+choques aleatórios. O objetivo da log-linearização é mapear  
+
+Em 
+
+ (                   )       
+
+          , e 
+
+                 
+
+                           . (2) 
+
+A  equação  (2)  é  a  representação  Log-linear  (na  vizinhança  do  steady-state)  dos  modelos 
+estruturais.  Onde  A,  B,C  e  D  são  funções  dos  parâmetros  estruturais  µ.  Para  proceder  é  preciso 
+expressar a solução do modelo dinâmico log-linearizado e as condições do equilíbrio estático. 
+Sims (2001) propôs um método de solução aplicado a modelos escritos da seguinte maneira: 
+
+                               (3) 
+
+A  equação  (3)  é  a  representação  Log-linear  (na  vizinhança  do  steady-state)  dos  modelos 
+estruturais.  Onde  A,  B,  C  e  D  são  funções  dos  parâmetros  estruturais  e  E  é  uma  matriz  de 
+constantes23.  
+
+O primeiro passo para a solução de (3) é empregar a “QZ factorization” para decompor A e 
+
+B em matrizes triangulares superiores unitárias: 
+
+           
+           
+
+Onde          são  unitários,  e          são  triangulares  superiores24.  Em  seguida,                são 
+ordenadas  de  modo  que,  em  valores  absolutos,  os  autovalores  generalizados  de  A  e  de  B  estejam 
+organizados em   e   em ordem crescente da esquerda para a direita, assim como no procedimento 
+de decomposição de Jordan utilizado por Blanchard e Kahn (1980)25. Tendo obtido a  fatoração, o 
+sistema  original  é  então  multiplicado  por   ,  expressando  o  sistema  transformado  em  termos  de 
+              da seguinte forma: 
+
+Assim  como  em  Blanchard  e  Kahn  (ibid),  (4)  é  particionada  em  blocos  explosivos  e  não 
+
+                              (4) 
+
+explosivos: 
+
+[
+
+       
+ 
+   
+
+] [
+
+   
+   
+
+]   [
+
+       
+ 
+   
+
+] [
+
+     
+     
+
+]   [
+
+  
+  
+
+] [             ](5) 
+
+O  bloco  explosivo  (as  equações  da  parte  inferior)  é  resolvido  da  seguinte  forma:  Seja      
+                 – particionando adequadamente para     e    . O bloco inferior de (5) é dado 
+por:  
+
+                       (6) 
+
+Adiantando (6) um período e resolvendo para     leva a: 
+                  
+
+        
+
+Onde        
+
+     . Substituindo recursivamente para      ,      ,... chega-se a  
+
+        ∑      
+
+ 
+   
+
+         
+
+(7) 
+
+Uma  vez  que                     Como                       ,  (7)  expressa       como  uma 
+função de seus valores futuros de erros estruturais e expectacionais. Mas     é conhecida no tempo 
+t, e                         para        então (7) deve ser escrita da seguinte maneira:  
+
+        ∑      
+
+ 
+   
+
+      
+
+(8) 
+
+                                                           
+23 A matriz E é desnecessária pois as variáveis em    são expressas em termos de log-desvios de seus valores de steady-
+state.  
+24  Uma  matriz  unitária     satisfaz               .  Se     e/ou     contêm  valores  complexos,  a  transposição  reflete  a 
+conjugação complexa, isto é, cada entrada complexa é substituída por seu conjugado e então transposta.  
+25 Autovalores generalizados de   são obtidos como a solução para         , onde   é uma matriz simétrica. 
+
+Onde      é a porção inferior de    conformável com   
+notando que – ∑                
+
+ 
+   
+
+, obtém-se a solução de    como 
+                       
+
+26. Pós-multiplicando (8) por    
+
+       e 
+
+Tendo resolvido para     o passo seguinte é resolver para     em (5). Nota-se que a solução 
+de     requer uma solução para os erros expectacionais que aparecem em (5). Quando uma solução 
+única  para  o  modelo  existe  há  uma  relação  sistemática  entre  os  erros  expectacionais  associados 
+à   e  à     –  explorar  essa  relação  leva  a  um  meio  de  resolver  para        A  condição  necessária  e 
+suficiente  para  a  unicidade  é  dada  pela  existência  de  uma  matriz      de  ordem            ,  que 
+satisfaz: 
+
+          (9) 
+
+A  equação  (9)  representa  a  relação  sistemática  entre  os  erros  expectacionais  associados  a 
+   e  a     .  Dada  a  unicidade  e  a  possibilidade  de  calcular     como  em  (9),  a  solução  para      
+procede  com  a  pré-multiplicação  de  (4)  por  [     ].  Como      é         e      é       ,  tal  que      
+      , então   é         e   é        . Pré-multiplicando implica em 
+
+[             ] [
+
+]   [             ] [
+
+]   [        ][             ](10) 
+
+   
+   
+
+     
+     
+
+Devido à  (9), o fator de carregamento dos erros expectacionais em  (10) é zero e,  então, o sistema 
+pode ser escrito sob a seguinte forma: 
+
+Onde  
+
+                         (11) 
+
+              
+
+] 
+
+       
+      [   
+ 
+       [
+
+ 
+        
+
+               
+  [               ]  
+
+]   
+
+           
+
+       [
+
+        
+
+]   
+
+ 
+
+Onde    é uma matriz        que contém a primeira até a enésima coluna de Z. 
+
+Com a solução em forma linear, (11), é possível obter, por exemplo, a resposta dinâmica de 
+uma  particular  variável  (algum  elemento  de    )  a  um  determinado  choque.  Funções  Impulso-
+Resposta  descrevem  o  efeito  isolado  de  um  choque  unitário27  no  sistema  dinâmico  deixando  tudo 
+mais  constante.  Formalmente,  a  função  impulso-resposta  do  n-ésimo  componente  do  vetor    ,  no 
+período      , a um choque específico no período  ,   
+
+  
+     
+
+(      
+
+ )   (  (  
+
+   |  
+
+ , é definida como: 
+   |  
+
+ )        
+
+       
+
+    ) 
+
+ 
+2.2. Minimizando a Função Perda de Forma a Encontrar a Política Monetária Ótima 
+
+Seja a função perda definida como28: 
+
+                                                           
+26Sims  também  considera  o  caso  no  qual  as  inovações  estruturais      são  serialmente  correlacionadas,  o  que  leva  à 
+generalização da equação (8). 
+27 O steady-stateé a condição inicial em todos os períodos que precedem o primeiro período da simulação. Os choques 
+unitários (os quais somente a distribuição de probabilidade das ocorrências é conhecida pelos agentes) somente atingem 
+o modelo (como uma surpresa) no instante  t (instante em que ocorrem), mas depois seus valores esperados são zeros. 
+Em modelos estocásticos os choques permanentes não podem ser acomodados devido à necessidade de “estacionariza” 
+o  modelo  ao  redor  do  steady-statedeterminístico.  No  entanto,  o  efeito  do  choque  se  propaga  lentamente  através  da 
+Economia a partir da introdução das variáveis latentes tais como as perturbações que afetam os modelos por meio das 
+variáveis exógenas que são, por sua vez, processos AR (1) estacionários. Assume-se que todos os choques considerados 
+neste trabalho são log-desvios unitários positivos.   
+28  Essa  forma  funcional  da  função  perda  fora  usada  por  Levin,  Wieland  e  Williams  (2003)  e  por  Taylor  e  Wieland 
+(2012).    Sem  considerar  a  variação  dos  juros,  essa  função  perda  corresponde  à  expectativa  incondicional  de  uma 
+aproximação  de  segunda  ordem  da  utilidade  das  famílias  de  um  pequeno  modelo  Novo-Keynesiano  derivado  de 
+fundamentos  microeconômicos,  conforme  mostrado  em  Rotemberg  e  Woodford  (1999).  A  inclusão  da  variação  dos 
+juros objetiva, segundo Taylor e Wieland (2012), capturar a tendência notória dos bancos centrais em suavizar a taxa de 
+
+                                 
+
+Onde            é  a  variância  da  resposta  da  variável  em  questão  a  choques  exógenos  unitários.  As 
+variâncias  são  contabilizadas  através  das  funções  impulso-resposta.  A  variância  da  inflação,  por 
+ , é definidas como 
+exemplo, atéo período      , em resposta a um choque unitário29 no período  ,   
+   [      
+
+ 
+
+ )], onde: 
+(      
+ 
+(      
+     
+
+      
+
+ )        
+
+ )        
+
+  (      
+ )   (  (    |        
+
+  (      
+
+  (      
+
+ )            
+
+  (      
+
+ ) e 
+
+ )          |     ) 
+
+Assume-se que: 
+
+    (  
+
+     
+    (  
+
+ )                
+ )              
+
+O  steady-state  é  a  condição  inicial  do  sistema  em  todos  os  momentos  que  precedem  cada 
+choque.  Cada  choque  unitário  atinge  o  modelo  no  instante  t,com  todos  os  demais  choques 
+constantes em seus valores de steady-state (iguais a zero), e nos períodos seguintes seus valores são 
+zeros novamente30. Para computar a função loss são considerados todos os choques abarcados pelo 
+respectivo modelo. Isto é: 
+
+ 
+
+           ∑    [      
+
+ 
+
+(      
+
+ )]
+
+ 
+
+Onde     {             } é o conjunto de todos os choques considerados pelo SAMBA (2008). 
+
+   
+
+Com o objetivo de investigar a resposta ótima da política monetária a um pequeno número 
+de  variáveis  incluídas  em  uma  regra  simples31considera-se  a  forma  funcional  da  regra  de  Levin, 
+Wieland e Williams (1999, 2003): 
+
+Também é considerada  a forma  funcional da regra expandida para incluir o  lag do gap do 
+
+produto, conforme a seguinte regra proposta por Smets e Wouters (2007): 
+
+                        
+
+                                 
+
+Os  parâmetros  da  política  monetária  ótima              32  são  escolhidos  de  modo  a 
+
+resolver33 
+
+    {                                } 
+
+ 
+3. O MODELO SAMBA (2008) E AS REGRAS DE POLÍTICA MONETÁRIA 
+3.1 O ambiente do modelo SAMBA (2008) 
+
+Gouvea et al. (2008) construíram e estimaram um modelo de uma pequena economia aberta 
+para o Brasil34. O modelo fora desenvolvido no Banco Central do Brasil para prover suporte às suas 
+decisões de política econômica35.  
+                                                                                                                                                                                                 
+juros  e  evitar  valores  extremos  dos  coeficientes  de  resposta  otimizados  que  podem  se  distanciar  das  observações 
+empíricas e regularmente violar a restrição de não-negatividade (ver Woodford (1999)). 
+29 Ver nota de rodapé nº 27 deste trabalho. 
+30 Os choques se propagam pelo tempo na economia através dos processos auto regressivos estacionários que definem 
+as variáveis exógenas. 
+31 Aqui, simples tem mais a conotação de simplicidade do que a da distinta inferioridade.  
+32 Dada a suposição da função objetivo quadrática e dada a estrutura linear dos modelos, restringe-se às regras lineares 
+de política monetária para facilitar a computação. No presente trabalho não são realizadas otimizações sobre regras não-
+lineares de política monetária, sendo este feito deixado para pesquisas futuras.  
+33 Para resolver o processo de  minimização  fora criada uma rotina do software MatLab.  Esta rotina utiliza o Dynare 
+para realizar as simulações estocásticas do modelo, computa as variâncias das respostas da variável de interesse a cada 
+um  dos  choques  exógenos  e  encontra,  a  partir  de  iterações,  os  parâmetros  ótimos  que  minimizam  a  função  perda 
+sugerida. Após definidas as funções objetivos e os parâmetros de iteração, a função do MatLab “fmincon” é usada para 
+achar  o  mínimo  global  de  uma  função  escalar  de  diversas  variáveis  partindo  de  um  ponto  inicial.  Essa  função  é 
+usualmente referida como otimização não-linear com restrições ou programação não-linear. 
+34  O  modelo  de  Gouveaet  al.  (2008)  é  uma  versão  preliminar  do  SAMBA  (2011).  A  diferença  entre  eles  é  que  o 
+SAMBA  (2011)  considera,  além  das  características  do  SAMBA  (2008),  um  prêmio  de  risco  doméstico;  curvas  de 
+Phillips distintas para os preços dos bens importados, para os preços do investimento e do consumo do governo, para os 
+
+Demanda Agregada: Há dois tipos de famílias: Optimizers e Rule-of-thumbers. Ambos maximizam 
+uma  função  utilidade  similar  separável  em  consumo  e  lazer  mas  sujeitos  a  diferentes  restrições 
+orçamentárias. Ambos ofertam trabalho em um mercado competitivo. Diferente das  Optimizers, as 
+famílias  Rule-of-thumbers  não  têm  acesso  aos  mercados  de  crédito,  ativos  e  nem  de  capital.  Eles 
+apenas consomem a renda de seus salários.As famílias Optimizers têm acesso a títulos domésticos e 
+a títulos denominados em moeda estrangeira, acumulam capital sujeitos a um custo de ajustamento 
+do capital, recebem por alugar o capital e pagam taxas.  
+Oferta  Agregada:  O  setor  produtivo  é  composto  por  produtores  e  montadores.  Firmas 
+monopolisticamente competitivas produzem bens diferenciados sob uma tecnologia Cobb-Douglas 
+com  trabalho, capital  e bens importados como insumos. Aderindo à Galí  e Gertler  (1999),  apenas 
+uma fração das firmas pode ajustar seus preços de forma ótima (“forward-looking firms). As demais 
+firmas  seguem  uma  regra  específica.  O  bem  final  homogêneo  é  montado  por  uma  firma 
+representativa  que  usa  um  agregador  CES  e  é  vendido  em  um  mercado  competitivo.  O  bem  final 
+pode ser usado para consumo das famílias, consumo do governo, investimento e exportações. O gap 
+do  produto  é  definido  como  a  diferença  entre  o  produto  consumido  pela  Economia  e  o  que 
+efetivamente é produzido por essa economia (isto é, é a diferença entre o produto bruto e o produto 
+do valor adicionado). 
+O  setor  externo:  É  assumido  que  o  resto  do  mundo  é  composto  por  um  contínuo  de  pequenas 
+economias abertas como em Gali e Monacelli (2005), as quais produzem bens diferenciados em um 
+mercado  global.  A  demanda  pelas  exportações  domésticas  é  obtida  através  da  agregação  das 
+demandas dos países  estrangeiros,  expressa  em  uma moeda internacional. As firmas  importadoras 
+domésticas tomam a demanda pelos seus bens a partir das escolhas dos produtores de insumos. 
+Choques:  O  modelo  considera  choque  na  meta  de  inflação,  choque  na  meta  fiscal,  choque  de 
+preferências, choque de oferta de trabalho, choque de investimentos, choque da aversão a risco do 
+investidor estrangeiro, choque no prêmio de risco do país, choque de tecnologia, choque de política 
+monetária, choque de política fiscal, choque das importações do resto do mundo, choque na inflação 
+do resto do mundo e choque na taxa de juros do resto do mundo. 
+ 
+Quadro 1 - Regras Ótimas de Políticas Monetária 
+
+                                 
+
+Regra com 3 parâmetros:                   
+
+  
+
+1.082 
+
+   
+
+0.222 
+
+Regra com 4 parâmetros:                            
+
+  
+
+1.082 
+
+   
+
+2.374 
+
+   
+n.a 
+
+   
+
+-2.323 
+
+  
+
+1.105 
+
+  
+
+1.103 
+
+   Obs.: Resultados calculados pelos autores. 
+ 
+Nota-se,  no  Quadro  1,  uma  considerável  persistência  dos  juros  em  ambas  as  regras 
+refletida  no  parâmetro  ρ.  Essa  persistência  pode  estar  sendo  causada  pela  inclusão  da 
+variância da variação dos juros na função perda  e corrobora  a “bem  conhecida tendência de 
+bancos  centrais  em  suavizar  as  taxas  de  juros”  [  Taylor  e  Wieland  (2012)].  Quando 
+considerada  a  regra  ótima  com  3  parâmetros  há  pouco  peso  relativo  na  resposta  ao  gap 
+
+                                                                                                                                                                                                 
+preços  do  consumo  das  famílias  e  para  os  preços  dos  bens  de  exportação;  além  de  distinguir  demandas  setoriais  por 
+famílias,  firmas,  governo  e  setor  externo.  A  não  utilização  da  versão  SAMBA  (2011) deve-se  à  inconsistência  obtida 
+das  Funções  Impulso-resposta  no  processo  computacional.  As  funções  impulso-resposta  obtidas  são  bem  “nervosas” 
+indicando a possível existência de um looping nos choques, como se as expectativas dos agentes fossem temporalmente 
+inconsistentes. Essa inconsistência, entretanto, pode ser uma  falha de programação, e não da modelagem do SAMBA 
+(2011). Optou-se, portanto, em adotar o modelo SAMBA (2008). 
+35  O  modelo  log-linear  é  apresentado  sucintamente  no  apêndice.  O  modelo  completo  e  os  valores  dos  parâmetros 
+estruturais estão no paper original.  
+
+contemporâneo  do  produto;  no  entanto,  há  elevado  peso  relativo  ao  gap  contemporâneo  do 
+produto na regra ótima com 4 parâmetros. Observa-se, porém, que a resposta ao gap defasado 
+do produto é negativa, arrefecendo, no longo prazo, a resposta da política monetária à desvios 
+do  gap  do  produto  do  steady-state  –  o  que  torna  a  regra  ótima  com  4  parâmetros  similar  à 
+regra ótima com 3 parâmetros. 
+
+ 
+
+Quadro 2 - Decréscimo na Função Perda diante da mudança de número de parâmetros 
+
+Modelo 
+
+BRA_SAMBA 
+
+3versus 4 parâmetros 
+
+- 1.44% 
+
+   Obs.: Resultados calculados pelos autores.  
+
+ 
+Observa-se  no  Quadro  2  que  quando  se  considera  a  regra  com  4  parâmetros  ao  invés  de 
+
+considerar a regra com 3 parâmetros, a função perda proposta decresce em 1.44%.  
+
+ 
+4. Funções Impulso-Resposta: Regras Otimizadas (1 e 2) e Regra Original 
+Regras Otimizadas no SAMBA (2008): 
+Regra de Levin, Wieland e Williams (1999, 2003):                         (Regra 1) 
+Regra de Smets e Wouters (2007):                                   (Regra 2) 
+Regra Original do modelo SAMBA (2008): 
+                                 ̅             ̅             (Regra Original) 
+ 
+Apesar  da  regra  original  do  SAMBA  (2008)  considerar  a  meta  de  inflação  e  a  expectativa 
+ 
+com  relação  à  inflação  futura  podem  ser  realizadas  algumas  comparações  com  as  regras 
+otimizadas.36 
+ 
+Observa-se que as regras ótimas encontradas dão mais peso relativo à persistência dos juros, 
+comparando à regra original. O peso relativo dado à inflação corrente é relativamente menor do que 
+o  adotado  pelas  regras  otimizadas.  Considerando  o  efeito  de  longo  prazo,  a  resposta  da  política 
+monetária ao gap do produto é semelhante em ambas regras. 
+Os  períodos  das  funções  estão  em  trimestre.  A  resposta  aos  impulsos  é  simulada  para  40 
+ 
+períodos, totalizando 10  anos. No eixo das  ordenadas encontram-se os log-desvios37 das variáveis 
+de interesse de seus valores de steady-state. Conforme já mencionado os choques unitários atingem 
+o modelo no instante t como uma surpresa38 mas depois seus valores esperados são zeros. Os efeitos 
+dos choques propagam-se no tempo pois são introduzidos no modelo através das variáveis exógenas 
+que são, por sua vez, processos autorregressivos estacionários.  Assume-se que os choques não são 
+correlacionados  entre  si.  Todos  os  choques  considerados  são  log-desvios  (desvios  percentuais) 
+unitários positivos39. 
+ 
+
+Figura 1: Funções Impulso-Resposta a choques na Preferência e na Oferta de Trabalho 
+
+                                                           
+36 Dada a suposição da função objetivo quadrática e dada a estrutura linear dos modelos, restringe-se às regras lineares 
+de política monetária para facilitar a computação. No presente trabalho não são realizadas otimizações sobre regras não-
+lineares de política monetária, sendo este feito deixado para pesquisas futuras. 
+37 Log-desvios são desvios percentuais.  
+38 Ver nota de rodapé nº 27.  
+39 Como o valor dos choques no  steady-stateé zero, a ocorrência de cada choque é um  desvio de um ponto percentual 
+positivo. 
+
+ 
+
+O choque na preferência das famílias causa um aumento no consumo e consequentemente 
+no  produto  para  ajustar  a  demanda.  O  aumento  na  produção  é  acompanhado  por  pressões 
+inflacionárias  pois  os  custos  marginais  aumentam.  O  choque  da  oferta  de  trabalho,  por  sua 
+vez,  afeta  negativamente  a  oferta  de  trabalho  das  famílias40.  A  taxa  de  utilização  do  capital 
+aumenta para manter a produção com a diminuição da oferta de trabalho provocando pressões 
+inflacionárias.  Inicialmente  as  famílias  trocam  o  trabalho  por  lazer  e  consomem  mais, 
+elevando o produto,  até os períodos seguintes onde diminuem o consumo devido à perda da 
+renda do trabalho. Toda essa dinâmica pode ser observada na figura 1. 
+
+Percebe-se, na figura 1, que a resposta da inflação sob a regra original é nítidamente mais 
+impactantetanto  tanto  sob  um  choque  no  consumo  (preferências)  quanto  sob  um  choque  na 
+oferta de trabalho41. A resposta do produto é semelhante para os choques de preferência mais 
+ligeiramente distintos considerando o choque na oferta de trabalho. Sob esse último, o produto 
+reage  positivamente  quando  adotada  a  regra  original  –  embora  esse  incremento  venha 
+acompanhado de uma inflação mais aguçada.  
+
+Figura  2:  Funções  Impulso-Resposta  a  choques  nos  investimentos  e  aversão  ao  risco  do 
+
+investidor estrangeiro 
+
+                                                           
+40 Ver modelo log-linearizado no apêndice 1.  
+41 Para deixar claro o conceito das ocorrências dos choques ressalta-se aqui que os choques de preferências são, como 
+todos  os  outros  choques  abarcados  por  este  trabalho,  choques  positivos  de  um  ponto  percentual.  Para  derivar  os 
+efeitos dos choques sob a economia basta partir das equações do modelo log-linearizado conforme apresentado no 
+apêndice deste trabalho.  
+
+ 
+
+investimento 
+
+Os  choques  de 
+
+impactam  positivamente  na  demanda  por  novos 
+investimentos.  Com  novos  investimentos  o  incremento  da  capacidade  produtiva  pressiona 
+negativamente a inflação. O produto da economia aumenta em consequência da elevação da 
+demanda  e  da  oferta  de  novos  investimentos.  O  aumento  da  aversão  ao  risco  do  investidor 
+estrangeiro  pressiona  positivamente  o  prêmio  de  risco  e  aumenta  a  posse  líquida  de  ativos 
+estrangeiros  por  agentes  domésticos  além  de  elevar  a  condição  da  paridade  descoberta  dos 
+juros  que  pressionam  negativamente  as  exportações  líquidas.  O  incremento  da  condição  de 
+paridade descoberta dos juros pressiona, em um primeiro momento, os custos marginais mas 
+terminam  por  pressionar  a  inflação  dos  produtos  domésticos  para  baixo.  Essas  dinâmicas 
+podem ser observada nas respostas do produto e da inflação mostradas na figura 2. 
+
+Analisando a figura 2, com relação a um choque nos investimentos, a resposta negativa da 
+inflação  é  mais  intensa  quando  adotada  a  regra  original  –  embora  o  produto  responda  bem 
+mais  quando  adotas  a  regra  otimizada  1.  Com  relação  a  um  choque  na  aversão  ao  risco  do 
+investidor  estrangeiro,  a  inflação  sob  a  regra  original,  apesar  de  incialmente  ficar 
+relativamente mais elevada, permanece por um longo período abaixo de seu nível de  steady-
+state. A resposta ao produto é bem similar sob as três regras, com a resposta sob a regra 1 ser 
+ligeiramente mais elevada.  
+
+Figura 3: Funções Impulso-Resposta a choques no Prêmio de Risco País e na Tecnologia 
+
+ 
+
+O choque no prêmio de risco país possui efeitos similares ao choque na aversão ao risco do 
+investidor  estrangeiro  explicado  logo  acima.  O  choque  na  tecnologia  afeta  positivamente 
+todos  os  componentes  do  produto  e  da  demanda.  Inicialmente  o  capital  torna-se  mais 
+produtivo, incentivando seu acúmulo. A pressão negativa na inflação devido ao incremento da 
+capacidade produtiva parece ser superior à pressão negativa exercida sobre a inflação devido 
+ao aumento dos salários reais, umavez que o trabalho efetivo torna-se também mais produtivo. 
+Essas dinâmicas de transmissão podem ser observadas na figura 3. 
+
+Analisando  a  figura  3,  percebe-se  que  as  respostas  sob  diferentes  regras  a  um  choque  no 
+prêmio  de  risco  são  similares  às  respostas  a  um  choque  na  aversão  ao  risco  do  investidor 
+estrangeiro.  Novamente,  a  regra  1  parece  suavizar  relativamente  mais  a  resposta  inflação  e 
+incrementar  mais  a  resposta  do  produtoao  choque  no  prêmio  de  risco.Com  u  relação  ao 
+choque da tecnologia, a inflação cai muito mais quando adotada a regra original relativamente 
+à adoção das regras ótimas. Porém, o produto quase não se altera sob a regra orginal enquanto 
+que sob as regras ótimas a resposta do produto a um choque tecnológico é bem intensa e dura 
+mais de 10 anos até retornar ao nível de steady-state. 
+
+Figura 4: Funções Impulso-Resposta a choques nas exportações domésticas e na inflação 
+
+do resto do mundo 
+
+Os  canais  de  transmissão  dos  choques  no  incremento  das  exportações  domésticas  se  dão 
+pelo  aumento  imediato  do  produto  e  pelo  seguido  aumento  das  importações  devido  à 
+apreciação cambial. A inflação é pressionada negativamente com o aumento das importações 
+e o aumento da produção. Os efeitos sobre o produto  de um  choque na inflação do resto  do 
+mundo são similares no sentido da apreciação cambial, diferindo no sentido de que não há um 
+efeito  direto  sobre  as  exportações  domésticas  –  elevando,  portanto,  o  produto  mas  não  a 
+geração de valor agregado na economia. A dinâmica dessas propagações pode ser observada 
+na figura 4. 
+
+Observando a figura 4, percebe-se que as respostas da inflação e do produto é bem similar 
+sob todas as regras, com a inflação prolongando  bem  mais a volta para o  steady-state  sob a 
+regra original. Em resposta a um choque na inflação do resto do mundo, a inflação doméstica 
+é  impactada  positivamente  sob  a  regra  original,  ao  contrário  de  quando  adotadas  as  regras 
+ótimas. As respostas do produto são bem similares sob asdistintas regras.  
+
+Figura 5: Funções Impulso-Resposta a choque na taxa de juros do resto do mundo 
+
+ 
+
+ 
+
+Um  choque  na  taxa  de  juros  mundial  afeta  o  modelo  através  de  um  impacto  positivo  no 
+montante  líquido  de  ativos  estrangeiros  como  proporção  do  PIB,  que,  por  sua  vez,  afeta 
+negativamente  o  prêmio  de  risco  país  afetando  negativamente  a  condição  de  paridade 
+descoberta dos juros e, pressionando positivamente as exportações líquidas e positivamente a 
+inflação de produtos domésticos. Essa dinâmica pode ser observada na figura 5. 
+
+Percebe-se  pela  figura  5  que  sob  a  regra  original  a  inflação  aparenta  perder  o  controle 
+inicialmente comparando com adoção das regras ótimas. O produto cresce inicialmente mais 
+quando adotada a regra 1, situa-se pouco abaixo do nível de steady-state e em seguida retorna 
+a este nível. . 
+
+ 
+4. CONCLUSÃO 
+ 
+Este  trabalho  apresentou  um  método  prático  para  encontrar,  em  modelos  DSGE,  respostas 
+ótimas  de  políticas  monetárias  que  minimizam  uma  função  perda  proposta.  Foram  otimizadas  as 
+regras de Levin, Wieland e Williams (1999, 2003) e a de Smets e Wouters (2007) considerando o 
+modelo SAMBA (2008) e todos os choques abarcados por este. Nas regras ótimas obtidas nota-se 
+uma  considerável  persistência  dos  juros  em  ambas  e  uma  baixa  resposta  em  relação  ao  gap  do 
+produto.  Verificou-se  uma  pequena  diminuição  na  perda  obtida  quando  adotada  a  regra  com  4 
+parâmetros vis-á-vis a perda obtida quando adotada a regra com 3 parâmetros.  
+ 
+Foram  simuladas,  para  um  período  de  10  anos,  funções  impulso  resposta  do  produto  e  da 
+inflação a choques na preferência das famílias, na oferta de trabalho das famílias, no nível de novos 
+investimentos, na aversão ao risco do investidor estrangeiro, no prêmio de risco país, na tecnologia, 
+nas  importações  mundiais  (exportações  domésticas),  na  inflação  internacional  e  na  taxa  de  juros 
+internacional.  
+ 
+Na maioria dos cenários analisados, as trajetórias de transmissão dos choques são similares 
+sob a adoção das três regras distintas. As respostas do produto e da inflação aos distintos choques 
+obtidas  quando  adotas  as  regras  otimizadas  são  aparentemente  mais  suaves  do  que  as  respostas 
+obtidas quando adotada a regra original do modelo – vale ressaltar,em alguns casos o produto cresce 
+mais  sob  as  regras  otimizadas  –  indicando  que  a  adoção  de  insights  obtidos  a  partir  das  regras 
+otimizadas podem  contribuir para a estabilização da  economia  frente  a choques exógenos. Com  o 
+método  apresentado  é  possível  realizar  experimentos  de  robustez  de  política  monetária  frente  às 
+incertezas  inerentes  a  distintos  modelos,  assim  como  em  Levin,  Wieland  e  Williams  (2003)  e  em 
+Taylor  e  Wieland  (2011).  Espera-se  que  estudos  futuros  utilizem  o  método  apresentado  neste 
+trabalho para realizar investigações diversas acerca de otimizações de diferentes regras de política 
+monetária  (incluindo  regras  não-lineares)  nos  mais  diversos  ambientes  econômicos  representados 
+pelos modelos DSGE.  
+ 
+REFERÊNCIAS 
+Adolfson,  M.;  S.  Laseén,  J.  Lindé;  M.Villani.(2007).  “RAMSES  –  A  New  General  Equilibrium 
+Model for Monetary Policy Analysis” SverigesRiksbank,Economic Review 2: 5-39. 
+Blanchard, O. J.; C. M. Kahn,  (1980).  “The Solution  of  Linear Difference Models under Rational 
+Expectations”,Econometrica, 48, 1305-11. 
+Cogley,  T.;  T.  J.  Sargent.  (2005).Drifts  and  Volatilities:  Monetary  Policies  and  Outcomes  in  the 
+Post WWII U.S.,Review of Economic Dynamics, 8, 99. 262-302. 
+DeJong, David N.; Dave, Chetan.(2011). Structural Macroeconometrics.Princeton University Press. 
+Favero, Carlo A., (2001).Applied Macroeconometrics.Oxford University Press, New York. 
+Gali,  J.,  Gertler,  M.,  (1999).Inflation  Dynamics:  A  structural  econometric  analysis.Journal  of 
+Monetary Economics 113(1), 1-45. 
+Gali,  J.,  Monacelli,  T.,  (2005).Monetary  policy  and  Exchange  rate  volatility  in  a  small  open 
+economy.Review of Economic Studies 72, 707-734. 
+Gouvea,  S.;  A.  Minella,  R.  Santos;  N.  Souza-Sobrinho.  (2008).  “SAMBA:  Stochastic  Analytical 
+Model with a Bayesian Approach” Preliminary Version. Central Bank of Brazil. 
+
+Gouvea,  S.;  A.  Minella,  R.  Santos;  N.  Souza-Sobrinho;  R.  de  Castro,  M.  (2011).  “SAMBA: 
+Stochastic Analytical Model with a Bayesian Approach” Banco Central do Brasil – Working Paper 
+Series 239.  
+Hansen, L. P.; T. J. Sargent, (2008).Robustness, Princeton: Princeton University Press. 
+Kydland,  F.;  E.  Prescott  (1982),  “Time  to  build  and  aggregate  fluctuations”,  Econometrica,  50, 
+1345-1371. 
+Kydland,  Finn  E.;  Edward  C.  Prescott.(1996).  The  Computational  Experiment:  An  Econometric 
+Tool. Journal of Economic Perspectives 10(1). 
+Levin, Andrew; Volker Wieland; John C. Williams (1999), Robustness os Simple Monetary Policy 
+Rules  under  Model  Uncertainty,  In:  John  B.  Taylor,  ed.,  Monetary  Policy  Rules.  Chicago: 
+University of Chicago Press, 1999.  
+Levin,  Andrew;  Volker  Wieland;  John  C.  Williams.  (2003).  The  Performance  of  Forecast-Based 
+Monetary Policy Rules under Model Uncertainty. American Economic Review93, 3: 622-645. 
+Lucas, R.(1976). Econometric policy evaluation: A critique. Carnegie-Rochester Conference Series 
+on Public Policy 1, 19–46. 
+McCallum, B.; Nelson, E. Performance of Operational Policy Rules in an estimated semi-classical 
+structural  model.In:  Taylor,  J.  B.  (Ed.),  Monetary  Policy  Rules.  Chicago:  University  of  Chicago 
+Press. 1999. 
+Prescott,  E.  (1986),  “Theory  ahead  of  business  cycle  measurement”,  Federal  Reserve  Bank  of 
+Minneapolis Quarterly Review, 10, Fall, 9-22. 
+Rotemberg,  Julio;  Michael  Woodford.(1999).  Interest-Rate  Rules  in  na  Estimated  Sticky  Price 
+Model,”  In:  John  B.  Taylor,  ed.,  Monetary  Policy  Rules.  Chicago:  University  of  Chicago  Press, 
+1999.  
+Sims,  C.  (1980).  Macroeconomics  and  reality.Econometrica:  Journal  of  the  Econometric  Society, 
+pages 1{48. 
+Sims,  C.  (2003),  “Comments  osSmets  and  Wouters”,  unpublished  notes,  available  at 
+http://sims.princeton.edu/yftp/Ottawa/SWcomment Slides.pdf. 
+Sims, C. A.(2001). “Solving Linear Rational Expectations Models”, Computational Economics, 20, 
+1-20. 
+Smets, Frank;RafWoulters. (2007).Shocks and Frictions in US Business Cycles: A Bayesian DSGE 
+Approach.The American Economic Review,97 (3). 
+Smets, Frank; RafWoulters. (2003). An estimated dynamic stochastic general equilibrium modelo f 
+the euro área.Journal of the Ruropean Economic Association 1(5) 
+Taylor,  John  B.;  Volker  Wieland.(2011).  Surprising  comparative  properties  of  monetary  models: 
+Results from a new data basen.Review of Economics and Statistics. 
+The  Royal  Swedish  Academy  of  Sciences  (2004),  Finn  Kydland  and  Edward  Prescott’s 
+Contribution  to  Dynamic  Macroeconomics:  The  Time  Consistency  of  Economic  Policy  and  the 
+Driving Forces Behind Business Cycles. In:Advanced information on the Bank of  sweden Prize in 
+Economic Sciences in Memory of Alfred Nobel. 11 October 2004. 
+Uhlig,  H.,  (1999).  “A  Toolkit  for  Analyszing  Non-Linear  Dynamic  Stochastic  Models  Easily”em 
+Ramon  Marimon  e  Andrew  Scott,  eds.,  Computational  Methods  for  the  Study  of  Dynamic 
+Economies, Oxford University Press, New York. 
+Uhlig,  Harald;  Andrew,  Mountford.  (2008).What  are  the  effects  of  Fiscal  Policy  Shocks?Working 
+Paper 14551.National Bureau of Economic Reasearch. December 2008.  
+Volker  Wieland;  Tobias  Cwik;Gernot  J.  Muller;  Sebastian  Schmidt;  MaikWolters  (2012).A  New 
+Comparative Approach to Macroeconomic Modeling and Policy Analysys.January 23. 
+Walsh, Carl E., (2010).Monetary Theory and Policy.Third Edition.The MIT Press. 
+Woodford, Michael (1999).Optimal Monetary Policy Inertia, Manchester School, Supplement, 67: 
+1-35. 
+ 
+APÊNDICE  
+A versão log-linearizada do modelo SAMBA (2008) 
+
+Consumo das famílias Optimizing: 
+ 
+
+ 
+
+    (
+  
+
+)        
+
+      (
+
+)     
+
+   
+
+     
+Consumo das famílias rule-of-thumb: 
+
+     
+
+ 
+ 
+
+(
+
+     
+     
+
+)                
+
+ 
+ 
+
+     
+(
+     
+
+  
+)           
+
+Consumo Agregado: 
+
+        
+  
+
+      
+
+    
+
+               
+
+        
+
+    
+
+Oferta de trabalho das famílias Optimizing: 
+
+   
+
+  
+
+ 
+ 
+
+[  
+
+   
+
+ 
+
+     
+
+Oferta de trabalho das famílias rule-of-thumb: 
+
+     
+
+  
+
+ 
+ 
+
+[  
+
+   
+
+ 
+
+     
+
+Oferta de trabalho agregada: 
+
+   
+
+         
+
+        
+
+ ] 
+
+   
+
+           
+
+          
+
+ ] 
+
+Condição da Paridade descoberta dos Juros: 
+
+              [                   
+
+               
+
+ 
+
+ ] 
+
+Demanda Agregada por Trabalho: 
+
+               
+
+        
+
+    
+
+                      [            ]  
+
+              
+
+         
+
+Demanda Agregada pelos serviços de capital: 
+
+                           (            )  
+
+ ̂                   
+
+         
+
+Prêmio de Risco: 
+
+Equação Euler do Capital: 
+
+           
+
+        
+
+       
+
+ 
+
+ 
+
+                  
+  
+
+    (            )    
+
+ ̂               
+
+Equação Euler do investimento: 
+
+    
+
+ 
+
+         
+
+   
+  
+
+ 
+
+     
+
+        
+
+ 
+
+     
+
+       (
+
+       
+     
+
+  
+)   
+
+Lei de moção do capital: 
+
+Equação das exportações: 
+
+Equação das Importações: 
+
+Utilização do capital: 
+
+Custo Marginal Real: 
+
+Curva de Phillips: 
+
+                   (
+
+ 
+ 
+
+)    
+
+       
+
+        
+
+                      
+
+ ̂        
+  
+
+         [   
+
+ ̂            
+
+      ]              
+
+Onde as formas reduzidas dos parâmetros da curva de Phillips são dadas por: 
+
+                              
+
+                       
+
+ 
+
+   
+
+      (            )
+
+  
+
+      (            )
+
+ 
+
+  
+
+      (            )
+
+ 
+
+    
+
+    
+
+Lei de moção dos ativos estrangeiros (líquidos, como proporção do PIB): 
+
+         [  
+    
+
+        
+
+        (    
+
+       
+
+    
+
+Exportações líquidas (como proporção do PIB): 
+
+ 
+   
+
+                
+
+ )]              
+
+   
+
+   
+
+   
+
+  
+   
+
+    
+
+    
+
+  
+   
+
+       
+
+    
+
+  
+
+  
+   
+
+      
+(
+
+)    
+
+   
+Regra de Política Fiscal (variáveis expressas como proporções do PIB): 
+ )     
+
+    (      ) (      
+
+          
+  
+
+ ̂       
+
+   
+
+ 
+
+ 
+
+Superávit Primário: 
+
+ ̂     
+  
+
+ ̅̅̅      
+
+ 
+
+ 
+
+Dívida do Governo (Como uma proporção do PIB): 
+         
+
+     [  
+    
+
+      
+
+         
+
+       
+
+   ]        
+
+Gastos do Governo: 
+
+       
+
+     (
+
+   
+  
+
+    (
+
+)   
+
+  
+   
+
+)    
+
+Condição de equilíbrio de mercado para os bens finais – Produto Bruto: 
+
+                               
+
+ 
+
+ 
+
+ 
+
+ 
+
+,      
+
+Onde      
+consumo, do investimento, dos gastos do governo e das exportações. 
+ Produto em termos do valor adicionado:  
+
+  e      
+
+,      
+
+ 
+
+ 
+
+ 
+
+ 
+
+  são  as  taxas  de  steady-stateem  relação  ao  produto  brutodo 
+
+    
+
+  
+
+ 
+   
+
+    
+
+  
+   
+
+   
+
+   
+
+ 
+
+ 
+
+ e     
+
+Onde      
+Inflação do Valor Adicionado (deflator do PIB): 
+         
+  
+
+ 
+
+ 
+
+  
+   
+
+            
+
+Todos  as  variáveis  exógenas  são  modeladas  como  processos  AR(1)  e  podem  ser  consultados  no 
+paperoriginal  do  SAMBA  (2008).Os  valores  dos  parâmetros  também  podem  ser  consultados  no 
+paperoriginal do SAMBA (2008). 
+ 
+ 
+ 
+
+
