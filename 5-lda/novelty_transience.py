@@ -55,14 +55,17 @@ def mysplit3(s) -> str:
 
 os.chdir(f'{root}')
 local = r'\dados\data_final/results'
-corpus_en = pd.read_pickle(f'{root}/{local}/corpus_cleaned4_en.pkl')
-corpus_pt = pd.read_pickle(f'{root}/{local}/corpus_cleaned4_pt.pkl')
+local2 = r'\dados\data_final'
+corpus_en = pd.read_pickle(f'{root}/{local2}/corpus_cleaned4_en.pkl')
+corpus_pt = pd.read_pickle(f'{root}/{local2}/corpus_cleaned4_pt.pkl')
 
 corpus = pd.concat([corpus_en, corpus_pt]).sort_index()
 
-data = pd.read_pickle(f'{root}/{local}/data_final_v2.pkl')
-data2 = pd.read_pickle(f'{root}/{local}/data_final.pkl')
+data = pd.read_pickle(f'{root}/{local2}/data_final_v2.pkl')
+data2 = pd.read_pickle(f'{root}/{local2}/data_final.pkl')
 data.code_area = data['code_area'].astype(str).apply(lambda x: mysplit3(x))
+data.to_pickle(f'{root}/{local2}/data_final_v2.pkl')
+
 
 df = pd.concat([corpus, data], axis=1, sort=False)
 df = df[df.texts.notna()]
@@ -79,8 +82,8 @@ df = df.drop('autores_universi.', 1)
 # docs_topic_pt = pd.read_pickle(f'{local}/docs_topic_pt(30).pkl')
 
 
-docs_topic_en = pd.read_pickle(f'{root}/{local}/docs_topic_en(30)v3.pkl')
-docs_topic_pt = pd.read_pickle(f'{root}/{local}/docs_topic_pt(30)v3.pkl')
+docs_topic_en = pd.read_pickle(f'{root}/{local2}/docs_topic_en(30)v3.pkl')
+docs_topic_pt = pd.read_pickle(f'{root}/{local2}/docs_topic_pt(30)v3.pkl')
 
 
 groups = df.groupby(['linguagem', 'code_area', 'ano'])
@@ -773,6 +776,7 @@ def rodar_KLD_random_nvezes(n, tipo='area'):
 # base2 = rodar_KLD_random_nvezes(50, 'ano')
 # base2.to_pickle(f'{local}/data_KLDv2.pkl')
 NTR_df = rodar_KLD_random_nvezes(100, 'area')
+# NTR_df_ano = rodar_KLD_random_nvezes(50, 'ano')
 NTR_df.to_pickle(f'{root}/{local}/data_KLDv4(30_gensim).pkl')
 
 # =============================================================================

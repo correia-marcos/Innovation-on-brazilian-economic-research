@@ -11,6 +11,7 @@ facility of using Stanza and the quality of results, Stanza is arguably the
 best library for our purpose (the difference of results between TurkuNLP and
                               Stanza is actually quiet low).
 
+VERY IMPORTANT: In this script we did NOT do Tfidf-Vectorizer!!!!
 """
 import os
 import pandas as pd
@@ -113,7 +114,7 @@ len(id2word_pt_gensim)
 corpus_pt_gensim = [id2word_pt_gensim.doc2bow(text) for text in
                     corpus_pt.tokenized]
 
-num_topics = 100
+num_topics = 30
 lda_pt = LdaModel(corpus=corpus_pt_gensim, id2word=id2word_pt_gensim,
                   num_topics=num_topics, passes=60,
                   random_state=42, iterations=200,
