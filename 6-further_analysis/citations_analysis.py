@@ -260,13 +260,15 @@ data_plot.columns = ['matches']
 data_plot['random'] = listinha
 
 plt.rcParams["patch.force_edgecolor"] = True
+sns.set_palette(sns.dark_palette('indigo'))
 
 sns.histplot(data_plot, x='matches',
-             stat='density',
+             stat='probability',
+             color='indigo',
              cbar_kws=dict(edgecolor="black", linewidth=10))
 plt.plot([data_plot[data_plot['random'] == 'true_matches'].matches.iloc[0],
           data_plot[data_plot['random'] == 'true_matches'].matches.iloc[0]],
-         [0, 0.02], color='black')
+         [0, 0.1], color='black')
 plt.show()
 
 # =============================================================================
@@ -296,10 +298,10 @@ j = 1
 for i in list_test:
     # i['area'] = data_df['Area']
     teste2 = pd.DataFrame(i.sum(), columns=['matches'])
-    sns.histplot(teste2, x='matches', stat='density')
+    sns.histplot(teste2, x='matches', stat='probability', color='indigo')
     plt.title(f'Area {j}')
     plt.plot([teste2.loc['true_matches', 'matches'],
               teste2.loc['true_matches', 'matches']],
-             [0, 0.05], color='black')
+             [0, 0.1], color='black')
     plt.show()
     j += 1
