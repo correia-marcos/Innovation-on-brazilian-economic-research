@@ -262,11 +262,11 @@ data_plot['random'] = listinha
 plt.rcParams["patch.force_edgecolor"] = True
 
 sns.histplot(data_plot, x='matches',
-             stat='frequency',
+             stat='density',
              cbar_kws=dict(edgecolor="black", linewidth=10))
 plt.plot([data_plot[data_plot['random'] == 'true_matches'].matches.iloc[0],
           data_plot[data_plot['random'] == 'true_matches'].matches.iloc[0]],
-         [0, 20], color='black')
+         [0, 0.02], color='black')
 plt.show()
 
 # =============================================================================
@@ -276,12 +276,8 @@ base[['code_area', 'ano']] = data_df[['code_area', 'ano']]
 base_simu[['code_area', 'ano']] = data_df[['code_area', 'ano']]
 
 base['matches_total'] = num_base
-base.to_pickle(f'{root}/dados/outside/simulation/base_real.pkl')
-base_simu.to_pickle(f'{root}/dados/outside/simulation/base_simu.pkl')
-
-# base = pd.read_pickle(f'{root}/dados/outside/simulation/base_real.pkl')
-# base_simu = pd.read_pickle(f'{root}/dados/outside/simulation/base_simu.pkl')
-
+# base.to_pickle(f'{root}/dados/outside/simulation/base_real.pkl')
+# base_simu.to_pickle(f'{root}/dados/outside/simulation/base_simu.pkl')
 
 gb_base = base.groupby(['code_area'])
 dfs_base = dict(tuple(gb_base))
@@ -300,10 +296,10 @@ j = 1
 for i in list_test:
     # i['area'] = data_df['Area']
     teste2 = pd.DataFrame(i.sum(), columns=['matches'])
-    sns.histplot(teste2, x='matches', stat='frequency')
-    plt.title(f'Área {j}')
+    sns.histplot(teste2, x='matches', stat='density')
+    plt.title(f'Area {j}')
     plt.plot([teste2.loc['true_matches', 'matches'],
               teste2.loc['true_matches', 'matches']],
-             [0, 70], color='black')
+             [0, 0.05], color='black')
     plt.show()
     j += 1
