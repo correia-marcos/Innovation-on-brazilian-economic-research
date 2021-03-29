@@ -39,10 +39,10 @@ Briefly, we did the following:
 * Part 4 - Pré-processing
 * Part 4 - Stopwords (en, pt)
 * Part 5 - Stemming / Lemmatizing
-* Part 5 - Topic Modelling: tf-idf
+* Part 5 - Topic Modelling
 * Part 5 - Latent dirichlet allocation (LDA)
 * Part 5 - Ressonance/novelty/transience calculations (formula based on Kullback-leiber divergence)
-
+* Part 6 - Further analysis with citations and other variables
 
 ## Script requirements
 * requests
@@ -71,6 +71,7 @@ Briefly, we did the following:
 * NTRexample_FRevNCA from github (cloned)
 * artifici_lda library from github (cloned)
 * polyglot library from github (cloned)
+* stanza
 
 **Important:** some of this libraries need to be downloaded (pip install or
 conda install).
