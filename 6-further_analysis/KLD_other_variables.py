@@ -24,6 +24,7 @@ local_final = r'dados/data_final'
 
 kld = pd.read_pickle(f'{root}/{local_final}/data_KLDv4(30_gensim).pkl')
 data = pd.read_pickle(f'{root}/{local_final}/data_final_v2.pkl')
+matches = pd.read_pickle(f'{root}/dados/outside/matches.pkl')
 
 data['docs'] = data.index
 data['ano'] = data.docs.str.split('_')
@@ -60,12 +61,16 @@ df_merge = pd.merge(kld, df[['citations', 'num-authors', 'code_area',
                              'ano']],
                     left_index=True,
                     right_index=True).drop_duplicates()
+df_merge = pd.merge(df_merge, matches, left_index=True, right_index=True)
+
+# df_merge['title'] = data['tí­tulo']
+# df_merge.to_excel(f'{root}/{local_final}/results/base_c_citações.xlsx')
 
 # =============================================================================
 # Plot for citations x ressonance
 # =============================================================================
 
-quantil_citations = df_merge.citations.quantile(0.7)
+quantil_citations = df_merge.citations.quantile(0.8)
 quantil_ressonances = df_merge.ressonances.quantile(0.7)
 
 mean_citations = df_merge.citations.mean()
@@ -75,7 +80,14 @@ mean_ressonances = df_merge.ressonances.mean()
 df_maior = df_merge[(df_merge.ressonances > quantil_ressonances) &
                     (df_merge.citations > quantil_citations)]
 
-sns.scatterplot(data=df_maior, x='ressonances', y='citations',
+df_ploting = df_merge[np.abs(df_merge.citations -
+                             df_merge.citations.mean()) 
+                <= (3*df_merge.citations.std())]
+
+df_ploting = df_merge[(df_merge.ressonances > 0)]
+
+corr2 = df_ploting.corr()
+sns.scatterplot(data=df_ploting, x='ressonances', y='citations',
                 hue='num-authors')
 # =============================================================================
 # plot for area
@@ -121,13 +133,11 @@ plt.show()
 # =============================================================================
 # Correlations
 # =============================================================================
+df_merge['titulo'] = data['tí­tulo']
+df_merge.to_excel(f'{root}/dados/outside/complete_base.xlsx')
 
-corr_transience_citations = df.citations.corr(df.ressonances)
-corr_novelty_citations = df.citations.corr(df.novelties)
-
-corr_novelty_transience = df.ressonances.corr(df.novelties)
-
-corr_transience_authors = df.tra
+resonance_positive = df_merge[df_merge.ressonances > 0]
+correlations2 = resonance_positive.corr()
 
 correlations = df_merge.corr()
 correlations.to_excel(f'{root}/dados/outside/correlation.xlsx')

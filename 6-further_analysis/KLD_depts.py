@@ -68,8 +68,14 @@ data_depts['mean_ressonances'] = data_depts.ressonances.mean()
 
 data_depts = data_depts.sort_values('ressonances', ascending=False)
 
-data_depts.to_excel(f'{root}/dados/outside/depts_kld.xlsx')
+idx = pd.IndexSlice
+data_depts2 = data_depts_grouped.agg({'mean', 'std'})
+data_depts2['quantidade_artigos'] = data_depts_grouped.size()
+data_depts2['mean_ressonances'] = data_depts.loc[:, idx['ressonances',
+                                                        'mean']].mean()
 
+data_depts.to_excel(f'{root}/dados/outside/depts_kld.xlsx')
+data_depts2.to_excel(f'{root}/dados/outside/depts_kld2.xlsx')
 # =============================================================================
 # Plots
 # =============================================================================
