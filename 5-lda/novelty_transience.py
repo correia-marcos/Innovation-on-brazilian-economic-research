@@ -64,7 +64,7 @@ corpus = pd.concat([corpus_en, corpus_pt]).sort_index()
 data = pd.read_pickle(f'{root}/{local2}/data_final_v2.pkl')
 data2 = pd.read_pickle(f'{root}/{local2}/data_final.pkl')
 data.code_area = data['code_area'].astype(str).apply(lambda x: mysplit3(x))
-data.to_pickle(f'{root}/{local2}/data_final_v2.pkl')
+# data.to_pickle(f'{root}/{local2}/data_final_v2.pkl')
 
 
 df = pd.concat([corpus, data], axis=1, sort=False)
@@ -776,8 +776,10 @@ def rodar_KLD_random_nvezes(n, tipo='area'):
 # base2 = rodar_KLD_random_nvezes(50, 'ano')
 # base2.to_pickle(f'{local}/data_KLDv2.pkl')
 NTR_df = rodar_KLD_random_nvezes(100, 'area')
+NTR_df_test = rodar_KLD_random_nvezes(100, 'ano')
 # NTR_df_ano = rodar_KLD_random_nvezes(50, 'ano')
-NTR_df.to_pickle(f'{root}/{local}/data_KLDv4(30_gensim).pkl')
+NTR_df.to_pickle(f'{root}/{local2}/data_KLDv4(30_gensim).pkl')
+NTR_df_test.to_pickle(f'{root}/{local2}/data_KLD_for_year(30_gensim).pkl')
 
 # =============================================================================
 # Parte final
@@ -790,6 +792,7 @@ df.loc[:, 'ano'] = df.ano.map(lambda x: x[1])
 df = df.drop('docs', 1)
 
 mean_std_geral = NTR_df.agg(['mean', 'std'])
+mean_std_geral_test = NTR_df_test.agg(['mean', 'std'])
 mean_std_geral.to_excel(f'{root}/{local}/NTR_mean_std_geral_v2gensim.xlsx')
 
 NTR_df['área'] = df.code_area
