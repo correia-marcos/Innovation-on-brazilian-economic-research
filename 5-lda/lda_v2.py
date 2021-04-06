@@ -23,7 +23,7 @@ from gensim.models.ldamodel import LdaModel
 import gensim
 from nltk import word_tokenize
 import pyLDAvis
-import pyLDAvis.gensim
+# import pyLDAvis.gensim
 import matplotlib.pyplot as plt
 %matplotlib inline
 
@@ -37,17 +37,18 @@ corpus_pt = pd.read_pickle(f'{root}/{local}/corpus_cleaned4_pt.pkl')
 
 
 stopwords = pickle.load(open(f'{root}/{local}\\stopwords_total.pkl', 'rb'))
-stopwords.append('-')
-stopwords.append('economy')
-stopwords.append('economia')
-stopwords.append('alpha')
-stopwords.append('beta')
-stopwords.append('gamma')
-stopwords.append('●●●')
-stopwords.append('∗∗∗')
+# stopwords.append('-')
+# stopwords.append('economy')
+# stopwords.append('economia')
+# stopwords.append('alpha')
+# stopwords.append('beta')
+# stopwords.append('gamma')
+# stopwords.append('●●●')
+# stopwords.append('∗∗∗')
 # Did some removing of "cidcidcid..." terms by spyder IDE operations. It was
 # easier then "stopwords.remove('...')".
-pickle.dump(stopwords, open(f'{root}/{local}\\stopwords_total.pkl', 'wb'))
+
+# pickle.dump(stopwords, open(f'{root}/{local}\\stopwords_total.pkl', 'wb'))
 
 
 def prepare_text_for_lda(text):
@@ -68,7 +69,7 @@ corpus_pt['tokenized'] = corpus_pt['texts'].apply(prepare_text_for_lda)
 # =============================================================================
 
 id2word_en_gensim = corpora.Dictionary(corpus_en.tokenized)
-id2word_en_gensim.filter_extremes(no_below=3)
+id2word_en_gensim.filter_extremes(no_below=2)
 
 len(id2word_en_gensim)
 

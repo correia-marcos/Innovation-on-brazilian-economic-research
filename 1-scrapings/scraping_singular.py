@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import os
 
-
+root = os.path.abspath(os.curdir)
 # Download pagina
 
 url_2017 = 'https://en.anpec.org.br/previous-editions/2017/artigos-2017.html'
@@ -241,5 +241,5 @@ def scrape_2015_files(url, local):
 
 
 if __name__ == '__main__':
-    scrape_2017_files(url_2017, 'C:\\Users\\Usuário\\Projects\\monografia')
-    scrape_2015_files(url_2015, 'C:\\Users\\Usuário\\Projects\\monografia')
+    scrape_2017_files(url_2017, f'{root}')
+    scrape_2015_files(url_2015, f'{root}')

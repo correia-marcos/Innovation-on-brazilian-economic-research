@@ -14,7 +14,8 @@ import requests
 from bs4 import BeautifulSoup
 
 # Change to the correct Directory tree where is located the raw folder!
-os.chdir('C:/Users/Usuário/Projects/monografia/dados/raw')
+root = os.path.abspath(os.curdir)
+os.chdir(f'{root}/dados/raw')
 
 data_2014 = pd.read_csv('data-index-2014.csv', sep=';')
 data_2016 = pd.read_csv('data-index-2016.csv', sep=';')
@@ -130,6 +131,7 @@ for w in [2014, 2016, 2018]:
     j += 1
 
 
+os.chdir(f'{root}')
 # data_2019 = pd.read_csv('data-index-2019.csv', sep=';')
 # link = ["https://www.anpec.org.br/encontro/2019/submissao/files_I/i8-304a77bc2497c3c956b98adc7804317f.doc"]
 # autores = ['RÔMULO EUFROSINO DE ALENCAR RODRIGUES (UFPB) - EDWARD MARTINS COSTA (UFC) - GUILHERME IRFFI (UFC) - JOSÉ NEWTON REIS PIRES (UFC)']

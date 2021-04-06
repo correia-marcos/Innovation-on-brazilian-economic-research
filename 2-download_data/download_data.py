@@ -4,6 +4,8 @@ import requests
 import time
 import os
 
+root = os.path.abspath(os.curdir)
+
 
 def download_data(url, path, sleep=3, silence=True):
     """Download of the papers."""
@@ -43,7 +45,7 @@ if __name__ == '__main__':
     import pandas as pd
     # Change the below line to the correct directory tree where "dados" folder
     # is located.
-    os.chdir('C:\\Users\\Usuário\\Projects\\monografia\\dados')
+    os.chdir(f'{root}/dados')
     path_data = [f"raw/links_{x}.csv" for x
                  in reversed(range(2013, 2020))]
 
@@ -72,3 +74,5 @@ if __name__ == '__main__':
 
         # Exporting urls com erro
         export_url_erro(urls_erro, "dados/testes/urls-erro.csv")
+
+    os.chdir(f'{root}')
