@@ -68,8 +68,8 @@ os.chdir('C:/Users/Usuário/Projects/monografia/dados/raw')
 arquivos = glob.glob('data-index*.csv')
 
 # By a mistake in our codes, data-index-2019.csv was imported with sep = ","
-data = pd.read_csv(arquivos[-1], sep=',')
-data.to_csv('data-index-2019.csv', sep=';', encoding='utf-8', index=False)
+# data = pd.read_csv(arquivos[-1], sep=',')
+# data.to_csv('data-index-2019.csv', sep=';', encoding='utf-8', index=False)
 
 # By the way in which 2015 papers were presented in ANPEC site, we couldn't
 # get the autors names. This is later resolved by searching the autors in

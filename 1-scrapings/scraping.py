@@ -14,6 +14,8 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import os
 
+root = os.path.abspath(os.curdir)
+
 urls = [f"https://en.anpec.org.br/previous-editions/{x}/artigos-{x}.html" for x
         in reversed(range(2013, 2020))]
 j = 0
@@ -107,6 +109,6 @@ for w in reversed(range(2013, 2020)):
     path_out = f"./dados/raw/links_{w}.csv"
 
     # Change for the directory where the root of the project is located!
-    os.chdir('C:/Users/Usuário/Projects/monografia')
+    os.chdir(f'{root}')
     data.to_csv(path_out, sep=';', index=False, encoding='UTF-8')
     j += 1

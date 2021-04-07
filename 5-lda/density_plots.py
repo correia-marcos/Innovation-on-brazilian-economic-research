@@ -27,7 +27,11 @@ mpl.rcParams['font.family'] = 'serif'
 
 local = r'dados/data_final'
 NTR_df = pd.read_pickle(f'{root}/{local}/data_KLDv4(30_gensim).pkl')
+<<<<<<< HEAD
 
+=======
+NTR_test = pd.read_pickle(f'{root}/{local}/results/data_KLDv4(30_gensim).pkl')
+>>>>>>> teste_media
 NTR_df.columns = ['Novelty', 'Transience', 'Resonance']
 
 centininch = 2.54

@@ -100,6 +100,7 @@ def create_finaldf(arquivos: list):
 
     return data_final
 
+
 # Change the below os.chdir!
 os.chdir('C:\\Users\\Usuário\\Projects\\monografia\\dados\\txt_filesv2')
 txt_files = glob.glob('*.txt')
