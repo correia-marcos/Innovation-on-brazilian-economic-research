@@ -64,11 +64,11 @@ corpus = pd.concat([corpus_en, corpus_pt]).sort_index()
 data = pd.read_pickle(f'{root}/{local2}/data_final_v2.pkl')
 data2 = pd.read_pickle(f'{root}/{local2}/data_final.pkl')
 data.code_area = data['code_area'].astype(str).apply(lambda x: mysplit3(x))
-<<<<<<< HEAD
+# <<<<<<< HEAD
 data.to_pickle(f'{root}/{local2}/data_final_v2.pkl')
-=======
+# =======
 # data.to_pickle(f'{root}/{local2}/data_final_v2.pkl')
->>>>>>> teste_media
+# >>>>>>> teste_media
 
 
 df = pd.concat([corpus, data], axis=1, sort=False)
