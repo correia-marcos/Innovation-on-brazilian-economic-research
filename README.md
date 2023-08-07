@@ -6,7 +6,10 @@ We used the submitted papers in Annals Meeting of ANPEC, to understand the exten
 which patterns of papers changed in time (given that they were submitted to the same
 area in ANPEC meeting). This approach produces an quantitative analysis of the
 innovation, transience and resonance of a paper in a corpus of other papers.
-  
+
+## Publication
+We published this study in the Brazilian Journal of Innovation. Access the article [here](https://www.scielo.br/j/rbi/a/5xvYTHfFtPwcYbd6mz3PZbM/).
+
 ## Data
 
 We use papers submitted in the ANPEC annal Meeting from 2013 to 2019. 2013 was 
@@ -29,6 +32,9 @@ doc128_2013 - EFEITOS DO INVESTIMENTO EM CAPITAL INTANGÍVEL E PATENTES NO VALOR
 
 They were, also, downloaded by googling the title of the paper (on other sites).
 
+## Result
+
+The project's main output is a dataframe containing the value of resonance, innovation and transience of each article in the textual corpus analyzed. This result is produced in part 5 of the project - after using the Kullback Leiber Divergence on the textual topics produced by the Topic Modeling algorithm (LDA)
 
 ## Summary
 
